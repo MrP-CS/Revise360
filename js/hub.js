@@ -2,8 +2,8 @@
   const CFG = window.APP_CONFIG, $ = s => document.querySelector(s);
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const [topicsFile, reg] = await Promise.all([
-    fetch("experiences/topics.json").then(r => r.json()).catch(() => ({ groups: [] })),
-    fetch("experiences/registry.json").then(r => r.json())
+    fetch("experiences/topics.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({ groups: [] })),
+    fetch("experiences/registry.json", { cache: "no-cache" }).then(r => r.json())
   ]);
   const title = topicsFile.siteTitle || CFG.siteTitle;
   $("#siteTitle").textContent = title; document.title = title;
@@ -16,7 +16,7 @@
   const next = new URLSearchParams(location.search).get("next");
 
   const loaded = {};
-  async function loadExp(id) { if (!(id in loaded)) { try { loaded[id] = await (await fetch("experiences/" + id + ".json")).json(); } catch (e) { loaded[id] = null; } } return loaded[id]; }
+  async function loadExp(id) { if (!(id in loaded)) { try { loaded[id] = await (await fetch("experiences/" + id + ".json", { cache: "no-cache" })).json(); } catch (e) { loaded[id] = null; } } return loaded[id]; }
   async function summaries(list) {
     const out = {};
     await Promise.all(list.map(async e => { const exp = await loadExp(e.id); out[e.id] = exp ? Store.summarise(exp, Store.get(e.id)) : null; }));
@@ -77,7 +77,8 @@
       }).join("");
       return `<h2 class="group">${esc(g.name)}</h2><div class="topics">${cards}</div>`;
     }).join("");
-    $("#main").innerHTML = `<h2 style="margin:0 0 4px">Choose a topic</h2><p class="muted" style="margin:0">Pick a topic to see its 360° experiences.</p>${groups}`;
+    setTimeout(vrNote, 0);
+    $("#main").innerHTML = `<div class="vrnote" id="vrnote" hidden>🥽 <span>This headset supports VR. Open any experience and press <b>Enter VR</b>.</span></div><h2 style="margin:0 0 4px">Choose a topic</h2><p class="muted" style="margin:0">Pick a topic to see its 360° experiences.</p>${groups}`;
   }
 
   // ---------- stage 2: experiences in a topic ----------
@@ -115,6 +116,10 @@
       : '<p class="muted">There are no experiences for this topic yet. Check back soon.</p>'}`;
   }
 
+  function vrNote() {
+    const n = $("#vrnote"); if (!n || !navigator.xr) return;
+    navigator.xr.isSessionSupported("immersive-vr").then(ok => { if (ok) n.hidden = false; }).catch(() => {});
+  }
   function route() {
     if (!Store.student()) return signIn();
     const t = new URLSearchParams(location.search).get("topic");

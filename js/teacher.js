@@ -2,8 +2,8 @@
   const CFG = window.APP_CONFIG, $ = s => document.querySelector(s);
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const [topicsFile, fullReg] = await Promise.all([
-    fetch("experiences/topics.json").then(r => r.json()).catch(() => ({ groups: [] })),
-    fetch("experiences/registry.json").then(r => r.json())]);
+    fetch("experiences/topics.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({ groups: [] })),
+    fetch("experiences/registry.json", { cache: "no-cache" }).then(r => r.json())]);
   if (topicsFile.siteTitle) { $("#topic").textContent = topicsFile.siteTitle; document.title = "Teacher dashboard | " + topicsFile.siteTitle; }
   const topicList = topicsFile.groups.flatMap(g => g.topics).filter(t => fullReg.experiences.some(e => e.topic === t.id));
   fullReg.experiences.filter(e => !topicList.some(t => t.id === e.topic)).forEach(e => { if (!topicList.some(t => t.id === (e.topic || "other"))) topicList.push({ id: e.topic || "other", title: e.topic ? "Topic " + e.topic : "Other" }); });
@@ -11,7 +11,7 @@
   const reg = { experiences: [] };
   const setTopic = id => { topicSel = id; reg.experiences = fullReg.experiences.filter(e => (e.topic || "other") === id).sort((a, b) => (a.lesson || 0) - (b.lesson || 0)); if (!reg.experiences.some(e => e.id === expSel)) expSel = reg.experiences[0]?.id; };
   const exps = {};
-  await Promise.all(fullReg.experiences.map(async e => { try { exps[e.id] = await (await fetch("experiences/" + e.id + ".json")).json(); } catch (x) {} }));
+  await Promise.all(fullReg.experiences.map(async e => { try { exps[e.id] = await (await fetch("experiences/" + e.id + ".json", { cache: "no-cache" })).json(); } catch (x) {} }));
   const COL = { g: "#50dc96", a: "#ffd046", r: "#ff5f5f", n: "#51607a" };
   let rows = [], students = [], cls = "", expSel;
   setTopic(topicSel);

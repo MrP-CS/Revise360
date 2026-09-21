@@ -12,7 +12,7 @@
   const marks = t => (t.t === "mcq" || t.t === "multi") ? 1 : t.t === "order" ? t.steps.length : t.t === "sort" ? t.items.length : t.pairs.length;
 
   let exp;
-  try { exp = await (await fetch("experiences/" + encodeURIComponent(expId) + ".json")).json(); }
+  try { exp = await (await fetch("experiences/" + encodeURIComponent(expId) + ".json", { cache: "no-cache" })).json(); }
   catch (e) { document.body.innerHTML = '<div class="page"><div class="card"><h1>Experience not found</h1><p><a href="index.html">Back to home</a></p></div></div>'; return; }
   document.title = exp.title + " | " + CFG.siteTitle;
 
@@ -34,10 +34,24 @@
   // ---------- three.js scene ----------
   const el = $("#v");
   const r = new THREE.WebGLRenderer({ antialias: true }); r.setPixelRatio(Math.min(devicePixelRatio, 2)); el.appendChild(r.domElement);
+  r.xr.enabled = true; r.xr.setReferenceSpaceType("local");
   const scene = new THREE.Scene(); const cam = new THREE.PerspectiveCamera(85, 1, .1, 100);
+  // Everything in the 360 world lives in one group, so VR can rotate it (snap turn, starting direction)
+  const grp = new THREE.Group(); scene.add(grp);
   const geo = new THREE.SphereGeometry(50, 96, 64); geo.scale(-1, 1, 1);
-  const mat = new THREE.MeshBasicMaterial(); scene.add(new THREE.Mesh(geo, mat));
+  const mat = new THREE.MeshBasicMaterial(); grp.add(new THREE.Mesh(geo, mat));
   const loader = new THREE.TextureLoader(); const texs = {};
+  // Headsets get the high-resolution image (if the experience has one) for sharper text
+  function texFor(i) {
+    const sc = exp.scenes[i], hi = core.inVR && sc.imgHi, key = i + (hi ? "hi" : "");
+    if (!texs[key]) {
+      texs[key] = loader.load("experiences/" + (hi ? sc.imgHi : sc.img), () => { if (cur === i) { mat.map = texs[key]; mat.needsUpdate = true; } });
+      texs[key].minFilter = THREE.LinearFilter; texs[key].generateMipmaps = false;
+      if (hi && texs[i]) return texs[i];  // show the normal image until the sharp one arrives
+    }
+    return texs[key];
+  }
+  const core = { inVR: false, frameHooks: [], toastHook: null };
   let cur = 0, lon = 0, lat = 0, pd = 0, t = 0, reviewMode = params.get("review") === "1";
   let sprites = [];
 
@@ -101,18 +115,18 @@
   }
   function loadScene(i) {
     cur = i; const sc = exp.scenes[i];
-    sprites.forEach(s => scene.remove(s)); sprites = [];
-    if (!texs[i]) { texs[i] = loader.load("experiences/" + sc.img); texs[i].minFilter = THREE.LinearFilter; }
-    mat.map = texs[i]; mat.needsUpdate = true; lon = 0; lat = 0; cam.fov = 85; cam.updateProjectionMatrix();
+    sprites.forEach(s => grp.remove(s)); sprites = [];
+    mat.map = texFor(i); mat.needsUpdate = true; lon = 0; lat = 0; cam.fov = 85; cam.updateProjectionMatrix();
     sc.stations.forEach((st, k) => {
       const s = new THREE.Sprite(new THREE.SpriteMaterial({ depthTest: false, transparent: true }));
-      s.position.copy(world(cubeFrom(st))); s.scale.set(5.2, 5.2, 1); s.userData = { type: "st", k }; s.renderOrder = 2; scene.add(s); sprites.push(s);
+      s.position.copy(world(cubeFrom(st))); s.scale.set(5.2, 5.2, 1); s.userData = { type: "st", k }; s.renderOrder = 2; grp.add(s); sprites.push(s);
     });
     (sc.info || []).forEach(inf => {
       const s = new THREE.Sprite(new THREE.SpriteMaterial({ depthTest: false, transparent: true }));
-      s.position.copy(world(cubeFrom(inf))); s.scale.set(2.6, 2.6, 1); s.userData = { type: "info", id: sc.id + ":" + inf.id, inf }; s.renderOrder = 1; scene.add(s); sprites.push(s);
+      s.position.copy(world(cubeFrom(inf))); s.scale.set(2.6, 2.6, 1); s.userData = { type: "info", id: sc.id + ":" + inf.id, inf }; s.renderOrder = 1; grp.add(s); sprites.push(s);
     });
     closeDrawer(); refreshSprites(); drawNav(); hud();
+    (core.sceneHooks || []).forEach(f => f(i));
   }
   function drawNav() {
     const n = $("#nav"); n.innerHTML = "";
@@ -158,21 +172,27 @@
     const u = h.object.userData; if (u.type === "info") showInfo(u); else openStation(u.k);
   }
   const still = matchMedia("(prefers-reduced-motion: reduce)");
-  (function loop() {
+  let lastT = performance.now();
+  r.setAnimationLoop((now, frame) => {
+    const dt = Math.min(.1, (now - lastT) / 1000); lastT = now;
     t += .03; lat = Math.max(-89, Math.min(89, lat));
-    const a = THREE.MathUtils.degToRad(lon), b = THREE.MathUtils.degToRad(lat);
-    cam.lookAt(-Math.cos(a) * Math.cos(b), Math.sin(b), -Math.sin(a) * Math.cos(b));
+    if (!r.xr.isPresenting) {
+      const a = THREE.MathUtils.degToRad(lon), b = THREE.MathUtils.degToRad(lat);
+      cam.lookAt(-Math.cos(a) * Math.cos(b), Math.sin(b), -Math.sin(a) * Math.cos(b));
+    }
     const k = still.matches ? 0 : .35 * Math.sin(t); const sc = exp.scenes[cur];
     sprites.forEach(s => { if (s.userData.type === "st") { const st = stationState(sc, s.userData.k); s.scale.setScalar(st.done && !(reviewMode && st.open) ? 4.6 : 5.2 + k); } });
-    r.render(scene, cam); requestAnimationFrame(loop);
-  })();
+    core.frameHooks.forEach(f => f(dt, frame));
+    r.render(scene, cam);
+  });
 
   // ---------- drawers (non-modal: the scene keeps working behind them) ----------
   const drawer = $("#drawer");
   function openDrawer(html, cls) { drawer.className = "drawer open " + (cls || ""); drawer.innerHTML = '<button class="x" aria-label="Close panel">×</button>' + html; drawer.querySelector(".x").onclick = closeDrawer; }
   function closeDrawer() { drawer.className = "drawer"; drawer.innerHTML = ""; }
+  function markInfo(id) { if (!prog.info.includes(id)) { prog.info.push(id); save(); refreshSprites(); hud(); } }
   function showInfo(u) {
-    if (!prog.info.includes(u.id)) { prog.info.push(u.id); save(); refreshSprites(); hud(); }
+    markInfo(u.id);
     const sc = exp.scenes[cur], n = (sc.info || []).length, seen = (sc.info || []).filter(f => prog.info.includes(sc.id + ":" + f.id)).length;
     openDrawer(`<h2>${esc(u.inf.title)}</h2><p>${esc(u.inf.text)}</p><p class="count">Fact ${seen} of ${n} found in this scene. Keep looking for blue <b>i</b> markers.</p>`);
   }
@@ -200,7 +220,7 @@
     toast(on ? "Review mode: stations marked Review or Focus let you retry the questions you got wrong." : "Review mode off.");
     refreshSprites();
   }
-  let toastT; function toast(msg) { const tEl = $("#toast"); tEl.textContent = msg; tEl.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => tEl.hidden = true, 5000); }
+  let toastT; function toast(msg) { if (core.inVR && core.toastHook) return core.toastHook(msg); const tEl = $("#toast"); tEl.textContent = msg; tEl.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => tEl.hidden = true, 5000); }
 
   // ---------- question modal ----------
   const modal = $("#modal"), box = $("#box"); let lastFocus = null;
@@ -213,18 +233,35 @@
   modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
   function openStation(k) {
     const sc = exp.scenes[cur], st = sc.stations[k]; if (!st) return;
+    const list = taskList(k); if (!list) return;
+    lastFocus = document.activeElement; modal.classList.add("open"); closeDrawer(); run(k, list, 0);
+  }
+  // Which questions to ask at a station (null = nothing to ask, with a message shown)
+  function taskList(k) {
+    const sc = exp.scenes[cur], st = sc.stations[k]; if (!st) return null;
     const sp = prog.scenes[sc.id], state = stationState(sc, k);
     let list;
     if (reviewMode) {
-      if (!state.done) { toast("Answer this station normally first. Turn review mode off to start it."); return; }
+      if (!state.done) { toast("Answer this station normally first. Turn review mode off to start it."); return null; }
       list = st.tasks.map((_, i) => i).filter(i => (sp.ans[k + "-" + i] ?? 0) < marks(st.tasks[i]) && !prog.review[sc.id + ":" + k + "-" + i]);
-      if (!list.length) { toast("Nothing left to review here. Well done!"); return; }
+      if (!list.length) { toast("Nothing left to review here. Well done!"); return null; }
     } else {
-      if (state.done) { toast(`You scored ${state.got}/${state.tot} here. Use review mode to retry anything you got wrong.`); return; }
+      if (state.done) { toast(`You scored ${state.got}/${state.tot} here. Use review mode to retry anything you got wrong.`); return null; }
       list = st.tasks.map((_, i) => i).filter(i => sp.ans[k + "-" + i] === undefined);
-      if (!list.length) { sp.done[k] = true; save(); refreshSprites(); return; }
+      if (!list.length) { sp.done[k] = true; save(); refreshSprites(); return null; }
     }
-    lastFocus = document.activeElement; modal.classList.add("open"); closeDrawer(); run(k, list, 0);
+    return list;
+  }
+  // Records a finished station; returns what to show next
+  function completeStation(k) {
+    const sc = exp.scenes[cur];
+    if (reviewMode) { const st = stationState(sc, k); return { review: true, message: st.open ? "Keep going: some questions still need reviewing." : "Reviewed. Nice work." }; }
+    prog.scenes[sc.id].done[k] = true; save(); refreshSprites(); hud(); drawNav();
+    if (!sc.stations.every((_, x) => prog.scenes[sc.id].done[x])) return { sceneDone: false };
+    const rows = sc.stations.map((st, x) => ({ name: st.name, ...stationState(sc, x) }));
+    const got = rows.reduce((a, x) => a + x.got, 0), tot = rows.reduce((a, x) => a + x.tot, 0);
+    const nextIdx = exp.scenes.findIndex((s, x) => x !== cur && !s.stations.every((_, y) => prog.scenes[s.id].done[y]));
+    return { sceneDone: true, sc, rows, got, tot, nextIdx, whole: Store.summarise(exp, prog), anyOpen: rows.some(x => x.open) };
   }
   function award(k, i, got) {
     const sc = exp.scenes[cur], key = k + "-" + i, m = marks(sc.stations[k].tasks[i]);
@@ -301,21 +338,17 @@
     }
   }
   function finish(k) {
-    const sc = exp.scenes[cur];
-    if (reviewMode) { closeModal(); const st = stationState(sc, k); toast(st.open ? "Keep going: some questions still need reviewing." : "Reviewed. Nice work."); return; }
-    prog.scenes[sc.id].done[k] = true; save(); refreshSprites(); hud(); drawNav();
-    const all = sc.stations.every((_, x) => prog.scenes[sc.id].done[x]);
-    if (!all) { closeModal(); return; }
-    const rows = sc.stations.map((st, x) => { const s = stationState(sc, x); return `<tr><td>${esc(st.name)}</td><td>${s.got} / ${s.tot} <span class="rag ${s.band}">${Store.BAND_LABEL[s.band]}</span></td></tr>`; }).join("");
-    let got = 0, tot = 0; sc.stations.forEach((_, x) => { const s = stationState(sc, x); got += s.got; tot += s.tot; });
-    const nextIdx = exp.scenes.findIndex((s, x) => x !== cur && !s.stations.every((_, y) => prog.scenes[s.id].done[y]));
-    const whole = Store.summarise(exp, prog);
+    const res = completeStation(k);
+    if (res.review) { closeModal(); toast(res.message); return; }
+    if (!res.sceneDone) { closeModal(); return; }
+    const { sc, got, tot, nextIdx, whole } = res;
+    const rows = res.rows.map(s => `<tr><td>${esc(s.name)}</td><td>${s.got} / ${s.tot} <span class="rag ${s.band}">${Store.BAND_LABEL[s.band]}</span></td></tr>`).join("");
     shell(sc.title + " complete", "#ffd046", `<p class="center q">Your score</p><div class="big">${got} / ${tot}</div>
       <p class="center">Your score has been saved${CFG.backendUrl ? " for your teacher" : " on this device"}. Copy it onto your worksheet too.</p>
       <table class="bd">${rows}</table>
       ${whole.complete && exp.scenes.length > 1 ? `<p class="center"><b>Lesson complete: ${whole.score} / ${whole.total}</b></p>` : ""}
       <p class="qn">Secure = full marks. Revise = mostly right. Focus here = revise this first. Turn on review mode to retry anything you got wrong.</p>
-      <div class="mrow" id="mrow">${sc.stations.some((_, x) => stationState(sc, x).open) ? '<button class="btn ghost" id="rv">Review my mistakes</button>' : ""}${nextIdx >= 0 ? `<button class="btn" id="go">Go to ${esc(exp.scenes[nextIdx].title)}</button>` : `<a class="btn" href="${esc(home)}">Back to topic</a>`}</div>`);
+      <div class="mrow" id="mrow">${res.anyOpen ? '<button class="btn ghost" id="rv">Review my mistakes</button>' : ""}${nextIdx >= 0 ? `<button class="btn" id="go">Go to ${esc(exp.scenes[nextIdx].title)}</button>` : `<a class="btn" href="${esc(home)}">Back to topic</a>`}</div>`);
     const go = $("#go"); if (go) { go.focus(); go.onclick = () => { closeModal(); loadScene(nextIdx); }; }
     const rv = $("#rv"); if (rv) rv.onclick = () => { closeModal(); setReview(true); };
   }
@@ -323,8 +356,8 @@
   // ---------- toolbar ----------
   let home = "index.html";
   $("#homeBtn").onclick = () => location.href = home;
-  fetch("experiences/topics.json").then(r => r.json()).then(t => { if (t.siteTitle) document.title = exp.title + " | " + t.siteTitle; }).catch(() => {});
-  fetch("experiences/registry.json").then(r => r.json()).then(reg => {
+  fetch("experiences/topics.json", { cache: "no-cache" }).then(r => r.json()).then(t => { if (t.siteTitle) document.title = exp.title + " | " + t.siteTitle; }).catch(() => {});
+  fetch("experiences/registry.json", { cache: "no-cache" }).then(r => r.json()).then(reg => {
     const e = (reg.experiences || []).find(x => x.id === expId);
     if (e && e.topic) home = "index.html?topic=" + encodeURIComponent(e.topic);
     if (e && e.worksheet) { const a = $("#wsBtn"); a.href = e.worksheet; a.hidden = false; a.setAttribute("aria-label", "Download the worksheet for this lesson (Word document)"); }
@@ -334,6 +367,16 @@
   $("#reviewBtn").setAttribute("aria-pressed", reviewMode);
   $("#helpBtn").onclick = () => openDrawer(`<h2>How to use</h2><p>Drag (or use the arrow keys) to look around. Pinch or scroll to zoom.</p><p style="margin-top:8px">Tap a numbered badge to answer that station's questions. Tap a blue <b>i</b> to find out more; the panel stays open while you keep exploring.</p><p style="margin-top:8px">Your progress saves automatically after every answer, so you can leave and come back later.</p>`);
 
+  Object.assign(core, {
+    exp, prog, student, CFG, scene, cam, renderer: r, grp, mat, marks, shuffle, esc, save, hud, drawNav, refreshSprites,
+    stationState, taskList, award, completeStation, markInfo, setReview, loadScene, cubeFrom, world, texFor,
+    sceneHooks: [], closeUI() { closeDrawer(); if (modal.classList.contains("open")) closeModal(); }
+  });
+  // Live values (getters, so VR always sees the current scene and mode)
+  Object.defineProperties(core, {
+    cur: { get: () => cur }, sprites: { get: () => sprites }, reviewMode: { get: () => reviewMode }, home: { get: () => home } });
+  window.NVRCore = core;
+  document.dispatchEvent(new Event("nvr-ready"));
   // Hooks for keyboard/switch access and automated testing
   window.NVR = { openStation, goTo, showInfo: n => { const sp = sprites.filter(x => x.userData.type === "info")[n]; if (sp) showInfo(sp.userData); }, setReview, loadScene };
   const go = params.get("go");
