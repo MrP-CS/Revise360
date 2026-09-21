@@ -322,6 +322,10 @@
 
   // ---------- toolbar ----------
   $("#homeBtn").onclick = () => location.href = "index.html";
+  fetch("experiences/registry.json").then(r => r.json()).then(reg => {
+    const e = (reg.experiences || []).find(x => x.id === expId);
+    if (e && e.worksheet) { const a = $("#wsBtn"); a.href = e.worksheet; a.hidden = false; a.setAttribute("aria-label", "Download the worksheet for this lesson (Word document)"); }
+  }).catch(() => {});
   $("#progBtn").onclick = () => drawer.classList.contains("progress") ? closeDrawer() : showProgress();
   $("#reviewBtn").onclick = () => setReview(!reviewMode);
   $("#reviewBtn").setAttribute("aria-pressed", reviewMode);

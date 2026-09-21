@@ -56,7 +56,8 @@
         ${sum ? `<div class="row" style="justify-content:space-between"><span class="muted" style="font-size:13px">${sum.done}/${sum.count} stations · ${sum.score}/${sum.total} marks${sum.infoTotal ? ` · ${sum.infoSeen}/${sum.infoTotal} facts` : ""}</span><span class="rag ${band}">${sum.done ? Store.BAND_LABEL[band] : "Not started"}</span></div>
         <div class="bar" role="progressbar" aria-label="Stations complete" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100"><i style="width:${pct}%"></i></div>` : '<p class="err">Could not load this experience.</p>'}
         <div class="row"><a class="btn small" href="experience.html?id=${encodeURIComponent(e.id)}">${sum && sum.complete ? "Open" : started ? "Continue" : "Start"}</a>
-        ${hasWeak ? `<a class="btn small ghost" href="experience.html?id=${encodeURIComponent(e.id)}&review=1">Review mistakes</a>` : ""}</div></div></article>`);
+        ${hasWeak ? `<a class="btn small ghost" href="experience.html?id=${encodeURIComponent(e.id)}&review=1">Review mistakes</a>` : ""}
+        ${e.worksheet ? `<a class="btn small ghost" href="${esc(e.worksheet)}" download aria-label="Download the Lesson ${esc(e.lesson)} worksheet (Word document)">⬇ Worksheet</a>` : ""}</div></div></article>`);
     }
     weak.sort((a, b) => (a.st.got / a.st.tot) - (b.st.got / b.st.tot));
     $("#main").innerHTML = `<section style="margin-top:0"><div class="stats">
