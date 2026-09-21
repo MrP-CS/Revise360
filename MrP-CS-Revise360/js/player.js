@@ -1,0 +1,337 @@
+// Generic 360 experience player. Everything it shows comes from
+// experiences/<id>.json, so new lessons need no code changes.
+(async function () {
+  const CFG = window.APP_CONFIG;
+  const params = new URLSearchParams(location.search);
+  const expId = params.get("id");
+  const student = Store.student();
+  if (!student) { location.href = "index.html?next=" + encodeURIComponent(location.pathname.split("/").pop() + location.search); return; }
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const marks = t => (t.t === "mcq" || t.t === "multi") ? 1 : t.t === "order" ? t.steps.length : t.t === "sort" ? t.items.length : t.pairs.length;
+
+  let exp;
+  try { exp = await (await fetch("experiences/" + encodeURIComponent(expId) + ".json")).json(); }
+  catch (e) { document.body.innerHTML = '<div class="page"><div class="card"><h1>Experience not found</h1><p><a href="index.html">Back to home</a></p></div></div>'; return; }
+  document.title = exp.title + " | " + CFG.siteTitle;
+
+  // ---------- progress ----------
+  const prog = Store.get(expId) || { v: 1, scenes: {}, review: {}, info: [] };
+  prog.review = prog.review || {}; prog.info = prog.info || [];
+  exp.scenes.forEach(sc => { prog.scenes[sc.id] = prog.scenes[sc.id] || { ans: {}, done: {} }; });
+  function save() {
+    const s = Store.summarise(exp, prog);
+    prog.summary = { score: s.score, total: s.total, done: s.done, count: s.count, info: s.infoSeen, infoTotal: s.infoTotal };
+    Store.put(expId, prog);
+  }
+  const statusText = { local: "Saved on this device", idle: "Saved", saved: "Saved ✓", pending: "Saving…", syncing: "Saving…", offline: "Offline: saved on this device, will sync later" };
+  let syncState = "local";
+  Store.onStatus(s => { syncState = s; const el = $("#sync"); if (el) el.textContent = statusText[s] || ""; });
+  Store.flushQueue();
+  addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden" && CFG.backendUrl) Store.push(expId, true); });
+
+  // ---------- three.js scene ----------
+  const el = $("#v");
+  const r = new THREE.WebGLRenderer({ antialias: true }); r.setPixelRatio(Math.min(devicePixelRatio, 2)); el.appendChild(r.domElement);
+  const scene = new THREE.Scene(); const cam = new THREE.PerspectiveCamera(85, 1, .1, 100);
+  const geo = new THREE.SphereGeometry(50, 96, 64); geo.scale(-1, 1, 1);
+  const mat = new THREE.MeshBasicMaterial(); scene.add(new THREE.Mesh(geo, mat));
+  const loader = new THREE.TextureLoader(); const texs = {};
+  let cur = 0, lon = 0, lat = 0, pd = 0, t = 0, reviewMode = params.get("review") === "1";
+  let sprites = [];
+
+  // Positions: either pos [right, up, front] on a unit cube, or {face, x, y}
+  // in pixels on that wall's 2048×2048 artwork (easier for authoring).
+  function cubeFrom(o) {
+    if (Array.isArray(o.pos)) return o.pos;
+    const u = o.x / 2048, v = o.y / 2048;
+    switch (o.face) {
+      case "front": return [2 * u - 1, 1 - 2 * v, 1];
+      case "right": return [1, 1 - 2 * v, 1 - 2 * u];
+      case "back": return [1 - 2 * u, 1 - 2 * v, -1];
+      case "left": return [-1, 1 - 2 * v, 2 * u - 1];
+      case "up": return [2 * u - 1, 1, 2 * v - 1];
+      default: return [2 * u - 1, -1, 1 - 2 * v];
+    }
+  }
+  const world = p => new THREE.Vector3(-p[2], p[1], -p[0]).normalize().multiplyScalar(38);
+  function lookAtVec(v) { const n = v.clone().normalize(); lat = THREE.MathUtils.radToDeg(Math.asin(n.y)); lon = THREE.MathUtils.radToDeg(Math.atan2(-n.z, -n.x)); }
+
+  function stationState(sc, k) {
+    const st = sc.stations[k], sp = prog.scenes[sc.id];
+    let got = 0, tot = 0, open = 0;
+    st.tasks.forEach((tk, i) => { const m = marks(tk); tot += m; const a = sp.ans[k + "-" + i]; if (a !== undefined) { got += a; if (a < m && !prog.review[sc.id + ":" + k + "-" + i]) open++; } });
+    return { done: !!sp.done[k], got, tot, band: Store.band(got, tot), open };
+  }
+  function badgeTex(label, col, mode) {
+    const c = document.createElement("canvas"); c.width = c.height = 512; const x = c.getContext("2d");
+    const colours = { g: "#50dc96", a: "#ffd046", r: "#ff5f5f" };
+    const f = mode.band ? colours[mode.band] : col;
+    x.globalAlpha = mode.dim ? .35 : 1;
+    x.beginPath(); x.arc(256, 256, 220, 0, Math.PI * 2); x.fillStyle = "rgba(10,16,30,.9)"; x.fill();
+    x.lineWidth = 26; x.strokeStyle = f; x.stroke(); x.fillStyle = f; x.textAlign = "center"; x.textBaseline = "middle";
+    x.font = "bold 170px Segoe UI, sans-serif"; x.fillText(mode.band === "g" ? "✓" : mode.band ? "!" : label, 256, 225);
+    x.font = "bold 58px Segoe UI, sans-serif"; x.fillStyle = "#f0f4fa";
+    x.fillText(mode.caption, 256, 370);
+    return new THREE.CanvasTexture(c);
+  }
+  function infoTex(seen) {
+    const c = document.createElement("canvas"); c.width = c.height = 256; const x = c.getContext("2d");
+    x.beginPath(); x.arc(128, 128, 110, 0, Math.PI * 2); x.fillStyle = seen ? "rgba(40,50,70,.92)" : "rgba(20,60,110,.95)"; x.fill();
+    x.lineWidth = 14; x.strokeStyle = seen ? "#8a98b0" : "#5ab4ff"; x.stroke();
+    x.fillStyle = seen ? "#b4c4dc" : "#ffffff"; x.textAlign = "center"; x.textBaseline = "middle"; x.font = "italic bold 150px Georgia, serif"; x.fillText("i", 128, 136);
+    return new THREE.CanvasTexture(c);
+  }
+  function refreshSprites() {
+    const sc = exp.scenes[cur];
+    sprites.forEach(s => {
+      const u = s.userData;
+      if (u.type === "info") { s.material.map = infoTex(prog.info.includes(u.id)); }
+      else {
+        const st = stationState(sc, u.k), def = sc.stations[u.k];
+        let mode;
+        if (!st.done) mode = { caption: "Answer" };
+        else mode = { band: st.band, caption: st.band === "g" ? "Secure" : st.band === "a" ? "Revise" : "Focus" };
+        if (reviewMode) { if (!st.done) mode.dim = true; else if (st.open === 0) mode = { band: "g", caption: st.band === "g" ? "Secure" : "Reviewed", dim: true }; else mode.caption = "Review"; }
+        s.material.map = badgeTex(def.label, def.col, mode);
+      }
+      s.material.needsUpdate = true;
+    });
+  }
+  function loadScene(i) {
+    cur = i; const sc = exp.scenes[i];
+    sprites.forEach(s => scene.remove(s)); sprites = [];
+    if (!texs[i]) { texs[i] = loader.load("experiences/" + sc.img); texs[i].minFilter = THREE.LinearFilter; }
+    mat.map = texs[i]; mat.needsUpdate = true; lon = 0; lat = 0; cam.fov = 85; cam.updateProjectionMatrix();
+    sc.stations.forEach((st, k) => {
+      const s = new THREE.Sprite(new THREE.SpriteMaterial({ depthTest: false, transparent: true }));
+      s.position.copy(world(cubeFrom(st))); s.scale.set(5.2, 5.2, 1); s.userData = { type: "st", k }; s.renderOrder = 2; scene.add(s); sprites.push(s);
+    });
+    (sc.info || []).forEach(inf => {
+      const s = new THREE.Sprite(new THREE.SpriteMaterial({ depthTest: false, transparent: true }));
+      s.position.copy(world(cubeFrom(inf))); s.scale.set(2.6, 2.6, 1); s.userData = { type: "info", id: sc.id + ":" + inf.id, inf }; s.renderOrder = 1; scene.add(s); sprites.push(s);
+    });
+    closeDrawer(); refreshSprites(); drawNav(); hud();
+  }
+  function drawNav() {
+    const n = $("#nav"); n.innerHTML = "";
+    if (exp.scenes.length < 2) { n.parentElement.style.display = "none"; return; }
+    exp.scenes.forEach((sc, i) => {
+      const b = document.createElement("button"); const fin = sc.stations.every((_, k) => prog.scenes[sc.id].done[k]);
+      b.innerHTML = (fin ? '<span class="tick">✓</span> ' : "") + esc(sc.title); b.setAttribute("aria-pressed", i === cur); b.onclick = () => loadScene(i); n.appendChild(b);
+    });
+  }
+  function hud() {
+    const sc = exp.scenes[cur], s = Store.summarise(exp, prog);
+    let got = 0, tot = 0, d = 0; sc.stations.forEach((_, k) => { const st = stationState(sc, k); got += st.got; tot += st.tot; if (st.done) d++; });
+    const infoN = (sc.info || []).length, infoSeen = (sc.info || []).filter(f => prog.info.includes(sc.id + ":" + f.id)).length;
+    $("#hud").innerHTML = `${esc(student.name)} · ${esc(student.cls)}<br>${esc(sc.title)}: <b>${got}</b> / ${tot}<br>${d} of ${sc.stations.length} stations${infoN ? ` · ${infoSeen}/${infoN} facts found` : ""}` +
+      (exp.scenes.length > 1 ? `<br>Lesson total ${s.score} / ${s.total}` : "") + `<br><span id="sync" class="sync"></span>`;
+    $("#sync").textContent = statusText[syncState] || "";
+  }
+
+  function size() { r.setSize(innerWidth, innerHeight); cam.aspect = innerWidth / innerHeight; cam.updateProjectionMatrix(); }
+  addEventListener("resize", size); size();
+  const pts = new Map(); let downAt = null; const ray = new THREE.Raycaster();
+  const ndc = e => new THREE.Vector2(e.clientX / innerWidth * 2 - 1, -(e.clientY / innerHeight) * 2 + 1);
+  el.addEventListener("pointerdown", e => { el.setPointerCapture(e.pointerId); pts.set(e.pointerId, [e.clientX, e.clientY]); downAt = [e.clientX, e.clientY]; });
+  el.addEventListener("pointermove", e => {
+    if (!pts.has(e.pointerId)) { ray.setFromCamera(ndc(e), cam); el.style.cursor = ray.intersectObjects(sprites).length ? "pointer" : "grab"; return; }
+    const [ox, oy] = pts.get(e.pointerId);
+    if (pts.size === 1) { lon -= (e.clientX - ox) * .15 * cam.fov / 85; lat += (e.clientY - oy) * .15 * cam.fov / 85; }
+    pts.set(e.pointerId, [e.clientX, e.clientY]);
+    if (pts.size === 2) { const a = [...pts.values()]; const d = Math.hypot(a[0][0] - a[1][0], a[0][1] - a[1][1]); if (pd) zoom((pd - d) * .1); pd = d; }
+  });
+  el.addEventListener("pointerup", e => { pts.delete(e.pointerId); pd = 0; if (downAt && Math.hypot(e.clientX - downAt[0], e.clientY - downAt[1]) < 8) pick(e); downAt = null; });
+  el.addEventListener("pointercancel", e => { pts.delete(e.pointerId); pd = 0; downAt = null; });
+  function zoom(d) { cam.fov = Math.min(100, Math.max(35, cam.fov + d)); cam.updateProjectionMatrix(); }
+  el.addEventListener("wheel", e => { e.preventDefault(); zoom(e.deltaY * .03); }, { passive: false });
+  addEventListener("keydown", e => {
+    if ($("#modal").classList.contains("open")) { if (e.key === "Escape") closeModal(); return; }
+    if (e.key === "Escape") closeDrawer();
+    const step = 8; if (e.target !== document.body) return;
+    if (e.key === "ArrowLeft") lon -= step; if (e.key === "ArrowRight") lon += step; if (e.key === "ArrowUp") lat += step; if (e.key === "ArrowDown") lat -= step;
+  });
+  function pick(e) {
+    ray.setFromCamera(ndc(e), cam); const h = ray.intersectObjects(sprites).sort((a, b) => b.object.renderOrder - a.object.renderOrder)[0]; if (!h) return;
+    const u = h.object.userData; if (u.type === "info") showInfo(u); else openStation(u.k);
+  }
+  const still = matchMedia("(prefers-reduced-motion: reduce)");
+  (function loop() {
+    t += .03; lat = Math.max(-89, Math.min(89, lat));
+    const a = THREE.MathUtils.degToRad(lon), b = THREE.MathUtils.degToRad(lat);
+    cam.lookAt(-Math.cos(a) * Math.cos(b), Math.sin(b), -Math.sin(a) * Math.cos(b));
+    const k = still.matches ? 0 : .35 * Math.sin(t); const sc = exp.scenes[cur];
+    sprites.forEach(s => { if (s.userData.type === "st") { const st = stationState(sc, s.userData.k); s.scale.setScalar(st.done && !(reviewMode && st.open) ? 4.6 : 5.2 + k); } });
+    r.render(scene, cam); requestAnimationFrame(loop);
+  })();
+
+  // ---------- drawers (non-modal: the scene keeps working behind them) ----------
+  const drawer = $("#drawer");
+  function openDrawer(html, cls) { drawer.className = "drawer open " + (cls || ""); drawer.innerHTML = '<button class="x" aria-label="Close panel">×</button>' + html; drawer.querySelector(".x").onclick = closeDrawer; }
+  function closeDrawer() { drawer.className = "drawer"; drawer.innerHTML = ""; }
+  function showInfo(u) {
+    if (!prog.info.includes(u.id)) { prog.info.push(u.id); save(); refreshSprites(); hud(); }
+    const sc = exp.scenes[cur], n = (sc.info || []).length, seen = (sc.info || []).filter(f => prog.info.includes(sc.id + ":" + f.id)).length;
+    openDrawer(`<h2>${esc(u.inf.title)}</h2><p>${esc(u.inf.text)}</p><p class="count">Fact ${seen} of ${n} found in this scene. Keep looking for blue <b>i</b> markers.</p>`);
+  }
+  function showProgress() {
+    const s = Store.summarise(exp, prog);
+    const rows = s.stations.map(st => {
+      const open = st.wrongTasks - st.fixed;
+      const lab = st.done ? Store.BAND_LABEL[st.band] : "Not started";
+      const act = st.done && open > 0 ? `<button class="btn small" data-go="${esc(st.scene)}:${st.k}">Review</button>` : !st.done ? `<button class="btn small ghost" data-go="${esc(st.scene)}:${st.k}">Go</button>` : "";
+      return `<tr><td>${exp.scenes.length > 1 ? `<span class="muted">${esc(st.sceneTitle)}</span><br>` : ""}${esc(st.name)}</td><td>${st.done ? `${st.got}/${st.tot} ` : ""}<span class="rag ${st.band}">${lab}</span>${st.fixed ? `<br><span class="muted">${st.fixed} reviewed</span>` : ""}</td><td>${act}</td></tr>`;
+    }).join("");
+    openDrawer(`<h2>My progress</h2><p><b>${s.score} / ${s.total}</b> · ${s.done} of ${s.count} stations done${s.infoTotal ? ` · ${s.infoSeen}/${s.infoTotal} facts found` : ""}</p>
+      <table class="bd">${rows}</table><p class="count">Your first answer is your score. Review mode lets you retry the questions you got wrong, so you can check you've fixed them.</p>`, "progress");
+    drawer.querySelectorAll("[data-go]").forEach(b => b.onclick = () => goTo(b.dataset.go, b.textContent === "Review"));
+  }
+  function goTo(ref, review) {
+    const [sid, k] = ref.split(":"); const i = exp.scenes.findIndex(s => s.id === sid); if (i < 0) return;
+    if (review && !reviewMode) setReview(true);
+    if (i !== cur) loadScene(i);
+    const sc = exp.scenes[i]; lookAtVec(world(cubeFrom(sc.stations[+k])));
+    closeDrawer(); if (review) openStation(+k);
+  }
+  function setReview(on) {
+    reviewMode = on; $("#reviewBtn").setAttribute("aria-pressed", on);
+    toast(on ? "Review mode: stations marked Review or Focus let you retry the questions you got wrong." : "Review mode off.");
+    refreshSprites();
+  }
+  let toastT; function toast(msg) { const tEl = $("#toast"); tEl.textContent = msg; tEl.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => tEl.hidden = true, 5000); }
+
+  // ---------- question modal ----------
+  const modal = $("#modal"), box = $("#box"); let lastFocus = null;
+  function shell(title, col, inner) {
+    box.style.setProperty("--c", col);
+    box.innerHTML = `<div class="head"><span id="mt">${esc(title)}</span><button aria-label="Close" id="x">×</button></div><div class="mbody">${inner}</div>`;
+    $("#x").onclick = closeModal; box.scrollTop = 0;
+  }
+  function closeModal() { modal.classList.remove("open"); refreshSprites(); hud(); drawNav(); if (lastFocus && lastFocus.focus) lastFocus.focus(); }
+  modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
+  function openStation(k) {
+    const sc = exp.scenes[cur], st = sc.stations[k]; if (!st) return;
+    const sp = prog.scenes[sc.id], state = stationState(sc, k);
+    let list;
+    if (reviewMode) {
+      if (!state.done) { toast("Answer this station normally first. Turn review mode off to start it."); return; }
+      list = st.tasks.map((_, i) => i).filter(i => (sp.ans[k + "-" + i] ?? 0) < marks(st.tasks[i]) && !prog.review[sc.id + ":" + k + "-" + i]);
+      if (!list.length) { toast("Nothing left to review here. Well done!"); return; }
+    } else {
+      if (state.done) { toast(`You scored ${state.got}/${state.tot} here. Use review mode to retry anything you got wrong.`); return; }
+      list = st.tasks.map((_, i) => i).filter(i => sp.ans[k + "-" + i] === undefined);
+      if (!list.length) { sp.done[k] = true; save(); refreshSprites(); return; }
+    }
+    lastFocus = document.activeElement; modal.classList.add("open"); closeDrawer(); run(k, list, 0);
+  }
+  function award(k, i, got) {
+    const sc = exp.scenes[cur], key = k + "-" + i, m = marks(sc.stations[k].tasks[i]);
+    if (reviewMode) { if (got === m) prog.review[sc.id + ":" + key] = true; }
+    else if (prog.scenes[sc.id].ans[key] === undefined) prog.scenes[sc.id].ans[key] = got;
+    save(); hud();
+  }
+  function feedback(ok, partial, text) { const fb = $("#fb"); fb.className = "fb show " + (ok ? "ok" : "no"); fb.innerHTML = `<strong>${ok ? "Correct!" : partial || "Not quite."}</strong>${esc(text)}`; }
+  function nextBtn(k, list, n) {
+    const last = n === list.length - 1; const b = document.createElement("button"); b.className = "btn"; b.textContent = last ? "Finish" : "Next question";
+    b.onclick = () => last ? finish(k) : run(k, list, n + 1); $("#mrow").appendChild(b); b.focus();
+  }
+  const ALT = "Diagram for this question";
+  function run(k, list, n) {
+    const i = list[n], sc = exp.scenes[cur], st = sc.stations[k], task = st.tasks[i];
+    const head = `${st.label === "?" ? "" : st.label + "  "}${st.name}`;
+    const qn = (list.length > 1 ? `<p class="qn">Question ${n + 1} of ${list.length}</p>` : "") + (reviewMode ? '<div class="review-note">Review: this won\'t change your score, but it shows whether you\'ve fixed it.</div>' : "");
+    const img = task.img ? `<img class="diag" src="experiences/${esc(task.img)}" alt="${esc(task.alt || ALT)}">` : "";
+    const tail = '<div class="fb" id="fb" aria-live="polite"></div><div class="mrow" id="mrow"></div>';
+    if (task.t === "mcq") {
+      shell(head, st.col, `${qn}${img}<p class="q">${esc(task.q)}</p><div class="opts">${shuffle(task.a).map(a => `<button class="opt">${esc(a)}</button>`).join("")}</div>${tail}`);
+      const opts = [...box.querySelectorAll(".opt")]; opts[0].focus(); const right = task.a[0];
+      opts.forEach(b => b.onclick = () => {
+        const ok = b.textContent === right; opts.forEach(o => { o.disabled = true; if (o.textContent === right) o.classList.add("right"); });
+        if (!ok) b.classList.add("wrong"); award(k, i, ok ? 1 : 0);
+        feedback(ok, null, (ok ? "" : "The correct answer is highlighted in green. ") + task.fb); nextBtn(k, list, n);
+      });
+    } else if (task.t === "multi") {
+      shell(head, st.col, `${qn}${img}<p class="q">${esc(task.q)}</p><div class="chips">${task.opts.map(o => `<button class="chip" aria-pressed="false">${esc(o)}</button>`).join("")}</div>${tail}`);
+      const chips = [...box.querySelectorAll(".chip")], row = $("#mrow"); chips[0].focus();
+      const ck = document.createElement("button"); ck.className = "btn"; ck.textContent = "Check my answer"; ck.disabled = true; row.appendChild(ck);
+      chips.forEach(c => c.onclick = () => { c.setAttribute("aria-pressed", c.getAttribute("aria-pressed") !== "true"); ck.disabled = !chips.some(x => x.getAttribute("aria-pressed") === "true"); });
+      ck.onclick = () => {
+        const sel = chips.filter(c => c.getAttribute("aria-pressed") === "true").map(c => c.textContent);
+        const ok = sel.length === task.correct.length && sel.every(x => task.correct.includes(x));
+        chips.forEach(c => { c.disabled = true; const want = task.correct.includes(c.textContent), got = c.getAttribute("aria-pressed") === "true"; if (want) c.classList.add("right"); else if (got) c.classList.add("wrong"); });
+        award(k, i, ok ? 1 : 0); ck.remove(); feedback(ok, null, (ok ? "" : "The correct answers are shown in green. ") + task.fb); nextBtn(k, list, n);
+      };
+    } else if (task.t === "sort") {
+      const items = shuffle(task.items), pickd = {};
+      shell(head, st.col, `${qn}${img}<p class="q">${esc(task.q)}</p>${items.map((it, x) => `<div class="item" data-n="${x}"><span>${esc(it[0])}</span><div class="seg">${task.cats.map(c => `<button aria-pressed="false" data-c="${esc(c)}">${esc(c)}</button>`).join("")}</div></div>`).join("")}${tail}`);
+      const row = $("#mrow"), ck = document.createElement("button"); ck.className = "btn"; ck.textContent = "Check my answers"; ck.disabled = true; row.appendChild(ck);
+      box.querySelectorAll(".item").forEach(it => { const x = it.dataset.n; it.querySelectorAll(".seg button").forEach(b => b.onclick = () => { pickd[x] = b.dataset.c; it.querySelectorAll(".seg button").forEach(y => y.setAttribute("aria-pressed", y === b)); ck.disabled = Object.keys(pickd).length < items.length; }); });
+      box.querySelector(".seg button").focus();
+      ck.onclick = () => {
+        let got = 0; box.querySelectorAll(".item").forEach(it => { const x = it.dataset.n, ok = pickd[x] === items[x][1]; if (ok) got++; it.classList.add(ok ? "right" : "wrong"); it.querySelectorAll("button").forEach(b => b.disabled = true); if (!ok) { const f = document.createElement("div"); f.className = "fix"; f.textContent = "Answer: " + items[x][1]; it.firstElementChild.appendChild(f); } });
+        award(k, i, got); ck.remove(); const all = got === items.length; feedback(all, `You got ${got} out of ${items.length}.`, (all ? "" : "Corrections are shown in green. ") + task.fb); nextBtn(k, list, n);
+      };
+    } else if (task.t === "match") {
+      const rights = shuffle(task.pairs.map(p => p[1]));
+      shell(head, st.col, `${qn}${img}<p class="q">${esc(task.q)}</p>${task.pairs.map((p, x) => `<div class="item stack"><strong>${esc(p[0])}</strong><select aria-label="${esc(p[0])}"><option value="">Choose…</option>${rights.map(y => `<option>${esc(y)}</option>`).join("")}</select></div>`).join("")}${tail}`);
+      const sels = [...box.querySelectorAll("select")], row = $("#mrow"), ck = document.createElement("button"); ck.className = "btn"; ck.textContent = "Check my answers"; ck.disabled = true; row.appendChild(ck); sels[0].focus();
+      sels.forEach(s => s.onchange = () => ck.disabled = sels.some(x => !x.value));
+      ck.onclick = () => {
+        let got = 0; sels.forEach((s, x) => { const ok = s.value === task.pairs[x][1]; if (ok) got++; s.disabled = true; const it = s.parentElement; it.classList.add(ok ? "right" : "wrong"); if (!ok) { const f = document.createElement("div"); f.className = "fix"; f.textContent = "Answer: " + task.pairs[x][1]; it.appendChild(f); } });
+        award(k, i, got); ck.remove(); const all = got === task.pairs.length; feedback(all, `You got ${got} out of ${task.pairs.length}.`, (all ? "" : "Corrections are shown in green. ") + task.fb); nextBtn(k, list, n);
+      };
+    } else if (task.t === "order") {
+      const pool = shuffle(task.steps); let seq = [];
+      shell(head, st.col, `${qn}${img}<p class="q">${esc(task.q)}</p><ol class="olist" id="ol"></ol><p class="qn" id="tapl">Tap the steps in order:</p><div class="pool" id="pool">${pool.map(p => `<button class="opt">${esc(p)}</button>`).join("")}</div>${tail}`);
+      const ol = $("#ol"), btns = [...box.querySelectorAll("#pool .opt")], row = $("#mrow");
+      const rs = document.createElement("button"); rs.className = "btn ghost"; rs.textContent = "Start again"; row.appendChild(rs);
+      const ck = document.createElement("button"); ck.className = "btn"; ck.textContent = "Check my order"; row.appendChild(ck);
+      const draw = () => { ol.innerHTML = task.steps.map((_, x) => seq[x] ? `<li>${esc(seq[x])}</li>` : '<li class="empty">…</li>').join(""); ck.disabled = seq.length < task.steps.length; };
+      draw(); btns[0].focus();
+      btns.forEach(b => b.onclick = () => { seq.push(b.textContent); b.disabled = true; draw(); });
+      rs.onclick = () => { seq = []; btns.forEach(b => b.disabled = false); draw(); };
+      ck.onclick = () => {
+        let got = 0; const lis = [...ol.children];
+        seq.forEach((x, y) => { const ok = x === task.steps[y]; if (ok) got++; lis[y].classList.add(ok ? "right" : "wrong"); if (!ok) { const f = document.createElement("div"); f.className = "fix"; f.textContent = "Should be: " + task.steps[y]; lis[y].appendChild(f); } });
+        award(k, i, got); $("#pool").remove(); $("#tapl").remove(); rs.remove(); ck.remove();
+        const all = got === task.steps.length; feedback(all, `You got ${got} out of ${task.steps.length} in the right place.`, (all ? "" : "The correct step is shown under each one you got wrong. ") + task.fb); nextBtn(k, list, n);
+      };
+    }
+  }
+  function finish(k) {
+    const sc = exp.scenes[cur];
+    if (reviewMode) { closeModal(); const st = stationState(sc, k); toast(st.open ? "Keep going: some questions still need reviewing." : "Reviewed. Nice work."); return; }
+    prog.scenes[sc.id].done[k] = true; save(); refreshSprites(); hud(); drawNav();
+    const all = sc.stations.every((_, x) => prog.scenes[sc.id].done[x]);
+    if (!all) { closeModal(); return; }
+    const rows = sc.stations.map((st, x) => { const s = stationState(sc, x); return `<tr><td>${esc(st.name)}</td><td>${s.got} / ${s.tot} <span class="rag ${s.band}">${Store.BAND_LABEL[s.band]}</span></td></tr>`; }).join("");
+    let got = 0, tot = 0; sc.stations.forEach((_, x) => { const s = stationState(sc, x); got += s.got; tot += s.tot; });
+    const nextIdx = exp.scenes.findIndex((s, x) => x !== cur && !s.stations.every((_, y) => prog.scenes[s.id].done[y]));
+    const whole = Store.summarise(exp, prog);
+    shell(sc.title + " complete", "#ffd046", `<p class="center q">Your score</p><div class="big">${got} / ${tot}</div>
+      <p class="center">Your score has been saved${CFG.backendUrl ? " for your teacher" : " on this device"}. Copy it onto your worksheet too.</p>
+      <table class="bd">${rows}</table>
+      ${whole.complete && exp.scenes.length > 1 ? `<p class="center"><b>Lesson complete: ${whole.score} / ${whole.total}</b></p>` : ""}
+      <p class="qn">Secure = full marks. Revise = mostly right. Focus here = revise this first. Turn on review mode to retry anything you got wrong.</p>
+      <div class="mrow" id="mrow">${sc.stations.some((_, x) => stationState(sc, x).open) ? '<button class="btn ghost" id="rv">Review my mistakes</button>' : ""}${nextIdx >= 0 ? `<button class="btn" id="go">Go to ${esc(exp.scenes[nextIdx].title)}</button>` : '<a class="btn" href="index.html">Back to home</a>'}</div>`);
+    const go = $("#go"); if (go) { go.focus(); go.onclick = () => { closeModal(); loadScene(nextIdx); }; }
+    const rv = $("#rv"); if (rv) rv.onclick = () => { closeModal(); setReview(true); };
+  }
+
+  // ---------- toolbar ----------
+  $("#homeBtn").onclick = () => location.href = "index.html";
+  $("#progBtn").onclick = () => drawer.classList.contains("progress") ? closeDrawer() : showProgress();
+  $("#reviewBtn").onclick = () => setReview(!reviewMode);
+  $("#reviewBtn").setAttribute("aria-pressed", reviewMode);
+  $("#helpBtn").onclick = () => openDrawer(`<h2>How to use</h2><p>Drag (or use the arrow keys) to look around. Pinch or scroll to zoom.</p><p style="margin-top:8px">Tap a numbered badge to answer that station's questions. Tap a blue <b>i</b> to find out more; the panel stays open while you keep exploring.</p><p style="margin-top:8px">Your progress saves automatically after every answer, so you can leave and come back later.</p>`);
+
+  // Hooks for keyboard/switch access and automated testing
+  window.NVR = { openStation, goTo, showInfo: n => { const sp = sprites.filter(x => x.userData.type === "info")[n]; if (sp) showInfo(sp.userData); }, setReview, loadScene };
+  const go = params.get("go");
+  const startScene = go ? Math.max(0, exp.scenes.findIndex(s => s.id === go.split(":")[0])) : 0;
+  loadScene(startScene);
+  if (go) setTimeout(() => goTo(go, reviewMode), 300);
+  else if (reviewMode) toast("Review mode: stations marked Review or Focus let you retry the questions you got wrong.");
+})();
