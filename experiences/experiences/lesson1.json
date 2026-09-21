@@ -1,0 +1,627 @@
+{
+ "id": "lesson1",
+ "lesson": 1,
+ "title": "Types of network: zoom out",
+ "scenes": [
+  {
+   "id": "p1",
+   "title": "Part 1: Standalone",
+   "img": "img/L1_Part1_Standalone_360.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Standalone computer",
+     "col": "#40c4ff",
+     "pos": [
+      1,
+      -0.69,
+      0.473
+     ],
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is a standalone computer?",
+       "a": [
+        "A computer that is not connected to any other computer or network",
+        "A computer that stands on the floor rather than a desk",
+        "A computer that connects to the internet only by Wi-Fi",
+        "The main computer that controls a network"
+       ],
+       "fb": "A standalone computer works on its own. Its files, software and hardware can only be used on that one machine."
+      },
+      {
+       "t": "mcq",
+       "q": "Which of these is most likely to be standalone?",
+       "a": [
+        "A laptop with Wi-Fi switched off, used to write stories",
+        "A games console playing online",
+        "A smart speaker answering questions",
+        "A school PC that you log on to with your network username"
+       ],
+       "fb": "With Wi-Fi off and no cables, the laptop isn't connected to anything, so it is standalone. The others all rely on a network."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Sharing a file",
+     "col": "#aa6eeb",
+     "pos": [
+      1,
+      -0.69,
+      -0.473
+     ],
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Without a network, how can you get a file onto another computer?",
+       "a": [
+        "Copy it onto removable media, such as a USB stick, and carry it over",
+        "Send it by email",
+        "Save it to the cloud",
+        "Print it to the other computer"
+       ],
+       "fb": "Email and the cloud both need a network, so without one you have to carry the file on removable media."
+      },
+      {
+       "t": "mcq",
+       "q": "Two friends pass one essay back and forth on a USB stick. What is the most likely problem?",
+       "a": [
+        "They end up with different versions, and changes get lost",
+        "The file turns into a virus",
+        "The essay gets shorter every time it is copied",
+        "The USB stick sends it to the wrong person"
+       ],
+       "fb": "Every copy can be edited separately, so it is easy to lose track of which version is the latest."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Printing",
+     "col": "#ff785a",
+     "pos": [
+      0.473,
+      -0.69,
+      -1
+     ],
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "A room has 30 standalone computers. How many printers are needed so that every computer can print directly?",
+       "a": [
+        "30",
+        "1",
+        "3",
+        "None"
+       ],
+       "fb": "Each standalone computer needs its own printer plugged in, so 30 computers need 30 printers."
+      },
+      {
+       "t": "mcq",
+       "q": "Why would needing so many printers be a problem for a school?",
+       "a": [
+        "Buying, powering and maintaining lots of printers is expensive",
+        "Printers can only print one page each per day",
+        "Printers slow down the internet",
+        "Standalone printers can't print in colour"
+       ],
+       "fb": "More printers means more cost for the machines, ink, paper, electricity and repairs. On a network, one printer can be shared."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Updates and backups",
+     "col": "#ffa028",
+     "pos": [
+      -0.473,
+      -0.69,
+      -1
+     ],
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "On standalone computers, how must software updates be installed?",
+       "a": [
+        "Separately on every computer",
+        "Once, on a server, for every computer",
+        "Automatically by the router",
+        "They never need updating"
+       ],
+       "fb": "Without a network, someone has to install each update on each computer individually."
+      },
+      {
+       "t": "mcq",
+       "q": "A standalone computer that has never been backed up has a hard drive failure. What happens to its files?",
+       "a": [
+        "They are lost, because there is no other copy",
+        "They are restored from the network server",
+        "They move to the cloud automatically",
+        "They are saved on the printer"
+       ],
+       "fb": "There is no network, so there is no server or cloud copy. Without a backup, the files are gone."
+      }
+     ]
+    },
+    {
+     "label": "?",
+     "name": "Predict",
+     "col": "#f05aaa",
+     "pos": [
+      -1,
+      -0.72,
+      0
+     ],
+     "tasks": [
+      {
+       "t": "match",
+       "q": "Match each problem to how a network would solve it.",
+       "pairs": [
+        [
+         "Sharing files",
+         "Save files on a file server that every computer can open"
+        ],
+        [
+         "Printing",
+         "Share one printer between many computers"
+        ],
+        [
+         "Installing updates",
+         "Install updates on every computer from one place"
+        ],
+        [
+         "Backing up",
+         "Back up everyone's data centrally, all at once"
+        ]
+       ],
+       "fb": "You'll see all four of these in part 2, the school LAN."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "airgap",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "Standalone on purpose",
+     "text": "Some organisations deliberately keep important computers standalone, known as air-gapped, so that hackers can't reach them over a network. The trade-off is that sharing and updating become much harder."
+    },
+    {
+     "id": "sneaker",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "The sneakernet",
+     "text": "Carrying files between computers on removable media is jokingly called a sneakernet. It still happens today: some companies ship huge amounts of data on hard drives because that can be quicker than sending it over the internet."
+    },
+    {
+     "id": "321",
+     "face": "back",
+     "x": 1888,
+     "y": 540,
+     "title": "The 3-2-1 backup rule",
+     "text": "A common rule for backups: keep 3 copies of your data, on 2 different types of storage, with 1 copy kept somewhere else (off-site). A standalone computer with no backup breaks every part of the rule."
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "title": "Part 2: LAN",
+   "img": "img/L1_Part2_LAN_360.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Local area network (LAN)",
+     "col": "#40c4ff",
+     "pos": [
+      1,
+      -0.69,
+      0.473
+     ],
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which best describes a LAN?",
+       "a": [
+        "A network covering a small area, such as one site, where the organisation owns the hardware",
+        "A network covering a large area, using connections rented from telecoms companies",
+        "A single computer not connected to anything",
+        "The cables that link countries under the sea"
+       ],
+       "fb": "LAN stands for local area network: small area, one site, and hardware owned by the organisation."
+      },
+      {
+       "t": "mcq",
+       "q": "Is the Wi-Fi network in a home a LAN?",
+       "a": [
+        "Yes: it covers one small site and the household owns the equipment",
+        "No: it uses Wi-Fi, so it cannot be a LAN",
+        "No: it connects to the internet, so it is a WAN",
+        "Only if more than 10 devices are connected"
+       ],
+       "fb": "A LAN can use cables, Wi-Fi or both. Connecting to the internet doesn't stop your home network being a LAN."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Sharing resources",
+     "col": "#aa6eeb",
+     "pos": [
+      1,
+      -0.69,
+      -0.473
+     ],
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "On a school LAN, where are shared files kept so that any computer can open them?",
+       "a": [
+        "On a file server",
+        "On the router",
+        "On each student's monitor",
+        "On the switch"
+       ],
+       "fb": "The file server stores shared files, and the network lets every computer reach them."
+      },
+      {
+       "t": "mcq",
+       "q": "Which of these is NOT a benefit of sharing resources on a LAN?",
+       "a": [
+        "Every computer needs its own printer",
+        "One printer can be shared by a whole room",
+        "You can log on at any computer and see your own files",
+        "Files can be opened from any computer"
+       ],
+       "fb": "Sharing a printer is the benefit. Needing one printer per computer is the standalone problem from part 1."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Advantages",
+     "col": "#50dc96",
+     "pos": [
+      0.473,
+      -0.69,
+      -1
+     ],
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which of these is an advantage of a network?",
+       "a": [
+        "Software can be installed and updated on every computer from one place",
+        "Viruses can spread from one computer to others",
+        "A network manager is needed to run it",
+        "Servers and switches are expensive"
+       ],
+       "fb": "The other three options are all disadvantages of networks."
+      },
+      {
+       "t": "mcq",
+       "q": "How does a network make backing up easier?",
+       "a": [
+        "Everyone's data is stored centrally, so it can all be backed up at once",
+        "Each computer backs itself up to a USB stick",
+        "Networks never lose data, so backups aren't needed",
+        "The switch keeps a copy of every file"
+       ],
+       "fb": "Central storage on a server means one backup covers everyone's work."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Disadvantages",
+     "col": "#ff5f5f",
+     "pos": [
+      -0.473,
+      -0.69,
+      -1
+     ],
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which of these is a disadvantage of a network?",
+       "a": [
+        "Viruses and malware can spread from one computer to many",
+        "Files can be shared easily",
+        "One printer can be shared",
+        "Users can communicate by email"
+       ],
+       "fb": "Because the computers are connected, malware on one machine can reach the others."
+      },
+      {
+       "t": "mcq",
+       "q": "Which would best reduce the risk of a virus spreading across a school network?",
+       "a": [
+        "Keep anti-malware software up to date and install security updates",
+        "Buy more printers",
+        "Use longer network cables",
+        "Turn off the file server at lunchtime"
+       ],
+       "fb": "Up-to-date anti-malware software and security updates stop most malware before it can spread."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "The LAN in this room",
+     "col": "#f05aaa",
+     "pos": [
+      -1,
+      -0.72,
+      0
+     ],
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "In the LAN on this wall, which device connects all the computers together?",
+       "a": [
+        "The switch",
+        "The printer",
+        "The file server",
+        "The monitor"
+       ],
+       "fb": "Every computer's cable runs to the switch, which links them all together."
+      },
+      {
+       "t": "mcq",
+       "q": "Which device on this wall stores the files that everyone shares?",
+       "a": [
+        "The file server",
+        "The switch",
+        "The shared printer",
+        "The cable"
+       ],
+       "fb": "The file server holds shared files so that any computer on the LAN can open them."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "wlan",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "Is Wi-Fi a LAN?",
+     "text": "A wireless LAN is sometimes called a WLAN. It is still a LAN: it covers one site and the organisation owns the equipment. Most school LANs mix cables and Wi-Fi."
+    },
+    {
+     "id": "login",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "Why your files follow you",
+     "text": "When you log on at school, your username and password are checked by a server. Your documents are stored centrally, so they appear on whichever computer you use."
+    },
+    {
+     "id": "wannacry",
+     "face": "back",
+     "x": 1888,
+     "y": 540,
+     "title": "When malware spreads",
+     "text": "In 2017 the WannaCry ransomware spread across networks around the world, including computers in NHS hospitals, causing cancelled appointments. It is a real example of why network security matters."
+    },
+    {
+     "id": "wap",
+     "face": "up",
+     "x": 1024,
+     "y": 1024,
+     "title": "The access point above you",
+     "text": "The disc on the ceiling is a wireless access point. It connects laptops and tablets in this room to the same LAN as the wired computers."
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "title": "Part 3: WAN",
+   "img": "img/L1_Part3_WAN_360.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Wide area network (WAN)",
+     "col": "#40c4ff",
+     "pos": [
+      1,
+      -0.69,
+      0.473
+     ],
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which best describes a WAN?",
+       "a": [
+        "A network covering a large geographical area that connects LANs together",
+        "A network inside one building",
+        "A network that uses no cables at all",
+        "A standalone computer with internet access"
+       ],
+       "fb": "WAN stands for wide area network. It covers towns, countries or the whole world, and joins LANs together."
+      },
+      {
+       "t": "mcq",
+       "q": "A school trust links the LANs of its schools in different towns. What is this?",
+       "a": [
+        "A WAN, because it covers a large area and joins LANs together",
+        "A LAN, because it all belongs to one organisation",
+        "A standalone network",
+        "It isn't a network at all"
+       ],
+       "fb": "Size is the key: once a network spans different towns, it is a WAN, even if one organisation runs it."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Who owns the connections?",
+     "col": "#aa6eeb",
+     "pos": [
+      1,
+      -0.69,
+      -0.473
+     ],
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Who usually owns the connections used by a WAN?",
+       "a": [
+        "Telecoms companies, who rent (lease) them to organisations",
+        "The school",
+        "The students",
+        "Nobody owns them"
+       ],
+       "fb": "Organisations rent WAN links from telecoms companies rather than building their own."
+      },
+      {
+       "t": "mcq",
+       "q": "Why doesn't a school lay its own cable to another school 30 miles away?",
+       "a": [
+        "It would cost far too much and cross land the school doesn't own, so renting a link is cheaper",
+        "Cables can't be longer than one mile",
+        "WANs never use cables",
+        "Schools aren't allowed to own any network cables"
+       ],
+       "fb": "Laying cable over long distances is hugely expensive and needs permission from landowners. Telecoms companies already have the cables in place."
+      },
+      {
+       "t": "mcq",
+       "q": "What carries WAN traffic across oceans?",
+       "a": [
+        "Undersea fibre optic cables",
+        "UTP cables",
+        "Bluetooth",
+        "USB cables"
+       ],
+       "fb": "Fibre optic cables on the seabed carry most of the internet's traffic between continents."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "LAN vs WAN",
+     "col": "#ff785a",
+     "pos": [
+      0,
+      -0.74,
+      -1
+     ],
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Sort each statement: does it describe a LAN or a WAN?",
+       "cats": [
+        "LAN",
+        "WAN"
+       ],
+       "items": [
+        [
+         "Covers one building or site",
+         "LAN"
+        ],
+        [
+         "Covers towns, countries or the world",
+         "WAN"
+        ],
+        [
+         "Hardware is owned by the organisation",
+         "LAN"
+        ],
+        [
+         "Connections are usually rented from telecoms companies",
+         "WAN"
+        ],
+        [
+         "Your school network",
+         "LAN"
+        ],
+        [
+         "The internet",
+         "WAN"
+        ]
+       ],
+       "fb": "Now use these to write your three LAN bullet points and three contrasting WAN bullet points in your workbook."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Quick check",
+     "col": "#f05aaa",
+     "pos": [
+      -1,
+      -0.72,
+      0
+     ],
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is the biggest WAN in the world?",
+       "a": [
+        "The internet",
+        "Your school network",
+        "A home Wi-Fi network",
+        "Bluetooth"
+       ],
+       "fb": "The internet is a WAN of millions of connected networks."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Satellite",
+     "col": "#50dc96",
+     "pos": [
+      0,
+      1,
+      -0.146
+     ],
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Why are satellites used for some WAN links?",
+       "a": [
+        "To reach places that cables can't easily reach, such as ships at sea",
+        "Because they are the cheapest option everywhere",
+        "Because they are faster than fibre in every situation",
+        "To connect computers in the same room"
+       ],
+       "fb": "Satellites cover remote places, but fibre is usually faster and has less delay where it is available."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "cables",
+     "face": "front",
+     "x": 1024,
+     "y": 930,
+     "title": "Cables under the sea",
+     "text": "Hundreds of undersea fibre optic cables carry most of the data travelling between continents. When one is damaged, traffic is rerouted along other cables, but whole regions can slow down."
+    },
+    {
+     "id": "leased",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "Leased lines",
+     "text": "A business that needs a fast, reliable link between its sites can rent a leased line from a telecoms company. It pays a monthly fee instead of laying its own cables."
+    },
+    {
+     "id": "latency",
+     "face": "up",
+     "x": 1024,
+     "y": 874,
+     "title": "Satellites and delay",
+     "text": "Signals to and from satellites travel a very long way, so there is a noticeable delay called latency. That's why fibre is preferred wherever cables can reach."
+    }
+   ]
+  }
+ ]
+}
