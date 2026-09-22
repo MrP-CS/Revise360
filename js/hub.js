@@ -102,9 +102,10 @@
       const pct = sum && sum.count ? Math.round(sum.done / sum.count * 100) : 0, band = bandOf(sum);
       const started = sum && (sum.done > 0 || Object.values(prog?.scenes || {}).some(sc => Object.keys(sc.ans || {}).length));
       const hasWeak = sum && sum.stations.some(st => st.done && st.wrongTasks > st.fixed);
-      cards.push(`<article class="exp"><div class="thumb" style="background-image:url('experiences/${esc(e.thumb)}')">${e.lesson ? `<span>Lesson ${esc(e.lesson)}</span>` : ""}</div>
+      cards.push(`<article class="exp"><div class="thumb" style="background-image:url('experiences/${esc(e.thumb)}')">${e.badge ? `<span>${esc(e.badge)}</span>` : e.lesson ? `<span>Lesson ${esc(e.lesson)}</span>` : ""}</div>
         <div class="body"><h3>${esc(e.title)}</h3><p>${esc(e.description)}</p>
-        ${sum ? `<div class="row" style="justify-content:space-between"><span class="muted" style="font-size:13px">${sum.done}/${sum.count} stations · ${sum.score}/${sum.total} marks${sum.infoTotal ? ` · ${sum.infoSeen}/${sum.infoTotal} facts` : ""}</span><span class="rag ${band}">${sum.done ? Store.BAND_LABEL[band] : "Not started"}</span></div>
+        ${sum && e.sprint ? `<div class="row" style="justify-content:space-between"><span class="muted" style="font-size:13px">${sum.sprint ? `Personal best <b style="color:var(--edge)">${sum.sprint.best}</b> · ${sum.sprint.attempts} ${sum.sprint.attempts === 1 ? "try" : "tries"}` : "Set your first score"}</span><span class="rag ${sum.sprint ? "g" : "n"}">${sum.sprint ? "🏁 Played" : "Not started"}</span></div>` :
+        sum ? `<div class="row" style="justify-content:space-between"><span class="muted" style="font-size:13px">${sum.done}/${sum.count} stations · ${sum.score}/${sum.total} marks${sum.infoTotal ? ` · ${sum.infoSeen}/${sum.infoTotal} facts` : ""}</span><span class="rag ${band}">${sum.done ? Store.BAND_LABEL[band] : "Not started"}</span></div>
         <div class="bar" role="progressbar" aria-label="Stations complete" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100"><i style="width:${pct}%"></i></div>` : '<p class="err">Could not load this experience.</p>'}
         <div class="row"><a class="btn small" href="experience.html?id=${encodeURIComponent(e.id)}">${sum && sum.complete ? "Open" : started ? "Continue" : "Start"}</a>
         ${hasWeak ? `<a class="btn small ghost" href="experience.html?id=${encodeURIComponent(e.id)}&review=1">Review mistakes</a>` : ""}

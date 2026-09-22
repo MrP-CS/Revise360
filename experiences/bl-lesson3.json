@@ -1,0 +1,277 @@
+{
+ "id": "bl-lesson3",
+ "lesson": 3,
+ "title": "Circuit workshop",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Circuit workshop",
+   "img": "img/BL_L3_CircuitWorkshop_360.jpg",
+   "imgHi": "img/BL_L3_CircuitWorkshop_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "From words to logic",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "'The alarm sounds if the door is open AND it is night.' Which gate is needed?",
+       "a": [
+        "AND",
+        "OR",
+        "NOT",
+        "No gate"
+       ],
+       "fb": "Both conditions must be true."
+      },
+      {
+       "t": "mcq",
+       "q": "'Regardless of the sensors, the alarm always sounds if the manual button is pressed.' How is the button joined to the rest?",
+       "a": [
+        "With an OR gate",
+        "With an AND gate",
+        "With a NOT gate",
+        "It isn't connected"
+       ],
+       "fb": "'Regardless' means the button alone is enough, so it's OR."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Scenario 1: the alarm",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "circuit",
+       "q": "Build the alarm circuit: X = (A AND B) OR C.",
+       "expr": "(A AND B) OR C",
+       "fb": "A and B go into an AND gate, whose output goes into an OR gate with C."
+      },
+      {
+       "t": "table",
+       "q": "Complete the truth table for the alarm.",
+       "expr": "(A AND B) OR C",
+       "fb": "The alarm is off only when C is 0 and A AND B is 0.",
+       "diagram": true,
+       "cols": [
+        [
+         "W",
+         "A AND B"
+        ]
+       ],
+       "out": "X"
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Scenario 2: the police cell",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "circuit",
+       "q": "Build the police cell circuit: X = (A OR B) AND (C OR D).",
+       "expr": "(A OR B) AND (C OR D)",
+       "fb": "Two OR gates feed an AND gate."
+      },
+      {
+       "t": "mcq",
+       "q": "In the police cell, when does the speaker sound?",
+       "a": [
+        "When at least one door is open, and the camera or the occupied sign is on",
+        "Only when both doors are open",
+        "Whenever the camera is on",
+        "Never"
+       ],
+       "fb": "Both OR gates must output 1."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Scenario 3: the factory",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "circuit",
+       "q": "Build the factory circuit: X = (A OR B) AND NOT C.",
+       "expr": "(A OR B) AND NOT C",
+       "fb": "NOT C means the override stops the system when it's pressed."
+      },
+      {
+       "t": "table",
+       "q": "Complete the truth table for the factory.",
+       "expr": "(A OR B) AND NOT C",
+       "fb": "Whenever C = 1, the system is off.",
+       "diagram": true,
+       "cols": [
+        [
+         "V",
+         "A OR B"
+        ],
+        [
+         "W",
+         "NOT C"
+        ]
+       ],
+       "out": "X"
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Editing a diagram",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "A circuit should output 1 only when both sensors are on, but it uses an OR gate. How do you fix it?",
+       "a": [
+        "Replace the OR gate with an AND gate",
+        "Add a NOT gate",
+        "Remove one sensor",
+        "Add another OR gate"
+       ],
+       "fb": "AND needs both inputs to be 1."
+      },
+      {
+       "t": "mcq",
+       "q": "The factory override is wired straight into the AND gate, without a NOT gate. What goes wrong?",
+       "a": [
+        "The system only runs when the override is pressed",
+        "Nothing changes",
+        "The system never switches on",
+        "The alarm sounds"
+       ],
+       "fb": "Without NOT, pressing the override would allow the system to run."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Reading diagrams",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "expr",
+       "q": "Write the Boolean expression for this logic diagram.",
+       "expr": "NOT A AND (B OR C)",
+       "fb": "NOT A and (B OR C) both feed the AND gate."
+      },
+      {
+       "t": "expr",
+       "q": "Write the Boolean expression for this logic diagram.",
+       "expr": "(A OR B) AND NOT C",
+       "fb": "This is the factory circuit.",
+       "out": "X"
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: design and test",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "circuit",
+       "q": "Build the security light: Q = (A AND B) AND NOT C.",
+       "expr": "(A AND B) AND NOT C",
+       "fb": "'Unless' becomes AND NOT."
+      },
+      {
+       "t": "table",
+       "q": "Complete the truth table for NOT (A AND B) OR C.",
+       "expr": "NOT (A AND B) OR C",
+       "fb": "Work out A AND B, reverse it, then OR it with C.",
+       "diagram": true,
+       "cols": [
+        [
+         "X",
+         "A AND B"
+        ],
+        [
+         "Y",
+         "NOT (A AND B)"
+        ]
+       ]
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "Single-atom magnets",
+     "text": "Your starter: scientists have stored a single bit of data on a single atom. If it can be made practical, hard drives could hold far more data than today."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "Real alarms",
+     "text": "Burglar alarms really are built from logic like this, often with extra inputs for doors, windows and a timer."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 920,
+     "y": 540,
+     "title": "Fail-safe design",
+     "text": "Emergency stops are usually wired so that a broken wire also stops the machine. Safety engineers call this fail-safe design."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1888,
+     "y": 540,
+     "title": "Programmable logic",
+     "text": "Factories use programmable logic controllers (PLCs), which are programmed with logic diagrams very like the ones you're drawing."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 920,
+     "y": 540,
+     "title": "Test everything",
+     "text": "A truth table tests every possible combination, so engineers can prove a safety circuit will always behave correctly."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1888,
+     "y": 540,
+     "title": "Simplify it",
+     "text": "Different circuits can give identical truth tables. Engineers choose the one with the fewest gates, because it's cheaper and faster."
+    }
+   ],
+   "models": []
+  }
+ ]
+}

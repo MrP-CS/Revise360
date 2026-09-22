@@ -29,7 +29,7 @@
     }
     function leave() {
       session = null; core.inVR = false; core.toastHook = null;
-      grp.rotation.y = 0; root.visible = false; closeAll(); closeModelVR();
+      grp.rotation.y = 0; root.visible = false; stopSprint(); closeAll(); closeModelVR(); closeBoard();
       core.mat.map = core.texFor(core.cur); core.mat.needsUpdate = true;
       core.refreshSprites(); core.hud(); core.drawNav();
     }
@@ -245,6 +245,22 @@
     }
     function closeModelVR() { if (!vrModel) return; scene.remove(vrModel.holder); vrModel = null; modelPanel.hide(); core.refreshSprites(); }
 
+    // ---------------- logic boards (drag and wire in VR) ----------------
+    let vrBoard = null;
+    function openBoard(board) {
+      closeBoard();
+      const tex = new T.CanvasTexture(board.canvas); tex.minFilter = T.LinearFilter; tex.generateMipmaps = false;
+      const w = 1.35, h = w * board.canvas.height / board.canvas.width;
+      const mesh = new T.Mesh(new T.PlaneGeometry(w, h), new T.MeshBasicMaterial({ map: tex, depthTest: false, depthWrite: false }));
+      mesh.renderOrder = 22; mesh.userData.board = true; root.add(mesh);
+      const { pos, dir } = headPose(); const yaw = Math.atan2(dir.x, dir.z) + .28, pitch = T.MathUtils.degToRad(T.MathUtils.clamp(gazePitch(), -15, 10) - 4);
+      mesh.position.set(pos.x + Math.sin(yaw) * Math.cos(pitch) * 1.3, pos.y + Math.sin(pitch) * 1.3, pos.z + Math.cos(yaw) * Math.cos(pitch) * 1.3); mesh.lookAt(pos);
+      vrBoard = { board, mesh, tex, last: 0, lastXY: null };
+      return yaw;
+    }
+    function closeBoard() { if (!vrBoard) return; root.remove(vrBoard.mesh); vrBoard.tex.dispose(); vrBoard = null; }
+    const boardXY = uv => [uv.x * vrBoard.board.canvas.width, (1 - uv.y) * vrBoard.board.canvas.height];
+
     // ---------------- questions ----------------
     function openStation(k) {
       const list = core.taskList(k); if (!list) return;
@@ -260,13 +276,38 @@
       if (core.reviewMode) head.push({ p: "Review: this won't change your score, but shows whether you've fixed it.", size: 24, color: COL.edge });
       let img = null; if (task.img) { img = new Image(); img.src = core.asset ? core.asset(task.img) : "experiences/" + task.img; }
       const top = () => [...head, img ? { img } : null, { p: task.q, size: 34, bold: true }, { gap: 6 }];
-      const close = () => { qPanel.hide(); core.refreshSprites(); core.hud(); };
+      const close = () => { qPanel.hide(); closeBoard(); core.refreshSprites(); core.hud(); };
       let fb = null, done = false;
       const fbBlocks = () => fb ? [{ gap: 4 }, { p: fb.head, size: 32, bold: true, color: fb.ok ? COL.ok : COL.bad }, { p: fb.text, size: 28 },
         { btn: n === list.length - 1 ? "Finish" : "Next question", id: "next", primary: true, onClick: () => n === list.length - 1 ? finish(k) : run(k, list, n + 1) }] : [];
       const setFb = (ok, partial, text) => { fb = { ok, head: ok ? "Correct!" : partial || "Not quite.", text }; };
       const show = body => qPanel.set({ title, color: st.col, onClose: close, blocks: [...top(), ...body(), ...fbBlocks()] });
 
+      closeBoard();
+      if (task.t === "sprint") { sprintVR(k, st, task); return; }
+      if (task.t === "circuit" || task.t === "expr" || task.t === "table") {
+        const Lg = window.R360Logic;
+        const board = task.t === "circuit" ? Lg.CircuitBoard({ inputs: task.inputs || Lg.vars(Lg.parse(task.expr)), hit: 34 })
+          : task.t === "expr" ? Lg.ExprBoard({ expr: task.expr, out: task.out })
+          : Lg.TableBoard({ expr: task.expr, cols: task.cols, out: task.out, inputs: task.inputs, diagram: task.diagram });
+        const yaw = openBoard(board);
+        const { pos } = headPose(); const qy = yaw - .28 - .75;
+        qPanel.mesh.position.set(pos.x + Math.sin(qy) * 1.25, pos.y - .05, pos.z + Math.cos(qy) * 1.25); qPanel.mesh.lookAt(pos);
+        let lastOk = true, shown = false;
+        const tips = { circuit: "Point at a gate at the top of the board, hold the trigger and drag it down. To wire, hold the trigger on an output dot and release on an input.",
+          expr: "Hold the trigger on a tile and drag it into the answer row, or just pull the trigger on a tile to add it to the end.", table: "Point at a ? and pull the trigger to change it to 0 or 1." };
+        const body = () => done ? [
+            !lastOk && task.t === "circuit" && !shown ? { btn: "Show a correct circuit", id: "show", center: true, onClick: () => { board.showAnswer(task.expr); shown = true; show(body); } } : null]
+          : [{ p: tips[task.t], size: 24, color: COL.soft },
+             { row: [{ btn: "Clear", id: "clr", center: true, onClick: () => board.clear() },
+                     { btn: "Check my answer", id: "check", primary: true, onClick: () => {
+                        if (task.t === "table" && !board.filled()) { toast("Set every ? to 0 or 1 first."); return; }
+                        const res = board.check(task.expr); if (res.incomplete) { toast(res.msg); return; }
+                        done = true; lastOk = res.ok; core.award(k, i, res.got);
+                        setFb(res.ok, res.max > 1 ? `You got ${res.got} out of ${res.max}.` : null, res.msg + " " + (task.fb || "")); show(body); } }] }];
+        show(body);
+        return;
+      }
       if (task.t === "mcq") {
         const opts = core.shuffle(task.a), right = task.a[0]; let chosen = null;
         const body = () => opts.map((o, x) => ({ btn: o, id: "o" + x, disabled: done, state: done ? (o === right ? "right" : x === chosen ? "wrong" : "") : "", onClick: () => {
@@ -330,7 +371,59 @@
         show(body);
       }
     }
+    // ---------------- Logic sprint (VR) ----------------
+    let sprintHook = null;
+    function stopSprint() { if (sprintHook) { const i = core.frameHooks.indexOf(sprintHook); if (i >= 0) core.frameHooks.splice(i, 1); sprintHook = null; } }
+    function sprintVR(k, st, task) {
+      const Lg = window.R360Logic, rec = core.prog.sprint || { best: 0, attempts: 0 };
+      stopSprint(); closeBoard();
+      const closeAllSprint = () => { stopSprint(); closeBoard(); qPanel.hide(); core.refreshSprites(); core.hud(); };
+      qPanel.set({ title: st.name, color: st.col, onClose: closeAllSprint, blocks: [
+        { p: "How fast is your logic?", size: 34, bold: true },
+        { p: `You have ${task.duration || 120} seconds. Each question asks you to build a circuit or write an expression. Correct answers score 100 plus a speed bonus, and streaks multiply your points. A wrong answer resets your streak.`, size: 27 },
+        { p: `Personal best: ${rec.best}. Beat it!`, size: 30, bold: true, color: COL.edge },
+        { btn: "Start the sprint", id: "go", primary: true, onClick: play }] });
+      function play() {
+        const s = Lg.Sprint(task.duration || 120); let q = null, board = null, busy = false, fb = null, lastSec = -1;
+        const hudText = () => `⏱ ${Math.ceil(s.timeLeft())}s    Score ${s.score}    Streak ${s.streak > 1 ? "×" + (1 + Math.min(s.streak - 1, 4) * .5) : "–"}    Best ${rec.best}`;
+        const panel = () => qPanel.set({ title: st.name, color: st.col, onClose: closeAllSprint, blocks: [
+          { p: hudText(), size: 30, bold: true, color: COL.edge }, { p: q.q, size: 32, bold: true },
+          fb ? { p: fb.head, size: 30, bold: true, color: fb.ok ? COL.ok : COL.bad } : null, fb ? { p: fb.text, size: 26 } : null,
+          busy ? null : { row: [{ btn: "Skip", id: "skip", center: true, onClick: () => { s.streak = 0; ask(); } }, { btn: "Clear", id: "clr", center: true, onClick: () => board.clear() },
+            { btn: "Check", id: "check", primary: true, onClick: check }] }] });
+        function ask() {
+          if (s.timeLeft() <= 0) return end();
+          q = s.next(); busy = false; fb = null;
+          board = q.t === "circuit" ? Lg.CircuitBoard({ inputs: Lg.vars(Lg.parse(q.expr)), hit: 34 }) : Lg.ExprBoard({ expr: q.expr });
+          window.__sprint = { s, board, q };
+          const yaw = openBoard(board), { pos } = headPose(), qy = yaw - .28 - .75;
+          panel(); qPanel.mesh.position.set(pos.x + Math.sin(qy) * 1.25, pos.y - .05, pos.z + Math.cos(qy) * 1.25); qPanel.mesh.lookAt(pos);
+        }
+        function check() {
+          const res = board.check(q.expr); if (res.incomplete) { toast(res.msg); return; }
+          busy = true; const r = s.mark(res.ok);
+          fb = res.ok ? { ok: true, head: `+${r.pts} points`, text: r.mult > 1 ? `Speed bonus ${r.bonus}, streak ×${r.mult}.` : `Speed bonus ${r.bonus}.` }
+                      : { ok: false, head: "Not quite.", text: "A correct answer is Q = " + q.expr + "." };
+          if (!res.ok && q.t === "circuit") board.showAnswer(q.expr);
+          panel(); setTimeout(ask, res.ok ? 800 : 2200);
+        }
+        function end() {
+          stopSprint(); closeBoard();
+          const isBest = Lg.recordSprint(core.prog, s); core.prog.scenes[core.exp.scenes[core.cur].id].done[k] = true; core.save(); core.refreshSprites(); core.hud();
+          placeInFront(qPanel, 1.35, T.MathUtils.clamp(gazePitch(), -18, 12));
+          qPanel.set({ title: st.name + ": finished!", color: COL.edge, onClose: closeAllSprint, blocks: [
+            { big: String(s.score) }, { p: isBest ? "🏆 New personal best!" : "Personal best: " + core.prog.sprint.best, size: 32, bold: true, align: "center", color: COL.edge },
+            { kv: ["Correct answers", `${s.correct} of ${s.answered}`] }, { kv: ["Best streak", String(s.bestStreak)] }, { kv: ["Attempts so far", String(core.prog.sprint.attempts)] }, { gap: 8 },
+            { row: [{ btn: "Close", id: "cl", center: true, onClick: closeAllSprint }, { btn: "Play again", id: "again", primary: true, onClick: play }] }] });
+        }
+        sprintHook = () => { const sec = Math.ceil(s.timeLeft()); if (sec !== lastSec && q && qPanel.open) { lastSec = sec; if (!busy) panel(); } if (s.timeLeft() <= 0 && !busy) end(); };
+        core.frameHooks.push(sprintHook);
+        ask();
+      }
+    }
+
     function finish(k) {
+      closeBoard();
       const res = core.completeStation(k);
       core.refreshSprites(); core.hud();
       if (res.review) { qPanel.hide(); toast(res.message); return; }
@@ -360,10 +453,12 @@
       c.addEventListener("connected", e => { c.userData.source = e.data; line.visible = e.data.targetRayMode !== "gaze"; });
       c.addEventListener("disconnected", () => { c.userData.source = null; dot.visible = false; });
       c.addEventListener("select", () => select(c));
+      c.addEventListener("selectstart", () => { const h = c.userData.hover; if (vrBoard && h && h.board) { const xy = boardXY(h.uv); vrBoard.board.down(...xy); c.userData.boardDrag = true; pulse(c, .4, 20); } });
+      c.addEventListener("selectend", () => { if (vrBoard && c.userData.boardDrag) { const h = c.userData.hover; const xy = h && h.board ? boardXY(h.uv) : (vrBoard.lastXY || [0, 0]); vrBoard.board.up(...xy); } c.userData.boardDrag = false; });
       return c;
     });
     function targets() {
-      if (qPanel.open) return { panels: [qPanel.mesh], sprites: [], model: null };   // questions are modal, like on the web page
+      if (qPanel.open) return { panels: vrBoard ? [qPanel.mesh, vrBoard.mesh] : [qPanel.mesh], sprites: [], model: null };   // questions are modal, like on the web page
       return { panels: [menuPanel, infoPanel, modelPanel, menuBtn].filter(p => p.open).map(p => p.mesh), sprites: core.sprites, model: vrModel };
     }
     const vS = new T.Vector3(), vTo = new T.Vector3();
@@ -387,7 +482,7 @@
       return best;
     }
     function select(c) {
-      const h = c.userData.hover; if (!h) return;
+      const h = c.userData.hover; if (!h || h.board) return;
       if (h.modelPart !== undefined) { pulse(c, .5, 30); showModelPanel(h.modelPart); return; }
       if (h.panel) { const hit = h.panel.hitAt(h.uv); if (hit && hit.fn) { pulse(c, .5, 30); hit.fn(); } return; }
       const u = h.sprite.userData; pulse(c, .5, 30);
@@ -405,13 +500,17 @@
         const h = hitFor(c);
         if (h) {
           ud.line.scale.z = h.distance; ud.dot.visible = true; ud.dot.position.copy(h.point); ud.dot.lookAt(raycaster.ray.origin);
-          if (h.modelPart !== undefined) { ud.hover = { modelPart: h.modelPart }; }
+          if (h.object.userData.board) { ud.hover = { board: true, uv: h.uv.clone() };
+            const now = performance.now(), xy = boardXY(h.uv);
+            if (vrBoard && (!vrBoard.lastXY || Math.hypot(xy[0] - vrBoard.lastXY[0], xy[1] - vrBoard.lastXY[1]) > 3) && now - vrBoard.last > 30) { vrBoard.board.move(...xy); vrBoard.lastXY = xy; vrBoard.last = now; }
+          }
+          else if (h.modelPart !== undefined) { ud.hover = { modelPart: h.modelPart }; }
           else if (h.object.userData.panel) {
             const p = h.object.userData.panel, hit = p.hitAt(h.uv);
             ud.hover = { panel: p, uv: h.uv.clone() }; if (hit) hovered.set(p, hit.id);
           } else ud.hover = { sprite: h.object };
         } else { ud.hover = null; ud.line.scale.z = 3; ud.dot.visible = false; }
-        const prev = ud.lastId, now = ud.hover ? (ud.hover.modelPart !== undefined ? "m" + ud.hover.modelPart : ud.hover.panel ? (ud.hover.panel.hitAt(ud.hover.uv) || {}).id : ud.hover.sprite.uuid) : null;
+        const prev = ud.lastId, now = ud.hover ? (ud.hover.board ? "board" : ud.hover.modelPart !== undefined ? "m" + ud.hover.modelPart : ud.hover.panel ? (ud.hover.panel.hitAt(ud.hover.uv) || {}).id : ud.hover.sprite.uuid) : null;
         if (now && now !== prev) pulse(c, .15, 12); ud.lastId = now;
         // snap turn with the thumbstick
         const gp = ud.source.gamepad;
@@ -423,9 +522,10 @@
         }
       });
       panels.forEach(p => p.open && p.setHover(hovered.get(p) || null));
+      if (vrBoard && vrBoard.board.dirty) { vrBoard.tex.needsUpdate = true; vrBoard.board.dirty = false; }
     });
     core.sceneHooks.push(() => { if (core.inVR) { closeAll(); closeModelVR(); } });
-    window.NVRVR = { modelPanel, get vrModel() { return vrModel; }, openModelVR: n => { const sp = core.sprites.filter(x => x.userData.type === "model")[n]; if (sp) openModelVR(sp.userData); }, qPanel, infoPanel, menuPanel, menuBtn, toastPanel, enter, exitVR };  // for testing
+    window.NVRVR = { get vrBoard() { return vrBoard; }, modelPanel, get vrModel() { return vrModel; }, openModelVR: n => { const sp = core.sprites.filter(x => x.userData.type === "model")[n]; if (sp) openModelVR(sp.userData); }, qPanel, infoPanel, menuPanel, menuBtn, toastPanel, enter, exitVR };  // for testing
   }
   if (window.NVRCore) start(window.NVRCore);
   else document.addEventListener("nvr-ready", () => start(window.NVRCore), { once: true });

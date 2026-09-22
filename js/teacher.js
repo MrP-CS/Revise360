@@ -46,6 +46,7 @@
   }
 
   function cell(sum) {
+    if (sum && sum.sprint) return `<span class="cell" style="background:#ffd046" title="Logic sprint personal best">${sum.sprint.best}</span><br><span class="muted" style="font-size:12px">best · ${sum.sprint.attempts} ${sum.sprint.attempts === 1 ? "try" : "tries"}</span>`;
     if (!sum || !sum.done) return '<span class="cell" style="background:#51607a;color:#f0f4fa">—</span>';
     const tot = sum.stations.filter(x => x.done).reduce((a, x) => a + x.tot, 0);
     const b = Store.band(sum.score, tot);
