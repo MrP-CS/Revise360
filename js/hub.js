@@ -27,8 +27,8 @@
   function signIn() {
     $("#who").innerHTML = ""; $("#topic").textContent = topicsFile.tagline || "";
     $("#main").innerHTML = `<form class="card signin" id="f" novalidate>
-      <h2>Sign in</h2><p class="muted">Use the same name, class and PIN every time so your progress follows you to any device.</p>
-      <div class="field"><label for="n">First name and surname</label><input id="n" autocomplete="name" required maxlength="60"></div>
+      <h2>Sign in</h2><p class="muted">Use the same username, class and PIN every time so your progress follows you to any device.</p>
+      <div class="field"><label for="n">School username</label><input id="n" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" required maxlength="60"></div>
       <div class="field"><label for="c">Class</label><select id="c" required><option value="">Choose your class…</option>${CFG.classes.map(c => `<option>${esc(c)}</option>`).join("")}</select></div>
       <div class="field"><label for="p">4-digit PIN (make one up and remember it)</label><input id="p" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" required autocomplete="off"></div>
       <p class="err" id="err" role="alert"></p>
@@ -39,7 +39,7 @@
     $("#f").onsubmit = async e => {
       e.preventDefault();
       const n = $("#n").value.trim(), c = $("#c").value, p = $("#p").value.trim();
-      if (n.split(/\s+/).length < 2) return $("#err").textContent = "Please enter your first name and surname.";
+      if (!/^[A-Za-z0-9._@-]{2,60}$/.test(n)) return $("#err").textContent = "Please enter your school username, with no spaces.";
       if (!c) return $("#err").textContent = "Please choose your class.";
       if (!/^\d{4}$/.test(p)) return $("#err").textContent = "Your PIN must be 4 digits.";
       $("#err").textContent = ""; e.submitter && (e.submitter.disabled = true);

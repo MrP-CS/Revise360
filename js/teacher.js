@@ -78,7 +78,7 @@
       <section><div class="stats"><div class="stat"><span class="muted">Students</span><b>${list.length}</b></div>
         <div class="stat"><span class="muted">Active in the last 7 days</span><b>${active}</b></div>
         ${reg.experiences.map(e => { const d = list.filter(s => s.exps[e.id]?.complete).length; return `<div class="stat"><span class="muted">L${esc(e.lesson)} complete</span><b>${d} / ${list.length}</b></div>`; }).join("")}</div></section>
-      <section><h2>Progress by student</h2>${list.length ? `<div class="scroll"><table class="t"><thead><tr><th>Student</th><th>Class</th>${reg.experiences.map(e => `<th>L${esc(e.lesson)}: ${esc(e.title)}</th>`).join("")}<th>Last active</th></tr></thead><tbody>
+      <section><h2>Progress by student</h2>${list.length ? `<div class="scroll"><table class="t"><thead><tr><th>Username</th><th>Class</th>${reg.experiences.map(e => `<th>L${esc(e.lesson)}: ${esc(e.title)}</th>`).join("")}<th>Last active</th></tr></thead><tbody>
         ${list.map((s, i) => `<tr><td><button class="link" data-i="${students.indexOf(s)}">${esc(s.name)}</button></td><td>${esc(s.cls)}</td>${reg.experiences.map(e => `<td>${cell(s.exps[e.id])}</td>`).join("")}<td class="muted">${s.updated ? new Date(s.updated).toLocaleDateString("en-GB", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }) : "—"}</td></tr>`).join("")}
         </tbody></table></div>` : '<p class="muted">No results yet.</p>'}</section>
       <section><div class="row" style="justify-content:space-between"><h2 style="margin:0">Class weak areas</h2>
@@ -105,7 +105,7 @@
   }
 
   function csv(list) {
-    const out = [["Student", "Class", "Topic", "Lesson", "Experience", "Scene", "Station", "Marks", "Out of", "Band", "Mistakes", "Fixed in review"]];
+    const out = [["Username", "Class", "Topic", "Lesson", "Experience", "Scene", "Station", "Marks", "Out of", "Band", "Mistakes", "Fixed in review"]];
     list.forEach(s => reg.experiences.forEach(e => (s.exps[e.id]?.stations || []).forEach(st => {
       if (st.done) out.push([s.name, s.cls, e.topic, e.lesson, e.title, st.sceneTitle, st.name, st.got, st.tot, Store.BAND_LABEL[st.band], st.wrongTasks, st.fixed]);
     })));

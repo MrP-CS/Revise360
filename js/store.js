@@ -41,7 +41,7 @@
     student() { return read("student", null); },
 
     async signIn(name, cls, pin) {
-      name = name.trim().replace(/\s+/g, " ");
+      name = name.trim().replace(/\s+/g, "").toLowerCase();
       const key = await sha256(cls + "|" + name.toLowerCase() + "|" + pin);
       const s = { key, name, cls };
       write("student", s);

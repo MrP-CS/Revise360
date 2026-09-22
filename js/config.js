@@ -11,7 +11,7 @@ window.APP_CONFIG = {
   backendUrl: "",
 
   // Classes shown in the sign-in list. Edit to match your groups.
-  classes: ["10A", "10B", "10C", "10D"],
+  classes: ["MCS 11A", "MCS 10C", "BDB 11B", "BDB 10B"],
 
   // Score bands used everywhere (fraction of marks).
   secure: 1.0,   // full marks = Secure
