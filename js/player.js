@@ -9,6 +9,7 @@
   const $ = s => document.querySelector(s);
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const asset = p => /^(data:|blob:|https?:)/.test(p) ? p : "experiences/" + p;
   const marks = t => (t.t === "mcq" || t.t === "multi") ? 1 : t.t === "order" ? t.steps.length : t.t === "sort" ? t.items.length : t.pairs.length;
 
   let exp;
@@ -45,7 +46,7 @@
   function texFor(i) {
     const sc = exp.scenes[i], hi = core.inVR && sc.imgHi, key = i + (hi ? "hi" : "");
     if (!texs[key]) {
-      texs[key] = loader.load("experiences/" + (hi ? sc.imgHi : sc.img), () => { if (cur === i) { mat.map = texs[key]; mat.needsUpdate = true; } });
+      texs[key] = loader.load(asset(hi ? sc.imgHi : sc.img), () => { if (cur === i) { mat.map = texs[key]; mat.needsUpdate = true; } });
       texs[key].minFilter = THREE.LinearFilter; texs[key].generateMipmaps = false;
       if (hi && texs[i]) return texs[i];  // show the normal image until the sharp one arrives
     }
@@ -279,7 +280,7 @@
     const i = list[n], sc = exp.scenes[cur], st = sc.stations[k], task = st.tasks[i];
     const head = `${st.label === "?" ? "" : st.label + "  "}${st.name}`;
     const qn = (list.length > 1 ? `<p class="qn">Question ${n + 1} of ${list.length}</p>` : "") + (reviewMode ? '<div class="review-note">Review: this won\'t change your score, but it shows whether you\'ve fixed it.</div>' : "");
-    const img = task.img ? `<img class="diag" src="experiences/${esc(task.img)}" alt="${esc(task.alt || ALT)}">` : "";
+    const img = task.img ? `<img class="diag" src="${esc(asset(task.img))}" alt="${esc(task.alt || ALT)}">` : "";
     const tail = '<div class="fb" id="fb" aria-live="polite"></div><div class="mrow" id="mrow"></div>';
     if (task.t === "mcq") {
       shell(head, st.col, `${qn}${img}<p class="q">${esc(task.q)}</p><div class="opts">${shuffle(task.a).map(a => `<button class="opt">${esc(a)}</button>`).join("")}</div>${tail}`);
@@ -302,7 +303,7 @@
       };
     } else if (task.t === "sort") {
       const items = shuffle(task.items), pickd = {};
-      shell(head, st.col, `${qn}${img}<p class="q">${esc(task.q)}</p>${items.map((it, x) => `<div class="item" data-n="${x}"><span>${esc(it[0])}</span><div class="seg">${task.cats.map(c => `<button aria-pressed="false" data-c="${esc(c)}">${esc(c)}</button>`).join("")}</div></div>`).join("")}${tail}`);
+      shell(head, st.col, `${qn}${img}<p class="q">${esc(task.q)}</p>${items.map((it, x) => `<div class="item${task.cats.length > 3 ? " stack" : ""}" data-n="${x}"><span>${esc(it[0])}</span><div class="seg">${task.cats.map(c => `<button aria-pressed="false" data-c="${esc(c)}">${esc(c)}</button>`).join("")}</div></div>`).join("")}${tail}`);
       const row = $("#mrow"), ck = document.createElement("button"); ck.className = "btn"; ck.textContent = "Check my answers"; ck.disabled = true; row.appendChild(ck);
       box.querySelectorAll(".item").forEach(it => { const x = it.dataset.n; it.querySelectorAll(".seg button").forEach(b => b.onclick = () => { pickd[x] = b.dataset.c; it.querySelectorAll(".seg button").forEach(y => y.setAttribute("aria-pressed", y === b)); ck.disabled = Object.keys(pickd).length < items.length; }); });
       box.querySelector(".seg button").focus();
@@ -369,7 +370,7 @@
 
   Object.assign(core, {
     exp, prog, student, CFG, scene, cam, renderer: r, grp, mat, marks, shuffle, esc, save, hud, drawNav, refreshSprites,
-    stationState, taskList, award, completeStation, markInfo, setReview, loadScene, cubeFrom, world, texFor,
+    stationState, taskList, award, asset, completeStation, markInfo, setReview, loadScene, cubeFrom, world, texFor,
     sceneHooks: [], closeUI() { closeDrawer(); if (modal.classList.contains("open")) closeModal(); }
   });
   // Live values (getters, so VR always sees the current scene and mode)

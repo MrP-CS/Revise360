@@ -4,6 +4,7 @@
   const [topicsFile, fullReg] = await Promise.all([
     fetch("experiences/topics.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({ groups: [] })),
     fetch("experiences/registry.json", { cache: "no-cache" }).then(r => r.json())]);
+  fullReg.experiences = fullReg.experiences.filter(e => e.type !== "worksheet");
   if (topicsFile.siteTitle) { $("#topic").textContent = topicsFile.siteTitle; document.title = "Teacher dashboard | " + topicsFile.siteTitle; }
   const topicList = topicsFile.groups.flatMap(g => g.topics).filter(t => fullReg.experiences.some(e => e.topic === t.id));
   fullReg.experiences.filter(e => !topicList.some(t => t.id === e.topic)).forEach(e => { if (!topicList.some(t => t.id === (e.topic || "other"))) topicList.push({ id: e.topic || "other", title: e.topic ? "Topic " + e.topic : "Other" }); });

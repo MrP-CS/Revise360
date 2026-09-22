@@ -12,7 +12,9 @@
   const orphanIds = [...new Set(reg.experiences.filter(e => !listed.some(t => t.id === e.topic)).map(e => e.topic || "other"))];
   if (orphanIds.length) topicsFile.groups.push({ name: "Other", topics: orphanIds.map(id => ({ id, title: id === "other" ? "Other experiences" : "Topic " + id, description: "" })) });
   const allTopics = topicsFile.groups.flatMap(g => g.topics);
-  const expsFor = id => reg.experiences.filter(e => (e.topic || "other") === id).sort((a, b) => (a.lesson || 0) - (b.lesson || 0));
+  const isWS = e => e.type === "worksheet";
+  const expsFor = id => reg.experiences.filter(e => (e.topic || "other") === id && !isWS(e))
+  const allFor = id => reg.experiences.filter(e => (e.topic || "other") === id).sort((a, b) => (a.lesson || 0) - (b.lesson || 0)).sort((a, b) => (a.lesson || 0) - (b.lesson || 0));
   const next = new URLSearchParams(location.search).get("next");
 
   const loaded = {};
@@ -62,7 +64,7 @@
   async function topicsPage() {
     await header();
     $("#topic").textContent = topicsFile.tagline || "";
-    const sums = await summaries(reg.experiences);
+    const sums = await summaries(reg.experiences.filter(e => !isWS(e)));
     const groups = topicsFile.groups.map(g => {
       const cards = g.topics.map(t => {
         const list = expsFor(t.id);
@@ -88,7 +90,12 @@
     $("#topic").textContent = `${t.id} ${t.title}`;
     const list = expsFor(id), sums = await summaries(list);
     const cards = [], weak = []; let totS = 0, totT = 0, doneE = 0;
-    for (const e of list) {
+    for (const e of allFor(id)) {
+      if (isWS(e)) {
+        cards.push(`<article class="exp"><div class="thumb ws"><span>Lesson ${esc(e.lesson)}</span><b>📝</b></div><div class="body"><h3>${esc(e.title)}</h3><p>${esc(e.description)}</p>
+          <div class="row"><a class="btn small" href="${esc(e.worksheet)}" download aria-label="Download the ${esc(e.title)} worksheet (Word document)">⬇ Worksheet</a></div></div></article>`);
+        continue;
+      }
       const sum = sums[e.id], prog = Store.get(e.id);
       if (sum) { totS += sum.score; totT += sum.total; if (sum.complete) doneE++;
         sum.stations.filter(st => st.done && st.band !== "g" && st.wrongTasks > st.fixed).forEach(st => weak.push({ e, st })); }

@@ -230,7 +230,7 @@
       const head = [];
       if (list.length > 1) head.push({ p: `Question ${n + 1} of ${list.length}`, size: 24, color: COL.soft });
       if (core.reviewMode) head.push({ p: "Review: this won't change your score, but shows whether you've fixed it.", size: 24, color: COL.edge });
-      let img = null; if (task.img) { img = new Image(); img.src = "experiences/" + task.img; }
+      let img = null; if (task.img) { img = new Image(); img.src = core.asset ? core.asset(task.img) : "experiences/" + task.img; }
       const top = () => [...head, img ? { img } : null, { p: task.q, size: 34, bold: true }, { gap: 6 }];
       const close = () => { qPanel.hide(); core.refreshSprites(); core.hud(); };
       let fb = null, done = false;
