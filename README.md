@@ -11,7 +11,5 @@ The first answer to each question is the score that counts. Review mode records 
 
 ## 7. Data protection: please check before using with students
 
-- The site stores each student's name, class and scores. With step 2 set up, these are saved in **your** Google Sheet. Check with your school's data protection lead that this is acceptable, and use a school Google account if you have one.
-- Nothing else is collected: there are no cookies, analytics or adverts.
-- The PIN isn't stored. It's combined with the name and class to create an ID for each student. It isn't a strong password, so treat it as a way to keep progress separate between students, not as security.
-- To delete a student's data, delete their rows in the Sheet.
+- The site stores each student's username, class and scores. Check with your school's data protection lead that this is acceptable.
+- The PIN isn't stored. It's combined with the username and class to create an ID for each student. It isn't a strong password, so treat it as a way to keep progress separate between students, not as security.
