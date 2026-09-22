@@ -1,0 +1,309 @@
+{
+ "id": "rp-lesson1",
+ "lesson": 1,
+ "title": "Security desk",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Security desk",
+   "img": "img/RP_L1_SecurityDesk_360.jpg",
+   "imgHi": "img/RP_L1_SecurityDesk_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Defensive design",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is defensive design?",
+       "a": [
+        "Designing a program so it copes with mistakes and misuse without breaking",
+        "Adding a firewall",
+        "Writing the program as fast as possible",
+        "Designing the program's colours"
+       ],
+       "fb": "Defensive design plans for everything that could go wrong."
+      },
+      {
+       "t": "mcq",
+       "q": "What is input validation?",
+       "a": [
+        "Checking data entered meets certain rules before it is processed",
+        "Checking the user's identity",
+        "Encrypting the data",
+        "Testing the finished program"
+       ],
+       "fb": "Validation checks that data is sensible, not that it is correct."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Type check",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which check would stop 'twelve' being entered as an age?",
+       "a": [
+        "Type check",
+        "Length check",
+        "Presence check",
+        "Range check"
+       ],
+       "fb": "It isn't a number, so it's the wrong type."
+      },
+      {
+       "t": "mcq",
+       "q": "What does isnumeric() check in the code?",
+       "a": [
+        "Whether the input contains only digits",
+        "Whether the input is empty",
+        "Whether it's in the right range",
+        "Whether it's 10 characters long"
+       ],
+       "fb": "It returns True only if every character is a digit."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Range check",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which check would reject a month of 13?",
+       "a": [
+        "Range check",
+        "Type check",
+        "Presence check",
+        "Format check"
+       ],
+       "fb": "Months must be from 1 to 12."
+      },
+      {
+       "t": "mcq",
+       "q": "A menu accepts 1, 2 or 3. Which input should a range check reject?",
+       "a": [
+        "4",
+        "1",
+        "2",
+        "3"
+       ],
+       "fb": "4 is outside the range 1 to 3."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Presence check",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does a presence check do?",
+       "a": [
+        "Checks that something has been entered",
+        "Checks the data type",
+        "Checks the length",
+        "Checks the user is present in the room"
+       ],
+       "fb": "It rejects empty input."
+      },
+      {
+       "t": "mcq",
+       "q": "Which input would fail a presence check?",
+       "a": [
+        "An empty input",
+        "0",
+        "abc",
+        "12/05/2010"
+       ],
+       "fb": "0 and abc are still data; only empty input fails."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Format and length checks",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which check makes sure a date is written as DD/MM/YYYY?",
+       "a": [
+        "Format check",
+        "Range check",
+        "Type check",
+        "Presence check"
+       ],
+       "fb": "It checks the pattern, such as slashes in the right places."
+      },
+      {
+       "t": "mcq",
+       "q": "Which check makes sure a password is at least 8 characters?",
+       "a": [
+        "Length check",
+        "Format check",
+        "Type check",
+        "Range check"
+       ],
+       "fb": "It counts the characters."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Whitelists and blacklists",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is a whitelist?",
+       "a": [
+        "A list of the only inputs that are allowed",
+        "A list of inputs to reject",
+        "A list of users",
+        "A list of errors"
+       ],
+       "fb": "Anything not on the whitelist is rejected."
+      },
+      {
+       "t": "mcq",
+       "q": "Which is the best use of a blacklist?",
+       "a": [
+        "Rejecting illegal characters in a file name",
+        "Accepting only A, B or C",
+        "Checking a number is 1 to 3",
+        "Checking a field isn't empty"
+       ],
+       "fb": "There are only a few illegal characters, so listing them is simpler."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: date checks",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Which type of check is each date rule?",
+       "cats": [
+        "Presence",
+        "Length",
+        "Format",
+        "Type",
+        "Range"
+       ],
+       "items": [
+        [
+         "There is some input",
+         "Presence"
+        ],
+        [
+         "The date is 10 characters long",
+         "Length"
+        ],
+        [
+         "The date is in the format DD/MM/YYYY",
+         "Format"
+        ],
+        [
+         "The day, month and year are all numbers",
+         "Type"
+        ],
+        [
+         "The month is not more than 12",
+         "Range"
+        ],
+        [
+         "The year is not less than 1900",
+         "Range"
+        ],
+        [
+         "The day and month are not less than 01",
+         "Range"
+        ]
+       ],
+       "fb": "Now use these rules to write your date validation program."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "Valid isn't correct",
+     "text": "Validation checks data is sensible, not true. A birthday of 01/01/2000 passes every check even if it's wrong. Asking twice, called verification, helps catch that."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "Leap years",
+     "text": "A year is a leap year if it divides by 4, except century years, which must divide by 400. So 2000 was a leap year, but 1900 wasn't."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 920,
+     "y": 540,
+     "title": "Double checking",
+     "text": "Websites usually validate in your browser for speed, then again on the server, because a clever user can skip the browser's checks."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1888,
+     "y": 540,
+     "title": "Postcodes",
+     "text": "UK postcodes follow patterns like LLN NLL or LLNN NLL, where L is a letter and N a number. A format check can test for this."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 920,
+     "y": 540,
+     "title": "Why it matters",
+     "text": "Unvalidated input is one of the main ways attackers break into systems, for example with SQL injection, which you'll meet in topic 1.4."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1888,
+     "y": 540,
+     "title": "Casting",
+     "text": "input() always gives a string. int() casts it to a whole number, but it will crash on 'abc', so check it's numeric first."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,312 @@
+{
+ "id": "rp-lesson5",
+ "lesson": 5,
+ "title": "Test lab",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Test lab",
+   "img": "img/RP_L5_TestLab_360.jpg",
+   "imgHi": "img/RP_L5_TestLab_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Why test with different data?",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Why should a program be tested with lots of different data?",
+       "a": [
+        "It may work for some inputs but fail for others",
+        "To make it run faster",
+        "Because one test is illegal",
+        "To use up memory"
+       ],
+       "fb": "Testing only one value proves very little."
+      },
+      {
+       "t": "mcq",
+       "q": "What does a test plan include for each test?",
+       "a": [
+        "The test data, the type of test and the expected result",
+        "The programmer's password",
+        "The colour of the screen",
+        "The number of lines of code"
+       ],
+       "fb": "You then compare the actual result with the expected one."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Normal data",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which is normal data for a score from 0 to 100?",
+       "a": [
+        "57",
+        "0",
+        "105",
+        "Dave"
+       ],
+       "fb": "57 is a typical, valid value."
+      },
+      {
+       "t": "mcq",
+       "q": "What should happen when normal data is entered?",
+       "a": [
+        "It is accepted and processed",
+        "It is rejected",
+        "The program crashes",
+        "It asks again"
+       ],
+       "fb": "Normal data should always work."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Boundary data",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which is boundary data for a score from 0 to 100?",
+       "a": [
+        "100",
+        "57",
+        "105",
+        "Dave"
+       ],
+       "fb": "100 is valid, but right on the edge."
+      },
+      {
+       "t": "mcq",
+       "q": "Why is boundary data so important to test?",
+       "a": [
+        "Mistakes like using < instead of <= only show up at the edges",
+        "It's the most common data",
+        "It makes the program faster",
+        "It can't be entered by users"
+       ],
+       "fb": "Off-by-one errors are some of the most common bugs."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Invalid data",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which is invalid data for a score from 0 to 100?",
+       "a": [
+        "105",
+        "57",
+        "100",
+        "Dave"
+       ],
+       "fb": "It's a number, but outside the range."
+      },
+      {
+       "t": "mcq",
+       "q": "What should a robust program do with invalid data?",
+       "a": [
+        "Reject it and ask again",
+        "Accept it",
+        "Crash",
+        "Change it to 100 without telling the user"
+       ],
+       "fb": "Rejecting it with a message is the robust response."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Erroneous data",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which is erroneous data for a score from 0 to 100?",
+       "a": [
+        "Dave",
+        "57",
+        "0",
+        "105"
+       ],
+       "fb": "Text is the wrong type for a score."
+      },
+      {
+       "t": "mcq",
+       "q": "What's the difference between invalid and erroneous data?",
+       "a": [
+        "Invalid is the right type but out of range; erroneous is the wrong type",
+        "They mean the same thing",
+        "Erroneous is always a number",
+        "Invalid data is always accepted"
+       ],
+       "fb": "105 is invalid; Dave is erroneous."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Test the tweet",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which is boundary data for the 280-character tweet limit?",
+       "a": [
+        "280 characters",
+        "150 characters",
+        "300 characters",
+        "The word 'hello'"
+       ],
+       "fb": "280 is the very edge of what's allowed."
+      },
+      {
+       "t": "mcq",
+       "q": "For the menu that accepts 1 to 3, what should happen if 4 is entered?",
+       "a": [
+        "It is rejected and the user is asked again",
+        "Option 3 runs",
+        "The program ends",
+        "It is accepted"
+       ],
+       "fb": "4 is invalid data."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: sort the test data",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Which type of test data is each input for a score from 0 to 100?",
+       "cats": [
+        "Normal",
+        "Boundary",
+        "Invalid",
+        "Erroneous"
+       ],
+       "items": [
+        [
+         "57",
+         "Normal"
+        ],
+        [
+         "42",
+         "Normal"
+        ],
+        [
+         "0",
+         "Boundary"
+        ],
+        [
+         "100",
+         "Boundary"
+        ],
+        [
+         "105",
+         "Invalid"
+        ],
+        [
+         "-3",
+         "Invalid"
+        ],
+        [
+         "Dave",
+         "Erroneous"
+        ],
+        [
+         "twelve",
+         "Erroneous"
+        ]
+       ],
+       "fb": "Use these categories for Task 1 on your worksheet."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "Off by one",
+     "text": "Using < instead of <= is so common it has a name: an off-by-one error. Boundary tests are designed to catch it."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "Fuzz testing",
+     "text": "Fuzz testing sends thousands of random inputs to a program automatically, to find ones that crash it."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 920,
+     "y": 540,
+     "title": "280 characters",
+     "text": "In 2017, Twitter doubled its limit from 140 to 280 characters. The old limit came from text messages, which were limited to 160 characters."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1888,
+     "y": 540,
+     "title": "Test first",
+     "text": "Some programmers write their tests before the code. This is called test-driven development."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 920,
+     "y": 540,
+     "title": "Expected vs actual",
+     "text": "A test only passes if the actual result matches the expected result. Writing the expected result first stops you fooling yourself."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1888,
+     "y": 540,
+     "title": "Paid to break things",
+     "text": "Penetration testers are paid to try to break into systems, finding weaknesses before criminals do."
+    }
+   ]
+  }
+ ]
+}

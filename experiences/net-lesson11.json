@@ -1,0 +1,315 @@
+{
+ "id": "net-lesson11",
+ "lesson": 11,
+ "title": "Address sorting office",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Address sorting office",
+   "img": "img/L11_AddressSorting_360.jpg",
+   "imgHi": "img/L11_AddressSorting_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "MAC addresses",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "When is a MAC address given to a device?",
+       "a": [
+        "When its network interface card is made",
+        "Every time it joins a network",
+        "When you name the device",
+        "When DNS looks it up"
+       ],
+       "fb": "The manufacturer sets it, and it is meant to stay the same."
+      },
+      {
+       "t": "mcq",
+       "q": "Which is a MAC address?",
+       "a": [
+        "00-15-E9-2B-99-3C",
+        "180.17.255.1",
+        "2001:0DB8:AC10:FE01::",
+        "www.bbc.co.uk"
+       ],
+       "fb": "MAC addresses are six pairs of hexadecimal digits."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "IP addresses",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is an IP address used for?",
+       "a": [
+        "Identifying a device so packets can be routed to it across networks",
+        "Encrypting Wi-Fi data",
+        "Naming a website",
+        "Storing a device's files"
+       ],
+       "fb": "Routers read the destination IP address to decide where to send each packet next."
+      },
+      {
+       "t": "mcq",
+       "q": "Which device mainly uses IP addresses to forward data?",
+       "a": [
+        "A router",
+        "A switch",
+        "A printer",
+        "A monitor"
+       ],
+       "fb": "Switches use MAC addresses inside a LAN; routers use IP addresses between networks."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "IPv4",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which is a valid IPv4 address?",
+       "a": [
+        "192.168.1.20",
+        "256.10.3.4",
+        "10.0.0",
+        "1.2.3.4.5"
+       ],
+       "fb": "Four numbers, each from 0 to 255."
+      },
+      {
+       "t": "mcq",
+       "q": "How many bits are in an IPv4 address?",
+       "a": [
+        "32",
+        "48",
+        "64",
+        "128"
+       ],
+       "fb": "Four numbers of 8 bits each makes 32 bits."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "IPv6",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Why was IPv6 introduced?",
+       "a": [
+        "The world was running out of IPv4 addresses",
+        "IPv4 was too slow",
+        "IPv4 couldn't use Wi-Fi",
+        "To replace MAC addresses"
+       ],
+       "fb": "Billions of phones, computers and smart devices need addresses."
+      },
+      {
+       "t": "mcq",
+       "q": "How many bits are in an IPv6 address?",
+       "a": [
+        "128",
+        "32",
+        "48",
+        "64"
+       ],
+       "fb": "128 bits gives an enormous number of possible addresses."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "LAN or WAN addressing?",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which address does a switch use to deliver a frame?",
+       "a": [
+        "The MAC address",
+        "The IPv4 address",
+        "The domain name",
+        "The IPv6 address"
+       ],
+       "fb": "Switches work within a LAN, using MAC addresses."
+      },
+      {
+       "t": "mcq",
+       "q": "Which address stays with a device when it moves to a different network?",
+       "a": [
+        "Its MAC address",
+        "Its IP address",
+        "Both change",
+        "Neither is used"
+       ],
+       "fb": "The MAC is built into the NIC; the IP address comes from the network it joins."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Network and device parts",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "In the address 192.168.1.20, which part identifies the device?",
+       "a": [
+        "20",
+        "192",
+        "168.1",
+        "192.168"
+       ],
+       "fb": "In this common home setup, the last number identifies the device."
+      },
+      {
+       "t": "mcq",
+       "q": "Which address is on the same network as 192.168.1.20?",
+       "a": [
+        "192.168.1.35",
+        "192.168.2.20",
+        "10.0.1.20",
+        "172.16.1.20"
+       ],
+       "fb": "It shares the same network part: 192.168.1."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: sort the mail",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Does each item describe a MAC, IPv4 or IPv6 address?",
+       "cats": [
+        "MAC",
+        "IPv4",
+        "IPv6"
+       ],
+       "items": [
+        [
+         "180.17.255.1",
+         "IPv4"
+        ],
+        [
+         "2001:0DB8:AC10:FE01:0000:0000:0000:0000",
+         "IPv6"
+        ],
+        [
+         "00-15-E9-2B-99-3C",
+         "MAC"
+        ],
+        [
+         "32 bits long",
+         "IPv4"
+        ],
+        [
+         "128 bits long",
+         "IPv6"
+        ],
+        [
+         "48 bits, set when the NIC is made",
+         "MAC"
+        ],
+        [
+         "Four numbers from 0 to 255",
+         "IPv4"
+        ],
+        [
+         "Eight groups of hexadecimal separated by colons",
+         "IPv6"
+        ],
+        [
+         "Used by switches within a LAN",
+         "MAC"
+        ]
+       ],
+       "fb": "These are the three addresses from your starter. Can you identify them straight away now?"
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "Hexadecimal",
+     "text": "Hexadecimal uses 16 digits: 0 to 9, then A to F. Each pair of hex digits is exactly one byte, which is why MAC addresses are written in pairs."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "Hiding your MAC",
+     "text": "Many phones now use a random MAC address on each Wi-Fi network, so shops and venues can't track you from place to place."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 920,
+     "y": 540,
+     "title": "Why 255?",
+     "text": "Each part of an IPv4 address is 8 bits. The biggest number 8 bits can hold is 11111111 in binary, which is 255."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1888,
+     "y": 540,
+     "title": "IPv4 ran out",
+     "text": "The last big blocks of IPv4 addresses were handed out in 2011. Many networks now share one public address between many devices."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 920,
+     "y": 540,
+     "title": "Home networks",
+     "text": "Addresses starting 192.168 are private: they only work inside your home network. Your router shares one public IP address between all your devices."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1888,
+     "y": 540,
+     "title": "Shortening IPv6",
+     "text": "Groups of zeros in IPv6 can be shortened with ::, so 2001:0DB8:0000:0000:0000:0000:0000:0001 can be written as 2001:DB8::1."
+    }
+   ]
+  }
+ ]
+}

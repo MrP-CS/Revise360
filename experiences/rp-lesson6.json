@@ -1,0 +1,362 @@
+{
+ "id": "rp-lesson6",
+ "lesson": 6,
+ "title": "Revision HQ 2.3",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Revision HQ 2.3",
+   "img": "img/RP_L6_RevisionHQ_360.jpg",
+   "imgHi": "img/RP_L6_RevisionHQ_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Lesson 1: Input validation",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which check would reject an empty username?",
+       "a": [
+        "Presence check",
+        "Range check",
+        "Type check",
+        "Format check"
+       ],
+       "fb": "Nothing has been entered."
+      },
+      {
+       "t": "mcq",
+       "q": "Which check ensures a score is between 0 and 100?",
+       "a": [
+        "Range check",
+        "Length check",
+        "Presence check",
+        "Format check"
+       ],
+       "fb": "It checks the limits."
+      },
+      {
+       "t": "mcq",
+       "q": "What does input validation mean?",
+       "a": [
+        "Checking input meets rules before it's processed",
+        "Checking who the user is",
+        "Testing the program",
+        "Encrypting input"
+       ],
+       "fb": "Validation is about data, not people."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Lesson 2: Defensive design",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is authentication?",
+       "a": [
+        "Checking a user is who they say they are",
+        "Checking data is valid",
+        "Adding comments",
+        "Testing with boundary data"
+       ],
+       "fb": "It verifies identity."
+      },
+      {
+       "t": "mcq",
+       "q": "What is a CAPTCHA for?",
+       "a": [
+        "Stopping bots using a form",
+        "Checking passwords are strong",
+        "Speeding up forms",
+        "Validating dates"
+       ],
+       "fb": "It tells humans and bots apart."
+      },
+      {
+       "t": "mcq",
+       "q": "Which could crash a program even with valid input?",
+       "a": [
+        "Dividing by zero",
+        "A descriptive variable name",
+        "A comment",
+        "Indentation"
+       ],
+       "fb": "Exception handling can deal with it."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Lesson 3: Maintainability",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which makes code easier to maintain?",
+       "a": [
+        "Descriptive variable names",
+        "Single-letter names",
+        "No indentation",
+        "No comments"
+       ],
+       "fb": "Names should say what data is stored."
+      },
+      {
+       "t": "mcq",
+       "q": "Why use sub-programs?",
+       "a": [
+        "Code is reused and each part can be tested separately",
+        "They make code run faster",
+        "They remove the need for testing",
+        "They validate input automatically"
+       ],
+       "fb": "Write once, use many times."
+      },
+      {
+       "t": "mcq",
+       "q": "What happens to comments when code runs?",
+       "a": [
+        "They are ignored",
+        "They are printed",
+        "They slow the code down",
+        "They cause errors"
+       ],
+       "fb": "They're for people, not the computer."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Lesson 4: Testing and errors",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "When does iterative testing happen?",
+       "a": [
+        "While the program is being developed",
+        "Only after release",
+        "Before any code is written",
+        "Only once"
+       ],
+       "fb": "Each part is tested as it's written."
+      },
+      {
+       "t": "mcq",
+       "q": "A program runs but gives the wrong answer. What type of error is this?",
+       "a": [
+        "Logic error",
+        "Syntax error",
+        "Validation error",
+        "Hardware error"
+       ],
+       "fb": "The code follows the rules but the logic is wrong."
+      },
+      {
+       "t": "mcq",
+       "q": "Which is a syntax error?",
+       "a": [
+        "A missing colon at the end of an if statement",
+        "Using + instead of -",
+        "Dividing by the wrong variable",
+        "A loop that runs one time too many"
+       ],
+       "fb": "The translator can't understand the line."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Lesson 5: Test data",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "A form accepts 1 to 10. Which is boundary data?",
+       "a": [
+        "10",
+        "5",
+        "11",
+        "ten"
+       ],
+       "fb": "10 is valid but on the edge."
+      },
+      {
+       "t": "mcq",
+       "q": "A form accepts 1 to 10. Which is erroneous data?",
+       "a": [
+        "ten",
+        "5",
+        "10",
+        "11"
+       ],
+       "fb": "It's text, the wrong type."
+      },
+      {
+       "t": "mcq",
+       "q": "A form accepts 1 to 10. Which is invalid data?",
+       "a": [
+        "11",
+        "1",
+        "5",
+        "ten"
+       ],
+       "fb": "Right type, outside the range."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Plan a 12-mark answer",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "multi",
+       "q": "Which points belong in a 12-mark answer on producing robust programs? Select all that apply.",
+       "opts": [
+        "Input validation, with examples of checks",
+        "Authentication of users",
+        "Planning for misuse and runtime errors",
+        "Maintainable code with comments and sub-programs",
+        "Testing with normal, boundary, invalid and erroneous data",
+        "The colour scheme of the program"
+       ],
+       "correct": [
+        "Input validation, with examples of checks",
+        "Authentication of users",
+        "Planning for misuse and runtime errors",
+        "Maintainable code with comments and sub-programs",
+        "Testing with normal, boundary, invalid and erroneous data"
+       ],
+       "fb": "Everything except the colour scheme contributes to robustness."
+      },
+      {
+       "t": "mcq",
+       "q": "What makes a 12-mark answer stand out?",
+       "a": [
+        "Explaining why each technique makes the program robust, with examples",
+        "Listing as many keywords as possible",
+        "Writing in bullet points only",
+        "Repeating the question"
+       ],
+       "fb": "Depth and examples earn the top marks."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: key terms",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "match",
+       "q": "Match each key term to its meaning.",
+       "pairs": [
+        [
+         "Input validation",
+         "Checking data meets rules before it's processed"
+        ],
+        [
+         "Authentication",
+         "Verifying a user's identity before they can use a system"
+        ],
+        [
+         "Maintainability",
+         "Techniques that make code easier to debug, update and maintain"
+        ],
+        [
+         "Iterative testing",
+         "Testing during development, module by module"
+        ],
+        [
+         "Syntax error",
+         "Breaking the rules of the language, so the code won't run"
+        ],
+        [
+         "Boundary data",
+         "Valid data on the edge of the accepted range"
+        ]
+       ],
+       "fb": "Check your results table to see which lessons to revise first."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "Revision tip",
+     "text": "Explain each topic out loud to someone else. If you can teach it, you know it."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "Common mix-up",
+     "text": "Validation checks data; authentication checks people. Examiners love this difference."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 920,
+     "y": 540,
+     "title": "Program practice",
+     "text": "Finish your outstanding programs: date validation, password validation, greatest common factors, factorial and tweet validation."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1888,
+     "y": 540,
+     "title": "Error spotting",
+     "text": "In exam code, read each line slowly. Look for misspelt keywords (syntax) and wrong operators or variables (logic)."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 920,
+     "y": 540,
+     "title": "Super challenge",
+     "text": "Try converting a decimal to a fraction: 0.75 is 75/100, then divide both by their greatest common factor (25) to get 3/4."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1888,
+     "y": 540,
+     "title": "Robust means...",
+     "text": "A robust program keeps working correctly whatever users throw at it: that's the thread that links every lesson in this topic."
+    }
+   ]
+  }
+ ]
+}

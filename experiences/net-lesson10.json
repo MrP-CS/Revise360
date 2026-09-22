@@ -1,0 +1,301 @@
+{
+ "id": "net-lesson10",
+ "lesson": 10,
+ "title": "Cipher room",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Cipher room",
+   "img": "img/L10_CipherRoom_360.jpg",
+   "imgHi": "img/L10_CipherRoom_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Why encrypt?",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is the purpose of encryption?",
+       "a": [
+        "To scramble data so only someone with the key can understand it",
+        "To make data travel faster",
+        "To compress files",
+        "To stop signals leaving the building"
+       ],
+       "fb": "Encryption doesn't stop interception; it makes intercepted data useless."
+      },
+      {
+       "t": "mcq",
+       "q": "Why is encryption especially important for wireless networks?",
+       "a": [
+        "Radio signals can be picked up by anyone within range",
+        "Wireless is always slower",
+        "Cables can't carry encrypted data",
+        "Wi-Fi has no passwords"
+       ],
+       "fb": "With a cable, an attacker needs physical access. Wireless signals spread out into the air."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "ROT13 and the Romans",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is HELLO in ROT13?",
+       "a": [
+        "URYYB",
+        "IFMMP",
+        "OLSSV",
+        "HELLO"
+       ],
+       "fb": "H→U, E→R, L→Y, L→Y, O→B."
+      },
+      {
+       "t": "mcq",
+       "q": "Why isn't ROT13 secure?",
+       "a": [
+        "Anyone who knows the rule can reverse it, because there's no secret key",
+        "It only works on numbers",
+        "It makes messages longer",
+        "It can't be decoded at all"
+       ],
+       "fb": "ROT13 is used to hide spoilers or puzzle answers, not to keep secrets."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Keys",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is an encryption key?",
+       "a": [
+        "The secret value used to encrypt and decrypt data",
+        "The password to your email",
+        "The first letter of the message",
+        "The Wi-Fi network's name"
+       ],
+       "fb": "Anyone with the key can unlock the message, so the key must be protected."
+      },
+      {
+       "t": "mcq",
+       "q": "Why are master keys never sent over the network?",
+       "a": [
+        "They could be intercepted, and then all the data could be decrypted",
+        "They are too large to send",
+        "The network doesn't allow it",
+        "They change every second"
+       ],
+       "fb": "If an attacker captures the key, the encryption is worthless."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Public and private keys",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which key can be shared with anyone?",
+       "a": [
+        "The public key",
+        "The private key",
+        "Both keys",
+        "Neither key"
+       ],
+       "fb": "The public key only locks messages; it can't unlock them."
+      },
+      {
+       "t": "mcq",
+       "q": "What happens if someone gets hold of your private key?",
+       "a": [
+        "They can decrypt messages meant only for you",
+        "Nothing, as it's useless without the public key",
+        "Your messages get shorter",
+        "Your Wi-Fi speeds up"
+       ],
+       "fb": "That's why a private key is never shared."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "The WPA2 handshake",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "order",
+       "q": "Put the WPA2 handshake steps in order.",
+       "steps": [
+        "Master key is generated from the wireless password",
+        "Random number is sent with the network interface card address",
+        "Transient key is calculated from the master key, random numbers and network card addresses",
+        "Random number is sent with a message integrity code",
+        "Transient key is calculated",
+        "Group temporal key is calculated and sent with a message integrity code",
+        "Acknowledgement is sent confirming communication can begin"
+       ],
+       "fb": "Both sides calculate the same keys, so the keys themselves never travel over the air."
+      },
+      {
+       "t": "mcq",
+       "q": "What does WPA2 do before any data is sent?",
+       "a": [
+        "Checks that both devices know the same key, so they can trust each other",
+        "Deletes old data",
+        "Speeds up the connection",
+        "Turns off encryption"
+       ],
+       "fb": "This check is called authentication."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Staying safe on Wi-Fi",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which network is the safest to use?",
+       "a": [
+        "One protected with WPA2 or WPA3 and a strong password",
+        "An open network with no password",
+        "One with the password 'password'",
+        "One that uses old WEP security"
+       ],
+       "fb": "WEP was cracked years ago, and open networks don't encrypt Wi-Fi traffic."
+      },
+      {
+       "t": "mcq",
+       "q": "Why does the strength of the Wi-Fi password matter?",
+       "a": [
+        "The master key is made from it, so a weak password makes the key easier to guess",
+        "It changes the range",
+        "It sets the bandwidth",
+        "It doesn't matter"
+       ],
+       "fb": "Attackers try common passwords to recreate the key."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: code breakers",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "match",
+       "q": "Match each term to its meaning.",
+       "pairs": [
+        [
+         "Plaintext",
+         "The original, readable message"
+        ],
+        [
+         "Ciphertext",
+         "The scrambled message"
+        ],
+        [
+         "Key",
+         "The secret used to encrypt and decrypt"
+        ],
+        [
+         "Public key",
+         "Shared with anyone and used to encrypt"
+        ],
+        [
+         "Private key",
+         "Kept secret and used to decrypt"
+        ],
+        [
+         "Encryption",
+         "Scrambling data so it can't be read without the key"
+        ]
+       ],
+       "fb": "Learn these terms: they come up in exam questions on wireless security."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "Bletchley Park",
+     "text": "In the Second World War, codebreakers at Bletchley Park, including Alan Turing, cracked the German Enigma cipher, which helped shorten the war."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "Caesar's shift",
+     "text": "Julius Caesar is said to have used a shift of 3: A became D, B became E, and so on. That's why shift ciphers are called Caesar ciphers."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 920,
+     "y": 540,
+     "title": "Spoiler alert",
+     "text": "ROT13 is still used online to hide spoilers and puzzle answers: it's easy to reverse, but you won't read it by accident."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1888,
+     "y": 540,
+     "title": "The padlock",
+     "text": "The padlock in your browser means HTTPS, which uses public and private keys to set up a secure connection with the website."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 920,
+     "y": 540,
+     "title": "WEP was cracked",
+     "text": "The first Wi-Fi security, WEP, had serious flaws and could be cracked in minutes. WPA and then WPA2 replaced it."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1888,
+     "y": 540,
+     "title": "WPA3",
+     "text": "WPA3 arrived in 2018. It protects even weak passwords better, by making it much harder to guess them offline."
+    }
+   ]
+  }
+ ]
+}

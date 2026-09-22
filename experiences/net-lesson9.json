@@ -1,0 +1,346 @@
+{
+ "id": "net-lesson9",
+ "lesson": 9,
+ "title": "Connection café",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Connection café",
+   "img": "img/L9_ConnectionCafe_360.jpg",
+   "imgHi": "img/L9_ConnectionCafe_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Ethernet",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What type of connection is Ethernet?",
+       "a": [
+        "Wired",
+        "Wireless",
+        "Satellite",
+        "Bluetooth"
+       ],
+       "fb": "Ethernet uses cables, usually twisted pair copper or fibre."
+      },
+      {
+       "t": "mcq",
+       "q": "What does an Ethernet frame contain so it reaches the right device?",
+       "a": [
+        "Source and destination addresses",
+        "A Wi-Fi password",
+        "A domain name",
+        "A Bluetooth pairing code"
+       ],
+       "fb": "Each frame carries the MAC address it came from and the one it's going to."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Wi-Fi",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is the typical range of Wi-Fi?",
+       "a": [
+        "About 100 metres",
+        "About 10 metres",
+        "About 1 kilometre",
+        "Unlimited"
+       ],
+       "fb": "Walls and interference usually reduce this indoors."
+      },
+      {
+       "t": "mcq",
+       "q": "What does a device need in order to join a Wi-Fi network?",
+       "a": [
+        "A wireless NIC, and to be in range of a wireless access point",
+        "An Ethernet cable",
+        "A Bluetooth headset",
+        "A satellite dish"
+       ],
+       "fb": "The wireless NIC sends and receives the radio signals to and from the WAP."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Bluetooth",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is the typical range of Bluetooth?",
+       "a": [
+        "About 10 metres",
+        "About 100 metres",
+        "About 1 kilometre",
+        "About 1 metre"
+       ],
+       "fb": "Bluetooth is designed for devices close together."
+      },
+      {
+       "t": "mcq",
+       "q": "Why is Bluetooth good for wireless earbuds?",
+       "a": [
+        "It uses very little power, so batteries last longer",
+        "It has the highest bandwidth",
+        "It has the longest range",
+        "It needs a cable"
+       ],
+       "fb": "Earbuds have tiny batteries, and they only need a short range and low bandwidth."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Wi-Fi vs Bluetooth",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Does each feature describe Wi-Fi or Bluetooth?",
+       "cats": [
+        "Wi-Fi",
+        "Bluetooth"
+       ],
+       "items": [
+        [
+         "Range of about 100 metres",
+         "Wi-Fi"
+        ],
+        [
+         "Range of about 10 metres",
+         "Bluetooth"
+        ],
+        [
+         "High bandwidth",
+         "Wi-Fi"
+        ],
+        [
+         "Low bandwidth",
+         "Bluetooth"
+        ],
+        [
+         "Higher power consumption",
+         "Wi-Fi"
+        ],
+        [
+         "Low power consumption",
+         "Bluetooth"
+        ]
+       ],
+       "fb": "Wi-Fi is for networks; Bluetooth is for linking two nearby devices."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Wired vs wireless",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which is an advantage of a wired connection over wireless?",
+       "a": [
+        "It is usually faster and more reliable",
+        "You can use it anywhere in the building",
+        "It needs no cabling",
+        "It is easier to set up in an old building"
+       ],
+       "fb": "The other options are advantages of wireless."
+      },
+      {
+       "t": "mcq",
+       "q": "Why is a wireless network usually harder to secure?",
+       "a": [
+        "Its signals travel through the air, so anyone in range could try to connect or intercept them",
+        "Wireless data can't be encrypted",
+        "It has no passwords",
+        "It uses copper cables"
+       ],
+       "fb": "That's why Wi-Fi needs strong encryption, which is next lesson's topic."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Recommend a connection",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "A school hall needs 30 laptops online for one day. Which connection is best?",
+       "a": [
+        "Wi-Fi",
+        "Ethernet",
+        "Bluetooth",
+        "USB cables"
+       ],
+       "fb": "Wi-Fi avoids running 30 temporary cables."
+      },
+      {
+       "t": "mcq",
+       "q": "A server room needs the fastest, most reliable links. Which connection is best?",
+       "a": [
+        "Ethernet",
+        "Wi-Fi",
+        "Bluetooth",
+        "Satellite"
+       ],
+       "fb": "Servers don't move, so cabled links give the best speed and reliability."
+      },
+      {
+       "t": "mcq",
+       "q": "A wireless mouse for a laptop: which connection is best?",
+       "a": [
+        "Bluetooth",
+        "Ethernet",
+        "Wi-Fi",
+        "Fibre optic"
+       ],
+       "fb": "Short range, low data and low power: a perfect fit for Bluetooth."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: wired or wireless?",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Does each statement describe wired or wireless connections?",
+       "cats": [
+        "Wired",
+        "Wireless"
+       ],
+       "items": [
+        [
+         "Less reliable, and can be blocked by walls",
+         "Wireless"
+        ],
+        [
+         "Lots of physical hardware required",
+         "Wired"
+        ],
+        [
+         "Transfer speeds tend to be slower",
+         "Wireless"
+        ],
+        [
+         "Connections tend to be more reliable",
+         "Wired"
+        ],
+        [
+         "More secure and easier to secure",
+         "Wired"
+        ],
+        [
+         "Less secure and more difficult to secure",
+         "Wireless"
+        ],
+        [
+         "Sharing files tends to be easier",
+         "Wired"
+        ],
+        [
+         "Users can access the network from anywhere in range",
+         "Wireless"
+        ],
+        [
+         "Less physically complicated and disruptive to set up",
+         "Wireless"
+        ],
+        [
+         "Transfer speeds tend to be faster",
+         "Wired"
+        ],
+        [
+         "Sharing files tends to be more difficult",
+         "Wireless"
+        ]
+       ],
+       "fb": "Colour these on your worksheet: green for advantages and red for disadvantages."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "Where Ethernet began",
+     "text": "Ethernet was invented at Xerox's research lab in California in 1973. The same idea, much faster, still connects most wired networks today."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "Wi-Fi's real name",
+     "text": "Wi-Fi is the everyday name for a family of IEEE standards called 802.11. Each new version, such as Wi-Fi 6, is faster than the last."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 920,
+     "y": 540,
+     "title": "A Viking king",
+     "text": "Bluetooth is named after Harald Bluetooth, a 10th-century Danish king. Its logo combines the runes for his initials, H and B."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1888,
+     "y": 540,
+     "title": "Checking frames",
+     "text": "Every Ethernet frame ends with a cyclic redundancy check: a calculated value that lets the receiver spot if the frame was damaged on the way."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 920,
+     "y": 540,
+     "title": "Li-Fi",
+     "text": "Li-Fi is an experimental technology that sends data using flickering LED light instead of radio waves. It can't pass through walls, which makes it hard to eavesdrop on."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1888,
+     "y": 540,
+     "title": "Mesh at home",
+     "text": "Many homes now use mesh Wi-Fi: several access points that pass data to each other so the signal reaches every room."
+    }
+   ]
+  }
+ ]
+}

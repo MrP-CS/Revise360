@@ -1,0 +1,323 @@
+{
+ "id": "net-lesson5",
+ "lesson": 5,
+ "title": "Inside the internet",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Inside the internet",
+   "img": "img/L5_InsideTheInternet_360.jpg",
+   "imgHi": "img/L5_InsideTheInternet_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "What is the internet?",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is the internet?",
+       "a": [
+        "A worldwide collection of connected computer networks",
+        "All the websites in the world",
+        "One huge computer owned by a tech company",
+        "The Wi-Fi in your home"
+       ],
+       "fb": "The internet is the network of networks. Websites are part of the World Wide Web, which runs on the internet."
+      },
+      {
+       "t": "mcq",
+       "q": "What is the World Wide Web?",
+       "a": [
+        "A collection of web pages that are accessed over the internet",
+        "Another name for the internet",
+        "The cables that link countries",
+        "A type of router"
+       ],
+       "fb": "The web is one service that uses the internet. Email and online games are others."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Domain Name Service (DNS)",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does DNS do?",
+       "a": [
+        "Turns a domain name into an IP address",
+        "Stores every web page",
+        "Gives devices their MAC addresses",
+        "Encrypts Wi-Fi signals"
+       ],
+       "fb": "DNS looks up the IP address for a domain name so your browser knows where to send its request."
+      },
+      {
+       "t": "order",
+       "q": "Put the steps in order to show how a browser finds www.google.com.",
+       "steps": [
+        "You type www.google.com into the browser",
+        "The browser asks a domain name server for the IP address",
+        "Domain name servers look up the name, asking other DNS servers if they need to",
+        "The IP address is sent back to the browser",
+        "The browser requests the page from the web server at that IP address"
+       ],
+       "fb": "You don't need the names of the servers for the exam, just the idea that DNS is many servers working together."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Hosting",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is meant by hosting?",
+       "a": [
+        "Storing websites or files on a server so they can be accessed over the internet",
+        "Inviting people to use your Wi-Fi",
+        "Buying a domain name",
+        "Printing web pages"
+       ],
+       "fb": "A host provides the server space and connection that keep a website available."
+      },
+      {
+       "t": "mcq",
+       "q": "Why might a business use a hosting company?",
+       "a": [
+        "It doesn't need to buy, run and look after its own servers",
+        "Its website becomes invisible to competitors",
+        "It no longer needs a domain name",
+        "It stops needing the internet"
+       ],
+       "fb": "The hosting company handles the hardware, power, cooling and connection."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "The cloud",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which is the best description of the cloud?",
+       "a": [
+        "Storage and services on remote servers, reached over the internet",
+        "Wireless networks in the sky",
+        "Files saved on a USB stick",
+        "A type of weather satellite"
+       ],
+       "fb": "'The cloud' is just other people's servers, in data centres, that you use over the internet."
+      },
+      {
+       "t": "mcq",
+       "q": "Which is a disadvantage of using the cloud?",
+       "a": [
+        "It relies on a stable internet connection",
+        "You can access files anywhere",
+        "It's easy to scale up",
+        "It has good backup options"
+       ],
+       "fb": "No connection means no access. The other three are advantages."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Web servers and clients",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "In the relationship between a phone and a web server, what is the phone?",
+       "a": [
+        "The client",
+        "The server",
+        "The router",
+        "The host"
+       ],
+       "fb": "The phone requests the page, so it is the client. The web server responds."
+      },
+      {
+       "t": "mcq",
+       "q": "What does a web server do?",
+       "a": [
+        "Stores web pages and sends them to clients that request them",
+        "Turns domain names into IP addresses",
+        "Connects Wi-Fi devices",
+        "Blocks viruses"
+       ],
+       "fb": "Turning names into addresses is DNS's job; the web server delivers the pages."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "File servers",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "match",
+       "q": "Match each device to its role.",
+       "pairs": [
+        [
+         "Web server",
+         "Sends web pages to browsers"
+        ],
+        [
+         "File server",
+         "Stores files for users on a network"
+        ],
+        [
+         "Desktop PC opening a file",
+         "Client"
+        ],
+        [
+         "Phone loading a website",
+         "Client"
+        ]
+       ],
+       "fb": "Servers provide; clients request."
+      },
+      {
+       "t": "mcq",
+       "q": "Which is an advantage of storing work on a file server?",
+       "a": [
+        "You can open your work from any computer on the network",
+        "It works without a network",
+        "Files can never be deleted",
+        "It makes the computer faster"
+       ],
+       "fb": "Files stored centrally follow you to whichever networked computer you use."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: the cloud",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Is each statement an advantage or a disadvantage of the cloud?",
+       "cats": [
+        "Advantage",
+        "Disadvantage"
+       ],
+       "items": [
+        [
+         "Excellent backup and recovery options",
+         "Advantage"
+        ],
+        [
+         "Less control over your data",
+         "Disadvantage"
+        ],
+        [
+         "Speed depends on your network's bandwidth",
+         "Disadvantage"
+        ],
+        [
+         "Room for growth: easy to scale up",
+         "Advantage"
+        ],
+        [
+         "Ongoing monthly or yearly cost",
+         "Disadvantage"
+        ],
+        [
+         "No hardware to buy: everything is hosted",
+         "Advantage"
+        ],
+        [
+         "Relies on a stable internet connection",
+         "Disadvantage"
+        ],
+        [
+         "Access your data anywhere, at any time",
+         "Advantage"
+        ]
+       ],
+       "fb": "Use these for your Task 3 grouping on the worksheet."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "How many people?",
+     "text": "Around two-thirds of the world's population now use the internet, and most of them connect through phones."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "8.8.8.8",
+     "text": "The address 8.8.8.8 actually belongs to Google's public DNS service. Some people set their devices to use it instead of their internet provider's DNS."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 920,
+     "y": 540,
+     "title": "Cool servers",
+     "text": "Data centres use a lot of electricity for cooling. Some are built in cold countries to cut cooling costs."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1888,
+     "y": 540,
+     "title": "Someone else's computer",
+     "text": "Your cloud files are stored on real servers in data centres, often copied to several locations so they survive a failure."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 920,
+     "y": 540,
+     "title": "The web's birthday",
+     "text": "Tim Berners-Lee invented the World Wide Web in 1989 while working at CERN in Switzerland."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1888,
+     "y": 540,
+     "title": "Root servers",
+     "text": "At the top of DNS are root name servers. There are 13 root server addresses, but each one is copied to hundreds of servers around the world."
+    }
+   ]
+  }
+ ]
+}
