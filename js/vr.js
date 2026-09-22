@@ -29,7 +29,7 @@
     }
     function leave() {
       session = null; core.inVR = false; core.toastHook = null;
-      grp.rotation.y = 0; root.visible = false; closeAll();
+      grp.rotation.y = 0; root.visible = false; closeAll(); closeModelVR();
       core.mat.map = core.texFor(core.cur); core.mat.needsUpdate = true;
       core.refreshSprites(); core.hud(); core.drawNav();
     }
@@ -217,6 +217,34 @@
       menuPanel.set({ title: "My progress", color: COL.edge, onClose: () => menuPanel.hide(), blocks });
     }
 
+    // ---------------- 3D models ----------------
+    let vrModel = null, lit = false; const modelPanel = new Panel(.75, 1000); panels.push(modelPanel);
+    function openModelVR(u) {
+      if (!window.R360Models) return;
+      closeModelVR(); infoPanel.hide(); menuPanel.hide();
+      if (!lit) { R360Models.lights(scene); lit = true; }
+      core.markInfo(u.id);
+      const b = R360Models.build(u.md.model); const holder = new T.Group(); holder.add(b.group);
+      const { pos, dir } = headPose(); const yaw = Math.atan2(dir.x, dir.z);
+      holder.position.set(pos.x + Math.sin(yaw) * 1.1, pos.y - .15, pos.z + Math.cos(yaw) * 1.1);
+      holder.scale.setScalar(.12 * b.scale / .7); b.group.rotation.x = .35; scene.add(holder);
+      vrModel = { b, holder, sel: -1, u };
+      showModelPanel(-1);
+      modelPanel.mesh.position.set(pos.x + Math.sin(yaw - .62) * 1.15, pos.y - .05, pos.z + Math.cos(yaw - .62) * 1.15); modelPanel.mesh.lookAt(pos);
+      toast("Point at a part and pull the trigger to learn about it. Push the thumbstick to turn the model.");
+    }
+    function showModelPanel(i) {
+      const m = vrModel; if (!m) return; m.sel = i; R360Models.highlight(m.b, i);
+      const p = i >= 0 ? m.b.parts[i] : null;
+      modelPanel.set({ title: m.u.md.title, color: "#ffa028", onClose: closeModelVR, blocks: [
+        { p: p ? p.name : "Select a part", size: 32, bold: true, color: "#ffd046" }, { p: p ? p.text : (m.u.md.text || "Point at the model and pull the trigger."), size: 28 }, { gap: 6 },
+        { row: m.b.parts.slice(0, 3).map((q, j) => ({ btn: q.name, id: "mp" + j, center: true, size: 22, state: j === i ? "on" : "", onClick: () => showModelPanel(j) })) },
+        m.b.parts.length > 3 ? { row: m.b.parts.slice(3, 6).map((q, j) => ({ btn: q.name, id: "mp" + (j + 3), center: true, size: 22, state: j + 3 === i ? "on" : "", onClick: () => showModelPanel(j + 3) })) } : null,
+        m.b.parts.length > 6 ? { row: m.b.parts.slice(6, 9).map((q, j) => ({ btn: q.name, id: "mp" + (j + 6), center: true, size: 22, state: j + 6 === i ? "on" : "", onClick: () => showModelPanel(j + 6) })) } : null,
+        { btn: "Close model", id: "mclose", center: true, onClick: closeModelVR }] });
+    }
+    function closeModelVR() { if (!vrModel) return; scene.remove(vrModel.holder); vrModel = null; modelPanel.hide(); core.refreshSprites(); }
+
     // ---------------- questions ----------------
     function openStation(k) {
       const list = core.taskList(k); if (!list) return;
@@ -335,8 +363,8 @@
       return c;
     });
     function targets() {
-      if (qPanel.open) return { panels: [qPanel.mesh], sprites: [] };   // questions are modal, like on the web page
-      return { panels: [menuPanel, infoPanel, menuBtn].filter(p => p.open).map(p => p.mesh), sprites: core.sprites };
+      if (qPanel.open) return { panels: [qPanel.mesh], sprites: [], model: null };   // questions are modal, like on the web page
+      return { panels: [menuPanel, infoPanel, modelPanel, menuBtn].filter(p => p.open).map(p => p.mesh), sprites: core.sprites, model: vrModel };
     }
     const vS = new T.Vector3(), vTo = new T.Vector3();
     function hitFor(c) {
@@ -347,6 +375,7 @@
       // panels sit in front of the scene, so they win over badges behind them
       const ph = raycaster.intersectObjects(tg.panels, false);
       if (ph.length) return ph[0];
+      if (tg.model) { const mhs = raycaster.intersectObjects(tg.model.holder.children, true).filter(x => x.object.userData.part !== undefined); const mh = mhs.find(x => !(x.object.material && x.object.material.transparent)) || mhs[0]; if (mh) return { object: mh.object, distance: mh.distance, point: mh.point, modelPart: mh.object.userData.part }; }
       // badges always face the viewer, so test them by angle rather than as flat sprites
       let best = null;
       tg.sprites.forEach(s => {
@@ -359,9 +388,10 @@
     }
     function select(c) {
       const h = c.userData.hover; if (!h) return;
+      if (h.modelPart !== undefined) { pulse(c, .5, 30); showModelPanel(h.modelPart); return; }
       if (h.panel) { const hit = h.panel.hitAt(h.uv); if (hit && hit.fn) { pulse(c, .5, 30); hit.fn(); } return; }
       const u = h.sprite.userData; pulse(c, .5, 30);
-      if (u.type === "info") showInfo(u); else openStation(u.k);
+      if (u.type === "info") showInfo(u); else if (u.type === "model") openModelVR(u); else openStation(u.k);
     }
     function pulse(c, v, ms) { try { const g = c.userData.source && c.userData.source.gamepad; g && g.hapticActuators && g.hapticActuators[0] && g.hapticActuators[0].pulse(v, ms); } catch (e) {} }
 
@@ -375,25 +405,27 @@
         const h = hitFor(c);
         if (h) {
           ud.line.scale.z = h.distance; ud.dot.visible = true; ud.dot.position.copy(h.point); ud.dot.lookAt(raycaster.ray.origin);
-          if (h.object.userData.panel) {
+          if (h.modelPart !== undefined) { ud.hover = { modelPart: h.modelPart }; }
+          else if (h.object.userData.panel) {
             const p = h.object.userData.panel, hit = p.hitAt(h.uv);
             ud.hover = { panel: p, uv: h.uv.clone() }; if (hit) hovered.set(p, hit.id);
           } else ud.hover = { sprite: h.object };
         } else { ud.hover = null; ud.line.scale.z = 3; ud.dot.visible = false; }
-        const prev = ud.lastId, now = ud.hover ? (ud.hover.panel ? (ud.hover.panel.hitAt(ud.hover.uv) || {}).id : ud.hover.sprite.uuid) : null;
+        const prev = ud.lastId, now = ud.hover ? (ud.hover.modelPart !== undefined ? "m" + ud.hover.modelPart : ud.hover.panel ? (ud.hover.panel.hitAt(ud.hover.uv) || {}).id : ud.hover.sprite.uuid) : null;
         if (now && now !== prev) pulse(c, .15, 12); ud.lastId = now;
         // snap turn with the thumbstick
         const gp = ud.source.gamepad;
         if (gp && gp.axes && gp.axes.length >= 4) {
           const x = gp.axes[2];
-          if (Math.abs(x) > .7 && ud.turnReady) { ud.turnReady = false; grp.rotation.y -= Math.sign(x) * Math.PI / 6; }
+          if (vrModel) { if (Math.abs(x) > .2) vrModel.b.group.rotation.y += x * .05; }
+          else if (Math.abs(x) > .7 && ud.turnReady) { ud.turnReady = false; grp.rotation.y -= Math.sign(x) * Math.PI / 6; }
           if (Math.abs(x) < .3) ud.turnReady = true;
         }
       });
       panels.forEach(p => p.open && p.setHover(hovered.get(p) || null));
     });
-    core.sceneHooks.push(() => { if (core.inVR) { closeAll(); } });
-    window.NVRVR = { qPanel, infoPanel, menuPanel, menuBtn, toastPanel, enter, exitVR };  // for testing
+    core.sceneHooks.push(() => { if (core.inVR) { closeAll(); closeModelVR(); } });
+    window.NVRVR = { modelPanel, get vrModel() { return vrModel; }, openModelVR: n => { const sp = core.sprites.filter(x => x.userData.type === "model")[n]; if (sp) openModelVR(sp.userData); }, qPanel, infoPanel, menuPanel, menuBtn, toastPanel, enter, exitVR };  // for testing
   }
   if (window.NVRCore) start(window.NVRCore);
   else document.addEventListener("nvr-ready", () => start(window.NVRCore), { once: true });

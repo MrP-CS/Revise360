@@ -1,0 +1,352 @@
+{
+ "id": "sa-lesson4",
+ "lesson": 4,
+ "title": "Smart home",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Smart home",
+   "img": "img/SA_L4_SmartHome_360.jpg",
+   "imgHi": "img/SA_L4_SmartHome_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "What is an embedded system?",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is an embedded system?",
+       "a": [
+        "A computer system built into a larger device to do a dedicated job",
+        "A laptop used for many different tasks",
+        "A program saved in the cloud",
+        "A type of monitor"
+       ],
+       "fb": "It's part of something bigger, and it has a specific purpose."
+      },
+      {
+       "t": "mcq",
+       "q": "Which is an example of an embedded system?",
+       "a": [
+        "The controller in a microwave oven",
+        "A desktop PC",
+        "A laptop",
+        "A tablet running many apps"
+       ],
+       "fb": "The others are general-purpose computers."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Characteristics",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "multi",
+       "q": "Which are typical characteristics of embedded systems? Select all that apply.",
+       "opts": [
+        "Dedicated to a specific task",
+        "Low power consumption",
+        "Small in size",
+        "Reliable",
+        "Designed to run lots of different apps",
+        "Needs a large monitor and keyboard"
+       ],
+       "correct": [
+        "Dedicated to a specific task",
+        "Low power consumption",
+        "Small in size",
+        "Reliable"
+       ],
+       "fb": "Running lots of apps is what general-purpose computers do."
+      },
+      {
+       "t": "mcq",
+       "q": "Why are embedded systems usually cheap to make?",
+       "a": [
+        "They only need enough processing power for one job, and are made in huge numbers",
+        "They have no processor",
+        "They are made by hand",
+        "They don't need electricity"
+       ],
+       "fb": "Simple, mass-produced hardware keeps the cost down."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Embedded systems everywhere",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which of these contains an embedded system?",
+       "a": [
+        "A car's automatic headlights",
+        "A pencil",
+        "A paper book",
+        "A wooden chair"
+       ],
+       "fb": "A sensor and microcontroller switch the lights on when it gets dark."
+      },
+      {
+       "t": "mcq",
+       "q": "Complete the exam sentence: embedded systems have limited...",
+       "a": [
+        "functions",
+        "colours",
+        "keyboards",
+        "screens"
+       ],
+       "fb": "Embedded systems have limited functions and are built into a larger machine."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Input, process, output",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Is each part of a washing machine an input, process or output?",
+       "cats": [
+        "Input",
+        "Process",
+        "Output"
+       ],
+       "items": [
+        [
+         "Program dial",
+         "Input"
+        ],
+        [
+         "Temperature sensor",
+         "Input"
+        ],
+        [
+         "Microcontroller running the wash program",
+         "Process"
+        ],
+        [
+         "Motor turning the drum",
+         "Output"
+        ],
+        [
+         "Water heater",
+         "Output"
+        ],
+        [
+         "Display showing time left",
+         "Output"
+        ]
+       ],
+       "fb": "Take apart the 3D washing machine to see each part."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Programming embedded systems",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which programming language is mainly used for embedded systems?",
+       "a": [
+        "C (and C++)",
+        "HTML",
+        "Scratch",
+        "SQL"
+       ],
+       "fb": "C is fast and gives close control of the hardware."
+      },
+      {
+       "t": "mcq",
+       "q": "What is firmware?",
+       "a": [
+        "The program stored permanently in a device to control it",
+        "The outer case of a device",
+        "A type of cable",
+        "A website"
+       ],
+       "fb": "It's usually held in ROM or flash memory."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Embedded or general purpose?",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Why is a laptop not an embedded system?",
+       "a": [
+        "It's a general-purpose computer that can run many different programs",
+        "It doesn't have a CPU",
+        "It is too heavy",
+        "It has no memory"
+       ],
+       "fb": "Embedded systems have a dedicated function."
+      },
+      {
+       "t": "mcq",
+       "q": "A car has a computer that only controls the anti-lock brakes. What is it?",
+       "a": [
+        "An embedded system",
+        "A general-purpose computer",
+        "A server",
+        "A web browser"
+       ],
+       "fb": "It's built in, with one job."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: spot the embedded system",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Is each device an embedded system or a general-purpose computer?",
+       "cats": [
+        "Embedded",
+        "General purpose"
+       ],
+       "items": [
+        [
+         "Washing machine",
+         "Embedded"
+        ],
+        [
+         "Microwave oven",
+         "Embedded"
+        ],
+        [
+         "Traffic lights",
+         "Embedded"
+        ],
+        [
+         "Car anti-lock brakes",
+         "Embedded"
+        ],
+        [
+         "Smart thermostat",
+         "Embedded"
+        ],
+        [
+         "Laptop",
+         "General purpose"
+        ],
+        [
+         "Desktop PC",
+         "General purpose"
+        ],
+        [
+         "Tablet running apps",
+         "General purpose"
+        ]
+       ],
+       "fb": "The exam paragraph: embedded systems have limited functions and are often built into a larger machine."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "Computers on wheels",
+     "text": "A modern car has dozens of embedded computers, often more than 50, controlling everything from the engine to the windows."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "Life-saving computers",
+     "text": "Pacemakers are embedded systems that must be extremely reliable and run for years on one battery."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 920,
+     "y": 540,
+     "title": "The Internet of Things",
+     "text": "When embedded systems connect to the internet, like smart speakers and doorbells, they're called the Internet of Things."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1888,
+     "y": 540,
+     "title": "Microcontrollers",
+     "text": "A microcontroller combines a CPU, memory and input/output on one tiny chip: a whole computer the size of a fingernail."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 920,
+     "y": 540,
+     "title": "Space-proof code",
+     "text": "The Mars rovers are controlled by embedded systems whose software can be updated from Earth, millions of kilometres away."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1888,
+     "y": 540,
+     "title": "Real time",
+     "text": "Anti-lock brakes must respond in milliseconds. Systems that must react instantly are called real-time systems."
+    }
+   ],
+   "models": [
+    {
+     "id": "m1",
+     "face": "back",
+     "x": 1178,
+     "y": 540,
+     "model": "washingmachine",
+     "title": "Inside a washing machine",
+     "text": "The casing is see-through. Click each part to see whether it's an input, the process, or an output."
+    },
+    {
+     "id": "m2",
+     "face": "left",
+     "x": 210,
+     "y": 540,
+     "model": "cpu",
+     "title": "A processor",
+     "text": "Embedded systems use small, low-power processors called microcontrollers."
+    }
+   ]
+  }
+ ]
+}

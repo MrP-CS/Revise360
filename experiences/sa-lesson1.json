@@ -1,0 +1,309 @@
+{
+ "id": "sa-lesson1",
+ "lesson": 1,
+ "title": "Fetch-execute factory",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Fetch-execute factory",
+   "img": "img/SA_L1_FetchExecute_360.jpg",
+   "imgHi": "img/SA_L1_FetchExecute_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Purpose of the CPU",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is the purpose of the CPU?",
+       "a": [
+        "To process data and instructions by fetching, decoding and executing them",
+        "To store files permanently",
+        "To display images on the screen",
+        "To connect the computer to the internet"
+       ],
+       "fb": "Storage, display and networking are done by other components."
+      },
+      {
+       "t": "mcq",
+       "q": "What does CPU stand for?",
+       "a": [
+        "Central processing unit",
+        "Computer power unit",
+        "Central program utility",
+        "Control processing unit"
+       ],
+       "fb": "It's the central part that processes everything."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Stage 1: Fetch",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "During the fetch stage, what happens to the program counter?",
+       "a": [
+        "It is incremented to point to the next instruction",
+        "It is cleared to zero",
+        "It stores the result of a calculation",
+        "It decodes the instruction"
+       ],
+       "fb": "The PC always holds the address of the next instruction, so it moves on by one."
+      },
+      {
+       "t": "mcq",
+       "q": "Where is the instruction fetched from?",
+       "a": [
+        "Main memory (RAM)",
+        "The hard drive",
+        "The ALU",
+        "The monitor"
+       ],
+       "fb": "Programs being run are held in RAM."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Stage 2: Decode",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which component decodes instructions?",
+       "a": [
+        "The control unit (CU)",
+        "The ALU",
+        "The cache",
+        "The MDR"
+       ],
+       "fb": "The CU works out what each instruction means."
+      },
+      {
+       "t": "mcq",
+       "q": "What does 'decode' mean in the fetch-decode-execute cycle?",
+       "a": [
+        "Working out what the instruction means and what needs to be done",
+        "Encrypting the instruction",
+        "Deleting the instruction",
+        "Sending the instruction to the printer"
+       ],
+       "fb": "Only once it's decoded can the instruction be carried out."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Stage 3: Execute",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Where are the results of calculations stored?",
+       "a": [
+        "The accumulator",
+        "The program counter",
+        "The MAR",
+        "The hard drive"
+       ],
+       "fb": "The ALU does the maths and the accumulator holds the answer."
+      },
+      {
+       "t": "mcq",
+       "q": "After the execute stage, what happens next?",
+       "a": [
+        "The cycle starts again with the next fetch",
+        "The computer switches off",
+        "The program is deleted",
+        "The CPU waits for the user to press a key"
+       ],
+       "fb": "The cycle repeats billions of times a second."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "The registers",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "match",
+       "q": "Match each register to its purpose.",
+       "pairs": [
+        [
+         "Program counter (PC)",
+         "Holds the address of the next instruction"
+        ],
+        [
+         "Memory address register (MAR)",
+         "Holds the address where data is to be stored or fetched"
+        ],
+        [
+         "Memory data register (MDR)",
+         "Holds data fetched from, or to be written to, main memory"
+        ],
+        [
+         "Accumulator (ACC)",
+         "Holds the results of calculations"
+        ]
+       ],
+       "fb": "This is Task 2 on your worksheet and a very common exam question."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Other CPU components",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "match",
+       "q": "Match each component to what it does.",
+       "pairs": [
+        [
+         "ALU",
+         "Performs calculations and logical decisions"
+        ],
+        [
+         "Control unit",
+         "Decodes instructions and controls how data moves around the CPU"
+        ],
+        [
+         "Cache",
+         "Fast memory for frequently used instructions and data"
+        ]
+       ],
+       "fb": "Use the 3D CPU model to see where the cache sits."
+      },
+      {
+       "t": "mcq",
+       "q": "Why is cache faster to use than RAM?",
+       "a": [
+        "It is inside the CPU, very close to where the processing happens",
+        "It is bigger than RAM",
+        "It stores data permanently",
+        "It uses the internet"
+       ],
+       "fb": "Like the toy railway starter: the inside track is shorter, so the train gets round faster."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: the cycle",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "order",
+       "q": "Put the steps of the fetch-decode-execute cycle in order.",
+       "steps": [
+        "The PC holds the address of the next instruction",
+        "The address is copied into the MAR",
+        "The instruction is fetched from RAM into the MDR",
+        "The PC is incremented to point to the next instruction",
+        "The control unit decodes the instruction",
+        "The instruction is executed"
+       ],
+       "fb": "Then the whole cycle repeats for the next instruction."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "The first microprocessor",
+     "text": "The Intel 4004, released in 1971, was the first CPU on a single chip. It had about 2,300 transistors; modern CPUs have billions."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "Billions per second",
+     "text": "A 3 GHz CPU can run about 3 billion cycles every second, so the fetch-decode-execute cycle happens faster than you can imagine."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 920,
+     "y": 540,
+     "title": "Instruction sets",
+     "text": "Each type of CPU understands its own set of instructions. PCs mostly use x86 CPUs, while phones and many new laptops use ARM."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1888,
+     "y": 540,
+     "title": "Hot stuff",
+     "text": "CPUs get hot while they work. Many slow themselves down automatically if they reach around 100°C, to avoid damage."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 920,
+     "y": 540,
+     "title": "Registers are tiny",
+     "text": "A register holds just one value, but it's the fastest memory in the whole computer."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1888,
+     "y": 540,
+     "title": "The toy railway",
+     "text": "Your starter's inside track is like cache: a shorter trip means the train (data) gets back to the CPU sooner. But the inside track can't hold everything."
+    }
+   ],
+   "models": [
+    {
+     "id": "m1",
+     "face": "right",
+     "x": 210,
+     "y": 540,
+     "model": "cpu",
+     "title": "Inside a CPU",
+     "text": "Turn the CPU and click its parts. The metal lid is see-through, so you can see the cores and cache inside."
+    },
+    {
+     "id": "m2",
+     "face": "front",
+     "x": 330,
+     "y": 1580,
+     "model": "motherboard",
+     "title": "The motherboard",
+     "text": "See where the CPU sits, how it's kept cool, and where RAM goes."
+    }
+   ]
+  }
+ ]
+}

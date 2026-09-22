@@ -1,0 +1,299 @@
+{
+ "id": "sa-lesson3",
+ "lesson": 3,
+ "title": "Speed lab",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Speed lab",
+   "img": "img/SA_L3_SpeedLab_360.jpg",
+   "imgHi": "img/SA_L3_SpeedLab_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Clock speed",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does clock speed measure?",
+       "a": [
+        "How many fetch-decode-execute cycles the CPU can carry out per second",
+        "How much the CPU weighs",
+        "How much RAM there is",
+        "The size of the hard drive"
+       ],
+       "fb": "More cycles per second means more instructions processed."
+      },
+      {
+       "t": "mcq",
+       "q": "How many cycles per second does a 2 GHz processor run?",
+       "a": [
+        "2 billion",
+        "2 million",
+        "2 thousand",
+        "200"
+       ],
+       "fb": "Giga means billion."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Overclocking and heat",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is overclocking?",
+       "a": [
+        "Running a CPU faster than its intended clock speed",
+        "Adding more RAM",
+        "Slowing a CPU down to save power",
+        "Changing the time on the computer's clock"
+       ],
+       "fb": "It can boost performance but creates extra heat."
+      },
+      {
+       "t": "mcq",
+       "q": "Why can overclocking be risky?",
+       "a": [
+        "The CPU gets hotter, which can cause crashes or damage",
+        "It deletes files",
+        "It uses less electricity",
+        "It stops the fans working"
+       ],
+       "fb": "That's why overclockers use powerful cooling."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Cache size",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Why does a larger cache usually improve performance?",
+       "a": [
+        "More instructions and data can be kept close to the CPU, so it waits for RAM less often",
+        "It increases the clock speed",
+        "It adds extra cores",
+        "It makes the hard drive faster"
+       ],
+       "fb": "Fetching from cache is much quicker than fetching from RAM."
+      },
+      {
+       "t": "mcq",
+       "q": "Which level of cache is the fastest?",
+       "a": [
+        "L1",
+        "L2",
+        "L3",
+        "They are all the same"
+       ],
+       "fb": "L1 is closest to the core, so it's the quickest but also the smallest."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Number of cores",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is a core?",
+       "a": [
+        "A processing unit that can fetch, decode and execute instructions independently",
+        "A type of RAM",
+        "The centre of the hard drive",
+        "A cooling fan"
+       ],
+       "fb": "Multi-core CPUs have several of these on one chip."
+      },
+      {
+       "t": "mcq",
+       "q": "Why might a quad-core CPU not be four times faster?",
+       "a": [
+        "Not all software is designed to split its work between cores",
+        "Cores can only run one at a time",
+        "Extra cores slow down the clock",
+        "Cores don't do any processing"
+       ],
+       "fb": "Some jobs have to be done step by step, so extra cores sit waiting."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Single core, 2.5 GHz",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is meant by a single core 2.5 GHz processor?",
+       "a": [
+        "It has one processing unit that carries out 2.5 billion cycles per second",
+        "It has 2.5 cores",
+        "It has 2.5 GB of cache",
+        "It can run for 2.5 hours"
+       ],
+       "fb": "This is a real exam question worth 2 marks: one for each part."
+      },
+      {
+       "t": "mcq",
+       "q": "Which change would most help a CPU run several programs at the same time?",
+       "a": [
+        "Adding more cores",
+        "Lowering the clock speed",
+        "Removing the cache",
+        "Using a bigger monitor"
+       ],
+       "fb": "Each core can work on a different task."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Units of speed",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which is the fastest clock speed?",
+       "a": [
+        "2 GHz",
+        "20 MHz",
+        "200 kHz",
+        "900 MHz"
+       ],
+       "fb": "2 GHz is 2,000 MHz."
+      },
+      {
+       "t": "mcq",
+       "q": "What do the anagrams 'cockle sped', 'a chics zee' and 'en cumbers roof' spell?",
+       "a": [
+        "Clock speed, cache size and number of cores",
+        "Cache, cores and cooling",
+        "RAM, ROM and cache",
+        "Clock, cache and chips"
+       ],
+       "fb": "The three factors that affect CPU performance."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: fastest to slowest",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "order",
+       "q": "Put these processors in order of clock speed, slowest first.",
+       "steps": [
+        "200 kilohertz",
+        "20 megahertz",
+        "800 megahertz",
+        "2 gigahertz",
+        "3.5 gigahertz"
+       ],
+       "fb": "Remember: kilo is thousand, mega is million, giga is billion."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "Turbo boost",
+     "text": "Many CPUs speed themselves up automatically for short bursts when there's lots of work, then slow down again to stay cool."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "World records",
+     "text": "Enthusiasts have overclocked CPUs past 9 GHz using liquid nitrogen to keep them cold, but only for a few minutes."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 920,
+     "y": 540,
+     "title": "Cache sizes",
+     "text": "Cache is measured in megabytes, while RAM is measured in gigabytes. Cache is tiny, but much faster."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1888,
+     "y": 540,
+     "title": "Phones have many cores",
+     "text": "Many smartphones have eight cores: some powerful ones for games and some low-power ones to save battery."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 920,
+     "y": 540,
+     "title": "It's not just the CPU",
+     "text": "The amount of RAM, the speed of storage and the graphics card also affect how fast a computer feels."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1888,
+     "y": 540,
+     "title": "Hertz",
+     "text": "The unit hertz is named after Heinrich Hertz, a German physicist who proved radio waves exist."
+    }
+   ],
+   "models": [
+    {
+     "id": "m1",
+     "face": "back",
+     "x": 1178,
+     "y": 540,
+     "model": "cpu",
+     "title": "A quad-core CPU",
+     "text": "Click the cores and the cache to see how each affects performance."
+    },
+    {
+     "id": "m2",
+     "face": "right",
+     "x": 1178,
+     "y": 540,
+     "model": "motherboard",
+     "title": "Keeping cool",
+     "text": "Click the heatsink and fan to see how a fast CPU is kept cool."
+    }
+   ]
+  }
+ ]
+}
