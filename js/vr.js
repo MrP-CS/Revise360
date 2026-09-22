@@ -222,7 +222,7 @@
     function openModelVR(u) {
       if (!window.R360Models) return;
       closeModelVR(); infoPanel.hide(); menuPanel.hide();
-      if (!lit) { R360Models.lights(scene); lit = true; }
+      if (!lit) { R360Models.lights(scene, r); lit = true; }
       core.markInfo(u.id);
       const b = R360Models.build(u.md.model); const holder = new T.Group(); holder.add(b.group);
       const { pos, dir } = headPose(); const yaw = Math.atan2(dir.x, dir.z);
