@@ -293,11 +293,12 @@
   }
 
   // Logic sprint: timed rounds of random circuit and expression questions
-  function Sprint(duration) {
+  function Sprint(duration, gen) {
     const s = { score: 0, streak: 0, bestStreak: 0, correct: 0, answered: 0, level: 0, dur: (duration || 120) * 1000, t0: performance.now(), qStart: 0, q: null, last: null };
     s.timeLeft = () => Math.max(0, s.dur - (performance.now() - s.t0)) / 1000;
     s.next = () => {
       s.level = s.correct < 3 ? 0 : s.correct < 7 ? 1 : 2;
+      if (gen) { let g; do { g = gen(s.level); } while (g.key && g.key === s.last); s.last = g.key; s.q = g; s.qStart = performance.now(); return g; }
       let e; do { e = randomExpr(s.level); } while (e === s.last); s.last = e;
       const type = Math.random() < .5 ? "circuit" : "expr";
       s.q = { t: type, expr: e, q: type === "circuit" ? "Build the circuit for Q = " + e : "Write the Boolean expression for this diagram." };

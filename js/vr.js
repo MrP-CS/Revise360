@@ -245,7 +245,8 @@
     }
     function closeModelVR() { if (!vrModel) return; scene.remove(vrModel.holder); vrModel = null; modelPanel.hide(); core.refreshSprites(); }
 
-    // ---------------- logic boards (drag and wire in VR) ----------------
+    const BOARD_TASKS = ["circuit", "expr", "table", "convert", "addshift", "pixels", "sound"];
+    // ---------------- boards (drag, paint and tap in VR) ----------------
     let vrBoard = null;
     function openBoard(board) {
       closeBoard();
@@ -299,24 +300,27 @@
         qPanel.mesh.position.set(pos.x + Math.sin(qy) * 1.2, pos.y - .05, pos.z + Math.cos(qy) * 1.2); qPanel.mesh.lookAt(pos);
         return;
       }
-      if (task.t === "sprint") { sprintVR(k, st, task); return; }
-      if (task.t === "circuit" || task.t === "expr" || task.t === "table") {
+      if (task.t === "sprint" || task.t === "blitz") { sprintVR(k, st, task); return; }
+      if (BOARD_TASKS.includes(task.t)) {
         const Lg = window.R360Logic;
         const board = task.t === "circuit" ? Lg.CircuitBoard({ inputs: task.inputs || Lg.vars(Lg.parse(task.expr)), hit: 34 })
           : task.t === "expr" ? Lg.ExprBoard({ expr: task.expr, out: task.out })
-          : Lg.TableBoard({ expr: task.expr, cols: task.cols, out: task.out, inputs: task.inputs, diagram: task.diagram });
+          : task.t === "table" ? Lg.TableBoard({ expr: task.expr, cols: task.cols, out: task.out, inputs: task.inputs, diagram: task.diagram })
+          : R360Data.make(task);
         const yaw = openBoard(board);
         const { pos } = headPose(); const qy = yaw - .28 - .75;
         qPanel.mesh.position.set(pos.x + Math.sin(qy) * 1.25, pos.y - .05, pos.z + Math.cos(qy) * 1.25); qPanel.mesh.lookAt(pos);
         let lastOk = true, shown = false;
         const tips = { circuit: "Point at a gate at the top of the board, hold the trigger and drag it down. To wire, hold the trigger on an output dot and release on an input.",
-          expr: "Hold the trigger on a tile and drag it into the answer row, or just pull the trigger on a tile to add it to the end.", table: "Point at a ? and pull the trigger to change it to 0 or 1." };
+          expr: "Hold the trigger on a tile and drag it into the answer row, or just pull the trigger on a tile to add it to the end.", table: "Point at a ? and pull the trigger to change it to 0 or 1.",
+          convert: "Point at a bit or a key and pull the trigger.", addshift: "Point at a bit and pull the trigger to change it between 0 and 1.",
+          pixels: "Choose a colour, then hold the trigger and sweep across the pixels to paint them.", sound: "Pull the trigger on the level nearest the wave in each column." };
         const body = () => done ? [
             !lastOk && task.t === "circuit" && !shown ? { btn: "Show a correct circuit", id: "show", center: true, onClick: () => { board.showAnswer(task.expr); shown = true; show(body); } } : null]
           : [{ p: tips[task.t], size: 24, color: COL.soft },
              { row: [{ btn: "Clear", id: "clr", center: true, onClick: () => board.clear() },
                      { btn: "Check my answer", id: "check", primary: true, onClick: () => {
-                        if (task.t === "table" && !board.filled()) { toast("Set every ? to 0 or 1 first."); return; }
+                        if (board.filled && !board.filled()) { toast(task.t === "sound" ? "Choose a level in every column first." : "Fill in your answer first."); return; }
                         const res = board.check(task.expr); if (res.incomplete) { toast(res.msg); return; }
                         done = true; lastOk = res.ok; core.award(k, i, res.got);
                         setFb(res.ok, res.max > 1 ? `You got ${res.got} out of ${res.max}.` : null, res.msg + " " + (task.fb || "")); show(body); } }] }];
@@ -394,12 +398,12 @@
       stopSprint(); closeBoard();
       const closeAllSprint = () => { stopSprint(); closeBoard(); qPanel.hide(); core.refreshSprites(); core.hud(); };
       qPanel.set({ title: st.name, color: st.col, onClose: closeAllSprint, blocks: [
-        { p: "How fast is your logic?", size: 34, bold: true },
-        { p: `You have ${task.duration || 120} seconds. Each question asks you to build a circuit or write an expression. Correct answers score 100 plus a speed bonus, and streaks multiply your points. A wrong answer resets your streak.`, size: 27 },
+        { p: task.t === "blitz" ? "How fast are your conversions?" : "How fast is your logic?", size: 34, bold: true },
+        { p: `You have ${task.duration || 120} seconds. ${task.t === "blitz" ? "Each question asks you to convert between denary, binary and hexadecimal." : "Each question asks you to build a circuit or write an expression."} Correct answers score 100 plus a speed bonus, and streaks multiply your points. A wrong answer resets your streak.`, size: 27 },
         { p: `Personal best: ${rec.best}. Beat it!`, size: 30, bold: true, color: COL.edge },
         { btn: "Start the sprint", id: "go", primary: true, onClick: play }] });
       function play() {
-        const s = Lg.Sprint(task.duration || 120); let q = null, board = null, busy = false, fb = null, lastSec = -1;
+        const s = Lg.Sprint(task.duration || 120, task.t === "blitz" ? R360Data.blitz : null); let q = null, board = null, busy = false, fb = null, lastSec = -1;
         const hudText = () => `⏱ ${Math.ceil(s.timeLeft())}s    Score ${s.score}    Streak ${s.streak > 1 ? "×" + (1 + Math.min(s.streak - 1, 4) * .5) : "–"}    Best ${rec.best}`;
         const panel = () => qPanel.set({ title: st.name, color: st.col, onClose: closeAllSprint, blocks: [
           { p: hudText(), size: 30, bold: true, color: COL.edge }, { p: q.q, size: 32, bold: true },
@@ -409,7 +413,7 @@
         function ask() {
           if (s.timeLeft() <= 0) return end();
           q = s.next(); busy = false; fb = null;
-          board = q.t === "circuit" ? Lg.CircuitBoard({ inputs: Lg.vars(Lg.parse(q.expr)), hit: 34 }) : Lg.ExprBoard({ expr: q.expr });
+          board = q.t === "convert" ? R360Data.make(q) : q.t === "circuit" ? Lg.CircuitBoard({ inputs: Lg.vars(Lg.parse(q.expr)), hit: 34 }) : Lg.ExprBoard({ expr: q.expr });
           window.__sprint = { s, board, q };
           const yaw = openBoard(board), { pos } = headPose(), qy = yaw - .28 - .75;
           panel(); qPanel.mesh.position.set(pos.x + Math.sin(qy) * 1.25, pos.y - .05, pos.z + Math.cos(qy) * 1.25); qPanel.mesh.lookAt(pos);
@@ -418,7 +422,7 @@
           const res = board.check(q.expr); if (res.incomplete) { toast(res.msg); return; }
           busy = true; const r = s.mark(res.ok);
           fb = res.ok ? { ok: true, head: `+${r.pts} points`, text: r.mult > 1 ? `Speed bonus ${r.bonus}, streak ×${r.mult}.` : `Speed bonus ${r.bonus}.` }
-                      : { ok: false, head: "Not quite.", text: "A correct answer is Q = " + q.expr + "." };
+                      : { ok: false, head: "Not quite.", text: q.t === "convert" ? "The answer is " + q.answer + "." : "A correct answer is Q = " + q.expr + "." };
           if (!res.ok && q.t === "circuit") board.showAnswer(q.expr);
           panel(); setTimeout(ask, res.ok ? 800 : 2200);
         }

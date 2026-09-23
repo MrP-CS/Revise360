@@ -10,7 +10,7 @@
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
   const asset = p => /^(data:|blob:|https?:)/.test(p) ? p : "experiences/" + p;
-  const marks = t => (t.t === "mcq" || t.t === "multi" || t.t === "circuit" || t.t === "expr") ? 1 : t.t === "table" ? (1 << (t.inputs ? t.inputs.length : new Set((t.expr || "").replace(/AND|OR|NOT/g, "").match(/[A-Z]/g) || []).size)) : (t.t === "sprint" || t.t === "defence") ? 0 : t.t === "order" ? t.steps.length : t.t === "sort" ? t.items.length : t.pairs.length;
+  const marks = t => (t.t === "mcq" || t.t === "multi" || t.t === "circuit" || t.t === "expr" || t.t === "convert" || t.t === "addshift" || t.t === "pixels" || t.t === "sound") ? 1 : t.t === "table" ? (1 << (t.inputs ? t.inputs.length : new Set((t.expr || "").replace(/AND|OR|NOT/g, "").match(/[A-Z]/g) || []).size)) : (t.t === "sprint" || t.t === "defence" || t.t === "blitz") ? 0 : t.t === "order" ? t.steps.length : t.t === "sort" ? t.items.length : t.pairs.length;
 
   let exp;
   try { exp = await (await fetch("experiences/" + encodeURIComponent(expId) + ".json", { cache: "no-cache" })).json(); }
@@ -237,7 +237,8 @@
 
   // ---------- question modal ----------
   const modal = $("#modal"), box = $("#box"); let lastFocus = null;
-  // Logic boards draw to a canvas; map mouse and touch events onto it
+  const BOARD_TASKS = ["circuit", "expr", "table", "convert", "addshift", "pixels", "sound"];
+  // Boards draw to a canvas; map mouse and touch events onto it
   function mountBoard(host, board) {
     const cv = board.canvas; cv.style.cssText = "width:100%;display:block;border-radius:12px;touch-action:none;cursor:pointer"; host.appendChild(cv);
     const xy = e => { const r = cv.getBoundingClientRect(); return [(e.clientX - r.left) * cv.width / r.width, (e.clientY - r.top) * cv.height / r.height]; };
@@ -257,14 +258,14 @@
   function runSprint(k, st, task) {
     const Lg = window.R360Logic, rec = prog.sprint || { best: 0, attempts: 0 };
     box.classList.add("wide");
-    shell(st.name, st.col, `<p class="q">How fast is your logic?</p>
-      <p>You have <b>${task.duration || 120} seconds</b>. Each question asks you to either build a circuit or write the expression for a diagram. Questions get harder as you go.</p>
+    shell(st.name, st.col, `<p class="q">${task.t === "blitz" ? "How fast are your conversions?" : "How fast is your logic?"}</p>
+      <p>You have <b>${task.duration || 120} seconds</b>. ${task.t === "blitz" ? "Each question asks you to convert a number between denary, binary and hexadecimal." : "Each question asks you to either build a circuit or write the expression for a diagram."} Questions get harder as you go.</p>
       <p>Each correct answer scores 100 points, plus a speed bonus of up to 60. Get several right in a row for a streak multiplier of up to ×3. A wrong answer resets your streak. Skip a question if you're stuck.</p>
       <p>Your personal best: <b style="color:var(--edge)">${rec.best}</b>${rec.attempts ? ` from ${rec.attempts} ${rec.attempts === 1 ? "try" : "tries"}` : ""}. Beat it!</p>
       <div class="mrow" id="mrow"><button class="btn" id="go">Start the sprint</button></div>`);
     $("#go").onclick = () => play();
     function play() {
-      const s = Lg.Sprint(task.duration || 120); let board = null, busy = false;
+      const s = Lg.Sprint(task.duration || 120, task.t === "blitz" ? R360Data.blitz : null); let board = null, busy = false;
       const hud = () => { const t = $("#spT"); if (!t) return; t.textContent = Math.ceil(s.timeLeft()) + "s"; $("#spS").textContent = s.score; $("#spK").textContent = s.streak > 1 ? "×" + (1 + Math.min(s.streak - 1, 4) * .5) : "–"; };
       clearInterval(sprintTimer); sprintTimer = setInterval(() => { hud(); if (s.timeLeft() <= 0 && !busy) end(); }, 250);
       function ask() {
@@ -273,7 +274,7 @@
         shell(st.name, st.col, `<div class="sprinthud"><span>⏱ <b id="spT"></b></span><span>Score <b id="spS"></b></span><span>Streak <b id="spK"></b></span><span>Best <b>${rec.best}</b></span></div>
           <p class="q">${esc(q.q)}</p><div class="lboard" id="lb"></div><div class="fb" id="fb" role="status"></div><div class="mrow" id="mrow"></div>`);
         hud();
-        board = q.t === "circuit" ? Lg.CircuitBoard({ inputs: Lg.vars(Lg.parse(q.expr)) }) : Lg.ExprBoard({ expr: q.expr });
+        board = q.t === "convert" ? R360Data.make(q) : q.t === "circuit" ? Lg.CircuitBoard({ inputs: Lg.vars(Lg.parse(q.expr)) }) : Lg.ExprBoard({ expr: q.expr });
         mountBoard($("#lb"), board); window.__sprint = { s, board, q };
         const row = $("#mrow");
         const skip = document.createElement("button"); skip.className = "btn ghost"; skip.textContent = "Skip"; skip.onclick = () => { s.streak = 0; ask(); }; row.appendChild(skip);
@@ -284,7 +285,7 @@
           if (res.incomplete) { feedback(false, "Not finished yet.", res.msg); return; }
           busy = true; const r = s.mark(res.ok); row.innerHTML = ""; hud();
           if (res.ok) feedback(true, null, `+${r.pts} points. Speed bonus ${r.bonus}${r.mult > 1 ? `, streak ×${r.mult}` : ""}.`);
-          else { feedback(false, "Not quite.", "A correct answer is Q = " + q.expr + "."); if (q.t === "circuit") board.showAnswer(q.expr); }
+          else { feedback(false, "Not quite.", q.t === "convert" ? "The answer is " + q.answer + "." : "A correct answer is Q = " + q.expr + "."); if (q.t === "circuit") board.showAnswer(q.expr); }
           setTimeout(() => { busy = false; ask(); }, res.ok ? 800 : 2200);
         };
       }
@@ -419,20 +420,21 @@
           prog.scenes[exp.scenes[cur].id].done[k] = true; save(); refreshSprites(); hud(); drawNav(); } });
       let lastEnd = null;
       mountBoard($("#lb"), board); window.__def = board;
-    } else if (task.t === "sprint") {
+    } else if (task.t === "sprint" || task.t === "blitz") {
       runSprint(k, st, task);
-    } else if (task.t === "circuit" || task.t === "expr" || task.t === "table") {
+    } else if (BOARD_TASKS.includes(task.t)) {
       const Lg = window.R360Logic;
       box.classList.add("wide");
       shell(head, st.col, `${qn}<p class="q">${esc(task.q)}</p><div class="lboard" id="lb"></div>${tail}`);
       const board = task.t === "circuit" ? Lg.CircuitBoard({ inputs: task.inputs || Lg.vars(Lg.parse(task.expr)) })
         : task.t === "expr" ? Lg.ExprBoard({ expr: task.expr, out: task.out })
-        : Lg.TableBoard({ expr: task.expr, cols: task.cols, out: task.out, inputs: task.inputs, diagram: task.diagram });
+        : task.t === "table" ? Lg.TableBoard({ expr: task.expr, cols: task.cols, out: task.out, inputs: task.inputs, diagram: task.diagram })
+        : R360Data.make(task);
       mountBoard($("#lb"), board); window.__board = { board, task };
       const row = $("#mrow"), clr = document.createElement("button"); clr.className = "btn ghost"; clr.textContent = "Clear"; clr.onclick = () => board.clear(); row.appendChild(clr);
       const ck = document.createElement("button"); ck.className = "btn"; ck.textContent = "Check my answer"; row.appendChild(ck);
       ck.onclick = () => {
-        if (task.t === "table" && !board.filled()) { feedback(false, "Not finished yet.", "Click every ? to set it to 0 or 1 first."); return; }
+        if (board.filled && !board.filled()) { feedback(false, "Not finished yet.", task.t === "sound" ? "Choose a level in every column first." : "Fill in your answer first."); return; }
         const res = board.check(task.expr);
         if (res.incomplete) { feedback(false, "Not finished yet.", res.msg); return; }
         award(k, i, res.got); clr.remove(); ck.remove();
