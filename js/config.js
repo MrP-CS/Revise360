@@ -1,3 +1,4 @@
+// Revise 360 — Copyright (c) 2026 Olly Pettitt. All rights reserved. See LICENCE.txt.
 // ============================================================
 //  SITE SETTINGS - the only file most teachers need to edit
 // ============================================================
@@ -8,7 +9,11 @@ window.APP_CONFIG = {
   // Paste the web app URL from your Google Apps Script deployment here
   // (see README.md, step 2). Leave it empty to run in "this device only"
   // mode: progress is saved in the browser, but teachers can't see it.
-  backendUrl: "",
+  // The hosted Revise 360 backend. Teachers don't need to change anything here:
+  // students sign in and their progress syncs automatically. Schools who prefer
+  // to hold the data themselves can point this at their own Worker instead
+  // (see backend/README.md).
+  backendUrl: "https://api.revise360.co.uk",
 
   // Classes shown in the sign-in list. Edit to match your groups.
   classes: ["MCS 11A", "MCS 10C", "BDB 11B", "BDB 10B"],
