@@ -19,7 +19,7 @@
 
   function keyForm(msg) {
     $("#main").innerHTML = `<form class="card signin" id="f"><h2>Teacher sign-in</h2>
-      <p class="muted">Enter the teacher key you set in the Google Apps Script (see README).</p>
+      <p class="muted">Sign in with your teacher key to see your classes' results. Need one? Email hello@revise360.co.uk from your school address.</p>
       <div class="field"><label for="k">Teacher key</label><input id="k" type="password" autocomplete="current-password" required></div>
       <p class="err" role="alert">${esc(msg || "")}</p><div class="row end"><button class="btn">Open dashboard</button></div></form>`;
     $("#k").focus();
@@ -27,11 +27,12 @@
   }
 
   async function load() {
+    if (window.R360Nav) R360Nav.refresh();
     const tk = sessionStorage.getItem("nvr-tk") || "";
     if (CFG.backendUrl && !tk) return keyForm();
     $("#main").innerHTML = '<p class="muted">Loading results…</p>';
     try { rows = await Store.teacherRows(tk); }
-    catch (e) { sessionStorage.removeItem("nvr-tk"); return keyForm(e.message === "bad key" ? "That key wasn't recognised." : "Couldn't reach the results sheet: " + e.message); }
+    catch (e) { sessionStorage.removeItem("nvr-tk"); return keyForm(e.message === "bad key" ? "That key wasn't recognised." : "Couldn't reach the results server: " + e.message); }
     const map = {};
     for (const r of rows) {
       const s = map[r.key] = map[r.key] || { key: r.key, name: r.name, cls: r.cls, exps: {}, updated: 0 };
@@ -76,7 +77,7 @@
         <label for="cf" class="muted">Class</label><select id="cf" class="btn small ghost">${['<option value="">All classes</option>', ...classes.map(c => `<option ${c === cls ? "selected" : ""}>${esc(c)}</option>`)].join("")}</select></div>
         <div class="row"><button class="btn small ghost" id="rf">Refresh</button><button class="btn small" id="csv">Download CSV</button></div>
       </div>
-      ${CFG.backendUrl ? "" : '<p class="review-note" style="margin-top:14px">Device-only mode: showing students who signed in on this browser. Add your Apps Script URL to js/config.js to collect results from every device.</p>'}
+      ${CFG.backendUrl ? "" : '<p class="review-note" style="margin-top:14px">Device-only mode: showing students who signed in on this browser. Add your backend URL to js/config.js to collect results from every device.</p>'}
       <section><div class="stats"><div class="stat"><span class="muted">Students</span><b>${list.length}</b></div>
         <div class="stat"><span class="muted">Active in the last 7 days</span><b>${active}</b></div>
         ${reg.experiences.map(e => { const d = list.filter(s => s.exps[e.id]?.complete).length; return `<div class="stat"><span class="muted">L${esc(e.lesson)} complete</span><b>${d} / ${list.length}</b></div>`; }).join("")}</div></section>

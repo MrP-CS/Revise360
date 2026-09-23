@@ -26,6 +26,13 @@
   }
   const bandOf = sum => sum && sum.done ? Store.band(sum.score, sum.stations.filter(x => x.done).reduce((a, x) => a + x.tot, 0)) : "n";
 
+  // A teacher can share a link like index.html?school=K7M3QP so students don't have to type it
+  function prefillSchool() {
+    const q = new URLSearchParams(location.search).get("school");
+    if (q) { try { localStorage.setItem("nvr:v1:school", JSON.stringify(q.toUpperCase())); } catch (e) {} return q.toUpperCase(); }
+    try { return JSON.parse(localStorage.getItem("nvr:v1:school") || '""'); } catch (e) { return ""; }
+  }
+
   function signIn() {
     $("#who").innerHTML = ""; $("#topic").textContent = topicsFile.tagline || "";
     $("#main").innerHTML = `<form class="card signin" id="f" novalidate>
@@ -34,6 +41,7 @@
       <div class="field"><label for="c">Class or group <span class="muted">(optional)</span></label><select id="c"><option value="">Not set</option>${CFG.classes.map(c => `<option>${esc(c)}</option>`).join("")}<option value="__other">Other…</option></select></div>
       <div class="field" id="cwrap" hidden><label for="c2">Type your class or group</label><input id="c2" maxlength="24" autocapitalize="characters"></div>
       <div class="field"><label for="p">4-digit PIN (make one up and remember it)</label><input id="p" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" required autocomplete="off"></div>
+      <div class="field"><label for="sc">School code <span class="muted">(from your teacher)</span></label><input id="sc" maxlength="12" autocapitalize="characters" autocomplete="off" placeholder="e.g. K7M3QP" value="${esc(prefillSchool())}"></div>
       <p class="err" id="err" role="alert"></p>
       <div class="row end"><button class="btn" type="submit">Start</button></div>
       ${CFG.backendUrl ? "" : '<p class="muted" style="font-size:13px">This site is in device-only mode: progress is saved in this browser only.</p>'}
@@ -42,12 +50,12 @@
     $("#c").onchange = () => { const w = $("#cwrap"); w.hidden = $("#c").value !== "__other"; if (!w.hidden) $("#c2").focus(); };
     $("#f").onsubmit = async e => {
       e.preventDefault();
-      const n = $("#n").value.trim(), c = $("#c").value, p = $("#p").value.trim();
+      const n = $("#n").value.trim(), c = $("#c").value, p = $("#p").value.trim(), sc = $("#sc").value.trim().toUpperCase();
       if (!/^[A-Za-z0-9._@-]{2,60}$/.test(n)) return $("#err").textContent = "Please enter your school username, with no spaces.";
       const cls = c === "__other" ? ($("#c2").value.trim() || "") : c;
       if (!/^\d{4}$/.test(p)) return $("#err").textContent = "Your PIN must be 4 digits.";
       $("#err").textContent = ""; e.submitter && (e.submitter.disabled = true);
-      await Store.signIn(n, cls, p);
+      await Store.signIn(n, cls, p, sc);
       if (next && /^experience\.html\?/.test(next)) location.href = next; else route();
     };
   }
@@ -55,8 +63,9 @@
   let synced = false, statusHooked = false;
   async function header() {
     const s = Store.student();
-    $("#who").innerHTML = `<span class="sync" id="sync"></span><span>${esc(s.name)} · ${esc(s.cls)}</span><button class="btn small ghost" id="out">Sign out</button>`;
-    $("#out").onclick = () => { Store.signOut(); synced = false; history.replaceState(null, "", location.pathname); signIn(); };
+    $("#who").innerHTML = `<span class="sync" id="sync"></span><span>${esc(s.name)}${s.cls ? " · " + esc(s.cls) : ""}</span><button class="btn small ghost" id="out">Sign out</button>`;
+    if (window.R360Nav) R360Nav.refresh();
+    $("#out").onclick = () => { Store.signOut(); synced = false; history.replaceState(null, "", location.pathname); signIn(); if (window.R360Nav) R360Nav.refresh(); };
     const labels = { local: "Saved on this device", saved: "Progress synced ✓", syncing: "Syncing…", pending: "Syncing…", offline: "Offline: progress saved on this device", idle: "" };
     if (!statusHooked) { statusHooked = true; Store.onStatus(st => { const el = $("#sync"); if (el) el.textContent = labels[st] || ""; }); }
     if (!synced) { synced = true; $("#main").innerHTML = '<p class="muted">Loading…</p>'; await Store.pull(); await Store.flushQueue(); }

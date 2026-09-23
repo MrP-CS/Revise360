@@ -211,3 +211,12 @@ header.top{position:relative}
 header.top .nav{margin-left:auto}
 header.top .nav ul{justify-content:flex-end}
 @media (max-width:860px){header.top .nav ul{top:52px}}
+
+.footnav{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px;margin:0 0 18px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.footnav h4{margin:0 0 8px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg)}
+.footnav ul{list-style:none;margin:0;padding:0}
+.footnav li{margin:5px 0}
+.footnav a{color:var(--soft);text-decoration:none;font-size:13px}
+.footnav a:hover{color:var(--edge);text-decoration:underline}
+header.bar.player{position:absolute;top:0;left:0;right:0;z-index:30;background:linear-gradient(180deg,rgba(10,16,28,.85),rgba(10,16,28,0));border:0}
+header.bar.player .nav a{background:rgba(21,34,59,.75)}

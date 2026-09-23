@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Get a teacher key | Revise 360</title>
+<meta name="description" content="Request a teacher key and school code for Revise 360, so your classes' progress appears on your dashboard.">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/config.js"></script>
+<script src="js/store.js"></script>
+<script src="js/nav.js"></script>
+</head>
+<body>
+<header class="bar">
+  <a class="brand" href="index.html"><span class="logo">360</span><span><b>Revise 360</b><small>Get a teacher key</small></span></a>
+  <div class="tools"></div>
+</header>
+
+<main class="page">
+  <section class="hero">
+    <h1>Get your teacher key</h1>
+    <p class="lead">A teacher key opens your dashboard. It comes with a six-character school code that your students type when they sign in, which is what links their progress to your school and nobody else's.</p>
+  </section>
+
+  <div class="cards">
+    <div class="c"><span class="ico">🔑</span><h3>Your teacher key</h3><p>A long private string you paste into the dashboard. Keep it to staff: anyone with it can see your school's results.</p></div>
+    <div class="c"><span class="ico">🏫</span><h3>Your school code</h3><p>Six characters, such as <code>K7M3QP</code>. Safe to put on the board or in a link. Students type it once.</p></div>
+    <div class="c"><span class="ico">⏱️</span><h3>Usually same day</h3><p>Requests are checked by hand from a school email address, then the key and code are emailed to you.</p></div>
+  </div>
+
+  <h2>Request a key</h2>
+  <form class="card signin" id="f" novalidate style="max-width:640px">
+    <div class="field"><label for="name">Your name</label><input id="name" required maxlength="80" autocomplete="name"></div>
+    <div class="field"><label for="email">School email address</label><input id="email" type="email" required maxlength="120" autocomplete="email" placeholder="you@yourschool.sch.uk"></div>
+    <div class="field"><label for="school">School or trust</label><input id="school" required maxlength="120"></div>
+    <div class="field"><label for="role">Your role <span class="muted">(optional)</span></label><input id="role" maxlength="60" placeholder="Head of Computing"></div>
+    <div class="field"><label for="note">Anything else <span class="muted">(optional)</span></label><textarea id="note" maxlength="500" rows="3" placeholder="Which year groups, how many classes, when you'd like to start"></textarea></div>
+    <p class="muted" style="font-size:13px">We use your email only to send your key and occasional service notices. Nothing is shared with anyone else, and you can ask for it to be deleted at any time. See the <a href="privacy.html">privacy page</a>.</p>
+    <p class="err" id="err" role="alert"></p>
+    <div class="row end"><button class="btn" type="submit" id="go">Request a key</button></div>
+  </form>
+
+  <div id="done" hidden>
+    <div class="callout"><p><b>Request sent.</b> Check your inbox: your teacher key and school code will arrive by email, usually the same working day. If nothing has arrived by the next morning, email <a href="mailto:hello@revise360.co.uk">hello@revise360.co.uk</a>.</p></div>
+  </div>
+
+  <h2>What happens next</h2>
+  <ol class="steps">
+    <li><b>You get two things by email:</b> a teacher key and a school code.</li>
+    <li><b>Give students the school code</b>, or send them a link with it built in, such as <code>revise360.co.uk/?school=K7M3QP</code>. They type it once when they first sign in.</li>
+    <li><b>Students sign in</b> with a username, an optional class, a PIN they choose, and that school code.</li>
+    <li><b>Open the dashboard</b> and paste your teacher key. You'll see only students who used your school code.</li>
+  </ol>
+
+  <div class="callout">
+    <p><b>Already have a key?</b> Go straight to the <a href="teacher.html">dashboard</a>. Lost it? Email from the address you signed up with and it can be reissued.</p>
+  </div>
+</main>
+
+<footer class="site">
+  <p><b>Revise 360</b> — a product of Revise 360 Ltd, created by Olly Pettitt. An independent resource: not written, endorsed or approved by OCR or any exam board.</p>
+  <p>&copy; 2026 Revise 360 Ltd. All rights reserved. Licensed to subscribing schools for use with their own students; not to be copied, redistributed, resold or adapted without written permission.</p>
+</footer>
+
+<script>
+(function () {
+  const $ = s => document.querySelector(s);
+  $("#f").onsubmit = async e => {
+    e.preventDefault();
+    const body = { action: "signup", name: $("#name").value.trim(), email: $("#email").value.trim(),
+                   school: $("#school").value.trim(), role: $("#role").value.trim(), note: $("#note").value.trim() };
+    if (!body.name || !body.school || !/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(body.email))
+      return $("#err").textContent = "Please fill in your name, school and a valid school email address.";
+    $("#go").disabled = true; $("#err").textContent = "";
+    try {
+      const r = await fetch(window.APP_CONFIG.backendUrl, { method: "POST", body: JSON.stringify(body) });
+      const j = await r.json();
+      if (!j.ok) throw new Error(j.error || "server error");
+      $("#f").hidden = true; $("#done").hidden = false; $("#done").scrollIntoView({ behavior: "smooth", block: "center" });
+    } catch (err) {
+      $("#go").disabled = false;
+      $("#err").innerHTML = 'Sorry, that didn\'t send. Please email <a href="mailto:hello@revise360.co.uk">hello@revise360.co.uk</a> instead.';
+    }
+  };
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+name = "revise360-api"
+main = "worker.js"
+compatibility_date = "2026-01-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "revise360"
+database_id = "PASTE_YOUR_DATABASE_ID_HERE"
+
+# Weekly clean-up of data untouched for a year
+[triggers]
+crons = ["0 3 * * 1"]

@@ -1,5 +1,6 @@
-// Progress storage: always saved on this device, and synced to the
-// teacher's Google Sheet when APP_CONFIG.backendUrl is set.
+// Progress storage: always saved on this device, and synced to the Revise 360
+// backend when APP_CONFIG.backendUrl is set, so progress follows a student
+// between devices. Works offline: anything unsent is queued and retried.
 (function () {
   const CFG = window.APP_CONFIG;
   const NS = "nvr:v1:";
@@ -21,8 +22,14 @@
 
   async function api(body, opts = {}) {
     if (!CFG.backendUrl) throw new Error("no backend");
-    // text/plain avoids a CORS preflight, which Apps Script can't answer
-    const r = await fetch(CFG.backendUrl, { method: "POST", body: JSON.stringify(body), keepalive: !!opts.keepalive });
+    // A plain body avoids a CORS preflight on every save
+    const ctl = typeof AbortController !== "undefined" ? new AbortController() : null;
+    const timer = ctl ? setTimeout(() => ctl.abort(), opts.timeout || 8000) : null;
+    let r;
+    try { r = await fetch(CFG.backendUrl, { method: "POST", body: JSON.stringify(body), keepalive: !!opts.keepalive, signal: ctl ? ctl.signal : undefined }); }
+    finally { if (timer) clearTimeout(timer); }
+    if (r.status === 403) throw new Error("bad key");
+    if (!r.ok) throw new Error("server error " + r.status);
     const j = await r.json();
     if (!j.ok) throw new Error(j.error || "server error");
     return j;
@@ -40,12 +47,13 @@
     onStatus(f) { listeners.add(f); f(status); return () => listeners.delete(f); },
     student() { return read("student", null); },
 
-    async signIn(name, cls, pin) {
+    async signIn(name, cls, pin, school) {
       name = name.trim().replace(/\s+/g, "").toLowerCase();
+      school = (school || "").trim().toUpperCase();
       const key = await sha256(cls + "|" + name.toLowerCase() + "|" + pin);
-      const s = { key, name, cls };
+      const s = { key, name, cls, school };
       write("student", s);
-      const roster = read("roster", {}); roster[key] = { name, cls }; write("roster", roster);
+      const roster = read("roster", {}); roster[key] = { name, cls, school }; write("roster", roster);
       await Store.pull();
       return s;
     },
@@ -83,7 +91,7 @@
       const s = Store.student(); if (!s || !CFG.backendUrl) return;
       const data = Store.get(expId); if (!data) return;
       setStatus("syncing");
-      try { await api({ action: "save", key: s.key, name: s.name, cls: s.cls, expId, data }, { keepalive }); setStatus("saved"); }
+      try { await api({ action: "save", key: s.key, name: s.name, cls: s.cls, school: s.school || "", expId, data }, { keepalive }); setStatus("saved"); }
       catch (e) { setStatus("offline"); const q = read("queue", []); if (!q.includes(expId)) q.push(expId); write("queue", q); }
     },
 
@@ -91,6 +99,10 @@
       const q = read("queue", []); write("queue", []);
       for (const id of q) await Store.push(id);
     },
+
+    // Teacher tools that need the backend
+    async teacherCsv(teacherKey) { return (await api({ action: "csv", teacherKey })).csv; },
+    async forget(teacherKey, key) { return api({ action: "forget", teacherKey, key }); },
 
     // ----- teacher -----
     async teacherRows(teacherKey) {
