@@ -2,14 +2,4 @@
 
 A small website that hosts 360° GCSE Computer Science experiences in one place. Students choose a topic, then an experience within it.
 
-- **Students** sign in with their name, class and a 4-digit PIN they make up. Their progress saves after every answer, so they can stop and carry on later, on any device.
-- **In each experience**, students answer quiz stations, tap blue **i** markers to find out more (the panel doesn't block the scene), open **My progress**, and use **Review mode** to retry questions they got wrong.
-- **On the home screen**, students choose a topic (topics without experiences yet show as Coming soon), then see its experiences with their progress, plus a list of "areas to work on" that links straight to the questions to retry.
-- **Teachers** open `teacher.html`, pick a topic, and see every student's progress, the weakest stations for each class, and a per-student breakdown. Results can be downloaded as a CSV.
-
-The first answer to each question is the score that counts. Review mode records whether a student has since fixed a mistake, and the teacher dashboard shows both.
-
-## 7. Data protection: please check before using with students
-
-- The site stores each student's username, class and scores. Check with your school's data protection lead that this is acceptable.
-- The PIN isn't stored. It's combined with the username and class to create an ID for each student. It isn't a strong password, so treat it as a way to keep progress separate between students, not as security.
+2026 Revise360 (Oliver Pettitt). All Rights Reserved. All content on this website, including text, graphics, logos, images, audio clips, digital downloads, data compilations, and software, is the property of Revise360 (Oliver Pettitt) and is protected by international copyright laws. No part of this website may be reproduced, distributed, modified, or transmitted in any form or by any means without the prior written permission of the copyright owner.
