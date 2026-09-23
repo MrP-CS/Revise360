@@ -1,4 +1,4 @@
-// Revise 360 — Copyright (c) 2026 Olly Pettitt. All rights reserved. See LICENCE.txt.
+// Revise 360 — Copyright (c) 2026 Revise 360 Ltd. All rights reserved. See LICENCE.txt.
 // ============================================================
 //  SITE SETTINGS - the only file most teachers need to edit
 // ============================================================
