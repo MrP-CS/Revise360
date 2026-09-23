@@ -221,35 +221,35 @@
        ],
        "items": [
         [
-         "There is some input",
+         "The field has not been left blank",
          "Presence"
         ],
         [
-         "The date is 10 characters long",
+         "The date is exactly 10 characters long",
          "Length"
         ],
         [
-         "The date is in the format DD/MM/YYYY",
+         "The date follows the pattern DD/MM/YYYY",
          "Format"
         ],
         [
-         "The day, month and year are all numbers",
+         "The day, month and year are all whole numbers",
          "Type"
         ],
         [
-         "The month is not more than 12",
+         "The month is between 1 and 12",
          "Range"
         ],
         [
-         "The year is not less than 1900",
+         "The year is no earlier than 1920",
          "Range"
         ],
         [
-         "The day and month are not less than 01",
+         "The day is at least 01",
          "Range"
         ]
        ],
-       "fb": "Now use these rules to write your date validation program."
+       "fb": "Use these rules when you write your own date validation program."
       }
      ]
     }
@@ -303,7 +303,8 @@
      "title": "Casting",
      "text": "input() always gives a string. int() casts it to a whole number, but it will crash on 'abc', so check it's numeric first."
     }
-   ]
+   ],
+   "models": []
   }
  ]
 }

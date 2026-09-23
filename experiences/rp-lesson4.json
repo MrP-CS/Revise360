@@ -179,22 +179,22 @@
      "tasks": [
       {
        "t": "multi",
-       "q": "Which of these are errors in the factorial program? Select all that apply.",
+       "q": "Which of these are errors in the total cost program? Select all that apply.",
        "opts": [
-        "num = num * num should be num = num * n",
-        "Nothing inside the loop reduces n, so it never ends",
+        "total = total + total should be total = total + 3",
+        "Nothing inside the loop reduces items, so it never ends",
         "prnt should be print",
-        "The input isn't converted to an integer before factorial is called",
-        "num = 1 should be num = 0",
-        "return num should be inside the loop"
+        "The input isn't converted to an integer before it is used",
+        "total = 0 should be total = 1",
+        "return total should be inside the loop"
        ],
        "correct": [
-        "num = num * num should be num = num * n",
-        "Nothing inside the loop reduces n, so it never ends",
+        "total = total + total should be total = total + 3",
+        "Nothing inside the loop reduces items, so it never ends",
         "prnt should be print",
-        "The input isn't converted to an integer before factorial is called"
+        "The input isn't converted to an integer before it is used"
        ],
-       "fb": "Four errors: the wrong calculation, the missing n = n - 1, the misspelt print, and the missing int(). num must start at 1, because anything multiplied by 0 is 0."
+       "fb": "Four errors: the wrong calculation, the missing items = items - 1, the misspelt print, and the missing int()."
       },
       {
        "t": "mcq",
@@ -226,7 +226,7 @@
        ],
        "items": [
         [
-         "prnt(\"2. Save game\")",
+         "prnt(\"2. Take register\")",
          "Syntax"
         ],
         [
@@ -234,7 +234,7 @@
          "Syntax"
         ],
         [
-         "while n >= 1 with the colon missing",
+         "while items >= 1 with the colon missing",
          "Syntax"
         ],
         [
@@ -250,11 +250,11 @@
          "Logic"
         ],
         [
-         "average = total / tests when tests is 0",
+         "average = total / count when count is 0",
          "Logic"
         ],
         [
-         "Printing number1 as the largest when number1 < number2",
+         "Printing 'Fail' when the score is above the pass mark",
          "Logic"
         ]
        ],

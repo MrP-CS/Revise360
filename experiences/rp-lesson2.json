@@ -179,7 +179,7 @@
     },
     {
      "label": "6",
-     "name": "Validate an email address",
+     "name": "Validate a password",
      "col": "#f05aaa",
      "face": "left",
      "x": 1508,
@@ -187,29 +187,29 @@
      "tasks": [
       {
        "t": "multi",
-       "q": "Which email addresses pass all four rules? Select all that apply.",
+       "q": "Which passwords pass all three rules? Select all that apply.",
        "opts": [
-        "olly.p@school.org",
-        "Jo@School.org",
-        "a..b@school.org",
-        ".jo@school.org",
-        "jo@school.org.",
-        "joschool.org"
+        "three-red-kites-9",
+        "Pa55word",
+        "correct7horse",
+        "sunshine",
+        "12345678901",
+        "b3"
        ],
        "correct": [
-        "olly.p@school.org",
-        "Jo@School.org"
+        "three-red-kites-9",
+        "correct7horse"
        ],
-       "fb": "Jo@School.org passes once it's converted to lower case. The others break a rule."
+       "fb": "Pa55word and sunshine appear on common password lists, 12345678901 has no letter, and b3 is far too short."
       },
       {
        "t": "mcq",
-       "q": "Why convert capitals to lower case first?",
+       "q": "Why does the program use strip() on the input first?",
        "a": [
-        "So JO@SCHOOL.ORG and jo@school.org are treated as the same address",
-        "To make it shorter",
-        "To encrypt it",
-        "Because capitals aren't allowed on keyboards"
+        "It removes spaces typed by accident at the start or end",
+        "It encrypts the password",
+        "It shortens the password",
+        "It checks the length"
        ],
        "fb": "Cleaning up input before checking it is called sanitisation."
       }
@@ -308,8 +308,8 @@
      "face": "left",
      "x": 920,
      "y": 540,
-     "title": "Invisible CAPTCHA",
-     "text": "Newer versions of reCAPTCHA work mostly in the background, judging whether you're human by how you move and click."
+     "title": "Invisible checks",
+     "text": "Newer bot detection works mostly in the background, judging whether a visitor is human from how they move and click, so most people never see a puzzle."
     },
     {
      "id": "f6",
@@ -319,7 +319,8 @@
      "title": "Sanitising input",
      "text": "Sanitisation cleans input before it's checked, such as trimming spaces or converting to lower case, so the same data is always treated the same way."
     }
-   ]
+   ],
+   "models": []
   }
  ]
 }

@@ -179,26 +179,26 @@
      "tasks": [
       {
        "t": "multi",
-       "q": "Which changes would make the username program more robust? Select all that apply.",
+       "q": "Which changes would make the locker code program more robust? Select all that apply.",
        "opts": [
-        "Check the initial is exactly 1 letter",
-        "Check the surname part is exactly 3 letters",
-        "Check the year is a 4-digit number in a sensible range",
-        "Check the age is a whole number from 11 to 19",
-        "Print the username in capital letters",
+        "Check the house letter is exactly 1 letter from A to D",
+        "Check the form group is a number",
+        "Check the year group is a whole number from 7 to 11",
+        "Check the seat number is a whole number from 1 to 30",
+        "Print the code in capital letters",
         "Remove the prompts to save space"
        ],
        "correct": [
-        "Check the initial is exactly 1 letter",
-        "Check the surname part is exactly 3 letters",
-        "Check the year is a 4-digit number in a sensible range",
-        "Check the age is a whole number from 11 to 19"
+        "Check the house letter is exactly 1 letter from A to D",
+        "Check the form group is a number",
+        "Check the year group is a whole number from 7 to 11",
+        "Check the seat number is a whole number from 1 to 30"
        ],
-       "fb": "Each input needs validating before it's used. Changing the output's capitals or removing prompts doesn't make the program any more robust."
+       "fb": "Each input needs validating before it is used. Changing the output's capitals or removing prompts doesn't make the program more robust."
       },
       {
        "t": "mcq",
-       "q": "A student types 'fifteen' as their age. Which check would stop this?",
+       "q": "A student types 'nine' as their year group. Which check would stop this?",
        "a": [
         "A type check",
         "A length check",
@@ -211,7 +211,7 @@
     },
     {
      "label": "★",
-     "name": "Final challenge: the seven deadly sins",
+     "name": "Final challenge: good practice or bad?",
      "col": "#ffd046",
      "face": "down",
      "x": 1024,
@@ -219,19 +219,19 @@
      "tasks": [
       {
        "t": "sort",
-       "q": "Sort each habit: is it good practice or one of the deadly sins of unreadable code?",
+       "q": "Sort each habit: is it good practice, or bad practice that makes code hard to maintain?",
        "cats": [
         "Good practice",
-        "Deadly sin"
+        "Bad practice"
        ],
        "items": [
         [
-         "Descriptive variable names like surname",
+         "Descriptive variable names like seatNumber",
          "Good practice"
         ],
         [
-         "Single-letter variable names like x and f",
-         "Deadly sin"
+         "Single-letter variable names like t and p",
+         "Bad practice"
         ],
         [
          "A comment at the start of each sub-program",
@@ -239,11 +239,11 @@
         ],
         [
          "No indentation inside loops",
-         "Deadly sin"
+         "Bad practice"
         ],
         [
          "Repeating the same lines instead of using a loop or sub-program",
-         "Deadly sin"
+         "Bad practice"
         ],
         [
          "Splitting the program into named sub-programs",
@@ -251,14 +251,14 @@
         ],
         [
          "No blank lines between sub-programs",
-         "Deadly sin"
+         "Bad practice"
         ],
         [
          "Accepting input without any validation",
-         "Deadly sin"
+         "Bad practice"
         ]
        ],
-       "fb": "Exhibit A on the floor commits most of these sins. Look back at it: can you rewrite it using good practice?"
+       "fb": "Exhibit A on the floor shows most of the bad habits at once. Could you rewrite it using good practice?"
       }
      ]
     }
