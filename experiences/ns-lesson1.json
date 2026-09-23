@@ -1,0 +1,319 @@
+{
+ "id": "ns-lesson1",
+ "lesson": 1,
+ "title": "Threat map",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Threat map",
+   "img": "img/NS_L1_ThreatMap_360.jpg",
+   "imgHi": "img/NS_L1_ThreatMap_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "What is a cyberattack?",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is a cyberattack?",
+       "a": [
+        "An attempt to damage, disrupt or gain unauthorised access to a system or its data",
+        "A software update that goes wrong",
+        "A power cut in a server room",
+        "A network running slowly at busy times"
+       ],
+       "fb": "Damage, disruption and unauthorised access are the three things attackers are after."
+      },
+      {
+       "t": "mcq",
+       "q": "Where can attacks come from?",
+       "a": [
+        "Both outside the network and inside it",
+        "Only from outside the organisation",
+        "Only from other countries",
+        "Only from viruses"
+       ],
+       "fb": "Insiders, including careless staff, cause a large share of security incidents."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "The six forms of attack",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "match",
+       "q": "Match each form of attack to what it does.",
+       "pairs": [
+        [
+         "Malware",
+         "Malicious software that damages or takes control of a system"
+        ],
+        [
+         "Phishing",
+         "Fake messages that trick people into giving away information"
+        ],
+        [
+         "Brute-force attack",
+         "Trying huge numbers of passwords until one works"
+        ],
+        [
+         "Denial of service",
+         "Flooding a server with requests so it can't respond"
+        ],
+        [
+         "Data interception",
+         "Capturing data as it travels across a network"
+        ],
+        [
+         "SQL injection",
+         "Entering code into a text box to attack a database"
+        ]
+       ],
+       "fb": "These six are the forms of attack named in the specification."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "What do attackers want?",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Why do most criminal cyberattacks happen?",
+       "a": [
+        "To make money",
+        "To improve software",
+        "To test networks legally",
+        "To help companies"
+       ],
+       "fb": "Ransom payments, fraud and selling stolen data all make money for attackers."
+      },
+      {
+       "t": "mcq",
+       "q": "A pen tester is paid by a company to attack its systems. Is this a crime?",
+       "a": [
+        "No, because the company has given permission",
+        "Yes, all attacks are crimes",
+        "Yes, unless it fails",
+        "No, because no data is stored"
+       ],
+       "fb": "Permission is what separates penetration testing from criminal hacking."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "CryptoLocker",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What type of malware was CryptoLocker?",
+       "a": [
+        "Ransomware",
+        "A worm with no payload",
+        "Spyware",
+        "A firewall"
+       ],
+       "fb": "It encrypted files and demanded payment for the key."
+      },
+      {
+       "t": "mcq",
+       "q": "How did most victims get infected?",
+       "a": [
+        "By opening an infected email attachment",
+        "By visiting a library",
+        "By using a firewall",
+        "By updating their operating system"
+       ],
+       "fb": "Email attachments are still one of the most common ways malware spreads."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Operation Tovar",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What was Operation Tovar?",
+       "a": [
+        "An international operation that took down the botnet behind CryptoLocker",
+        "A new type of ransomware",
+        "A firewall product",
+        "A password cracking tool"
+       ],
+       "fb": "It involved police forces, universities and security companies in several countries."
+      },
+      {
+       "t": "mcq",
+       "q": "Why is catching cybercriminals difficult?",
+       "a": [
+        "Attackers can operate from another country, hiding their identity and location",
+        "Attacks leave no trace at all",
+        "Police aren't allowed to investigate computers",
+        "The internet has no addresses"
+       ],
+       "fb": "That's why investigations are international and take years."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "How much damage?",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "multi",
+       "q": "Which of these are costs of a successful attack on a business? Select all that apply.",
+       "opts": [
+        "Downtime while systems are offline",
+        "Money spent recovering data",
+        "Damage to the company's reputation",
+        "Possible fines for failing to protect personal data",
+        "The price of new office furniture",
+        "Staff holidays"
+       ],
+       "correct": [
+        "Downtime while systems are offline",
+        "Money spent recovering data",
+        "Damage to the company's reputation",
+        "Possible fines for failing to protect personal data"
+       ],
+       "fb": "The ransom is often the smallest part of the total cost."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: name that attack",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Which form of attack does each incident describe?",
+       "cats": [
+        "Malware",
+        "Phishing",
+        "Brute force",
+        "Denial of service"
+       ],
+       "items": [
+        [
+         "An email pretending to be from the bank asks for a password",
+         "Phishing"
+        ],
+        [
+         "Software downloaded with a game secretly deletes files",
+         "Malware"
+        ],
+        [
+         "A program tries a million passwords on one account",
+         "Brute force"
+        ],
+        [
+         "A website is flooded with fake requests until it goes offline",
+         "Denial of service"
+        ],
+        [
+         "A text message claims a parcel is waiting and links to a fake login page",
+         "Phishing"
+        ],
+        [
+         "A program encrypts files and demands a payment",
+         "Malware"
+        ],
+        [
+         "Thousands of infected computers send traffic to one server at once",
+         "Denial of service"
+        ],
+        [
+         "A dictionary of common passwords is tried against a login page",
+         "Brute force"
+        ]
+       ],
+       "fb": "Data interception and SQL injection come up in lessons 3 and 8."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "White hats and black hats",
+     "text": "Attackers who break in illegally are called black hats. White hats do the same thing with permission, to help organisations find weaknesses before criminals do."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "Attacks per day",
+     "text": "Large organisations see thousands of attempted attacks every day. Most are automated programs scanning for weaknesses, not people."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 920,
+     "y": 540,
+     "title": "Hacktivism",
+     "text": "Some attacks are political: groups attack organisations they disagree with to make a point. This is called hacktivism."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1888,
+     "y": 540,
+     "title": "Paying doesn't help",
+     "text": "Police advise against paying ransoms: it funds more crime and the files often stay locked. Good backups are a far better defence."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 920,
+     "y": 540,
+     "title": "Still wanted",
+     "text": "Evgeniy Bogachev is still on the FBI's most wanted cyber list, with a reward of up to $3 million."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1888,
+     "y": 540,
+     "title": "The law",
+     "text": "In the UK, the Computer Misuse Act 1990 makes unauthorised access to a computer system a crime, even if nothing is damaged."
+    }
+   ],
+   "models": []
+  }
+ ]
+}

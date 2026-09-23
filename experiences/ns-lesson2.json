@@ -1,0 +1,310 @@
+{
+ "id": "ns-lesson2",
+ "lesson": 2,
+ "title": "Malware lab",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Malware lab",
+   "img": "img/NS_L2_MalwareLab_360.jpg",
+   "imgHi": "img/NS_L2_MalwareLab_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "What is malware?",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does malware mean?",
+       "a": [
+        "Malicious software: programs written to cause harm or gain access",
+        "Hardware that has broken",
+        "Software that is out of date",
+        "A type of firewall"
+       ],
+       "fb": "Malware is a broad term covering viruses, worms, trojans, ransomware and spyware."
+      },
+      {
+       "t": "mcq",
+       "q": "Which is the most common way malware reaches a computer?",
+       "a": [
+        "A user opens an infected email attachment or download",
+        "Through the power supply",
+        "By the computer being too old",
+        "Through the monitor cable"
+       ],
+       "fb": "Most malware still needs a person to open something."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Viruses",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "How does a virus spread?",
+       "a": [
+        "It attaches to files, and spreads when those files are opened and shared",
+        "It travels through the network on its own",
+        "It disguises itself as useful software",
+        "It encrypts files and demands payment"
+       ],
+       "fb": "Needing a user to run it is what separates a virus from a worm."
+      },
+      {
+       "t": "mcq",
+       "q": "Which of these could carry a virus?",
+       "a": [
+        "A program file attached to an email",
+        "A blank USB stick that has been formatted",
+        "A printed document",
+        "A monitor"
+       ],
+       "fb": "Any file that can be run, or that contains macros, can carry a virus."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Worms",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What makes a worm different from a virus?",
+       "a": [
+        "A worm copies itself across a network without any user action",
+        "A worm needs a user to open a file",
+        "A worm only affects printers",
+        "A worm is not malware"
+       ],
+       "fb": "That's why worms can spread through a whole network in minutes."
+      },
+      {
+       "t": "mcq",
+       "q": "Which defence helps most against worms?",
+       "a": [
+        "Keeping software and operating systems patched and up to date",
+        "Turning the monitor off",
+        "Using a bigger hard drive",
+        "Deleting old emails"
+       ],
+       "fb": "Worms exploit known weaknesses, which patches fix."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Trojans",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is a trojan?",
+       "a": [
+        "Malware disguised as legitimate software that the user installs themselves",
+        "Malware that copies itself across networks",
+        "Software that encrypts a hard drive by accident",
+        "A type of firewall"
+       ],
+       "fb": "The disguise is the whole point: the user lets it in."
+      },
+      {
+       "t": "mcq",
+       "q": "What does a backdoor let an attacker do?",
+       "a": [
+        "Access the computer again later, without the normal login",
+        "Print documents faster",
+        "Improve the Wi-Fi signal",
+        "Delete the trojan"
+       ],
+       "fb": "Backdoors let attackers return whenever they like."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Ransomware and spyware",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does ransomware do?",
+       "a": [
+        "Encrypts files and demands payment for the key to unlock them",
+        "Records every key you press",
+        "Copies itself across a network",
+        "Blocks a website with traffic"
+       ],
+       "fb": "CryptoLocker, from lesson 1, is an example."
+      },
+      {
+       "t": "mcq",
+       "q": "What is a keylogger?",
+       "a": [
+        "Spyware that records every key pressed, including passwords",
+        "A device that unlocks doors",
+        "Software that speeds up typing",
+        "A firewall rule"
+       ],
+       "fb": "Keyloggers can be software or a small device plugged in behind the keyboard."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Stopping malware",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "multi",
+       "q": "Which of these help protect against malware? Select all that apply.",
+       "opts": [
+        "Anti-malware software kept up to date",
+        "Installing operating system updates",
+        "Regular backups",
+        "Not opening unexpected attachments",
+        "Using the same password everywhere",
+        "Turning off the firewall"
+       ],
+       "correct": [
+        "Anti-malware software kept up to date",
+        "Installing operating system updates",
+        "Regular backups",
+        "Not opening unexpected attachments"
+       ],
+       "fb": "Backups don't stop an infection, but they mean you don't have to pay a ransom."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: identify the malware",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Which type of malware does each description match?",
+       "cats": [
+        "Virus",
+        "Worm",
+        "Trojan",
+        "Ransomware"
+       ],
+       "items": [
+        [
+         "Attaches to a file and spreads when that file is shared",
+         "Virus"
+        ],
+        [
+         "Copies itself across a network with no user action",
+         "Worm"
+        ],
+        [
+         "Pretends to be a free game, then opens a backdoor",
+         "Trojan"
+        ],
+        [
+         "Encrypts every document and demands Bitcoin",
+         "Ransomware"
+        ],
+        [
+         "Needs the user to run an infected program",
+         "Virus"
+        ],
+        [
+         "Exploits a weakness in unpatched software to spread by itself",
+         "Worm"
+        ],
+        [
+         "Downloaded as a 'video player update' that steals passwords",
+         "Trojan"
+        ],
+        [
+         "Displays a countdown and a payment demand",
+         "Ransomware"
+        ]
+       ],
+       "fb": "The key differences: viruses need a user, worms don't, trojans disguise themselves, and ransomware wants money."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "The first worm",
+     "text": "The Morris worm of 1988 was one of the first. It was meant as an experiment, but it slowed thousands of computers and led to the first conviction under a US computer crime law."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "WannaCry",
+     "text": "In 2017, the WannaCry ransomware worm spread worldwide in hours and hit NHS hospitals, cancelling thousands of appointments. A patch already existed, but many systems hadn't installed it."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 920,
+     "y": 540,
+     "title": "Signatures and behaviour",
+     "text": "Anti-malware spots known malware by its 'signature', and unknown malware by watching for suspicious behaviour, such as a program encrypting lots of files."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1888,
+     "y": 540,
+     "title": "Sandbox",
+     "text": "Security researchers run suspected malware inside a sandbox: an isolated virtual machine where it can do no harm."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 920,
+     "y": 540,
+     "title": "Not just PCs",
+     "text": "Phones, smart TVs and even fridges can be infected. Any device that runs software can run malicious software."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1888,
+     "y": 540,
+     "title": "3-2-1 backups",
+     "text": "A common rule is 3 copies of your data, on 2 types of storage, with 1 kept off-site. Ransomware can't encrypt a backup that isn't connected."
+    }
+   ],
+   "models": []
+  }
+ ]
+}

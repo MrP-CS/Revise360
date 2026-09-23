@@ -284,6 +284,21 @@
       const show = body => qPanel.set({ title, color: st.col, onClose: close, blocks: [...top(), ...body(), ...fbBlocks()] });
 
       closeBoard();
+      if (task.t === "defence") {
+        const rec = core.prog.defence || { best: 0, attempts: 0 };
+        let lastEnd = null;
+        const board = R360Defence.Defence({ best: rec.best, isBest: () => lastEnd && lastEnd.score > rec.best,
+          onEnd: r => { lastEnd = r; const d = core.prog.defence || (core.prog.defence = { best: 0, attempts: 0, history: [] });
+            d.attempts++; d.lastScore = r.score; d.best = Math.max(d.best, r.score); d.history = [[r.score, r.rounds, r.correct, Date.now()]].concat(d.history || []).slice(0, 10);
+            core.prog.scenes[core.exp.scenes[core.cur].id].done[k] = true; core.save(); core.refreshSprites(); core.hud(); } });
+        window.__def = board;
+        const yaw = openBoard(board); const { pos } = headPose(); const qy = yaw - .28 - .8;
+        qPanel.set({ title: st.name, color: st.col, onClose: () => { qPanel.hide(); closeBoard(); core.refreshSprites(); core.hud(); }, blocks: [
+          { p: "Point at the board and pull the trigger to choose. Spend your budget, then face each threat.", size: 26 },
+          { p: "Personal best: " + rec.best, size: 30, bold: true, color: COL.edge }] });
+        qPanel.mesh.position.set(pos.x + Math.sin(qy) * 1.2, pos.y - .05, pos.z + Math.cos(qy) * 1.2); qPanel.mesh.lookAt(pos);
+        return;
+      }
       if (task.t === "sprint") { sprintVR(k, st, task); return; }
       if (task.t === "circuit" || task.t === "expr" || task.t === "table") {
         const Lg = window.R360Logic;

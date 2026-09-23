@@ -10,7 +10,7 @@
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
   const asset = p => /^(data:|blob:|https?:)/.test(p) ? p : "experiences/" + p;
-  const marks = t => (t.t === "mcq" || t.t === "multi" || t.t === "circuit" || t.t === "expr") ? 1 : t.t === "table" ? (1 << (t.inputs ? t.inputs.length : new Set((t.expr || "").replace(/AND|OR|NOT/g, "").match(/[A-Z]/g) || []).size)) : t.t === "sprint" ? 0 : t.t === "order" ? t.steps.length : t.t === "sort" ? t.items.length : t.pairs.length;
+  const marks = t => (t.t === "mcq" || t.t === "multi" || t.t === "circuit" || t.t === "expr") ? 1 : t.t === "table" ? (1 << (t.inputs ? t.inputs.length : new Set((t.expr || "").replace(/AND|OR|NOT/g, "").match(/[A-Z]/g) || []).size)) : (t.t === "sprint" || t.t === "defence") ? 0 : t.t === "order" ? t.steps.length : t.t === "sort" ? t.items.length : t.pairs.length;
 
   let exp;
   try { exp = await (await fetch("experiences/" + encodeURIComponent(expId) + ".json", { cache: "no-cache" })).json(); }
@@ -328,7 +328,7 @@
   // Which questions to ask at a station (null = nothing to ask, with a message shown)
   function taskList(k) {
     const sc = exp.scenes[cur], st = sc.stations[k]; if (!st) return null;
-    if (st.tasks[0] && st.tasks[0].t === "sprint") return [0];
+    if (st.tasks[0] && (st.tasks[0].t === "sprint" || st.tasks[0].t === "defence")) return [0];
     const sp = prog.scenes[sc.id], state = stationState(sc, k);
     let list;
     if (reviewMode) {
@@ -409,6 +409,16 @@
         let got = 0; sels.forEach((s, x) => { const ok = s.value === task.pairs[x][1]; if (ok) got++; s.disabled = true; const it = s.parentElement; it.classList.add(ok ? "right" : "wrong"); if (!ok) { const f = document.createElement("div"); f.className = "fix"; f.textContent = "Answer: " + task.pairs[x][1]; it.appendChild(f); } });
         award(k, i, got); ck.remove(); const all = got === task.pairs.length; feedback(all, `You got ${got} out of ${task.pairs.length}.`, (all ? "" : "Corrections are shown in green. ") + task.fb); nextBtn(k, list, n);
       };
+    } else if (task.t === "defence") {
+      const rec = prog.defence || { best: 0, attempts: 0 };
+      box.classList.add("wide");
+      shell(st.name, st.col, `<div class="lboard" id="lb"></div>`);
+      const board = R360Defence.Defence({ best: rec.best, isBest: () => lastEnd && lastEnd.score > rec.best,
+        onEnd: r => { lastEnd = r; const d = prog.defence || (prog.defence = { best: 0, attempts: 0, history: [] });
+          d.attempts++; d.lastScore = r.score; d.best = Math.max(d.best, r.score); d.history = [[r.score, r.rounds, r.correct, Date.now()]].concat(d.history || []).slice(0, 10);
+          prog.scenes[exp.scenes[cur].id].done[k] = true; save(); refreshSprites(); hud(); drawNav(); } });
+      let lastEnd = null;
+      mountBoard($("#lb"), board); window.__def = board;
     } else if (task.t === "sprint") {
       runSprint(k, st, task);
     } else if (task.t === "circuit" || task.t === "expr" || task.t === "table") {

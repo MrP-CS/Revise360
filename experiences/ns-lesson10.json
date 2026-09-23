@@ -1,0 +1,321 @@
+{
+ "id": "ns-lesson10",
+ "lesson": 10,
+ "title": "Defence depot 2",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Defence depot 2",
+   "img": "img/NS_L10_DefenceDepot2_360.jpg",
+   "imgHi": "img/NS_L10_DefenceDepot2_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Passwords",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which attack do strong passwords protect against most directly?",
+       "a": [
+        "Brute-force attacks",
+        "Denial of service",
+        "Data interception on public Wi-Fi",
+        "A flood of traffic from a botnet"
+       ],
+       "fb": "A long password takes impossibly long to guess."
+      },
+      {
+       "t": "mcq",
+       "q": "Give an example of when a password alone isn't enough.",
+       "a": [
+        "When it has been phished or appears in a data breach",
+        "When the computer is switched off",
+        "When the screen is too small",
+        "When the password is 20 characters long"
+       ],
+       "fb": "That's why two-factor authentication matters."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Encryption",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does encryption protect against?",
+       "a": [
+        "Intercepted or stolen data being understood",
+        "Denial-of-service floods",
+        "Malware being installed",
+        "Weak passwords being guessed"
+       ],
+       "fb": "Encryption is about confidentiality, not access."
+      },
+      {
+       "t": "mcq",
+       "q": "A laptop with encrypted storage is stolen. What is the result?",
+       "a": [
+        "The thief has the hardware, but can't read the data without the key",
+        "The data deletes itself instantly",
+        "The laptop stops working forever",
+        "The data is emailed back to the owner"
+       ],
+       "fb": "This is why organisations encrypt every mobile device."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Physical security",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Why does physical security matter for network security?",
+       "a": [
+        "Someone with physical access to a server can bypass many other protections",
+        "It makes the network faster",
+        "It stops viruses spreading by email",
+        "It encrypts the hard drives"
+       ],
+       "fb": "A locked door is one of the cheapest and most effective controls."
+      },
+      {
+       "t": "mcq",
+       "q": "Which is an example of physical security?",
+       "a": [
+        "A locked server room with keycard access",
+        "A 16-character password",
+        "Anti-malware software",
+        "A firewall rule"
+       ],
+       "fb": "Physical security protects the hardware itself."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Backups and updates",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Why do backups defend against ransomware?",
+       "a": [
+        "The files can be restored instead of paying the ransom",
+        "They stop the malware installing",
+        "They encrypt the attacker's computer",
+        "They block the email"
+       ],
+       "fb": "Backups are recovery, not prevention, and they're vital."
+      },
+      {
+       "t": "mcq",
+       "q": "Why should a backup be kept disconnected or off-site?",
+       "a": [
+        "Ransomware can encrypt any backup that is connected",
+        "It saves electricity",
+        "Backups work faster when cold",
+        "It makes the files smaller"
+       ],
+       "fb": "Connected backups get encrypted along with everything else."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Match the defence",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "match",
+       "q": "Match each threat to the defence that works best against it.",
+       "pairs": [
+        [
+         "Ransomware",
+         "Regular off-site backups"
+        ],
+        [
+         "Phishing",
+         "Staff training and two-factor authentication"
+        ],
+        [
+         "Brute-force attack",
+         "Account lockouts and strong passwords"
+        ],
+        [
+         "Data interception",
+         "Encryption, such as HTTPS and a VPN"
+        ],
+        [
+         "SQL injection",
+         "Input validation and parameterised queries"
+        ],
+        [
+         "Malware downloads",
+         "Anti-malware software and updates"
+        ]
+       ],
+       "fb": "In the bonus Cyber defence game you'll have to make exactly these choices, on a budget."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Layers of defence",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Why do organisations layer their defences?",
+       "a": [
+        "If one protection fails, others still stand between the attacker and the data",
+        "It makes the network faster",
+        "It is required to use Wi-Fi",
+        "One strong protection is impossible"
+       ],
+       "fb": "This is often called defence in depth."
+      },
+      {
+       "t": "mcq",
+       "q": "Which combination best protects against a stolen password?",
+       "a": [
+        "Two-factor authentication, access levels and monitoring",
+        "A bigger hard drive and a fast router",
+        "Anti-malware alone",
+        "A longer network cable"
+       ],
+       "fb": "Layers cover each other's weaknesses."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: build the defences",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Is each measure a technical, physical or people-based protection?",
+       "cats": [
+        "Technical",
+        "Physical",
+        "People"
+       ],
+       "items": [
+        [
+         "A firewall filtering incoming traffic",
+         "Technical"
+        ],
+        [
+         "A locked server cabinet",
+         "Physical"
+        ],
+        [
+         "Staff training on spotting phishing",
+         "People"
+        ],
+        [
+         "Encrypting laptops' storage",
+         "Technical"
+        ],
+        [
+         "Keycard access to the IT office",
+         "Physical"
+        ],
+        [
+         "An acceptable use policy everyone signs",
+         "People"
+        ],
+        [
+         "Automatic software updates",
+         "Technical"
+        ],
+        [
+         "CCTV covering the server room door",
+         "Physical"
+        ]
+       ],
+       "fb": "A good security plan uses all three types, which is what the Cyber defence game asks you to balance."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "Change it only when needed",
+     "text": "Modern advice is to stop forcing regular password changes: it pushes people towards weak, predictable patterns. Change passwords when there's a reason."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "Encryption by default",
+     "text": "Messaging apps like WhatsApp and Signal use end-to-end encryption, so even the company running the service can't read the messages."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 920,
+     "y": 540,
+     "title": "The cleaner test",
+     "text": "Security teams ask: could someone dressed as a cleaner walk in and plug something into a server? Often the answer used to be yes."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1888,
+     "y": 540,
+     "title": "Test your backups",
+     "text": "A backup that has never been restored isn't a backup. Organisations practise restoring, so they know it works before they need it."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 920,
+     "y": 540,
+     "title": "Patch Tuesday",
+     "text": "Microsoft releases security patches on the second Tuesday of each month. Attackers study them to work out what to exploit on unpatched systems."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1888,
+     "y": 540,
+     "title": "Cheapest first",
+     "text": "Many of the strongest protections, like updates, backups, training and locking doors, cost very little compared with the damage they prevent."
+    }
+   ],
+   "models": []
+  }
+ ]
+}
