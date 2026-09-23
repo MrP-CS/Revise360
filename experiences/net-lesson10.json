@@ -147,15 +147,15 @@
      "tasks": [
       {
        "t": "order",
-       "q": "Put the WPA2 handshake steps in order.",
+       "q": "Put the steps of the Wi-Fi handshake in order.",
        "steps": [
-        "Master key is generated from the wireless password",
-        "Random number is sent with the network interface card address",
-        "Transient key is calculated from the master key, random numbers and network card addresses",
-        "Random number is sent with a message integrity code",
-        "Transient key is calculated",
-        "Group temporal key is calculated and sent with a message integrity code",
-        "Acknowledgement is sent confirming communication can begin"
+        "Both devices work out the same master key from the Wi-Fi password",
+        "The access point sends a random number to the device",
+        "The device uses the random numbers and addresses to calculate a session key",
+        "The device replies with its own random number and a check value",
+        "The access point calculates the same session key",
+        "The access point sends the shared group key, protected by a check value",
+        "The device acknowledges, and encrypted data can begin"
        ],
        "fb": "Both sides calculate the same keys, so the keys themselves never travel over the air."
       },
@@ -295,7 +295,8 @@
      "title": "WPA3",
      "text": "WPA3 arrived in 2018. It protects even weak passwords better, by making it much harder to guess them offline."
     }
-   ]
+   ],
+   "models": []
   }
  ]
 }
