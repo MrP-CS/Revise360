@@ -31,21 +31,23 @@
     $("#main").innerHTML = `<form class="card signin" id="f" novalidate>
       <h2>Sign in</h2><p class="muted">Use the same username, class and PIN every time so your progress follows you to any device.</p>
       <div class="field"><label for="n">School username</label><input id="n" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" required maxlength="60"></div>
-      <div class="field"><label for="c">Class</label><select id="c" required><option value="">Choose your class…</option>${CFG.classes.map(c => `<option>${esc(c)}</option>`).join("")}</select></div>
+      <div class="field"><label for="c">Class or group <span class="muted">(optional)</span></label><select id="c"><option value="">Not set</option>${CFG.classes.map(c => `<option>${esc(c)}</option>`).join("")}<option value="__other">Other…</option></select></div>
+      <div class="field" id="cwrap" hidden><label for="c2">Type your class or group</label><input id="c2" maxlength="24" autocapitalize="characters"></div>
       <div class="field"><label for="p">4-digit PIN (make one up and remember it)</label><input id="p" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" required autocomplete="off"></div>
       <p class="err" id="err" role="alert"></p>
       <div class="row end"><button class="btn" type="submit">Start</button></div>
       ${CFG.backendUrl ? "" : '<p class="muted" style="font-size:13px">This site is in device-only mode: progress is saved in this browser only.</p>'}
     </form>`;
     $("#n").focus();
+    $("#c").onchange = () => { const w = $("#cwrap"); w.hidden = $("#c").value !== "__other"; if (!w.hidden) $("#c2").focus(); };
     $("#f").onsubmit = async e => {
       e.preventDefault();
       const n = $("#n").value.trim(), c = $("#c").value, p = $("#p").value.trim();
       if (!/^[A-Za-z0-9._@-]{2,60}$/.test(n)) return $("#err").textContent = "Please enter your school username, with no spaces.";
-      if (!c) return $("#err").textContent = "Please choose your class.";
+      const cls = c === "__other" ? ($("#c2").value.trim() || "") : c;
       if (!/^\d{4}$/.test(p)) return $("#err").textContent = "Your PIN must be 4 digits.";
       $("#err").textContent = ""; e.submitter && (e.submitter.disabled = true);
-      await Store.signIn(n, c, p);
+      await Store.signIn(n, cls, p);
       if (next && /^experience\.html\?/.test(next)) location.href = next; else route();
     };
   }
