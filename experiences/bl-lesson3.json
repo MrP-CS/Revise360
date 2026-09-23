@@ -43,7 +43,7 @@
     },
     {
      "label": "2",
-     "name": "Scenario 1: the alarm",
+     "name": "Scenario 1: the shop alarm",
      "col": "#aa6eeb",
      "face": "right",
      "x": 1508,
@@ -51,13 +51,13 @@
      "tasks": [
       {
        "t": "circuit",
-       "q": "Build the alarm circuit: X = (A AND B) OR C.",
+       "q": "Build the shop alarm circuit: X = (A AND B) OR C.",
        "expr": "(A AND B) OR C",
        "fb": "A and B go into an AND gate, whose output goes into an OR gate with C."
       },
       {
        "t": "table",
-       "q": "Complete the truth table for the alarm.",
+       "q": "Complete the truth table for the shop alarm.",
        "expr": "(A AND B) OR C",
        "fb": "The alarm is off only when C is 0 and A AND B is 0.",
        "diagram": true,
@@ -73,7 +73,7 @@
     },
     {
      "label": "3",
-     "name": "Scenario 2: the police cell",
+     "name": "Scenario 2: the hospital lift",
      "col": "#ff785a",
      "face": "back",
      "x": 540,
@@ -81,17 +81,17 @@
      "tasks": [
       {
        "t": "circuit",
-       "q": "Build the police cell circuit: X = (A OR B) AND (C OR D).",
+       "q": "Build the hospital lift circuit: X = (A OR B) AND (C OR D).",
        "expr": "(A OR B) AND (C OR D)",
        "fb": "Two OR gates feed an AND gate."
       },
       {
        "t": "mcq",
-       "q": "In the police cell, when does the speaker sound?",
+       "q": "In the hospital lift, when does the alarm sound?",
        "a": [
-        "When at least one door is open, and the camera or the occupied sign is on",
+        "When at least one door is open, and the lift is either moving or overloaded",
         "Only when both doors are open",
-        "Whenever the camera is on",
+        "Whenever the lift moves",
         "Never"
        ],
        "fb": "Both OR gates must output 1."
@@ -100,7 +100,7 @@
     },
     {
      "label": "4",
-     "name": "Scenario 3: the factory",
+     "name": "Scenario 3: the greenhouse",
      "col": "#ffa028",
      "face": "back",
      "x": 1508,
@@ -108,15 +108,15 @@
      "tasks": [
       {
        "t": "circuit",
-       "q": "Build the factory circuit: X = (A OR B) AND NOT C.",
+       "q": "Build the greenhouse circuit: X = (A OR B) AND NOT C.",
        "expr": "(A OR B) AND NOT C",
-       "fb": "NOT C means the override stops the system when it's pressed."
+       "fb": "NOT C means an open window stops the heater."
       },
       {
        "t": "table",
-       "q": "Complete the truth table for the factory.",
+       "q": "Complete the truth table for the greenhouse.",
        "expr": "(A OR B) AND NOT C",
-       "fb": "Whenever C = 1, the system is off.",
+       "fb": "Whenever C = 1, the heater is off.",
        "diagram": true,
        "cols": [
         [
@@ -153,14 +153,14 @@
       },
       {
        "t": "mcq",
-       "q": "The factory override is wired straight into the AND gate, without a NOT gate. What goes wrong?",
+       "q": "The greenhouse window sensor is wired straight into the AND gate, without a NOT gate. What goes wrong?",
        "a": [
-        "The system only runs when the override is pressed",
+        "The heater runs only when a window is open",
         "Nothing changes",
-        "The system never switches on",
+        "The heater never switches on",
         "The alarm sounds"
        ],
-       "fb": "Without NOT, pressing the override would allow the system to run."
+       "fb": "Without NOT, an open window would let the heater run."
       }
      ]
     },
@@ -182,7 +182,7 @@
        "t": "expr",
        "q": "Write the Boolean expression for this logic diagram.",
        "expr": "(A OR B) AND NOT C",
-       "fb": "This is the factory circuit.",
+       "fb": "This is the greenhouse circuit.",
        "out": "X"
       }
      ]
@@ -227,8 +227,8 @@
      "face": "right",
      "x": 920,
      "y": 540,
-     "title": "Single-atom magnets",
-     "text": "Your starter: scientists have stored a single bit of data on a single atom. If it can be made practical, hard drives could hold far more data than today."
+     "title": "Logic in everyday rules",
+     "text": "Nearly every automatic device hides a logic expression: a boiler, a lift, a car alarm. Reading the rule and underlining the words and, or and not is most of the work."
     },
     {
      "id": "f2",
