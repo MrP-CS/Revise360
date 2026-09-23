@@ -1,0 +1,387 @@
+{
+ "id": "ms-lesson16",
+ "lesson": 16,
+ "title": "Revision HQ 1.2 part 2",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Revision HQ 1.2 part 2",
+   "img": "img/MS_L16_RevisionHQ2_360.jpg",
+   "imgHi": "img/MS_L16_RevisionHQ2_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Character sets",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "How many characters can 8 bits represent?",
+       "a": [
+        "256",
+        "8",
+        "128",
+        "512"
+       ],
+       "fb": "2 to the power 8."
+      },
+      {
+       "t": "mcq",
+       "q": "What is the advantage of Unicode?",
+       "a": [
+        "It can represent characters from every writing system",
+        "It uses fewer bits",
+        "It makes files smaller",
+        "It is faster to type"
+       ],
+       "fb": "Coverage, at the cost of size."
+      },
+      {
+       "t": "mcq",
+       "q": "A text file has 100 characters in 8-bit ASCII. How big is it?",
+       "a": [
+        "100 bytes",
+        "800 bytes",
+        "12.5 bytes",
+        "1,000 bits"
+       ],
+       "fb": "100 × 8 = 800 bits = 100 bytes."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Images",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is the formula for an image's file size?",
+       "a": [
+        "Width × height × colour depth",
+        "Width + height + colour depth",
+        "Resolution ÷ colour depth",
+        "Sample rate × duration"
+       ],
+       "fb": "In pixels and bits."
+      },
+      {
+       "t": "mcq",
+       "q": "A colour depth of 4 bits gives how many colours?",
+       "a": [
+        "16",
+        "4",
+        "8",
+        "256"
+       ],
+       "fb": "2 to the power 4."
+      },
+      {
+       "t": "mcq",
+       "q": "Which is an example of metadata?",
+       "a": [
+        "The date the image was taken",
+        "The colour of pixel 1",
+        "The screen size",
+        "The printer model"
+       ],
+       "fb": "Metadata describes the file."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Sound",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does bit depth mean for sound?",
+       "a": [
+        "The number of bits used to store each sample",
+        "The number of samples per second",
+        "How long the recording is",
+        "How loud it is"
+       ],
+       "fb": "More bits means more levels."
+      },
+      {
+       "t": "mcq",
+       "q": "Doubling the sample rate does what to the file?",
+       "a": [
+        "Doubles its size and improves quality",
+        "Halves its size",
+        "No change",
+        "Removes the metadata"
+       ],
+       "fb": "Twice as many samples."
+      },
+      {
+       "t": "mcq",
+       "q": "What is sampling?",
+       "a": [
+        "Measuring the wave's amplitude at regular intervals",
+        "Playing the sound back slowly",
+        "Removing quiet parts",
+        "Compressing the file"
+       ],
+       "fb": "Each measurement is stored in binary."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Compression",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which type of compression is used for MP3 files?",
+       "a": [
+        "Lossy",
+        "Lossless",
+        "Neither",
+        "Both at once"
+       ],
+       "fb": "Sounds most people can't hear are removed."
+      },
+      {
+       "t": "mcq",
+       "q": "Why can't a program file use lossy compression?",
+       "a": [
+        "Missing data would stop the program working",
+        "Programs are too small",
+        "It would take too long",
+        "Programs have no patterns"
+       ],
+       "fb": "Every byte matters."
+      },
+      {
+       "t": "mcq",
+       "q": "How does run-length encoding save space?",
+       "a": [
+        "It stores a colour once with the number of times it repeats",
+        "It deletes every second pixel",
+        "It reduces the colour depth",
+        "It crops the image"
+       ],
+       "fb": "Great for big blocks of one colour."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Calculations practice",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "A 400 × 300 image has 8-bit colour. What is the size in kB?",
+       "a": [
+        "120",
+        "960",
+        "12",
+        "1,200"
+       ],
+       "fb": "400 × 300 × 8 = 960,000 bits, ÷ 8 = 120,000 bytes = 120 kB."
+      },
+      {
+       "t": "mcq",
+       "q": "A 60-second sound is 22,050 Hz at 16 bits. Roughly how large is it?",
+       "a": [
+        "About 2.6 MB",
+        "About 26 MB",
+        "About 260 kB",
+        "About 21 MB"
+       ],
+       "fb": "22,050 × 16 × 60 ÷ 8 = 2,646,000 bytes."
+      },
+      {
+       "t": "mcq",
+       "q": "A 2,000-character file uses 16-bit Unicode. How big is it in bytes?",
+       "a": [
+        "4,000",
+        "2,000",
+        "32,000",
+        "250"
+       ],
+       "fb": "2,000 × 16 = 32,000 bits = 4,000 bytes."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Exam technique",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "A question says 'calculate' and is worth 3 marks. What should you include?",
+       "a": [
+        "The formula, the substituted numbers and the final answer with units",
+        "Just the answer",
+        "A diagram",
+        "A definition of the formula"
+       ],
+       "fb": "Method marks are free marks."
+      },
+      {
+       "t": "mcq",
+       "q": "A question asks for the answer in kilobytes but you have bits. What do you do?",
+       "a": [
+        "Divide by 8, then by 1,000",
+        "Divide by 1,000 only",
+        "Multiply by 8",
+        "Leave it in bits"
+       ],
+       "fb": "Bits to bytes to kilobytes."
+      },
+      {
+       "t": "mcq",
+       "q": "Which definition is correct?",
+       "a": [
+        "Metadata is data about the data, such as an image's dimensions",
+        "Metadata is the colour of each pixel",
+        "Metadata is a type of compression",
+        "Metadata is the file's name only"
+       ],
+       "fb": "Learn this one word for word."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: data representation",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "convert",
+       "q": "Convert the character code 90 (the letter Z) into 8-bit binary.",
+       "from": "denary",
+       "to": "binary",
+       "value": 90,
+       "fb": "90 is 01011010."
+      },
+      {
+       "t": "sort",
+       "q": "Which part of the topic does each fact belong to?",
+       "cats": [
+        "Text",
+        "Images",
+        "Sound",
+        "Compression"
+       ],
+       "items": [
+        [
+         "ASCII uses 7 bits per character",
+         "Text"
+        ],
+        [
+         "Colour depth is bits per pixel",
+         "Images"
+        ],
+        [
+         "Sample rate is measured in hertz",
+         "Sound"
+        ],
+        [
+         "Lossy removes data permanently",
+         "Compression"
+        ],
+        [
+         "Metadata stores the dimensions",
+         "Images"
+        ],
+        [
+         "Unicode covers every writing system",
+         "Text"
+        ],
+        [
+         "Bit depth sets the number of levels",
+         "Sound"
+        ],
+        [
+         "Run-length encoding is lossless",
+         "Compression"
+        ]
+       ],
+       "fb": "Check your results table to see what to revise."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "Revision tip",
+     "text": "Write the three file size formulas on a card and test yourself until you can write them from memory."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "Common slip",
+     "text": "Forgetting to divide by 8 turns bits into bytes wrongly, and costs a mark in nearly every series."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 920,
+     "y": 540,
+     "title": "Definitions win marks",
+     "text": "Sampling, metadata, character set, lossy and lossless are all 1 or 2-mark definition questions."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1888,
+     "y": 540,
+     "title": "Compression choice",
+     "text": "If the question involves text, a program or a spreadsheet, the answer is always lossless."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 920,
+     "y": 540,
+     "title": "Quality and size",
+     "text": "Almost every question here can be answered with: more bits means better quality and a bigger file."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1888,
+     "y": 540,
+     "title": "Binary blitz",
+     "text": "Use the Binary blitz challenge to get fast at conversions: they appear in nearly every paper."
+    }
+   ],
+   "models": []
+  }
+ ]
+}

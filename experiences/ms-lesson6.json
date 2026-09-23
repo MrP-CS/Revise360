@@ -1,0 +1,321 @@
+{
+ "id": "ms-lesson6",
+ "lesson": 6,
+ "title": "Units lab",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Units lab",
+   "img": "img/MS_L6_UnitsLab_360.jpg",
+   "imgHi": "img/MS_L6_UnitsLab_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Why binary?",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Why do computers use binary?",
+       "a": [
+        "Their circuits have two states, on and off, which represent 1 and 0",
+        "Because binary is shorter to write",
+        "Because people find binary easy to read",
+        "Because it uses less electricity than decimal"
+       ],
+       "fb": "Two reliable states are much easier to build than ten."
+      },
+      {
+       "t": "mcq",
+       "q": "Which of these is stored in binary inside a computer?",
+       "a": [
+        "All of them: numbers, text, images and sound",
+        "Only numbers",
+        "Only text",
+        "Only images"
+       ],
+       "fb": "Everything ends up as 1s and 0s."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Bits, nibbles and bytes",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "How many bits are in a byte?",
+       "a": [
+        "8",
+        "2",
+        "4",
+        "16"
+       ],
+       "fb": "Half a byte, 4 bits, is a nibble."
+      },
+      {
+       "t": "convert",
+       "q": "Show the number 5 in binary. Use the last four bits, as a nibble.",
+       "from": "denary",
+       "to": "binary",
+       "value": 5,
+       "fb": "5 is 0101 in a nibble, which is 00000101 in a byte."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Kilo, mega, giga",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "order",
+       "q": "Put these units in order, smallest first.",
+       "steps": [
+        "Bit",
+        "Nibble",
+        "Byte",
+        "Kilobyte",
+        "Megabyte",
+        "Gigabyte",
+        "Terabyte",
+        "Petabyte"
+       ],
+       "fb": "Each unit after byte is 1,000 times the one before."
+      },
+      {
+       "t": "mcq",
+       "q": "How many megabytes are in a gigabyte?",
+       "a": [
+        "1,000",
+        "8",
+        "100",
+        "1,024,000"
+       ],
+       "fb": "OCR uses 1,000 for these conversions."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Converting units",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "How many bytes are in 2 kB?",
+       "a": [
+        "2,000",
+        "16",
+        "256",
+        "2,048,000"
+       ],
+       "fb": "1 kB is 1,000 bytes."
+      },
+      {
+       "t": "mcq",
+       "q": "A file is 6,000 MB. How big is it in gigabytes?",
+       "a": [
+        "6 GB",
+        "0.6 GB",
+        "60 GB",
+        "600 GB"
+       ],
+       "fb": "Divide by 1,000 to go up a unit."
+      },
+      {
+       "t": "mcq",
+       "q": "What does a lowercase b mean, as in 34 Kb?",
+       "a": [
+        "Kilobits, used for data transmission speeds",
+        "Kilobytes",
+        "Kilobits per byte",
+        "Nothing: it means the same as KB"
+       ],
+       "fb": "Uppercase B is bytes, for storage; lowercase b is bits, for speeds."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Storing a number",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "convert",
+       "q": "Show the number 65 in 8-bit binary. This is the code for the letter A.",
+       "from": "denary",
+       "to": "binary",
+       "value": 65,
+       "fb": "65 is 01000001, which is the ASCII code for A."
+      },
+      {
+       "t": "mcq",
+       "q": "What is the largest number a byte can store?",
+       "a": [
+        "255",
+        "8",
+        "128",
+        "1,000"
+       ],
+       "fb": "8 bits give 256 different values, from 0 to 255."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "How big is a petabyte?",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "How many gigabytes are in a petabyte?",
+       "a": [
+        "1,000,000",
+        "1,000",
+        "8,000",
+        "1,000,000,000"
+       ],
+       "fb": "GB → TB → PB is two steps of 1,000."
+      },
+      {
+       "t": "mcq",
+       "q": "Roughly how many 8 GB memory sticks would hold 1 TB?",
+       "a": [
+        "125",
+        "8",
+        "80",
+        "1,000"
+       ],
+       "fb": "1,000 ÷ 8 = 125."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: unit conversions",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "convert",
+       "q": "Show the number 200 in 8-bit binary.",
+       "from": "denary",
+       "to": "binary",
+       "value": 200,
+       "fb": "200 is 11001000."
+      },
+      {
+       "t": "sort",
+       "q": "Sort these into the correct unit.",
+       "cats": [
+        "Kilobyte",
+        "Megabyte",
+        "Gigabyte"
+       ],
+       "items": [
+        [
+         "1,000 bytes",
+         "Kilobyte"
+        ],
+        [
+         "1,000,000 bytes",
+         "Megabyte"
+        ],
+        [
+         "1,000 kB",
+         "Megabyte"
+        ],
+        [
+         "1,000 MB",
+         "Gigabyte"
+        ],
+        [
+         "10⁹ bytes",
+         "Gigabyte"
+        ],
+        [
+         "A typical short photo file",
+         "Megabyte"
+        ]
+       ],
+       "fb": "Each step up the units multiplies by 1,000."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "1,000 or 1,024?",
+     "text": "Strictly, 1,024 bytes is a kibibyte (KiB). OCR uses 1,000 for a kilobyte, so use 1,000 in the exam."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "Why 8 bits?",
+     "text": "A byte settled at 8 bits because it holds one character in early character sets, and 8 is a convenient power of two."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 920,
+     "y": 540,
+     "title": "Nibble",
+     "text": "A nibble really is the official name for half a byte: computer scientists do occasionally have a sense of humour."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1888,
+     "y": 540,
+     "title": "Exabytes",
+     "text": "After petabyte comes exabyte, then zettabyte. The world now creates well over 100 zettabytes of data a year."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 920,
+     "y": 540,
+     "title": "Advertised sizes",
+     "text": "A '1 TB' drive shows as about 931 GB in Windows, because Windows divides by 1,024 while the manufacturer used 1,000."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1888,
+     "y": 540,
+     "title": "Bits for speed",
+     "text": "Broadband is sold in megabits per second. 80 Mb/s is only 10 MB/s of actual files, because there are 8 bits in a byte."
+    }
+   ],
+   "models": []
+  }
+ ]
+}

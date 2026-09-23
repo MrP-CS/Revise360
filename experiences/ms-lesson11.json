@@ -1,0 +1,358 @@
+{
+ "id": "ms-lesson11",
+ "lesson": 11,
+ "title": "Revision HQ 1.2 part 1",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Revision HQ 1.2 part 1",
+   "img": "img/MS_L11_RevisionHQ1_360.jpg",
+   "imgHi": "img/MS_L11_RevisionHQ1_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Primary storage",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which is volatile?",
+       "a": [
+        "RAM",
+        "ROM",
+        "A hard disk",
+        "An SSD"
+       ],
+       "fb": "Volatile means the contents are lost without power."
+      },
+      {
+       "t": "mcq",
+       "q": "What does ROM hold?",
+       "a": [
+        "The boot program or BIOS",
+        "Your documents",
+        "Open applications",
+        "Virtual memory"
+       ],
+       "fb": "It starts the computer up."
+      },
+      {
+       "t": "mcq",
+       "q": "What does primary storage mean?",
+       "a": [
+        "Memory the CPU can access directly",
+        "Storage kept off-site",
+        "The largest drive in the computer",
+        "Cloud storage"
+       ],
+       "fb": "RAM, ROM, cache and registers."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Virtual memory",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "When is virtual memory used?",
+       "a": [
+        "When RAM is full",
+        "When the computer is switched off",
+        "When ROM is full",
+        "Only on servers"
+       ],
+       "fb": "It borrows space from secondary storage."
+      },
+      {
+       "t": "mcq",
+       "q": "Why is virtual memory slow?",
+       "a": [
+        "Secondary storage is much slower than RAM",
+        "It is stored online",
+        "It uses the ROM",
+        "It only works at night"
+       ],
+       "fb": "Every swap means slow disk access."
+      },
+      {
+       "t": "mcq",
+       "q": "What is the best way to reduce the use of virtual memory?",
+       "a": [
+        "Install more RAM",
+        "Buy a bigger monitor",
+        "Delete the BIOS",
+        "Use a slower CPU"
+       ],
+       "fb": "More RAM means less swapping."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Secondary storage",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which type has no moving parts?",
+       "a": [
+        "Solid state",
+        "Magnetic",
+        "Optical",
+        "Tape"
+       ],
+       "fb": "That's why it survives being carried around."
+      },
+      {
+       "t": "mcq",
+       "q": "Which is cheapest per gigabyte for very large amounts of data?",
+       "a": [
+        "Magnetic",
+        "Solid state",
+        "Optical",
+        "RAM"
+       ],
+       "fb": "Hard disks and tape store bulk data cheaply."
+      },
+      {
+       "t": "mcq",
+       "q": "Which would you choose for a video camera's storage?",
+       "a": [
+        "A solid state memory card",
+        "An internal hard disk",
+        "A Blu-ray disc",
+        "Magnetic tape"
+       ],
+       "fb": "Portable, durable and fast to write."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Units and capacity",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "How many bytes are in 3 kB?",
+       "a": [
+        "3,000",
+        "24",
+        "384",
+        "3,072,000"
+       ],
+       "fb": "Use 1,000 per step in the exam."
+      },
+      {
+       "t": "mcq",
+       "q": "What is the formula for image file size?",
+       "a": [
+        "Width × height × colour depth",
+        "Width + height + depth",
+        "Sample rate × duration",
+        "Characters × bits"
+       ],
+       "fb": "All in pixels and bits."
+      },
+      {
+       "t": "mcq",
+       "q": "A sound is 8,000 Hz, 8-bit, 10 seconds. What is its size in bits?",
+       "a": [
+        "640,000",
+        "80,000",
+        "6,400",
+        "64,000"
+       ],
+       "fb": "8,000 × 8 × 10."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Binary and addition",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is 10011100 in denary?",
+       "a": [
+        "156",
+        "142",
+        "158",
+        "172"
+       ],
+       "fb": "128 + 16 + 8 + 4."
+      },
+      {
+       "t": "mcq",
+       "q": "What is the largest number 8 bits can hold?",
+       "a": [
+        "255",
+        "128",
+        "256",
+        "512"
+       ],
+       "fb": "All bits set to 1."
+      },
+      {
+       "t": "mcq",
+       "q": "When does an overflow error occur?",
+       "a": [
+        "When the result needs more bits than are available",
+        "When a number is negative",
+        "When two numbers are equal",
+        "When the disk is full"
+       ],
+       "fb": "Over 255 in 8 bits."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Shifts and hex",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "A left shift of 1 place does what?",
+       "a": [
+        "Multiplies by 2",
+        "Divides by 2",
+        "Adds 1",
+        "Reverses the bits"
+       ],
+       "fb": "Each place is worth double."
+      },
+      {
+       "t": "mcq",
+       "q": "What is 1111 in hexadecimal?",
+       "a": [
+        "F",
+        "E",
+        "15",
+        "10"
+       ],
+       "fb": "F is 15 in denary."
+      },
+      {
+       "t": "mcq",
+       "q": "How many bits does one hex digit represent?",
+       "a": [
+        "4",
+        "1",
+        "8",
+        "16"
+       ],
+       "fb": "That's why a byte is two hex digits."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: mixed practice",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "convert",
+       "q": "Convert 149 into 8-bit binary.",
+       "from": "denary",
+       "to": "binary",
+       "value": 149,
+       "fb": "128 + 16 + 4 + 1 = 149."
+      },
+      {
+       "t": "addshift",
+       "q": "Add these two binary numbers, ticking overflow if needed.",
+       "fb": "180 + 95 = 275, so there is an overflow.",
+       "mode": "add",
+       "a": 180,
+       "b": 95
+      },
+      {
+       "t": "convert",
+       "q": "Convert 10110010 into hexadecimal.",
+       "from": "binary",
+       "to": "hex",
+       "value": 178,
+       "fb": "1011 = B and 0010 = 2, so B2."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "Revision tip",
+     "text": "Practise conversions little and often. Five minutes a day beats an hour the night before."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "Check by adding",
+     "text": "After converting denary to binary, always add the place values back up to check you get the original number."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 920,
+     "y": 540,
+     "title": "Units in the exam",
+     "text": "Read carefully whether the answer is wanted in bits, bytes, kB or MB: it's the most common place to drop a mark."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1888,
+     "y": 540,
+     "title": "Storage answers",
+     "text": "Name the device, name the characteristic, then link it to the scenario. All three parts earn marks."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 920,
+     "y": 540,
+     "title": "Say it simply",
+     "text": "Volatile means 'loses its contents when the power is off'. Learn that phrase word for word."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1888,
+     "y": 540,
+     "title": "Try Binary blitz",
+     "text": "The bonus Binary blitz challenge is the fastest way to get quick at conversions before the test."
+    }
+   ],
+   "models": []
+  }
+ ]
+}

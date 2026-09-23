@@ -1,0 +1,301 @@
+{
+ "id": "ms-lesson7",
+ "lesson": 7,
+ "title": "Capacity calculator",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Capacity calculator",
+   "img": "img/MS_L7_CapacityCalculator_360.jpg",
+   "imgHi": "img/MS_L7_CapacityCalculator_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "What is data capacity?",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is the first step in a capacity calculation?",
+       "a": [
+        "Work out the size of one file",
+        "Divide the card size by 8",
+        "Convert everything to bits",
+        "Count the pixels on the screen"
+       ],
+       "fb": "Then multiply by the number of files and convert units."
+      },
+      {
+       "t": "mcq",
+       "q": "A card holds 64 GB and each photo is 4 MB. Roughly how many photos fit?",
+       "a": [
+        "16,000",
+        "160",
+        "1,600",
+        "160,000"
+       ],
+       "fb": "64,000 MB ÷ 4 MB = 16,000."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Image file size",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is the formula for the size of a bitmap image?",
+       "a": [
+        "Width × height × colour depth",
+        "Width + height + colour depth",
+        "Width × height ÷ colour depth",
+        "Resolution × sample rate"
+       ],
+       "fb": "All in pixels and bits per pixel."
+      },
+      {
+       "t": "mcq",
+       "q": "A 500 × 400 image has a colour depth of 4 bits. What is its size in bits?",
+       "a": [
+        "800,000",
+        "200,000",
+        "1,600,000",
+        "8,000"
+       ],
+       "fb": "500 × 400 × 4 = 800,000 bits."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Sound file size",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is the formula for the size of a sound file?",
+       "a": [
+        "Sample rate × bit depth × duration",
+        "Width × height × colour depth",
+        "Sample rate + bit depth + duration",
+        "Bit depth ÷ duration"
+       ],
+       "fb": "Multiply by the number of channels for stereo."
+      },
+      {
+       "t": "mcq",
+       "q": "A 10-second clip is recorded at 8,000 Hz with a bit depth of 8. What is its size in bits?",
+       "a": [
+        "640,000",
+        "80,000",
+        "64,000",
+        "6,400,000"
+       ],
+       "fb": "8,000 × 8 × 10 = 640,000 bits."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Text file size",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "A 500-character text file uses 8 bits per character. How large is it?",
+       "a": [
+        "500 bytes",
+        "500 bits",
+        "4,000 bytes",
+        "64 bytes"
+       ],
+       "fb": "500 × 8 = 4,000 bits, which is 500 bytes."
+      },
+      {
+       "t": "mcq",
+       "q": "Why is the same text larger in Unicode than in ASCII?",
+       "a": [
+        "Unicode uses more bits per character",
+        "Unicode adds pictures",
+        "Unicode repeats each character",
+        "It isn't: they're the same"
+       ],
+       "fb": "More bits per character means a bigger file."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Scenario practice",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "300 photos are 3 MB each. Will they fit on a 1 GB memory stick?",
+       "a": [
+        "No: they need 900 MB, which fits, but only just",
+        "No: they need 9 GB",
+        "Yes: they need 90 MB",
+        "Yes: they need 30 MB"
+       ],
+       "fb": "300 × 3 MB = 900 MB, which is under 1,000 MB."
+      },
+      {
+       "t": "mcq",
+       "q": "Why should you show your working?",
+       "a": [
+        "Marks are given for the method, even if the final number is wrong",
+        "It makes the answer longer",
+        "It is required by law",
+        "It doesn't matter"
+       ],
+       "fb": "Write the formula, substitute the numbers, then convert."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Estimating",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Why is a real photo file usually smaller than the calculated raw size?",
+       "a": [
+        "It has been compressed",
+        "The camera rounds down",
+        "Metadata is removed",
+        "Pixels are deleted at random"
+       ],
+       "fb": "Compression is covered in lessons 15 and 16."
+      },
+      {
+       "t": "mcq",
+       "q": "Which would double a bitmap image's file size?",
+       "a": [
+        "Doubling the colour depth",
+        "Halving the resolution",
+        "Renaming the file",
+        "Saving it twice"
+       ],
+       "fb": "Doubling either the number of pixels or the bits per pixel doubles the size."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: work it out",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "An image is 800 × 600 with a colour depth of 8 bits. What is the file size in bytes?",
+       "a": [
+        "480,000",
+        "3,840,000",
+        "60,000",
+        "4,800"
+       ],
+       "fb": "800 × 600 × 8 = 3,840,000 bits, and ÷ 8 = 480,000 bytes."
+      },
+      {
+       "t": "mcq",
+       "q": "A 60-second clip is sampled at 20,000 Hz with a bit depth of 16. What is the file size in bits?",
+       "a": [
+        "19,200,000",
+        "1,200,000",
+        "320,000",
+        "2,400,000"
+       ],
+       "fb": "20,000 × 16 × 60 = 19,200,000 bits."
+      },
+      {
+       "t": "mcq",
+       "q": "A text file has 4,000 characters stored in 16-bit Unicode. How big is it in bytes?",
+       "a": [
+        "8,000",
+        "4,000",
+        "64,000",
+        "500"
+       ],
+       "fb": "4,000 × 16 = 64,000 bits, and ÷ 8 = 8,000 bytes."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "CD quality",
+     "text": "A music CD samples at 44,100 Hz with 16-bit depth in stereo, which is about 10 MB per minute of audio."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "Why 44,100?",
+     "text": "Sampling must be at least twice the highest frequency you want to record. Human hearing stops around 20 kHz, so 44.1 kHz covers it."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 920,
+     "y": 540,
+     "title": "Raw photos",
+     "text": "Professional cameras can save 'raw' files with 14 bits per colour channel, which is why they're often 30 MB or more each."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1888,
+     "y": 540,
+     "title": "Metadata adds up",
+     "text": "A photo's metadata includes the date, camera settings and often GPS coordinates, which is worth remembering in exam answers."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 920,
+     "y": 540,
+     "title": "Streaming",
+     "text": "An hour of standard-definition streaming uses roughly 1 GB; 4K uses about 7 GB, which is why data limits matter."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1888,
+     "y": 540,
+     "title": "Show your working",
+     "text": "Examiners award method marks. Even if you slip up dividing by 8, the formula and substitution can still earn marks."
+    }
+   ],
+   "models": []
+  }
+ ]
+}

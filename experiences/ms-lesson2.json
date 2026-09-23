@@ -1,0 +1,292 @@
+{
+ "id": "ms-lesson2",
+ "lesson": 2,
+ "title": "Swap space",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Swap space",
+   "img": "img/MS_L2_SwapSpace_360.jpg",
+   "imgHi": "img/MS_L2_SwapSpace_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "When RAM runs out",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What happens when RAM becomes full?",
+       "a": [
+        "Data that isn't being used right now is moved to secondary storage to free up space",
+        "The computer switches off",
+        "The CPU slows its clock",
+        "Files are deleted permanently"
+       ],
+       "fb": "That borrowed space is called virtual memory."
+      },
+      {
+       "t": "mcq",
+       "q": "Which is most likely to fill RAM?",
+       "a": [
+        "Having many large programs open at once",
+        "Having a large hard drive",
+        "Having a fast CPU",
+        "Having a big monitor"
+       ],
+       "fb": "Each program needs its own space in memory."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "What is virtual memory?",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is virtual memory?",
+       "a": [
+        "Space on secondary storage used as extra RAM when RAM is full",
+        "Memory that only exists in the cloud",
+        "A faster type of RAM",
+        "The memory used by virtual reality"
+       ],
+       "fb": "It's real storage space, used as if it were memory."
+      },
+      {
+       "t": "mcq",
+       "q": "Can the CPU work directly on data held in virtual memory?",
+       "a": [
+        "No: it must be copied back into RAM first",
+        "Yes, just as quickly as RAM",
+        "Yes, but only for small files",
+        "Only when the computer is idle"
+       ],
+       "fb": "That copying back and forth is what costs time."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Swapping",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "order",
+       "q": "Put the steps in order for when the CPU needs data that is in virtual memory.",
+       "steps": [
+        "The CPU asks for data that isn't in RAM",
+        "Something not currently needed is moved from RAM to the disk",
+        "The data is copied from the disk into the free space in RAM",
+        "The CPU can now use the data"
+       ],
+       "fb": "Each of these steps involves slow disk access."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Why it's slow",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Why is virtual memory slower than RAM?",
+       "a": [
+        "Secondary storage takes far longer to read and write than RAM",
+        "It uses a different power supply",
+        "It is stored in the cloud",
+        "The CPU ignores it"
+       ],
+       "fb": "Even a fast SSD is much slower than RAM."
+      },
+      {
+       "t": "mcq",
+       "q": "What is disk thrashing?",
+       "a": [
+        "The computer spending most of its time swapping data instead of doing useful work",
+        "A hard disk being physically damaged",
+        "Deleting temporary files",
+        "Defragmenting the disk"
+       ],
+       "fb": "It's the point where virtual memory stops helping."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Avoiding virtual memory",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is the best way to avoid heavy use of virtual memory?",
+       "a": [
+        "Install more RAM",
+        "Buy a bigger monitor",
+        "Use a faster internet connection",
+        "Delete the operating system"
+       ],
+       "fb": "More RAM means less swapping."
+      },
+      {
+       "t": "mcq",
+       "q": "Why does doubling RAM make a heavily loaded computer much faster?",
+       "a": [
+        "Far less swapping is needed, so the CPU waits for the disk much less often",
+        "The CPU's clock speed doubles",
+        "The hard disk spins twice as fast",
+        "Programs become smaller"
+       ],
+       "fb": "The time saved is disk time, not CPU time."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Virtual memory in action",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "The user switches back to the swapped-out word processor. What happens?",
+       "a": [
+        "It is copied back into RAM, and something else is swapped out",
+        "It reopens from scratch, losing the work",
+        "It runs from the disk at full speed",
+        "Nothing: it was never moved"
+       ],
+       "fb": "That's why switching back takes a moment."
+      },
+      {
+       "t": "mcq",
+       "q": "Which would remove the delay completely?",
+       "a": [
+        "Having enough RAM to hold all three programs at once",
+        "Turning off the monitor",
+        "Using a smaller mouse pointer",
+        "Closing the ROM"
+       ],
+       "fb": "With enough RAM, no swapping is needed."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: the swap",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Is each statement about virtual memory true or false?",
+       "cats": [
+        "True",
+        "False"
+       ],
+       "items": [
+        [
+         "It uses secondary storage as extra memory",
+         "True"
+        ],
+        [
+         "The CPU can work on it directly, without using RAM",
+         "False"
+        ],
+        [
+         "It is slower than using RAM",
+         "True"
+        ],
+        [
+         "It is needed because RAM is limited",
+         "True"
+        ],
+        [
+         "Adding more RAM reduces how much it is used",
+         "True"
+        ],
+        [
+         "It makes a computer faster than having enough RAM",
+         "False"
+        ]
+       ],
+       "fb": "Virtual memory is a rescue, not an upgrade."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "Page file",
+     "text": "On Windows this space is called the page file; on Linux it's the swap partition. You can see it using up disk space."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "How big?",
+     "text": "Virtual memory is often set to around the same size as the installed RAM, but the operating system usually manages it automatically."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 920,
+     "y": 540,
+     "title": "Thrashing sounds",
+     "text": "On old computers with spinning hard disks, you could hear thrashing: the drive clicking constantly while nothing happened on screen."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1888,
+     "y": 540,
+     "title": "Phones too",
+     "text": "Some phones now use storage as extra RAM in the same way, advertised as 'RAM expansion' or 'virtual RAM'."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 920,
+     "y": 540,
+     "title": "Pages",
+     "text": "Memory is swapped in fixed-size blocks called pages, usually 4 kB, rather than whole programs at a time."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1888,
+     "y": 540,
+     "title": "SSD wear",
+     "text": "Heavy swapping writes a lot of data, which slowly wears out an SSD. Another reason to fit enough RAM."
+    }
+   ],
+   "models": []
+  }
+ ]
+}

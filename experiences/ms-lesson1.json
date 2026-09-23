@@ -1,0 +1,315 @@
+{
+ "id": "ms-lesson1",
+ "lesson": 1,
+ "title": "Memory bay",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Memory bay",
+   "img": "img/MS_L1_MemoryBay_360.jpg",
+   "imgHi": "img/MS_L1_MemoryBay_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Why primary storage?",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is primary storage?",
+       "a": [
+        "Memory the CPU can access directly, holding data and instructions in use",
+        "Long-term storage for files you aren't using",
+        "The cloud",
+        "A backup drive"
+       ],
+       "fb": "RAM, ROM, cache and registers are all primary storage."
+      },
+      {
+       "t": "mcq",
+       "q": "Why are programs copied into RAM before they run?",
+       "a": [
+        "RAM is much faster than secondary storage, so the CPU doesn't have to wait",
+        "RAM is bigger than a hard drive",
+        "RAM keeps data when the power is off",
+        "Secondary storage can't hold programs"
+       ],
+       "fb": "Speed is the whole reason primary storage exists."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "RAM",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does volatile mean?",
+       "a": [
+        "The contents are lost when the power is switched off",
+        "The contents can't be changed",
+        "It stores data permanently",
+        "It can explode if it gets hot"
+       ],
+       "fb": "That's why unsaved work disappears in a power cut."
+      },
+      {
+       "t": "mcq",
+       "q": "Which is stored in RAM while a computer is running?",
+       "a": [
+        "The operating system and the programs currently open",
+        "Only the BIOS",
+        "Files you haven't opened for years",
+        "Nothing at all"
+       ],
+       "fb": "Anything being used is copied into RAM."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "ROM",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is stored in ROM?",
+       "a": [
+        "The start-up instructions, often called the BIOS",
+        "Your documents",
+        "The programs you have open",
+        "Temporary internet files"
+       ],
+       "fb": "ROM holds the small program that gets everything else started."
+      },
+      {
+       "t": "mcq",
+       "q": "Why is ROM used for the boot program?",
+       "a": [
+        "It is non-volatile, so the instructions are still there when the power comes on",
+        "It is faster than cache",
+        "It can be written to easily",
+        "It is bigger than RAM"
+       ],
+       "fb": "If it were in RAM it would be empty at switch-on."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "RAM vs ROM",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Does each statement describe RAM or ROM?",
+       "cats": [
+        "RAM",
+        "ROM"
+       ],
+       "items": [
+        [
+         "Volatile: loses its contents at power off",
+         "RAM"
+        ],
+        [
+         "Non-volatile",
+         "ROM"
+        ],
+        [
+         "Can be read from and written to",
+         "RAM"
+        ],
+        [
+         "Can normally only be read from",
+         "ROM"
+        ],
+        [
+         "Holds the operating system while the computer runs",
+         "RAM"
+        ],
+        [
+         "Holds the BIOS or boot program",
+         "ROM"
+        ]
+       ],
+       "fb": "Both are primary storage, but they do very different jobs."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "The boot sequence",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "order",
+       "q": "Put the start-up steps in order.",
+       "steps": [
+        "The computer is switched on",
+        "The CPU runs the boot program stored in ROM",
+        "The BIOS checks the hardware is working",
+        "The operating system is copied from secondary storage into RAM",
+        "The operating system takes control"
+       ],
+       "fb": "This is why both types of primary storage are needed."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "More RAM, faster computer?",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Why does a computer slow down when RAM is full?",
+       "a": [
+        "It has to use much slower secondary storage as extra memory",
+        "The CPU switches itself off",
+        "ROM takes over",
+        "The monitor refreshes less often"
+       ],
+       "fb": "That's virtual memory, which is the next lesson."
+      },
+      {
+       "t": "mcq",
+       "q": "A computer has plenty of free RAM but still feels slow. What does adding more RAM do?",
+       "a": [
+        "Very little: the bottleneck is somewhere else",
+        "Doubles the clock speed",
+        "Makes the hard drive bigger",
+        "Removes all malware"
+       ],
+       "fb": "More RAM only helps when RAM is the limit."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: primary storage",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Does each statement describe RAM, ROM, or both?",
+       "cats": [
+        "RAM",
+        "ROM",
+        "Both"
+       ],
+       "items": [
+        [
+         "Loses its contents when the power goes off",
+         "RAM"
+        ],
+        [
+         "Holds the BIOS",
+         "ROM"
+        ],
+        [
+         "Is a type of primary storage",
+         "Both"
+        ],
+        [
+         "Can be written to by the operating system",
+         "RAM"
+        ],
+        [
+         "Keeps its contents with no power",
+         "ROM"
+        ],
+        [
+         "Is found on the motherboard",
+         "Both"
+        ],
+        [
+         "Holds the programs you currently have open",
+         "RAM"
+        ],
+        [
+         "Is read-only in normal use",
+         "ROM"
+        ]
+       ],
+       "fb": "Copy any you got wrong onto your worksheet comparison table."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "Core memory",
+     "text": "Early computers used 'core memory': tiny magnetic rings threaded on wires by hand. A few kilobytes filled a cabinet."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "How fast?",
+     "text": "RAM can be read in tens of nanoseconds. A hard disk takes milliseconds, which is around a hundred thousand times longer."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 920,
+     "y": 540,
+     "title": "Flashable ROM",
+     "text": "Modern boot ROM is usually flash memory, so it can be updated. That's what a 'BIOS update' or 'firmware update' does."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1888,
+     "y": 540,
+     "title": "Why 'random access'?",
+     "text": "Any location in RAM can be reached just as quickly as any other. Tape, by contrast, has to be wound to the right place."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 920,
+     "y": 540,
+     "title": "RAM in phones",
+     "text": "Phones have RAM too, usually 4 GB to 12 GB. It's why a phone with more RAM can keep more apps open in the background."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1888,
+     "y": 540,
+     "title": "Power cuts",
+     "text": "Some servers keep a battery-backed cache, so data in memory isn't lost if the power fails before it's written to disk."
+    }
+   ],
+   "models": []
+  }
+ ]
+}

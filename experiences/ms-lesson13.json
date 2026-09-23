@@ -1,0 +1,629 @@
+{
+ "id": "ms-lesson13",
+ "lesson": 13,
+ "title": "Pixel studio",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Pixel studio",
+   "img": "img/MS_L13_PixelStudio_360.jpg",
+   "imgHi": "img/MS_L13_PixelStudio_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Pixels and bitmaps",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "pixels",
+       "q": "Colour the grid to match the image. Each pixel is 1 bit: black is 0 and white is 1.",
+       "w": 8,
+       "h": 8,
+       "depth": 1,
+       "target": [
+        [
+         0,
+         0,
+         1,
+         1,
+         1,
+         1,
+         0,
+         0
+        ],
+        [
+         0,
+         1,
+         0,
+         0,
+         0,
+         0,
+         1,
+         0
+        ],
+        [
+         1,
+         0,
+         1,
+         0,
+         0,
+         1,
+         0,
+         1
+        ],
+        [
+         1,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         1
+        ],
+        [
+         1,
+         0,
+         1,
+         0,
+         0,
+         1,
+         0,
+         1
+        ],
+        [
+         1,
+         0,
+         0,
+         1,
+         1,
+         0,
+         0,
+         1
+        ],
+        [
+         0,
+         1,
+         0,
+         0,
+         0,
+         0,
+         1,
+         0
+        ],
+        [
+         0,
+         0,
+         1,
+         1,
+         1,
+         1,
+         0,
+         0
+        ]
+       ],
+       "fb": "This image is 8 × 8 × 1 = 64 bits, which is 8 bytes.",
+       "title": "Colour the grid"
+      },
+      {
+       "t": "mcq",
+       "q": "What is a pixel?",
+       "a": [
+        "A single point of colour in an image",
+        "A type of file",
+        "A unit of storage",
+        "A colour palette"
+       ],
+       "fb": "Picture element: the smallest part of a bitmap."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Colour depth",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "pixels",
+       "q": "This image uses a colour depth of 2 bits, so four colours. Copy it.",
+       "w": 8,
+       "h": 8,
+       "depth": 2,
+       "target": [
+        [
+         3,
+         3,
+         3,
+         3,
+         3,
+         3,
+         0,
+         0
+        ],
+        [
+         3,
+         1,
+         1,
+         1,
+         1,
+         3,
+         0,
+         0
+        ],
+        [
+         3,
+         1,
+         2,
+         2,
+         1,
+         3,
+         0,
+         0
+        ],
+        [
+         3,
+         1,
+         2,
+         2,
+         1,
+         3,
+         0,
+         0
+        ],
+        [
+         3,
+         1,
+         1,
+         1,
+         1,
+         3,
+         0,
+         0
+        ],
+        [
+         3,
+         3,
+         3,
+         3,
+         3,
+         3,
+         0,
+         0
+        ],
+        [
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0
+        ],
+        [
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0
+        ]
+       ],
+       "fb": "Four colours need 2 bits per pixel: 00, 01, 10 and 11.",
+       "title": "Colour the grid"
+      },
+      {
+       "t": "mcq",
+       "q": "How many colours can a colour depth of 8 bits represent?",
+       "a": [
+        "256",
+        "8",
+        "64",
+        "1,024"
+       ],
+       "fb": "2 to the power 8."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Resolution",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does resolution mean?",
+       "a": [
+        "The number of pixels in the image, width × height",
+        "The number of colours available",
+        "The size of the screen",
+        "How fast the image loads"
+       ],
+       "fb": "Don't confuse it with colour depth."
+      },
+      {
+       "t": "mcq",
+       "q": "An image is doubled in width and in height. What happens to the file size?",
+       "a": [
+        "It becomes four times larger",
+        "It doubles",
+        "It stays the same",
+        "It halves"
+       ],
+       "fb": "Twice the width and twice the height gives four times as many pixels."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Metadata",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "multi",
+       "q": "Which of these are examples of image metadata? Select all that apply.",
+       "opts": [
+        "The image's width and height",
+        "The colour depth",
+        "The date the photo was taken",
+        "The camera settings used",
+        "The colour of each pixel",
+        "The monitor's brightness"
+       ],
+       "correct": [
+        "The image's width and height",
+        "The colour depth",
+        "The date the photo was taken",
+        "The camera settings used"
+       ],
+       "fb": "The pixel colours are the data itself, not metadata."
+      },
+      {
+       "t": "mcq",
+       "q": "Why does an image file need metadata?",
+       "a": [
+        "So the computer knows the dimensions and colour depth needed to rebuild the image",
+        "To make the file bigger",
+        "To store the pixels twice",
+        "To stop the image being copied"
+       ],
+       "fb": "Without the width, the computer wouldn't know where each row ends."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Calculating file size",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "A 200 × 100 image has a colour depth of 4 bits. What is its size in bits?",
+       "a": [
+        "80,000",
+        "20,000",
+        "800",
+        "160,000"
+       ],
+       "fb": "200 × 100 × 4."
+      },
+      {
+       "t": "mcq",
+       "q": "That image is how many bytes?",
+       "a": [
+        "10,000",
+        "80,000",
+        "1,250",
+        "20,000"
+       ],
+       "fb": "80,000 ÷ 8 = 10,000 bytes."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Quality against size",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "pixels",
+       "q": "Copy this arrow icon. It's 1-bit, so just black and white.",
+       "w": 8,
+       "h": 8,
+       "depth": 1,
+       "target": [
+        [
+         0,
+         0,
+         0,
+         1,
+         1,
+         0,
+         0,
+         0
+        ],
+        [
+         0,
+         0,
+         1,
+         1,
+         1,
+         1,
+         0,
+         0
+        ],
+        [
+         0,
+         1,
+         1,
+         1,
+         1,
+         1,
+         1,
+         0
+        ],
+        [
+         1,
+         1,
+         0,
+         1,
+         1,
+         0,
+         1,
+         1
+        ],
+        [
+         0,
+         0,
+         0,
+         1,
+         1,
+         0,
+         0,
+         0
+        ],
+        [
+         0,
+         0,
+         0,
+         1,
+         1,
+         0,
+         0,
+         0
+        ],
+        [
+         0,
+         0,
+         0,
+         1,
+         1,
+         0,
+         0,
+         0
+        ],
+        [
+         0,
+         0,
+         0,
+         1,
+         1,
+         0,
+         0,
+         0
+        ]
+       ],
+       "fb": "Simple icons don't need many colours: 64 bits is plenty.",
+       "title": "Colour the grid"
+      },
+      {
+       "t": "mcq",
+       "q": "Which change would make an image file smaller?",
+       "a": [
+        "Reducing the colour depth from 24 bits to 8 bits",
+        "Increasing the resolution",
+        "Adding more metadata",
+        "Saving it twice"
+       ],
+       "fb": "Fewer bits per pixel means a smaller file."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: build an image",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "pixels",
+       "q": "Copy this 2-bit image. Watch the file size readout as you work.",
+       "w": 8,
+       "h": 8,
+       "depth": 2,
+       "target": [
+        [
+         3,
+         3,
+         3,
+         3,
+         3,
+         3,
+         0,
+         0
+        ],
+        [
+         3,
+         1,
+         1,
+         1,
+         1,
+         3,
+         0,
+         0
+        ],
+        [
+         3,
+         1,
+         2,
+         2,
+         1,
+         3,
+         0,
+         0
+        ],
+        [
+         3,
+         1,
+         2,
+         2,
+         1,
+         3,
+         0,
+         0
+        ],
+        [
+         3,
+         1,
+         1,
+         1,
+         1,
+         3,
+         0,
+         0
+        ],
+        [
+         3,
+         3,
+         3,
+         3,
+         3,
+         3,
+         0,
+         0
+        ],
+        [
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0
+        ],
+        [
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0
+        ]
+       ],
+       "fb": "8 × 8 × 2 = 128 bits, or 16 bytes.",
+       "title": "Colour the grid"
+      },
+      {
+       "t": "mcq",
+       "q": "An image is 1,000 × 500 pixels with a colour depth of 8 bits. What is the file size in kilobytes?",
+       "a": [
+        "500",
+        "4,000",
+        "62.5",
+        "5,000"
+       ],
+       "fb": "1,000 × 500 × 8 = 4,000,000 bits, ÷ 8 = 500,000 bytes, ÷ 1,000 = 500 kB."
+      },
+      {
+       "t": "mcq",
+       "q": "Which pair of items would both be stored as metadata?",
+       "a": [
+        "The image's dimensions and the date it was created",
+        "The pixel colours and the file size",
+        "The screen brightness and the printer type",
+        "The user's password and the file name"
+       ],
+       "fb": "Metadata describes the image, not the device showing it."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "Picture element",
+     "text": "The word pixel is short for 'picture element'. Your phone's camera captures tens of millions of them at once."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "True colour",
+     "text": "24-bit colour uses 8 bits each for red, green and blue, giving 16.7 million shades: more than the human eye can distinguish."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 920,
+     "y": 540,
+     "title": "Why images look blocky",
+     "text": "Enlarging a bitmap doesn't add detail, so pixels become visible. Vector images, drawn from shapes, don't have that problem."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1888,
+     "y": 540,
+     "title": "Hidden GPS",
+     "text": "Photos taken on a phone often store the exact location in their metadata, which is worth knowing before sharing them online."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 920,
+     "y": 540,
+     "title": "Bitmap sizes",
+     "text": "An uncompressed 12-megapixel photo at 24-bit colour would be about 36 MB. Compression is what makes it around 3 MB."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1888,
+     "y": 540,
+     "title": "Screens do the same",
+     "text": "Your screen is a grid of pixels too, each made of red, green and blue subpixels, blended by your eye."
+    }
+   ],
+   "models": []
+  }
+ ]
+}
