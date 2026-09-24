@@ -3,7 +3,7 @@
 (async function () {
   const CFG = window.APP_CONFIG;
   const params = new URLSearchParams(location.search);
-  const expId = params.get("id");
+  let expId = params.get("id");
   const student = Store.student();
   if (!student) { location.href = "index.html?next=" + encodeURIComponent(location.pathname.split("/").pop() + location.search); return; }
   const $ = s => document.querySelector(s);
@@ -13,7 +13,23 @@
   const marks = t => (t.t === "mcq" || t.t === "multi" || t.t === "circuit" || t.t === "expr" || t.t === "convert" || t.t === "addshift" || t.t === "pixels" || t.t === "sound") ? 1 : t.t === "table" ? (1 << (t.inputs ? t.inputs.length : new Set((t.expr || "").replace(/AND|OR|NOT/g, "").match(/[A-Z]/g) || []).size)) : (t.t === "sprint" || t.t === "defence" || t.t === "blitz") ? 0 : t.t === "order" ? t.steps.length : t.t === "sort" ? t.items.length : t.pairs.length;
 
   let exp;
-  try { exp = await (await fetch("experiences/" + encodeURIComponent(expId) + ".json", { cache: "no-cache" })).json(); }
+  // Experience files were renamed to a single convention; old links still work
+  async function fetchExp(id) {
+    const r = await fetch("experiences/" + encodeURIComponent(id) + ".json", { cache: "no-cache" });
+    if (!r.ok) throw new Error("not found");
+    return r.json();
+  }
+  try {
+    try { exp = await fetchExp(expId); }
+    catch (e) {
+      const al = await (await fetch("experiences/aliases.json", { cache: "no-cache" })).json();
+      if (!al[expId]) throw e;
+      const newId = al[expId];
+      Store.rename && Store.rename(expId, newId);     // carry any saved progress across
+      expId = newId; exp = await fetchExp(newId);
+      history.replaceState(null, "", "experience.html?id=" + encodeURIComponent(newId));
+    }
+  }
   catch (e) { document.body.innerHTML = '<div class="page"><div class="card"><h1>Experience not found</h1><p><a href="index.html">Back to home</a></p></div></div>'; return; }
   document.title = exp.title + " | " + CFG.siteTitle;
 
@@ -76,7 +92,7 @@
   function stationState(sc, k) {
     const st = sc.stations[k], sp = prog.scenes[sc.id];
     let got = 0, tot = 0, open = 0;
-    st.tasks.forEach((tk, i) => { const m = marks(tk); tot += m; const a = sp.ans[k + "-" + i]; if (a !== undefined) { got += a; if (a < m && !prog.review[sc.id + ":" + k + "-" + i]) open++; } });
+    st.tasks.forEach((tk, i) => { const m = marks(tk); tot += m; const a = (sp.ans || {})[k + "-" + i]; if (a !== undefined) { got += a; if (a < m && !prog.review[sc.id + ":" + k + "-" + i]) open++; } });
     return { done: !!sp.done[k], got, tot, band: Store.band(got, tot), open };
   }
   function badgeTex(label, col, mode) {
@@ -334,11 +350,11 @@
     let list;
     if (reviewMode) {
       if (!state.done) { toast("Answer this station normally first. Turn review mode off to start it."); return null; }
-      list = st.tasks.map((_, i) => i).filter(i => (sp.ans[k + "-" + i] ?? 0) < marks(st.tasks[i]) && !prog.review[sc.id + ":" + k + "-" + i]);
+      list = st.tasks.map((_, i) => i).filter(i => ((sp.ans || {})[k + "-" + i] ?? 0) < marks(st.tasks[i]) && !prog.review[sc.id + ":" + k + "-" + i]);
       if (!list.length) { toast("Nothing left to review here. Well done!"); return null; }
     } else {
       if (state.done) { toast(`You scored ${state.got}/${state.tot} here. Use review mode to retry anything you got wrong.`); return null; }
-      list = st.tasks.map((_, i) => i).filter(i => sp.ans[k + "-" + i] === undefined);
+      list = st.tasks.map((_, i) => i).filter(i => (sp.ans || {})[k + "-" + i] === undefined);
       if (!list.length) { sp.done[k] = true; save(); refreshSprites(); return null; }
     }
     return list;

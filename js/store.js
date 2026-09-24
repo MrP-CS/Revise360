@@ -83,6 +83,13 @@
 
     signOut() { try { localStorage.removeItem(NS + "student"); } catch (e) {} },
 
+    // Move progress saved under an old experience id onto the new one
+    rename(oldId, newId) {
+      const s = Store.student(); if (!s) return;
+      const all = read("p:" + s.key, {});
+      if (all[oldId] && !all[newId]) { all[newId] = all[oldId]; delete all[oldId]; write("p:" + s.key, all); Store.push(newId); }
+    },
+
     async pull() {
       const s = Store.student(); if (!s || (!CFG.backendUrl && !(window.R360Local && R360Local.active()))) return;
       setStatus("syncing");
@@ -147,7 +154,7 @@
         let got = 0, tot = 0, answered = 0, fixed = 0, wrongTasks = 0;
         st.tasks.forEach((t, i) => {
           const m = marks(t); tot += m;
-          const a = sp.ans[k + "-" + i];
+          const a = (sp.ans || {})[k + "-" + i];
           if (a !== undefined) { got += a; answered++; if (a < m) { wrongTasks++; if (prog.review && prog.review[sc.id + ":" + k + "-" + i]) fixed++; } }
         });
         const done = !!sp.done[k];
