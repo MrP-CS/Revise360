@@ -59,24 +59,23 @@
 
   async function topicsPage() {
     await header();
-    $("#topic").textContent = topicsFile.tagline || "";
+    $("#topic").textContent = "OCR J277 · GCSE Computer Science";
     const sums = await summaries(reg.experiences.filter(e => !isWS(e)));
-    const groups = topicsFile.groups.map(g => {
-      const cards = g.topics.map(t => {
+    const groups = topicsFile.groups.map((g, gi) => {
+      const rows = g.topics.map(t => {
         const list = expsFor(t.id);
-        if (!list.length) return `<div class="topic soon" aria-disabled="true"><span class="code">${esc(t.id)}</span><h3>${esc(t.title)}</h3><p>${esc(t.description || "")}</p><div class="meta"><span>Coming soon</span></div></div>`;
+        if (!list.length) return `<div class="topic soon"><span class="code">${esc(t.id)}</span><div class="topic-copy"><h3>${esc(t.title)}</h3><p>${esc(t.description || "")}</p></div><span class="topic-state">Coming soon</span></div>`;
         let score = 0, total = 0, complete = 0, weak = 0;
         list.forEach(e => { const s = sums[e.id]; if (!s) return; score += s.score; total += s.total; if (s.complete) complete++; weak += s.stations.filter(x => x.done && x.wrongTasks > x.fixed).length; });
         const started = list.some(e => sums[e.id] && sums[e.id].done);
         const pct = Math.round(complete / list.length * 100);
-        return `<a class="topic" href="?topic=${encodeURIComponent(t.id)}"><span class="code">${esc(t.id)}</span><h3>${esc(t.title)}</h3><p>${esc(t.description || "")}</p>
-          <div class="meta"><span>${list.length} experience${list.length > 1 ? "s" : ""} · ${complete} complete${started ? ` · ${score}/${total} marks` : ""}</span>${weak ? `<span class="rag a">${weak} to review</span>` : ""}</div>
-          <div class="bar" role="progressbar" aria-label="Experiences complete" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100"><i style="width:${pct}%"></i></div></a>`;
+        return `<a class="topic" href="?topic=${encodeURIComponent(t.id)}"><span class="code">${esc(t.id)}</span><div class="topic-copy"><h3>${esc(t.title)}</h3><p>${esc(t.description || "")}</p><div class="topic-progress"><div class="bar" role="progressbar" aria-label="${esc(t.title)} experiences complete" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100"><i style="width:${pct}%"></i></div><span>${complete} / ${list.length} complete${started ? ` · ${score}/${total} marks` : ""}</span>${weak ? `<span class="rag a">${weak} to review</span>` : ""}</div></div><span class="topic-action" aria-hidden="true">${started ? "Continue" : "Explore"} <span>↗</span></span></a>`;
       }).join("");
-      return `<h2 class="group">${esc(g.name)}</h2><div class="topics">${cards}</div>`;
+      const name = g.name.replace(/^Paper [12]:\s*/, "");
+      return `<section class="paper-section"><div class="paper-heading"><span class="paper-kicker">PAPER 0${gi + 1}</span><div><h2>${esc(name)}</h2><p>${gi === 0 ? "Hardware, data, networks and security" : "Algorithms, programming and logic"}</p></div></div><div class="course-list">${rows}</div></section>`;
     }).join("");
-    setTimeout(vrNote, 0);
-    $("#main").innerHTML = `<div class="vrnote" id="vrnote" hidden>🥽 <span>This headset supports VR. Open any experience and press <b>Enter VR</b>.</span></div><h2 style="margin:0 0 4px">Choose a topic</h2><p class="muted" style="margin:0">Pick a topic to see its 360° experiences.</p>${groups}`;
+    $("#main").innerHTML = `<div class="vrnote" id="vrnote" hidden><span>VR READY</span> This headset supports VR. Open an experience and select Enter VR.</div><div class="dashboard-intro"><p class="eyebrow">YOUR COURSE / OCR J277</p><h1>What are you revising today?</h1><p>Open an experience on a PC or tablet, or step inside with a VR headset. Choose a topic to begin.</p></div>${groups}`;
+    vrNote();
   }
 
   // ---------- stage 2: experiences in a topic ----------
@@ -85,11 +84,11 @@
     const t = allTopics.find(x => x.id === id) || { id, title: "Topic " + id };
     $("#topic").textContent = `${t.id} ${t.title}`;
     const list = expsFor(id), sums = await summaries(list);
-    const cards = [], weak = []; let totS = 0, totT = 0, doneE = 0;
+    const rows = [], weak = []; let totS = 0, totT = 0, doneE = 0;
     for (const e of allFor(id)) {
+      const number = e.lesson ? String(e.lesson).padStart(2, "0") : "★";
       if (isWS(e)) {
-        cards.push(`<article class="exp"><div class="thumb ws"><span>Lesson ${esc(e.lesson)}</span><b>📝</b></div><div class="body"><h3>${esc(e.title)}</h3><p>${esc(e.description)}</p>
-          <div class="row"><a class="btn small" href="${esc(e.worksheet)}" download aria-label="Download the ${esc(e.title)} worksheet (Word document)">⬇ Worksheet</a></div></div></article>`);
+        rows.push(`<article class="exp worksheet-row"><span class="lesson-number">${number}</span><div class="body"><span class="lesson-type">Paper assessment</span><h3>${esc(e.title)}</h3><p>${esc(e.description)}</p></div><div class="lesson-actions"><a class="btn small ghost" href="${esc(e.worksheet)}" download aria-label="Download the ${esc(e.title)} worksheet (Word document)">Download worksheet ↓</a></div></article>`);
         continue;
       }
       const sum = sums[e.id], prog = Store.get(e.id);
@@ -98,24 +97,20 @@
       const pct = sum && sum.count ? Math.round(sum.done / sum.count * 100) : 0, band = bandOf(sum);
       const started = sum && (sum.done > 0 || Object.values(prog?.scenes || {}).some(sc => Object.keys(sc.ans || {}).length));
       const hasWeak = sum && sum.stations.some(st => st.done && st.wrongTasks > st.fixed);
-      cards.push(`<article class="exp"><div class="thumb" style="background-image:url('experiences/${esc(e.thumb)}')">${e.badge ? `<span>${esc(e.badge)}</span>` : e.lesson ? `<span>Lesson ${esc(e.lesson)}</span>` : ""}</div>
-        <div class="body"><h3>${esc(e.title)}</h3><p>${esc(e.description)}</p>
-        ${sum && e.sprint ? `<div class="row" style="justify-content:space-between"><span class="muted" style="font-size:13px">${sum.sprint ? `Personal best <b style="color:var(--edge)">${sum.sprint.best}</b> · ${sum.sprint.attempts} ${sum.sprint.attempts === 1 ? "try" : "tries"}` : "Set your first score"}</span><span class="rag ${sum.sprint ? "g" : "n"}">${sum.sprint ? "🏁 Played" : "Not started"}</span></div>` :
-        sum ? `<div class="row" style="justify-content:space-between"><span class="muted" style="font-size:13px">${sum.done}/${sum.count} stations · ${sum.score}/${sum.total} marks${sum.infoTotal ? ` · ${sum.infoSeen}/${sum.infoTotal} facts` : ""}</span><span class="rag ${band}">${sum.done ? Store.BAND_LABEL[band] : "Not started"}</span></div>
-        <div class="bar" role="progressbar" aria-label="Stations complete" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100"><i style="width:${pct}%"></i></div>` : '<p class="err">Could not load this experience.</p>'}
-        <div class="row"><a class="btn small" href="experience.html?id=${encodeURIComponent(e.id)}">${sum && sum.complete ? "Open" : started ? "Continue" : "Start"}</a>
-        ${hasWeak ? `<a class="btn small ghost" href="experience.html?id=${encodeURIComponent(e.id)}&review=1">Review mistakes</a>` : ""}
-        ${e.worksheet ? `<a class="btn small ghost" href="${esc(e.worksheet)}" download aria-label="Download the ${esc(e.title)} worksheet (Word document)">⬇ Worksheet</a>` : ""}</div></div></article>`);
+      const kind = e.sprint || e.badge ? "Challenge" : "360° experience";
+      rows.push(`<article class="exp"><span class="lesson-number">${number}</span><div class="thumb" style="background-image:url('experiences/${esc(e.thumb)}')" role="img" aria-label="Preview of ${esc(e.title)}"></div><div class="body"><span class="lesson-type">${kind}</span><h3>${esc(e.title)}</h3><p>${esc(e.description)}</p>
+        ${sum && e.sprint ? `<div class="lesson-meta">${sum.sprint ? `Personal best ${sum.sprint.best} · ${sum.sprint.attempts} ${sum.sprint.attempts === 1 ? "try" : "tries"}` : "Set your first score"}</div>` :
+        sum ? `<div class="lesson-meta"><span>${sum.done}/${sum.count} stations · ${sum.score}/${sum.total} marks${sum.infoTotal ? ` · ${sum.infoSeen}/${sum.infoTotal} facts` : ""}</span><span class="rag ${band}">${sum.done ? Store.BAND_LABEL[band] : "Not started"}</span><div class="bar" role="progressbar" aria-label="${esc(e.title)} stations complete" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100"><i style="width:${pct}%"></i></div></div>` : '<span class="err">Could not load this experience.</span>'}</div>
+        <div class="lesson-actions"><a class="btn small" href="experience.html?id=${encodeURIComponent(e.id)}">${sum && sum.complete ? "Open" : started ? "Continue" : "Start"} <span aria-hidden="true">↗</span></a>
+        ${hasWeak ? `<a class="quiet-link" href="experience.html?id=${encodeURIComponent(e.id)}&review=1">Review mistakes</a>` : ""}
+        ${e.worksheet ? `<a class="quiet-link" href="${esc(e.worksheet)}" download aria-label="Download the ${esc(e.title)} worksheet (Word document)">Worksheet ↓</a>` : ""}</div></article>`);
     }
     weak.sort((a, b) => (a.st.got / a.st.tot) - (b.st.got / b.st.tot));
     $("#main").innerHTML = `<a class="crumb" href="?">← All topics</a>
-      <h2 style="margin:0 0 16px">${esc(t.id)} ${esc(t.title)}</h2>
-      ${list.length ? `<div class="stats">
-        <div class="stat"><span class="muted">Experiences complete</span><b>${doneE} / ${list.length}</b></div>
-        <div class="stat"><span class="muted">Total marks</span><b>${totS} / ${totT}</b></div>
-        <div class="stat"><span class="muted">Areas to review</span><b>${weak.length}</b></div></div>
-      <section><h2>Experiences</h2><div class="grid">${cards.join("")}</div></section>
-      <section><h2>My areas to work on</h2>${weak.length ? `<div class="weak">${weak.map(w => `<a href="experience.html?id=${encodeURIComponent(w.e.id)}&review=1&go=${encodeURIComponent(w.st.scene + ":" + w.st.k)}"><span><span class="muted">${w.e.lesson ? `Lesson ${esc(w.e.lesson)} · ` : ""}${esc(w.st.sceneTitle)}</span><br>${esc(w.st.name)}</span><span>${w.st.got}/${w.st.tot} <span class="rag ${w.st.band}">${Store.BAND_LABEL[w.st.band]}</span></span></a>`).join("")}</div>`
+      <div class="topic-intro"><div><p class="eyebrow">TOPIC ${esc(t.id)} / OCR J277</p><h1>${esc(t.title)}</h1><p>${esc(t.description || "")}</p></div><span class="topic-count">${list.length} experiences</span></div>
+      ${list.length ? `<div class="topic-summary"><div><span>Experiences complete</span><strong>${doneE} / ${list.length}</strong></div><div><span>Marks so far</span><strong>${totS} / ${totT}</strong></div><div><span>Areas to review</span><strong>${weak.length}</strong></div></div>
+      <section class="learning-section"><div class="section-title"><span>YOUR LEARNING PATH</span><h2>Experiences and assessments</h2></div><div class="learning-list">${rows.join("")}</div></section>
+      <section class="review-section"><div class="section-title"><span>NEXT STEPS</span><h2>My areas to work on</h2></div>${weak.length ? `<div class="weak">${weak.map(w => `<a href="experience.html?id=${encodeURIComponent(w.e.id)}&review=1&go=${encodeURIComponent(w.st.scene + ":" + w.st.k)}"><span><span class="muted">${w.e.lesson ? `Lesson ${esc(w.e.lesson)} · ` : ""}${esc(w.st.sceneTitle)}</span><br>${esc(w.st.name)}</span><span>${w.st.got}/${w.st.tot} <span class="rag ${w.st.band}">${Store.BAND_LABEL[w.st.band]}</span></span></a>`).join("")}</div>`
         : '<p class="muted">Nothing to review yet. Stations where you drop marks will appear here, with a link straight to the questions to retry.</p>'}</section>`
       : '<p class="muted">There are no experiences for this topic yet. Check back soon.</p>'}`;
   }
@@ -126,8 +121,8 @@
   }
   async function header() {
     const s = Store.student();
-    $("#who").innerHTML = `<span class="sync" id="sync"></span><span>${esc(s.name)} · ${esc(s.cls)}</span><button class="btn small ghost" id="out">Sign out</button>`;
-    $("#out").onclick = () => { Store.signOut(); synced = false; history.replaceState(null, "", location.pathname); signIn(); };
+    $("#who").innerHTML = `<span class="sync" id="sync"></span><span class="student-name">${esc(s.name)}${s.cls ? ` · ${esc(s.cls)}` : ""}</span><button class="quiet-link signout" id="out">Sign out</button>`;
+    $("#out").onclick = () => { Store.signOut(); synced = false; history.replaceState(null, "", location.pathname); signIn(); if (window.R360Nav) R360Nav.refresh(); };
     const labels = { local: "Saved on this device", saved: "Progress synced ✓", syncing: "Syncing…", pending: "Syncing…", offline: "Offline: progress saved on this device", idle: "" };
     if (!statusHooked) { statusHooked = true; Store.onStatus(st => { const el = $("#sync"); if (el) el.textContent = labels[st] || ""; }); }
     if (!synced) { synced = true; $("#main").innerHTML = '<p class="muted">Loading…</p>'; await Store.pull(); await Store.flushQueue(); }

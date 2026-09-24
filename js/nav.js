@@ -2,18 +2,17 @@
 // collapses to a menu button on narrow screens.
 (function () {
   const LINKS = [
-    { href: "index.html", label: "Home" },
     { href: "topics.html", label: "Topics" },
-    { href: "about.html", label: "About" },
+    { href: "guides.html", label: "How it works" },
     { href: "teachers.html", label: "For teachers" },
-    { href: "teacher.html", label: "Dashboard" },
-    { href: "guides.html", label: "Guides" }
+    { href: "teacher.html", label: "Teacher dashboard" }
   ];
   const here = (location.pathname.split("/").pop() || "index.html").toLowerCase();
+  const esc = s => String(s).replace(/[&<>\"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
   function signInLink() {
     const s = window.Store && Store.student && Store.student();
-    if (s) return { href: "topics.html", label: "Signed in: " + s.name, cls: "me" };
+    if (s) return { href: "topics.html", label: "My progress", cls: "me" };
     return { href: "topics.html#signin", label: "Sign in", cls: "cta" };
   }
 
@@ -35,15 +34,17 @@
 
   function build() {
     const bar = document.querySelector("header.bar, header.top");
-    if (!bar || bar.querySelector(".nav")) return;
+    if (!bar || bar.querySelector(".site-nav")) return;
     const links = LINKS.concat([signInLink()]);
     const nav = document.createElement("nav");
-    nav.className = "nav";
+    nav.className = "site-nav";
+    nav.setAttribute("aria-label", "Main navigation");
     nav.innerHTML = `
-      <button class="navbtn" aria-expanded="false" aria-controls="navlinks" aria-label="Menu">☰</button>
+      <button class="navbtn" aria-expanded="false" aria-controls="navlinks">Menu <span aria-hidden="true">☰</span></button>
       <ul id="navlinks">${links.map(l => {
-        const active = l.href.split("#")[0].toLowerCase() === here && !l.cls ? ' class="on"' : l.cls ? ` class="${l.cls}"` : "";
-        return `<li><a href="${l.href}"${active}>${l.label}</a></li>`;
+        const active = l.href.split("#")[0].toLowerCase() === here && !l.cls;
+        const cls = [l.cls, active ? "on" : ""].filter(Boolean).join(" ");
+        return `<li><a href="${l.href}"${cls ? ` class="${cls}"` : ""}${active ? ' aria-current="page"' : ""}>${esc(l.label)}</a></li>`;
       }).join("")}</ul>`;
     bar.appendChild(nav);   // straight onto the header, so page scripts that rewrite their own areas can't wipe it
     const btn = nav.querySelector(".navbtn"), ul = nav.querySelector("ul");
@@ -66,5 +67,5 @@
   }
 
   document.readyState === "loading" ? addEventListener("DOMContentLoaded", init) : init();
-  window.R360Nav = { refresh: () => { const n = document.querySelector("header .nav"); if (n) n.remove(); build(); }, footer };
+  window.R360Nav = { refresh: () => { const n = document.querySelector("header .site-nav"); if (n) n.remove(); build(); }, footer };
 })();

@@ -3,79 +3,97 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Revise 360 — GCSE Computer Science revision you step inside</title>
-<meta name="description" content="Revise 360 turns each part of GCSE Computer Science into a 360° room students explore on a laptop, a tablet or in a VR headset, with printed worksheets and interactive challenges.">
+<title>Revise 360 — GCSE Computer Science from every angle</title>
+<meta name="description" content="Explore OCR GCSE Computer Science in interactive 360° rooms, with questions, practical challenges and printable worksheets.">
+<link rel="icon" href="assets/revise360-mark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/rebrand.css">
 <script src="js/config.js"></script>
 <script src="js/local.js"></script>
 <script src="js/store.js"></script>
 <script src="js/nav.js"></script>
+<script src="js/preview.js" defer></script>
 </head>
 <body>
 <header class="bar">
-  <a class="brand" href="index.html"><span class="logo">360</span><span><b>Revise 360</b><small>GCSE Computer Science</small></span></a>
-  <div class="tools"></div>
+  <a class="brand" href="index.html" aria-label="Revise 360 home"><img class="brand-icon" src="assets/revise360-mark.svg" alt=""><span class="brand-copy"><b>Revise<span>360</span></b><small>GCSE Computer Science</small></span></a>
 </header>
 
-<main class="page">
+<main class="page home-page">
   <section class="hero home">
-    <p class="eyebrow">OCR J277 · Paper 1 and Paper 2</p>
-    <h1>Revision you step inside</h1>
-    <p class="lead">Every part of the specification becomes a 360° room. Students look around, work through six stations, build circuits and defragment disks with their own hands, and leave knowing exactly what to revise. It works on a laptop, a tablet, a phone or in a VR headset.</p>
-    <div class="row">
-      <a class="btn big" href="topics.html">Explore the experiences</a>
-      <a class="btn ghost big" href="guides.html#teachers">How it works in a lesson</a>
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="eyebrow-line"></span> OCR J277 · GCSE Computer Science</p>
+      <h1>See the whole<br><em>picture.</em></h1>
+      <p class="lead">Open a 360° Computer Science room on a PC or tablet. Work through the stations and see what to revise next. Have a VR headset? Step inside the same experience.</p>
+      <div class="row hero-actions">
+        <a class="btn big" href="topics.html">Explore topics <span aria-hidden="true">↗</span></a>
+        <a class="text-link" href="guides.html#students">How it works <span aria-hidden="true">→</span></a>
+      </div>
+      <p class="hero-note">No VR headset needed to get started.</p>
     </div>
-    <p class="muted small">Students sign in on the topics page with the card their teacher gives them. Teachers, there's a <a href="teachers.html">guide</a> and you can <a href="signup.html">request a key</a>.</p>
+    <div class="hero-visual">
+      <div class="visual-top"><span class="visual-dot"></span><span>REAL EXPERIENCE</span><button class="preview-toggle" id="previewToggle" type="button" aria-controls="experiencePreview">Play</button></div>
+      <video class="visual-scene visual-video" id="experiencePreview" muted loop playsinline preload="metadata" poster="media/memory-bay-poster.jpg" aria-label="Memory bay experience preview" aria-describedby="previewDescription">
+        <source src="media/memory-bay-demo.mp4" type="video/mp4">
+        Your browser cannot play this preview.
+      </video>
+      <p class="sr" id="previewDescription">Silent demonstration of Memory bay: look around the 360° room, answer a station question and see your progress.</p>
+      <div class="visual-caption"><span class="visual-index">1.2 / MEMORY &amp; STORAGE</span><strong>Memory bay</strong><span>Explore RAM, ROM and primary storage</span></div>
+      <div class="visual-corner" aria-hidden="true">360°</div>
+    </div>
   </section>
 
-  <section class="stats">
-    <div><b>7</b><span>topics</span></div>
-    <div><b>60+</b><span>experiences</span></div>
-    <div><b>64</b><span>worksheets</span></div>
-    <div><b>3</b><span>replayable challenges</span></div>
+  <div class="proof-strip" aria-label="Course at a glance">
+    <div><strong>07</strong><span>topics to explore</span></div>
+    <div><strong>58</strong><span>interactive experiences</span></div>
+    <div><strong>64</strong><span>printable worksheets</span></div>
+    <div><strong>06</strong><span>stations in each room</span></div>
+  </div>
+
+  <section class="access-section" aria-labelledby="access-title">
+    <div>
+      <p class="eyebrow">EXPLORE YOUR WAY</p>
+      <h2 id="access-title">On a screen.<br>Or step inside.</h2>
+      <p>Every experience opens on a PC or tablet. With a compatible VR headset, you can explore the same 360° room in VR.</p>
+      <a class="text-link" href="guides.html#vr">How to use VR <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="access-options">
+      <div><span>01 / SCREEN</span><strong>PC or tablet</strong><p>Look around with a mouse, keyboard or touch.</p></div>
+      <div><span>02 / IMMERSIVE</span><strong>VR headset</strong><p>Enter VR and explore the room from inside it.</p></div>
+    </div>
   </section>
 
-  <h2>What makes it different</h2>
-  <div class="cards">
-    <div class="c"><span class="ico">🧭</span><h3>Six stations, one room</h3><p>No slides to scroll. Students turn to face each station, read the wall, write on the worksheet, then answer.</p></div>
-    <div class="c"><span class="ico">🛠️</span><h3>Things you do, not read</h3><p>Wire logic gates, add binary numbers, paint pixels to see file size, sample a sound wave, set file permissions, defragment a disk.</p></div>
-    <div class="c"><span class="ico">🥽</span><h3>VR without the faff</h3><p>Any headset with a modern browser can enter VR. Nothing to install, and everything works without a headset too.</p></div>
-    <div class="c"><span class="ico">📄</span><h3>Paper where it matters</h3><p>Every experience has a four-page worksheet, so the thinking happens in writing and the headset isn't the whole lesson.</p></div>
-    <div class="c"><span class="ico">📊</span><h3>Feedback that names the gap</h3><p>Scores break down station by station and flag Secure, Revise or Focus here, so revision has a target.</p></div>
-    <div class="c"><span class="ico">🎮</span><h3>Challenges they replay</h3><p>Timed conversion and logic sprints, and a cyber defence game with a budget and consequences. Personal bests, no leaderboards.</p></div>
-  </div>
+  <section class="home-section how-section" id="how-it-works">
+    <div class="section-heading"><p class="eyebrow">01 / HOW IT WORKS</p><h2>Revision with somewhere to go.</h2><p>Each lesson gives you a place to explore and a clear task to complete. Your answers show what you know and where to focus next.</p></div>
+    <ol class="method-list">
+      <li><span class="method-number">01</span><div><h3>Look around</h3><p>Move through a 360° room and find its six numbered stations.</p></div></li>
+      <li><span class="method-number">02</span><div><h3>Think and try</h3><p>Use the worksheet, answer questions and test ideas in interactive challenges.</p></div></li>
+      <li><span class="method-number">03</span><div><h3>Know what’s next</h3><p>See your results by station, then return to the parts that need more practice.</p></div></li>
+    </ol>
+  </section>
 
-  <h2>What's covered</h2>
-  <table class="info">
-    <tr><th>Topic</th><th>Experiences</th><th>Includes</th></tr>
-    <tr><td>1.1 Systems architecture</td><td>4</td><td>The CPU, fetch-execute, performance, embedded systems, 3D hardware models</td></tr>
-    <tr><td>1.2 Memory and storage</td><td>15 + Binary blitz</td><td>RAM and ROM, virtual memory, storage, units, binary, hex, images, sound, compression</td></tr>
-    <tr><td>1.3 Computer networks</td><td>13</td><td>LAN and WAN, performance, topologies, the internet, protocols, layers</td></tr>
-    <tr><td>1.4 Network security</td><td>10 + Cyber defence</td><td>Forms of attack, malware, SQL injection, social engineering, prevention</td></tr>
-    <tr><td>1.5 Systems software</td><td>4</td><td>Operating systems, interfaces, multitasking, memory and file management, utilities</td></tr>
-    <tr><td>2.3 Producing robust programs</td><td>6</td><td>Defensive design, validation, maintainability, testing, error types</td></tr>
-    <tr><td>2.4 Boolean logic</td><td>3 + Logic sprint</td><td>Gates, truth tables, building circuits, writing expressions</td></tr>
-  </table>
+  <section class="home-section course-section" id="course">
+    <div class="section-heading"><p class="eyebrow">02 / THE COURSE</p><h2>Choose your starting point.</h2><p>Follow the OCR J277 specification, one topic at a time. More topics are on the way.</p></div>
+    <div class="course-preview">
+      <div class="course-paper"><div class="course-paper-head"><span>PAPER 01</span><h3>Computer systems</h3></div>
+        <a href="topics.html?topic=1.1"><span>1.1</span><strong>Systems architecture</strong><span aria-hidden="true">↗</span></a>
+        <a href="topics.html?topic=1.2"><span>1.2</span><strong>Memory and storage</strong><span aria-hidden="true">↗</span></a>
+        <a href="topics.html?topic=1.3"><span>1.3</span><strong>Networks and protocols</strong><span aria-hidden="true">↗</span></a>
+        <a href="topics.html?topic=1.4"><span>1.4</span><strong>Network security</strong><span aria-hidden="true">↗</span></a>
+        <a href="topics.html?topic=1.5"><span>1.5</span><strong>Systems software</strong><span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="course-paper"><div class="course-paper-head"><span>PAPER 02</span><h3>Computational thinking and programming</h3></div>
+        <a href="topics.html?topic=2.3"><span>2.3</span><strong>Producing robust programs</strong><span aria-hidden="true">↗</span></a>
+        <a href="topics.html?topic=2.4"><span>2.4</span><strong>Boolean logic</strong><span aria-hidden="true">↗</span></a>
+        <div class="course-coming"><span>+ MORE</span><strong>More Paper 2 topics coming soon</strong></div>
+      </div>
+    </div>
+    <a class="text-link course-all" href="topics.html">View all topics <span aria-hidden="true">→</span></a>
+  </section>
 
-  <h2>How a lesson runs</h2>
-  <ol class="steps">
-    <li><b>Starter on paper.</b> Five minutes, no devices, from the worksheet.</li>
-    <li><b>Into the room.</b> Six stations: read the wall, write the key fact and the challenge answer, then answer the questions.</li>
-    <li><b>Final challenge.</b> Predict on paper first, then test it in the experience.</li>
-    <li><b>Score screen.</b> A breakdown by station: secure, needs revising, needs reteaching.</li>
-    <li><b>Exam practice.</b> Device away, questions answered from memory.</li>
-  </ol>
-
-  <div class="callout">
-    <p><b>Where this is up to.</b> Revise 360 is in development. Teachers create their students' logins and print login cards; sign-in through Microsoft school accounts is planned, so schools can eventually use the logins they already have.</p>
-  </div>
-
-  <section class="cta">
-    <h2>Have a look around</h2>
-    <p>Open any topic and start an experience. Teachers can <a href="signup.html">request a key</a> to create class logins and see results.</p>
-    <div class="row"><a class="btn big" href="topics.html">Explore the experiences</a>
-      <a class="btn ghost big" href="about.html">About Revise 360</a></div>
+  <section class="home-section teacher-callout">
+    <div><p class="eyebrow">FOR THE CLASSROOM</p><h2>Built to use in a lesson.</h2><p>Printable worksheets make space for written thinking. Teachers can create login cards and see where students need help.</p></div>
+    <a class="btn ghost" href="teachers.html">Explore the teacher guide <span aria-hidden="true">↗</span></a>
   </section>
 </main>
 
