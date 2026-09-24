@@ -1,7 +1,5 @@
 :root{--bg:#121e34;--bg2:#0e1628;--panel:#1c2c4a;--line:#3c5a87;--fg:#f0f4fa;--soft:#b4c4dc;--edge:#ffd046;--ok:#50dc96;--amber:#ffd046;--bad:#ff5f5f;--info:#5ab4ff;
  color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#121e34}}
-:root[data-theme="dark"]{--bg:#121e34}
 *,*::before,*::after{box-sizing:inherit}
 html,body{margin:0;background:var(--bg);color:var(--fg);font-family:"Segoe UI",system-ui,-apple-system,sans-serif;line-height:1.45}
 button,input,select{font:inherit}
