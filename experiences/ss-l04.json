@@ -1,0 +1,360 @@
+{
+ "id": "ss-l04",
+ "lesson": 4,
+ "title": "Utility workshop",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Utility workshop",
+   "img": "img/SS_L04_UtilityWorkshop.jpg",
+   "imgHi": "img/SS_L04_UtilityWorkshop_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "What is utility software?",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is utility software for?",
+       "a": [
+        "Maintaining and protecting the computer system",
+        "Writing documents",
+        "Playing games",
+        "Designing hardware"
+       ],
+       "fb": "It is systems software, like the OS itself."
+      },
+      {
+       "t": "sort",
+       "q": "Is each program a utility or an application?",
+       "cats": [
+        "Utility",
+        "Application"
+       ],
+       "items": [
+        [
+         "Disk defragmenter",
+         "Utility"
+        ],
+        [
+         "File compression tool",
+         "Utility"
+        ],
+        [
+         "Backup software",
+         "Utility"
+        ],
+        [
+         "Presentation software",
+         "Application"
+        ],
+        [
+         "Video editor",
+         "Application"
+        ],
+        [
+         "Web browser",
+         "Application"
+        ]
+       ],
+       "fb": "If it looks after the machine, it's a utility."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Encryption",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does an encryption utility produce?",
+       "a": [
+        "Cyphertext, which is meaningless without the key",
+        "A smaller file",
+        "A backup copy",
+        "A defragmented disk"
+       ],
+       "fb": "The data is still there, just unreadable."
+      },
+      {
+       "t": "mcq",
+       "q": "A laptop with an encrypted drive is stolen. What can the thief read?",
+       "a": [
+        "Nothing, without the key",
+        "Everything, once it is plugged in elsewhere",
+        "Only the photos",
+        "Only files under 1 MB"
+       ],
+       "fb": "Which is why organisations encrypt every mobile device."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Defragmentation",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 841,
+     "y": 1621,
+     "tasks": [
+      {
+       "t": "defrag",
+       "q": "Defragment this disk: gather each file into one run with the free space at the end.",
+       "fb": "Every jump the head avoids is time saved on every future read.",
+       "title": "Disk: three files, badly fragmented"
+      },
+      {
+       "t": "mcq",
+       "q": "Why does defragmentation not help a solid state drive?",
+       "a": [
+        "An SSD has no moving head, so it reaches any block equally quickly, and the extra writes wear it out",
+        "SSDs never get fragmented",
+        "SSDs are always full",
+        "SSDs cannot store files"
+       ],
+       "fb": "Defragmenting an SSD is at best pointless and at worst harmful."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Compression",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Why must a program file be compressed losslessly?",
+       "a": [
+        "Losing any data would stop the program working",
+        "Programs are too small to compress",
+        "Lossy compression is illegal",
+        "Programs have no patterns"
+       ],
+       "fb": "Every byte matters in a program."
+      },
+      {
+       "t": "mcq",
+       "q": "A 30 MB photo album is emailed as an 8 MB zip file. What has the utility done?",
+       "a": [
+        "Rewritten the data more efficiently so it can be restored exactly",
+        "Deleted some photos",
+        "Reduced the number of pixels",
+        "Encrypted the photos"
+       ],
+       "fb": "Zip is lossless: the photos come back unchanged."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Backup and updates",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is an incremental backup?",
+       "a": [
+        "A backup of only the files that have changed since the last one",
+        "A backup of everything, every time",
+        "A backup that deletes the original",
+        "A compressed photo"
+       ],
+       "fb": "Faster to take, but a restore needs the full backup and every incremental set since."
+      },
+      {
+       "t": "mcq",
+       "q": "Why should one backup be kept off-site or offline?",
+       "a": [
+        "A fire, theft or ransomware attack could destroy both copies at once",
+        "Backups work faster when cold",
+        "It saves electricity",
+        "The law requires two buildings"
+       ],
+       "fb": "A connected backup is not a backup from ransomware's point of view."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Choosing the right utility",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "match",
+       "q": "Match each problem to the utility that fixes it.",
+       "pairs": [
+        [
+         "A hard disk that has become slow to open files",
+         "Defragmentation"
+        ],
+        [
+         "A laptop that is taken off site",
+         "Encryption"
+        ],
+        [
+         "Files too large to email",
+         "Compression"
+        ],
+        [
+         "Work lost when a drive failed",
+         "Backup"
+        ]
+       ],
+       "fb": "Name the utility, what it does, and why it suits the problem."
+      },
+      {
+       "t": "mcq",
+       "q": "Which is the best exam answer?",
+       "a": [
+        "Encryption, because it turns the files into cyphertext, so a thief who takes the laptop cannot read them",
+        "Encryption, because it is secure",
+        "Encryption, because everyone uses it",
+        "Encryption, because it makes files smaller"
+       ],
+       "fb": "Utility, what it does, why it fits."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: service the machine",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "defrag",
+       "q": "Defragment this disk, then say what the read/write head no longer has to do.",
+       "fb": "Files in one run, free space together: fewer jumps, faster reads."
+      },
+      {
+       "t": "sort",
+       "q": "Which utility does each situation need?",
+       "cats": [
+        "Encryption",
+        "Defragmentation",
+        "Compression",
+        "Backup"
+       ],
+       "items": [
+        [
+         "A hospital laptop holding patient records",
+         "Encryption"
+        ],
+        [
+         "A mechanical disk that has slowed down over two years",
+         "Defragmentation"
+        ],
+        [
+         "A 60 MB set of photos to send by email",
+         "Compression"
+        ],
+        [
+         "A school that must survive a ransomware attack",
+         "Backup"
+        ],
+        [
+         "A USB stick that staff carry between sites",
+         "Encryption"
+        ],
+        [
+         "Ten years of records to archive in less space",
+         "Compression"
+        ]
+       ],
+       "fb": "Name the utility, say what it does, and link it to the situation."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 1035,
+     "y": 585,
+     "title": "Utilities used to be separate",
+     "text": "Defragmenters, backup tools and antivirus were once programs you bought. Most are now built into the operating system."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1828,
+     "y": 440,
+     "title": "Keys, not passwords",
+     "text": "An encryption key is far longer than a password. A 256-bit key has more combinations than there are atoms in the observable universe."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 1035,
+     "y": 585,
+     "title": "Why disks fragment",
+     "text": "When a file grows and the space after it is taken, the extra has to go elsewhere. Do that for years and files end up in dozens of pieces."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1828,
+     "y": 440,
+     "title": "Zip is everywhere",
+     "text": "A .docx file is really a zip archive: rename one to .zip and open it to find the document's parts inside."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 1035,
+     "y": 585,
+     "title": "SSDs do their own thing",
+     "text": "Solid state drives run a process called TRIM instead of defragmentation, marking deleted blocks so they can be reused quickly."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1821,
+     "y": 401,
+     "title": "3-2-1",
+     "text": "The standard backup advice: three copies, on two types of media, with one off-site. Most data loss stories come from ignoring the last part."
+    }
+   ],
+   "models": [
+    {
+     "id": "m1",
+     "face": "back",
+     "x": 363,
+     "y": 411,
+     "model": "harddisk",
+     "title": "Inside a hard disk",
+     "text": "The platters spin and the head swings across them. On a fragmented disk it jumps between tracks for a single file."
+    },
+    {
+     "id": "m2",
+     "face": "left",
+     "x": 1178,
+     "y": 540,
+     "model": "harddisk",
+     "title": "Why defragmenting helps",
+     "text": "Tracks are concentric rings. A file written in one run sits on neighbouring tracks, so the head barely moves."
+    }
+   ]
+  }
+ ]
+}

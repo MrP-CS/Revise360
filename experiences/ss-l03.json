@@ -1,0 +1,386 @@
+{
+ "id": "ss-l03",
+ "lesson": 3,
+ "title": "Accounts office",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Accounts office",
+   "img": "img/SS_L03_AccountsOffice.jpg",
+   "imgHi": "img/SS_L03_AccountsOffice_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "User accounts",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is user management?",
+       "a": [
+        "Setting up accounts and deciding what each user is allowed to do",
+        "Deciding which programs run fastest",
+        "Cleaning up the hard disk",
+        "Compressing files"
+       ],
+       "fb": "Accounts, passwords, groups and permissions are all part of it."
+      },
+      {
+       "t": "mcq",
+       "q": "Why does a shared computer need separate accounts?",
+       "a": [
+        "So each user has their own files and settings, and can't reach anyone else's",
+        "To use less memory",
+        "To make it boot faster",
+        "So the screen is brighter"
+       ],
+       "fb": "It's about privacy and protection, not performance."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Access levels",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "permissions",
+       "q": "Set the access each group needs on the school network.",
+       "groups": [
+        "Students",
+        "Teachers",
+        "Network manager"
+       ],
+       "files": [
+        {
+         "name": "My documents (student's own)",
+         "want": {
+          "Students": 2,
+          "Teachers": 1,
+          "Network manager": 2
+         }
+        },
+        {
+         "name": "Lesson resources",
+         "want": {
+          "Students": 1,
+          "Teachers": 2,
+          "Network manager": 2
+         }
+        },
+        {
+         "name": "Exam papers",
+         "want": {
+          "Students": 0,
+          "Teachers": 1,
+          "Network manager": 2
+         }
+        }
+       ],
+       "fb": "Least access that still lets each group do its job. Teachers read student work but shouldn't rewrite it.",
+       "note": "Tip: a student must be able to change their own work; nobody but the network manager needs full control of everything."
+      },
+      {
+       "t": "mcq",
+       "q": "Why is a student given read access to lesson resources, rather than read/write?",
+       "a": [
+        "They need to open them, but must not be able to change or delete them",
+        "Reading uses less memory",
+        "Writing is slower",
+        "It stops the files being printed"
+       ],
+       "fb": "Least privilege: enough to work, no more."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Groups and profiles",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is the advantage of user groups?",
+       "a": [
+        "One change to the group applies to every member at once",
+        "Groups use less disk space",
+        "Groups make logins faster",
+        "Groups encrypt files"
+       ],
+       "fb": "Add a new teacher to the teachers group and they get the right access immediately."
+      },
+      {
+       "t": "mcq",
+       "q": "A user signs in to a different computer and finds their own desktop and documents. What made that possible?",
+       "a": [
+        "Their profile is stored on the network, not on one machine",
+        "The computers share a keyboard",
+        "The files were emailed",
+        "The OS guessed the settings"
+       ],
+       "fb": "It's why any machine in the school feels like yours."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Files and folders",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "order",
+       "q": "Put these in order, from the top of the hierarchy down to the file.",
+       "steps": [
+        "Root",
+        "Documents",
+        "Computing",
+        "Topic 1.5",
+        "notes.docx"
+       ],
+       "fb": "That route, written out, is the file's path."
+      },
+      {
+       "t": "mcq",
+       "q": "What does a file's path describe?",
+       "a": [
+        "The route through the folders to reach that file",
+        "How large the file is",
+        "Who owns the file",
+        "Which program made it"
+       ],
+       "fb": "Each folder name in the path is one step down the hierarchy."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "What the OS does with files",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "multi",
+       "q": "Which of these are file management jobs done by the operating system? Select all that apply.",
+       "opts": [
+        "Renaming a file",
+        "Moving a file to another folder",
+        "Recording where the file is stored on the disk",
+        "Deleting a file and freeing its space",
+        "Writing the contents of the essay",
+        "Choosing the font"
+       ],
+       "correct": [
+        "Renaming a file",
+        "Moving a file to another folder",
+        "Recording where the file is stored on the disk",
+        "Deleting a file and freeing its space"
+       ],
+       "fb": "The application writes the contents; the OS looks after the file itself."
+      },
+      {
+       "t": "mcq",
+       "q": "What happens to the disk space when a file is deleted?",
+       "a": [
+        "The OS marks it as free so it can be reused",
+        "The disk gets physically smaller",
+        "The space is lost forever",
+        "The file moves to another disk"
+       ],
+       "fb": "Which is also why deleted files can sometimes be recovered until the space is reused."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "File extensions",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "match",
+       "q": "Match each extension to what it holds.",
+       "pairs": [
+        [
+         ".docx",
+         "A word processed document"
+        ],
+        [
+         ".jpg",
+         "A compressed image"
+        ],
+        [
+         ".mp3",
+         "A compressed sound file"
+        ],
+        [
+         ".exe",
+         "A program that runs"
+        ]
+       ],
+       "fb": "The OS uses the extension to pick the right program."
+      },
+      {
+       "t": "mcq",
+       "q": "A student renames report.docx to report.jpg. What happens?",
+       "a": [
+        "The file is unchanged inside, but the OS now tries to open it with the wrong program",
+        "It becomes an image",
+        "The text is deleted",
+        "It halves in size"
+       ],
+       "fb": "The extension is a label, not a conversion."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: lock down the network",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "permissions",
+       "q": "A school's shared drive. Give each group the least access that lets it work.",
+       "groups": [
+        "Students",
+        "Teachers",
+        "Office staff"
+       ],
+       "files": [
+        {
+         "name": "Homework hand-in folder",
+         "want": {
+          "Students": 2,
+          "Teachers": 2,
+          "Office staff": 0
+         }
+        },
+        {
+         "name": "Reports to parents",
+         "want": {
+          "Students": 0,
+          "Teachers": 2,
+          "Office staff": 2
+         }
+        },
+        {
+         "name": "School policies",
+         "want": {
+          "Students": 1,
+          "Teachers": 1,
+          "Office staff": 2
+         }
+        }
+       ],
+       "fb": "Least privilege every time: enough access to do the job, and no more."
+      },
+      {
+       "t": "sort",
+       "q": "Is each job user management or file management?",
+       "cats": [
+        "User management",
+        "File management"
+       ],
+       "items": [
+        [
+         "Creating an account for a new teacher",
+         "User management"
+        ],
+        [
+         "Putting a student into the Year 11 group",
+         "User management"
+        ],
+        [
+         "Resetting a password",
+         "User management"
+        ],
+        [
+         "Moving a file into another folder",
+         "File management"
+        ],
+        [
+         "Recording which blocks a file uses",
+         "File management"
+        ],
+        [
+         "Freeing space when a file is deleted",
+         "File management"
+        ]
+       ],
+       "fb": "Both are jobs of the operating system, and both happen constantly."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 1035,
+     "y": 585,
+     "title": "Least privilege",
+     "text": "Security teams call this the principle of least privilege: give every account the smallest access that still lets the work happen. It limits the damage when an account is stolen."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1828,
+     "y": 440,
+     "title": "Who did what",
+     "text": "Operating systems keep logs of who signed in, and what they opened. It's how a school can find out who deleted a shared file."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 1035,
+     "y": 585,
+     "title": "The root",
+     "text": "On Windows the top of a drive is C:\\; on Linux and macOS it is simply /. Either way, everything else hangs below it."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1828,
+     "y": 440,
+     "title": "Long names",
+     "text": "Early systems allowed eight characters and a three-letter extension, which is why old files have names like REPORT01.DOC."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 1035,
+     "y": 585,
+     "title": "Hidden extensions",
+     "text": "Many systems hide extensions by default, which attackers exploit: invoice.pdf.exe looks like invoice.pdf in the file list."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1828,
+     "y": 440,
+     "title": "Deleted isn't gone",
+     "text": "Deleting a file usually removes the entry, not the data. Proper deletion overwrites the blocks, which is why organisations wipe drives before disposal."
+    }
+   ],
+   "models": []
+  }
+ ]
+}
