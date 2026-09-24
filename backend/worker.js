@@ -121,6 +121,23 @@ export default {
           return json({ ok: true, requests: results });
         }
 
+        case "teachers": {        // owner only: list issued keys
+          const whoT = await teacherOk(env, body.teacherKey);
+          if (!whoT || !whoT.all) return fail("bad key", 403);
+          const { results } = await env.DB.prepare(
+            `SELECT t.id, t.email, t.school, t.school_code, t.licence, t.seats, t.active, t.created,
+                    (SELECT COUNT(*) FROM students s WHERE s.school_code = t.school_code) AS students
+             FROM teachers t ORDER BY t.created DESC LIMIT 500`).all();
+          return json({ ok: true, teachers: results });
+        }
+
+        case "revoke": {          // owner only: switch a key off
+          const whoR = await teacherOk(env, body.teacherKey);
+          if (!whoR || !whoR.all) return fail("bad key", 403);
+          await env.DB.prepare("UPDATE teachers SET active = ? WHERE id = ?").bind(body.active ? 1 : 0, clean(body.id, 64)).run();
+          return json({ ok: true });
+        }
+
         case "issue": {           // owner only: create a teacher key and school code
           const who = await teacherOk(env, body.teacherKey);
           if (!who || !who.all) return fail("bad key", 403);

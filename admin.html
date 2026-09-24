@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin | Revise 360</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/config.js"></script>
+<script src="js/store.js"></script>
+<script src="js/nav.js"></script>
+</head>
+<body>
+<header class="bar">
+  <a class="brand" href="index.html"><span class="logo">360</span><span><b>Revise 360</b><small>Admin</small></span></a>
+  <div class="tools"></div>
+</header>
+
+<main class="page admin" id="main"><p class="muted">Loading…</p></main>
+
+<footer class="site">
+  <p><b>Revise 360</b> — a product of Revise 360 Ltd, created by Olly Pettitt.</p>
+  <p>&copy; 2026 Revise 360 Ltd. All rights reserved.</p>
+</footer>
+
+<script>
+(function () {
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const when = ms => ms ? new Date(Number(ms)).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }) : "";
+  const KEY = () => sessionStorage.getItem("r360-owner") || "";
+
+  async function api(body) {
+    const r = await fetch(window.APP_CONFIG.backendUrl, { method: "POST", body: JSON.stringify(Object.assign({ teacherKey: KEY() }, body)) });
+    if (r.status === 403) throw new Error("bad key");
+    const j = await r.json();
+    if (!j.ok) throw new Error(j.error || "server error");
+    return j;
+  }
+
+  function signIn(msg) {
+    $("#main").innerHTML = `<form class="card signin" id="f" style="max-width:520px">
+      <h2>Owner sign-in</h2>
+      <p class="muted">Enter the owner key (the TEACHER_KEY secret on the backend). It is kept for this browser tab only.</p>
+      <div class="field"><label for="k">Owner key</label><input id="k" type="password" autocomplete="current-password" required></div>
+      <p class="err">${esc(msg || "")}</p>
+      <div class="row end"><button class="btn">Open admin</button></div></form>`;
+    $("#k").focus();
+    $("#f").onsubmit = e => { e.preventDefault(); sessionStorage.setItem("r360-owner", $("#k").value.trim()); load(); };
+  }
+
+  async function load() {
+    if (!KEY()) return signIn();
+    $("#main").innerHTML = '<p class="muted">Loading…</p>';
+    let reqs = [], teachers = [];
+    try {
+      reqs = (await api({ action: "requests" })).requests || [];
+      teachers = (await api({ action: "teachers" })).teachers || [];
+    } catch (e) {
+      sessionStorage.removeItem("r360-owner");
+      return signIn(e.message === "bad key" ? "That key wasn't recognised." : "Couldn't reach the server: " + e.message);
+    }
+    render(reqs, teachers);
+  }
+
+  function render(reqs, teachers) {
+    const waiting = reqs.filter(r => r.status === "new");
+    $("#main").innerHTML = `
+      <section class="hero" style="padding:28px 0 6px">
+        <h1>Admin</h1>
+        <p class="lead">Issue teacher keys, see who has asked for one, and switch a key off. ${waiting.length ? `<b style="color:var(--edge)">${waiting.length} request${waiting.length === 1 ? "" : "s"} waiting.</b>` : "No requests waiting."}</p>
+        <div class="row"><button class="btn ghost" id="refresh">Refresh</button><button class="btn ghost" id="out">Sign out</button></div>
+      </section>
+
+      <h2>Issue a key</h2>
+      <form class="card" id="issue" style="max-width:720px">
+        <div class="field"><label for="school">School or trust</label><input id="school" required maxlength="120"></div>
+        <div class="field"><label for="email">Contact email</label><input id="email" type="email" maxlength="120"></div>
+        <div class="row" style="gap:12px;flex-wrap:wrap">
+          <div class="field" style="flex:1;min-width:160px"><label for="licence">Licence</label>
+            <select id="licence"><option value="trial">Trial</option><option value="paid">Paid</option><option value="free">Free</option></select></div>
+          <div class="field" style="flex:1;min-width:120px"><label for="seats">Seats <span class="muted">(0 = unlimited)</span></label><input id="seats" inputmode="numeric" value="0" maxlength="6"></div>
+          <div class="field" style="flex:1;min-width:160px"><label for="code">School code <span class="muted">(blank = generate)</span></label><input id="code" maxlength="12" autocapitalize="characters" placeholder="K7M3QP"></div>
+        </div>
+        <input type="hidden" id="reqid">
+        <p class="err" id="err" role="alert"></p>
+        <div class="row end"><button class="btn" type="submit" id="go">Issue key</button></div>
+      </form>
+      <div id="issued"></div>
+
+      <h2>Requests</h2>
+      ${reqs.length ? `<table><tr><th>When</th><th>Teacher</th><th>School</th><th>Email</th><th>Note</th><th>Status</th><th></th></tr>
+        ${reqs.map(r => `<tr>
+          <td>${when(r.created)}</td><td>${esc(r.name)}${r.role ? `<br><span class="muted">${esc(r.role)}</span>` : ""}</td>
+          <td>${esc(r.school)}</td><td><a href="mailto:${esc(r.email)}">${esc(r.email)}</a></td>
+          <td>${esc(r.note || "")}</td>
+          <td class="${r.status === "new" ? "new" : "muted"}">${esc(r.status)}</td>
+          <td>${r.status === "new" ? `<button class="btn small" data-fill="${esc(r.id)}" data-school="${esc(r.school)}" data-email="${esc(r.email)}">Use</button>` : ""}</td>
+        </tr>`).join("")}</table>` : '<p class="muted">No requests yet.</p>'}
+
+      <h2>Issued keys</h2>
+      ${teachers.length ? `<table><tr><th>School</th><th>Code</th><th>Licence</th><th>Students</th><th>Issued</th><th>Status</th><th></th></tr>
+        ${teachers.map(t => `<tr>
+          <td>${esc(t.school)}${t.email ? `<br><span class="muted">${esc(t.email)}</span>` : ""}</td>
+          <td><code>${esc(t.school_code)}</code></td><td>${esc(t.licence)}${t.seats ? ` · ${t.seats} seats` : ""}</td>
+          <td>${t.students}</td><td>${when(t.created)}</td>
+          <td class="${t.active ? "" : "muted"}">${t.active ? "Active" : "Off"}</td>
+          <td><button class="btn small ghost" data-toggle="${esc(t.id)}" data-active="${t.active ? 0 : 1}">${t.active ? "Switch off" : "Switch on"}</button></td>
+        </tr>`).join("")}</table>` : '<p class="muted">No keys issued yet.</p>'}
+
+      <div class="callout" style="margin-top:22px">
+        <p><b>What to send a school:</b> their teacher key (private, staff only), their school code, the link <code>revise360.co.uk/?school=THEIRCODE</code> for students, and the <a href="guides.html#teachers">teacher guide</a>.</p>
+      </div>`;
+
+    $("#refresh").onclick = load;
+    $("#out").onclick = () => { sessionStorage.removeItem("r360-owner"); signIn(); };
+    document.querySelectorAll("[data-fill]").forEach(b => b.onclick = () => {
+      $("#school").value = b.dataset.school; $("#email").value = b.dataset.email; $("#reqid").value = b.dataset.fill;
+      $("#issue").scrollIntoView({ behavior: "smooth", block: "center" }); $("#school").focus();
+    });
+    document.querySelectorAll("[data-toggle]").forEach(b => b.onclick = async () => {
+      b.disabled = true;
+      try { await api({ action: "revoke", id: b.dataset.toggle, active: b.dataset.active === "1" }); load(); }
+      catch (e) { b.disabled = false; alert("Couldn't change that: " + e.message); }
+    });
+    $("#issue").onsubmit = async e => {
+      e.preventDefault();
+      const school = $("#school").value.trim();
+      if (!school) return $("#err").textContent = "Enter the school name.";
+      $("#go").disabled = true; $("#err").textContent = "";
+      try {
+        const j = await api({ action: "issue", school, email: $("#email").value.trim(), licence: $("#licence").value,
+                              seats: Number($("#seats").value) || 0, schoolCode: $("#code").value.trim(), requestId: $("#reqid").value || undefined });
+        const link = location.origin + location.pathname.replace(/admin\.html$/, "") + "?school=" + j.schoolCode;
+        $("#issued").innerHTML = `<div class="callout">
+          <p><b>Key issued for ${esc(school)}.</b> Copy these now: the key is not shown again.</p>
+          <p>Teacher key: <code class="key" id="tk">${esc(j.teacherKey)}</code> <button class="btn small ghost" id="ctk">Copy</button></p>
+          <p>School code: <code class="key">${esc(j.schoolCode)}</code></p>
+          <p>Student link: <code class="key">${esc(link)}</code></p>
+          <p><button class="btn small" id="mail">Draft the email</button> <button class="btn small ghost" id="done">I've copied it — refresh the lists</button></p></div>`;
+        $("#ctk").onclick = () => { navigator.clipboard.writeText(j.teacherKey); $("#ctk").textContent = "Copied"; };
+        $("#done").onclick = load;
+        $("#mail").onclick = () => {
+          const body = `Hello,\n\nYour Revise 360 access is ready.\n\nTeacher key (staff only, keep private):\n${j.teacherKey}\n\nSchool code for students: ${j.schoolCode}\nStudent link: ${link}\n\nOpen your dashboard at ${location.origin}/teacher.html and paste the teacher key.\nThe teacher guide is at ${location.origin}/guides.html#teachers\n\nBest wishes,\nRevise 360`;
+          location.href = "mailto:" + encodeURIComponent($("#email").value.trim()) + "?subject=" + encodeURIComponent("Your Revise 360 teacher key") + "&body=" + encodeURIComponent(body);
+        };
+        $("#issued").scrollIntoView({ behavior: "smooth", block: "center" });
+        $("#school").value = ""; $("#email").value = ""; $("#code").value = ""; $("#reqid").value = "";
+      } catch (err) { $("#err").textContent = "Couldn't issue that key: " + err.message; }
+      finally { $("#go").disabled = false; }
+    };
+  }
+
+  load();
+})();
+</script>
+</body>
+</html>

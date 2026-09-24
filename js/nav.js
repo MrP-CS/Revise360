@@ -51,7 +51,11 @@
     btn.onclick = () => { const open = ul.classList.toggle("open"); btn.setAttribute("aria-expanded", open); };
     addEventListener("click", e => { if (!nav.contains(e.target)) { ul.classList.remove("open"); btn.setAttribute("aria-expanded", "false"); } });
   }
-  function init() { build(); footer(); gate(); }
+  function init() {
+    gate();
+    if (document.body.classList.contains("player")) return;   // experiences stay clear: the ⌂ Home button is the way out
+    build(); footer();
+  }
 
   // Experiences are for signed-in students only
   function gate() {

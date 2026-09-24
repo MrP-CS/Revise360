@@ -218,5 +218,10 @@ header.top .nav ul{justify-content:flex-end}
 .footnav li{margin:5px 0}
 .footnav a{color:var(--soft);text-decoration:none;font-size:13px}
 .footnav a:hover{color:var(--edge);text-decoration:underline}
-header.bar.player{position:absolute;top:0;left:0;right:0;z-index:30;background:linear-gradient(180deg,rgba(10,16,28,.85),rgba(10,16,28,0));border:0}
-header.bar.player .nav a{background:rgba(21,34,59,.75)}
+
+/* ---- admin ---- */
+.admin table{width:100%;border-collapse:collapse;font-size:14px;margin:10px 0}
+.admin th,.admin td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.admin th{background:#17233c}
+.admin .new{color:var(--edge);font-weight:700}
+.admin code.key{display:inline-block;background:#0b1322;border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:13px;word-break:break-all}

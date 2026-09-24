@@ -63,7 +63,12 @@ dashboard query is filtered by the code attached to the teacher's key, so a teac
 their own school and nothing else. The owner key set in `TEACHER_KEY` sees everything, for
 support.
 
-Issue a key and code with:
+The easiest way to issue a key is the **admin page** at `/admin.html`: sign in with the
+`TEACHER_KEY` secret, review requests from the sign-up form, and press Issue key. It shows
+the teacher key once, offers a ready-drafted email, and lists every key with its school code
+and student count so you can switch one off later.
+
+Or from the command line:
 
 ```
 curl -X POST https://your-worker-url/ -d '{"action":"issue","teacherKey":"OWNER_KEY",
@@ -87,3 +92,19 @@ The school remains the data controller. This service is a processor: it holds a 
 optional class label and quiz scores. Keep the teacher key private, don't reuse it between
 schools, and tell your data protection lead what is stored. When licences arrive, each school
 gets its own token in the `teachers` table so keys are never shared.
+
+## Connecting a payment system (WordPress, Stripe or anything else)
+
+Key issuing is a single API call, so any checkout can trigger it:
+
+```
+POST { "action": "issue", "teacherKey": "OWNER_KEY",
+       "school": "Riverside Academy", "email": "buyer@school.sch.uk",
+       "licence": "paid", "seats": 200 }
+→ { "ok": true, "teacherKey": "…", "schoolCode": "K7M3QP" }
+```
+
+With WooCommerce, add a hook on `woocommerce_order_status_completed` that makes this call
+and emails the key and school code to the buyer. Keep the owner key in `wp-config.php`, never
+in a page or a theme file. Until that's wired up, issuing by hand from the admin page after a
+payment notification works perfectly well, and gives you a look at who is signing up.
