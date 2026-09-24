@@ -495,7 +495,7 @@
   fetch("experiences/topics.json", { cache: "no-cache" }).then(r => r.json()).then(t => { if (t.siteTitle) document.title = exp.title + " | " + t.siteTitle; }).catch(() => {});
   fetch("experiences/registry.json", { cache: "no-cache" }).then(r => r.json()).then(reg => {
     const e = (reg.experiences || []).find(x => x.id === expId);
-    if (e && e.topic) home = "index.html?topic=" + encodeURIComponent(e.topic);
+    if (e && e.topic) home = "topics.html?topic=" + encodeURIComponent(e.topic);
     if (e && e.worksheet) { const a = $("#wsBtn"); a.href = e.worksheet; a.hidden = false; a.setAttribute("aria-label", "Download the worksheet for this lesson (Word document)"); }
   }).catch(() => {});
   $("#progBtn").onclick = () => drawer.classList.contains("progress") ? closeDrawer() : showProgress();
