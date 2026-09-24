@@ -38,15 +38,8 @@
       <p class="err" id="err" role="alert">${esc(msg || "")}</p>
       <div class="row end"><button class="btn" type="submit">Start</button></div>
       <p class="muted" style="font-size:13px">No card yet? Your teacher creates them. Lost yours, or forgotten the PIN? Ask your teacher for a new card: your progress stays with you.</p>
-      <p class="muted" style="font-size:13px"><a href="#" id="guest">Just looking? Try Revise 360 as a guest</a> — progress is saved on this device only.</p>
     </form>`;
     $("#n").focus();
-    $("#guest").onclick = async e => {
-      e.preventDefault();
-      await Store.guest("guest");
-      if (window.R360Nav) R360Nav.refresh();
-      route();
-    };
     $("#f").onsubmit = async e => {
       e.preventDefault();
       const n = $("#n").value.trim(), p = $("#p").value.trim(), sc = $("#sc").value.trim().toUpperCase();

@@ -31,6 +31,9 @@ CREATE TABLE IF NOT EXISTS teachers (
   licence  TEXT,                   -- free | trial | paid
   active   INTEGER DEFAULT 1,
   enforce_roster INTEGER DEFAULT 0, -- 1 = only students on the teacher's list may sign in
+  role     TEXT DEFAULT 'admin',   -- admin = the school's lead teacher; member = invited colleague
+  invited_by TEXT,
+  person   TEXT,                   -- the teacher's name, for the team list
   created  INTEGER
 );
 
@@ -55,3 +58,16 @@ CREATE TABLE IF NOT EXISTS attempts (
   at   INTEGER NOT NULL
 );
 CREATE INDEX IF NOT EXISTS attempts_name ON attempts (name, at);
+
+-- Invitations to colleagues at the same school
+CREATE TABLE IF NOT EXISTS invites (
+  code        TEXT PRIMARY KEY,
+  school_code TEXT NOT NULL,
+  created_by  TEXT NOT NULL,
+  email       TEXT,
+  created     INTEGER,
+  expires     INTEGER,
+  used        INTEGER,
+  used_by     TEXT
+);
+CREATE INDEX IF NOT EXISTS invites_school ON invites (school_code);

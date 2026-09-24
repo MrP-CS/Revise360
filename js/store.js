@@ -52,7 +52,7 @@
     async signIn(name, pin, school) {
       name = String(name).trim().replace(/\s+/g, "").toLowerCase();
       pin = String(pin).trim();
-      if (!CFG.backendUrl) return Store.guest(name);
+      if (!CFG.backendUrl) throw Object.assign(new Error("This site isn't connected to Revise 360 right now. Please try again later."), { code: "offline" });
       let j;
       try {
         const r = await fetch(CFG.backendUrl, { method: "POST", body: JSON.stringify({ action: "login", name, pin, school: school || "" }) });
@@ -75,21 +75,12 @@
       return s;
     },
 
-    // Guest mode: try the site with no account. Progress stays on this device.
-    async guest(name) {
-      const key = await sha256("guest|" + (name || "guest") + "|" + Date.now());
-      const s = { key, name: name || "guest", cls: "", school: "", guest: true };
-      write("student", s);
-      const roster = read("roster", {}); roster[key] = { name: s.name, cls: "", school: "" }; write("roster", roster);
-      return s;
-    },
+    all() { const s = Store.student(); return s ? read("p:" + s.key, {}) : {}; },
+
+    get(expId) { return Store.all()[expId] || null; },
 
     signOut() { try { localStorage.removeItem(NS + "student"); } catch (e) {} },
 
-    all() { const s = Store.student(); return s ? read("p:" + s.key, {}) : {}; },
-    get(expId) { return Store.all()[expId] || null; },
-
-    // Merge the server copy with this device's copy (newest wins per experience)
     async pull() {
       const s = Store.student(); if (!s || !CFG.backendUrl) return;
       setStatus("syncing");
@@ -115,7 +106,7 @@
     },
 
     async push(expId, keepalive) {
-      const s = Store.student(); if (!s || s.guest || !CFG.backendUrl) return;
+      const s = Store.student(); if (!s || !CFG.backendUrl) return;
       const data = Store.get(expId); if (!data) return;
       setStatus("syncing");
       try { await api({ action: "save", key: s.key, name: s.name, cls: s.cls, school: s.school || "", expId, data }, { keepalive }); setStatus("saved"); }

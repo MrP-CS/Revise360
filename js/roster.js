@@ -99,10 +99,11 @@
     setTimeout(() => w.print(), 300);
   }
 
-  function render(host, data) {
+  function render(host, data, team) {
     const byClass = {};
     (data.students || []).forEach(s => { (byClass[s.cls || "No class"] = byClass[s.cls || "No class"] || []).push(s); });
     host.innerHTML = `
+      ${team ? teamHtml(team) : ""}
       <div class="row" style="justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:10px">
         <div><h2 style="margin:0">Class logins</h2>
           <p class="muted" style="margin:4px 0">Students sign in with just the username and PIN on their card. Your school code, <code>${esc(data.schoolCode || "")}</code>, is attached to each login automatically.</p></div>
@@ -147,6 +148,8 @@
                 <button class="btn small ghost" data-del="${esc(s.key)}" title="Delete this student and their progress">Remove</button></td>
           </tr>`).join("")}
         </table>`).join("") || '<p class="muted">No logins yet. Paste your class list above to create them.</p>'}`;
+
+    if (team) wireTeam(host, team);
 
     $("#csvfile").onchange = async e => {
       const file = e.target.files && e.target.files[0];
@@ -256,9 +259,81 @@
     });
   }
 
+  function teamHtml(t) {
+    const when = ms => ms ? new Date(Number(ms)).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }) : "";
+    const rows = (t.team || []).map(m => `<tr>
+        <td>${esc(m.person || "—")}${m.id === t.you ? ' <span class="muted">(you)</span>' : ""}</td>
+        <td>${esc(m.email || "")}</td>
+        <td>${m.role === "admin" ? "Lead teacher" : "Teacher"}</td>
+        <td>${when(m.created)}</td>
+        <td class="${m.active ? "" : "muted"}">${m.active ? "Active" : "No access"}</td>
+        <td>${t.admin && m.id !== t.you ? `<button class="btn small ghost" data-team="${esc(m.id)}" data-on="${m.active ? 0 : 1}">${m.active ? "Remove access" : "Restore"}</button>` : ""}</td>
+      </tr>`).join("");
+    const pending = (t.invites || []).map(i => `<tr>
+        <td colspan="2">${esc(i.email || "Anyone with the link")}</td>
+        <td colspan="2">Invited ${when(i.created)}</td>
+        <td class="muted">Not used yet</td>
+        <td>${t.admin ? `<button class="btn small ghost" data-copyinv="${esc(i.code)}">Copy link</button> <button class="btn small ghost" data-cancel="${esc(i.code)}">Cancel</button>` : ""}</td>
+      </tr>`).join("");
+    return `<h2 style="margin-top:0">Your team at ${esc(t.school || "this school")}</h2>
+      <p class="muted">Everyone listed here sees the same classes and the same results. ${t.admin ? "As lead teacher you can invite colleagues and remove access." : "Your lead teacher manages who has access."}</p>
+      <table class="roster">
+        <tr><th>Teacher</th><th>Email</th><th>Role</th><th>Joined</th><th>Access</th><th></th></tr>
+        ${rows}${pending}
+      </table>
+      ${t.admin ? `<form class="card" id="invf" style="max-width:560px;margin:10px 0 24px">
+        <div class="field"><label for="iemail">Invite a colleague <span class="muted">(their email, optional)</span></label>
+          <input id="iemail" type="email" maxlength="120" placeholder="colleague@school.sch.uk"></div>
+        <p class="muted" style="font-size:13px">They'll join your school automatically and get their own teacher key. The link works once and expires after 30 days.</p>
+        <p class="err" id="ierr" role="alert"></p>
+        <div class="row end"><button class="btn" type="submit" id="invgo">Create invite link</button></div>
+      </form><div id="invout"></div>` : ""}`;
+  }
+
+  function wireTeam(host, t) {
+    const inviteUrl = code => location.origin + location.pathname.replace(/teacher\.html$/, "") + "join.html?invite=" + code;
+    host.querySelectorAll("[data-team]").forEach(b => b.onclick = async () => {
+      if (!confirm(b.dataset.on === "1" ? "Restore this colleague's access?" : "Remove this colleague's access to your school's results?")) return;
+      try { await api({ action: "team_set", id: b.dataset.team, active: b.dataset.on === "1" }); load(host); }
+      catch (e) { alert("Couldn't change that: " + e.message); }
+    });
+    host.querySelectorAll("[data-copyinv]").forEach(b => b.onclick = () => {
+      navigator.clipboard.writeText(inviteUrl(b.dataset.copyinv));
+      const old = b.textContent; b.textContent = "Copied"; setTimeout(() => b.textContent = old, 1500);
+    });
+    host.querySelectorAll("[data-cancel]").forEach(b => b.onclick = async () => {
+      if (!confirm("Cancel this invite? The link stops working.")) return;
+      try { await api({ action: "invite_cancel", code: b.dataset.cancel }); load(host); }
+      catch (e) { alert("Couldn't cancel that: " + e.message); }
+    });
+    const f = host.querySelector("#invf");
+    if (f) f.onsubmit = async e => {
+      e.preventDefault();
+      const btn = host.querySelector("#invgo"); btn.disabled = true;
+      try {
+        const j = await api({ action: "invite_create", email: host.querySelector("#iemail").value.trim() });
+        const url = inviteUrl(j.code);
+        host.querySelector("#invout").innerHTML = `<div class="callout"><p><b>Invite ready.</b> Send this link to your colleague. It works once.</p>
+          <p><code class="key">${esc(url)}</code></p>
+          <p><button class="btn small" id="icopy">Copy link</button> <button class="btn small ghost" id="imail">Email it</button></p></div>`;
+        host.querySelector("#icopy").onclick = () => { navigator.clipboard.writeText(url); host.querySelector("#icopy").textContent = "Copied"; };
+        host.querySelector("#imail").onclick = () => {
+          const body = `Hello,\n\nI've added you to our school's Revise 360 account. Use this link to set up your access:\n${url}\n\nYou'll get your own teacher key, and you'll see the same classes and results as me.\n\nThanks`;
+          location.href = "mailto:" + encodeURIComponent(host.querySelector("#iemail").value.trim()) +
+            "?subject=" + encodeURIComponent("Revise 360 access") + "&body=" + encodeURIComponent(body);
+        };
+      } catch (err) { host.querySelector("#ierr").textContent = "Couldn't create that invite: " + err.message; }
+      finally { btn.disabled = false; }
+    };
+  }
+
   async function load(host) {
-    host.innerHTML = '<p class="muted">Loading class logins…</p>';
-    try { render(host, await api({ action: "roster_list" })); }
+    host.innerHTML = '<p class="muted">Loading…</p>';
+    try {
+      const team = await api({ action: "team_list" }).catch(() => null);
+      const data = await api({ action: "roster_list" });
+      render(host, data, team);
+    }
     catch (e) { host.innerHTML = `<p class="muted">Class logins need a school teacher key${e.message === "bad key" ? "" : ": " + esc(e.message)}.</p>`; }
   }
 

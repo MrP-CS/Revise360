@@ -36,8 +36,8 @@ function sameSecret(a, b) {
 async function teacherOk(env, key) {
   if (env.TEACHER_KEY && sameSecret(key || "", env.TEACHER_KEY)) return { all: true, school: null };
   if (!key || key.length < 8) return null;
-  const row = await env.DB.prepare("SELECT id, school_code, school FROM teachers WHERE token = ? AND active = 1").bind(key).first();
-  return row ? { all: false, school: row.school_code, name: row.school } : null;
+  const row = await env.DB.prepare("SELECT id, school_code, school, role FROM teachers WHERE token = ? AND active = 1").bind(key).first();
+  return row ? { all: false, id: row.id, school: row.school_code, name: row.school, role: row.role || "admin", admin: (row.role || "admin") === "admin" } : null;
 }
 async function sha256Hex(text) {
   const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
@@ -132,6 +132,75 @@ export default {
           if (!who || !who.all) return fail("bad key", 403);
           const { results } = await env.DB.prepare("SELECT id, email, school, name, role, note, created, status FROM requests ORDER BY created DESC LIMIT 500").all();
           return json({ ok: true, requests: results });
+        }
+
+        case "invite_create": {   // a school admin invites a colleague
+          const whoI = await teacherOk(env, body.teacherKey);
+          if (!whoI || whoI.all) return fail("bad key", 403);
+          if (!whoI.admin) return fail("only the school's lead teacher can invite colleagues", 403);
+          const code = code6() + code6();
+          await env.DB.prepare(`INSERT INTO invites (code, school_code, created_by, email, created, expires)
+                                VALUES (?, ?, ?, ?, ?, ?)`)
+            .bind(code, whoI.school, whoI.id, clean(body.email, 120).toLowerCase(), now, now + 30 * 24 * 60 * 60 * 1000).run();
+          return json({ ok: true, code, school: whoI.name, expires: now + 30 * 24 * 60 * 60 * 1000 });
+        }
+
+        case "invite_info": {     // the join page asks what this link is for
+          const inv = await env.DB.prepare(
+            `SELECT i.code, i.expires, i.used, t.school FROM invites i
+             LEFT JOIN teachers t ON t.id = i.created_by WHERE i.code = ?`).bind(clean(body.code, 24)).first();
+          if (!inv) return json({ ok: false, error: "unknown invite" });
+          if (inv.used) return json({ ok: false, error: "invite already used" });
+          if (inv.expires && inv.expires < now) return json({ ok: false, error: "invite expired" });
+          return json({ ok: true, school: inv.school });
+        }
+
+        case "invite_accept": {   // colleague joins and gets their own key on the same school code
+          const code = clean(body.code, 24);
+          const inv = await env.DB.prepare("SELECT * FROM invites WHERE code = ?").bind(code).first();
+          if (!inv) return fail("unknown invite");
+          if (inv.used) return fail("invite already used");
+          if (inv.expires && inv.expires < now) return fail("invite expired");
+          const email = clean(body.email, 120).toLowerCase(), person = clean(body.name, 80);
+          if (!person || !/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(email)) return fail("missing details");
+          const school = await env.DB.prepare("SELECT school, licence, seats FROM teachers WHERE id = ?").bind(inv.created_by).first();
+          const token = crypto.randomUUID().replace(/-/g, ""), id = crypto.randomUUID();
+          await env.DB.batch([
+            env.DB.prepare(`INSERT INTO teachers (id, email, token, school, school_code, seats, licence, active, created, role, invited_by, person)
+                            VALUES (?, ?, ?, ?, ?, ?, ?, 1, ?, 'member', ?, ?)`)
+              .bind(id, email, token, school ? school.school : "", inv.school_code, school ? school.seats : 0, school ? school.licence : "trial", now, inv.created_by, person),
+            env.DB.prepare("UPDATE invites SET used = ?, used_by = ? WHERE code = ?").bind(now, id, code)
+          ]);
+          return json({ ok: true, teacherKey: token, school: school ? school.school : "", schoolCode: inv.school_code });
+        }
+
+        case "team_list": {       // who can see this school's dashboard
+          const whoT2 = await teacherOk(env, body.teacherKey);
+          if (!whoT2 || whoT2.all) return fail("bad key", 403);
+          const { results } = await env.DB.prepare(
+            `SELECT id, person, email, role, active, created FROM teachers WHERE school_code = ? ORDER BY created`).bind(whoT2.school).all();
+          const { results: pending } = await env.DB.prepare(
+            `SELECT code, email, created, expires FROM invites WHERE school_code = ? AND used IS NULL ORDER BY created DESC LIMIT 50`).bind(whoT2.school).all();
+          return json({ ok: true, team: results, invites: pending, you: whoT2.id, admin: whoT2.admin, school: whoT2.name, schoolCode: whoT2.school });
+        }
+
+        case "team_set": {        // admin switches a colleague's access on or off
+          const whoS = await teacherOk(env, body.teacherKey);
+          if (!whoS || whoS.all) return fail("bad key", 403);
+          if (!whoS.admin) return fail("only the school's lead teacher can change access", 403);
+          const id = clean(body.id, 64);
+          if (id === whoS.id) return fail("you can't remove your own access");
+          const t = await env.DB.prepare("SELECT school_code FROM teachers WHERE id = ?").bind(id).first();
+          if (!t || t.school_code !== whoS.school) return fail("not your colleague", 403);
+          await env.DB.prepare("UPDATE teachers SET active = ? WHERE id = ?").bind(body.active ? 1 : 0, id).run();
+          return json({ ok: true });
+        }
+
+        case "invite_cancel": {
+          const whoC2 = await teacherOk(env, body.teacherKey);
+          if (!whoC2 || whoC2.all || !whoC2.admin) return fail("bad key", 403);
+          await env.DB.prepare("DELETE FROM invites WHERE code = ? AND school_code = ?").bind(clean(body.code, 24), whoC2.school).run();
+          return json({ ok: true });
         }
 
         case "roster_add": {      // teacher creates logins for a class

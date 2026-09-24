@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Join your school | Revise 360</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/config.js"></script>
+<script src="js/store.js"></script>
+<script src="js/nav.js"></script>
+</head>
+<body>
+<header class="bar">
+  <a class="brand" href="index.html"><span class="logo">360</span><span><b>Revise 360</b><small>Join your school</small></span></a>
+  <div class="tools"></div>
+</header>
+
+<main class="page" id="main"><p class="muted">Checking your invite…</p></main>
+
+<footer class="site">
+  <p><b>Revise 360</b> — a product of Revise 360 Ltd, created by Olly Pettitt. An independent resource: not written, endorsed or approved by OCR or any exam board.</p>
+  <p>&copy; 2026 Revise 360 Ltd. All rights reserved.</p>
+</footer>
+
+<script>
+(function () {
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const code = new URLSearchParams(location.search).get("invite") || "";
+
+  async function api(body) {
+    const r = await fetch(window.APP_CONFIG.backendUrl, { method: "POST", body: JSON.stringify(body) });
+    const j = await r.json();
+    if (!j.ok) throw new Error(j.error || "server error");
+    return j;
+  }
+
+  function problem(msg) {
+    $("#main").innerHTML = `<section class="hero"><h1>That invite didn't work</h1>
+      <p class="lead">${esc(msg)}</p>
+      <p>Ask the colleague who sent it to create a new invite from their dashboard, or <a href="signup.html">request your own teacher key</a>.</p></section>`;
+  }
+
+  async function start() {
+    if (!code) return problem("The link is missing its invite code. Check you copied the whole thing.");
+    let info;
+    try { info = await api({ action: "invite_info", code }); }
+    catch (e) {
+      return problem({ "unknown invite": "We don't recognise that invite code.",
+                       "invite already used": "That invite has already been used. Invites work once only.",
+                       "invite expired": "That invite has expired. Invites last 30 days." }[e.message] || e.message);
+    }
+    $("#main").innerHTML = `<section class="hero">
+        <h1>Join ${esc(info.school || "your school")} on Revise 360</h1>
+        <p class="lead">A colleague has invited you. Once you're set up you'll see the same classes, the same student results, and you can create login cards of your own.</p>
+      </section>
+      <form class="card signin" id="f" style="max-width:560px">
+        <div class="field"><label for="name">Your name</label><input id="name" required maxlength="80" autocomplete="name"></div>
+        <div class="field"><label for="email">School email address</label><input id="email" type="email" required maxlength="120" autocomplete="email"></div>
+        <p class="muted" style="font-size:13px">Your email is used only for your account and service notices. See the <a href="privacy.html">privacy page</a>.</p>
+        <p class="err" id="err" role="alert"></p>
+        <div class="row end"><button class="btn" type="submit" id="go">Join and get my key</button></div>
+      </form>`;
+    $("#name").focus();
+    $("#f").onsubmit = async e => {
+      e.preventDefault();
+      const name = $("#name").value.trim(), email = $("#email").value.trim();
+      if (!name || !/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(email))
+        return $("#err").textContent = "Please enter your name and a valid school email address.";
+      $("#go").disabled = true; $("#err").textContent = "";
+      try {
+        const j = await api({ action: "invite_accept", code, name, email });
+        $("#main").innerHTML = `<section class="hero"><h1>You're in</h1>
+            <p class="lead">You've joined ${esc(j.school || "your school")}. Here is your teacher key: copy it somewhere safe, because it isn't shown again.</p></section>
+          <div class="callout">
+            <p><code class="key" id="tk">${esc(j.teacherKey)}</code> <button class="btn small ghost" id="copy">Copy</button></p>
+            <p>Paste it into the <a href="teacher.html">dashboard</a> whenever you want to see your school's results.</p>
+          </div>
+          <ol class="steps">
+            <li><b>Open the dashboard</b> and paste your key.</li>
+            <li><b>Look at your school's classes.</b> You'll see everything your colleagues have set up.</li>
+            <li><b>Create your own class logins</b> and print the cards, in the Class logins section.</li>
+            <li><b>Read the <a href="guides.html#teachers">teacher guide</a></b> if you haven't used Revise 360 before.</li>
+          </ol>`;
+        $("#copy").onclick = () => { navigator.clipboard.writeText(j.teacherKey); $("#copy").textContent = "Copied"; };
+      } catch (err) {
+        $("#go").disabled = false;
+        $("#err").textContent = "Couldn't complete that: " + err.message;
+      }
+    };
+  }
+  start();
+})();
+</script>
+</body>
+</html>
