@@ -39,6 +39,19 @@ async function teacherOk(env, key) {
   const row = await env.DB.prepare("SELECT id, school_code, school FROM teachers WHERE token = ? AND active = 1").bind(key).first();
   return row ? { all: false, school: row.school_code, name: row.school } : null;
 }
+async function sha256Hex(text) {
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
+  return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, "0")).join("");
+}
+const studentKey = (cls, name, pin) => sha256Hex(cls + "|" + String(name).toLowerCase() + "|" + pin);
+function makePin() {
+  const bad = new Set(["0000", "1111", "2222", "3333", "4444", "5555", "6666", "7777", "8888", "9999", "1234", "4321", "1122", "2580"]);
+  for (;;) {
+    const n = crypto.getRandomValues(new Uint32Array(1))[0] % 10000;
+    const p = String(n).padStart(4, "0");
+    if (!bad.has(p)) return p;
+  }
+}
 const code6 = () => {
   const a = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";  // no look-alikes
   return [...crypto.getRandomValues(new Uint8Array(6))].map(b => a[b % a.length]).join("");
@@ -119,6 +132,90 @@ export default {
           if (!who || !who.all) return fail("bad key", 403);
           const { results } = await env.DB.prepare("SELECT id, email, school, name, role, note, created, status FROM requests ORDER BY created DESC LIMIT 500").all();
           return json({ ok: true, requests: results });
+        }
+
+        case "roster_add": {      // teacher creates logins for a class
+          const whoA = await teacherOk(env, body.teacherKey);
+          if (!whoA || whoA.all === undefined) return fail("bad key", 403);
+          if (whoA.all) return fail("use a school key, not the owner key");
+          const cls = clean(body.cls, 40);
+          const names = (Array.isArray(body.names) ? body.names : [])
+            .map(n => clean(n, 40).toLowerCase().replace(/\s+/g, "")).filter(Boolean).slice(0, 400);
+          if (!names.length) return fail("no usernames");
+          const made = [];
+          for (const name of names) {
+            const existing = await env.DB.prepare("SELECT pin FROM students WHERE name = ? AND cls = ? AND school_code = ?")
+              .bind(name, cls, whoA.school).first();
+            const pin = existing ? existing.pin : makePin();
+            const key = await studentKey(cls, name, pin);
+            await env.DB.prepare(`INSERT INTO students (key, name, cls, school_code, pin, roster, first_seen, last_seen)
+                                  VALUES (?, ?, ?, ?, ?, 1, ?, ?)
+                                  ON CONFLICT(key) DO UPDATE SET roster = 1, pin = excluded.pin, school_code = excluded.school_code`)
+              .bind(key, name, cls, whoA.school, pin, now, now).run();
+            made.push({ key, name, cls, pin });
+          }
+          return json({ ok: true, students: made, schoolCode: whoA.school });
+        }
+
+        case "roster_list": {
+          const whoL = await teacherOk(env, body.teacherKey);
+          if (!whoL || whoL.all) return fail("bad key", 403);
+          const { results } = await env.DB.prepare(
+            `SELECT key, name, cls, pin, roster, last_seen,
+                    (SELECT COUNT(*) FROM progress p WHERE p.key = students.key) AS started
+             FROM students WHERE school_code = ? ORDER BY cls, name LIMIT 2000`).bind(whoL.school).all();
+          const t = await env.DB.prepare("SELECT enforce_roster FROM teachers WHERE school_code = ? LIMIT 1").bind(whoL.school).first();
+          return json({ ok: true, students: results, enforce: !!(t && t.enforce_roster), schoolCode: whoL.school });
+        }
+
+        case "roster_reset": {    // new PIN for one student, keeping their progress
+          const whoR2 = await teacherOk(env, body.teacherKey);
+          if (!whoR2 || whoR2.all) return fail("bad key", 403);
+          const old = await env.DB.prepare("SELECT key, name, cls FROM students WHERE key = ? AND school_code = ?")
+            .bind(clean(body.key, 64), whoR2.school).first();
+          if (!old) return fail("not found", 404);
+          const pin = makePin(), key = await studentKey(old.cls, old.name, pin);
+          await env.DB.batch([
+            env.DB.prepare("UPDATE students SET key = ?, pin = ? WHERE key = ?").bind(key, pin, old.key),
+            env.DB.prepare("UPDATE progress SET key = ? WHERE key = ?").bind(key, old.key)
+          ]);
+          return json({ ok: true, key, pin, name: old.name, cls: old.cls });
+        }
+
+        case "roster_remove": {
+          const whoRm = await teacherOk(env, body.teacherKey);
+          if (!whoRm || whoRm.all) return fail("bad key", 403);
+          const k = clean(body.key, 64);
+          const owns = await env.DB.prepare("SELECT 1 AS ok FROM students WHERE key = ? AND school_code = ?").bind(k, whoRm.school).first();
+          if (!owns) return fail("not your student", 403);
+          await env.DB.batch([
+            env.DB.prepare("DELETE FROM progress WHERE key = ?").bind(k),
+            env.DB.prepare("DELETE FROM students WHERE key = ?").bind(k)
+          ]);
+          return json({ ok: true });
+        }
+
+        case "roster_enforce": {  // only listed students may sign in at this school
+          const whoE = await teacherOk(env, body.teacherKey);
+          if (!whoE || whoE.all) return fail("bad key", 403);
+          await env.DB.prepare("UPDATE teachers SET enforce_roster = ? WHERE school_code = ?")
+            .bind(body.on ? 1 : 0, whoE.school).run();
+          return json({ ok: true, enforce: !!body.on });
+        }
+
+        case "check": {           // called at sign-in: is this login allowed?
+          if (!isKey(body.key)) return fail("bad key");
+          const school = clean(body.school, 12).toUpperCase();
+          const known = await env.DB.prepare("SELECT name, cls, roster FROM students WHERE key = ?").bind(body.key).first();
+          if (known) return json({ ok: true, known: true });
+          if (!school) return json({ ok: true, known: false });
+          const t = await env.DB.prepare("SELECT enforce_roster FROM teachers WHERE school_code = ? AND active = 1").bind(school).first();
+          if (t && t.enforce_roster) return json({ ok: false, error: "not on roster" });
+          // username already claimed at this school with a different PIN?
+          const name = clean(body.name, 40).toLowerCase();
+          const taken = await env.DB.prepare("SELECT 1 AS ok FROM students WHERE name = ? AND school_code = ?").bind(name, school).first();
+          if (taken) return json({ ok: false, error: "wrong pin" });
+          return json({ ok: true, known: false });
         }
 
         case "teachers": {        // owner only: list issued keys

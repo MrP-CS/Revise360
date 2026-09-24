@@ -4,6 +4,8 @@ CREATE TABLE IF NOT EXISTS students (
   name       TEXT NOT NULL,        -- school username, e.g. 24smithj
   cls        TEXT,                 -- class or group label, may be empty
   school_code TEXT,                -- the code the teacher gives out; links a student to a school
+  pin         TEXT,                -- set only for logins the teacher created, so cards can be reprinted
+  roster      INTEGER DEFAULT 0,   -- 1 = created by a teacher rather than self-registered
   first_seen INTEGER,
   last_seen  INTEGER
 );
@@ -16,6 +18,7 @@ CREATE TABLE IF NOT EXISTS progress (
 );
 CREATE INDEX IF NOT EXISTS progress_updated ON progress (updated);
 CREATE INDEX IF NOT EXISTS students_cls ON students (cls);
+CREATE INDEX IF NOT EXISTS students_name_school ON students (name, school_code);
 
 -- For licences later: one row per teacher, each with their own dashboard token
 CREATE TABLE IF NOT EXISTS teachers (
@@ -27,6 +30,7 @@ CREATE TABLE IF NOT EXISTS teachers (
   seats    INTEGER DEFAULT 0,
   licence  TEXT,                   -- free | trial | paid
   active   INTEGER DEFAULT 1,
+  enforce_roster INTEGER DEFAULT 0, -- 1 = only students on the teacher's list may sign in
   created  INTEGER
 );
 

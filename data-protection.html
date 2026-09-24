@@ -43,6 +43,7 @@
     <tr><td>Class or group label, optional</td><td><code>11A</code></td><td>Grouping results for a teacher</td><td>As above</td></tr>
     <tr><td>Derived sign-in code</td><td>SHA-256 hash</td><td>Matching a returning student to their progress across devices</td><td>As above</td></tr>
     <tr><td>Progress records</td><td>Scores per station, answers given, personal bests, markers viewed</td><td>Feedback to the student and the teacher</td><td>As above</td></tr>
+    <tr><td>Generated PIN <span class="muted">(only where a teacher creates the logins)</span></td><td><code>2418</code></td><td>So a teacher can reprint a lost login card or reset a PIN</td><td>As above</td></tr>
     <tr><td>Teacher key</td><td>A secret phrase held by the school</td><td>Controlling access to the dashboard</td><td>Contract</td></tr>
   </table>
   <p>No special category data is processed. No profiling and no automated decision-making with legal or similarly significant effects takes place: scores are feedback on quiz answers, nothing more.</p>
@@ -50,7 +51,7 @@
   <h2>3. What is never processed</h2>
   <ul>
     <li>Real names, email addresses, dates of birth, addresses or phone numbers</li>
-    <li>PINs or passwords in readable form: the PIN is combined with the username and class in the browser and only the resulting one-way code is sent</li>
+    <li>Passwords of any kind. Where a student chooses their own PIN it is never transmitted or stored: only a one-way code made from it. Where a teacher creates class logins, the generated PIN is stored so cards can be reprinted; it is not a password to any other system and can be reset at any time</li>
     <li>Location, microphone, camera, or headset sensor data of any kind</li>
     <li>Advertising identifiers, third-party cookies or analytics trackers. There is no advertising on the service, and data is never sold, rented or shared for marketing</li>
   </ul>

@@ -51,6 +51,20 @@
       name = name.trim().replace(/\s+/g, "").toLowerCase();
       school = (school || "").trim().toUpperCase();
       const key = await sha256(cls + "|" + name.toLowerCase() + "|" + pin);
+      if (CFG.backendUrl) {
+        // Ask the server whether this login is allowed, so a mistyped PIN doesn't
+        // quietly become a second profile
+        try {
+          const r = await fetch(CFG.backendUrl, { method: "POST", body: JSON.stringify({ action: "check", key, name, school }) });
+          const j = await r.json();
+          if (!j.ok) {
+            const e = new Error(j.error === "not on roster"
+              ? "That username isn't on your school's list. Check the username and class on your login card, or ask your teacher."
+              : "That username is already in use at your school. Check the PIN on your login card, or ask your teacher to reset it.");
+            e.code = j.error; throw e;
+          }
+        } catch (err) { if (err.code) throw err; /* offline: let them work locally */ }
+      }
       const s = { key, name, cls, school };
       write("student", s);
       const roster = read("roster", {}); roster[key] = { name, cls, school }; write("roster", roster);

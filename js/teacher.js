@@ -26,6 +26,17 @@
     $("#f").onsubmit = e => { e.preventDefault(); sessionStorage.setItem("nvr-tk", $("#k").value); load(); };
   }
 
+  function mountRoster() {
+    if (!window.R360Roster || !CFG.backendUrl) return;
+    let host = document.querySelector("#rosterSection");
+    if (!host) {
+      host = document.createElement("section");
+      host.id = "rosterSection"; host.className = "rosterwrap";
+      document.querySelector("#main").appendChild(host);
+    }
+    R360Roster.load(host);
+  }
+
   async function load() {
     if (window.R360Nav) R360Nav.refresh();
     const tk = sessionStorage.getItem("nvr-tk") || "";
@@ -44,6 +55,7 @@
     if (withData && !Object.values(map).some(s => s.exps[expSel]?.done)) expSel = withData.id;
     students = Object.values(map).sort((a, b) => a.cls.localeCompare(b.cls) || a.name.localeCompare(b.name));
     render();
+    mountRoster();
   }
 
   function cell(sum) {

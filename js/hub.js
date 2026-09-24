@@ -55,7 +55,11 @@
       const cls = c === "__other" ? ($("#c2").value.trim() || "") : c;
       if (!/^\d{4}$/.test(p)) return $("#err").textContent = "Your PIN must be 4 digits.";
       $("#err").textContent = ""; e.submitter && (e.submitter.disabled = true);
-      await Store.signIn(n, cls, p, sc);
+      try { await Store.signIn(n, cls, p, sc); }
+      catch (err) {
+        e.submitter && (e.submitter.disabled = false);
+        return $("#err").textContent = err && err.message ? err.message : "Couldn't sign you in. Please try again.";
+      }
       if (next && /^experience\.html\?/.test(next)) location.href = next; else route();
     };
   }
