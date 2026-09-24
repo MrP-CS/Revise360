@@ -1,7 +1,6 @@
 # Revise 360 backend
 
-A Cloudflare Worker plus a D1 database. It replaces the Google Sheet and works from any
-device, not just the one a student signed in on.
+A Cloudflare Worker plus a D1 database that provides hosted progress syncing, class management and teacher reporting across devices.
 
 ## What it stores
 
