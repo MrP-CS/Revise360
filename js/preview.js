@@ -25,7 +25,7 @@
       case 'back': return [1-2*u, 1-2*v, -1];
       case 'left': return [-1, 1-2*v, 2*u-1];
       case 'up': return [2*u-1, 1, 2*v-1];
-      default: return [2*u-1, -1, 1-2*u];
+      default: return [2*u-1, -1, 1-2*v];
     }
   };
   const world = p => new THREE.Vector3(-p[2], p[1], -p[0]).normalize().multiplyScalar(38);
