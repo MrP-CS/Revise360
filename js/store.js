@@ -83,12 +83,6 @@
 
     signOut() { try { localStorage.removeItem(NS + "student"); } catch (e) {} },
 
-    // Move progress saved under an old experience id onto the new one
-    rename(oldId, newId) {
-      const s = Store.student(); if (!s) return;
-      const all = read("p:" + s.key, {});
-      if (all[oldId] && !all[newId]) { all[newId] = all[oldId]; delete all[oldId]; write("p:" + s.key, all); Store.push(newId); }
-    },
 
     async pull() {
       const s = Store.student(); if (!s || (!CFG.backendUrl && !(window.R360Local && R360Local.active()))) return;

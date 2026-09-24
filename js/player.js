@@ -13,22 +13,10 @@
   const marks = t => (t.t === "mcq" || t.t === "multi" || t.t === "circuit" || t.t === "expr" || t.t === "convert" || t.t === "addshift" || t.t === "pixels" || t.t === "sound") ? 1 : t.t === "table" ? (1 << (t.inputs ? t.inputs.length : new Set((t.expr || "").replace(/AND|OR|NOT/g, "").match(/[A-Z]/g) || []).size)) : (t.t === "sprint" || t.t === "defence" || t.t === "blitz") ? 0 : t.t === "order" ? t.steps.length : t.t === "sort" ? t.items.length : t.pairs.length;
 
   let exp;
-  // Experience files were renamed to a single convention; old links still work
-  async function fetchExp(id) {
-    const r = await fetch("experiences/" + encodeURIComponent(id) + ".json", { cache: "no-cache" });
-    if (!r.ok) throw new Error("not found");
-    return r.json();
-  }
   try {
-    try { exp = await fetchExp(expId); }
-    catch (e) {
-      const al = await (await fetch("experiences/aliases.json", { cache: "no-cache" })).json();
-      if (!al[expId]) throw e;
-      const newId = al[expId];
-      Store.rename && Store.rename(expId, newId);     // carry any saved progress across
-      expId = newId; exp = await fetchExp(newId);
-      history.replaceState(null, "", "experience.html?id=" + encodeURIComponent(newId));
-    }
+    const r = await fetch("experiences/" + encodeURIComponent(expId) + ".json", { cache: "no-cache" });
+    if (!r.ok) throw new Error("not found");
+    exp = await r.json();
   }
   catch (e) { document.body.innerHTML = '<div class="page"><div class="card"><h1>Experience not found</h1><p><a href="index.html">Back to home</a></p></div></div>'; return; }
   document.title = exp.title + " | " + CFG.siteTitle;
