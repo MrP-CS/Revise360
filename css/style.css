@@ -34,7 +34,7 @@ a{color:var(--info)}
 .err{color:var(--bad);font-size:14px;min-height:20px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
 .exp{background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
-.exp .thumb{height:130px;background-size:300% auto;background-position:50% 45%;position:relative}
+.exp .thumb{height:136px;background-size:100% 100%;background-position:50% 50%;background-repeat:no-repeat;position:relative}
 .exp .thumb span{position:absolute;left:12px;top:12px;background:rgba(10,16,30,.85);border-radius:999px;padding:3px 10px;font-size:13px;font-weight:700;color:var(--edge)}
 .exp .body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px;flex:1}
 .exp h3{margin:0;font-size:18px}
@@ -232,3 +232,21 @@ table.roster th,table.roster td{border:1px solid var(--line);padding:7px 10px;te
 table.roster th{background:#17233c}
 table.roster code{background:#0b1322;border:1px solid var(--line);border-radius:6px;padding:2px 8px;letter-spacing:2px}
 textarea{width:100%;background:#0f1930;color:var(--fg);border:1px solid var(--line);border-radius:10px;padding:10px;font:inherit}
+
+/* ---- home page ---- */
+.hero.home{padding:56px 0 18px;max-width:820px}
+.eyebrow{color:var(--edge);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:13px;margin:0 0 10px}
+.hero.home h1{font-size:clamp(34px,6vw,60px);margin:0 0 16px}
+.btn.big{padding:13px 22px;font-size:16px}
+.muted.small{font-size:13px;margin-top:14px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:26px 0 8px}
+.stats div{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;text-align:center}
+.stats b{display:block;font-size:30px;color:var(--edge)}
+.stats span{color:var(--soft);font-size:13px}
+.cta{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px 28px;margin:34px 0 10px;text-align:center}
+.cta h2{margin:0 0 8px}
+.cta .row{justify-content:center;flex-wrap:wrap;gap:10px;margin-top:16px}
+
+
+.page .btn, .hero .btn, .cta .btn{color:#0f1626}
+.page .btn.ghost, .hero .btn.ghost, .cta .btn.ghost{color:var(--fg)}

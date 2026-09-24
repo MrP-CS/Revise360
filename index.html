@@ -1,26 +1,87 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8">
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Revise 360</title>
+<title>Revise 360 — GCSE Computer Science revision you step inside</title>
+<meta name="description" content="Revise 360 turns each part of GCSE Computer Science into a 360° room students explore on a laptop, a tablet or in a VR headset, with printed worksheets and interactive challenges.">
 <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-<div class="page">
-  <header class="top">
-    <div class="brand"><div class="mark" aria-hidden="true"><span>360</span></div><div><h1 id="siteTitle">Revise 360</h1><p id="topic"></p></div></div>
-    <div class="row" id="who"></div>
-  </header>
-  <main id="main"></main>
-  <span id="topics" hidden></span>
-</div>
 <script src="js/config.js"></script>
 <script src="js/local.js"></script>
 <script src="js/store.js"></script>
 <script src="js/nav.js"></script>
-<script src="js/hub.js"></script>
+</head>
+<body>
+<header class="bar">
+  <a class="brand" href="index.html"><span class="logo">360</span><span><b>Revise 360</b><small>GCSE Computer Science</small></span></a>
+  <div class="tools"></div>
+</header>
+
+<main class="page">
+  <section class="hero home">
+    <p class="eyebrow">OCR J277 · Paper 1 and Paper 2</p>
+    <h1>Revision you step inside</h1>
+    <p class="lead">Every part of the specification becomes a 360° room. Students look around, work through six stations, build circuits and defragment disks with their own hands, and leave knowing exactly what to revise. It works on a laptop, a tablet, a phone or in a VR headset.</p>
+    <div class="row">
+      <a class="btn big" href="topics.html">Explore the experiences</a>
+      <a class="btn ghost big" href="guides.html#teachers">How it works in a lesson</a>
+    </div>
+    <p class="muted small">Students sign in on the topics page with the card their teacher gives them. Teachers, there's a <a href="teachers.html">guide</a> and you can <a href="signup.html">request a key</a>.</p>
+  </section>
+
+  <section class="stats">
+    <div><b>7</b><span>topics</span></div>
+    <div><b>60+</b><span>experiences</span></div>
+    <div><b>64</b><span>worksheets</span></div>
+    <div><b>3</b><span>replayable challenges</span></div>
+  </section>
+
+  <h2>What makes it different</h2>
+  <div class="cards">
+    <div class="c"><span class="ico">🧭</span><h3>Six stations, one room</h3><p>No slides to scroll. Students turn to face each station, read the wall, write on the worksheet, then answer.</p></div>
+    <div class="c"><span class="ico">🛠️</span><h3>Things you do, not read</h3><p>Wire logic gates, add binary numbers, paint pixels to see file size, sample a sound wave, set file permissions, defragment a disk.</p></div>
+    <div class="c"><span class="ico">🥽</span><h3>VR without the faff</h3><p>Any headset with a modern browser can enter VR. Nothing to install, and everything works without a headset too.</p></div>
+    <div class="c"><span class="ico">📄</span><h3>Paper where it matters</h3><p>Every experience has a four-page worksheet, so the thinking happens in writing and the headset isn't the whole lesson.</p></div>
+    <div class="c"><span class="ico">📊</span><h3>Feedback that names the gap</h3><p>Scores break down station by station and flag Secure, Revise or Focus here, so revision has a target.</p></div>
+    <div class="c"><span class="ico">🎮</span><h3>Challenges they replay</h3><p>Timed conversion and logic sprints, and a cyber defence game with a budget and consequences. Personal bests, no leaderboards.</p></div>
+  </div>
+
+  <h2>What's covered</h2>
+  <table class="info">
+    <tr><th>Topic</th><th>Experiences</th><th>Includes</th></tr>
+    <tr><td>1.1 Systems architecture</td><td>4</td><td>The CPU, fetch-execute, performance, embedded systems, 3D hardware models</td></tr>
+    <tr><td>1.2 Memory and storage</td><td>15 + Binary blitz</td><td>RAM and ROM, virtual memory, storage, units, binary, hex, images, sound, compression</td></tr>
+    <tr><td>1.3 Computer networks</td><td>13</td><td>LAN and WAN, performance, topologies, the internet, protocols, layers</td></tr>
+    <tr><td>1.4 Network security</td><td>10 + Cyber defence</td><td>Forms of attack, malware, SQL injection, social engineering, prevention</td></tr>
+    <tr><td>1.5 Systems software</td><td>4</td><td>Operating systems, interfaces, multitasking, memory and file management, utilities</td></tr>
+    <tr><td>2.3 Producing robust programs</td><td>6</td><td>Defensive design, validation, maintainability, testing, error types</td></tr>
+    <tr><td>2.4 Boolean logic</td><td>3 + Logic sprint</td><td>Gates, truth tables, building circuits, writing expressions</td></tr>
+  </table>
+
+  <h2>How a lesson runs</h2>
+  <ol class="steps">
+    <li><b>Starter on paper.</b> Five minutes, no devices, from the worksheet.</li>
+    <li><b>Into the room.</b> Six stations: read the wall, write the key fact and the challenge answer, then answer the questions.</li>
+    <li><b>Final challenge.</b> Predict on paper first, then test it in the experience.</li>
+    <li><b>Score screen.</b> A breakdown by station: secure, needs revising, needs reteaching.</li>
+    <li><b>Exam practice.</b> Device away, questions answered from memory.</li>
+  </ol>
+
+  <div class="callout">
+    <p><b>Where this is up to.</b> Revise 360 is in development. Teachers create their students' logins and print login cards; sign-in through Microsoft school accounts is planned, so schools can eventually use the logins they already have.</p>
+  </div>
+
+  <section class="cta">
+    <h2>Have a look around</h2>
+    <p>Open any topic and start an experience. Teachers can <a href="signup.html">request a key</a> to create class logins and see results.</p>
+    <div class="row"><a class="btn big" href="topics.html">Explore the experiences</a>
+      <a class="btn ghost big" href="about.html">About Revise 360</a></div>
+  </section>
+</main>
+
 <footer class="site">
   <p><b>Revise 360</b> — a product of Revise 360 Ltd, created by Olly Pettitt. An independent resource: not written, endorsed or approved by OCR or any exam board.</p>
-  <p>&copy; 2026 Revise 360 Ltd. All rights reserved. Licensed to subscribing schools for use with their own students; not to be copied, redistributed, resold or adapted without written permission.</p>
-  <p><a href="about.html">About</a> · <a href="teachers.html">For teachers</a> · <a href="privacy.html">Privacy</a> · <a href="data-protection.html">Data protection</a> · <a href="dpa.html">Processing agreement</a> · <a href="mailto:hello@revise360.co.uk">hello@revise360.co.uk</a></p>
+  <p>&copy; 2026 Revise 360 Ltd. All rights reserved.</p>
 </footer>
-</body></html>
+</body>
+</html>

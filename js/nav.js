@@ -3,27 +3,26 @@
 (function () {
   const LINKS = [
     { href: "index.html", label: "Home" },
-    { href: "index.html#topics", label: "Topics" },
+    { href: "topics.html", label: "Topics" },
     { href: "about.html", label: "About" },
     { href: "teachers.html", label: "For teachers" },
     { href: "teacher.html", label: "Dashboard" },
-    { href: "data-protection.html", label: "Data" },
     { href: "guides.html", label: "Guides" }
   ];
   const here = (location.pathname.split("/").pop() || "index.html").toLowerCase();
 
   function signInLink() {
     const s = window.Store && Store.student && Store.student();
-    if (s) return { href: "index.html#account", label: "Signed in: " + s.name, cls: "me" };
-    return { href: "index.html#signin", label: "Sign in", cls: "cta" };
+    if (s) return { href: "topics.html", label: "Signed in: " + s.name, cls: "me" };
+    return { href: "topics.html#signin", label: "Sign in", cls: "cta" };
   }
 
   // Footer navigation, in columns, added to every page that has the site footer
   const FOOT = [
-    ["Students", [["index.html", "Sign in"], ["guides.html#students", "How to use Revise 360"], ["guides.html#vr", "Using a VR headset"]]],
+    ["Students", [["topics.html", "All topics"], ["guides.html#students", "How to use Revise 360"], ["guides.html#vr", "Using a VR headset"]]],
     ["Teachers", [["teachers.html", "For teachers"], ["signup.html", "Get a teacher key"], ["teacher.html", "Dashboard"], ["guides.html#teachers", "Teacher guide"]]],
-    ["About", [["about.html", "About Revise 360"], ["about.html#faq", "FAQs"], ["mailto:hello@revise360.co.uk", "Contact"]]],
-    ["Legal", [["privacy.html", "Privacy"], ["data-protection.html", "Data protection policy"], ["dpa.html", "Processing agreement"], ["terms.html", "Terms of use"]]]
+    ["About", [["index.html", "Home"], ["about.html", "About Revise 360"], ["about.html#faq", "FAQs"], ["mailto:hello@revise360.co.uk", "Contact"]]],
+    ["Legal", [["privacy.html", "Privacy"], ["data-protection.html", "Data protection"], ["dpa.html", "Processing agreement"], ["terms.html", "Terms of use"]]]
   ];
   function footer() {
     const f = document.querySelector("footer.site");
@@ -63,7 +62,7 @@
     const s = window.Store && Store.student && Store.student();
     if (s) return;
     const back = encodeURIComponent(location.pathname.split("/").pop() + location.search);
-    location.replace("index.html?next=" + back + "#signin");
+    location.replace("topics.html?next=" + back + "#signin");
   }
 
   document.readyState === "loading" ? addEventListener("DOMContentLoaded", init) : init();

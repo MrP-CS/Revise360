@@ -1,6 +1,18 @@
 // Generic 360 experience player. Everything it shows comes from
 // experiences/<id>.json, so new lessons need no code changes.
 (async function () {
+  // Experiences are for signed-in students. No navigation chrome in here: the ⌂ Home
+  // button in the toolbar is the way out.
+  const R360PlayerGate = (() => {
+    const who = window.Store && Store.student && Store.student();
+    if (!who) {
+      const back = encodeURIComponent(location.pathname.split("/").pop() + location.search);
+      location.replace("topics.html?next=" + back + "#signin");
+      return false;
+    }
+    return true;
+  })();
+  if (!R360PlayerGate) return;
   const CFG = window.APP_CONFIG;
   const params = new URLSearchParams(location.search);
   let expId = params.get("id");
