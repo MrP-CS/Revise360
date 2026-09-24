@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Get a teacher key | Revise 360</title>
-<meta name="description" content="Request a teacher key and school code for Revise 360, so your classes' progress appears on your dashboard.">
+<meta name="description" content="Request a teacher key for Revise 360, then create your students' logins and print their cards.">
 <link rel="stylesheet" href="css/style.css">
 <script src="js/config.js"></script>
 <script src="js/store.js"></script>
@@ -19,12 +19,12 @@
 <main class="page">
   <section class="hero">
     <h1>Get your teacher key</h1>
-    <p class="lead">A teacher key opens your dashboard. It comes with a six-character school code that your students type when they sign in, which is what links their progress to your school and nobody else's.</p>
+    <p class="lead">A teacher key opens your dashboard, where you create your students' logins and print their cards. Everything you create is tied to your school, so you see your classes and nobody else's.</p>
   </section>
 
   <div class="cards">
     <div class="c"><span class="ico">🔑</span><h3>Your teacher key</h3><p>A long private string you paste into the dashboard. Keep it to staff: anyone with it can see your school's results.</p></div>
-    <div class="c"><span class="ico">🏫</span><h3>Your school code</h3><p>Six characters, such as <code>K7M3QP</code>. Safe to put on the board or in a link. Students type it once.</p></div>
+    <div class="c"><span class="ico">🪪</span><h3>Your students' logins</h3><p>You choose the usernames; PINs are generated. Print a login card for each student, or share them on Teams.</p></div>
     <div class="c"><span class="ico">⏱️</span><h3>Usually same day</h3><p>Requests are checked by hand from a school email address, then the key and code are emailed to you.</p></div>
   </div>
 
@@ -41,19 +41,20 @@
   </form>
 
   <div id="done" hidden>
-    <div class="callout"><p><b>Request sent.</b> Check your inbox: your teacher key and school code will arrive by email, usually the same working day. If nothing has arrived by the next morning, email <a href="mailto:hello@revise360.co.uk">hello@revise360.co.uk</a>.</p></div>
+    <div class="callout"><p><b>Request sent.</b> Check your inbox: your teacher key will arrive by email, usually the same working day. If nothing has arrived by the next morning, email <a href="mailto:hello@revise360.co.uk">hello@revise360.co.uk</a>.</p></div>
   </div>
 
   <h2>What happens next</h2>
   <ol class="steps">
-    <li><b>You get two things by email:</b> a teacher key and a school code.</li>
-    <li><b>Give students the school code</b>, or send them a link with it built in, such as <code>revise360.co.uk/?school=K7M3QP</code>. They type it once when they first sign in.</li>
-    <li><b>Students sign in</b> with a username, an optional class, a PIN they choose, and that school code.</li>
-    <li><b>Open the dashboard</b> and paste your teacher key. You'll see only students who used your school code.</li>
+    <li><b>Your teacher key arrives by email.</b> Keep it to staff: it opens your school's dashboard.</li>
+    <li><b>Create your class logins.</b> In the dashboard, paste your usernames or import a CSV from your MIS. A four-digit PIN is generated for each one.</li>
+    <li><b>Hand out the login cards.</b> Print them, or save them to share on Teams or Google Classroom.</li>
+    <li><b>Students sign in</b> with just their username and PIN. Nothing else to type, nothing for them to set up.</li>
+    <li><b>Watch the results</b> appear on your dashboard, and invite your colleagues so they see the same classes.</li>
   </ol>
 
   <div class="callout">
-    <p><b>Already have a key?</b> Go straight to the <a href="teacher.html">dashboard</a>. Lost it? Email from the address you signed up with and it can be reissued.</p>
+    <p><b>Already have a key?</b> Go straight to the <a href="teacher.html">dashboard</a>. Lost it? Email from the address you signed up with and it can be reissued. <b>A colleague already using Revise 360?</b> Ask them to invite you from their dashboard instead: you'll join their school automatically and see the same classes.</p>
   </div>
 </main>
 
@@ -79,7 +80,15 @@
       $("#f").hidden = true; $("#done").hidden = false; $("#done").scrollIntoView({ behavior: "smooth", block: "center" });
     } catch (err) {
       $("#go").disabled = false;
-      $("#err").innerHTML = 'Sorry, that didn\'t send. Please email <a href="mailto:hello@revise360.co.uk">hello@revise360.co.uk</a> instead.';
+      // The server didn't answer. Offer the same request as an email instead, already written.
+      const subject = "Revise 360 teacher key request — " + body.school;
+      const mail = "Hello,\n\nPlease could I have a Revise 360 teacher key?\n\n"
+        + "Name: " + body.name + "\nSchool: " + body.school + "\nEmail: " + body.email
+        + (body.role ? "\nRole: " + body.role : "") + (body.note ? "\nNotes: " + body.note : "")
+        + "\n\nThank you.";
+      const href = "mailto:hello@revise360.co.uk?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(mail);
+      $("#err").innerHTML = 'We couldn\'t reach the server just now. <a id="mailfall" href="' + href + '">Send this request by email instead</a>, '
+        + 'and you\'ll get your key the same way.';
     }
   };
 })();

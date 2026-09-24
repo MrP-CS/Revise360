@@ -106,7 +106,7 @@
       ${team ? teamHtml(team) : ""}
       <div class="row" style="justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:10px">
         <div><h2 style="margin:0">Class logins</h2>
-          <p class="muted" style="margin:4px 0">Students sign in with just the username and PIN on their card. Your school code, <code>${esc(data.schoolCode || "")}</code>, is attached to each login automatically.</p></div>
+          <p class="muted" style="margin:4px 0">Students sign in with just the username and PIN on their card. Every login you create here belongs to your school automatically.</p></div>
         <label class="row" style="gap:8px;align-items:center;font-size:14px">
           <input type="checkbox" id="enforce" ${data.enforce ? "checked" : ""}>
           Only students on this list may sign in

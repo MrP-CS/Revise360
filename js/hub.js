@@ -34,7 +34,6 @@
       <h2>Sign in</h2><p class="muted">Use the username and PIN on your login card. Your class is already set up for you.</p>
       <div class="field"><label for="n">Username</label><input id="n" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" required maxlength="40" inputmode="text"></div>
       <div class="field"><label for="p">4-digit PIN</label><input id="p" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" required autocomplete="off"></div>
-      <div class="field" id="scwrap" hidden><label for="sc">School code <span class="muted">(only if asked)</span></label><input id="sc" maxlength="12" autocapitalize="characters" autocomplete="off"></div>
       <p class="err" id="err" role="alert">${esc(msg || "")}</p>
       <div class="row end"><button class="btn" type="submit">Start</button></div>
       <p class="muted" style="font-size:13px">No card yet? Your teacher creates them. Lost yours, or forgotten the PIN? Ask your teacher for a new card: your progress stays with you.</p>
@@ -42,14 +41,13 @@
     $("#n").focus();
     $("#f").onsubmit = async e => {
       e.preventDefault();
-      const n = $("#n").value.trim(), p = $("#p").value.trim(), sc = $("#sc").value.trim().toUpperCase();
+      const n = $("#n").value.trim(), p = $("#p").value.trim();
       if (!n) return $("#err").textContent = "Enter the username from your login card.";
       if (!/^\d{4}$/.test(p)) return $("#err").textContent = "Your PIN is the 4 digits on your login card.";
       $("#err").textContent = ""; e.submitter && (e.submitter.disabled = true);
-      try { await Store.signIn(n, p, sc); }
+      try { await Store.signIn(n, p); }
       catch (err) {
         e.submitter && (e.submitter.disabled = false);
-        if (err && err.code === "needs school") $("#scwrap").hidden = false, $("#sc").focus();
         return $("#err").textContent = err && err.message ? err.message : "Couldn't sign you in. Please try again.";
       }
       if (window.R360Nav) R360Nav.refresh();

@@ -109,7 +109,7 @@
         </tr>`).join("")}</table>` : '<p class="muted">No keys issued yet.</p>'}
 
       <div class="callout" style="margin-top:22px">
-        <p><b>What to send a school:</b> their teacher key (private, staff only), their school code, the link <code>revise360.co.uk/?school=THEIRCODE</code> for students, and the <a href="guides.html#teachers">teacher guide</a>.</p>
+        <p><b>What to send a school:</b> their teacher key (private, staff only), a link to the <a href="guides.html#teachers">teacher guide</a>, and a line explaining that they create their students' logins in the dashboard and print the cards. The school code is for your reference: students never type it.</p>
       </div>`;
 
     $("#refresh").onclick = load;
@@ -141,7 +141,7 @@
         $("#ctk").onclick = () => { navigator.clipboard.writeText(j.teacherKey); $("#ctk").textContent = "Copied"; };
         $("#done").onclick = load;
         $("#mail").onclick = () => {
-          const body = `Hello,\n\nYour Revise 360 access is ready.\n\nTeacher key (staff only, keep private):\n${j.teacherKey}\n\nSchool code for students: ${j.schoolCode}\nStudent link: ${link}\n\nOpen your dashboard at ${location.origin}/teacher.html and paste the teacher key.\nThe teacher guide is at ${location.origin}/guides.html#teachers\n\nBest wishes,\nRevise 360`;
+          const body = `Hello,\n\nYour Revise 360 access is ready.\n\nTeacher key (staff only, keep private):\n${j.teacherKey}\n\nTo get started:\n1. Open ${location.origin}/teacher.html and paste your teacher key.\n2. In Class logins, paste your class list or import a CSV. A PIN is generated for each student.\n3. Print the login cards, or save them to share on Teams.\n4. Students sign in at ${location.origin} with just their username and PIN.\n\nYou can invite colleagues from your dashboard so they see the same classes.\nThe teacher guide is at ${location.origin}/guides.html#teachers\n\nBest wishes,\nRevise 360`;
           location.href = "mailto:" + encodeURIComponent($("#email").value.trim()) + "?subject=" + encodeURIComponent("Your Revise 360 teacher key") + "&body=" + encodeURIComponent(body);
         };
         $("#issued").scrollIntoView({ behavior: "smooth", block: "center" });
