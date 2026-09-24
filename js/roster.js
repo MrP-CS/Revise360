@@ -29,6 +29,11 @@
   const guessCol = (header, words) => header.findIndex(h => words.some(w => h.toLowerCase().includes(w)));
 
   async function api(body) {
+    if (window.R360Local && R360Local.active()) {
+      const j = await R360Local.handle(body);
+      if (!j.ok) throw new Error(j.error || "error");
+      return j;
+    }
     const r = await fetch(CFG.backendUrl, { method: "POST", body: JSON.stringify(Object.assign({ teacherKey: tk() }, body)) });
     if (r.status === 403) throw new Error("bad key");
     const j = await r.json();

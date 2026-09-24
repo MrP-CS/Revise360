@@ -15,6 +15,17 @@ device, not just the one a student signed in on.
 No passwords, no email addresses, no real names, no IP logging beyond Cloudflare's own
 request logs. Data untouched for a year is deleted automatically every Monday.
 
+## Before you deploy: demo mode
+
+With `backendUrl` empty in `js/config.js`, the whole platform runs in the browser:
+teachers sign in to the dashboard with the key `demo`, create class logins, print cards,
+and students sign in and work through experiences with progress saved on that device. It
+uses the same actions as this Worker, so when you're ready you paste your Worker URL into
+`backendUrl` and everything switches over with no other change.
+
+What demo mode can't do: share progress between devices, let colleagues see each other's
+classes, or issue real teacher keys. Those need the backend below.
+
 ## Setup, about 15 minutes
 
 1. Install the tool and sign in:

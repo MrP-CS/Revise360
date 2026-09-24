@@ -21,6 +21,11 @@
   }
 
   async function api(body, opts = {}) {
+    if (window.R360Local && R360Local.active()) {          // demo mode: answer in the browser
+      const j = await R360Local.handle(body);
+      if (!j.ok) { const e = new Error(j.error || "error"); e.code = j.error; throw e; }
+      return j;
+    }
     if (!CFG.backendUrl) throw new Error("no backend");
     // A plain body avoids a CORS preflight on every save
     const ctl = typeof AbortController !== "undefined" ? new AbortController() : null;
@@ -52,14 +57,11 @@
     async signIn(name, pin, school) {
       name = String(name).trim().replace(/\s+/g, "").toLowerCase();
       pin = String(pin).trim();
-      if (!CFG.backendUrl) throw Object.assign(new Error("This site isn't connected to Revise 360 right now. Please try again later."), { code: "offline" });
       let j;
-      try {
-        const r = await fetch(CFG.backendUrl, { method: "POST", body: JSON.stringify({ action: "login", name, pin, school: school || "" }) });
-        j = await r.json();
-      } catch (e) {
-        const off = new Error("Can't reach Revise 360 right now. Check the connection and try again.");
-        off.code = "offline"; throw off;
+      try { j = await api({ action: "login", name, pin, school: school || "" }); }
+      catch (e) {
+        if (!e.code) { const off = new Error("Can't reach Revise 360 right now. Check the connection and try again."); off.code = "offline"; throw off; }
+        j = { ok: false, error: e.code };
       }
       if (!j.ok) {
         const msg = { "no match": "That username and PIN don't match. Check your login card, or ask your teacher for a new one.",
@@ -82,7 +84,7 @@
     signOut() { try { localStorage.removeItem(NS + "student"); } catch (e) {} },
 
     async pull() {
-      const s = Store.student(); if (!s || !CFG.backendUrl) return;
+      const s = Store.student(); if (!s || (!CFG.backendUrl && !(window.R360Local && R360Local.active()))) return;
       setStatus("syncing");
       try {
         const j = await api({ action: "load", key: s.key });
@@ -106,7 +108,7 @@
     },
 
     async push(expId, keepalive) {
-      const s = Store.student(); if (!s || !CFG.backendUrl) return;
+      const s = Store.student(); if (!s || (!CFG.backendUrl && !(window.R360Local && R360Local.active()))) return;
       const data = Store.get(expId); if (!data) return;
       setStatus("syncing");
       try { await api({ action: "save", key: s.key, name: s.name, cls: s.cls, school: s.school || "", expId, data }, { keepalive }); setStatus("saved"); }
