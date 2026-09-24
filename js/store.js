@@ -146,7 +146,7 @@
   // Summarise an experience's progress for hub cards and the teacher view
   Store.summarise = function (exp, prog) {
     const out = { score: 0, total: 0, done: 0, count: 0, stations: [], infoSeen: (prog && prog.info || []).length, infoTotal: 0 };
-    const marks = t => (t.t === "mcq" || t.t === "multi" || t.t === "circuit" || t.t === "expr" || t.t === "convert" || t.t === "addshift" || t.t === "pixels" || t.t === "sound" || t.t === "memory" || t.t === "permissions" || t.t === "defrag") ? 1 : t.t === "table" ? (1 << (t.inputs ? t.inputs.length : new Set((t.expr || "").replace(/AND|OR|NOT/g, "").match(/[A-Z]/g) || []).size)) : (t.t === "sprint" || t.t === "defence" || t.t === "blitz") ? 0 : t.t === "order" ? t.steps.length : t.t === "sort" ? t.items.length : t.pairs.length;
+    const marks = t => (t.t === "mcq" || t.t === "multi" || t.t === "circuit" || t.t === "expr" || t.t === "convert" || t.t === "addshift" || t.t === "pixels" || t.t === "sound" || t.t === "memory" || t.t === "permissions" || t.t === "defrag" || t.t === "impact") ? 1 : t.t === "table" ? (1 << (t.inputs ? t.inputs.length : new Set((t.expr || "").replace(/AND|OR|NOT/g, "").match(/[A-Z]/g) || []).size)) : (t.t === "sprint" || t.t === "defence" || t.t === "blitz") ? 0 : t.t === "order" ? t.steps.length : t.t === "sort" ? t.items.length : t.pairs.length;
     exp.scenes.forEach(sc => {
       out.infoTotal += (sc.info || []).length;
       const sp = prog && prog.scenes && prog.scenes[sc.id] || { ans: {}, done: {} };

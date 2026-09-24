@@ -1,0 +1,374 @@
+{
+ "id": "el-l02",
+ "lesson": 2,
+ "title": "Privacy lab",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Privacy lab",
+   "img": "img/EL_L02_PrivacyLab_360.jpg",
+   "imgHi": "img/EL_L02_PrivacyLab_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "What is collected",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "multi",
+       "q": "Which of these count as personal data? Select all that apply.",
+       "opts": [
+        "Your home postcode with your date of birth",
+        "Your phone's location history",
+        "Photographs of you",
+        "Your school username",
+        "The weather forecast",
+        "The population of France"
+       ],
+       "correct": [
+        "Your home postcode with your date of birth",
+        "Your phone's location history",
+        "Photographs of you",
+        "Your school username"
+       ],
+       "fb": "If it can be traced back to a person, it is personal data."
+      },
+      {
+       "t": "mcq",
+       "q": "Why is data about what you look at so valuable to advertisers?",
+       "a": [
+        "It predicts what you are likely to buy, so adverts can be aimed precisely",
+        "It is expensive to store",
+        "It is required by law",
+        "It makes phones run faster"
+       ],
+       "fb": "Attention is the product being sold."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Tracking",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is profiling?",
+       "a": [
+        "Building a picture of someone from many small pieces of collected data",
+        "Deleting old data",
+        "Encrypting a hard disk",
+        "Compressing a photograph"
+       ],
+       "fb": "Individually harmless facts can add up to something very personal."
+      },
+      {
+       "t": "mcq",
+       "q": "A torch app asks for access to your contacts. What is the concern?",
+       "a": [
+        "It doesn't need contacts to work, so the data is likely being collected to sell or profile",
+        "Torches use a lot of battery",
+        "Contacts make the light brighter",
+        "It is illegal to have a torch app"
+       ],
+       "fb": "Ask what a feature genuinely needs."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Consent",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which of these is closest to meaningful consent?",
+       "a": [
+        "A short, clear choice where refusing is as easy as accepting",
+        "A 12,000-word policy with an Accept button",
+        "A banner with only one button",
+        "Consent assumed by continuing to scroll"
+       ],
+       "fb": "If refusing is hard, it isn't freely given."
+      },
+      {
+       "t": "mcq",
+       "q": "Why does the law treat children's data more carefully?",
+       "a": [
+        "Children are less able to understand what they are agreeing to",
+        "Children produce more data",
+        "Children's data is cheaper",
+        "It is easier to store"
+       ],
+       "fb": "That's why services aimed at children have stricter rules."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Two sides of privacy",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Is each point a benefit of collecting data, or a risk?",
+       "cats": [
+        "Benefit",
+        "Risk"
+       ],
+       "items": [
+        [
+         "Your bank spots a fraudulent payment",
+         "Benefit"
+        ],
+        [
+         "A leaked database exposes millions of addresses",
+         "Risk"
+        ],
+        [
+         "A map app routes you around traffic",
+         "Benefit"
+        ],
+        [
+         "An insurer charges more based on a profile",
+         "Risk"
+        ],
+        [
+         "Health researchers spot a disease pattern early",
+         "Benefit"
+        ],
+        [
+         "An employer searches your posts from years ago",
+         "Risk"
+        ]
+       ],
+       "fb": "A good answer admits the benefits and then weighs them against the risks."
+      },
+      {
+       "t": "mcq",
+       "q": "Which is the best exam sentence about smart speakers?",
+       "a": [
+        "They make information hands free, but a microphone in every room is a serious privacy risk if recordings are stored or leaked",
+        "They are dangerous",
+        "They are useful",
+        "They are popular with families"
+       ],
+       "fb": "Benefit, risk, and the reason."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "When it goes wrong",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Why is collecting less data a privacy protection?",
+       "a": [
+        "Data that was never collected cannot leak, be sold or be misused",
+        "Smaller databases run faster",
+        "It saves electricity",
+        "The law bans large databases"
+       ],
+       "fb": "Data minimisation is the cheapest protection there is."
+      },
+      {
+       "t": "mcq",
+       "q": "Why can a privacy breach be worse than a stolen bank card?",
+       "a": [
+        "A card can be replaced, but a medical record or a home address cannot be made private again",
+        "Cards are more valuable",
+        "Breaches are always larger",
+        "Banks never refund fraud"
+       ],
+       "fb": "Some information cannot be un-leaked."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Arguing a privacy case",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "impact",
+       "q": "A school installs software that logs every website pupils visit, at school and at home on school laptops. How is each group affected?",
+       "groups": [
+        "Effect"
+       ],
+       "stakeholders": [
+        {
+         "name": "Pupils at risk of harm online",
+         "want": {
+          "Effect": 1
+         }
+        },
+        {
+         "name": "Pupils' private browsing at home",
+         "want": {
+          "Effect": 2
+         }
+        },
+        {
+         "name": "Teachers responsible for safeguarding",
+         "want": {
+          "Effect": 1
+         }
+        },
+        {
+         "name": "Parents",
+         "want": {
+          "Effect": 0
+         }
+        },
+        {
+         "name": "The school's IT team",
+         "want": {
+          "Effect": 2
+         }
+        }
+       ],
+       "fb": "Safeguarding is a real benefit; monitoring a pupil's home use is a real intrusion. Both belong in the answer.",
+       "title": "School monitoring: who is affected?"
+      },
+      {
+       "t": "mcq",
+       "q": "Which conclusion is best justified?",
+       "a": [
+        "Monitoring is defensible at school, but home use should be excluded unless parents are told exactly what is recorded",
+        "Monitoring is always wrong",
+        "Monitoring is always right",
+        "Schools should decide without telling anyone"
+       ],
+       "fb": "A limit, with the reason it falls there."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: the privacy line",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "How would you classify each practice?",
+       "cats": [
+        "Reasonable",
+        "Needs clear consent",
+        "Too far"
+       ],
+       "items": [
+        [
+         "A map app using your location while you navigate",
+         "Reasonable"
+        ],
+        [
+         "A bank checking a payment against your usual pattern",
+         "Reasonable"
+        ],
+        [
+         "A shop's app tracking which aisles you walk down",
+         "Needs clear consent"
+        ],
+        [
+         "A fitness app sharing your heart data with an insurer",
+         "Too far"
+        ],
+        [
+         "A game collecting your contacts list",
+         "Too far"
+        ],
+        [
+         "A site remembering your login",
+         "Reasonable"
+        ],
+        [
+         "A school reading pupils' personal messages",
+         "Too far"
+        ],
+        [
+         "An advertiser building a profile from sites you visit",
+         "Needs clear consent"
+        ]
+       ],
+       "fb": "There is no single right line, but you must be able to justify where you put it."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 1035,
+     "y": 585,
+     "title": "The price of free",
+     "text": "If a service is free, the running costs are usually paid for by advertising, and advertising is paid for by what is known about you."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1828,
+     "y": 440,
+     "title": "Anonymous isn't",
+     "text": "Studies have shown that a few 'anonymous' details, such as postcode, date of birth and sex, identify most people uniquely."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 1035,
+     "y": 585,
+     "title": "Metadata matters",
+     "text": "Who you called and when can reveal more than the conversation itself: a call to a clinic followed by a call to a relative tells a story."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1821,
+     "y": 401,
+     "title": "Dark patterns",
+     "text": "Designs that make accepting easy and refusing hard have a name, and regulators have started fining companies for them."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 1035,
+     "y": 585,
+     "title": "Right to be forgotten",
+     "text": "In the UK and EU you can ask for personal data to be deleted in many circumstances, though not where there's a legal reason to keep it."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1821,
+     "y": 401,
+     "title": "Check your settings",
+     "text": "Every phone has a screen listing which apps have location, microphone and camera access. Most people are surprised by it."
+    }
+   ],
+   "models": []
+  }
+ ]
+}

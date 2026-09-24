@@ -140,7 +140,7 @@
   function Permissions(opts) {
     const cv = base(), x = cv.getContext("2d");
     const groups = opts.groups, files = opts.files;          // files: [{name, want: {group: level}}]
-    const LEVELS = ["None", "Read", "Read/write"];
+    const LEVELS = opts.levels || ["None", "Read", "Read/write"];
     const st = { set: files.map(() => groups.map(() => 0)), locked: false, marks: null, hover: null, hits: [] };
     const X0 = 300, Y0 = 170, CW = Math.min(200, (W - X0 - 60) / groups.length), RH = 74;
     function draw() {
@@ -280,11 +280,24 @@
     draw(); return api;
   }
 
+  // Stakeholders and impacts, for 1.6: who is affected by a change, and how
+  function Impact(opts) {
+    return Permissions({
+      title: opts.title || "Who is affected, and how?",
+      note: opts.note || "Tap a cell to move it through the choices.",
+      groups: opts.groups,
+      files: opts.stakeholders.map(s => ({ name: s.name, want: s.want })),
+      levels: opts.levels || ["No real effect", "Benefits", "Loses out"],
+      q: opts.q
+    });
+  }
+
   function make(task) {
+    if (task.t === "impact") return Impact(task);
     if (task.t === "memory") return Memory(task);
     if (task.t === "permissions") return Permissions(task);
     if (task.t === "defrag") return Defrag(task);
     return null;
   }
-  window.R360OS = { make, Memory, Permissions, Defrag, TYPES: ["memory", "permissions", "defrag"] };
+  window.R360OS = { make, Memory, Permissions, Defrag, Impact, TYPES: ["memory", "permissions", "defrag", "impact"] };
 })();

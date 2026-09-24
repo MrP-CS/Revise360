@@ -1,0 +1,338 @@
+{
+ "id": "el-l03",
+ "lesson": 3,
+ "title": "Law court",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Law court",
+   "img": "img/EL_L03_LawCourt_360.jpg",
+   "imgHi": "img/EL_L03_LawCourt_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Data Protection Act 2018",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "multi",
+       "q": "Which of these are requirements of the Data Protection Act 2018? Select all that apply.",
+       "opts": [
+        "Data must be kept secure",
+        "Data must be accurate and up to date",
+        "Data must not be kept longer than necessary",
+        "Data must be collected for a stated purpose",
+        "Data must be stored in the UK only",
+        "Data must be printed once a year"
+       ],
+       "correct": [
+        "Data must be kept secure",
+        "Data must be accurate and up to date",
+        "Data must not be kept longer than necessary",
+        "Data must be collected for a stated purpose"
+       ],
+       "fb": "Location is not a requirement; the safeguards travel with the data."
+      },
+      {
+       "t": "mcq",
+       "q": "A company keeps customer records for 25 years with no reason. Which Act is breached?",
+       "a": [
+        "The Data Protection Act 2018",
+        "The Computer Misuse Act 1990",
+        "The Copyright, Designs and Patents Act 1988",
+        "None: keeping data is always allowed"
+       ],
+       "fb": "Data must not be kept longer than necessary."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Computer Misuse Act 1990",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "A student uses a teacher's login to read a mark sheet, changing nothing. Is this an offence?",
+       "a": [
+        "Yes: unauthorised access is an offence on its own",
+        "No, because nothing was changed",
+        "No, because it was a school computer",
+        "Only if they were caught"
+       ],
+       "fb": "Access without permission is the first offence in the Act."
+      },
+      {
+       "t": "mcq",
+       "q": "The same student then changes their grade. What has now happened?",
+       "a": [
+        "A second, more serious offence: unauthorised modification of data",
+        "Nothing extra",
+        "It becomes a copyright matter",
+        "It becomes a privacy matter only"
+       ],
+       "fb": "Modification carries heavier penalties than access alone."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Copyright, Designs and Patents Act 1988",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Someone uploads a film they bought to a sharing site. Which Act have they breached?",
+       "a": [
+        "The Copyright, Designs and Patents Act 1988",
+        "The Data Protection Act 2018",
+        "The Computer Misuse Act 1990",
+        "No Act: they bought it"
+       ],
+       "fb": "Buying a copy does not buy the right to distribute it."
+      },
+      {
+       "t": "mcq",
+       "q": "Why is this Act constantly having to adapt?",
+       "a": [
+        "Copying digital work is effortless and global, which the Act was not written for",
+        "Because Parliament rewrites it yearly",
+        "Because software is not protected",
+        "Because copyright expires after one year"
+       ],
+       "fb": "Streaming, sampling and AI training all raise questions it never anticipated."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Which Act applies?",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Which Act does each situation fall under?",
+       "cats": [
+        "Data Protection Act",
+        "Computer Misuse Act",
+        "Copyright Act"
+       ],
+       "items": [
+        [
+         "A hospital emails patient records to the wrong address",
+         "Data Protection Act"
+        ],
+        [
+         "A pupil logs in as a teacher to see exam papers",
+         "Computer Misuse Act"
+        ],
+        [
+         "A shop sells copied games at a market stall",
+         "Copyright Act"
+        ],
+        [
+         "A company sells customer emails without telling them",
+         "Data Protection Act"
+        ],
+        [
+         "Someone plants malware that deletes files",
+         "Computer Misuse Act"
+        ],
+        [
+         "A website uses a photographer's pictures without asking",
+         "Copyright Act"
+        ]
+       ],
+       "fb": "Personal data, unauthorised access, or someone's creative work: that's the decision."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Other legislation",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "A resident wants to know what the council spent on a cycle lane. Which law helps?",
+       "a": [
+        "Freedom of Information",
+        "The Data Protection Act",
+        "The Computer Misuse Act",
+        "The Copyright Act"
+       ],
+       "fb": "Public money, public body, public information."
+      },
+      {
+       "t": "mcq",
+       "q": "Can someone use Freedom of Information to get a named employee's salary and address?",
+       "a": [
+        "No: personal data is protected, not released",
+        "Yes, all council data is public",
+        "Yes, if they ask twice",
+        "Only in writing"
+       ],
+       "fb": "The two laws work together: openness about the organisation, protection for individuals."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Answering legal questions",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "A worker copies the customer database and takes it to a rival firm. Which Acts are involved?",
+       "a": [
+        "The Data Protection Act, for misuse of personal data, and the Computer Misuse Act, for unauthorised access",
+        "Copyright only",
+        "None, as they worked there",
+        "Freedom of Information"
+       ],
+       "fb": "Real cases often engage more than one Act."
+      },
+      {
+       "t": "mcq",
+       "q": "Which is the better exam answer?",
+       "a": [
+        "This breaches the Computer Misuse Act 1990, because accessing data without permission is an offence",
+        "This is illegal",
+        "This breaks computer law",
+        "This is against the rules"
+       ],
+       "fb": "Name, year, principle, application."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: name the Act",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Which Act applies to each case?",
+       "cats": [
+        "Data Protection Act 2018",
+        "Computer Misuse Act 1990",
+        "Copyright Act 1988"
+       ],
+       "items": [
+        [
+         "A charity leaves donor records on an unencrypted laptop",
+         "Data Protection Act 2018"
+        ],
+        [
+         "A teenager breaks into a school network to look around",
+         "Computer Misuse Act 1990"
+        ],
+        [
+         "A site streams films without the studio's permission",
+         "Copyright Act 1988"
+        ],
+        [
+         "An employee sells patient details to a newspaper",
+         "Data Protection Act 2018"
+        ],
+        [
+         "Ransomware encrypts a company's files",
+         "Computer Misuse Act 1990"
+        ],
+        [
+         "A student sells copies of a textbook as a PDF",
+         "Copyright Act 1988"
+        ],
+        [
+         "A shop keeps CCTV of customers for ten years with no reason",
+         "Data Protection Act 2018"
+        ],
+        [
+         "Someone guesses a colleague's password and reads their email",
+         "Computer Misuse Act 1990"
+        ],
+        [
+         "An app uses a song in its adverts without a licence",
+         "Copyright Act 1988"
+        ]
+       ],
+       "fb": "Personal data, unauthorised access, or creative work. Name the Act and the year."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 1035,
+     "y": 585,
+     "title": "Why 1990",
+     "text": "The Computer Misuse Act was passed after two hackers who broke into a mailbox system were acquitted, because no existing law covered what they had done."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1821,
+     "y": 401,
+     "title": "Fines that hurt",
+     "text": "Serious data protection breaches can be fined up to 4% of a company's worldwide turnover, which is why boards now pay attention."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 1035,
+     "y": 585,
+     "title": "Copyright lasts",
+     "text": "In the UK, copyright in a literary or musical work lasts for the creator's lifetime plus 70 years."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1821,
+     "y": 401,
+     "title": "Not all copying is illegal",
+     "text": "Limited copying for criticism, review, news reporting or education can be allowed under fair dealing, but the rules are narrower than most people assume."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 1035,
+     "y": 585,
+     "title": "Public bodies only",
+     "text": "Freedom of Information covers councils, schools, the NHS and government departments, not private companies."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1821,
+     "y": 401,
+     "title": "Licences everywhere",
+     "text": "Every piece of software you use came with a licence setting out what you may do with it. Section 7 of this topic is about what those licences say."
+    }
+   ],
+   "models": []
+  }
+ ]
+}

@@ -245,7 +245,7 @@
     }
     function closeModelVR() { if (!vrModel) return; scene.remove(vrModel.holder); vrModel = null; modelPanel.hide(); core.refreshSprites(); }
 
-    const BOARD_TASKS = ["circuit", "expr", "table", "convert", "addshift", "pixels", "sound", "memory", "permissions", "defrag"];
+    const BOARD_TASKS = ["circuit", "expr", "table", "convert", "addshift", "pixels", "sound", "memory", "permissions", "defrag", "impact"];
     // ---------------- boards (drag, paint and tap in VR) ----------------
     let vrBoard = null;
     function openBoard(board) {
@@ -316,7 +316,7 @@
           expr: "Hold the trigger on a tile and drag it into the answer row, or just pull the trigger on a tile to add it to the end.", table: "Point at a ? and pull the trigger to change it to 0 or 1.",
           convert: "Point at a bit or a key and pull the trigger.", addshift: "Point at a bit and pull the trigger to change it between 0 and 1.",
           pixels: "Choose a colour, then hold the trigger and sweep across the pixels to paint them.", sound: "Pull the trigger on the level nearest the wave in each column.",
-          memory: "Hold the trigger on a program and drag it into RAM, or onto the disk if RAM is full.", permissions: "Pull the trigger on a cell to change the access level.",
+          memory: "Hold the trigger on a program and drag it into RAM, or onto the disk if RAM is full.", permissions: "Pull the trigger on a cell to change the access level.", impact: "Pull the trigger on a cell to change how that group is affected.",
           defrag: "Pull the trigger on a block, then on a free space to move it there. Or use the Defragment button." };
         const body = () => done ? [
             !lastOk && task.t === "circuit" && !shown ? { btn: "Show a correct circuit", id: "show", center: true, onClick: () => { board.showAnswer(task.expr); shown = true; show(body); } } : null]

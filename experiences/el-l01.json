@@ -1,0 +1,400 @@
+{
+ "id": "el-l01",
+ "lesson": 1,
+ "title": "Impact desk",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Impact desk",
+   "img": "img/EL_L01_ImpactDesk_360.jpg",
+   "imgHi": "img/EL_L01_ImpactDesk_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Beyond building it",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "multi",
+       "q": "Which of these should be considered before a new technology is released? Select all that apply.",
+       "opts": [
+        "Whether it is legal",
+        "Who might be harmed by it",
+        "What it does to the environment",
+        "Whether it widens the gap between rich and poor",
+        "The colour of the packaging",
+        "The font used in the manual"
+       ],
+       "correct": [
+        "Whether it is legal",
+        "Who might be harmed by it",
+        "What it does to the environment",
+        "Whether it widens the gap between rich and poor"
+       ],
+       "fb": "Every one of those is an impact the specification asks you to consider."
+      },
+      {
+       "t": "mcq",
+       "q": "What is the difference between a legal issue and an ethical issue?",
+       "a": [
+        "Legal is what the law allows; ethical is what is right, which can be stricter",
+        "They mean the same thing",
+        "Ethical issues only apply to companies",
+        "Legal issues only apply online"
+       ],
+       "fb": "Something can be perfectly legal and still be wrong."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Ethical issues",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1355,
+     "y": 1859,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which of these is an ethical question rather than a legal one?",
+       "a": [
+        "Should a company use AI to decide who gets a job interview?",
+        "Is copying a film without paying illegal?",
+        "What does the Data Protection Act require?",
+        "Which licence does this software use?"
+       ],
+       "fb": "Legal questions have answers in law. Ethical ones are arguments."
+      },
+      {
+       "t": "sort",
+       "q": "Is each concern mainly ethical or mainly legal?",
+       "cats": [
+        "Ethical",
+        "Legal"
+       ],
+       "items": [
+        [
+         "Should a shop's cameras recognise faces?",
+         "Ethical"
+        ],
+        [
+         "Is it illegal to use someone else's login?",
+         "Legal"
+        ],
+        [
+         "Should children's data be sold to advertisers?",
+         "Ethical"
+        ],
+        [
+         "Does copying this image break copyright?",
+         "Legal"
+        ],
+        [
+         "Should a driverless car protect its passenger or a pedestrian?",
+         "Ethical"
+        ],
+        [
+         "Must a company report a data breach?",
+         "Legal"
+        ]
+       ],
+       "fb": "Legal questions are settled by an Act of Parliament; ethical ones are argued."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Two sides of an argument",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which is the strongest exam answer about school monitoring software?",
+       "a": [
+        "It protects pupils by flagging harmful searches, but records private messages too, so schools must say exactly what is stored",
+        "Monitoring is bad",
+        "Monitoring is good for safety",
+        "It depends on the school"
+       ],
+       "fb": "Both sides, a reason each, and a position at the end."
+      },
+      {
+       "t": "mcq",
+       "q": "Why do these questions carry high marks in the exam?",
+       "a": [
+        "They ask you to weigh competing points and reach a justified conclusion",
+        "They need long answers",
+        "They have one correct answer",
+        "They test spelling"
+       ],
+       "fb": "Marks come from the reasoning, not the length."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Stakeholders",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "impact",
+       "q": "A supermarket replaces half its staffed tills with self-service machines. How is each group affected?",
+       "groups": [
+        "Effect"
+       ],
+       "stakeholders": [
+        {
+         "name": "Customers in a hurry",
+         "want": {
+          "Effect": 1
+         }
+        },
+        {
+         "name": "Customers who need help",
+         "want": {
+          "Effect": 2
+         }
+        },
+        {
+         "name": "Till staff",
+         "want": {
+          "Effect": 2
+         }
+        },
+        {
+         "name": "The supermarket's owners",
+         "want": {
+          "Effect": 1
+         }
+        },
+        {
+         "name": "The shelf-stacking team",
+         "want": {
+          "Effect": 0
+         }
+        }
+       ],
+       "fb": "The same change can benefit one group and cost another their job. Both belong in your answer.",
+       "title": "Self-service tills: who is affected?",
+       "note": "Tap each cell to choose: no real effect, benefits, or loses out."
+      },
+      {
+       "t": "mcq",
+       "q": "Why should an answer name several stakeholders?",
+       "a": [
+        "Because a change rarely affects everyone the same way, and the marks are for showing that",
+        "To make the answer longer",
+        "Because the exam says to name five",
+        "So you can avoid a conclusion"
+       ],
+       "fb": "Different people, different effects."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Piracy: a worked example",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Is each point an argument for or against piracy?",
+       "cats": [
+        "For",
+        "Against"
+       ],
+       "items": [
+        [
+         "The creator is paid nothing for their work",
+         "Against"
+        ],
+        [
+         "Some films are not available legally in every country",
+         "For"
+        ],
+        [
+         "Studios take fewer risks on new ideas",
+         "Against"
+        ],
+        [
+         "Subscriptions cost more than some people can afford",
+         "For"
+        ],
+        [
+         "It is illegal under copyright law",
+         "Against"
+        ],
+        [
+         "Copying a file costs the maker nothing extra",
+         "For"
+        ]
+       ],
+       "fb": "A strong answer uses points from both columns, then commits to a view."
+      },
+      {
+       "t": "mcq",
+       "q": "Which sentence is a justified conclusion?",
+       "a": [
+        "On balance it is wrong, because the creator loses the income that funds the next piece of work",
+        "It is wrong",
+        "Everyone does it",
+        "It is complicated"
+       ],
+       "fb": "A position plus the reason that decided it."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Writing the answer",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "order",
+       "q": "Put these parts of a strong impact answer in order.",
+       "steps": [
+        "Name the kind of impact the question is about",
+        "Name the stakeholders affected",
+        "Give the arguments on both sides, with reasons",
+        "Reach a conclusion and justify it"
+       ],
+       "fb": "Same structure every time, whatever the technology."
+      },
+      {
+       "t": "mcq",
+       "q": "An answer lists ten disadvantages and no advantages. What is missing?",
+       "a": [
+        "The other side of the argument, and a justified conclusion",
+        "More disadvantages",
+        "A diagram",
+        "A definition of technology"
+       ],
+       "fb": "Discuss means both sides."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: sort the impacts",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 996,
+     "y": 587,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Which kind of impact is each concern?",
+       "cats": [
+        "Ethical",
+        "Legal",
+        "Environmental",
+        "Privacy"
+       ],
+       "items": [
+        [
+         "A phone contains metals mined in dangerous conditions",
+         "Environmental"
+        ],
+        [
+         "An app shares your location with advertisers",
+         "Privacy"
+        ],
+        [
+         "Using someone else's password to read their email",
+         "Legal"
+        ],
+        [
+         "Should AI decide who gets a loan?",
+         "Ethical"
+        ],
+        [
+         "Old laptops dumped in landfill leak toxic metals",
+         "Environmental"
+        ],
+        [
+         "A company keeps customer data for twenty years",
+         "Privacy"
+        ],
+        [
+         "Copying a game and selling it at a car boot sale",
+         "Legal"
+        ],
+        [
+         "Should delivery drivers be tracked every minute?",
+         "Ethical"
+        ]
+       ],
+       "fb": "Many real cases are two or three of these at once: say so in the exam."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 1035,
+     "y": 585,
+     "title": "Why this topic exists",
+     "text": "Every specification now includes impacts, because the people building systems are the ones who decide what gets built. The technical skill is only half the job."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1828,
+     "y": 440,
+     "title": "Trolley problems",
+     "text": "Driverless cars force a decision nobody wants to write down: who a car should protect in a crash. Engineers really do have to choose."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 1035,
+     "y": 585,
+     "title": "Marks for arguing",
+     "text": "Impact questions are among the highest-mark questions on the paper, and the marks are for reasoning rather than recall."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1828,
+     "y": 440,
+     "title": "Stakeholders in law",
+     "text": "Big public projects legally require consultation with the people affected, which is stakeholder analysis by another name."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 1035,
+     "y": 585,
+     "title": "Piracy figures",
+     "text": "Studies on lost income disagree wildly, partly because not every copy would have been a sale. Be careful quoting numbers you can't check."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1821,
+     "y": 401,
+     "title": "Your turn",
+     "text": "Every technology you use was signed off by someone. The questions in this topic are the ones they were asked."
+    }
+   ],
+   "models": []
+  }
+ ]
+}

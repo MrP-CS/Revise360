@@ -22,7 +22,7 @@
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
   const asset = p => /^(data:|blob:|https?:)/.test(p) ? p : "experiences/" + p;
-  const marks = t => (t.t === "mcq" || t.t === "multi" || t.t === "circuit" || t.t === "expr" || t.t === "convert" || t.t === "addshift" || t.t === "pixels" || t.t === "sound" || t.t === "memory" || t.t === "permissions" || t.t === "defrag") ? 1 : t.t === "table" ? (1 << (t.inputs ? t.inputs.length : new Set((t.expr || "").replace(/AND|OR|NOT/g, "").match(/[A-Z]/g) || []).size)) : (t.t === "sprint" || t.t === "defence" || t.t === "blitz") ? 0 : t.t === "order" ? t.steps.length : t.t === "sort" ? t.items.length : t.pairs.length;
+  const marks = t => (t.t === "mcq" || t.t === "multi" || t.t === "circuit" || t.t === "expr" || t.t === "convert" || t.t === "addshift" || t.t === "pixels" || t.t === "sound" || t.t === "memory" || t.t === "permissions" || t.t === "defrag" || t.t === "impact") ? 1 : t.t === "table" ? (1 << (t.inputs ? t.inputs.length : new Set((t.expr || "").replace(/AND|OR|NOT/g, "").match(/[A-Z]/g) || []).size)) : (t.t === "sprint" || t.t === "defence" || t.t === "blitz") ? 0 : t.t === "order" ? t.steps.length : t.t === "sort" ? t.items.length : t.pairs.length;
 
   let exp;
   try { exp = await (await fetch("experiences/" + encodeURIComponent(expId) + ".json", { cache: "no-cache" })).json(); }
@@ -249,7 +249,7 @@
 
   // ---------- question modal ----------
   const modal = $("#modal"), box = $("#box"); let lastFocus = null;
-  const BOARD_TASKS = ["circuit", "expr", "table", "convert", "addshift", "pixels", "sound", "memory", "permissions", "defrag"];
+  const BOARD_TASKS = ["circuit", "expr", "table", "convert", "addshift", "pixels", "sound", "memory", "permissions", "defrag", "impact"];
   // Boards draw to a canvas; map mouse and touch events onto it
   function mountBoard(host, board) {
     const cv = board.canvas; cv.style.cssText = "width:100%;display:block;border-radius:12px;touch-action:none;cursor:pointer"; host.appendChild(cv);
@@ -495,7 +495,7 @@
   fetch("experiences/topics.json", { cache: "no-cache" }).then(r => r.json()).then(t => { if (t.siteTitle) document.title = exp.title + " | " + t.siteTitle; }).catch(() => {});
   fetch("experiences/registry.json", { cache: "no-cache" }).then(r => r.json()).then(reg => {
     const e = (reg.experiences || []).find(x => x.id === expId);
-    if (e && e.topic) home = "topics.html?topic=" + encodeURIComponent(e.topic);
+    if (e && e.topic) home = "index.html?topic=" + encodeURIComponent(e.topic);
     if (e && e.worksheet) { const a = $("#wsBtn"); a.href = e.worksheet; a.hidden = false; a.setAttribute("aria-label", "Download the worksheet for this lesson (Word document)"); }
   }).catch(() => {});
   $("#progBtn").onclick = () => drawer.classList.contains("progress") ? closeDrawer() : showProgress();
