@@ -44,13 +44,30 @@ async function sha256Hex(text) {
   return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, "0")).join("");
 }
 const studentKey = (cls, name, pin) => sha256Hex(cls + "|" + String(name).toLowerCase() + "|" + pin);
+// Six digits: a million combinations, so guessing is impractical and two schools
+// sharing a username are very unlikely to share a PIN as well.
+function weakPin(p) {
+  if (/^(\d)\1{5}$/.test(p)) return true;                    // 111111
+  if ("0123456789".includes(p) || "9876543210".includes(p)) return true;  // runs
+  if (/^(\d\d)\1\1$/.test(p) || /^(\d\d\d)\1$/.test(p)) return true;    // 121212, 123123
+  return ["123456", "654321", "000000", "111111", "121212", "112233"].includes(p);
+}
 function makePin() {
-  const bad = new Set(["0000", "1111", "2222", "3333", "4444", "5555", "6666", "7777", "8888", "9999", "1234", "4321", "1122", "2580"]);
   for (;;) {
-    const n = crypto.getRandomValues(new Uint32Array(1))[0] % 10000;
-    const p = String(n).padStart(4, "0");
-    if (!bad.has(p)) return p;
+    const n = crypto.getRandomValues(new Uint32Array(1))[0] % 1000000;
+    const p = String(n).padStart(6, "0");
+    if (!weakPin(p)) return p;
   }
+}
+// A PIN that no other student with this username is already using, anywhere,
+// so username + PIN always identifies exactly one person
+async function makeUniquePin(env, name) {
+  for (let i = 0; i < 25; i++) {
+    const p = makePin();
+    const clash = await env.DB.prepare("SELECT 1 AS ok FROM students WHERE name = ? AND pin = ? LIMIT 1").bind(name, p).first();
+    if (!clash) return p;
+  }
+  return makePin();
 }
 const code6 = () => {
   const a = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";  // no look-alikes
@@ -215,7 +232,7 @@ export default {
           for (const name of names) {
             const existing = await env.DB.prepare("SELECT pin FROM students WHERE name = ? AND cls = ? AND school_code = ?")
               .bind(name, cls, whoA.school).first();
-            const pin = existing ? existing.pin : makePin();
+            const pin = existing ? existing.pin : await makeUniquePin(env, name);
             const key = await studentKey(cls, name, pin);
             await env.DB.prepare(`INSERT INTO students (key, name, cls, school_code, pin, roster, first_seen, last_seen)
                                   VALUES (?, ?, ?, ?, ?, 1, ?, ?)
@@ -243,7 +260,7 @@ export default {
           const old = await env.DB.prepare("SELECT key, name, cls FROM students WHERE key = ? AND school_code = ?")
             .bind(clean(body.key, 64), whoR2.school).first();
           if (!old) return fail("not found", 404);
-          const pin = makePin(), key = await studentKey(old.cls, old.name, pin);
+          const pin = await makeUniquePin(env, old.name), key = await studentKey(old.cls, old.name, pin);
           await env.DB.batch([
             env.DB.prepare("UPDATE students SET key = ?, pin = ? WHERE key = ?").bind(key, pin, old.key),
             env.DB.prepare("UPDATE progress SET key = ? WHERE key = ?").bind(key, old.key)
@@ -275,7 +292,7 @@ export default {
         case "login": {           // username + PIN only: the class and school come from the record
           const name = clean(body.name, 40).toLowerCase().replace(/\s+/g, "");
           const pin = clean(body.pin, 8);
-          if (!name || !/^\d{4,8}$/.test(pin)) return fail("bad login");
+          if (!name || !/^\d{4,8}$/.test(pin)) return fail("bad login");   // 4-digit PINs from before the change still work
 
           // Simple throttle: 10 wrong tries for a username in 15 minutes and it pauses
           const since = now - 15 * 60 * 1000;

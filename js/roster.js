@@ -125,7 +125,7 @@
           <p class="muted" style="font-size:13px;margin:6px 0 0">Nothing is uploaded: the file is read in your browser, and only the usernames you confirm are sent.</p>
         </div>
         <div id="csvpick"></div>
-        <p class="muted" style="font-size:13px">PINs are generated for you. Students can't change them; you can reset one at any time.</p>
+        <p class="muted" style="font-size:13px">Six-digit PINs are generated for you. Students can't change them; you can reset one at any time.</p>
         <p class="err" id="aerr" role="alert"></p>
         <div class="row end"><button class="btn" type="submit" id="addgo">Create logins</button></div>
       </form>

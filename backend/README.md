@@ -42,6 +42,66 @@ request logs. Data untouched for a year is deleted automatically every Monday.
 6. Put that URL into `js/config.js` as `backendUrl`, commit, and the site starts syncing.
 7. Check it: open `https://…workers.dev/health` and you should see `{"ok":true,…}`.
 
+## "Sorry, that didn't send" on the sign-up form
+
+That message means the browser couldn't get an answer from the backend. Work through these
+in order; it's nearly always the first two.
+
+**1. Is the backend deployed and reachable?**
+Open `https://api.revise360.co.uk/health` (or your `workers.dev` URL) in a browser. You want
+`{"ok":true,...}`. If it doesn't load:
+- `wrangler deploy` from the `backend` folder, and check it prints a URL.
+- If you're using `api.revise360.co.uk`, add that custom domain to the Worker in the
+  Cloudflare dashboard, under Workers → your worker → Settings → Domains & Routes. Until
+  that DNS record exists the address doesn't resolve.
+
+**2. Does `js/config.js` point at the right place?**
+`backendUrl` must be exactly the URL that answered in step 1, including `https://`. If you're
+still testing, put the `workers.dev` URL there for now.
+
+**3. Do the tables exist?**
+The sign-up form writes to a `requests` table, which was added after the first version.
+Run the migration once:
+
+```
+wrangler d1 execute revise360 --remote --file=migrate.sql
+```
+
+You'll see "duplicate column name" errors for anything already present. Those are expected.
+
+**4. Still stuck?**
+Open the page, press F12, and look at the Console and Network tabs while you submit. A red
+CORS message means the Worker isn't returning the headers, so check it deployed properly. A
+404 means the URL is wrong. A 500 usually means a missing table, so go back to step 3.
+
+Whatever happens, the form now falls back to a pre-written email to you, so a teacher can
+always get through.
+
+## Demo data for testing
+
+`seed-demo.sql` creates one demo school, one teacher key and five student logins so you can
+try the whole platform before any real school touches it:
+
+```
+wrangler d1 execute revise360 --remote --file=seed-demo.sql
+```
+
+The credentials are in that file. Sign in as a student on the home page, work through an
+experience, then open `teacher.html` with the demo teacher key and watch the results appear.
+The demo school is a normal school as far as the system is concerned, so class logins,
+printing cards, CSV import and colleague invites all work.
+
+When you've finished, take it all out again:
+
+```
+wrangler d1 execute revise360 --remote --file=seed-demo-remove.sql
+```
+
+**Two rules.** Don't leave the demo teacher key in place once real schools are signed up:
+anyone who learns it sees that school's data, though the demo school holds nothing real.
+And never put a teacher key or the owner key in `js/config.js` or anywhere else the browser
+can read: keys belong in the backend only.
+
 ## Cost
 
 Cloudflare's free tier covers 100,000 requests a day and 5 GB of D1 storage. A class of 30

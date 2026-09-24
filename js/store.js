@@ -65,7 +65,7 @@
         const msg = { "no match": "That username and PIN don't match. Check your login card, or ask your teacher for a new one.",
                       "needs school": "That username and PIN are in use at more than one school. Ask your teacher for a new login card.",
                       "locked": "Too many tries. Wait a few minutes, then try again with your login card.",
-                      "bad login": "Enter your username and the 4-digit PIN from your login card." }[j.error] || "Couldn't sign you in.";
+                      "bad login": "Enter your username and the PIN from your login card." }[j.error] || "Couldn't sign you in.";
         const e = new Error(msg); e.code = j.error; throw e;
       }
       const s = { key: j.student.key, name: j.student.name, cls: j.student.cls, school: j.student.school };
