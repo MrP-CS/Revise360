@@ -1,0 +1,366 @@
+{
+ "id": "ss-l02",
+ "lesson": 2,
+ "title": "Multitasking floor",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Multitasking floor",
+   "img": "img/SS_L02_MultitaskingFloor.jpg",
+   "imgHi": "img/SS_L02_MultitaskingFloor_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Multitasking",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "How does an operating system multitask on a single core?",
+       "a": [
+        "It switches between programs very quickly, giving each a small slice of processor time",
+        "It runs every program at exactly the same moment",
+        "It speeds the clock up",
+        "It uses the graphics card instead"
+       ],
+       "fb": "Each program gets a few milliseconds, then the OS moves on."
+      },
+      {
+       "t": "mcq",
+       "q": "What is a process?",
+       "a": [
+        "A program that is currently running, with its own place in memory",
+        "A file saved on disk",
+        "A folder of documents",
+        "A type of user interface"
+       ],
+       "fb": "A program on disk becomes a process when it is loaded and run."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Sharing the processor",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "order",
+       "q": "Put these steps of a context switch in order.",
+       "steps": [
+        "A process runs until its time slice ends",
+        "The OS saves the state of that process",
+        "The OS loads the saved state of the next process",
+        "The next process runs until its time slice ends"
+       ],
+       "fb": "Switching costs a little time itself, which is why too many open programs slows everything down."
+      },
+      {
+       "t": "mcq",
+       "q": "Why might a video call be given a higher priority than a backup?",
+       "a": [
+        "The call must keep up in real time, while the backup can wait",
+        "Backups are not important",
+        "The call uses less memory",
+        "Priority makes the processor faster"
+       ],
+       "fb": "Priority decides who gets the processor sooner, not how fast it runs."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Managing memory",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "memory",
+       "q": "Open all five programs. RAM has 8 blocks: put what fits into RAM, and the rest into virtual memory.",
+       "ram": 8,
+       "programs": [
+        {
+         "name": "Browser",
+         "size": 3
+        },
+        {
+         "name": "Word processor",
+         "size": 2
+        },
+        {
+         "name": "Music player",
+         "size": 1
+        },
+        {
+         "name": "Photo editor",
+         "size": 3
+        },
+        {
+         "name": "Antivirus",
+         "size": 2
+        }
+       ],
+       "fb": "The OS always uses RAM first, because it is far faster than the disk."
+      },
+      {
+       "t": "mcq",
+       "q": "Why does the OS keep each process in its own area of memory?",
+       "a": [
+        "So one program can't read or overwrite another program's data",
+        "To make programs run faster",
+        "To save electricity",
+        "Because RAM is read-only"
+       ],
+       "fb": "It's protection as well as organisation."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Virtual memory",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "memory",
+       "q": "RAM now has only 5 blocks. Load the same programs sensibly.",
+       "ram": 5,
+       "programs": [
+        {
+         "name": "Browser",
+         "size": 3
+        },
+        {
+         "name": "Word processor",
+         "size": 2
+        },
+        {
+         "name": "Music player",
+         "size": 1
+        },
+        {
+         "name": "Photo editor",
+         "size": 3
+        }
+       ],
+       "fb": "With less RAM, more has to live on the disk, and the machine feels slower."
+      },
+      {
+       "t": "mcq",
+       "q": "What is the best fix for a computer constantly using virtual memory?",
+       "a": [
+        "Install more RAM",
+        "Buy a bigger monitor",
+        "Delete the operating system",
+        "Use a longer cable"
+       ],
+       "fb": "More RAM means less swapping."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Device drivers",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does a device driver do?",
+       "a": [
+        "Translates between the operating system and a particular piece of hardware",
+        "Stores the user's files",
+        "Shares the processor between programs",
+        "Encrypts the hard disk"
+       ],
+       "fb": "It is the translator for that one device."
+      },
+      {
+       "t": "mcq",
+       "q": "A new printer prints, but none of its extra features work. What is the most likely cause?",
+       "a": [
+        "The OS is using a basic driver rather than the manufacturer's own",
+        "The printer is out of paper",
+        "The cable is too short",
+        "The computer needs more RAM"
+       ],
+       "fb": "Generic drivers cover the basics only."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Updates and plug and play",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does plug and play mean?",
+       "a": [
+        "The operating system detects a new device and sets up its driver automatically",
+        "The device works without electricity",
+        "Any cable fits any port",
+        "Games install themselves"
+       ],
+       "fb": "It saves the user finding and installing a driver by hand."
+      },
+      {
+       "t": "mcq",
+       "q": "Why can a bad driver crash the whole computer?",
+       "a": [
+        "Drivers run with high privileges, close to the hardware",
+        "Drivers are very large files",
+        "Drivers are stored in ROM",
+        "Drivers use the internet"
+       ],
+       "fb": "A mistake there affects everything, not just one program."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: the busy machine",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "memory",
+       "q": "Load these six programs. RAM has 8 blocks.",
+       "ram": 8,
+       "programs": [
+        {
+         "name": "Browser",
+         "size": 3
+        },
+        {
+         "name": "Email",
+         "size": 1
+        },
+        {
+         "name": "Music player",
+         "size": 1
+        },
+        {
+         "name": "Video editor",
+         "size": 4
+        },
+        {
+         "name": "Antivirus",
+         "size": 2
+        },
+        {
+         "name": "Notes",
+         "size": 1
+        }
+       ],
+       "fb": "Only what doesn't fit belongs in virtual memory."
+      },
+      {
+       "t": "sort",
+       "q": "Which part of the operating system is each job?",
+       "cats": [
+        "Processor management",
+        "Memory management",
+        "Device management"
+       ],
+       "items": [
+        [
+         "Giving each process a time slice",
+         "Processor management"
+        ],
+        [
+         "Deciding which process runs next",
+         "Processor management"
+        ],
+        [
+         "Choosing where a program sits in RAM",
+         "Memory management"
+        ],
+        [
+         "Swapping unused data out to disk",
+         "Memory management"
+        ],
+        [
+         "Loading a driver for a new printer",
+         "Device management"
+        ],
+        [
+         "Sending data to the graphics card",
+         "Device management"
+        ]
+       ],
+       "fb": "Three of the OS's jobs, all happening at once, all the time."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 1035,
+     "y": 585,
+     "title": "Milliseconds",
+     "text": "A typical time slice is a few milliseconds. In the time it takes to blink, a processor may have switched between programs a hundred times."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1828,
+     "y": 440,
+     "title": "Task manager",
+     "text": "Open the task manager on any computer and you'll see dozens of processes running that you never started. Most belong to the operating system."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 1035,
+     "y": 585,
+     "title": "Thrashing",
+     "text": "If RAM is so full that the OS spends more time swapping than working, it's called thrashing. The disk light stays on and nothing happens."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1828,
+     "y": 440,
+     "title": "Cores help",
+     "text": "A four-core processor really can run four things at once, and the OS still time slices on top of that, which is why a modern machine copes with so much."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 1035,
+     "y": 585,
+     "title": "Driver disks",
+     "text": "Hardware used to come with a driver disk in the box. Now the OS downloads drivers automatically, which is why a new mouse works the moment you plug it in."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1828,
+     "y": 440,
+     "title": "Blue screens",
+     "text": "Most famous crash screens are caused by drivers rather than by the operating system itself, because drivers run with the deepest access to the hardware."
+    }
+   ],
+   "models": []
+  }
+ ]
+}

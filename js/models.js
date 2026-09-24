@@ -157,6 +157,55 @@
       part(buses, "Buses", "Wires that carry addresses from the MAR to RAM (pink), and data and instructions between RAM and the MDR (green).");
       return { group, parts, scale: .75 };
     },
+    // The software stack: hardware at the bottom, the operating system between, applications on top
+    stack() {
+      const { group, parts, part } = kit();
+      const slab = (label, color, y, h, note) => {
+        const g = new T.Group();
+        const top = std({ map: blockTex("stk" + label, label, color), roughness: .4, metalness: .2 });
+        const side = std({ color: new T.Color(color).multiplyScalar(.55), roughness: .5 });
+        g.add(topBox(3.6, h, 3.6, side, top, 0, y, 0));
+        return g;
+      };
+      part(slab("Applications", "#40c4ff", 1.25, .5), "Applications", "The programs people actually use: a browser, a game, a word processor. They ask the operating system for everything: memory, files, the printer, the network.");
+      part(slab("Operating system", "#c88cff", .55, .7), "Operating system", "The layer in the middle. It manages memory, processes, files, users and devices, and gives every application one consistent way to reach the hardware.");
+      part(slab("Hardware", "#50dc96", -.15, .5), "Hardware", "The physical machine: CPU, memory, storage, input and output devices. On its own it can do nothing useful until software tells it what to do.");
+      const arrows = new T.Group();
+      [[-1.1, "#ffd046"], [1.1, "#ffd046"]].forEach(([xo]) => {
+        arrows.add(tube(new T.Vector3(xo, 1.1, 1.9), new T.Vector3(xo, .2, 1.9), .05, std({ color: 0xffd046, emissive: 0x3a2e00, metalness: .5, roughness: .35 })));
+      });
+      part(arrows, "Requests and responses", "An application never touches the hardware directly. It asks the operating system, which does the work and passes the result back. That is why the same program runs on very different machines.");
+      return { group, parts, scale: .72 };
+    },
+
+    // A hard disk drive, for storage, file management and defragmentation
+    harddisk() {
+      const { group, parts, part } = kit();
+      const case_ = std({ map: brushed("hdcase", "#b6bcc6"), metalness: .85, roughness: .38, transparent: true, opacity: .35 });
+      part(box(4.2, .35, 3.4, case_, 0, -.55, 0), "Casing", "A sealed metal case keeps dust out. Even a speck would be a boulder to a head flying this close to the surface.");
+      const platters = new T.Group();
+      [0, .34, .68].forEach((dy, i) => {
+        const pl = cyl(1.45, 1.45, .06, metal(brushed("platter" + i, "#cfd4dc"), { metalness: 1, roughness: .12 }), -.35, -.15 + dy, 0, 64);
+        platters.add(pl);
+      });
+      platters.add(cyl(.18, .18, 1.1, metal(null, { color: 0x8a929e }), -.35, .2, 0));
+      part(platters, "Platters", "Spinning magnetic discs, typically at 5,400 or 7,200 revolutions per minute. Data is stored by magnetising tiny areas in circular tracks.");
+      const arm = new T.Group();
+      const a = box(2.6, .09, .3, metal(brushed("arm", "#9aa2ae")), .5, .92, .1);
+      a.rotation.y = -.42; arm.add(a);
+      const head = box(.34, .08, .2, std({ color: 0xffd046, emissive: 0x3a2e00, metalness: .6, roughness: .3 }), -.62, .9, .48);
+      arm.add(head);
+      arm.add(cyl(.3, .3, .9, metal(null, { color: 0x6e7684 }), 1.62, .55, -.2));
+      part(arm, "Read/write head and actuator arm", "The head floats nanometres above the surface, reading and writing as the platter passes. The arm swings it to the right track. Every jump to a new track costs time: that is why a fragmented disk is slower.");
+      part(chip(.9, .12, .7, ["CONTROLLER", "R360-HD"], 1.35, -.32, -1.1), "Controller board", "Turns requests from the operating system into movements of the head, and manages the drive's own cache.");
+      const tracks = new T.Group();
+      [1.25, .95, .65].forEach((r, i) => {
+        const ring = new T.Mesh(new T.TorusGeometry(r, .012, 6, 64), std({ color: i === 0 ? 0x40c4ff : i === 1 ? 0xff785a : 0x50dc96, emissive: 0x102030 }));
+        ring.rotation.x = Math.PI / 2; ring.position.set(-.35, .58, 0); tracks.add(ring);
+      });
+      part(tracks, "Tracks", "Data sits in concentric tracks. A file written in one run sits on neighbouring tracks and reads quickly; a file scattered across the disk makes the head hunt for each piece.");
+      return { group, parts, scale: .85 };
+    },
     motherboard() {
       const { group, parts, part } = kit();
       const mb = pcb("mb", [["REVISE 360  MB-1", .62, .95], ["CPU_FAN", .05, .06], ["DIMM_A1", .6, .12], ["PCIE_1", .1, .8], ["USB 3.2", .82, .5]]);

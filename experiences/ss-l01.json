@@ -1,0 +1,376 @@
+{
+ "id": "ss-l01",
+ "lesson": 1,
+ "title": "Control room",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Control room",
+   "img": "img/SS_L01_ControlRoom.jpg",
+   "imgHi": "img/SS_L01_ControlRoom_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "What is systems software?",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which of these is systems software?",
+       "a": [
+        "The operating system",
+        "A web browser",
+        "A spreadsheet",
+        "A racing game"
+       ],
+       "fb": "Systems software runs the machine; applications run on top of it."
+      },
+      {
+       "t": "sort",
+       "q": "Is each program systems software or application software?",
+       "cats": [
+        "Systems software",
+        "Application software"
+       ],
+       "items": [
+        [
+         "Operating system",
+         "Systems software"
+        ],
+        [
+         "Antivirus scanner",
+         "Systems software"
+        ],
+        [
+         "Disk defragmenter",
+         "Systems software"
+        ],
+        [
+         "Web browser",
+         "Application software"
+        ],
+        [
+         "Photo editor",
+         "Application software"
+        ],
+        [
+         "Spreadsheet",
+         "Application software"
+        ]
+       ],
+       "fb": "If it looks after the computer, it's systems software. If it does a job for the user, it's an application."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "What the OS does",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "multi",
+       "q": "Which of these are jobs of an operating system? Select all that apply.",
+       "opts": [
+        "Managing memory",
+        "Managing files and folders",
+        "Controlling input and output devices",
+        "Providing a user interface",
+        "Writing the user's essay",
+        "Designing the hardware"
+       ],
+       "correct": [
+        "Managing memory",
+        "Managing files and folders",
+        "Controlling input and output devices",
+        "Providing a user interface"
+       ],
+       "fb": "The OS runs the machine. It doesn't do the user's work, and it doesn't build the hardware."
+      },
+      {
+       "t": "mcq",
+       "q": "Why does an application not talk to the hardware directly?",
+       "a": [
+        "The OS handles the hardware, so the same program runs on very different machines",
+        "Hardware can't be programmed",
+        "It would be too fast",
+        "Applications are not allowed to use memory"
+       ],
+       "fb": "That's why a browser works on machines with completely different processors and printers."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Graphical user interface",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is the main advantage of a GUI?",
+       "a": [
+        "It is easy to learn, because you can see the options",
+        "It uses less memory",
+        "It is faster for experts to automate",
+        "It works without a screen"
+       ],
+       "fb": "You don't have to remember any commands."
+      },
+      {
+       "t": "mcq",
+       "q": "What is the main disadvantage of a GUI?",
+       "a": [
+        "It uses more memory and processing power",
+        "It can't show pictures",
+        "It needs a keyboard",
+        "It can't run applications"
+       ],
+       "fb": "Drawing all those windows costs resources."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Command line interface",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Why do network managers often use a command line?",
+       "a": [
+        "Commands can be scripted, so the same job runs on hundreds of machines",
+        "It looks more impressive",
+        "It uses more memory",
+        "It has bigger icons"
+       ],
+       "fb": "One script can do in seconds what would take hours of clicking."
+      },
+      {
+       "t": "mcq",
+       "q": "What is the main drawback of a command line interface?",
+       "a": [
+        "The user has to know the commands",
+        "It is slow to run",
+        "It cannot use files",
+        "It needs a graphics card"
+       ],
+       "fb": "There is nothing on screen to prompt you."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Menu driven and voice",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "match",
+       "q": "Match each situation to the most suitable interface.",
+       "pairs": [
+        [
+         "A cash machine",
+         "Menu driven"
+        ],
+        [
+         "A server managed remotely",
+         "Command line"
+        ],
+        [
+         "A tablet for a young child",
+         "Graphical"
+        ],
+        [
+         "A smart speaker in a kitchen",
+         "Voice"
+        ]
+       ],
+       "fb": "Match the interface to the user and the situation, not to what you like best."
+      },
+      {
+       "t": "mcq",
+       "q": "What is a drawback of a voice interface?",
+       "a": [
+        "Background noise and accents can cause it to mishear",
+        "It needs a mouse",
+        "It uses no memory",
+        "It can't be used hands free"
+       ],
+       "fb": "It also struggles with anything that has to be precise, like a long file name."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Choosing an interface",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which is the best exam answer for a supermarket self-service till?",
+       "a": [
+        "A menu driven interface, because shoppers need no training and only a few choices are allowed",
+        "A GUI, because it looks nicer",
+        "A CLI, because it is fastest",
+        "Voice, because it is modern"
+       ],
+       "fb": "Choice, characteristic, reason."
+      },
+      {
+       "t": "mcq",
+       "q": "A computer in a server room has no monitor attached. Which interface is most suitable?",
+       "a": [
+        "A command line, accessed remotely",
+        "A graphical interface",
+        "A menu driven interface",
+        "A voice interface"
+       ],
+       "fb": "No screen means no GUI."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: pick the interface",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Which interface suits each device best?",
+       "cats": [
+        "GUI",
+        "Command line",
+        "Menu driven",
+        "Voice"
+       ],
+       "items": [
+        [
+         "A laptop used by a Year 7 class",
+         "GUI"
+        ],
+        [
+         "A web server managed from another building",
+         "Command line"
+        ],
+        [
+         "A ticket machine at a station",
+         "Menu driven"
+        ],
+        [
+         "A smart speaker",
+         "Voice"
+        ],
+        [
+         "A hands-free system in a car",
+         "Voice"
+        ],
+        [
+         "A cash machine",
+         "Menu driven"
+        ],
+        [
+         "A digital art tablet",
+         "GUI"
+        ],
+        [
+         "Automating a nightly backup on 200 machines",
+         "Command line"
+        ]
+       ],
+       "fb": "The user and the situation decide, every time."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 1035,
+     "y": 585,
+     "title": "Where the name comes from",
+     "text": "Early computers ran one job at a time, loaded by hand. The first 'operating systems' were programs that loaded the next job automatically, so the operator didn't have to."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1828,
+     "y": 440,
+     "title": "Bigger than you think",
+     "text": "A modern operating system is tens of millions of lines of code, and is being updated somewhere in the world every day."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 1035,
+     "y": 585,
+     "title": "Xerox first",
+     "text": "The windows, icons and pointer idea was developed at Xerox PARC in the 1970s, before either Apple or Microsoft shipped a graphical system."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1828,
+     "y": 440,
+     "title": "The command line never died",
+     "text": "Most servers, cloud platforms and developer tools are still driven from a command line, because a typed command can be repeated exactly and stored in a script."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 1035,
+     "y": 585,
+     "title": "Interfaces for access",
+     "text": "Voice control, screen readers and switch devices are interfaces too. Choosing the right one can be the difference between a computer being usable or useless to someone."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1828,
+     "y": 440,
+     "title": "Embedded systems",
+     "text": "The washing machine from topic 1.1 has an operating system too, but a tiny one, with a menu driven interface of dials and buttons."
+    }
+   ],
+   "models": [
+    {
+     "id": "m1",
+     "face": "right",
+     "x": 210,
+     "y": 540,
+     "model": "stack",
+     "title": "The software stack",
+     "text": "Pull the layers apart: hardware at the bottom, the operating system in the middle, applications on top."
+    },
+    {
+     "id": "m2",
+     "face": "right",
+     "x": 1178,
+     "y": 540,
+     "model": "stack",
+     "title": "What sits where",
+     "text": "Every request from an application goes through the operating system before it reaches the hardware."
+    }
+   ]
+  }
+ ]
+}
