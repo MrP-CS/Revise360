@@ -22,7 +22,7 @@
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
   const asset = p => /^(data:|blob:|https?:)/.test(p) ? p : "experiences/" + p;
-  const marks = t => (t.t === "mcq" || t.t === "multi" || t.t === "circuit" || t.t === "expr" || t.t === "convert" || t.t === "addshift" || t.t === "pixels" || t.t === "sound" || t.t === "memory" || t.t === "permissions" || t.t === "defrag" || t.t === "impact") ? 1 : t.t === "table" ? (1 << (t.inputs ? t.inputs.length : new Set((t.expr || "").replace(/AND|OR|NOT/g, "").match(/[A-Z]/g) || []).size)) : (t.t === "sprint" || t.t === "defence" || t.t === "blitz") ? 0 : t.t === "order" ? t.steps.length : t.t === "sort" ? t.items.length : t.pairs.length;
+  const marks = t => (t.t === "mcq" || t.t === "multi" || t.t === "circuit" || t.t === "expr" || t.t === "convert" || t.t === "addshift" || t.t === "pixels" || t.t === "sound" || t.t === "memory" || t.t === "permissions" || t.t === "defrag" || t.t === "impact") ? 1 : t.t === "table" ? (1 << (t.inputs ? t.inputs.length : new Set((t.expr || "").replace(/AND|OR|NOT/g, "").match(/[A-Z]/g) || []).size)) : (t.t === "sprint" || t.t === "defence" || t.t === "blitz" || t.t === "lawgame") ? 0 : t.t === "order" ? t.steps.length : t.t === "sort" ? t.items.length : t.pairs.length;
 
   let exp;
   try { exp = await (await fetch("experiences/" + encodeURIComponent(expId) + ".json", { cache: "no-cache" })).json(); }
@@ -277,7 +277,7 @@
       <div class="mrow" id="mrow"><button class="btn" id="go">Start the sprint</button></div>`);
     $("#go").onclick = () => play();
     function play() {
-      const s = Lg.Sprint(task.duration || 120, task.t === "blitz" ? R360Data.blitz : null); let board = null, busy = false;
+      const s = Lg.Sprint(task.duration || 120, task.t === "blitz" ? R360Data.blitz : task.t === "lawgame" ? R360OS.lawCase : null); let board = null, busy = false;
       const hud = () => { const t = $("#spT"); if (!t) return; t.textContent = Math.ceil(s.timeLeft()) + "s"; $("#spS").textContent = s.score; $("#spK").textContent = s.streak > 1 ? "×" + (1 + Math.min(s.streak - 1, 4) * .5) : "–"; };
       clearInterval(sprintTimer); sprintTimer = setInterval(() => { hud(); if (s.timeLeft() <= 0 && !busy) end(); }, 250);
       function ask() {
@@ -286,7 +286,7 @@
         shell(st.name, st.col, `<div class="sprinthud"><span>⏱ <b id="spT"></b></span><span>Score <b id="spS"></b></span><span>Streak <b id="spK"></b></span><span>Best <b>${rec.best}</b></span></div>
           <p class="q">${esc(q.q)}</p><div class="lboard" id="lb"></div><div class="fb" id="fb" role="status"></div><div class="mrow" id="mrow"></div>`);
         hud();
-        board = q.t === "convert" ? R360Data.make(q) : q.t === "circuit" ? Lg.CircuitBoard({ inputs: Lg.vars(Lg.parse(q.expr)) }) : Lg.ExprBoard({ expr: q.expr });
+        board = q.t === "law" ? R360OS.make(q) : q.t === "convert" ? R360Data.make(q) : q.t === "circuit" ? Lg.CircuitBoard({ inputs: Lg.vars(Lg.parse(q.expr)) }) : Lg.ExprBoard({ expr: q.expr });
         mountBoard($("#lb"), board); window.__sprint = { s, board, q };
         const row = $("#mrow");
         const skip = document.createElement("button"); skip.className = "btn ghost"; skip.textContent = "Skip"; skip.onclick = () => { s.streak = 0; ask(); }; row.appendChild(skip);
@@ -297,7 +297,7 @@
           if (res.incomplete) { feedback(false, "Not finished yet.", res.msg); return; }
           busy = true; const r = s.mark(res.ok); row.innerHTML = ""; hud();
           if (res.ok) feedback(true, null, `+${r.pts} points. Speed bonus ${r.bonus}${r.mult > 1 ? `, streak ×${r.mult}` : ""}.`);
-          else { feedback(false, "Not quite.", q.t === "convert" ? "The answer is " + q.answer + "." : "A correct answer is Q = " + q.expr + "."); if (q.t === "circuit") board.showAnswer(q.expr); }
+          else { feedback(false, "Not quite.", q.t === "law" || q.t === "convert" ? "The answer is " + q.answer + "." : "A correct answer is Q = " + q.expr + "."); if (q.t === "circuit") board.showAnswer(q.expr); }
           setTimeout(() => { busy = false; ask(); }, res.ok ? 800 : 2200);
         };
       }
@@ -432,7 +432,7 @@
           prog.scenes[exp.scenes[cur].id].done[k] = true; save(); refreshSprites(); hud(); drawNav(); } });
       let lastEnd = null;
       mountBoard($("#lb"), board); window.__def = board;
-    } else if (task.t === "sprint" || task.t === "blitz") {
+    } else if (task.t === "sprint" || task.t === "blitz" || task.t === "lawgame") {
       runSprint(k, st, task);
     } else if (BOARD_TASKS.includes(task.t)) {
       const Lg = window.R360Logic;

@@ -1,0 +1,436 @@
+{
+ "id": "el-l06",
+ "lesson": 6,
+ "title": "Stakeholder room",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Stakeholder room",
+   "img": "img/EL_L06_StakeholderRoom_360.jpg",
+   "imgHi": "img/EL_L06_StakeholderRoom_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Finding the stakeholders",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "multi",
+       "q": "An energy company replaces meter readers with smart meters. Who are the stakeholders? Select all that apply.",
+       "opts": [
+        "Customers",
+        "Meter reading staff",
+        "The energy company",
+        "The National Grid",
+        "The company's web designer's cousin",
+        "People in other countries with no connection to it"
+       ],
+       "correct": [
+        "Customers",
+        "Meter reading staff",
+        "The energy company",
+        "The National Grid"
+       ],
+       "fb": "Stakeholders are affected by the change, not merely near it."
+      },
+      {
+       "t": "mcq",
+       "q": "Which group do students most often miss?",
+       "a": [
+        "People affected without having chosen to use the system",
+        "The company's owners",
+        "The users",
+        "The staff"
+       ],
+       "fb": "Neighbours, passers-by, and the people whose jobs change."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Local, national, global",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Is each impact of online shopping local, national or global?",
+       "cats": [
+        "Local",
+        "National",
+        "Global"
+       ],
+       "items": [
+        [
+         "Empty units on the high street",
+         "Local"
+        ],
+        [
+         "More delivery vans on residential roads",
+         "Local"
+        ],
+        [
+         "Retail jobs replaced by warehouse jobs",
+         "National"
+        ],
+        [
+         "Tax rules changed for online sellers",
+         "National"
+        ],
+        [
+         "Goods shipped from factories overseas",
+         "Global"
+        ],
+        [
+         "Packaging waste and shipping emissions",
+         "Global"
+        ]
+       ],
+       "fb": "A full-mark answer usually reaches all three levels."
+      },
+      {
+       "t": "mcq",
+       "q": "Why does the exam want more than local effects?",
+       "a": [
+        "Because computing decisions ripple outwards, and the biggest effects are often furthest away",
+        "Because local effects are unimportant",
+        "To make answers longer",
+        "Because global sounds better"
+       ],
+       "fb": "The waste and the work usually end up somewhere else."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Working a scenario",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 693,
+     "y": 1859,
+     "tasks": [
+      {
+       "t": "impact",
+       "q": "An energy supplier replaces yearly meter readings with smart meters that send usage over the internet. How is each stakeholder affected?",
+       "groups": [
+        "Effect"
+       ],
+       "stakeholders": [
+        {
+         "name": "Customers who want accurate bills",
+         "want": {
+          "Effect": 1
+         }
+        },
+        {
+         "name": "Customers worried about being monitored",
+         "want": {
+          "Effect": 2
+         }
+        },
+        {
+         "name": "Meter reading staff",
+         "want": {
+          "Effect": 2
+         }
+        },
+        {
+         "name": "The energy supplier",
+         "want": {
+          "Effect": 1
+         }
+        },
+        {
+         "name": "Customers with no internet connection",
+         "want": {
+          "Effect": 2
+         }
+        }
+       ],
+       "fb": "Accurate bills and no home visits are real gains; lost jobs and constant usage data are real costs.",
+       "title": "Smart meters: who is affected?"
+      },
+      {
+       "t": "mcq",
+       "q": "Which impact of smart meters is a privacy issue rather than a cost issue?",
+       "a": [
+        "Usage data reveals when a household is at home, awake, or away",
+        "Meters cost money to install",
+        "Staff lose their jobs",
+        "Bills become more accurate"
+       ],
+       "fb": "Half-hourly readings are a diary of a household's day."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Trade-offs",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which sentence states a trade-off properly?",
+       "a": [
+        "Deliveries become cheaper and faster, but drivers lose work and residential streets carry more traffic",
+        "Driverless vans are the future",
+        "Driverless vans are dangerous",
+        "Some people like driverless vans"
+       ],
+       "fb": "Gain, cost, and who carries each."
+      },
+      {
+       "t": "mcq",
+       "q": "A student writes eight disadvantages and no advantages. What will the examiner say?",
+       "a": [
+        "The answer is one-sided, so it cannot reach the top marks",
+        "It is too long",
+        "It needs a diagram",
+        "It is perfect"
+       ],
+       "fb": "Discuss means weigh."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Reaching a conclusion",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which is the strongest conclusion?",
+       "a": [
+        "Smart meters are worth introducing, provided customers can see and delete their own usage data and a non-internet option remains",
+        "Smart meters have advantages and disadvantages",
+        "Smart meters are good",
+        "It depends on your point of view"
+       ],
+       "fb": "Position, reason, condition."
+      },
+      {
+       "t": "order",
+       "q": "Put the parts of a full-mark impact answer in order.",
+       "steps": [
+        "Identify the stakeholders",
+        "Describe the impacts on each, with reasons",
+        "Weigh the benefits against the costs",
+        "State a conclusion and justify it"
+       ],
+       "fb": "Same shape every time, whatever the scenario."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Practice scenario",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "impact",
+       "q": "A hospital replaces paper notes with tablets. How is each stakeholder affected?",
+       "groups": [
+        "Effect"
+       ],
+       "stakeholders": [
+        {
+         "name": "Patients, through fewer lost notes",
+         "want": {
+          "Effect": 1
+         }
+        },
+        {
+         "name": "Nurses learning a new system mid-shift",
+         "want": {
+          "Effect": 2
+         }
+        },
+        {
+         "name": "Doctors needing records instantly",
+         "want": {
+          "Effect": 1
+         }
+        },
+        {
+         "name": "Patients if the system goes down",
+         "want": {
+          "Effect": 2
+         }
+        },
+        {
+         "name": "The IT team",
+         "want": {
+          "Effect": 2
+         }
+        }
+       ],
+       "fb": "Better records and instant access are the gains; training time, downtime risk and workload are the costs."
+      },
+      {
+       "t": "mcq",
+       "q": "Which is a national-level impact of this change?",
+       "a": [
+        "If it works, the approach is adopted across the health service, changing how records are shared",
+        "A nurse drops a tablet",
+        "The ward needs new sockets",
+        "Patients see a screen instead of paper"
+       ],
+       "fb": "Local effects happen on the ward; national ones change policy."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: the smart town",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "impact",
+       "q": "Sensors are installed across a town, tracking traffic, air quality and parking. How is each stakeholder affected?",
+       "groups": [
+        "Effect"
+       ],
+       "stakeholders": [
+        {
+         "name": "Drivers finding a parking space",
+         "want": {
+          "Effect": 1
+         }
+        },
+        {
+         "name": "Residents of monitored streets",
+         "want": {
+          "Effect": 2
+         }
+        },
+        {
+         "name": "The council's transport team",
+         "want": {
+          "Effect": 1
+         }
+        },
+        {
+         "name": "Parking attendants",
+         "want": {
+          "Effect": 2
+         }
+        },
+        {
+         "name": "People with asthma in the town",
+         "want": {
+          "Effect": 1
+         }
+        }
+       ],
+       "fb": "Cleaner air and easier parking against surveillance and lost jobs: that's the trade-off to write about."
+      },
+      {
+       "t": "sort",
+       "q": "Is each impact of the smart town local, national or global?",
+       "cats": [
+        "Local",
+        "National",
+        "Global"
+       ],
+       "items": [
+        [
+         "Residents' movements recorded on their own street",
+         "Local"
+        ],
+        [
+         "Parking attendants' jobs lost in the town",
+         "Local"
+        ],
+        [
+         "Other councils copy the scheme",
+         "National"
+        ],
+        [
+         "New rules needed on how long sensor data is kept",
+         "National"
+        ],
+        [
+         "Sensors manufactured using mined metals",
+         "Global"
+        ],
+        [
+         "Servers processing the data run continuously",
+         "Global"
+        ]
+       ],
+       "fb": "Local, national and global, with a reason for each: that's the full-mark answer."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 1035,
+     "y": 585,
+     "title": "Stakeholder is a real job",
+     "text": "Large projects employ people whose entire role is consulting the groups a change will affect."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1821,
+     "y": 401,
+     "title": "Unintended effects",
+     "text": "Ride-hailing apps cut waiting times and also changed congestion, taxi licensing and public transport use in ways nobody planned."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 1035,
+     "y": 585,
+     "title": "Smart meter rollout",
+     "text": "Britain's smart meter programme is one of the largest technology rollouts ever attempted here, and it has had every impact in this lesson."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1828,
+     "y": 440,
+     "title": "Who pays?",
+     "text": "A common exam trick: the group that benefits and the group that pays are different. Say so."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 1035,
+     "y": 585,
+     "title": "Conditions score",
+     "text": "Conclusions with a condition attached usually read as more thoughtful than a flat yes or no."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1828,
+     "y": 440,
+     "title": "Try it on anything",
+     "text": "The method works on any scenario: streaming, self-checkouts, AI marking, electric cars, school fingerprint systems."
+    }
+   ],
+   "models": []
+  }
+ ]
+}

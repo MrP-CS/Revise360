@@ -1,0 +1,355 @@
+{
+ "id": "el-l07",
+ "lesson": 7,
+ "title": "Licence lab",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Licence lab",
+   "img": "img/EL_L07_LicenceLab_360.jpg",
+   "imgHi": "img/EL_L07_LicenceLab_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "What a licence decides",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does a software licence set out?",
+       "a": [
+        "What you are allowed to do with the program",
+        "How fast the program runs",
+        "Which language it was written in",
+        "How much memory it needs"
+       ],
+       "fb": "Use, copy, modify, distribute: the four questions every licence answers."
+      },
+      {
+       "t": "mcq",
+       "q": "You buy a copy of a design program. What have you bought?",
+       "a": [
+        "A licence to use it under the terms set by the publisher",
+        "Ownership of the software",
+        "The source code",
+        "The right to sell copies"
+       ],
+       "fb": "Which is why installing it on twenty machines may breach the licence."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Proprietary software",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is the defining feature of proprietary software?",
+       "a": [
+        "The source code is not made available, so users cannot change it",
+        "It always costs money",
+        "It only runs on Windows",
+        "It cannot be copied at all"
+       ],
+       "fb": "Some proprietary software is free to use; the code is still closed."
+      },
+      {
+       "t": "mcq",
+       "q": "Why might a hospital choose proprietary software?",
+       "a": [
+        "It comes with a support contract and someone accountable when it fails",
+        "It is always cheaper",
+        "It is easier to program",
+        "It never has faults"
+       ],
+       "fb": "When the system matters, someone to call at 3am is worth paying for."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Open source software",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is the defining feature of open source software?",
+       "a": [
+        "The source code is available, so it can be studied and modified",
+        "It is always free",
+        "It has no licence",
+        "It cannot be sold"
+       ],
+       "fb": "Open source is about the code being open, not simply about price."
+      },
+      {
+       "t": "multi",
+       "q": "Which are genuine advantages of open source software? Select all that apply.",
+       "opts": [
+        "It can be adapted to exactly what you need",
+        "Usually no licence fee",
+        "Many developers can inspect the code for faults",
+        "Not tied to one supplier",
+        "It is always easier to use",
+        "It never contains security flaws"
+       ],
+       "correct": [
+        "It can be adapted to exactly what you need",
+        "Usually no licence fee",
+        "Many developers can inspect the code for faults",
+        "Not tied to one supplier"
+       ],
+       "fb": "Open code is inspected more, but inspection is not a guarantee."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Support and cost",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Does each statement describe open source or proprietary software?",
+       "cats": [
+        "Open source",
+        "Proprietary"
+       ],
+       "items": [
+        [
+         "The source code is published",
+         "Open source"
+        ],
+        [
+         "The source code is kept secret",
+         "Proprietary"
+        ],
+        [
+         "Users may adapt it to their needs",
+         "Open source"
+        ],
+        [
+         "Support comes with the licence fee",
+         "Proprietary"
+        ],
+        [
+         "Support may rely on forums and volunteers",
+         "Open source"
+        ],
+        [
+         "Usually paid for per user or machine",
+         "Proprietary"
+        ]
+       ],
+       "fb": "Four rows of that table are the most common exam question in this lesson."
+      },
+      {
+       "t": "mcq",
+       "q": "Why might free open source software still cost a school money?",
+       "a": [
+        "It may need staff time or a paid contract to install, maintain and support it",
+        "The download costs money",
+        "It requires new computers",
+        "It must be bought yearly"
+       ],
+       "fb": "Total cost of ownership is the phrase the industry uses."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Choosing between them",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "match",
+       "q": "Match each situation to the more suitable licence type, based on the reason given.",
+       "pairs": [
+        [
+         "A charity with technical volunteers and no budget",
+         "Open source"
+        ],
+        [
+         "A hospital system needing a guaranteed response time",
+         "Proprietary"
+        ],
+        [
+         "A university wanting to modify software for its own research",
+         "Open source"
+        ],
+        [
+         "A small firm with no IT staff needing something that just works",
+         "Proprietary"
+        ]
+       ],
+       "fb": "Budget, skills, criticality and the need to adapt decide it."
+      },
+      {
+       "t": "mcq",
+       "q": "Which is the best exam answer for a school on a tight budget with a capable technician?",
+       "a": [
+        "Open source, because there is no licence fee and the technician can adapt and maintain it",
+        "Open source, because it is free",
+        "Proprietary, because it is better",
+        "Either would do"
+       ],
+       "fb": "Licence type, characteristic, and why it fits this school."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Common misconceptions",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Is open source software unlicensed?",
+       "a": [
+        "No: it has a licence, which sets out what you may do, often including sharing changes",
+        "Yes, it has no licence",
+        "Yes, because it is free",
+        "Only for schools"
+       ],
+       "fb": "Some licences require your changes to be published too."
+      },
+      {
+       "t": "mcq",
+       "q": "Which statement is accurate?",
+       "a": [
+        "Some proprietary software is free of charge, and some open source software is sold",
+        "Proprietary always costs money",
+        "Open source is always free",
+        "Free software is always open source"
+       ],
+       "fb": "Price and openness are separate questions."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: pick the licence",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Does each describe or suit open source or proprietary software?",
+       "cats": [
+        "Open source",
+        "Proprietary"
+       ],
+       "items": [
+        [
+         "Anyone may read and change the source code",
+         "Open source"
+        ],
+        [
+         "Sold with a support contract and updates",
+         "Proprietary"
+        ],
+        [
+         "A council with developers wanting to adapt a system",
+         "Open source"
+        ],
+        [
+         "A dental practice with no IT staff",
+         "Proprietary"
+        ],
+        [
+         "Changes must often be shared under the same licence",
+         "Open source"
+        ],
+        [
+         "The supplier decides which features get added",
+         "Proprietary"
+        ],
+        [
+         "A research group needing to see exactly how the code works",
+         "Open source"
+        ],
+        [
+         "A school needing a guaranteed helpline",
+         "Proprietary"
+        ]
+       ],
+       "fb": "Say which, name the characteristic, and link it to the situation."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 1035,
+     "y": 585,
+     "title": "Open source runs the internet",
+     "text": "Most web servers, and the software behind most websites, are open source. So is the code inside most phones."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1821,
+     "y": 401,
+     "title": "Licences differ",
+     "text": "Some open source licences let you do almost anything; others require you to publish your changes. Reading the licence matters."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 1035,
+     "y": 585,
+     "title": "Paid open source",
+     "text": "Companies sell supported versions of open source software: the code is free, the support contract is not."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1828,
+     "y": 440,
+     "title": "Security both ways",
+     "text": "Open code lets more people find flaws, including attackers. Closed code hides flaws from everyone, including defenders."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 1035,
+     "y": 585,
+     "title": "Schools and cost",
+     "text": "Licensing is one of the largest lines in a school's IT budget, which is why the question comes up in real life as well as exams."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1821,
+     "y": 401,
+     "title": "Lock-in",
+     "text": "The cost of leaving a supplier, because your data and workflows are tied to their software, is called lock-in, and it is a real argument for open formats."
+    }
+   ],
+   "models": []
+  }
+ ]
+}

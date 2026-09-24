@@ -300,7 +300,7 @@
         qPanel.mesh.position.set(pos.x + Math.sin(qy) * 1.2, pos.y - .05, pos.z + Math.cos(qy) * 1.2); qPanel.mesh.lookAt(pos);
         return;
       }
-      if (task.t === "sprint" || task.t === "blitz") { sprintVR(k, st, task); return; }
+      if (task.t === "sprint" || task.t === "blitz" || task.t === "lawgame") { sprintVR(k, st, task); return; }
       if (BOARD_TASKS.includes(task.t)) {
         const Lg = window.R360Logic;
         const board = task.t === "circuit" ? Lg.CircuitBoard({ inputs: task.inputs || Lg.vars(Lg.parse(task.expr)), hit: 34 })
@@ -406,7 +406,7 @@
         { p: `Personal best: ${rec.best}. Beat it!`, size: 30, bold: true, color: COL.edge },
         { btn: "Start the sprint", id: "go", primary: true, onClick: play }] });
       function play() {
-        const s = Lg.Sprint(task.duration || 120, task.t === "blitz" ? R360Data.blitz : null); let q = null, board = null, busy = false, fb = null, lastSec = -1;
+        const s = Lg.Sprint(task.duration || 120, task.t === "blitz" ? R360Data.blitz : task.t === "lawgame" ? R360OS.lawCase : null); let q = null, board = null, busy = false, fb = null, lastSec = -1;
         const hudText = () => `⏱ ${Math.ceil(s.timeLeft())}s    Score ${s.score}    Streak ${s.streak > 1 ? "×" + (1 + Math.min(s.streak - 1, 4) * .5) : "–"}    Best ${rec.best}`;
         const panel = () => qPanel.set({ title: st.name, color: st.col, onClose: closeAllSprint, blocks: [
           { p: hudText(), size: 30, bold: true, color: COL.edge }, { p: q.q, size: 32, bold: true },
@@ -416,7 +416,7 @@
         function ask() {
           if (s.timeLeft() <= 0) return end();
           q = s.next(); busy = false; fb = null;
-          board = q.t === "convert" ? R360Data.make(q) : q.t === "circuit" ? Lg.CircuitBoard({ inputs: Lg.vars(Lg.parse(q.expr)), hit: 34 }) : Lg.ExprBoard({ expr: q.expr });
+          board = q.t === "law" ? R360OS.make(q) : q.t === "convert" ? R360Data.make(q) : q.t === "circuit" ? Lg.CircuitBoard({ inputs: Lg.vars(Lg.parse(q.expr)), hit: 34 }) : Lg.ExprBoard({ expr: q.expr });
           window.__sprint = { s, board, q };
           const yaw = openBoard(board), { pos } = headPose(), qy = yaw - .28 - .75;
           panel(); qPanel.mesh.position.set(pos.x + Math.sin(qy) * 1.25, pos.y - .05, pos.z + Math.cos(qy) * 1.25); qPanel.mesh.lookAt(pos);
@@ -425,7 +425,7 @@
           const res = board.check(q.expr); if (res.incomplete) { toast(res.msg); return; }
           busy = true; const r = s.mark(res.ok);
           fb = res.ok ? { ok: true, head: `+${r.pts} points`, text: r.mult > 1 ? `Speed bonus ${r.bonus}, streak ×${r.mult}.` : `Speed bonus ${r.bonus}.` }
-                      : { ok: false, head: "Not quite.", text: q.t === "convert" ? "The answer is " + q.answer + "." : "A correct answer is Q = " + q.expr + "." };
+                      : { ok: false, head: "Not quite.", text: q.t === "law" || q.t === "convert" ? "The answer is " + q.answer + "." : "A correct answer is Q = " + q.expr + "." };
           if (!res.ok && q.t === "circuit") board.showAnswer(q.expr);
           panel(); setTimeout(ask, res.ok ? 800 : 2200);
         }

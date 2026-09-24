@@ -292,12 +292,91 @@
     });
   }
 
+  // "Name that Act": a scenario appears, you choose the law it falls under
+  const ACTS = ["Data Protection Act 2018", "Computer Misuse Act 1990", "Copyright, Designs and Patents Act 1988", "No law broken"];
+  const CASES = [
+    // [scenario, correct act index, difficulty 0-2]
+    ["A hospital emails a patient list to the wrong address", 0, 0],
+    ["A pupil uses a teacher's password to read a mark sheet", 1, 0],
+    ["A market stall sells copied games on memory sticks", 2, 0],
+    ["A shop keeps ten years of CCTV for no stated reason", 0, 0],
+    ["Someone releases malware that deletes company files", 1, 0],
+    ["A website uses a photographer's pictures without asking", 2, 0],
+    ["A charity loses an unencrypted laptop of donor records", 0, 1],
+    ["A student writes their own program and shares it freely", 3, 1],
+    ["An employee copies the customer database for a rival", 1, 1],
+    ["A teacher shows a film they bought, to their own class", 3, 1],
+    ["An app sells children's data to advertisers", 0, 1],
+    ["A band samples a song without clearing the rights", 2, 1],
+    ["A user guesses a colleague's password but changes nothing", 1, 1],
+    ["A company keeps applicants' CVs for fifteen years", 0, 2],
+    ["A firm reverse-engineers software against its licence", 2, 2],
+    ["A pupil reports a security flaw without exploiting it", 3, 2],
+    ["A shop's app records your location while it is closed", 0, 2],
+    ["Someone floods a council's website to take it offline", 1, 2],
+    ["A YouTuber uses 8 seconds of a track in a review", 3, 2],
+    ["A site streams films it has no licence to show", 2, 2]
+  ];
+  function lawCase(level) {
+    const pool = CASES.filter(c => c[2] <= level);
+    const c = pool[Math.floor(Math.random() * pool.length)];
+    return { t: "law", key: c[0], q: c[0], answer: ACTS[c[1]], options: ACTS, correct: c[1] };
+  }
+
+  // The board the sprint engine shows for one case: four big buttons
+  function LawBoard(q) {
+    const cv = base(), x = cv.getContext("2d");
+    const st = { pick: null, locked: false, hover: null, hits: [] };
+    function draw() {
+      st.hits = []; bg(x);
+      label(x, "Which law does this fall under?", 40, 48, 26, C.edge);
+      const lines = [];
+      let cur = "";
+      x.font = "700 30px Segoe UI, sans-serif";
+      q.q.split(" ").forEach(w => { const t = (cur + " " + w).trim();
+        if (x.measureText(t).width < W - 120) cur = t; else { lines.push(cur); cur = w; } });
+      if (cur) lines.push(cur);
+      lines.forEach((ln, i) => label(x, ln, 40, 120 + i * 44, 30, C.fg, "left", true));
+      q.options.forEach((o, i) => {
+        const py = 270 + i * 82;
+        const chosen = st.pick === i;
+        const right = st.locked && i === q.correct;
+        const wrong = st.locked && chosen && i !== q.correct;
+        rr(x, 40, py, W - 80, 68, 12);
+        x.fillStyle = right ? "#143a2c" : wrong ? "#40161c" : st.hover === "o" + i ? "#1d2f52" : "#15223b"; x.fill();
+        x.lineWidth = right || wrong || chosen ? 5 : 3;
+        x.strokeStyle = right ? C.ok : wrong ? C.bad : chosen ? C.edge : C.line; x.stroke();
+        label(x, o, 66, py + 34, 25, C.fg, "left", true);
+        st.hits.push({ id: "o" + i, px: 40, py, w: W - 80, h: 68 });
+      });
+      api.dirty = true;
+    }
+    const api = {
+      canvas: cv, dirty: true,
+      down(px, py) { if (st.locked) return;
+        const h = st.hits.find(h => px > h.px && px < h.px + h.w && py > h.py && py < h.py + h.h);
+        if (h) st.pick = +h.id.slice(1);
+        draw(); },
+      move(px, py) { const h = st.hits.find(h => px > h.px && px < h.px + h.w && py > h.py && py < h.py + h.h);
+        const id = h ? h.id : null; if (id !== st.hover) { st.hover = id; draw(); } },
+      up() {}, leave() { st.hover = null; draw(); },
+      clear() { if (!st.locked) { st.pick = null; draw(); } },
+      filled() { return st.pick !== null; },
+      check() { st.locked = true; const ok = st.pick === q.correct; draw();
+        return { ok, got: ok ? 1 : 0, max: 1, msg: ok ? "Correct." : "The answer is " + q.answer + "." }; },
+      lock() { st.locked = true; draw(); },
+      solve() { st.pick = q.correct; draw(); }
+    };
+    draw(); return api;
+  }
+
   function make(task) {
+    if (task.t === "law") return LawBoard(task);
     if (task.t === "impact") return Impact(task);
     if (task.t === "memory") return Memory(task);
     if (task.t === "permissions") return Permissions(task);
     if (task.t === "defrag") return Defrag(task);
     return null;
   }
-  window.R360OS = { make, Memory, Permissions, Defrag, Impact, TYPES: ["memory", "permissions", "defrag", "impact"] };
+  window.R360OS = { make, Memory, Permissions, Defrag, Impact, LawBoard, lawCase, TYPES: ["memory", "permissions", "defrag", "impact", "law"] };
 })();
