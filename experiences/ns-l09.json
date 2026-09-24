@@ -1,0 +1,296 @@
+{
+ "id": "ns-l09",
+ "lesson": 9,
+ "title": "Defence depot",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Defence depot",
+   "img": "img/NS_L09_DefenceDepot_360.jpg",
+   "imgHi": "img/NS_L09_DefenceDepot_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Penetration testing",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is penetration testing?",
+       "a": [
+        "Attacking a system with the owner's permission to find its weaknesses",
+        "Attacking a rival company's website",
+        "Installing anti-malware on every computer",
+        "Encrypting the hard drives"
+       ],
+       "fb": "Permission is what separates it from a crime."
+      },
+      {
+       "t": "mcq",
+       "q": "What makes penetration testing legal?",
+       "a": [
+        "The organisation has given permission for the tests",
+        "The tester works at night",
+        "No data is ever accessed",
+        "The tester uses their own laptop"
+       ],
+       "fb": "Without permission it's a crime, however good the intentions."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Anti-malware software",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does anti-malware software do?",
+       "a": [
+        "Detects, blocks and removes malicious software",
+        "Blocks traffic entering a network",
+        "Sets who can see which files",
+        "Tests the system's security with permission"
+       ],
+       "fb": "Don't confuse it with a firewall: that controls traffic."
+      },
+      {
+       "t": "mcq",
+       "q": "Why must anti-malware be updated regularly?",
+       "a": [
+        "New malware appears constantly, so it needs new definitions",
+        "It runs out of storage",
+        "The licence changes colour",
+        "It forgets old malware"
+       ],
+       "fb": "Out-of-date protection is one of the ways people are a weak point."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Firewalls",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does a firewall do?",
+       "a": [
+        "Controls traffic entering and leaving a network using a set of rules",
+        "Scans files for viruses",
+        "Encrypts the hard drive",
+        "Backs up data automatically"
+       ],
+       "fb": "It is the gatekeeper between a network and the outside world."
+      },
+      {
+       "t": "mcq",
+       "q": "Which attack does a firewall help most against?",
+       "a": [
+        "Unauthorised access attempts and suspicious traffic from outside",
+        "A member of staff losing a printout",
+        "Someone watching you type a PIN",
+        "A trojan already installed by a user"
+       ],
+       "fb": "Firewalls can't help with attacks that come from people inside."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "User access levels",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What are user access levels for?",
+       "a": [
+        "Limiting each user to the data and settings they need",
+        "Blocking viruses",
+        "Encrypting network traffic",
+        "Testing the network's security"
+       ],
+       "fb": "This is sometimes called the principle of least privilege."
+      },
+      {
+       "t": "mcq",
+       "q": "A student's account is stolen by an attacker. Why do access levels help?",
+       "a": [
+        "The attacker can only reach what a student can reach",
+        "The account deletes itself",
+        "The attacker is logged out after a minute",
+        "The network shuts down"
+       ],
+       "fb": "Damage is limited to that account's rights."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Monitoring and policies",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "match",
+       "q": "Match each term to its definition.",
+       "pairs": [
+        [
+         "Network forensics",
+         "Watching network traffic to spot intrusions and gather evidence about what happened"
+        ],
+        [
+         "Penetration testing",
+         "Attacking a system with permission, to find its weaknesses before criminals do"
+        ],
+        [
+         "Acceptable use policy",
+         "The rules a user signs up to before they are allowed on the network"
+        ]
+       ],
+       "fb": "Learn these three: they come up as definition questions."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Which defence?",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "A company keeps getting infected by malware from downloads. Which helps most?",
+       "a": [
+        "Anti-malware software, kept up to date",
+        "A longer Wi-Fi password",
+        "A bigger monitor",
+        "A penetration test once every five years"
+       ],
+       "fb": "Match the defence to the threat."
+      },
+      {
+       "t": "mcq",
+       "q": "A company wants to find weaknesses before criminals do. What should it arrange?",
+       "a": [
+        "A penetration test",
+        "A denial-of-service attack on a rival",
+        "More printers",
+        "A longer lunch break"
+       ],
+       "fb": "Testing with permission is the professional way to find holes."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: defence definitions",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "match",
+       "q": "Match each prevention method to its description.",
+       "pairs": [
+        [
+         "Penetration testing",
+         "Attacking a system with permission, to find weaknesses before criminals do"
+        ],
+        [
+         "Anti-malware software",
+         "Detects, blocks and removes malicious software"
+        ],
+        [
+         "Firewall",
+         "Controls traffic entering and leaving a network using rules"
+        ],
+        [
+         "User access levels",
+         "Limits each user to the data and settings their role needs"
+        ],
+        [
+         "Network forensics",
+         "Monitors and analyses traffic to detect intrusions and gather evidence"
+        ],
+        [
+         "Acceptable use policy",
+         "The rules a user signs up to before using the network"
+        ]
+       ],
+       "fb": "Learn these six, then lesson 10 adds passwords, encryption and physical security."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 880,
+     "y": 609,
+     "title": "Bug bounties",
+     "text": "Big companies pay 'bug bounties' to anyone who reports a security flaw responsibly. Some researchers earn a full-time living this way."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "Red team, blue team",
+     "text": "In large organisations, a red team attacks and a blue team defends, so both sides practise against a real opponent."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 920,
+     "y": 540,
+     "title": "Zero-day",
+     "text": "A 'zero-day' is a weakness nobody has patched yet. Anti-malware may miss it, which is why behaviour monitoring matters."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1828,
+     "y": 436,
+     "title": "Two firewalls",
+     "text": "Many networks have a hardware firewall at the boundary and software firewalls on each computer, so one mistake isn't fatal."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 920,
+     "y": 540,
+     "title": "Least privilege",
+     "text": "Giving everyone the minimum access they need is called the principle of least privilege. It's one of the oldest rules in security."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1828,
+     "y": 436,
+     "title": "Logs matter",
+     "text": "After an incident, logs are what let investigators work out what happened, which accounts were used and what was taken."
+    }
+   ],
+   "models": []
+  }
+ ]
+}

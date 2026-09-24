@@ -1,0 +1,294 @@
+{
+ "id": "nw-l02",
+ "lesson": 2,
+ "title": "Network control room",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Control room",
+   "img": "img/NW_L02_NetworkControlRoom_360.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Bandwidth",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is bandwidth?",
+       "a": [
+        "The maximum amount of data that can be sent in a given time",
+        "The length of the network cable",
+        "The number of devices on the network",
+        "The delay before data arrives"
+       ],
+       "fb": "Bandwidth is how much data can travel per second. The delay before data arrives is latency, a different factor."
+      },
+      {
+       "t": "mcq",
+       "q": "What unit is bandwidth usually measured in?",
+       "a": [
+        "Megabits per second (Mbps)",
+        "Milliseconds (ms)",
+        "Megabytes (MB)",
+        "Gigahertz (GHz)"
+       ],
+       "fb": "Bandwidth is a rate, so it is measured in bits per second. Milliseconds measure latency; megabytes measure file size."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Number of users",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Why does a network slow down when more people use it at the same time?",
+       "a": [
+        "They all share the same bandwidth, so each person gets less",
+        "Each new user deletes some of the data",
+        "The cables get longer",
+        "The router changes its IP address"
+       ],
+       "fb": "The available bandwidth is split between everyone using it at that moment."
+      },
+      {
+       "t": "mcq",
+       "q": "Which change would most help a network that is slow when everyone uses it at once?",
+       "a": [
+        "Increasing the network's bandwidth",
+        "Moving the printer to another room",
+        "Changing everyone's passwords",
+        "Turning the computers' screens down"
+       ],
+       "fb": "More bandwidth means each user's share is bigger, even when lots of people are online."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Transmission media",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which connection usually offers the highest bandwidth over long distances?",
+       "a": [
+        "Fibre optic cable",
+        "UTP copper cable",
+        "Wi-Fi",
+        "Bluetooth"
+       ],
+       "fb": "Fibre carries data as light, with very high bandwidth over many kilometres."
+      },
+      {
+       "t": "mcq",
+       "q": "Why is a wired connection usually more reliable than Wi-Fi?",
+       "a": [
+        "Wireless signals weaken with distance and are blocked by walls, but a cable isn't affected in the same way",
+        "Cables are always made of glass",
+        "Wi-Fi only works outdoors",
+        "Wired connections don't use any bandwidth"
+       ],
+       "fb": "Walls, distance and interference all weaken Wi-Fi. A cable delivers a steadier connection."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Error rate",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What happens when a packet is damaged or lost on the way?",
+       "a": [
+        "It has to be sent again, which slows the network down",
+        "It is deleted and never needed",
+        "The network speeds up to make up for it",
+        "The switch changes its MAC address"
+       ],
+       "fb": "Resending damaged data uses extra bandwidth and time, so a high error rate slows everything down."
+      },
+      {
+       "t": "mcq",
+       "q": "Which is most likely to increase the error rate on a Wi-Fi network?",
+       "a": [
+        "Interference from other devices, such as microwave ovens and nearby Wi-Fi networks",
+        "Using a strong password",
+        "Adding more RAM to the laptop",
+        "Switching to fibre optic cable"
+       ],
+       "fb": "Other radio signals can interfere with Wi-Fi and damage data, so more of it has to be resent."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Latency",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is latency?",
+       "a": [
+        "The delay between data being sent and it arriving",
+        "The amount of data that can be sent per second",
+        "The number of people using the network",
+        "The number of errors in the data"
+       ],
+       "fb": "Latency is a delay, measured in milliseconds. The amount of data per second is bandwidth."
+      },
+      {
+       "t": "mcq",
+       "q": "For which activity does low latency matter most?",
+       "a": [
+        "Playing a fast-paced online game",
+        "Downloading a film to watch later",
+        "Sending an email",
+        "Backing up files overnight"
+       ],
+       "fb": "In a game, every delay between pressing a button and seeing the result is noticeable. A download just needs to finish eventually."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Case study: CCTV",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Why could more CCTV cameras slow down the school network?",
+       "a": [
+        "Each camera streams video all the time, using up bandwidth that everyone shares",
+        "Cameras delete files from the server",
+        "Cameras change the school's IP address",
+        "Cameras make the Wi-Fi password longer"
+       ],
+       "fb": "Video is a lot of data. More cameras means more of the shared bandwidth is used up, all day and night."
+      },
+      {
+       "t": "mcq",
+       "q": "The new cameras will be outside, a long way from the building. What is the best advice?",
+       "a": [
+        "Use cabled connections if possible, as Wi-Fi outdoors may be slow and unreliable, and check the network has enough bandwidth",
+        "Connect them by Bluetooth",
+        "Plug them into the printer",
+        "Nothing needs checking, because distance doesn't affect networks"
+       ],
+       "fb": "Distance weakens Wi-Fi and increases errors. The manager should also check bandwidth and server storage for the extra video."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: diagnose the network",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "match",
+       "q": "Match each help desk problem to the factor causing it.",
+       "pairs": [
+        [
+         "Downloads slow right down every lunchtime, when 300 students go online",
+         "Number of users"
+        ],
+        [
+         "A 10 Mbps connection can't stream several HD videos at once",
+         "Bandwidth"
+        ],
+        [
+         "A laptop at the far end of the building keeps losing its Wi-Fi",
+         "Transmission media"
+        ],
+        [
+         "Packets are corrupted near heavy machinery and keep being resent",
+         "Error rate"
+        ],
+        [
+         "Online gamers notice a delay between pressing a button and the action happening",
+         "Latency"
+        ]
+       ],
+       "fb": "These are the five factors in the specification. In the exam, name the factor and explain how it slows the network."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "bits",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "Bits and bytes",
+     "text": "Broadband speeds are given in megabits per second (Mbps), but file sizes are in megabytes (MB). There are 8 bits in a byte, so a 100 Mbps connection downloads at most about 12.5 MB each second."
+    },
+    {
+     "id": "evening",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "Why evenings are slower",
+     "text": "Home broadband often slows down in the evening, when lots of people in the same area are streaming at the same time. It's the number-of-users factor on a bigger scale."
+    },
+    {
+     "id": "ghz",
+     "face": "back",
+     "x": 1033,
+     "y": 581,
+     "title": "2.4 GHz or 5 GHz?",
+     "text": "Wi-Fi uses two main radio bands. 5 GHz is usually faster, but its signal doesn't travel as far or pass through walls as well as 2.4 GHz."
+    },
+    {
+     "id": "checksum",
+     "face": "back",
+     "x": 1888,
+     "y": 540,
+     "title": "Spotting damaged data",
+     "text": "Packets carry extra check information. The receiving device checks it, and if the data doesn't match, the packet is sent again."
+    },
+    {
+     "id": "oz",
+     "face": "left",
+     "x": 920,
+     "y": 540,
+     "title": "Distance adds delay",
+     "text": "Data sent to Australia and back typically takes around a quarter of a second, however much bandwidth you have. Gamers call this delay 'ping'."
+    },
+    {
+     "id": "cctv",
+     "face": "left",
+     "x": 1888,
+     "y": 540,
+     "title": "Video is heavy",
+     "text": "An HD camera can send several megabits of video every second, all day and night. Ten cameras can use as much bandwidth as a whole class streaming videos."
+    }
+   ],
+   "imgHi": "img/NW_L02_NetworkControlRoom_360_hi.jpg"
+  }
+ ]
+}

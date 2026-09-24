@@ -1,0 +1,267 @@
+{
+ "id": "bl-l01",
+ "lesson": 1,
+ "title": "Logic gate lab",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Logic gate lab",
+   "img": "img/BL_L01_LogicGateLab_360.jpg",
+   "imgHi": "img/BL_L01_LogicGateLab_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "The AND gate",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "When is the output of an AND gate 1?",
+       "a": [
+        "Only when both inputs are 1",
+        "When either input is 1",
+        "When both inputs are 0",
+        "When the inputs are different"
+       ],
+       "fb": "Both inputs have to be true."
+      },
+      {
+       "t": "table",
+       "q": "Complete the truth table for A AND B. Click each ? to change it to 0 or 1.",
+       "expr": "A AND B",
+       "fb": "Only the last row, where both inputs are 1, outputs 1.",
+       "diagram": true
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "The OR gate",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "When is the output of an OR gate 0?",
+       "a": [
+        "Only when both inputs are 0",
+        "When either input is 0",
+        "When both inputs are 1",
+        "Never"
+       ],
+       "fb": "One true input is enough to make OR output 1."
+      },
+      {
+       "t": "table",
+       "q": "Complete the truth table for A OR B.",
+       "expr": "A OR B",
+       "fb": "Only the first row, where both inputs are 0, outputs 0.",
+       "diagram": true
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "The NOT gate",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does a NOT gate do?",
+       "a": [
+        "Reverses its input: 1 becomes 0, and 0 becomes 1",
+        "Outputs 1 when both inputs are 1",
+        "Outputs 1 when either input is 1",
+        "Always outputs 0"
+       ],
+       "fb": "NOT is also called an inverter."
+      },
+      {
+       "t": "table",
+       "q": "Complete the truth table for NOT A.",
+       "expr": "NOT A",
+       "fb": "NOT flips each input.",
+       "diagram": true
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Symbols and pseudocode",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "match",
+       "q": "Match each symbol to its operator.",
+       "pairs": [
+        [
+         "∧",
+         "AND"
+        ],
+        [
+         "∨",
+         "OR"
+        ],
+        [
+         "¬",
+         "NOT"
+        ]
+       ],
+       "fb": "You'll see these symbols in exam questions."
+      },
+      {
+       "t": "mcq",
+       "q": "What does the cash machine program output?",
+       "a": [
+        "Welcome",
+        "Card declined",
+        "1234",
+        "Nothing"
+       ],
+       "fb": "Both conditions are true, so the AND is true."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Two-level circuits",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "circuit",
+       "q": "Build the circuit for Q = A AND C.",
+       "expr": "A AND C",
+       "fb": "One AND gate, with inputs A and C."
+      },
+      {
+       "t": "circuit",
+       "q": "Build the circuit for Q = (A OR B) AND C.",
+       "expr": "(A OR B) AND C",
+       "fb": "The OR gate's output feeds one input of the AND gate."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "NOT and brackets",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "In NOT A OR B, which part is worked out first?",
+       "a": [
+        "NOT A",
+        "A OR B",
+        "B",
+        "They're all worked out at once"
+       ],
+       "fb": "NOT applies only to the thing right after it, unless there are brackets."
+      },
+      {
+       "t": "circuit",
+       "q": "Build the circuit for Q = NOT A OR B.",
+       "expr": "NOT A OR B",
+       "fb": "NOT A feeds one input of the OR gate."
+      },
+      {
+       "t": "circuit",
+       "q": "Build the circuit for Q = NOT (A AND B).",
+       "expr": "NOT (A AND B)",
+       "fb": "The AND gate's output goes into the NOT gate."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: build and read",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "circuit",
+       "q": "Build the circuit for Q = (A AND B) OR (C AND D).",
+       "expr": "(A AND B) OR (C AND D)",
+       "fb": "Two AND gates feed one OR gate."
+      },
+      {
+       "t": "expr",
+       "q": "Write the Boolean expression for this logic diagram.",
+       "expr": "NOT (A OR B)",
+       "fb": "The OR gate comes first, then its output is reversed."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "George Boole",
+     "text": "Boolean logic is named after George Boole, an English mathematician who described this kind of algebra in 1854, long before computers existed."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "Made of transistors",
+     "text": "Inside a CPU, logic gates are built from transistors, tiny electronic switches. A modern CPU contains billions of them."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 920,
+     "y": 540,
+     "title": "Claude Shannon",
+     "text": "In 1937, a student called Claude Shannon showed that Boole's logic could be built with electrical switches. That idea is the basis of every digital computer."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1888,
+     "y": 540,
+     "title": "Search engines",
+     "text": "Many search engines and library catalogues let you use AND, OR and NOT to narrow down your search results."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 920,
+     "y": 540,
+     "title": "One gate to rule them all",
+     "text": "A NAND gate (NOT AND) is 'universal': any other gate, and so any computer, can be built using only NAND gates."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1888,
+     "y": 540,
+     "title": "1 and 0",
+     "text": "True and false, on and off, 1 and 0: they all mean the same thing in logic. Computers use the voltage in a wire to represent them."
+    }
+   ],
+   "models": []
+  }
+ ]
+}

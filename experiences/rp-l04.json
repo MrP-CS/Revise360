@@ -1,0 +1,318 @@
+{
+ "id": "rp-l04",
+ "lesson": 4,
+ "title": "Bug hunt lab",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Bug hunt lab",
+   "img": "img/RP_L04_BugHuntLab_360.jpg",
+   "imgHi": "img/RP_L04_BugHuntLab_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Why test a program?",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which is a reason for testing a program before release?",
+       "a": [
+        "To find and fix errors so it works as intended",
+        "To make the code shorter",
+        "To add comments to the code",
+        "To choose better variable names"
+       ],
+       "fb": "Testing finds bugs before users do. Other reasons: checking it meets the requirements, can't be misused, and has no security weak spots."
+      },
+      {
+       "t": "mcq",
+       "q": "Why should testers deliberately try to misuse a program?",
+       "a": [
+        "To check it won't crash or be exploited when users do something unexpected",
+        "To make the program run faster",
+        "Because users never make mistakes",
+        "To find syntax errors only"
+       ],
+       "fb": "Real users type unexpected things and some try to break programs on purpose, so a robust program must cope with both."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Iterative testing",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "When does iterative testing take place?",
+       "a": [
+        "While the program is being developed",
+        "Only after the program is released",
+        "Once, when the program is finished",
+        "Before any code is written"
+       ],
+       "fb": "Iterative testing happens throughout development: each module is tested as it's written."
+      },
+      {
+       "t": "mcq",
+       "q": "After fixing a bug in one module, why test the rest of the program again?",
+       "a": [
+        "To check the change hasn't broken code that already worked",
+        "Because the bug always moves to another module",
+        "To make the program run faster",
+        "Testing twice is a rule of Python"
+       ],
+       "fb": "A fix in one place can have side effects elsewhere, so previously working parts are retested."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Final (terminal) testing",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is final (terminal) testing?",
+       "a": [
+        "Testing the complete program at the end of development, to check it meets all the requirements",
+        "Testing each line as you type it",
+        "Testing done by the translator",
+        "Testing that happens only if the program crashes"
+       ],
+       "fb": "Final testing happens once the program is complete, before release."
+      },
+      {
+       "t": "mcq",
+       "q": "Which is most likely to be checked during final testing?",
+       "a": [
+        "Whether all the modules work together correctly",
+        "Whether one loop works just after it's written",
+        "Whether a variable name is spelt correctly",
+        "Whether the programmer has saved their file"
+       ],
+       "fb": "Iterative testing checks parts as they're built; final testing checks the whole program works together."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Syntax errors",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is a syntax error?",
+       "a": [
+        "An error that breaks the rules of the programming language, so the code can't be translated or run",
+        "An error that makes the program give the wrong answer",
+        "An error caused by the user typing the wrong data",
+        "An error in the comments"
+       ],
+       "fb": "Syntax is the grammar of a language. If the translator can't understand a line, the program won't run."
+      },
+      {
+       "t": "mcq",
+       "q": "Which line contains a syntax error?",
+       "a": [
+        "prnt(\"Hello\")",
+        "total = total + 1",
+        "print(total)",
+        "if total > 10:"
+       ],
+       "fb": "prnt is a misspelling of the keyword print, so Python doesn't recognise it."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Logic errors",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is a logic error?",
+       "a": [
+        "The program runs, but doesn't do what the programmer intended",
+        "The program won't run at all",
+        "The translator reports a mistake",
+        "The computer's hardware is faulty"
+       ],
+       "fb": "Logic errors produce wrong results, loop forever or crash at the wrong moment, even though the code follows the rules."
+      },
+      {
+       "t": "mcq",
+       "q": "Why are logic errors usually harder to find than syntax errors?",
+       "a": [
+        "The translator doesn't report them, because the code follows the language's rules",
+        "They only happen on old computers",
+        "They are always hidden in comments",
+        "They make the program too fast to see"
+       ],
+       "fb": "You find logic errors by testing and checking the output against what you expected."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Error detective",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "multi",
+       "q": "Which of these are errors in the total cost program? Select all that apply.",
+       "opts": [
+        "total = total + total should be total = total + 3",
+        "Nothing inside the loop reduces items, so it never ends",
+        "prnt should be print",
+        "The input isn't converted to an integer before it is used",
+        "total = 0 should be total = 1",
+        "return total should be inside the loop"
+       ],
+       "correct": [
+        "total = total + total should be total = total + 3",
+        "Nothing inside the loop reduces items, so it never ends",
+        "prnt should be print",
+        "The input isn't converted to an integer before it is used"
+       ],
+       "fb": "Four errors: the wrong calculation, the missing items = items - 1, the misspelt print, and the missing int()."
+      },
+      {
+       "t": "mcq",
+       "q": "Which type of error is prnt instead of print?",
+       "a": [
+        "Syntax error",
+        "Logic error",
+        "Runtime data error",
+        "No error"
+       ],
+       "fb": "A misspelt keyword breaks the language's rules, so the code won't run."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: syntax or logic?",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Sort each bug: is it a syntax error or a logic error?",
+       "cats": [
+        "Syntax",
+        "Logic"
+       ],
+       "items": [
+        [
+         "prnt(\"2. Take register\")",
+         "Syntax"
+        ],
+        [
+         "choice = input(Enter choice:) with no quotation marks",
+         "Syntax"
+        ],
+        [
+         "while items >= 1 with the colon missing",
+         "Syntax"
+        ],
+        [
+         "valid = True before while not valid:, so the loop never runs",
+         "Logic"
+        ],
+        [
+         "if not choice in [1,2,3]: when input() gives the string \"2\"",
+         "Logic"
+        ],
+        [
+         "valid == True where valid = True was meant",
+         "Logic"
+        ],
+        [
+         "average = total / count when count is 0",
+         "Logic"
+        ],
+        [
+         "Printing 'Fail' when the score is above the pass mark",
+         "Logic"
+        ]
+       ],
+       "fb": "If Python refuses to run the line, it's syntax. If it runs but does the wrong thing, it's logic."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "moth",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "The first actual bug",
+     "text": "In 1947, engineers working on the Harvard Mark II computer found a moth trapped in a relay. They taped it into their logbook as the 'first actual case of bug being found'."
+    },
+    {
+     "id": "unit",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "Tests that run themselves",
+     "text": "Professional programmers write automated tests that re-run every time the code changes, so iterative testing happens in seconds instead of by hand."
+    },
+    {
+     "id": "beta",
+     "face": "back",
+     "x": 920,
+     "y": 540,
+     "title": "Alpha and beta testing",
+     "text": "Many games and apps are tested by the developers (alpha testing), then released early to real users (beta testing) to find bugs the developers missed."
+    },
+    {
+     "id": "ide",
+     "face": "back",
+     "x": 1888,
+     "y": 540,
+     "title": "Red squiggly lines",
+     "text": "Most IDEs spot syntax errors as you type and underline them, just like a spell checker. They can't spot logic errors, though."
+    },
+    {
+     "id": "mars",
+     "face": "left",
+     "x": 920,
+     "y": 540,
+     "title": "A logic error in space",
+     "text": "In 1999, NASA lost the Mars Climate Orbiter because one team's software used imperial units while another expected metric. The code ran perfectly, but the answer was wrong."
+    },
+    {
+     "id": "ariane",
+     "face": "left",
+     "x": 1828,
+     "y": 644,
+     "title": "A very expensive bug",
+     "text": "In 1996, the Ariane 5 rocket self-destructed about 40 seconds after launch. Software reused from the older Ariane 4 tried to store a number too big for its variable."
+    }
+   ]
+  }
+ ]
+}

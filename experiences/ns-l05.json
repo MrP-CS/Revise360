@@ -1,0 +1,322 @@
+{
+ "id": "ns-l05",
+ "lesson": 5,
+ "title": "Social engineering HQ",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Social engineering HQ",
+   "img": "img/NS_L05_SocialEngineeringHQ_360.jpg",
+   "imgHi": "img/NS_L05_SocialEngineeringHQ_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "People as a weak point",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "multi",
+       "q": "Which of these are examples of people being a weak point? Select all that apply.",
+       "opts": [
+        "Writing a password on a sticky note",
+        "Not logging off a shared computer",
+        "Leaving the server room door unlocked",
+        "Ignoring operating system updates",
+        "Using a password manager",
+        "Locking the screen when leaving a desk"
+       ],
+       "correct": [
+        "Writing a password on a sticky note",
+        "Not logging off a shared computer",
+        "Leaving the server room door unlocked",
+        "Ignoring operating system updates"
+       ],
+       "fb": "The last two are good practice: they make people a strength instead."
+      },
+      {
+       "t": "mcq",
+       "q": "Why do attackers target people rather than software?",
+       "a": [
+        "People can be tricked, and it's often easier than defeating the technology",
+        "People are always offline",
+        "Software has no weaknesses",
+        "People own the servers"
+       ],
+       "fb": "Firewalls can't stop someone from holding a door open."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Blagging",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is blagging?",
+       "a": [
+        "Inventing a convincing story to persuade someone to give information or access",
+        "Sending a fake email to thousands of people",
+        "Watching someone type a password",
+        "Leaving an infected USB stick in a car park"
+       ],
+       "fb": "Blagging is done person to person, often by phone."
+      },
+      {
+       "t": "mcq",
+       "q": "Someone phones claiming to be from IT and asks for your password to 'fix an error'. What should you do?",
+       "a": [
+        "Refuse, and check with the IT team using a number you know",
+        "Give it, because IT staff can be trusted",
+        "Give a slightly changed version",
+        "Email it instead of saying it"
+       ],
+       "fb": "Genuine IT staff never need your password."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Shouldering and tailgating",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is shouldering?",
+       "a": [
+        "Watching someone enter their password or PIN to steal it",
+        "Carrying a server out of a building",
+        "Sending a fake text message",
+        "Guessing a password with software"
+       ],
+       "fb": "Cash machines and school logins are common targets."
+      },
+      {
+       "t": "mcq",
+       "q": "How does tailgating get someone into a secure building?",
+       "a": [
+        "They follow an authorised person through the door before it closes",
+        "They climb through a window",
+        "They email the receptionist",
+        "They guess the door code with software"
+       ],
+       "fb": "Staff should politely challenge anyone without a pass."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Baiting",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is baiting?",
+       "a": [
+        "Leaving something tempting, such as an infected USB stick, for a victim to use",
+        "Flooding a website with requests",
+        "Watching someone type a PIN",
+        "Encrypting files for a ransom"
+       ],
+       "fb": "Curiosity is the weakness being exploited."
+      },
+      {
+       "t": "mcq",
+       "q": "You find a USB stick in the car park labelled 'Staff salaries'. What should you do?",
+       "a": [
+        "Hand it to the IT team without plugging it in",
+        "Plug it into a school computer to find the owner",
+        "Take it home and check it there",
+        "Throw it in the bin"
+       ],
+       "fb": "Plugging it in is exactly what the attacker hopes for."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Phishing, vishing and smishing",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "match",
+       "q": "Match each technique to how it reaches the victim.",
+       "pairs": [
+        [
+         "Phishing",
+         "Email"
+        ],
+        [
+         "Vishing",
+         "Phone call"
+        ],
+        [
+         "Smishing",
+         "Text message"
+        ],
+        [
+         "Baiting",
+         "An infected USB stick or download"
+        ]
+       ],
+       "fb": "They differ in the channel, but all are social engineering."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Turning people into a strength",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is an acceptable use policy?",
+       "a": [
+        "A document setting out the rules a user must agree to before using an organisation's network",
+        "Software that blocks viruses",
+        "A password cracking program",
+        "A type of firewall"
+       ],
+       "fb": "This is the definition from your lesson 9 matching task."
+      },
+      {
+       "t": "mcq",
+       "q": "Which is the best defence against social engineering?",
+       "a": [
+        "Training people to recognise the techniques, backed by clear policies",
+        "A faster internet connection",
+        "More powerful servers",
+        "Longer URLs"
+       ],
+       "fb": "Technology alone can't stop someone being persuaded."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: name the technique",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 996,
+     "y": 587,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Which technique does each incident describe?",
+       "cats": [
+        "Blagging",
+        "Shouldering",
+        "Baiting",
+        "Phishing"
+       ],
+       "items": [
+        [
+         "A caller pretends to be the head teacher and asks for a password reset",
+         "Blagging"
+        ],
+        [
+         "Someone stands behind you while you type your PIN",
+         "Shouldering"
+        ],
+        [
+         "A USB stick labelled 'Exam papers' is left in the corridor",
+         "Baiting"
+        ],
+        [
+         "An email claims your account will close unless you log in now",
+         "Phishing"
+        ],
+        [
+         "A stranger in a high-vis jacket says they're here to fix the servers",
+         "Blagging"
+        ],
+        [
+         "A free game download secretly installs malware",
+         "Baiting"
+        ],
+        [
+         "A camera is angled at the keypad by the office door",
+         "Shouldering"
+        ],
+        [
+         "A text message asks you to confirm your bank details",
+         "Phishing"
+        ]
+       ],
+       "fb": "All four are social engineering: they target people, not technology."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 1033,
+     "y": 581,
+     "title": "The famous social engineer",
+     "text": "Kevin Mitnick, once the FBI's most wanted hacker, said he got most of his access by simply asking people, rather than by breaking software."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "USB drops work",
+     "text": "In one study, researchers dropped USB sticks around a university car park. Around half were picked up and plugged into a computer."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 920,
+     "y": 540,
+     "title": "Politeness is a weakness",
+     "text": "Holding a door open is polite, but it also defeats an expensive door lock. Good security training tells staff it's fine to ask for a pass."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1888,
+     "y": 540,
+     "title": "Caller ID lies",
+     "text": "Phone numbers can be spoofed, so a call that appears to come from your bank may not. Hang up and call back on a number you know."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 1033,
+     "y": 581,
+     "title": "Screen privacy",
+     "text": "Privacy filters make a screen look black from the side, which makes shouldering much harder in public places."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1867,
+     "y": 422,
+     "title": "Clean desk",
+     "text": "Many organisations have a clean-desk policy: no printouts or notes left out when you leave, so nothing sensitive is on show."
+    }
+   ],
+   "models": []
+  }
+ ]
+}

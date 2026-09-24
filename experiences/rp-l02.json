@@ -1,0 +1,326 @@
+{
+ "id": "rp-l02",
+ "lesson": 2,
+ "title": "Cyber defence HQ",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Cyber defence HQ",
+   "img": "img/RP_L02_CyberDefenceHQ_360.jpg",
+   "imgHi": "img/RP_L02_CyberDefenceHQ_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Anticipating misuse",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does anticipating misuse mean?",
+       "a": [
+        "Planning for the ways users might accidentally or deliberately misuse a program",
+        "Blocking all users",
+        "Only testing with normal data",
+        "Making the program run faster"
+       ],
+       "fb": "Programmers imagine what could go wrong and plan for it."
+      },
+      {
+       "t": "mcq",
+       "q": "A user types their name into a box asking for a number. What should a robust program do?",
+       "a": [
+        "Reject it with a helpful message and ask again",
+        "Crash",
+        "Accept it anyway",
+        "Delete the user's account"
+       ],
+       "fb": "Robust programs handle bad input gracefully."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "When things go wrong",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "multi",
+       "q": "Which of these could crash a program even when the input is valid? Select all that apply.",
+       "opts": [
+        "Dividing by zero",
+        "The network connection dropping",
+        "The printer running out of paper",
+        "The storage being full",
+        "Using descriptive variable names",
+        "Adding comments"
+       ],
+       "correct": [
+        "Dividing by zero",
+        "The network connection dropping",
+        "The printer running out of paper",
+        "The storage being full"
+       ],
+       "fb": "Descriptive names and comments help maintainability; they don't crash programs."
+      },
+      {
+       "t": "mcq",
+       "q": "How can a program cope with a problem like a missing file?",
+       "a": [
+        "Exception handling: catching the error and responding sensibly",
+        "Ignoring it",
+        "Using a longer variable name",
+        "Removing all input"
+       ],
+       "fb": "The program can show a message instead of crashing."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Authentication",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is authentication?",
+       "a": [
+        "Checking a user's identity before they can use a system",
+        "Checking data is sensible",
+        "Testing a program",
+        "Encrypting a file"
+       ],
+       "fb": "Validation checks data; authentication checks people."
+      },
+      {
+       "t": "mcq",
+       "q": "Which is the strongest password?",
+       "a": [
+        "Tr0ub4dor&3!Pz",
+        "password",
+        "123456",
+        "olly2010"
+       ],
+       "fb": "Long, with mixed case, numbers and symbols."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Forgotten passwords and new users",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Why does a website email a link to reset your password?",
+       "a": [
+        "Only the real owner should be able to access that email account",
+        "Emails are faster than web pages",
+        "It saves storage",
+        "To show you adverts"
+       ],
+       "fb": "It proves you own the account before letting you change the password."
+      },
+      {
+       "t": "mcq",
+       "q": "What is two-factor authentication?",
+       "a": [
+        "Using a second check, such as a code sent to your phone, as well as a password",
+        "Typing your password twice",
+        "Having two usernames",
+        "Logging in on two devices"
+       ],
+       "fb": "Even if someone steals your password, they'd also need your phone."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Bots and CAPTCHA",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 816,
+     "y": 1499,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is a CAPTCHA used for?",
+       "a": [
+        "Stopping automated bots from using a form",
+        "Checking a date's format",
+        "Speeding up a website",
+        "Encrypting passwords"
+       ],
+       "fb": "It tells humans and bots apart."
+      },
+      {
+       "t": "mcq",
+       "q": "How are CAPTCHAs made accessible to people who can't see images?",
+       "a": [
+        "An audio version is offered",
+        "They are skipped completely",
+        "The text is made smaller",
+        "A second password is needed"
+       ],
+       "fb": "Accessibility options help everyone use the site."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Validate a password",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "multi",
+       "q": "Which passwords pass all three rules? Select all that apply.",
+       "opts": [
+        "three-red-kites-9",
+        "Pa55word",
+        "correct7horse",
+        "sunshine",
+        "12345678901",
+        "b3"
+       ],
+       "correct": [
+        "three-red-kites-9",
+        "correct7horse"
+       ],
+       "fb": "Pa55word and sunshine appear on common password lists, 12345678901 has no letter, and b3 is far too short."
+      },
+      {
+       "t": "mcq",
+       "q": "Why does the program use strip() on the input first?",
+       "a": [
+        "It removes spaces typed by accident at the start or end",
+        "It encrypts the password",
+        "It shortens the password",
+        "It checks the length"
+       ],
+       "fb": "Cleaning up input before checking it is called sanitisation."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: defend the program",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Is each defence validation, authentication or anticipating misuse?",
+       "cats": [
+        "Validation",
+        "Authentication",
+        "Misuse"
+       ],
+       "items": [
+        [
+         "A username and password login",
+         "Authentication"
+        ],
+        [
+         "A code sent to your phone",
+         "Authentication"
+        ],
+        [
+         "Checking an age is between 11 and 19",
+         "Validation"
+        ],
+        [
+         "Checking an email contains an @",
+         "Validation"
+        ],
+        [
+         "Not crashing when the printer runs out of paper",
+         "Misuse"
+        ],
+        [
+         "Handling a user dividing by zero",
+         "Misuse"
+        ],
+        [
+         "Checking a field isn't left empty",
+         "Validation"
+        ],
+        [
+         "Confirming a new account from an email link",
+         "Authentication"
+        ]
+       ],
+       "fb": "Validation checks data, authentication checks people, and anticipating misuse plans for what could go wrong."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 1035,
+     "y": 585,
+     "title": "Most common password",
+     "text": "Lists of leaked passwords are still topped by '123456'. Attackers try these first, which is why systems should reject common passwords."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1821,
+     "y": 401,
+     "title": "Try and except",
+     "text": "In Python, try and except let a program catch an error, like a missing file, and show a message instead of crashing."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 1035,
+     "y": 585,
+     "title": "Brute force maths",
+     "text": "An 8-letter password using only lowercase letters has about 200 billion combinations. A computer can try that many surprisingly quickly."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1821,
+     "y": 401,
+     "title": "Password managers",
+     "text": "A password manager stores a different strong password for every site, so you only need to remember one master password."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 1035,
+     "y": 585,
+     "title": "Invisible checks",
+     "text": "Newer bot detection works mostly in the background, judging whether a visitor is human from how they move and click, so most people never see a puzzle."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1821,
+     "y": 401,
+     "title": "Sanitising input",
+     "text": "Sanitisation cleans input before it's checked, such as trimming spaces or converting to lower case, so the same data is always treated the same way."
+    }
+   ],
+   "models": []
+  }
+ ]
+}

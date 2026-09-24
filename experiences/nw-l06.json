@@ -1,0 +1,469 @@
+{
+ "id": "nw-l06",
+ "lesson": 6,
+ "title": "Star and mesh networks",
+ "scenes": [
+  {
+   "id": "p1",
+   "title": "Part 1: Star",
+   "img": "img/NW_L06_StarAndMeshNetworks_Part1_360.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Star topology",
+     "col": "#40c4ff",
+     "pos": [
+      1,
+      -0.69,
+      0.473
+     ],
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is at the centre of a star network?",
+       "a": [
+        "A switch",
+        "A printer",
+        "A laptop",
+        "The internet"
+       ],
+       "fb": "Every device in a star connects to the central switch, and all data passes through it."
+      },
+      {
+       "t": "mcq",
+       "q": "How does each device connect in a star network?",
+       "a": [
+        "With its own cable to the central switch",
+        "With a cable to the next device along",
+        "With cables to every other device",
+        "Only by Bluetooth"
+       ],
+       "fb": "Each device has its own dedicated cable to the switch. Cables to every other device would be a full mesh."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Advantages of star",
+     "col": "#aa6eeb",
+     "pos": [
+      1,
+      -0.69,
+      -0.473
+     ],
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "One cable in a star network is cut. What happens?",
+       "a": [
+        "Only the device on that cable loses its connection",
+        "The whole network stops working",
+        "Every device slows down",
+        "The data is automatically rerouted along another cable"
+       ],
+       "fb": "Each device has its own cable, so a cut cable only affects that one device. There is no other route, so the data can't be rerouted."
+      },
+      {
+       "t": "mcq",
+       "q": "Why does a star network perform well?",
+       "a": [
+        "The switch sends data only to the device it is meant for, so there is less unnecessary traffic",
+        "Every device receives every message",
+        "Data travels around a ring",
+        "It doesn't use any cables"
+       ],
+       "fb": "The switch forwards each piece of data only where it needs to go, which keeps traffic down."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Disadvantages of star",
+     "col": "#ff785a",
+     "pos": [
+      0.473,
+      -0.69,
+      -1
+     ],
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is the biggest weakness of a star network?",
+       "a": [
+        "If the central switch fails, every device loses its connection",
+        "If one cable fails, every device loses its connection",
+        "It is hard to add new devices",
+        "Data can go the wrong way round the star"
+       ],
+       "fb": "The switch is a single point of failure: everything depends on it."
+      },
+      {
+       "t": "mcq",
+       "q": "Why can a star network be expensive to install?",
+       "a": [
+        "Every device needs its own cable back to the switch, which uses a lot of cable",
+        "Every device needs its own switch",
+        "Each computer needs a satellite dish",
+        "Star networks need a separate router for every room"
+       ],
+       "fb": "Running a separate cable from every device to the switch adds up to a lot of cable and installation work."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Joining star networks",
+     "col": "#ffa028",
+     "pos": [
+      -0.473,
+      -0.69,
+      -1
+     ],
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "An office has two star networks, each with its own switch. How are they joined together?",
+       "a": [
+        "A cable links the two switches",
+        "Every computer is plugged into both switches",
+        "They are joined through the printer",
+        "Star networks can't be joined"
+       ],
+       "fb": "Linking the switches lets devices on one star reach devices on the other."
+      },
+      {
+       "t": "mcq",
+       "q": "The link cable between the two switches is cut. What happens?",
+       "a": [
+        "Devices can still talk to others on the same switch, but not to devices on the other switch",
+        "Every device loses its connection",
+        "Nothing changes",
+        "Only the two switches stop working"
+       ],
+       "fb": "Each star still works on its own. Only traffic between the two stars is cut off."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Break it!",
+     "col": "#f05aaa",
+     "pos": [
+      -1,
+      -0.74,
+      0
+     ],
+     "tasks": [
+      {
+       "t": "multi",
+       "q": "The cable between Sales 2 and Switch A is cut. Which devices can no longer reach the file server? Select all that apply.",
+       "opts": [
+        "Reception",
+        "Sales 1",
+        "Sales 2",
+        "Accounts",
+        "Conference"
+       ],
+       "correct": [
+        "Sales 2"
+       ],
+       "fb": "Only Sales 2 is cut off. Everyone else's cables and switches still work.",
+       "img": "img/L6_break_diagram.png"
+      },
+      {
+       "t": "multi",
+       "q": "Switch A fails. Which devices can no longer reach the file server? Select all that apply.",
+       "opts": [
+        "Reception",
+        "Sales 1",
+        "Sales 2",
+        "Accounts",
+        "Conference"
+       ],
+       "correct": [
+        "Reception",
+        "Sales 1",
+        "Sales 2"
+       ],
+       "fb": "Everything plugged into Switch A loses its connection. Accounts and Conference are on Switch B with the server, so they are fine.",
+       "img": "img/L6_break_diagram.png"
+      },
+      {
+       "t": "multi",
+       "q": "The link cable between the two switches is cut. Which devices can still reach the file server? Select all that apply.",
+       "opts": [
+        "Reception",
+        "Sales 1",
+        "Sales 2",
+        "Accounts",
+        "Conference"
+       ],
+       "correct": [
+        "Accounts",
+        "Conference"
+       ],
+       "fb": "Accounts and Conference share Switch B with the server. Reception and Sales are stranded on Switch A.",
+       "img": "img/L6_break_diagram.png"
+      },
+      {
+       "t": "mcq",
+       "q": "Which single failure would stop every device from reaching the file server?",
+       "a": [
+        "Switch B fails",
+        "Switch A fails",
+        "The cable to Reception is cut",
+        "The link cable between the switches is cut"
+       ],
+       "fb": "The server is plugged into Switch B, so if Switch B fails nobody can reach it. Cutting the server's own cable would do the same.",
+       "img": "img/L6_break_diagram.png"
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "hub",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "Hubs and switches",
+     "text": "Older networks used hubs, which sent every piece of data to every device. Switches send data only to the device it is meant for, which is why star networks today perform well."
+    },
+    {
+     "id": "redund",
+     "face": "left",
+     "x": 1490,
+     "y": 850,
+     "title": "Adding a backup",
+     "text": "Important networks often add a second switch or a second link cable, called redundancy, so the network keeps working if one part fails."
+    },
+    {
+     "id": "cabling",
+     "face": "down",
+     "x": 1017,
+     "y": 799,
+     "title": "Hidden cables",
+     "text": "In real offices, network cables run through ceilings, floors and walls to a comms cabinet, where they plug into switches. This is called structured cabling."
+    }
+   ],
+   "imgHi": "img/NW_L06_StarAndMeshNetworks_Part1_360_hi.jpg"
+  },
+  {
+   "id": "p2",
+   "title": "Part 2: Mesh",
+   "img": "img/NW_L06_StarAndMeshNetworks_Part2_360.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Full mesh",
+     "col": "#40c4ff",
+     "pos": [
+      1,
+      -0.69,
+      0.473
+     ],
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is a full mesh network?",
+       "a": [
+        "Every device is connected directly to every other device",
+        "Every device connects to one central switch",
+        "Devices are connected in a single line",
+        "Devices connect only by Wi-Fi"
+       ],
+       "fb": "In a full mesh every device has a direct link to every other device."
+      },
+      {
+       "t": "mcq",
+       "q": "How many cables are needed to connect four devices in a full mesh?",
+       "a": [
+        "6",
+        "4",
+        "8",
+        "12"
+       ],
+       "fb": "Each of the 4 devices links to the 3 others: 4 × 3 = 12, but each cable joins two devices, so 12 ÷ 2 = 6."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Mesh: pros and cons",
+     "col": "#aa6eeb",
+     "pos": [
+      1,
+      -0.69,
+      -0.473
+     ],
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "One link in a mesh network fails. What happens?",
+       "a": [
+        "The data is rerouted along another path",
+        "The whole network stops working",
+        "Every device loses its connection",
+        "Data waits until the link is repaired"
+       ],
+       "fb": "There are many routes between devices, so data simply takes a different one."
+      },
+      {
+       "t": "mcq",
+       "q": "What is the main disadvantage of a full mesh network?",
+       "a": [
+        "It needs a lot of cable and is hard to set up, so it is expensive",
+        "It has a single point of failure",
+        "Data can only travel one way",
+        "It can only connect two devices"
+       ],
+       "fb": "The number of cables grows quickly as devices are added, which makes a full mesh costly."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Partial mesh: the internet",
+     "col": "#ff785a",
+     "pos": [
+      0.473,
+      -0.69,
+      -1
+     ],
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Why is the internet a partial mesh rather than a full mesh?",
+       "a": [
+        "Connecting every router to every other router would need an impossible amount of cabling",
+        "Routers can only have one connection each",
+        "The internet doesn't use routers",
+        "A partial mesh has no single point of failure but a full mesh does"
+       ],
+       "fb": "Routers connect to several others, which gives plenty of alternative routes without linking every pair."
+      },
+      {
+       "t": "mcq",
+       "q": "A router on the internet fails. What happens to data that was going to pass through it?",
+       "a": [
+        "It is sent a different way through other routers",
+        "The whole internet goes down",
+        "It is deleted",
+        "It waits in the failed router until it is fixed"
+       ],
+       "fb": "Because the internet is a mesh, other routes are available around the failed router."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Wireless mesh",
+     "col": "#ffa028",
+     "pos": [
+      -0.473,
+      -0.69,
+      -1
+     ],
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "In a wireless mesh, what must be true of each wireless access point?",
+       "a": [
+        "It must be within range of at least one other WAP",
+        "It must be plugged into the router with a cable",
+        "It must be in the same room as the router",
+        "It must connect to every device in the building"
+       ],
+       "fb": "WAPs pass data to each other by Wi-Fi, so each one needs at least one neighbour in range. Only one needs a cable."
+      },
+      {
+       "t": "mcq",
+       "q": "What is a disadvantage of a wireless mesh compared with a wired network?",
+       "a": [
+        "It can be slower and less reliable, because data hops between WAPs and walls cause interference",
+        "It needs much more cable",
+        "Devices must stay plugged in",
+        "It has no range limits"
+       ],
+       "fb": "Every hop between WAPs adds delay, and walls and other devices can weaken the signal."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Star vs mesh",
+     "col": "#f05aaa",
+     "pos": [
+      -1,
+      -0.74,
+      0
+     ],
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Sort each statement: does it describe a star or a mesh network?",
+       "cats": [
+        "Star",
+        "Mesh"
+       ],
+       "items": [
+        [
+         "The central switch is a single point of failure",
+         "Star"
+        ],
+        [
+         "Data can be rerouted if a link fails",
+         "Mesh"
+        ],
+        [
+         "Uses the least cable of the two",
+         "Star"
+        ],
+        [
+         "Each device connects to several others",
+         "Mesh"
+        ],
+        [
+         "A new device needs just one cable to the switch",
+         "Star"
+        ],
+        [
+         "The internet is an example",
+         "Mesh"
+        ]
+       ],
+       "fb": "Use these to answer the worksheet question: why is a mesh network better than a star network, and when would you still choose a star?"
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "grow",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "Cables add up fast",
+     "text": "Each new device in a full mesh needs a cable to every device already there, so the number of cables grows very quickly. That's why full mesh is rare for large networks."
+    },
+    {
+     "id": "arpanet",
+     "face": "back",
+     "x": 920,
+     "y": 540,
+     "title": "Routes around damage",
+     "text": "The internet grew from ARPANET, first connected in 1969. Its mesh-like design means data can find a way around broken links or failed routers."
+    },
+    {
+     "id": "homemesh",
+     "face": "back",
+     "x": 1888,
+     "y": 540,
+     "title": "Mesh Wi-Fi at home",
+     "text": "Home mesh Wi-Fi systems use several units placed around a house. They pass data between each other so the signal reaches rooms that one router can't."
+    }
+   ],
+   "imgHi": "img/NW_L06_StarAndMeshNetworks_Part2_360_hi.jpg"
+  }
+ ]
+}

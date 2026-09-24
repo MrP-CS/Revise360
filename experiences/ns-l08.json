@@ -1,0 +1,308 @@
+{
+ "id": "ns-l08",
+ "lesson": 8,
+ "title": "Packet sniffers",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Packet sniffers",
+   "img": "img/NS_L08_PacketSniffers_360.jpg",
+   "imgHi": "img/NS_L08_PacketSniffers_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Data interception and theft",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is data interception?",
+       "a": [
+        "Capturing data as it travels across a network",
+        "Encrypting data before it is sent",
+        "Deleting data from a server",
+        "Flooding a network with traffic"
+       ],
+       "fb": "The data still arrives, so the victim may never know."
+      },
+      {
+       "t": "mcq",
+       "q": "Which is an example of data theft rather than interception?",
+       "a": [
+        "A laptop full of customer records is stolen from a car",
+        "Packets are captured on public Wi-Fi",
+        "A router is monitored by software",
+        "Traffic is copied as it crosses a switch"
+       ],
+       "fb": "Theft takes the data at rest; interception takes it in transit."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Packet sniffing",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does packet sniffer software do?",
+       "a": [
+        "Captures and examines the packets travelling across a network",
+        "Blocks websites for children",
+        "Encrypts a hard drive",
+        "Backs up files automatically"
+       ],
+       "fb": "It's a normal network management tool that attackers misuse."
+      },
+      {
+       "t": "mcq",
+       "q": "Why is free public Wi-Fi risky?",
+       "a": [
+        "Traffic may be unencrypted, and anyone nearby could capture it",
+        "It is always slower",
+        "It uses more battery",
+        "It cannot reach secure websites"
+       ],
+       "fb": "Attackers also set up fake hotspots with convincing names."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Man in the middle",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "In a man-in-the-middle attack, what does the attacker do?",
+       "a": [
+        "Sits between the two parties, reading and passing on the messages",
+        "Blocks all traffic to the website",
+        "Encrypts the victim's files",
+        "Guesses passwords repeatedly"
+       ],
+       "fb": "Neither side realises anyone is in between."
+      },
+      {
+       "t": "mcq",
+       "q": "Which warning sign might suggest a fake hotspot?",
+       "a": [
+        "An open network with a convincing name and no password",
+        "A network that asks for WPA2 security",
+        "A network with a padlock icon",
+        "A network named after your own router"
+       ],
+       "fb": "Open networks give attackers the easiest route in."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "What attackers gain",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Why is intercepted data valuable to criminals?",
+       "a": [
+        "It can be used for fraud, or sold to others",
+        "It makes their internet faster",
+        "It proves their software works",
+        "It deletes their own records"
+       ],
+       "fb": "Stolen data is traded openly on criminal marketplaces."
+      },
+      {
+       "t": "mcq",
+       "q": "Which everyday habit most increases the risk of data theft?",
+       "a": [
+        "Writing passwords down and leaving them by the computer",
+        "Locking your screen",
+        "Using a password manager",
+        "Updating your phone"
+       ],
+       "fb": "People remain the easiest way in."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Encryption is the answer",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "How does encryption protect data in transit?",
+       "a": [
+        "Intercepted data can't be understood without the key",
+        "It stops packets being captured at all",
+        "It makes the network faster",
+        "It deletes the attacker's copy"
+       ],
+       "fb": "You can't stop someone capturing packets, but you can make them worthless."
+      },
+      {
+       "t": "mcq",
+       "q": "What does a VPN do?",
+       "a": [
+        "Encrypts all your traffic between your device and a trusted server",
+        "Blocks adverts only",
+        "Speeds up your broadband",
+        "Stops your device needing a password"
+       ],
+       "fb": "That's why VPNs are recommended on public Wi-Fi."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Other protections",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "multi",
+       "q": "Which of these reduce the risk of data interception and theft? Select all that apply.",
+       "opts": [
+        "Using HTTPS and WPA2 encryption",
+        "Using a VPN on public Wi-Fi",
+        "Locking screens and logging off",
+        "Shredding printouts with personal data",
+        "Sharing one login for the whole office",
+        "Keeping the server room door propped open"
+       ],
+       "correct": [
+        "Using HTTPS and WPA2 encryption",
+        "Using a VPN on public Wi-Fi",
+        "Locking screens and logging off",
+        "Shredding printouts with personal data"
+       ],
+       "fb": "The last two create exactly the weaknesses attackers look for."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: safe or risky?",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Is each habit safe or risky?",
+       "cats": [
+        "Safe",
+        "Risky"
+       ],
+       "items": [
+        [
+         "Banking on open café Wi-Fi with no VPN",
+         "Risky"
+        ],
+        [
+         "Checking the padlock and HTTPS before logging in",
+         "Safe"
+        ],
+        [
+         "Leaving a laptop unlocked at a desk",
+         "Risky"
+        ],
+        [
+         "Shredding printouts containing customer details",
+         "Safe"
+        ],
+        [
+         "Writing the Wi-Fi password on the office whiteboard",
+         "Risky"
+        ],
+        [
+         "Using a VPN when working away from the office",
+         "Safe"
+        ],
+        [
+         "Emailing a spreadsheet of personal data unencrypted",
+         "Risky"
+        ],
+        [
+         "Keeping the server room locked",
+         "Safe"
+        ]
+       ],
+       "fb": "Most of the risky ones are about people, not technology."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "Wireshark",
+     "text": "Wireshark is a free packet sniffer used by network managers worldwide. The same tool in the wrong hands is an attacker's dream."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "HTTPS everywhere",
+     "text": "Most websites now use HTTPS by default, which is why intercepting browsing is far less useful than it once was."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 920,
+     "y": 540,
+     "title": "Evil twin",
+     "text": "A fake hotspot with the same name as a real one is called an evil twin. Phones may join it automatically."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1867,
+     "y": 422,
+     "title": "Data protection law",
+     "text": "UK law requires organisations to protect personal data. Serious breaches can lead to very large fines."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 900,
+     "y": 575,
+     "title": "Shoulder to shoulder",
+     "text": "Interception isn't always technical: reading a screen on a train, or a document on a printer, works too."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1828,
+     "y": 436,
+     "title": "Encrypted devices",
+     "text": "Modern phones and laptops encrypt their storage, so a stolen device doesn't hand over its data."
+    }
+   ],
+   "models": []
+  }
+ ]
+}

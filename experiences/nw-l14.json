@@ -1,0 +1,365 @@
+{
+ "id": "nw-l14",
+ "lesson": 14,
+ "title": "Revision HQ 2",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Revision HQ 2",
+   "img": "img/NW_L14_RevisionHQ2_360.jpg",
+   "imgHi": "img/NW_L14_RevisionHQ2_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Lesson 9: Modes of connection",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which connection has a range of about 10 metres and low power use?",
+       "a": [
+        "Bluetooth",
+        "Wi-Fi",
+        "Ethernet",
+        "Fibre optic"
+       ],
+       "fb": "Bluetooth is designed for nearby devices with small batteries."
+      },
+      {
+       "t": "mcq",
+       "q": "Which is an advantage of a wired connection?",
+       "a": [
+        "More reliable and easier to secure",
+        "Can be used anywhere in range",
+        "No cables needed",
+        "Easy to set up in any room"
+       ],
+       "fb": "The others are wireless advantages."
+      },
+      {
+       "t": "mcq",
+       "q": "What does Ethernet send data in?",
+       "a": [
+        "Frames with source and destination addresses",
+        "Radio waves",
+        "Emails",
+        "Web pages only"
+       ],
+       "fb": "Frames carry MAC addresses so the switch knows where to send them."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Lesson 10: Wi-Fi encryption",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Why is encryption needed on Wi-Fi?",
+       "a": [
+        "Signals can be intercepted by anyone in range",
+        "Wi-Fi is slow",
+        "Cables can't carry data",
+        "It increases the range"
+       ],
+       "fb": "Encryption makes intercepted data useless."
+      },
+      {
+       "t": "mcq",
+       "q": "Which key must never be shared?",
+       "a": [
+        "The private key",
+        "The public key",
+        "Both",
+        "Neither"
+       ],
+       "fb": "The private key decrypts your messages."
+      },
+      {
+       "t": "mcq",
+       "q": "What does WPA2 do before data is sent?",
+       "a": [
+        "Authenticates the devices using keys made from the password",
+        "Deletes old data",
+        "Turns off encryption",
+        "Speeds up the network"
+       ],
+       "fb": "The keys are calculated on both sides, never sent."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Lesson 11: IP and MAC addressing",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which is an IPv6 address?",
+       "a": [
+        "2001:0DB8:AC10:FE01:0000:0000:0000:0000",
+        "180.17.255.1",
+        "00-15-E9-2B-99-3C",
+        "www.example.com"
+       ],
+       "fb": "Eight groups of hexadecimal separated by colons."
+      },
+      {
+       "t": "mcq",
+       "q": "Why was IPv6 introduced?",
+       "a": [
+        "IPv4 addresses were running out",
+        "IPv4 was too secure",
+        "To replace MAC addresses",
+        "To make Wi-Fi faster"
+       ],
+       "fb": "IPv4 only allows about 4.3 billion addresses."
+      },
+      {
+       "t": "mcq",
+       "q": "Which address does a switch use?",
+       "a": [
+        "MAC address",
+        "IPv4 address",
+        "IPv6 address",
+        "Domain name"
+       ],
+       "fb": "Switches deliver frames within a LAN using MAC addresses."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Lesson 12: Standards and protocols",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which protocol sends email to a mail server?",
+       "a": [
+        "SMTP",
+        "POP",
+        "IMAP",
+        "HTTP"
+       ],
+       "fb": "SMTP sends; POP and IMAP retrieve."
+      },
+      {
+       "t": "mcq",
+       "q": "What does HTTPS add to HTTP?",
+       "a": [
+        "Encryption and authentication",
+        "Faster speeds",
+        "Email support",
+        "File uploads"
+       ],
+       "fb": "The S stands for Secure."
+      },
+      {
+       "t": "mcq",
+       "q": "What does TCP do?",
+       "a": [
+        "Makes sure packets arrive without errors and in order",
+        "Routes packets",
+        "Sends email",
+        "Stores web pages"
+       ],
+       "fb": "IP routes; TCP makes it reliable."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Lesson 13: Layers",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Why are protocols layered?",
+       "a": [
+        "To divide a complex task into smaller, simpler tasks",
+        "To make networks slower",
+        "So only one protocol is used",
+        "To stop encryption"
+       ],
+       "fb": "Each layer has one clear responsibility."
+      },
+      {
+       "t": "mcq",
+       "q": "Which is an advantage of layering?",
+       "a": [
+        "One layer can be changed without affecting the others",
+        "No protocols are needed",
+        "Data can never be lost",
+        "Only one company can make network products"
+       ],
+       "fb": "E.g. swapping Wi-Fi for Ethernet."
+      },
+      {
+       "t": "mcq",
+       "q": "Which layer does Wi-Fi belong to?",
+       "a": [
+        "Link",
+        "Application",
+        "Transport",
+        "Internet"
+       ],
+       "fb": "The link layer covers the physical connection."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Exam technique",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "A question says 'Explain'. What do you need to include?",
+       "a": [
+        "Reasons: how or why something happens",
+        "Just a single word",
+        "A drawing",
+        "A list of acronyms only"
+       ],
+       "fb": "Link each point with 'because' or 'so'."
+      },
+      {
+       "t": "mcq",
+       "q": "How many points should you aim for in a 4-mark question?",
+       "a": [
+        "Four clear points",
+        "One",
+        "Two",
+        "Ten"
+       ],
+       "fb": "Usually one mark per valid point."
+      },
+      {
+       "t": "mcq",
+       "q": "A question says 'State'. What is expected?",
+       "a": [
+        "A short, direct fact",
+        "A full paragraph",
+        "An essay",
+        "A diagram with labels"
+       ],
+       "fb": "State questions don't need explanations."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: key terms",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "match",
+       "q": "Match each key term to its meaning.",
+       "pairs": [
+        [
+         "Ethernet",
+         "A wired standard for connecting devices on a LAN"
+        ],
+        [
+         "Bluetooth",
+         "Short-range, low-power wireless connection between two devices"
+        ],
+        [
+         "Encryption",
+         "Scrambling data so it can't be read without the key"
+        ],
+        [
+         "IPv6",
+         "A 128-bit address, written in hexadecimal"
+        ],
+        [
+         "Protocol",
+         "A set of rules for how devices communicate"
+        ],
+        [
+         "Layer",
+         "A part of networking with one defined responsibility"
+        ]
+       ],
+       "fb": "Check your results table to see which lessons to revise first."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "Revision tip",
+     "text": "Cover your notes and write the key facts from memory, then check. Testing yourself works much better than rereading."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "Exam favourite",
+     "text": "Questions often ask you to recommend wired or wireless for a scenario. Always link your choice to the scenario's needs."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 900,
+     "y": 575,
+     "title": "Spot the address",
+     "text": "If it has dots and numbers up to 255, it's IPv4. Colons and hex, it's IPv6. Dashes and hex pairs, it's a MAC address."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1867,
+     "y": 422,
+     "title": "Protocol memory trick",
+     "text": "SMTP 'Sends Mail To People'. POP 'Pulls Off Post'. IMAP 'I Manage All Places'."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 1033,
+     "y": 581,
+     "title": "Layers in one line",
+     "text": "Each layer does one job and serves the layer above: that's the core idea to explain in the exam."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1828,
+     "y": 436,
+     "title": "Marks matter",
+     "text": "Look at the number of marks: a 2-mark 'explain' question usually needs a point and a reason."
+    }
+   ],
+   "models": []
+  }
+ ]
+}

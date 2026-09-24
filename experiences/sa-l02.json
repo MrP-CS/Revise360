@@ -1,0 +1,322 @@
+{
+ "id": "sa-l02",
+ "lesson": 2,
+ "title": "Von Neumann HQ",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Von Neumann HQ",
+   "img": "img/SA_L02_VonNeumannHQ_360.jpg",
+   "imgHi": "img/SA_L02_VonNeumannHQ_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "John von Neumann",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is John von Neumann best known for in computing?",
+       "a": [
+        "Describing a computer design where programs are stored in memory",
+        "Inventing the World Wide Web",
+        "Founding a games company",
+        "Creating Python"
+       ],
+       "fb": "His 1945 report described the stored-program computer."
+      },
+      {
+       "t": "mcq",
+       "q": "When did von Neumann describe his architecture?",
+       "a": [
+        "1945",
+        "1985",
+        "2001",
+        "1850"
+       ],
+       "fb": "Around the end of the Second World War."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "The stored-program concept",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "In von Neumann architecture, where are instructions stored?",
+       "a": [
+        "In main memory, together with the data",
+        "Only inside the ALU",
+        "In a separate memory from data",
+        "On paper tape outside the computer"
+       ],
+       "fb": "Storing both in the same memory is the key feature."
+      },
+      {
+       "t": "mcq",
+       "q": "Why is the stored-program idea so useful?",
+       "a": [
+        "The same computer can run different programs just by loading them into memory",
+        "It makes computers use no power",
+        "It removes the need for a CPU",
+        "It stops programs having bugs"
+       ],
+       "fb": "Early computers had to be rewired for each new job."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Program counter and accumulator",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does the program counter hold?",
+       "a": [
+        "The address of the next instruction",
+        "The result of the last calculation",
+        "The current instruction's data",
+        "The number of programs running"
+       ],
+       "fb": "It increments with each cycle."
+      },
+      {
+       "t": "mcq",
+       "q": "Which register holds the results of calculations?",
+       "a": [
+        "Accumulator",
+        "MAR",
+        "Program counter",
+        "MDR"
+       ],
+       "fb": "The ALU's results go into the accumulator."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "MAR and MDR",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1355,
+     "y": 1859,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which register holds the address of data to be fetched from memory?",
+       "a": [
+        "Memory address register (MAR)",
+        "Memory data register (MDR)",
+        "Accumulator",
+        "Program counter"
+       ],
+       "fb": "Address: MAR. Data: MDR."
+      },
+      {
+       "t": "mcq",
+       "q": "What does the MDR hold?",
+       "a": [
+        "Data or an instruction fetched from memory, or waiting to be written to memory",
+        "The address of the next instruction",
+        "The results of calculations",
+        "The clock speed"
+       ],
+       "fb": "It's the CPU's 'in tray and out tray' for memory."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Other architectures",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is the main difference in Harvard architecture?",
+       "a": [
+        "Instructions and data are held in separate memories",
+        "It has no CPU",
+        "It stores everything on a hard drive",
+        "It only works with the internet"
+       ],
+       "fb": "Separate memories mean both can be fetched at once."
+      },
+      {
+       "t": "mcq",
+       "q": "Where is Harvard architecture commonly used?",
+       "a": [
+        "In microcontrollers inside embedded systems",
+        "In web browsers",
+        "In printers' paper trays",
+        "In monitors' screens"
+       ],
+       "fb": "Many small dedicated devices use it."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Keywords",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which of these is a Python keyword?",
+       "a": [
+        "while",
+        "total",
+        "score",
+        "myList"
+       ],
+       "fb": "while starts a loop. The others are just names a programmer might choose."
+      },
+      {
+       "t": "mcq",
+       "q": "Why can't you call a variable 'if'?",
+       "a": [
+        "It's a keyword with a special meaning in the language",
+        "It's too short",
+        "Variables must start with a capital letter",
+        "It would use too much memory"
+       ],
+       "fb": "Keywords are reserved by the language."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: name that part",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 996,
+     "y": 587,
+     "tasks": [
+      {
+       "t": "match",
+       "q": "Match each component or register to its definition.",
+       "pairs": [
+        [
+         "Program counter",
+         "Stores the address of the next instruction; increments each cycle"
+        ],
+        [
+         "Control unit",
+         "Decodes instructions and sends control signals"
+        ],
+        [
+         "MAR",
+         "Stores the address of the data to be fetched or stored"
+        ],
+        [
+         "ALU",
+         "Performs mathematical calculations and logical operations"
+        ],
+        [
+         "MDR",
+         "Stores data fetched from, or to be written to, memory"
+        ],
+        [
+         "Accumulator",
+         "Stores the results of calculations"
+        ],
+        [
+         "Cache",
+         "Fast memory for frequently used instructions and data"
+        ]
+       ],
+       "fb": "Exam tip: learn these seven definitions word for word in your own style."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "A brilliant mind",
+     "text": "Von Neumann also made major contributions to maths, physics and game theory, and worked on some of the first electronic computers."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "Rewiring computers",
+     "text": "Before stored programs, machines like ENIAC had to be physically rewired with cables to change the job they did."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 1033,
+     "y": 581,
+     "title": "The von Neumann bottleneck",
+     "text": "Because instructions and data share one memory, the CPU can only fetch one at a time. This limit is called the von Neumann bottleneck."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1888,
+     "y": 540,
+     "title": "Best of both",
+     "text": "Modern CPUs mix both ideas: they use von Neumann-style shared RAM, but separate caches for instructions and data, like Harvard architecture."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 900,
+     "y": 575,
+     "title": "Harvard Mark I",
+     "text": "Harvard architecture is named after the Harvard Mark I computer of 1944, which read instructions from punched tape and kept data separately."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1888,
+     "y": 540,
+     "title": "How many keywords?",
+     "text": "Python has about 35 keywords. Try typing help(\"keywords\") into Python to see the full list."
+    }
+   ],
+   "models": [
+    {
+     "id": "m1",
+     "face": "right",
+     "x": 1178,
+     "y": 540,
+     "model": "vonneumann",
+     "title": "Von Neumann architecture",
+     "text": "Turn the model and click each block. Notice that the one RAM block holds both instructions and data."
+    },
+    {
+     "id": "m2",
+     "face": "back",
+     "x": 1178,
+     "y": 540,
+     "model": "cpu",
+     "title": "Inside a CPU",
+     "text": "See the registers' neighbours: the cores and cache on the silicon die."
+    }
+   ]
+  }
+ ]
+}

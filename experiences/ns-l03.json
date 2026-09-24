@@ -1,0 +1,306 @@
+{
+ "id": "ns-l03",
+ "lesson": 3,
+ "title": "Database break-in",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Database break-in",
+   "img": "img/NS_L03_DatabaseBreakIn_360.jpg",
+   "imgHi": "img/NS_L03_DatabaseBreakIn_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Databases and SQL",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is SQL used for?",
+       "a": [
+        "Asking a database for records, and adding, changing or deleting them",
+        "Designing web page layouts",
+        "Encrypting Wi-Fi traffic",
+        "Sending emails"
+       ],
+       "fb": "SQL is the language databases understand."
+      },
+      {
+       "t": "mcq",
+       "q": "Which part of a website would use SQL?",
+       "a": [
+        "The login page checking a username and password",
+        "The colour scheme",
+        "The font size",
+        "The company logo"
+       ],
+       "fb": "Any page that looks up stored data uses queries like this."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "The dangerous line",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Joining a string to a variable, as in 'uname = ' + username, is known as what?",
+       "a": [
+        "Concatenation",
+        "Compilation",
+        "Compression",
+        "Encryption"
+       ],
+       "fb": "This is the answer to your starter question."
+      },
+      {
+       "t": "mcq",
+       "q": "Why is building a query this way dangerous?",
+       "a": [
+        "Anything the user types becomes part of the SQL command",
+        "It makes the website load slowly",
+        "It uses too much memory",
+        "It stops the database saving"
+       ],
+       "fb": "The database can't tell the difference between the programmer's code and the user's input."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "The attack",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does ' OR 1=1 do inside a query?",
+       "a": [
+        "It makes the condition always true, so every record matches",
+        "It deletes the database",
+        "It encrypts the password",
+        "It logs the attacker out"
+       ],
+       "fb": "1=1 is always true, so the WHERE clause stops filtering anything."
+      },
+      {
+       "t": "mcq",
+       "q": "What is the -- for?",
+       "a": [
+        "It turns the rest of the line into a comment, so it is ignored",
+        "It adds two records",
+        "It subtracts a value",
+        "It joins two tables"
+       ],
+       "fb": "Commenting out the rest removes anything that would break the attacker's query."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "What attackers gain",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "multi",
+       "q": "What can a successful SQL injection attack achieve? Select all that apply.",
+       "opts": [
+        "Bypass a login and enter as another user",
+        "Read personal data from the database",
+        "Change or delete records",
+        "Make the website's colours brighter",
+        "Speed up the server"
+       ],
+       "correct": [
+        "Bypass a login and enter as another user",
+        "Read personal data from the database",
+        "Change or delete records"
+       ],
+       "fb": "The attacker gets whatever access the website's database account has."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Stopping injection",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which is the strongest defence against SQL injection?",
+       "a": [
+        "Using parameterised queries, so input is never treated as code",
+        "Hiding the login page",
+        "Using a longer password",
+        "Turning off the firewall"
+       ],
+       "fb": "Validation and sanitisation help, but parameterised queries remove the problem."
+      },
+      {
+       "t": "mcq",
+       "q": "What does sanitising input mean?",
+       "a": [
+        "Removing or escaping characters that could change the meaning of the query",
+        "Deleting the user's account",
+        "Encrypting the whole database",
+        "Blocking the user's IP address"
+       ],
+       "fb": "For example, escaping a single quotation mark so it is treated as text."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Testing for holes",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Why do companies pay penetration testers?",
+       "a": [
+        "To find weaknesses like SQL injection before criminals do",
+        "To design the website's logo",
+        "To sell customer data",
+        "To install new monitors"
+       ],
+       "fb": "It's legal because the company gives permission."
+      },
+      {
+       "t": "mcq",
+       "q": "Why hide detailed error messages on a live site?",
+       "a": [
+        "They can tell an attacker how the database is built",
+        "They slow the website down",
+        "They use up storage",
+        "They upset the web designer"
+       ],
+       "fb": "Error messages are useful to developers, and just as useful to attackers."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: secure the login",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Is each practice safe or risky when writing a login page?",
+       "cats": [
+        "Safe",
+        "Risky"
+       ],
+       "items": [
+        [
+         "Building the query by joining text to the user's input",
+         "Risky"
+        ],
+        [
+         "Using parameterised queries",
+         "Safe"
+        ],
+        [
+         "Checking input contains only letters and numbers",
+         "Safe"
+        ],
+        [
+         "Showing the full database error on the page",
+         "Risky"
+        ],
+        [
+         "Giving the website's database account full admin rights",
+         "Risky"
+        ],
+        [
+         "Removing or escaping quotation marks in input",
+         "Safe"
+        ],
+        [
+         "Having the site penetration tested",
+         "Safe"
+        ],
+        [
+         "Trusting that users will only type a username",
+         "Risky"
+        ]
+       ],
+       "fb": "Never trust input from a user: that's the lesson behind every one of these."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "Little Bobby Tables",
+     "text": "A famous web comic shows a pupil named 'Robert'); DROP TABLE Students;--' whose name deletes a school's database. It's a joke, but the attack is real."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "Still in the top ten",
+     "text": "Injection attacks have been in the OWASP list of the ten most serious web security risks for over 20 years."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 920,
+     "y": 540,
+     "title": "TalkTalk",
+     "text": "In 2015, a UK telecoms company was fined £400,000 after an SQL injection attack exposed the details of around 157,000 customers."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1867,
+     "y": 422,
+     "title": "It's not just logins",
+     "text": "Search boxes, contact forms and even web addresses can all be injection points if the input isn't handled safely."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 1033,
+     "y": 581,
+     "title": "Hashing passwords",
+     "text": "Even if attackers steal a database, properly hashed passwords are extremely hard to reverse. Storing plain-text passwords is a serious mistake."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1888,
+     "y": 540,
+     "title": "Automated scanners",
+     "text": "Attackers use automated tools that test thousands of sites for injection flaws, so even small websites are targets."
+    }
+   ],
+   "models": []
+  }
+ ]
+}

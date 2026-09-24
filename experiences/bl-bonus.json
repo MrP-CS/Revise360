@@ -1,0 +1,63 @@
+{
+ "id": "bl-bonus",
+ "lesson": 5,
+ "title": "Logic sprint",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Logic sprint",
+   "img": "img/BL_Bonus_LogicSprint_360.jpg",
+   "imgHi": "img/BL_Bonus_LogicSprint_360_hi.jpg",
+   "stations": [
+    {
+     "label": "★",
+     "name": "Logic sprint",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 1024,
+     "tasks": [
+      {
+       "t": "sprint",
+       "duration": 120
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "front",
+     "x": 1880,
+     "y": 300,
+     "title": "Practice makes fast",
+     "text": "Engineers who design chips recognise common gate patterns instantly. The more sprints you do, the faster you'll spot them too."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1024,
+     "y": 330,
+     "title": "Tip: work backwards",
+     "text": "To write an expression, start at the output gate and work back towards the inputs. Each gate that feeds another becomes a pair of brackets."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 1024,
+     "y": 330,
+     "title": "Tip: brackets first",
+     "text": "To build a circuit, find the part in brackets first. That's the gate nearest the inputs."
+    },
+    {
+     "id": "f4",
+     "face": "left",
+     "x": 1024,
+     "y": 330,
+     "title": "Streaks",
+     "text": "Your multiplier goes up by 0.5 for each correct answer in a row, up to ×3. Skipping or a wrong answer resets it, so accuracy matters as much as speed."
+    }
+   ]
+  }
+ ]
+}

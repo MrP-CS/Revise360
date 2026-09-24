@@ -1,0 +1,286 @@
+{
+ "id": "ns-l07",
+ "lesson": 7,
+ "title": "Traffic flood",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Traffic flood",
+   "img": "img/NS_L07_TrafficFlood_360.jpg",
+   "imgHi": "img/NS_L07_TrafficFlood_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Denial of service",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does a denial-of-service attack set out to do?",
+       "a": [
+        "Stop real users from being able to use a service",
+        "Steal passwords from a database",
+        "Encrypt files for a ransom",
+        "Read data as it crosses the network"
+       ],
+       "fb": "It denies service: that's exactly what the name says."
+      },
+      {
+       "t": "mcq",
+       "q": "What is the main cost of a DoS attack to a business?",
+       "a": [
+        "Downtime: lost sales and customers while the service is unavailable",
+        "The electricity used by the attack",
+        "The cost of new keyboards",
+        "Nothing, if no data is stolen"
+       ],
+       "fb": "An online shop that's offline earns nothing."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "DDoS and botnets",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is a botnet?",
+       "a": [
+        "A network of infected computers controlled by an attacker",
+        "A program that blocks adverts",
+        "A type of firewall",
+        "A backup server"
+       ],
+       "fb": "Each infected machine is called a zombie."
+      },
+      {
+       "t": "mcq",
+       "q": "Why is a distributed attack harder to stop?",
+       "a": [
+        "The traffic comes from thousands of different addresses, so it's hard to tell it from real users",
+        "It uses less bandwidth",
+        "It only happens at night",
+        "It comes from one address that is easy to block"
+       ],
+       "fb": "Blocking one address does nothing when there are 100,000 of them."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "21 October 2016",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 693,
+     "y": 1859,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What were most of the devices in the Mirai botnet?",
+       "a": [
+        "Internet-connected devices such as cameras and routers, still using default passwords",
+        "Supercomputers in universities",
+        "Games consoles owned by the attacker",
+        "Company mail servers"
+       ],
+       "fb": "Smart devices are rarely updated and often ship with the same password."
+      },
+      {
+       "t": "mcq",
+       "q": "Why did attacking a DNS provider knock out so many sites?",
+       "a": [
+        "Without DNS, browsers couldn't turn domain names into IP addresses",
+        "It deleted the websites",
+        "It encrypted every web page",
+        "It switched off the undersea cables"
+       ],
+       "fb": "The sites were still running; nobody could find them."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Effects",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "multi",
+       "q": "Which are effects of a successful DDoS attack on a company? Select all that apply.",
+       "opts": [
+        "Customers can't buy anything while the site is down",
+        "Damage to the company's reputation",
+        "Staff unable to use internal systems",
+        "The company's data is automatically encrypted",
+        "Every customer's password is revealed"
+       ],
+       "correct": [
+        "Customers can't buy anything while the site is down",
+        "Damage to the company's reputation",
+        "Staff unable to use internal systems"
+       ],
+       "fb": "A DoS attack doesn't steal or encrypt data: it blocks access."
+      },
+      {
+       "t": "mcq",
+       "q": "Why might attackers launch a DDoS as a distraction?",
+       "a": [
+        "The security team is busy, so another attack may go unnoticed",
+        "It backs up the data first",
+        "It switches off the firewall by law",
+        "It makes the servers faster"
+       ],
+       "fb": "Attacks often come in combinations."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Defending the server",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "How does rate limiting help against a DoS attack?",
+       "a": [
+        "It caps how many requests each source can make, so floods are throttled",
+        "It encrypts the web pages",
+        "It hides the server's IP address forever",
+        "It deletes the attacker's account"
+       ],
+       "fb": "Genuine users rarely make hundreds of requests a second."
+      },
+      {
+       "t": "mcq",
+       "q": "Which helps stop your devices being used in a botnet?",
+       "a": [
+        "Changing default passwords and keeping devices updated",
+        "Turning the router upside down",
+        "Using a longer network cable",
+        "Paying the ransom"
+       ],
+       "fb": "Mirai spread entirely through default passwords."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Watching the attacks",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Why does knowing normal traffic patterns help?",
+       "a": [
+        "Because an unusual spike stands out as a possible attack",
+        "Because attacks only happen on Mondays",
+        "Because it makes servers faster",
+        "Because it encrypts the traffic"
+       ],
+       "fb": "Detection is the first step in responding."
+      },
+      {
+       "t": "mcq",
+       "q": "Paying a website to 'stress test' someone else's server is:",
+       "a": [
+        "Illegal under the Computer Misuse Act",
+        "Fine if you don't do it yourself",
+        "Legal if the attack fails",
+        "Legal if you are under 18"
+       ],
+       "fb": "People have been prosecuted in the UK for using these services."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: the anatomy of a DDoS",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "order",
+       "q": "Put the stages of a DDoS attack in order.",
+       "steps": [
+        "Malware infects thousands of poorly secured devices",
+        "The infected devices become zombies in a botnet",
+        "The attacker sends a command to the botnet",
+        "Every zombie sends requests to the target server at once",
+        "The server runs out of capacity and stops responding to real users"
+       ],
+       "fb": "This is the illustration you need for your Hacker's Handbook page on denial of service."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "It's not always an attack",
+     "text": "A sudden rush of genuine visitors, such as tickets going on sale, can knock a site over too. That's sometimes called the 'hug of death'."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "Mirai's source code",
+     "text": "The code behind the Mirai botnet was published online, so copies of it are still scanning the internet for weak devices today."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 920,
+     "y": 540,
+     "title": "Attack sizes",
+     "text": "The largest recorded DDoS attacks have exceeded the capacity of entire countries' internet connections, measured in terabits per second."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1828,
+     "y": 436,
+     "title": "Smart devices",
+     "text": "Your fridge, doorbell or camera can join a botnet. Change default passwords and install updates on anything you connect to the internet."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 1033,
+     "y": 581,
+     "title": "Absorbing floods",
+     "text": "Large providers protect customers by spreading traffic across many data centres, so no single server has to take the whole flood."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1888,
+     "y": 540,
+     "title": "Ransom DDoS",
+     "text": "Some criminals threaten a DDoS attack unless a company pays. Police advise reporting it and not paying."
+    }
+   ],
+   "models": []
+  }
+ ]
+}

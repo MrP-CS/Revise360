@@ -1,0 +1,424 @@
+{
+ "id": "ms-l15",
+ "lesson": 15,
+ "title": "Compression works",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Compression works",
+   "img": "img/MS_L15_CompressionWorks_360.jpg",
+   "imgHi": "img/MS_L15_CompressionWorks_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Why compress?",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "multi",
+       "q": "Why is data compressed? Select all that apply.",
+       "opts": [
+        "To use less storage space",
+        "To transfer files more quickly",
+        "To use less bandwidth",
+        "To make the data impossible to read",
+        "To add more colours to an image"
+       ],
+       "correct": [
+        "To use less storage space",
+        "To transfer files more quickly",
+        "To use less bandwidth"
+       ],
+       "fb": "Making data unreadable is encryption, which is a different thing."
+      },
+      {
+       "t": "mcq",
+       "q": "Which is a benefit of compression for a video streaming service?",
+       "a": [
+        "Video can be sent over slower connections without buffering",
+        "Videos gain extra detail",
+        "It stops piracy",
+        "It removes the need for servers"
+       ],
+       "fb": "Less data per second means fewer interruptions."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Lossy compression",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What happens to the data in lossy compression?",
+       "a": [
+        "Some is permanently removed, so the original can't be restored",
+        "It is rearranged but all kept",
+        "It is encrypted",
+        "It is copied twice"
+       ],
+       "fb": "That's why it's called lossy: data is lost."
+      },
+      {
+       "t": "mcq",
+       "q": "Which file types typically use lossy compression?",
+       "a": [
+        "JPEG images and MP3 audio",
+        "Word documents and spreadsheets",
+        "Program files",
+        "ZIP archives"
+       ],
+       "fb": "Photos and music can lose detail without most people noticing."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Lossless compression",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is the key feature of lossless compression?",
+       "a": [
+        "The original file can be restored exactly",
+        "It always gives the smallest file",
+        "It removes unimportant detail",
+        "It only works on images"
+       ],
+       "fb": "Nothing is thrown away."
+      },
+      {
+       "t": "mcq",
+       "q": "Why must text and program files use lossless compression?",
+       "a": [
+        "Losing even one character or instruction would corrupt the file",
+        "They are too small to compress",
+        "They contain no patterns",
+        "Lossy compression is illegal for text"
+       ],
+       "fb": "A program with missing bits simply won't run."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Which one, when?",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Which type of compression should be used for each file?",
+       "cats": [
+        "Lossy",
+        "Lossless"
+       ],
+       "items": [
+        [
+         "A photo on a web page",
+         "Lossy"
+        ],
+        [
+         "A music streaming track",
+         "Lossy"
+        ],
+        [
+         "A word-processed essay",
+         "Lossless"
+        ],
+        [
+         "A program's installer",
+         "Lossless"
+        ],
+        [
+         "A spreadsheet of results",
+         "Lossless"
+        ],
+        [
+         "A video on a streaming service",
+         "Lossy"
+        ]
+       ],
+       "fb": "If losing detail would break the file, it has to be lossless."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Run-length encoding",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "pixels",
+       "q": "Copy this image, then look at each row: how many runs does it have?",
+       "w": 8,
+       "h": 8,
+       "depth": 1,
+       "target": [
+        [
+         1,
+         1,
+         1,
+         1,
+         1,
+         1,
+         1,
+         1
+        ],
+        [
+         0,
+         0,
+         0,
+         0,
+         1,
+         1,
+         1,
+         1
+        ],
+        [
+         1,
+         1,
+         0,
+         0,
+         0,
+         0,
+         1,
+         1
+        ],
+        [
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0
+        ],
+        [
+         1,
+         1,
+         1,
+         1,
+         0,
+         0,
+         0,
+         0
+        ],
+        [
+         0,
+         0,
+         1,
+         1,
+         1,
+         1,
+         0,
+         0
+        ],
+        [
+         1,
+         1,
+         1,
+         1,
+         1,
+         1,
+         1,
+         1
+        ],
+        [
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0
+        ]
+       ],
+       "fb": "Rows of repeated pixels compress well with run-length encoding.",
+       "title": "Colour the grid"
+      },
+      {
+       "t": "mcq",
+       "q": "A row of 8 pixels is 00001111. How would run-length encoding store it?",
+       "a": [
+        "Colour 0 four times, then colour 1 four times",
+        "Eight separate pixel values",
+        "The average colour of the row",
+        "Only the first pixel"
+       ],
+       "fb": "Two runs instead of eight values."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Does it always help?",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "When does run-length encoding work best?",
+       "a": [
+        "When the image has large areas of the same colour",
+        "When every pixel is a different colour",
+        "When the image is a photograph",
+        "When the image is in colour"
+       ],
+       "fb": "Runs are what it compresses."
+      },
+      {
+       "t": "mcq",
+       "q": "What happens if RLE is used on an image where every pixel differs from the next?",
+       "a": [
+        "The compressed file can be larger than the original",
+        "It halves the file size",
+        "It deletes the image",
+        "Nothing changes"
+       ],
+       "fb": "Each run of one still needs a count stored."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: compress it",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Is each statement about lossy or lossless compression?",
+       "cats": [
+        "Lossy",
+        "Lossless"
+       ],
+       "items": [
+        [
+         "Data is permanently removed",
+         "Lossy"
+        ],
+        [
+         "The original file can be restored exactly",
+         "Lossless"
+        ],
+        [
+         "Used for MP3 and JPEG files",
+         "Lossy"
+        ],
+        [
+         "Used for text and program files",
+         "Lossless"
+        ],
+        [
+         "Usually gives the smallest file",
+         "Lossy"
+        ],
+        [
+         "Run-length encoding is an example",
+         "Lossless"
+        ]
+       ],
+       "fb": "Lossy trades quality for size; lossless keeps everything."
+      },
+      {
+       "t": "mcq",
+       "q": "A 1-bit image row is 11111000. How many runs does run-length encoding need?",
+       "a": [
+        "2",
+        "8",
+        "3",
+        "5"
+       ],
+       "fb": "Five 1s then three 0s: two runs."
+      },
+      {
+       "t": "mcq",
+       "q": "Why is compression especially important for streaming video?",
+       "a": [
+        "It reduces the bandwidth needed, so video plays without buffering",
+        "It improves the picture quality",
+        "It stops adverts",
+        "It makes screens brighter"
+       ],
+       "fb": "Less data per second is the whole point."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 1033,
+     "y": 581,
+     "title": "ZIP",
+     "text": "ZIP files use lossless compression, which is why a zipped document opens exactly as it was, character for character."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1827,
+     "y": 591,
+     "title": "JPEG artefacts",
+     "text": "Save a JPEG repeatedly and it slowly degrades: each save throws a little more detail away."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 900,
+     "y": 575,
+     "title": "Fax machines",
+     "text": "Run-length encoding is old technology: fax machines used it to send pages of mostly white paper quickly."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1828,
+     "y": 436,
+     "title": "Streaming",
+     "text": "Video services compress the same film at several quality levels and switch between them as your connection changes."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 920,
+     "y": 540,
+     "title": "Lossless audio",
+     "text": "Formats like FLAC compress music losslessly, giving files around half the size of raw audio with no quality loss."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1827,
+     "y": 591,
+     "title": "Already compressed",
+     "text": "Zipping a JPEG saves almost nothing: the file has already had its patterns squeezed out."
+    }
+   ],
+   "models": []
+  }
+ ]
+}

@@ -1,0 +1,335 @@
+{
+ "id": "nw-l03",
+ "lesson": 3,
+ "title": "Network showdown",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Network showdown",
+   "img": "img/NW_L03_NetworkShowdown_360.jpg",
+   "imgHi": "img/NW_L03_NetworkShowdown_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Client-server model",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "In a client-server network, what does a client do?",
+       "a": [
+        "Requests services, such as files or web pages, from a server",
+        "Provides services to every other computer",
+        "Connects the network to the internet",
+        "Stores everyone's backups"
+       ],
+       "fb": "Clients ask; servers provide. Connecting to the internet is the router's job."
+      },
+      {
+       "t": "mcq",
+       "q": "Which of these is acting as a server?",
+       "a": [
+        "A computer that stores students' files and checks their logins",
+        "A laptop being used to write an essay",
+        "A phone browsing a website",
+        "A printer cable"
+       ],
+       "fb": "A server provides a service to other computers on the network."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Peer-to-peer model",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is a peer in a peer-to-peer network?",
+       "a": [
+        "A computer that both requests and provides resources, as an equal",
+        "A computer that only requests services",
+        "The central server",
+        "The network's router"
+       ],
+       "fb": "Peers act as both client and server, sharing directly with each other."
+      },
+      {
+       "t": "mcq",
+       "q": "Who is responsible for backups in a peer-to-peer network?",
+       "a": [
+        "Each user, for their own computer",
+        "A network manager",
+        "The central server",
+        "The internet service provider"
+       ],
+       "fb": "With no server, there's no central backup: every user has to manage their own."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Client-server: pros and cons",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which is an advantage of a client-server network?",
+       "a": [
+        "It is easier to take backups of all the shared data",
+        "It is cheaper to set up",
+        "There is no dependency on a single machine",
+        "No specialist staff are needed"
+       ],
+       "fb": "All the shared data is stored on the server, so one backup covers it. The other options describe peer-to-peer."
+      },
+      {
+       "t": "mcq",
+       "q": "Why is the server a single point of failure?",
+       "a": [
+        "If it stops working, the clients can't reach the files and services it provides",
+        "Only one person can log in at a time",
+        "It can only store one file",
+        "It has only one network cable"
+       ],
+       "fb": "Everything depends on the server, so a server failure affects every client."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Peer-to-peer: pros and cons",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which is a disadvantage of peer-to-peer?",
+       "a": [
+        "Users need to manage their own backups",
+        "Needs expensive server hardware",
+        "Requires IT specialists to maintain",
+        "The server is a single point of failure"
+       ],
+       "fb": "The other three are disadvantages of client-server."
+      },
+      {
+       "t": "mcq",
+       "q": "Why is peer-to-peer usually cheaper to set up?",
+       "a": [
+        "No expensive server hardware is needed",
+        "It doesn't need any cables",
+        "It only works with one computer",
+        "It doesn't need electricity"
+       ],
+       "fb": "The peers are ordinary computers, so there's no server to buy or specialist to pay."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Who's who?",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "match",
+       "q": "Match each role to what it does.",
+       "pairs": [
+        [
+         "Server",
+         "Provides services and resources to other computers"
+        ],
+        [
+         "Client",
+         "Requests services from a server"
+        ],
+        [
+         "Peer",
+         "Both requests and provides resources, as an equal"
+        ]
+       ],
+       "fb": "These are the definitions to learn for the exam."
+      },
+      {
+       "t": "mcq",
+       "q": "A games console downloads an update from the manufacturer's server. What is the console?",
+       "a": [
+        "A client",
+        "A server",
+        "A peer",
+        "A router"
+       ],
+       "fb": "The console requests the update, so it is the client."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "How torrents work",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Torrenting is an example of which model?",
+       "a": [
+        "Peer-to-peer",
+        "Client-server",
+        "Standalone",
+        "Star topology"
+       ],
+       "fb": "Every user's computer shares pieces directly with the others, so they act as peers."
+      },
+      {
+       "t": "mcq",
+       "q": "Why can torrent downloads be fast?",
+       "a": [
+        "Pieces come from many peers at the same time, so no single server limits the speed",
+        "Torrent files are always tiny",
+        "They skip the internet",
+        "Only one person can download at once"
+       ],
+       "fb": "Lots of peers each sending a piece adds up to a fast download, especially for popular files."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: client-server or P2P?",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Does each statement describe client-server or peer-to-peer?",
+       "cats": [
+        "Client-server",
+        "Peer-to-peer"
+       ],
+       "items": [
+        [
+         "Each user has to back up their own machine",
+         "Peer-to-peer"
+        ],
+        [
+         "Files end up scattered and hard to find",
+         "Peer-to-peer"
+        ],
+        [
+         "No expensive central machine to buy",
+         "Peer-to-peer"
+        ],
+        [
+         "One nightly backup covers everyone's shared work",
+         "Client-server"
+        ],
+        [
+         "Carries on working if one computer is switched off",
+         "Peer-to-peer"
+        ],
+        [
+         "Security settings are hard to apply consistently",
+         "Peer-to-peer"
+        ],
+        [
+         "Permissions are set once, centrally",
+         "Client-server"
+        ],
+        [
+         "Needs trained staff to look after it",
+         "Client-server"
+        ],
+        [
+         "New software can be pushed to every machine at once",
+         "Client-server"
+        ],
+        [
+         "Costs more to buy and to run",
+         "Client-server"
+        ],
+        [
+         "Anyone can set it up without training",
+         "Peer-to-peer"
+        ],
+        [
+         "Everything stops if the central machine fails",
+         "Client-server"
+        ]
+       ],
+       "fb": "Now mark each statement on your worksheet: is it an advantage or a disadvantage?"
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "Virtual servers",
+     "text": "One powerful physical computer can run many virtual servers at once, each acting as a separate server. Most school and cloud servers work this way."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "Napster",
+     "text": "In 1999, Napster made peer-to-peer music sharing famous. It was shut down in 2001 after legal action, because most of the music was shared without permission."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 1033,
+     "y": 581,
+     "title": "Server rooms",
+     "text": "Servers are kept in locked, air-conditioned rooms, often with backup power supplies, because a server failure affects everyone."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1867,
+     "y": 422,
+     "title": "P2P is legal",
+     "text": "Peer-to-peer technology is completely legal. What's illegal is sharing copyrighted films, music or games without permission."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 920,
+     "y": 540,
+     "title": "Online games",
+     "text": "Most online games use dedicated servers. Some older games used peer-to-peer, where one player's console hosted the match for everyone."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1888,
+     "y": 540,
+     "title": "Updates from peers",
+     "text": "Some operating systems can download pieces of an update from other computers on your network, peer-to-peer, instead of all from the maker's servers."
+    }
+   ],
+   "models": []
+  }
+ ]
+}

@@ -1,0 +1,315 @@
+{
+ "id": "nw-l12",
+ "lesson": 12,
+ "title": "Protocol city",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Protocol city",
+   "img": "img/NW_L12_ProtocolCity_360.jpg",
+   "imgHi": "img/NW_L12_ProtocolCity_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Standards",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Why are standards needed in computing?",
+       "a": [
+        "So hardware and software from different manufacturers can work together",
+        "To make devices more expensive",
+        "To stop people making new products",
+        "To keep networks slow"
+       ],
+       "fb": "Standards mean a laptop from one company can use Wi-Fi from another."
+      },
+      {
+       "t": "mcq",
+       "q": "Which of these is a standard?",
+       "a": [
+        "USB",
+        "A web browser's logo",
+        "A student's password",
+        "A file name"
+       ],
+       "fb": "USB sets rules that every maker follows for connectors and data transfer."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Protocols",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is a network protocol?",
+       "a": [
+        "A set of rules for how devices communicate on a network",
+        "A type of cable",
+        "A network's password",
+        "A kind of virus"
+       ],
+       "fb": "Both ends must follow the same protocol to understand each other."
+      },
+      {
+       "t": "mcq",
+       "q": "Why must both devices use the same protocol?",
+       "a": [
+        "So each can understand the data the other sends",
+        "So they have the same MAC address",
+        "To use less electricity",
+        "So they can share a screen"
+       ],
+       "fb": "It's like two people agreeing to speak the same language."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Web protocols",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is HTTP used for?",
+       "a": [
+        "Requesting and delivering web pages between browsers and web servers",
+        "Sending email",
+        "Uploading files",
+        "Routing packets"
+       ],
+       "fb": "HTTP delivers HTML files from web servers to browsers."
+      },
+      {
+       "t": "mcq",
+       "q": "What does HTTPS add to HTTP?",
+       "a": [
+        "Encryption and authentication of the data between client and server",
+        "Faster downloads",
+        "Email attachments",
+        "Bigger images"
+       ],
+       "fb": "The S stands for Secure."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Email protocols",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "match",
+       "q": "Match each email protocol to its job.",
+       "pairs": [
+        [
+         "SMTP",
+         "Sends email to a mail server"
+        ],
+        [
+         "POP",
+         "Retrieves email from a mail server"
+        ],
+        [
+         "IMAP",
+         "Retrieves email and manages mailboxes on the server"
+        ]
+       ],
+       "fb": "IMAP keeps mail on the server, so every device sees the same inbox."
+      },
+      {
+       "t": "mcq",
+       "q": "Which protocol keeps your emails in sync across your phone and laptop?",
+       "a": [
+        "IMAP",
+        "POP",
+        "SMTP",
+        "FTP"
+       ],
+       "fb": "IMAP manages mail on the server rather than just downloading it."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "FTP",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is FTP used for?",
+       "a": [
+        "Sending files between computers",
+        "Sending email",
+        "Encrypting web pages",
+        "Finding IP addresses"
+       ],
+       "fb": "File Transfer Protocol does exactly what its name says."
+      },
+      {
+       "t": "mcq",
+       "q": "Which protocol would upload a website's files to a web server?",
+       "a": [
+        "FTP",
+        "SMTP",
+        "POP",
+        "IMAP"
+       ],
+       "fb": "FTP is the classic way to upload web pages for hosting."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "TCP/IP",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does TCP do?",
+       "a": [
+        "Makes sure all the packets arrive without errors and in the right order",
+        "Routes packets between networks",
+        "Sends email",
+        "Encrypts Wi-Fi"
+       ],
+       "fb": "If a packet goes missing, TCP gets it sent again."
+      },
+      {
+       "t": "mcq",
+       "q": "What does IP do?",
+       "a": [
+        "Routes packets across networks to the right address",
+        "Checks packets arrive in order",
+        "Uploads files",
+        "Stores web pages"
+       ],
+       "fb": "IP handles addressing and routing; TCP handles reliability."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: protocol match",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 996,
+     "y": 587,
+     "tasks": [
+      {
+       "t": "match",
+       "q": "Match each protocol to its description.",
+       "pairs": [
+        [
+         "HTTP",
+         "Requests and delivers web pages (HTML files)"
+        ],
+        [
+         "HTTPS",
+         "Web pages with encryption and authentication"
+        ],
+        [
+         "FTP",
+         "Sends files between computers"
+        ],
+        [
+         "SMTP",
+         "Sends email to a mail server"
+        ],
+        [
+         "POP",
+         "Retrieves email from a mail server"
+        ],
+        [
+         "IMAP",
+         "Retrieves email and manages mailboxes on the server"
+        ],
+        [
+         "TCP",
+         "Error-free transmission of packets"
+        ],
+        [
+         "IP",
+         "Routes packets across a WAN"
+        ]
+       ],
+       "fb": "Learn these eight: exam questions often ask you to name the protocol for a job."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 1033,
+     "y": 581,
+     "title": "USB-C",
+     "text": "A standard can become law: from the end of 2024, new phones sold in the EU had to use USB-C charging ports."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "Who writes the rules?",
+     "text": "Organisations such as the IEEE and the IETF agree networking standards, so that companies around the world build compatible products."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 900,
+     "y": 575,
+     "title": "Port numbers",
+     "text": "Protocols use numbered 'ports'. Web servers usually listen on port 80 for HTTP and port 443 for HTTPS."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1888,
+     "y": 540,
+     "title": "The @ symbol",
+     "text": "Ray Tomlinson sent the first network email in 1971 and chose the @ symbol to separate the user's name from their computer's name."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 920,
+     "y": 540,
+     "title": "FTP is fading",
+     "text": "Plain FTP sends passwords unencrypted, so many hosts now use secure versions, such as SFTP, instead."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1828,
+     "y": 436,
+     "title": "Packets take different routes",
+     "text": "The packets for one web page can travel by completely different routes. TCP puts them back in order when they arrive."
+    }
+   ],
+   "models": []
+  }
+ ]
+}

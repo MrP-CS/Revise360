@@ -1,0 +1,275 @@
+{
+ "id": "ms-l10",
+ "lesson": 10,
+ "title": "Shift and hex lab",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Shift and hex lab",
+   "img": "img/MS_L10_ShiftAndHexLab_360.jpg",
+   "imgHi": "img/MS_L10_ShiftAndHexLab_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Left shift",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "addshift",
+       "q": "Shift this number one place to the left.",
+       "fb": "26 × 2 = 52.",
+       "mode": "shift",
+       "value": 26,
+       "dir": "left",
+       "places": 1
+      },
+      {
+       "t": "mcq",
+       "q": "What does a left shift of 2 places do to a number?",
+       "a": [
+        "Multiplies it by 4",
+        "Multiplies it by 2",
+        "Divides it by 4",
+        "Adds 2 to it"
+       ],
+       "fb": "Each place doubles the value, so two places is × 4."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Right shift",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "addshift",
+       "q": "Shift this number one place to the right.",
+       "fb": "76 ÷ 2 = 38.",
+       "mode": "shift",
+       "value": 76,
+       "dir": "right",
+       "places": 1
+      },
+      {
+       "t": "mcq",
+       "q": "What happens when a 1 is pushed off the right-hand end during a right shift?",
+       "a": [
+        "It is lost, so the answer is rounded down",
+        "It wraps around to the left",
+        "It causes an overflow error",
+        "The shift is cancelled"
+       ],
+       "fb": "That's why 7 right-shifted once gives 3, not 3.5."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Shifts and precision",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "addshift",
+       "q": "Shift this number two places to the left.",
+       "fb": "50 × 4 = 200, which still fits in 8 bits.",
+       "mode": "shift",
+       "value": 50,
+       "dir": "left",
+       "places": 2
+      },
+      {
+       "t": "mcq",
+       "q": "Why do processors use shifts rather than multiplication where possible?",
+       "a": [
+        "A shift is a much faster operation",
+        "Shifts are more accurate",
+        "Multiplication isn't possible in binary",
+        "Shifts use less storage"
+       ],
+       "fb": "It's one of the ALU's simplest operations."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Why hexadecimal?",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Why do programmers use hexadecimal?",
+       "a": [
+        "It is shorter than binary and easier to read, and each digit is exactly 4 bits",
+        "Computers store data in hexadecimal",
+        "It uses less memory",
+        "It is the only base with letters"
+       ],
+       "fb": "Computers still work in binary; hex is for humans."
+      },
+      {
+       "t": "mcq",
+       "q": "What is the denary value of the hex digit C?",
+       "a": [
+        "12",
+        "10",
+        "11",
+        "13"
+       ],
+       "fb": "A = 10, B = 11, C = 12, D = 13, E = 14, F = 15."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Denary and hex",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "convert",
+       "q": "Convert 207 into 2-digit hexadecimal.",
+       "from": "denary",
+       "to": "hex",
+       "value": 207,
+       "fb": "207 ÷ 16 = 12 remainder 15, so CF."
+      },
+      {
+       "t": "convert",
+       "q": "Convert 2D into denary.",
+       "from": "hex",
+       "to": "denary",
+       "value": 45,
+       "fb": "2 × 16 = 32, plus D (13) = 45."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Binary and hex",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "convert",
+       "q": "Convert 10111010 into hexadecimal.",
+       "from": "binary",
+       "to": "hex",
+       "value": 186,
+       "fb": "1011 = B and 1010 = A, so BA."
+      },
+      {
+       "t": "convert",
+       "q": "Convert E4 into 8-bit binary.",
+       "from": "hex",
+       "to": "binary",
+       "value": 228,
+       "fb": "E = 1110 and 4 = 0100, so 11100100."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: shift and convert",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "addshift",
+       "q": "Shift this number one place left. Watch for an overflow.",
+       "fb": "100 × 2 = 200, which still fits.",
+       "mode": "shift",
+       "value": 100,
+       "dir": "left",
+       "places": 1
+      },
+      {
+       "t": "convert",
+       "q": "Convert 11010110 into hexadecimal.",
+       "from": "binary",
+       "to": "hex",
+       "value": 214,
+       "fb": "1101 = D and 0110 = 6, so D6."
+      },
+      {
+       "t": "convert",
+       "q": "Convert 9F into denary.",
+       "from": "hex",
+       "to": "denary",
+       "value": 159,
+       "fb": "9 × 16 = 144, plus F (15) = 159."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 920,
+     "y": 540,
+     "title": "Colour codes",
+     "text": "Web colours are written in hex: #FF0000 is red, because the red channel is 255 and the others are 0."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 540,
+     "title": "MAC addresses",
+     "text": "The MAC addresses from topic 1.3 are written in hex pairs for exactly this reason: each pair is one byte."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 900,
+     "y": 575,
+     "title": "Shifting in code",
+     "text": "In many languages, x << 1 means shift left, and programmers use it as a fast way to double a number."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1888,
+     "y": 540,
+     "title": "Underflow",
+     "text": "Shifting right too far loses everything, leaving zero. That's sometimes called an underflow."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 920,
+     "y": 540,
+     "title": "Base 16 by hand",
+     "text": "Counting in hex: 8, 9, A, B, C, D, E, F, 10. That '10' means sixteen, not ten."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1888,
+     "y": 540,
+     "title": "Memory dumps",
+     "text": "When engineers inspect memory, it's displayed in hex, because a screen of pure binary would be unreadable."
+    }
+   ],
+   "models": []
+  }
+ ]
+}
