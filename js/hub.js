@@ -26,57 +26,46 @@
   }
   const bandOf = sum => sum && sum.done ? Store.band(sum.score, sum.stations.filter(x => x.done).reduce((a, x) => a + x.tot, 0)) : "n";
 
-  // A teacher can share a link like index.html?school=K7M3QP so students don't have to type it
-  function prefillSchool() {
-    const q = new URLSearchParams(location.search).get("school");
-    if (q) { try { localStorage.setItem("nvr:v1:school", JSON.stringify(q.toUpperCase())); } catch (e) {} return q.toUpperCase(); }
-    try { return JSON.parse(localStorage.getItem("nvr:v1:school") || '""'); } catch (e) { return ""; }
-  }
+  let synced = false, statusHooked = false;
 
-  function signIn() {
+  function signIn(msg) {
     $("#who").innerHTML = ""; $("#topic").textContent = topicsFile.tagline || "";
     $("#main").innerHTML = `<form class="card signin" id="f" novalidate>
-      <h2>Sign in</h2><p class="muted">Use the details on your login card. The same card works on any device, and your progress follows you.</p>
-      <div class="field"><label for="n">Username</label><input id="n" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" required maxlength="60"></div>
-      <div class="field"><label for="c">Class or group <span class="muted">(optional)</span></label><select id="c"><option value="">Not set</option>${CFG.classes.map(c => `<option>${esc(c)}</option>`).join("")}<option value="__other">Other…</option></select></div>
-      <div class="field" id="cwrap" hidden><label for="c2">Type your class or group</label><input id="c2" maxlength="24" autocapitalize="characters"></div>
-      <div class="field"><label for="p">4-digit PIN <span class="muted">(from your login card)</span></label><input id="p" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" required autocomplete="off"></div>
-      <div class="field"><label for="sc">School code <span class="muted">(from your teacher)</span></label><input id="sc" maxlength="12" autocapitalize="characters" autocomplete="off" placeholder="e.g. K7M3QP" value="${esc(prefillSchool())}"></div>
-      <p class="err" id="err" role="alert"></p>
+      <h2>Sign in</h2><p class="muted">Use the username and PIN on your login card. Your class is already set up for you.</p>
+      <div class="field"><label for="n">Username</label><input id="n" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" required maxlength="40" inputmode="text"></div>
+      <div class="field"><label for="p">4-digit PIN</label><input id="p" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" required autocomplete="off"></div>
+      <div class="field" id="scwrap" hidden><label for="sc">School code <span class="muted">(only if asked)</span></label><input id="sc" maxlength="12" autocapitalize="characters" autocomplete="off"></div>
+      <p class="err" id="err" role="alert">${esc(msg || "")}</p>
       <div class="row end"><button class="btn" type="submit">Start</button></div>
-      <p class="muted" style="font-size:13px">Lost your card, or forgotten your PIN? Ask your teacher for a new one: PINs can't be reset by students, and a new card keeps all your progress.</p>
-      ${CFG.backendUrl ? "" : '<p class="muted" style="font-size:13px">This site is in device-only mode: progress is saved in this browser only.</p>'}
+      <p class="muted" style="font-size:13px">No card yet? Your teacher creates them. Lost yours, or forgotten the PIN? Ask your teacher for a new card: your progress stays with you.</p>
+      <p class="muted" style="font-size:13px"><a href="#" id="guest">Just looking? Try Revise 360 as a guest</a> — progress is saved on this device only.</p>
     </form>`;
     $("#n").focus();
-    $("#c").onchange = () => { const w = $("#cwrap"); w.hidden = $("#c").value !== "__other"; if (!w.hidden) $("#c2").focus(); };
+    $("#guest").onclick = async e => {
+      e.preventDefault();
+      await Store.guest("guest");
+      if (window.R360Nav) R360Nav.refresh();
+      route();
+    };
     $("#f").onsubmit = async e => {
       e.preventDefault();
-      const n = $("#n").value.trim(), c = $("#c").value, p = $("#p").value.trim(), sc = $("#sc").value.trim().toUpperCase();
-      if (!/^[A-Za-z0-9._@-]{2,60}$/.test(n)) return $("#err").textContent = "Please enter your school username, with no spaces.";
-      const cls = c === "__other" ? ($("#c2").value.trim() || "") : c;
-      if (!/^\d{4}$/.test(p)) return $("#err").textContent = "Your PIN must be 4 digits.";
+      const n = $("#n").value.trim(), p = $("#p").value.trim(), sc = $("#sc").value.trim().toUpperCase();
+      if (!n) return $("#err").textContent = "Enter the username from your login card.";
+      if (!/^\d{4}$/.test(p)) return $("#err").textContent = "Your PIN is the 4 digits on your login card.";
       $("#err").textContent = ""; e.submitter && (e.submitter.disabled = true);
-      try { await Store.signIn(n, cls, p, sc); }
+      try { await Store.signIn(n, p, sc); }
       catch (err) {
         e.submitter && (e.submitter.disabled = false);
+        if (err && err.code === "needs school") $("#scwrap").hidden = false, $("#sc").focus();
         return $("#err").textContent = err && err.message ? err.message : "Couldn't sign you in. Please try again.";
       }
-      if (next && /^experience\.html\?/.test(next)) location.href = next; else route();
+      if (window.R360Nav) R360Nav.refresh();
+      const next = new URLSearchParams(location.search).get("next");
+      if (next && /^[\w.-]+\.html/.test(next)) return location.replace(next);
+      route();
     };
   }
 
-  let synced = false, statusHooked = false;
-  async function header() {
-    const s = Store.student();
-    $("#who").innerHTML = `<span class="sync" id="sync"></span><span>${esc(s.name)}${s.cls ? " · " + esc(s.cls) : ""}</span><button class="btn small ghost" id="out">Sign out</button>`;
-    if (window.R360Nav) R360Nav.refresh();
-    $("#out").onclick = () => { Store.signOut(); synced = false; history.replaceState(null, "", location.pathname); signIn(); if (window.R360Nav) R360Nav.refresh(); };
-    const labels = { local: "Saved on this device", saved: "Progress synced ✓", syncing: "Syncing…", pending: "Syncing…", offline: "Offline: progress saved on this device", idle: "" };
-    if (!statusHooked) { statusHooked = true; Store.onStatus(st => { const el = $("#sync"); if (el) el.textContent = labels[st] || ""; }); }
-    if (!synced) { synced = true; $("#main").innerHTML = '<p class="muted">Loading…</p>'; await Store.pull(); await Store.flushQueue(); }
-  }
-
-  // ---------- stage 1: choose a topic ----------
   async function topicsPage() {
     await header();
     $("#topic").textContent = topicsFile.tagline || "";
@@ -144,6 +133,15 @@
     const n = $("#vrnote"); if (!n || !navigator.xr) return;
     navigator.xr.isSessionSupported("immersive-vr").then(ok => { if (ok) n.hidden = false; }).catch(() => {});
   }
+  async function header() {
+    const s = Store.student();
+    $("#who").innerHTML = `<span class="sync" id="sync"></span><span>${esc(s.name)} · ${esc(s.cls)}</span><button class="btn small ghost" id="out">Sign out</button>`;
+    $("#out").onclick = () => { Store.signOut(); synced = false; history.replaceState(null, "", location.pathname); signIn(); };
+    const labels = { local: "Saved on this device", saved: "Progress synced ✓", syncing: "Syncing…", pending: "Syncing…", offline: "Offline: progress saved on this device", idle: "" };
+    if (!statusHooked) { statusHooked = true; Store.onStatus(st => { const el = $("#sync"); if (el) el.textContent = labels[st] || ""; }); }
+    if (!synced) { synced = true; $("#main").innerHTML = '<p class="muted">Loading…</p>'; await Store.pull(); await Store.flushQueue(); }
+  }
+
   function route() {
     if (!Store.student()) return signIn();
     const t = new URLSearchParams(location.search).get("topic");

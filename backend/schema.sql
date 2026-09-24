@@ -48,3 +48,10 @@ CREATE TABLE IF NOT EXISTS requests (
   created INTEGER,
   status  TEXT DEFAULT 'new'       -- new | issued | declined
 );
+
+-- Failed sign-in attempts, used only to slow down PIN guessing; cleaned up weekly
+CREATE TABLE IF NOT EXISTS attempts (
+  name TEXT NOT NULL,
+  at   INTEGER NOT NULL
+);
+CREATE INDEX IF NOT EXISTS attempts_name ON attempts (name, at);

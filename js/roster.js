@@ -44,11 +44,10 @@
         <div class="lc-name">${esc(s.name)}</div>
         <table class="lc-t">
           <tr><td>Username</td><th>${esc(s.name)}</th></tr>
-          <tr><td>Class</td><th>${esc(s.cls || "— leave blank —")}</th></tr>
           <tr><td>PIN</td><th class="pin">${esc(s.pin)}</th></tr>
-          <tr><td>School code</td><th>${esc(schoolCode)}</th></tr>
+          <tr><td>Class</td><th>${esc(s.cls || "—")}</th></tr>
         </table>
-        <div class="lc-foot">${esc(link)}<br>Keep this card. Your PIN can't be looked up.</div>
+        <div class="lc-foot">Sign in at ${esc(link.replace(/\?school=.*/, ""))}<br>Keep this card. Only your teacher can issue a new one.</div>
       </div>`).join("")}</div>`;
   }
 
@@ -85,7 +84,7 @@
   // Plain text for pasting into a Teams post or an email
   function copyList(students, schoolCode, btn) {
     const link = location.origin + location.pathname.replace(/teacher\.html$/, "") + "?school=" + schoolCode;
-    const text = `Revise 360 logins${students[0] && students[0].cls ? " — " + students[0].cls : ""}\nSign in at ${link}\nSchool code: ${schoolCode}\n\n`
+    const text = `Revise 360 logins${students[0] && students[0].cls ? " — " + students[0].cls : ""}\nSign in at ${link.replace(/\?school=.*/, "")}\n\n`
       + students.map(s => `${s.name}   PIN ${s.pin}${s.cls ? "   class " + s.cls : ""}`).join("\n")
       + "\n\nKeep your PIN safe. If you lose it, ask your teacher for a new card.";
     navigator.clipboard.writeText(text).then(() => { if (btn) { const t = btn.textContent; btn.textContent = "Copied"; setTimeout(() => btn.textContent = t, 1500); } },
@@ -106,7 +105,7 @@
     host.innerHTML = `
       <div class="row" style="justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:10px">
         <div><h2 style="margin:0">Class logins</h2>
-          <p class="muted" style="margin:4px 0">Your school code is <code>${esc(data.schoolCode || "")}</code>. Students need it once, or use the link on their card.</p></div>
+          <p class="muted" style="margin:4px 0">Students sign in with just the username and PIN on their card. Your school code, <code>${esc(data.schoolCode || "")}</code>, is attached to each login automatically.</p></div>
         <label class="row" style="gap:8px;align-items:center;font-size:14px">
           <input type="checkbox" id="enforce" ${data.enforce ? "checked" : ""}>
           Only students on this list may sign in

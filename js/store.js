@@ -47,30 +47,43 @@
     onStatus(f) { listeners.add(f); f(status); return () => listeners.delete(f); },
     student() { return read("student", null); },
 
-    async signIn(name, cls, pin, school) {
-      name = name.trim().replace(/\s+/g, "").toLowerCase();
-      school = (school || "").trim().toUpperCase();
-      const key = await sha256(cls + "|" + name.toLowerCase() + "|" + pin);
-      if (CFG.backendUrl) {
-        // Ask the server whether this login is allowed, so a mistyped PIN doesn't
-        // quietly become a second profile
-        try {
-          const r = await fetch(CFG.backendUrl, { method: "POST", body: JSON.stringify({ action: "check", key, name, school }) });
-          const j = await r.json();
-          if (!j.ok) {
-            const e = new Error(j.error === "not on roster"
-              ? "That username isn't on your school's list. Check the username and class on your login card, or ask your teacher."
-              : "That username is already in use at your school. Check the PIN on your login card, or ask your teacher to reset it.");
-            e.code = j.error; throw e;
-          }
-        } catch (err) { if (err.code) throw err; /* offline: let them work locally */ }
+    // Students sign in with the username and PIN on their login card. The class and
+    // school are already attached to the record their teacher created.
+    async signIn(name, pin, school) {
+      name = String(name).trim().replace(/\s+/g, "").toLowerCase();
+      pin = String(pin).trim();
+      if (!CFG.backendUrl) return Store.guest(name);
+      let j;
+      try {
+        const r = await fetch(CFG.backendUrl, { method: "POST", body: JSON.stringify({ action: "login", name, pin, school: school || "" }) });
+        j = await r.json();
+      } catch (e) {
+        const off = new Error("Can't reach Revise 360 right now. Check the connection and try again.");
+        off.code = "offline"; throw off;
       }
-      const s = { key, name, cls, school };
+      if (!j.ok) {
+        const msg = { "no match": "That username and PIN don't match. Check your login card, or ask your teacher for a new one.",
+                      "needs school": "Two schools use that login. Please enter your school code as well.",
+                      "locked": "Too many tries. Wait a few minutes, then try again with your login card.",
+                      "bad login": "Enter your username and the 4-digit PIN from your login card." }[j.error] || "Couldn't sign you in.";
+        const e = new Error(msg); e.code = j.error; throw e;
+      }
+      const s = { key: j.student.key, name: j.student.name, cls: j.student.cls, school: j.student.school };
       write("student", s);
-      const roster = read("roster", {}); roster[key] = { name, cls, school }; write("roster", roster);
+      const roster = read("roster", {}); roster[s.key] = { name: s.name, cls: s.cls, school: s.school }; write("roster", roster);
       await Store.pull();
       return s;
     },
+
+    // Guest mode: try the site with no account. Progress stays on this device.
+    async guest(name) {
+      const key = await sha256("guest|" + (name || "guest") + "|" + Date.now());
+      const s = { key, name: name || "guest", cls: "", school: "", guest: true };
+      write("student", s);
+      const roster = read("roster", {}); roster[key] = { name: s.name, cls: "", school: "" }; write("roster", roster);
+      return s;
+    },
+
     signOut() { try { localStorage.removeItem(NS + "student"); } catch (e) {} },
 
     all() { const s = Store.student(); return s ? read("p:" + s.key, {}) : {}; },
@@ -102,7 +115,7 @@
     },
 
     async push(expId, keepalive) {
-      const s = Store.student(); if (!s || !CFG.backendUrl) return;
+      const s = Store.student(); if (!s || s.guest || !CFG.backendUrl) return;
       const data = Store.get(expId); if (!data) return;
       setStatus("syncing");
       try { await api({ action: "save", key: s.key, name: s.name, cls: s.cls, school: s.school || "", expId, data }, { keepalive }); setStatus("saved"); }

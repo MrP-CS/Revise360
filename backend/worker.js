@@ -203,6 +203,34 @@ export default {
           return json({ ok: true, enforce: !!body.on });
         }
 
+        case "login": {           // username + PIN only: the class and school come from the record
+          const name = clean(body.name, 40).toLowerCase().replace(/\s+/g, "");
+          const pin = clean(body.pin, 8);
+          if (!name || !/^\d{4,8}$/.test(pin)) return fail("bad login");
+
+          // Simple throttle: 10 wrong tries for a username in 15 minutes and it pauses
+          const since = now - 15 * 60 * 1000;
+          const tries = await env.DB.prepare("SELECT COUNT(*) AS n FROM attempts WHERE name = ? AND at > ?").bind(name, since).first();
+          if (tries && tries.n >= 10) return json({ ok: false, error: "locked" });
+
+          const school = clean(body.school, 12).toUpperCase();
+          const rows = school
+            ? (await env.DB.prepare("SELECT key, name, cls, school_code FROM students WHERE name = ? AND pin = ? AND school_code = ? LIMIT 5").bind(name, pin, school).all()).results
+            : (await env.DB.prepare("SELECT key, name, cls, school_code FROM students WHERE name = ? AND pin = ? LIMIT 5").bind(name, pin).all()).results;
+
+          if (!rows.length) {
+            await env.DB.prepare("INSERT INTO attempts (name, at) VALUES (?, ?)").bind(name, now).run();
+            return json({ ok: false, error: "no match" });
+          }
+          if (rows.length > 1) return json({ ok: false, error: "needs school" });   // same login at two schools
+
+          await env.DB.batch([
+            env.DB.prepare("DELETE FROM attempts WHERE name = ?").bind(name),
+            env.DB.prepare("UPDATE students SET last_seen = ? WHERE key = ?").bind(now, rows[0].key)
+          ]);
+          return json({ ok: true, student: { key: rows[0].key, name: rows[0].name, cls: rows[0].cls || "", school: rows[0].school_code || "" } });
+        }
+
         case "check": {           // called at sign-in: is this login allowed?
           if (!isKey(body.key)) return fail("bad key");
           const school = clean(body.school, 12).toUpperCase();
@@ -288,7 +316,8 @@ export default {
     const cutoff = Date.now() - 365 * 24 * 60 * 60 * 1000;
     await env.DB.batch([
       env.DB.prepare("DELETE FROM progress WHERE updated < ?").bind(cutoff),
-      env.DB.prepare("DELETE FROM students WHERE last_seen < ?").bind(cutoff)
+      env.DB.prepare("DELETE FROM students WHERE last_seen < ?").bind(cutoff),
+      env.DB.prepare("DELETE FROM attempts WHERE at < ?").bind(Date.now() - 24 * 60 * 60 * 1000)
     ]);
   }
 };
