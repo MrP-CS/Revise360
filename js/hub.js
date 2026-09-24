@@ -98,7 +98,9 @@
       const started = sum && (sum.done > 0 || Object.values(prog?.scenes || {}).some(sc => Object.keys(sc.ans || {}).length));
       const hasWeak = sum && sum.stations.some(st => st.done && st.wrongTasks > st.fixed);
       const kind = e.sprint || e.badge ? "Challenge" : "360° experience";
-      rows.push(`<article class="exp"><span class="lesson-number">${number}</span><div class="thumb" style="background-image:url('experiences/${esc(e.thumb)}')" role="img" aria-label="Preview of ${esc(e.title)}"></div><div class="body"><span class="lesson-type">${kind}</span><h3>${esc(e.title)}</h3><p>${esc(e.description)}</p>
+      const sceneImg = loaded[e.id]?.scenes?.find(scene => scene?.img)?.img || "";
+      const thumbLayers = [e.thumb, sceneImg].filter(Boolean).map(src => `url('experiences/${esc(src)}')`).join(",");
+      rows.push(`<article class="exp"><span class="lesson-number">${number}</span><div class="thumb" style="background-image:${thumbLayers || "none"}" role="img" aria-label="Preview of ${esc(e.title)}"></div><div class="body"><span class="lesson-type">${kind}</span><h3>${esc(e.title)}</h3><p>${esc(e.description)}</p>
         ${sum && e.sprint ? `<div class="lesson-meta">${sum.sprint ? `Personal best ${sum.sprint.best} · ${sum.sprint.attempts} ${sum.sprint.attempts === 1 ? "try" : "tries"}` : "Set your first score"}</div>` :
         sum ? `<div class="lesson-meta"><span>${sum.done}/${sum.count} stations · ${sum.score}/${sum.total} marks${sum.infoTotal ? ` · ${sum.infoSeen}/${sum.infoTotal} facts` : ""}</span><span class="rag ${band}">${sum.done ? Store.BAND_LABEL[band] : "Not started"}</span><div class="bar" role="progressbar" aria-label="${esc(e.title)} stations complete" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100"><i style="width:${pct}%"></i></div></div>` : '<span class="err">Could not load this experience.</span>'}</div>
         <div class="lesson-actions"><a class="btn small" href="experience.html?id=${encodeURIComponent(e.id)}">${sum && sum.complete ? "Open" : started ? "Continue" : "Start"} <span aria-hidden="true">↗</span></a>
