@@ -12,6 +12,7 @@
 <script src="js/local.js"></script>
 <script src="js/store.js"></script>
 <script src="js/nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
 <script src="js/preview.js" defer></script>
 </head>
 <body>
@@ -31,14 +32,15 @@
       </div>
       <p class="hero-note">No VR headset needed to get started.</p>
     </div>
-    <div class="hero-visual">
-      <div class="visual-top"><span class="visual-dot"></span><span>REAL EXPERIENCE</span><button class="preview-toggle" id="previewToggle" type="button" aria-controls="experiencePreview">Play</button></div>
-      <video class="visual-scene visual-video" id="experiencePreview" muted loop playsinline preload="metadata" poster="media/memory-bay-poster.jpg" aria-label="Memory bay experience preview" aria-describedby="previewDescription">
-        <source src="media/memory-bay-demo.mp4" type="video/mp4">
-        Your browser cannot play this preview.
-      </video>
-      <p class="sr" id="previewDescription">Silent demonstration of Memory bay: look around the 360° room, answer a station question and see your progress.</p>
-      <div class="visual-caption"><span class="visual-index">1.2 / MEMORY &amp; STORAGE</span><strong>Memory bay</strong><span>Explore RAM, ROM and primary storage</span></div>
+    <div class="hero-visual hero-demo" id="heroDemo">
+      <div class="visual-top"><span class="visual-dot"></span><span>LIVE EXPERIENCE</span><button class="preview-toggle" id="demoReset" type="button" aria-controls="heroExperience">Reset view</button></div>
+      <div class="hero-demo-stage" id="heroExperience" tabindex="0" aria-label="Interactive 360 degree Memory bay experience. Drag to look around and select numbered stations." aria-describedby="previewDescription">
+        <div class="hero-demo-loading" id="demoLoading" role="status">Loading interactive experience…</div>
+        <div class="hero-demo-hint" id="demoHint">Drag to look around · select a numbered marker</div>
+      </div>
+      <aside class="hero-demo-panel" id="demoPanel" hidden aria-live="polite"></aside>
+      <p class="sr" id="previewDescription">A public interactive version of Memory bay. Drag or use the arrow keys to look around, then select numbered stations or blue information markers.</p>
+      <div class="visual-caption hero-demo-caption"><span class="visual-index">1.2 / MEMORY &amp; STORAGE</span><strong>Memory bay</strong><span id="demoProgress">Loading live experience…</span></div>
       <div class="visual-corner" aria-hidden="true">360°</div>
     </div>
   </section>
