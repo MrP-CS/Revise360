@@ -36,14 +36,15 @@
   function signIn() {
     $("#who").innerHTML = ""; $("#topic").textContent = topicsFile.tagline || "";
     $("#main").innerHTML = `<form class="card signin" id="f" novalidate>
-      <h2>Sign in</h2><p class="muted">Use the same username, class and PIN every time so your progress follows you to any device.</p>
-      <div class="field"><label for="n">School username</label><input id="n" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" required maxlength="60"></div>
+      <h2>Sign in</h2><p class="muted">Use the details on your login card. The same card works on any device, and your progress follows you.</p>
+      <div class="field"><label for="n">Username</label><input id="n" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" required maxlength="60"></div>
       <div class="field"><label for="c">Class or group <span class="muted">(optional)</span></label><select id="c"><option value="">Not set</option>${CFG.classes.map(c => `<option>${esc(c)}</option>`).join("")}<option value="__other">Other…</option></select></div>
       <div class="field" id="cwrap" hidden><label for="c2">Type your class or group</label><input id="c2" maxlength="24" autocapitalize="characters"></div>
-      <div class="field"><label for="p">4-digit PIN (make one up and remember it)</label><input id="p" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" required autocomplete="off"></div>
+      <div class="field"><label for="p">4-digit PIN <span class="muted">(from your login card)</span></label><input id="p" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" required autocomplete="off"></div>
       <div class="field"><label for="sc">School code <span class="muted">(from your teacher)</span></label><input id="sc" maxlength="12" autocapitalize="characters" autocomplete="off" placeholder="e.g. K7M3QP" value="${esc(prefillSchool())}"></div>
       <p class="err" id="err" role="alert"></p>
       <div class="row end"><button class="btn" type="submit">Start</button></div>
+      <p class="muted" style="font-size:13px">Lost your card, or forgotten your PIN? Ask your teacher for a new one: PINs can't be reset by students, and a new card keeps all your progress.</p>
       ${CFG.backendUrl ? "" : '<p class="muted" style="font-size:13px">This site is in device-only mode: progress is saved in this browser only.</p>'}
     </form>`;
     $("#n").focus();
