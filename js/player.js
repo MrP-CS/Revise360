@@ -33,7 +33,7 @@
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
   const asset = p => /^(data:|blob:|https?:)/.test(p) ? p : "experiences/" + p;
-  const marks = t => (t.t === "mcq" || t.t === "multi" || t.t === "circuit" || t.t === "expr" || t.t === "convert" || t.t === "addshift" || t.t === "pixels" || t.t === "sound" || t.t === "memory" || t.t === "permissions" || t.t === "defrag" || t.t === "impact" || t.t === "language" || t.t === "machine" || t.t === "translator" || t.t === "ide") ? 1 : t.t === "table" ? (1 << (t.inputs ? t.inputs.length : new Set((t.expr || "").replace(/AND|OR|NOT/g, "").match(/[A-Z]/g) || []).size)) : (t.t === "sprint" || t.t === "defence" || t.t === "blitz" || t.t === "lawgame") ? 0 : t.t === "order" ? t.steps.length : t.t === "sort" ? t.items.length : t.pairs.length;
+  const marks = t => (t.t === "mcq" || t.t === "multi" || t.t === "circuit" || t.t === "expr" || t.t === "convert" || t.t === "addshift" || t.t === "pixels" || t.t === "sound" || t.t === "memory" || t.t === "permissions" || t.t === "defrag" || t.t === "impact") ? 1 : t.t === "table" ? (1 << (t.inputs ? t.inputs.length : new Set((t.expr || "").replace(/AND|OR|NOT/g, "").match(/[A-Z]/g) || []).size)) : (t.t === "sprint" || t.t === "defence" || t.t === "blitz" || t.t === "lawgame") ? 0 : t.t === "order" ? t.steps.length : t.t === "sort" ? t.items.length : t.pairs.length;
 
   let exp;
   try { exp = await (await fetch("experiences/" + encodeURIComponent(expId) + ".json", { cache: "no-cache" })).json(); }
@@ -284,7 +284,7 @@
 
   // ---------- question modal ----------
   const modal = $("#modal"), box = $("#box"); let lastFocus = null;
-  const BOARD_TASKS = ["circuit", "expr", "table", "convert", "addshift", "pixels", "sound", "memory", "permissions", "defrag", "impact", "language", "machine", "translator", "ide"];
+  const BOARD_TASKS = ["circuit", "expr", "table", "convert", "addshift", "pixels", "sound", "memory", "permissions", "defrag", "impact"];
   // Boards draw to a canvas; map mouse and touch events onto it
   function mountBoard(host, board) {
     const cv = board.canvas; cv.style.cssText = "width:100%;display:block;border-radius:12px;touch-action:none;cursor:pointer"; host.appendChild(cv);
@@ -476,10 +476,9 @@
       const board = task.t === "circuit" ? Lg.CircuitBoard({ inputs: task.inputs || Lg.vars(Lg.parse(task.expr)) })
         : task.t === "expr" ? Lg.ExprBoard({ expr: task.expr, out: task.out })
         : task.t === "table" ? Lg.TableBoard({ expr: task.expr, cols: task.cols, out: task.out, inputs: task.inputs, diagram: task.diagram })
-        : window.R360Programming && R360Programming.TYPES.includes(task.t) ? R360Programming.make(task)
         : R360OS.TYPES.includes(task.t) ? R360OS.make(task)
         : R360Data.make(task);
-      mountBoard($("#lb"), board); if (board.mountControls) board.mountControls($("#lb")); window.__board = { board, task };
+      mountBoard($("#lb"), board); window.__board = { board, task };
       const row = $("#mrow"), clr = document.createElement("button"); clr.className = "btn ghost"; clr.textContent = "Clear"; clr.onclick = () => board.clear(); row.appendChild(clr);
       const ck = document.createElement("button"); ck.className = "btn"; ck.textContent = "Check my answer"; row.appendChild(ck);
       ck.onclick = () => {
