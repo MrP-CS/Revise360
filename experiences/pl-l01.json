@@ -1,0 +1,306 @@
+{
+ "id": "pl-l01",
+ "lesson": 1,
+ "title": "Language design studio",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Language design studio",
+   "img": "img/PL_L01_LanguageDesignStudio_360.jpg",
+   "imgHi": "img/PL_L01_LanguageDesignStudio_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Instructions for people and processors",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "A developer edits total = price * quantity. What are they editing?",
+       "a": [
+        "Source code",
+        "A processor circuit",
+        "The finished machine-code executable",
+        "A RAM address"
+       ],
+       "fb": "The expression is human-readable source code. It describes a calculation without listing individual processor operations."
+      },
+      {
+       "t": "mcq",
+       "q": "What can a processor execute directly?",
+       "a": [
+        "Machine-code instructions for its instruction set",
+        "Any English instruction",
+        "Python source without any translator",
+        "Comments in a source file"
+       ],
+       "fb": "The processor recognises its machine-code instruction set. It does not directly understand high-level source."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "High-level languages",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "multi",
+       "q": "Which TWO features support maintainability?",
+       "opts": [
+        "Meaningful variable names",
+        "Expressions that hide hardware detail",
+        "Instructions written only as binary",
+        "A requirement to manage every register"
+       ],
+       "correct": [
+        "Meaningful variable names",
+        "Expressions that hide hardware detail"
+       ],
+       "fb": "Clear source makes the intention easier to follow. Binary and register management add detail for the programmer."
+      },
+      {
+       "t": "mcq",
+       "q": "A statement calculates the average of three readings. How many machine instructions must it become?",
+       "a": [
+        "The number depends on the language implementation and target processor",
+        "Exactly one in every case",
+        "Always exactly three",
+        "None, because high-level code bypasses the CPU"
+       ],
+       "fb": "A high-level operation can become several low-level instructions; the mapping is not a fixed universal ratio."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Low-level languages",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Classify the descriptions.",
+       "cats": [
+        "High-level",
+        "Low-level"
+       ],
+       "items": [
+        [
+         "An expression hides register handling",
+         "High-level"
+        ],
+        [
+         "Instructions are closely tied to one processor family",
+         "Low-level"
+        ],
+        [
+         "Mnemonic operations name hardware instructions",
+         "Low-level"
+        ],
+        [
+         "Code focuses on the problem rather than each CPU step",
+         "High-level"
+        ]
+       ],
+       "fb": "Both levels are useful. Choose according to the problem and the control needed."
+      },
+      {
+       "t": "mcq",
+       "q": "Which is a realistic drawback of low-level programming?",
+       "a": [
+        "It takes specialist knowledge and is harder to move between processor families",
+        "It can never access hardware",
+        "It is automatically free of bugs",
+        "It cannot contain instructions"
+       ],
+       "fb": "Detailed control brings more work for the programmer and stronger dependence on the target architecture."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Portability is conditional",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "A program must run on several types of computer. Which choice usually helps?",
+       "a": [
+        "High-level source with compatible tools for each target",
+        "Machine code for just one CPU used unchanged everywhere",
+        "Removing every translator",
+        "Using memory addresses as all variable names"
+       ],
+       "fb": "High-level source generally travels more easily, but platform-specific libraries or features can still require changes."
+      },
+      {
+       "t": "mcq",
+       "q": "Why might an executable made for one processor fail on another?",
+       "a": [
+        "The target processor may use a different instruction set",
+        "The source uses too many comments",
+        "All executables require the original editor",
+        "Executables contain no instructions"
+       ],
+       "fb": "Compiled code must match the required target platform."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Choose for the brief",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "language",
+       "q": "Choose a language level and the reason that best meets the museum brief.",
+       "brief": "museum"
+      },
+      {
+       "t": "mcq",
+       "q": "Which explanation is strongest?",
+       "a": [
+        "High-level source makes regular feature changes easier for a team to maintain",
+        "High-level is always faster because it is newer",
+        "Assembly is best because it is harder to read",
+        "Machine code works unchanged on all processors"
+       ],
+       "fb": "A justified choice connects a characteristic to the particular project, rather than making an absolute claim."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Challenge the shortcuts",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "language",
+       "q": "Now choose for a carefully specified hardware-control routine.",
+       "brief": "device"
+      },
+      {
+       "t": "mcq",
+       "q": "A program is readable and compiles successfully. What must the developer still do?",
+       "a": [
+        "Test that the outputs meet the requirements",
+        "Assume every result is correct",
+        "Delete the test data",
+        "Convert the source to a picture"
+       ],
+       "fb": "Translation can succeed even when a program implements the wrong calculation."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Plenary knowledge check",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "A team must maintain a timetable app across different systems. Which recommendation is best justified?",
+       "a": [
+        "High-level source for maintainability and portability, with compatible tools on each system",
+        "Machine code because one binary fits every CPU",
+        "Assembly because no specialist knowledge is needed",
+        "No programming language is needed"
+       ],
+       "fb": "Link the choice to the team and target platforms. Portability still has conditions."
+      },
+      {
+       "t": "match",
+       "q": "Match each term to its meaning.",
+       "pairs": [
+        [
+         "Source code",
+         "Instructions written by a programmer"
+        ],
+        [
+         "Machine code",
+         "Instructions executed directly by the target CPU"
+        ],
+        [
+         "Portability",
+         "Ease of moving a program between systems"
+        ]
+       ],
+       "fb": "Source code is translated or processed for execution; machine code is specific to the target instruction set."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 920,
+     "y": 600,
+     "title": "Instructions for people and processors",
+     "text": "Source code is the version a programmer writes and edits. A processor executes instructions in its own machine code. High-level source must be processed by a suitable translator before the processor can perform its instructions. Think: Why can a processor not directly execute a Python assignment as written?"
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 600,
+     "title": "High-level languages",
+     "text": "High-level languages hide many hardware details. Meaningful names and familiar expressions help people write, read and maintain code. One high-level statement can require several machine instructions. Think: Why could a high-level language reduce the time spent maintaining a school booking system?"
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 920,
+     "y": 600,
+     "title": "Low-level languages",
+     "text": "Machine code and assembly language are low-level forms. Assembly uses mnemonic instruction names rather than long strings of binary. Low-level code is closely tied to a processor instruction set and exposes hardware details. Think: Why might low-level code be useful in a small part of a device controller?"
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1888,
+     "y": 600,
+     "title": "Portability is conditional",
+     "text": "High-level source is usually easier to move between platforms. The destination still needs a compatible implementation and required libraries. A compiled executable normally targets a particular platform; portable source does not make every executable universal. Think: A source file runs on two systems after installing compatible tools. Does this prove one compiled executable will run everywhere?"
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 920,
+     "y": 600,
+     "title": "Choose for the brief",
+     "text": "There is no best language level for every project. Compare development time, maintenance, portability and hardware control. Support a recommendation with the needs stated in the brief. Think: Recommend a level for a museum booking tool used on several systems. Link your choice to two needs."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1888,
+     "y": 600,
+     "title": "Challenge the shortcuts",
+     "text": "Readable code can still contain errors. Low-level code is not automatically faster than every compiled high-level program. Testing checks behaviour; choosing a language does not prove correctness. Think: Explain why “low-level always means faster” is too strong."
+    }
+   ],
+   "models": []
+  }
+ ]
+}

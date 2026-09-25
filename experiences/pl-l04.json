@@ -1,0 +1,321 @@
+{
+ "id": "pl-l04",
+ "lesson": 4,
+ "title": "Developer control room",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Developer control room",
+   "img": "img/PL_L04_DeveloperControlRoom_360.jpg",
+   "imgHi": "img/PL_L04_DeveloperControlRoom_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "One environment",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does IDE stand for?",
+       "a": [
+        "Integrated development environment",
+        "Internal data execution",
+        "Instruction design engine",
+        "Internet debugging extension"
+       ],
+       "fb": "An IDE combines programming facilities into one environment."
+      },
+      {
+       "t": "match",
+       "q": "Match the core facility to its role.",
+       "pairs": [
+        [
+         "Editor",
+         "Create and change source code"
+        ],
+        [
+         "Translator",
+         "Process source for execution"
+        ],
+        [
+         "Run-time environment",
+         "Provide facilities needed to execute the program"
+        ],
+        [
+         "Error diagnostics",
+         "Help locate or explain problems"
+        ]
+       ],
+       "fb": "OCR J277 asks you to know these facilities and how they help program development."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "The source editor",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which facility lets a developer change price + quantity to price * quantity?",
+       "a": [
+        "The source editor",
+        "The screen brightness control",
+        "The output window alone",
+        "A backup archive"
+       ],
+       "fb": "The editor changes source. The program must be rerun to test the change."
+      },
+      {
+       "t": "mcq",
+       "q": "How can automatic indentation help?",
+       "a": [
+        "It supports a consistent layout and can reduce indentation mistakes",
+        "It guarantees the correct algorithm",
+        "It replaces the need to run tests",
+        "It permanently removes every syntax error"
+       ],
+       "fb": "Editor assistance reduces some effort, but the programmer must still check the result."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Read the diagnostic",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which problem is most likely to produce a syntax diagnostic?",
+       "a": [
+        "A missing closing bracket in a function call",
+        "A valid multiplication when addition was intended",
+        "A correct result printed in a small font",
+        "A variable with a meaningful name"
+       ],
+       "fb": "Syntax diagnostics concern the language rules. Valid syntax can still implement the wrong logic."
+      },
+      {
+       "t": "mcq",
+       "q": "No syntax problems are reported, but the total is wrong. What should you inspect?",
+       "a": [
+        "The calculation and the values it uses",
+        "Only the colour theme",
+        "Only the file icon",
+        "Nothing, because the result must be correct"
+       ],
+       "fb": "A logic error often requires tracing and testing rather than a syntax fix."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Run and observe",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which is the best test for a total price calculation?",
+       "a": [
+        "Known price and quantity with an independently calculated expected total",
+        "Any data without an expected output",
+        "Changing the font and assuming success",
+        "Only opening the source file"
+       ],
+       "fb": "A test needs an expected result to compare with the actual output."
+      },
+      {
+       "t": "mcq",
+       "q": "Why can a program fail during execution even after translation succeeds?",
+       "a": [
+        "Some errors depend on the values or situation at runtime",
+        "Translation always prevents runtime problems",
+        "The editor must be closed first",
+        "Machine code never uses data"
+       ],
+       "fb": "For example, division by zero can depend on an input value. Successful translation alone is insufficient."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Pause and inspect",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "ide",
+       "q": "Set the breakpoint, inspect the values, repair the total calculation and pass both tests."
+      },
+      {
+       "t": "mcq",
+       "q": "What does a variable watch help a developer do?",
+       "a": [
+        "Inspect current values while debugging",
+        "Guarantee that every variable has the intended value",
+        "Turn source code into a photograph",
+        "Replace the specification"
+       ],
+       "fb": "The watch makes state visible. The programmer still decides whether those values are appropriate."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Test the change",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Choose the facility that directly addresses each need.",
+       "cats": [
+        "Editor",
+        "Diagnostics",
+        "Run-time environment",
+        "Translator"
+       ],
+       "items": [
+        [
+         "Change a source expression",
+         "Editor"
+        ],
+        [
+         "Read an explanation of a syntax problem",
+         "Diagnostics"
+        ],
+        [
+         "Execute the program and observe its output",
+         "Run-time environment"
+        ],
+        [
+         "Convert or process the source for execution",
+         "Translator"
+        ]
+       ],
+       "fb": "Several facilities can work together when you press Run, but their roles are different."
+      },
+      {
+       "t": "mcq",
+       "q": "After changing total = price + quantity to multiplication, what is the best next step?",
+       "a": [
+        "Rerun tests with expected results for different inputs",
+        "Stop because any edit must be an improvement",
+        "Delete the output evidence",
+        "Change the variable names only"
+       ],
+       "fb": "Test the corrected source, including relevant cases that could reveal a remaining mistake."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Plenary knowledge check",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "A teacher wants evidence that an IDE helped locate a logic error. Which evidence is strongest?",
+       "a": [
+        "A breakpoint and variable values showing where the wrong total was calculated",
+        "A screenshot of a new colour theme",
+        "The fact that no error message appeared",
+        "A larger font in the editor"
+       ],
+       "fb": "Useful debugging evidence connects a tool to the observed problem."
+      },
+      {
+       "t": "match",
+       "q": "Match the action to the tool.",
+       "pairs": [
+        [
+         "Pause before a calculation",
+         "Breakpoint"
+        ],
+        [
+         "Inspect the value of quantity",
+         "Variable watch"
+        ],
+        [
+         "Advance one instruction",
+         "Step control"
+        ]
+       ],
+       "fb": "These debugging facilities support investigation. Their names and layouts vary between IDEs."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 920,
+     "y": 600,
+     "title": "One environment",
+     "text": "An IDE brings tools for writing, translating, running and debugging code into one working environment. The exact features vary between products and languages. An IDE helps the programmer work; it does not choose the correct algorithm for them. Think: How could integration reduce the effort of checking a small change?"
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 600,
+     "title": "The source editor",
+     "text": "The editor lets you write and change source code. Syntax highlighting can make keywords, strings and comments easier to distinguish. Auto-indentation or completion can reduce routine typing, but suggestions still need checking. Think: Why does syntax highlighting not prove that a calculation is correct?"
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 920,
+     "y": 600,
+     "title": "Read the diagnostic",
+     "text": "A syntax diagnostic can identify a location and describe invalid source. The reported location may be near the cause rather than the exact fix. A logic error can produce an incorrect result without a translation diagnostic. Think: A diagnostic says “unexpected closing bracket”. What should you do next?"
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1888,
+     "y": 600,
+     "title": "Run and observe",
+     "text": "The run-time environment supports execution and interaction with input and output. A translator may be invoked by a build or run command. Use expected results to decide whether the observed output is correct. Think: A ticket costs 4 and a customer buys 3. What output should a correct total calculation produce?"
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 920,
+     "y": 600,
+     "title": "Pause and inspect",
+     "text": "A breakpoint pauses execution at a chosen point. A variable watch shows values at that pause; stepping advances through instructions. Use the first unexpected value to narrow down the location of a logic error. Think: Where would you pause to inspect the inputs to a wrong total calculation?"
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1888,
+     "y": 600,
+     "title": "Test the change",
+     "text": "Fixing one example is not enough evidence for every input. Rerun relevant tests after changing source. Record the input, expected output, actual output and whether the test passed. Think: Why does testing two different orders provide stronger evidence than repeatedly testing the same order?"
+    }
+   ],
+   "models": []
+  }
+ ]
+}

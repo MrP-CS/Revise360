@@ -245,7 +245,7 @@
     }
     function closeModelVR() { if (!vrModel) return; scene.remove(vrModel.holder); vrModel = null; modelPanel.hide(); core.refreshSprites(); }
 
-    const BOARD_TASKS = ["circuit", "expr", "table", "convert", "addshift", "pixels", "sound", "memory", "permissions", "defrag", "impact"];
+    const BOARD_TASKS = ["circuit", "expr", "table", "convert", "addshift", "pixels", "sound", "memory", "permissions", "defrag", "impact", "language", "machine", "translator", "ide"];
     // ---------------- boards (drag, paint and tap in VR) ----------------
     let vrBoard = null;
     function openBoard(board) {
@@ -306,13 +306,14 @@
         const board = task.t === "circuit" ? Lg.CircuitBoard({ inputs: task.inputs || Lg.vars(Lg.parse(task.expr)), hit: 34 })
           : task.t === "expr" ? Lg.ExprBoard({ expr: task.expr, out: task.out })
           : task.t === "table" ? Lg.TableBoard({ expr: task.expr, cols: task.cols, out: task.out, inputs: task.inputs, diagram: task.diagram })
-          : R360OS.TYPES.includes(task.t) ? R360OS.make(task)
+          : window.R360Programming && R360Programming.TYPES.includes(task.t) ? R360Programming.make(task)
+        : R360OS.TYPES.includes(task.t) ? R360OS.make(task)
           : R360Data.make(task);
         const yaw = openBoard(board);
         const { pos } = headPose(); const qy = yaw - .28 - .75;
         qPanel.mesh.position.set(pos.x + Math.sin(qy) * 1.25, pos.y - .05, pos.z + Math.cos(qy) * 1.25); qPanel.mesh.lookAt(pos);
         let lastOk = true, shown = false;
-        const tips = { circuit: "Point at a gate at the top of the board, hold the trigger and drag it down. To wire, hold the trigger on an output dot and release on an input.",
+        const tips = { language: "Select the language level and the reason that fits the brief.", machine: "Select a program slot to cycle its instruction. Use Step instruction to trace the result.", translator: "Use both modes, observe the error, repair line 3 and run both modes again.", ide: "Set a breakpoint, run, watch values, step, edit the operator and test both orders.", circuit: "Point at a gate at the top of the board, hold the trigger and drag it down. To wire, hold the trigger on an output dot and release on an input.",
           expr: "Hold the trigger on a tile and drag it into the answer row, or just pull the trigger on a tile to add it to the end.", table: "Point at a ? and pull the trigger to change it to 0 or 1.",
           convert: "Point at a bit or a key and pull the trigger.", addshift: "Point at a bit and pull the trigger to change it between 0 and 1.",
           pixels: "Choose a colour, then hold the trigger and sweep across the pixels to paint them.", sound: "Pull the trigger on the level nearest the wave in each column.",

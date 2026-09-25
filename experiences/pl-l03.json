@@ -1,0 +1,307 @@
+{
+ "id": "pl-l03",
+ "lesson": 3,
+ "title": "Translation exchange",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Translation exchange",
+   "img": "img/PL_L03_TranslationExchange_360.jpg",
+   "imgHi": "img/PL_L03_TranslationExchange_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Why translate",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is the purpose of a language translator?",
+       "a": [
+        "Process source code into a form or operations that can be executed",
+        "Guarantee that every algorithm is correct",
+        "Draw the user interface automatically",
+        "Replace the processor"
+       ],
+       "fb": "A translator enables execution. Correct outputs still need to be tested."
+      },
+      {
+       "t": "mcq",
+       "q": "A program translates but calculates the wrong discount. What is still needed?",
+       "a": [
+        "Testing and correction of its logic",
+        "A claim that translation guarantees correctness",
+        "Deletion of the requirements",
+        "A faster monitor"
+       ],
+       "fb": "A valid expression can perform the wrong calculation."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Compile before running",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "order",
+       "q": "Put a successful compiled workflow in order.",
+       "steps": [
+        "Write or edit source code",
+        "Compile the source for a target platform",
+        "Obtain a successful build",
+        "Run the compiled result"
+       ],
+       "fb": "If a build fails, correct the reported problem and compile again before running the updated result."
+      },
+      {
+       "t": "mcq",
+       "q": "A developer changes a calculation in the source. What updates the compiled release?",
+       "a": [
+        "Recompile and distribute the new build",
+        "Run the old executable and expect its instructions to change",
+        "Rename the source file only",
+        "Remove the editor"
+       ],
+       "fb": "The existing compiled file does not update itself when its source changes."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Interpret during execution",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "In this model, what happens when interpretation reaches an invalid instruction?",
+       "a": [
+        "It reports the error and stops at that point",
+        "It silently fixes the instruction",
+        "It proves earlier output was correct",
+        "It always generates a distributable executable"
+       ],
+       "fb": "Earlier valid instructions may already have run. Real implementations can also perform checks before execution."
+      },
+      {
+       "t": "mcq",
+       "q": "Why can repeated interpretation have an execution cost?",
+       "a": [
+        "Source processing happens during each run",
+        "The screen must redraw the entire source",
+        "Interpreters cannot use memory",
+        "All source is converted to an image"
+       ],
+       "fb": "Compiled code can avoid repeating the same translation work at runtime. Actual performance depends on the implementation."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Observe the error",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "translator",
+       "q": "Investigate both modes with the error, repair it, then successfully run both modes."
+      },
+      {
+       "t": "mcq",
+       "q": "The interpreter displayed 6 before stopping. What can you conclude?",
+       "a": [
+        "At least one earlier output instruction executed",
+        "The entire program completed successfully",
+        "The compiler must also have displayed 6",
+        "There are no logic errors"
+       ],
+       "fb": "Partial output is evidence of earlier execution, not evidence that the entire program works."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Development and distribution",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Match each need to the approach it most directly supports.",
+       "cats": [
+        "Compiler",
+        "Interpreter"
+       ],
+       "items": [
+        [
+         "Create a saved target-code build before users run it",
+         "Compiler"
+        ],
+        [
+         "Process source instructions during each run",
+         "Interpreter"
+        ],
+        [
+         "Distribute the translated program without supplying high-level source",
+         "Compiler"
+        ],
+        [
+         "Use the simplified statement-at-a-time edit-run cycle",
+         "Interpreter"
+        ]
+       ],
+       "fb": "Both can be used during development; the choice depends on the language tools and project requirements."
+      },
+      {
+       "t": "mcq",
+       "q": "Which claim about compiled releases needs correcting?",
+       "a": [
+        "They work on every processor and operating system without checking",
+        "They may need rebuilding after source changes",
+        "They can be distributed as target code",
+        "They can avoid repeated source translation on each run"
+       ],
+       "fb": "Compiled output usually targets a particular platform and may depend on runtime support."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Compare without absolutes",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "multi",
+       "q": "Select the TWO defensible statements.",
+       "opts": [
+        "A compiler can produce a saved target-code build",
+        "Successful translation guarantees correct logic",
+        "An interpreter processes source during execution",
+        "Every interpreted program is slower than every compiled program"
+       ],
+       "correct": [
+        "A compiler can produce a saved target-code build",
+        "An interpreter processes source during execution"
+       ],
+       "fb": "Avoid universal speed claims; use the stated translation models when comparing the approaches."
+      },
+      {
+       "t": "mcq",
+       "q": "What should a developer do after fixing an error?",
+       "a": [
+        "Rerun relevant tests using the corrected program",
+        "Assume the change cannot affect anything else",
+        "Keep distributing only the failed build",
+        "Remove all error messages"
+       ],
+       "fb": "Testing the correction checks both the intended fix and other affected behaviour."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Plenary knowledge check",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "A team distributes a stable application to a known platform. Which benefit supports compilation?",
+       "a": [
+        "Users can run the translated build without compiling its source",
+        "It guarantees no logic errors",
+        "The source changes automatically update all installed copies",
+        "The executable runs on every instruction set"
+       ],
+       "fb": "Compilation can support distribution, but does not remove testing or platform requirements."
+      },
+      {
+       "t": "match",
+       "q": "Match each statement to the approach.",
+       "pairs": [
+        [
+         "Translates the source before running its compiled result",
+         "Compiler"
+        ],
+        [
+         "Processes source while carrying out its instructions",
+         "Interpreter"
+        ]
+       ],
+       "fb": "These are the GCSE comparison models. Some real implementations combine compilation and interpretation."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 920,
+     "y": 600,
+     "title": "Why translate",
+     "text": "The processor executes machine instructions, not the high-level source as written. A translator connects source instructions to operations the computer can carry out. Translation does not prove that the program meets its requirements. Think: Why is translating a program different from testing it?"
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1888,
+     "y": 600,
+     "title": "Compile before running",
+     "text": "In the GCSE model, a compiler translates the whole source program before execution. A successful build produces target code that can be saved and run again. Changes to the source require a new build to update that compiled version. Think: Why can a user run a compiled release without the original compiler?"
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 920,
+     "y": 600,
+     "title": "Interpret during execution",
+     "text": "In the simplified GCSE model, an interpreter processes and executes source statement by statement. If an error is reached, execution stops there and reports the problem. The interpreting software is used again when the source is run again. Think: Why can an interpreter be useful while a programmer is making frequent changes?"
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1888,
+     "y": 600,
+     "title": "Observe the error",
+     "text": "Use the same small program in both modes. The simulator deliberately models whole-program compilation and statement-at-a-time interpretation. Some real systems combine techniques; this is a conceptual comparison, not a timing benchmark. Think: Record what each mode outputs before the deliberately invalid instruction is fixed."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 920,
+     "y": 600,
+     "title": "Development and distribution",
+     "text": "Interpretation can support a quick edit-run-debug cycle. A compiled release can be distributed without giving users the high-level source. Target compatibility and runtime dependencies still matter for a compiled program. Think: Give one reason a supplier might compile a stable release for a specified platform."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1888,
+     "y": 600,
+     "title": "Compare without absolutes",
+     "text": "Both approaches can help identify errors, but neither guarantees correct logic. A compiler may report several translation errors from a build. An interpreter can help locate a problem during execution; error behaviour depends on the tool and error type. Think: Why is “a compiler finds every mistake” an unreliable claim?"
+    }
+   ],
+   "models": []
+  }
+ ]
+}
