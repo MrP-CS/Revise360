@@ -103,7 +103,8 @@
         sum ? `<div class="lesson-meta"><span>${sum.done}/${sum.count} stations · ${sum.score}/${sum.total} marks${sum.infoTotal ? ` · ${sum.infoSeen}/${sum.infoTotal} facts` : ""}</span><span class="rag ${band}">${sum.done ? Store.BAND_LABEL[band] : "Not started"}</span><div class="bar" role="progressbar" aria-label="${esc(e.title)} stations complete" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100"><i style="width:${pct}%"></i></div></div>` : '<span class="err">Could not load this experience.</span>'}</div>
         <div class="lesson-actions"><a class="btn small" href="experience.html?id=${encodeURIComponent(e.id)}">${sum && sum.complete ? "Open" : started ? "Continue" : "Start"} <span aria-hidden="true">↗</span></a>
         ${hasWeak ? `<a class="quiet-link" href="experience.html?id=${encodeURIComponent(e.id)}&review=1">Review mistakes</a>` : ""}
-        ${e.worksheet ? `<a class="quiet-link" href="${esc(e.worksheet)}" download aria-label="Download the ${esc(e.title)} worksheet (Word document)">Worksheet ↓</a>` : ""}</div></article>`);
+        ${e.worksheet ? `<a class="quiet-link" href="${esc(e.worksheet)}" download aria-label="Download the ${esc(e.title)} worksheet (Word document)">Worksheet ↓</a>` : ""}
+        ${e.powerpoint ? `<a class="quiet-link" href="${esc(e.powerpoint)}" download aria-label="Download the ${esc(e.title)} lesson PowerPoint (PPTX)">Lesson PowerPoint ↓</a>` : ""}</div></article>`);
     }
     weak.sort((a, b) => (a.st.got / a.st.tot) - (b.st.got / b.st.tot));
     $("#main").innerHTML = `<a class="crumb" href="?">← All topics</a>
