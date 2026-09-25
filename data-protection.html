@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Data protection policy | Revise 360</title>
-<meta name="description" content="The Revise 360 data protection policy: what is processed, the lawful basis, retention, security, sub-processors, breach handling and your rights.">
+<meta name="description" content="Current local-demo data storage and the work required before hosted school accounts are introduced.">
 <link rel="icon" href="assets/revise360-mark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/rebrand.css">
 <script src="js/config.js"></script>
 <script src="js/local.js"></script>
 <script src="js/store.js"></script>
-<script src="js/nav.js"></script>
+<script src="js/nav.js?v=info-20260925"></script>
 </head>
 <body>
 <header class="bar">
@@ -20,98 +20,19 @@
 </header>
 
 <main class="page">
-  <section class="hero">
-    <h1>Data protection policy</h1>
-    <p class="lead">This is the full policy for schools and data protection leads. It explains what Revise 360 processes, why, where it is kept, for how long, and what a school can ask for. The short version is on the <a href="privacy.html">privacy page</a>.</p>
-    <p class="muted">Version 1.0 · September 2026 · Revise 360 Ltd · Applies to revise360.co.uk and its backend service</p>
-  </section>
-
-  <div class="callout">
-    <p><b>The principle behind the design.</b> Revise 360 is used by children, so it is built to hold as little as possible. It never asks for a name, an email address, a date of birth or any contact detail, and a PIN never leaves the device in a readable form. A record on its own does not identify a child: it identifies a username that only the school can resolve.</p>
-  </div>
-
-  <h2>1. Who does what</h2>
-  <table class="info">
-    <tr><th>Role</th><th>Who</th><th>Responsibility</th></tr>
-    <tr><td>Data controller</td><td>The subscribing school or trust</td><td>Decides to use the service, chooses which usernames are used, tells pupils and parents, and handles pupils' rights requests</td></tr>
-    <tr><td>Data processor</td><td>Revise 360 Ltd (company number __________, registered in England and Wales)</td><td>Processes progress data only on the school's instructions, to provide the service</td></tr>
-    <tr><td>Sub-processor</td><td>Cloudflare, Inc.</td><td>Hosting, database and content delivery</td></tr>
-  </table>
-  <p>A written processor agreement under Article 28 of the UK GDPR is provided to every subscribing school before any pupil data is processed. You can <a href="dpa.html">read the agreement in full</a>, or email <a href="mailto:hello@revise360.co.uk">hello@revise360.co.uk</a> for a signable copy.</p>
-
-  <h2>2. What is processed</h2>
-  <table class="info">
-    <tr><th>Data</th><th>Example</th><th>Purpose</th><th>Lawful basis</th></tr>
-    <tr><td>Username chosen at sign-in</td><td><code>24smithj</code></td><td>So teachers can identify a row on the dashboard</td><td>Public task, or legitimate interests of the school</td></tr>
-    <tr><td>Class or group label, optional</td><td><code>11A</code></td><td>Grouping results for a teacher</td><td>As above</td></tr>
-    <tr><td>Derived sign-in code</td><td>SHA-256 hash</td><td>Matching a returning student to their progress across devices</td><td>As above</td></tr>
-    <tr><td>Progress records</td><td>Scores per station, answers given, personal bests, markers viewed</td><td>Feedback to the student and the teacher</td><td>As above</td></tr>
-    <tr><td>Generated PIN <span class="muted">(only where a teacher creates the logins)</span></td><td><code>2418</code></td><td>So a teacher can reprint a lost login card or reset a PIN</td><td>As above</td></tr>
-    <tr><td>Teacher key</td><td>A secret phrase held by the school</td><td>Controlling access to the dashboard</td><td>Contract</td></tr>
-  </table>
-  <p>No special category data is processed. No profiling and no automated decision-making with legal or similarly significant effects takes place: scores are feedback on quiz answers, nothing more.</p>
-
-  <h2>3. What is never processed</h2>
-  <ul>
-    <li>Real names, email addresses, dates of birth, addresses or phone numbers</li>
-    <li>Passwords of any kind. Where a student chooses their own PIN it is never transmitted or stored: only a one-way code made from it. Where a teacher creates class logins, the generated PIN is stored so cards can be reprinted; it is not a password to any other system and can be reset at any time</li>
-    <li>Location, microphone, camera, or headset sensor data of any kind</li>
-    <li>Advertising identifiers, third-party cookies or analytics trackers. There is no advertising on the service, and data is never sold, rented or shared for marketing</li>
-  </ul>
-
-  <h2>4. Where data is held, and transfers</h2>
-  <p>Progress is stored in the browser's local storage on the device, and in a Cloudflare D1 database hosted in the UK and the European Union. Cloudflare may route requests through its global network, and any resulting transfer outside the UK is covered by the UK International Data Transfer Addendum and Standard Contractual Clauses under Cloudflare's own data processing addendum.</p>
-
-  <h2>5. Retention</h2>
-  <table class="info">
-    <tr><th>Record</th><th>Kept for</th></tr>
-    <tr><td>Progress and sign-in records</td><td>Until a year after the last activity, then deleted automatically by a weekly job</td></tr>
-    <tr><td>All of a school's records</td><td>Deleted within 30 days of a subscription ending, or sooner on request</td></tr>
-    <tr><td>On-device copies</td><td>Removed when the browser's site data is cleared, or on sign-out from that device</td></tr>
-    <tr><td>Support emails</td><td>Up to 12 months, then deleted</td></tr>
-  </table>
-
-  <h2>6. Security</h2>
-  <ul>
-    <li>All traffic is encrypted in transit with HTTPS, and data at rest is encrypted by the hosting platform.</li>
-    <li>PINs are never stored. The sign-in code is a one-way hash and cannot be reversed to recover a PIN.</li>
-    <li>Dashboard access requires a teacher key, checked in a way that resists guessing by timing. Each school has its own key, and keys are never shared between schools.</li>
-    <li>Requests are size-limited and validated, and the database is reached only through parameterised queries.</li>
-    <li>Access to production systems is limited to the service owner, protected by multi-factor authentication.</li>
-    <li>The system is designed so that a compromise would expose usernames and quiz scores, not identities or credentials.</li>
-  </ul>
-
-  <h2>7. Pupils' rights</h2>
-  <p>Requests are made to the school as controller, which can act directly in the dashboard or ask Revise 360 to act. Because records contain no contact details, a school must identify the username concerned.</p>
-  <ul>
-    <li><b>Access:</b> an export of that username's records, provided within one calendar month.</li>
-    <li><b>Rectification:</b> a username or class label can be corrected.</li>
-    <li><b>Erasure:</b> all records for a username deleted, normally the same working day.</li>
-    <li><b>Objection and restriction:</b> a school can switch off syncing so nothing leaves the device.</li>
-    <li><b>Portability:</b> records are exported as CSV or JSON.</li>
-  </ul>
-
-  <h2>8. If something goes wrong</h2>
-  <p>Any suspected personal data breach is investigated immediately, and affected schools are told without undue delay and in any case within 24 hours of confirmation, with what happened, what data was affected, what has been done and what the school should consider. As processor, Revise 360 supports the school in any report it must make to the Information Commissioner's Office within 72 hours.</p>
-
-  <h2>9. Children</h2>
-  <p>The service is designed for supervised classroom use with 11 to 16 year olds. It has no chat, no messaging, no user-generated content, no public leaderboards, no external links inside the experiences and no way for students to contact one another. Nothing a student writes is published anywhere. Schools should include Revise 360 in the privacy notice they give to parents; a short paragraph is available on request.</p>
-
-  <h2>10. Helping with your DPIA</h2>
-  <p>Most schools find this service low risk, but the following is provided on request to support a data protection impact assessment: the processor agreement, a data flow description, the retention schedule, details of sub-processors, security measures, and a completed supplier questionnaire.</p>
-
-  <h2>11. Changes and contact</h2>
-  <p>Material changes to this policy are notified to subscribing schools by email at least 30 days in advance. Questions, requests, agreements and breach notifications: <a href="mailto:hello@revise360.co.uk">hello@revise360.co.uk</a>.</p>
-  <p>If you are unhappy with how data has been handled, you may complain to the Information Commissioner's Office at ico.org.uk.</p>
-
-  <div class="callout">
-    <p><b>Schools running their own copy.</b> If your school hosts its own backend, none of the pupil data reaches Revise 360 at all. In that case you are both controller and processor for the progress data, and this policy applies only to the site's own content.</p>
-  </div>
+  <section class="hero"><h1>Data protection information for schools</h1><p class="lead">The current public site is a local demonstration. It is not yet a hosted school account service. This page distinguishes today's trial from the planned service.</p><p class="muted">Updated 25 September 2026.</p></section>
+  <h2>What the trial stores</h2><p>Demo usernames, PINs, class lists and learning progress are stored in the browser used to create them. They are not shared between school devices. Use fictional student and colleague details when testing the dashboard.</p>
+  <p>Signing out does not delete the entire local dataset. Clear the site's browser data to remove it from that browser profile. Browser storage is not a school data backup or a secure shared account system.</p>
+  <h2>Resources and web requests</h2><p>Teachers and students can download available lesson PowerPoints and worksheets. Completed or edited documents are not uploaded by this site. The website, font and library providers still receive ordinary web requests; see the <a href="privacy.html">privacy page</a>.</p>
+  <h2>Before a hosted school trial</h2><p>Hosted progress tracking and teacher Microsoft sign-in are not enabled. Before introducing them, the service's data flows, account permissions, security, retention and hosting arrangements need to be confirmed and documented for participating schools.</p>
+  <ul><li>Define exactly which teacher and pupil information is processed and why.</li><li>Confirm the providers, processing locations and applicable transfer arrangements.</li><li>Verify school separation, account revocation, deletion and export.</li><li>Complete the organisation details and review the school processing agreement.</li></ul>
+  <p>The <a href="dpa.html">draft processing agreement</a> is for review, not evidence that these controls are already deployed. Earlier descriptions of UK/EU-only hosting and PINs never being stored should not be relied on as a description of the current prototype.</p>
+  <h2>Questions and school review</h2><p>Contact <a href="mailto:hello@revise360.co.uk">hello@revise360.co.uk</a> with data protection questions or your school's supplier-review requirements. Do not send identifiable pupil data as part of a trial enquiry.</p>
 </main>
 
 <footer class="site">
   <p><b>Revise 360</b> — a product of Revise 360 Ltd, created by Olly Pettitt. An independent resource: not written, endorsed or approved by OCR or any exam board.</p>
-  <p>&copy; 2026 Revise 360 Ltd. All rights reserved. Licensed to subscribing schools for use with their own students; not to be copied, redistributed, resold or adapted without written permission.</p>
+  <p>&copy; 2026 Revise 360 Ltd. All rights reserved. Classroom use and personal study are subject to the <a href="terms.html">terms of use</a>. Do not republish or resell the resources.</p>
   <p><a href="index.html">Home</a> · <a href="about.html">About</a> · <a href="teachers.html">For teachers</a> · <a href="privacy.html">Privacy</a> · <a href="mailto:hello@revise360.co.uk">hello@revise360.co.uk</a></p>
 </footer>
 </body>

@@ -3,67 +3,57 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Get a teacher key | Revise 360</title>
-<meta name="description" content="Request a teacher key for Revise 360, then create your students' logins and print their cards.">
+<title>School access | Revise 360</title>
+<meta name="description" content="Enquire about Revise 360 school access and try the local teacher dashboard.">
 <link rel="icon" href="assets/revise360-mark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/rebrand.css">
 <script src="js/config.js"></script>
 <script src="js/local.js"></script>
 <script src="js/store.js"></script>
-<script src="js/nav.js"></script>
+<script src="js/nav.js?v=info-20260925"></script>
 </head>
 <body>
 <header class="bar">
-  <a class="brand" href="index.html"><img class="brand-icon" src="assets/revise360-mark.svg" alt=""><span class="brand-copy"><b>Revise<span>360</span></b><small>Get a teacher key</small></span></a>
+  <a class="brand" href="index.html"><img class="brand-icon" src="assets/revise360-mark.svg" alt=""><span class="brand-copy"><b>Revise<span>360</span></b><small>School access</small></span></a>
   <div class="tools"></div>
 </header>
 
 <main class="page">
   <section class="hero">
-    <h1>Get your teacher key</h1>
-    <p class="lead">A teacher key opens your dashboard, where you create your students' logins and print their cards. Everything you create is tied to your school, so you see your classes and nobody else's.</p>
+    <h1>Ask about school access</h1>
+    <p class="lead">Try the lesson resources now and contact us about school access. The current dashboard is a local demo; shared class tracking and teacher Microsoft sign-in are not yet enabled.</p>
   </section>
 
   <div class="cards">
-    <div class="c"><span class="ico">01 /</span><h3>Your teacher key</h3><p>A long private string you paste into the dashboard. Keep it to staff: anyone with it can see your school's results.</p></div>
-    <div class="c"><span class="ico">02 /</span><h3>Your students' logins</h3><p>You choose the usernames; PINs are generated. Print a login card for each student, or share them on Teams.</p></div>
-    <div class="c"><span class="ico">03 /</span><h3>Usually same day</h3><p>Requests are checked by hand from a school email address, then the key and code are emailed to you.</p></div>
+    <div class="c"><span class="ico">01 /</span><h3>Lesson resources</h3><p>Download available PowerPoints and worksheets from the experience selection screen for teaching and revision.</p></div>
+    <div class="c"><span class="ico">02 /</span><h3>Try the dashboard</h3><p>Use the key demo and fictional details to explore class tools. Logins and results stay in the same browser.</p></div>
+    <div class="c"><span class="ico">03 /</span><h3>School enquiries</h3><p>Tell us what your school needs. We will discuss access and availability with you before any hosted school setup.</p></div>
   </div>
 
-  <h2>Request a key</h2>
+  <h2>Enquire about access</h2>
   <form class="card signin" id="f" novalidate style="max-width:640px">
     <div class="field"><label for="name">Your name</label><input id="name" required maxlength="80" autocomplete="name"></div>
     <div class="field"><label for="email">School email address</label><input id="email" type="email" required maxlength="120" autocomplete="email" placeholder="you@yourschool.sch.uk"></div>
     <div class="field"><label for="school">School or trust</label><input id="school" required maxlength="120"></div>
     <div class="field"><label for="role">Your role <span class="muted">(optional)</span></label><input id="role" maxlength="60" placeholder="Head of Computing"></div>
     <div class="field"><label for="note">Anything else <span class="muted">(optional)</span></label><textarea id="note" maxlength="500" rows="3" placeholder="Which year groups, how many classes, when you'd like to start"></textarea></div>
-    <p class="muted" style="font-size:13px">We use your email only to send your key and occasional service notices. Nothing is shared with anyone else, and you can ask for it to be deleted at any time. See the <a href="privacy.html">privacy page</a>.</p>
+    <p class="muted" style="font-size:13px">We use the details you send to respond to your school access enquiry. Do not include pupil records. You can ask about access to or deletion of your correspondence at any time. See the <a href="privacy.html">privacy page</a>.</p>
     <p class="err" id="err" role="alert"></p>
-    <div class="row end"><button class="btn" type="submit" id="go">Request a key</button></div>
+    <div class="row end"><button class="btn" type="submit" id="go">Prepare access request</button></div>
   </form>
 
   <div id="done" hidden>
-    <div class="callout"><p><b>Request sent.</b> Check your inbox: your teacher key will arrive by email, usually the same working day. If nothing has arrived by the next morning, email <a href="mailto:hello@revise360.co.uk">hello@revise360.co.uk</a>.</p></div>
+    <div class="callout"><p><b>Request sent.</b> We will reply about access and availability. For questions, email <a href="mailto:hello@revise360.co.uk">hello@revise360.co.uk</a>.</p></div>
   </div>
 
-  <h2>What happens next</h2>
-  <ol class="steps">
-    <li><b>Your teacher key arrives by email.</b> Keep it to staff: it opens your school's dashboard.</li>
-    <li><b>Create your class logins.</b> In the dashboard, paste your usernames or import a CSV from your MIS. A six-digit PIN is generated for each one.</li>
-    <li><b>Hand out the login cards.</b> Print them, or save them to share on Teams or Google Classroom.</li>
-    <li><b>Students sign in</b> with just their username and PIN. Nothing else to type, nothing for them to set up.</li>
-    <li><b>Watch the results</b> appear on your dashboard, and invite your colleagues so they see the same classes.</li>
-  </ol>
-
-  <div class="callout">
-    <p><b>Already have a key?</b> Go straight to the <a href="teacher.html">dashboard</a>. Lost it? Email from the address you signed up with and it can be reissued. <b>A colleague already using Revise 360?</b> Ask them to invite you from their dashboard instead: you'll join their school automatically and see the same classes.</p>
-  </div>
+  <h2>What you can try now</h2><p>Visit the <a href="teachers.html">teacher guide</a> for the lesson sequence and resource downloads, or open the <a href="teacher.html">local demo dashboard</a> with the key <b>demo</b>. Creating a login in one browser does not make it available on another device.</p>
+  <p>School account activation and colleague invitations require the hosted service. Submitting an enquiry does not create an account.</p>
 </main>
 
 <footer class="site">
   <p><b>Revise 360</b> — a product of Revise 360 Ltd, created by Olly Pettitt. An independent resource: not written, endorsed or approved by OCR or any exam board.</p>
-  <p>&copy; 2026 Revise 360 Ltd. All rights reserved. Licensed to subscribing schools for use with their own students; not to be copied, redistributed, resold or adapted without written permission.</p>
+  <p>&copy; 2026 Revise 360 Ltd. All rights reserved. Classroom use and personal study are subject to the <a href="terms.html">terms of use</a>. Do not republish or resell the resources.</p>
 </footer>
 
 <script>
@@ -77,6 +67,7 @@
       return $("#err").textContent = "Please fill in your name, school and a valid school email address.";
     $("#go").disabled = true; $("#err").textContent = "";
     try {
+      if (!window.APP_CONFIG.backendUrl) throw new Error("local demo");
       const r = await fetch(window.APP_CONFIG.backendUrl, { method: "POST", body: JSON.stringify(body) });
       const j = await r.json();
       if (!j.ok) throw new Error(j.error || "server error");
@@ -84,14 +75,14 @@
     } catch (err) {
       $("#go").disabled = false;
       // The server didn't answer. Offer the same request as an email instead, already written.
-      const subject = "Revise 360 teacher key request — " + body.school;
-      const mail = "Hello,\n\nPlease could I have a Revise 360 teacher key?\n\n"
+      const subject = "Revise 360 school access enquiry — " + body.school;
+      const mail = "Hello,\n\nPlease could you tell me about Revise 360 school access?\n\n"
         + "Name: " + body.name + "\nSchool: " + body.school + "\nEmail: " + body.email
         + (body.role ? "\nRole: " + body.role : "") + (body.note ? "\nNotes: " + body.note : "")
         + "\n\nThank you.";
       const href = "mailto:hello@revise360.co.uk?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(mail);
-      $("#err").innerHTML = 'We couldn\'t reach the server just now. <a id="mailfall" href="' + href + '">Send this request by email instead</a>, '
-        + 'and you\'ll get your key the same way.';
+      $("#err").innerHTML = 'Online registration is not available right now. <a id="mailfall" href="' + href + '">Send this request by email instead</a>, '
+        + 'then choose Send in your email app to submit your enquiry.';
     }
   };
 })();

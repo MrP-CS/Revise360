@@ -11,7 +11,7 @@
 <script src="js/config.js"></script>
 <script src="js/local.js"></script>
 <script src="js/store.js"></script>
-<script src="js/nav.js"></script>
+<script src="js/nav.js?v=info-20260925"></script>
 </head>
 <body>
 <header class="bar">
@@ -46,6 +46,10 @@
   }
 
   async function start() {
+    if (!window.APP_CONFIG.backendUrl) {
+      $("#main").innerHTML = '<section class="hero"><h1>School invitations are not enabled yet</h1><p class="lead">The current site uses a local demo. Shared school accounts and colleague invitations require the hosted service.</p><p><a href="teachers.html">Read the teacher guide</a> or <a href="signup.html">enquire about school access</a>.</p></section>';
+      return;
+    }
     if (!code) return problem("The link is missing its invite code. Check you copied the whole thing.");
     let info;
     try { info = await api({ action: "invite_info", code }); }

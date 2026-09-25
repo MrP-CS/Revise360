@@ -19,7 +19,7 @@
   // Footer navigation, in columns, added to every page that has the site footer
   const FOOT = [
     ["Students", [["topics.html", "All topics"], ["guides.html#students", "How to use Revise 360"], ["guides.html#vr", "Using a VR headset"]]],
-    ["Teachers", [["teachers.html", "For teachers"], ["signup.html", "Get a teacher key"], ["teacher.html", "Dashboard"], ["guides.html#teachers", "Teacher guide"]]],
+    ["Teachers", [["teachers.html", "For teachers"], ["signup.html", "School access"], ["teacher.html", "Dashboard"], ["guides.html#teachers", "Teacher guide"]]],
     ["About", [["index.html", "Home"], ["about.html", "About Revise 360"], ["about.html#faq", "FAQs"], ["mailto:hello@revise360.co.uk", "Contact"]]],
     ["Legal", [["privacy.html", "Privacy"], ["data-protection.html", "Data protection"], ["dpa.html", "Processing agreement"], ["terms.html", "Terms of use"]]]
   ];
