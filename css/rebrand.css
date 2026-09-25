@@ -199,7 +199,7 @@ a.topic:hover { background:#F5F7FC;border-color:var(--line);color:var(--fg)!impo
 .exp .lesson-number { align-self:start;color:var(--edge);font:600 15px 'IBM Plex Mono',ui-monospace,monospace;padding-top:7px; }
 .exp .thumb { display:block;width:190px;height:120px;padding:12px 14px;overflow:hidden;border:1px solid #C9D5E7;border-radius:0;background:#F2F5FB;color:#263C62;text-align:left;cursor:zoom-in; }
 .exp .thumb:hover { border-color:var(--edge);background:#EAF0FF; }
-.exp .thumb-copy { display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:6;overflow:hidden;font-size:12px;line-height:1.35; }
+.exp .thumb .thumb-copy { position:static;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:6;overflow:hidden;padding:0;border-radius:0;background:transparent;color:inherit;font-size:12px;font-weight:400;line-height:1.35; }
 .description-dialog { position:fixed;width:min(560px,calc(100vw - 36px));max-height:calc(100dvh - 36px);padding:30px 34px 34px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--fg);box-shadow:0 25px 80px rgba(16,24,40,.3); }
 .description-dialog::backdrop { background:rgba(16,24,40,.7); }
 .description-dialog .eyebrow { margin:0 34px 10px 0; }
