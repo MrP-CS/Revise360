@@ -451,7 +451,7 @@
       if (res.review) { qPanel.hide(); toast(res.message); return; }
       if (!res.sceneDone) { qPanel.hide(); return; }
       const blocks = [{ p: "Your score", size: 30, align: "center", color: COL.soft }, { big: `${res.got} / ${res.tot}` },
-        { p: `Saved${core.CFG.backendUrl ? " for your teacher" : " on this device"}. Copy it onto your worksheet when you take the headset off.`, size: 26, align: "center" }, { gap: 8 }];
+        { p: core.publicDemo ? "Demo progress resets when you leave. Copy your score onto your worksheet when you take the headset off." : `Saved${core.CFG.backendUrl ? " for your teacher" : " on this device"}. Copy it onto your worksheet when you take the headset off.`, size: 26, align: "center" }, { gap: 8 }];
       res.rows.forEach(x => blocks.push({ kv: [x.name, `${x.got} / ${x.tot}`, [x.band, Store.BAND_LABEL[x.band]]] }));
       if (res.whole.complete && core.exp.scenes.length > 1) blocks.push({ gap: 6 }, { p: `Lesson complete: ${res.whole.score} / ${res.whole.total}`, size: 30, bold: true, align: "center" });
       const row = [];

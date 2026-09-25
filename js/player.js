@@ -1,10 +1,22 @@
 // Generic 360 experience player. Everything it shows comes from
 // experiences/<id>.json, so new lessons need no code changes.
 (async function () {
-  // Experiences are for signed-in students. No navigation chrome in here: the ⌂ Home
-  // button in the toolbar is the way out.
+  const params = new URLSearchParams(location.search);
+  // The homepage may show this one lesson without a login. Its progress stays in memory.
+  const publicDemo = params.get("demo") === "1" && params.get("id") === "ms-l01";
+  let demoProgress = null;
+  const Store = publicDemo ? {
+    ...window.Store,
+    student: () => ({ name: "Visitor", cls: "Public demo" }),
+    get: () => demoProgress,
+    put: (_id, data) => { demoProgress = data; },
+    onStatus: callback => { callback("demo"); return () => {}; },
+    flushQueue: async () => {},
+    push: async () => {}
+  } : window.Store;
+  // Other experiences still require a student login.
   const R360PlayerGate = (() => {
-    const who = window.Store && Store.student && Store.student();
+    const who = Store && Store.student && Store.student();
     if (!who) {
       const back = encodeURIComponent(location.pathname.split("/").pop() + location.search);
       location.replace("topics.html?next=" + back + "#signin");
@@ -14,7 +26,6 @@
   })();
   if (!R360PlayerGate) return;
   const CFG = window.APP_CONFIG;
-  const params = new URLSearchParams(location.search);
   let expId = params.get("id");
   const student = Store.student();
   if (!student) { location.href = "index.html?next=" + encodeURIComponent(location.pathname.split("/").pop() + location.search); return; }
@@ -38,11 +49,11 @@
     prog.summary = { score: s.score, total: s.total, done: s.done, count: s.count, info: s.infoSeen, infoTotal: s.infoTotal };
     Store.put(expId, prog);
   }
-  const statusText = { local: "Saved on this device", idle: "Saved", saved: "Saved ✓", pending: "Saving…", syncing: "Saving…", offline: "Offline: saved on this device, will sync later" };
-  let syncState = "local";
+  const statusText = { demo: "Demo progress resets when you leave", local: "Saved on this device", idle: "Saved", saved: "Saved ✓", pending: "Saving…", syncing: "Saving…", offline: "Offline: saved on this device, will sync later" };
+  let syncState = publicDemo ? "demo" : "local";
   Store.onStatus(s => { syncState = s; const el = $("#sync"); if (el) el.textContent = statusText[s] || ""; });
   Store.flushQueue();
-  addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden" && CFG.backendUrl) Store.push(expId, true); });
+  addEventListener("visibilitychange", () => { if (!publicDemo && document.visibilityState === "hidden" && CFG.backendUrl) Store.push(expId, true); });
 
   // ---------- three.js scene ----------
   const el = $("#v");
@@ -480,31 +491,54 @@
     const { sc, got, tot, nextIdx, whole } = res;
     const rows = res.rows.map(s => `<tr><td>${esc(s.name)}</td><td>${s.got} / ${s.tot} <span class="rag ${s.band}">${Store.BAND_LABEL[s.band]}</span></td></tr>`).join("");
     shell(sc.title + " complete", "#ffd046", `<p class="center q">Your score</p><div class="big">${got} / ${tot}</div>
-      <p class="center">Your score has been saved${CFG.backendUrl ? " for your teacher" : " on this device"}. Copy it onto your worksheet too.</p>
+      <p class="center">${publicDemo ? "This demo score resets when you leave. Copy it onto your worksheet if you want to keep it." : `Your score has been saved${CFG.backendUrl ? " for your teacher" : " on this device"}. Copy it onto your worksheet too.`}</p>
       <table class="bd">${rows}</table>
       ${whole.complete && exp.scenes.length > 1 ? `<p class="center"><b>Lesson complete: ${whole.score} / ${whole.total}</b></p>` : ""}
       <p class="qn">Secure = full marks. Revise = mostly right. Focus here = revise this first. Turn on review mode to retry anything you got wrong.</p>
-      <div class="mrow" id="mrow">${res.anyOpen ? '<button class="btn ghost" id="rv">Review my mistakes</button>' : ""}${nextIdx >= 0 ? `<button class="btn" id="go">Go to ${esc(exp.scenes[nextIdx].title)}</button>` : `<a class="btn" href="${esc(home)}">Back to topic</a>`}</div>`);
+      <div class="mrow" id="mrow">${res.anyOpen ? '<button class="btn ghost" id="rv">Review my mistakes</button>' : ""}${nextIdx >= 0 ? `<button class="btn" id="go">Go to ${esc(exp.scenes[nextIdx].title)}</button>` : `<a class="btn" href="${esc(home)}"${publicDemo ? ' target="_top"' : ''}>${publicDemo ? 'Back to home' : 'Back to topic'}</a>`}</div>`);
     const go = $("#go"); if (go) { go.focus(); go.onclick = () => { closeModal(); loadScene(nextIdx); }; }
     const rv = $("#rv"); if (rv) rv.onclick = () => { closeModal(); setReview(true); };
   }
 
   // ---------- toolbar ----------
   let home = "index.html";
-  $("#homeBtn").onclick = () => location.href = home;
+  $("#homeBtn").onclick = () => { if (publicDemo && window.top !== window) window.top.location.href = home; else location.href = home; };
   fetch("experiences/topics.json", { cache: "no-cache" }).then(r => r.json()).then(t => { if (t.siteTitle) document.title = exp.title + " | " + t.siteTitle; }).catch(() => {});
   fetch("experiences/registry.json", { cache: "no-cache" }).then(r => r.json()).then(reg => {
     const e = (reg.experiences || []).find(x => x.id === expId);
-    if (e && e.topic) home = "index.html?topic=" + encodeURIComponent(e.topic);
+    if (!publicDemo && e && e.topic) home = "index.html?topic=" + encodeURIComponent(e.topic);
     if (e && e.worksheet) { const a = $("#wsBtn"); a.href = e.worksheet; a.hidden = false; a.setAttribute("aria-label", "Download the worksheet for this lesson (Word document)"); }
   }).catch(() => {});
   $("#progBtn").onclick = () => drawer.classList.contains("progress") ? closeDrawer() : showProgress();
   $("#reviewBtn").onclick = () => setReview(!reviewMode);
   $("#reviewBtn").setAttribute("aria-pressed", reviewMode);
-  $("#helpBtn").onclick = () => openDrawer(`<h2>How to use</h2><p>Drag (or use the arrow keys) to look around. Pinch or scroll to zoom.</p><p style="margin-top:8px">Tap a numbered badge to answer that station's questions. Tap a blue <b>i</b> to find out more; the panel stays open while you keep exploring.</p><p style="margin-top:8px">Your progress saves automatically after every answer, so you can leave and come back later.</p>`);
+  const fullBtn = $("#fullBtn");
+  const parentFullscreen = () => {
+    try { return window.parent !== window && window.parent.document.fullscreenElement === window.frameElement; }
+    catch (err) { return false; }
+  };
+  if (!document.documentElement.requestFullscreen && !parentFullscreen()) fullBtn.hidden = true;
+  else {
+    fullBtn.onclick = async () => {
+      try {
+        if (document.fullscreenElement) await document.exitFullscreen();
+        else if (parentFullscreen()) await window.parent.document.exitFullscreen();
+        else await document.documentElement.requestFullscreen();
+      } catch (err) { /* The browser may disallow full screen in this context. */ }
+    };
+    const updateFullscreen = () => {
+      const active = !!document.fullscreenElement || parentFullscreen();
+      fullBtn.textContent = active ? "⛶ Exit full screen" : "⛶ Full screen";
+      fullBtn.setAttribute("aria-pressed", String(active));
+    };
+    document.addEventListener("fullscreenchange", updateFullscreen);
+    try { if (window.parent !== window) window.parent.document.addEventListener("fullscreenchange", updateFullscreen); }
+    catch (err) { /* An external embed cannot read its parent document. */ }
+  }
+  $("#helpBtn").onclick = () => openDrawer(`<h2>How to use</h2><p>Drag (or use the arrow keys) to look around. Pinch or scroll to zoom.</p><p style="margin-top:8px">Tap a numbered badge to answer that station's questions. Tap a blue <b>i</b> to find out more; the panel stays open while you keep exploring.</p><p style="margin-top:8px">${publicDemo ? "Your demo progress lasts until you leave this page." : "Your progress saves automatically after every answer, so you can leave and come back later."}</p>`);
 
   Object.assign(core, {
-    exp, prog, student, CFG, scene, cam, renderer: r, grp, mat, marks, shuffle, esc, save, hud, drawNav, refreshSprites,
+    exp, prog, student, CFG, publicDemo, scene, cam, renderer: r, grp, mat, marks, shuffle, esc, save, hud, drawNav, refreshSprites,
     stationState, taskList, award, asset, completeStation, markInfo, setReview, loadScene, cubeFrom, world, texFor,
     sceneHooks: [], closeUI() { closeDrawer(); if (modal.classList.contains("open")) closeModal(); }
   });
