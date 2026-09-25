@@ -57,7 +57,31 @@
 
   // ---------- three.js scene ----------
   const el = $("#v");
-  const r = new THREE.WebGLRenderer({ antialias: true }); r.setPixelRatio(Math.min(devicePixelRatio, 2)); el.appendChild(r.domElement);
+  let r;
+  try { r = new THREE.WebGLRenderer({ antialias: true }); }
+  catch (err) {
+    // A blocked 3D library or unavailable WebGL context should not leave an empty frame.
+    const image = exp.scenes[0]?.img;
+    if (image) el.style.backgroundImage = `linear-gradient(rgba(10,16,30,.35),rgba(10,16,30,.7)),url("${asset(image)}")`;
+    el.style.backgroundPosition = "center";
+    el.style.backgroundSize = "cover";
+    el.style.cursor = "default";
+    const message = document.createElement("div");
+    message.className = "webgl-fallback";
+    message.setAttribute("role", "status");
+    const title = document.createElement("h1"); title.textContent = "360° viewer unavailable";
+    const detail = document.createElement("p"); detail.textContent = "This browser cannot start the interactive 3D view. Try a device or browser with WebGL enabled.";
+    const link = document.createElement("a"); link.className = "btn";
+    link.href = publicDemo ? "index.html" : "topics.html";
+    if (publicDemo) link.target = "_top";
+    link.textContent = publicDemo ? "Back to home" : "Back to topics";
+    message.append(title, detail, link);
+    el.appendChild(message);
+    $(".hudbar").style.display = "none";
+    $(".tools").style.display = "none";
+    return;
+  }
+  r.setPixelRatio(Math.min(devicePixelRatio, 2)); el.appendChild(r.domElement);
   r.xr.enabled = true; r.xr.setReferenceSpaceType("local");
   const scene = new THREE.Scene(); const cam = new THREE.PerspectiveCamera(85, 1, .1, 100);
   // Everything in the 360 world lives in one group, so VR can rotate it (snap turn, starting direction)

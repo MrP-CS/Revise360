@@ -70,6 +70,10 @@ html:has(body.player){height:100%}
 .hud{margin-left:auto;text-align:right;font-size:13px;line-height:1.4;padding:8px 12px}
 .hud b{font-size:20px;color:var(--edge)}
 .tools{position:fixed;bottom:calc(12px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:96vw}
+body.player .tools{width:max-content}
+.webgl-fallback{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(420px,calc(100% - 32px));padding:22px 24px;text-align:center;background:rgba(10,16,30,.92);border:1px solid #667996;border-radius:12px;color:#fff;cursor:default}
+.webgl-fallback h1{margin:0 0 8px;font-size:22px}
+.webgl-fallback p{margin:0 0 15px;font-size:14px;line-height:1.5;color:#D4DFEE}
 .tools a{background:rgba(10,16,30,.9);color:var(--fg);border:1px solid var(--line);border-radius:11px;padding:8px 12px;font-size:14px;text-decoration:none}
 .tools button{background:rgba(10,16,30,.9);color:var(--fg);border:1px solid var(--line);border-radius:11px;padding:8px 12px;font-size:14px}
 .tools button[aria-pressed="true"]{border-color:var(--amber);color:var(--amber)}
