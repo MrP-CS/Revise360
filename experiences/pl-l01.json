@@ -1,0 +1,369 @@
+{
+  "id": "pl-l01",
+  "lesson": 1,
+  "title": "Language level lab",
+  "scenes": [
+    {
+      "id": "main",
+      "title": "Language level lab",
+      "img": "img/PL_L01_LanguageLevelLab/fallback.jpg",
+      "faces": {
+        "right": "img/PL_L01_LanguageLevelLab/right.webp",
+        "back": "img/PL_L01_LanguageLevelLab/back.webp",
+        "left": "img/PL_L01_LanguageLevelLab/left.webp",
+        "front": "img/PL_L01_LanguageLevelLab/front.webp",
+        "down": "img/PL_L01_LanguageLevelLab/down.webp",
+        "up": "img/PL_L01_LanguageLevelLab/up.webp"
+      },
+      "stations": [
+        {
+          "label": "1",
+          "name": "High-level languages",
+          "col": "#40c4ff",
+          "face": "right",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "What makes a language high-level?",
+              "a": [
+                "It hides many hardware details behind readable instructions",
+                "It can only run on a powerful computer",
+                "It executes directly without translation",
+                "It is always faster than every other language"
+              ],
+              "fb": "High-level describes the level of abstraction, not the speed or quality of the computer."
+            },
+            {
+              "t": "mcq",
+              "q": "The Python example calculates 4 + 7. What does print(total) output?",
+              "a": [
+                "11",
+                "47",
+                "total",
+                "4 + 7"
+              ],
+              "fb": "Both values are numbers. The addition produces 11, which is stored in total and then displayed."
+            }
+          ]
+        },
+        {
+          "label": "2",
+          "name": "Low-level languages",
+          "col": "#aa6eeb",
+          "face": "right",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "sort",
+              "q": "Which level is each characteristic most closely associated with?",
+              "cats": [
+                "High-level",
+                "Low-level"
+              ],
+              "items": [
+                [
+                  "Hides most processor details",
+                  "High-level"
+                ],
+                [
+                  "Direct control over processor operations",
+                  "Low-level"
+                ],
+                [
+                  "Usually easier for people to maintain",
+                  "High-level"
+                ],
+                [
+                  "Closely tied to a processor instruction set",
+                  "Low-level"
+                ]
+              ],
+              "fb": "High-level languages prioritise abstraction and readability. Low-level languages expose more hardware detail."
+            },
+            {
+              "t": "mcq",
+              "q": "A programmer needs precise control of processor registers. Which is the stronger reason to consider a low-level language?",
+              "a": [
+                "It exposes hardware operations more directly",
+                "It guarantees there will be no bugs",
+                "It runs unchanged on every processor",
+                "It is always quicker to develop"
+              ],
+              "fb": "Choose a language for the task requirements. Low-level code gives control, not a guarantee of correctness."
+            }
+          ]
+        },
+        {
+          "label": "3",
+          "name": "Machine code",
+          "col": "#ff785a",
+          "face": "back",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "Which form of program instruction can a CPU execute directly?",
+              "a": [
+                "Machine code for its instruction set",
+                "Python source code",
+                "An English description",
+                "Assembly mnemonics without translation"
+              ],
+              "fb": "A CPU executes machine instructions it recognises. Human-readable source code must be translated."
+            },
+            {
+              "t": "multi",
+              "q": "Select TWO accurate statements about machine code.",
+              "opts": [
+                "Instructions are represented in binary",
+                "The instruction set matters",
+                "Every CPU understands the same instructions",
+                "It is usually easier to maintain than high-level code"
+              ],
+              "correct": [
+                "Instructions are represented in binary",
+                "The instruction set matters"
+              ],
+              "fb": "Machine code is binary and specific to a compatible instruction set. A string of bits has no universal instruction meaning."
+            }
+          ]
+        },
+        {
+          "label": "4",
+          "name": "Assembly language",
+          "col": "#ffa028",
+          "face": "back",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "match",
+              "q": "Match the description to the correct term.",
+              "pairs": [
+                [
+                  "Short instruction names such as ADD",
+                  "Mnemonics"
+                ],
+                [
+                  "Binary instructions executed by a CPU",
+                  "Machine code"
+                ],
+                [
+                  "Human-written program before translation",
+                  "Source code"
+                ]
+              ],
+              "fb": "Assembly is source code too. It uses mnemonic instructions but remains close to the processor."
+            },
+            {
+              "t": "mcq",
+              "q": "A simplified example loads 4 into R0, then adds 7 to R0. What value is now in R0?",
+              "a": [
+                "11",
+                "7",
+                "4",
+                "47"
+              ],
+              "fb": "The register first holds 4. Adding 7 changes it to 11. This is an illustrative instruction model, not a specific processor syntax."
+            }
+          ]
+        },
+        {
+          "label": "5",
+          "name": "Moving between devices",
+          "col": "#50dc96",
+          "face": "left",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "What does portable source code mean?",
+              "a": [
+                "It can be used on different systems with suitable supporting software",
+                "Its file is always small enough for a memory stick",
+                "It requires no translation on any computer",
+                "It works without an operating system"
+              ],
+              "fb": "Portability is about using code across systems. It still depends on suitable software and any required libraries."
+            },
+            {
+              "t": "sort",
+              "q": "Does each statement about portability hold?",
+              "cats": [
+                "Accurate",
+                "Not accurate"
+              ],
+              "items": [
+                [
+                  "Python source needs a suitable runtime on the new system",
+                  "Accurate"
+                ],
+                [
+                  "Every machine-code program runs on every CPU",
+                  "Not accurate"
+                ],
+                [
+                  "Hardware-specific code may need changes on a new processor",
+                  "Accurate"
+                ],
+                [
+                  "High-level code can depend on libraries that must also be available",
+                  "Accurate"
+                ]
+              ],
+              "fb": "High-level code is often more portable, but the runtime, libraries and system features must still be compatible."
+            }
+          ]
+        },
+        {
+          "label": "6",
+          "name": "Choosing the right level",
+          "col": "#f05aaa",
+          "face": "left",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "A school wants a revision app that staff can update easily. Which justification is strongest?",
+              "a": [
+                "A high-level language makes the code easier to read and maintain",
+                "A high-level language guarantees the app uses no memory",
+                "Machine code is always easiest for staff to edit",
+                "Low-level code automatically works on all devices"
+              ],
+              "fb": "The requirement is easy maintenance. Link your reason to that requirement, rather than making absolute claims."
+            },
+            {
+              "t": "multi",
+              "q": "Select TWO sensible conclusions when choosing a language.",
+              "opts": [
+                "Development time matters as well as execution speed",
+                "Different parts of a system can use different language levels",
+                "Low-level code is always the best choice",
+                "A high-level program never needs translation"
+              ],
+              "correct": [
+                "Development time matters as well as execution speed",
+                "Different parts of a system can use different language levels"
+              ],
+              "fb": "There is no best level for every project. Teams balance development effort, portability and hardware control."
+            }
+          ]
+        },
+        {
+          "label": "★",
+          "name": "Final challenge",
+          "col": "#ffd046",
+          "face": "down",
+          "x": 1024,
+          "y": 800,
+          "tasks": [
+            {
+              "t": "sort",
+              "q": "Choose the best fit for each brief, using the stated priority.",
+              "cats": [
+                "High-level",
+                "Low-level"
+              ],
+              "items": [
+                [
+                  "A revision app: readable code and frequent updates",
+                  "High-level"
+                ],
+                [
+                  "A tiny hardware routine: direct register control",
+                  "Low-level"
+                ],
+                [
+                  "A data report: rapid development using libraries",
+                  "High-level"
+                ],
+                [
+                  "A processor-specific routine: fine control over instructions",
+                  "Low-level"
+                ]
+              ],
+              "fb": "Use the priority in each brief. High-level code supports productive development; low-level code supports detailed hardware control."
+            },
+            {
+              "t": "match",
+              "q": "Finish the recommendation by matching each choice to its reason.",
+              "pairs": [
+                [
+                  "High-level for a changing school quiz",
+                  "Easier to read and maintain"
+                ],
+                [
+                  "Low-level for a hardware-specific routine",
+                  "Direct control of processor operations"
+                ],
+                [
+                  "Check before moving high-level source to another system",
+                  "A compatible runtime and dependencies are available"
+                ]
+              ],
+              "fb": "An exam explanation should connect a language characteristic to the requirement in the question."
+            }
+          ]
+        }
+      ],
+      "info": [
+        {
+          "id": "f1",
+          "face": "right",
+          "x": 920,
+          "y": 540,
+          "title": "High-level languages",
+          "text": "Use readable words and familiar operations to express a solution.\n\nHide many details of how the processor works.\n\nUsually easier to write, understand and maintain.\n\nChallenge: Why might a school choose Python to build a quiz?\n\nLanguage level alone does not decide speed. The algorithm, translator, implementation and hardware all matter."
+        },
+        {
+          "id": "f2",
+          "face": "right",
+          "x": 1888,
+          "y": 540,
+          "title": "Low-level languages",
+          "text": "Close to the instructions and hardware of a processor.\n\nMachine code and assembly are low-level languages.\n\nOffer detailed control, but are harder to write and maintain.\n\nChallenge: Why might precise hardware control matter in a device?\n\nMore control can mean more code and more details to manage. Development time and testing effort still matter."
+        },
+        {
+          "id": "f3",
+          "face": "back",
+          "x": 920,
+          "y": 540,
+          "title": "Machine code",
+          "text": "Binary instructions that a compatible CPU can execute.\n\nEach processor family has its own instruction set.\n\nDifficult for people to read, write and check directly.\n\nChallenge: Would the same machine code work on every CPU? Explain.\n\nThe binary diagram is illustrative. Actual instruction lengths and encodings depend on the processor architecture."
+        },
+        {
+          "id": "f4",
+          "face": "back",
+          "x": 1888,
+          "y": 540,
+          "title": "Assembly language",
+          "text": "Uses short instruction names called mnemonics.\n\nClosely follows a particular processor instruction set.\n\nEasier to read than binary, but still needs translation.\n\nChallenge: Why is assembly low-level even though it uses words?\n\nThe register example shows the idea of assembly. You do not need to learn these illustrative instructions for OCR J277."
+        },
+        {
+          "id": "f5",
+          "face": "left",
+          "x": 920,
+          "y": 540,
+          "title": "Moving between devices",
+          "text": "High-level source is often more portable between systems.\n\nA suitable translator or runtime must be available.\n\nLow-level code may need rewriting for another instruction set.\n\nChallenge: What must be available before a Python program can run on a new computer?\n\nPortable source code and a portable executable are different ideas. Reusing source may require translating it for the target system."
+        },
+        {
+          "id": "f6",
+          "face": "left",
+          "x": 1888,
+          "y": 540,
+          "title": "Choosing the right level",
+          "text": "Match the language to the requirements of the project.\n\nHigh-level code can reduce development and maintenance effort.\n\nLow-level code can provide fine control of speed and memory use.\n\nChallenge: Give a language choice AND a reason for a school revision app.\n\nFor a stronger answer, name the requirement, choose the level, then explain how its characteristic meets that requirement."
+        }
+      ],
+      "models": []
+    }
+  ]
+}

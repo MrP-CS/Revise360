@@ -1,0 +1,337 @@
+{
+  "id": "pl-l04",
+  "lesson": 4,
+  "title": "IDE control room",
+  "scenes": [
+    {
+      "id": "main",
+      "title": "IDE control room",
+      "img": "img/PL_L04_IDEControlRoom/fallback.jpg",
+      "faces": {
+        "right": "img/PL_L04_IDEControlRoom/right.webp",
+        "back": "img/PL_L04_IDEControlRoom/back.webp",
+        "left": "img/PL_L04_IDEControlRoom/left.webp",
+        "front": "img/PL_L04_IDEControlRoom/front.webp",
+        "down": "img/PL_L04_IDEControlRoom/down.webp",
+        "up": "img/PL_L04_IDEControlRoom/up.webp"
+      },
+      "stations": [
+        {
+          "label": "1",
+          "name": "Tools in one place",
+          "col": "#40c4ff",
+          "face": "right",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "What is an IDE?",
+              "a": [
+                "An application that brings programming tools together",
+                "A processor instruction set",
+                "A type of secondary storage",
+                "A programming language itself"
+              ],
+              "fb": "The IDE supports programming. It is not itself the source language."
+            },
+            {
+              "t": "match",
+              "q": "Match each facility to its purpose.",
+              "pairs": [
+                [
+                  "Editor",
+                  "Write and change source code"
+                ],
+                [
+                  "Execution tool",
+                  "Start a program run"
+                ],
+                [
+                  "Debugger",
+                  "Investigate behaviour during execution"
+                ]
+              ],
+              "fb": "These facilities work together within the development environment."
+            }
+          ]
+        },
+        {
+          "label": "2",
+          "name": "Writing source code",
+          "col": "#aa6eeb",
+          "face": "right",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "match",
+              "q": "Match the editor feature to the benefit.",
+              "pairs": [
+                [
+                  "Syntax highlighting",
+                  "Makes code elements easier to distinguish"
+                ],
+                [
+                  "Auto-completion",
+                  "Suggests names and reduces typing"
+                ],
+                [
+                  "Automatic indentation",
+                  "Helps align blocks consistently"
+                ]
+              ],
+              "fb": "Editing support improves productivity and readability, but programmers still need to check their code."
+            },
+            {
+              "t": "mcq",
+              "q": "Does syntax highlighting prove that a calculation is correct?",
+              "a": [
+                "No, it mainly helps distinguish code elements",
+                "Yes, all coloured code is correct",
+                "Yes, if every line is blue",
+                "Only when the font is large"
+              ],
+              "fb": "Colour is a reading aid. It does not prove the algorithm gives the intended result."
+            }
+          ]
+        },
+        {
+          "label": "3",
+          "name": "Translation and execution",
+          "col": "#ff785a",
+          "face": "back",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "Which facility lets you start the program and see its output?",
+              "a": [
+                "Run or execution controls",
+                "Changing the editor font only",
+                "Renaming a comment",
+                "Sorting project files"
+              ],
+              "fb": "The IDE invokes its configured execution tools and displays the results."
+            },
+            {
+              "t": "mcq",
+              "q": "Where would you look to see the result of print(6 * 4)?",
+              "a": [
+                "The output area or console",
+                "Only in the filename",
+                "Only in the colour legend",
+                "In the breakpoint icon"
+              ],
+              "fb": "The statement sends 24 to the output area."
+            }
+          ]
+        },
+        {
+          "label": "4",
+          "name": "Diagnostic messages",
+          "col": "#ffa028",
+          "face": "back",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "Which repair addresses the visible syntax error on line 4?",
+              "a": [
+                "Add the closing ) after the string",
+                "Delete every print statement",
+                "Change Ready to Go",
+                "Add a breakpoint only"
+              ],
+              "fb": "The opening bracket needs a matching closing bracket."
+            },
+            {
+              "t": "multi",
+              "q": "Select TWO sensible uses of diagnostics.",
+              "opts": [
+                "Read the message to identify the kind of problem",
+                "Assume the IDE repairs every fault automatically",
+                "Inspect nearby lines as well as the highlighted one",
+                "Ignore testing once the message disappears"
+              ],
+              "correct": [
+                "Read the message to identify the kind of problem",
+                "Inspect nearby lines as well as the highlighted one"
+              ],
+              "fb": "Diagnostics guide investigation. The reported location may be where a problem was noticed."
+            }
+          ]
+        },
+        {
+          "label": "5",
+          "name": "Pausing and stepping",
+          "col": "#50dc96",
+          "face": "left",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "Execution pauses before the calculation. What should you do to inspect its result?",
+              "a": [
+                "Step over it, then inspect total",
+                "Assume total already changed",
+                "Delete the source file",
+                "Only change the font"
+              ],
+              "fb": "A breakpoint pauses before the line. Stepping lets you see the effect of executing it."
+            },
+            {
+              "t": "match",
+              "q": "Match the debugging action to its use.",
+              "pairs": [
+                [
+                  "Set a breakpoint",
+                  "Pause at a chosen location"
+                ],
+                [
+                  "Step over a line",
+                  "Execute a line and pause again"
+                ],
+                [
+                  "Inspect a variable",
+                  "Read its current value"
+                ]
+              ],
+              "fb": "Use the facilities together to investigate where actual behaviour diverges from your expectation."
+            }
+          ]
+        },
+        {
+          "label": "6",
+          "name": "Finding a logic error",
+          "col": "#f05aaa",
+          "face": "left",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "Which replacement meets the stated requirement?",
+              "a": [
+                "total = price * quantity",
+                "total = price - quantity",
+                "total = quantity",
+                "total = 10"
+              ],
+              "fb": "Multiplying the unit price by the quantity calculates the bill."
+            },
+            {
+              "t": "mcq",
+              "q": "Which is the strongest follow-up after the repair?",
+              "a": [
+                "Run the original test and another known case",
+                "Assume one edit fixed every possible fault",
+                "Delete all expected outputs",
+                "Check only that the source is coloured"
+              ],
+              "fb": "Retesting checks the repair. More than one known case gives better evidence."
+            }
+          ]
+        },
+        {
+          "label": "★",
+          "name": "Final challenge",
+          "col": "#ffd046",
+          "face": "down",
+          "x": 1024,
+          "y": 800,
+          "tasks": [
+            {
+              "t": "match",
+              "q": "Select the useful IDE facility for each need.",
+              "pairs": [
+                [
+                  "Reduce typing of a long variable name",
+                  "Auto-completion"
+                ],
+                [
+                  "Stop just before an incorrect calculation",
+                  "Breakpoint"
+                ],
+                [
+                  "Inspect the current total",
+                  "Variable watch"
+                ],
+                [
+                  "See a message about a missing bracket",
+                  "Diagnostics"
+                ]
+              ],
+              "fb": "Choose the facility that directly addresses the programmer’s next step."
+            },
+            {
+              "t": "mcq",
+              "q": "A debugger shows correct inputs but the wrong result after one line. What should happen next?",
+              "a": [
+                "Inspect that calculation, repair it and retest",
+                "Replace the entire computer immediately",
+                "Turn off diagnostics permanently",
+                "Assume the debugger caused the fault"
+              ],
+              "fb": "The evidence narrows the investigation to the calculation."
+            }
+          ]
+        }
+      ],
+      "info": [
+        {
+          "id": "f1",
+          "face": "right",
+          "x": 920,
+          "y": 540,
+          "title": "Tools in one place",
+          "text": "IDE means integrated development environment.\n\nAn IDE combines tools used to create and test programs.\n\nIts facilities may include editing, execution and debugging.\n\nChallenge: Why can bringing these tools together help a programmer?\n\nDifferent IDEs provide different tools. An editor can be part of an IDE, but a simple text editor alone may not include execution or debugging."
+        },
+        {
+          "id": "f2",
+          "face": "right",
+          "x": 1888,
+          "y": 540,
+          "title": "Writing source code",
+          "text": "Syntax highlighting uses colour to distinguish code elements.\n\nAuto-completion suggests names or code as you type.\n\nIndentation tools help present blocks clearly.\n\nChallenge: How can auto-completion reduce mistakes without guaranteeing correct code?\n\nColour meanings vary between themes and IDEs. Recognise what highlighting does rather than memorising one colour scheme."
+        },
+        {
+          "id": "f3",
+          "face": "back",
+          "x": 920,
+          "y": 540,
+          "title": "Translation and execution",
+          "text": "An IDE can call a compiler or interpreter.\n\nRun controls start the program using its configured tools.\n\nThe output area shows results and may accept input.\n\nChallenge: What is the difference between the editor and the output area?\n\nAn IDE may require a separately installed compiler or interpreter. The interface and the language execution tool have different jobs."
+        },
+        {
+          "id": "f4",
+          "face": "back",
+          "x": 1888,
+          "y": 540,
+          "title": "Diagnostic messages",
+          "text": "Diagnostics identify detected problems in the code.\n\nA message can include a line number and an error description.\n\nRead the surrounding code before deciding on a repair.\n\nChallenge: A message points to line 5. Why might you also inspect line 4?\n\nA warning can differ from an error that prevents execution. Read the message rather than treating every highlight as the same kind of problem."
+        },
+        {
+          "id": "f5",
+          "face": "left",
+          "x": 920,
+          "y": 540,
+          "title": "Pausing and stepping",
+          "text": "A breakpoint pauses before a selected line executes.\n\nStep controls advance execution in small steps.\n\nWatching variables reveals how values change.\n\nChallenge: If execution pauses before total = price * quantity, what can you inspect first?\n\nStepping options differ. Step into can enter a called function, while step over runs that call without stopping on each line inside it."
+        },
+        {
+          "id": "f6",
+          "face": "left",
+          "x": 1888,
+          "y": 540,
+          "title": "Finding a logic error",
+          "text": "A logic error can remain even when syntax is valid.\n\nCompare actual values with the result you expected.\n\nRetest after changing the faulty statement.\n\nChallenge: The bill should be 24 but is 10. Identify and repair the calculation.\n\nDebugging finds and fixes faults. Testing supplies evidence about whether the program meets its requirements."
+        }
+      ],
+      "models": []
+    }
+  ]
+}

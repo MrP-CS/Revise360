@@ -1,0 +1,369 @@
+{
+  "id": "pl-l05",
+  "lesson": 5,
+  "title": "Language review HQ",
+  "scenes": [
+    {
+      "id": "main",
+      "title": "Language review HQ",
+      "img": "img/PL_L05_LanguageReviewHQ/fallback.jpg",
+      "faces": {
+        "right": "img/PL_L05_LanguageReviewHQ/right.webp",
+        "back": "img/PL_L05_LanguageReviewHQ/back.webp",
+        "left": "img/PL_L05_LanguageReviewHQ/left.webp",
+        "front": "img/PL_L05_LanguageReviewHQ/front.webp",
+        "down": "img/PL_L05_LanguageReviewHQ/down.webp",
+        "up": "img/PL_L05_LanguageReviewHQ/up.webp"
+      },
+      "stations": [
+        {
+          "label": "1",
+          "name": "Language decisions",
+          "col": "#40c4ff",
+          "face": "right",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "sort",
+              "q": "Choose the level that fits the priority.",
+              "items": [
+                [
+                  "Readable code for frequent updates",
+                  "High-level"
+                ],
+                [
+                  "Direct processor-register control",
+                  "Low-level"
+                ],
+                [
+                  "Rapid use of existing libraries",
+                  "High-level"
+                ],
+                [
+                  "Instructions for one processor family",
+                  "Low-level"
+                ]
+              ],
+              "cats": [
+                "High-level",
+                "Low-level"
+              ],
+              "fb": "Link the language characteristic to the priority in the brief."
+            },
+            {
+              "t": "mcq",
+              "q": "Why is “low-level is always better” a weak recommendation?",
+              "a": [
+                "It ignores the requirements and development trade-offs",
+                "Low-level languages do not exist",
+                "Every task needs machine code written by hand",
+                "High-level code never uses memory"
+              ],
+              "fb": "Different priorities lead to different language choices."
+            }
+          ]
+        },
+        {
+          "label": "2",
+          "name": "Representations",
+          "col": "#aa6eeb",
+          "face": "right",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "match",
+              "q": "Match each description.",
+              "pairs": [
+                [
+                  "ADD as a readable instruction name",
+                  "Mnemonic"
+                ],
+                [
+                  "Binary instructions for a CPU",
+                  "Machine code"
+                ],
+                [
+                  "Program text before translation",
+                  "Source code"
+                ]
+              ],
+              "fb": "Source code can be high-level or assembly. Machine code is executable by a compatible processor."
+            },
+            {
+              "t": "mcq",
+              "q": "Which representation does a compatible CPU execute directly?",
+              "a": [
+                "Machine code",
+                "A worksheet flowchart",
+                "An English problem statement",
+                "Untranslated Python source"
+              ],
+              "fb": "The processor recognises instructions from its machine-code instruction set."
+            }
+          ]
+        },
+        {
+          "label": "3",
+          "name": "Translator choices",
+          "col": "#ff785a",
+          "face": "back",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "sort",
+              "q": "Use the usual GCSE translator comparison.",
+              "items": [
+                [
+                  "Translate before executing the built program",
+                  "Compiler"
+                ],
+                [
+                  "Process source during the run",
+                  "Interpreter"
+                ],
+                [
+                  "Produce target code for later use",
+                  "Compiler"
+                ],
+                [
+                  "Use source with an execution runtime",
+                  "Interpreter"
+                ]
+              ],
+              "cats": [
+                "Compiler",
+                "Interpreter"
+              ],
+              "fb": "These are the simplified GCSE models. Real implementations can combine techniques."
+            },
+            {
+              "t": "mcq",
+              "q": "A compiled app gives the wrong output. What is the best conclusion?",
+              "a": [
+                "It may contain a logic error that testing can reveal",
+                "Its CPU must be broken",
+                "Compilers always ignore every syntax error",
+                "The output must be correct because it compiled"
+              ],
+              "fb": "Successful translation does not prove that the program meets its requirements."
+            }
+          ]
+        },
+        {
+          "label": "4",
+          "name": "IDE evidence",
+          "col": "#ffa028",
+          "face": "back",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "match",
+              "q": "Choose the tool for the job.",
+              "pairs": [
+                [
+                  "Suggest a variable name while typing",
+                  "Auto-completion"
+                ],
+                [
+                  "Pause at a selected line",
+                  "Breakpoint"
+                ],
+                [
+                  "Inspect current variable values",
+                  "Watch"
+                ],
+                [
+                  "Explain a detected syntax problem",
+                  "Diagnostic message"
+                ]
+              ],
+              "fb": "Use each tool for its specific purpose."
+            },
+            {
+              "t": "mcq",
+              "q": "Which feature mainly makes keywords and strings easier to distinguish?",
+              "a": [
+                "Syntax highlighting",
+                "A breakpoint",
+                "Object-code generation",
+                "A memory address"
+              ],
+              "fb": "Syntax highlighting changes the display of code elements, not the program logic."
+            }
+          ]
+        },
+        {
+          "label": "5",
+          "name": "Interpreting a trace",
+          "col": "#50dc96",
+          "face": "left",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "What is the working value after adding 8 to 5?",
+              "a": [
+                "13",
+                "58",
+                "8",
+                "5"
+              ],
+              "fb": "Both values are numeric. Addition gives 13."
+            },
+            {
+              "t": "mcq",
+              "q": "What is output after subtracting 4 from that result?",
+              "a": [
+                "9",
+                "17",
+                "4",
+                "13"
+              ],
+              "fb": "13 minus 4 is 9. Follow the updated working value."
+            }
+          ]
+        },
+        {
+          "label": "6",
+          "name": "Writing an explanation",
+          "col": "#f05aaa",
+          "face": "left",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "Which response best explains an IDE benefit for investigating a wrong answer?",
+              "a": [
+                "A breakpoint pauses near the calculation so variable values can be checked",
+                "An IDE is useful because it is modern",
+                "An IDE makes every program correct",
+                "An IDE is a type of CPU"
+              ],
+              "fb": "The first response connects a feature to how it helps solve the problem."
+            },
+            {
+              "t": "multi",
+              "q": "Select TWO habits that strengthen an exam explanation.",
+              "opts": [
+                "Use a specific feature or characteristic",
+                "Repeat the question without adding a reason",
+                "Link its effect to the scenario",
+                "Use “always” for every comparison"
+              ],
+              "correct": [
+                "Use a specific feature or characteristic",
+                "Link its effect to the scenario"
+              ],
+              "fb": "Specific, linked points explain more than vague praise or unsupported absolutes."
+            }
+          ]
+        },
+        {
+          "label": "★",
+          "name": "Final challenge",
+          "col": "#ffd046",
+          "face": "down",
+          "x": 1024,
+          "y": 800,
+          "tasks": [
+            {
+              "t": "match",
+              "q": "Recommend a tool or approach for each priority.",
+              "pairs": [
+                [
+                  "Quickly test frequent source changes",
+                  "Interpreter"
+                ],
+                [
+                  "Maintain a frequently updated app",
+                  "High-level language"
+                ],
+                [
+                  "Pause before a suspected faulty line",
+                  "Breakpoint"
+                ],
+                [
+                  "Execute instructions directly on a compatible CPU",
+                  "Machine code"
+                ]
+              ],
+              "fb": "Explain the benefit of each recommendation in the context given."
+            },
+            {
+              "t": "multi",
+              "q": "Select TWO accurate conclusions.",
+              "opts": [
+                "Successful translation does not guarantee correct logic",
+                "Every IDE automatically repairs every program",
+                "Hardware compatibility matters for machine code",
+                "High-level source always runs unchanged anywhere"
+              ],
+              "correct": [
+                "Successful translation does not guarantee correct logic",
+                "Hardware compatibility matters for machine code"
+              ],
+              "fb": "Testing and compatibility remain important regardless of the development tools."
+            }
+          ]
+        }
+      ],
+      "info": [
+        {
+          "id": "f1",
+          "face": "right",
+          "x": 920,
+          "y": 540,
+          "title": "Language decisions",
+          "text": "High-level languages hide many hardware details.\n\nLow-level languages expose processor operations.\n\nThe project requirements should guide the choice.\n\nChallenge: Choose a level for a school app that needs frequent updates. Explain why.\n\nA strong explanation names a characteristic and shows how it meets a requirement. A language name alone is often not enough."
+        },
+        {
+          "id": "f2",
+          "face": "right",
+          "x": 1888,
+          "y": 540,
+          "title": "Representations",
+          "text": "Source code is the programmer’s representation.\n\nAssembly uses mnemonic instructions.\n\nMachine code contains encoded processor instructions.\n\nChallenge: Explain why assembly and machine code are both low-level.\n\nThe same binary sequence need not mean the same instruction on another architecture. Compatibility cannot be assumed."
+        },
+        {
+          "id": "f3",
+          "face": "back",
+          "x": 920,
+          "y": 540,
+          "title": "Translator choices",
+          "text": "Compilers process source before the translated program runs.\n\nInterpreters process source during execution.\n\nNeither approach removes the need to test.\n\nChallenge: Which route supports quick testing of frequent source edits? Why?\n\nWhen comparing two approaches, make paired points. Explain what each does rather than listing unrelated advantages."
+        },
+        {
+          "id": "f4",
+          "face": "back",
+          "x": 1888,
+          "y": 540,
+          "title": "IDE evidence",
+          "text": "Editor features help create readable source.\n\nDiagnostics report detected problems.\n\nDebugging tools help inspect execution.\n\nChallenge: Which tools would help you find why a total changes incorrectly?\n\nThe IDE offers facilities. The programmer uses their evidence to decide what change to make."
+        },
+        {
+          "id": "f5",
+          "face": "left",
+          "x": 920,
+          "y": 540,
+          "title": "Interpreting a trace",
+          "text": "A trace records the effect of each instruction.\n\nStored values and the working value are different.\n\nPredict before checking the result.\n\nChallenge: Trace 5 + 8, then subtract 4. What are the two results?\n\nThe arithmetic trace applies the idea of instruction order. You do not need to memorise an extra assembly instruction set for J277."
+        },
+        {
+          "id": "f6",
+          "face": "left",
+          "x": 1888,
+          "y": 540,
+          "title": "Writing an explanation",
+          "text": "Read the requirement before choosing a feature.\n\nName a relevant characteristic.\n\nExplain its effect on the stated problem.\n\nChallenge: Improve “Use an IDE because it is good” with one specific example.\n\nUse the marks as a guide to the number of distinct points. Correct terminology helps, but the link to the scenario matters too."
+        }
+      ],
+      "models": []
+    }
+  ]
+}

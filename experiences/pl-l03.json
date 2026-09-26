@@ -1,0 +1,353 @@
+{
+  "id": "pl-l03",
+  "lesson": 3,
+  "title": "Translation studio",
+  "scenes": [
+    {
+      "id": "main",
+      "title": "Translation studio",
+      "img": "img/PL_L03_TranslationStudio/fallback.jpg",
+      "faces": {
+        "right": "img/PL_L03_TranslationStudio/right.webp",
+        "back": "img/PL_L03_TranslationStudio/back.webp",
+        "left": "img/PL_L03_TranslationStudio/left.webp",
+        "front": "img/PL_L03_TranslationStudio/front.webp",
+        "down": "img/PL_L03_TranslationStudio/down.webp",
+        "up": "img/PL_L03_TranslationStudio/up.webp"
+      },
+      "stations": [
+        {
+          "label": "1",
+          "name": "Why translate?",
+          "col": "#40c4ff",
+          "face": "right",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "Why does high-level source need translation?",
+              "a": [
+                "The CPU executes machine instructions, not high-level source directly",
+                "Source files cannot be stored",
+                "The CPU can only process images",
+                "Translation makes every algorithm correct"
+              ],
+              "fb": "Translation changes representation. It does not prove the algorithm correct."
+            },
+            {
+              "t": "match",
+              "q": "Match each item to its meaning.",
+              "pairs": [
+                [
+                  "Source code",
+                  "Program written before translation"
+                ],
+                [
+                  "Machine code",
+                  "Binary instructions for a CPU"
+                ],
+                [
+                  "Translator",
+                  "Software that processes one code form into another"
+                ]
+              ],
+              "fb": "Separate the program representation from the software that translates it."
+            }
+          ]
+        },
+        {
+          "label": "2",
+          "name": "The compiler route",
+          "col": "#aa6eeb",
+          "face": "right",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "In the usual GCSE model, when does compilation happen?",
+              "a": [
+                "Before the translated program is executed",
+                "Only after every run has finished",
+                "Only when the source is printed",
+                "Once for each key pressed"
+              ],
+              "fb": "Compilation produces target code before that translated program runs."
+            },
+            {
+              "t": "sort",
+              "q": "Place each action in the build or run stage.",
+              "items": [
+                [
+                  "Translate the source program",
+                  "Build"
+                ],
+                [
+                  "Report translation errors",
+                  "Build"
+                ],
+                [
+                  "Execute the translated instructions",
+                  "Run"
+                ],
+                [
+                  "Start the built program again",
+                  "Run"
+                ]
+              ],
+              "cats": [
+                "Build",
+                "Run"
+              ],
+              "fb": "A build creates translated code. Running executes it."
+            }
+          ]
+        },
+        {
+          "label": "3",
+          "name": "The interpreter route",
+          "col": "#ff785a",
+          "face": "back",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "Which best describes interpretation in the GCSE model?",
+              "a": [
+                "Translate and execute instructions during the run",
+                "Translate the whole program once and discard the source",
+                "Execute all instructions simultaneously",
+                "Ignore every error"
+              ],
+              "fb": "Interpretation combines translation and execution during a run."
+            },
+            {
+              "t": "mcq",
+              "q": "An unhandled error occurs during an interpreted run. What normally happens?",
+              "a": [
+                "Execution stops and an error is reported",
+                "The interpreter guarantees a repair",
+                "The source becomes machine code permanently",
+                "Every later instruction must still run"
+              ],
+              "fb": "Earlier instructions may already have run before the error is encountered."
+            }
+          ]
+        },
+        {
+          "label": "4",
+          "name": "Errors at different stages",
+          "col": "#ffa028",
+          "face": "back",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "sort",
+              "q": "Which kind of issue is described?",
+              "items": [
+                [
+                  "A missing bracket breaks the language rules",
+                  "Syntax"
+                ],
+                [
+                  "A valid formula applies the wrong discount",
+                  "Logic"
+                ],
+                [
+                  "A keyword is spelled incorrectly",
+                  "Syntax"
+                ],
+                [
+                  "A loop runs one time too many",
+                  "Logic"
+                ]
+              ],
+              "cats": [
+                "Syntax",
+                "Logic"
+              ],
+              "fb": "Syntax concerns language rules. Logic concerns whether valid instructions solve the intended problem."
+            },
+            {
+              "t": "mcq",
+              "q": "What does a successful compilation prove?",
+              "a": [
+                "The compiler accepted the source for translation",
+                "All expected outputs are correct",
+                "No testing is needed",
+                "The program cannot crash"
+              ],
+              "fb": "Successful translation is useful but does not establish correctness."
+            }
+          ]
+        },
+        {
+          "label": "5",
+          "name": "Time and distribution",
+          "col": "#50dc96",
+          "face": "left",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "multi",
+              "q": "Select TWO sensible comparisons.",
+              "opts": [
+                "Compilation adds a build step",
+                "Compiled software never needs libraries",
+                "Interpreted source needs suitable execution software",
+                "An interpreter guarantees faster execution"
+              ],
+              "correct": [
+                "Compilation adds a build step",
+                "Interpreted source needs suitable execution software"
+              ],
+              "fb": "Consider the build step and the target environment. Avoid absolute speed claims."
+            },
+            {
+              "t": "mcq",
+              "q": "What may be needed when compiled software moves to a different processor architecture?",
+              "a": [
+                "A compatible build for that architecture",
+                "A new colour scheme only",
+                "Removal of all variables",
+                "Printing the object code"
+              ],
+              "fb": "Machine code targets an instruction set. Compatibility matters."
+            }
+          ]
+        },
+        {
+          "label": "6",
+          "name": "Choosing a route",
+          "col": "#f05aaa",
+          "face": "left",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "A developer is testing many small changes. Which is a sound reason for using an interpreter?",
+              "a": [
+                "It supports quick edit-and-run cycles",
+                "It prevents all logic errors",
+                "It always hides the source code",
+                "It requires no software on the computer"
+              ],
+              "fb": "Link the choice to the work being done, not an absolute promise."
+            },
+            {
+              "t": "mcq",
+              "q": "A team supplies a built application to users. Which compiler benefit fits?",
+              "a": [
+                "Users can run the translated program without the original compiler",
+                "Users never need compatible hardware",
+                "The program can never contain bugs",
+                "All source becomes readable English"
+              ],
+              "fb": "The build separates translation from use. Compatibility and testing still matter."
+            }
+          ]
+        },
+        {
+          "label": "★",
+          "name": "Final challenge",
+          "col": "#ffd046",
+          "face": "down",
+          "x": 1024,
+          "y": 800,
+          "tasks": [
+            {
+              "t": "match",
+              "q": "Match the situation to the explanation.",
+              "pairs": [
+                [
+                  "Quickly retest a changed source statement",
+                  "Interpretation supports short edit-and-run cycles"
+                ],
+                [
+                  "Run a finished program many times",
+                  "A compiled build avoids repeating source translation"
+                ],
+                [
+                  "A translated program gives the wrong answer",
+                  "Logic still needs testing"
+                ]
+              ],
+              "fb": "Choose using the requirement and explain the relevant characteristic."
+            },
+            {
+              "t": "multi",
+              "q": "Select TWO claims you can defend.",
+              "opts": [
+                "Translation does not replace testing",
+                "Every interpreter is faster than every compiler",
+                "A compiled program may need a compatible runtime library",
+                "Successful compilation guarantees correct outputs"
+              ],
+              "correct": [
+                "Translation does not replace testing",
+                "A compiled program may need a compatible runtime library"
+              ],
+              "fb": "Neither translator type guarantees correct behaviour or universal compatibility."
+            }
+          ]
+        }
+      ],
+      "info": [
+        {
+          "id": "f1",
+          "face": "right",
+          "x": 920,
+          "y": 540,
+          "title": "Why translate?",
+          "text": "Source code expresses a program in a human-readable language.\n\nA CPU executes compatible machine instructions.\n\nA translator connects the source language to execution.\n\nChallenge: Why is saving a source file not enough to make it executable by a CPU?\n\nReal language implementations can mix techniques. This lesson uses the GCSE comparison of compilation before execution and interpretation during execution."
+        },
+        {
+          "id": "f2",
+          "face": "right",
+          "x": 1888,
+          "y": 540,
+          "title": "The compiler route",
+          "text": "A compiler processes the source program before execution.\n\nIt reports translation errors it finds.\n\nA successful build can produce code that is run later.\n\nChallenge: Why might compilation suit software used repeatedly by customers?\n\nObject code may need linking with other code before it becomes a complete executable. A compiler does not always produce a ready-to-run file in one step."
+        },
+        {
+          "id": "f3",
+          "face": "back",
+          "x": 920,
+          "y": 540,
+          "title": "The interpreter route",
+          "text": "An interpreter processes source instructions as they execute.\n\nIt typically stops when it encounters an error it cannot handle.\n\nThe usual GCSE model has no separate standalone executable.\n\nChallenge: Why can an interpreter help during short edit-and-test cycles?\n\nAn interpreter may internally use bytecode or other processing. “One instruction at a time” is a teaching comparison, not a rule for every implementation."
+        },
+        {
+          "id": "f4",
+          "face": "back",
+          "x": 1888,
+          "y": 540,
+          "title": "Errors at different stages",
+          "text": "Translation can reveal some syntax errors.\n\nA program can translate successfully and still contain logic errors.\n\nTesting checks whether outputs meet the requirements.\n\nChallenge: A compiled program gives the wrong discount. Has translation proved it correct?\n\nAn error message often points to where a problem was noticed. The actual cause can be on an earlier line."
+        },
+        {
+          "id": "f5",
+          "face": "left",
+          "x": 920,
+          "y": 540,
+          "title": "Time and distribution",
+          "text": "Compilation takes time before the translated program runs.\n\nBuilt programs can run without the original compiler installed.\n\nInterpreted source normally needs a compatible interpreter or runtime.\n\nChallenge: A user has a compiled executable. Must they install the original compiler?\n\nCompiled code is often faster to run in the simplified comparison because source translation has already happened. Actual performance depends on the implementation and program."
+        },
+        {
+          "id": "f6",
+          "face": "left",
+          "x": 1888,
+          "y": 540,
+          "title": "Choosing a route",
+          "text": "Frequent edits can favour an interpreter during development.\n\nRepeated distribution can favour a compiled build.\n\nGive a reason linked to the stated requirement.\n\nChallenge: Choose a route for a developer testing small changes frequently and explain your choice.\n\nMany teams use both approaches in different parts of their workflow. A GCSE recommendation should use the requirements in the question."
+        }
+      ],
+      "models": []
+    }
+  ]
+}

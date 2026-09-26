@@ -1,0 +1,1928 @@
+[
+  {
+    "n": 1,
+    "title": "Language level lab",
+    "slug": "LanguageLevelLab",
+    "mission": "Compare high-level, assembly and machine code, then justify a language choice for a project.",
+    "donow": "Why might two programmers choose different languages to solve the same problem?",
+    "outcomes": [
+      "Compare high-level and low-level languages.",
+      "Distinguish source code, assembly and machine code.",
+      "Justify language choices using project requirements."
+    ],
+    "starter": "A school needs a quiz app that staff can update. A device needs precise control of processor registers. Would the same language level suit both equally well? Explain.",
+    "starter_answer": "The quiz may suit a high-level language because readable code is easier to maintain. The hardware routine may suit a low-level language because it exposes processor operations.",
+    "terms": [
+      [
+        "High-level language",
+        "A language that abstracts many hardware details using human-readable constructs."
+      ],
+      [
+        "Low-level language",
+        "A language closely related to a processor instruction set and hardware operations."
+      ]
+    ],
+    "stations": [
+      {
+        "name": "High-level languages",
+        "facts": [
+          "Use readable words and familiar operations to express a solution.",
+          "Hide many details of how the processor works.",
+          "Usually easier to write, understand and maintain."
+        ],
+        "challenge": "Why might a school choose Python to build a quiz?",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "What makes a language high-level?",
+            "a": [
+              "It hides many hardware details behind readable instructions",
+              "It can only run on a powerful computer",
+              "It executes directly without translation",
+              "It is always faster than every other language"
+            ],
+            "fb": "High-level describes the level of abstraction, not the speed or quality of the computer."
+          },
+          {
+            "t": "mcq",
+            "q": "The Python example calculates 4 + 7. What does print(total) output?",
+            "a": [
+              "11",
+              "47",
+              "total",
+              "4 + 7"
+            ],
+            "fb": "Both values are numbers. The addition produces 11, which is stored in total and then displayed."
+          }
+        ],
+        "answer": "Python hides hardware details and is readable, so staff can build and maintain the quiz more easily.",
+        "diagram": [
+          "# Python source",
+          "first = 4",
+          "second = 7",
+          "total = first + second",
+          "print(total)"
+        ],
+        "info": "Language level alone does not decide speed. The algorithm, translator, implementation and hardware all matter."
+      },
+      {
+        "name": "Low-level languages",
+        "facts": [
+          "Close to the instructions and hardware of a processor.",
+          "Machine code and assembly are low-level languages.",
+          "Offer detailed control, but are harder to write and maintain."
+        ],
+        "challenge": "Why might precise hardware control matter in a device?",
+        "tasks": [
+          {
+            "t": "sort",
+            "q": "Which level is each characteristic most closely associated with?",
+            "cats": [
+              "High-level",
+              "Low-level"
+            ],
+            "items": [
+              [
+                "Hides most processor details",
+                "High-level"
+              ],
+              [
+                "Direct control over processor operations",
+                "Low-level"
+              ],
+              [
+                "Usually easier for people to maintain",
+                "High-level"
+              ],
+              [
+                "Closely tied to a processor instruction set",
+                "Low-level"
+              ]
+            ],
+            "fb": "High-level languages prioritise abstraction and readability. Low-level languages expose more hardware detail."
+          },
+          {
+            "t": "mcq",
+            "q": "A programmer needs precise control of processor registers. Which is the stronger reason to consider a low-level language?",
+            "a": [
+              "It exposes hardware operations more directly",
+              "It guarantees there will be no bugs",
+              "It runs unchanged on every processor",
+              "It is always quicker to develop"
+            ],
+            "fb": "Choose a language for the task requirements. Low-level code gives control, not a guarantee of correctness."
+          }
+        ],
+        "answer": "A device may need exact control over processor operations or memory use. Low-level code exposes these details.",
+        "diagram": [
+          "HIGH-LEVEL",
+          "Focus on the solution",
+          "",
+          "LOW-LEVEL",
+          "Focus on the hardware"
+        ],
+        "info": "More control can mean more code and more details to manage. Development time and testing effort still matter."
+      },
+      {
+        "name": "Machine code",
+        "facts": [
+          "Binary instructions that a compatible CPU can execute.",
+          "Each processor family has its own instruction set.",
+          "Difficult for people to read, write and check directly."
+        ],
+        "challenge": "Would the same machine code work on every CPU? Explain.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Which form of program instruction can a CPU execute directly?",
+            "a": [
+              "Machine code for its instruction set",
+              "Python source code",
+              "An English description",
+              "Assembly mnemonics without translation"
+            ],
+            "fb": "A CPU executes machine instructions it recognises. Human-readable source code must be translated."
+          },
+          {
+            "t": "multi",
+            "q": "Select TWO accurate statements about machine code.",
+            "opts": [
+              "Instructions are represented in binary",
+              "The instruction set matters",
+              "Every CPU understands the same instructions",
+              "It is usually easier to maintain than high-level code"
+            ],
+            "correct": [
+              "Instructions are represented in binary",
+              "The instruction set matters"
+            ],
+            "fb": "Machine code is binary and specific to a compatible instruction set. A string of bits has no universal instruction meaning."
+          }
+        ],
+        "answer": "No. A CPU must support the instruction set used by that machine code.",
+        "diagram": [
+          "ILLUSTRATIVE BITS",
+          "1011 0010 0001 0110",
+          "0010 0101 1100 0001",
+          "",
+          "Compatible CPU"
+        ],
+        "info": "The binary diagram is illustrative. Actual instruction lengths and encodings depend on the processor architecture."
+      },
+      {
+        "name": "Assembly language",
+        "facts": [
+          "Uses short instruction names called mnemonics.",
+          "Closely follows a particular processor instruction set.",
+          "Easier to read than binary, but still needs translation."
+        ],
+        "challenge": "Why is assembly low-level even though it uses words?",
+        "tasks": [
+          {
+            "t": "match",
+            "q": "Match the description to the correct term.",
+            "pairs": [
+              [
+                "Short instruction names such as ADD",
+                "Mnemonics"
+              ],
+              [
+                "Binary instructions executed by a CPU",
+                "Machine code"
+              ],
+              [
+                "Human-written program before translation",
+                "Source code"
+              ]
+            ],
+            "fb": "Assembly is source code too. It uses mnemonic instructions but remains close to the processor."
+          },
+          {
+            "t": "mcq",
+            "q": "A simplified example loads 4 into R0, then adds 7 to R0. What value is now in R0?",
+            "a": [
+              "11",
+              "7",
+              "4",
+              "47"
+            ],
+            "fb": "The register first holds 4. Adding 7 changes it to 11. This is an illustrative instruction model, not a specific processor syntax."
+          }
+        ],
+        "answer": "Assembly instructions remain closely tied to a processor instruction set, even though mnemonics are readable.",
+        "diagram": [
+          "ILLUSTRATIVE ASSEMBLY",
+          "LOAD R0, 4",
+          "ADD  R0, 7",
+          "",
+          "R0: 4 then 11"
+        ],
+        "info": "The register example shows the idea of assembly. You do not need to learn these illustrative instructions for OCR J277."
+      },
+      {
+        "name": "Moving between devices",
+        "facts": [
+          "High-level source is often more portable between systems.",
+          "A suitable translator or runtime must be available.",
+          "Low-level code may need rewriting for another instruction set."
+        ],
+        "challenge": "What must be available before a Python program can run on a new computer?",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "What does portable source code mean?",
+            "a": [
+              "It can be used on different systems with suitable supporting software",
+              "Its file is always small enough for a memory stick",
+              "It requires no translation on any computer",
+              "It works without an operating system"
+            ],
+            "fb": "Portability is about using code across systems. It still depends on suitable software and any required libraries."
+          },
+          {
+            "t": "sort",
+            "q": "Does each statement about portability hold?",
+            "cats": [
+              "Accurate",
+              "Not accurate"
+            ],
+            "items": [
+              [
+                "Python source needs a suitable runtime on the new system",
+                "Accurate"
+              ],
+              [
+                "Every machine-code program runs on every CPU",
+                "Not accurate"
+              ],
+              [
+                "Hardware-specific code may need changes on a new processor",
+                "Accurate"
+              ],
+              [
+                "High-level code can depend on libraries that must also be available",
+                "Accurate"
+              ]
+            ],
+            "fb": "High-level code is often more portable, but the runtime, libraries and system features must still be compatible."
+          }
+        ],
+        "answer": "A compatible Python runtime and any required libraries must be available.",
+        "diagram": [
+          "SAME SOURCE",
+          "",
+          "SYSTEM A / SYSTEM B",
+          "Suitable runtime",
+          "Required libraries"
+        ],
+        "info": "Portable source code and a portable executable are different ideas. Reusing source may require translating it for the target system."
+      },
+      {
+        "name": "Choosing the right level",
+        "facts": [
+          "Match the language to the requirements of the project.",
+          "High-level code can reduce development and maintenance effort.",
+          "Low-level code can provide fine control of speed and memory use."
+        ],
+        "challenge": "Give a language choice AND a reason for a school revision app.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "A school wants a revision app that staff can update easily. Which justification is strongest?",
+            "a": [
+              "A high-level language makes the code easier to read and maintain",
+              "A high-level language guarantees the app uses no memory",
+              "Machine code is always easiest for staff to edit",
+              "Low-level code automatically works on all devices"
+            ],
+            "fb": "The requirement is easy maintenance. Link your reason to that requirement, rather than making absolute claims."
+          },
+          {
+            "t": "multi",
+            "q": "Select TWO sensible conclusions when choosing a language.",
+            "opts": [
+              "Development time matters as well as execution speed",
+              "Different parts of a system can use different language levels",
+              "Low-level code is always the best choice",
+              "A high-level program never needs translation"
+            ],
+            "correct": [
+              "Development time matters as well as execution speed",
+              "Different parts of a system can use different language levels"
+            ],
+            "fb": "There is no best level for every project. Teams balance development effort, portability and hardware control."
+          }
+        ],
+        "answer": "A high-level language supports readable, maintainable code, making updates easier.",
+        "diagram": [
+          "REVISION APP",
+          "Readable + maintainable",
+          "",
+          "HARDWARE ROUTINE",
+          "Precise control"
+        ],
+        "info": "For a stronger answer, name the requirement, choose the level, then explain how its characteristic meets that requirement."
+      }
+    ],
+    "final": [
+      {
+        "t": "sort",
+        "q": "Choose the best fit for each brief, using the stated priority.",
+        "cats": [
+          "High-level",
+          "Low-level"
+        ],
+        "items": [
+          [
+            "A revision app: readable code and frequent updates",
+            "High-level"
+          ],
+          [
+            "A tiny hardware routine: direct register control",
+            "Low-level"
+          ],
+          [
+            "A data report: rapid development using libraries",
+            "High-level"
+          ],
+          [
+            "A processor-specific routine: fine control over instructions",
+            "Low-level"
+          ]
+        ],
+        "fb": "Use the priority in each brief. High-level code supports productive development; low-level code supports detailed hardware control."
+      },
+      {
+        "t": "match",
+        "q": "Finish the recommendation by matching each choice to its reason.",
+        "pairs": [
+          [
+            "High-level for a changing school quiz",
+            "Easier to read and maintain"
+          ],
+          [
+            "Low-level for a hardware-specific routine",
+            "Direct control of processor operations"
+          ],
+          [
+            "Check before moving high-level source to another system",
+            "A compatible runtime and dependencies are available"
+          ]
+        ],
+        "fb": "An exam explanation should connect a language characteristic to the requirement in the question."
+      }
+    ],
+    "final_answer": "Revision app and data report: high-level. Processor-specific routines: low-level. Link readability to maintenance, hardware operations to direct control, and portability to a compatible runtime.",
+    "plenary": [
+      [
+        "Explain two benefits of a high-level language for staff maintaining a school quiz app. [4]",
+        [
+          "Readable source is easier for staff to understand.",
+          "That makes updates easier to maintain.",
+          "Useful libraries can provide existing functions.",
+          "This reduces the amount of code staff need to develop."
+        ]
+      ],
+      [
+        "State one difference between assembly and machine code. [2]",
+        [
+          "Assembly uses readable mnemonics for instructions.",
+          "Machine code represents processor instructions in binary."
+        ]
+      ],
+      [
+        "A Python program is moved to another computer. Explain one software requirement before it can run. [2]",
+        [
+          "The computer needs a compatible Python interpreter or runtime.",
+          "It executes the Python source, which the CPU cannot execute directly."
+        ]
+      ]
+    ],
+    "stem": "PL_L01_LanguageLevelLab",
+    "id": "pl-l01"
+  },
+  {
+    "n": 2,
+    "title": "Instruction workshop",
+    "slug": "InstructionWorkshop",
+    "mission": "Trace a small teaching computer, explain what each instruction changes and repair a faulty program.",
+    "donow": "How can a short instruction make a processor change a stored value?",
+    "outcomes": [
+      "Compare assembly with machine code.",
+      "Trace simple input, storage and calculation instructions.",
+      "Explain why instruction order matters."
+    ],
+    "starter": "A box contains 6. Add 5, store the result, then subtract 2. What is in the box before and after the subtraction?",
+    "starter_answer": "Before subtraction: 11. After subtraction: 9. Each instruction uses the result left by the previous one.",
+    "terms": [
+      [
+        "Mnemonic",
+        "A short name that represents an instruction, such as ADD."
+      ],
+      [
+        "Accumulator",
+        "A register that holds a value being processed in this teaching computer."
+      ]
+    ],
+    "stations": [
+      {
+        "name": "The teaching computer",
+        "facts": [
+          "An accumulator holds the current working value.",
+          "Named memory locations store values for later use.",
+          "Instructions run in order unless a branch changes the route."
+        ],
+        "challenge": "How is the accumulator different from a memory location?",
+        "answer": "The accumulator holds the current working value. Memory keeps values that the program can load later.",
+        "diagram": [
+          "ACCUMULATOR: 6",
+          "MEMORY BOX: 12",
+          "One working value",
+          "Many stored values"
+        ],
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "The accumulator holds 6 and BOX holds 12. Where is the current working value?",
+            "a": [
+              "In the accumulator",
+              "In the output window",
+              "In BOX only",
+              "In the source-code filename"
+            ],
+            "fb": "The accumulator is the working register in this model."
+          },
+          {
+            "t": "match",
+            "q": "Match each part to its role.",
+            "pairs": [
+              [
+                "Accumulator",
+                "Holds the working value"
+              ],
+              [
+                "Memory location",
+                "Keeps a stored value"
+              ],
+              [
+                "Instruction",
+                "Tells the model what to do"
+              ]
+            ],
+            "fb": "A register, a memory location and an instruction have different roles."
+          }
+        ],
+        "info": "This is a simplified teaching model. Tracing its instructions develops understanding of low-level operations. These mnemonics are not a required OCR J277 instruction list."
+      },
+      {
+        "name": "Input and output",
+        "facts": [
+          "INP places the next input in the accumulator.",
+          "OUT displays the accumulator without clearing it.",
+          "HLT stops the program."
+        ],
+        "challenge": "Predict the output when the input is 9.",
+        "answer": "The output is 9. INP reads it, OUT displays it, then HLT stops the program.",
+        "diagram": [
+          "INP   # input is 9",
+          "OUT",
+          "HLT",
+          "Output: ?"
+        ],
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "INP reads 9. OUT runs next. What is displayed?",
+            "a": [
+              "9",
+              "0",
+              "INP",
+              "Nothing until HLT"
+            ],
+            "fb": "OUT displays the accumulator value, which is 9."
+          },
+          {
+            "t": "mcq",
+            "q": "What does HLT do in this model?",
+            "a": [
+              "Stops execution",
+              "Clears every memory location",
+              "Reads a new input",
+              "Adds the next value"
+            ],
+            "fb": "HLT ends the program. OUT displays a value but does not stop the program."
+          }
+        ],
+        "info": "Read input values in the order supplied. Two INP instructions consume two inputs, even when both use the same accumulator."
+      },
+      {
+        "name": "Keeping a value",
+        "facts": [
+          "STA copies the accumulator into a named memory location.",
+          "LDA copies a stored value into the accumulator.",
+          "Loading a value does not remove it from memory."
+        ],
+        "challenge": "After this sequence, what do ACC and BOX contain?",
+        "answer": "ACC contains 8 and BOX contains 8. The later LDA restores the first input from BOX.",
+        "diagram": [
+          "INP   # 8",
+          "STA BOX",
+          "INP   # 3",
+          "LDA BOX"
+        ],
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "After INP 8, STA BOX, INP 3 and LDA BOX, what is in the accumulator?",
+            "a": [
+              "8",
+              "3",
+              "11",
+              "0"
+            ],
+            "fb": "STA saved 8 before the second input. LDA copies that saved value back."
+          },
+          {
+            "t": "multi",
+            "q": "Select TWO true statements about this trace.",
+            "opts": [
+              "BOX still contains 8 after LDA BOX",
+              "LDA deletes BOX",
+              "The second INP replaces the working value",
+              "STA always resets the accumulator to zero"
+            ],
+            "correct": [
+              "BOX still contains 8 after LDA BOX",
+              "The second INP replaces the working value"
+            ],
+            "fb": "Stores and loads copy values. Neither operation here deletes the stored value."
+          }
+        ],
+        "info": "The names ACC and BOX are labels for the diagram. BOX represents a memory location, not another accumulator."
+      },
+      {
+        "name": "Calculating step by step",
+        "facts": [
+          "ADD adds a stored value to the accumulator.",
+          "SUB subtracts a stored value from the accumulator.",
+          "Record each new working value when tracing."
+        ],
+        "challenge": "What does this program output? Show the intermediate values.",
+        "answer": "LDA gives 8. ADD gives 13. SUB gives 11. OUT displays 11.",
+        "diagram": [
+          "LDA A   # A = 8",
+          "ADD B   # B = 5",
+          "SUB C   # C = 2",
+          "OUT"
+        ],
+        "tasks": [
+          {
+            "t": "match",
+            "q": "Match each instruction to the accumulator value after it runs.",
+            "pairs": [
+              [
+                "LDA A, where A = 8",
+                "8"
+              ],
+              [
+                "Then ADD B, where B = 5",
+                "13"
+              ],
+              [
+                "Then SUB C, where C = 2",
+                "11"
+              ]
+            ],
+            "fb": "Trace one instruction at a time: 8, then 13, then 11."
+          },
+          {
+            "t": "mcq",
+            "q": "Does ADD B change the value stored at B?",
+            "a": [
+              "No, it changes the accumulator",
+              "Yes, B becomes zero",
+              "Yes, B always doubles",
+              "Yes, B becomes the output"
+            ],
+            "fb": "ADD reads B and updates the accumulator. B stays unchanged."
+          }
+        ],
+        "info": "For this model, examples use small non-negative integers. Overflow and a particular real processor encoding are outside these activities."
+      },
+      {
+        "name": "Repairing a program",
+        "facts": [
+          "An input overwrites the accumulator.",
+          "Save a value before reading another one if you still need it.",
+          "Test a repair with inputs whose sum you can predict."
+        ],
+        "challenge": "Repair the missing instruction so inputs 6 and 4 produce 10.",
+        "answer": "Insert STA FIRST after the first INP. FIRST then holds 6, so ADD FIRST adds it to the second input 4.",
+        "diagram": [
+          "INP   # first value",
+          "???",
+          "INP   # second value",
+          "ADD FIRST",
+          "OUT"
+        ],
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Which instruction belongs in the gap?",
+            "a": [
+              "STA FIRST",
+              "LDA FIRST",
+              "OUT",
+              "HLT"
+            ],
+            "fb": "Store the first input before the second input overwrites the accumulator."
+          },
+          {
+            "t": "mcq",
+            "q": "If FIRST starts at 0 and the store is missing, what do inputs 6 then 4 produce?",
+            "a": [
+              "4",
+              "10",
+              "6",
+              "0"
+            ],
+            "fb": "The second input leaves 4 in the accumulator. Adding the unchanged FIRST value 0 still gives 4."
+          }
+        ],
+        "info": "A program may run without reporting an error and still produce the wrong answer. Compare actual output with a predicted result."
+      },
+      {
+        "name": "Linking code to hardware",
+        "facts": [
+          "Assembly uses readable instruction names.",
+          "Machine code encodes instructions as binary.",
+          "An assembler translates assembly source into machine code."
+        ],
+        "challenge": "Why does readable assembly still count as low-level?",
+        "answer": "Its operations closely match a processor instruction set and expose hardware details.",
+        "diagram": [
+          "ASSEMBLY SOURCE",
+          "Assembler",
+          "MACHINE CODE",
+          "Compatible processor"
+        ],
+        "tasks": [
+          {
+            "t": "sort",
+            "q": "Classify these descriptions.",
+            "items": [
+              [
+                "Mnemonic instructions",
+                "Assembly"
+              ],
+              [
+                "Binary processor instructions",
+                "Machine code"
+              ],
+              [
+                "Readable ADD instruction",
+                "Assembly"
+              ],
+              [
+                "Encoded operation bits",
+                "Machine code"
+              ]
+            ],
+            "cats": [
+              "Assembly",
+              "Machine code"
+            ],
+            "fb": "Assembly and machine code are both low-level. Their representations differ."
+          },
+          {
+            "t": "mcq",
+            "q": "What must happen before a real CPU executes assembly source?",
+            "a": [
+              "It must be translated to compatible machine code",
+              "It must be converted into a worksheet",
+              "Every instruction must become Python",
+              "The source must be printed"
+            ],
+            "fb": "An assembler performs this translation. The teaching computer helps illustrate the idea."
+          }
+        ],
+        "info": "The assembler is included to explain this practical activity. The main assessed translator comparison in J277 is compiler versus interpreter."
+      }
+    ],
+    "final": [
+      {
+        "t": "sort",
+        "q": "For inputs 7 and 2, match each point to the working value.",
+        "items": [
+          [
+            "After first INP",
+            "7"
+          ],
+          [
+            "After STA FIRST",
+            "7"
+          ],
+          [
+            "After second INP",
+            "2"
+          ],
+          [
+            "After ADD FIRST",
+            "9"
+          ]
+        ],
+        "cats": [
+          "7",
+          "2",
+          "9"
+        ],
+        "fb": "Store the first value, read the second, then add the saved first value."
+      },
+      {
+        "t": "mcq",
+        "q": "Which test best checks that the repaired program adds both inputs?",
+        "a": [
+          "Use 7 and 2, and expect 9",
+          "Use 0 and 0 only",
+          "Check that the source file opens",
+          "Check that OUT is written in capitals"
+        ],
+        "fb": "Different non-zero inputs reveal whether one value was lost."
+      }
+    ],
+    "final_answer": "INP 7 leaves 7. STA FIRST stores 7 and leaves ACC at 7. INP 2 leaves 2. ADD FIRST makes 9. OUT displays 9.",
+    "plenary": [
+      [
+        "Explain the difference between assembly and machine code. [2]",
+        [
+          "Assembly uses mnemonic instruction names.",
+          "Machine code uses binary instructions a compatible CPU executes."
+        ]
+      ],
+      [
+        "A program reads two inputs into one accumulator. Explain why it must store the first before reading the second if it needs both. [2]",
+        [
+          "The second input replaces the accumulator value.",
+          "Storing the first preserves it for later use."
+        ]
+      ],
+      [
+        "Trace LDA X, ADD Y, SUB Z, OUT for X = 9, Y = 4 and Z = 3. Give the intermediate values and output. [4]",
+        [
+          "After LDA X: 9.",
+          "After ADD Y: 13.",
+          "After SUB Z: 10.",
+          "OUT displays 10."
+        ]
+      ]
+    ],
+    "stem": "PL_L02_InstructionWorkshop",
+    "id": "pl-l02"
+  },
+  {
+    "n": 3,
+    "title": "Translation studio",
+    "slug": "TranslationStudio",
+    "mission": "Follow source code through translation and choose a compiler or interpreter for different working situations.",
+    "donow": "Why can a CPU not simply follow a Python source file as written?",
+    "outcomes": [
+      "Explain why programs need translation.",
+      "Compare how compilers and interpreters work.",
+      "Justify a translator choice using the task requirements."
+    ],
+    "starter": "A programmer writes total = price * quantity. Identify the source code and explain why the CPU needs another representation.",
+    "starter_answer": "The written statement is source code. The CPU executes instructions in its own machine-code instruction set.",
+    "terms": [
+      [
+        "Compiler",
+        "A translator that processes a program into target code before that translated program runs."
+      ],
+      [
+        "Interpreter",
+        "Software that translates and executes source instructions as the program runs."
+      ]
+    ],
+    "stations": [
+      {
+        "name": "Why translate?",
+        "facts": [
+          "Source code expresses a program in a human-readable language.",
+          "A CPU executes compatible machine instructions.",
+          "A translator connects the source language to execution."
+        ],
+        "challenge": "Why is saving a source file not enough to make it executable by a CPU?",
+        "answer": "Saving keeps the source text. It does not itself translate the program into instructions the CPU can execute.",
+        "diagram": [
+          "SOURCE CODE",
+          "Translation",
+          "MACHINE INSTRUCTIONS",
+          "CPU execution"
+        ],
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Why does high-level source need translation?",
+            "a": [
+              "The CPU executes machine instructions, not high-level source directly",
+              "Source files cannot be stored",
+              "The CPU can only process images",
+              "Translation makes every algorithm correct"
+            ],
+            "fb": "Translation changes representation. It does not prove the algorithm correct."
+          },
+          {
+            "t": "match",
+            "q": "Match each item to its meaning.",
+            "pairs": [
+              [
+                "Source code",
+                "Program written before translation"
+              ],
+              [
+                "Machine code",
+                "Binary instructions for a CPU"
+              ],
+              [
+                "Translator",
+                "Software that processes one code form into another"
+              ]
+            ],
+            "fb": "Separate the program representation from the software that translates it."
+          }
+        ],
+        "info": "Real language implementations can mix techniques. This lesson uses the GCSE comparison of compilation before execution and interpretation during execution."
+      },
+      {
+        "name": "The compiler route",
+        "facts": [
+          "A compiler processes the source program before execution.",
+          "It reports translation errors it finds.",
+          "A successful build can produce code that is run later."
+        ],
+        "challenge": "Why might compilation suit software used repeatedly by customers?",
+        "answer": "Users can run the translated program repeatedly without translating the whole source again each time.",
+        "diagram": [
+          "SOURCE PROGRAM",
+          "COMPILE",
+          "TARGET CODE",
+          "RUN when needed"
+        ],
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "In the usual GCSE model, when does compilation happen?",
+            "a": [
+              "Before the translated program is executed",
+              "Only after every run has finished",
+              "Only when the source is printed",
+              "Once for each key pressed"
+            ],
+            "fb": "Compilation produces target code before that translated program runs."
+          },
+          {
+            "t": "sort",
+            "q": "Place each action in the build or run stage.",
+            "items": [
+              [
+                "Translate the source program",
+                "Build"
+              ],
+              [
+                "Report translation errors",
+                "Build"
+              ],
+              [
+                "Execute the translated instructions",
+                "Run"
+              ],
+              [
+                "Start the built program again",
+                "Run"
+              ]
+            ],
+            "cats": [
+              "Build",
+              "Run"
+            ],
+            "fb": "A build creates translated code. Running executes it."
+          }
+        ],
+        "info": "Object code may need linking with other code before it becomes a complete executable. A compiler does not always produce a ready-to-run file in one step."
+      },
+      {
+        "name": "The interpreter route",
+        "facts": [
+          "An interpreter processes source instructions as they execute.",
+          "It typically stops when it encounters an error it cannot handle.",
+          "The usual GCSE model has no separate standalone executable."
+        ],
+        "challenge": "Why can an interpreter help during short edit-and-test cycles?",
+        "answer": "The programmer can edit source and test it without a separate whole-program compilation step.",
+        "diagram": [
+          "READ AN INSTRUCTION",
+          "TRANSLATE + EXECUTE",
+          "Continue with next",
+          "Stop on unhandled error"
+        ],
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Which best describes interpretation in the GCSE model?",
+            "a": [
+              "Translate and execute instructions during the run",
+              "Translate the whole program once and discard the source",
+              "Execute all instructions simultaneously",
+              "Ignore every error"
+            ],
+            "fb": "Interpretation combines translation and execution during a run."
+          },
+          {
+            "t": "mcq",
+            "q": "An unhandled error occurs during an interpreted run. What normally happens?",
+            "a": [
+              "Execution stops and an error is reported",
+              "The interpreter guarantees a repair",
+              "The source becomes machine code permanently",
+              "Every later instruction must still run"
+            ],
+            "fb": "Earlier instructions may already have run before the error is encountered."
+          }
+        ],
+        "info": "An interpreter may internally use bytecode or other processing. “One instruction at a time” is a teaching comparison, not a rule for every implementation."
+      },
+      {
+        "name": "Errors at different stages",
+        "facts": [
+          "Translation can reveal some syntax errors.",
+          "A program can translate successfully and still contain logic errors.",
+          "Testing checks whether outputs meet the requirements."
+        ],
+        "challenge": "A compiled program gives the wrong discount. Has translation proved it correct?",
+        "answer": "No. The code can obey syntax rules while implementing the wrong calculation. Test its outputs against expected results.",
+        "diagram": [
+          "SYNTAX CHECK",
+          "Can the code translate?",
+          "OUTPUT TEST",
+          "Does it solve the task?"
+        ],
+        "tasks": [
+          {
+            "t": "sort",
+            "q": "Which kind of issue is described?",
+            "items": [
+              [
+                "A missing bracket breaks the language rules",
+                "Syntax"
+              ],
+              [
+                "A valid formula applies the wrong discount",
+                "Logic"
+              ],
+              [
+                "A keyword is spelled incorrectly",
+                "Syntax"
+              ],
+              [
+                "A loop runs one time too many",
+                "Logic"
+              ]
+            ],
+            "cats": [
+              "Syntax",
+              "Logic"
+            ],
+            "fb": "Syntax concerns language rules. Logic concerns whether valid instructions solve the intended problem."
+          },
+          {
+            "t": "mcq",
+            "q": "What does a successful compilation prove?",
+            "a": [
+              "The compiler accepted the source for translation",
+              "All expected outputs are correct",
+              "No testing is needed",
+              "The program cannot crash"
+            ],
+            "fb": "Successful translation is useful but does not establish correctness."
+          }
+        ],
+        "info": "An error message often points to where a problem was noticed. The actual cause can be on an earlier line."
+      },
+      {
+        "name": "Time and distribution",
+        "facts": [
+          "Compilation takes time before the translated program runs.",
+          "Built programs can run without the original compiler installed.",
+          "Interpreted source normally needs a compatible interpreter or runtime."
+        ],
+        "challenge": "A user has a compiled executable. Must they install the original compiler?",
+        "answer": "Usually no. They need a compatible system and any required runtime libraries, but not the original compiler.",
+        "diagram": [
+          "COMPILED PROGRAM",
+          "Build first, run later",
+          "INTERPRETED SOURCE",
+          "Runtime needed to run"
+        ],
+        "tasks": [
+          {
+            "t": "multi",
+            "q": "Select TWO sensible comparisons.",
+            "opts": [
+              "Compilation adds a build step",
+              "Compiled software never needs libraries",
+              "Interpreted source needs suitable execution software",
+              "An interpreter guarantees faster execution"
+            ],
+            "correct": [
+              "Compilation adds a build step",
+              "Interpreted source needs suitable execution software"
+            ],
+            "fb": "Consider the build step and the target environment. Avoid absolute speed claims."
+          },
+          {
+            "t": "mcq",
+            "q": "What may be needed when compiled software moves to a different processor architecture?",
+            "a": [
+              "A compatible build for that architecture",
+              "A new colour scheme only",
+              "Removal of all variables",
+              "Printing the object code"
+            ],
+            "fb": "Machine code targets an instruction set. Compatibility matters."
+          }
+        ],
+        "info": "Compiled code is often faster to run in the simplified comparison because source translation has already happened. Actual performance depends on the implementation and program."
+      },
+      {
+        "name": "Choosing a route",
+        "facts": [
+          "Frequent edits can favour an interpreter during development.",
+          "Repeated distribution can favour a compiled build.",
+          "Give a reason linked to the stated requirement."
+        ],
+        "challenge": "Choose a route for a developer testing small changes frequently and explain your choice.",
+        "answer": "An interpreter supports quick edit-and-run cycles without a separate full compilation step.",
+        "diagram": [
+          "EDIT OFTEN?",
+          "Quick testing matters",
+          "DISTRIBUTE WIDELY?",
+          "A built program may help"
+        ],
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "A developer is testing many small changes. Which is a sound reason for using an interpreter?",
+            "a": [
+              "It supports quick edit-and-run cycles",
+              "It prevents all logic errors",
+              "It always hides the source code",
+              "It requires no software on the computer"
+            ],
+            "fb": "Link the choice to the work being done, not an absolute promise."
+          },
+          {
+            "t": "mcq",
+            "q": "A team supplies a built application to users. Which compiler benefit fits?",
+            "a": [
+              "Users can run the translated program without the original compiler",
+              "Users never need compatible hardware",
+              "The program can never contain bugs",
+              "All source becomes readable English"
+            ],
+            "fb": "The build separates translation from use. Compatibility and testing still matter."
+          }
+        ],
+        "info": "Many teams use both approaches in different parts of their workflow. A GCSE recommendation should use the requirements in the question."
+      }
+    ],
+    "final": [
+      {
+        "t": "match",
+        "q": "Match the situation to the explanation.",
+        "pairs": [
+          [
+            "Quickly retest a changed source statement",
+            "Interpretation supports short edit-and-run cycles"
+          ],
+          [
+            "Run a finished program many times",
+            "A compiled build avoids repeating source translation"
+          ],
+          [
+            "A translated program gives the wrong answer",
+            "Logic still needs testing"
+          ]
+        ],
+        "fb": "Choose using the requirement and explain the relevant characteristic."
+      },
+      {
+        "t": "multi",
+        "q": "Select TWO claims you can defend.",
+        "opts": [
+          "Translation does not replace testing",
+          "Every interpreter is faster than every compiler",
+          "A compiled program may need a compatible runtime library",
+          "Successful compilation guarantees correct outputs"
+        ],
+        "correct": [
+          "Translation does not replace testing",
+          "A compiled program may need a compatible runtime library"
+        ],
+        "fb": "Neither translator type guarantees correct behaviour or universal compatibility."
+      }
+    ],
+    "final_answer": "Quick retesting: interpreter. Repeated use of a finished build: compiler. Wrong results after successful translation: test and repair the logic.",
+    "plenary": [
+      [
+        "State why a high-level program needs a translator. [2]",
+        [
+          "The CPU executes machine code.",
+          "The translator processes high-level source into a form that can be executed."
+        ]
+      ],
+      [
+        "Describe two differences between a compiler and an interpreter in the GCSE model. [4]",
+        [
+          "A compiler translates the source program before execution.",
+          "An interpreter translates and executes instructions during execution.",
+          "A compiled build can run again without retranslating the source each time.",
+          "Interpretation requires the interpreter or suitable runtime when running the source."
+        ]
+      ],
+      [
+        "A program compiles but calculates tax incorrectly. Explain why testing is still needed. [2]",
+        [
+          "The program may contain a logic error despite valid syntax.",
+          "Testing compares actual results with expected results to identify the fault."
+        ]
+      ]
+    ],
+    "stem": "PL_L03_TranslationStudio",
+    "id": "pl-l03"
+  },
+  {
+    "n": 4,
+    "title": "IDE control room",
+    "slug": "IDEControlRoom",
+    "mission": "Use an editor, execution tools and debugging information to find faults and explain how an IDE supports programming.",
+    "donow": "What help would you want from the software you use to write programs?",
+    "outcomes": [
+      "Identify common IDE facilities.",
+      "Explain how editing and diagnostics support programmers.",
+      "Use a breakpoint, stepping and variable values to investigate a fault."
+    ],
+    "starter": "A program runs but calculates 3 + 4 as 34. Suggest a cause and one useful piece of evidence to inspect.",
+    "starter_answer": "The inputs may be strings, so + joins them. Inspect the types and values of the inputs before the calculation.",
+    "terms": [
+      [
+        "IDE",
+        "An integrated development environment brings programming tools together in one application."
+      ],
+      [
+        "Breakpoint",
+        "A chosen point where a debugger pauses execution for inspection."
+      ]
+    ],
+    "stations": [
+      {
+        "name": "Tools in one place",
+        "facts": [
+          "IDE means integrated development environment.",
+          "An IDE combines tools used to create and test programs.",
+          "Its facilities may include editing, execution and debugging."
+        ],
+        "challenge": "Why can bringing these tools together help a programmer?",
+        "answer": "The programmer can edit, run and investigate code in one place, reducing switching between separate tools.",
+        "diagram": [
+          "SOURCE EDITOR",
+          "RUN + OUTPUT",
+          "DIAGNOSTICS",
+          "DEBUGGER"
+        ],
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "What is an IDE?",
+            "a": [
+              "An application that brings programming tools together",
+              "A processor instruction set",
+              "A type of secondary storage",
+              "A programming language itself"
+            ],
+            "fb": "The IDE supports programming. It is not itself the source language."
+          },
+          {
+            "t": "match",
+            "q": "Match each facility to its purpose.",
+            "pairs": [
+              [
+                "Editor",
+                "Write and change source code"
+              ],
+              [
+                "Execution tool",
+                "Start a program run"
+              ],
+              [
+                "Debugger",
+                "Investigate behaviour during execution"
+              ]
+            ],
+            "fb": "These facilities work together within the development environment."
+          }
+        ],
+        "info": "Different IDEs provide different tools. An editor can be part of an IDE, but a simple text editor alone may not include execution or debugging."
+      },
+      {
+        "name": "Writing source code",
+        "facts": [
+          "Syntax highlighting uses colour to distinguish code elements.",
+          "Auto-completion suggests names or code as you type.",
+          "Indentation tools help present blocks clearly."
+        ],
+        "challenge": "How can auto-completion reduce mistakes without guaranteeing correct code?",
+        "answer": "It can reduce typing errors in suggested names, but the programmer can still select the wrong name or write the wrong logic.",
+        "diagram": [
+          "def total(price):",
+          "    return price * 3",
+          "",
+          "Editor: colours + suggestions"
+        ],
+        "tasks": [
+          {
+            "t": "match",
+            "q": "Match the editor feature to the benefit.",
+            "pairs": [
+              [
+                "Syntax highlighting",
+                "Makes code elements easier to distinguish"
+              ],
+              [
+                "Auto-completion",
+                "Suggests names and reduces typing"
+              ],
+              [
+                "Automatic indentation",
+                "Helps align blocks consistently"
+              ]
+            ],
+            "fb": "Editing support improves productivity and readability, but programmers still need to check their code."
+          },
+          {
+            "t": "mcq",
+            "q": "Does syntax highlighting prove that a calculation is correct?",
+            "a": [
+              "No, it mainly helps distinguish code elements",
+              "Yes, all coloured code is correct",
+              "Yes, if every line is blue",
+              "Only when the font is large"
+            ],
+            "fb": "Colour is a reading aid. It does not prove the algorithm gives the intended result."
+          }
+        ],
+        "info": "Colour meanings vary between themes and IDEs. Recognise what highlighting does rather than memorising one colour scheme."
+      },
+      {
+        "name": "Translation and execution",
+        "facts": [
+          "An IDE can call a compiler or interpreter.",
+          "Run controls start the program using its configured tools.",
+          "The output area shows results and may accept input."
+        ],
+        "challenge": "What is the difference between the editor and the output area?",
+        "answer": "The editor contains the source being written. The output area shows what happens when the program runs.",
+        "diagram": [
+          "EDITOR: print(6 * 4)",
+          "",
+          "RUN",
+          "",
+          "OUTPUT: 24"
+        ],
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Which facility lets you start the program and see its output?",
+            "a": [
+              "Run or execution controls",
+              "Changing the editor font only",
+              "Renaming a comment",
+              "Sorting project files"
+            ],
+            "fb": "The IDE invokes its configured execution tools and displays the results."
+          },
+          {
+            "t": "mcq",
+            "q": "Where would you look to see the result of print(6 * 4)?",
+            "a": [
+              "The output area or console",
+              "Only in the filename",
+              "Only in the colour legend",
+              "In the breakpoint icon"
+            ],
+            "fb": "The statement sends 24 to the output area."
+          }
+        ],
+        "info": "An IDE may require a separately installed compiler or interpreter. The interface and the language execution tool have different jobs."
+      },
+      {
+        "name": "Diagnostic messages",
+        "facts": [
+          "Diagnostics identify detected problems in the code.",
+          "A message can include a line number and an error description.",
+          "Read the surrounding code before deciding on a repair."
+        ],
+        "challenge": "A message points to line 5. Why might you also inspect line 4?",
+        "answer": "An earlier missing bracket or other error may only become apparent when the tool reaches the next line.",
+        "diagram": [
+          "4  print(\"Ready\"",
+          "5  print(\"Go\")",
+          "",
+          "Diagnostic: missing bracket"
+        ],
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Which repair addresses the visible syntax error on line 4?",
+            "a": [
+              "Add the closing ) after the string",
+              "Delete every print statement",
+              "Change Ready to Go",
+              "Add a breakpoint only"
+            ],
+            "fb": "The opening bracket needs a matching closing bracket."
+          },
+          {
+            "t": "multi",
+            "q": "Select TWO sensible uses of diagnostics.",
+            "opts": [
+              "Read the message to identify the kind of problem",
+              "Assume the IDE repairs every fault automatically",
+              "Inspect nearby lines as well as the highlighted one",
+              "Ignore testing once the message disappears"
+            ],
+            "correct": [
+              "Read the message to identify the kind of problem",
+              "Inspect nearby lines as well as the highlighted one"
+            ],
+            "fb": "Diagnostics guide investigation. The reported location may be where a problem was noticed."
+          }
+        ],
+        "info": "A warning can differ from an error that prevents execution. Read the message rather than treating every highlight as the same kind of problem."
+      },
+      {
+        "name": "Pausing and stepping",
+        "facts": [
+          "A breakpoint pauses before a selected line executes.",
+          "Step controls advance execution in small steps.",
+          "Watching variables reveals how values change."
+        ],
+        "challenge": "If execution pauses before total = price * quantity, what can you inspect first?",
+        "answer": "Inspect the current values of price and quantity. Step over the calculation, then inspect total.",
+        "diagram": [
+          "price = 6",
+          "quantity = 4",
+          "BREAK: total = price * quantity",
+          "WATCH: price 6, quantity 4"
+        ],
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Execution pauses before the calculation. What should you do to inspect its result?",
+            "a": [
+              "Step over it, then inspect total",
+              "Assume total already changed",
+              "Delete the source file",
+              "Only change the font"
+            ],
+            "fb": "A breakpoint pauses before the line. Stepping lets you see the effect of executing it."
+          },
+          {
+            "t": "match",
+            "q": "Match the debugging action to its use.",
+            "pairs": [
+              [
+                "Set a breakpoint",
+                "Pause at a chosen location"
+              ],
+              [
+                "Step over a line",
+                "Execute a line and pause again"
+              ],
+              [
+                "Inspect a variable",
+                "Read its current value"
+              ]
+            ],
+            "fb": "Use the facilities together to investigate where actual behaviour diverges from your expectation."
+          }
+        ],
+        "info": "Stepping options differ. Step into can enter a called function, while step over runs that call without stopping on each line inside it."
+      },
+      {
+        "name": "Finding a logic error",
+        "facts": [
+          "A logic error can remain even when syntax is valid.",
+          "Compare actual values with the result you expected.",
+          "Retest after changing the faulty statement."
+        ],
+        "challenge": "The bill should be 24 but is 10. Identify and repair the calculation.",
+        "answer": "Replace price + quantity with price * quantity. Test that 6 and 4 produce 24, then try another case.",
+        "diagram": [
+          "price = 6",
+          "quantity = 4",
+          "total = price + quantity",
+          "",
+          "Actual 10 / expected 24"
+        ],
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Which replacement meets the stated requirement?",
+            "a": [
+              "total = price * quantity",
+              "total = price - quantity",
+              "total = quantity",
+              "total = 10"
+            ],
+            "fb": "Multiplying the unit price by the quantity calculates the bill."
+          },
+          {
+            "t": "mcq",
+            "q": "Which is the strongest follow-up after the repair?",
+            "a": [
+              "Run the original test and another known case",
+              "Assume one edit fixed every possible fault",
+              "Delete all expected outputs",
+              "Check only that the source is coloured"
+            ],
+            "fb": "Retesting checks the repair. More than one known case gives better evidence."
+          }
+        ],
+        "info": "Debugging finds and fixes faults. Testing supplies evidence about whether the program meets its requirements."
+      }
+    ],
+    "final": [
+      {
+        "t": "match",
+        "q": "Select the useful IDE facility for each need.",
+        "pairs": [
+          [
+            "Reduce typing of a long variable name",
+            "Auto-completion"
+          ],
+          [
+            "Stop just before an incorrect calculation",
+            "Breakpoint"
+          ],
+          [
+            "Inspect the current total",
+            "Variable watch"
+          ],
+          [
+            "See a message about a missing bracket",
+            "Diagnostics"
+          ]
+        ],
+        "fb": "Choose the facility that directly addresses the programmer’s next step."
+      },
+      {
+        "t": "mcq",
+        "q": "A debugger shows correct inputs but the wrong result after one line. What should happen next?",
+        "a": [
+          "Inspect that calculation, repair it and retest",
+          "Replace the entire computer immediately",
+          "Turn off diagnostics permanently",
+          "Assume the debugger caused the fault"
+        ],
+        "fb": "The evidence narrows the investigation to the calculation."
+      }
+    ],
+    "final_answer": "Auto-completion helps with typing. Breakpoints pause at a chosen line. Watches display values. Diagnostics describe detected problems. Use this evidence to repair and retest.",
+    "plenary": [
+      [
+        "Name two IDE editing facilities and explain how each helps a programmer. [4]",
+        [
+          "Syntax highlighting makes code elements easier to distinguish.",
+          "Auto-completion suggests names and can reduce typing errors.",
+          "Award one mark for each facility and one for its explained benefit.",
+          "Automatic indentation with a clear benefit is also acceptable."
+        ]
+      ],
+      [
+        "Explain how a breakpoint and a variable watch can help investigate a wrong total. [2]",
+        [
+          "A breakpoint pauses near the calculation.",
+          "The variable watch shows values to compare with the expected inputs or result."
+        ]
+      ],
+      [
+        "Why must a programmer still test code after all syntax errors have been corrected? [2]",
+        [
+          "Valid syntax can still express incorrect logic.",
+          "Testing checks actual results against expected results."
+        ]
+      ]
+    ],
+    "stem": "PL_L04_IDEControlRoom",
+    "id": "pl-l04"
+  },
+  {
+    "n": 5,
+    "title": "Language review HQ",
+    "slug": "LanguageReviewHQ",
+    "mission": "Apply the whole topic to short scenarios, check your reasoning and use review mode to repair misunderstandings.",
+    "donow": "Which tool or language choice would most help you build a reliable revision app?",
+    "outcomes": [
+      "Recall language levels and translator behaviour.",
+      "Select IDE tools for specific problems.",
+      "Write explanations linked to the needs of a scenario."
+    ],
+    "starter": "A quiz app runs successfully but awards every answer a mark. Is this evidence that the logic is correct? Explain.",
+    "starter_answer": "No. Running without an error does not prove the rules are correct. Test correct and incorrect answers against expected scores.",
+    "terms": [
+      [
+        "Source code",
+        "The program text written by a programmer before translation."
+      ],
+      [
+        "Logic error",
+        "A mistake in a program’s reasoning that causes incorrect behaviour."
+      ]
+    ],
+    "stations": [
+      {
+        "name": "Language decisions",
+        "facts": [
+          "High-level languages hide many hardware details.",
+          "Low-level languages expose processor operations.",
+          "The project requirements should guide the choice."
+        ],
+        "challenge": "Choose a level for a school app that needs frequent updates. Explain why.",
+        "answer": "High-level code is usually easier to read and maintain, helping staff update the app.",
+        "diagram": [
+          "REVISION APP",
+          "Frequent changes",
+          "HARDWARE ROUTINE",
+          "Precise register control"
+        ],
+        "tasks": [
+          {
+            "t": "sort",
+            "q": "Choose the level that fits the priority.",
+            "items": [
+              [
+                "Readable code for frequent updates",
+                "High-level"
+              ],
+              [
+                "Direct processor-register control",
+                "Low-level"
+              ],
+              [
+                "Rapid use of existing libraries",
+                "High-level"
+              ],
+              [
+                "Instructions for one processor family",
+                "Low-level"
+              ]
+            ],
+            "cats": [
+              "High-level",
+              "Low-level"
+            ],
+            "fb": "Link the language characteristic to the priority in the brief."
+          },
+          {
+            "t": "mcq",
+            "q": "Why is “low-level is always better” a weak recommendation?",
+            "a": [
+              "It ignores the requirements and development trade-offs",
+              "Low-level languages do not exist",
+              "Every task needs machine code written by hand",
+              "High-level code never uses memory"
+            ],
+            "fb": "Different priorities lead to different language choices."
+          }
+        ],
+        "info": "A strong explanation names a characteristic and shows how it meets a requirement. A language name alone is often not enough."
+      },
+      {
+        "name": "Representations",
+        "facts": [
+          "Source code is the programmer’s representation.",
+          "Assembly uses mnemonic instructions.",
+          "Machine code contains encoded processor instructions."
+        ],
+        "challenge": "Explain why assembly and machine code are both low-level.",
+        "answer": "Both closely relate to a processor instruction set, even though assembly uses readable mnemonics.",
+        "diagram": [
+          "HIGH-LEVEL SOURCE",
+          "ASSEMBLY MNEMONICS",
+          "MACHINE INSTRUCTIONS",
+          "Different representations"
+        ],
+        "tasks": [
+          {
+            "t": "match",
+            "q": "Match each description.",
+            "pairs": [
+              [
+                "ADD as a readable instruction name",
+                "Mnemonic"
+              ],
+              [
+                "Binary instructions for a CPU",
+                "Machine code"
+              ],
+              [
+                "Program text before translation",
+                "Source code"
+              ]
+            ],
+            "fb": "Source code can be high-level or assembly. Machine code is executable by a compatible processor."
+          },
+          {
+            "t": "mcq",
+            "q": "Which representation does a compatible CPU execute directly?",
+            "a": [
+              "Machine code",
+              "A worksheet flowchart",
+              "An English problem statement",
+              "Untranslated Python source"
+            ],
+            "fb": "The processor recognises instructions from its machine-code instruction set."
+          }
+        ],
+        "info": "The same binary sequence need not mean the same instruction on another architecture. Compatibility cannot be assumed."
+      },
+      {
+        "name": "Translator choices",
+        "facts": [
+          "Compilers process source before the translated program runs.",
+          "Interpreters process source during execution.",
+          "Neither approach removes the need to test."
+        ],
+        "challenge": "Which route supports quick testing of frequent source edits? Why?",
+        "answer": "An interpreter supports quick edit-and-run cycles without a separate whole-program compilation step.",
+        "diagram": [
+          "COMPILER",
+          "Build before execution",
+          "INTERPRETER",
+          "Process during execution"
+        ],
+        "tasks": [
+          {
+            "t": "sort",
+            "q": "Use the usual GCSE translator comparison.",
+            "items": [
+              [
+                "Translate before executing the built program",
+                "Compiler"
+              ],
+              [
+                "Process source during the run",
+                "Interpreter"
+              ],
+              [
+                "Produce target code for later use",
+                "Compiler"
+              ],
+              [
+                "Use source with an execution runtime",
+                "Interpreter"
+              ]
+            ],
+            "cats": [
+              "Compiler",
+              "Interpreter"
+            ],
+            "fb": "These are the simplified GCSE models. Real implementations can combine techniques."
+          },
+          {
+            "t": "mcq",
+            "q": "A compiled app gives the wrong output. What is the best conclusion?",
+            "a": [
+              "It may contain a logic error that testing can reveal",
+              "Its CPU must be broken",
+              "Compilers always ignore every syntax error",
+              "The output must be correct because it compiled"
+            ],
+            "fb": "Successful translation does not prove that the program meets its requirements."
+          }
+        ],
+        "info": "When comparing two approaches, make paired points. Explain what each does rather than listing unrelated advantages."
+      },
+      {
+        "name": "IDE evidence",
+        "facts": [
+          "Editor features help create readable source.",
+          "Diagnostics report detected problems.",
+          "Debugging tools help inspect execution."
+        ],
+        "challenge": "Which tools would help you find why a total changes incorrectly?",
+        "answer": "Pause before the calculation with a breakpoint, inspect inputs, step over the line and inspect the total.",
+        "diagram": [
+          "PAUSE",
+          "Inspect inputs",
+          "STEP",
+          "Inspect result"
+        ],
+        "tasks": [
+          {
+            "t": "match",
+            "q": "Choose the tool for the job.",
+            "pairs": [
+              [
+                "Suggest a variable name while typing",
+                "Auto-completion"
+              ],
+              [
+                "Pause at a selected line",
+                "Breakpoint"
+              ],
+              [
+                "Inspect current variable values",
+                "Watch"
+              ],
+              [
+                "Explain a detected syntax problem",
+                "Diagnostic message"
+              ]
+            ],
+            "fb": "Use each tool for its specific purpose."
+          },
+          {
+            "t": "mcq",
+            "q": "Which feature mainly makes keywords and strings easier to distinguish?",
+            "a": [
+              "Syntax highlighting",
+              "A breakpoint",
+              "Object-code generation",
+              "A memory address"
+            ],
+            "fb": "Syntax highlighting changes the display of code elements, not the program logic."
+          }
+        ],
+        "info": "The IDE offers facilities. The programmer uses their evidence to decide what change to make."
+      },
+      {
+        "name": "Interpreting a trace",
+        "facts": [
+          "A trace records the effect of each instruction.",
+          "Stored values and the working value are different.",
+          "Predict before checking the result."
+        ],
+        "challenge": "Trace 5 + 8, then subtract 4. What are the two results?",
+        "answer": "After addition: 13. After subtraction: 9.",
+        "diagram": [
+          "WORKING VALUE: 5",
+          "ADD stored 8",
+          "SUB stored 4",
+          "OUT"
+        ],
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "What is the working value after adding 8 to 5?",
+            "a": [
+              "13",
+              "58",
+              "8",
+              "5"
+            ],
+            "fb": "Both values are numeric. Addition gives 13."
+          },
+          {
+            "t": "mcq",
+            "q": "What is output after subtracting 4 from that result?",
+            "a": [
+              "9",
+              "17",
+              "4",
+              "13"
+            ],
+            "fb": "13 minus 4 is 9. Follow the updated working value."
+          }
+        ],
+        "info": "The arithmetic trace applies the idea of instruction order. You do not need to memorise an extra assembly instruction set for J277."
+      },
+      {
+        "name": "Writing an explanation",
+        "facts": [
+          "Read the requirement before choosing a feature.",
+          "Name a relevant characteristic.",
+          "Explain its effect on the stated problem."
+        ],
+        "challenge": "Improve “Use an IDE because it is good” with one specific example.",
+        "answer": "Use a breakpoint to pause near the faulty calculation, then inspect variable values to locate the error.",
+        "diagram": [
+          "REQUIREMENT",
+          "Wrong calculation",
+          "FEATURE",
+          "Breakpoint + watch"
+        ],
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Which response best explains an IDE benefit for investigating a wrong answer?",
+            "a": [
+              "A breakpoint pauses near the calculation so variable values can be checked",
+              "An IDE is useful because it is modern",
+              "An IDE makes every program correct",
+              "An IDE is a type of CPU"
+            ],
+            "fb": "The first response connects a feature to how it helps solve the problem."
+          },
+          {
+            "t": "multi",
+            "q": "Select TWO habits that strengthen an exam explanation.",
+            "opts": [
+              "Use a specific feature or characteristic",
+              "Repeat the question without adding a reason",
+              "Link its effect to the scenario",
+              "Use “always” for every comparison"
+            ],
+            "correct": [
+              "Use a specific feature or characteristic",
+              "Link its effect to the scenario"
+            ],
+            "fb": "Specific, linked points explain more than vague praise or unsupported absolutes."
+          }
+        ],
+        "info": "Use the marks as a guide to the number of distinct points. Correct terminology helps, but the link to the scenario matters too."
+      }
+    ],
+    "final": [
+      {
+        "t": "match",
+        "q": "Recommend a tool or approach for each priority.",
+        "pairs": [
+          [
+            "Quickly test frequent source changes",
+            "Interpreter"
+          ],
+          [
+            "Maintain a frequently updated app",
+            "High-level language"
+          ],
+          [
+            "Pause before a suspected faulty line",
+            "Breakpoint"
+          ],
+          [
+            "Execute instructions directly on a compatible CPU",
+            "Machine code"
+          ]
+        ],
+        "fb": "Explain the benefit of each recommendation in the context given."
+      },
+      {
+        "t": "multi",
+        "q": "Select TWO accurate conclusions.",
+        "opts": [
+          "Successful translation does not guarantee correct logic",
+          "Every IDE automatically repairs every program",
+          "Hardware compatibility matters for machine code",
+          "High-level source always runs unchanged anywhere"
+        ],
+        "correct": [
+          "Successful translation does not guarantee correct logic",
+          "Hardware compatibility matters for machine code"
+        ],
+        "fb": "Testing and compatibility remain important regardless of the development tools."
+      }
+    ],
+    "final_answer": "Frequent source edits: interpreter. Maintainable app: high-level language. Pause near a fault: breakpoint. Direct CPU execution: machine code.",
+    "plenary": [
+      [
+        "A school will update its quiz app each week. Explain two reasons for choosing a high-level language. [4]",
+        [
+          "Readable source helps staff understand the program.",
+          "This makes frequent changes easier to maintain.",
+          "Useful libraries can reduce how much code staff must write.",
+          "This can reduce development time for new features."
+        ]
+      ],
+      [
+        "Compare a compiler and an interpreter. [4]",
+        [
+          "A compiler translates before the resulting program runs.",
+          "An interpreter processes source during execution.",
+          "Compiled target code can be run again without repeating source translation.",
+          "Interpreted source requires its interpreter or execution runtime."
+        ]
+      ],
+      [
+        "A bill is wrong even though the program runs. Explain how two IDE debugging facilities could help. [4]",
+        [
+          "A breakpoint pauses execution near the calculation.",
+          "This allows inspection before or after the suspected operation.",
+          "A variable watch shows current input or result values.",
+          "Comparing these with expected values helps locate the fault."
+        ]
+      ]
+    ],
+    "stem": "PL_L05_LanguageReviewHQ",
+    "id": "pl-l05"
+  }
+]

@@ -87,10 +87,40 @@
   // Everything in the 360 world lives in one group, so VR can rotate it (snap turn, starting direction)
   const grp = new THREE.Group(); scene.add(grp);
   const geo = new THREE.SphereGeometry(50, 96, 64); geo.scale(-1, 1, 1);
-  const mat = new THREE.MeshBasicMaterial(); grp.add(new THREE.Mesh(geo, mat));
+  const mat = new THREE.MeshBasicMaterial(); const panorama = new THREE.Mesh(geo, mat); grp.add(panorama);
+  // Optional authored cube faces keep wall text sharp without resampling it
+  // through an equirectangular panorama. Existing lessons keep their sphere.
+  const walls = new THREE.Group(); grp.add(walls);
+  let wallScene = -1;
+  function loadWalls(i) {
+    const faces = exp.scenes[i].faces;
+    panorama.visible = !faces; walls.visible = !!faces;
+    if (wallScene === i) return;
+    walls.children.slice().forEach(mesh => {
+      walls.remove(mesh); mesh.geometry.dispose();
+      if (mesh.material.map) mesh.material.map.dispose();
+      mesh.material.dispose();
+    });
+    wallScene = i;
+    if (!faces) return;
+    ["front", "right", "back", "left", "up", "down"].forEach(face => {
+      const vertices = [];
+      [[0, 0], [2048, 0], [2048, 2048], [0, 2048]].forEach(([x, y]) => {
+        const p = cubeFrom({ face, x, y }); vertices.push(-p[2] * 48, p[1] * 48, -p[0] * 48);
+      });
+      const geometry = new THREE.BufferGeometry();
+      geometry.setAttribute("position", new THREE.Float32BufferAttribute(vertices, 3));
+      geometry.setAttribute("uv", new THREE.Float32BufferAttribute([0, 1, 1, 1, 1, 0, 0, 0], 2));
+      geometry.setIndex([0, 1, 2, 0, 2, 3]);
+      const map = loader.load(asset(faces[face]));
+      map.anisotropy = Math.min(8, r.capabilities.getMaxAnisotropy());
+      walls.add(new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map, side: THREE.DoubleSide })));
+    });
+  }
   const loader = new THREE.TextureLoader(); const texs = {};
   // Headsets get the high-resolution image (if the experience has one) for sharper text
   function texFor(i) {
+    if (exp.scenes[i].faces) return null;
     const sc = exp.scenes[i], hi = core.inVR && sc.imgHi, key = i + (hi ? "hi" : "");
     if (!texs[key]) {
       texs[key] = loader.load(asset(hi ? sc.imgHi : sc.img), () => { if (cur === i) { mat.map = texs[key]; mat.needsUpdate = true; } });
@@ -171,6 +201,7 @@
   }
   function loadScene(i) {
     cur = i; const sc = exp.scenes[i];
+    loadWalls(i);
     sprites.forEach(s => grp.remove(s)); sprites = [];
     mat.map = texFor(i); mat.needsUpdate = true; lon = 0; lat = 0; cam.fov = 85; cam.updateProjectionMatrix();
     sc.stations.forEach((st, k) => {

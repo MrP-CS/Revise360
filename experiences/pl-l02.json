@@ -1,0 +1,350 @@
+{
+  "id": "pl-l02",
+  "lesson": 2,
+  "title": "Instruction workshop",
+  "scenes": [
+    {
+      "id": "main",
+      "title": "Instruction workshop",
+      "img": "img/PL_L02_InstructionWorkshop/fallback.jpg",
+      "faces": {
+        "right": "img/PL_L02_InstructionWorkshop/right.webp",
+        "back": "img/PL_L02_InstructionWorkshop/back.webp",
+        "left": "img/PL_L02_InstructionWorkshop/left.webp",
+        "front": "img/PL_L02_InstructionWorkshop/front.webp",
+        "down": "img/PL_L02_InstructionWorkshop/down.webp",
+        "up": "img/PL_L02_InstructionWorkshop/up.webp"
+      },
+      "stations": [
+        {
+          "label": "1",
+          "name": "The teaching computer",
+          "col": "#40c4ff",
+          "face": "right",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "The accumulator holds 6 and BOX holds 12. Where is the current working value?",
+              "a": [
+                "In the accumulator",
+                "In the output window",
+                "In BOX only",
+                "In the source-code filename"
+              ],
+              "fb": "The accumulator is the working register in this model."
+            },
+            {
+              "t": "match",
+              "q": "Match each part to its role.",
+              "pairs": [
+                [
+                  "Accumulator",
+                  "Holds the working value"
+                ],
+                [
+                  "Memory location",
+                  "Keeps a stored value"
+                ],
+                [
+                  "Instruction",
+                  "Tells the model what to do"
+                ]
+              ],
+              "fb": "A register, a memory location and an instruction have different roles."
+            }
+          ]
+        },
+        {
+          "label": "2",
+          "name": "Input and output",
+          "col": "#aa6eeb",
+          "face": "right",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "INP reads 9. OUT runs next. What is displayed?",
+              "a": [
+                "9",
+                "0",
+                "INP",
+                "Nothing until HLT"
+              ],
+              "fb": "OUT displays the accumulator value, which is 9."
+            },
+            {
+              "t": "mcq",
+              "q": "What does HLT do in this model?",
+              "a": [
+                "Stops execution",
+                "Clears every memory location",
+                "Reads a new input",
+                "Adds the next value"
+              ],
+              "fb": "HLT ends the program. OUT displays a value but does not stop the program."
+            }
+          ]
+        },
+        {
+          "label": "3",
+          "name": "Keeping a value",
+          "col": "#ff785a",
+          "face": "back",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "After INP 8, STA BOX, INP 3 and LDA BOX, what is in the accumulator?",
+              "a": [
+                "8",
+                "3",
+                "11",
+                "0"
+              ],
+              "fb": "STA saved 8 before the second input. LDA copies that saved value back."
+            },
+            {
+              "t": "multi",
+              "q": "Select TWO true statements about this trace.",
+              "opts": [
+                "BOX still contains 8 after LDA BOX",
+                "LDA deletes BOX",
+                "The second INP replaces the working value",
+                "STA always resets the accumulator to zero"
+              ],
+              "correct": [
+                "BOX still contains 8 after LDA BOX",
+                "The second INP replaces the working value"
+              ],
+              "fb": "Stores and loads copy values. Neither operation here deletes the stored value."
+            }
+          ]
+        },
+        {
+          "label": "4",
+          "name": "Calculating step by step",
+          "col": "#ffa028",
+          "face": "back",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "match",
+              "q": "Match each instruction to the accumulator value after it runs.",
+              "pairs": [
+                [
+                  "LDA A, where A = 8",
+                  "8"
+                ],
+                [
+                  "Then ADD B, where B = 5",
+                  "13"
+                ],
+                [
+                  "Then SUB C, where C = 2",
+                  "11"
+                ]
+              ],
+              "fb": "Trace one instruction at a time: 8, then 13, then 11."
+            },
+            {
+              "t": "mcq",
+              "q": "Does ADD B change the value stored at B?",
+              "a": [
+                "No, it changes the accumulator",
+                "Yes, B becomes zero",
+                "Yes, B always doubles",
+                "Yes, B becomes the output"
+              ],
+              "fb": "ADD reads B and updates the accumulator. B stays unchanged."
+            }
+          ]
+        },
+        {
+          "label": "5",
+          "name": "Repairing a program",
+          "col": "#50dc96",
+          "face": "left",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "Which instruction belongs in the gap?",
+              "a": [
+                "STA FIRST",
+                "LDA FIRST",
+                "OUT",
+                "HLT"
+              ],
+              "fb": "Store the first input before the second input overwrites the accumulator."
+            },
+            {
+              "t": "mcq",
+              "q": "If FIRST starts at 0 and the store is missing, what do inputs 6 then 4 produce?",
+              "a": [
+                "4",
+                "10",
+                "6",
+                "0"
+              ],
+              "fb": "The second input leaves 4 in the accumulator. Adding the unchanged FIRST value 0 still gives 4."
+            }
+          ]
+        },
+        {
+          "label": "6",
+          "name": "Linking code to hardware",
+          "col": "#f05aaa",
+          "face": "left",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "sort",
+              "q": "Classify these descriptions.",
+              "items": [
+                [
+                  "Mnemonic instructions",
+                  "Assembly"
+                ],
+                [
+                  "Binary processor instructions",
+                  "Machine code"
+                ],
+                [
+                  "Readable ADD instruction",
+                  "Assembly"
+                ],
+                [
+                  "Encoded operation bits",
+                  "Machine code"
+                ]
+              ],
+              "cats": [
+                "Assembly",
+                "Machine code"
+              ],
+              "fb": "Assembly and machine code are both low-level. Their representations differ."
+            },
+            {
+              "t": "mcq",
+              "q": "What must happen before a real CPU executes assembly source?",
+              "a": [
+                "It must be translated to compatible machine code",
+                "It must be converted into a worksheet",
+                "Every instruction must become Python",
+                "The source must be printed"
+              ],
+              "fb": "An assembler performs this translation. The teaching computer helps illustrate the idea."
+            }
+          ]
+        },
+        {
+          "label": "★",
+          "name": "Final challenge",
+          "col": "#ffd046",
+          "face": "down",
+          "x": 1024,
+          "y": 800,
+          "tasks": [
+            {
+              "t": "sort",
+              "q": "For inputs 7 and 2, match each point to the working value.",
+              "items": [
+                [
+                  "After first INP",
+                  "7"
+                ],
+                [
+                  "After STA FIRST",
+                  "7"
+                ],
+                [
+                  "After second INP",
+                  "2"
+                ],
+                [
+                  "After ADD FIRST",
+                  "9"
+                ]
+              ],
+              "cats": [
+                "7",
+                "2",
+                "9"
+              ],
+              "fb": "Store the first value, read the second, then add the saved first value."
+            },
+            {
+              "t": "mcq",
+              "q": "Which test best checks that the repaired program adds both inputs?",
+              "a": [
+                "Use 7 and 2, and expect 9",
+                "Use 0 and 0 only",
+                "Check that the source file opens",
+                "Check that OUT is written in capitals"
+              ],
+              "fb": "Different non-zero inputs reveal whether one value was lost."
+            }
+          ]
+        }
+      ],
+      "info": [
+        {
+          "id": "f1",
+          "face": "right",
+          "x": 920,
+          "y": 540,
+          "title": "The teaching computer",
+          "text": "An accumulator holds the current working value.\n\nNamed memory locations store values for later use.\n\nInstructions run in order unless a branch changes the route.\n\nChallenge: How is the accumulator different from a memory location?\n\nThis is a simplified teaching model. Tracing its instructions develops understanding of low-level operations. These mnemonics are not a required OCR J277 instruction list."
+        },
+        {
+          "id": "f2",
+          "face": "right",
+          "x": 1888,
+          "y": 540,
+          "title": "Input and output",
+          "text": "INP places the next input in the accumulator.\n\nOUT displays the accumulator without clearing it.\n\nHLT stops the program.\n\nChallenge: Predict the output when the input is 9.\n\nRead input values in the order supplied. Two INP instructions consume two inputs, even when both use the same accumulator."
+        },
+        {
+          "id": "f3",
+          "face": "back",
+          "x": 920,
+          "y": 540,
+          "title": "Keeping a value",
+          "text": "STA copies the accumulator into a named memory location.\n\nLDA copies a stored value into the accumulator.\n\nLoading a value does not remove it from memory.\n\nChallenge: After this sequence, what do ACC and BOX contain?\n\nThe names ACC and BOX are labels for the diagram. BOX represents a memory location, not another accumulator."
+        },
+        {
+          "id": "f4",
+          "face": "back",
+          "x": 1888,
+          "y": 540,
+          "title": "Calculating step by step",
+          "text": "ADD adds a stored value to the accumulator.\n\nSUB subtracts a stored value from the accumulator.\n\nRecord each new working value when tracing.\n\nChallenge: What does this program output? Show the intermediate values.\n\nFor this model, examples use small non-negative integers. Overflow and a particular real processor encoding are outside these activities."
+        },
+        {
+          "id": "f5",
+          "face": "left",
+          "x": 920,
+          "y": 540,
+          "title": "Repairing a program",
+          "text": "An input overwrites the accumulator.\n\nSave a value before reading another one if you still need it.\n\nTest a repair with inputs whose sum you can predict.\n\nChallenge: Repair the missing instruction so inputs 6 and 4 produce 10.\n\nA program may run without reporting an error and still produce the wrong answer. Compare actual output with a predicted result."
+        },
+        {
+          "id": "f6",
+          "face": "left",
+          "x": 1888,
+          "y": 540,
+          "title": "Linking code to hardware",
+          "text": "Assembly uses readable instruction names.\n\nMachine code encodes instructions as binary.\n\nAn assembler translates assembly source into machine code.\n\nChallenge: Why does readable assembly still count as low-level?\n\nThe assembler is included to explain this practical activity. The main assessed translator comparison in J277 is compiler versus interpreter."
+        }
+      ],
+      "models": []
+    }
+  ]
+}
