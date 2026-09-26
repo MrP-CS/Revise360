@@ -32,7 +32,7 @@ state the simplified GCSE model and qualify real-world exceptions.
 - `lesson1.json`: the approved-preview lesson, revised for publication.
 - `build.py`: renders 4096-pixel cube walls and updates experience data/registry.
 - `lessons.json`: generated common content used for worksheet/slide alignment.
-- `worksheets.py`: generates the five editable worksheets.
+- `worksheets.py`: clones the established Logic Gate Lab worksheet template for all five lessons, preserving its station panels, answer lines, score box and confidence table.
 
 Run `python tools/topic25/build.py`, then `python tools/topic25/worksheets.py` from
 an environment with Pillow, NumPy and python-docx installed. Artwork uses DejaVu
@@ -51,3 +51,12 @@ first-attempt scores, persistence, scene orientation and legacy panorama loading
 Tablet interaction checks cover touch controls and layout. Physical headset testing
 is still required on the HTTPS site, especially wall clarity, controller selection
 and comfortable reading distance. No claim of headset hardware verification is made.
+
+## Returning-browser regression
+
+The cube-face player requires the updated script. `experience.html` now uses
+`player.js?v=20260926-topic25-2`, so a browser holding the older panorama-only
+player fetches the compatible version. The old script was reproduced displaying
+the square preview as a stretched panorama; the versioned page restores all six
+room walls. Whenever the player format changes, update its version in the page.
+Worksheet URLs are versioned too, so previous downloads do not mask the new template.

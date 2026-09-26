@@ -85,7 +85,7 @@ for l in LESSONS:
  stations.append(dict(label='★',name='Final challenge',col='#ffd046',face='down',x=1024,y=800,tasks=l['final']))
  exp=dict(id=f'pl-l{l["n"]:02d}',lesson=l['n'],title=l['title'],scenes=[dict(id='main',title=l['title'],img=f'img/{stem}/fallback.jpg',faces={k:f'img/{stem}/{k}.webp'for k in faces},stations=stations,info=infos,models=[])])
  (ROOT/'experiences'/f'{exp["id"]}.json').write_text(json.dumps(exp,indent=2,ensure_ascii=False))
- entry=dict(id=exp['id'],topic='2.5',lesson=l['n'],title=l['title'],description=l['mission'],thumb=f'img/{stem}_card.jpg',worksheet=f'worksheets/{stem}_Worksheet.docx',powerpoint=f'presentations/{stem}_Lesson.pptx')
+ entry=dict(id=exp['id'],topic='2.5',lesson=l['n'],title=l['title'],description=l['mission'],thumb=f'img/{stem}_card.jpg',worksheet=f'worksheets/{stem}_Worksheet.docx?v=20260926-template',powerpoint=f'presentations/{stem}_Lesson.pptx')
  manifest.append(entry);l.update(stem=stem,id=exp['id'])
 regpath=ROOT/'experiences/registry.json';reg=json.loads(regpath.read_text());key=next(k for k,v in reg.items() if isinstance(v,list));reg[key]=[e for e in reg[key] if e.get('topic')!='2.5']+manifest;regpath.write_text(json.dumps(reg,indent=1,ensure_ascii=False))
 (HERE/'lessons.json').write_text(json.dumps(LESSONS,indent=2,ensure_ascii=False));print('Built',len(LESSONS),'rooms')
