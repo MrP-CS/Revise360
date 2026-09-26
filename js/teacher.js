@@ -19,7 +19,7 @@
 
   function keyForm(msg) {
     $("#main").innerHTML = `<form class="card signin" id="f"><h2>Teacher sign-in</h2>
-      <p class="muted">${window.R360Local && R360Local.active() ? 'Demo mode: this site isn\'t connected to a backend yet, so everything stays on this device. Sign in with the key <b>demo</b>.' : 'Sign in with your teacher key to see your classes\' results. Need one? Email hello@revise360.co.uk from your school address.'}</p>
+      <p class="muted">Sign in with your teacher key to open the dashboard. For access, contact <a href="mailto:hello@revise360.co.uk">hello@revise360.co.uk</a> from your school address.</p>
       <div class="field"><label for="k">Teacher key</label><input id="k" type="password" autocomplete="current-password" required></div>
       <p class="err" role="alert">${esc(msg || "")}</p><div class="row end"><button class="btn">Open dashboard</button></div></form>`;
     $("#k").focus();
