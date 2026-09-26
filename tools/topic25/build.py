@@ -3,6 +3,7 @@ from pathlib import Path
 import json,sys
 from PIL import Image,ImageDraw,ImageFont
 from content import LESSONS,C
+from panorama import save_panoramas
 ROOT=Path(__file__).resolve().parents[2];HERE=Path(__file__).parent
 LESSONS.insert(0,json.loads((HERE/'lesson1.json').read_text()))
 F=Path('/usr/share/fonts/truetype/dejavu');SCALE=2
@@ -38,7 +39,7 @@ def base():
  return im,d
 manifest=[]
 for l in LESSONS:
- stem=f'PL_L{l["n"]:02d}_{l["slug"]}';folder=ROOT/'experiences/img'/stem;folder.mkdir(parents=True,exist_ok=True);faces={}
+ stem=f'PL_L{l["n"]:02d}_{l["slug"]}';faces={}
  for fi,side in enumerate(['right','back','left']):
   im,d=base()
   for n in range(2):
@@ -73,19 +74,17 @@ for l in LESSONS:
  im,d=base()
  for rect in [(320,370,800,610),(1248,370,1728,610),(320,1438,800,1678),(1248,1438,1728,1678)]:d.rounded_rectangle(rect,25,fill='#e9eefb')
  faces['up']=im
- for name,im in faces.items():im.save(folder/(name+'.webp'),quality=95,method=6)
+ save_panoramas(faces,ROOT/'experiences/img',stem)
  # The selection thumbnail is a flat overview, never a warped panorama crop.
  faces['front'].crop((280,670,3816,3550)).resize((1000,815),Image.Resampling.LANCZOS).save(ROOT/'experiences/img'/(stem+'_card.jpg'),quality=95)
- # Keep a fallback image for older players; face rendering takes priority.
- faces['front'].resize((1024,1024),Image.Resampling.LANCZOS).save(folder/'fallback.jpg',quality=92)
  stations=[];infos=[]
  for i,s in enumerate(l['stations']):
   stations.append(dict(label=str(i+1),name=s['name'],col=C[i],face=['right','back','left'][i//2],x=[540,1508][i%2],y=1770,tasks=s['tasks']))
   infos.append(dict(id='f'+str(i+1),face=['right','back','left'][i//2],x=[920,1888][i%2],y=540,title=s['name'],text='\n\n'.join(s['facts'])+'\n\nChallenge: '+s['challenge']+'\n\n'+s['info']))
  stations.append(dict(label='★',name='Final challenge',col='#ffd046',face='down',x=1024,y=800,tasks=l['final']))
- exp=dict(id=f'pl-l{l["n"]:02d}',lesson=l['n'],title=l['title'],scenes=[dict(id='main',title=l['title'],img=f'img/{stem}/fallback.jpg',faces={k:f'img/{stem}/{k}.webp'for k in faces},stations=stations,info=infos,models=[])])
+ exp=dict(id=f'pl-l{l["n"]:02d}',lesson=l['n'],title=l['title'],scenes=[dict(id='main',title=l['title'],img=f'img/{stem}_360.jpg',imgHi=f'img/{stem}_360_hi.jpg',stations=stations,info=infos,models=[])])
  (ROOT/'experiences'/f'{exp["id"]}.json').write_text(json.dumps(exp,indent=2,ensure_ascii=False))
- entry=dict(id=exp['id'],topic='2.5',lesson=l['n'],title=l['title'],description=l['mission'],thumb=f'img/{stem}_card.jpg',worksheet=f'worksheets/{stem}_Worksheet.docx?v=20260926-template',powerpoint=f'presentations/{stem}_Lesson.pptx')
+ entry=dict(id=exp['id'],topic='2.5',lesson=l['n'],title=l['title'],description=l['mission'],thumb=f'img/{stem}_card.jpg',worksheet=f'worksheets/{stem}_Worksheet.docx?v=20260926-ocr',powerpoint=f'presentations/{stem}_Lesson.pptx?v=20260926-ocr')
  manifest.append(entry);l.update(stem=stem,id=exp['id'])
 regpath=ROOT/'experiences/registry.json';reg=json.loads(regpath.read_text());key=next(k for k,v in reg.items() if isinstance(v,list));reg[key]=[e for e in reg[key] if e.get('topic')!='2.5']+manifest;regpath.write_text(json.dumps(reg,indent=1,ensure_ascii=False))
 (HERE/'lessons.json').write_text(json.dumps(LESSONS,indent=2,ensure_ascii=False));print('Built',len(LESSONS),'rooms')

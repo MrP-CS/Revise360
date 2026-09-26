@@ -6,15 +6,8 @@
     {
       "id": "main",
       "title": "Language level lab",
-      "img": "img/PL_L01_LanguageLevelLab/fallback.jpg",
-      "faces": {
-        "right": "img/PL_L01_LanguageLevelLab/right.webp",
-        "back": "img/PL_L01_LanguageLevelLab/back.webp",
-        "left": "img/PL_L01_LanguageLevelLab/left.webp",
-        "front": "img/PL_L01_LanguageLevelLab/front.webp",
-        "down": "img/PL_L01_LanguageLevelLab/down.webp",
-        "up": "img/PL_L01_LanguageLevelLab/up.webp"
-      },
+      "img": "img/PL_L01_LanguageLevelLab_360.jpg",
+      "imgHi": "img/PL_L01_LanguageLevelLab_360_hi.jpg",
       "stations": [
         {
           "label": "1",
@@ -37,14 +30,14 @@
             },
             {
               "t": "mcq",
-              "q": "The Python example calculates 4 + 7. What does print(total) output?",
+              "q": "Which feature of the Python example illustrates a high-level language?",
               "a": [
-                "11",
-                "47",
-                "total",
-                "4 + 7"
+                "Readable words and familiar arithmetic notation",
+                "Only binary processor instructions",
+                "Direct control of every processor operation",
+                "No need for translation"
               ],
-              "fb": "Both values are numbers. The addition produces 11, which is stored in total and then displayed."
+              "fb": "Readable words and familiar notation make the source easier for a person to understand."
             }
           ]
         },
@@ -134,41 +127,41 @@
         },
         {
           "label": "4",
-          "name": "Assembly language",
+          "name": "The need for translation",
           "col": "#ffa028",
           "face": "back",
           "x": 1508,
           "y": 1770,
           "tasks": [
             {
-              "t": "match",
-              "q": "Match the description to the correct term.",
-              "pairs": [
-                [
-                  "Short instruction names such as ADD",
-                  "Mnemonics"
-                ],
-                [
-                  "Binary instructions executed by a CPU",
-                  "Machine code"
-                ],
-                [
-                  "Human-written program before translation",
-                  "Source code"
-                ]
+              "t": "mcq",
+              "q": "Why is a translator needed for high-level source?",
+              "a": [
+                "The CPU cannot execute that source directly",
+                "Source cannot be saved",
+                "The source has no instructions",
+                "Every source file contains an error"
               ],
-              "fb": "Assembly is source code too. It uses mnemonic instructions but remains close to the processor."
+              "fb": "The CPU executes machine instructions, so high-level source needs translation."
             },
             {
-              "t": "mcq",
-              "q": "A simplified example loads 4 into R0, then adds 7 to R0. What value is now in R0?",
-              "a": [
-                "11",
-                "7",
-                "4",
-                "47"
+              "t": "match",
+              "q": "Match each term to its role.",
+              "pairs": [
+                [
+                  "Source code",
+                  "The program text written by a programmer"
+                ],
+                [
+                  "Translator",
+                  "Processes source into executable instructions"
+                ],
+                [
+                  "Machine code",
+                  "Instructions a compatible CPU executes"
+                ]
               ],
-              "fb": "The register first holds 4. Adding 7 changes it to 11. This is an illustrative instruction model, not a specific processor syntax."
+              "fb": "The source expresses the program. Translation makes its instructions executable."
             }
           ]
         },
@@ -189,7 +182,7 @@
                 "It requires no translation on any computer",
                 "It works without an operating system"
               ],
-              "fb": "Portability is about using code across systems. It still depends on suitable software and any required libraries."
+              "fb": "Portability is about using code across systems. It still depends on suitable translation software."
             },
             {
               "t": "sort",
@@ -200,7 +193,7 @@
               ],
               "items": [
                 [
-                  "Python source needs a suitable runtime on the new system",
+                  "Python source needs a suitable interpreter on the new system",
                   "Accurate"
                 ],
                 [
@@ -212,11 +205,11 @@
                   "Accurate"
                 ],
                 [
-                  "High-level code can depend on libraries that must also be available",
+                  "A suitable translator must be available on the new system",
                   "Accurate"
                 ]
               ],
-              "fb": "High-level code is often more portable, but the runtime, libraries and system features must still be compatible."
+              "fb": "High-level code is often more portable, but the translator and system must still be compatible."
             }
           ]
         },
@@ -305,7 +298,7 @@
                 ],
                 [
                   "Check before moving high-level source to another system",
-                  "A compatible runtime and dependencies are available"
+                  "A compatible translator is available"
                 ]
               ],
               "fb": "An exam explanation should connect a language characteristic to the requirement in the question."
@@ -343,8 +336,8 @@
           "face": "back",
           "x": 1888,
           "y": 540,
-          "title": "Assembly language",
-          "text": "Uses short instruction names called mnemonics.\n\nClosely follows a particular processor instruction set.\n\nEasier to read than binary, but still needs translation.\n\nChallenge: Why is assembly low-level even though it uses words?\n\nThe register example shows the idea of assembly. You do not need to learn these illustrative instructions for OCR J277."
+          "title": "The need for translation",
+          "text": "Programmers write source code to express instructions.\n\nA CPU cannot execute high-level source directly.\n\nA translator enables the source program to be executed.\n\nChallenge: Why does high-level source need translation?\n\nCompilers and interpreters are two types of translator. Their differences are explored in Lesson 3."
         },
         {
           "id": "f5",
@@ -352,7 +345,7 @@
           "x": 920,
           "y": 540,
           "title": "Moving between devices",
-          "text": "High-level source is often more portable between systems.\n\nA suitable translator or runtime must be available.\n\nLow-level code may need rewriting for another instruction set.\n\nChallenge: What must be available before a Python program can run on a new computer?\n\nPortable source code and a portable executable are different ideas. Reusing source may require translating it for the target system."
+          "text": "High-level source is often more portable between systems.\n\nA suitable translator or runtime must be available.\n\nLow-level code may need rewriting for another instruction set.\n\nChallenge: What must be available before a Python program can run on a new computer?\n\nPortability describes how readily source code can be used on another system. The new system still needs a suitable translator."
         },
         {
           "id": "f6",

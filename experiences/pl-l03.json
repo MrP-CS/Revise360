@@ -6,15 +6,8 @@
     {
       "id": "main",
       "title": "Translation studio",
-      "img": "img/PL_L03_TranslationStudio/fallback.jpg",
-      "faces": {
-        "right": "img/PL_L03_TranslationStudio/right.webp",
-        "back": "img/PL_L03_TranslationStudio/back.webp",
-        "left": "img/PL_L03_TranslationStudio/left.webp",
-        "front": "img/PL_L03_TranslationStudio/front.webp",
-        "down": "img/PL_L03_TranslationStudio/down.webp",
-        "up": "img/PL_L03_TranslationStudio/up.webp"
-      },
+      "img": "img/PL_L03_TranslationStudio_360.jpg",
+      "imgHi": "img/PL_L03_TranslationStudio_360_hi.jpg",
       "stations": [
         {
           "label": "1",
@@ -138,55 +131,55 @@
         },
         {
           "label": "4",
-          "name": "Errors at different stages",
+          "name": "Error reporting",
           "col": "#ffa028",
           "face": "back",
           "x": 1508,
           "y": 1770,
           "tasks": [
             {
+              "t": "mcq",
+              "q": "How can interpreter feedback help during development?",
+              "a": [
+                "It identifies an error encountered during execution",
+                "It guarantees an automatic repair",
+                "It hides the source line",
+                "It proves every output is correct"
+              ],
+              "fb": "Stopping and reporting an error helps the programmer locate the problem."
+            },
+            {
               "t": "sort",
-              "q": "Which kind of issue is described?",
+              "q": "Match the error-reporting behaviour to the translator.",
               "items": [
                 [
-                  "A missing bracket breaks the language rules",
-                  "Syntax"
+                  "Reports errors during whole-program translation",
+                  "Compiler"
                 ],
                 [
-                  "A valid formula applies the wrong discount",
-                  "Logic"
+                  "Stops at an error while processing source",
+                  "Interpreter"
                 ],
                 [
-                  "A keyword is spelled incorrectly",
-                  "Syntax"
+                  "May report several errors from a translation attempt",
+                  "Compiler"
                 ],
                 [
-                  "A loop runs one time too many",
-                  "Logic"
+                  "Earlier instructions may already have executed",
+                  "Interpreter"
                 ]
               ],
               "cats": [
-                "Syntax",
-                "Logic"
+                "Compiler",
+                "Interpreter"
               ],
-              "fb": "Syntax concerns language rules. Logic concerns whether valid instructions solve the intended problem."
-            },
-            {
-              "t": "mcq",
-              "q": "What does a successful compilation prove?",
-              "a": [
-                "The compiler accepted the source for translation",
-                "All expected outputs are correct",
-                "No testing is needed",
-                "The program cannot crash"
-              ],
-              "fb": "Successful translation is useful but does not establish correctness."
+              "fb": "Compare when translation and execution happen."
             }
           ]
         },
         {
           "label": "5",
-          "name": "Time and distribution",
+          "name": "Running and distributing",
           "col": "#50dc96",
           "face": "left",
           "x": 540,
@@ -194,29 +187,29 @@
           "tasks": [
             {
               "t": "multi",
-              "q": "Select TWO sensible comparisons.",
+              "q": "Select TWO compiler benefits.",
               "opts": [
-                "Compilation adds a build step",
-                "Compiled software never needs libraries",
-                "Interpreted source needs suitable execution software",
-                "An interpreter guarantees faster execution"
+                "Translated code can be run again without source translation",
+                "Compilation removes every possible error",
+                "Users do not need the original compiler to run the executable",
+                "Compilation takes no time"
               ],
               "correct": [
-                "Compilation adds a build step",
-                "Interpreted source needs suitable execution software"
+                "Translated code can be run again without source translation",
+                "Users do not need the original compiler to run the executable"
               ],
-              "fb": "Consider the build step and the target environment. Avoid absolute speed claims."
+              "fb": "Compilation separates translation from running the resulting program."
             },
             {
               "t": "mcq",
-              "q": "What may be needed when compiled software moves to a different processor architecture?",
+              "q": "Which is a drawback of interpretation in the GCSE comparison?",
               "a": [
-                "A compatible build for that architecture",
-                "A new colour scheme only",
-                "Removal of all variables",
-                "Printing the object code"
+                "Repeated translation can make execution slower",
+                "It never reports errors",
+                "It requires no source or interpreter",
+                "It always creates a standalone executable"
               ],
-              "fb": "Machine code targets an instruction set. Compatibility matters."
+              "fb": "Translation takes place during each run, adding work during execution."
             }
           ]
         },
@@ -262,37 +255,37 @@
           "tasks": [
             {
               "t": "match",
-              "q": "Match the situation to the explanation.",
+              "q": "Match each requirement to the translator benefit.",
               "pairs": [
                 [
-                  "Quickly retest a changed source statement",
-                  "Interpretation supports short edit-and-run cycles"
+                  "Quick feedback while changing source",
+                  "Interpreter stops and reports an error"
                 ],
                 [
-                  "Run a finished program many times",
-                  "A compiled build avoids repeating source translation"
+                  "Run a finished program repeatedly",
+                  "Compiler avoids repeating source translation"
                 ],
                 [
-                  "A translated program gives the wrong answer",
-                  "Logic still needs testing"
+                  "Supply a program without its source",
+                  "Compiler can produce an executable"
                 ]
               ],
-              "fb": "Choose using the requirement and explain the relevant characteristic."
+              "fb": "Relate each benefit to how the translator works."
             },
             {
               "t": "multi",
-              "q": "Select TWO claims you can defend.",
+              "q": "Select TWO accurate comparisons.",
               "opts": [
-                "Translation does not replace testing",
-                "Every interpreter is faster than every compiler",
-                "A compiled program may need a compatible runtime library",
-                "Successful compilation guarantees correct outputs"
+                "Compilation takes place before the resulting program runs",
+                "An interpreter always produces a standalone executable",
+                "An interpreter translates during each run",
+                "A compiler guarantees correct outputs"
               ],
               "correct": [
-                "Translation does not replace testing",
-                "A compiled program may need a compatible runtime library"
+                "Compilation takes place before the resulting program runs",
+                "An interpreter translates during each run"
               ],
-              "fb": "Neither translator type guarantees correct behaviour or universal compatibility."
+              "fb": "Compilation happens before execution of the result. Interpretation combines translation and execution."
             }
           ]
         }
@@ -304,7 +297,7 @@
           "x": 920,
           "y": 540,
           "title": "Why translate?",
-          "text": "Source code expresses a program in a human-readable language.\n\nA CPU executes compatible machine instructions.\n\nA translator connects the source language to execution.\n\nChallenge: Why is saving a source file not enough to make it executable by a CPU?\n\nReal language implementations can mix techniques. This lesson uses the GCSE comparison of compilation before execution and interpretation during execution."
+          "text": "Source code expresses a program in a human-readable language.\n\nA CPU executes compatible machine instructions.\n\nA translator connects the source language to execution.\n\nChallenge: Why is saving a source file not enough to make it executable by a CPU?\n\nCompare the GCSE models: a compiler translates the whole source before execution, while an interpreter translates and executes one instruction at a time."
         },
         {
           "id": "f2",
@@ -312,7 +305,7 @@
           "x": 1888,
           "y": 540,
           "title": "The compiler route",
-          "text": "A compiler processes the source program before execution.\n\nIt reports translation errors it finds.\n\nA successful build can produce code that is run later.\n\nChallenge: Why might compilation suit software used repeatedly by customers?\n\nObject code may need linking with other code before it becomes a complete executable. A compiler does not always produce a ready-to-run file in one step."
+          "text": "A compiler processes the source program before execution.\n\nIt reports translation errors it finds.\n\nA successful build can produce code that is run later.\n\nChallenge: Why might compilation suit software used repeatedly by customers?\n\nOnce a compiled executable exists, it can run again on a compatible system without translating the source again."
         },
         {
           "id": "f3",
@@ -320,23 +313,23 @@
           "x": 920,
           "y": 540,
           "title": "The interpreter route",
-          "text": "An interpreter processes source instructions as they execute.\n\nIt typically stops when it encounters an error it cannot handle.\n\nThe usual GCSE model has no separate standalone executable.\n\nChallenge: Why can an interpreter help during short edit-and-test cycles?\n\nAn interpreter may internally use bytecode or other processing. “One instruction at a time” is a teaching comparison, not a rule for every implementation."
+          "text": "An interpreter processes source instructions as they execute.\n\nIt typically stops when it encounters an error it cannot handle.\n\nThe usual GCSE model has no separate standalone executable.\n\nChallenge: Why can an interpreter help during short edit-and-test cycles?\n\nIn the GCSE comparison, an interpreter translates and executes one instruction at a time. An error stops this process and provides feedback to the programmer."
         },
         {
           "id": "f4",
           "face": "back",
           "x": 1888,
           "y": 540,
-          "title": "Errors at different stages",
-          "text": "Translation can reveal some syntax errors.\n\nA program can translate successfully and still contain logic errors.\n\nTesting checks whether outputs meet the requirements.\n\nChallenge: A compiled program gives the wrong discount. Has translation proved it correct?\n\nAn error message often points to where a problem was noticed. The actual cause can be on an earlier line."
+          "title": "Error reporting",
+          "text": "A compiler reports errors found during translation.\n\nAn interpreter stops at an error as it processes the source.\n\nImmediate feedback can help the programmer locate a problem.\n\nChallenge: Why can an interpreter help a programmer locate an error during development?\n\nThe programmer uses the error report to make a correction. A translator does not guarantee that a program produces the intended results."
         },
         {
           "id": "f5",
           "face": "left",
           "x": 920,
           "y": 540,
-          "title": "Time and distribution",
-          "text": "Compilation takes time before the translated program runs.\n\nBuilt programs can run without the original compiler installed.\n\nInterpreted source normally needs a compatible interpreter or runtime.\n\nChallenge: A user has a compiled executable. Must they install the original compiler?\n\nCompiled code is often faster to run in the simplified comparison because source translation has already happened. Actual performance depends on the implementation and program."
+          "title": "Running and distributing",
+          "text": "Compilation takes time before the first run.\n\nCompiled code runs without repeating source translation.\n\nInterpreted source needs translation each time it runs.\n\nChallenge: Why can a compiled program run faster than interpreted source in the GCSE comparison?\n\nThese are the standard GCSE comparisons. A compiled executable must still be compatible with the system that runs it."
         },
         {
           "id": "f6",

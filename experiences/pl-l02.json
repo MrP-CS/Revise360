@@ -1,24 +1,17 @@
 {
   "id": "pl-l02",
   "lesson": 2,
-  "title": "Instruction workshop",
+  "title": "Language choice workshop",
   "scenes": [
     {
       "id": "main",
-      "title": "Instruction workshop",
-      "img": "img/PL_L02_InstructionWorkshop/fallback.jpg",
-      "faces": {
-        "right": "img/PL_L02_InstructionWorkshop/right.webp",
-        "back": "img/PL_L02_InstructionWorkshop/back.webp",
-        "left": "img/PL_L02_InstructionWorkshop/left.webp",
-        "front": "img/PL_L02_InstructionWorkshop/front.webp",
-        "down": "img/PL_L02_InstructionWorkshop/down.webp",
-        "up": "img/PL_L02_InstructionWorkshop/up.webp"
-      },
+      "title": "Language choice workshop",
+      "img": "img/PL_L02_InstructionWorkshop_360.jpg",
+      "imgHi": "img/PL_L02_InstructionWorkshop_360_hi.jpg",
       "stations": [
         {
           "label": "1",
-          "name": "The teaching computer",
+          "name": "Reading and changing code",
           "col": "#40c4ff",
           "face": "right",
           "x": 540,
@@ -26,39 +19,39 @@
           "tasks": [
             {
               "t": "mcq",
-              "q": "The accumulator holds 6 and BOX holds 12. Where is the current working value?",
+              "q": "Which priority most strongly supports high-level code for a changing school quiz?",
               "a": [
-                "In the accumulator",
-                "In the output window",
-                "In BOX only",
-                "In the source-code filename"
+                "Staff need to understand and edit it easily",
+                "Staff need binary instructions on paper",
+                "The code must never be translated",
+                "Every processor must share an instruction set"
               ],
-              "fb": "The accumulator is the working register in this model."
+              "fb": "Readability helps programmers maintain a frequently updated program."
             },
             {
               "t": "match",
-              "q": "Match each part to its role.",
+              "q": "Match the characteristic to its effect.",
               "pairs": [
                 [
-                  "Accumulator",
-                  "Holds the working value"
+                  "Readable source",
+                  "Easier to understand changes"
                 ],
                 [
-                  "Memory location",
-                  "Keeps a stored value"
+                  "Hidden hardware details",
+                  "Less processor knowledge needed"
                 ],
                 [
-                  "Instruction",
-                  "Tells the model what to do"
+                  "Close to processor instructions",
+                  "More hardware knowledge needed"
                 ]
               ],
-              "fb": "A register, a memory location and an instruction have different roles."
+              "fb": "A useful explanation connects a characteristic with its effect."
             }
           ]
         },
         {
           "label": "2",
-          "name": "Input and output",
+          "name": "Development time",
           "col": "#aa6eeb",
           "face": "right",
           "x": 1508,
@@ -66,107 +59,119 @@
           "tasks": [
             {
               "t": "mcq",
-              "q": "INP reads 9. OUT runs next. What is displayed?",
+              "q": "Why can high-level code be quicker to develop?",
               "a": [
-                "9",
-                "0",
-                "INP",
-                "Nothing until HLT"
+                "It can express a task with fewer instructions",
+                "It guarantees there are no errors",
+                "It never needs a translator",
+                "It executes directly as English"
               ],
-              "fb": "OUT displays the accumulator value, which is 9."
+              "fb": "Higher-level operations reduce the detail a programmer must write."
             },
             {
-              "t": "mcq",
-              "q": "What does HLT do in this model?",
-              "a": [
-                "Stops execution",
-                "Clears every memory location",
-                "Reads a new input",
-                "Adds the next value"
+              "t": "multi",
+              "q": "Select TWO reasonable comparisons.",
+              "opts": [
+                "High-level code usually takes less effort to write",
+                "High-level code can never contain mistakes",
+                "Low-level code requires more processor detail",
+                "Low-level code is always easiest to maintain"
               ],
-              "fb": "HLT ends the program. OUT displays a value but does not stop the program."
+              "correct": [
+                "High-level code usually takes less effort to write",
+                "Low-level code requires more processor detail"
+              ],
+              "fb": "Compare typical characteristics without claiming that a language guarantees correctness."
             }
           ]
         },
         {
           "label": "3",
-          "name": "Keeping a value",
+          "name": "Moving to another system",
           "col": "#ff785a",
           "face": "back",
           "x": 540,
           "y": 1770,
           "tasks": [
             {
-              "t": "mcq",
-              "q": "After INP 8, STA BOX, INP 3 and LDA BOX, what is in the accumulator?",
-              "a": [
-                "8",
-                "3",
-                "11",
-                "0"
+              "t": "sort",
+              "q": "Classify the language characteristic.",
+              "items": [
+                [
+                  "Usually easier to move between systems",
+                  "High-level"
+                ],
+                [
+                  "Closely tied to a processor instruction set",
+                  "Low-level"
+                ],
+                [
+                  "Needs suitable translation on the new system",
+                  "High-level"
+                ],
+                [
+                  "May require processor-specific rewriting",
+                  "Low-level"
+                ]
               ],
-              "fb": "STA saved 8 before the second input. LDA copies that saved value back."
+              "cats": [
+                "High-level",
+                "Low-level"
+              ],
+              "fb": "High-level source is usually more portable, with a suitable translator."
             },
             {
-              "t": "multi",
-              "q": "Select TWO true statements about this trace.",
-              "opts": [
-                "BOX still contains 8 after LDA BOX",
-                "LDA deletes BOX",
-                "The second INP replaces the working value",
-                "STA always resets the accumulator to zero"
+              "t": "mcq",
+              "q": "What must be checked when moving high-level source to another system?",
+              "a": [
+                "A suitable translator is available",
+                "The keyboard has the same colour",
+                "Every CPU uses identical instructions",
+                "The source contains only binary"
               ],
-              "correct": [
-                "BOX still contains 8 after LDA BOX",
-                "The second INP replaces the working value"
-              ],
-              "fb": "Stores and loads copy values. Neither operation here deletes the stored value."
+              "fb": "Portability still depends on translation support on the target system."
             }
           ]
         },
         {
           "label": "4",
-          "name": "Calculating step by step",
+          "name": "Control of hardware",
           "col": "#ffa028",
           "face": "back",
           "x": 1508,
           "y": 1770,
           "tasks": [
             {
-              "t": "match",
-              "q": "Match each instruction to the accumulator value after it runs.",
-              "pairs": [
-                [
-                  "LDA A, where A = 8",
-                  "8"
-                ],
-                [
-                  "Then ADD B, where B = 5",
-                  "13"
-                ],
-                [
-                  "Then SUB C, where C = 2",
-                  "11"
-                ]
+              "t": "mcq",
+              "q": "Which requirement most strongly favours low-level code?",
+              "a": [
+                "Precise control over processor operations",
+                "Readable code for weekly staff edits",
+                "Minimum processor knowledge",
+                "Rapid writing of a general school app"
               ],
-              "fb": "Trace one instruction at a time: 8, then 13, then 11."
+              "fb": "Low-level languages expose hardware operations in more detail."
             },
             {
-              "t": "mcq",
-              "q": "Does ADD B change the value stored at B?",
-              "a": [
-                "No, it changes the accumulator",
-                "Yes, B becomes zero",
-                "Yes, B always doubles",
-                "Yes, B becomes the output"
+              "t": "multi",
+              "q": "Select TWO valid trade-offs.",
+              "opts": [
+                "Low-level code can offer detailed hardware control",
+                "Low-level code is independent of every processor",
+                "Low-level code can be harder to maintain",
+                "Low-level code is always quickest to develop"
               ],
-              "fb": "ADD reads B and updates the accumulator. B stays unchanged."
+              "correct": [
+                "Low-level code can offer detailed hardware control",
+                "Low-level code can be harder to maintain"
+              ],
+              "fb": "Detailed control must be balanced against the effort needed to write and maintain the code."
             }
           ]
         },
         {
           "label": "5",
-          "name": "Repairing a program",
+          "name": "Speed and memory",
           "col": "#50dc96",
           "face": "left",
           "x": 540,
@@ -174,73 +179,65 @@
           "tasks": [
             {
               "t": "mcq",
-              "q": "Which instruction belongs in the gap?",
+              "q": "Which benefit fits a routine with strict memory limits?",
               "a": [
-                "STA FIRST",
-                "LDA FIRST",
-                "OUT",
-                "HLT"
+                "Detailed control over memory use",
+                "Guaranteed zero memory use",
+                "No need to understand hardware",
+                "Automatic portability to every CPU"
               ],
-              "fb": "Store the first input before the second input overwrites the accumulator."
+              "fb": "Low-level code can give precise control, but it still uses memory."
             },
             {
-              "t": "mcq",
-              "q": "If FIRST starts at 0 and the store is missing, what do inputs 6 then 4 produce?",
-              "a": [
-                "4",
-                "10",
-                "6",
-                "0"
+              "t": "match",
+              "q": "Match each priority to the relevant characteristic.",
+              "pairs": [
+                [
+                  "Easy staff updates",
+                  "Readable high-level source"
+                ],
+                [
+                  "Precise memory use",
+                  "Detailed low-level control"
+                ],
+                [
+                  "Short development deadline",
+                  "High-level operations reduce coding detail"
+                ]
               ],
-              "fb": "The second input leaves 4 in the accumulator. Adding the unchanged FIRST value 0 still gives 4."
+              "fb": "Choose a characteristic that directly addresses the requirement."
             }
           ]
         },
         {
           "label": "6",
-          "name": "Linking code to hardware",
+          "name": "A justified recommendation",
           "col": "#f05aaa",
           "face": "left",
           "x": 1508,
           "y": 1770,
           "tasks": [
             {
-              "t": "sort",
-              "q": "Classify these descriptions.",
-              "items": [
-                [
-                  "Mnemonic instructions",
-                  "Assembly"
-                ],
-                [
-                  "Binary processor instructions",
-                  "Machine code"
-                ],
-                [
-                  "Readable ADD instruction",
-                  "Assembly"
-                ],
-                [
-                  "Encoded operation bits",
-                  "Machine code"
-                ]
+              "t": "mcq",
+              "q": "Which recommendation best fits the school app?",
+              "a": [
+                "High-level code supports readability and portability",
+                "Low-level code always runs on every system",
+                "Machine code is easiest for staff to read",
+                "Language choice never affects maintenance"
               ],
-              "cats": [
-                "Assembly",
-                "Machine code"
-              ],
-              "fb": "Assembly and machine code are both low-level. Their representations differ."
+              "fb": "Link readability to updates and portability to use on different systems."
             },
             {
               "t": "mcq",
-              "q": "What must happen before a real CPU executes assembly source?",
+              "q": "What drawback should accompany this recommendation?",
               "a": [
-                "It must be translated to compatible machine code",
-                "It must be converted into a worksheet",
-                "Every instruction must become Python",
-                "The source must be printed"
+                "The source still needs suitable translation",
+                "The source can never be changed",
+                "High-level code cannot store values",
+                "High-level code is always binary"
               ],
-              "fb": "An assembler performs this translation. The teaching computer helps illustrate the idea."
+              "fb": "A balanced recommendation includes the need for a suitable translator."
             }
           ]
         },
@@ -254,42 +251,49 @@
           "tasks": [
             {
               "t": "sort",
-              "q": "For inputs 7 and 2, match each point to the working value.",
+              "q": "Choose a language level for each priority.",
               "items": [
                 [
-                  "After first INP",
-                  "7"
+                  "Easy weekly updates to a quiz",
+                  "High-level"
                 ],
                 [
-                  "After STA FIRST",
-                  "7"
+                  "Precise processor control",
+                  "Low-level"
                 ],
                 [
-                  "After second INP",
-                  "2"
+                  "Quick development of a school app",
+                  "High-level"
                 ],
                 [
-                  "After ADD FIRST",
-                  "9"
+                  "Careful control of a tiny routine’s memory use",
+                  "Low-level"
                 ]
               ],
               "cats": [
-                "7",
-                "2",
-                "9"
+                "High-level",
+                "Low-level"
               ],
-              "fb": "Store the first value, read the second, then add the saved first value."
+              "fb": "Match readability and development speed to high-level code, and detailed hardware control to low-level code."
             },
             {
-              "t": "mcq",
-              "q": "Which test best checks that the repaired program adds both inputs?",
-              "a": [
-                "Use 7 and 2, and expect 9",
-                "Use 0 and 0 only",
-                "Check that the source file opens",
-                "Check that OUT is written in capitals"
+              "t": "match",
+              "q": "Match each choice to a relevant drawback.",
+              "pairs": [
+                [
+                  "High-level source on a new system",
+                  "Needs a suitable translator"
+                ],
+                [
+                  "Low-level source for one processor",
+                  "May need rewriting for another processor"
+                ],
+                [
+                  "Detailed low-level routine",
+                  "Usually takes more effort to maintain"
+                ]
               ],
-              "fb": "Different non-zero inputs reveal whether one value was lost."
+              "fb": "Explain the trade-off, not just the choice."
             }
           ]
         }
@@ -300,48 +304,48 @@
           "face": "right",
           "x": 920,
           "y": 540,
-          "title": "The teaching computer",
-          "text": "An accumulator holds the current working value.\n\nNamed memory locations store values for later use.\n\nInstructions run in order unless a branch changes the route.\n\nChallenge: How is the accumulator different from a memory location?\n\nThis is a simplified teaching model. Tracing its instructions develops understanding of low-level operations. These mnemonics are not a required OCR J277 instruction list."
+          "title": "Reading and changing code",
+          "text": "High-level code uses readable words and structures.\n\nReadable code is usually easier to understand and change.\n\nLow-level code requires more knowledge of the processor.\n\nChallenge: Why might a high-level language help staff update a quiz each week?\n\nMaintenance includes correcting and changing a program. High-level languages usually reduce the effort needed."
         },
         {
           "id": "f2",
           "face": "right",
           "x": 1888,
           "y": 540,
-          "title": "Input and output",
-          "text": "INP places the next input in the accumulator.\n\nOUT displays the accumulator without clearing it.\n\nHLT stops the program.\n\nChallenge: Predict the output when the input is 9.\n\nRead input values in the order supplied. Two INP instructions consume two inputs, even when both use the same accumulator."
+          "title": "Development time",
+          "text": "High-level operations can express a task in fewer instructions.\n\nLow-level code often needs more detailed instructions.\n\nMore detailed code can take longer to write and check.\n\nChallenge: Why can high-level code reduce development time?\n\nDevelopment time is the time spent creating the program. It is different from the time the finished program takes to run."
         },
         {
           "id": "f3",
           "face": "back",
           "x": 920,
           "y": 540,
-          "title": "Keeping a value",
-          "text": "STA copies the accumulator into a named memory location.\n\nLDA copies a stored value into the accumulator.\n\nLoading a value does not remove it from memory.\n\nChallenge: After this sequence, what do ACC and BOX contain?\n\nThe names ACC and BOX are labels for the diagram. BOX represents a memory location, not another accumulator."
+          "title": "Moving to another system",
+          "text": "High-level source is usually more portable.\n\nThe new system needs a suitable translator.\n\nLow-level code is tied more closely to a processor.\n\nChallenge: Why may low-level code need rewriting for a different processor?\n\nPortability does not mean every source program works unchanged on every device. Compare the language levels using the requirement given."
         },
         {
           "id": "f4",
           "face": "back",
           "x": 1888,
           "y": 540,
-          "title": "Calculating step by step",
-          "text": "ADD adds a stored value to the accumulator.\n\nSUB subtracts a stored value from the accumulator.\n\nRecord each new working value when tracing.\n\nChallenge: What does this program output? Show the intermediate values.\n\nFor this model, examples use small non-negative integers. Overflow and a particular real processor encoding are outside these activities."
+          "title": "Control of hardware",
+          "text": "Low-level code closely matches processor operations.\n\nIt allows detailed control of hardware and memory use.\n\nThis control comes with greater development effort.\n\nChallenge: Why might low-level code suit a routine needing precise hardware control?\n\nA strong answer explains why detailed hardware control matters to the stated task."
         },
         {
           "id": "f5",
           "face": "left",
           "x": 920,
           "y": 540,
-          "title": "Repairing a program",
-          "text": "An input overwrites the accumulator.\n\nSave a value before reading another one if you still need it.\n\nTest a repair with inputs whose sum you can predict.\n\nChallenge: Repair the missing instruction so inputs 6 and 4 produce 10.\n\nA program may run without reporting an error and still produce the wrong answer. Compare actual output with a predicted result."
+          "title": "Speed and memory",
+          "text": "Low-level code can be carefully tuned for a processor.\n\nThis can help control execution speed and memory use.\n\nHigh-level code usually makes development easier.\n\nChallenge: A tiny routine must use little memory. Give one benefit and one drawback of low-level code.\n\nAvoid claiming low-level code is always faster. Its relevant advantage is the detailed control it can give a programmer."
         },
         {
           "id": "f6",
           "face": "left",
           "x": 1888,
           "y": 540,
-          "title": "Linking code to hardware",
-          "text": "Assembly uses readable instruction names.\n\nMachine code encodes instructions as binary.\n\nAn assembler translates assembly source into machine code.\n\nChallenge: Why does readable assembly still count as low-level?\n\nThe assembler is included to explain this practical activity. The main assessed translator comparison in J277 is compiler versus interpreter."
+          "title": "A justified recommendation",
+          "text": "Identify the main requirement in the project.\n\nChoose the language level that addresses it.\n\nExplain both the benefit and a relevant drawback.\n\nChallenge: Recommend a level for a school app that needs frequent changes on several systems.\n\nUse the scenario to decide which characteristics matter. There is no single language level that is best for every task."
         }
       ],
       "models": []

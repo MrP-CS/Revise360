@@ -6,15 +6,8 @@
     {
       "id": "main",
       "title": "IDE control room",
-      "img": "img/PL_L04_IDEControlRoom/fallback.jpg",
-      "faces": {
-        "right": "img/PL_L04_IDEControlRoom/right.webp",
-        "back": "img/PL_L04_IDEControlRoom/back.webp",
-        "left": "img/PL_L04_IDEControlRoom/left.webp",
-        "front": "img/PL_L04_IDEControlRoom/front.webp",
-        "down": "img/PL_L04_IDEControlRoom/down.webp",
-        "up": "img/PL_L04_IDEControlRoom/up.webp"
-      },
+      "img": "img/PL_L04_IDEControlRoom_360.jpg",
+      "imgHi": "img/PL_L04_IDEControlRoom_360_hi.jpg",
       "stations": [
         {
           "label": "1",
@@ -28,31 +21,31 @@
               "t": "mcq",
               "q": "What is an IDE?",
               "a": [
-                "An application that brings programming tools together",
+                "An application combining programming facilities",
                 "A processor instruction set",
-                "A type of secondary storage",
-                "A programming language itself"
+                "A programming language itself",
+                "A type of secondary storage"
               ],
-              "fb": "The IDE supports programming. It is not itself the source language."
+              "fb": "An IDE provides tools used while developing programs."
             },
             {
               "t": "match",
-              "q": "Match each facility to its purpose.",
+              "q": "Match the facility to its role.",
               "pairs": [
                 [
                   "Editor",
-                  "Write and change source code"
+                  "Write and change source"
                 ],
                 [
-                  "Execution tool",
-                  "Start a program run"
+                  "Error diagnostics",
+                  "Report detected problems"
                 ],
                 [
-                  "Debugger",
-                  "Investigate behaviour during execution"
+                  "Translator",
+                  "Translate program instructions"
                 ]
               ],
-              "fb": "These facilities work together within the development environment."
+              "fb": "The four facilities support different parts of development."
             }
           ]
         },
@@ -98,7 +91,7 @@
         },
         {
           "label": "3",
-          "name": "Translation and execution",
+          "name": "The run-time environment",
           "col": "#ff785a",
           "face": "back",
           "x": 540,
@@ -106,14 +99,14 @@
           "tasks": [
             {
               "t": "mcq",
-              "q": "Which facility lets you start the program and see its output?",
+              "q": "Which facility runs the program so you can observe its output?",
               "a": [
-                "Run or execution controls",
-                "Changing the editor font only",
-                "Renaming a comment",
-                "Sorting project files"
+                "Run-time environment",
+                "Editor colour theme",
+                "Auto-completion alone",
+                "Source filename"
               ],
-              "fb": "The IDE invokes its configured execution tools and displays the results."
+              "fb": "The run-time environment supports execution and lets the programmer observe the result."
             },
             {
               "t": "mcq",
@@ -122,7 +115,7 @@
                 "The output area or console",
                 "Only in the filename",
                 "Only in the colour legend",
-                "In the breakpoint icon"
+                "In a font menu"
               ],
               "fb": "The statement sends 24 to the output area."
             }
@@ -143,7 +136,7 @@
                 "Add the closing ) after the string",
                 "Delete every print statement",
                 "Change Ready to Go",
-                "Add a breakpoint only"
+                "Change the font only"
               ],
               "fb": "The opening bracket needs a matching closing bracket."
             },
@@ -166,7 +159,7 @@
         },
         {
           "label": "5",
-          "name": "Pausing and stepping",
+          "name": "Translators in an IDE",
           "col": "#50dc96",
           "face": "left",
           "x": 540,
@@ -174,39 +167,39 @@
           "tasks": [
             {
               "t": "mcq",
-              "q": "Execution pauses before the calculation. What should you do to inspect its result?",
+              "q": "What is the translator’s role in an IDE?",
               "a": [
-                "Step over it, then inspect total",
-                "Assume total already changed",
-                "Delete the source file",
-                "Only change the font"
+                "Process source into instructions that can be executed",
+                "Choose the editor font",
+                "Write the user’s requirements automatically",
+                "Guarantee every result is correct"
               ],
-              "fb": "A breakpoint pauses before the line. Stepping lets you see the effect of executing it."
+              "fb": "Translation enables high-level source to execute."
             },
             {
               "t": "match",
-              "q": "Match the debugging action to its use.",
+              "q": "Match each facility with its action.",
               "pairs": [
                 [
-                  "Set a breakpoint",
-                  "Pause at a chosen location"
+                  "Editor",
+                  "Change a source instruction"
                 ],
                 [
-                  "Step over a line",
-                  "Execute a line and pause again"
+                  "Translator",
+                  "Process the source for execution"
                 ],
                 [
-                  "Inspect a variable",
-                  "Read its current value"
+                  "Run-time environment",
+                  "Execute the program"
                 ]
               ],
-              "fb": "Use the facilities together to investigate where actual behaviour diverges from your expectation."
+              "fb": "Writing, translation and running are different jobs, even when one application provides them."
             }
           ]
         },
         {
           "label": "6",
-          "name": "Finding a logic error",
+          "name": "Using your class IDE",
           "col": "#f05aaa",
           "face": "left",
           "x": 1508,
@@ -214,25 +207,25 @@
           "tasks": [
             {
               "t": "mcq",
-              "q": "Which replacement meets the stated requirement?",
+              "q": "Which action demonstrates using the editor?",
               "a": [
-                "total = price * quantity",
-                "total = price - quantity",
-                "total = quantity",
-                "total = 10"
+                "Change a message in the source",
+                "Read output without changing code",
+                "Look at the monitor brand",
+                "Close the computer lid"
               ],
-              "fb": "Multiplying the unit price by the quantity calculates the bill."
+              "fb": "The editor is where the programmer writes and changes source."
             },
             {
               "t": "mcq",
-              "q": "Which is the strongest follow-up after the repair?",
+              "q": "A diagnostic reports a missing closing bracket. Which IDE facility lets you correct it?",
               "a": [
-                "Run the original test and another known case",
-                "Assume one edit fixed every possible fault",
-                "Delete all expected outputs",
-                "Check only that the source is coloured"
+                "The editor",
+                "The output alone",
+                "The display brightness control",
+                "The filename only"
               ],
-              "fb": "Retesting checks the repair. More than one known case gives better evidence."
+              "fb": "Read the diagnostic, then use the editor to correct the source."
             }
           ]
         },
@@ -246,37 +239,37 @@
           "tasks": [
             {
               "t": "match",
-              "q": "Select the useful IDE facility for each need.",
+              "q": "Choose the facility for each job.",
               "pairs": [
                 [
-                  "Reduce typing of a long variable name",
-                  "Auto-completion"
+                  "Change the source text",
+                  "Editor"
                 ],
                 [
-                  "Stop just before an incorrect calculation",
-                  "Breakpoint"
+                  "Read a reported error",
+                  "Error diagnostics"
                 ],
                 [
-                  "Inspect the current total",
-                  "Variable watch"
+                  "Translate source instructions",
+                  "Translator"
                 ],
                 [
-                  "See a message about a missing bracket",
-                  "Diagnostics"
+                  "Run the program and see output",
+                  "Run-time environment"
                 ]
               ],
-              "fb": "Choose the facility that directly addresses the programmer’s next step."
+              "fb": "Explain what each facility does for the programmer."
             },
             {
               "t": "mcq",
-              "q": "A debugger shows correct inputs but the wrong result after one line. What should happen next?",
+              "q": "After correcting source using a diagnostic, which facility lets you observe the new output?",
               "a": [
-                "Inspect that calculation, repair it and retest",
-                "Replace the entire computer immediately",
-                "Turn off diagnostics permanently",
-                "Assume the debugger caused the fault"
+                "Run-time environment",
+                "Only the editor’s colour scheme",
+                "Only the source filename",
+                "Only auto-completion"
               ],
-              "fb": "The evidence narrows the investigation to the calculation."
+              "fb": "Execute the corrected program to see its output."
             }
           ]
         }
@@ -288,7 +281,7 @@
           "x": 920,
           "y": 540,
           "title": "Tools in one place",
-          "text": "IDE means integrated development environment.\n\nAn IDE combines tools used to create and test programs.\n\nIts facilities may include editing, execution and debugging.\n\nChallenge: Why can bringing these tools together help a programmer?\n\nDifferent IDEs provide different tools. An editor can be part of an IDE, but a simple text editor alone may not include execution or debugging."
+          "text": "An IDE combines programming facilities in one application.\n\nEditors and diagnostics help create and correct source.\n\nTranslators and a run-time environment help execute it.\n\nChallenge: How does an IDE help a programmer work on a program?\n\nAn IDE combines these facilities so the programmer can work without repeatedly switching between separate applications."
         },
         {
           "id": "f2",
@@ -303,8 +296,8 @@
           "face": "back",
           "x": 920,
           "y": 540,
-          "title": "Translation and execution",
-          "text": "An IDE can call a compiler or interpreter.\n\nRun controls start the program using its configured tools.\n\nThe output area shows results and may accept input.\n\nChallenge: What is the difference between the editor and the output area?\n\nAn IDE may require a separately installed compiler or interpreter. The interface and the language execution tool have different jobs."
+          "title": "The run-time environment",
+          "text": "A run-time environment lets a programmer execute a program.\n\nInput and output can be handled during the run.\n\nThe programmer can observe the program’s behaviour.\n\nChallenge: What is the difference between the editor and the output area?\n\nUse the Run control in your class IDE and find where it displays output. Names and layouts differ between IDEs."
         },
         {
           "id": "f4",
@@ -319,16 +312,16 @@
           "face": "left",
           "x": 920,
           "y": 540,
-          "title": "Pausing and stepping",
-          "text": "A breakpoint pauses before a selected line executes.\n\nStep controls advance execution in small steps.\n\nWatching variables reveals how values change.\n\nChallenge: If execution pauses before total = price * quantity, what can you inspect first?\n\nStepping options differ. Step into can enter a called function, while step over runs that call without stopping on each line inside it."
+          "title": "Translators in an IDE",
+          "text": "An IDE can use a compiler or an interpreter.\n\nThe translator processes the program’s source instructions.\n\nTranslation and execution have different roles.\n\nChallenge: Why does an IDE need access to a translator for high-level source?\n\nThe IDE may call a compiler or interpreter installed separately. The translator is a tool used by the IDE."
         },
         {
           "id": "f6",
           "face": "left",
           "x": 1888,
           "y": 540,
-          "title": "Finding a logic error",
-          "text": "A logic error can remain even when syntax is valid.\n\nCompare actual values with the result you expected.\n\nRetest after changing the faulty statement.\n\nChallenge: The bill should be 24 but is 10. Identify and repair the calculation.\n\nDebugging finds and fixes faults. Testing supplies evidence about whether the program meets its requirements."
+          "title": "Using your class IDE",
+          "text": "Open the IDE your teacher uses for programming.\n\nUse its editor, Run control and output area.\n\nRead a diagnostic message and correct its cause.\n\nChallenge: In your class IDE, change a printed message and run it. Which two facilities did you use?\n\nPractical task: in your class IDE, run print(\"Ready\"), change the message and run it again. Remove the closing bracket, run to see the diagnostic, then restore it and rerun. Identify the translator used by the IDE. Record the IDE name and the facilities you used."
         }
       ],
       "models": []

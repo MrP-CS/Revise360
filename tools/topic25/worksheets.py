@@ -79,7 +79,7 @@ for l in LESSONS:
  d=Document(TEMPLATE);body=d._element.body
  for e in list(body):
   if e.tag!=qn('w:sectPr'):body.remove(e)
- title=['Language characteristics','Low-level programming','Compilers and interpreters','Integrated development environments','Programming languages and IDEs review'][l['n']-1]
+ title=['Language characteristics','Language choices','Compilers and interpreters','Integrated development environments','Programming languages and IDEs review'][l['n']-1]
  t=append(d,source.tables[0]);c=t.cell(0,0)
  setp(c.paragraphs[0],f'OCR J277 2.5 Programming languages and IDEs  |  Lesson {l["n"]}')
  setp(c.paragraphs[1],title);setp(c.paragraphs[2],'Worksheet for the 360° experience: '+l['title'])
@@ -119,7 +119,7 @@ for l in LESSONS:
  t=append(d,source.tables[13]);setp(t.cell(0,1).paragraphs[0],f'______ / {total}');spacer(d)
  t=append(d,source.tables[14]);setp(t.cell(0,0).paragraphs[1],l['donow']);spacer(d)
  # Review sits below the score/key question, using the same established panel style.
- t=append(d,source.tables[14]);setp(t.cell(0,0).paragraphs[0],'Review and improve');setp(t.cell(0,0).paragraphs[1],'Use review mode. Explain one correction and why the correct answer fits.')
+ t=append(d,source.tables[14]);setp(t.cell(0,0).paragraphs[0],'Review and improve');setp(t.cell(0,0).paragraphs[1],'Use review mode. Explain one correction and why the correct answer fits.' + (' In your class IDE, run print("Ready"), change the message and run it again. Remove the closing bracket, read the diagnostic, then restore it and rerun. Record the IDE name and identify its editor, diagnostics, translator and run-time environment.' if l['n']==4 else ''))
  page(d)
  t=append(d,source.tables[15]);c=t.cell(0,0);ps=list(c.paragraphs);clearcell(c)
  addp(c,ps[0],'Exam practice');addp(c,ps[1],'Near the end of the lesson, close the experience and answer from memory.')
