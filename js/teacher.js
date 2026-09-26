@@ -89,7 +89,7 @@
         <label for="cf" class="muted">Class</label><select id="cf" class="btn small ghost">${['<option value="">All classes</option>', ...classes.map(c => `<option ${c === cls ? "selected" : ""}>${esc(c)}</option>`)].join("")}</select></div>
         <div class="row"><button class="btn small ghost" id="rf">Refresh</button><button class="btn small" id="csv">Download CSV</button></div>
       </div>
-      ${CFG.backendUrl ? "" : '<p class="review-note" style="margin-top:14px"><b>Demo mode.</b> Everything here is stored on this device: class logins, login cards, student progress and these results. To collect results from every device, deploy the backend and put its URL in <code>js/config.js</code>. Nothing else changes.</p>'}
+      ${CFG.backendUrl ? "" : '<p class="review-note" style="margin-top:14px"><b>Demo mode.</b> Everything here is stored on this device: class logins, login cards, student progress and these results.</p>'}
       <section><div class="stats"><div class="stat"><span class="muted">Students</span><b>${list.length}</b></div>
         <div class="stat"><span class="muted">Active in the last 7 days</span><b>${active}</b></div>
         ${reg.experiences.map(e => { const d = list.filter(s => s.exps[e.id]?.complete).length; return `<div class="stat"><span class="muted">L${esc(e.lesson)} complete</span><b>${d} / ${list.length}</b></div>`; }).join("")}</div></section>
