@@ -1,0 +1,308 @@
+{
+  "id": "al-l15",
+  "lesson": 15,
+  "title": "Bug investigation lab",
+  "scenes": [
+    {
+      "id": "main",
+      "title": "Bug investigation lab",
+      "img": "img/AL_L15_BugInvestigationLab_360.jpg",
+      "imgHi": "img/AL_L15_BugInvestigationLab_360_hi.jpg",
+      "stations": [
+        {
+          "label": "1",
+          "name": "Syntax rules",
+          "col": "#40c4ff",
+          "face": "right",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "Which is a Python syntax error?",
+              "a": [
+                "A missing colon after an if condition",
+                "Multiplying when addition was intended",
+                "Using > instead of >= in a valid condition",
+                "Printing the wrong variable"
+              ],
+              "fb": "A missing colon after an if condition"
+            },
+            {
+              "t": "mcq",
+              "q": "Python print(\"Ready\") has...",
+              "a": [
+                "Balanced parentheses",
+                "A missing closing parenthesis",
+                "No valid string"
+              ],
+              "fb": "Balanced parentheses. A language has rules for valid code."
+            }
+          ]
+        },
+        {
+          "label": "2",
+          "name": "Logic can be wrong",
+          "col": "#aa6eeb",
+          "face": "right",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "Which expression correctly averages x and y?",
+              "a": [
+                "(x + y) / 2",
+                "x + y / 2",
+                "x * y / 2",
+                "x - y / 2"
+              ],
+              "fb": "(x + y) / 2"
+            },
+            {
+              "t": "mcq",
+              "q": "For a = 6, b = 10, a + b / 2 gives...",
+              "a": [
+                "11",
+                "8",
+                "16"
+              ],
+              "fb": "11. A program can execute and give a wrong result."
+            }
+          ]
+        },
+        {
+          "label": "3",
+          "name": "Off-by-one errors",
+          "col": "#ff785a",
+          "face": "back",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "Python range(1, 4) repeats how many times?",
+              "a": [
+                "3",
+                "4",
+                "5",
+                "1"
+              ],
+              "fb": "3"
+            },
+            {
+              "t": "mcq",
+              "q": "Last valid zero-based index in a five-item list?",
+              "a": [
+                "4",
+                "5",
+                "1"
+              ],
+              "fb": "4. A loop may run once too often or too little."
+            }
+          ]
+        },
+        {
+          "label": "4",
+          "name": "Faulty initialisation",
+          "col": "#ffa028",
+          "face": "back",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "A counter starts at 1 but should count from zero. What type of fault can this cause?",
+              "a": [
+                "A logic error in the count",
+                "Always a syntax error",
+                "A missing quotation mark",
+                "A translation requirement"
+              ],
+              "fb": "A logic error in the count"
+            },
+            {
+              "t": "mcq",
+              "q": "Resetting total in each iteration causes...",
+              "a": [
+                "Previous additions to be lost",
+                "A syntax error in every language",
+                "The correct overall sum"
+              ],
+              "fb": "Previous additions to be lost. A running total needs an initial value."
+            }
+          ]
+        },
+        {
+          "label": "5",
+          "name": "Trace the faulty line",
+          "col": "#50dc96",
+          "face": "left",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "match",
+              "q": "Match the fault to its correction.",
+              "pairs": [
+                [
+                  "Missing Python colon",
+                  "Add : after the condition"
+                ],
+                [
+                  "Exclusive threshold",
+                  "Use >= for at least"
+                ],
+                [
+                  "Counter never changes",
+                  "Update the counter in the loop"
+                ]
+              ],
+              "fb": "Corrections should address the actual cause."
+            },
+            {
+              "t": "mcq",
+              "q": "A missing Python colon is corrected by...",
+              "a": [
+                "Adding the colon after the condition",
+                "Changing + to *",
+                "Resetting a counter"
+              ],
+              "fb": "Adding the colon after the condition. Change one cause at a time."
+            }
+          ]
+        },
+        {
+          "label": "6",
+          "name": "Verify with evidence",
+          "col": "#f05aaa",
+          "face": "left",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "order",
+              "q": "Order the debugging steps.",
+              "steps": [
+                "Reproduce the incorrect behaviour",
+                "Locate and explain the fault",
+                "Apply a targeted correction",
+                "Retest and compare outputs"
+              ],
+              "fb": "An error message or wrong result is evidence to investigate."
+            },
+            {
+              "t": "mcq",
+              "q": "A passing test proves...",
+              "a": [
+                "That tested case produced the expected result",
+                "All possible cases are correct",
+                "The program has no remaining errors"
+              ],
+              "fb": "That tested case produced the expected result. Retest the input that exposed the error."
+            }
+          ]
+        },
+        {
+          "label": "★",
+          "name": "Final challenge",
+          "col": "#ffd046",
+          "face": "down",
+          "x": 1024,
+          "y": 800,
+          "tasks": [
+            {
+              "t": "sort",
+              "q": "Classify the errors.",
+              "cats": [
+                "Syntax",
+                "Logic"
+              ],
+              "items": [
+                [
+                  "Python if x > 0 with no colon",
+                  "Syntax"
+                ],
+                [
+                  "Average calculated as a + b / 2",
+                  "Logic"
+                ],
+                [
+                  "Missing closing quote",
+                  "Syntax"
+                ],
+                [
+                  "Discount applied below the wrong threshold",
+                  "Logic"
+                ]
+              ],
+              "fb": "Syntax breaks language rules. Logic breaks the intended solution."
+            },
+            {
+              "t": "mcq",
+              "q": "The corrected average works for 6 and 10. What should you conclude?",
+              "a": [
+                "That test passes, but other suitable tests are still useful",
+                "Every possible input is proven correct",
+                "No logic errors can remain",
+                "Testing should never use equal inputs"
+              ],
+              "fb": "That test passes, but other suitable tests are still useful"
+            }
+          ]
+        }
+      ],
+      "info": [
+        {
+          "id": "f1",
+          "face": "right",
+          "x": 920,
+          "y": 540,
+          "title": "Syntax rules",
+          "text": "A language has rules for valid code.\n\nMissing punctuation can break those rules.\n\nRead the diagnostic and inspect nearby code.\n\nChallenge: What single character fixes this example?\n\nAdd the closing parenthesis after the closing quote."
+        },
+        {
+          "id": "f2",
+          "face": "right",
+          "x": 1888,
+          "y": 540,
+          "title": "Logic can be wrong",
+          "text": "A program can execute and give a wrong result.\n\nCompare behaviour with the requirement.\n\nUse known inputs to expose the fault.\n\nChallenge: What does the wrong expression give for 6 and 10?\n\n11, because division happens before addition. The correct average is 8."
+        },
+        {
+          "id": "f3",
+          "face": "back",
+          "x": 920,
+          "y": 540,
+          "title": "Off-by-one errors",
+          "text": "A loop may run once too often or too little.\n\nCheck the start and end conventions.\n\nArray indices must stay within their valid range.\n\nChallenge: Why is index 4 invalid for this list?\n\nA four-item zero-indexed list ends at index 3."
+        },
+        {
+          "id": "f4",
+          "face": "back",
+          "x": 1888,
+          "y": 540,
+          "title": "Faulty initialisation",
+          "text": "A running total needs an initial value.\n\nInitialise it once before the loop.\n\nRepeated initialisation loses earlier work.\n\nChallenge: Where should total = 0 be moved?\n\nBefore the loop, so earlier additions remain in the total."
+        },
+        {
+          "id": "f5",
+          "face": "left",
+          "x": 920,
+          "y": 540,
+          "title": "Trace the faulty line",
+          "text": "Change one cause at a time.\n\nExplain how the faulty line affects the result.\n\nA renamed variable alone may not fix the rule.\n\nChallenge: Give the corrected line and a reason.\n\nUse if age >= 12 then. Equality must be included."
+        },
+        {
+          "id": "f6",
+          "face": "left",
+          "x": 1888,
+          "y": 540,
+          "title": "Verify with evidence",
+          "text": "Retest the input that exposed the error.\n\nCheck nearby and previously working cases.\n\nRecord expected and actual results.\n\nChallenge: Why check 11 as well as 12?\n\nIt verifies that the correction has not started accepting values below the threshold."
+        }
+      ],
+      "models": []
+    }
+  ]
+}

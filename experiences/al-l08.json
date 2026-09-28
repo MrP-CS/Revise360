@@ -1,0 +1,292 @@
+{
+  "id": "al-l08",
+  "lesson": 8,
+  "title": "Binary search archive",
+  "scenes": [
+    {
+      "id": "main",
+      "title": "Binary search archive",
+      "img": "img/AL_L08_BinarySearchArchive_360.jpg",
+      "imgHi": "img/AL_L08_BinarySearchArchive_360_hi.jpg",
+      "stations": [
+        {
+          "label": "1",
+          "name": "Sorted data first",
+          "col": "#40c4ff",
+          "face": "right",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "What must hold before binary search is used?",
+              "a": [
+                "The data is sorted by the search key",
+                "The target is first",
+                "The list length is even",
+                "Every value is positive"
+              ],
+              "fb": "The data is sorted by the search key"
+            },
+            {
+              "t": "mcq",
+              "q": "Binary search on unsorted data can...",
+              "a": [
+                "Discard the half containing the target",
+                "Always find the target",
+                "Sort the data automatically"
+              ],
+              "fb": "Discard the half containing the target. The list must be ordered."
+            }
+          ]
+        },
+        {
+          "label": "2",
+          "name": "Find the midpoint",
+          "col": "#aa6eeb",
+          "face": "right",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "low = 2, high = 6. Midpoint index?",
+              "a": [
+                "4",
+                "3",
+                "6",
+                "8"
+              ],
+              "fb": "4"
+            },
+            {
+              "t": "mcq",
+              "q": "low = 0, high = 6. Rounded-down midpoint?",
+              "a": [
+                "3",
+                "6",
+                "2"
+              ],
+              "fb": "3. Use low and high indices."
+            }
+          ]
+        },
+        {
+          "label": "3",
+          "name": "Discard the wrong half",
+          "col": "#ff785a",
+          "face": "back",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "match",
+              "q": "Match each comparison to the update.",
+              "pairs": [
+                [
+                  "Target greater",
+                  "low = mid + 1"
+                ],
+                [
+                  "Target smaller",
+                  "high = mid - 1"
+                ],
+                [
+                  "Target equal",
+                  "Report found"
+                ]
+              ],
+              "fb": "Remove the checked midpoint as well as the impossible half."
+            },
+            {
+              "t": "mcq",
+              "q": "If target < data[mid], which update is correct?",
+              "a": [
+                "high = mid - 1",
+                "low = mid + 1",
+                "high = mid + 1"
+              ],
+              "fb": "high = mid - 1. If target is greater, move low above mid."
+            }
+          ]
+        },
+        {
+          "label": "4",
+          "name": "Trace a successful search",
+          "col": "#ffa028",
+          "face": "back",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "Search this list for 21. Checked values?",
+              "a": [
+                "12, 18, 21",
+                "3, 6, 9, 12, 15, 18, 21",
+                "12, 15, 21",
+                "21 only"
+              ],
+              "fb": "12, 18, 21"
+            },
+            {
+              "t": "mcq",
+              "q": "For [3,6,9,12,15,18,21], target 18 is at index...",
+              "a": [
+                "5",
+                "6",
+                "18"
+              ],
+              "fb": "5. Recalculate the midpoint after each update."
+            }
+          ]
+        },
+        {
+          "label": "5",
+          "name": "Trace not found",
+          "col": "#50dc96",
+          "face": "left",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "For target 1 in [2, 4, 6, 8, 10], what is checked?",
+              "a": [
+                "6 then 2",
+                "6 then 4 then 2",
+                "Only 1",
+                "All five values"
+              ],
+              "fb": "6 then 2"
+            },
+            {
+              "t": "mcq",
+              "q": "When low > high, the remaining range is...",
+              "a": [
+                "Empty",
+                "The whole list",
+                "One definite match"
+              ],
+              "fb": "Empty. A search can exhaust the remaining range."
+            }
+          ]
+        },
+        {
+          "label": "6",
+          "name": "Choose the search",
+          "col": "#f05aaa",
+          "face": "left",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "Which is the strongest case for binary search?",
+              "a": [
+                "Many lookups in a large sorted list",
+                "One lookup in three unsorted items",
+                "A list that cannot be ordered",
+                "A target known to be the first item"
+              ],
+              "fb": "Many lookups in a large sorted list"
+            },
+            {
+              "t": "mcq",
+              "q": "Why can binary search scale well?",
+              "a": [
+                "It discards about half the remaining items each time",
+                "It checks all items every time",
+                "It makes sorting free"
+              ],
+              "fb": "It discards about half the remaining items each time. Binary search can use fewer comparisons."
+            }
+          ]
+        },
+        {
+          "label": "★",
+          "name": "Final challenge",
+          "col": "#ffd046",
+          "face": "down",
+          "x": 1024,
+          "y": 800,
+          "tasks": [
+            {
+              "t": "order",
+              "q": "Order the checks for target 14 in [2, 4, 6, 8, 10, 12, 14].",
+              "steps": [
+                "Check 8 at index 3",
+                "Keep indices 4 to 6",
+                "Check 12 at index 5",
+                "Check 14 at index 6"
+              ],
+              "fb": "Round down at each midpoint."
+            },
+            {
+              "t": "mcq",
+              "q": "What is the worst-case advantage as a sorted list grows?",
+              "a": [
+                "Binary search repeatedly halves the remaining range",
+                "Binary search checks every item twice",
+                "Linear search always checks fewer items",
+                "Sorting is free"
+              ],
+              "fb": "Binary search repeatedly halves the remaining range"
+            }
+          ]
+        }
+      ],
+      "info": [
+        {
+          "id": "f1",
+          "face": "right",
+          "x": 920,
+          "y": 540,
+          "title": "Sorted data first",
+          "text": "The list must be ordered.\n\nUse the order to rule out one half.\n\nUnsorted data makes this reasoning unsafe.\n\nChallenge: Why is sorted order required?\n\nIt guarantees smaller values lie before the middle and larger values after it."
+        },
+        {
+          "id": "f2",
+          "face": "right",
+          "x": 1888,
+          "y": 540,
+          "title": "Find the midpoint",
+          "text": "Use low and high indices.\n\nTake the integer midpoint.\n\nOur examples round down.\n\nChallenge: What is mid when low = 3 and high = 8?\n\n(3 + 8) DIV 2 = 5."
+        },
+        {
+          "id": "f3",
+          "face": "back",
+          "x": 920,
+          "y": 540,
+          "title": "Discard the wrong half",
+          "text": "If target is greater, move low above mid.\n\nIf target is smaller, move high below mid.\n\nThe middle item has already been checked.\n\nChallenge: Why use mid + 1 rather than mid?\n\nThe midpoint has already failed to match and should not remain in the search range."
+        },
+        {
+          "id": "f4",
+          "face": "back",
+          "x": 1888,
+          "y": 540,
+          "title": "Trace a successful search",
+          "text": "Recalculate the midpoint after each update.\n\nCount comparisons with the target.\n\nStop immediately at a match.\n\nChallenge: What values are checked when searching for 6?\n\n12, then 6. The target is found after two comparisons."
+        },
+        {
+          "id": "f5",
+          "face": "left",
+          "x": 920,
+          "y": 540,
+          "title": "Trace not found",
+          "text": "A search can exhaust the remaining range.\n\nStop when low is greater than high.\n\nDo not access another midpoint after stopping.\n\nChallenge: Why does low > high mean not found?\n\nNo indices remain in the possible search range."
+        },
+        {
+          "id": "f6",
+          "face": "left",
+          "x": 1888,
+          "y": 540,
+          "title": "Choose the search",
+          "text": "Binary search can use fewer comparisons.\n\nSorting first also takes work.\n\nConsider list size and repeated searches.\n\nChallenge: Why not always sort before a one-off search?\n\nSorting takes work. For a short unsorted list, one linear scan may be simpler and cheaper overall."
+        }
+      ],
+      "models": []
+    }
+  ]
+}

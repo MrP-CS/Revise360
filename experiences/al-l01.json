@@ -1,0 +1,324 @@
+{
+  "id": "al-l01",
+  "lesson": 1,
+  "title": "Abstraction studio",
+  "scenes": [
+    {
+      "id": "main",
+      "title": "Abstraction studio",
+      "img": "img/AL_L01_AbstractionStudio_360.jpg",
+      "imgHi": "img/AL_L01_AbstractionStudio_360_hi.jpg",
+      "stations": [
+        {
+          "label": "1",
+          "name": "Keep the purpose",
+          "col": "#40c4ff",
+          "face": "right",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "Which detail belongs on a route map?",
+              "a": [
+                "Connections between rooms",
+                "The price of each carpet",
+                "Every wall texture",
+                "Every pupil name"
+              ],
+              "fb": "Connections between rooms"
+            },
+            {
+              "t": "mcq",
+              "q": "For recognising a camera icon, which detail is least necessary?",
+              "a": [
+                "The exact serial number",
+                "The lens outline",
+                "The body outline"
+              ],
+              "fb": "The exact serial number. Start with the problem to solve."
+            }
+          ]
+        },
+        {
+          "label": "2",
+          "name": "Essential information",
+          "col": "#aa6eeb",
+          "face": "right",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "sort",
+              "q": "Classify details for tracking loans.",
+              "cats": [
+                "Needed",
+                "Not needed"
+              ],
+              "items": [
+                [
+                  "Borrower ID",
+                  "Needed"
+                ],
+                [
+                  "Item ID",
+                  "Needed"
+                ],
+                [
+                  "Favourite film",
+                  "Not needed"
+                ],
+                [
+                  "Shoe brand",
+                  "Not needed"
+                ]
+              ],
+              "fb": "Keep details that support identifying and returning the item."
+            },
+            {
+              "t": "mcq",
+              "q": "Which detail helps identify an overdue loan?",
+              "a": [
+                "Due date",
+                "Favourite colour",
+                "Wallpaper pattern"
+              ],
+              "fb": "Due date. A loan system must identify the borrower."
+            }
+          ]
+        },
+        {
+          "label": "3",
+          "name": "Remove distractions",
+          "col": "#ff785a",
+          "face": "back",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "What would damage a route map?",
+              "a": [
+                "Removing the corridor connections",
+                "Removing wallpaper patterns",
+                "Using simple room outlines",
+                "Omitting ceiling colours"
+              ],
+              "fb": "Removing the corridor connections"
+            },
+            {
+              "t": "mcq",
+              "q": "Removing required corridor links is...",
+              "a": [
+                "Too much simplification",
+                "Always useful abstraction",
+                "A sorting method"
+              ],
+              "fb": "Too much simplification. Not every real-world detail belongs in a model."
+            }
+          ]
+        },
+        {
+          "label": "4",
+          "name": "Purpose changes relevance",
+          "col": "#ffa028",
+          "face": "back",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "match",
+              "q": "Match purpose to a useful detail.",
+              "pairs": [
+                [
+                  "Find a room",
+                  "Corridor connections"
+                ],
+                [
+                  "Repair a camera",
+                  "Fault description"
+                ],
+                [
+                  "Return a loan",
+                  "Borrower ID"
+                ]
+              ],
+              "fb": "Each detail supports a particular decision."
+            },
+            {
+              "t": "mcq",
+              "q": "A fault description becomes relevant when...",
+              "a": [
+                "Planning repairs",
+                "Finding a room by route",
+                "Comparing latitude"
+              ],
+              "fb": "Planning repairs. A detail can matter in one task and not another."
+            }
+          ]
+        },
+        {
+          "label": "5",
+          "name": "Abstraction in software",
+          "col": "#50dc96",
+          "face": "left",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "A return button is an abstraction because it...",
+              "a": [
+                "Hides internal steps behind one clear action",
+                "Deletes the loan system",
+                "Removes every calculation",
+                "Guarantees there are no errors"
+              ],
+              "fb": "Hides internal steps behind one clear action"
+            },
+            {
+              "t": "mcq",
+              "q": "Hiding processing behind a button means...",
+              "a": [
+                "Users need not manage every internal step",
+                "No processing occurs",
+                "The code has disappeared"
+              ],
+              "fb": "Users need not manage every internal step. Users can work without knowing every internal detail."
+            }
+          ]
+        },
+        {
+          "label": "6",
+          "name": "Evaluate a model",
+          "col": "#f05aaa",
+          "face": "left",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "Which justification is strongest?",
+              "a": [
+                "Keep due dates so overdue loans can be identified",
+                "Keep everything just in case",
+                "Remove all numbers",
+                "Keep only colourful details"
+              ],
+              "fb": "Keep due dates so overdue loans can be identified"
+            },
+            {
+              "t": "mcq",
+              "q": "A model should be judged against...",
+              "a": [
+                "Its stated purpose",
+                "Its number of colours",
+                "How much detail it retains"
+              ],
+              "fb": "Its stated purpose. Check whether the model solves the problem."
+            }
+          ]
+        },
+        {
+          "label": "★",
+          "name": "Final challenge",
+          "col": "#ffd046",
+          "face": "down",
+          "x": 1024,
+          "y": 800,
+          "tasks": [
+            {
+              "t": "sort",
+              "q": "Choose data for identifying overdue equipment loans.",
+              "cats": [
+                "Keep",
+                "Omit"
+              ],
+              "items": [
+                [
+                  "Borrower ID",
+                  "Keep"
+                ],
+                [
+                  "Due date",
+                  "Keep"
+                ],
+                [
+                  "Item ID",
+                  "Keep"
+                ],
+                [
+                  "Favourite snack",
+                  "Omit"
+                ]
+              ],
+              "fb": "The system needs to identify the loan and whether its due date has passed."
+            },
+            {
+              "t": "mcq",
+              "q": "Why is abstraction useful here?",
+              "a": [
+                "It reduces unnecessary detail while preserving what the task needs",
+                "It removes the need to test",
+                "It makes every detail irrelevant",
+                "It changes the purpose automatically"
+              ],
+              "fb": "It reduces unnecessary detail while preserving what the task needs"
+            }
+          ]
+        }
+      ],
+      "info": [
+        {
+          "id": "f1",
+          "face": "right",
+          "x": 920,
+          "y": 540,
+          "title": "Keep the purpose",
+          "text": "Start with the problem to solve.\n\nRelevant details depend on the purpose.\n\nA simpler model can still be useful.\n\nChallenge: Why can a map omit carpet patterns?\n\nCarpet patterns do not help identify a route to the library."
+        },
+        {
+          "id": "f2",
+          "face": "right",
+          "x": 1888,
+          "y": 540,
+          "title": "Essential information",
+          "text": "A loan system must identify the borrower.\n\nIt must identify the borrowed item.\n\nIt needs enough data to track the loan.\n\nChallenge: Name two details needed to track a camera loan.\n\nBorrower ID and item ID identify who has which camera. The due date helps track returns."
+        },
+        {
+          "id": "f3",
+          "face": "back",
+          "x": 920,
+          "y": 540,
+          "title": "Remove distractions",
+          "text": "Not every real-world detail belongs in a model.\n\nRemoving detail makes a model easier to use.\n\nDo not remove information needed for accuracy.\n\nChallenge: Why might an icon omit the serial number?\n\nIts purpose is to recognise a camera category. A serial number identifies one particular camera."
+        },
+        {
+          "id": "f4",
+          "face": "back",
+          "x": 1888,
+          "y": 540,
+          "title": "Purpose changes relevance",
+          "text": "A detail can matter in one task and not another.\n\nA repair system needs different data from a route map.\n\nExplain choices using the stated task.\n\nChallenge: When would a room light fault become relevant?\n\nWhen planning repairs, the fault and room location help staff repair the correct light."
+        },
+        {
+          "id": "f5",
+          "face": "left",
+          "x": 920,
+          "y": 540,
+          "title": "Abstraction in software",
+          "text": "Users can work without knowing every internal detail.\n\nA button can hide several processing steps.\n\nThe hidden steps still happen.\n\nChallenge: What does a return button hide from its user?\n\nIt hides the detailed steps for finding the loan and updating its stored status."
+        },
+        {
+          "id": "f6",
+          "face": "left",
+          "x": 1888,
+          "y": 540,
+          "title": "Evaluate a model",
+          "text": "Check whether the model solves the problem.\n\nAdd missing relevant details.\n\nRemove detail that only distracts.\n\nChallenge: How should this route map be improved?\n\nAdd the connections between rooms so users can plan a route. Textures can be removed."
+        }
+      ],
+      "models": []
+    }
+  ]
+}

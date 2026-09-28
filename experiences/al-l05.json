@@ -1,0 +1,292 @@
+{
+  "id": "al-l05",
+  "lesson": 5,
+  "title": "Decision control centre",
+  "scenes": [
+    {
+      "id": "main",
+      "title": "Decision control centre",
+      "img": "img/AL_L05_DecisionControlCentre_360.jpg",
+      "imgHi": "img/AL_L05_DecisionControlCentre_360_hi.jpg",
+      "stations": [
+        {
+          "label": "1",
+          "name": "Two possible paths",
+          "col": "#40c4ff",
+          "face": "right",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "If available is false, which message is printed?",
+              "a": [
+                "Unavailable",
+                "Loan allowed",
+                "Both messages",
+                "No message"
+              ],
+              "fb": "Unavailable"
+            },
+            {
+              "t": "mcq",
+              "q": "An IF condition evaluates to...",
+              "a": [
+                "True or false",
+                "Only a string",
+                "Always 1"
+              ],
+              "fb": "True or false. A condition selects a path."
+            }
+          ]
+        },
+        {
+          "label": "2",
+          "name": "Include the boundary",
+          "col": "#aa6eeb",
+          "face": "right",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "Which condition means score is at least 50?",
+              "a": [
+                "score >= 50",
+                "score > 50",
+                "score < 50",
+                "score == 49"
+              ],
+              "fb": "score >= 50"
+            },
+            {
+              "t": "mcq",
+              "q": "Which age is excluded by age > 12 but included by age >= 12?",
+              "a": [
+                "12",
+                "13",
+                "14"
+              ],
+              "fb": "12. Greater than excludes equality."
+            }
+          ]
+        },
+        {
+          "label": "3",
+          "name": "Three-way decisions",
+          "col": "#ff785a",
+          "face": "back",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "A = 7 and B = 7. What is the correct result?",
+              "a": [
+                "Draw",
+                "A wins",
+                "B wins",
+                "A is greater"
+              ],
+              "fb": "Draw"
+            },
+            {
+              "t": "mcq",
+              "q": "Which result fits a = 9 and b = 4?",
+              "a": [
+                "A wins",
+                "B wins",
+                "Draw"
+              ],
+              "fb": "A wins. Some problems need more than two outcomes."
+            }
+          ]
+        },
+        {
+          "label": "4",
+          "name": "Both conditions",
+          "col": "#ffa028",
+          "face": "back",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "Which permits a loan only if both checks pass?",
+              "a": [
+                "member AND available",
+                "member OR available",
+                "NOT member",
+                "available == false"
+              ],
+              "fb": "member AND available"
+            },
+            {
+              "t": "mcq",
+              "q": "true AND false is...",
+              "a": [
+                "False",
+                "True",
+                "Undefined"
+              ],
+              "fb": "False. AND is true when both conditions are true."
+            }
+          ]
+        },
+        {
+          "label": "5",
+          "name": "Either condition",
+          "col": "#50dc96",
+          "face": "left",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "student = false, senior = true. What is student OR senior?",
+              "a": [
+                "True",
+                "False",
+                "Equal to student only",
+                "An error"
+              ],
+              "fb": "True"
+            },
+            {
+              "t": "mcq",
+              "q": "true OR true is...",
+              "a": [
+                "True",
+                "False",
+                "Only one true is allowed"
+              ],
+              "fb": "True. OR is true when at least one condition is true."
+            }
+          ]
+        },
+        {
+          "label": "6",
+          "name": "Nested decisions",
+          "col": "#f05aaa",
+          "face": "left",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "Which describes nesting?",
+              "a": [
+                "Placing one selection inside another",
+                "Deleting all conditions",
+                "Always running both branches",
+                "Changing an input to an output"
+              ],
+              "fb": "Placing one selection inside another"
+            },
+            {
+              "t": "mcq",
+              "q": "An inner branch inside a false outer IF is...",
+              "a": [
+                "Skipped",
+                "Always executed",
+                "Repeated twice"
+              ],
+              "fb": "Skipped. A decision can sit inside another decision."
+            }
+          ]
+        },
+        {
+          "label": "★",
+          "name": "Final challenge",
+          "col": "#ffd046",
+          "face": "down",
+          "x": 1024,
+          "y": 800,
+          "tasks": [
+            {
+              "t": "match",
+              "q": "Match the phrase to its condition.",
+              "pairs": [
+                [
+                  "At least 10",
+                  "x >= 10"
+                ],
+                [
+                  "Below 10",
+                  "x < 10"
+                ],
+                [
+                  "Exactly 10",
+                  "x == 10"
+                ]
+              ],
+              "fb": "Equality must be handled as the wording requires."
+            },
+            {
+              "t": "mcq",
+              "q": "A loan needs a member AND an available item. Member is true and available is false. Result?",
+              "a": [
+                "Reject the loan",
+                "Issue the loan",
+                "Issue two loans",
+                "Ignore availability"
+              ],
+              "fb": "Reject the loan"
+            }
+          ]
+        }
+      ],
+      "info": [
+        {
+          "id": "f1",
+          "face": "right",
+          "x": 920,
+          "y": 540,
+          "title": "Two possible paths",
+          "text": "A condition selects a path.\n\nIF handles the true case.\n\nELSE handles the false case.\n\nChallenge: What happens when available is false?\n\nThe ELSE branch prints Unavailable."
+        },
+        {
+          "id": "f2",
+          "face": "right",
+          "x": 1888,
+          "y": 540,
+          "title": "Include the boundary",
+          "text": "Greater than excludes equality.\n\nGreater than or equal includes equality.\n\nMatch the condition to the rule.\n\nChallenge: Why does age > 12 not match the rule?\n\nIt rejects a pupil aged exactly 12, although the rule includes them."
+        },
+        {
+          "id": "f3",
+          "face": "back",
+          "x": 920,
+          "y": 540,
+          "title": "Three-way decisions",
+          "text": "Some problems need more than two outcomes.\n\nCheck greater, less and equal cases.\n\nEach valid input should have an outcome.\n\nChallenge: What happens if the draw case is omitted?\n\nEqual values may get the wrong result or no intended output."
+        },
+        {
+          "id": "f4",
+          "face": "back",
+          "x": 1888,
+          "y": 540,
+          "title": "Both conditions",
+          "text": "AND is true when both conditions are true.\n\nUse it when both requirements must hold.\n\nCheck each requirement separately.\n\nChallenge: Can this member borrow the unavailable item?\n\nNo. Both membership and availability are required, and availability is false."
+        },
+        {
+          "id": "f5",
+          "face": "left",
+          "x": 920,
+          "y": 540,
+          "title": "Either condition",
+          "text": "OR is true when at least one condition is true.\n\nIt is also true when both are true.\n\nDo not confuse OR with exactly one.\n\nChallenge: Does a person who meets both conditions qualify?\n\nYes. OR includes the case where both conditions are true."
+        },
+        {
+          "id": "f6",
+          "face": "left",
+          "x": 1888,
+          "y": 540,
+          "title": "Nested decisions",
+          "text": "A decision can sit inside another decision.\n\nThe outer path controls whether it is reached.\n\nIndentation helps show the structure.\n\nChallenge: If member is false, is the inner decision reached?\n\nNo. The outer IF body is skipped."
+        }
+      ],
+      "models": []
+    }
+  ]
+}

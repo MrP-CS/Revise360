@@ -1,0 +1,292 @@
+{
+  "id": "al-l07",
+  "lesson": 7,
+  "title": "Linear search depot",
+  "scenes": [
+    {
+      "id": "main",
+      "title": "Linear search depot",
+      "img": "img/AL_L07_LinearSearchDepot_360.jpg",
+      "imgHi": "img/AL_L07_LinearSearchDepot_360_hi.jpg",
+      "stations": [
+        {
+          "label": "1",
+          "name": "Check one at a time",
+          "col": "#40c4ff",
+          "face": "right",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "order",
+              "q": "Order a successful search for 27 in [18, 4, 27, 9].",
+              "steps": [
+                "Compare 18 with 27",
+                "Compare 4 with 27",
+                "Compare 27 with 27",
+                "Report found and stop"
+              ],
+              "fb": "Do not continue checking after the first match in this version."
+            },
+            {
+              "t": "mcq",
+              "q": "Search [8, 6, 4] for 8. Comparisons?",
+              "a": [
+                "1",
+                "3",
+                "0"
+              ],
+              "fb": "1. Start at the first item."
+            }
+          ]
+        },
+        {
+          "label": "2",
+          "name": "Unsorted lists",
+          "col": "#aa6eeb",
+          "face": "right",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "Which list can linear search use?",
+              "a": [
+                "Both sorted and unsorted lists",
+                "Only sorted lists",
+                "Only lists of even length",
+                "Only lists without duplicates"
+              ],
+              "fb": "Both sorted and unsorted lists"
+            },
+            {
+              "t": "mcq",
+              "q": "Must linear search sort its input first?",
+              "a": [
+                "No",
+                "Yes",
+                "Only for numbers"
+              ],
+              "fb": "No. Linear search does not need sorted data."
+            }
+          ]
+        },
+        {
+          "label": "3",
+          "name": "Unsuccessful searches",
+          "col": "#ff785a",
+          "face": "back",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "Search [3, 8, 1] for 9. Target comparisons?",
+              "a": [
+                "3",
+                "0",
+                "1",
+                "9"
+              ],
+              "fb": "3"
+            },
+            {
+              "t": "mcq",
+              "q": "An absent target in six items needs how many target comparisons?",
+              "a": [
+                "6",
+                "1",
+                "3"
+              ],
+              "fb": "6. A target may not be present."
+            }
+          ]
+        },
+        {
+          "label": "4",
+          "name": "Read the code",
+          "col": "#ffa028",
+          "face": "back",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "Why include i < n?",
+              "a": [
+                "To stop before accessing beyond the list",
+                "To force the target to exist",
+                "To sort the list",
+                "To skip index 0"
+              ],
+              "fb": "To stop before accessing beyond the list"
+            },
+            {
+              "t": "mcq",
+              "q": "What does i = i + 1 do in a linear search?",
+              "a": [
+                "Moves to the next index",
+                "Sorts the list",
+                "Changes the target"
+              ],
+              "fb": "Moves to the next index. i tracks the current index."
+            }
+          ]
+        },
+        {
+          "label": "5",
+          "name": "Index versus value",
+          "col": "#50dc96",
+          "face": "left",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "match",
+              "q": "Match the quantities for finding 9 in [6, 2, 9, 4].",
+              "pairs": [
+                [
+                  "Value found",
+                  "9"
+                ],
+                [
+                  "Zero-based index",
+                  "2"
+                ],
+                [
+                  "Target comparisons",
+                  "3"
+                ]
+              ],
+              "fb": "Index and comparison count differ by one in this successful left-to-right search."
+            },
+            {
+              "t": "mcq",
+              "q": "In [6, 2, 9, 4], index 1 stores...",
+              "a": [
+                "2",
+                "6",
+                "9"
+              ],
+              "fb": "2. An index is a position, not the stored value."
+            }
+          ]
+        },
+        {
+          "label": "6",
+          "name": "Best and worst cases",
+          "col": "#f05aaa",
+          "face": "left",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "For 20 items, which case needs 20 comparisons?",
+              "a": [
+                "Target absent",
+                "Target first",
+                "Target second",
+                "Every successful search"
+              ],
+              "fb": "Target absent"
+            },
+            {
+              "t": "mcq",
+              "q": "The best-case linear search finds the target...",
+              "a": [
+                "At the first item",
+                "At the last item",
+                "After checking every item"
+              ],
+              "fb": "At the first item. First-item success needs one comparison."
+            }
+          ]
+        },
+        {
+          "label": "★",
+          "name": "Final challenge",
+          "col": "#ffd046",
+          "face": "down",
+          "x": 1024,
+          "y": 800,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "Search [13, 5, 21, 8, 3] for 8. What is its zero-based index?",
+              "a": [
+                "3",
+                "4",
+                "8",
+                "2"
+              ],
+              "fb": "3"
+            },
+            {
+              "t": "mcq",
+              "q": "In the same search, how many target comparisons occur?",
+              "a": [
+                "4",
+                "3",
+                "5",
+                "8"
+              ],
+              "fb": "4"
+            }
+          ]
+        }
+      ],
+      "info": [
+        {
+          "id": "f1",
+          "face": "right",
+          "x": 920,
+          "y": 540,
+          "title": "Check one at a time",
+          "text": "Start at the first item.\n\nCompare the item with the target.\n\nContinue if it does not match.\n\nChallenge: How many target comparisons find 27?\n\nThree comparisons. With zero-based indexing, its index is 2."
+        },
+        {
+          "id": "f2",
+          "face": "right",
+          "x": 1888,
+          "y": 540,
+          "title": "Unsorted lists",
+          "text": "Linear search does not need sorted data.\n\nEvery item is still checked in sequence.\n\nIt also works on sorted lists.\n\nChallenge: Why can linear search use an unsorted list?\n\nIt checks items directly and does not discard a half based on value order."
+        },
+        {
+          "id": "f3",
+          "face": "back",
+          "x": 920,
+          "y": 540,
+          "title": "Unsuccessful searches",
+          "text": "A target may not be present.\n\nContinue until the list is exhausted.\n\nThen report not found.\n\nChallenge: How many target comparisons are needed here?\n\nFour, one for each item."
+        },
+        {
+          "id": "f4",
+          "face": "back",
+          "x": 1888,
+          "y": 540,
+          "title": "Read the code",
+          "text": "i tracks the current index.\n\nfound records whether a match exists.\n\nIncrease i after checking an item.\n\nChallenge: What does data[i] == target test?\n\nIt compares the current list item with the search target."
+        },
+        {
+          "id": "f5",
+          "face": "left",
+          "x": 920,
+          "y": 540,
+          "title": "Index versus value",
+          "text": "An index is a position, not the stored value.\n\nZero-based indexing starts at 0.\n\nReport the form of result requested.\n\nChallenge: State the value, index and comparison count for 9.\n\nValue 9, index 2, and three target comparisons."
+        },
+        {
+          "id": "f6",
+          "face": "left",
+          "x": 1888,
+          "y": 540,
+          "title": "Best and worst cases",
+          "text": "First-item success needs one comparison.\n\nLast-item success checks every item.\n\nAn absent target also checks every item.\n\nChallenge: Why does a longer list worsen the worst case?\n\nMore items must be checked before a last-item match or not-found result."
+        }
+      ],
+      "models": []
+    }
+  ]
+}

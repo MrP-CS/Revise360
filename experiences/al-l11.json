@@ -1,0 +1,309 @@
+{
+  "id": "al-l11",
+  "lesson": 11,
+  "title": "Flowchart design studio",
+  "scenes": [
+    {
+      "id": "main",
+      "title": "Flowchart design studio",
+      "img": "img/AL_L11_FlowchartDesignStudio_360.jpg",
+      "imgHi": "img/AL_L11_FlowchartDesignStudio_360_hi.jpg",
+      "stations": [
+        {
+          "label": "1",
+          "name": "Start and finish",
+          "col": "#40c4ff",
+          "face": "right",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "match",
+              "q": "Match the symbol name to its role.",
+              "pairs": [
+                [
+                  "Terminal",
+                  "Start or end"
+                ],
+                [
+                  "Flow line",
+                  "Direction of execution"
+                ],
+                [
+                  "Process",
+                  "Calculation or assignment"
+                ]
+              ],
+              "fb": "A terminal is commonly drawn as an oval or rounded rectangle."
+            },
+            {
+              "t": "mcq",
+              "q": "Which symbol marks the end?",
+              "a": [
+                "Terminal",
+                "Decision diamond",
+                "Input parallelogram"
+              ],
+              "fb": "Terminal. A terminal marks start or end."
+            }
+          ]
+        },
+        {
+          "label": "2",
+          "name": "Read and write",
+          "col": "#aa6eeb",
+          "face": "right",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "Which action belongs in an input/output symbol?",
+              "a": [
+                "Display the total",
+                "Set total to 0",
+                "Test total > 10",
+                "Start"
+              ],
+              "fb": "Display the total"
+            },
+            {
+              "t": "mcq",
+              "q": "Output total is drawn in...",
+              "a": [
+                "An input/output symbol",
+                "A decision diamond",
+                "A terminal only"
+              ],
+              "fb": "An input/output symbol. A parallelogram represents input or output."
+            }
+          ]
+        },
+        {
+          "label": "3",
+          "name": "Process the data",
+          "col": "#ff785a",
+          "face": "back",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "Which label is a process?",
+              "a": [
+                "total = price * quantity",
+                "Input quantity",
+                "Output total",
+                "Is quantity > 0?"
+              ],
+              "fb": "total = price * quantity"
+            },
+            {
+              "t": "mcq",
+              "q": "Assign total = 0 is drawn in...",
+              "a": [
+                "A process rectangle",
+                "An input/output symbol",
+                "A decision diamond"
+              ],
+              "fb": "A process rectangle. A rectangle represents a process."
+            }
+          ]
+        },
+        {
+          "label": "4",
+          "name": "Branch on a decision",
+          "col": "#ffa028",
+          "face": "back",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "What belongs inside a decision diamond?",
+              "a": [
+                "age >= 12",
+                "Input age",
+                "Print age",
+                "Start"
+              ],
+              "fb": "age >= 12"
+            },
+            {
+              "t": "mcq",
+              "q": "The two paths from a condition can be labelled...",
+              "a": [
+                "True and False",
+                "Start and End only",
+                "Input and Output only"
+              ],
+              "fb": "True and False. A diamond contains a condition."
+            }
+          ]
+        },
+        {
+          "label": "5",
+          "name": "Use a subprogram",
+          "col": "#50dc96",
+          "face": "left",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "A rectangle with extra vertical lines at its sides usually means...",
+              "a": [
+                "Subprogram or predefined process",
+                "Input/output",
+                "Start only",
+                "A decision"
+              ],
+              "fb": "Subprogram or predefined process"
+            },
+            {
+              "t": "mcq",
+              "q": "A subprogram symbol refers to...",
+              "a": [
+                "A defined set of steps elsewhere",
+                "An undefined random operation",
+                "Only a variable value"
+              ],
+              "fb": "A defined set of steps elsewhere. A predefined-process symbol calls a named subprogram."
+            }
+          ]
+        },
+        {
+          "label": "6",
+          "name": "Check every route",
+          "col": "#f05aaa",
+          "face": "left",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "order",
+              "q": "Order a simple flowchart design process.",
+              "steps": [
+                "State inputs and required outputs",
+                "Choose symbols for the steps",
+                "Connect and label the paths",
+                "Trace each possible branch"
+              ],
+              "fb": "Check the design before coding it."
+            },
+            {
+              "t": "mcq",
+              "q": "A disconnected branch means...",
+              "a": [
+                "The next step is unclear",
+                "The flowchart is automatically correct",
+                "The branch runs faster"
+              ],
+              "fb": "The next step is unclear. Trace each branch using sample data."
+            }
+          ]
+        },
+        {
+          "label": "★",
+          "name": "Final challenge",
+          "col": "#ffd046",
+          "face": "down",
+          "x": 1024,
+          "y": 800,
+          "tasks": [
+            {
+              "t": "sort",
+              "q": "Choose a flowchart symbol for each action.",
+              "cats": [
+                "Input/output",
+                "Process",
+                "Decision"
+              ],
+              "items": [
+                [
+                  "Read hours",
+                  "Input/output"
+                ],
+                [
+                  "charge = hours * 3",
+                  "Process"
+                ],
+                [
+                  "charge > 12?",
+                  "Decision"
+                ],
+                [
+                  "Print charge",
+                  "Input/output"
+                ]
+              ],
+              "fb": "The symbol should match the action."
+            },
+            {
+              "t": "mcq",
+              "q": "What must a decision have in this two-way flowchart?",
+              "a": [
+                "A labelled path for each outcome",
+                "Only a Yes path",
+                "No outgoing arrows",
+                "Two start symbols"
+              ],
+              "fb": "A labelled path for each outcome"
+            }
+          ]
+        }
+      ],
+      "info": [
+        {
+          "id": "f1",
+          "face": "right",
+          "x": 920,
+          "y": 540,
+          "title": "Start and finish",
+          "text": "A terminal marks start or end.\n\nA flow line shows the next step.\n\nEvery intended path needs a clear destination.\n\nChallenge: Why should an arrow have a clear direction?\n\nIt shows which instruction executes next."
+        },
+        {
+          "id": "f2",
+          "face": "right",
+          "x": 1888,
+          "y": 540,
+          "title": "Read and write",
+          "text": "A parallelogram represents input or output.\n\nLabel the action and the data.\n\nInputs and outputs are different operations.\n\nChallenge: Which symbol should contain Input age?\n\nAn input/output parallelogram."
+        },
+        {
+          "id": "f3",
+          "face": "back",
+          "x": 920,
+          "y": 540,
+          "title": "Process the data",
+          "text": "A rectangle represents a process.\n\nUse it for calculations or assignments.\n\nShow the operation clearly.\n\nChallenge: Which symbol should contain total = total + 3?\n\nA process rectangle, because the value is being updated."
+        },
+        {
+          "id": "f4",
+          "face": "back",
+          "x": 1888,
+          "y": 540,
+          "title": "Branch on a decision",
+          "text": "A diamond contains a condition.\n\nLabel outgoing paths Yes/No or True/False.\n\nBoth outcomes must be handled.\n\nChallenge: What is missing if only the Yes path is drawn?\n\nThe behaviour when the item is unavailable is not defined."
+        },
+        {
+          "id": "f5",
+          "face": "left",
+          "x": 920,
+          "y": 540,
+          "title": "Use a subprogram",
+          "text": "A predefined-process symbol calls a named subprogram.\n\nIts detailed steps may be shown elsewhere.\n\nIt supports a clear top-level algorithm.\n\nChallenge: How does a subprogram symbol help a large flowchart?\n\nIt keeps the main diagram manageable while detailed steps are defined separately."
+        },
+        {
+          "id": "f6",
+          "face": "left",
+          "x": 1888,
+          "y": 540,
+          "title": "Check every route",
+          "text": "Trace each branch using sample data.\n\nCheck that arrows connect correctly.\n\nCompare outputs with the requirement.\n\nChallenge: Why test both branches?\n\nA correct true path does not prove the false path behaves correctly."
+        }
+      ],
+      "models": []
+    }
+  ]
+}

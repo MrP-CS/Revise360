@@ -1,0 +1,292 @@
+{
+  "id": "al-l10",
+  "lesson": 10,
+  "title": "Merge and insertion works",
+  "scenes": [
+    {
+      "id": "main",
+      "title": "Merge and insertion works",
+      "img": "img/AL_L10_MergeInsertionWorks_360.jpg",
+      "imgHi": "img/AL_L10_MergeInsertionWorks_360_hi.jpg",
+      "stations": [
+        {
+          "label": "1",
+          "name": "Divide the list",
+          "col": "#40c4ff",
+          "face": "right",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "order",
+              "q": "Order these merge-sort stages.",
+              "steps": [
+                "Split the original list",
+                "Split again into single items",
+                "Merge into sorted pairs",
+                "Merge the pairs into the sorted list"
+              ],
+              "fb": "Splitting alone does not order the data."
+            },
+            {
+              "t": "mcq",
+              "q": "Merge sort splits until...",
+              "a": [
+                "Single-item lists remain",
+                "All values are equal",
+                "The list is already reversed"
+              ],
+              "fb": "Single-item lists remain. Merge sort splits a list into smaller parts."
+            }
+          ]
+        },
+        {
+          "label": "2",
+          "name": "Merge sorted groups",
+          "col": "#aa6eeb",
+          "face": "right",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "Merge [1, 8] and [4, 6]. Result?",
+              "a": [
+                "1, 4, 6, 8",
+                "1, 8, 4, 6",
+                "4, 6, 1, 8",
+                "8, 6, 4, 1"
+              ],
+              "fb": "1, 4, 6, 8"
+            },
+            {
+              "t": "mcq",
+              "q": "Which value is chosen first when merging [4,9] and [2,7]?",
+              "a": [
+                "2",
+                "4",
+                "9"
+              ],
+              "fb": "2. Compare the front unmerged values."
+            }
+          ]
+        },
+        {
+          "label": "3",
+          "name": "Read a merge segment",
+          "col": "#ff785a",
+          "face": "back",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "Left is exhausted but right has [9, 12]. What next?",
+              "a": [
+                "Append 9 and 12",
+                "Discard both values",
+                "Start splitting again",
+                "Reverse the output"
+              ],
+              "fb": "Append 9 and 12"
+            },
+            {
+              "t": "mcq",
+              "q": "After taking left[i], which pointer advances?",
+              "a": [
+                "i",
+                "j",
+                "Both every time"
+              ],
+              "fb": "i. Read from each sorted input group."
+            }
+          ]
+        },
+        {
+          "label": "4",
+          "name": "Insert into a prefix",
+          "col": "#ffa028",
+          "face": "back",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "After inserting 3 into prefix [2, 7, 9], the prefix is...",
+              "a": [
+                "2, 3, 7, 9",
+                "3, 2, 7, 9",
+                "2, 7, 9, 3",
+                "2, 7, 3, 9"
+              ],
+              "fb": "2, 3, 7, 9"
+            },
+            {
+              "t": "mcq",
+              "q": "Insertion sort grows...",
+              "a": [
+                "A sorted prefix",
+                "An unsorted prefix only",
+                "A binary search range"
+              ],
+              "fb": "A sorted prefix. Treat the first item as a sorted prefix."
+            }
+          ]
+        },
+        {
+          "label": "5",
+          "name": "Shift and insert",
+          "col": "#50dc96",
+          "face": "left",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "order",
+              "q": "Insert key 4 into sorted prefix [1, 6, 8].",
+              "steps": [
+                "Save key 4",
+                "Shift 8 one place right",
+                "Shift 6 one place right",
+                "Place 4 after 1"
+              ],
+              "fb": "Only values larger than the key need shifting."
+            },
+            {
+              "t": "mcq",
+              "q": "When inserting 5 into [2,7,9], which values shift?",
+              "a": [
+                "7 and 9",
+                "Only 2",
+                "2, 7 and 9"
+              ],
+              "fb": "7 and 9. Save the key before shifting."
+            }
+          ]
+        },
+        {
+          "label": "6",
+          "name": "Compare the methods",
+          "col": "#f05aaa",
+          "face": "left",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "match",
+              "q": "Match the method to its main approach.",
+              "pairs": [
+                [
+                  "Bubble",
+                  "Compare and swap neighbours"
+                ],
+                [
+                  "Insertion",
+                  "Insert a key into a sorted prefix"
+                ],
+                [
+                  "Merge",
+                  "Split then merge sorted groups"
+                ]
+              ],
+              "fb": "Do not describe merge sort as repeated adjacent swapping."
+            },
+            {
+              "t": "mcq",
+              "q": "Which method splits and merges groups?",
+              "a": [
+                "Merge sort",
+                "Bubble sort",
+                "Linear search"
+              ],
+              "fb": "Merge sort. Bubble sort compares neighbours over passes."
+            }
+          ]
+        },
+        {
+          "label": "★",
+          "name": "Final challenge",
+          "col": "#ffd046",
+          "face": "down",
+          "x": 1024,
+          "y": 800,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "Insertion sort on [4, 1, 3, 2]: after inserting the first two keys, the list is...",
+              "a": [
+                "1, 3, 4, 2",
+                "1, 2, 3, 4",
+                "4, 3, 1, 2",
+                "1, 4, 2, 3"
+              ],
+              "fb": "1, 3, 4, 2"
+            },
+            {
+              "t": "mcq",
+              "q": "Which statement describes the usual school-level merge-sort implementation?",
+              "a": [
+                "It uses additional temporary storage during merging",
+                "It never splits data",
+                "It only swaps adjacent pairs",
+                "It needs the input already sorted"
+              ],
+              "fb": "It uses additional temporary storage during merging"
+            }
+          ]
+        }
+      ],
+      "info": [
+        {
+          "id": "f1",
+          "face": "right",
+          "x": 920,
+          "y": 540,
+          "title": "Divide the list",
+          "text": "Merge sort splits a list into smaller parts.\n\nContinue until single-item lists remain.\n\nA single-item list is already sorted.\n\nChallenge: Why can splitting stop at one item?\n\nA single item cannot be out of order relative to another item in its list."
+        },
+        {
+          "id": "f2",
+          "face": "right",
+          "x": 1888,
+          "y": 540,
+          "title": "Merge sorted groups",
+          "text": "Compare the front unmerged values.\n\nTake the smaller value into the output.\n\nAppend the remainder when one group empties.\n\nChallenge: Which value is chosen after 2? Why?\n\n3, because it is smaller than the other front value, 7."
+        },
+        {
+          "id": "f3",
+          "face": "back",
+          "x": 920,
+          "y": 540,
+          "title": "Read a merge segment",
+          "text": "Read from each sorted input group.\n\nAdvance only the pointer you used.\n\nDo not discard unmerged values.\n\nChallenge: Why increment only the pointer used?\n\nThe other front value has not been output yet and must remain available for comparison."
+        },
+        {
+          "id": "f4",
+          "face": "back",
+          "x": 1888,
+          "y": 540,
+          "title": "Insert into a prefix",
+          "text": "Treat the first item as a sorted prefix.\n\nTake the next item as the key.\n\nInsert the key at its correct position.\n\nChallenge: What is the sorted prefix after inserting 5?\n\n2, 5, 6. The final value 1 has not yet been inserted."
+        },
+        {
+          "id": "f5",
+          "face": "left",
+          "x": 920,
+          "y": 540,
+          "title": "Shift and insert",
+          "text": "Save the key before shifting.\n\nMove larger prefix values one position right.\n\nPlace the key in the gap.\n\nChallenge: Why save the key before shifting values?\n\nShifting could overwrite its original position. Saving it preserves the value for insertion."
+        },
+        {
+          "id": "f6",
+          "face": "left",
+          "x": 1888,
+          "y": 540,
+          "title": "Compare the methods",
+          "text": "Bubble sort compares neighbours over passes.\n\nInsertion sort grows a sorted prefix.\n\nMerge sort splits and merges sorted groups.\n\nChallenge: Which method can use few shifts on nearly sorted data?\n\nInsertion sort, because many keys are already close to their correct positions."
+        }
+      ],
+      "models": []
+    }
+  ]
+}

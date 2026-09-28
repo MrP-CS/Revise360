@@ -88,7 +88,7 @@
     for (const e of allFor(id)) {
       const number = e.lesson ? String(e.lesson).padStart(2, "0") : "★";
       if (isWS(e)) {
-        rows.push(`<article class="exp worksheet-row"><span class="lesson-number">${number}</span><div class="body"><span class="lesson-type">Paper assessment</span><h3>${esc(e.title)}</h3><p>${esc(e.description)}</p></div><div class="lesson-actions"><a class="btn small ghost" href="${esc(e.worksheet)}" download aria-label="Download the ${esc(e.title)} worksheet (Word document)">Download worksheet ↓</a></div></article>`);
+        rows.push(`<article class="exp worksheet-row"><span class="lesson-number">${number}</span><div class="body"><span class="lesson-type">Paper assessment</span><h3>${esc(e.title)}</h3><p>${esc(e.description)}</p></div><div class="lesson-actions"><a class="btn small ghost" href="${esc(e.worksheet)}" download aria-label="Download the ${esc(e.title)} worksheet (Word document)">Download worksheet ↓</a>${e.powerpoint ? `<a class="quiet-link" href="${esc(e.powerpoint)}" download aria-label="Download the ${esc(e.title)} lesson PowerPoint (PPTX)">Lesson PowerPoint ↓</a>` : ""}</div></article>`);
         continue;
       }
       const sum = sums[e.id], prog = Store.get(e.id);
