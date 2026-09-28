@@ -1,0 +1,284 @@
+{
+  "id": "al-l13",
+  "lesson": 13,
+  "title": "Algorithm repair clinic",
+  "scenes": [
+    {
+      "id": "main",
+      "title": "Algorithm repair clinic",
+      "img": "img/AL_L13_AlgorithmRepairClinic_360.jpg",
+      "imgHi": "img/AL_L13_AlgorithmRepairClinic_360_hi.jpg",
+      "stations": [
+        {
+          "label": "1",
+          "name": "Read what is written",
+          "col": "#40c4ff",
+          "face": "right",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "x = 2; y = x * 5; print(y + 1). Output?",
+              "a": [
+                "11",
+                "10",
+                "15",
+                "3"
+              ],
+              "fb": "11"
+            },
+            {
+              "t": "mcq",
+              "q": "x = 4; y = x + 3. What is y?",
+              "a": [
+                "7",
+                "3",
+                "12"
+              ],
+              "fb": "7. Follow the code, not the intended outcome."
+            }
+          ]
+        },
+        {
+          "label": "2",
+          "name": "Correct an operation",
+          "col": "#aa6eeb",
+          "face": "right",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "A rectangle area uses length + width. Correction?",
+              "a": [
+                "length * width",
+                "length - width",
+                "length / width",
+                "length == width"
+              ],
+              "fb": "length * width"
+            },
+            {
+              "t": "mcq",
+              "q": "For length 6 and width 2, area is...",
+              "a": [
+                "12",
+                "8",
+                "4"
+              ],
+              "fb": "12. Compare the calculation with the requirement."
+            }
+          ]
+        },
+        {
+          "label": "3",
+          "name": "Correct a boundary",
+          "col": "#ff785a",
+          "face": "back",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "The rule is fewer than 10. Which condition fits?",
+              "a": [
+                "n < 10",
+                "n <= 10",
+                "n > 10",
+                "n == 10"
+              ],
+              "fb": "n < 10"
+            },
+            {
+              "t": "mcq",
+              "q": "Which value exposes > 40 used for at least 40?",
+              "a": [
+                "40",
+                "41",
+                "50"
+              ],
+              "fb": "40. Translate inclusive wording carefully."
+            }
+          ]
+        },
+        {
+          "label": "4",
+          "name": "Complete an update",
+          "col": "#ffa028",
+          "face": "back",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "Which update makes this countdown terminate?",
+              "a": [
+                "n = n - 1",
+                "n = n + 1",
+                "n = 3",
+                "n = n"
+              ],
+              "fb": "n = n - 1"
+            },
+            {
+              "t": "mcq",
+              "q": "A countdown from 3 using n = n - 1 should stop at...",
+              "a": [
+                "0 when the condition is n > 0",
+                "3",
+                "4"
+              ],
+              "fb": "0 when the condition is n > 0. A loop must move towards its end condition."
+            }
+          ]
+        },
+        {
+          "label": "5",
+          "name": "Refine an omitted case",
+          "col": "#50dc96",
+          "face": "left",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "How should the two-player comparison be refined?",
+              "a": [
+                "Add a separate draw outcome for equal values",
+                "Always choose A",
+                "Remove all comparisons",
+                "Ignore equal inputs"
+              ],
+              "fb": "Add a separate draw outcome for equal values"
+            },
+            {
+              "t": "mcq",
+              "q": "A draw should be reported when...",
+              "a": [
+                "a == b",
+                "a > b",
+                "a < b"
+              ],
+              "fb": "a == b. Check whether every valid situation is handled."
+            }
+          ]
+        },
+        {
+          "label": "6",
+          "name": "Recheck the correction",
+          "col": "#f05aaa",
+          "face": "left",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "order",
+              "q": "Order the repair process.",
+              "steps": [
+                "State the expected behaviour",
+                "Trace the faulty algorithm",
+                "Correct the identified fault",
+                "Retest failing and working cases"
+              ],
+              "fb": "Use evidence to decide whether the correction works."
+            },
+            {
+              "t": "mcq",
+              "q": "Retesting a previously working input checks...",
+              "a": [
+                "The fix has not broken existing behaviour",
+                "That testing is unnecessary",
+                "Only the variable spelling"
+              ],
+              "fb": "The fix has not broken existing behaviour. Retest the original failing input."
+            }
+          ]
+        },
+        {
+          "label": "★",
+          "name": "Final challenge",
+          "col": "#ffd046",
+          "face": "down",
+          "x": 1024,
+          "y": 800,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "total = 0 inside a loop causes only the latest input to be kept. What is the fix?",
+              "a": [
+                "Move total = 0 before the loop",
+                "Print total earlier",
+                "Reset total twice",
+                "Remove every input"
+              ],
+              "fb": "Move total = 0 before the loop"
+            },
+            {
+              "t": "mcq",
+              "q": "A loop should visit indices 0 to 4. Which OCR loop fits?",
+              "a": [
+                "for i = 0 to 4",
+                "for i = 1 to 4",
+                "for i = 0 to 5",
+                "for i = 4 to 4"
+              ],
+              "fb": "for i = 0 to 4"
+            }
+          ]
+        }
+      ],
+      "info": [
+        {
+          "id": "f1",
+          "face": "right",
+          "x": 920,
+          "y": 540,
+          "title": "Read what is written",
+          "text": "Follow the code, not the intended outcome.\n\nRecord changing values in order.\n\nPredict outputs before changing anything.\n\nChallenge: What is printed and why?\n\n14. y becomes 7, then x is assigned 7 * 2."
+        },
+        {
+          "id": "f2",
+          "face": "right",
+          "x": 1888,
+          "y": 540,
+          "title": "Correct an operation",
+          "text": "Compare the calculation with the requirement.\n\nCheck using a small known example.\n\nChange the faulty operation only.\n\nChallenge: What are the wrong and correct results?\n\nThe wrong result is 8. The correct total is 15."
+        },
+        {
+          "id": "f3",
+          "face": "back",
+          "x": 920,
+          "y": 540,
+          "title": "Correct a boundary",
+          "text": "Translate inclusive wording carefully.\n\nCheck the value exactly at the threshold.\n\nA running program can still reject valid input.\n\nChallenge: Which test exposes the error?\n\n40, because it should pass but the faulty condition rejects it."
+        },
+        {
+          "id": "f4",
+          "face": "back",
+          "x": 1888,
+          "y": 540,
+          "title": "Complete an update",
+          "text": "A loop must move towards its end condition.\n\nChoose an update consistent with the start.\n\nTrace at least two iterations.\n\nChallenge: Complete the update so it prints 3, 2, 1.\n\nn = n - 1."
+        },
+        {
+          "id": "f5",
+          "face": "left",
+          "x": 920,
+          "y": 540,
+          "title": "Refine an omitted case",
+          "text": "Check whether every valid situation is handled.\n\nEqual values often need their own case.\n\nRefine the output rather than hiding the case.\n\nChallenge: What happens incorrectly when a == b?\n\nThe ELSE branch declares B the winner even though the values are equal."
+        },
+        {
+          "id": "f6",
+          "face": "left",
+          "x": 1888,
+          "y": 540,
+          "title": "Recheck the correction",
+          "text": "Retest the original failing input.\n\nCheck an input that previously worked.\n\nOne successful test is not proof of correctness.\n\nChallenge: Why rerun a previously successful case?\n\nThe correction might accidentally break behaviour that was already correct."
+        }
+      ],
+      "models": []
+    }
+  ]
+}

@@ -1,0 +1,5121 @@
+[
+  {
+    "n": 1,
+    "title": "Abstraction studio",
+    "slug": "AbstractionStudio",
+    "subject": "Abstraction",
+    "mission": "Choose the details a school equipment-loan system needs. Explain what can be left out and why.",
+    "donow": "Would a photograph always be more useful than a simple map?",
+    "outcomes": [
+      "Explain abstraction.",
+      "Select details for a stated purpose.",
+      "Justify why some details can be ignored."
+    ],
+    "starter": "A pupil needs to find the library. Which is more useful: a map of corridors or a list of wall colours? Explain.",
+    "starter_answer": "A corridor map shows routes and destinations. Wall colours are usually unnecessary for finding a route.",
+    "terms": [
+      [
+        "Abstraction",
+        "Keeping relevant details and removing unnecessary detail for a particular purpose."
+      ],
+      [
+        "Model",
+        "A simplified representation of a real system."
+      ]
+    ],
+    "stations": [
+      {
+        "name": "Keep the purpose",
+        "facts": [
+          "Start with the problem to solve.",
+          "Relevant details depend on the purpose.",
+          "A simpler model can still be useful."
+        ],
+        "diagram": [
+          "PURPOSE",
+          "Find the library",
+          "Keep: rooms and routes",
+          "Ignore: paint textures"
+        ],
+        "challenge": "Why can a map omit carpet patterns?",
+        "answer": "Carpet patterns do not help identify a route to the library.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Which detail belongs on a route map?",
+            "a": [
+              "Connections between rooms",
+              "The price of each carpet",
+              "Every wall texture",
+              "Every pupil name"
+            ],
+            "fb": "Connections between rooms"
+          },
+          {
+            "t": "mcq",
+            "q": "For recognising a camera icon, which detail is least necessary?",
+            "a": [
+              "The exact serial number",
+              "The lens outline",
+              "The body outline"
+            ],
+            "fb": "The exact serial number. Start with the problem to solve."
+          }
+        ],
+        "info": "Carpet patterns do not help identify a route to the library."
+      },
+      {
+        "name": "Essential information",
+        "facts": [
+          "A loan system must identify the borrower.",
+          "It must identify the borrowed item.",
+          "It needs enough data to track the loan."
+        ],
+        "diagram": [
+          "LOAN RECORD",
+          "Borrower ID: 241",
+          "Item ID: CAM07",
+          "Due date: 12 October"
+        ],
+        "challenge": "Name two details needed to track a camera loan.",
+        "answer": "Borrower ID and item ID identify who has which camera. The due date helps track returns.",
+        "tasks": [
+          {
+            "t": "sort",
+            "q": "Classify details for tracking loans.",
+            "cats": [
+              "Needed",
+              "Not needed"
+            ],
+            "items": [
+              [
+                "Borrower ID",
+                "Needed"
+              ],
+              [
+                "Item ID",
+                "Needed"
+              ],
+              [
+                "Favourite film",
+                "Not needed"
+              ],
+              [
+                "Shoe brand",
+                "Not needed"
+              ]
+            ],
+            "fb": "Keep details that support identifying and returning the item."
+          },
+          {
+            "t": "mcq",
+            "q": "Which detail helps identify an overdue loan?",
+            "a": [
+              "Due date",
+              "Favourite colour",
+              "Wallpaper pattern"
+            ],
+            "fb": "Due date. A loan system must identify the borrower."
+          }
+        ],
+        "info": "Borrower ID and item ID identify who has which camera. The due date helps track returns."
+      },
+      {
+        "name": "Remove distractions",
+        "facts": [
+          "Not every real-world detail belongs in a model.",
+          "Removing detail makes a model easier to use.",
+          "Do not remove information needed for accuracy."
+        ],
+        "diagram": [
+          "CAMERA ICON",
+          "Keep: lens and body",
+          "Ignore: serial number",
+          "Purpose: recognise item"
+        ],
+        "challenge": "Why might an icon omit the serial number?",
+        "answer": "Its purpose is to recognise a camera category. A serial number identifies one particular camera.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "What would damage a route map?",
+            "a": [
+              "Removing the corridor connections",
+              "Removing wallpaper patterns",
+              "Using simple room outlines",
+              "Omitting ceiling colours"
+            ],
+            "fb": "Removing the corridor connections"
+          },
+          {
+            "t": "mcq",
+            "q": "Removing required corridor links is...",
+            "a": [
+              "Too much simplification",
+              "Always useful abstraction",
+              "A sorting method"
+            ],
+            "fb": "Too much simplification. Not every real-world detail belongs in a model."
+          }
+        ],
+        "info": "Its purpose is to recognise a camera category. A serial number identifies one particular camera."
+      },
+      {
+        "name": "Purpose changes relevance",
+        "facts": [
+          "A detail can matter in one task and not another.",
+          "A repair system needs different data from a route map.",
+          "Explain choices using the stated task."
+        ],
+        "diagram": [
+          "TWO PURPOSES",
+          "Find room: location",
+          "Repair light: fault type",
+          "Same school, new detail"
+        ],
+        "challenge": "When would a room light fault become relevant?",
+        "answer": "When planning repairs, the fault and room location help staff repair the correct light.",
+        "tasks": [
+          {
+            "t": "match",
+            "q": "Match purpose to a useful detail.",
+            "pairs": [
+              [
+                "Find a room",
+                "Corridor connections"
+              ],
+              [
+                "Repair a camera",
+                "Fault description"
+              ],
+              [
+                "Return a loan",
+                "Borrower ID"
+              ]
+            ],
+            "fb": "Each detail supports a particular decision."
+          },
+          {
+            "t": "mcq",
+            "q": "A fault description becomes relevant when...",
+            "a": [
+              "Planning repairs",
+              "Finding a room by route",
+              "Comparing latitude"
+            ],
+            "fb": "Planning repairs. A detail can matter in one task and not another."
+          }
+        ],
+        "info": "When planning repairs, the fault and room location help staff repair the correct light."
+      },
+      {
+        "name": "Abstraction in software",
+        "facts": [
+          "Users can work without knowing every internal detail.",
+          "A button can hide several processing steps.",
+          "The hidden steps still happen."
+        ],
+        "diagram": [
+          "CLICK: RETURN ITEM",
+          "Find the loan",
+          "Mark item available",
+          "Show confirmation"
+        ],
+        "challenge": "What does a return button hide from its user?",
+        "answer": "It hides the detailed steps for finding the loan and updating its stored status.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "A return button is an abstraction because it...",
+            "a": [
+              "Hides internal steps behind one clear action",
+              "Deletes the loan system",
+              "Removes every calculation",
+              "Guarantees there are no errors"
+            ],
+            "fb": "Hides internal steps behind one clear action"
+          },
+          {
+            "t": "mcq",
+            "q": "Hiding processing behind a button means...",
+            "a": [
+              "Users need not manage every internal step",
+              "No processing occurs",
+              "The code has disappeared"
+            ],
+            "fb": "Users need not manage every internal step. Users can work without knowing every internal detail."
+          }
+        ],
+        "info": "It hides the detailed steps for finding the loan and updating its stored status."
+      },
+      {
+        "name": "Evaluate a model",
+        "facts": [
+          "Check whether the model solves the problem.",
+          "Add missing relevant details.",
+          "Remove detail that only distracts."
+        ],
+        "diagram": [
+          "ROUTE MAP REVIEW",
+          "Rooms: yes",
+          "Connections: missing",
+          "Textures: unnecessary"
+        ],
+        "challenge": "How should this route map be improved?",
+        "answer": "Add the connections between rooms so users can plan a route. Textures can be removed.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Which justification is strongest?",
+            "a": [
+              "Keep due dates so overdue loans can be identified",
+              "Keep everything just in case",
+              "Remove all numbers",
+              "Keep only colourful details"
+            ],
+            "fb": "Keep due dates so overdue loans can be identified"
+          },
+          {
+            "t": "mcq",
+            "q": "A model should be judged against...",
+            "a": [
+              "Its stated purpose",
+              "Its number of colours",
+              "How much detail it retains"
+            ],
+            "fb": "Its stated purpose. Check whether the model solves the problem."
+          }
+        ],
+        "info": "Add the connections between rooms so users can plan a route. Textures can be removed."
+      }
+    ],
+    "final": [
+      {
+        "t": "sort",
+        "q": "Choose data for identifying overdue equipment loans.",
+        "cats": [
+          "Keep",
+          "Omit"
+        ],
+        "items": [
+          [
+            "Borrower ID",
+            "Keep"
+          ],
+          [
+            "Due date",
+            "Keep"
+          ],
+          [
+            "Item ID",
+            "Keep"
+          ],
+          [
+            "Favourite snack",
+            "Omit"
+          ]
+        ],
+        "fb": "The system needs to identify the loan and whether its due date has passed."
+      },
+      {
+        "t": "mcq",
+        "q": "Why is abstraction useful here?",
+        "a": [
+          "It reduces unnecessary detail while preserving what the task needs",
+          "It removes the need to test",
+          "It makes every detail irrelevant",
+          "It changes the purpose automatically"
+        ],
+        "fb": "It reduces unnecessary detail while preserving what the task needs"
+      }
+    ],
+    "plenary": [
+      [
+        "Define abstraction. [2]",
+        "Keep relevant detail (1) and remove unnecessary detail for a purpose (1)."
+      ],
+      [
+        "A delivery map omits the colour of each house. Explain why this is appropriate. [2]",
+        "The map is used to find routes (1). House colours are not needed to represent the route connections (1)."
+      ],
+      [
+        "Give one detail that a loan system should retain and justify it. [2]",
+        "Borrower ID identifies who has the item, or due date supports identifying overdue items. One suitable detail (1) with a linked reason (1)."
+      ]
+    ],
+    "practical": ""
+  },
+  {
+    "n": 2,
+    "title": "Model design lab",
+    "slug": "ModelDesignLab",
+    "subject": "Applying abstraction",
+    "mission": "Build and test simple models. Select the data needed to compare locations and calculate fares.",
+    "donow": "Can a simplified model give a correct answer?",
+    "outcomes": [
+      "Apply abstraction to a new problem.",
+      "Identify inputs, processing and outputs.",
+      "Refine a model when requirements change."
+    ],
+    "starter": "A program compares two places north or south. Does it need latitude, shop names or building colours?",
+    "starter_answer": "Latitude is relevant to north/south position. Shop names and building colours are not.",
+    "terms": [
+      [
+        "Input",
+        "Data supplied to an algorithm."
+      ],
+      [
+        "Output",
+        "Information produced by an algorithm."
+      ]
+    ],
+    "stations": [
+      {
+        "name": "Define the question",
+        "facts": [
+          "A model answers a specific question.",
+          "Write the required output first.",
+          "Then decide which inputs are necessary."
+        ],
+        "diagram": [
+          "QUESTION",
+          "Which point is further north?",
+          "INPUT: two latitudes",
+          "OUTPUT: north / same"
+        ],
+        "challenge": "Why define the output before selecting data?",
+        "answer": "The required answer determines which data the model needs.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Which input supports a north/south comparison?",
+            "a": [
+              "Latitude",
+              "Population",
+              "Building colour",
+              "Ticket price"
+            ],
+            "fb": "Latitude"
+          },
+          {
+            "t": "mcq",
+            "q": "The required output helps determine...",
+            "a": [
+              "Which inputs are relevant",
+              "The computer brand",
+              "The number of wall colours"
+            ],
+            "fb": "Which inputs are relevant. A model answers a specific question."
+          }
+        ],
+        "info": "The required answer determines which data the model needs."
+      },
+      {
+        "name": "Signed coordinates",
+        "facts": [
+          "Northern latitudes are positive.",
+          "Southern latitudes are negative.",
+          "A larger latitude is further north."
+        ],
+        "diagram": [
+          "LATITUDES",
+          "A = -12",
+          "B = -35",
+          "A is further north"
+        ],
+        "challenge": "Which is further north: -8 or -21? Explain.",
+        "answer": "-8 is larger than -21, so it is further north.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Which latitude is further north?",
+            "a": [
+              "-3",
+              "-17",
+              "-40",
+              "-61"
+            ],
+            "fb": "-3 is the greatest value, so it is furthest north."
+          },
+          {
+            "t": "mcq",
+            "q": "Which is further north: -15 or -4?",
+            "a": [
+              "-4",
+              "-15",
+              "They are equal"
+            ],
+            "fb": "-4. Northern latitudes are positive."
+          }
+        ],
+        "info": "-8 is larger than -21, so it is further north."
+      },
+      {
+        "name": "Equality matters",
+        "facts": [
+          "Two values can be equal.",
+          "A two-way comparison may miss this case.",
+          "Specify an output for every valid case."
+        ],
+        "diagram": [
+          "COMPARE A AND B",
+          "A > B: A north",
+          "A < B: B north",
+          "A == B: same latitude"
+        ],
+        "challenge": "Why is an equality case needed?",
+        "answer": "Without it, equal latitudes could be incorrectly labelled north or south.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "A = 12 and B = 12. What should be output?",
+            "a": [
+              "Same latitude",
+              "A is north",
+              "B is north",
+              "No valid coordinates"
+            ],
+            "fb": "Same latitude"
+          },
+          {
+            "t": "mcq",
+            "q": "Which comparison checks equal values?",
+            "a": [
+              "A == B",
+              "A > B",
+              "A < B"
+            ],
+            "fb": "A == B. Two values can be equal."
+          }
+        ],
+        "info": "Without it, equal latitudes could be incorrectly labelled north or south."
+      },
+      {
+        "name": "Inputs and processing",
+        "facts": [
+          "Inputs supply the data.",
+          "Processes transform or compare it.",
+          "Outputs communicate the result."
+        ],
+        "diagram": [
+          "FARE MODEL",
+          "Input: distance",
+          "Process: distance * 2",
+          "Output: fare"
+        ],
+        "challenge": "Classify multiplying distance by 2.",
+        "answer": "It is a process because it transforms the input into the fare.",
+        "tasks": [
+          {
+            "t": "sort",
+            "q": "Classify each part of the fare model.",
+            "cats": [
+              "Input",
+              "Process",
+              "Output"
+            ],
+            "items": [
+              [
+                "Distance entered",
+                "Input"
+              ],
+              [
+                "Multiply by 2",
+                "Process"
+              ],
+              [
+                "Fare displayed",
+                "Output"
+              ]
+            ],
+            "fb": "Input enters, a process calculates, and output leaves the system."
+          },
+          {
+            "t": "mcq",
+            "q": "A displayed fare is...",
+            "a": [
+              "Output",
+              "Input",
+              "An arithmetic operation"
+            ],
+            "fb": "Output. Inputs supply the data."
+          }
+        ],
+        "info": "It is a process because it transforms the input into the fare."
+      },
+      {
+        "name": "Change the requirement",
+        "facts": [
+          "A new requirement may need new data.",
+          "Review the model before adding detail.",
+          "Keep the change relevant to the new purpose."
+        ],
+        "diagram": [
+          "OLD: north / south",
+          "Input: latitude",
+          "NEW: east / west",
+          "Add: longitude"
+        ],
+        "challenge": "What extra coordinate supports east/west comparison?",
+        "answer": "Longitude supports comparing east/west positions within a stated coordinate convention.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "A fare now depends on passenger age. What changes?",
+            "a": [
+              "Add age as an input and a discount rule",
+              "Add every passenger hobby",
+              "Remove distance",
+              "Stop producing a fare"
+            ],
+            "fb": "Add age as an input and a discount rule"
+          },
+          {
+            "t": "mcq",
+            "q": "Which input supports an age discount?",
+            "a": [
+              "Passenger age",
+              "Passenger shoe brand",
+              "Vehicle colour"
+            ],
+            "fb": "Passenger age. A new requirement may need new data."
+          }
+        ],
+        "info": "Longitude supports comparing east/west positions within a stated coordinate convention."
+      },
+      {
+        "name": "Test the simplified model",
+        "facts": [
+          "Use examples with known answers.",
+          "Include less obvious cases.",
+          "Refine the rules if an example fails."
+        ],
+        "diagram": [
+          "TEST PAIRS",
+          "10 and 20",
+          "-10 and -20",
+          "15 and 15"
+        ],
+        "challenge": "Why test equal and negative latitudes?",
+        "answer": "They check equality and signed-number comparisons that positive unequal examples may miss.",
+        "tasks": [
+          {
+            "t": "order",
+            "q": "Order the model-development steps.",
+            "steps": [
+              "State the required answer",
+              "Choose relevant inputs",
+              "Write the processing rules",
+              "Check known examples"
+            ],
+            "fb": "Test against the original question."
+          },
+          {
+            "t": "mcq",
+            "q": "Which case checks equality?",
+            "a": [
+              "8 and 8",
+              "8 and 9",
+              "-8 and 8"
+            ],
+            "fb": "8 and 8. Use examples with known answers."
+          }
+        ],
+        "info": "They check equality and signed-number comparisons that positive unequal examples may miss."
+      }
+    ],
+    "final": [
+      {
+        "t": "mcq",
+        "q": "A fare is distance * 2. Distance is 7. What is output?",
+        "a": [
+          "14",
+          "9",
+          "5",
+          "2"
+        ],
+        "fb": "14"
+      },
+      {
+        "t": "match",
+        "q": "Match each improvement to its purpose.",
+        "pairs": [
+          [
+            "Add an equality branch",
+            "Handle equal values"
+          ],
+          [
+            "Remove wall colours",
+            "Reduce irrelevant detail"
+          ],
+          [
+            "Add age",
+            "Apply an age discount"
+          ]
+        ],
+        "fb": "Only add detail that supports the requirement."
+      }
+    ],
+    "plenary": [
+      [
+        "Identify input, process and output for a fare calculated as distance multiplied by 2. [3]",
+        "Distance (1), multiply by 2 (1), fare (1)."
+      ],
+      [
+        "Explain why comparing only positive latitudes is insufficient testing. [2]",
+        "It misses negative values (1), where incorrect use of absolute values could reverse the result (1)."
+      ],
+      [
+        "A model compares only north/south locations. Explain a refinement needed for equal latitudes. [2]",
+        "Add a test for equality (1) and output a same-latitude result (1)."
+      ]
+    ],
+    "practical": ""
+  },
+  {
+    "n": 3,
+    "title": "Decomposition workshop",
+    "slug": "DecompositionWorkshop",
+    "subject": "Decomposition and structure diagrams",
+    "mission": "Break an equipment-loan system into manageable parts and build a structure diagram.",
+    "donow": "How could a team share the work of building one program?",
+    "outcomes": [
+      "Decompose a problem into sub-problems.",
+      "Interpret and create structure diagrams.",
+      "Explain benefits of decomposition."
+    ],
+    "starter": "A school club needs to register members, lend equipment and record returns. Name three smaller problems.",
+    "starter_answer": "Manage members, issue loans and process returns are three suitable sub-problems.",
+    "terms": [
+      [
+        "Decomposition",
+        "Breaking a problem into smaller, manageable sub-problems."
+      ],
+      [
+        "Structure diagram",
+        "A hierarchy showing a system and its component sub-problems."
+      ]
+    ],
+    "stations": [
+      {
+        "name": "Split the problem",
+        "facts": [
+          "Start with the whole task.",
+          "Identify separate responsibilities.",
+          "Break large parts down further."
+        ],
+        "diagram": [
+          "EQUIPMENT SYSTEM",
+          "Members",
+          "Loans",
+          "Returns"
+        ],
+        "challenge": "Suggest three parts of a library system.",
+        "answer": "Manage members, issue books and process returned books are suitable parts.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Which example is decomposition?",
+            "a": [
+              "Split a shop into stock, orders and payments",
+              "Remove irrelevant stock colours",
+              "Put every instruction in one block",
+              "Change the screen font"
+            ],
+            "fb": "Split a shop into stock, orders and payments"
+          },
+          {
+            "t": "mcq",
+            "q": "Which is a sub-problem of a loan system?",
+            "a": [
+              "Process a return",
+              "Change the weather",
+              "Draw every classroom"
+            ],
+            "fb": "Process a return. Start with the whole task."
+          }
+        ],
+        "info": "Manage members, issue books and process returned books are suitable parts."
+      },
+      {
+        "name": "Read the hierarchy",
+        "facts": [
+          "The top box is the whole system.",
+          "Child boxes are parts of their parent.",
+          "Lower levels show more detail."
+        ],
+        "diagram": [
+          "Loan system",
+          "  Issue loan",
+          "    Check availability",
+          "    Record borrower"
+        ],
+        "challenge": "What are the two parts of Issue loan?",
+        "answer": "Check availability and record borrower.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "What does a line to a child box mean?",
+            "a": [
+              "The child is a component of the parent",
+              "The child always runs next",
+              "The child is an output value",
+              "The parent is false"
+            ],
+            "fb": "The child is a component of the parent"
+          },
+          {
+            "t": "mcq",
+            "q": "The top box of a structure diagram is...",
+            "a": [
+              "The complete system",
+              "Always the first output",
+              "A yes/no decision"
+            ],
+            "fb": "The complete system. The top box is the whole system."
+          }
+        ],
+        "info": "Check availability and record borrower."
+      },
+      {
+        "name": "Refine a sub-problem",
+        "facts": [
+          "Refinement adds useful detail.",
+          "Stop when each task is clear enough to solve.",
+          "Keep the hierarchy logically grouped."
+        ],
+        "diagram": [
+          "PROCESS RETURN",
+          "Find active loan",
+          "Mark loan returned",
+          "Make item available"
+        ],
+        "challenge": "Break Process return into three smaller tasks.",
+        "answer": "Find the active loan, mark it returned and make the item available again.",
+        "tasks": [
+          {
+            "t": "order",
+            "q": "Order a sensible refinement process.",
+            "steps": [
+              "Identify the whole system",
+              "Name its main sub-problems",
+              "Split a complex sub-problem",
+              "Check the parts cover the requirements"
+            ],
+            "fb": "Refinement adds detail to a decomposition."
+          },
+          {
+            "t": "mcq",
+            "q": "Refinement means...",
+            "a": [
+              "Breaking a large part into clearer smaller tasks",
+              "Removing all requirements",
+              "Only changing colours"
+            ],
+            "fb": "Breaking a large part into clearer smaller tasks. Refinement adds useful detail."
+          }
+        ],
+        "info": "Find the active loan, mark it returned and make the item available again."
+      },
+      {
+        "name": "Structure versus flow",
+        "facts": [
+          "Structure diagrams show parts.",
+          "Flowcharts show execution and decisions.",
+          "A hierarchy does not specify run order."
+        ],
+        "diagram": [
+          "STRUCTURE: parts",
+          "FLOWCHART: execution",
+          "Hierarchy is not a loop",
+          "Branches are not yes/no"
+        ],
+        "challenge": "Why is a structure diagram not a flowchart?",
+        "answer": "It shows what the system contains, rather than the order of execution and decision paths.",
+        "tasks": [
+          {
+            "t": "sort",
+            "q": "Classify the diagram features.",
+            "cats": [
+              "Structure diagram",
+              "Flowchart"
+            ],
+            "items": [
+              [
+                "Parent and child modules",
+                "Structure diagram"
+              ],
+              [
+                "Yes/no decision branch",
+                "Flowchart"
+              ],
+              [
+                "System broken into parts",
+                "Structure diagram"
+              ],
+              [
+                "Arrow showing next action",
+                "Flowchart"
+              ]
+            ],
+            "fb": "Do not read a hierarchy as execution order."
+          },
+          {
+            "t": "mcq",
+            "q": "Does left-to-right position in a structure diagram define execution order?",
+            "a": [
+              "No",
+              "Yes, always",
+              "Only if the boxes are blue"
+            ],
+            "fb": "No. Structure diagrams show parts."
+          }
+        ],
+        "info": "It shows what the system contains, rather than the order of execution and decision paths."
+      },
+      {
+        "name": "Work as a team",
+        "facts": [
+          "Smaller tasks can be allocated to people.",
+          "Parts can be tested separately.",
+          "Interfaces between parts must still agree."
+        ],
+        "diagram": [
+          "TEAM PLAN",
+          "A: member records",
+          "B: loan checks",
+          "Shared: member ID"
+        ],
+        "challenge": "Why must both programmers agree on member ID?",
+        "answer": "Their parts exchange member details. A consistent ID allows the parts to work together.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Which is a benefit of decomposition?",
+            "a": [
+              "Individual parts are easier to understand and test",
+              "Testing becomes unnecessary",
+              "Parts never need to communicate",
+              "Every program runs faster"
+            ],
+            "fb": "Individual parts are easier to understand and test"
+          },
+          {
+            "t": "mcq",
+            "q": "A shared interface helps parts...",
+            "a": [
+              "Exchange data consistently",
+              "Avoid all testing",
+              "Run without inputs"
+            ],
+            "fb": "Exchange data consistently. Smaller tasks can be allocated to people."
+          }
+        ],
+        "info": "Their parts exchange member details. A consistent ID allows the parts to work together."
+      },
+      {
+        "name": "Check coverage",
+        "facts": [
+          "Compare the parts with the requirements.",
+          "Look for missing responsibilities.",
+          "Avoid duplicate or unclear tasks."
+        ],
+        "diagram": [
+          "REQUIREMENTS",
+          "Register / lend / return",
+          "CURRENT PARTS",
+          "Register / lend"
+        ],
+        "challenge": "Which responsibility is missing?",
+        "answer": "Processing returns is missing and must be included.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "The system must report overdue loans. What should be added?",
+            "a": [
+              "An overdue-report sub-problem",
+              "A wallpaper sub-problem",
+              "A second unrelated system",
+              "Nothing because all systems report automatically"
+            ],
+            "fb": "An overdue-report sub-problem"
+          },
+          {
+            "t": "mcq",
+            "q": "An omitted return function is found by checking...",
+            "a": [
+              "The decomposition against the requirements",
+              "Only the font size",
+              "Only the logo"
+            ],
+            "fb": "The decomposition against the requirements. Compare the parts with the requirements."
+          }
+        ],
+        "info": "Processing returns is missing and must be included."
+      }
+    ],
+    "final": [
+      {
+        "t": "match",
+        "q": "Match each sub-problem to a suitable smaller task.",
+        "pairs": [
+          [
+            "Members",
+            "Add a member record"
+          ],
+          [
+            "Loans",
+            "Check item availability"
+          ],
+          [
+            "Returns",
+            "Mark an item available"
+          ]
+        ],
+        "fb": "Each child must belong to its parent."
+      },
+      {
+        "t": "mcq",
+        "q": "Why test each part before combining them?",
+        "a": [
+          "It helps locate faults within smaller sections",
+          "It proves the whole system cannot fail",
+          "It removes the need for shared data",
+          "It guarantees the fastest code"
+        ],
+        "fb": "It helps locate faults within smaller sections"
+      }
+    ],
+    "plenary": [
+      [
+        "Define decomposition. [2]",
+        "Break a complex problem (1) into smaller manageable sub-problems (1)."
+      ],
+      [
+        "Draw a structure diagram for a club system with members, loans and returns. Decompose loans into two tasks. [4]",
+        "Whole system above three appropriate parts (1), correct parent-child connections (1), check availability beneath loans (1), record loan beneath loans (1)."
+      ],
+      [
+        "Explain one advantage of decomposition for a team. [2]",
+        "Separate tasks can be assigned to different people (1), allowing work on manageable parts in parallel (1)."
+      ]
+    ],
+    "practical": ""
+  },
+  {
+    "n": 4,
+    "title": "Algorithm planning room",
+    "slug": "AlgorithmPlanningRoom",
+    "subject": "Algorithmic thinking: sequence",
+    "mission": "Design precise steps for issuing an equipment loan, then check their order and outputs.",
+    "donow": "Why can instructions that seem obvious to a person confuse a computer?",
+    "outcomes": [
+      "Explain algorithmic thinking.",
+      "Identify inputs, processes and outputs.",
+      "Write precise ordered instructions."
+    ],
+    "starter": "Put these actions in order: display total, input price, calculate total.",
+    "starter_answer": "Input price, calculate total, display total.",
+    "terms": [
+      [
+        "Algorithm",
+        "A finite set of precise steps for solving a problem."
+      ],
+      [
+        "Sequence",
+        "Executing instructions in their stated order."
+      ]
+    ],
+    "stations": [
+      {
+        "name": "A clear goal",
+        "facts": [
+          "Algorithmic thinking plans a solution as steps.",
+          "State what must be achieved.",
+          "Check that the steps reach that goal."
+        ],
+        "diagram": [
+          "GOAL: issue a loan",
+          "Read borrower and item",
+          "Check whether available",
+          "Record or reject loan"
+        ],
+        "challenge": "Why state the goal before writing steps?",
+        "answer": "The goal defines what counts as a correct result.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Algorithmic thinking involves...",
+            "a": [
+              "Planning precise steps to solve a problem",
+              "Only choosing a screen colour",
+              "Removing all processing",
+              "Guessing an output"
+            ],
+            "fb": "Planning precise steps to solve a problem"
+          },
+          {
+            "t": "mcq",
+            "q": "A useful algorithm must...",
+            "a": [
+              "Reach the stated goal through precise steps",
+              "Depend on guessing",
+              "Always use exactly ten steps"
+            ],
+            "fb": "Reach the stated goal through precise steps. Algorithmic thinking plans a solution as steps."
+          }
+        ],
+        "info": "The goal defines what counts as a correct result."
+      },
+      {
+        "name": "Input, process, output",
+        "facts": [
+          "Identify data entering the algorithm.",
+          "Identify operations on the data.",
+          "Identify the result to communicate."
+        ],
+        "diagram": [
+          "INPUT: hours, rate",
+          "PROCESS: hours * rate",
+          "OUTPUT: charge"
+        ],
+        "challenge": "Name the inputs for calculating hire cost.",
+        "answer": "The number of hours and the hourly rate.",
+        "tasks": [
+          {
+            "t": "sort",
+            "q": "Classify the hire steps.",
+            "cats": [
+              "Input",
+              "Process",
+              "Output"
+            ],
+            "items": [
+              [
+                "Read hours",
+                "Input"
+              ],
+              [
+                "Multiply hours by rate",
+                "Process"
+              ],
+              [
+                "Display charge",
+                "Output"
+              ]
+            ],
+            "fb": "The calculation is the process."
+          },
+          {
+            "t": "mcq",
+            "q": "Multiplying hours by rate is...",
+            "a": [
+              "Processing",
+              "Input",
+              "A route map"
+            ],
+            "fb": "Processing. Identify data entering the algorithm."
+          }
+        ],
+        "info": "The number of hours and the hourly rate."
+      },
+      {
+        "name": "Order matters",
+        "facts": [
+          "A value must be available before use.",
+          "Calculate before displaying the result.",
+          "Changing order can change behaviour."
+        ],
+        "diagram": [
+          "Read quantity",
+          "Read unit price",
+          "total = quantity * price",
+          "Print total"
+        ],
+        "challenge": "What is wrong with printing total first?",
+        "answer": "The total has not yet been calculated from the inputs.",
+        "tasks": [
+          {
+            "t": "order",
+            "q": "Order a total-cost algorithm.",
+            "steps": [
+              "Input quantity",
+              "Input unit price",
+              "Calculate quantity times unit price",
+              "Output total"
+            ],
+            "fb": "Read both values before calculating."
+          },
+          {
+            "t": "mcq",
+            "q": "Which must happen before outputting a calculated total?",
+            "a": [
+              "Calculate the total",
+              "End the program",
+              "Discard the inputs"
+            ],
+            "fb": "Calculate the total. A value must be available before use."
+          }
+        ],
+        "info": "The total has not yet been calculated from the inputs."
+      },
+      {
+        "name": "Remove ambiguity",
+        "facts": [
+          "Instructions need clear actions and quantities.",
+          "Avoid words such as some or enough.",
+          "Specify what happens in each case."
+        ],
+        "diagram": [
+          "VAGUE: add some points",
+          "PRECISE: add 3 points",
+          "VAGUE: repeat a bit",
+          "PRECISE: repeat 4 times"
+        ],
+        "challenge": "Rewrite Add some bonus points precisely.",
+        "answer": "Add 5 bonus points to score is one precise example.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Which instruction is precise?",
+            "a": [
+              "Increase score by 2",
+              "Increase score a little",
+              "Process the result somehow",
+              "Repeat until it seems right"
+            ],
+            "fb": "Increase score by 2"
+          },
+          {
+            "t": "mcq",
+            "q": "Which word often makes an instruction ambiguous?",
+            "a": [
+              "Some",
+              "Exactly",
+              "Multiply"
+            ],
+            "fb": "Some. Instructions need clear actions and quantities."
+          }
+        ],
+        "info": "Add 5 bonus points to score is one precise example."
+      },
+      {
+        "name": "Follow the steps",
+        "facts": [
+          "Trace an algorithm in its exact order.",
+          "Use the current value of a variable.",
+          "Assignment replaces its previous value."
+        ],
+        "diagram": [
+          "x = 3",
+          "x = x + 4",
+          "x = x * 2",
+          "print(x)"
+        ],
+        "challenge": "What is printed? Show the intermediate value.",
+        "answer": "x becomes 7 and then 14, so 14 is printed.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "For x = 5, then x = x + 2, then x = x * 3, what is x?",
+            "a": [
+              "21",
+              "17",
+              "15",
+              "10"
+            ],
+            "fb": "5 + 2 = 7, then 7 * 3 = 21."
+          },
+          {
+            "t": "mcq",
+            "q": "x = 3; x = x + 4; x = x * 2. Output?",
+            "a": [
+              "14",
+              "11",
+              "10"
+            ],
+            "fb": "14. Trace an algorithm in its exact order."
+          }
+        ],
+        "info": "x becomes 7 and then 14, so 14 is printed."
+      },
+      {
+        "name": "Check the result",
+        "facts": [
+          "Use a simple example with a known answer.",
+          "Compare expected and actual results.",
+          "Correct the steps when they differ."
+        ],
+        "diagram": [
+          "quantity = 3",
+          "price = 4",
+          "Expected total: 12",
+          "Wrong rule: quantity + price"
+        ],
+        "challenge": "How should the wrong rule be corrected?",
+        "answer": "Multiply quantity by price. Adding gives 7, not the expected 12.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "A total is wrong. What is the useful next step?",
+            "a": [
+              "Trace each calculation using known inputs",
+              "Change all variable names at random",
+              "Ignore the expected result",
+              "Delete every input"
+            ],
+            "fb": "Trace each calculation using known inputs"
+          },
+          {
+            "t": "mcq",
+            "q": "3 items cost 4 each. Why is output 7 wrong?",
+            "a": [
+              "It adds instead of multiplying",
+              "It multiplies correctly",
+              "It uses no inputs"
+            ],
+            "fb": "It adds instead of multiplying. Use a simple example with a known answer."
+          }
+        ],
+        "info": "Multiply quantity by price. Adding gives 7, not the expected 12."
+      }
+    ],
+    "final": [
+      {
+        "t": "order",
+        "q": "Put a simple loan algorithm in order.",
+        "steps": [
+          "Read borrower ID and item ID",
+          "Check the item is available",
+          "Record the loan if available",
+          "Display the result"
+        ],
+        "fb": "The check must happen before recording the loan."
+      },
+      {
+        "t": "mcq",
+        "q": "What is the charge for 4 hours at 3 per hour?",
+        "a": [
+          "12",
+          "7",
+          "1",
+          "43"
+        ],
+        "fb": "12"
+      }
+    ],
+    "plenary": [
+      [
+        "Explain algorithmic thinking. [2]",
+        "Plan a logical sequence of steps (1) that solves a stated problem (1)."
+      ],
+      [
+        "Write an algorithm to input length and width and output area. [3]",
+        "Input length and width (1), area = length * width (1), output area (1)."
+      ],
+      [
+        "Explain why the order of instructions matters. [2]",
+        "Later instructions can depend on earlier results (1), so using a result before calculation can be incorrect (1)."
+      ]
+    ],
+    "practical": ""
+  },
+  {
+    "n": 5,
+    "title": "Decision control centre",
+    "slug": "DecisionControlCentre",
+    "subject": "Algorithmic thinking: selection",
+    "mission": "Build decisions that handle thresholds, equal values and combined conditions correctly.",
+    "donow": "Is age greater than 16 the same as age at least 16?",
+    "outcomes": [
+      "Apply selection to decisions.",
+      "Handle boundary and equality cases.",
+      "Combine conditions accurately."
+    ],
+    "starter": "A club accepts pupils aged 12 or older. Should age 12 be accepted?",
+    "starter_answer": "Yes. Age 12 is included, so the condition must be age >= 12.",
+    "terms": [
+      [
+        "Selection",
+        "Choosing which instructions to execute using a condition."
+      ],
+      [
+        "Condition",
+        "An expression evaluated as true or false."
+      ]
+    ],
+    "stations": [
+      {
+        "name": "Two possible paths",
+        "facts": [
+          "A condition selects a path.",
+          "IF handles the true case.",
+          "ELSE handles the false case."
+        ],
+        "diagram": [
+          "if available == true then",
+          "  print(\"Loan allowed\")",
+          "else",
+          "  print(\"Unavailable\")",
+          "endif"
+        ],
+        "challenge": "What happens when available is false?",
+        "answer": "The ELSE branch prints Unavailable.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "If available is false, which message is printed?",
+            "a": [
+              "Unavailable",
+              "Loan allowed",
+              "Both messages",
+              "No message"
+            ],
+            "fb": "Unavailable"
+          },
+          {
+            "t": "mcq",
+            "q": "An IF condition evaluates to...",
+            "a": [
+              "True or false",
+              "Only a string",
+              "Always 1"
+            ],
+            "fb": "True or false. A condition selects a path."
+          }
+        ],
+        "info": "The ELSE branch prints Unavailable."
+      },
+      {
+        "name": "Include the boundary",
+        "facts": [
+          "Greater than excludes equality.",
+          "Greater than or equal includes equality.",
+          "Match the condition to the rule."
+        ],
+        "diagram": [
+          "RULE: age at least 12",
+          "Use: age >= 12",
+          "11: reject",
+          "12: accept"
+        ],
+        "challenge": "Why does age > 12 not match the rule?",
+        "answer": "It rejects a pupil aged exactly 12, although the rule includes them.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Which condition means score is at least 50?",
+            "a": [
+              "score >= 50",
+              "score > 50",
+              "score < 50",
+              "score == 49"
+            ],
+            "fb": "score >= 50"
+          },
+          {
+            "t": "mcq",
+            "q": "Which age is excluded by age > 12 but included by age >= 12?",
+            "a": [
+              "12",
+              "13",
+              "14"
+            ],
+            "fb": "12. Greater than excludes equality."
+          }
+        ],
+        "info": "It rejects a pupil aged exactly 12, although the rule includes them."
+      },
+      {
+        "name": "Three-way decisions",
+        "facts": [
+          "Some problems need more than two outcomes.",
+          "Check greater, less and equal cases.",
+          "Each valid input should have an outcome."
+        ],
+        "diagram": [
+          "A > B: A wins",
+          "A < B: B wins",
+          "Otherwise: draw"
+        ],
+        "challenge": "What happens if the draw case is omitted?",
+        "answer": "Equal values may get the wrong result or no intended output.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "A = 7 and B = 7. What is the correct result?",
+            "a": [
+              "Draw",
+              "A wins",
+              "B wins",
+              "A is greater"
+            ],
+            "fb": "Draw"
+          },
+          {
+            "t": "mcq",
+            "q": "Which result fits a = 9 and b = 4?",
+            "a": [
+              "A wins",
+              "B wins",
+              "Draw"
+            ],
+            "fb": "A wins. Some problems need more than two outcomes."
+          }
+        ],
+        "info": "Equal values may get the wrong result or no intended output."
+      },
+      {
+        "name": "Both conditions",
+        "facts": [
+          "AND is true when both conditions are true.",
+          "Use it when both requirements must hold.",
+          "Check each requirement separately."
+        ],
+        "diagram": [
+          "member = true",
+          "available = false",
+          "member AND available",
+          "Result: false"
+        ],
+        "challenge": "Can this member borrow the unavailable item?",
+        "answer": "No. Both membership and availability are required, and availability is false.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Which permits a loan only if both checks pass?",
+            "a": [
+              "member AND available",
+              "member OR available",
+              "NOT member",
+              "available == false"
+            ],
+            "fb": "member AND available"
+          },
+          {
+            "t": "mcq",
+            "q": "true AND false is...",
+            "a": [
+              "False",
+              "True",
+              "Undefined"
+            ],
+            "fb": "False. AND is true when both conditions are true."
+          }
+        ],
+        "info": "No. Both membership and availability are required, and availability is false."
+      },
+      {
+        "name": "Either condition",
+        "facts": [
+          "OR is true when at least one condition is true.",
+          "It is also true when both are true.",
+          "Do not confuse OR with exactly one."
+        ],
+        "diagram": [
+          "discount = student OR senior",
+          "Student only: yes",
+          "Senior only: yes",
+          "Both: yes"
+        ],
+        "challenge": "Does a person who meets both conditions qualify?",
+        "answer": "Yes. OR includes the case where both conditions are true.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "student = false, senior = true. What is student OR senior?",
+            "a": [
+              "True",
+              "False",
+              "Equal to student only",
+              "An error"
+            ],
+            "fb": "True"
+          },
+          {
+            "t": "mcq",
+            "q": "true OR true is...",
+            "a": [
+              "True",
+              "False",
+              "Only one true is allowed"
+            ],
+            "fb": "True. OR is true when at least one condition is true."
+          }
+        ],
+        "info": "Yes. OR includes the case where both conditions are true."
+      },
+      {
+        "name": "Nested decisions",
+        "facts": [
+          "A decision can sit inside another decision.",
+          "The outer path controls whether it is reached.",
+          "Indentation helps show the structure."
+        ],
+        "diagram": [
+          "if member then",
+          "  if available then",
+          "    print(\"Issue\")",
+          "  endif",
+          "endif"
+        ],
+        "challenge": "If member is false, is the inner decision reached?",
+        "answer": "No. The outer IF body is skipped.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Which describes nesting?",
+            "a": [
+              "Placing one selection inside another",
+              "Deleting all conditions",
+              "Always running both branches",
+              "Changing an input to an output"
+            ],
+            "fb": "Placing one selection inside another"
+          },
+          {
+            "t": "mcq",
+            "q": "An inner branch inside a false outer IF is...",
+            "a": [
+              "Skipped",
+              "Always executed",
+              "Repeated twice"
+            ],
+            "fb": "Skipped. A decision can sit inside another decision."
+          }
+        ],
+        "info": "No. The outer IF body is skipped."
+      }
+    ],
+    "final": [
+      {
+        "t": "match",
+        "q": "Match the phrase to its condition.",
+        "pairs": [
+          [
+            "At least 10",
+            "x >= 10"
+          ],
+          [
+            "Below 10",
+            "x < 10"
+          ],
+          [
+            "Exactly 10",
+            "x == 10"
+          ]
+        ],
+        "fb": "Equality must be handled as the wording requires."
+      },
+      {
+        "t": "mcq",
+        "q": "A loan needs a member AND an available item. Member is true and available is false. Result?",
+        "a": [
+          "Reject the loan",
+          "Issue the loan",
+          "Issue two loans",
+          "Ignore availability"
+        ],
+        "fb": "Reject the loan"
+      }
+    ],
+    "plenary": [
+      [
+        "Write a condition for a temperature from 18 to 24 inclusive. [2]",
+        "temperature >= 18 (1) AND temperature <= 24 (1)."
+      ],
+      [
+        "Explain the difference between AND and OR. [2]",
+        "AND needs both conditions true (1). OR needs at least one true (1)."
+      ],
+      [
+        "An algorithm uses age > 16 for a rule of at least 16. Identify and correct the error. [2]",
+        "The boundary age 16 is rejected (1). Use age >= 16 (1)."
+      ]
+    ],
+    "practical": ""
+  },
+  {
+    "n": 6,
+    "title": "Loop planning lab",
+    "slug": "LoopPlanningLab",
+    "subject": "Algorithmic thinking: iteration",
+    "mission": "Plan repetition that counts accurately and terminates. Combine loops with decisions.",
+    "donow": "How could a program process 100 loans without writing the same instructions 100 times?",
+    "outcomes": [
+      "Choose count- or condition-controlled iteration.",
+      "Trace loops and running totals.",
+      "Explain why loops terminate."
+    ],
+    "starter": "A task repeats exactly five times. Would a counter or an unknown stopping condition be clearer?",
+    "starter_answer": "A count-controlled loop is suitable because the number of repetitions is known.",
+    "terms": [
+      [
+        "Iteration",
+        "Repeating a group of instructions."
+      ],
+      [
+        "Accumulator",
+        "A variable used to build a running total."
+      ]
+    ],
+    "stations": [
+      {
+        "name": "Repeat a known count",
+        "facts": [
+          "Use a count-controlled loop for a known count.",
+          "Be clear whether the last value is included.",
+          "OCR for loops include their stated end value."
+        ],
+        "diagram": [
+          "for i = 1 to 3",
+          "  print(i)",
+          "next i",
+          "Output: 1, 2, 3"
+        ],
+        "challenge": "How many times does this loop print?",
+        "answer": "Three times, because 1, 2 and 3 are included.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "OCR pseudocode: for i = 1 to 4. How many iterations?",
+            "a": [
+              "4",
+              "3",
+              "5",
+              "1"
+            ],
+            "fb": "4"
+          },
+          {
+            "t": "mcq",
+            "q": "OCR for i = 2 to 5 executes...",
+            "a": [
+              "4 times",
+              "3 times",
+              "5 times"
+            ],
+            "fb": "4 times. Use a count-controlled loop for a known count."
+          }
+        ],
+        "info": "Three times, because 1, 2 and 3 are included."
+      },
+      {
+        "name": "Repeat until a condition",
+        "facts": [
+          "A while loop checks before its body.",
+          "It can execute zero times.",
+          "The condition must eventually become false."
+        ],
+        "diagram": [
+          "count = 0",
+          "while count < 3",
+          "  count = count + 1",
+          "endwhile",
+          "Final count: 3"
+        ],
+        "challenge": "When does the loop stop?",
+        "answer": "When count becomes 3, count < 3 is false.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "A while condition is false before the first check. How often does its body run?",
+            "a": [
+              "Zero times",
+              "Once",
+              "Twice",
+              "Forever"
+            ],
+            "fb": "Zero times"
+          },
+          {
+            "t": "mcq",
+            "q": "Which loop can execute zero times?",
+            "a": [
+              "A while loop",
+              "Every do-until loop",
+              "A loop fixed at three repetitions"
+            ],
+            "fb": "A while loop. A while loop checks before its body."
+          }
+        ],
+        "info": "When count becomes 3, count < 3 is false."
+      },
+      {
+        "name": "Accumulate a total",
+        "facts": [
+          "Set a starting total before the loop.",
+          "Add each new value to the running total.",
+          "Do not reset the total during each iteration."
+        ],
+        "diagram": [
+          "total = 0",
+          "Values: 4, 6, 3",
+          "Totals: 4, 10, 13",
+          "Output: 13"
+        ],
+        "challenge": "What goes wrong if total = 0 is inside the loop?",
+        "answer": "Earlier values are discarded at each iteration, so the running total is lost.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Starting at 0, add 5, 2 and 8. What is the total?",
+            "a": [
+              "15",
+              "8",
+              "10",
+              "7"
+            ],
+            "fb": "15"
+          },
+          {
+            "t": "mcq",
+            "q": "Where should a running total normally be initialised?",
+            "a": [
+              "Before the loop",
+              "After every addition",
+              "After the final output"
+            ],
+            "fb": "Before the loop. Set a starting total before the loop."
+          }
+        ],
+        "info": "Earlier values are discarded at each iteration, so the running total is lost."
+      },
+      {
+        "name": "Guarantee progress",
+        "facts": [
+          "A loop needs a way to reach its stopping case.",
+          "Update the control variable correctly.",
+          "Trace the update and condition together."
+        ],
+        "diagram": [
+          "x = 0",
+          "while x < 3",
+          "  print(x)",
+          "  x = x + 1",
+          "endwhile"
+        ],
+        "challenge": "What happens if the update is removed?",
+        "answer": "x stays 0, so x < 3 remains true and the loop does not terminate.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "What fixes a loop whose counter never changes?",
+            "a": [
+              "Update the counter towards the stopping condition",
+              "Print the counter twice",
+              "Rename the counter only",
+              "Remove all conditions"
+            ],
+            "fb": "Update the counter towards the stopping condition"
+          },
+          {
+            "t": "mcq",
+            "q": "x = 0, while x < 3, x = x + 1. Final x?",
+            "a": [
+              "3",
+              "2",
+              "4"
+            ],
+            "fb": "3. A loop needs a way to reach its stopping case."
+          }
+        ],
+        "info": "x stays 0, so x < 3 remains true and the loop does not terminate."
+      },
+      {
+        "name": "Selection inside a loop",
+        "facts": [
+          "A loop can repeat a decision.",
+          "The decision runs for each item.",
+          "Only matching items affect the count."
+        ],
+        "diagram": [
+          "count = 0",
+          "Values: 4, 9, 7",
+          "For each value:",
+          "  if value >= 7: count + 1",
+          "Result: 2"
+        ],
+        "challenge": "How many of 2, 7, 8 and 3 are at least 7?",
+        "answer": "Two values: 7 and 8.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Which values pass value >= 5 in [1, 5, 8]?",
+            "a": [
+              "5 and 8",
+              "Only 8",
+              "1 and 5",
+              "All three"
+            ],
+            "fb": "5 and 8"
+          },
+          {
+            "t": "mcq",
+            "q": "Count values > 5 in [5, 6, 2, 8]. Count?",
+            "a": [
+              "2",
+              "3",
+              "4"
+            ],
+            "fb": "2. A loop can repeat a decision."
+          }
+        ],
+        "info": "Two values: 7 and 8."
+      },
+      {
+        "name": "Nested loops",
+        "facts": [
+          "An inner loop runs for each outer iteration.",
+          "Count repetitions at both levels.",
+          "Multiply fixed counts when both fully execute."
+        ],
+        "diagram": [
+          "Outer: 3 repetitions",
+          "Inner: 2 repetitions",
+          "Print once in inner body",
+          "Total prints: 6"
+        ],
+        "challenge": "How many prints for outer 4 and inner 3?",
+        "answer": "Twelve prints: the three inner iterations run for each of four outer iterations.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Outer loop runs twice. Inner loop runs five times each time. Total inner executions?",
+            "a": [
+              "10",
+              "7",
+              "5",
+              "2"
+            ],
+            "fb": "10"
+          },
+          {
+            "t": "mcq",
+            "q": "Outer 3, inner 4, both fixed counts. Inner runs?",
+            "a": [
+              "12",
+              "7",
+              "4"
+            ],
+            "fb": "12. An inner loop runs for each outer iteration."
+          }
+        ],
+        "info": "Twelve prints: the three inner iterations run for each of four outer iterations."
+      }
+    ],
+    "final": [
+      {
+        "t": "order",
+        "q": "Order a running-total algorithm.",
+        "steps": [
+          "Set total to 0",
+          "Repeat for each input value",
+          "Add the value to total inside the loop",
+          "Output total after the loop"
+        ],
+        "fb": "Initialise once, update repeatedly and output at the end."
+      },
+      {
+        "t": "mcq",
+        "q": "A loop starts n = 1, adds 1 while n < 4. What is n after the loop?",
+        "a": [
+          "4",
+          "3",
+          "5",
+          "1"
+        ],
+        "fb": "4"
+      }
+    ],
+    "plenary": [
+      [
+        "Explain one difference between count-controlled and condition-controlled loops. [2]",
+        "Count-controlled repetition uses a specified count/range (1). Condition-controlled repetition depends on a condition (1)."
+      ],
+      [
+        "Write pseudocode to input three numbers and output their total. [4]",
+        "Initialise total (1), loop exactly three times (1), input and add each value (1), output total after the loop (1)."
+      ],
+      [
+        "Why might a while loop never terminate? [2]",
+        "Its condition remains true (1), for example because the control variable is never updated (1)."
+      ]
+    ],
+    "practical": "In Python, write and run a program that inputs three numbers and prints their total. Test 2, 3, 4 (expected 9) and -2, 2, 0 (expected 0)."
+  },
+  {
+    "n": 7,
+    "title": "Linear search depot",
+    "slug": "LinearSearchDepot",
+    "subject": "Linear search",
+    "mission": "Search equipment records one at a time. Trace successful and unsuccessful linear searches.",
+    "donow": "How would you find an item in a box with no useful ordering?",
+    "outcomes": [
+      "Describe and trace linear search.",
+      "Interpret a search code segment.",
+      "Compare successful and unsuccessful searches."
+    ],
+    "starter": "Search [18, 4, 27, 9] from left to right for 27. Which values are checked?",
+    "starter_answer": "18, then 4, then 27. Stop when 27 is found.",
+    "terms": [
+      [
+        "Linear search",
+        "Checking items one at a time until a target is found or the list ends."
+      ],
+      [
+        "Index",
+        "A position used to access an item in a list."
+      ]
+    ],
+    "stations": [
+      {
+        "name": "Check one at a time",
+        "facts": [
+          "Start at the first item.",
+          "Compare the item with the target.",
+          "Continue if it does not match."
+        ],
+        "diagram": [
+          "List: 18, 4, 27, 9",
+          "Target: 27",
+          "Checks: 18, 4, 27",
+          "Found at index 2"
+        ],
+        "challenge": "How many target comparisons find 27?",
+        "answer": "Three comparisons. With zero-based indexing, its index is 2.",
+        "tasks": [
+          {
+            "t": "order",
+            "q": "Order a successful search for 27 in [18, 4, 27, 9].",
+            "steps": [
+              "Compare 18 with 27",
+              "Compare 4 with 27",
+              "Compare 27 with 27",
+              "Report found and stop"
+            ],
+            "fb": "Do not continue checking after the first match in this version."
+          },
+          {
+            "t": "mcq",
+            "q": "Search [8, 6, 4] for 8. Comparisons?",
+            "a": [
+              "1",
+              "3",
+              "0"
+            ],
+            "fb": "1. Start at the first item."
+          }
+        ],
+        "info": "Three comparisons. With zero-based indexing, its index is 2."
+      },
+      {
+        "name": "Unsorted lists",
+        "facts": [
+          "Linear search does not need sorted data.",
+          "Every item is still checked in sequence.",
+          "It also works on sorted lists."
+        ],
+        "diagram": [
+          "UNSORTED",
+          "42, 7, 19, 3",
+          "Linear search: works",
+          "Sorting first: not needed"
+        ],
+        "challenge": "Why can linear search use an unsorted list?",
+        "answer": "It checks items directly and does not discard a half based on value order.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Which list can linear search use?",
+            "a": [
+              "Both sorted and unsorted lists",
+              "Only sorted lists",
+              "Only lists of even length",
+              "Only lists without duplicates"
+            ],
+            "fb": "Both sorted and unsorted lists"
+          },
+          {
+            "t": "mcq",
+            "q": "Must linear search sort its input first?",
+            "a": [
+              "No",
+              "Yes",
+              "Only for numbers"
+            ],
+            "fb": "No. Linear search does not need sorted data."
+          }
+        ],
+        "info": "It checks items directly and does not discard a half based on value order."
+      },
+      {
+        "name": "Unsuccessful searches",
+        "facts": [
+          "A target may not be present.",
+          "Continue until the list is exhausted.",
+          "Then report not found."
+        ],
+        "diagram": [
+          "List: 8, 2, 6, 4",
+          "Target: 7",
+          "Check all four items",
+          "Result: not found"
+        ],
+        "challenge": "How many target comparisons are needed here?",
+        "answer": "Four, one for each item.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Search [3, 8, 1] for 9. Target comparisons?",
+            "a": [
+              "3",
+              "0",
+              "1",
+              "9"
+            ],
+            "fb": "3"
+          },
+          {
+            "t": "mcq",
+            "q": "An absent target in six items needs how many target comparisons?",
+            "a": [
+              "6",
+              "1",
+              "3"
+            ],
+            "fb": "6. A target may not be present."
+          }
+        ],
+        "info": "Four, one for each item."
+      },
+      {
+        "name": "Read the code",
+        "facts": [
+          "i tracks the current index.",
+          "found records whether a match exists.",
+          "Increase i after checking an item."
+        ],
+        "diagram": [
+          "i = 0; found = false",
+          "while i < n AND NOT found",
+          "  if data[i] == target then",
+          "    found = true",
+          "  endif; i = i + 1"
+        ],
+        "challenge": "What does data[i] == target test?",
+        "answer": "It compares the current list item with the search target.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Why include i < n?",
+            "a": [
+              "To stop before accessing beyond the list",
+              "To force the target to exist",
+              "To sort the list",
+              "To skip index 0"
+            ],
+            "fb": "To stop before accessing beyond the list"
+          },
+          {
+            "t": "mcq",
+            "q": "What does i = i + 1 do in a linear search?",
+            "a": [
+              "Moves to the next index",
+              "Sorts the list",
+              "Changes the target"
+            ],
+            "fb": "Moves to the next index. i tracks the current index."
+          }
+        ],
+        "info": "It compares the current list item with the search target."
+      },
+      {
+        "name": "Index versus value",
+        "facts": [
+          "An index is a position, not the stored value.",
+          "Zero-based indexing starts at 0.",
+          "Report the form of result requested."
+        ],
+        "diagram": [
+          "Index: 0  1  2  3",
+          "Value: 6  2  9  4",
+          "Target 9: index 2",
+          "Checks needed: 3"
+        ],
+        "challenge": "State the value, index and comparison count for 9.",
+        "answer": "Value 9, index 2, and three target comparisons.",
+        "tasks": [
+          {
+            "t": "match",
+            "q": "Match the quantities for finding 9 in [6, 2, 9, 4].",
+            "pairs": [
+              [
+                "Value found",
+                "9"
+              ],
+              [
+                "Zero-based index",
+                "2"
+              ],
+              [
+                "Target comparisons",
+                "3"
+              ]
+            ],
+            "fb": "Index and comparison count differ by one in this successful left-to-right search."
+          },
+          {
+            "t": "mcq",
+            "q": "In [6, 2, 9, 4], index 1 stores...",
+            "a": [
+              "2",
+              "6",
+              "9"
+            ],
+            "fb": "2. An index is a position, not the stored value."
+          }
+        ],
+        "info": "Value 9, index 2, and three target comparisons."
+      },
+      {
+        "name": "Best and worst cases",
+        "facts": [
+          "First-item success needs one comparison.",
+          "Last-item success checks every item.",
+          "An absent target also checks every item."
+        ],
+        "diagram": [
+          "List length: 100",
+          "First item: 1 comparison",
+          "Last item: 100",
+          "Absent: 100"
+        ],
+        "challenge": "Why does a longer list worsen the worst case?",
+        "answer": "More items must be checked before a last-item match or not-found result.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "For 20 items, which case needs 20 comparisons?",
+            "a": [
+              "Target absent",
+              "Target first",
+              "Target second",
+              "Every successful search"
+            ],
+            "fb": "Target absent"
+          },
+          {
+            "t": "mcq",
+            "q": "The best-case linear search finds the target...",
+            "a": [
+              "At the first item",
+              "At the last item",
+              "After checking every item"
+            ],
+            "fb": "At the first item. First-item success needs one comparison."
+          }
+        ],
+        "info": "More items must be checked before a last-item match or not-found result."
+      }
+    ],
+    "final": [
+      {
+        "t": "mcq",
+        "q": "Search [13, 5, 21, 8, 3] for 8. What is its zero-based index?",
+        "a": [
+          "3",
+          "4",
+          "8",
+          "2"
+        ],
+        "fb": "3"
+      },
+      {
+        "t": "mcq",
+        "q": "In the same search, how many target comparisons occur?",
+        "a": [
+          "4",
+          "3",
+          "5",
+          "8"
+        ],
+        "fb": "4"
+      }
+    ],
+    "plenary": [
+      [
+        "Describe a linear search for an absent target. [3]",
+        "Start at the first item (1), compare each item with the target (1), report not found after the final item (1)."
+      ],
+      [
+        "Trace a search for 6 in [9, 2, 4, 6, 1]. Give checked values and its zero-based index. [2]",
+        "Checks 9, 2, 4, 6 (1). Index 3 (1)."
+      ],
+      [
+        "Explain one reason to use linear search for a short unsorted list. [2]",
+        "No sorting is required (1), so a short one-off search can directly check the items (1)."
+      ]
+    ],
+    "practical": ""
+  },
+  {
+    "n": 8,
+    "title": "Binary search archive",
+    "slug": "BinarySearchArchive",
+    "subject": "Binary search",
+    "mission": "Use ordered records to halve a search range. Track low, high and midpoint values.",
+    "donow": "Why does a dictionary put words in order?",
+    "outcomes": [
+      "Describe and trace binary search.",
+      "Explain why sorted data is required.",
+      "Compare binary and linear search choices."
+    ],
+    "starter": "In [2, 5, 8, 11, 14], the middle value is 8. Where can target 14 still be?",
+    "starter_answer": "Only to the right of 8 because the list is in ascending order.",
+    "terms": [
+      [
+        "Binary search",
+        "Searching sorted data by comparing with the middle item and discarding the impossible half."
+      ],
+      [
+        "Midpoint",
+        "The middle index of the current search range."
+      ]
+    ],
+    "stations": [
+      {
+        "name": "Sorted data first",
+        "facts": [
+          "The list must be ordered.",
+          "Use the order to rule out one half.",
+          "Unsorted data makes this reasoning unsafe."
+        ],
+        "diagram": [
+          "Sorted: 2, 5, 8, 11, 14",
+          "Middle value: 8",
+          "Target: 14",
+          "Keep the right half"
+        ],
+        "challenge": "Why is sorted order required?",
+        "answer": "It guarantees smaller values lie before the middle and larger values after it.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "What must hold before binary search is used?",
+            "a": [
+              "The data is sorted by the search key",
+              "The target is first",
+              "The list length is even",
+              "Every value is positive"
+            ],
+            "fb": "The data is sorted by the search key"
+          },
+          {
+            "t": "mcq",
+            "q": "Binary search on unsorted data can...",
+            "a": [
+              "Discard the half containing the target",
+              "Always find the target",
+              "Sort the data automatically"
+            ],
+            "fb": "Discard the half containing the target. The list must be ordered."
+          }
+        ],
+        "info": "It guarantees smaller values lie before the middle and larger values after it."
+      },
+      {
+        "name": "Find the midpoint",
+        "facts": [
+          "Use low and high indices.",
+          "Take the integer midpoint.",
+          "Our examples round down."
+        ],
+        "diagram": [
+          "low = 0; high = 5",
+          "mid = (low + high) DIV 2",
+          "mid = 2",
+          "Compare data[2]"
+        ],
+        "challenge": "What is mid when low = 3 and high = 8?",
+        "answer": "(3 + 8) DIV 2 = 5.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "low = 2, high = 6. Midpoint index?",
+            "a": [
+              "4",
+              "3",
+              "6",
+              "8"
+            ],
+            "fb": "4"
+          },
+          {
+            "t": "mcq",
+            "q": "low = 0, high = 6. Rounded-down midpoint?",
+            "a": [
+              "3",
+              "6",
+              "2"
+            ],
+            "fb": "3. Use low and high indices."
+          }
+        ],
+        "info": "(3 + 8) DIV 2 = 5."
+      },
+      {
+        "name": "Discard the wrong half",
+        "facts": [
+          "If target is greater, move low above mid.",
+          "If target is smaller, move high below mid.",
+          "The middle item has already been checked."
+        ],
+        "diagram": [
+          "Target > data[mid]",
+          "low = mid + 1",
+          "",
+          "Target < data[mid]",
+          "high = mid - 1"
+        ],
+        "challenge": "Why use mid + 1 rather than mid?",
+        "answer": "The midpoint has already failed to match and should not remain in the search range.",
+        "tasks": [
+          {
+            "t": "match",
+            "q": "Match each comparison to the update.",
+            "pairs": [
+              [
+                "Target greater",
+                "low = mid + 1"
+              ],
+              [
+                "Target smaller",
+                "high = mid - 1"
+              ],
+              [
+                "Target equal",
+                "Report found"
+              ]
+            ],
+            "fb": "Remove the checked midpoint as well as the impossible half."
+          },
+          {
+            "t": "mcq",
+            "q": "If target < data[mid], which update is correct?",
+            "a": [
+              "high = mid - 1",
+              "low = mid + 1",
+              "high = mid + 1"
+            ],
+            "fb": "high = mid - 1. If target is greater, move low above mid."
+          }
+        ],
+        "info": "The midpoint has already failed to match and should not remain in the search range."
+      },
+      {
+        "name": "Trace a successful search",
+        "facts": [
+          "Recalculate the midpoint after each update.",
+          "Count comparisons with the target.",
+          "Stop immediately at a match."
+        ],
+        "diagram": [
+          "List: 3, 6, 9, 12, 15, 18, 21",
+          "Target: 18",
+          "mid 3: value 12",
+          "mid 5: value 18",
+          "Found in 2 comparisons"
+        ],
+        "challenge": "What values are checked when searching for 6?",
+        "answer": "12, then 6. The target is found after two comparisons.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Search this list for 21. Checked values?",
+            "a": [
+              "12, 18, 21",
+              "3, 6, 9, 12, 15, 18, 21",
+              "12, 15, 21",
+              "21 only"
+            ],
+            "fb": "12, 18, 21"
+          },
+          {
+            "t": "mcq",
+            "q": "For [3,6,9,12,15,18,21], target 18 is at index...",
+            "a": [
+              "5",
+              "6",
+              "18"
+            ],
+            "fb": "5. Recalculate the midpoint after each update."
+          }
+        ],
+        "info": "12, then 6. The target is found after two comparisons."
+      },
+      {
+        "name": "Trace not found",
+        "facts": [
+          "A search can exhaust the remaining range.",
+          "Stop when low is greater than high.",
+          "Do not access another midpoint after stopping."
+        ],
+        "diagram": [
+          "List: 2, 4, 6, 8, 10",
+          "Target: 7",
+          "Checks: 6, 8",
+          "Then low = 3; high = 2",
+          "Result: not found"
+        ],
+        "challenge": "Why does low > high mean not found?",
+        "answer": "No indices remain in the possible search range.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "For target 1 in [2, 4, 6, 8, 10], what is checked?",
+            "a": [
+              "6 then 2",
+              "6 then 4 then 2",
+              "Only 1",
+              "All five values"
+            ],
+            "fb": "6 then 2"
+          },
+          {
+            "t": "mcq",
+            "q": "When low > high, the remaining range is...",
+            "a": [
+              "Empty",
+              "The whole list",
+              "One definite match"
+            ],
+            "fb": "Empty. A search can exhaust the remaining range."
+          }
+        ],
+        "info": "No indices remain in the possible search range."
+      },
+      {
+        "name": "Choose the search",
+        "facts": [
+          "Binary search can use fewer comparisons.",
+          "Sorting first also takes work.",
+          "Consider list size and repeated searches."
+        ],
+        "diagram": [
+          "Short unsorted list",
+          "One search: linear suits",
+          "Large sorted list",
+          "Many searches: binary suits"
+        ],
+        "challenge": "Why not always sort before a one-off search?",
+        "answer": "Sorting takes work. For a short unsorted list, one linear scan may be simpler and cheaper overall.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Which is the strongest case for binary search?",
+            "a": [
+              "Many lookups in a large sorted list",
+              "One lookup in three unsorted items",
+              "A list that cannot be ordered",
+              "A target known to be the first item"
+            ],
+            "fb": "Many lookups in a large sorted list"
+          },
+          {
+            "t": "mcq",
+            "q": "Why can binary search scale well?",
+            "a": [
+              "It discards about half the remaining items each time",
+              "It checks all items every time",
+              "It makes sorting free"
+            ],
+            "fb": "It discards about half the remaining items each time. Binary search can use fewer comparisons."
+          }
+        ],
+        "info": "Sorting takes work. For a short unsorted list, one linear scan may be simpler and cheaper overall."
+      }
+    ],
+    "final": [
+      {
+        "t": "order",
+        "q": "Order the checks for target 14 in [2, 4, 6, 8, 10, 12, 14].",
+        "steps": [
+          "Check 8 at index 3",
+          "Keep indices 4 to 6",
+          "Check 12 at index 5",
+          "Check 14 at index 6"
+        ],
+        "fb": "Round down at each midpoint."
+      },
+      {
+        "t": "mcq",
+        "q": "What is the worst-case advantage as a sorted list grows?",
+        "a": [
+          "Binary search repeatedly halves the remaining range",
+          "Binary search checks every item twice",
+          "Linear search always checks fewer items",
+          "Sorting is free"
+        ],
+        "fb": "Binary search repeatedly halves the remaining range"
+      }
+    ],
+    "plenary": [
+      [
+        "Explain why binary search requires sorted data. [2]",
+        "Ordering locates smaller and larger values on known sides (1), allowing one half to be safely discarded (1)."
+      ],
+      [
+        "Trace binary search for 4 in [2, 4, 6, 8, 10, 12, 14]. Round midpoint down. [3]",
+        "Check 8 at index 3 (1), keep indices 0 to 2 (1), check 4 at index 1 and stop (1)."
+      ],
+      [
+        "Explain when linear search could be a better choice. [2]",
+        "A short unsorted list with one lookup (1), because sorting first adds work not needed for a linear scan (1)."
+      ]
+    ],
+    "practical": ""
+  },
+  {
+    "n": 9,
+    "title": "Bubble sort conveyor",
+    "slug": "BubbleSortConveyor",
+    "subject": "Bubble sort",
+    "mission": "Sort equipment codes by comparing neighbours. Record complete passes and recognise when to stop.",
+    "donow": "Can moving one item at a time eventually put a whole list in order?",
+    "outcomes": [
+      "Describe adjacent comparisons and swaps.",
+      "Trace complete bubble-sort passes.",
+      "Explain an early stopping condition."
+    ],
+    "starter": "For ascending order, should neighbouring values 7 and 3 be swapped? Why?",
+    "starter_answer": "Yes. 7 is greater than 3, so swapping puts the smaller value first.",
+    "terms": [
+      [
+        "Pass",
+        "One traversal of the part of the list currently being processed."
+      ],
+      [
+        "Swap",
+        "Exchanging the positions of two values."
+      ]
+    ],
+    "stations": [
+      {
+        "name": "Compare neighbours",
+        "facts": [
+          "Compare adjacent values.",
+          "Swap if the left value is greater.",
+          "Leave correctly ordered neighbours unchanged."
+        ],
+        "diagram": [
+          "Ascending order",
+          "Compare: 7, 3",
+          "Swap: 3, 7",
+          "Compare: 3, 5 -> no swap"
+        ],
+        "challenge": "Should equal neighbouring values be swapped?",
+        "answer": "No. They are already in a valid ascending order.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Which pair needs swapping for ascending order?",
+            "a": [
+              "9, 4",
+              "2, 8",
+              "5, 5",
+              "1, 3"
+            ],
+            "fb": "9, 4"
+          },
+          {
+            "t": "mcq",
+            "q": "Comparing adjacent values means comparing...",
+            "a": [
+              "Neighbouring items",
+              "Only first and last items",
+              "Random items"
+            ],
+            "fb": "Neighbouring items. Compare adjacent values."
+          }
+        ],
+        "info": "No. They are already in a valid ascending order."
+      },
+      {
+        "name": "Complete the first pass",
+        "facts": [
+          "Work from left to right in these examples.",
+          "Compare each adjacent pair in turn.",
+          "The largest value reaches the right-hand end."
+        ],
+        "diagram": [
+          "Start: 5, 1, 4, 2",
+          "After pair 1: 1, 5, 4, 2",
+          "After pair 2: 1, 4, 5, 2",
+          "After pair 3: 1, 4, 2, 5"
+        ],
+        "challenge": "Is the list fully sorted after this pass?",
+        "answer": "No. 4 and 2 are still out of order, though 5 is in its final position.",
+        "tasks": [
+          {
+            "t": "order",
+            "q": "Order the states in the first left-to-right pass.",
+            "steps": [
+              "5, 1, 4, 2",
+              "1, 5, 4, 2",
+              "1, 4, 5, 2",
+              "1, 4, 2, 5"
+            ],
+            "fb": "The largest item moves right one comparison at a time."
+          },
+          {
+            "t": "mcq",
+            "q": "After the first pass on [5,1,4,2], the final item is...",
+            "a": [
+              "5",
+              "2",
+              "1"
+            ],
+            "fb": "5. Work from left to right in these examples."
+          }
+        ],
+        "info": "No. 4 and 2 are still out of order, though 5 is in its final position."
+      },
+      {
+        "name": "Continue the passes",
+        "facts": [
+          "A pass does not always finish the sort.",
+          "The next pass fixes the next-largest value.",
+          "An optimised version excludes the sorted end."
+        ],
+        "diagram": [
+          "After pass 1: 1, 4, 2, 5",
+          "Pass 2: compare 1 and 4",
+          "Then swap 4 and 2",
+          "After pass 2: 1, 2, 4, 5"
+        ],
+        "challenge": "What is the list after the second pass?",
+        "answer": "1, 2, 4, 5.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "After pass 1 gives [2, 3, 1, 4], what does pass 2 give?",
+            "a": [
+              "2, 1, 3, 4",
+              "1, 2, 3, 4",
+              "2, 3, 4, 1",
+              "4, 3, 2, 1"
+            ],
+            "fb": "2, 1, 3, 4"
+          },
+          {
+            "t": "mcq",
+            "q": "After two passes on [5,1,4,2], the list is...",
+            "a": [
+              "1,2,4,5",
+              "1,4,2,5",
+              "5,4,2,1"
+            ],
+            "fb": "1,2,4,5. A pass does not always finish the sort."
+          }
+        ],
+        "info": "1, 2, 4, 5."
+      },
+      {
+        "name": "Swaps and comparisons",
+        "facts": [
+          "A comparison may not cause a swap.",
+          "Keep comparison and swap counts separate.",
+          "A full first pass on four items compares three pairs."
+        ],
+        "diagram": [
+          "Start: 1, 2, 4, 3",
+          "Compare 1/2: no swap",
+          "Compare 2/4: no swap",
+          "Compare 4/3: swap"
+        ],
+        "challenge": "How many comparisons and swaps occur?",
+        "answer": "Three adjacent comparisons and one swap.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "First full pass on [1, 2, 3, 4]: how many swaps?",
+            "a": [
+              "0",
+              "1",
+              "3",
+              "4"
+            ],
+            "fb": "0"
+          },
+          {
+            "t": "mcq",
+            "q": "A comparison always produces a swap. Is this true?",
+            "a": [
+              "No",
+              "Yes",
+              "Only for equal values"
+            ],
+            "fb": "No. A comparison may not cause a swap."
+          }
+        ],
+        "info": "Three adjacent comparisons and one swap."
+      },
+      {
+        "name": "Read the swap",
+        "facts": [
+          "Keep one value temporarily.",
+          "Overwrite its original position safely.",
+          "Restore the saved value in the other position."
+        ],
+        "diagram": [
+          "temp = a[i]",
+          "a[i] = a[i+1]",
+          "a[i+1] = temp"
+        ],
+        "challenge": "Why is temp needed in this three-line swap?",
+        "answer": "It preserves the original a[i] so it is not lost when a[i] is overwritten.",
+        "tasks": [
+          {
+            "t": "order",
+            "q": "Order the three-line swap.",
+            "steps": [
+              "Save a[i] in temp",
+              "Copy a[i+1] into a[i]",
+              "Copy temp into a[i+1]"
+            ],
+            "fb": "Both original values must survive the swap."
+          },
+          {
+            "t": "mcq",
+            "q": "Without saving a value before overwriting it, a swap may...",
+            "a": [
+              "Lose an original value",
+              "Sort the whole list",
+              "Create a new index"
+            ],
+            "fb": "Lose an original value. Keep one value temporarily."
+          }
+        ],
+        "info": "It preserves the original a[i] so it is not lost when a[i] is overwritten."
+      },
+      {
+        "name": "Stop when unchanged",
+        "facts": [
+          "Track whether any swap occurred.",
+          "A complete pass with no swaps shows sorted order.",
+          "Reset the swap flag before each new pass."
+        ],
+        "diagram": [
+          "Start pass: swapped = false",
+          "On a swap: swapped = true",
+          "No swaps in whole pass?",
+          "Stop: list is sorted"
+        ],
+        "challenge": "Why is one correct pair not enough to stop?",
+        "answer": "Other adjacent pairs may still be out of order. The whole active pass must be checked.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Which is a safe early stopping condition?",
+            "a": [
+              "A complete pass makes no swaps",
+              "The first pair is ordered",
+              "Exactly one swap occurs",
+              "The list contains an even number"
+            ],
+            "fb": "A complete pass makes no swaps"
+          },
+          {
+            "t": "mcq",
+            "q": "When should swapped be reset to false?",
+            "a": [
+              "Before each pass",
+              "Only after a swap",
+              "After every comparison"
+            ],
+            "fb": "Before each pass. Track whether any swap occurred."
+          }
+        ],
+        "info": "Other adjacent pairs may still be out of order. The whole active pass must be checked."
+      }
+    ],
+    "final": [
+      {
+        "t": "mcq",
+        "q": "First full left-to-right bubble pass on [4, 3, 2, 1] gives...",
+        "a": [
+          "3, 2, 1, 4",
+          "1, 2, 3, 4",
+          "1, 4, 3, 2",
+          "4, 2, 3, 1"
+        ],
+        "fb": "3, 2, 1, 4"
+      },
+      {
+        "t": "mcq",
+        "q": "Why can the rightmost value then be excluded?",
+        "a": [
+          "It is the largest and is in its final position",
+          "It is always the smallest",
+          "It was never compared",
+          "All other values are now sorted"
+        ],
+        "fb": "It is the largest and is in its final position"
+      }
+    ],
+    "plenary": [
+      [
+        "Show the first left-to-right pass on [6, 2, 5, 1], recording each swap. [3]",
+        "2,6,5,1 (1); 2,5,6,1 (1); 2,5,1,6 (1)."
+      ],
+      [
+        "Explain how a swap flag can reduce unnecessary passes. [2]",
+        "Reset the flag before a pass and set it on a swap (1). Stop after a whole pass leaves it false (1)."
+      ],
+      [
+        "Explain why one pass does not necessarily sort a list. [2]",
+        "It places the largest remaining value at the end (1), but other values can still be out of order (1)."
+      ]
+    ],
+    "practical": ""
+  },
+  {
+    "n": 10,
+    "title": "Merge and insertion works",
+    "slug": "MergeInsertionWorks",
+    "subject": "Merge sort and insertion sort",
+    "mission": "Trace two ways to build sorted lists. Compare merging sorted groups with inserting into a sorted prefix.",
+    "donow": "How do you put a new playing card into a sorted hand?",
+    "outcomes": [
+      "Trace merge sort splits and merges.",
+      "Trace insertion sort.",
+      "Compare the main sorting methods."
+    ],
+    "starter": "Merge sorted lists [2, 7] and [3, 5]. What is the sorted result?",
+    "starter_answer": "2, 3, 5, 7. Repeatedly take the smaller front value, then append the remainder.",
+    "terms": [
+      [
+        "Merge",
+        "Combine sorted lists into one sorted list."
+      ],
+      [
+        "Sorted prefix",
+        "The ordered section at the beginning of a list."
+      ]
+    ],
+    "stations": [
+      {
+        "name": "Divide the list",
+        "facts": [
+          "Merge sort splits a list into smaller parts.",
+          "Continue until single-item lists remain.",
+          "A single-item list is already sorted."
+        ],
+        "diagram": [
+          "[7, 2, 6, 3]",
+          "[7, 2]   [6, 3]",
+          "[7] [2]  [6] [3]"
+        ],
+        "challenge": "Why can splitting stop at one item?",
+        "answer": "A single item cannot be out of order relative to another item in its list.",
+        "tasks": [
+          {
+            "t": "order",
+            "q": "Order these merge-sort stages.",
+            "steps": [
+              "Split the original list",
+              "Split again into single items",
+              "Merge into sorted pairs",
+              "Merge the pairs into the sorted list"
+            ],
+            "fb": "Splitting alone does not order the data."
+          },
+          {
+            "t": "mcq",
+            "q": "Merge sort splits until...",
+            "a": [
+              "Single-item lists remain",
+              "All values are equal",
+              "The list is already reversed"
+            ],
+            "fb": "Single-item lists remain. Merge sort splits a list into smaller parts."
+          }
+        ],
+        "info": "A single item cannot be out of order relative to another item in its list."
+      },
+      {
+        "name": "Merge sorted groups",
+        "facts": [
+          "Compare the front unmerged values.",
+          "Take the smaller value into the output.",
+          "Append the remainder when one group empties."
+        ],
+        "diagram": [
+          "Left: 2, 7",
+          "Right: 3, 6",
+          "Take: 2, 3, 6",
+          "Append: 7",
+          "Result: 2, 3, 6, 7"
+        ],
+        "challenge": "Which value is chosen after 2? Why?",
+        "answer": "3, because it is smaller than the other front value, 7.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Merge [1, 8] and [4, 6]. Result?",
+            "a": [
+              "1, 4, 6, 8",
+              "1, 8, 4, 6",
+              "4, 6, 1, 8",
+              "8, 6, 4, 1"
+            ],
+            "fb": "1, 4, 6, 8"
+          },
+          {
+            "t": "mcq",
+            "q": "Which value is chosen first when merging [4,9] and [2,7]?",
+            "a": [
+              "2",
+              "4",
+              "9"
+            ],
+            "fb": "2. Compare the front unmerged values."
+          }
+        ],
+        "info": "3, because it is smaller than the other front value, 7."
+      },
+      {
+        "name": "Read a merge segment",
+        "facts": [
+          "Read from each sorted input group.",
+          "Advance only the pointer you used.",
+          "Do not discard unmerged values."
+        ],
+        "diagram": [
+          "if left[i] <= right[j]",
+          "  output left[i]",
+          "  i = i + 1",
+          "else: output right[j]",
+          "      j = j + 1"
+        ],
+        "challenge": "Why increment only the pointer used?",
+        "answer": "The other front value has not been output yet and must remain available for comparison.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Left is exhausted but right has [9, 12]. What next?",
+            "a": [
+              "Append 9 and 12",
+              "Discard both values",
+              "Start splitting again",
+              "Reverse the output"
+            ],
+            "fb": "Append 9 and 12"
+          },
+          {
+            "t": "mcq",
+            "q": "After taking left[i], which pointer advances?",
+            "a": [
+              "i",
+              "j",
+              "Both every time"
+            ],
+            "fb": "i. Read from each sorted input group."
+          }
+        ],
+        "info": "The other front value has not been output yet and must remain available for comparison."
+      },
+      {
+        "name": "Insert into a prefix",
+        "facts": [
+          "Treat the first item as a sorted prefix.",
+          "Take the next item as the key.",
+          "Insert the key at its correct position."
+        ],
+        "diagram": [
+          "Start: 6, 2, 5, 1",
+          "Insert 2: 2, 6, 5, 1",
+          "Insert 5: 2, 5, 6, 1",
+          "Insert 1: 1, 2, 5, 6"
+        ],
+        "challenge": "What is the sorted prefix after inserting 5?",
+        "answer": "2, 5, 6. The final value 1 has not yet been inserted.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "After inserting 3 into prefix [2, 7, 9], the prefix is...",
+            "a": [
+              "2, 3, 7, 9",
+              "3, 2, 7, 9",
+              "2, 7, 9, 3",
+              "2, 7, 3, 9"
+            ],
+            "fb": "2, 3, 7, 9"
+          },
+          {
+            "t": "mcq",
+            "q": "Insertion sort grows...",
+            "a": [
+              "A sorted prefix",
+              "An unsorted prefix only",
+              "A binary search range"
+            ],
+            "fb": "A sorted prefix. Treat the first item as a sorted prefix."
+          }
+        ],
+        "info": "2, 5, 6. The final value 1 has not yet been inserted."
+      },
+      {
+        "name": "Shift and insert",
+        "facts": [
+          "Save the key before shifting.",
+          "Move larger prefix values one position right.",
+          "Place the key in the gap."
+        ],
+        "diagram": [
+          "Prefix: 2, 7, 9; key = 5",
+          "Shift 9 right",
+          "Shift 7 right",
+          "Place 5 after 2",
+          "Result: 2, 5, 7, 9"
+        ],
+        "challenge": "Why save the key before shifting values?",
+        "answer": "Shifting could overwrite its original position. Saving it preserves the value for insertion.",
+        "tasks": [
+          {
+            "t": "order",
+            "q": "Insert key 4 into sorted prefix [1, 6, 8].",
+            "steps": [
+              "Save key 4",
+              "Shift 8 one place right",
+              "Shift 6 one place right",
+              "Place 4 after 1"
+            ],
+            "fb": "Only values larger than the key need shifting."
+          },
+          {
+            "t": "mcq",
+            "q": "When inserting 5 into [2,7,9], which values shift?",
+            "a": [
+              "7 and 9",
+              "Only 2",
+              "2, 7 and 9"
+            ],
+            "fb": "7 and 9. Save the key before shifting."
+          }
+        ],
+        "info": "Shifting could overwrite its original position. Saving it preserves the value for insertion."
+      },
+      {
+        "name": "Compare the methods",
+        "facts": [
+          "Bubble sort compares neighbours over passes.",
+          "Insertion sort grows a sorted prefix.",
+          "Merge sort splits and merges sorted groups."
+        ],
+        "diagram": [
+          "Bubble: neighbour swaps",
+          "Insertion: prefix + key",
+          "Merge: split then merge",
+          "Typical merge uses extra space"
+        ],
+        "challenge": "Which method can use few shifts on nearly sorted data?",
+        "answer": "Insertion sort, because many keys are already close to their correct positions.",
+        "tasks": [
+          {
+            "t": "match",
+            "q": "Match the method to its main approach.",
+            "pairs": [
+              [
+                "Bubble",
+                "Compare and swap neighbours"
+              ],
+              [
+                "Insertion",
+                "Insert a key into a sorted prefix"
+              ],
+              [
+                "Merge",
+                "Split then merge sorted groups"
+              ]
+            ],
+            "fb": "Do not describe merge sort as repeated adjacent swapping."
+          },
+          {
+            "t": "mcq",
+            "q": "Which method splits and merges groups?",
+            "a": [
+              "Merge sort",
+              "Bubble sort",
+              "Linear search"
+            ],
+            "fb": "Merge sort. Bubble sort compares neighbours over passes."
+          }
+        ],
+        "info": "Insertion sort, because many keys are already close to their correct positions."
+      }
+    ],
+    "final": [
+      {
+        "t": "mcq",
+        "q": "Insertion sort on [4, 1, 3, 2]: after inserting the first two keys, the list is...",
+        "a": [
+          "1, 3, 4, 2",
+          "1, 2, 3, 4",
+          "4, 3, 1, 2",
+          "1, 4, 2, 3"
+        ],
+        "fb": "1, 3, 4, 2"
+      },
+      {
+        "t": "mcq",
+        "q": "Which statement describes the usual school-level merge-sort implementation?",
+        "a": [
+          "It uses additional temporary storage during merging",
+          "It never splits data",
+          "It only swaps adjacent pairs",
+          "It needs the input already sorted"
+        ],
+        "fb": "It uses additional temporary storage during merging"
+      }
+    ],
+    "plenary": [
+      [
+        "Show the split and merge stages for [8, 3, 6, 1]. [4]",
+        "Split into [8,3] and [6,1] (1), split into singles (1), merge to [3,8] and [1,6] (1), merge to [1,3,6,8] (1)."
+      ],
+      [
+        "Show the list after each insertion for [5, 2, 4, 1]. [3]",
+        "[2,5,4,1] (1), [2,4,5,1] (1), [1,2,4,5] (1)."
+      ],
+      [
+        "Give one difference between merge and insertion sort. [2]",
+        "Merge splits and combines sorted groups (1). Insertion places successive keys into a growing sorted prefix (1)."
+      ]
+    ],
+    "practical": ""
+  },
+  {
+    "n": 11,
+    "title": "Flowchart design studio",
+    "slug": "FlowchartDesignStudio",
+    "subject": "Producing algorithms: flowcharts",
+    "mission": "Design a flowchart for an equipment loan. Use the correct symbols and labelled decision paths.",
+    "donow": "How could a diagram make a decision easier to check?",
+    "outcomes": [
+      "Recognise flowchart symbols.",
+      "Follow decision paths.",
+      "Create a complete flowchart."
+    ],
+    "starter": "A program reads age, checks age >= 12 and prints a result. Which step is a decision?",
+    "starter_answer": "The check age >= 12 is a decision because it has true and false paths.",
+    "terms": [
+      [
+        "Flowchart",
+        "A diagram using symbols and arrows to show an algorithm."
+      ],
+      [
+        "Decision",
+        "A condition that selects between paths."
+      ]
+    ],
+    "stations": [
+      {
+        "name": "Start and finish",
+        "facts": [
+          "A terminal marks start or end.",
+          "A flow line shows the next step.",
+          "Every intended path needs a clear destination."
+        ],
+        "diagram": [
+          "TERMINAL: start / end",
+          "ARROW: next step",
+          "Follow one path at a time"
+        ],
+        "challenge": "Why should an arrow have a clear direction?",
+        "answer": "It shows which instruction executes next.",
+        "tasks": [
+          {
+            "t": "match",
+            "q": "Match the symbol name to its role.",
+            "pairs": [
+              [
+                "Terminal",
+                "Start or end"
+              ],
+              [
+                "Flow line",
+                "Direction of execution"
+              ],
+              [
+                "Process",
+                "Calculation or assignment"
+              ]
+            ],
+            "fb": "A terminal is commonly drawn as an oval or rounded rectangle."
+          },
+          {
+            "t": "mcq",
+            "q": "Which symbol marks the end?",
+            "a": [
+              "Terminal",
+              "Decision diamond",
+              "Input parallelogram"
+            ],
+            "fb": "Terminal. A terminal marks start or end."
+          }
+        ],
+        "info": "It shows which instruction executes next."
+      },
+      {
+        "name": "Read and write",
+        "facts": [
+          "A parallelogram represents input or output.",
+          "Label the action and the data.",
+          "Inputs and outputs are different operations."
+        ],
+        "diagram": [
+          "INPUT: borrower ID",
+          "INPUT: item ID",
+          "OUTPUT: loan result"
+        ],
+        "challenge": "Which symbol should contain Input age?",
+        "answer": "An input/output parallelogram.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Which action belongs in an input/output symbol?",
+            "a": [
+              "Display the total",
+              "Set total to 0",
+              "Test total > 10",
+              "Start"
+            ],
+            "fb": "Display the total"
+          },
+          {
+            "t": "mcq",
+            "q": "Output total is drawn in...",
+            "a": [
+              "An input/output symbol",
+              "A decision diamond",
+              "A terminal only"
+            ],
+            "fb": "An input/output symbol. A parallelogram represents input or output."
+          }
+        ],
+        "info": "An input/output parallelogram."
+      },
+      {
+        "name": "Process the data",
+        "facts": [
+          "A rectangle represents a process.",
+          "Use it for calculations or assignments.",
+          "Show the operation clearly."
+        ],
+        "diagram": [
+          "PROCESS",
+          "charge = hours * rate",
+          "total = total + charge"
+        ],
+        "challenge": "Which symbol should contain total = total + 3?",
+        "answer": "A process rectangle, because the value is being updated.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Which label is a process?",
+            "a": [
+              "total = price * quantity",
+              "Input quantity",
+              "Output total",
+              "Is quantity > 0?"
+            ],
+            "fb": "total = price * quantity"
+          },
+          {
+            "t": "mcq",
+            "q": "Assign total = 0 is drawn in...",
+            "a": [
+              "A process rectangle",
+              "An input/output symbol",
+              "A decision diamond"
+            ],
+            "fb": "A process rectangle. A rectangle represents a process."
+          }
+        ],
+        "info": "A process rectangle, because the value is being updated."
+      },
+      {
+        "name": "Branch on a decision",
+        "facts": [
+          "A diamond contains a condition.",
+          "Label outgoing paths Yes/No or True/False.",
+          "Both outcomes must be handled."
+        ],
+        "diagram": [
+          "DECISION: available?",
+          "Yes: record loan",
+          "No: show unavailable",
+          "Both paths reach End"
+        ],
+        "challenge": "What is missing if only the Yes path is drawn?",
+        "answer": "The behaviour when the item is unavailable is not defined.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "What belongs inside a decision diamond?",
+            "a": [
+              "age >= 12",
+              "Input age",
+              "Print age",
+              "Start"
+            ],
+            "fb": "age >= 12"
+          },
+          {
+            "t": "mcq",
+            "q": "The two paths from a condition can be labelled...",
+            "a": [
+              "True and False",
+              "Start and End only",
+              "Input and Output only"
+            ],
+            "fb": "True and False. A diamond contains a condition."
+          }
+        ],
+        "info": "The behaviour when the item is unavailable is not defined."
+      },
+      {
+        "name": "Use a subprogram",
+        "facts": [
+          "A predefined-process symbol calls a named subprogram.",
+          "Its detailed steps may be shown elsewhere.",
+          "It supports a clear top-level algorithm."
+        ],
+        "diagram": [
+          "MAIN FLOW",
+          "Read item ID",
+          "Call checkAvailability",
+          "Use returned result"
+        ],
+        "challenge": "How does a subprogram symbol help a large flowchart?",
+        "answer": "It keeps the main diagram manageable while detailed steps are defined separately.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "A rectangle with extra vertical lines at its sides usually means...",
+            "a": [
+              "Subprogram or predefined process",
+              "Input/output",
+              "Start only",
+              "A decision"
+            ],
+            "fb": "Subprogram or predefined process"
+          },
+          {
+            "t": "mcq",
+            "q": "A subprogram symbol refers to...",
+            "a": [
+              "A defined set of steps elsewhere",
+              "An undefined random operation",
+              "Only a variable value"
+            ],
+            "fb": "A defined set of steps elsewhere. A predefined-process symbol calls a named subprogram."
+          }
+        ],
+        "info": "It keeps the main diagram manageable while detailed steps are defined separately."
+      },
+      {
+        "name": "Check every route",
+        "facts": [
+          "Trace each branch using sample data.",
+          "Check that arrows connect correctly.",
+          "Compare outputs with the requirement."
+        ],
+        "diagram": [
+          "Test available = true",
+          "Expected: loan recorded",
+          "Test available = false",
+          "Expected: unavailable"
+        ],
+        "challenge": "Why test both branches?",
+        "answer": "A correct true path does not prove the false path behaves correctly.",
+        "tasks": [
+          {
+            "t": "order",
+            "q": "Order a simple flowchart design process.",
+            "steps": [
+              "State inputs and required outputs",
+              "Choose symbols for the steps",
+              "Connect and label the paths",
+              "Trace each possible branch"
+            ],
+            "fb": "Check the design before coding it."
+          },
+          {
+            "t": "mcq",
+            "q": "A disconnected branch means...",
+            "a": [
+              "The next step is unclear",
+              "The flowchart is automatically correct",
+              "The branch runs faster"
+            ],
+            "fb": "The next step is unclear. Trace each branch using sample data."
+          }
+        ],
+        "info": "A correct true path does not prove the false path behaves correctly."
+      }
+    ],
+    "final": [
+      {
+        "t": "sort",
+        "q": "Choose a flowchart symbol for each action.",
+        "cats": [
+          "Input/output",
+          "Process",
+          "Decision"
+        ],
+        "items": [
+          [
+            "Read hours",
+            "Input/output"
+          ],
+          [
+            "charge = hours * 3",
+            "Process"
+          ],
+          [
+            "charge > 12?",
+            "Decision"
+          ],
+          [
+            "Print charge",
+            "Input/output"
+          ]
+        ],
+        "fb": "The symbol should match the action."
+      },
+      {
+        "t": "mcq",
+        "q": "What must a decision have in this two-way flowchart?",
+        "a": [
+          "A labelled path for each outcome",
+          "Only a Yes path",
+          "No outgoing arrows",
+          "Two start symbols"
+        ],
+        "fb": "A labelled path for each outcome"
+      }
+    ],
+    "plenary": [
+      [
+        "Name the symbols for input, a calculation and a decision. [3]",
+        "Parallelogram (1), rectangle (1), diamond (1)."
+      ],
+      [
+        "Draw a flowchart that inputs age, outputs Allowed if age >= 12 and otherwise outputs Too young. [5]",
+        "Input age (1), correct decision (1), labelled branches (1), correct outputs (1), connected start/end paths (1)."
+      ],
+      [
+        "Explain why testing only one path is insufficient. [2]",
+        "The other branch may contain an error (1), so a test must execute that branch too (1)."
+      ]
+    ],
+    "practical": "Create the flowchart in a diagram tool or on paper. Implement it in Python and check ages 11, 12 and 13."
+  },
+  {
+    "n": 12,
+    "title": "Pseudocode workshop",
+    "slug": "PseudocodeWorkshop",
+    "subject": "Producing algorithms: pseudocode",
+    "mission": "Translate a clear design into readable pseudocode and equivalent Python. Keep each decision and loop intact.",
+    "donow": "How can you explain an algorithm without choosing a particular programming language?",
+    "outcomes": [
+      "Write clear pseudocode.",
+      "Translate between algorithm representations.",
+      "Distinguish assignment and comparison."
+    ],
+    "starter": "What happens after score = 5 followed by score = score + 2?",
+    "starter_answer": "The value of score becomes 7. The second assignment replaces its previous value.",
+    "terms": [
+      [
+        "Pseudocode",
+        "A readable description of algorithm steps using programming-like notation."
+      ],
+      [
+        "Assignment",
+        "Storing a value in a variable."
+      ]
+    ],
+    "stations": [
+      {
+        "name": "Readable instructions",
+        "facts": [
+          "Pseudocode focuses on the algorithm.",
+          "Use consistent, unambiguous notation.",
+          "OCR exam reference language is one defined notation."
+        ],
+        "diagram": [
+          "INPUT quantity",
+          "INPUT price",
+          "total = quantity * price",
+          "OUTPUT total"
+        ],
+        "challenge": "Why must pseudocode still be precise?",
+        "answer": "Another person must be able to follow it and obtain the intended result.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Which is an effective pseudocode instruction?",
+            "a": [
+              "total = quantity * price",
+              "Work out something useful",
+              "Do the normal thing",
+              "Use some numbers"
+            ],
+            "fb": "total = quantity * price"
+          },
+          {
+            "t": "mcq",
+            "q": "Pseudocode should be...",
+            "a": [
+              "Clear enough to trace",
+              "Deliberately vague",
+              "Identical to machine code"
+            ],
+            "fb": "Clear enough to trace. Pseudocode focuses on the algorithm."
+          }
+        ],
+        "info": "Another person must be able to follow it and obtain the intended result."
+      },
+      {
+        "name": "Assignment or equality",
+        "facts": [
+          "Assignment changes a stored value.",
+          "A comparison checks a relationship.",
+          "In OCR notation, = assigns and == compares."
+        ],
+        "diagram": [
+          "score = 7",
+          "Stores 7 in score",
+          "",
+          "score == 7",
+          "Tests whether score is 7"
+        ],
+        "challenge": "Explain the different jobs of = and == here.",
+        "answer": "= assigns a value. == compares two values and produces true or false.",
+        "tasks": [
+          {
+            "t": "match",
+            "q": "Match the expression to its role.",
+            "pairs": [
+              [
+                "count = 0",
+                "Assignment"
+              ],
+              [
+                "count == 0",
+                "Equality comparison"
+              ],
+              [
+                "count > 0",
+                "Greater-than comparison"
+              ]
+            ],
+            "fb": "The same variable can be assigned and later compared."
+          },
+          {
+            "t": "mcq",
+            "q": "After x = 4 then x = 7, x contains...",
+            "a": [
+              "7",
+              "4",
+              "11"
+            ],
+            "fb": "7. Assignment changes a stored value."
+          }
+        ],
+        "info": "= assigns a value. == compares two values and produces true or false."
+      },
+      {
+        "name": "Write selection",
+        "facts": [
+          "Put the true actions inside the IF branch.",
+          "Use ELSE for the alternative.",
+          "End the selection clearly."
+        ],
+        "diagram": [
+          "if age >= 12 then",
+          "  print(\"Allowed\")",
+          "else",
+          "  print(\"Too young\")",
+          "endif"
+        ],
+        "challenge": "What output is produced for age 12?",
+        "answer": "Allowed, because 12 >= 12 is true.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Which line belongs at the end in OCR notation?",
+            "a": [
+              "endif",
+              "next age",
+              "endwhile",
+              "input age"
+            ],
+            "fb": "endif"
+          },
+          {
+            "t": "mcq",
+            "q": "For age 11, the displayed selection outputs...",
+            "a": [
+              "Too young",
+              "Allowed",
+              "Both messages"
+            ],
+            "fb": "Too young. Put the true actions inside the IF branch."
+          }
+        ],
+        "info": "Allowed, because 12 >= 12 is true."
+      },
+      {
+        "name": "Write repetition",
+        "facts": [
+          "Use a count-controlled loop for a fixed count.",
+          "Initialise a running total once.",
+          "Put repeated input and addition in the loop."
+        ],
+        "diagram": [
+          "total = 0",
+          "for i = 1 to 3",
+          "  value = int(input())",
+          "  total = total + value",
+          "next i; print(total)"
+        ],
+        "challenge": "Why is print(total) after the loop?",
+        "answer": "The required result is the final total after all three inputs have been added.",
+        "tasks": [
+          {
+            "t": "order",
+            "q": "Order the running-total design.",
+            "steps": [
+              "Initialise total to 0",
+              "Repeat input and addition three times",
+              "Finish the loop",
+              "Output total"
+            ],
+            "fb": "Output at the end if only the final total is required."
+          },
+          {
+            "t": "mcq",
+            "q": "Why initialise total once?",
+            "a": [
+              "So repeated additions accumulate",
+              "So every input is discarded",
+              "So no loop is needed"
+            ],
+            "fb": "So repeated additions accumulate. Use a count-controlled loop for a fixed count."
+          }
+        ],
+        "info": "The required result is the final total after all three inputs have been added."
+      },
+      {
+        "name": "Translate to Python",
+        "facts": [
+          "Keep the same inputs, branches and outputs.",
+          "Python uses a colon and indentation.",
+          "Python range excludes its stop value."
+        ],
+        "diagram": [
+          "# Python",
+          "for i in range(1, 4):",
+          "    print(i)",
+          "",
+          "Outputs: 1, 2, 3"
+        ],
+        "challenge": "Why is the stop value 4 rather than 3?",
+        "answer": "Python range(1, 4) includes 1, 2 and 3 but excludes 4.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Python range(3) produces which values?",
+            "a": [
+              "0, 1, 2",
+              "1, 2, 3",
+              "0, 1, 2, 3",
+              "Only 3"
+            ],
+            "fb": "0, 1, 2"
+          },
+          {
+            "t": "mcq",
+            "q": "Python range(1, 3) yields...",
+            "a": [
+              "1 and 2",
+              "1, 2 and 3",
+              "0, 1 and 2"
+            ],
+            "fb": "1 and 2. Keep the same inputs, branches and outputs."
+          }
+        ],
+        "info": "Python range(1, 4) includes 1, 2 and 3 but excludes 4."
+      },
+      {
+        "name": "Check equivalence",
+        "facts": [
+          "Different representations can do the same job.",
+          "Use identical inputs to compare outputs.",
+          "Check loop counts and boundary conditions."
+        ],
+        "diagram": [
+          "OCR: for i = 1 to 3",
+          "Python: range(1, 4)",
+          "Both repeat 3 times",
+          "Check the actual values too"
+        ],
+        "challenge": "Why can a direct copy of loop bounds be wrong?",
+        "answer": "OCR for loops include the end value while Python range excludes the stop value.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "What best checks equivalent behaviour?",
+            "a": [
+              "Trace both versions with the same inputs",
+              "Count the letters in each program",
+              "Use different inputs in each version",
+              "Compare only variable names"
+            ],
+            "fb": "Trace both versions with the same inputs"
+          },
+          {
+            "t": "mcq",
+            "q": "Equivalent representations should produce...",
+            "a": [
+              "The same specified outputs for the same inputs",
+              "Different results by design",
+              "The same number of characters"
+            ],
+            "fb": "The same specified outputs for the same inputs. Different representations can do the same job."
+          }
+        ],
+        "info": "OCR for loops include the end value while Python range excludes the stop value."
+      }
+    ],
+    "final": [
+      {
+        "t": "mcq",
+        "q": "OCR for i = 2 to 4 prints i. Which Python range matches?",
+        "a": [
+          "range(2, 5)",
+          "range(2, 4)",
+          "range(4)",
+          "range(1, 4)"
+        ],
+        "fb": "range(2, 5)"
+      },
+      {
+        "t": "mcq",
+        "q": "Which describes pseudocode?",
+        "a": [
+          "A precise readable description that need not execute as a program",
+          "Always valid Python",
+          "Always machine code",
+          "A diagram with no text"
+        ],
+        "fb": "A precise readable description that need not execute as a program"
+      }
+    ],
+    "plenary": [
+      [
+        "Write pseudocode to input quantity and unit price and output the total. [3]",
+        "Read both inputs (1), multiply them (1), output the product (1)."
+      ],
+      [
+        "Write selection that outputs Free if cost == 0 and Pay otherwise. [3]",
+        "Correct equality test (1), Free on true path (1), Pay on false path (1)."
+      ],
+      [
+        "Explain the loop-bound difference between OCR for and Python range. [2]",
+        "OCR for includes its end value (1). Python range excludes its stop value (1)."
+      ]
+    ],
+    "practical": "Write the three-number total in Python, run it with 3, 4 and 5, and compare the output with your pseudocode. Expected total: 12."
+  },
+  {
+    "n": 13,
+    "title": "Algorithm repair clinic",
+    "slug": "AlgorithmRepairClinic",
+    "subject": "Interpreting, correcting and completing algorithms",
+    "mission": "Predict what an algorithm actually does, identify a fault, and complete missing steps to meet its requirements.",
+    "donow": "Can code run successfully and still give the wrong answer?",
+    "outcomes": [
+      "Interpret algorithms using sample inputs.",
+      "Correct faulty conditions and updates.",
+      "Complete missing algorithm steps."
+    ],
+    "starter": "A total-cost algorithm adds price and quantity. Is this the correct calculation?",
+    "starter_answer": "No. Total cost requires price multiplied by quantity.",
+    "terms": [
+      [
+        "Logic error",
+        "An error in the algorithm that produces unintended behaviour."
+      ],
+      [
+        "Refinement",
+        "Improving an algorithm so it meets its requirements more fully."
+      ]
+    ],
+    "stations": [
+      {
+        "name": "Read what is written",
+        "facts": [
+          "Follow the code, not the intended outcome.",
+          "Record changing values in order.",
+          "Predict outputs before changing anything."
+        ],
+        "diagram": [
+          "x = 4",
+          "y = x + 3",
+          "x = y * 2",
+          "print(x)"
+        ],
+        "challenge": "What is printed and why?",
+        "answer": "14. y becomes 7, then x is assigned 7 * 2.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "x = 2; y = x * 5; print(y + 1). Output?",
+            "a": [
+              "11",
+              "10",
+              "15",
+              "3"
+            ],
+            "fb": "11"
+          },
+          {
+            "t": "mcq",
+            "q": "x = 4; y = x + 3. What is y?",
+            "a": [
+              "7",
+              "3",
+              "12"
+            ],
+            "fb": "7. Follow the code, not the intended outcome."
+          }
+        ],
+        "info": "14. y becomes 7, then x is assigned 7 * 2."
+      },
+      {
+        "name": "Correct an operation",
+        "facts": [
+          "Compare the calculation with the requirement.",
+          "Check using a small known example.",
+          "Change the faulty operation only."
+        ],
+        "diagram": [
+          "Need: total cost",
+          "quantity = 3; price = 5",
+          "Wrong: total = quantity + price",
+          "Correct: quantity * price"
+        ],
+        "challenge": "What are the wrong and correct results?",
+        "answer": "The wrong result is 8. The correct total is 15.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "A rectangle area uses length + width. Correction?",
+            "a": [
+              "length * width",
+              "length - width",
+              "length / width",
+              "length == width"
+            ],
+            "fb": "length * width"
+          },
+          {
+            "t": "mcq",
+            "q": "For length 6 and width 2, area is...",
+            "a": [
+              "12",
+              "8",
+              "4"
+            ],
+            "fb": "12. Compare the calculation with the requirement."
+          }
+        ],
+        "info": "The wrong result is 8. The correct total is 15."
+      },
+      {
+        "name": "Correct a boundary",
+        "facts": [
+          "Translate inclusive wording carefully.",
+          "Check the value exactly at the threshold.",
+          "A running program can still reject valid input."
+        ],
+        "diagram": [
+          "RULE: score at least 40",
+          "Wrong: score > 40",
+          "Correct: score >= 40",
+          "Test: 39, 40, 41"
+        ],
+        "challenge": "Which test exposes the error?",
+        "answer": "40, because it should pass but the faulty condition rejects it.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "The rule is fewer than 10. Which condition fits?",
+            "a": [
+              "n < 10",
+              "n <= 10",
+              "n > 10",
+              "n == 10"
+            ],
+            "fb": "n < 10"
+          },
+          {
+            "t": "mcq",
+            "q": "Which value exposes > 40 used for at least 40?",
+            "a": [
+              "40",
+              "41",
+              "50"
+            ],
+            "fb": "40. Translate inclusive wording carefully."
+          }
+        ],
+        "info": "40, because it should pass but the faulty condition rejects it."
+      },
+      {
+        "name": "Complete an update",
+        "facts": [
+          "A loop must move towards its end condition.",
+          "Choose an update consistent with the start.",
+          "Trace at least two iterations."
+        ],
+        "diagram": [
+          "n = 3",
+          "while n > 0",
+          "  print(n)",
+          "  [missing update]",
+          "endwhile"
+        ],
+        "challenge": "Complete the update so it prints 3, 2, 1.",
+        "answer": "n = n - 1.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Which update makes this countdown terminate?",
+            "a": [
+              "n = n - 1",
+              "n = n + 1",
+              "n = 3",
+              "n = n"
+            ],
+            "fb": "n = n - 1"
+          },
+          {
+            "t": "mcq",
+            "q": "A countdown from 3 using n = n - 1 should stop at...",
+            "a": [
+              "0 when the condition is n > 0",
+              "3",
+              "4"
+            ],
+            "fb": "0 when the condition is n > 0. A loop must move towards its end condition."
+          }
+        ],
+        "info": "n = n - 1."
+      },
+      {
+        "name": "Refine an omitted case",
+        "facts": [
+          "Check whether every valid situation is handled.",
+          "Equal values often need their own case.",
+          "Refine the output rather than hiding the case."
+        ],
+        "diagram": [
+          "if a > b: A wins",
+          "else: B wins",
+          "",
+          "Fault: a == b",
+          "Needs: draw result"
+        ],
+        "challenge": "What happens incorrectly when a == b?",
+        "answer": "The ELSE branch declares B the winner even though the values are equal.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "How should the two-player comparison be refined?",
+            "a": [
+              "Add a separate draw outcome for equal values",
+              "Always choose A",
+              "Remove all comparisons",
+              "Ignore equal inputs"
+            ],
+            "fb": "Add a separate draw outcome for equal values"
+          },
+          {
+            "t": "mcq",
+            "q": "A draw should be reported when...",
+            "a": [
+              "a == b",
+              "a > b",
+              "a < b"
+            ],
+            "fb": "a == b. Check whether every valid situation is handled."
+          }
+        ],
+        "info": "The ELSE branch declares B the winner even though the values are equal."
+      },
+      {
+        "name": "Recheck the correction",
+        "facts": [
+          "Retest the original failing input.",
+          "Check an input that previously worked.",
+          "One successful test is not proof of correctness."
+        ],
+        "diagram": [
+          "Fix: score >= 40",
+          "Retest: 40 -> pass",
+          "Check: 39 -> fail",
+          "Check: 41 -> pass"
+        ],
+        "challenge": "Why rerun a previously successful case?",
+        "answer": "The correction might accidentally break behaviour that was already correct.",
+        "tasks": [
+          {
+            "t": "order",
+            "q": "Order the repair process.",
+            "steps": [
+              "State the expected behaviour",
+              "Trace the faulty algorithm",
+              "Correct the identified fault",
+              "Retest failing and working cases"
+            ],
+            "fb": "Use evidence to decide whether the correction works."
+          },
+          {
+            "t": "mcq",
+            "q": "Retesting a previously working input checks...",
+            "a": [
+              "The fix has not broken existing behaviour",
+              "That testing is unnecessary",
+              "Only the variable spelling"
+            ],
+            "fb": "The fix has not broken existing behaviour. Retest the original failing input."
+          }
+        ],
+        "info": "The correction might accidentally break behaviour that was already correct."
+      }
+    ],
+    "final": [
+      {
+        "t": "mcq",
+        "q": "total = 0 inside a loop causes only the latest input to be kept. What is the fix?",
+        "a": [
+          "Move total = 0 before the loop",
+          "Print total earlier",
+          "Reset total twice",
+          "Remove every input"
+        ],
+        "fb": "Move total = 0 before the loop"
+      },
+      {
+        "t": "mcq",
+        "q": "A loop should visit indices 0 to 4. Which OCR loop fits?",
+        "a": [
+          "for i = 0 to 4",
+          "for i = 1 to 4",
+          "for i = 0 to 5",
+          "for i = 4 to 4"
+        ],
+        "fb": "for i = 0 to 4"
+      }
+    ],
+    "plenary": [
+      [
+        "Trace x = 3, y = x + 2, x = y * 4, print(x). Give y and the output. [2]",
+        "y = 5 (1), output 20 (1)."
+      ],
+      [
+        "A loop starts n = 1 and repeats while n < 4 but never updates n. Explain and correct the fault. [3]",
+        "n remains 1 (1), so the condition stays true (1). Add n = n + 1 inside the loop (1)."
+      ],
+      [
+        "An algorithm reports B wins whenever A is not greater than B. Explain a required refinement. [2]",
+        "Equal values are wrongly treated as a B win (1). Add an equality branch that outputs Draw (1)."
+      ]
+    ],
+    "practical": "Implement the repaired countdown in Python. Confirm it prints 3, 2, 1 and stops. Change the initial value to 1 and check again."
+  },
+  {
+    "n": 14,
+    "title": "Algorithm construction lab",
+    "slug": "AlgorithmConstructionLab",
+    "subject": "Producing algorithms: combined solutions",
+    "mission": "Design a complete equipment-hire calculation using inputs, selection, iteration and a running total.",
+    "donow": "How can you turn a long written requirement into a program you can check?",
+    "outcomes": [
+      "Extract requirements from a problem.",
+      "Combine sequence, selection and iteration.",
+      "Refine and test a complete solution."
+    ],
+    "starter": "A club charges 3 per hour for each item. What is the charge for two items hired for 2 and 4 hours?",
+    "starter_answer": "6 + 12 = 18. Calculate each item charge and add it to the total.",
+    "terms": [
+      [
+        "Requirement",
+        "A statement of what a solution must do."
+      ],
+      [
+        "Nested structure",
+        "A control structure placed inside another control structure."
+      ]
+    ],
+    "stations": [
+      {
+        "name": "Read the requirements",
+        "facts": [
+          "List every input and required output.",
+          "Separate rules from background detail.",
+          "Agree what valid inputs mean."
+        ],
+        "diagram": [
+          "Hire three items",
+          "Input hours for each item",
+          "Each costs 3 per hour",
+          "Output combined charge"
+        ],
+        "challenge": "Which inputs and output are required?",
+        "answer": "Three hour values are inputs. The combined charge is the output.",
+        "tasks": [
+          {
+            "t": "sort",
+            "q": "Classify the stated requirement.",
+            "cats": [
+              "Input",
+              "Process",
+              "Output"
+            ],
+            "items": [
+              [
+                "Hours for each item",
+                "Input"
+              ],
+              [
+                "Multiply hours by 3",
+                "Process"
+              ],
+              [
+                "Add item charges",
+                "Process"
+              ],
+              [
+                "Display combined charge",
+                "Output"
+              ]
+            ],
+            "fb": "Turn prose into clear data and operations."
+          },
+          {
+            "t": "mcq",
+            "q": "For one item at 3 per hour for 5 hours, charge is...",
+            "a": [
+              "15",
+              "8",
+              "2"
+            ],
+            "fb": "15. List every input and required output."
+          }
+        ],
+        "info": "Three hour values are inputs. The combined charge is the output."
+      },
+      {
+        "name": "Break down the solution",
+        "facts": [
+          "Separate input, calculation and reporting.",
+          "Give each sub-problem a clear purpose.",
+          "Combine the results consistently."
+        ],
+        "diagram": [
+          "HIRE PROGRAM",
+          "Read hire details",
+          "Calculate charges",
+          "Display total"
+        ],
+        "challenge": "How could Calculate charges be refined?",
+        "answer": "Calculate each item charge, add it to the running total and apply any required discount.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Which is a useful sub-problem?",
+            "a": [
+              "Calculate one item charge",
+              "Choose an unrelated game",
+              "Hide all inputs",
+              "Remove the total"
+            ],
+            "fb": "Calculate one item charge"
+          },
+          {
+            "t": "mcq",
+            "q": "A structure diagram is useful for...",
+            "a": [
+              "Organising the main sub-problems",
+              "Showing every loop iteration",
+              "Printing the bill"
+            ],
+            "fb": "Organising the main sub-problems. Separate input, calculation and reporting."
+          }
+        ],
+        "info": "Calculate each item charge, add it to the running total and apply any required discount."
+      },
+      {
+        "name": "Build the running total",
+        "facts": [
+          "Initialise total once before repetition.",
+          "Read hours for each item.",
+          "Add hours * 3 to the total."
+        ],
+        "diagram": [
+          "total = 0",
+          "for item = 1 to 3",
+          "  hours = int(input())",
+          "  total = total + hours * 3",
+          "next item"
+        ],
+        "challenge": "What total results from hours 1, 2 and 3?",
+        "answer": "3 + 6 + 9 = 18.",
+        "tasks": [
+          {
+            "t": "order",
+            "q": "Order the calculation.",
+            "steps": [
+              "Set total to 0",
+              "Repeat input of hours for each item",
+              "Add hours times 3 to total each time",
+              "Finish the loop"
+            ],
+            "fb": "The total must survive between iterations."
+          },
+          {
+            "t": "mcq",
+            "q": "Hours 1, 2, 3 at 3 per hour total...",
+            "a": [
+              "18",
+              "6",
+              "9"
+            ],
+            "fb": "18. Initialise total once before repetition."
+          }
+        ],
+        "info": "3 + 6 + 9 = 18."
+      },
+      {
+        "name": "Apply a rule once",
+        "facts": [
+          "Apply a whole-order discount after summing.",
+          "Match the threshold exactly.",
+          "Do not repeatedly discount intermediate totals."
+        ],
+        "diagram": [
+          "If total >= 30",
+          "  total = total - 5",
+          "Then output total",
+          "30 becomes 25"
+        ],
+        "challenge": "What should happen to totals 29 and 30?",
+        "answer": "29 stays 29. 30 qualifies and becomes 25.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "A total of 33 gets 5 off. Final charge?",
+            "a": [
+              "28",
+              "38",
+              "5",
+              "33"
+            ],
+            "fb": "28"
+          },
+          {
+            "t": "mcq",
+            "q": "Total 29 with a discount at >= 30 becomes...",
+            "a": [
+              "29",
+              "24",
+              "34"
+            ],
+            "fb": "29. Apply a whole-order discount after summing."
+          }
+        ],
+        "info": "29 stays 29. 30 qualifies and becomes 25."
+      },
+      {
+        "name": "Selection inside repetition",
+        "facts": [
+          "Decisions can apply to individual items.",
+          "Keep per-item rules inside the loop.",
+          "Keep whole-order rules after the loop."
+        ],
+        "diagram": [
+          "For each item:",
+          "  if hours > 5 then",
+          "    flag long hire",
+          "After all items:",
+          "  apply order discount"
+        ],
+        "challenge": "Where should a per-item long-hire check go?",
+        "answer": "Inside the loop, so every item is checked using its own hours.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Which rule belongs after the loop?",
+            "a": [
+              "Discount based on the combined order total",
+              "Read each item hours",
+              "Check each item availability",
+              "Calculate each item charge"
+            ],
+            "fb": "Discount based on the combined order total"
+          },
+          {
+            "t": "mcq",
+            "q": "A decision inside a loop is...",
+            "a": [
+              "Nested selection",
+              "A separate input only",
+              "Abstraction with no processing"
+            ],
+            "fb": "Nested selection. Decisions can apply to individual items."
+          }
+        ],
+        "info": "Inside the loop, so every item is checked using its own hours."
+      },
+      {
+        "name": "Test the complete design",
+        "facts": [
+          "Calculate expected results independently.",
+          "Test both sides of a decision boundary.",
+          "Record actual output and compare."
+        ],
+        "diagram": [
+          "Hours: 1, 2, 3 -> 18",
+          "Hours: 3, 3, 4 -> 25",
+          "Second raw total: 30",
+          "Discount applied once"
+        ],
+        "challenge": "Why is the second test useful?",
+        "answer": "It reaches the exact discount boundary of 30 and checks that the result is 25.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Which expected output fits hours 4, 4, 4 with the stated discount?",
+            "a": [
+              "31",
+              "36",
+              "41",
+              "12"
+            ],
+            "fb": "31"
+          },
+          {
+            "t": "mcq",
+            "q": "Hours 3, 3, 4 before the discount total...",
+            "a": [
+              "30",
+              "25",
+              "10"
+            ],
+            "fb": "30. Calculate expected results independently."
+          }
+        ],
+        "info": "It reaches the exact discount boundary of 30 and checks that the result is 25."
+      }
+    ],
+    "final": [
+      {
+        "t": "mcq",
+        "q": "Where should total = 0 be placed?",
+        "a": [
+          "Before the item loop",
+          "Inside every iteration",
+          "After printing the answer",
+          "Only in the discount branch"
+        ],
+        "fb": "Before the item loop"
+      },
+      {
+        "t": "mcq",
+        "q": "Hours 2, 2, 5 at 3 per hour. Discount is 5 if total >= 30. Output?",
+        "a": [
+          "27",
+          "22",
+          "30",
+          "9"
+        ],
+        "fb": "27"
+      }
+    ],
+    "plenary": [
+      [
+        "Identify the inputs, processing and output of the hire program. [3]",
+        "Hours for each item (1), calculate and sum charges then apply the rule (1), combined charge (1)."
+      ],
+      [
+        "Write pseudocode for three item-hour inputs at 3 per hour. Subtract 5 if total >= 30, then output the charge. [6]",
+        "Initialise total (1), three-iteration loop (1), input hours (1), accumulate hours * 3 (1), correct discount after loop (1), output final total (1)."
+      ],
+      [
+        "Give inputs that test the exact discount threshold and state the expected output. [2]",
+        "For example 3, 3, 4 hours makes a raw total of 30 (1) and output 25 (1)."
+      ]
+    ],
+    "practical": "Implement the full hire program in Python. Test 1, 2, 3 (18), 3, 3, 4 (25) and 4, 4, 4 (31). Compare each output with your design."
+  },
+  {
+    "n": 15,
+    "title": "Bug investigation lab",
+    "slug": "BugInvestigationLab",
+    "subject": "Identifying common errors and fixes",
+    "mission": "Distinguish syntax and logic errors, identify faulty lines and explain precise corrections.",
+    "donow": "Why does a program running without an error message not prove it is correct?",
+    "outcomes": [
+      "Distinguish syntax and logic errors.",
+      "Locate and correct faulty code.",
+      "Use test evidence to verify a fix."
+    ],
+    "starter": "Python print(\"Ready\" is missing a closing bracket. Is the problem a syntax rule or a wrong calculation?",
+    "starter_answer": "It breaks Python syntax because the opening parenthesis is not closed.",
+    "terms": [
+      [
+        "Syntax error",
+        "Code that breaks the grammatical rules of the language."
+      ],
+      [
+        "Logic error",
+        "Validly structured code whose behaviour does not meet the intended requirement."
+      ]
+    ],
+    "stations": [
+      {
+        "name": "Syntax rules",
+        "facts": [
+          "A language has rules for valid code.",
+          "Missing punctuation can break those rules.",
+          "Read the diagnostic and inspect nearby code."
+        ],
+        "diagram": [
+          "# Python: faulty",
+          "print(\"Ready\"",
+          "",
+          "# Correct",
+          "print(\"Ready\")"
+        ],
+        "challenge": "What single character fixes this example?",
+        "answer": "Add the closing parenthesis after the closing quote.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Which is a Python syntax error?",
+            "a": [
+              "A missing colon after an if condition",
+              "Multiplying when addition was intended",
+              "Using > instead of >= in a valid condition",
+              "Printing the wrong variable"
+            ],
+            "fb": "A missing colon after an if condition"
+          },
+          {
+            "t": "mcq",
+            "q": "Python print(\"Ready\") has...",
+            "a": [
+              "Balanced parentheses",
+              "A missing closing parenthesis",
+              "No valid string"
+            ],
+            "fb": "Balanced parentheses. A language has rules for valid code."
+          }
+        ],
+        "info": "Add the closing parenthesis after the closing quote."
+      },
+      {
+        "name": "Logic can be wrong",
+        "facts": [
+          "A program can execute and give a wrong result.",
+          "Compare behaviour with the requirement.",
+          "Use known inputs to expose the fault."
+        ],
+        "diagram": [
+          "Need average of a and b",
+          "Wrong: a + b / 2",
+          "Correct: (a + b) / 2",
+          "For 6 and 10: 8"
+        ],
+        "challenge": "What does the wrong expression give for 6 and 10?",
+        "answer": "11, because division happens before addition. The correct average is 8.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Which expression correctly averages x and y?",
+            "a": [
+              "(x + y) / 2",
+              "x + y / 2",
+              "x * y / 2",
+              "x - y / 2"
+            ],
+            "fb": "(x + y) / 2"
+          },
+          {
+            "t": "mcq",
+            "q": "For a = 6, b = 10, a + b / 2 gives...",
+            "a": [
+              "11",
+              "8",
+              "16"
+            ],
+            "fb": "11. A program can execute and give a wrong result."
+          }
+        ],
+        "info": "11, because division happens before addition. The correct average is 8."
+      },
+      {
+        "name": "Off-by-one errors",
+        "facts": [
+          "A loop may run once too often or too little.",
+          "Check the start and end conventions.",
+          "Array indices must stay within their valid range."
+        ],
+        "diagram": [
+          "Python list length: 4",
+          "Valid indices: 0, 1, 2, 3",
+          "Wrong: range(5)",
+          "Correct: range(4)"
+        ],
+        "challenge": "Why is index 4 invalid for this list?",
+        "answer": "A four-item zero-indexed list ends at index 3.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Python range(1, 4) repeats how many times?",
+            "a": [
+              "3",
+              "4",
+              "5",
+              "1"
+            ],
+            "fb": "3"
+          },
+          {
+            "t": "mcq",
+            "q": "Last valid zero-based index in a five-item list?",
+            "a": [
+              "4",
+              "5",
+              "1"
+            ],
+            "fb": "4. A loop may run once too often or too little."
+          }
+        ],
+        "info": "A four-item zero-indexed list ends at index 3."
+      },
+      {
+        "name": "Faulty initialisation",
+        "facts": [
+          "A running total needs an initial value.",
+          "Initialise it once before the loop.",
+          "Repeated initialisation loses earlier work."
+        ],
+        "diagram": [
+          "Wrong inside loop:",
+          "  total = 0",
+          "  total = total + value",
+          "Only last value survives"
+        ],
+        "challenge": "Where should total = 0 be moved?",
+        "answer": "Before the loop, so earlier additions remain in the total.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "A counter starts at 1 but should count from zero. What type of fault can this cause?",
+            "a": [
+              "A logic error in the count",
+              "Always a syntax error",
+              "A missing quotation mark",
+              "A translation requirement"
+            ],
+            "fb": "A logic error in the count"
+          },
+          {
+            "t": "mcq",
+            "q": "Resetting total in each iteration causes...",
+            "a": [
+              "Previous additions to be lost",
+              "A syntax error in every language",
+              "The correct overall sum"
+            ],
+            "fb": "Previous additions to be lost. A running total needs an initial value."
+          }
+        ],
+        "info": "Before the loop, so earlier additions remain in the total."
+      },
+      {
+        "name": "Trace the faulty line",
+        "facts": [
+          "Change one cause at a time.",
+          "Explain how the faulty line affects the result.",
+          "A renamed variable alone may not fix the rule."
+        ],
+        "diagram": [
+          "Rule: age at least 12",
+          "Fault: if age > 12 then",
+          "Input: 12",
+          "Actual: rejected"
+        ],
+        "challenge": "Give the corrected line and a reason.",
+        "answer": "Use if age >= 12 then. Equality must be included.",
+        "tasks": [
+          {
+            "t": "match",
+            "q": "Match the fault to its correction.",
+            "pairs": [
+              [
+                "Missing Python colon",
+                "Add : after the condition"
+              ],
+              [
+                "Exclusive threshold",
+                "Use >= for at least"
+              ],
+              [
+                "Counter never changes",
+                "Update the counter in the loop"
+              ]
+            ],
+            "fb": "Corrections should address the actual cause."
+          },
+          {
+            "t": "mcq",
+            "q": "A missing Python colon is corrected by...",
+            "a": [
+              "Adding the colon after the condition",
+              "Changing + to *",
+              "Resetting a counter"
+            ],
+            "fb": "Adding the colon after the condition. Change one cause at a time."
+          }
+        ],
+        "info": "Use if age >= 12 then. Equality must be included."
+      },
+      {
+        "name": "Verify with evidence",
+        "facts": [
+          "Retest the input that exposed the error.",
+          "Check nearby and previously working cases.",
+          "Record expected and actual results."
+        ],
+        "diagram": [
+          "Fix age >= 12",
+          "11 -> reject",
+          "12 -> accept",
+          "13 -> accept"
+        ],
+        "challenge": "Why check 11 as well as 12?",
+        "answer": "It verifies that the correction has not started accepting values below the threshold.",
+        "tasks": [
+          {
+            "t": "order",
+            "q": "Order the debugging steps.",
+            "steps": [
+              "Reproduce the incorrect behaviour",
+              "Locate and explain the fault",
+              "Apply a targeted correction",
+              "Retest and compare outputs"
+            ],
+            "fb": "An error message or wrong result is evidence to investigate."
+          },
+          {
+            "t": "mcq",
+            "q": "A passing test proves...",
+            "a": [
+              "That tested case produced the expected result",
+              "All possible cases are correct",
+              "The program has no remaining errors"
+            ],
+            "fb": "That tested case produced the expected result. Retest the input that exposed the error."
+          }
+        ],
+        "info": "It verifies that the correction has not started accepting values below the threshold."
+      }
+    ],
+    "final": [
+      {
+        "t": "sort",
+        "q": "Classify the errors.",
+        "cats": [
+          "Syntax",
+          "Logic"
+        ],
+        "items": [
+          [
+            "Python if x > 0 with no colon",
+            "Syntax"
+          ],
+          [
+            "Average calculated as a + b / 2",
+            "Logic"
+          ],
+          [
+            "Missing closing quote",
+            "Syntax"
+          ],
+          [
+            "Discount applied below the wrong threshold",
+            "Logic"
+          ]
+        ],
+        "fb": "Syntax breaks language rules. Logic breaks the intended solution."
+      },
+      {
+        "t": "mcq",
+        "q": "The corrected average works for 6 and 10. What should you conclude?",
+        "a": [
+          "That test passes, but other suitable tests are still useful",
+          "Every possible input is proven correct",
+          "No logic errors can remain",
+          "Testing should never use equal inputs"
+        ],
+        "fb": "That test passes, but other suitable tests are still useful"
+      }
+    ],
+    "plenary": [
+      [
+        "State the difference between syntax and logic errors. [2]",
+        "Syntax breaks language grammar (1). Logic gives unintended behaviour even when the code is syntactically valid (1)."
+      ],
+      [
+        "Correct average = a + b / 2 and explain why the change is needed. [3]",
+        "Use (a + b) / 2 (1). Division otherwise happens first (1). Parentheses add the values before halving (1)."
+      ],
+      [
+        "A four-item Python list is accessed with range(5). Explain and correct the issue. [2]",
+        "It includes invalid index 4 (1). Use range(4) to visit indices 0 to 3 (1)."
+      ]
+    ],
+    "practical": "In Python, test the faulty and corrected average with 6 and 10, then 4 and 4. Expected corrected outputs are 8 and 4."
+  },
+  {
+    "n": 16,
+    "title": "Trace table observatory",
+    "slug": "TraceTableObservatory",
+    "subject": "Trace tables",
+    "mission": "Follow assignments, decisions and loops precisely. Record variable changes and outputs in trace tables.",
+    "donow": "How can you check what a program does without running it?",
+    "outcomes": [
+      "Complete trace tables.",
+      "Trace selection and nested iteration.",
+      "Use traces to locate logic errors."
+    ],
+    "starter": "x = 2, x = x + 3, print(x). List each value stored in x and the output.",
+    "starter_answer": "x is first 2 and then 5. The output is 5.",
+    "terms": [
+      [
+        "Trace table",
+        "A table recording variable values and outputs while stepping through an algorithm."
+      ],
+      [
+        "Dry run",
+        "Following an algorithm manually with chosen inputs."
+      ]
+    ],
+    "stations": [
+      {
+        "name": "Record each change",
+        "facts": [
+          "Follow statements in execution order.",
+          "Record a new value when a variable changes.",
+          "Keep outputs in their own column."
+        ],
+        "diagram": [
+          "x = 2",
+          "y = x + 3",
+          "x = y * 2",
+          "print(x)",
+          "x: 2 then 10; y: 5"
+        ],
+        "challenge": "What belongs in the output column?",
+        "answer": "10, because only print(x) produces output.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Does an assignment automatically produce output?",
+            "a": [
+              "No, it changes stored data",
+              "Yes, every assignment prints",
+              "Only if the number is positive",
+              "Always twice"
+            ],
+            "fb": "No, it changes stored data"
+          },
+          {
+            "t": "mcq",
+            "q": "A trace table records output...",
+            "a": [
+              "Only when an output statement executes",
+              "After every assignment automatically",
+              "Before inputs are known"
+            ],
+            "fb": "Only when an output statement executes. Follow statements in execution order."
+          }
+        ],
+        "info": "10, because only print(x) produces output."
+      },
+      {
+        "name": "Use current values",
+        "facts": [
+          "Use the most recently assigned value.",
+          "The right-hand side is evaluated first.",
+          "Then the new value replaces the old one."
+        ],
+        "diagram": [
+          "a = 3",
+          "b = a + 2",
+          "a = b + 4",
+          "b = a - 1",
+          "Final: a = 9, b = 8"
+        ],
+        "challenge": "What is b after its final assignment?",
+        "answer": "8. The current value of a is 9, so b becomes 9 - 1.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "x = 4; x = x * 2; y = x + 1. What is y?",
+            "a": [
+              "9",
+              "5",
+              "8",
+              "4"
+            ],
+            "fb": "9"
+          },
+          {
+            "t": "mcq",
+            "q": "a = 3; b = a + 2; a = b + 4. Final a?",
+            "a": [
+              "9",
+              "7",
+              "3"
+            ],
+            "fb": "9. Use the most recently assigned value."
+          }
+        ],
+        "info": "8. The current value of a is 9, so b becomes 9 - 1."
+      },
+      {
+        "name": "Trace only the chosen branch",
+        "facts": [
+          "Evaluate the condition using current values.",
+          "Follow only the branch selected.",
+          "Skipped assignments do not change variables."
+        ],
+        "diagram": [
+          "x = 7",
+          "if x >= 5 then",
+          "  y = x + 1",
+          "else: y = 0",
+          "print(y)"
+        ],
+        "challenge": "Which assignment is skipped?",
+        "answer": "y = 0 is skipped because x >= 5 is true.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "For x = 3 in the displayed algorithm, what is printed?",
+            "a": [
+              "0",
+              "4",
+              "7",
+              "8"
+            ],
+            "fb": "0"
+          },
+          {
+            "t": "mcq",
+            "q": "A skipped ELSE assignment should...",
+            "a": [
+              "Not change its variable",
+              "Still be executed",
+              "Always set it to zero"
+            ],
+            "fb": "Not change its variable. Evaluate the condition using current values."
+          }
+        ],
+        "info": "y = 0 is skipped because x >= 5 is true."
+      },
+      {
+        "name": "Trace a running total",
+        "facts": [
+          "Record each loop iteration.",
+          "Update the total using the current counter.",
+          "Output only where the algorithm says."
+        ],
+        "diagram": [
+          "total = 0",
+          "for i = 1 to 3",
+          "  total = total + i",
+          "next i",
+          "print(total)"
+        ],
+        "challenge": "What are the totals after iterations 1, 2 and 3?",
+        "answer": "1, 3 and 6. The output after the loop is 6.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Same algorithm but i = 1 to 4. Final total?",
+            "a": [
+              "10",
+              "4",
+              "6",
+              "9"
+            ],
+            "fb": "10"
+          },
+          {
+            "t": "mcq",
+            "q": "Totals after adding 1, then 2, then 3 from zero?",
+            "a": [
+              "1, 3, 6",
+              "1, 2, 3",
+              "0, 1, 2"
+            ],
+            "fb": "1, 3, 6. Record each loop iteration."
+          }
+        ],
+        "info": "1, 3 and 6. The output after the loop is 6."
+      },
+      {
+        "name": "Trace nested loops",
+        "facts": [
+          "The inner loop restarts for each outer value.",
+          "Record counter values in separate columns.",
+          "Do not merge distinct output events."
+        ],
+        "diagram": [
+          "for a = 1 to 2",
+          "  for b = 1 to 2",
+          "    print(a + b)",
+          "  next b",
+          "next a"
+        ],
+        "challenge": "List the outputs in execution order.",
+        "answer": "2, 3, 3, 4.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "How many output events occur here?",
+            "a": [
+              "4",
+              "2",
+              "3",
+              "1"
+            ],
+            "fb": "4"
+          },
+          {
+            "t": "mcq",
+            "q": "Outer a = 1..2, inner b = 1..2, print a+b. First output?",
+            "a": [
+              "2",
+              "1",
+              "4"
+            ],
+            "fb": "2. The inner loop restarts for each outer value."
+          }
+        ],
+        "info": "2, 3, 3, 4."
+      },
+      {
+        "name": "Locate a fault with a trace",
+        "facts": [
+          "Find the first unexpected value.",
+          "Link it to the statement that caused it.",
+          "Retest after making the correction."
+        ],
+        "diagram": [
+          "total = 0",
+          "Inputs: 3, 4, 5",
+          "Wrong update: total = value",
+          "Totals: 3, 4, 5",
+          "Need: total = total + value"
+        ],
+        "challenge": "Which update produces totals 3, 7 and 12?",
+        "answer": "total = total + value, which accumulates instead of replacing the total.",
+        "tasks": [
+          {
+            "t": "mcq",
+            "q": "Why is tracing useful for debugging?",
+            "a": [
+              "It shows when values first differ from expectations",
+              "It automatically repairs code",
+              "It replaces every form of testing",
+              "It guarantees no syntax errors"
+            ],
+            "fb": "It shows when values first differ from expectations"
+          },
+          {
+            "t": "mcq",
+            "q": "total = value differs from total = total + value because it...",
+            "a": [
+              "Replaces the total instead of accumulating",
+              "Always gives the same result",
+              "Is always a syntax error"
+            ],
+            "fb": "Replaces the total instead of accumulating. Find the first unexpected value."
+          }
+        ],
+        "info": "total = total + value, which accumulates instead of replacing the total."
+      }
+    ],
+    "final": [
+      {
+        "t": "mcq",
+        "q": "total = 0. For i = 1 to 3, add i * 2. What is printed after the loop?",
+        "a": [
+          "12",
+          "6",
+          "10",
+          "3"
+        ],
+        "fb": "12"
+      },
+      {
+        "t": "mcq",
+        "q": "n = 4. While n > 1, print n then subtract 1. Outputs?",
+        "a": [
+          "4, 3, 2",
+          "4, 3, 2, 1",
+          "3, 2, 1",
+          "Only 4"
+        ],
+        "fb": "4, 3, 2"
+      }
+    ],
+    "plenary": [
+      [
+        "Trace x = 5, y = x - 2, x = y * 4, print(x). State each assignment and the output. [4]",
+        "x = 5 (1), y = 3 (1), x = 12 (1), output 12 (1)."
+      ],
+      [
+        "A loop starts total = 0 and adds i for i = 1 to 4 inclusive. Give the total after each iteration. [4]",
+        "1 (1), 3 (1), 6 (1), 10 (1)."
+      ],
+      [
+        "Explain how a trace table can help find a logic error. [2]",
+        "It records intermediate values in execution order (1), so the first wrong value can be linked to the statement that produced it (1)."
+      ]
+    ],
+    "practical": ""
+  }
+]

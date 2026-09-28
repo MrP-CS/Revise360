@@ -1,0 +1,297 @@
+{
+  "id": "al-l04",
+  "lesson": 4,
+  "title": "Algorithm planning room",
+  "scenes": [
+    {
+      "id": "main",
+      "title": "Algorithm planning room",
+      "img": "img/AL_L04_AlgorithmPlanningRoom_360.jpg",
+      "imgHi": "img/AL_L04_AlgorithmPlanningRoom_360_hi.jpg",
+      "stations": [
+        {
+          "label": "1",
+          "name": "A clear goal",
+          "col": "#40c4ff",
+          "face": "right",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "Algorithmic thinking involves...",
+              "a": [
+                "Planning precise steps to solve a problem",
+                "Only choosing a screen colour",
+                "Removing all processing",
+                "Guessing an output"
+              ],
+              "fb": "Planning precise steps to solve a problem"
+            },
+            {
+              "t": "mcq",
+              "q": "A useful algorithm must...",
+              "a": [
+                "Reach the stated goal through precise steps",
+                "Depend on guessing",
+                "Always use exactly ten steps"
+              ],
+              "fb": "Reach the stated goal through precise steps. Algorithmic thinking plans a solution as steps."
+            }
+          ]
+        },
+        {
+          "label": "2",
+          "name": "Input, process, output",
+          "col": "#aa6eeb",
+          "face": "right",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "sort",
+              "q": "Classify the hire steps.",
+              "cats": [
+                "Input",
+                "Process",
+                "Output"
+              ],
+              "items": [
+                [
+                  "Read hours",
+                  "Input"
+                ],
+                [
+                  "Multiply hours by rate",
+                  "Process"
+                ],
+                [
+                  "Display charge",
+                  "Output"
+                ]
+              ],
+              "fb": "The calculation is the process."
+            },
+            {
+              "t": "mcq",
+              "q": "Multiplying hours by rate is...",
+              "a": [
+                "Processing",
+                "Input",
+                "A route map"
+              ],
+              "fb": "Processing. Identify data entering the algorithm."
+            }
+          ]
+        },
+        {
+          "label": "3",
+          "name": "Order matters",
+          "col": "#ff785a",
+          "face": "back",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "order",
+              "q": "Order a total-cost algorithm.",
+              "steps": [
+                "Input quantity",
+                "Input unit price",
+                "Calculate quantity times unit price",
+                "Output total"
+              ],
+              "fb": "Read both values before calculating."
+            },
+            {
+              "t": "mcq",
+              "q": "Which must happen before outputting a calculated total?",
+              "a": [
+                "Calculate the total",
+                "End the program",
+                "Discard the inputs"
+              ],
+              "fb": "Calculate the total. A value must be available before use."
+            }
+          ]
+        },
+        {
+          "label": "4",
+          "name": "Remove ambiguity",
+          "col": "#ffa028",
+          "face": "back",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "Which instruction is precise?",
+              "a": [
+                "Increase score by 2",
+                "Increase score a little",
+                "Process the result somehow",
+                "Repeat until it seems right"
+              ],
+              "fb": "Increase score by 2"
+            },
+            {
+              "t": "mcq",
+              "q": "Which word often makes an instruction ambiguous?",
+              "a": [
+                "Some",
+                "Exactly",
+                "Multiply"
+              ],
+              "fb": "Some. Instructions need clear actions and quantities."
+            }
+          ]
+        },
+        {
+          "label": "5",
+          "name": "Follow the steps",
+          "col": "#50dc96",
+          "face": "left",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "For x = 5, then x = x + 2, then x = x * 3, what is x?",
+              "a": [
+                "21",
+                "17",
+                "15",
+                "10"
+              ],
+              "fb": "5 + 2 = 7, then 7 * 3 = 21."
+            },
+            {
+              "t": "mcq",
+              "q": "x = 3; x = x + 4; x = x * 2. Output?",
+              "a": [
+                "14",
+                "11",
+                "10"
+              ],
+              "fb": "14. Trace an algorithm in its exact order."
+            }
+          ]
+        },
+        {
+          "label": "6",
+          "name": "Check the result",
+          "col": "#f05aaa",
+          "face": "left",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "A total is wrong. What is the useful next step?",
+              "a": [
+                "Trace each calculation using known inputs",
+                "Change all variable names at random",
+                "Ignore the expected result",
+                "Delete every input"
+              ],
+              "fb": "Trace each calculation using known inputs"
+            },
+            {
+              "t": "mcq",
+              "q": "3 items cost 4 each. Why is output 7 wrong?",
+              "a": [
+                "It adds instead of multiplying",
+                "It multiplies correctly",
+                "It uses no inputs"
+              ],
+              "fb": "It adds instead of multiplying. Use a simple example with a known answer."
+            }
+          ]
+        },
+        {
+          "label": "★",
+          "name": "Final challenge",
+          "col": "#ffd046",
+          "face": "down",
+          "x": 1024,
+          "y": 800,
+          "tasks": [
+            {
+              "t": "order",
+              "q": "Put a simple loan algorithm in order.",
+              "steps": [
+                "Read borrower ID and item ID",
+                "Check the item is available",
+                "Record the loan if available",
+                "Display the result"
+              ],
+              "fb": "The check must happen before recording the loan."
+            },
+            {
+              "t": "mcq",
+              "q": "What is the charge for 4 hours at 3 per hour?",
+              "a": [
+                "12",
+                "7",
+                "1",
+                "43"
+              ],
+              "fb": "12"
+            }
+          ]
+        }
+      ],
+      "info": [
+        {
+          "id": "f1",
+          "face": "right",
+          "x": 920,
+          "y": 540,
+          "title": "A clear goal",
+          "text": "Algorithmic thinking plans a solution as steps.\n\nState what must be achieved.\n\nCheck that the steps reach that goal.\n\nChallenge: Why state the goal before writing steps?\n\nThe goal defines what counts as a correct result."
+        },
+        {
+          "id": "f2",
+          "face": "right",
+          "x": 1888,
+          "y": 540,
+          "title": "Input, process, output",
+          "text": "Identify data entering the algorithm.\n\nIdentify operations on the data.\n\nIdentify the result to communicate.\n\nChallenge: Name the inputs for calculating hire cost.\n\nThe number of hours and the hourly rate."
+        },
+        {
+          "id": "f3",
+          "face": "back",
+          "x": 920,
+          "y": 540,
+          "title": "Order matters",
+          "text": "A value must be available before use.\n\nCalculate before displaying the result.\n\nChanging order can change behaviour.\n\nChallenge: What is wrong with printing total first?\n\nThe total has not yet been calculated from the inputs."
+        },
+        {
+          "id": "f4",
+          "face": "back",
+          "x": 1888,
+          "y": 540,
+          "title": "Remove ambiguity",
+          "text": "Instructions need clear actions and quantities.\n\nAvoid words such as some or enough.\n\nSpecify what happens in each case.\n\nChallenge: Rewrite Add some bonus points precisely.\n\nAdd 5 bonus points to score is one precise example."
+        },
+        {
+          "id": "f5",
+          "face": "left",
+          "x": 920,
+          "y": 540,
+          "title": "Follow the steps",
+          "text": "Trace an algorithm in its exact order.\n\nUse the current value of a variable.\n\nAssignment replaces its previous value.\n\nChallenge: What is printed? Show the intermediate value.\n\nx becomes 7 and then 14, so 14 is printed."
+        },
+        {
+          "id": "f6",
+          "face": "left",
+          "x": 1888,
+          "y": 540,
+          "title": "Check the result",
+          "text": "Use a simple example with a known answer.\n\nCompare expected and actual results.\n\nCorrect the steps when they differ.\n\nChallenge: How should the wrong rule be corrected?\n\nMultiply quantity by price. Adding gives 7, not the expected 12."
+        }
+      ],
+      "models": []
+    }
+  ]
+}

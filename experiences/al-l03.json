@@ -1,0 +1,308 @@
+{
+  "id": "al-l03",
+  "lesson": 3,
+  "title": "Decomposition workshop",
+  "scenes": [
+    {
+      "id": "main",
+      "title": "Decomposition workshop",
+      "img": "img/AL_L03_DecompositionWorkshop_360.jpg",
+      "imgHi": "img/AL_L03_DecompositionWorkshop_360_hi.jpg",
+      "stations": [
+        {
+          "label": "1",
+          "name": "Split the problem",
+          "col": "#40c4ff",
+          "face": "right",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "Which example is decomposition?",
+              "a": [
+                "Split a shop into stock, orders and payments",
+                "Remove irrelevant stock colours",
+                "Put every instruction in one block",
+                "Change the screen font"
+              ],
+              "fb": "Split a shop into stock, orders and payments"
+            },
+            {
+              "t": "mcq",
+              "q": "Which is a sub-problem of a loan system?",
+              "a": [
+                "Process a return",
+                "Change the weather",
+                "Draw every classroom"
+              ],
+              "fb": "Process a return. Start with the whole task."
+            }
+          ]
+        },
+        {
+          "label": "2",
+          "name": "Read the hierarchy",
+          "col": "#aa6eeb",
+          "face": "right",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "What does a line to a child box mean?",
+              "a": [
+                "The child is a component of the parent",
+                "The child always runs next",
+                "The child is an output value",
+                "The parent is false"
+              ],
+              "fb": "The child is a component of the parent"
+            },
+            {
+              "t": "mcq",
+              "q": "The top box of a structure diagram is...",
+              "a": [
+                "The complete system",
+                "Always the first output",
+                "A yes/no decision"
+              ],
+              "fb": "The complete system. The top box is the whole system."
+            }
+          ]
+        },
+        {
+          "label": "3",
+          "name": "Refine a sub-problem",
+          "col": "#ff785a",
+          "face": "back",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "order",
+              "q": "Order a sensible refinement process.",
+              "steps": [
+                "Identify the whole system",
+                "Name its main sub-problems",
+                "Split a complex sub-problem",
+                "Check the parts cover the requirements"
+              ],
+              "fb": "Refinement adds detail to a decomposition."
+            },
+            {
+              "t": "mcq",
+              "q": "Refinement means...",
+              "a": [
+                "Breaking a large part into clearer smaller tasks",
+                "Removing all requirements",
+                "Only changing colours"
+              ],
+              "fb": "Breaking a large part into clearer smaller tasks. Refinement adds useful detail."
+            }
+          ]
+        },
+        {
+          "label": "4",
+          "name": "Structure versus flow",
+          "col": "#ffa028",
+          "face": "back",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "sort",
+              "q": "Classify the diagram features.",
+              "cats": [
+                "Structure diagram",
+                "Flowchart"
+              ],
+              "items": [
+                [
+                  "Parent and child modules",
+                  "Structure diagram"
+                ],
+                [
+                  "Yes/no decision branch",
+                  "Flowchart"
+                ],
+                [
+                  "System broken into parts",
+                  "Structure diagram"
+                ],
+                [
+                  "Arrow showing next action",
+                  "Flowchart"
+                ]
+              ],
+              "fb": "Do not read a hierarchy as execution order."
+            },
+            {
+              "t": "mcq",
+              "q": "Does left-to-right position in a structure diagram define execution order?",
+              "a": [
+                "No",
+                "Yes, always",
+                "Only if the boxes are blue"
+              ],
+              "fb": "No. Structure diagrams show parts."
+            }
+          ]
+        },
+        {
+          "label": "5",
+          "name": "Work as a team",
+          "col": "#50dc96",
+          "face": "left",
+          "x": 540,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "Which is a benefit of decomposition?",
+              "a": [
+                "Individual parts are easier to understand and test",
+                "Testing becomes unnecessary",
+                "Parts never need to communicate",
+                "Every program runs faster"
+              ],
+              "fb": "Individual parts are easier to understand and test"
+            },
+            {
+              "t": "mcq",
+              "q": "A shared interface helps parts...",
+              "a": [
+                "Exchange data consistently",
+                "Avoid all testing",
+                "Run without inputs"
+              ],
+              "fb": "Exchange data consistently. Smaller tasks can be allocated to people."
+            }
+          ]
+        },
+        {
+          "label": "6",
+          "name": "Check coverage",
+          "col": "#f05aaa",
+          "face": "left",
+          "x": 1508,
+          "y": 1770,
+          "tasks": [
+            {
+              "t": "mcq",
+              "q": "The system must report overdue loans. What should be added?",
+              "a": [
+                "An overdue-report sub-problem",
+                "A wallpaper sub-problem",
+                "A second unrelated system",
+                "Nothing because all systems report automatically"
+              ],
+              "fb": "An overdue-report sub-problem"
+            },
+            {
+              "t": "mcq",
+              "q": "An omitted return function is found by checking...",
+              "a": [
+                "The decomposition against the requirements",
+                "Only the font size",
+                "Only the logo"
+              ],
+              "fb": "The decomposition against the requirements. Compare the parts with the requirements."
+            }
+          ]
+        },
+        {
+          "label": "★",
+          "name": "Final challenge",
+          "col": "#ffd046",
+          "face": "down",
+          "x": 1024,
+          "y": 800,
+          "tasks": [
+            {
+              "t": "match",
+              "q": "Match each sub-problem to a suitable smaller task.",
+              "pairs": [
+                [
+                  "Members",
+                  "Add a member record"
+                ],
+                [
+                  "Loans",
+                  "Check item availability"
+                ],
+                [
+                  "Returns",
+                  "Mark an item available"
+                ]
+              ],
+              "fb": "Each child must belong to its parent."
+            },
+            {
+              "t": "mcq",
+              "q": "Why test each part before combining them?",
+              "a": [
+                "It helps locate faults within smaller sections",
+                "It proves the whole system cannot fail",
+                "It removes the need for shared data",
+                "It guarantees the fastest code"
+              ],
+              "fb": "It helps locate faults within smaller sections"
+            }
+          ]
+        }
+      ],
+      "info": [
+        {
+          "id": "f1",
+          "face": "right",
+          "x": 920,
+          "y": 540,
+          "title": "Split the problem",
+          "text": "Start with the whole task.\n\nIdentify separate responsibilities.\n\nBreak large parts down further.\n\nChallenge: Suggest three parts of a library system.\n\nManage members, issue books and process returned books are suitable parts."
+        },
+        {
+          "id": "f2",
+          "face": "right",
+          "x": 1888,
+          "y": 540,
+          "title": "Read the hierarchy",
+          "text": "The top box is the whole system.\n\nChild boxes are parts of their parent.\n\nLower levels show more detail.\n\nChallenge: What are the two parts of Issue loan?\n\nCheck availability and record borrower."
+        },
+        {
+          "id": "f3",
+          "face": "back",
+          "x": 920,
+          "y": 540,
+          "title": "Refine a sub-problem",
+          "text": "Refinement adds useful detail.\n\nStop when each task is clear enough to solve.\n\nKeep the hierarchy logically grouped.\n\nChallenge: Break Process return into three smaller tasks.\n\nFind the active loan, mark it returned and make the item available again."
+        },
+        {
+          "id": "f4",
+          "face": "back",
+          "x": 1888,
+          "y": 540,
+          "title": "Structure versus flow",
+          "text": "Structure diagrams show parts.\n\nFlowcharts show execution and decisions.\n\nA hierarchy does not specify run order.\n\nChallenge: Why is a structure diagram not a flowchart?\n\nIt shows what the system contains, rather than the order of execution and decision paths."
+        },
+        {
+          "id": "f5",
+          "face": "left",
+          "x": 920,
+          "y": 540,
+          "title": "Work as a team",
+          "text": "Smaller tasks can be allocated to people.\n\nParts can be tested separately.\n\nInterfaces between parts must still agree.\n\nChallenge: Why must both programmers agree on member ID?\n\nTheir parts exchange member details. A consistent ID allows the parts to work together."
+        },
+        {
+          "id": "f6",
+          "face": "left",
+          "x": 1888,
+          "y": 540,
+          "title": "Check coverage",
+          "text": "Compare the parts with the requirements.\n\nLook for missing responsibilities.\n\nAvoid duplicate or unclear tasks.\n\nChallenge: Which responsibility is missing?\n\nProcessing returns is missing and must be included."
+        }
+      ],
+      "models": []
+    }
+  ]
+}
