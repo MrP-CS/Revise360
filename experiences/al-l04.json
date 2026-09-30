@@ -1,297 +1,342 @@
 {
-  "id": "al-l04",
-  "lesson": 4,
-  "title": "Algorithm planning room",
-  "scenes": [
+ "id": "al-l04",
+ "lesson": 4,
+ "title": "Flowchart factory",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Flowchart factory",
+   "img": "img/AL_L04_FlowchartFactory_360.jpg",
+   "imgHi": "img/AL_L04_FlowchartFactory_360_hi.jpg",
+   "stations": [
     {
-      "id": "main",
-      "title": "Algorithm planning room",
-      "img": "img/AL_L04_AlgorithmPlanningRoom_360.jpg",
-      "imgHi": "img/AL_L04_AlgorithmPlanningRoom_360_hi.jpg",
-      "stations": [
-        {
-          "label": "1",
-          "name": "A clear goal",
-          "col": "#40c4ff",
-          "face": "right",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "Algorithmic thinking involves...",
-              "a": [
-                "Planning precise steps to solve a problem",
-                "Only choosing a screen colour",
-                "Removing all processing",
-                "Guessing an output"
-              ],
-              "fb": "Planning precise steps to solve a problem"
-            },
-            {
-              "t": "mcq",
-              "q": "A useful algorithm must...",
-              "a": [
-                "Reach the stated goal through precise steps",
-                "Depend on guessing",
-                "Always use exactly ten steps"
-              ],
-              "fb": "Reach the stated goal through precise steps. Algorithmic thinking plans a solution as steps."
-            }
-          ]
-        },
-        {
-          "label": "2",
-          "name": "Input, process, output",
-          "col": "#aa6eeb",
-          "face": "right",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "sort",
-              "q": "Classify the hire steps.",
-              "cats": [
-                "Input",
-                "Process",
-                "Output"
-              ],
-              "items": [
-                [
-                  "Read hours",
-                  "Input"
-                ],
-                [
-                  "Multiply hours by rate",
-                  "Process"
-                ],
-                [
-                  "Display charge",
-                  "Output"
-                ]
-              ],
-              "fb": "The calculation is the process."
-            },
-            {
-              "t": "mcq",
-              "q": "Multiplying hours by rate is...",
-              "a": [
-                "Processing",
-                "Input",
-                "A route map"
-              ],
-              "fb": "Processing. Identify data entering the algorithm."
-            }
-          ]
-        },
-        {
-          "label": "3",
-          "name": "Order matters",
-          "col": "#ff785a",
-          "face": "back",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "order",
-              "q": "Order a total-cost algorithm.",
-              "steps": [
-                "Input quantity",
-                "Input unit price",
-                "Calculate quantity times unit price",
-                "Output total"
-              ],
-              "fb": "Read both values before calculating."
-            },
-            {
-              "t": "mcq",
-              "q": "Which must happen before outputting a calculated total?",
-              "a": [
-                "Calculate the total",
-                "End the program",
-                "Discard the inputs"
-              ],
-              "fb": "Calculate the total. A value must be available before use."
-            }
-          ]
-        },
-        {
-          "label": "4",
-          "name": "Remove ambiguity",
-          "col": "#ffa028",
-          "face": "back",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "Which instruction is precise?",
-              "a": [
-                "Increase score by 2",
-                "Increase score a little",
-                "Process the result somehow",
-                "Repeat until it seems right"
-              ],
-              "fb": "Increase score by 2"
-            },
-            {
-              "t": "mcq",
-              "q": "Which word often makes an instruction ambiguous?",
-              "a": [
-                "Some",
-                "Exactly",
-                "Multiply"
-              ],
-              "fb": "Some. Instructions need clear actions and quantities."
-            }
-          ]
-        },
-        {
-          "label": "5",
-          "name": "Follow the steps",
-          "col": "#50dc96",
-          "face": "left",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "For x = 5, then x = x + 2, then x = x * 3, what is x?",
-              "a": [
-                "21",
-                "17",
-                "15",
-                "10"
-              ],
-              "fb": "5 + 2 = 7, then 7 * 3 = 21."
-            },
-            {
-              "t": "mcq",
-              "q": "x = 3; x = x + 4; x = x * 2. Output?",
-              "a": [
-                "14",
-                "11",
-                "10"
-              ],
-              "fb": "14. Trace an algorithm in its exact order."
-            }
-          ]
-        },
-        {
-          "label": "6",
-          "name": "Check the result",
-          "col": "#f05aaa",
-          "face": "left",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "A total is wrong. What is the useful next step?",
-              "a": [
-                "Trace each calculation using known inputs",
-                "Change all variable names at random",
-                "Ignore the expected result",
-                "Delete every input"
-              ],
-              "fb": "Trace each calculation using known inputs"
-            },
-            {
-              "t": "mcq",
-              "q": "3 items cost 4 each. Why is output 7 wrong?",
-              "a": [
-                "It adds instead of multiplying",
-                "It multiplies correctly",
-                "It uses no inputs"
-              ],
-              "fb": "It adds instead of multiplying. Use a simple example with a known answer."
-            }
-          ]
-        },
-        {
-          "label": "★",
-          "name": "Final challenge",
-          "col": "#ffd046",
-          "face": "down",
-          "x": 1024,
-          "y": 800,
-          "tasks": [
-            {
-              "t": "order",
-              "q": "Put a simple loan algorithm in order.",
-              "steps": [
-                "Read borrower ID and item ID",
-                "Check the item is available",
-                "Record the loan if available",
-                "Display the result"
-              ],
-              "fb": "The check must happen before recording the loan."
-            },
-            {
-              "t": "mcq",
-              "q": "What is the charge for 4 hours at 3 per hour?",
-              "a": [
-                "12",
-                "7",
-                "1",
-                "43"
-              ],
-              "fb": "12"
-            }
-          ]
-        }
-      ],
-      "info": [
-        {
-          "id": "f1",
-          "face": "right",
-          "x": 920,
-          "y": 540,
-          "title": "A clear goal",
-          "text": "Algorithmic thinking plans a solution as steps.\n\nState what must be achieved.\n\nCheck that the steps reach that goal.\n\nChallenge: Why state the goal before writing steps?\n\nThe goal defines what counts as a correct result."
-        },
-        {
-          "id": "f2",
-          "face": "right",
-          "x": 1888,
-          "y": 540,
-          "title": "Input, process, output",
-          "text": "Identify data entering the algorithm.\n\nIdentify operations on the data.\n\nIdentify the result to communicate.\n\nChallenge: Name the inputs for calculating hire cost.\n\nThe number of hours and the hourly rate."
-        },
-        {
-          "id": "f3",
-          "face": "back",
-          "x": 920,
-          "y": 540,
-          "title": "Order matters",
-          "text": "A value must be available before use.\n\nCalculate before displaying the result.\n\nChanging order can change behaviour.\n\nChallenge: What is wrong with printing total first?\n\nThe total has not yet been calculated from the inputs."
-        },
-        {
-          "id": "f4",
-          "face": "back",
-          "x": 1888,
-          "y": 540,
-          "title": "Remove ambiguity",
-          "text": "Instructions need clear actions and quantities.\n\nAvoid words such as some or enough.\n\nSpecify what happens in each case.\n\nChallenge: Rewrite Add some bonus points precisely.\n\nAdd 5 bonus points to score is one precise example."
-        },
-        {
-          "id": "f5",
-          "face": "left",
-          "x": 920,
-          "y": 540,
-          "title": "Follow the steps",
-          "text": "Trace an algorithm in its exact order.\n\nUse the current value of a variable.\n\nAssignment replaces its previous value.\n\nChallenge: What is printed? Show the intermediate value.\n\nx becomes 7 and then 14, so 14 is printed."
-        },
-        {
-          "id": "f6",
-          "face": "left",
-          "x": 1888,
-          "y": 540,
-          "title": "Check the result",
-          "text": "Use a simple example with a known answer.\n\nCompare expected and actual results.\n\nCorrect the steps when they differ.\n\nChallenge: How should the wrong rule be corrected?\n\nMultiply quantity by price. Adding gives 7, not the expected 12."
-        }
-      ],
-      "models": []
+     "label": "1",
+     "name": "The five symbols",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "match",
+       "q": "Match each flowchart symbol to what it represents.",
+       "pairs": [
+        [
+         "Rounded box",
+         "Start or stop"
+        ],
+        [
+         "Parallelogram",
+         "Input or output"
+        ],
+        [
+         "Rectangle",
+         "A process"
+        ],
+        [
+         "Diamond",
+         "A decision"
+        ]
+       ],
+       "fb": "These four cover almost every flowchart you will draw or read."
+      },
+      {
+       "t": "mcq",
+       "q": "Which symbol has two arrows leaving it?",
+       "a": [
+        "The diamond, because a decision has a yes path and a no path",
+        "The rectangle",
+        "The parallelogram",
+        "The rounded box"
+       ],
+       "fb": "Every decision splits the flow in two."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Reading a flowchart",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "A flowchart reads: input n, is n greater than 10, if yes output 'big', if no output 'small'. What does an input of 7 produce?",
+       "a": [
+        "small",
+        "big",
+        "7",
+        "Nothing: it stops"
+       ],
+       "fb": "7 is not greater than 10, so the no path is taken."
+      },
+      {
+       "t": "mcq",
+       "q": "A flowchart has an arrow going back to an earlier box. What does that show?",
+       "a": [
+        "A loop: those steps repeat",
+        "An error in the diagram",
+        "A subprogram call",
+        "The program has finished"
+       ],
+       "fb": "Loops in flowcharts are drawn as arrows going back up."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Decisions",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "order",
+       "q": "Put these boxes into the order a grading flowchart would use.",
+       "steps": [
+        "Start",
+        "Input the mark",
+        "Is the mark 70 or more?",
+        "Is the mark 50 or more?",
+        "Output the grade",
+        "Stop"
+       ],
+       "fb": "Test the highest boundary first, or a distinction is reported as a merit."
+      },
+      {
+       "t": "mcq",
+       "q": "Why must the highest grade be tested first?",
+       "a": [
+        "Otherwise a mark of 80 would match the lower condition and be given the wrong grade",
+        "Because diamonds must be in order",
+        "Because it is faster",
+        "Because 70 is bigger than 50"
+       ],
+       "fb": "Order of conditions is a classic source of logic errors."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Loops in flowcharts",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "order",
+       "q": "Put these boxes into the order for a flowchart that totals ten numbers.",
+       "steps": [
+        "Start",
+        "Set the total to 0 and the count to 0",
+        "Input a number",
+        "Add it to the total and add 1 to the count",
+        "Is the count 10?",
+        "Output the total",
+        "Stop"
+       ],
+       "fb": "The decision sends the flow back to the input box until the count reaches ten."
+      },
+      {
+       "t": "mcq",
+       "q": "What happens if the loop's decision can never be true?",
+       "a": [
+        "The program never stops: an infinite loop",
+        "It skips the loop entirely",
+        "It reports a syntax error",
+        "It runs ten times anyway"
+       ],
+       "fb": "Always check the condition can eventually be met."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Flowchart or pseudocode?",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "When is a flowchart the better choice?",
+       "a": [
+        "When explaining the shape of an algorithm to someone who does not program",
+        "When the algorithm is 500 lines long",
+        "When speed matters",
+        "When using Python"
+       ],
+       "fb": "Pictures are good for structure and poor for length."
+      },
+      {
+       "t": "mcq",
+       "q": "Which statement is true?",
+       "a": [
+        "A flowchart and pseudocode can describe exactly the same algorithm",
+        "Flowcharts run faster",
+        "Pseudocode is a programming language",
+        "Only flowcharts can show loops"
+       ],
+       "fb": "They are two notations for the same thing."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Drawing a flowchart in the exam",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "multi",
+       "q": "Which of these would lose marks in a flowchart question? Select all that apply.",
+       "opts": [
+        "Using a rectangle for a decision",
+        "Leaving the arrows from a diamond unlabelled",
+        "A path that never reaches a stop",
+        "Using a parallelogram for input",
+        "Drawing it in pencil",
+        "Using a ruler"
+       ],
+       "correct": [
+        "Using a rectangle for a decision",
+        "Leaving the arrows from a diamond unlabelled",
+        "A path that never reaches a stop"
+       ],
+       "fb": "Neatness is not marked; correct symbols and complete paths are."
+      },
+      {
+       "t": "mcq",
+       "q": "A flowchart's decision has only one arrow leaving it. What is wrong?",
+       "a": [
+        "A decision must have both a true and a false path",
+        "Decisions have three paths",
+        "Decisions need no arrows",
+        "Nothing is wrong"
+       ],
+       "fb": "Otherwise there is no way through when the condition is false."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: build the flowchart",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "order",
+       "q": "Put the boxes of the ticket machine flowchart into order.",
+       "steps": [
+        "Start",
+        "Input the passenger's age",
+        "Is the age under 16?",
+        "Set the price to £2 or £4",
+        "Output the price",
+        "Stop"
+       ],
+       "fb": "Start, input, decide, set, output, stop: the shape of most short flowcharts."
+      },
+      {
+       "t": "sort",
+       "q": "Which flowchart symbol would each step use?",
+       "cats": [
+        "Terminal",
+        "Input/output",
+        "Process",
+        "Decision"
+       ],
+       "items": [
+        [
+         "Start",
+         "Terminal"
+        ],
+        [
+         "Stop",
+         "Terminal"
+        ],
+        [
+         "Input the age",
+         "Input/output"
+        ],
+        [
+         "Output the price",
+         "Input/output"
+        ],
+        [
+         "Set the price to £2",
+         "Process"
+        ],
+        [
+         "Is the age under 16?",
+         "Decision"
+        ]
+       ],
+       "fb": "Getting the symbol right is where the marks are."
+      }
+     ]
     }
-  ]
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 1035,
+     "y": 585,
+     "title": "Older than software",
+     "text": "Flowcharts were used to plan industrial processes in the 1920s, long before they were used for programs."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1821,
+     "y": 401,
+     "title": "Standard shapes",
+     "text": "The symbols are set out in an international standard, which is why a flowchart drawn in one country is readable in another."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 1035,
+     "y": 585,
+     "title": "Why diamonds",
+     "text": "The diamond was chosen because two arrows can leave it cleanly, one from each side."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1821,
+     "y": 401,
+     "title": "Too big to draw",
+     "text": "Real programs are far too large to flowchart. They are used for the tricky part, not the whole thing."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 1035,
+     "y": 585,
+     "title": "Drawing tools",
+     "text": "Any diagram tool will do, and drawing one by hand on paper is perfectly acceptable in the exam."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1821,
+     "y": 401,
+     "title": "Exam tip",
+     "text": "Read a flowchart with a specific input and follow the arrows with your finger. Most reading errors come from skipping a branch."
+    }
+   ],
+   "models": []
+  }
+ ]
 }

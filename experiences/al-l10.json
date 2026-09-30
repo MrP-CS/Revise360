@@ -1,292 +1,369 @@
 {
-  "id": "al-l10",
-  "lesson": 10,
-  "title": "Merge and insertion works",
-  "scenes": [
+ "id": "al-l10",
+ "lesson": 10,
+ "title": "Fault finder",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Fault finder",
+   "img": "img/AL_L10_FaultFinder_360.jpg",
+   "imgHi": "img/AL_L10_FaultFinder_360_hi.jpg",
+   "stations": [
     {
-      "id": "main",
-      "title": "Merge and insertion works",
-      "img": "img/AL_L10_MergeInsertionWorks_360.jpg",
-      "imgHi": "img/AL_L10_MergeInsertionWorks_360_hi.jpg",
-      "stations": [
-        {
-          "label": "1",
-          "name": "Divide the list",
-          "col": "#40c4ff",
-          "face": "right",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "order",
-              "q": "Order these merge-sort stages.",
-              "steps": [
-                "Split the original list",
-                "Split again into single items",
-                "Merge into sorted pairs",
-                "Merge the pairs into the sorted list"
-              ],
-              "fb": "Splitting alone does not order the data."
-            },
-            {
-              "t": "mcq",
-              "q": "Merge sort splits until...",
-              "a": [
-                "Single-item lists remain",
-                "All values are equal",
-                "The list is already reversed"
-              ],
-              "fb": "Single-item lists remain. Merge sort splits a list into smaller parts."
-            }
-          ]
-        },
-        {
-          "label": "2",
-          "name": "Merge sorted groups",
-          "col": "#aa6eeb",
-          "face": "right",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "Merge [1, 8] and [4, 6]. Result?",
-              "a": [
-                "1, 4, 6, 8",
-                "1, 8, 4, 6",
-                "4, 6, 1, 8",
-                "8, 6, 4, 1"
-              ],
-              "fb": "1, 4, 6, 8"
-            },
-            {
-              "t": "mcq",
-              "q": "Which value is chosen first when merging [4,9] and [2,7]?",
-              "a": [
-                "2",
-                "4",
-                "9"
-              ],
-              "fb": "2. Compare the front unmerged values."
-            }
-          ]
-        },
-        {
-          "label": "3",
-          "name": "Read a merge segment",
-          "col": "#ff785a",
-          "face": "back",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "Left is exhausted but right has [9, 12]. What next?",
-              "a": [
-                "Append 9 and 12",
-                "Discard both values",
-                "Start splitting again",
-                "Reverse the output"
-              ],
-              "fb": "Append 9 and 12"
-            },
-            {
-              "t": "mcq",
-              "q": "After taking left[i], which pointer advances?",
-              "a": [
-                "i",
-                "j",
-                "Both every time"
-              ],
-              "fb": "i. Read from each sorted input group."
-            }
-          ]
-        },
-        {
-          "label": "4",
-          "name": "Insert into a prefix",
-          "col": "#ffa028",
-          "face": "back",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "After inserting 3 into prefix [2, 7, 9], the prefix is...",
-              "a": [
-                "2, 3, 7, 9",
-                "3, 2, 7, 9",
-                "2, 7, 9, 3",
-                "2, 7, 3, 9"
-              ],
-              "fb": "2, 3, 7, 9"
-            },
-            {
-              "t": "mcq",
-              "q": "Insertion sort grows...",
-              "a": [
-                "A sorted prefix",
-                "An unsorted prefix only",
-                "A binary search range"
-              ],
-              "fb": "A sorted prefix. Treat the first item as a sorted prefix."
-            }
-          ]
-        },
-        {
-          "label": "5",
-          "name": "Shift and insert",
-          "col": "#50dc96",
-          "face": "left",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "order",
-              "q": "Insert key 4 into sorted prefix [1, 6, 8].",
-              "steps": [
-                "Save key 4",
-                "Shift 8 one place right",
-                "Shift 6 one place right",
-                "Place 4 after 1"
-              ],
-              "fb": "Only values larger than the key need shifting."
-            },
-            {
-              "t": "mcq",
-              "q": "When inserting 5 into [2,7,9], which values shift?",
-              "a": [
-                "7 and 9",
-                "Only 2",
-                "2, 7 and 9"
-              ],
-              "fb": "7 and 9. Save the key before shifting."
-            }
-          ]
-        },
-        {
-          "label": "6",
-          "name": "Compare the methods",
-          "col": "#f05aaa",
-          "face": "left",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "match",
-              "q": "Match the method to its main approach.",
-              "pairs": [
-                [
-                  "Bubble",
-                  "Compare and swap neighbours"
-                ],
-                [
-                  "Insertion",
-                  "Insert a key into a sorted prefix"
-                ],
-                [
-                  "Merge",
-                  "Split then merge sorted groups"
-                ]
-              ],
-              "fb": "Do not describe merge sort as repeated adjacent swapping."
-            },
-            {
-              "t": "mcq",
-              "q": "Which method splits and merges groups?",
-              "a": [
-                "Merge sort",
-                "Bubble sort",
-                "Linear search"
-              ],
-              "fb": "Merge sort. Bubble sort compares neighbours over passes."
-            }
-          ]
-        },
-        {
-          "label": "★",
-          "name": "Final challenge",
-          "col": "#ffd046",
-          "face": "down",
-          "x": 1024,
-          "y": 800,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "Insertion sort on [4, 1, 3, 2]: after inserting the first two keys, the list is...",
-              "a": [
-                "1, 3, 4, 2",
-                "1, 2, 3, 4",
-                "4, 3, 1, 2",
-                "1, 4, 2, 3"
-              ],
-              "fb": "1, 3, 4, 2"
-            },
-            {
-              "t": "mcq",
-              "q": "Which statement describes the usual school-level merge-sort implementation?",
-              "a": [
-                "It uses additional temporary storage during merging",
-                "It never splits data",
-                "It only swaps adjacent pairs",
-                "It needs the input already sorted"
-              ],
-              "fb": "It uses additional temporary storage during merging"
-            }
-          ]
-        }
-      ],
-      "info": [
-        {
-          "id": "f1",
-          "face": "right",
-          "x": 920,
-          "y": 540,
-          "title": "Divide the list",
-          "text": "Merge sort splits a list into smaller parts.\n\nContinue until single-item lists remain.\n\nA single-item list is already sorted.\n\nChallenge: Why can splitting stop at one item?\n\nA single item cannot be out of order relative to another item in its list."
-        },
-        {
-          "id": "f2",
-          "face": "right",
-          "x": 1888,
-          "y": 540,
-          "title": "Merge sorted groups",
-          "text": "Compare the front unmerged values.\n\nTake the smaller value into the output.\n\nAppend the remainder when one group empties.\n\nChallenge: Which value is chosen after 2? Why?\n\n3, because it is smaller than the other front value, 7."
-        },
-        {
-          "id": "f3",
-          "face": "back",
-          "x": 920,
-          "y": 540,
-          "title": "Read a merge segment",
-          "text": "Read from each sorted input group.\n\nAdvance only the pointer you used.\n\nDo not discard unmerged values.\n\nChallenge: Why increment only the pointer used?\n\nThe other front value has not been output yet and must remain available for comparison."
-        },
-        {
-          "id": "f4",
-          "face": "back",
-          "x": 1888,
-          "y": 540,
-          "title": "Insert into a prefix",
-          "text": "Treat the first item as a sorted prefix.\n\nTake the next item as the key.\n\nInsert the key at its correct position.\n\nChallenge: What is the sorted prefix after inserting 5?\n\n2, 5, 6. The final value 1 has not yet been inserted."
-        },
-        {
-          "id": "f5",
-          "face": "left",
-          "x": 920,
-          "y": 540,
-          "title": "Shift and insert",
-          "text": "Save the key before shifting.\n\nMove larger prefix values one position right.\n\nPlace the key in the gap.\n\nChallenge: Why save the key before shifting values?\n\nShifting could overwrite its original position. Saving it preserves the value for insertion."
-        },
-        {
-          "id": "f6",
-          "face": "left",
-          "x": 1888,
-          "y": 540,
-          "title": "Compare the methods",
-          "text": "Bubble sort compares neighbours over passes.\n\nInsertion sort grows a sorted prefix.\n\nMerge sort splits and merges sorted groups.\n\nChallenge: Which method can use few shifts on nearly sorted data?\n\nInsertion sort, because many keys are already close to their correct positions."
-        }
-      ],
-      "models": []
+     "label": "1",
+     "name": "Syntax errors",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What happens when a program contains a syntax error?",
+       "a": [
+        "It will not run: the translator reports the error",
+        "It runs but gives the wrong answer",
+        "It runs more slowly",
+        "It runs normally"
+       ],
+       "fb": "That is actually helpful: you find out immediately."
+      },
+      {
+       "t": "bugline",
+       "q": "Find the syntax error in this program.",
+       "code": [
+        "total = 0",
+        "for i = 1 to 5",
+        "  total = total + i",
+        "  print('Running total: , total)",
+        "next i",
+        "print(total)"
+       ],
+       "line": 4,
+       "kind": "Syntax",
+       "fix": "Close the string: print('Running total: ', total)",
+       "fb": "A missing quotation mark means the translator cannot tell where the text ends.",
+       "title": "Which line breaks the rules?"
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Logic errors",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1355,
+     "y": 1859,
+     "tasks": [
+      {
+       "t": "bugline",
+       "q": "Find the logic error in this program, which should report a pass at 50 or more.",
+       "code": [
+        "mark = input('Enter the mark: ')",
+        "if mark > 50 then",
+        "  print('Pass')",
+        "else",
+        "  print('Fail')",
+        "endif"
+       ],
+       "line": 2,
+       "kind": "Logic",
+       "fix": "Use >= so that a mark of exactly 50 passes",
+       "fb": "It runs perfectly and gives the wrong answer for one particular input.",
+       "title": "Which line gives the wrong answer?"
+      },
+      {
+       "t": "mcq",
+       "q": "Why are logic errors harder to find than syntax errors?",
+       "a": [
+        "The program runs without complaint, so nothing points to the mistake",
+        "They are always longer",
+        "They only happen in long programs",
+        "The translator hides them"
+       ],
+       "fb": "You have to test carefully to notice the answer is wrong."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Telling them apart",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Is each mistake a syntax error or a logic error?",
+       "cats": [
+        "Syntax error",
+        "Logic error"
+       ],
+       "items": [
+        [
+         "A missing closing bracket",
+         "Syntax error"
+        ],
+        [
+         "Using + where - was meant",
+         "Logic error"
+        ],
+        [
+         "Misspelling the keyword while",
+         "Syntax error"
+        ],
+        [
+         "A loop that runs one time too many",
+         "Logic error"
+        ],
+        [
+         "A missing quotation mark",
+         "Syntax error"
+        ],
+        [
+         "Testing > instead of >=",
+         "Logic error"
+        ]
+       ],
+       "fb": "Broken rules against wrong meaning."
+      },
+      {
+       "t": "mcq",
+       "q": "A program outputs 11 when it should output 10. What kind of error is that?",
+       "a": [
+        "A logic error",
+        "A syntax error",
+        "A translation error",
+        "No error at all"
+       ],
+       "fb": "It ran, so the rules were obeyed."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Finding the line",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "bugline",
+       "q": "This program should output the numbers 1 to 5. Find the error.",
+       "code": [
+        "for i = 1 to 5",
+        "  print(i)",
+        "next j"
+       ],
+       "line": 3,
+       "kind": "Syntax",
+       "fix": "The loop variable must match: next i",
+       "fb": "The name after next has to be the one the loop counts with.",
+       "title": "Which line stops it running?"
+      },
+      {
+       "t": "mcq",
+       "q": "Why work through a program with a specific input?",
+       "a": [
+        "It shows exactly where what happens stops matching what should happen",
+        "It makes the program faster",
+        "It fixes syntax errors",
+        "It removes the need for testing"
+       ],
+       "fb": "That is what a trace table is for, in the next lesson."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Suggesting a fix",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which is the strongest suggested fix?",
+       "a": [
+        "On line 2, change > to >= so that a mark of exactly 50 passes",
+        "Fix line 2",
+        "Change the operator",
+        "Correct the logic error"
+       ],
+       "fb": "Line, change, and why."
+      },
+      {
+       "t": "bugline",
+       "q": "This should add up the numbers 1 to 10 but outputs 0. Find the error.",
+       "code": [
+        "total = 0",
+        "for i = 1 to 10",
+        "  total = total + i",
+        "next i",
+        "print(total * 0)"
+       ],
+       "line": 5,
+       "kind": "Logic",
+       "fix": "Print total, not total * 0",
+       "fb": "Every line obeys the rules, so the program runs and prints a confident 0.",
+       "title": "Why does it print zero?"
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Answering error questions",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "bugline",
+       "q": "This program should print 'Well done' when the score is 10 or more. Find the error.",
+       "code": [
+        "score = input('Score: ')",
+        "if score >= 10 then",
+        "  print('Try again')",
+        "else",
+        "  print('Well done')",
+        "endif"
+       ],
+       "line": 3,
+       "kind": "Logic",
+       "fix": "Swap the outputs: 'Well done' belongs on the true branch",
+       "fb": "The condition is right and the messages are the wrong way round.",
+       "title": "Which line has the wrong output?"
+      },
+      {
+       "t": "mcq",
+       "q": "A question is worth three marks for identifying and correcting an error. What are the three marks likely to be for?",
+       "a": [
+        "The line number, the type of error, and the correction",
+        "Three different errors",
+        "Three lines of code",
+        "Spelling, grammar and neatness"
+       ],
+       "fb": "Answer all three parts explicitly."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: debug it",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "bugline",
+       "q": "This program should count down from 5 to 1. Find the error.",
+       "code": [
+        "n = 5",
+        "while n > 0",
+        "  print(n)",
+        "  n = n + 1",
+        "endwhile"
+       ],
+       "line": 4,
+       "kind": "Logic",
+       "fix": "Change n = n + 1 to n = n - 1",
+       "fb": "It obeys every rule of the language and never stops running.",
+       "title": "Why does it never stop?"
+      },
+      {
+       "t": "sort",
+       "q": "Is each mistake a syntax error or a logic error?",
+       "cats": [
+        "Syntax error",
+        "Logic error"
+       ],
+       "items": [
+        [
+         "print('Hello)",
+         "Syntax error"
+        ],
+        [
+         "Using * where + was meant",
+         "Logic error"
+        ],
+        [
+         "Forgetting endif",
+         "Syntax error"
+        ],
+        [
+         "A loop starting at 0 instead of 1",
+         "Logic error"
+        ],
+        [
+         "Writing whlie instead of while",
+         "Syntax error"
+        ],
+        [
+         "Testing the lower grade boundary first",
+         "Logic error"
+        ]
+       ],
+       "fb": "If the translator would object, it is a syntax error."
+      }
+     ]
     }
-  ]
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 1035,
+     "y": 585,
+     "title": "The first bug",
+     "text": "In 1947 a moth was found jammed in a relay of the Harvard Mark II. The team taped it into the logbook and called it the first actual case of a bug being found."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1828,
+     "y": 440,
+     "title": "Syntax errors are the friendly ones",
+     "text": "They stop the program immediately and tell you roughly where. Logic errors can survive into released software for years."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 1035,
+     "y": 585,
+     "title": "Off by one",
+     "text": "Loops that run one time too many or too few are so common they have their own name: off-by-one errors."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1828,
+     "y": 440,
+     "title": "Runtime errors",
+     "text": "There is a third kind: errors that appear only while running, such as dividing by zero. At GCSE the focus is syntax and logic."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 1035,
+     "y": 585,
+     "title": "Rubber ducking",
+     "text": "Programmers explain their code line by line to an inanimate object to find logic errors. It works surprisingly often."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1821,
+     "y": 401,
+     "title": "Exam tip",
+     "text": "Always give the line number. Describing the error without locating it usually loses a mark."
+    }
+   ],
+   "models": []
+  }
+ ]
 }

@@ -1,309 +1,560 @@
 {
-  "id": "al-l11",
-  "lesson": 11,
-  "title": "Flowchart design studio",
-  "scenes": [
+ "id": "al-l11",
+ "lesson": 11,
+ "title": "Trace room",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Trace room",
+   "img": "img/AL_L11_TraceRoom_360.jpg",
+   "imgHi": "img/AL_L11_TraceRoom_360_hi.jpg",
+   "stations": [
     {
-      "id": "main",
-      "title": "Flowchart design studio",
-      "img": "img/AL_L11_FlowchartDesignStudio_360.jpg",
-      "imgHi": "img/AL_L11_FlowchartDesignStudio_360_hi.jpg",
-      "stations": [
-        {
-          "label": "1",
-          "name": "Start and finish",
-          "col": "#40c4ff",
-          "face": "right",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "match",
-              "q": "Match the symbol name to its role.",
-              "pairs": [
-                [
-                  "Terminal",
-                  "Start or end"
-                ],
-                [
-                  "Flow line",
-                  "Direction of execution"
-                ],
-                [
-                  "Process",
-                  "Calculation or assignment"
-                ]
-              ],
-              "fb": "A terminal is commonly drawn as an oval or rounded rectangle."
-            },
-            {
-              "t": "mcq",
-              "q": "Which symbol marks the end?",
-              "a": [
-                "Terminal",
-                "Decision diamond",
-                "Input parallelogram"
-              ],
-              "fb": "Terminal. A terminal marks start or end."
-            }
-          ]
-        },
-        {
-          "label": "2",
-          "name": "Read and write",
-          "col": "#aa6eeb",
-          "face": "right",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "Which action belongs in an input/output symbol?",
-              "a": [
-                "Display the total",
-                "Set total to 0",
-                "Test total > 10",
-                "Start"
-              ],
-              "fb": "Display the total"
-            },
-            {
-              "t": "mcq",
-              "q": "Output total is drawn in...",
-              "a": [
-                "An input/output symbol",
-                "A decision diamond",
-                "A terminal only"
-              ],
-              "fb": "An input/output symbol. A parallelogram represents input or output."
-            }
-          ]
-        },
-        {
-          "label": "3",
-          "name": "Process the data",
-          "col": "#ff785a",
-          "face": "back",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "Which label is a process?",
-              "a": [
-                "total = price * quantity",
-                "Input quantity",
-                "Output total",
-                "Is quantity > 0?"
-              ],
-              "fb": "total = price * quantity"
-            },
-            {
-              "t": "mcq",
-              "q": "Assign total = 0 is drawn in...",
-              "a": [
-                "A process rectangle",
-                "An input/output symbol",
-                "A decision diamond"
-              ],
-              "fb": "A process rectangle. A rectangle represents a process."
-            }
-          ]
-        },
-        {
-          "label": "4",
-          "name": "Branch on a decision",
-          "col": "#ffa028",
-          "face": "back",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "What belongs inside a decision diamond?",
-              "a": [
-                "age >= 12",
-                "Input age",
-                "Print age",
-                "Start"
-              ],
-              "fb": "age >= 12"
-            },
-            {
-              "t": "mcq",
-              "q": "The two paths from a condition can be labelled...",
-              "a": [
-                "True and False",
-                "Start and End only",
-                "Input and Output only"
-              ],
-              "fb": "True and False. A diamond contains a condition."
-            }
-          ]
-        },
-        {
-          "label": "5",
-          "name": "Use a subprogram",
-          "col": "#50dc96",
-          "face": "left",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "A rectangle with extra vertical lines at its sides usually means...",
-              "a": [
-                "Subprogram or predefined process",
-                "Input/output",
-                "Start only",
-                "A decision"
-              ],
-              "fb": "Subprogram or predefined process"
-            },
-            {
-              "t": "mcq",
-              "q": "A subprogram symbol refers to...",
-              "a": [
-                "A defined set of steps elsewhere",
-                "An undefined random operation",
-                "Only a variable value"
-              ],
-              "fb": "A defined set of steps elsewhere. A predefined-process symbol calls a named subprogram."
-            }
-          ]
-        },
-        {
-          "label": "6",
-          "name": "Check every route",
-          "col": "#f05aaa",
-          "face": "left",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "order",
-              "q": "Order a simple flowchart design process.",
-              "steps": [
-                "State inputs and required outputs",
-                "Choose symbols for the steps",
-                "Connect and label the paths",
-                "Trace each possible branch"
-              ],
-              "fb": "Check the design before coding it."
-            },
-            {
-              "t": "mcq",
-              "q": "A disconnected branch means...",
-              "a": [
-                "The next step is unclear",
-                "The flowchart is automatically correct",
-                "The branch runs faster"
-              ],
-              "fb": "The next step is unclear. Trace each branch using sample data."
-            }
-          ]
-        },
-        {
-          "label": "★",
-          "name": "Final challenge",
-          "col": "#ffd046",
-          "face": "down",
-          "x": 1024,
-          "y": 800,
-          "tasks": [
-            {
-              "t": "sort",
-              "q": "Choose a flowchart symbol for each action.",
-              "cats": [
-                "Input/output",
-                "Process",
-                "Decision"
-              ],
-              "items": [
-                [
-                  "Read hours",
-                  "Input/output"
-                ],
-                [
-                  "charge = hours * 3",
-                  "Process"
-                ],
-                [
-                  "charge > 12?",
-                  "Decision"
-                ],
-                [
-                  "Print charge",
-                  "Input/output"
-                ]
-              ],
-              "fb": "The symbol should match the action."
-            },
-            {
-              "t": "mcq",
-              "q": "What must a decision have in this two-way flowchart?",
-              "a": [
-                "A labelled path for each outcome",
-                "Only a Yes path",
-                "No outgoing arrows",
-                "Two start symbols"
-              ],
-              "fb": "A labelled path for each outcome"
-            }
-          ]
-        }
-      ],
-      "info": [
-        {
-          "id": "f1",
-          "face": "right",
-          "x": 920,
-          "y": 540,
-          "title": "Start and finish",
-          "text": "A terminal marks start or end.\n\nA flow line shows the next step.\n\nEvery intended path needs a clear destination.\n\nChallenge: Why should an arrow have a clear direction?\n\nIt shows which instruction executes next."
-        },
-        {
-          "id": "f2",
-          "face": "right",
-          "x": 1888,
-          "y": 540,
-          "title": "Read and write",
-          "text": "A parallelogram represents input or output.\n\nLabel the action and the data.\n\nInputs and outputs are different operations.\n\nChallenge: Which symbol should contain Input age?\n\nAn input/output parallelogram."
-        },
-        {
-          "id": "f3",
-          "face": "back",
-          "x": 920,
-          "y": 540,
-          "title": "Process the data",
-          "text": "A rectangle represents a process.\n\nUse it for calculations or assignments.\n\nShow the operation clearly.\n\nChallenge: Which symbol should contain total = total + 3?\n\nA process rectangle, because the value is being updated."
-        },
-        {
-          "id": "f4",
-          "face": "back",
-          "x": 1888,
-          "y": 540,
-          "title": "Branch on a decision",
-          "text": "A diamond contains a condition.\n\nLabel outgoing paths Yes/No or True/False.\n\nBoth outcomes must be handled.\n\nChallenge: What is missing if only the Yes path is drawn?\n\nThe behaviour when the item is unavailable is not defined."
-        },
-        {
-          "id": "f5",
-          "face": "left",
-          "x": 920,
-          "y": 540,
-          "title": "Use a subprogram",
-          "text": "A predefined-process symbol calls a named subprogram.\n\nIts detailed steps may be shown elsewhere.\n\nIt supports a clear top-level algorithm.\n\nChallenge: How does a subprogram symbol help a large flowchart?\n\nIt keeps the main diagram manageable while detailed steps are defined separately."
-        },
-        {
-          "id": "f6",
-          "face": "left",
-          "x": 1888,
-          "y": 540,
-          "title": "Check every route",
-          "text": "Trace each branch using sample data.\n\nCheck that arrows connect correctly.\n\nCompare outputs with the requirement.\n\nChallenge: Why test both branches?\n\nA correct true path does not prove the false path behaves correctly."
-        }
-      ],
-      "models": []
+     "label": "1",
+     "name": "What a trace table is",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does a trace table record?",
+       "a": [
+        "The value of each variable as the program runs, and anything it outputs",
+        "The errors in a program",
+        "How long the program takes",
+        "Which language it is written in"
+       ],
+       "fb": "It is a picture of the program's state, step by step."
+      },
+      {
+       "t": "mcq",
+       "q": "Why is it useful for finding logic errors?",
+       "a": [
+        "It shows exactly which line the values first go wrong on",
+        "It fixes the error automatically",
+        "It stops the program running",
+        "It reports syntax errors"
+       ],
+       "fb": "You compare what the values are with what they should be."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Filling one in",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "trace",
+       "q": "Trace this program and complete the table.",
+       "code": [
+        "total = 0",
+        "for i = 1 to 3",
+        "  total = total + i",
+        "next i",
+        "print(total)"
+       ],
+       "columns": [
+        "i",
+        "total",
+        "Output"
+       ],
+       "rows": [
+        [
+         "",
+         "0",
+         ""
+        ],
+        [
+         "1",
+         "",
+         ""
+        ],
+        [
+         "2",
+         "",
+         ""
+        ],
+        [
+         "3",
+         "",
+         ""
+        ]
+       ],
+       "answer": [
+        [
+         "",
+         "0",
+         ""
+        ],
+        [
+         "1",
+         "1",
+         ""
+        ],
+        [
+         "2",
+         "3",
+         ""
+        ],
+        [
+         "3",
+         "6",
+         "6"
+        ]
+       ],
+       "fb": "The total runs 0, 1, 3, 6, and the output happens after the loop finishes.",
+       "title": "Trace: adding 1 to 3"
+      },
+      {
+       "t": "mcq",
+       "q": "Why only write a value when it changes?",
+       "a": [
+        "It keeps the table readable and shows clearly where each change happened",
+        "It saves paper",
+        "The exam requires it",
+        "Unchanged values are wrong"
+       ],
+       "fb": "A column of repeated numbers hides what matters."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Tracing a loop",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "trace",
+       "q": "Trace this program and complete the table.",
+       "code": [
+        "n = 20",
+        "count = 0",
+        "while n > 1",
+        "  n = n DIV 2",
+        "  count = count + 1",
+        "endwhile",
+        "print(count)"
+       ],
+       "columns": [
+        "n",
+        "count",
+        "Output"
+       ],
+       "rows": [
+        [
+         "20",
+         "0",
+         ""
+        ],
+        [
+         "",
+         "",
+         ""
+        ],
+        [
+         "",
+         "",
+         ""
+        ],
+        [
+         "",
+         "",
+         ""
+        ],
+        [
+         "",
+         "",
+         ""
+        ]
+       ],
+       "answer": [
+        [
+         "20",
+         "0",
+         ""
+        ],
+        [
+         "10",
+         "1",
+         ""
+        ],
+        [
+         "5",
+         "2",
+         ""
+        ],
+        [
+         "2",
+         "3",
+         ""
+        ],
+        [
+         "1",
+         "4",
+         "4"
+        ]
+       ],
+       "fb": "20 halves to 10, 5, 2 then 1, so the loop runs four times.",
+       "title": "Trace: halving until one"
+      },
+      {
+       "t": "mcq",
+       "q": "A while loop's condition is false the first time it is tested. How many rows does the loop add?",
+       "a": [
+        "None: the body never runs",
+        "One",
+        "As many as the list",
+        "It runs once anyway"
+       ],
+       "fb": "A while loop may run zero times; a do-until always runs at least once."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Tracing selection",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "trace",
+       "q": "Trace this program with a mark of 62 and complete the table.",
+       "code": [
+        "mark = 62",
+        "if mark >= 70 then",
+        "  grade = 'D'",
+        "elseif mark >= 50 then",
+        "  grade = 'M'",
+        "else",
+        "  grade = 'P'",
+        "endif",
+        "print(grade)"
+       ],
+       "columns": [
+        "mark",
+        "grade",
+        "Output"
+       ],
+       "rows": [
+        [
+         "62",
+         "",
+         ""
+        ]
+       ],
+       "answer": [
+        [
+         "62",
+         "M",
+         "M"
+        ]
+       ],
+       "fb": "62 fails the first test and passes the second, so grade becomes M.",
+       "title": "Trace: the grade program"
+      },
+      {
+       "t": "mcq",
+       "q": "In an if-elseif-else, how many branches run?",
+       "a": [
+        "Exactly one",
+        "All of them",
+        "None of them",
+        "Two of them"
+       ],
+       "fb": "The first condition that is true wins, and the rest are skipped."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Finding the bug with a trace",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "trace",
+       "q": "This program should output the largest of the three numbers. Trace it and complete the table.",
+       "code": [
+        "a = 4",
+        "b = 9",
+        "c = 2",
+        "largest = a",
+        "if b > largest then largest = b",
+        "if c > largest then largest = c",
+        "print(largest)"
+       ],
+       "columns": [
+        "largest",
+        "Output"
+       ],
+       "rows": [
+        [
+         "4",
+         ""
+        ],
+        [
+         "",
+         ""
+        ],
+        [
+         "",
+         ""
+        ]
+       ],
+       "answer": [
+        [
+         "4",
+         ""
+        ],
+        [
+         "9",
+         ""
+        ],
+        [
+         "9",
+         "9"
+        ]
+       ],
+       "fb": "largest starts at 4, becomes 9, and 2 does not beat it.",
+       "title": "Trace: the largest of three"
+      },
+      {
+       "t": "mcq",
+       "q": "Your trace shows the right values until line 6, where total becomes 12 instead of 10. What does that tell you?",
+       "a": [
+        "The error is on line 6",
+        "The error is on line 1",
+        "There is no error",
+        "The whole program is wrong"
+       ],
+       "fb": "The first divergence locates the fault."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Trace tables in the exam",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "trace",
+       "q": "Trace this program and complete the table.",
+       "code": [
+        "x = 7",
+        "y = 0",
+        "while x > 0",
+        "  y = y + x",
+        "  x = x - 3",
+        "endwhile",
+        "print(y)"
+       ],
+       "columns": [
+        "x",
+        "y",
+        "Output"
+       ],
+       "rows": [
+        [
+         "7",
+         "0",
+         ""
+        ],
+        [
+         "",
+         "",
+         ""
+        ],
+        [
+         "",
+         "",
+         ""
+        ],
+        [
+         "",
+         "",
+         ""
+        ]
+       ],
+       "answer": [
+        [
+         "7",
+         "0",
+         ""
+        ],
+        [
+         "4",
+         "7",
+         ""
+        ],
+        [
+         "1",
+         "11",
+         ""
+        ],
+        [
+         "-2",
+         "12",
+         "12"
+        ]
+       ],
+       "fb": "x goes 7, 4, 1 then -2, which ends the loop, and y totals 12.",
+       "title": "Trace: the final table"
+      },
+      {
+       "t": "mcq",
+       "q": "Why is it worth tracing carefully rather than guessing the answer?",
+       "a": [
+        "Marks are given for the intermediate values, not just the final output",
+        "The final answer carries no marks",
+        "Guessing is against the rules",
+        "Tracing is quicker"
+       ],
+       "fb": "A wrong final answer with a correct trace still scores."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: trace it",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "trace",
+       "q": "Trace this program, which finds the greatest common divisor of 12 and 8.",
+       "code": [
+        "a = 12",
+        "b = 8",
+        "while a != b",
+        "  if a > b then a = a - b",
+        "  else b = b - a",
+        "endwhile",
+        "print(a)"
+       ],
+       "columns": [
+        "a",
+        "b",
+        "Output"
+       ],
+       "rows": [
+        [
+         "12",
+         "8",
+         ""
+        ],
+        [
+         "",
+         "",
+         ""
+        ],
+        [
+         "",
+         "",
+         ""
+        ],
+        [
+         "",
+         "",
+         ""
+        ]
+       ],
+       "answer": [
+        [
+         "12",
+         "8",
+         ""
+        ],
+        [
+         "4",
+         "8",
+         ""
+        ],
+        [
+         "4",
+         "4",
+         "4"
+        ],
+        [
+         "4",
+         "4",
+         "4"
+        ]
+       ],
+       "fb": "12 minus 8 gives 4; then 8 minus 4 gives 4; a and b are equal, so the loop ends.",
+       "title": "Trace: greatest common divisor"
+      }
+     ]
     }
-  ]
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 1035,
+     "y": 585,
+     "title": "Also called a dry run",
+     "text": "Running a program in your head with pen and paper is a dry run; the trace table is where you write it down."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1828,
+     "y": 440,
+     "title": "Before debuggers",
+     "text": "Early programmers had no way to inspect a running program, so tracing by hand was the only debugging technique there was."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 1035,
+     "y": 585,
+     "title": "Still used",
+     "text": "Professional programmers still trace tricky loops by hand, because a debugger shows what happens and a trace shows why."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1828,
+     "y": 440,
+     "title": "Watch the loop condition",
+     "text": "Most trace table mistakes come from going round a loop one time too many or too few. Check the condition every time."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 1035,
+     "y": 585,
+     "title": "Output is not a variable",
+     "text": "A common exam error is writing the output in a variable column. Give it a column of its own."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1821,
+     "y": 401,
+     "title": "Exam tip",
+     "text": "If a table has six rows printed, the examiner expects six rows used. An unused row is a hint that you stopped too early."
+    }
+   ],
+   "models": []
+  }
+ ]
 }

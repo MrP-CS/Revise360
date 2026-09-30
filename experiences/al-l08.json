@@ -1,292 +1,332 @@
 {
-  "id": "al-l08",
-  "lesson": 8,
-  "title": "Binary search archive",
-  "scenes": [
+ "id": "al-l08",
+ "lesson": 8,
+ "title": "Bubble bay",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Bubble bay",
+   "img": "img/AL_L08_BubbleBay_360.jpg",
+   "imgHi": "img/AL_L08_BubbleBay_360_hi.jpg",
+   "stations": [
     {
-      "id": "main",
-      "title": "Binary search archive",
-      "img": "img/AL_L08_BinarySearchArchive_360.jpg",
-      "imgHi": "img/AL_L08_BinarySearchArchive_360_hi.jpg",
-      "stations": [
-        {
-          "label": "1",
-          "name": "Sorted data first",
-          "col": "#40c4ff",
-          "face": "right",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "What must hold before binary search is used?",
-              "a": [
-                "The data is sorted by the search key",
-                "The target is first",
-                "The list length is even",
-                "Every value is positive"
-              ],
-              "fb": "The data is sorted by the search key"
-            },
-            {
-              "t": "mcq",
-              "q": "Binary search on unsorted data can...",
-              "a": [
-                "Discard the half containing the target",
-                "Always find the target",
-                "Sort the data automatically"
-              ],
-              "fb": "Discard the half containing the target. The list must be ordered."
-            }
-          ]
-        },
-        {
-          "label": "2",
-          "name": "Find the midpoint",
-          "col": "#aa6eeb",
-          "face": "right",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "low = 2, high = 6. Midpoint index?",
-              "a": [
-                "4",
-                "3",
-                "6",
-                "8"
-              ],
-              "fb": "4"
-            },
-            {
-              "t": "mcq",
-              "q": "low = 0, high = 6. Rounded-down midpoint?",
-              "a": [
-                "3",
-                "6",
-                "2"
-              ],
-              "fb": "3. Use low and high indices."
-            }
-          ]
-        },
-        {
-          "label": "3",
-          "name": "Discard the wrong half",
-          "col": "#ff785a",
-          "face": "back",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "match",
-              "q": "Match each comparison to the update.",
-              "pairs": [
-                [
-                  "Target greater",
-                  "low = mid + 1"
-                ],
-                [
-                  "Target smaller",
-                  "high = mid - 1"
-                ],
-                [
-                  "Target equal",
-                  "Report found"
-                ]
-              ],
-              "fb": "Remove the checked midpoint as well as the impossible half."
-            },
-            {
-              "t": "mcq",
-              "q": "If target < data[mid], which update is correct?",
-              "a": [
-                "high = mid - 1",
-                "low = mid + 1",
-                "high = mid + 1"
-              ],
-              "fb": "high = mid - 1. If target is greater, move low above mid."
-            }
-          ]
-        },
-        {
-          "label": "4",
-          "name": "Trace a successful search",
-          "col": "#ffa028",
-          "face": "back",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "Search this list for 21. Checked values?",
-              "a": [
-                "12, 18, 21",
-                "3, 6, 9, 12, 15, 18, 21",
-                "12, 15, 21",
-                "21 only"
-              ],
-              "fb": "12, 18, 21"
-            },
-            {
-              "t": "mcq",
-              "q": "For [3,6,9,12,15,18,21], target 18 is at index...",
-              "a": [
-                "5",
-                "6",
-                "18"
-              ],
-              "fb": "5. Recalculate the midpoint after each update."
-            }
-          ]
-        },
-        {
-          "label": "5",
-          "name": "Trace not found",
-          "col": "#50dc96",
-          "face": "left",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "For target 1 in [2, 4, 6, 8, 10], what is checked?",
-              "a": [
-                "6 then 2",
-                "6 then 4 then 2",
-                "Only 1",
-                "All five values"
-              ],
-              "fb": "6 then 2"
-            },
-            {
-              "t": "mcq",
-              "q": "When low > high, the remaining range is...",
-              "a": [
-                "Empty",
-                "The whole list",
-                "One definite match"
-              ],
-              "fb": "Empty. A search can exhaust the remaining range."
-            }
-          ]
-        },
-        {
-          "label": "6",
-          "name": "Choose the search",
-          "col": "#f05aaa",
-          "face": "left",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "Which is the strongest case for binary search?",
-              "a": [
-                "Many lookups in a large sorted list",
-                "One lookup in three unsorted items",
-                "A list that cannot be ordered",
-                "A target known to be the first item"
-              ],
-              "fb": "Many lookups in a large sorted list"
-            },
-            {
-              "t": "mcq",
-              "q": "Why can binary search scale well?",
-              "a": [
-                "It discards about half the remaining items each time",
-                "It checks all items every time",
-                "It makes sorting free"
-              ],
-              "fb": "It discards about half the remaining items each time. Binary search can use fewer comparisons."
-            }
-          ]
-        },
-        {
-          "label": "★",
-          "name": "Final challenge",
-          "col": "#ffd046",
-          "face": "down",
-          "x": 1024,
-          "y": 800,
-          "tasks": [
-            {
-              "t": "order",
-              "q": "Order the checks for target 14 in [2, 4, 6, 8, 10, 12, 14].",
-              "steps": [
-                "Check 8 at index 3",
-                "Keep indices 4 to 6",
-                "Check 12 at index 5",
-                "Check 14 at index 6"
-              ],
-              "fb": "Round down at each midpoint."
-            },
-            {
-              "t": "mcq",
-              "q": "What is the worst-case advantage as a sorted list grows?",
-              "a": [
-                "Binary search repeatedly halves the remaining range",
-                "Binary search checks every item twice",
-                "Linear search always checks fewer items",
-                "Sorting is free"
-              ],
-              "fb": "Binary search repeatedly halves the remaining range"
-            }
-          ]
-        }
-      ],
-      "info": [
-        {
-          "id": "f1",
-          "face": "right",
-          "x": 920,
-          "y": 540,
-          "title": "Sorted data first",
-          "text": "The list must be ordered.\n\nUse the order to rule out one half.\n\nUnsorted data makes this reasoning unsafe.\n\nChallenge: Why is sorted order required?\n\nIt guarantees smaller values lie before the middle and larger values after it."
-        },
-        {
-          "id": "f2",
-          "face": "right",
-          "x": 1888,
-          "y": 540,
-          "title": "Find the midpoint",
-          "text": "Use low and high indices.\n\nTake the integer midpoint.\n\nOur examples round down.\n\nChallenge: What is mid when low = 3 and high = 8?\n\n(3 + 8) DIV 2 = 5."
-        },
-        {
-          "id": "f3",
-          "face": "back",
-          "x": 920,
-          "y": 540,
-          "title": "Discard the wrong half",
-          "text": "If target is greater, move low above mid.\n\nIf target is smaller, move high below mid.\n\nThe middle item has already been checked.\n\nChallenge: Why use mid + 1 rather than mid?\n\nThe midpoint has already failed to match and should not remain in the search range."
-        },
-        {
-          "id": "f4",
-          "face": "back",
-          "x": 1888,
-          "y": 540,
-          "title": "Trace a successful search",
-          "text": "Recalculate the midpoint after each update.\n\nCount comparisons with the target.\n\nStop immediately at a match.\n\nChallenge: What values are checked when searching for 6?\n\n12, then 6. The target is found after two comparisons."
-        },
-        {
-          "id": "f5",
-          "face": "left",
-          "x": 920,
-          "y": 540,
-          "title": "Trace not found",
-          "text": "A search can exhaust the remaining range.\n\nStop when low is greater than high.\n\nDo not access another midpoint after stopping.\n\nChallenge: Why does low > high mean not found?\n\nNo indices remain in the possible search range."
-        },
-        {
-          "id": "f6",
-          "face": "left",
-          "x": 1888,
-          "y": 540,
-          "title": "Choose the search",
-          "text": "Binary search can use fewer comparisons.\n\nSorting first also takes work.\n\nConsider list size and repeated searches.\n\nChallenge: Why not always sort before a one-off search?\n\nSorting takes work. For a short unsorted list, one linear scan may be simpler and cheaper overall."
-        }
-      ],
-      "models": []
+     "label": "1",
+     "name": "One comparison",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "In a bubble sort, which items are compared?",
+       "a": [
+        "Two items next to each other",
+        "The first and last items",
+        "The middle and the first",
+        "Two random items"
+       ],
+       "fb": "Only neighbours are ever compared."
+      },
+      {
+       "t": "mcq",
+       "q": "When does a bubble sort swap two items?",
+       "a": [
+        "When they are in the wrong order for the sort",
+        "Every time it compares them",
+        "Only at the end of a pass",
+        "When they are equal"
+       ],
+       "fb": "Equal items are already in an acceptable order."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "One pass",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "sortstep",
+       "q": "Complete one pass of a bubble sort on this list. Tap two items to swap them.",
+       "list": [
+        7,
+        3,
+        9,
+        2,
+        8
+       ],
+       "mode": "bubble",
+       "fb": "After one pass the largest value, 9, has reached the right-hand end.",
+       "title": "Bubble sort: one pass"
+      },
+      {
+       "t": "mcq",
+       "q": "What is guaranteed after one complete pass?",
+       "a": [
+        "The largest value is in its final position at the end",
+        "The list is sorted",
+        "The smallest value is first",
+        "Nothing is guaranteed"
+       ],
+       "fb": "One value is settled per pass, which is why it needs so many."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Repeating the passes",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "How does a bubble sort know it has finished?",
+       "a": [
+        "A whole pass happens with no swaps",
+        "It counts to the length of the list",
+        "It checks the first and last items",
+        "It always does exactly ten passes"
+       ],
+       "fb": "No swaps means nothing was out of order."
+      },
+      {
+       "t": "mcq",
+       "q": "A list of 6 items is in exactly reverse order. How many passes are needed?",
+       "a": [
+        "Five",
+        "One",
+        "Six",
+        "Twelve"
+       ],
+       "fb": "n minus 1 passes in the worst case."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Why it is slow",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "A list doubles in size. Roughly what happens to the work a bubble sort does?",
+       "a": [
+        "It roughly quadruples",
+        "It doubles",
+        "It stays the same",
+        "It increases by one pass"
+       ],
+       "fb": "The comparisons per pass and the number of passes both grow."
+      },
+      {
+       "t": "mcq",
+       "q": "Why is a bubble sort still taught?",
+       "a": [
+        "It is the easiest sorting algorithm to understand and to program",
+        "It is the fastest",
+        "It uses the least memory of any sort",
+        "It is used in real databases"
+       ],
+       "fb": "Understanding it makes the faster sorts easier to follow."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Its advantages",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "multi",
+       "q": "Which are genuine advantages of a bubble sort? Select all that apply.",
+       "opts": [
+        "It is simple to program",
+        "It needs no extra copy of the list",
+        "It finishes quickly on a nearly sorted list",
+        "It is easy to explain",
+        "It is the fastest sort",
+        "It works without comparisons"
+       ],
+       "correct": [
+        "It is simple to program",
+        "It needs no extra copy of the list",
+        "It finishes quickly on a nearly sorted list",
+        "It is easy to explain"
+       ],
+       "fb": "Simplicity and memory use, not speed."
+      },
+      {
+       "t": "mcq",
+       "q": "What does 'sorts in place' mean?",
+       "a": [
+        "It rearranges the original list without needing a second copy",
+        "It sorts without moving anything",
+        "It sorts instantly",
+        "It needs a copy of the list"
+       ],
+       "fb": "Merge sort, in the next lesson, does not sort in place."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Answering bubble sort questions",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "sortstep",
+       "q": "Complete one pass of a bubble sort on this list.",
+       "list": [
+        6,
+        1,
+        8,
+        4,
+        2
+       ],
+       "mode": "bubble",
+       "fb": "Work from the left, comparing each neighbouring pair in turn.",
+       "title": "Bubble sort: show the pass"
+      },
+      {
+       "t": "mcq",
+       "q": "A question asks you to show the list after the first pass of a bubble sort on 9, 5, 7. What is the answer?",
+       "a": [
+        "5, 7, 9",
+        "5, 9, 7",
+        "9, 5, 7",
+        "7, 5, 9"
+       ],
+       "fb": "Compare 9 and 5 and swap, then compare 9 and 7 and swap."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: bubble it",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "sortstep",
+       "q": "Complete one pass of a bubble sort on this list.",
+       "list": [
+        12,
+        5,
+        20,
+        3,
+        17,
+        9
+       ],
+       "mode": "bubble",
+       "fb": "Six items means five comparisons in a pass, and the largest ends up on the right.",
+       "title": "Bubble sort: the full pass"
+      },
+      {
+       "t": "sort",
+       "q": "Is each statement true of a bubble sort?",
+       "cats": [
+        "True",
+        "False"
+       ],
+       "items": [
+        [
+         "It compares items that are next to each other",
+         "True"
+        ],
+        [
+         "It sorts the list in place",
+         "True"
+        ],
+        [
+         "It stops when a pass makes no swaps",
+         "True"
+        ],
+        [
+         "It requires the list to be sorted first",
+         "False"
+        ],
+        [
+         "It is the fastest sorting algorithm",
+         "False"
+        ],
+        [
+         "It splits the list in half",
+         "False"
+        ]
+       ],
+       "fb": "The false ones describe a binary search and a merge sort."
+      }
+     ]
     }
-  ]
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 1035,
+     "y": 585,
+     "title": "Also called sinking sort",
+     "text": "Depending on the direction, the largest value bubbles up or the smallest sinks down. Both names describe the same algorithm."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1828,
+     "y": 440,
+     "title": "Famously criticised",
+     "text": "The computer scientist Donald Knuth wrote that the bubble sort has nothing to recommend it except its catchy name."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 1035,
+     "y": 585,
+     "title": "One optimisation",
+     "text": "After each pass the end of the list is settled, so later passes can stop earlier. Most versions include this."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1828,
+     "y": 440,
+     "title": "Nearly sorted is different",
+     "text": "If a list is almost in order, a bubble sort finishes in about one pass, which beats more complex sorts."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 1035,
+     "y": 585,
+     "title": "Big O",
+     "text": "At A level this is O(n²): the work grows with the square of the list size."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1821,
+     "y": 401,
+     "title": "Exam tip",
+     "text": "If asked for the list after a given pass, do the passes on paper and cross out as you go. Rushing this costs more marks than anything else in the topic."
+    }
+   ],
+   "models": []
+  }
+ ]
 }

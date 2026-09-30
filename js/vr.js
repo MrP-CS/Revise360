@@ -245,7 +245,7 @@
     }
     function closeModelVR() { if (!vrModel) return; scene.remove(vrModel.holder); vrModel = null; modelPanel.hide(); core.refreshSprites(); }
 
-    const BOARD_TASKS = ["circuit", "expr", "table", "convert", "addshift", "pixels", "sound", "memory", "permissions", "defrag", "impact"];
+    const BOARD_TASKS = ["circuit", "expr", "table", "convert", "addshift", "pixels", "sound", "memory", "permissions", "defrag", "impact", "trace", "bugline", "searchstep", "sortstep"];
     // ---------------- boards (drag, paint and tap in VR) ----------------
     let vrBoard = null;
     function openBoard(board) {
@@ -300,13 +300,14 @@
         qPanel.mesh.position.set(pos.x + Math.sin(qy) * 1.2, pos.y - .05, pos.z + Math.cos(qy) * 1.2); qPanel.mesh.lookAt(pos);
         return;
       }
-      if (task.t === "sprint" || task.t === "blitz" || task.t === "lawgame") { sprintVR(k, st, task); return; }
+      if (task.t === "sprint" || task.t === "blitz" || task.t === "lawgame" || task.t === "arena") { sprintVR(k, st, task); return; }
       if (BOARD_TASKS.includes(task.t)) {
         const Lg = window.R360Logic;
         const board = task.t === "circuit" ? Lg.CircuitBoard({ inputs: task.inputs || Lg.vars(Lg.parse(task.expr)), hit: 34 })
           : task.t === "expr" ? Lg.ExprBoard({ expr: task.expr, out: task.out })
           : task.t === "table" ? Lg.TableBoard({ expr: task.expr, cols: task.cols, out: task.out, inputs: task.inputs, diagram: task.diagram })
-          : R360OS.TYPES.includes(task.t) ? R360OS.make(task)
+          : R360Algo.TYPES.includes(task.t) ? R360Algo.make(task)
+        : R360OS.TYPES.includes(task.t) ? R360OS.make(task)
           : R360Data.make(task);
         const yaw = openBoard(board);
         const { pos } = headPose(); const qy = yaw - .28 - .75;
@@ -317,6 +318,10 @@
           convert: "Point at a bit or a key and pull the trigger.", addshift: "Point at a bit and pull the trigger to change it between 0 and 1.",
           pixels: "Choose a colour, then hold the trigger and sweep across the pixels to paint them.", sound: "Pull the trigger on the level nearest the wave in each column.",
           memory: "Hold the trigger on a program and drag it into RAM, or onto the disk if RAM is full.", permissions: "Pull the trigger on a cell to change the access level.", impact: "Pull the trigger on a cell to change how that group is affected.",
+          trace: "Pull the trigger on a cell, then on the keypad to type the value.",
+          bugline: "Pull the trigger on the line with the error, then on the kind of error it is.",
+          searchstep: "Pull the trigger on the item the algorithm checks next.",
+          sortstep: "Pull the trigger on two items to swap them.",
           defrag: "Pull the trigger on a block, then on a free space to move it there. Or use the Defragment button." };
         const body = () => done ? [
             !lastOk && task.t === "circuit" && !shown ? { btn: "Show a correct circuit", id: "show", center: true, onClick: () => { board.showAnswer(task.expr); shown = true; show(body); } } : null]
@@ -406,7 +411,7 @@
         { p: `Personal best: ${rec.best}. Beat it!`, size: 30, bold: true, color: COL.edge },
         { btn: "Start the sprint", id: "go", primary: true, onClick: play }] });
       function play() {
-        const s = Lg.Sprint(task.duration || 120, task.t === "blitz" ? R360Data.blitz : task.t === "lawgame" ? R360OS.lawCase : null); let q = null, board = null, busy = false, fb = null, lastSec = -1;
+        const s = Lg.Sprint(task.duration || 120, task.t === "blitz" ? R360Data.blitz : task.t === "lawgame" ? R360OS.lawCase : task.t === "arena" ? R360Algo.arenaCase : null); let q = null, board = null, busy = false, fb = null, lastSec = -1;
         const hudText = () => `⏱ ${Math.ceil(s.timeLeft())}s    Score ${s.score}    Streak ${s.streak > 1 ? "×" + (1 + Math.min(s.streak - 1, 4) * .5) : "–"}    Best ${rec.best}`;
         const panel = () => qPanel.set({ title: st.name, color: st.col, onClose: closeAllSprint, blocks: [
           { p: hudText(), size: 30, bold: true, color: COL.edge }, { p: q.q, size: 32, bold: true },
@@ -416,7 +421,7 @@
         function ask() {
           if (s.timeLeft() <= 0) return end();
           q = s.next(); busy = false; fb = null;
-          board = q.t === "law" ? R360OS.make(q) : q.t === "convert" ? R360Data.make(q) : q.t === "circuit" ? Lg.CircuitBoard({ inputs: Lg.vars(Lg.parse(q.expr)), hit: 34 }) : Lg.ExprBoard({ expr: q.expr });
+          board = R360Algo.TYPES.includes(q.t) ? R360Algo.make(q) : q.t === "law" ? R360OS.make(q) : q.t === "convert" ? R360Data.make(q) : q.t === "circuit" ? Lg.CircuitBoard({ inputs: Lg.vars(Lg.parse(q.expr)), hit: 34 }) : Lg.ExprBoard({ expr: q.expr });
           window.__sprint = { s, board, q };
           const yaw = openBoard(board), { pos } = headPose(), qy = yaw - .28 - .75;
           panel(); qPanel.mesh.position.set(pos.x + Math.sin(qy) * 1.25, pos.y - .05, pos.z + Math.cos(qy) * 1.25); qPanel.mesh.lookAt(pos);
@@ -425,7 +430,7 @@
           const res = board.check(q.expr); if (res.incomplete) { toast(res.msg); return; }
           busy = true; const r = s.mark(res.ok);
           fb = res.ok ? { ok: true, head: `+${r.pts} points`, text: r.mult > 1 ? `Speed bonus ${r.bonus}, streak ×${r.mult}.` : `Speed bonus ${r.bonus}.` }
-                      : { ok: false, head: "Not quite.", text: q.t === "law" || q.t === "convert" ? "The answer is " + q.answer + "." : "A correct answer is Q = " + q.expr + "." };
+                      : { ok: false, head: "Not quite.", text: q.t === "law" || q.t === "convert" || R360Algo.TYPES.includes(q.t) ? "The answer is " + q.answer + "." : "A correct answer is Q = " + q.expr + "." };
           if (!res.ok && q.t === "circuit") board.showAnswer(q.expr);
           panel(); setTimeout(ask, res.ok ? 800 : 2200);
         }

@@ -1,292 +1,305 @@
 {
-  "id": "al-l05",
-  "lesson": 5,
-  "title": "Decision control centre",
-  "scenes": [
+ "id": "al-l05",
+ "lesson": 5,
+ "title": "Pseudocode press",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Pseudocode press",
+   "img": "img/AL_L05_PseudocodePress_360.jpg",
+   "imgHi": "img/AL_L05_PseudocodePress_360_hi.jpg",
+   "stations": [
     {
-      "id": "main",
-      "title": "Decision control centre",
-      "img": "img/AL_L05_DecisionControlCentre_360.jpg",
-      "imgHi": "img/AL_L05_DecisionControlCentre_360_hi.jpg",
-      "stations": [
-        {
-          "label": "1",
-          "name": "Two possible paths",
-          "col": "#40c4ff",
-          "face": "right",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "If available is false, which message is printed?",
-              "a": [
-                "Unavailable",
-                "Loan allowed",
-                "Both messages",
-                "No message"
-              ],
-              "fb": "Unavailable"
-            },
-            {
-              "t": "mcq",
-              "q": "An IF condition evaluates to...",
-              "a": [
-                "True or false",
-                "Only a string",
-                "Always 1"
-              ],
-              "fb": "True or false. A condition selects a path."
-            }
-          ]
-        },
-        {
-          "label": "2",
-          "name": "Include the boundary",
-          "col": "#aa6eeb",
-          "face": "right",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "Which condition means score is at least 50?",
-              "a": [
-                "score >= 50",
-                "score > 50",
-                "score < 50",
-                "score == 49"
-              ],
-              "fb": "score >= 50"
-            },
-            {
-              "t": "mcq",
-              "q": "Which age is excluded by age > 12 but included by age >= 12?",
-              "a": [
-                "12",
-                "13",
-                "14"
-              ],
-              "fb": "12. Greater than excludes equality."
-            }
-          ]
-        },
-        {
-          "label": "3",
-          "name": "Three-way decisions",
-          "col": "#ff785a",
-          "face": "back",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "A = 7 and B = 7. What is the correct result?",
-              "a": [
-                "Draw",
-                "A wins",
-                "B wins",
-                "A is greater"
-              ],
-              "fb": "Draw"
-            },
-            {
-              "t": "mcq",
-              "q": "Which result fits a = 9 and b = 4?",
-              "a": [
-                "A wins",
-                "B wins",
-                "Draw"
-              ],
-              "fb": "A wins. Some problems need more than two outcomes."
-            }
-          ]
-        },
-        {
-          "label": "4",
-          "name": "Both conditions",
-          "col": "#ffa028",
-          "face": "back",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "Which permits a loan only if both checks pass?",
-              "a": [
-                "member AND available",
-                "member OR available",
-                "NOT member",
-                "available == false"
-              ],
-              "fb": "member AND available"
-            },
-            {
-              "t": "mcq",
-              "q": "true AND false is...",
-              "a": [
-                "False",
-                "True",
-                "Undefined"
-              ],
-              "fb": "False. AND is true when both conditions are true."
-            }
-          ]
-        },
-        {
-          "label": "5",
-          "name": "Either condition",
-          "col": "#50dc96",
-          "face": "left",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "student = false, senior = true. What is student OR senior?",
-              "a": [
-                "True",
-                "False",
-                "Equal to student only",
-                "An error"
-              ],
-              "fb": "True"
-            },
-            {
-              "t": "mcq",
-              "q": "true OR true is...",
-              "a": [
-                "True",
-                "False",
-                "Only one true is allowed"
-              ],
-              "fb": "True. OR is true when at least one condition is true."
-            }
-          ]
-        },
-        {
-          "label": "6",
-          "name": "Nested decisions",
-          "col": "#f05aaa",
-          "face": "left",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "Which describes nesting?",
-              "a": [
-                "Placing one selection inside another",
-                "Deleting all conditions",
-                "Always running both branches",
-                "Changing an input to an output"
-              ],
-              "fb": "Placing one selection inside another"
-            },
-            {
-              "t": "mcq",
-              "q": "An inner branch inside a false outer IF is...",
-              "a": [
-                "Skipped",
-                "Always executed",
-                "Repeated twice"
-              ],
-              "fb": "Skipped. A decision can sit inside another decision."
-            }
-          ]
-        },
-        {
-          "label": "★",
-          "name": "Final challenge",
-          "col": "#ffd046",
-          "face": "down",
-          "x": 1024,
-          "y": 800,
-          "tasks": [
-            {
-              "t": "match",
-              "q": "Match the phrase to its condition.",
-              "pairs": [
-                [
-                  "At least 10",
-                  "x >= 10"
-                ],
-                [
-                  "Below 10",
-                  "x < 10"
-                ],
-                [
-                  "Exactly 10",
-                  "x == 10"
-                ]
-              ],
-              "fb": "Equality must be handled as the wording requires."
-            },
-            {
-              "t": "mcq",
-              "q": "A loan needs a member AND an available item. Member is true and available is false. Result?",
-              "a": [
-                "Reject the loan",
-                "Issue the loan",
-                "Issue two loans",
-                "Ignore availability"
-              ],
-              "fb": "Reject the loan"
-            }
-          ]
-        }
-      ],
-      "info": [
-        {
-          "id": "f1",
-          "face": "right",
-          "x": 920,
-          "y": 540,
-          "title": "Two possible paths",
-          "text": "A condition selects a path.\n\nIF handles the true case.\n\nELSE handles the false case.\n\nChallenge: What happens when available is false?\n\nThe ELSE branch prints Unavailable."
-        },
-        {
-          "id": "f2",
-          "face": "right",
-          "x": 1888,
-          "y": 540,
-          "title": "Include the boundary",
-          "text": "Greater than excludes equality.\n\nGreater than or equal includes equality.\n\nMatch the condition to the rule.\n\nChallenge: Why does age > 12 not match the rule?\n\nIt rejects a pupil aged exactly 12, although the rule includes them."
-        },
-        {
-          "id": "f3",
-          "face": "back",
-          "x": 920,
-          "y": 540,
-          "title": "Three-way decisions",
-          "text": "Some problems need more than two outcomes.\n\nCheck greater, less and equal cases.\n\nEach valid input should have an outcome.\n\nChallenge: What happens if the draw case is omitted?\n\nEqual values may get the wrong result or no intended output."
-        },
-        {
-          "id": "f4",
-          "face": "back",
-          "x": 1888,
-          "y": 540,
-          "title": "Both conditions",
-          "text": "AND is true when both conditions are true.\n\nUse it when both requirements must hold.\n\nCheck each requirement separately.\n\nChallenge: Can this member borrow the unavailable item?\n\nNo. Both membership and availability are required, and availability is false."
-        },
-        {
-          "id": "f5",
-          "face": "left",
-          "x": 920,
-          "y": 540,
-          "title": "Either condition",
-          "text": "OR is true when at least one condition is true.\n\nIt is also true when both are true.\n\nDo not confuse OR with exactly one.\n\nChallenge: Does a person who meets both conditions qualify?\n\nYes. OR includes the case where both conditions are true."
-        },
-        {
-          "id": "f6",
-          "face": "left",
-          "x": 1888,
-          "y": 540,
-          "title": "Nested decisions",
-          "text": "A decision can sit inside another decision.\n\nThe outer path controls whether it is reached.\n\nIndentation helps show the structure.\n\nChallenge: If member is false, is the inner decision reached?\n\nNo. The outer IF body is skipped."
-        }
-      ],
-      "models": []
+     "label": "1",
+     "name": "What pseudocode is",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is pseudocode?",
+       "a": [
+        "A structured way of writing an algorithm for a human reader, not tied to one language",
+        "A programming language",
+        "A kind of flowchart",
+        "The output of a compiler"
+       ],
+       "fb": "Nothing runs it, and that is deliberate."
+      },
+      {
+       "t": "mcq",
+       "q": "Why write pseudocode before coding?",
+       "a": [
+        "You can get the logic right without fighting the syntax of a language",
+        "It runs faster than code",
+        "It finds syntax errors",
+        "Exam boards insist on it"
+       ],
+       "fb": "Logic first, syntax second."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Variables and assignment",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does total = total + 1 do?",
+       "a": [
+        "Takes the current value of total, adds one, and stores the result back in total",
+        "Checks whether total equals total plus one",
+        "Creates a new variable",
+        "Reports an error"
+       ],
+       "fb": "A single equals sign is assignment, not a comparison."
+      },
+      {
+       "t": "mcq",
+       "q": "Which line correctly inputs a number and stores it?",
+       "a": [
+        "age = input('Enter your age: ')",
+        "input(age)",
+        "age == input()",
+        "print(age)"
+       ],
+       "fb": "The value goes into the variable on the left."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Selection",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is the difference between = and == ?",
+       "a": [
+        "One equals sign assigns a value; two compare two values",
+        "They mean the same thing",
+        "Two equals signs assign",
+        "One equals sign is only for numbers"
+       ],
+       "fb": "Using = where == belongs is one of the commonest logic errors."
+      },
+      {
+       "t": "order",
+       "q": "Put these lines into the right order for a grading algorithm.",
+       "steps": [
+        "if mark >= 70 then",
+        "  print('Distinction')",
+        "elseif mark >= 50 then",
+        "  print('Merit')",
+        "else",
+        "  print('Pass')",
+        "endif"
+       ],
+       "fb": "Highest boundary first, or every high mark is reported as a merit."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Iteration",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "When would you choose a while loop rather than a for loop?",
+       "a": [
+        "When you don't know in advance how many repeats are needed",
+        "When the loop is short",
+        "When counting upwards",
+        "When there is no condition"
+       ],
+       "fb": "Known count: for. Unknown count: while."
+      },
+      {
+       "t": "mcq",
+       "q": "How many times does 'for i = 1 to 5' run its body?",
+       "a": [
+        "Five",
+        "Four",
+        "Six",
+        "It depends on i"
+       ],
+       "fb": "Both ends are included in the reference language."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Arrays and subprograms",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "An array called names holds ['Ash','Bea','Cal']. What does names[1] give?",
+       "a": [
+        "Bea",
+        "Ash",
+        "Cal",
+        "1"
+       ],
+       "fb": "Arrays are numbered from zero, so index 1 is the second item."
+      },
+      {
+       "t": "mcq",
+       "q": "What is the difference between a function and a procedure?",
+       "a": [
+        "A function returns a value; a procedure does not",
+        "A function is faster",
+        "A procedure cannot take parameters",
+        "There is no difference"
+       ],
+       "fb": "Return is the giveaway."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Reading the reference language",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does this print: total = 0; for i = 1 to 4; total = total + i; next i; print(total)?",
+       "a": [
+        "10",
+        "4",
+        "0",
+        "24"
+       ],
+       "fb": "1 + 2 + 3 + 4 = 10."
+      },
+      {
+       "t": "mcq",
+       "q": "In the exam, which language must you write your answer in?",
+       "a": [
+        "Any language or clear pseudocode: the logic is what is marked",
+        "Python only",
+        "The OCR reference language only",
+        "Whichever the question was written in"
+       ],
+       "fb": "Read the reference language, write in whatever you are fluent in."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: read the code",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does this program output?  n = 5 · r = 1 · while n > 1: r = r * n, n = n - 1 · print(r)",
+       "a": [
+        "120",
+        "5",
+        "1",
+        "15"
+       ],
+       "fb": "5 × 4 × 3 × 2 = 120: it calculates a factorial."
+      },
+      {
+       "t": "mcq",
+       "q": "What does this output?  a = [3, 9, 4] · t = 0 · for i = 0 to 2: t = t + a[i] · print(t / 3)",
+       "a": [
+        "5.33 (the mean of the array)",
+        "16",
+        "3",
+        "9"
+       ],
+       "fb": "The total is 16 and there are 3 items."
+      },
+      {
+       "t": "order",
+       "q": "Put these lines into a working program that counts down from 3 to 1.",
+       "steps": [
+        "n = 3",
+        "while n > 0",
+        "  print(n)",
+        "  n = n - 1",
+        "endwhile"
+       ],
+       "fb": "Set up, test, do the work, change the variable the test depends on."
+      }
+     ]
     }
-  ]
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 1035,
+     "y": 585,
+     "title": "No standard",
+     "text": "There is no official pseudocode. Every exam board and textbook has its own, which is why OCR publishes a reference guide."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1821,
+     "y": 401,
+     "title": "Close to Python",
+     "text": "The reference language looks like Python on purpose, because so many schools teach Python, but the endif and next keywords are not Python."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 1035,
+     "y": 585,
+     "title": "Zero indexing",
+     "text": "Arrays start at zero in most languages, a habit that comes from the arithmetic of memory addresses."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1828,
+     "y": 440,
+     "title": "Off by one",
+     "text": "The commonest loop bug in the world is running one time too many or too few. Count the repeats by hand when checking."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 1035,
+     "y": 585,
+     "title": "Write what you know",
+     "text": "Examiners accept any clear language. Answering in the one you actually use is almost always safer."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1821,
+     "y": 401,
+     "title": "Comments",
+     "text": "Two slashes start a comment in the reference language. Comments are for people; the computer skips them."
+    }
+   ],
+   "models": []
+  }
+ ]
 }
