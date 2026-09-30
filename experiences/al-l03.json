@@ -1,308 +1,339 @@
 {
-  "id": "al-l03",
-  "lesson": 3,
-  "title": "Decomposition workshop",
-  "scenes": [
+ "id": "al-l03",
+ "lesson": 3,
+ "title": "Algorithm workshop",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Algorithm workshop",
+   "img": "img/AL_L03_AlgorithmWorkshop_360.jpg",
+   "imgHi": "img/AL_L03_AlgorithmWorkshop_360_hi.jpg",
+   "stations": [
     {
-      "id": "main",
-      "title": "Decomposition workshop",
-      "img": "img/AL_L03_DecompositionWorkshop_360.jpg",
-      "imgHi": "img/AL_L03_DecompositionWorkshop_360_hi.jpg",
-      "stations": [
-        {
-          "label": "1",
-          "name": "Split the problem",
-          "col": "#40c4ff",
-          "face": "right",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "Which example is decomposition?",
-              "a": [
-                "Split a shop into stock, orders and payments",
-                "Remove irrelevant stock colours",
-                "Put every instruction in one block",
-                "Change the screen font"
-              ],
-              "fb": "Split a shop into stock, orders and payments"
-            },
-            {
-              "t": "mcq",
-              "q": "Which is a sub-problem of a loan system?",
-              "a": [
-                "Process a return",
-                "Change the weather",
-                "Draw every classroom"
-              ],
-              "fb": "Process a return. Start with the whole task."
-            }
-          ]
-        },
-        {
-          "label": "2",
-          "name": "Read the hierarchy",
-          "col": "#aa6eeb",
-          "face": "right",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "What does a line to a child box mean?",
-              "a": [
-                "The child is a component of the parent",
-                "The child always runs next",
-                "The child is an output value",
-                "The parent is false"
-              ],
-              "fb": "The child is a component of the parent"
-            },
-            {
-              "t": "mcq",
-              "q": "The top box of a structure diagram is...",
-              "a": [
-                "The complete system",
-                "Always the first output",
-                "A yes/no decision"
-              ],
-              "fb": "The complete system. The top box is the whole system."
-            }
-          ]
-        },
-        {
-          "label": "3",
-          "name": "Refine a sub-problem",
-          "col": "#ff785a",
-          "face": "back",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "order",
-              "q": "Order a sensible refinement process.",
-              "steps": [
-                "Identify the whole system",
-                "Name its main sub-problems",
-                "Split a complex sub-problem",
-                "Check the parts cover the requirements"
-              ],
-              "fb": "Refinement adds detail to a decomposition."
-            },
-            {
-              "t": "mcq",
-              "q": "Refinement means...",
-              "a": [
-                "Breaking a large part into clearer smaller tasks",
-                "Removing all requirements",
-                "Only changing colours"
-              ],
-              "fb": "Breaking a large part into clearer smaller tasks. Refinement adds useful detail."
-            }
-          ]
-        },
-        {
-          "label": "4",
-          "name": "Structure versus flow",
-          "col": "#ffa028",
-          "face": "back",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "sort",
-              "q": "Classify the diagram features.",
-              "cats": [
-                "Structure diagram",
-                "Flowchart"
-              ],
-              "items": [
-                [
-                  "Parent and child modules",
-                  "Structure diagram"
-                ],
-                [
-                  "Yes/no decision branch",
-                  "Flowchart"
-                ],
-                [
-                  "System broken into parts",
-                  "Structure diagram"
-                ],
-                [
-                  "Arrow showing next action",
-                  "Flowchart"
-                ]
-              ],
-              "fb": "Do not read a hierarchy as execution order."
-            },
-            {
-              "t": "mcq",
-              "q": "Does left-to-right position in a structure diagram define execution order?",
-              "a": [
-                "No",
-                "Yes, always",
-                "Only if the boxes are blue"
-              ],
-              "fb": "No. Structure diagrams show parts."
-            }
-          ]
-        },
-        {
-          "label": "5",
-          "name": "Work as a team",
-          "col": "#50dc96",
-          "face": "left",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "Which is a benefit of decomposition?",
-              "a": [
-                "Individual parts are easier to understand and test",
-                "Testing becomes unnecessary",
-                "Parts never need to communicate",
-                "Every program runs faster"
-              ],
-              "fb": "Individual parts are easier to understand and test"
-            },
-            {
-              "t": "mcq",
-              "q": "A shared interface helps parts...",
-              "a": [
-                "Exchange data consistently",
-                "Avoid all testing",
-                "Run without inputs"
-              ],
-              "fb": "Exchange data consistently. Smaller tasks can be allocated to people."
-            }
-          ]
-        },
-        {
-          "label": "6",
-          "name": "Check coverage",
-          "col": "#f05aaa",
-          "face": "left",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "The system must report overdue loans. What should be added?",
-              "a": [
-                "An overdue-report sub-problem",
-                "A wallpaper sub-problem",
-                "A second unrelated system",
-                "Nothing because all systems report automatically"
-              ],
-              "fb": "An overdue-report sub-problem"
-            },
-            {
-              "t": "mcq",
-              "q": "An omitted return function is found by checking...",
-              "a": [
-                "The decomposition against the requirements",
-                "Only the font size",
-                "Only the logo"
-              ],
-              "fb": "The decomposition against the requirements. Compare the parts with the requirements."
-            }
-          ]
-        },
-        {
-          "label": "★",
-          "name": "Final challenge",
-          "col": "#ffd046",
-          "face": "down",
-          "x": 1024,
-          "y": 800,
-          "tasks": [
-            {
-              "t": "match",
-              "q": "Match each sub-problem to a suitable smaller task.",
-              "pairs": [
-                [
-                  "Members",
-                  "Add a member record"
-                ],
-                [
-                  "Loans",
-                  "Check item availability"
-                ],
-                [
-                  "Returns",
-                  "Mark an item available"
-                ]
-              ],
-              "fb": "Each child must belong to its parent."
-            },
-            {
-              "t": "mcq",
-              "q": "Why test each part before combining them?",
-              "a": [
-                "It helps locate faults within smaller sections",
-                "It proves the whole system cannot fail",
-                "It removes the need for shared data",
-                "It guarantees the fastest code"
-              ],
-              "fb": "It helps locate faults within smaller sections"
-            }
-          ]
-        }
-      ],
-      "info": [
-        {
-          "id": "f1",
-          "face": "right",
-          "x": 920,
-          "y": 540,
-          "title": "Split the problem",
-          "text": "Start with the whole task.\n\nIdentify separate responsibilities.\n\nBreak large parts down further.\n\nChallenge: Suggest three parts of a library system.\n\nManage members, issue books and process returned books are suitable parts."
-        },
-        {
-          "id": "f2",
-          "face": "right",
-          "x": 1888,
-          "y": 540,
-          "title": "Read the hierarchy",
-          "text": "The top box is the whole system.\n\nChild boxes are parts of their parent.\n\nLower levels show more detail.\n\nChallenge: What are the two parts of Issue loan?\n\nCheck availability and record borrower."
-        },
-        {
-          "id": "f3",
-          "face": "back",
-          "x": 920,
-          "y": 540,
-          "title": "Refine a sub-problem",
-          "text": "Refinement adds useful detail.\n\nStop when each task is clear enough to solve.\n\nKeep the hierarchy logically grouped.\n\nChallenge: Break Process return into three smaller tasks.\n\nFind the active loan, mark it returned and make the item available again."
-        },
-        {
-          "id": "f4",
-          "face": "back",
-          "x": 1888,
-          "y": 540,
-          "title": "Structure versus flow",
-          "text": "Structure diagrams show parts.\n\nFlowcharts show execution and decisions.\n\nA hierarchy does not specify run order.\n\nChallenge: Why is a structure diagram not a flowchart?\n\nIt shows what the system contains, rather than the order of execution and decision paths."
-        },
-        {
-          "id": "f5",
-          "face": "left",
-          "x": 920,
-          "y": 540,
-          "title": "Work as a team",
-          "text": "Smaller tasks can be allocated to people.\n\nParts can be tested separately.\n\nInterfaces between parts must still agree.\n\nChallenge: Why must both programmers agree on member ID?\n\nTheir parts exchange member details. A consistent ID allows the parts to work together."
-        },
-        {
-          "id": "f6",
-          "face": "left",
-          "x": 1888,
-          "y": 540,
-          "title": "Check coverage",
-          "text": "Compare the parts with the requirements.\n\nLook for missing responsibilities.\n\nAvoid duplicate or unclear tasks.\n\nChallenge: Which responsibility is missing?\n\nProcessing returns is missing and must be included."
-        }
-      ],
-      "models": []
+     "label": "1",
+     "name": "What an algorithm is",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which of these is a requirement of an algorithm?",
+       "a": [
+        "Every step is unambiguous and the whole thing finishes",
+        "It must be written in Python",
+        "It must use a loop",
+        "It must be under twenty lines"
+       ],
+       "fb": "Language and length are irrelevant; clarity and finishing are not."
+      },
+      {
+       "t": "mcq",
+       "q": "Why is 'stir until it looks right' not a good algorithm step?",
+       "a": [
+        "It is ambiguous: different people would do different things",
+        "It is too short",
+        "Stirring cannot be programmed",
+        "It has no input"
+       ],
+       "fb": "A computer cannot judge 'looks right'."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Algorithmic thinking",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "order",
+       "q": "Put these steps for finding the largest number in a list into a sensible order.",
+       "steps": [
+        "Set the largest so far to the first item",
+        "Look at the next item",
+        "If it is bigger than the largest so far, make it the new largest",
+        "Repeat until the end of the list",
+        "Output the largest"
+       ],
+       "fb": "Notice it works for any list, of any length: that is the point."
+      },
+      {
+       "t": "mcq",
+       "q": "Why is an algorithm more useful than solving one case by hand?",
+       "a": [
+        "It works for every similar problem, not just the one in front of you",
+        "It is quicker to write",
+        "It uses less memory",
+        "It never contains errors"
+       ],
+       "fb": "Generality is what makes it worth writing down."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Inputs, processes and outputs",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "For a cash machine, is each one an input, a process or an output?",
+       "cats": [
+        "Input",
+        "Process",
+        "Output"
+       ],
+       "items": [
+        [
+         "The PIN typed by the customer",
+         "Input"
+        ],
+        [
+         "The amount requested",
+         "Input"
+        ],
+        [
+         "Checking the PIN is correct",
+         "Process"
+        ],
+        [
+         "Reducing the account balance",
+         "Process"
+        ],
+        [
+         "The cash dispensed",
+         "Output"
+        ],
+        [
+         "The receipt printed",
+         "Output"
+        ]
+       ],
+       "fb": "Data in, work done, results back out."
+      },
+      {
+       "t": "mcq",
+       "q": "A program asks for two numbers, adds them and shows the total. What is the process?",
+       "a": [
+        "Adding the two numbers together",
+        "Asking for the numbers",
+        "Showing the total",
+        "Storing the numbers"
+       ],
+       "fb": "Asking is input; showing is output; the addition is the process."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Working a problem",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1355,
+     "y": 1859,
+     "tasks": [
+      {
+       "t": "order",
+       "q": "Put these stages of solving a problem into order.",
+       "steps": [
+        "Decide what the output should be",
+        "Work out what input is needed",
+        "Write the steps that turn the input into the output",
+        "Test the steps with an example by hand"
+       ],
+       "fb": "Testing on paper catches most mistakes before any code is written."
+      },
+      {
+       "t": "mcq",
+       "q": "Why start from the output?",
+       "a": [
+        "It tells you what the program must produce, which decides what input and steps you need",
+        "Outputs are easier to write",
+        "It is the fastest part",
+        "The exam asks for it first"
+       ],
+       "fb": "Working backwards from the answer keeps the steps focused."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "A worked example",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "order",
+       "q": "Put the steps of a pick-up sticks game into order.",
+       "steps": [
+        "Set the pile to 27 sticks",
+        "Ask the current player how many to take, between one and three",
+        "Take that many from the pile",
+        "If sticks remain, swap to the other player and repeat",
+        "When the pile is empty, the player who took the last stick loses"
+       ],
+       "fb": "Set up, repeat a turn, check the end condition, announce the result."
+      },
+      {
+       "t": "mcq",
+       "q": "Where does the algorithm need a decision rather than a step?",
+       "a": [
+        "Checking whether any sticks are left, which decides whether to carry on",
+        "Setting the pile to 27",
+        "Taking the sticks",
+        "Announcing the loser"
+       ],
+       "fb": "Decisions are where the path through an algorithm branches."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Answering algorithm questions",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which is the better algorithm step?",
+       "a": [
+        "IF the amount entered is more than the balance THEN show an error",
+        "Check the money is okay",
+        "Deal with the balance",
+        "Make sure it works"
+       ],
+       "fb": "Unambiguous, with a clear condition and a clear result."
+      },
+      {
+       "t": "mcq",
+       "q": "A student writes an algorithm with no way of stopping. What is wrong?",
+       "a": [
+        "An algorithm must always finish, so it isn't an algorithm yet",
+        "It needs more comments",
+        "It uses the wrong language",
+        "It has no input"
+       ],
+       "fb": "An endless loop is a classic exam mistake."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: in, through, out",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "For a library self-service kiosk, is each one an input, a process or an output?",
+       "cats": [
+        "Input",
+        "Process",
+        "Output"
+       ],
+       "items": [
+        [
+         "The barcode scanned from the book",
+         "Input"
+        ],
+        [
+         "The borrower's card number",
+         "Input"
+        ],
+        [
+         "The date the book is due back",
+         "Output"
+        ],
+        [
+         "Checking whether the borrower owes a fine",
+         "Process"
+        ],
+        [
+         "Working out the due date from today",
+         "Process"
+        ],
+        [
+         "The receipt printed for the borrower",
+         "Output"
+        ],
+        [
+         "Marking the book as on loan in the database",
+         "Process"
+        ],
+        [
+         "The message shown on the screen",
+         "Output"
+        ]
+       ],
+       "fb": "Data in, work done, results back out: the split earns marks in almost every scenario question."
+      }
+     ]
     }
-  ]
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 1035,
+     "y": 585,
+     "title": "Where the word comes from",
+     "text": "Algorithm comes from the name of the ninth-century scholar al-Khwarizmi, whose book on calculation reached Europe in translation."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1821,
+     "y": 401,
+     "title": "Older than computers",
+     "text": "Euclid wrote an algorithm for the greatest common divisor around 300 BC. It is still taught, and still works."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 1035,
+     "y": 585,
+     "title": "Ambiguity kills",
+     "text": "A famous early spacecraft was lost because two teams used different units. The steps were clear to each of them, and to nobody else."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1821,
+     "y": 401,
+     "title": "Terminating matters",
+     "text": "Deciding whether an arbitrary program will ever stop is provably impossible in general, a result from Alan Turing in 1936."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 1035,
+     "y": 585,
+     "title": "Same problem, many algorithms",
+     "text": "Sorting a list can be done a dozen different ways. You meet three of them later in this topic."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1821,
+     "y": 401,
+     "title": "Exam tip",
+     "text": "If a question says 'write an algorithm', numbered steps in plain English earn the marks. You are not required to use a language."
+    }
+   ],
+   "models": []
+  }
+ ]
 }

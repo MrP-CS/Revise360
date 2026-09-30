@@ -1,324 +1,368 @@
 {
-  "id": "al-l01",
-  "lesson": 1,
-  "title": "Abstraction studio",
-  "scenes": [
+ "id": "al-l01",
+ "lesson": 1,
+ "title": "Abstraction studio",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Abstraction studio",
+   "img": "img/AL_L01_AbstractionStudio_360.jpg",
+   "imgHi": "img/AL_L01_AbstractionStudio_360_hi.jpg",
+   "stations": [
     {
-      "id": "main",
-      "title": "Abstraction studio",
-      "img": "img/AL_L01_AbstractionStudio_360.jpg",
-      "imgHi": "img/AL_L01_AbstractionStudio_360_hi.jpg",
-      "stations": [
-        {
-          "label": "1",
-          "name": "Keep the purpose",
-          "col": "#40c4ff",
-          "face": "right",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "Which detail belongs on a route map?",
-              "a": [
-                "Connections between rooms",
-                "The price of each carpet",
-                "Every wall texture",
-                "Every pupil name"
-              ],
-              "fb": "Connections between rooms"
-            },
-            {
-              "t": "mcq",
-              "q": "For recognising a camera icon, which detail is least necessary?",
-              "a": [
-                "The exact serial number",
-                "The lens outline",
-                "The body outline"
-              ],
-              "fb": "The exact serial number. Start with the problem to solve."
-            }
-          ]
-        },
-        {
-          "label": "2",
-          "name": "Essential information",
-          "col": "#aa6eeb",
-          "face": "right",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "sort",
-              "q": "Classify details for tracking loans.",
-              "cats": [
-                "Needed",
-                "Not needed"
-              ],
-              "items": [
-                [
-                  "Borrower ID",
-                  "Needed"
-                ],
-                [
-                  "Item ID",
-                  "Needed"
-                ],
-                [
-                  "Favourite film",
-                  "Not needed"
-                ],
-                [
-                  "Shoe brand",
-                  "Not needed"
-                ]
-              ],
-              "fb": "Keep details that support identifying and returning the item."
-            },
-            {
-              "t": "mcq",
-              "q": "Which detail helps identify an overdue loan?",
-              "a": [
-                "Due date",
-                "Favourite colour",
-                "Wallpaper pattern"
-              ],
-              "fb": "Due date. A loan system must identify the borrower."
-            }
-          ]
-        },
-        {
-          "label": "3",
-          "name": "Remove distractions",
-          "col": "#ff785a",
-          "face": "back",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "What would damage a route map?",
-              "a": [
-                "Removing the corridor connections",
-                "Removing wallpaper patterns",
-                "Using simple room outlines",
-                "Omitting ceiling colours"
-              ],
-              "fb": "Removing the corridor connections"
-            },
-            {
-              "t": "mcq",
-              "q": "Removing required corridor links is...",
-              "a": [
-                "Too much simplification",
-                "Always useful abstraction",
-                "A sorting method"
-              ],
-              "fb": "Too much simplification. Not every real-world detail belongs in a model."
-            }
-          ]
-        },
-        {
-          "label": "4",
-          "name": "Purpose changes relevance",
-          "col": "#ffa028",
-          "face": "back",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "match",
-              "q": "Match purpose to a useful detail.",
-              "pairs": [
-                [
-                  "Find a room",
-                  "Corridor connections"
-                ],
-                [
-                  "Repair a camera",
-                  "Fault description"
-                ],
-                [
-                  "Return a loan",
-                  "Borrower ID"
-                ]
-              ],
-              "fb": "Each detail supports a particular decision."
-            },
-            {
-              "t": "mcq",
-              "q": "A fault description becomes relevant when...",
-              "a": [
-                "Planning repairs",
-                "Finding a room by route",
-                "Comparing latitude"
-              ],
-              "fb": "Planning repairs. A detail can matter in one task and not another."
-            }
-          ]
-        },
-        {
-          "label": "5",
-          "name": "Abstraction in software",
-          "col": "#50dc96",
-          "face": "left",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "A return button is an abstraction because it...",
-              "a": [
-                "Hides internal steps behind one clear action",
-                "Deletes the loan system",
-                "Removes every calculation",
-                "Guarantees there are no errors"
-              ],
-              "fb": "Hides internal steps behind one clear action"
-            },
-            {
-              "t": "mcq",
-              "q": "Hiding processing behind a button means...",
-              "a": [
-                "Users need not manage every internal step",
-                "No processing occurs",
-                "The code has disappeared"
-              ],
-              "fb": "Users need not manage every internal step. Users can work without knowing every internal detail."
-            }
-          ]
-        },
-        {
-          "label": "6",
-          "name": "Evaluate a model",
-          "col": "#f05aaa",
-          "face": "left",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "Which justification is strongest?",
-              "a": [
-                "Keep due dates so overdue loans can be identified",
-                "Keep everything just in case",
-                "Remove all numbers",
-                "Keep only colourful details"
-              ],
-              "fb": "Keep due dates so overdue loans can be identified"
-            },
-            {
-              "t": "mcq",
-              "q": "A model should be judged against...",
-              "a": [
-                "Its stated purpose",
-                "Its number of colours",
-                "How much detail it retains"
-              ],
-              "fb": "Its stated purpose. Check whether the model solves the problem."
-            }
-          ]
-        },
-        {
-          "label": "★",
-          "name": "Final challenge",
-          "col": "#ffd046",
-          "face": "down",
-          "x": 1024,
-          "y": 800,
-          "tasks": [
-            {
-              "t": "sort",
-              "q": "Choose data for identifying overdue equipment loans.",
-              "cats": [
-                "Keep",
-                "Omit"
-              ],
-              "items": [
-                [
-                  "Borrower ID",
-                  "Keep"
-                ],
-                [
-                  "Due date",
-                  "Keep"
-                ],
-                [
-                  "Item ID",
-                  "Keep"
-                ],
-                [
-                  "Favourite snack",
-                  "Omit"
-                ]
-              ],
-              "fb": "The system needs to identify the loan and whether its due date has passed."
-            },
-            {
-              "t": "mcq",
-              "q": "Why is abstraction useful here?",
-              "a": [
-                "It reduces unnecessary detail while preserving what the task needs",
-                "It removes the need to test",
-                "It makes every detail irrelevant",
-                "It changes the purpose automatically"
-              ],
-              "fb": "It reduces unnecessary detail while preserving what the task needs"
-            }
-          ]
-        }
-      ],
-      "info": [
-        {
-          "id": "f1",
-          "face": "right",
-          "x": 920,
-          "y": 540,
-          "title": "Keep the purpose",
-          "text": "Start with the problem to solve.\n\nRelevant details depend on the purpose.\n\nA simpler model can still be useful.\n\nChallenge: Why can a map omit carpet patterns?\n\nCarpet patterns do not help identify a route to the library."
-        },
-        {
-          "id": "f2",
-          "face": "right",
-          "x": 1888,
-          "y": 540,
-          "title": "Essential information",
-          "text": "A loan system must identify the borrower.\n\nIt must identify the borrowed item.\n\nIt needs enough data to track the loan.\n\nChallenge: Name two details needed to track a camera loan.\n\nBorrower ID and item ID identify who has which camera. The due date helps track returns."
-        },
-        {
-          "id": "f3",
-          "face": "back",
-          "x": 920,
-          "y": 540,
-          "title": "Remove distractions",
-          "text": "Not every real-world detail belongs in a model.\n\nRemoving detail makes a model easier to use.\n\nDo not remove information needed for accuracy.\n\nChallenge: Why might an icon omit the serial number?\n\nIts purpose is to recognise a camera category. A serial number identifies one particular camera."
-        },
-        {
-          "id": "f4",
-          "face": "back",
-          "x": 1888,
-          "y": 540,
-          "title": "Purpose changes relevance",
-          "text": "A detail can matter in one task and not another.\n\nA repair system needs different data from a route map.\n\nExplain choices using the stated task.\n\nChallenge: When would a room light fault become relevant?\n\nWhen planning repairs, the fault and room location help staff repair the correct light."
-        },
-        {
-          "id": "f5",
-          "face": "left",
-          "x": 920,
-          "y": 540,
-          "title": "Abstraction in software",
-          "text": "Users can work without knowing every internal detail.\n\nA button can hide several processing steps.\n\nThe hidden steps still happen.\n\nChallenge: What does a return button hide from its user?\n\nIt hides the detailed steps for finding the loan and updating its stored status."
-        },
-        {
-          "id": "f6",
-          "face": "left",
-          "x": 1888,
-          "y": 540,
-          "title": "Evaluate a model",
-          "text": "Check whether the model solves the problem.\n\nAdd missing relevant details.\n\nRemove detail that only distracts.\n\nChallenge: How should this route map be improved?\n\nAdd the connections between rooms so users can plan a route. Textures can be removed."
-        }
-      ],
-      "models": []
+     "label": "1",
+     "name": "Computational thinking",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What are the three parts of computational thinking?",
+       "a": [
+        "Abstraction, decomposition and algorithmic thinking",
+        "Input, process and output",
+        "Syntax, logic and runtime",
+        "Search, sort and trace"
+       ],
+       "fb": "All three appear in this topic, and all three are examinable by name."
+      },
+      {
+       "t": "sort",
+       "q": "Which part of computational thinking is each activity?",
+       "cats": [
+        "Abstraction",
+        "Decomposition",
+        "Algorithmic thinking"
+       ],
+       "items": [
+        [
+         "Deciding a train timetable only needs times and stations",
+         "Abstraction"
+        ],
+        [
+         "Ignoring the colour of a car in a traffic simulation",
+         "Abstraction"
+        ],
+        [
+         "Splitting a game into scoring, drawing and input",
+         "Decomposition"
+        ],
+        [
+         "Listing the smaller problems inside a big one",
+         "Decomposition"
+        ],
+        [
+         "Writing the steps to find the largest number",
+         "Algorithmic thinking"
+        ],
+        [
+         "Working out the order the checks must happen in",
+         "Algorithmic thinking"
+        ]
+       ],
+       "fb": "Remove detail, break it up, work out the steps."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "What abstraction is",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does abstraction mean in computational thinking?",
+       "a": [
+        "Removing detail that is not needed to solve the problem",
+        "Making a program shorter",
+        "Hiding the source code",
+        "Using shorter variable names"
+       ],
+       "fb": "The detail is removed from the model, not from the code."
+      },
+      {
+       "t": "mcq",
+       "q": "Why is what counts as 'unnecessary' not fixed?",
+       "a": [
+        "It depends on the problem: a detail that matters in one model is noise in another",
+        "Because different people prefer different details",
+        "Because computers vary",
+        "Because it changes over time"
+       ],
+       "fb": "Road surface matters to a road planner and not to a satnav."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "A worked example",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "multi",
+       "q": "Which details does a school register need? Select all that apply.",
+       "opts": [
+        "The pupil's name",
+        "The date",
+        "Whether they are present",
+        "Which form group they are in",
+        "Their favourite colour",
+        "How they travelled to school"
+       ],
+       "correct": [
+        "The pupil's name",
+        "The date",
+        "Whether they are present",
+        "Which form group they are in"
+       ],
+       "fb": "Everything else is real, but irrelevant to taking a register."
+      },
+      {
+       "t": "mcq",
+       "q": "Why is storing unnecessary data a problem?",
+       "a": [
+        "It takes more space, slows the system and gives more to keep accurate and secure",
+        "It makes the screen look busy",
+        "It uses more electricity in the CPU",
+        "It breaks the programming language"
+       ],
+       "fb": "There is a privacy cost too, from topic 1.6."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Models of the world",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "For a satnav, is each detail necessary or unnecessary?",
+       "cats": [
+        "Necessary",
+        "Unnecessary"
+       ],
+       "items": [
+        [
+         "The speed limit on a road",
+         "Necessary"
+        ],
+        [
+         "Which roads connect to which",
+         "Necessary"
+        ],
+        [
+         "Whether a road is one way",
+         "Necessary"
+        ],
+        [
+         "The colour of the houses",
+         "Unnecessary"
+        ],
+        [
+         "How many trees line the road",
+         "Unnecessary"
+        ],
+        [
+         "The name of the road's builder",
+         "Unnecessary"
+        ]
+       ],
+       "fb": "Necessary means the route would change without it."
+      },
+      {
+       "t": "mcq",
+       "q": "A flight simulator ignores the weight of the paint on the aircraft. Why is that acceptable?",
+       "a": [
+        "It is far too small to change the behaviour being modelled",
+        "Paint has no weight",
+        "Simulators cannot model weight",
+        "It would be illegal to include it"
+       ],
+       "fb": "Abstraction is about judging what makes a difference."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Abstraction in programs",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "How is a subprogram an example of abstraction?",
+       "a": [
+        "You use it by name without needing to know how it works inside",
+        "It makes the program shorter",
+        "It runs faster than normal code",
+        "It removes errors automatically"
+       ],
+       "fb": "The detail still exists; it is just hidden from whoever calls it."
+      },
+      {
+       "t": "mcq",
+       "q": "Why do layers of abstraction matter in a large project?",
+       "a": [
+        "Each person can work on their layer without understanding all the others",
+        "They make code run faster",
+        "They remove the need for testing",
+        "They stop syntax errors"
+       ],
+       "fb": "Nobody could hold an entire modern system in their head at once."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Answering abstraction questions",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which is the strongest exam answer about a library system?",
+       "a": [
+        "It stores the title, author and whether a book is on loan, but not the paper weight, because that never affects lending",
+        "It only stores important things",
+        "It stores the useful details",
+        "It removes the unimportant parts"
+       ],
+       "fb": "Named details, plus the reason they are or aren't needed."
+      },
+      {
+       "t": "mcq",
+       "q": "A question asks how abstraction has been used in an underground map. What earns the marks?",
+       "a": [
+        "Naming what was removed, such as true distances and surface geography, and why that helps a passenger",
+        "Saying the map is simplified",
+        "Describing the colours used",
+        "Explaining how trains work"
+       ],
+       "fb": "Named removals and the reason."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: keep or cut",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "For a cycle hire app, is each detail necessary or unnecessary?",
+       "cats": [
+        "Necessary",
+        "Unnecessary"
+       ],
+       "items": [
+        [
+         "Where each docking station is",
+         "Necessary"
+        ],
+        [
+         "How many bikes are free at each station",
+         "Necessary"
+        ],
+        [
+         "Whether a route has a cycle lane",
+         "Necessary"
+        ],
+        [
+         "The gradient of a hill",
+         "Necessary"
+        ],
+        [
+         "The make of each bike's bell",
+         "Unnecessary"
+        ],
+        [
+         "The name of the street's architect",
+         "Unnecessary"
+        ],
+        [
+         "What colour the docking station is painted",
+         "Unnecessary"
+        ],
+        [
+         "Which shops are on the route",
+         "Unnecessary"
+        ]
+       ],
+       "fb": "Necessary means the app would behave differently without it."
+      }
+     ]
     }
-  ]
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 1035,
+     "y": 585,
+     "title": "Where the word comes from",
+     "text": "To abstract something originally meant to draw it away. In computing you draw the important parts away from everything else."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1821,
+     "y": 401,
+     "title": "The famous map",
+     "text": "Harry Beck's 1933 underground diagram threw away real distances and geography, and became the model for transit maps worldwide."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 1035,
+     "y": 585,
+     "title": "Wrong but useful",
+     "text": "The statistician George Box wrote that all models are wrong but some are useful, which is abstraction in five words."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1821,
+     "y": 401,
+     "title": "Too much abstraction",
+     "text": "Remove something that mattered and the model gives confident wrong answers, which is worse than no model at all."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 1035,
+     "y": 585,
+     "title": "Abstraction in hardware",
+     "text": "You type a letter without knowing which transistors switched. Every layer below your program is hidden by abstraction."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1821,
+     "y": 401,
+     "title": "Exam tip",
+     "text": "Questions often show a picture and ask how abstraction was used. Name the details removed, not just the fact that some were."
+    }
+   ],
+   "models": []
+  }
+ ]
 }

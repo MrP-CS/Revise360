@@ -1,283 +1,347 @@
 {
-  "id": "al-l09",
-  "lesson": 9,
-  "title": "Bubble sort conveyor",
-  "scenes": [
+ "id": "al-l09",
+ "lesson": 9,
+ "title": "Split and insert",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Split and insert",
+   "img": "img/AL_L09_SplitAndInsert_360.jpg",
+   "imgHi": "img/AL_L09_SplitAndInsert_360_hi.jpg",
+   "stations": [
     {
-      "id": "main",
-      "title": "Bubble sort conveyor",
-      "img": "img/AL_L09_BubbleSortConveyor_360.jpg",
-      "imgHi": "img/AL_L09_BubbleSortConveyor_360_hi.jpg",
-      "stations": [
-        {
-          "label": "1",
-          "name": "Compare neighbours",
-          "col": "#40c4ff",
-          "face": "right",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "Which pair needs swapping for ascending order?",
-              "a": [
-                "9, 4",
-                "2, 8",
-                "5, 5",
-                "1, 3"
-              ],
-              "fb": "9, 4"
-            },
-            {
-              "t": "mcq",
-              "q": "Comparing adjacent values means comparing...",
-              "a": [
-                "Neighbouring items",
-                "Only first and last items",
-                "Random items"
-              ],
-              "fb": "Neighbouring items. Compare adjacent values."
-            }
-          ]
-        },
-        {
-          "label": "2",
-          "name": "Complete the first pass",
-          "col": "#aa6eeb",
-          "face": "right",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "order",
-              "q": "Order the states in the first left-to-right pass.",
-              "steps": [
-                "5, 1, 4, 2",
-                "1, 5, 4, 2",
-                "1, 4, 5, 2",
-                "1, 4, 2, 5"
-              ],
-              "fb": "The largest item moves right one comparison at a time."
-            },
-            {
-              "t": "mcq",
-              "q": "After the first pass on [5,1,4,2], the final item is...",
-              "a": [
-                "5",
-                "2",
-                "1"
-              ],
-              "fb": "5. Work from left to right in these examples."
-            }
-          ]
-        },
-        {
-          "label": "3",
-          "name": "Continue the passes",
-          "col": "#ff785a",
-          "face": "back",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "After pass 1 gives [2, 3, 1, 4], what does pass 2 give?",
-              "a": [
-                "2, 1, 3, 4",
-                "1, 2, 3, 4",
-                "2, 3, 4, 1",
-                "4, 3, 2, 1"
-              ],
-              "fb": "2, 1, 3, 4"
-            },
-            {
-              "t": "mcq",
-              "q": "After two passes on [5,1,4,2], the list is...",
-              "a": [
-                "1,2,4,5",
-                "1,4,2,5",
-                "5,4,2,1"
-              ],
-              "fb": "1,2,4,5. A pass does not always finish the sort."
-            }
-          ]
-        },
-        {
-          "label": "4",
-          "name": "Swaps and comparisons",
-          "col": "#ffa028",
-          "face": "back",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "First full pass on [1, 2, 3, 4]: how many swaps?",
-              "a": [
-                "0",
-                "1",
-                "3",
-                "4"
-              ],
-              "fb": "0"
-            },
-            {
-              "t": "mcq",
-              "q": "A comparison always produces a swap. Is this true?",
-              "a": [
-                "No",
-                "Yes",
-                "Only for equal values"
-              ],
-              "fb": "No. A comparison may not cause a swap."
-            }
-          ]
-        },
-        {
-          "label": "5",
-          "name": "Read the swap",
-          "col": "#50dc96",
-          "face": "left",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "order",
-              "q": "Order the three-line swap.",
-              "steps": [
-                "Save a[i] in temp",
-                "Copy a[i+1] into a[i]",
-                "Copy temp into a[i+1]"
-              ],
-              "fb": "Both original values must survive the swap."
-            },
-            {
-              "t": "mcq",
-              "q": "Without saving a value before overwriting it, a swap may...",
-              "a": [
-                "Lose an original value",
-                "Sort the whole list",
-                "Create a new index"
-              ],
-              "fb": "Lose an original value. Keep one value temporarily."
-            }
-          ]
-        },
-        {
-          "label": "6",
-          "name": "Stop when unchanged",
-          "col": "#f05aaa",
-          "face": "left",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "Which is a safe early stopping condition?",
-              "a": [
-                "A complete pass makes no swaps",
-                "The first pair is ordered",
-                "Exactly one swap occurs",
-                "The list contains an even number"
-              ],
-              "fb": "A complete pass makes no swaps"
-            },
-            {
-              "t": "mcq",
-              "q": "When should swapped be reset to false?",
-              "a": [
-                "Before each pass",
-                "Only after a swap",
-                "After every comparison"
-              ],
-              "fb": "Before each pass. Track whether any swap occurred."
-            }
-          ]
-        },
-        {
-          "label": "★",
-          "name": "Final challenge",
-          "col": "#ffd046",
-          "face": "down",
-          "x": 1024,
-          "y": 800,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "First full left-to-right bubble pass on [4, 3, 2, 1] gives...",
-              "a": [
-                "3, 2, 1, 4",
-                "1, 2, 3, 4",
-                "1, 4, 3, 2",
-                "4, 2, 3, 1"
-              ],
-              "fb": "3, 2, 1, 4"
-            },
-            {
-              "t": "mcq",
-              "q": "Why can the rightmost value then be excluded?",
-              "a": [
-                "It is the largest and is in its final position",
-                "It is always the smallest",
-                "It was never compared",
-                "All other values are now sorted"
-              ],
-              "fb": "It is the largest and is in its final position"
-            }
-          ]
-        }
-      ],
-      "info": [
-        {
-          "id": "f1",
-          "face": "right",
-          "x": 920,
-          "y": 540,
-          "title": "Compare neighbours",
-          "text": "Compare adjacent values.\n\nSwap if the left value is greater.\n\nLeave correctly ordered neighbours unchanged.\n\nChallenge: Should equal neighbouring values be swapped?\n\nNo. They are already in a valid ascending order."
-        },
-        {
-          "id": "f2",
-          "face": "right",
-          "x": 1888,
-          "y": 540,
-          "title": "Complete the first pass",
-          "text": "Work from left to right in these examples.\n\nCompare each adjacent pair in turn.\n\nThe largest value reaches the right-hand end.\n\nChallenge: Is the list fully sorted after this pass?\n\nNo. 4 and 2 are still out of order, though 5 is in its final position."
-        },
-        {
-          "id": "f3",
-          "face": "back",
-          "x": 920,
-          "y": 540,
-          "title": "Continue the passes",
-          "text": "A pass does not always finish the sort.\n\nThe next pass fixes the next-largest value.\n\nAn optimised version excludes the sorted end.\n\nChallenge: What is the list after the second pass?\n\n1, 2, 4, 5."
-        },
-        {
-          "id": "f4",
-          "face": "back",
-          "x": 1888,
-          "y": 540,
-          "title": "Swaps and comparisons",
-          "text": "A comparison may not cause a swap.\n\nKeep comparison and swap counts separate.\n\nA full first pass on four items compares three pairs.\n\nChallenge: How many comparisons and swaps occur?\n\nThree adjacent comparisons and one swap."
-        },
-        {
-          "id": "f5",
-          "face": "left",
-          "x": 920,
-          "y": 540,
-          "title": "Read the swap",
-          "text": "Keep one value temporarily.\n\nOverwrite its original position safely.\n\nRestore the saved value in the other position.\n\nChallenge: Why is temp needed in this three-line swap?\n\nIt preserves the original a[i] so it is not lost when a[i] is overwritten."
-        },
-        {
-          "id": "f6",
-          "face": "left",
-          "x": 1888,
-          "y": 540,
-          "title": "Stop when unchanged",
-          "text": "Track whether any swap occurred.\n\nA complete pass with no swaps shows sorted order.\n\nReset the swap flag before each new pass.\n\nChallenge: Why is one correct pair not enough to stop?\n\nOther adjacent pairs may still be out of order. The whole active pass must be checked."
-        }
-      ],
-      "models": []
+     "label": "1",
+     "name": "Merge sort: splitting",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "order",
+       "q": "Put these stages of the splitting phase in order for the list 8, 3, 5, 1.",
+       "steps": [
+        "8, 3, 5, 1",
+        "8, 3  and  5, 1",
+        "8  and  3  and  5  and  1"
+       ],
+       "fb": "Halve, halve again, until nothing can be split."
+      },
+      {
+       "t": "mcq",
+       "q": "Why does splitting stop at single items?",
+       "a": [
+        "A list of one item is already in order",
+        "Because the computer runs out of memory",
+        "Because two items cannot be compared",
+        "Because the list is empty"
+       ],
+       "fb": "That is the base case the algorithm builds back up from."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Merge sort: merging",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "order",
+       "q": "Put the merging of 3, 8 with 1, 5 into order.",
+       "steps": [
+        "Compare 3 and 1, take 1",
+        "Compare 3 and 5, take 3",
+        "Compare 8 and 5, take 5",
+        "Only 8 remains, so take 8"
+       ],
+       "fb": "The result is 1, 3, 5, 8."
+      },
+      {
+       "t": "mcq",
+       "q": "When merging two sorted lists, which item is taken next?",
+       "a": [
+        "The smaller of the two items at the front",
+        "The first item of the left list",
+        "The largest item overall",
+        "A random item"
+       ],
+       "fb": "Only the two front items are ever compared."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Merge sort: the whole thing",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is the main disadvantage of a merge sort?",
+       "a": [
+        "It needs extra memory to hold the pieces while merging",
+        "It only works on sorted lists",
+        "It is slower than a bubble sort",
+        "It cannot sort text"
+       ],
+       "fb": "Unlike bubble and insertion sorts, it does not work in place."
+      },
+      {
+       "t": "mcq",
+       "q": "Why is merge sort much faster than bubble sort on large lists?",
+       "a": [
+        "The work grows far more slowly as the list gets longer",
+        "It makes no comparisons",
+        "It uses no memory",
+        "It sorts in one pass"
+       ],
+       "fb": "For a million items the difference is minutes against days."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Insertion sort",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "sortstep",
+       "q": "Sort this list with an insertion sort. Tap two items to swap them.",
+       "list": [
+        5,
+        2,
+        8,
+        1,
+        6
+       ],
+       "mode": "insertion",
+       "fb": "Build the sorted section from the left, moving each new item back into place.",
+       "title": "Insertion sort: sort the list"
+      },
+      {
+       "t": "mcq",
+       "q": "Where does an insertion sort put each new item?",
+       "a": [
+        "Into its correct position within the sorted section on the left",
+        "At the end of the list",
+        "At the start of the list",
+        "In the middle"
+       ],
+       "fb": "Like sorting a hand of cards."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Comparing the three sorts",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Which sorting algorithm does each statement describe?",
+       "cats": [
+        "Bubble sort",
+        "Insertion sort",
+        "Merge sort"
+       ],
+       "items": [
+        [
+         "Compares neighbouring items and swaps them",
+         "Bubble sort"
+        ],
+        [
+         "Splits the list until single items remain",
+         "Merge sort"
+        ],
+        [
+         "Builds a sorted section one item at a time",
+         "Insertion sort"
+        ],
+        [
+         "Needs extra memory to hold the pieces",
+         "Merge sort"
+        ],
+        [
+         "The slowest of the three on a large list",
+         "Bubble sort"
+        ],
+        [
+         "Like sorting cards in your hand",
+         "Insertion sort"
+        ]
+       ],
+       "fb": "One phrase each is usually enough to identify them in the exam."
+      },
+      {
+       "t": "mcq",
+       "q": "Which sort would you choose for a million records with plenty of memory?",
+       "a": [
+        "Merge sort",
+        "Bubble sort",
+        "Insertion sort",
+        "Any of them"
+       ],
+       "fb": "Only merge sort copes well at that scale."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Answering sorting questions",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1466,
+     "y": 1494,
+     "tasks": [
+      {
+       "t": "sortstep",
+       "q": "Sort this list with an insertion sort.",
+       "list": [
+        9,
+        4,
+        7,
+        2
+       ],
+       "mode": "insertion",
+       "fb": "Four items: build the sorted section from the left.",
+       "title": "Insertion sort: four items"
+      },
+      {
+       "t": "mcq",
+       "q": "Which is the strongest comparison sentence?",
+       "a": [
+        "A merge sort is much faster on large lists, but a bubble sort sorts in place and needs no extra memory",
+        "Merge sort is better",
+        "Bubble sort is worse",
+        "They are both sorting algorithms"
+       ],
+       "fb": "A comparison needs both sides and a named trade-off."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: sort it out",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "sortstep",
+       "q": "Sort this list with an insertion sort.",
+       "list": [
+        14,
+        6,
+        21,
+        3,
+        11
+       ],
+       "mode": "insertion",
+       "fb": "Take each item in turn and move it left into the sorted part.",
+       "title": "Insertion sort: the full list"
+      },
+      {
+       "t": "sort",
+       "q": "Which sort is being described?",
+       "cats": [
+        "Bubble sort",
+        "Insertion sort",
+        "Merge sort"
+       ],
+       "items": [
+        [
+         "Repeats passes until no swaps are made",
+         "Bubble sort"
+        ],
+        [
+         "Divides the problem, then combines the answers",
+         "Merge sort"
+        ],
+        [
+         "Moves each new item back into the sorted part",
+         "Insertion sort"
+        ],
+        [
+         "The only one of the three that is not in place",
+         "Merge sort"
+        ],
+        [
+         "Very fast when the list is almost in order",
+         "Insertion sort"
+        ],
+        [
+         "The easiest of the three to program",
+         "Bubble sort"
+        ]
+       ],
+       "fb": "Each one has a distinctive action worth naming in the exam."
+      }
+     ]
     }
-  ]
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 1035,
+     "y": 585,
+     "title": "Merge sort is old",
+     "text": "John von Neumann described the merge sort in 1945, on one of the first stored-program computers."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1821,
+     "y": 401,
+     "title": "Recursion",
+     "text": "Merge sort naturally calls itself on each half, which is called recursion. You meet it properly at A level."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 1035,
+     "y": 585,
+     "title": "Real sorts are hybrids",
+     "text": "The sort built into most programming languages switches to insertion sort for small pieces, because it is faster there."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1828,
+     "y": 440,
+     "title": "Cards in your hand",
+     "text": "Almost everyone sorts a hand of cards with an insertion sort without being taught it."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 1035,
+     "y": 585,
+     "title": "Stable sorts",
+     "text": "Merge and insertion sorts keep equal items in their original order, which matters when sorting records by more than one field."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1821,
+     "y": 401,
+     "title": "Exam tip",
+     "text": "Show the list after each pass, clearly labelled. Marks are given for the intermediate states, not just the final answer."
+    }
+   ],
+   "models": []
+  }
+ ]
 }

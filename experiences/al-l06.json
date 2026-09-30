@@ -1,284 +1,342 @@
 {
-  "id": "al-l06",
-  "lesson": 6,
-  "title": "Loop planning lab",
-  "scenes": [
+ "id": "al-l06",
+ "lesson": 6,
+ "title": "Search corridor",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Search corridor",
+   "img": "img/AL_L06_SearchCorridor_360.jpg",
+   "imgHi": "img/AL_L06_SearchCorridor_360_hi.jpg",
+   "stations": [
     {
-      "id": "main",
-      "title": "Loop planning lab",
-      "img": "img/AL_L06_LoopPlanningLab_360.jpg",
-      "imgHi": "img/AL_L06_LoopPlanningLab_360_hi.jpg",
-      "stations": [
-        {
-          "label": "1",
-          "name": "Repeat a known count",
-          "col": "#40c4ff",
-          "face": "right",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "OCR pseudocode: for i = 1 to 4. How many iterations?",
-              "a": [
-                "4",
-                "3",
-                "5",
-                "1"
-              ],
-              "fb": "4"
-            },
-            {
-              "t": "mcq",
-              "q": "OCR for i = 2 to 5 executes...",
-              "a": [
-                "4 times",
-                "3 times",
-                "5 times"
-              ],
-              "fb": "4 times. Use a count-controlled loop for a known count."
-            }
-          ]
-        },
-        {
-          "label": "2",
-          "name": "Repeat until a condition",
-          "col": "#aa6eeb",
-          "face": "right",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "A while condition is false before the first check. How often does its body run?",
-              "a": [
-                "Zero times",
-                "Once",
-                "Twice",
-                "Forever"
-              ],
-              "fb": "Zero times"
-            },
-            {
-              "t": "mcq",
-              "q": "Which loop can execute zero times?",
-              "a": [
-                "A while loop",
-                "Every do-until loop",
-                "A loop fixed at three repetitions"
-              ],
-              "fb": "A while loop. A while loop checks before its body."
-            }
-          ]
-        },
-        {
-          "label": "3",
-          "name": "Accumulate a total",
-          "col": "#ff785a",
-          "face": "back",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "Starting at 0, add 5, 2 and 8. What is the total?",
-              "a": [
-                "15",
-                "8",
-                "10",
-                "7"
-              ],
-              "fb": "15"
-            },
-            {
-              "t": "mcq",
-              "q": "Where should a running total normally be initialised?",
-              "a": [
-                "Before the loop",
-                "After every addition",
-                "After the final output"
-              ],
-              "fb": "Before the loop. Set a starting total before the loop."
-            }
-          ]
-        },
-        {
-          "label": "4",
-          "name": "Guarantee progress",
-          "col": "#ffa028",
-          "face": "back",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "What fixes a loop whose counter never changes?",
-              "a": [
-                "Update the counter towards the stopping condition",
-                "Print the counter twice",
-                "Rename the counter only",
-                "Remove all conditions"
-              ],
-              "fb": "Update the counter towards the stopping condition"
-            },
-            {
-              "t": "mcq",
-              "q": "x = 0, while x < 3, x = x + 1. Final x?",
-              "a": [
-                "3",
-                "2",
-                "4"
-              ],
-              "fb": "3. A loop needs a way to reach its stopping case."
-            }
-          ]
-        },
-        {
-          "label": "5",
-          "name": "Selection inside a loop",
-          "col": "#50dc96",
-          "face": "left",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "Which values pass value >= 5 in [1, 5, 8]?",
-              "a": [
-                "5 and 8",
-                "Only 8",
-                "1 and 5",
-                "All three"
-              ],
-              "fb": "5 and 8"
-            },
-            {
-              "t": "mcq",
-              "q": "Count values > 5 in [5, 6, 2, 8]. Count?",
-              "a": [
-                "2",
-                "3",
-                "4"
-              ],
-              "fb": "2. A loop can repeat a decision."
-            }
-          ]
-        },
-        {
-          "label": "6",
-          "name": "Nested loops",
-          "col": "#f05aaa",
-          "face": "left",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "Outer loop runs twice. Inner loop runs five times each time. Total inner executions?",
-              "a": [
-                "10",
-                "7",
-                "5",
-                "2"
-              ],
-              "fb": "10"
-            },
-            {
-              "t": "mcq",
-              "q": "Outer 3, inner 4, both fixed counts. Inner runs?",
-              "a": [
-                "12",
-                "7",
-                "4"
-              ],
-              "fb": "12. An inner loop runs for each outer iteration."
-            }
-          ]
-        },
-        {
-          "label": "★",
-          "name": "Final challenge",
-          "col": "#ffd046",
-          "face": "down",
-          "x": 1024,
-          "y": 800,
-          "tasks": [
-            {
-              "t": "order",
-              "q": "Order a running-total algorithm.",
-              "steps": [
-                "Set total to 0",
-                "Repeat for each input value",
-                "Add the value to total inside the loop",
-                "Output total after the loop"
-              ],
-              "fb": "Initialise once, update repeatedly and output at the end."
-            },
-            {
-              "t": "mcq",
-              "q": "A loop starts n = 1, adds 1 while n < 4. What is n after the loop?",
-              "a": [
-                "4",
-                "3",
-                "5",
-                "1"
-              ],
-              "fb": "4"
-            }
-          ]
-        }
-      ],
-      "info": [
-        {
-          "id": "f1",
-          "face": "right",
-          "x": 920,
-          "y": 540,
-          "title": "Repeat a known count",
-          "text": "Use a count-controlled loop for a known count.\n\nBe clear whether the last value is included.\n\nOCR for loops include their stated end value.\n\nChallenge: How many times does this loop print?\n\nThree times, because 1, 2 and 3 are included."
-        },
-        {
-          "id": "f2",
-          "face": "right",
-          "x": 1888,
-          "y": 540,
-          "title": "Repeat until a condition",
-          "text": "A while loop checks before its body.\n\nIt can execute zero times.\n\nThe condition must eventually become false.\n\nChallenge: When does the loop stop?\n\nWhen count becomes 3, count < 3 is false."
-        },
-        {
-          "id": "f3",
-          "face": "back",
-          "x": 920,
-          "y": 540,
-          "title": "Accumulate a total",
-          "text": "Set a starting total before the loop.\n\nAdd each new value to the running total.\n\nDo not reset the total during each iteration.\n\nChallenge: What goes wrong if total = 0 is inside the loop?\n\nEarlier values are discarded at each iteration, so the running total is lost."
-        },
-        {
-          "id": "f4",
-          "face": "back",
-          "x": 1888,
-          "y": 540,
-          "title": "Guarantee progress",
-          "text": "A loop needs a way to reach its stopping case.\n\nUpdate the control variable correctly.\n\nTrace the update and condition together.\n\nChallenge: What happens if the update is removed?\n\nx stays 0, so x < 3 remains true and the loop does not terminate."
-        },
-        {
-          "id": "f5",
-          "face": "left",
-          "x": 920,
-          "y": 540,
-          "title": "Selection inside a loop",
-          "text": "A loop can repeat a decision.\n\nThe decision runs for each item.\n\nOnly matching items affect the count.\n\nChallenge: How many of 2, 7, 8 and 3 are at least 7?\n\nTwo values: 7 and 8."
-        },
-        {
-          "id": "f6",
-          "face": "left",
-          "x": 1888,
-          "y": 540,
-          "title": "Nested loops",
-          "text": "An inner loop runs for each outer iteration.\n\nCount repetitions at both levels.\n\nMultiply fixed counts when both fully execute.\n\nChallenge: How many prints for outer 4 and inner 3?\n\nTwelve prints: the three inner iterations run for each of four outer iterations."
-        }
-      ],
-      "models": []
+     "label": "1",
+     "name": "How it works",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "searchstep",
+       "q": "Step through a linear search for 31. Tap each item the algorithm checks, in order.",
+       "list": [
+        8,
+        14,
+        3,
+        31,
+        27,
+        19,
+        5
+       ],
+       "target": 31,
+       "mode": "linear",
+       "fb": "Four checks, because 31 is the fourth item. A linear search never skips ahead.",
+       "title": "Linear search: find 31"
+      },
+      {
+       "t": "mcq",
+       "q": "Where does a linear search start?",
+       "a": [
+        "At the first item in the list",
+        "At the middle item",
+        "At the last item",
+        "At a random item"
+       ],
+       "fb": "Always at the start, always one at a time."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Its one great advantage",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is the main advantage of a linear search?",
+       "a": [
+        "It works on a list that is not in order",
+        "It is the fastest search",
+        "It uses no memory",
+        "It always finds the item"
+       ],
+       "fb": "Sorting a list first costs time a linear search doesn't need to spend."
+      },
+      {
+       "t": "multi",
+       "q": "Which of these suit a linear search? Select all that apply.",
+       "opts": [
+        "A short list of names in no particular order",
+        "A list that changes every few seconds",
+        "Searching once through unsorted data",
+        "A list of only a dozen items",
+        "A million sorted records searched constantly",
+        "A database index"
+       ],
+       "correct": [
+        "A short list of names in no particular order",
+        "A list that changes every few seconds",
+        "Searching once through unsorted data",
+        "A list of only a dozen items"
+       ],
+       "fb": "Short, unsorted or constantly changing: linear wins on simplicity."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Counting the checks",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "A list has 500 items. What is the worst case for a linear search?",
+       "a": [
+        "500 checks",
+        "1 check",
+        "9 checks",
+        "250 checks"
+       ],
+       "fb": "The worst case is the item being last, or not there at all."
+      },
+      {
+       "t": "searchstep",
+       "q": "Step through a linear search for 5, the last item. Count how many checks it takes.",
+       "list": [
+        8,
+        14,
+        3,
+        31,
+        27,
+        19,
+        5
+       ],
+       "target": 5,
+       "mode": "linear",
+       "fb": "Seven checks: the worst case for a seven-item list.",
+       "title": "Linear search: the worst case"
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Why it gets slow",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "A list grows from 1,000 to 2,000 items. What happens to the worst case?",
+       "a": [
+        "It doubles, to 2,000 checks",
+        "It stays the same",
+        "It goes up by one",
+        "It quadruples"
+       ],
+       "fb": "The work grows in step with the list, which is what makes it unsuitable for huge data."
+      },
+      {
+       "t": "mcq",
+       "q": "Why do large systems sort their data?",
+       "a": [
+        "So they can use a much faster search that needs the list in order",
+        "Sorted data uses less space",
+        "Unsorted data cannot be stored",
+        "Sorting removes duplicates"
+       ],
+       "fb": "That faster search is the binary search, next lesson."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Writing it down",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "order",
+       "q": "Put these lines into a working linear search.",
+       "steps": [
+        "found = false",
+        "for i = 0 to length(list) - 1",
+        "  if list[i] == target then",
+        "    found = true",
+        "  endif",
+        "next i",
+        "print(found)"
+       ],
+       "fb": "Set the flag, check everything, report the flag."
+      },
+      {
+       "t": "mcq",
+       "q": "Why is the flag set to false before the loop?",
+       "a": [
+        "So that a list with no match still gives a sensible answer",
+        "To make the loop run",
+        "To reset the list",
+        "Because false is faster"
+       ],
+       "fb": "Without it the variable has no value if nothing matches."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Answering search questions",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which is the strongest description of a linear search?",
+       "a": [
+        "It compares the target with each item in turn from the start, stopping when it matches or the list ends",
+        "It looks through the list",
+        "It searches until it finds it",
+        "It checks every item"
+       ],
+       "fb": "Starting point, what is compared, and when it stops."
+      },
+      {
+       "t": "mcq",
+       "q": "A question asks how many items a linear search checks to find the fifth of eight items. What is the answer?",
+       "a": [
+        "Five",
+        "Eight",
+        "Four",
+        "Three"
+       ],
+       "fb": "Items one to five are compared."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: search it",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "searchstep",
+       "q": "Find 42 with a linear search. Tap each item the algorithm checks.",
+       "list": [
+        17,
+        9,
+        42,
+        4,
+        88,
+        23
+       ],
+       "target": 42,
+       "mode": "linear",
+       "fb": "Three checks: the algorithm stops as soon as it matches.",
+       "title": "Linear search: find 42"
+      },
+      {
+       "t": "sort",
+       "q": "Would a linear search be a sensible choice here?",
+       "cats": [
+        "Sensible",
+        "Not sensible"
+       ],
+       "items": [
+        [
+         "Twelve names in no particular order",
+         "Sensible"
+        ],
+        [
+         "A shopping list on your phone",
+         "Sensible"
+        ],
+        [
+         "A list that is rebuilt every second",
+         "Sensible"
+        ],
+        [
+         "Ten million sorted customer records",
+         "Not sensible"
+        ],
+        [
+         "A dictionary searched thousands of times a second",
+         "Not sensible"
+        ],
+        [
+         "Every web page on the internet",
+         "Not sensible"
+        ]
+       ],
+       "fb": "Short, unsorted or rapidly changing suits linear; large and sorted does not."
+      }
+     ]
     }
-  ]
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 1035,
+     "y": 585,
+     "title": "Also called sequential",
+     "text": "A linear search is sometimes called a sequential search, because it goes through the list in sequence."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1821,
+     "y": 401,
+     "title": "Sometimes unbeatable",
+     "text": "If the list is unsorted and you search it once, a linear search is the fastest possible: anything else would have to look at every item too."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 1035,
+     "y": 585,
+     "title": "Your eyes do it",
+     "text": "Scanning a shelf for a particular book is a linear search, which is why bookshops sort their shelves."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1828,
+     "y": 440,
+     "title": "Early exit",
+     "text": "A well-written linear search stops the moment it finds a match, which halves the average work."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 1035,
+     "y": 585,
+     "title": "Big O",
+     "text": "At A level this is written O(n): the work grows in proportion to the number of items."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1821,
+     "y": 401,
+     "title": "Exam tip",
+     "text": "Questions often ask for the number of comparisons. Count how many items are looked at, including the matching one."
+    }
+   ],
+   "models": []
+  }
+ ]
 }

@@ -1,305 +1,369 @@
 {
-  "id": "al-l02",
-  "lesson": 2,
-  "title": "Model design lab",
-  "scenes": [
+ "id": "al-l02",
+ "lesson": 2,
+ "title": "Breakdown bay",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Breakdown bay",
+   "img": "img/AL_L02_BreakdownBay_360.jpg",
+   "imgHi": "img/AL_L02_BreakdownBay_360_hi.jpg",
+   "stations": [
     {
-      "id": "main",
-      "title": "Model design lab",
-      "img": "img/AL_L02_ModelDesignLab_360.jpg",
-      "imgHi": "img/AL_L02_ModelDesignLab_360_hi.jpg",
-      "stations": [
-        {
-          "label": "1",
-          "name": "Define the question",
-          "col": "#40c4ff",
-          "face": "right",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "Which input supports a north/south comparison?",
-              "a": [
-                "Latitude",
-                "Population",
-                "Building colour",
-                "Ticket price"
-              ],
-              "fb": "Latitude"
-            },
-            {
-              "t": "mcq",
-              "q": "The required output helps determine...",
-              "a": [
-                "Which inputs are relevant",
-                "The computer brand",
-                "The number of wall colours"
-              ],
-              "fb": "Which inputs are relevant. A model answers a specific question."
-            }
-          ]
-        },
-        {
-          "label": "2",
-          "name": "Signed coordinates",
-          "col": "#aa6eeb",
-          "face": "right",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "Which latitude is further north?",
-              "a": [
-                "-3",
-                "-17",
-                "-40",
-                "-61"
-              ],
-              "fb": "-3 is the greatest value, so it is furthest north."
-            },
-            {
-              "t": "mcq",
-              "q": "Which is further north: -15 or -4?",
-              "a": [
-                "-4",
-                "-15",
-                "They are equal"
-              ],
-              "fb": "-4. Northern latitudes are positive."
-            }
-          ]
-        },
-        {
-          "label": "3",
-          "name": "Equality matters",
-          "col": "#ff785a",
-          "face": "back",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "A = 12 and B = 12. What should be output?",
-              "a": [
-                "Same latitude",
-                "A is north",
-                "B is north",
-                "No valid coordinates"
-              ],
-              "fb": "Same latitude"
-            },
-            {
-              "t": "mcq",
-              "q": "Which comparison checks equal values?",
-              "a": [
-                "A == B",
-                "A > B",
-                "A < B"
-              ],
-              "fb": "A == B. Two values can be equal."
-            }
-          ]
-        },
-        {
-          "label": "4",
-          "name": "Inputs and processing",
-          "col": "#ffa028",
-          "face": "back",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "sort",
-              "q": "Classify each part of the fare model.",
-              "cats": [
-                "Input",
-                "Process",
-                "Output"
-              ],
-              "items": [
-                [
-                  "Distance entered",
-                  "Input"
-                ],
-                [
-                  "Multiply by 2",
-                  "Process"
-                ],
-                [
-                  "Fare displayed",
-                  "Output"
-                ]
-              ],
-              "fb": "Input enters, a process calculates, and output leaves the system."
-            },
-            {
-              "t": "mcq",
-              "q": "A displayed fare is...",
-              "a": [
-                "Output",
-                "Input",
-                "An arithmetic operation"
-              ],
-              "fb": "Output. Inputs supply the data."
-            }
-          ]
-        },
-        {
-          "label": "5",
-          "name": "Change the requirement",
-          "col": "#50dc96",
-          "face": "left",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "A fare now depends on passenger age. What changes?",
-              "a": [
-                "Add age as an input and a discount rule",
-                "Add every passenger hobby",
-                "Remove distance",
-                "Stop producing a fare"
-              ],
-              "fb": "Add age as an input and a discount rule"
-            },
-            {
-              "t": "mcq",
-              "q": "Which input supports an age discount?",
-              "a": [
-                "Passenger age",
-                "Passenger shoe brand",
-                "Vehicle colour"
-              ],
-              "fb": "Passenger age. A new requirement may need new data."
-            }
-          ]
-        },
-        {
-          "label": "6",
-          "name": "Test the simplified model",
-          "col": "#f05aaa",
-          "face": "left",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "order",
-              "q": "Order the model-development steps.",
-              "steps": [
-                "State the required answer",
-                "Choose relevant inputs",
-                "Write the processing rules",
-                "Check known examples"
-              ],
-              "fb": "Test against the original question."
-            },
-            {
-              "t": "mcq",
-              "q": "Which case checks equality?",
-              "a": [
-                "8 and 8",
-                "8 and 9",
-                "-8 and 8"
-              ],
-              "fb": "8 and 8. Use examples with known answers."
-            }
-          ]
-        },
-        {
-          "label": "★",
-          "name": "Final challenge",
-          "col": "#ffd046",
-          "face": "down",
-          "x": 1024,
-          "y": 800,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "A fare is distance * 2. Distance is 7. What is output?",
-              "a": [
-                "14",
-                "9",
-                "5",
-                "2"
-              ],
-              "fb": "14"
-            },
-            {
-              "t": "match",
-              "q": "Match each improvement to its purpose.",
-              "pairs": [
-                [
-                  "Add an equality branch",
-                  "Handle equal values"
-                ],
-                [
-                  "Remove wall colours",
-                  "Reduce irrelevant detail"
-                ],
-                [
-                  "Add age",
-                  "Apply an age discount"
-                ]
-              ],
-              "fb": "Only add detail that supports the requirement."
-            }
-          ]
-        }
-      ],
-      "info": [
-        {
-          "id": "f1",
-          "face": "right",
-          "x": 920,
-          "y": 540,
-          "title": "Define the question",
-          "text": "A model answers a specific question.\n\nWrite the required output first.\n\nThen decide which inputs are necessary.\n\nChallenge: Why define the output before selecting data?\n\nThe required answer determines which data the model needs."
-        },
-        {
-          "id": "f2",
-          "face": "right",
-          "x": 1888,
-          "y": 540,
-          "title": "Signed coordinates",
-          "text": "Northern latitudes are positive.\n\nSouthern latitudes are negative.\n\nA larger latitude is further north.\n\nChallenge: Which is further north: -8 or -21? Explain.\n\n-8 is larger than -21, so it is further north."
-        },
-        {
-          "id": "f3",
-          "face": "back",
-          "x": 920,
-          "y": 540,
-          "title": "Equality matters",
-          "text": "Two values can be equal.\n\nA two-way comparison may miss this case.\n\nSpecify an output for every valid case.\n\nChallenge: Why is an equality case needed?\n\nWithout it, equal latitudes could be incorrectly labelled north or south."
-        },
-        {
-          "id": "f4",
-          "face": "back",
-          "x": 1888,
-          "y": 540,
-          "title": "Inputs and processing",
-          "text": "Inputs supply the data.\n\nProcesses transform or compare it.\n\nOutputs communicate the result.\n\nChallenge: Classify multiplying distance by 2.\n\nIt is a process because it transforms the input into the fare."
-        },
-        {
-          "id": "f5",
-          "face": "left",
-          "x": 920,
-          "y": 540,
-          "title": "Change the requirement",
-          "text": "A new requirement may need new data.\n\nReview the model before adding detail.\n\nKeep the change relevant to the new purpose.\n\nChallenge: What extra coordinate supports east/west comparison?\n\nLongitude supports comparing east/west positions within a stated coordinate convention."
-        },
-        {
-          "id": "f6",
-          "face": "left",
-          "x": 1888,
-          "y": 540,
-          "title": "Test the simplified model",
-          "text": "Use examples with known answers.\n\nInclude less obvious cases.\n\nRefine the rules if an example fails.\n\nChallenge: Why test equal and negative latitudes?\n\nThey check equality and signed-number comparisons that positive unequal examples may miss."
-        }
-      ],
-      "models": []
+     "label": "1",
+     "name": "What decomposition is",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is decomposition?",
+       "a": [
+        "Breaking a problem into smaller sub-problems that can be solved separately",
+        "Removing unnecessary detail",
+        "Writing the steps in order",
+        "Testing a program"
+       ],
+       "fb": "Not to be confused with abstraction, which removes detail rather than splitting it up."
+      },
+      {
+       "t": "mcq",
+       "q": "How do you know when to stop decomposing?",
+       "a": [
+        "When each part is small enough to be solved or programmed on its own",
+        "After exactly three levels",
+        "When there are ten parts",
+        "When the diagram fills the page"
+       ],
+       "fb": "There is no fixed number of levels."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Why it helps",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "multi",
+       "q": "Which are genuine advantages of decomposition? Select all that apply.",
+       "opts": [
+        "Each part can be tested on its own",
+        "Several programmers can work at once",
+        "Parts can be reused in other programs",
+        "Smaller parts are easier to understand",
+        "The program always runs faster",
+        "It removes the need for testing"
+       ],
+       "correct": [
+        "Each part can be tested on its own",
+        "Several programmers can work at once",
+        "Parts can be reused in other programs",
+        "Smaller parts are easier to understand"
+       ],
+       "fb": "Speed is not one of them, and testing becomes easier rather than unnecessary."
+      },
+      {
+       "t": "mcq",
+       "q": "A team of five is writing a shop system. How does decomposition help them?",
+       "a": [
+        "Each person takes a separate part, such as payments or stock, and they can work at the same time",
+        "Everyone writes the same code",
+        "It halves the number of bugs",
+        "It removes the need to plan"
+       ],
+       "fb": "Splitting the work is only possible once the problem is split."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Structure diagrams",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does a structure diagram show?",
+       "a": [
+        "How a problem breaks down into parts, from the whole system at the top to the detail below",
+        "The order the program runs in",
+        "Which variables are used",
+        "How long each part takes"
+       ],
+       "fb": "It shows structure, not sequence: that is what a flowchart is for."
+      },
+      {
+       "t": "order",
+       "q": "Put these levels of a structure diagram for a music app in order, from top to bottom.",
+       "steps": [
+        "Music streaming app",
+        "Play music, Manage playlists, Search",
+        "Add a track, Remove a track, Rename a playlist",
+        "Check the track exists, Write it to the playlist file"
+       ],
+       "fb": "Each level breaks the one above into its parts."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Worked example",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1355,
+     "y": 1859,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "In a quiz program, which level does each part belong to?",
+       "cats": [
+        "The whole problem",
+        "A main part",
+        "A detailed step"
+       ],
+       "items": [
+        [
+         "Quiz program",
+         "The whole problem"
+        ],
+        [
+         "Ask a question",
+         "A main part"
+        ],
+        [
+         "Keep the score",
+         "A main part"
+        ],
+        [
+         "Compare the answer to the correct one",
+         "A detailed step"
+        ],
+        [
+         "Add one to the score",
+         "A detailed step"
+        ],
+        [
+         "Print the question text on screen",
+         "A detailed step"
+        ]
+       ],
+       "fb": "Main parts are jobs; detailed steps are things you could write in one or two lines."
+      },
+      {
+       "t": "mcq",
+       "q": "Why is the bottom level of a structure diagram useful to a programmer?",
+       "a": [
+        "Each box there is small enough to be written as a few lines or one subprogram",
+        "It shows which language to use",
+        "It lists the variables",
+        "It proves the program works"
+       ],
+       "fb": "That is the point of splitting until the parts are small."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Decomposition and abstraction together",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 841,
+     "y": 1621,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Is each decision abstraction or decomposition?",
+       "cats": [
+        "Abstraction",
+        "Decomposition"
+       ],
+       "items": [
+        [
+         "Deciding the app does not need the car's colour",
+         "Abstraction"
+        ],
+        [
+         "Splitting the app into find a space, pay, and extend a stay",
+         "Decomposition"
+        ],
+        [
+         "Ignoring the driver's age",
+         "Abstraction"
+        ],
+        [
+         "Separating the payment code from the map code",
+         "Decomposition"
+        ],
+        [
+         "Storing only the space number, not its exact position",
+         "Abstraction"
+        ],
+        [
+         "Writing 'check space is free' as its own subprogram",
+         "Decomposition"
+        ]
+       ],
+       "fb": "Remove detail, or split into parts: two different jobs."
+      },
+      {
+       "t": "mcq",
+       "q": "Why does abstraction usually come first?",
+       "a": [
+        "You need to know what the problem really is before you can split it into the right parts",
+        "Because it is easier",
+        "Because the exam asks for it first",
+        "Because decomposition needs code"
+       ],
+       "fb": "Split the wrong problem and every part is wrong."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Answering decomposition questions",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1730,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which is the strongest exam answer?",
+       "a": [
+        "The system splits into borrow, return, search and fines; each can be written and tested separately, and search can be reused elsewhere",
+        "The system is broken into smaller parts",
+        "You decompose the library system",
+        "The parts are easier"
+       ],
+       "fb": "Named parts plus a stated benefit."
+      },
+      {
+       "t": "mcq",
+       "q": "A question asks for a structure diagram. What loses marks most often?",
+       "a": [
+        "Writing a list of steps in order instead of a tree of parts",
+        "Using a ruler",
+        "Using too many colours",
+        "Writing in pencil"
+       ],
+       "fb": "A structure diagram shows what the parts are, not the order they run in."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: build the tree",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Which level of the structure diagram does each item belong to?",
+       "cats": [
+        "Whole system",
+        "Main part",
+        "Detailed step"
+       ],
+       "items": [
+        [
+         "Takeaway ordering system",
+         "Whole system"
+        ],
+        [
+         "Browse the menu",
+         "Main part"
+        ],
+        [
+         "Take payment",
+         "Main part"
+        ],
+        [
+         "Track the delivery",
+         "Main part"
+        ],
+        [
+         "Add an item to the basket",
+         "Detailed step"
+        ],
+        [
+         "Check the card number is 16 digits",
+         "Detailed step"
+        ],
+        [
+         "Work out the total",
+         "Detailed step"
+        ],
+        [
+         "Send the driver's position to the app",
+         "Detailed step"
+        ]
+       ],
+       "fb": "Main parts are jobs the system does; detailed steps are things you could code directly."
+      }
+     ]
     }
-  ]
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 1035,
+     "y": 585,
+     "title": "Also called top-down",
+     "text": "Structure diagrams are sometimes called top-down design, because you start with the whole and work down into detail."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1828,
+     "y": 440,
+     "title": "Hidden problems",
+     "text": "Decomposing usually uncovers parts nobody thought of, which is one of the best reasons to do it before writing code."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 1035,
+     "y": 585,
+     "title": "Divide and conquer",
+     "text": "Some algorithms decompose as they run: merge sort splits a list in half over and over, which you meet later in this topic."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1828,
+     "y": 440,
+     "title": "Real teams",
+     "text": "A large app may have hundreds of modules. No one person knows them all, which is only possible because the problem was decomposed."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 1035,
+     "y": 585,
+     "title": "Reuse pays twice",
+     "text": "A well-separated 'check a date is valid' subprogram gets used in five places and tested once."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1821,
+     "y": 401,
+     "title": "Exam wording",
+     "text": "Watch for 'state the advantages of decomposition': the marks are for named benefits, not a definition."
+    }
+   ],
+   "models": []
+  }
+ ]
 }
