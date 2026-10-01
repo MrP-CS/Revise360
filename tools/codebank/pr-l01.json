@@ -1,0 +1,540 @@
+{
+ "lesson": "pr-l01",
+ "title": "First programs",
+ "stations": [
+  "Printing output",
+  "Variables",
+  "Reading input",
+  "Numbers and text",
+  "Casting",
+  "Putting it together"
+ ],
+ "questions": [
+  {
+   "id": "pr-l01-q1",
+   "station": 0,
+   "marks": 1,
+   "q": "The tuck shop screen shows the shop's name above whatever item has been scanned.",
+   "brief": [
+    "The line item = input() is already written. Leave it where it is.",
+    "The line print(item) is already written at the end. Leave it there too.",
+    "Add one line of your own that prints exactly: Oak Lane tuck shop",
+    "Your line must print before the item."
+   ],
+   "starter": "item = input()\n\n# Write one line here that prints:  Oak Lane tuck shop\n\nprint(item)\n",
+   "tests": [
+    {
+     "in": [
+      "Flapjack"
+     ],
+     "out": [
+      "Oak Lane tuck shop",
+      "Flapjack"
+     ],
+     "why": "Only the item appeared, so your print line is missing. A line of text to print goes inside print() and inside quotation marks: print('Oak Lane tuck shop')."
+    },
+    {
+     "in": [
+      "Orange juice"
+     ],
+     "out": [
+      "Oak Lane tuck shop",
+      "Orange juice"
+     ],
+     "why": "The shop name printed but the item did not, so the print(item) line has been changed or deleted. Put it back exactly as it was."
+    },
+    {
+     "in": [
+      "Cheese roll"
+     ],
+     "out": [
+      "Oak Lane tuck shop",
+      "Cheese roll"
+     ],
+     "why": "If the word item came out instead of Cheese roll, you wrote print('item') with quotation marks. Quotation marks mean 'print these letters'; without them Python prints what the variable holds."
+    }
+   ],
+   "fb": "print() sends one line of text to the screen, and the text has to be inside quotation marks."
+  },
+  {
+   "id": "pr-l01-q2",
+   "station": 0,
+   "marks": 2,
+   "q": "The tuck shop till prints a three line receipt around the item that was scanned.",
+   "brief": [
+    "Keep the first line, item = input(). It puts the scanned item into item.",
+    "Print this line exactly: ===== Tuck shop =====",
+    "Next print the item, using print(item) with no quotation marks.",
+    "Print this line last: Thank you"
+   ],
+   "starter": "item = input()\n\n# Three lines of output, in this order:\n#   ===== Tuck shop =====\n#   the item\n#   Thank you\n",
+   "tests": [
+    {
+     "in": [
+      "Flapjack 90p"
+     ],
+     "out": [
+      "===== Tuck shop =====",
+      "Flapjack 90p",
+      "Thank you"
+     ],
+     "why": "Check the row of equals signs: five before the words and five after, with a space either side of Tuck shop. Marking ignores capitals, but it does not ignore missing characters."
+    },
+    {
+     "in": [
+      "Orange juice 75p"
+     ],
+     "out": [
+      "===== Tuck shop =====",
+      "Orange juice 75p",
+      "Thank you"
+     ],
+     "why": "If the word item appeared in the middle, you put quotation marks round it. print(item) prints the value; print('item') prints the four letters."
+    },
+    {
+     "in": [
+      "Cheese roll 1.20"
+     ],
+     "out": [
+      "===== Tuck shop =====",
+      "Cheese roll 1.20",
+      "Thank you"
+     ],
+     "why": "Three separate print() lines are needed, one for each line of the receipt, and they run in the order you write them."
+    }
+   ],
+   "fb": "Each print() starts a new line, so three lines of output means three print() statements in the right order."
+  },
+  {
+   "id": "pr-l01-q3",
+   "station": 1,
+   "marks": 2,
+   "q": "Every drink at the sports day stall costs the same, so the price never changes while the program runs.",
+   "brief": [
+    "Keep the first line, name = input(). It puts the customer's name into name.",
+    "Make a constant called PRICE holding the whole number 90. A constant is a value the program never changes, and is written in capital letters.",
+    "Print the customer's name.",
+    "On the next line print the value held in PRICE."
+   ],
+   "starter": "name = input()\n\n# Make your constant here, then print the name and then the price.\n",
+   "tests": [
+    {
+     "in": [
+      "Priya"
+     ],
+     "out": [
+      "Priya",
+      "90"
+     ],
+     "why": "Two lines are wanted: the name first, then the price. If the words name or PRICE appeared, you printed the variable names in quotation marks instead of their values."
+    },
+    {
+     "in": [
+      "Tomas Reid"
+     ],
+     "out": [
+      "Tomas Reid",
+      "90"
+     ],
+     "why": "The whole line that was typed in is one value, spaces included, so print the variable rather than retyping a name of your own."
+    },
+    {
+     "in": [
+      "Yusuf"
+     ],
+     "out": [
+      "Yusuf",
+      "90"
+     ],
+     "why": "90 has to come from the constant you made. Putting 90 straight inside print() works here, but the question asks for a named constant so the price is written down once."
+    }
+   ],
+   "fb": "A variable is a named box for a value; a constant is the same thing for a value that must not change, and capitals are how programmers signal that."
+  },
+  {
+   "id": "pr-l01-q4",
+   "station": 1,
+   "marks": 2,
+   "q": "The noticeboard outside the library has one slot. It starts the day saying Closed and is then replaced with a new message.",
+   "brief": [
+    "Keep the first line, later = input(). It holds the message that replaces the first one.",
+    "Put the text Closed into a variable of your own.",
+    "Print that variable.",
+    "Now give the same variable the value held in later.",
+    "Print that same variable again."
+   ],
+   "starter": "later = input()\n\n# One variable, printed twice, with a new value in between.\n",
+   "tests": [
+    {
+     "in": [
+      "Open until 4pm"
+     ],
+     "out": [
+      "Closed",
+      "Open until 4pm"
+     ],
+     "why": "Closed must print before the slot changes. If only the new message appeared, you printed after the change instead of before it as well."
+    },
+    {
+     "in": [
+      "Back at 1pm"
+     ],
+     "out": [
+      "Closed",
+      "Back at 1pm"
+     ],
+     "why": "Assigning with = replaces whatever was in the variable. The old value is gone, which is why it has to be printed first."
+    },
+    {
+     "in": [
+      "Closed"
+     ],
+     "out": [
+      "Closed",
+      "Closed"
+     ],
+     "why": "Both lines say the same thing here only because the replacement message happens to be Closed. Your program should still print twice, with the assignment in between."
+    }
+   ],
+   "fb": "A variable holds one value at a time, and = overwrites it. Print the old value before you replace it."
+  },
+  {
+   "id": "pr-l01-q5",
+   "station": 2,
+   "marks": 2,
+   "q": "The library self-service screen asks a borrower for their name, then logs them in.",
+   "brief": [
+    "Read one line of input: the borrower's name. Leave the brackets of input() empty, with no prompt text inside.",
+    "Print this line exactly: Welcome",
+    "Print the name on the next line."
+   ],
+   "starter": "# Read the name, then print Welcome and then the name.\n",
+   "tests": [
+    {
+     "in": [
+      "Nadia"
+     ],
+     "out": [
+      "Welcome",
+      "Nadia"
+     ],
+     "why": "If words like Enter your name appeared, you put a prompt inside input(). A prompt is printed to the screen, so it becomes part of your output and no longer matches. Use input() with nothing in the brackets."
+    },
+    {
+     "in": [
+      "Samuel Okafor"
+     ],
+     "out": [
+      "Welcome",
+      "Samuel Okafor"
+     ],
+     "why": "input() reads the whole line, spaces included, so the full name comes back as one value. Store it in a variable, then print that variable."
+    },
+    {
+     "in": [
+      "Jo"
+     ],
+     "out": [
+      "Welcome",
+      "Jo"
+     ],
+     "why": "Nothing printed at all usually means input() was called but the result was never stored, so there was nothing left to print. Write name = input()."
+    }
+   ],
+   "fb": "input() waits for one line and gives it back as a string. Anything you put in its brackets is printed first, which is why this platform asks you to leave them empty."
+  },
+  {
+   "id": "pr-l01-q6",
+   "station": 2,
+   "marks": 2,
+   "q": "A bus stop screen is told which stop it is at and the time of the next bus, and shows the time above the stop name.",
+   "brief": [
+    "Read two lines of input: first the stop name, then the time.",
+    "Print the time.",
+    "Print the stop name on the next line.",
+    "Use input() with empty brackets both times."
+   ],
+   "starter": "# Two inputs: the stop first, then the time.\n# Two lines of output: the time first, then the stop.\n",
+   "tests": [
+    {
+     "in": [
+      "Oak Lane",
+      "09:15"
+     ],
+     "out": [
+      "09:15",
+      "Oak Lane"
+     ],
+     "why": "Printed in the order you read them. The stop arrives first but is printed second, so store each input in its own variable and then choose the order you print them in."
+    },
+    {
+     "in": [
+      "Mill Road",
+      "17:40"
+     ],
+     "out": [
+      "17:40",
+      "Mill Road"
+     ],
+     "why": "One input() reads one line only. Two lines of input need two separate calls to input()."
+    },
+    {
+     "in": [
+      "Station Approach",
+      "06:05"
+     ],
+     "out": [
+      "06:05",
+      "Station Approach"
+     ],
+     "why": "The time is text here, not a number. 06:05 is printed exactly as it was typed, so there is nothing to convert."
+    }
+   ],
+   "fb": "Reading and printing are separate steps. Once each value is in a variable you can print them in any order you like."
+  },
+  {
+   "id": "pr-l01-q7",
+   "station": 3,
+   "marks": 3,
+   "q": "A library ticket joins a borrower's two names into one line of text.",
+   "brief": [
+    "Read two lines of input: the first name, then the last name.",
+    "Print one single line in this form: Anna Lee is a member",
+    "That is the first name, one space, the last name, then a space and the words is a member."
+   ],
+   "starter": "# Read two names, join them, and print one line.\n",
+   "tests": [
+    {
+     "in": [
+      "Anna",
+      "Lee"
+     ],
+     "out": [
+      "Anna Lee is a member"
+     ],
+     "why": "AnnaLee is a member means the + joined the names with nothing between them. Joining text never adds spaces for you, so you have to join a space in as well: first + ' ' + last."
+    },
+    {
+     "in": [
+      "Jo",
+      "Okoro"
+     ],
+     "out": [
+      "Jo Okoro is a member"
+     ],
+     "why": "Three lines of output instead of one means you used three print() statements. Build the whole sentence first, then print it once."
+    },
+    {
+     "in": [
+      "Kit",
+      "Ng"
+     ],
+     "out": [
+      "Kit Ng is a member"
+     ],
+     "why": "If the words first or last appeared in the sentence, they were inside the quotation marks. Only the fixed words belong inside quotes; the variables go outside them, joined with +."
+    }
+   ],
+   "fb": "The + operator on strings is called concatenation. It joins exactly what you give it, so every space has to be joined in on purpose."
+  },
+  {
+   "id": "pr-l01-q8",
+   "station": 3,
+   "marks": 3,
+   "q": "A library account record holds four different kinds of value: a name, a count of books, a daily fine and a flag saying the account is open.",
+   "brief": [
+    "Read one line of input: the borrower's name. This is a string.",
+    "Print the name.",
+    "Print the integer 3, the number of books on loan.",
+    "Print the real number 0.25, the fine per day in pounds.",
+    "Print the Boolean True, meaning the account is open.",
+    "Four lines of output in that order."
+   ],
+   "starter": "# A string, an integer, a real number and a Boolean, one per line.\n",
+   "tests": [
+    {
+     "in": [
+      "Nadia"
+     ],
+     "out": [
+      "Nadia",
+      "3",
+      "0.25",
+      "True"
+     ],
+     "why": "0.25 is a real number, so print the number 0.25. Text such as 0.250 or 25p or a pound sign does not match, because those are strings, not numbers."
+    },
+    {
+     "in": [
+      "Samuel Okafor"
+     ],
+     "out": [
+      "Samuel Okafor",
+      "3",
+      "0.25",
+      "True"
+     ],
+     "why": "Four lines are wanted. If you ran out after two, remember each value needs its own print()."
+    },
+    {
+     "in": [
+      "Jo"
+     ],
+     "out": [
+      "Jo",
+      "3",
+      "0.25",
+      "True"
+     ],
+     "why": "A Boolean in Python is written True or False with a capital letter and no quotation marks. Putting quotes round it makes it a string that only looks like a Boolean."
+    }
+   ],
+   "fb": "Integer, real, Boolean, character and string are the five data types OCR names. Which one a value is decides what you can do with it later."
+  },
+  {
+   "id": "pr-l01-q9",
+   "station": 4,
+   "marks": 3,
+   "q": "The tuck shop gets two deliveries of juice cartons in one week and needs the total.",
+   "brief": [
+    "Read two lines of input. Each one is a whole number of cartons.",
+    "Print the total number of cartons as a whole number.",
+    "One line of output."
+   ],
+   "starter": "# Two whole numbers in, one total out.\n",
+   "tests": [
+    {
+     "in": [
+      "14",
+      "7"
+     ],
+     "out": [
+      "21"
+     ],
+     "why": "147 is the giveaway. input() always gives a string, and + on two strings joins them instead of adding them. Wrap each one in int() first: int(input())."
+    },
+    {
+     "in": [
+      "30",
+      "5"
+     ],
+     "out": [
+      "35"
+     ],
+     "why": "If the program crashed, check you converted before adding and not after: int(input()) + int(input()) works, but adding first and converting the joined text gives the wrong number."
+    },
+    {
+     "in": [
+      "0",
+      "12"
+     ],
+     "out": [
+      "12"
+     ],
+     "why": "A delivery of 0 is still a number to be read, so the second line is not the only input. Both lines must be read, in order."
+    }
+   ],
+   "fb": "Casting with int() turns a string of digits into an integer you can do arithmetic with. Everything input() gives you needs casting before you can add it."
+  },
+  {
+   "id": "pr-l01-q10",
+   "station": 4,
+   "marks": 3,
+   "q": "The library fine screen shows the amount owed inside a sentence, always as a real number.",
+   "brief": [
+    "Read one line of input: the fine in pounds. It may or may not have a decimal point.",
+    "Print one line in this form: Fine due: 2.5 pounds",
+    "The amount must be printed as a real number, so an input of 3 prints as 3.0 and an input of 2.50 prints as 2.5.",
+    "Keep the colon after Fine due and the word pounds at the end."
+   ],
+   "starter": "# Read the amount, turn it into a real number, print it in the sentence.\n",
+   "tests": [
+    {
+     "in": [
+      "2.50"
+     ],
+     "out": [
+      "Fine due: 2.5 pounds"
+     ],
+     "why": "Fine due: 2.50 pounds means the text went straight into the sentence without being cast. float() turns it into a real number, and 2.50 and 2.5 are the same real number, so it prints as 2.5."
+    },
+    {
+     "in": [
+      "3"
+     ],
+     "out": [
+      "Fine due: 3.0 pounds"
+     ],
+     "why": "3 instead of 3.0 means you cast with int() rather than float(). An integer has no decimal part; a real number always prints one."
+    },
+    {
+     "in": [
+      "0.75"
+     ],
+     "out": [
+      "Fine due: 0.75 pounds"
+     ],
+     "why": "A crash here is usually joining a number to text with +. Python will not join a real number to a string, so cast it back with str(fine) or pass the parts to print() separated by commas."
+    }
+   ],
+   "fb": "float() casts text to a real number and str() casts a number back to text. You often need both in the same line: one to calculate with, one to print."
+  },
+  {
+   "id": "pr-l01-q11",
+   "station": 5,
+   "marks": 4,
+   "q": "A sports day card is printed for each competitor in Elm house, showing their name, how many races they still have to run and their best time so far.",
+   "brief": [
+    "Read three lines of input: the competitor's name, then a whole number of races already run, then a time in seconds which may have a decimal point.",
+    "Make a constant called HOUSE holding the text Elm.",
+    "Print one line in this form: Ruby of Elm, using the name and the constant.",
+    "Print the number of races with 1 added to it, as a whole number.",
+    "Print the time as a real number, so an input of 60 prints as 60.0.",
+    "Three lines of output."
+   ],
+   "starter": "# A name, a whole number and a real number.\n# Then: name of HOUSE / races plus one / the time as a real number.\n",
+   "tests": [
+    {
+     "in": [
+      "Ruby",
+      "3",
+      "12.4"
+     ],
+     "out": [
+      "Ruby of Elm",
+      "4",
+      "12.4"
+     ],
+     "why": "31 on the second line means the races were still a string, so 1 was joined on the end instead of added. Cast with int() before the arithmetic."
+    },
+    {
+     "in": [
+      "Dev",
+      "0",
+      "9.80"
+     ],
+     "out": [
+      "Dev of Elm",
+      "1",
+      "9.8"
+     ],
+     "why": "9.80 means the time was never cast. float('9.80') is the real number 9.8, and a real number does not keep a trailing zero."
+    },
+    {
+     "in": [
+      "Aisha Khan",
+      "11",
+      "60"
+     ],
+     "out": [
+      "Aisha Khan of Elm",
+      "12",
+      "60.0"
+     ],
+     "why": "60 instead of 60.0 means int() was used for the time. The question asks for a real number, so use float(), which always shows a decimal part."
+    }
+   ],
+   "fb": "Most programs are this shape: read the inputs, cast each one to the type it needs to be, work something out, then print it in the form that was asked for."
+  }
+ ]
+}

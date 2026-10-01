@@ -1,0 +1,641 @@
+{
+ "lesson": "pr-l09",
+ "title": "Subprograms",
+ "stations": [
+  "Writing a procedure",
+  "Parameters",
+  "Returning a value",
+  "Functions and procedures",
+  "Local and global",
+  "Putting it together"
+ ],
+ "questions": [
+  {
+   "id": "pr-l09-q1",
+   "station": 0,
+   "marks": 2,
+   "q": "Write a procedure that prints a sign-off line, and call it at the end of a report.",
+   "brief": [
+    "Write a procedure called signoff that takes no parameters.",
+    "All it does is print: end of report",
+    "Read one line of input - the title of the report.",
+    "Print the title on its own line.",
+    "Then call signoff so the sign-off line is printed underneath it.",
+    "Two lines of output in total."
+   ],
+   "starter": "# Write the procedure signoff here\n\n# Then read the title, print it, and call signoff\n",
+   "tests": [
+    {
+     "in": [
+      "Weekly attendance"
+     ],
+     "out": [
+      "Weekly attendance",
+      "end of report"
+     ],
+     "why": "The title is printed first, then the procedure prints the sign-off. If you only see one line you have defined signoff but never called it - defining a procedure does not run it."
+    },
+    {
+     "in": [
+      "Kit cupboard check"
+     ],
+     "out": [
+      "Kit cupboard check",
+      "end of report"
+     ],
+     "why": "A different title, the same sign-off. If this failed you may have typed the title into the procedure instead of reading it with input()."
+    },
+    {
+     "in": [
+      "Lost property"
+     ],
+     "out": [
+      "Lost property",
+      "end of report"
+     ],
+     "why": "The sign-off wording never changes, so it belongs inside the procedure. Printing it twice means you called signoff twice."
+    }
+   ],
+   "fb": "A procedure is a named block of code you can run whenever you like. Writing def signoff(): only creates it - the line signoff() is what runs it."
+  },
+  {
+   "id": "pr-l09-q2",
+   "station": 0,
+   "marks": 3,
+   "q": "Write a procedure that prints a horizontal rule, and use it three times to box two headings.",
+   "brief": [
+    "Write a procedure called rule that takes no parameters and prints exactly five equals signs: =====",
+    "Read two lines of input - two headings.",
+    "Print, in this order: the rule, the first heading, the rule, the second heading, the rule.",
+    "Five lines of output in total.",
+    "The procedure must be written once and called three times."
+   ],
+   "starter": "# Write the procedure rule here\n\n# Then read two headings and print the boxed list\n",
+   "tests": [
+    {
+     "in": [
+      "Attendance",
+      "Behaviour"
+     ],
+     "out": [
+      "=====",
+      "Attendance",
+      "=====",
+      "Behaviour",
+      "====="
+     ],
+     "why": "There is a rule above, between and below the two headings, so rule() is called three times."
+    },
+    {
+     "in": [
+      "Clubs",
+      "Trips"
+     ],
+     "out": [
+      "=====",
+      "Clubs",
+      "=====",
+      "Trips",
+      "====="
+     ],
+     "why": "Different headings, same layout. If the headings came out in the wrong order, check you stored the first input() before reading the second."
+    },
+    {
+     "in": [
+      "Term 1",
+      "Term 2"
+     ],
+     "out": [
+      "=====",
+      "Term 1",
+      "=====",
+      "Term 2",
+      "====="
+     ],
+     "why": "Exactly five equals signs each time. Four or six will not match, and a rule printed inside the heading line will not either."
+    }
+   ],
+   "fb": "The point of a procedure is that the code for the rule is written once. If you copied print('=====') out three times you have not used a subprogram at all."
+  },
+  {
+   "id": "pr-l09-q3",
+   "station": 1,
+   "marks": 3,
+   "q": "Write a procedure with one parameter that prints a stock label, and use it for two different items.",
+   "brief": [
+    "Write a procedure called label that takes one parameter, a word.",
+    "It prints that word after the text: item:",
+    "So label('pen') prints: item: pen",
+    "Read two lines of input - two item names.",
+    "Call label once for each, in the order they were read.",
+    "Two lines of output in total."
+   ],
+   "starter": "# Write the procedure label, which takes one parameter\n\n# Then read two item names and call label for each\n",
+   "tests": [
+    {
+     "in": [
+      "pen",
+      "glue"
+     ],
+     "out": [
+      "item: pen",
+      "item: glue"
+     ],
+     "why": "The parameter is what makes one procedure work for both items. If both lines say the same word, you printed the same variable twice instead of passing each one in."
+    },
+    {
+     "in": [
+      "ruler",
+      "tape"
+     ],
+     "out": [
+      "item: ruler",
+      "item: tape"
+     ],
+     "why": "Nothing about the item is written inside the procedure - it arrives as the parameter."
+    },
+    {
+     "in": [
+      "ink",
+      "ink"
+     ],
+     "out": [
+      "item: ink",
+      "item: ink"
+     ],
+     "why": "The same word twice should print twice. If only one line appeared you may have skipped the second call, or only read one line of input."
+    }
+   ],
+   "fb": "A parameter is the name the procedure gives to whatever is handed to it. The value you pass in when you call it is the argument."
+  },
+  {
+   "id": "pr-l09-q4",
+   "station": 1,
+   "marks": 3,
+   "q": "Write a procedure with two parameters that works out and prints the cost of an order.",
+   "brief": [
+    "Read two whole numbers, each on its own line: the number of packs, then the price of one pack in pence.",
+    "Write a procedure called charge that takes two parameters, the number of packs and the price.",
+    "It works out packs multiplied by price and prints: total followed by a space and that number.",
+    "The procedure does the printing. Print nothing else.",
+    "One line of output."
+   ],
+   "starter": "# Write the procedure charge, which takes two parameters\n\n# Then read the two numbers and call charge\n",
+   "tests": [
+    {
+     "in": [
+      "4",
+      "75"
+     ],
+     "out": [
+      "total 300"
+     ],
+     "why": "4 packs at 75 pence is 300. If you got total 475 you joined the two inputs as text instead of turning them into numbers with int()."
+    },
+    {
+     "in": [
+      "1",
+      "99"
+     ],
+     "out": [
+      "total 99"
+     ],
+     "why": "One pack costs the price of one pack. A multiplication that gives 99 only here but fails elsewhere usually means the arguments were passed the wrong way round."
+    },
+    {
+     "in": [
+      "0",
+      "50"
+     ],
+     "out": [
+      "total 0"
+     ],
+     "why": "Zero packs cost nothing, and the procedure still has to print a line. Printing nothing at all for this case is a common slip."
+    },
+    {
+     "in": [
+      "12",
+      "125"
+     ],
+     "out": [
+      "total 1500"
+     ],
+     "why": "Bigger numbers must work too. If this failed but the others passed, you may have typed a fixed answer into the procedure."
+    }
+   ],
+   "fb": "Two parameters are separated by a comma in the def line, and the arguments go in the same order when you call it. Order matters, not the names."
+  },
+  {
+   "id": "pr-l09-q5",
+   "station": 2,
+   "marks": 3,
+   "q": "Write a function that returns double a number, and print what it gives back.",
+   "brief": [
+    "Read one whole number.",
+    "Write a function called double that takes one parameter and returns twice that number.",
+    "The function must use return. It must not print anything itself.",
+    "In the main program, print only the value the function returns.",
+    "One line of output."
+   ],
+   "starter": "# Write the function double here - it returns, it does not print\n\n# Then read a number and print what double gives back\n",
+   "tests": [
+    {
+     "in": [
+      "7"
+     ],
+     "out": [
+      "14"
+     ],
+     "why": "Double 7 is 14. If nothing was printed, your function returns the answer but the main program never printed it."
+    },
+    {
+     "in": [
+      "0"
+     ],
+     "out": [
+      "0"
+     ],
+     "why": "Double zero is zero, and it still has to be printed."
+    },
+    {
+     "in": [
+      "-3"
+     ],
+     "out": [
+      "-6"
+     ],
+     "why": "Negative numbers double too. If you used a loop that adds, it may not run for a negative value."
+    },
+    {
+     "in": [
+      "250"
+     ],
+     "out": [
+      "500"
+     ],
+     "why": "If this one failed, check you used int(input()) - doubling the text '250' gives 250250."
+    }
+   ],
+   "fb": "return hands a value back to whatever called the function, so print(double(7)) prints 14. Without return the function hands back None."
+  },
+  {
+   "id": "pr-l09-q6",
+   "station": 2,
+   "marks": 4,
+   "q": "Write a function that returns the area of a rectangle. The function must return the answer, not print it.",
+   "brief": [
+    "Read two whole numbers, each on its own line: the width, then the height.",
+    "Write a function called area that takes the width and height as parameters and returns width multiplied by height.",
+    "The function must contain no print at all.",
+    "In the main program, store what area returns in a variable, then print one single line: the word area, a space, then that value.",
+    "One line of output, and nothing else."
+   ],
+   "starter": "# Write the function area here. It returns the answer - no print inside it.\n\n# Then read width and height, store the returned value, and print one line\n",
+   "tests": [
+    {
+     "in": [
+      "5",
+      "4"
+     ],
+     "out": [
+      "area 20"
+     ],
+     "why": "One line only. If you got an extra line with 20 on its own, your function printed the answer as well as returning it - that is the mistake this question is about."
+    },
+    {
+     "in": [
+      "1",
+      "1"
+     ],
+     "out": [
+      "area 1"
+     ],
+     "why": "A one by one rectangle has area 1. If the line read area None, the function printed the answer instead of returning it, so there was nothing to hand back."
+    },
+    {
+     "in": [
+      "12",
+      "0"
+     ],
+     "out": [
+      "area 0"
+     ],
+     "why": "A height of 0 gives an area of 0, and the line must still be printed."
+    },
+    {
+     "in": [
+      "30",
+      "7"
+     ],
+     "out": [
+      "area 210"
+     ],
+     "why": "If only the first test passed, you may have written the answer into the function rather than calculating it from the parameters."
+    }
+   ],
+   "fb": "Printing and returning are not the same thing. A function that prints shows the value once and throws it away; a function that returns gives it to the caller, which can store it, add to it or print it."
+  },
+  {
+   "id": "pr-l09-q7",
+   "station": 3,
+   "marks": 4,
+   "q": "Write one program containing a function and a procedure, and use both: the function decides, the procedure prints.",
+   "brief": [
+    "Read a name on the first line and a whole number mark on the second.",
+    "Write a FUNCTION called grade that takes the mark and returns the word pass if the mark is 40 or more, or the word fail if it is under 40. It must not print.",
+    "Write a PROCEDURE called report that takes a name and a word, prints the name, then a colon, then a space, then the word, and returns nothing.",
+    "Use grade to work out the word and report to print it.",
+    "One line of output, like: Ada: pass"
+   ],
+   "starter": "# Write the function grade (it returns a word) and the procedure report (it prints)\n\n# Then read the name and mark and use both subprograms\n",
+   "tests": [
+    {
+     "in": [
+      "Ada",
+      "55"
+     ],
+     "out": [
+      "Ada: pass"
+     ],
+     "why": "55 is a pass, and the procedure does the printing. Two lines of output means grade printed as well as returned."
+    },
+    {
+     "in": [
+      "Jo",
+      "40"
+     ],
+     "out": [
+      "Jo: pass"
+     ],
+     "why": "Exactly 40 is a pass. Getting fail here means you tested mark > 40 instead of mark >= 40."
+    },
+    {
+     "in": [
+      "Sam",
+      "39"
+     ],
+     "out": [
+      "Sam: fail"
+     ],
+     "why": "39 is under 40. If this printed pass, your function may be returning a value only on the pass branch and None otherwise."
+    },
+    {
+     "in": [
+      "Kit",
+      "0"
+     ],
+     "out": [
+      "Kit: fail"
+     ],
+     "why": "A mark of 0 is still a mark and must be reported. Crashing here usually means int() was never used on the second input."
+    }
+   ],
+   "fb": "OCR asks for the difference by name: a function returns a value, a procedure does not. In this program grade is the function and report is the procedure, and the program needs both."
+  },
+  {
+   "id": "pr-l09-q8",
+   "station": 4,
+   "marks": 4,
+   "q": "Show that a variable made inside a procedure is local: the main program's variable of the same name must not change.",
+   "brief": [
+    "Read one whole number and store it in a variable called total.",
+    "Write a procedure called boost. Inside it, create its own variable also called total, set it to 99, and print it.",
+    "Call boost once.",
+    "After that, print the main program's total.",
+    "Two lines of output: 99 first, then the number that was read."
+   ],
+   "starter": "# Read a whole number into total\n\n# Write the procedure boost, which has its OWN total set to 99 and prints it\n\n# Call boost, then print the main program's total\n",
+   "tests": [
+    {
+     "in": [
+      "5"
+     ],
+     "out": [
+      "99",
+      "5"
+     ],
+     "why": "The 5 survives. If the second line also says 99, you wrote global total inside the procedure, so it changed the main program's variable instead of making a local one."
+    },
+    {
+     "in": [
+      "0"
+     ],
+     "out": [
+      "99",
+      "0"
+     ],
+     "why": "Zero is still the main program's value afterwards."
+    },
+    {
+     "in": [
+      "-12"
+     ],
+     "out": [
+      "99",
+      "-12"
+     ],
+     "why": "If this crashed, check you used int(input()) - a minus sign is fine for int but not for a text comparison."
+    },
+    {
+     "in": [
+      "4100"
+     ],
+     "out": [
+      "99",
+      "4100"
+     ],
+     "why": "If the second line printed 99 only on some tests, the procedure is printing after the main program rather than before. Call boost first, then print."
+    }
+   ],
+   "fb": "A variable created inside a subprogram is local: it exists only while the subprogram runs and disappears afterwards. The main program's total is a different variable that happens to share a name."
+  },
+  {
+   "id": "pr-l09-q9",
+   "station": 4,
+   "marks": 4,
+   "q": "Two procedures both have to change one running score that lives in the main program.",
+   "brief": [
+    "The line score = 0 is written for you. Do not change it.",
+    "Write a procedure called win that adds 3 to the main program's score, and a procedure called draw that adds 1 to it. Neither prints anything.",
+    "Read one whole number - the number of rounds.",
+    "Loop that many times. On each pass through the loop call win and then call draw.",
+    "After the loop, print the score and nothing else.",
+    "One line of output."
+   ],
+   "starter": "score = 0\n\n# Write win() and draw() so they change the main program's score\n\n# Then read the number of rounds, loop, and print the score at the end\n",
+   "tests": [
+    {
+     "in": [
+      "0"
+     ],
+     "out": [
+      "0"
+     ],
+     "why": "No rounds, so nothing is added and the starting score is printed. A program that prints something else here never handled the loop running zero times."
+    },
+    {
+     "in": [
+      "1"
+     ],
+     "out": [
+      "4"
+     ],
+     "why": "One round is 3 plus 1. If you got 0, the procedures made their own local score instead of changing the main program's - they need global score."
+    },
+    {
+     "in": [
+      "5"
+     ],
+     "out": [
+      "20"
+     ],
+     "why": "Five rounds at 4 each is 20. Getting 4 means the score is being reset to 0 somewhere inside the loop or inside a procedure."
+    },
+    {
+     "in": [
+      "3"
+     ],
+     "out": [
+      "12"
+     ],
+     "why": "If this gave 15 or 9, only one of the two procedures is being called inside the loop."
+    }
+   ],
+   "fb": "A global variable is one the whole program can see. A subprogram may read it without saying anything, but to change it the subprogram must declare global first, or Python makes a local copy instead."
+  },
+  {
+   "id": "pr-l09-q10",
+   "station": 5,
+   "marks": 5,
+   "q": "Call a function once for every match in a season, inside a loop, and add up what it returns.",
+   "brief": [
+    "Write a function called points that takes the number of goals a team scored in one match and returns 3 if that is 2 or more, 1 if it is exactly 1, and 0 if it is 0. It must not print.",
+    "Read one whole number - how many matches there were.",
+    "Then read that many more lines, one whole number each, the goals in each match.",
+    "Inside a loop, call points once per match and add what it returns to a running total.",
+    "Print only the total.",
+    "One line of output."
+   ],
+   "starter": "# Write the function points here\n\n# Read how many matches, then loop that many times reading the goals\n# Add up what points returns, then print the total\n",
+   "tests": [
+    {
+     "in": [
+      "3",
+      "2",
+      "1",
+      "0"
+     ],
+     "out": [
+      "4"
+     ],
+     "why": "3 plus 1 plus 0 is 4. If you got 3, the total is being replaced each time round the loop instead of added to."
+    },
+    {
+     "in": [
+      "1",
+      "5"
+     ],
+     "out": [
+      "3"
+     ],
+     "why": "Five goals is still just 3 points, because the function returns 3 for anything from 2 upwards."
+    },
+    {
+     "in": [
+      "0"
+     ],
+     "out": [
+      "0"
+     ],
+     "why": "No matches at all, so the loop never runs and the total is still 0. The program must still print a line. Crashing here means you read a goals line before checking how many matches there were."
+    },
+    {
+     "in": [
+      "4",
+      "0",
+      "0",
+      "1",
+      "1"
+     ],
+     "out": [
+      "2"
+     ],
+     "why": "Two draws and two losses is 2. If this crashed with an input error, your loop is reading more lines than there are matches."
+    },
+    {
+     "in": [
+      "2",
+      "2",
+      "2"
+     ],
+     "out": [
+      "6"
+     ],
+     "why": "Two wins is 6. If the total came out as 3, the function is being called once outside the loop rather than once per match."
+    }
+   ],
+   "fb": "Calling a subprogram inside a loop is how one piece of code gets reused on every item. The loop deals with how many times; the function deals with one match at a time."
+  },
+  {
+   "id": "pr-l09-q11",
+   "station": 5,
+   "marks": 6,
+   "q": "Build a booking receipt out of three subprograms, where one subprogram calls another.",
+   "brief": [
+    "Read two whole numbers, each on its own line: the number of nights, then the number of guests.",
+    "Write a function called fee that takes the nights and returns the nights multiplied by 25.",
+    "Write a function called total that takes the nights and the guests. It must CALL fee, then return the fee multiplied by the guests, plus a booking charge of 10.",
+    "Write a procedure called receipt that takes the nights and the guests, calls total, and prints two lines: the word nights, a space, the number of nights; then the word total, a space, the value total returned.",
+    "Call receipt once. Two lines of output."
+   ],
+   "starter": "# Write fee, then total (which calls fee), then the procedure receipt (which calls total)\n\n# Then read the nights and guests and call receipt once\n",
+   "tests": [
+    {
+     "in": [
+      "2",
+      "3"
+     ],
+     "out": [
+      "nights 2",
+      "total 160"
+     ],
+     "why": "2 nights is a fee of 50, times 3 guests is 150, plus 10 is 160. Getting 60 means the 10 was added before multiplying by the guests."
+    },
+    {
+     "in": [
+      "1",
+      "1"
+     ],
+     "out": [
+      "nights 1",
+      "total 35"
+     ],
+     "why": "25 for one night, times one guest, plus 10. If the second line said total None, total prints instead of returning, so receipt had nothing to print."
+    },
+    {
+     "in": [
+      "0",
+      "4"
+     ],
+     "out": [
+      "nights 0",
+      "total 10"
+     ],
+     "why": "No nights still costs the 10 booking charge. A program that skips the whole calculation when nights is 0 will print the wrong thing here."
+    },
+    {
+     "in": [
+      "5",
+      "2"
+     ],
+     "out": [
+      "nights 5",
+      "total 260"
+     ],
+     "why": "125 for the nights, times 2 guests, plus 10. If this failed, check total is calling fee rather than repeating the times 25 itself."
+    }
+   ],
+   "fb": "Subprograms can call subprograms. receipt calls total, total calls fee, and each one only has to know its own job - that is how a big program is broken into small ones."
+  }
+ ]
+}

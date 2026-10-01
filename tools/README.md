@@ -76,6 +76,9 @@ wsspecs/               generated worksheet specs; committed so a .docx rebuild i
                        reproducible without re-running the Python
 cardgen.py             the 1200x520 flat preview card on each lesson tile
 qcfit.py               QC: text overflowing a tile or table cell (see below)
+qcorig.py              QC: our writing against a reference we must not copy
+                       from. `python3 qcorig.py <book.pdf>` prints any run of
+                       six words our content shares with it
 qcscenes.py            QC: panel-level overflow. Over-reports badly - it counts
                        box borders as text - so treat its output as candidates
 qcstack.py             QC: stack-row label/description collisions. Also
@@ -279,6 +282,67 @@ Placements live in `newdiagrams.py`, in the same form as the 3D models:
 python3 applydiagrams.py          # show what would change
 python3 applydiagrams.py --write
 ```
+
+## Topic 2.2 - the coding practice
+
+Thirteen lessons of Python practice, `pr-l01` to `pr-l13`, which is the only
+topic on the site made entirely of code questions. It covers the OCR J277 list
+of programming techniques in the order they are usually taught, from printing
+one line to writing a merge sort and a SQL query, and is meant to be worked
+through across the two years rather than in one go.
+
+The questions live in `codebank/`, one JSON file per lesson, and `specs22.py`
+reads them: station names and tasks both come from the bank, so nothing is
+retyped and nothing can drift.
+
+Model solutions are **not** in the bank. A worked program is answer-sheet
+material and this repository is public, so they sit in `answers/codebank/`,
+which git ignores — the same place the teacher answer sheets are built into.
+`verifycode.py` and `smokecode.js` read them from there and say so if they are
+missing; nothing served to a browser has ever contained one. Keep that folder
+with the teacher keys: a fresh clone will not have it.
+
+```
+python3 verifycode.py            # all 144
+python3 verifycode.py pr-l03     # one lesson
+```
+
+Four checks per question: the model solution passes every test; a program that
+just prints the first test's expected answer fails at least one other, so the
+question cannot be guessed; an empty program fails everything; and the model
+solution does not itself use anything the question forbids. A question that
+fails any of them would mislead a pupil, so the bank is not allowed to ship
+with one.
+
+That is the floor, not the ceiling. The verifier cannot tell you a question's
+tests catch the mistake a pupil actually makes - for that, write the wrong
+program yourself and check a test fails. Doing that found several real defects
+while the bank was being written: seeds where `randrange` and `randint` happen
+to agree, a rounding question where `round()` was never needed, and three file
+questions whose expected output ended on a line read straight from the file,
+where a trailing newline is invisible because the comparison strips trailing
+blank lines.
+
+## Writing code in the headset
+
+There is no system keyboard in immersive VR, so the platform has its own: the
+brief, the program and the console on one plane, the keys and Run / Check /
+Close directly below it, both at the same yaw. Point and pull the trigger to
+type. Enter keeps the current indentation and adds a level after a colon, as
+the web editor does, because indentation is most of Python and retyping four
+spaces with a trigger is miserable.
+
+```
+R360_THREE=... R360_IWER=... PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers \
+  python3 tests/smokevrcode.py
+```
+
+That opens a code question in an emulated headset, types `print('hi')` by
+pulling the trigger on eleven keys, runs it and marks it.
+
+Marking is shared, not copied: `core.sameOutput` and `core.marks` are used by
+both the page and the headset, so the same program cannot be marked right on
+one and wrong on the other.
 
 ## Code questions and the Python editor
 

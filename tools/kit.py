@@ -420,6 +420,10 @@ def export(L, site=SITE_S):
     def marks(t):
         if t["t"] in ("mcq", "multi", "circuit", "expr", "convert", "addshift", "pixels", "sound", "memory", "permissions", "defrag", "impact", "searchstep", "sortstep"): return 1
         if t["t"] == "bugline": return 2
+        # A code question is marked by running it: the award is the share of its
+        # tests passed, out of the mark total the question carries. store.js uses
+        # the same default for one written without a total.
+        if t["t"] == "code": return t.get("marks", 3)
         if t["t"] == "trace": return sum(1 for row in t["rows"] for v in row if v == "")
         if t["t"] == "table": return 1 << (len(t["inputs"]) if t.get("inputs") else len(set(c for c in _re.sub("AND|OR|NOT", "", t["expr"]) if c.isalpha())))
         if t["t"] in ("sprint", "defence", "blitz", "lawgame"): return 0

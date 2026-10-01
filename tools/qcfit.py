@@ -21,7 +21,7 @@ from lib360 import font
 from kit import _wrap
 
 SPECS = ["specs11", "specs12a", "specs12b", "specs12c", "specs13",
-         "specs14a", "specs14b", "specs15", "specs21", "specs23", "specs24"]
+         "specs14a", "specs14b", "specs15", "specs21", "specs22", "specs23", "specs24"]
 D = ImageDraw.Draw(Image.new("RGB", (10, 10)))
 
 # Default: does anything overflow its box as things are rendered NOW? That is

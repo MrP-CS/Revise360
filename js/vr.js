@@ -354,6 +354,199 @@
     function closeBoard() { if (!vrBoard) return; root.remove(vrBoard.mesh); vrBoard.tex.dispose(); vrBoard = null; }
     const boardXY = uv => [uv.x * vrBoard.board.canvas.width, (1 - uv.y) * vrBoard.board.canvas.height];
 
+    /* ---------------- writing code in the headset ----------------
+     * A headset has no keyboard, and the system one is not offered while a page
+     * is in immersive VR, so this is one: the program on a panel in front of
+     * you, keys underneath, and the trigger to press them. Everything is
+     * stacked at the same yaw, like the boards.
+     */
+    let vrCode = null;
+    const kbPanel = new Panel(1.9, 1500);
+    panels.push(kbPanel);
+
+    const KEYS = [
+      "1234567890".split(""),
+      "qwertyuiop".split(""),
+      "asdfghjkl:".split(""),
+      "zxcvbnm,.'".split(""),
+      ["(", ")", "[", "]", "=", "+", "-", "*", "/", "_"],
+      ["<", ">", "#", '"', "%", "!", "&", "|", "{", "}"]
+    ];
+
+    function openCodeVR(k, list, n, task) {
+      closeCodeVR();
+      if (!window.R360Py) { toast("The Python editor is not available here."); return; }
+      const cv = document.createElement("canvas"); cv.width = 1100; cv.height = 860;
+      const cx = cv.getContext("2d");
+      const tex = new T.CanvasTexture(cv); tex.minFilter = T.LinearFilter; tex.generateMipmaps = false;
+      const mesh = new T.Mesh(new T.PlaneGeometry(1.9, 1.9 * 860 / 1100),
+        new T.MeshBasicMaterial({ map: tex, depthTest: false, depthWrite: false }));
+      mesh.renderOrder = 19;
+      setAnchor(true);
+      atAnchor(mesh, 1.85, 12);
+      scene.add(mesh);
+      vrCode = { task, k, list, n, cv, cx, tex, mesh, text: task.starter || "", caret: (task.starter || "").length,
+                 shift: false, out: "", marked: false, busy: true, state: "Starting Python\u2026" };
+      vrCode.caret = vrCode.text.length;
+      paintCode();
+      showKeyboard();
+      atAnchor(kbPanel.mesh, 1.55, -27);
+      R360Py.ready().then(() => { if (vrCode) { vrCode.busy = false; vrCode.state = ""; showKeyboard(); paintCode(); } });
+      toast("Point at a key and pull the trigger to type. Run tries your program; Check marks it.");
+    }
+
+    function paintCode() {
+      const v = vrCode; if (!v) return;
+      const x = v.cx, W = v.cv.width, H = v.cv.height;
+      x.setTransform(1, 0, 0, 1, 0, 0);
+      x.fillStyle = "#0b1322"; x.fillRect(0, 0, W, H);
+
+      // ---- the brief, along the top
+      const BRIEF = 240;
+      x.fillStyle = "#15223b"; x.fillRect(0, 0, W, BRIEF);
+      x.fillStyle = COL.ok; x.fillRect(0, BRIEF - 3, W, 3);
+      x.textAlign = "left"; x.textBaseline = "top";
+      const wrap = (text, font, max) => {
+        x.font = font; const out = []; let line = "";
+        String(text).split(" ").forEach(w => {
+          const t2 = line ? line + " " + w : w;
+          if (x.measureText(t2).width > max && line) { out.push(line); line = w; } else line = t2;
+        });
+        if (line) out.push(line); return out;
+      };
+      let by = 18;
+      wrap(v.task.q, "700 27px " + FONT, W - 48).forEach(l => { x.fillStyle = COL.fg; x.fillText(l, 24, by); by += 33; });
+      by += 4;
+      (v.task.brief || []).forEach(b => wrap("\u2022 " + b, "23px " + FONT, W - 56).forEach(l => {
+        if (by > BRIEF - 26) return;
+        x.fillStyle = COL.soft; x.fillText(l, 28, by); by += 27;
+      }));
+
+      // ---- the program
+      const lines = v.text.split("\n");
+      const before = v.text.slice(0, v.caret).split("\n");
+      const cl = before.length - 1, cc = before[before.length - 1].length;
+      const SZ = 26, LH = 33, PADX = 74, TOP = BRIEF + 16, SHOWN = 11;
+      x.font = SZ + "px Consolas, monospace";
+      const chw = x.measureText("0").width;
+      const first = Math.max(0, Math.min(cl - SHOWN + 3, lines.length - SHOWN));
+      for (let i = Math.max(0, first); i < Math.min(lines.length, Math.max(0, first) + SHOWN); i++) {
+        const y = TOP + (i - Math.max(0, first)) * LH;
+        x.font = (SZ - 5) + "px Consolas, monospace"; x.fillStyle = "#4a5a78";
+        x.textAlign = "right"; x.textBaseline = "top"; x.fillText(String(i + 1), PADX - 18, y + 5);
+        x.textAlign = "left";
+        let px = PADX;
+        for (const tok of R360Py.tokens(lines[i])) {
+          x.font = SZ + "px Consolas, monospace"; x.fillStyle = tok.c;
+          x.fillText(tok.t, px, y); px += x.measureText(tok.t).width;
+        }
+        if (i === cl) { x.fillStyle = COL.edge; x.fillRect(PADX + cc * chw, y - 2, 3, SZ + 8); }
+      }
+
+      // ---- the console and the marking line
+      const CON = H - 210;
+      x.fillStyle = "#0a1120"; x.fillRect(0, CON, W, H - CON);
+      x.fillStyle = "#24364f"; x.fillRect(0, CON, W, 2);
+      x.font = "21px Consolas, monospace"; x.textAlign = "left"; x.textBaseline = "top";
+      (v.out || "Press Run to try your program.").split("\n").slice(-4).forEach((l, i) => {
+        x.fillStyle = v.err ? "#ff9a9a" : "#b4c4dc";
+        x.fillText(l.slice(0, 92), 24, CON + 16 + i * 26);
+      });
+      if (v.state) { x.font = "700 24px " + FONT; x.fillStyle = COL.edge; x.fillText(v.state, 24, H - 92); }
+      if (v.result) {
+        x.fillStyle = v.resultOk ? COL.ok : COL.bad;
+        wrap(v.result, "700 23px " + FONT, W - 48).slice(0, 3).forEach((l, i) => x.fillText(l, 24, H - 92 + i * 27));
+      }
+      v.tex.needsUpdate = true;
+    }
+
+    function typeKey(key) {
+      const v = vrCode; if (!v || v.busy) return;
+      const ins = (t) => { v.text = v.text.slice(0, v.caret) + t + v.text.slice(v.caret); v.caret += t.length; };
+      if (key === "\u2190") v.caret = Math.max(0, v.caret - 1);
+      else if (key === "\u2192") v.caret = Math.min(v.text.length, v.caret + 1);
+      else if (key === "Back") { if (v.caret > 0) { v.text = v.text.slice(0, v.caret - 1) + v.text.slice(v.caret); v.caret--; } }
+      else if (key === "Enter") {
+        // keep this line's indentation, and add one after a colon, exactly as
+        // the editor on the web does - indentation is most of Python
+        const line = v.text.slice(v.text.lastIndexOf("\n", v.caret - 1) + 1, v.caret);
+        const pad = (line.match(/^ */) || [""])[0] + (/:\s*$/.test(line) ? "    " : "");
+        ins("\n" + pad);
+      }
+      else if (key === "Tab") ins("    ");
+      else if (key === "Space") ins(" ");
+      else if (key === "Shift") { v.shift = !v.shift; showKeyboard(); return; }
+      else { ins(v.shift ? key.toUpperCase() : key); if (v.shift) { v.shift = false; showKeyboard(); } }
+      paintCode();
+    }
+
+    function showKeyboard() {
+      const v = vrCode; if (!v) return;
+      const row = keys => ({ row: keys.map(ch => ({
+        btn: ch === " " ? "Space" : (v.shift && /[a-z]/.test(ch) ? ch.toUpperCase() : ch),
+        id: "key" + ch, center: true, size: 26, onClick: () => typeKey(ch) })) });
+      kbPanel.set({ color: COL.line, scale: .8, blocks: [
+        row(KEYS[0]), row(KEYS[1]), row(KEYS[2]), row(KEYS[3]), row(KEYS[4]), row(KEYS[5]),
+        { row: [
+          { btn: v.shift ? "SHIFT on" : "Shift", id: "kshift", center: true, size: 24, state: v.shift ? "on" : "", onClick: () => typeKey("Shift") },
+          { btn: "Space", id: "kspace", center: true, size: 24, onClick: () => typeKey("Space") },
+          { btn: "Tab", id: "ktab", center: true, size: 24, onClick: () => typeKey("Tab") },
+          { btn: "\u2190", id: "kleft", center: true, size: 24, onClick: () => typeKey("\u2190") },
+          { btn: "\u2192", id: "kright", center: true, size: 24, onClick: () => typeKey("\u2192") },
+          { btn: "Back", id: "kback", center: true, size: 24, onClick: () => typeKey("Back") },
+          { btn: "Enter", id: "kenter", center: true, size: 24, onClick: () => typeKey("Enter") }
+        ] },
+        { row: [
+          { btn: v.busy ? "\u2026" : "\u25b6 Run", id: "crun", center: true, size: 26, onClick: runCodeVR },
+          { btn: v.busy || v.marked ? "\u2026" : "Check my answer", id: "ccheck", center: true, size: 26, onClick: checkCodeVR },
+          { btn: "Close", id: "cclose", center: true, size: 26, onClick: closeCodeVR }
+        ] }] });
+    }
+
+    async function runCodeVR() {
+      const v = vrCode; if (!v || v.busy) return;
+      v.busy = true; v.state = "Running\u2026"; showKeyboard(); paintCode();
+      const first = (v.task.tests || [])[0] || {};
+      const r = await R360Py.run(v.text, { stdin: (first.in || []).slice(), files: first.files || {}, echo: true, timeoutMs: 6000 });
+      if (!vrCode) return;
+      v.err = !!r.error;
+      v.out = (r.stdout || "") + (r.error ? "\n" + r.error : "");
+      if (!v.out.trim()) v.out = "Your program ran but printed nothing.";
+      v.busy = false; v.state = ""; showKeyboard(); paintCode(); paintCode();
+    }
+
+    async function checkCodeVR() {
+      const v = vrCode; if (!v || v.busy || v.marked) return;
+      const tests = v.task.tests || []; if (!tests.length) return;
+      const broke = (v.task.forbid || []).find(f => v.text.indexOf(f[0]) >= 0);
+      if (broke) { v.result = broke[1]; v.resultOk = false; showKeyboard(); paintCode(); return; }
+      v.busy = true; v.state = "Marking\u2026"; showKeyboard(); paintCode();
+      let passed = 0, firstFail = null;
+      for (const t of tests) {
+        const r = await R360Py.run(v.text, { stdin: (t.in || []).slice(), files: t.files || {}, echo: false, timeoutMs: 6000 });
+        if (!vrCode) return;
+        const want = (t.out || []).join("\n");
+        const ok = !r.error && core.sameOutput(r.stdout, want);
+        if (ok) passed++;
+        else if (!firstFail) firstFail = (t.in && t.in.length ? "With " + t.in.join(", ") + " it should print " + want + ". " : "It should print " + want + ". ")
+          + (r.error ? r.error.split("\n")[0] : "Yours printed " + (r.stdout.trim() || "nothing") + ".");
+      }
+      const max = core.marks(v.task), got = Math.round(max * passed / tests.length);
+      core.award(v.k, v.list[v.n], got);
+      v.busy = false; v.state = ""; v.marked = true;
+      v.resultOk = passed === tests.length;
+      v.result = passed + " of " + tests.length + " tests passed - " + got + " of " + max + " marks."
+        + (firstFail ? "  " + firstFail : "");
+      showKeyboard(); paintCode();
+    }
+
+    function closeCodeVR() {
+      if (!vrCode) return;
+      scene.remove(vrCode.mesh); vrCode.tex.dispose(); vrCode = null;
+      kbPanel.hide(); clearAnchor();
+      core.refreshSprites(); core.hud();
+    }
+
     // ---------------- questions ----------------
     function openStation(k) {
       const list = core.taskList(k); if (!list) return;
@@ -393,6 +586,7 @@
         atAnchor(qPanel.mesh, 1.55, -24);         // directly below the board
         return;
       }
+      if (task.t === "code") { closeAll(); openCodeVR(k, list, n, task); return; }
       if (task.t === "sprint" || task.t === "blitz" || task.t === "lawgame" || task.t === "arena") { sprintVR(k, st, task); return; }
       if (BOARD_TASKS.includes(task.t)) {
         const Lg = window.R360Logic;
@@ -578,7 +772,7 @@
     });
     function targets() {
       if (qPanel.open) return { panels: vrBoard ? [qPanel.mesh, vrBoard.mesh] : [qPanel.mesh], sprites: [], model: null };   // questions are modal, like on the web page
-      return { panels: [menuPanel, infoPanel, modelPanel, diagPanel, menuBtn].filter(p => p.open).map(p => p.mesh), sprites: core.sprites, model: vrModel };
+      return { panels: [menuPanel, infoPanel, modelPanel, diagPanel, kbPanel, menuBtn].filter(p => p.open).map(p => p.mesh), sprites: core.sprites, model: vrModel };
     }
     const vS = new T.Vector3(), vTo = new T.Vector3();
     function hitFor(c) {
@@ -644,7 +838,8 @@
       if (vrBoard && vrBoard.board.dirty) { vrBoard.tex.needsUpdate = true; vrBoard.board.dirty = false; }
     });
     core.sceneHooks.push(() => { if (core.inVR) { closeAll(); closeModelVR(); } });
-    window.NVRVR = { get vrBoard() { return vrBoard; }, modelPanel, get vrModel() { return vrModel; }, openModelVR: n => { const sp = core.sprites.filter(x => x.userData.type === "model")[n]; if (sp) openModelVR(sp.userData); }, openDiagramVR: n => { const sp = core.sprites.filter(x => x.userData.type === "diagram")[n]; if (sp) openDiagramVR(sp.userData); }, diagPanel, get vrDiag() { return vrDiag; }, atAnchor, setAnchor, clearAnchor, get anchor() { return anchor; }, qPanel, infoPanel, menuPanel, menuBtn, toastPanel, enter, exitVR };  // for testing
+    window.__openVRCode = (k, i) => openCodeVR(k, [i], 0, core.exp.scenes[core.cur].stations[k].tasks[i]);
+    window.NVRVR = { get vrBoard() { return vrBoard; }, modelPanel, get vrModel() { return vrModel; }, openModelVR: n => { const sp = core.sprites.filter(x => x.userData.type === "model")[n]; if (sp) openModelVR(sp.userData); }, openDiagramVR: n => { const sp = core.sprites.filter(x => x.userData.type === "diagram")[n]; if (sp) openDiagramVR(sp.userData); }, diagPanel, get vrDiag() { return vrDiag; }, kbPanel, get vrCode() { return vrCode; }, typeKey, runCodeVR, checkCodeVR, openCodeVR, atAnchor, setAnchor, clearAnchor, get anchor() { return anchor; }, qPanel, infoPanel, menuPanel, menuBtn, toastPanel, enter, exitVR };  // for testing
   }
   if (window.NVRCore) start(window.NVRCore);
   else document.addEventListener("nvr-ready", () => start(window.NVRCore), { once: true });

@@ -1,0 +1,757 @@
+{
+ "lesson": "pr-l04",
+ "title": "Counting loops",
+ "stations": [
+  "Repeating a line",
+  "Using the counter",
+  "Choosing the range",
+  "Running totals",
+  "Loops inside loops",
+  "Putting it together"
+ ],
+ "questions": [
+  {
+   "id": "pr-l04-q1",
+   "station": 0,
+   "marks": 2,
+   "q": "A tannoy repeats every announcement four times. Write a program that prints a message four times.",
+   "brief": [
+    "Read one word - the message.",
+    "Print it four times, one on each line.",
+    "Print nothing else."
+   ],
+   "starter": "# Read the message, then print it four times\n",
+   "tests": [
+    {
+     "in": [
+      "boarding"
+     ],
+     "out": [
+      "boarding",
+      "boarding",
+      "boarding",
+      "boarding"
+     ],
+     "why": "Four lines exactly. Five lines means range(5) - range(4) already gives four turns, counting 0, 1, 2, 3."
+    },
+    {
+     "in": [
+      "delayed"
+     ],
+     "out": [
+      "delayed",
+      "delayed",
+      "delayed",
+      "delayed"
+     ],
+     "why": "The message is read from the user, so a program with the word typed into it will fail here."
+    },
+    {
+     "in": [
+      "x"
+     ],
+     "out": [
+      "x",
+      "x",
+      "x",
+      "x"
+     ],
+     "why": "A one letter message is still repeated four times."
+    }
+   ],
+   "fb": "range(4) counts 0, 1, 2, 3 - four numbers, so the loop body runs four times even though it never reaches 4."
+  },
+  {
+   "id": "pr-l04-q2",
+   "station": 0,
+   "marks": 2,
+   "q": "Write a program that repeats a word as many times as the user asks for.",
+   "brief": [
+    "Read one word on the first line.",
+    "Read one whole number on the second line - how many times to repeat it.",
+    "Print: start",
+    "Then print the word that many times, one on each line."
+   ],
+   "starter": "# Read a word and a count, print start, then repeat the word\n",
+   "tests": [
+    {
+     "in": [
+      "drip",
+      "3"
+     ],
+     "out": [
+      "start",
+      "drip",
+      "drip",
+      "drip"
+     ],
+     "why": "'start' is printed once, before the loop, so it must not be inside it."
+    },
+    {
+     "in": [
+      "tap",
+      "1"
+     ],
+     "out": [
+      "start",
+      "tap"
+     ],
+     "why": "A count of 1 means one repeat. Two lines of 'tap' means you looped to n + 1."
+    },
+    {
+     "in": [
+      "hum",
+      "0"
+     ],
+     "out": [
+      "start"
+     ],
+     "why": "range(0) runs no turns at all, so only 'start' is printed. A line of 'hum' here means your loop always runs at least once."
+    },
+    {
+     "in": [
+      "beep",
+      "5"
+     ],
+     "out": [
+      "start",
+      "beep",
+      "beep",
+      "beep",
+      "beep",
+      "beep"
+     ],
+     "why": "The number has to come from input(), and remember int() - range() cannot use the text '5'."
+    }
+   ],
+   "fb": "range(n) uses whatever number is in n, including 0, which simply means the body never runs."
+  },
+  {
+   "id": "pr-l04-q3",
+   "station": 1,
+   "marks": 2,
+   "q": "Write a program that numbers the lanes of a swimming pool.",
+   "brief": [
+    "Read one whole number - how many lanes there are.",
+    "Print the lane numbers from 1 up to and including that number, one on each line.",
+    "Print nothing else."
+   ],
+   "starter": "# Read how many lanes there are, then number them from 1\n",
+   "tests": [
+    {
+     "in": [
+      "5"
+     ],
+     "out": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+     ],
+     "why": "Starts at 1 and includes 5. A list starting at 0 means you used range(n) instead of range(1, n + 1)."
+    },
+    {
+     "in": [
+      "1"
+     ],
+     "out": [
+      "1"
+     ],
+     "why": "One lane gives one line. Nothing printed at all means range(1, n) stopped before it started."
+    },
+    {
+     "in": [
+      "3"
+     ],
+     "out": [
+      "1",
+      "2",
+      "3"
+     ],
+     "why": "The last number must appear. Missing 3 is the off by one that range(1, n) always causes."
+    }
+   ],
+   "fb": "range stops before its second number, so to finish on n you have to write range(1, n + 1)."
+  },
+  {
+   "id": "pr-l04-q4",
+   "station": 1,
+   "marks": 3,
+   "q": "A tiler needs the area of each square slab from 1 metre upwards. Write a program that lists them.",
+   "brief": [
+    "Read one whole number - the largest side length in metres.",
+    "For every side length from 1 up to and including that number, print one line:",
+    "the side length, a single space, then that side length multiplied by itself.",
+    "Print nothing else."
+   ],
+   "starter": "# Read the largest side, then print each side and its area\n",
+   "tests": [
+    {
+     "in": [
+      "3"
+     ],
+     "out": [
+      "1 1",
+      "2 4",
+      "3 9"
+     ],
+     "why": "The counter is used twice on each line - once on its own and once multiplied by itself."
+    },
+    {
+     "in": [
+      "1"
+     ],
+     "out": [
+      "1 1"
+     ],
+     "why": "A side of 1 has an area of 1, so the two numbers on the line are the same here."
+    },
+    {
+     "in": [
+      "5"
+     ],
+     "out": [
+      "1 1",
+      "2 4",
+      "3 9",
+      "4 16",
+      "5 25"
+     ],
+     "why": "Every line must use its own counter value. Lines that all show the same number mean you are printing n rather than i."
+    },
+    {
+     "in": [
+      "2"
+     ],
+     "out": [
+      "1 1",
+      "2 4"
+     ],
+     "why": "Two lines only. A third line means your range went one too far."
+    }
+   ],
+   "fb": "The loop variable is an ordinary number, so you can calculate with it inside the loop - i * i changes on every turn."
+  },
+  {
+   "id": "pr-l04-q5",
+   "station": 2,
+   "marks": 3,
+   "q": "A school hall has numbered rows. Write a program that lists the rows in a block from a first row to a last row.",
+   "brief": [
+    "Read two whole numbers, one on each line - the first row number, then the last row number.",
+    "Print every row number from the first up to and including the last, one on each line.",
+    "The last row number will never be smaller than the first.",
+    "Print nothing else."
+   ],
+   "starter": "# Read the first and last row numbers, then list every row in between\n",
+   "tests": [
+    {
+     "in": [
+      "3",
+      "7"
+     ],
+     "out": [
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+     ],
+     "why": "Both ends are included. A missing 7 means you wrote range(first, last)."
+    },
+    {
+     "in": [
+      "5",
+      "5"
+     ],
+     "out": [
+      "5"
+     ],
+     "why": "The first and last row are the same, so exactly one line is printed. Nothing at all means your range was empty."
+    },
+    {
+     "in": [
+      "10",
+      "12"
+     ],
+     "out": [
+      "10",
+      "11",
+      "12"
+     ],
+     "why": "The start has to come from the input. A list beginning at 0 or 1 means you ignored the first number."
+    },
+    {
+     "in": [
+      "1",
+      "4"
+     ],
+     "out": [
+      "1",
+      "2",
+      "3",
+      "4"
+     ],
+     "why": "Four lines. Five means you added 1 to the start as well as the end."
+    }
+   ],
+   "fb": "range takes a start and a stop, and the stop is never reached, so include the last value by writing last + 1."
+  },
+  {
+   "id": "pr-l04-q6",
+   "station": 2,
+   "marks": 4,
+   "q": "A gauge is read five times, going up or down by a fixed amount each time. Write a program that prints the five readings.",
+   "brief": [
+    "Read two whole numbers, one on each line - the first reading, then the step.",
+    "Print five readings, one on each line, starting at the first reading and changing by the step each time.",
+    "The step may be negative, in which case the readings count down.",
+    "The step will never be 0.",
+    "Print nothing else."
+   ],
+   "starter": "# Read the first reading and the step, then print five readings\n",
+   "tests": [
+    {
+     "in": [
+      "4",
+      "3"
+     ],
+     "out": [
+      "4",
+      "7",
+      "10",
+      "13",
+      "16"
+     ],
+     "why": "Five readings, starting at the first one. Starting at 7 means you added the step before printing instead of after."
+    },
+    {
+     "in": [
+      "10",
+      "-2"
+     ],
+     "out": [
+      "10",
+      "8",
+      "6",
+      "4",
+      "2"
+     ],
+     "why": "A negative step counts down. Nothing printed means your range still goes upwards - the third number in range has to be negative too."
+    },
+    {
+     "in": [
+      "1",
+      "1"
+     ],
+     "out": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+     ],
+     "why": "A step of 1 is the ordinary case, and there must still be exactly five lines."
+    },
+    {
+     "in": [
+      "100",
+      "-25"
+     ],
+     "out": [
+      "100",
+      "75",
+      "50",
+      "25",
+      "0"
+     ],
+     "why": "Counting down can pass through 0, so do not stop the loop early when the reading gets small."
+    },
+    {
+     "in": [
+      "-3",
+      "4"
+     ],
+     "out": [
+      "-3",
+      "1",
+      "5",
+      "9",
+      "13"
+     ],
+     "why": "A negative start with a positive step. The start is just a number - there is nothing special to do about the minus sign."
+    }
+   ],
+   "fb": "range takes a third number, the step: range(start, stop, step). A negative step counts down, and the stop still has to be past the last value you want."
+  },
+  {
+   "id": "pr-l04-q7",
+   "station": 3,
+   "marks": 3,
+   "q": "A tuck shop counts up the day's takings. Write a program that totals a set of amounts.",
+   "brief": [
+    "Read one whole number - how many amounts follow.",
+    "Then read that many whole numbers, one on each line.",
+    "Print only the total of those amounts."
+   ],
+   "starter": "# Read how many amounts there are, add them up, print the total\n",
+   "tests": [
+    {
+     "in": [
+      "3",
+      "40",
+      "55",
+      "60"
+     ],
+     "out": [
+      "155"
+     ],
+     "why": "The total starts at 0 and grows on every turn of the loop."
+    },
+    {
+     "in": [
+      "1",
+      "7"
+     ],
+     "out": [
+      "7"
+     ],
+     "why": "One amount. If you got 0 you printed the total before the loop had added anything."
+    },
+    {
+     "in": [
+      "4",
+      "100",
+      "-20",
+      "0",
+      "5"
+     ],
+     "out": [
+      "85"
+     ],
+     "why": "A refund is negative, so use total = total + amount rather than only adding when the amount is large."
+    },
+    {
+     "in": [
+      "2",
+      "0",
+      "0"
+     ],
+     "out": [
+      "0"
+     ],
+     "why": "Two zeros total 0, and that single line still has to be printed."
+    },
+    {
+     "in": [
+      "5",
+      "11",
+      "11",
+      "11",
+      "11",
+      "11"
+     ],
+     "out": [
+      "55"
+     ],
+     "why": "The loop must run exactly as many times as the first number says, and only the total is printed - not each amount."
+    }
+   ],
+   "fb": "A running total needs three things: set it to 0 before the loop, add to it inside the loop, print it after the loop."
+  },
+  {
+   "id": "pr-l04-q8",
+   "station": 3,
+   "marks": 4,
+   "q": "A weather club logs the overnight temperature for a week. Write a program that reports on the readings.",
+   "brief": [
+    "Read one whole number - how many readings follow.",
+    "Then read that many whole numbers, one on each line - temperatures in degrees Celsius.",
+    "Print four lines, in this order:",
+    "Line 1: the total of all the readings.",
+    "Line 2: how many readings are below 0.",
+    "Line 3: the highest reading.",
+    "Line 4: the lowest reading."
+   ],
+   "starter": "# Read the readings, then print the total, the frosty count, the highest and the lowest\n",
+   "tests": [
+    {
+     "in": [
+      "4",
+      "3",
+      "-2",
+      "0",
+      "5"
+     ],
+     "out": [
+      "6",
+      "1",
+      "5",
+      "-2"
+     ],
+     "why": "One reading is below 0, and the highest and lowest are both in the list - neither is a number you invented."
+    },
+    {
+     "in": [
+      "3",
+      "-5",
+      "-8",
+      "-1"
+     ],
+     "out": [
+      "-14",
+      "3",
+      "-1",
+      "-8"
+     ],
+     "why": "Every reading is negative, so a highest that starts at 0 will wrongly stay 0. Start it at the first reading instead."
+    },
+    {
+     "in": [
+      "1",
+      "7"
+     ],
+     "out": [
+      "7",
+      "0",
+      "7",
+      "7"
+     ],
+     "why": "With one reading it is both the highest and the lowest, and nothing is below 0."
+    },
+    {
+     "in": [
+      "2",
+      "0",
+      "0"
+     ],
+     "out": [
+      "0",
+      "0",
+      "0",
+      "0"
+     ],
+     "why": "Exactly 0 is not below 0, so the count stays at 0 - this is where < and <= get mixed up."
+    },
+    {
+     "in": [
+      "5",
+      "12",
+      "12",
+      "-3",
+      "0",
+      "4"
+     ],
+     "out": [
+      "25",
+      "1",
+      "12",
+      "-3"
+     ],
+     "why": "The highest value appears twice, which must not be counted twice in the total or change the answer."
+    }
+   ],
+   "fb": "Keep a separate variable for each thing you are tracking, and update them all inside the same loop. For a highest or lowest, start from the first reading, not from 0."
+  },
+  {
+   "id": "pr-l04-q9",
+   "station": 4,
+   "marks": 4,
+   "q": "Write a program that draws a rectangle of stars of any size.",
+   "brief": [
+    "Read two whole numbers, one on each line - the number of rows, then the number of stars in each row.",
+    "Print the rectangle: one line per row, each line made of that many * characters with nothing between them.",
+    "Print nothing else."
+   ],
+   "starter": "# Read the rows and the width, then draw the rectangle of stars\n",
+   "tests": [
+    {
+     "in": [
+      "3",
+      "4"
+     ],
+     "out": [
+      "****",
+      "****",
+      "****"
+     ],
+     "why": "Three rows of four stars. A single line of twelve stars means your print is inside the inner loop."
+    },
+    {
+     "in": [
+      "1",
+      "1"
+     ],
+     "out": [
+      "*"
+     ],
+     "why": "The smallest rectangle is one star. Nothing printed means a range that never runs."
+    },
+    {
+     "in": [
+      "2",
+      "5"
+     ],
+     "out": [
+      "*****",
+      "*****"
+     ],
+     "why": "The rows and the width are different numbers, so check you have not swapped them."
+    },
+    {
+     "in": [
+      "4",
+      "2"
+     ],
+     "out": [
+      "**",
+      "**",
+      "**",
+      "**"
+     ],
+     "why": "More rows than stars per row. If you got two rows of four stars, the two inputs are the wrong way round."
+    }
+   ],
+   "fb": "The outer loop counts the rows and the inner loop builds one row. Build the row into a string first, then print it once the inner loop has finished."
+  },
+  {
+   "id": "pr-l04-q10",
+   "station": 4,
+   "marks": 5,
+   "q": "Write a program that prints a multiplication square.",
+   "brief": [
+    "Read one whole number - the size of the square.",
+    "Print that many lines. The line for row r holds r times 1, r times 2, and so on up to r times the size.",
+    "Put a single space between the numbers on a line.",
+    "For a size of 3 the output is exactly these three lines: 1 2 3 then 2 4 6 then 3 6 9."
+   ],
+   "starter": "# Read the size, then print the multiplication square\n",
+   "tests": [
+    {
+     "in": [
+      "3"
+     ],
+     "out": [
+      "1 2 3",
+      "2 4 6",
+      "3 6 9"
+     ],
+     "why": "Both loops run from 1, not 0 - a square full of zeros on the first row means one of them started at 0."
+    },
+    {
+     "in": [
+      "1"
+     ],
+     "out": [
+      "1"
+     ],
+     "why": "A size of 1 gives one line holding 1 times 1."
+    },
+    {
+     "in": [
+      "4"
+     ],
+     "out": [
+      "1 2 3 4",
+      "2 4 6 8",
+      "3 6 9 12",
+      "4 8 12 16"
+     ],
+     "why": "Four lines of four numbers. Three lines means both ranges needed n + 1."
+    },
+    {
+     "in": [
+      "2"
+     ],
+     "out": [
+      "1 2",
+      "2 4"
+     ],
+     "why": "The row number is fixed while the inner loop runs, so the outer counter must be used in the multiplication too."
+    }
+   ],
+   "fb": "The outer counter stays still while the inner one runs all the way through, and the number you print is the two counters multiplied together."
+  },
+  {
+   "id": "pr-l04-q11",
+   "station": 5,
+   "marks": 6,
+   "q": "A spelling game scores words by how many vowels they hold. Write a program that reports on a set of words.",
+   "brief": [
+    "Read one whole number - how many words follow.",
+    "Then read that many words, one on each line, all in lower case.",
+    "For each word, print one line: the word, a single space, then how many vowels it holds.",
+    "After all the words, print one more line: the total number of vowels in all of them.",
+    "The vowels are a, e, i, o and u."
+   ],
+   "starter": "# Read the words, print each one with its vowel count, then the grand total\n",
+   "tests": [
+    {
+     "in": [
+      "2",
+      "banana",
+      "kiwi"
+     ],
+     "out": [
+      "banana 3",
+      "kiwi 2",
+      "5"
+     ],
+     "why": "Each word gets its own line and its own count, and the last line is the two counts added together."
+    },
+    {
+     "in": [
+      "1",
+      "rhythm"
+     ],
+     "out": [
+      "rhythm 0",
+      "0"
+     ],
+     "why": "A word with no vowels still prints a line, with 0. A missing line means you only print when a vowel is found."
+    },
+    {
+     "in": [
+      "3",
+      "apple",
+      "egg",
+      "sky"
+     ],
+     "out": [
+      "apple 2",
+      "egg 1",
+      "sky 0",
+      "3"
+     ],
+     "why": "The count has to be reset to 0 for each word, inside the outer loop. Counts that keep growing mean you set it to 0 only once, before the loop."
+    },
+    {
+     "in": [
+      "2",
+      "aeiou",
+      "xyz"
+     ],
+     "out": [
+      "aeiou 5",
+      "xyz 0",
+      "5"
+     ],
+     "why": "All five vowels counted, and the total ignores the word with none."
+    },
+    {
+     "in": [
+      "1",
+      "aa"
+     ],
+     "out": [
+      "aa 2",
+      "2"
+     ],
+     "why": "The same vowel twice counts twice, so go through the letters one at a time rather than checking whether a letter is present."
+    }
+   ],
+   "fb": "Two counters do different jobs here: one resets for each word, inside the outer loop, and the total is set up once before it and printed once after it."
+  }
+ ]
+}

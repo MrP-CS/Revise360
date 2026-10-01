@@ -385,10 +385,15 @@
    * way: comparing an answer against one model solution would fail every pupil
    * who solved it a different way, which is most of them.
    */
+  /* Is this what the question asked for? Leading and trailing space, repeated
+   * spaces and capitals are ignored; nothing else is, so a brief has to say
+   * exactly what to print. Shared with the headset through core, so the same
+   * program cannot be marked right on one and wrong on the other. */
   function norm(s) {
     return String(s).replace(/\r/g, "").split("\n").map(l => l.trim().replace(/\s+/g, " "))
       .filter((l, i, a) => l !== "" || i < a.length - 1).join("\n").replace(/\n+$/, "").toLowerCase();
   }
+  const sameOutput = (got, want) => norm(got) === norm(want);
   function runCode(k, list, n, task, head, qn) {
     const brief = (task.brief || []).map(b => `<li>${esc(b)}</li>`).join("");
     shell(head, "#50dc96", `<div class="vwrap">
@@ -428,7 +433,7 @@
     $("#pyrun").onclick = async () => {
       busy(true, "Running\u2026"); say('<span class="muted">Running\u2026</span>');
       const first = tests[0] || {};
-      const r = await R360Py.run(ed.get(), { stdin: (first.in || []).slice(), echo: true, timeoutMs: 6000 });
+      const r = await R360Py.run(ed.get(), { stdin: (first.in || []).slice(), files: first.files || {}, echo: true, timeoutMs: 6000 });
       busy(false, "");
       if (r.error) say(esc(r.stdout) + (r.stdout ? "\n" : "") + esc(r.error), true);
       else say(r.stdout ? esc(r.stdout) : '<span class="muted">Your program ran but printed nothing.</span>');
@@ -447,9 +452,9 @@
       const list2 = $("#pytests"); list2.innerHTML = "";
       let passed = 0;
       for (const t of tests) {
-        const r = await R360Py.run(ed.get(), { stdin: (t.in || []).slice(), echo: false, timeoutMs: 6000 });
+        const r = await R360Py.run(ed.get(), { stdin: (t.in || []).slice(), files: t.files || {}, echo: false, timeoutMs: 6000 });
         const want = (t.out || []).join("\n");
-        const ok = !r.error && norm(r.stdout) === norm(want);
+        const ok = !r.error && sameOutput(r.stdout, want);
         if (ok) passed++;
         const row = document.createElement("div");
         row.className = "pytest " + (ok ? "pass" : "fail");
@@ -745,7 +750,7 @@
 
   Object.assign(core, {
     exp, prog, student, CFG, publicDemo, scene, cam, renderer: r, grp, mat, marks, shuffle, esc, save, hud, drawNav, refreshSprites,
-    stationState, taskList, award, asset, completeStation, markInfo, setReview, loadScene, cubeFrom, world, texFor,
+    stationState, taskList, award, asset, completeStation, markInfo, setReview, loadScene, cubeFrom, world, texFor, sameOutput,
     sceneHooks: [], closeUI() { closeDrawer(); if (modal.classList.contains("open")) closeModal(); }
   });
   // Live values (getters, so VR always sees the current scene and mode)
