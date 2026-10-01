@@ -152,6 +152,18 @@ part that changes no pixels from any angle. It caught a switch whose "Switching
 chip" was sealed inside an opaque case, and status lights buried inside the port
 blocks.
 
+qcmodels.py makes three checks: a part that renders no pixels from any angle,
+a component buried in the board it is supposed to sit on, and a label that is
+stretched or put somewhere nobody can read it.
+
+Labels are drawn on a canvas and then mapped onto a face, so the canvas has to
+be made at that face's aspect or the lettering is squashed - "Cache" sat on a
+face six times wider than it was deep, drawn on a square canvas. `blockTex()`
+and `epoxy()` take the aspect as their last argument, and `chip()` and
+`chipFacing()` work theirs out from their own dimensions. A marking also belongs
+on a component's broad face, never on its edge, and anything routed over a model
+(a bus, a cable) must not come to rest across a label.
+
 Mind the orientation of anything mounted on a board. `chip()` prints its
 markings on the +Y face, which is right for a board lying flat; a board standing
 upright (the RAM module) needs `chipFacing()` with the +Z or -Z face instead, or

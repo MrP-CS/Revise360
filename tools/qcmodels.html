@@ -93,6 +93,54 @@ function orientation(b) {
   return out;
 }
 
+// ---- label distortion -------------------------------------------------------
+// A texture is drawn on a canvas and then stretched onto a face. If the canvas
+// aspect does not match the face aspect, the lettering is squashed or pulled.
+// "Cache" sat on a face six times wider than deep, drawn on a square canvas.
+function labels(b) {
+  b.group.rotation.set(0, 0, 0);
+  b.group.scale.setScalar(1);
+  b.group.updateMatrixWorld(true);
+  const out = [];
+  b.group.traverse(o => {
+    if (!o.isMesh || !o.geometry || !o.geometry.parameters) return;
+    const g = o.geometry.parameters;
+    if (g.width === undefined || g.depth === undefined) return;   // boxes only
+    const sc = o.getWorldScale(new T.Vector3());
+    const W = g.width * sc.x, H = g.height * sc.y, D = g.depth * sc.z;
+    // BoxGeometry face order: +X, -X, +Y, -Y, +Z, -Z
+    const faceAspect = [D / H, D / H, W / D, W / D, W / H, W / H];
+    const mats = Array.isArray(o.material) ? o.material : [o.material];
+    mats.forEach((m, i) => {
+      if (!m || !m.map || !m.map.image) return;
+      if (!(m.map.userData && m.map.userData.isLabel)) return;   // only lettering
+      const img = m.map.image;
+      const tex = img.width / img.height;
+      const face = Array.isArray(o.material) ? faceAspect[i] : faceAspect[2];
+      if (!isFinite(tex) || !isFinite(face) || face <= 0) return;
+      const names = ["+X","-X","+Y","-Y","+Z","-Z"];
+      const stretch = tex / face;
+      if (stretch > 1.25 || stretch < .8) {
+        out.push({ part: o.userData.part, face: names[i] || "?", why: "stretched",
+                   texture: +tex.toFixed(2), faceAspect: +face.toFixed(2),
+                   stretch: +stretch.toFixed(2) });
+      }
+      // Markings belong on a component's broad face, not on its edge. A label on
+      // a narrow side is one a pupil turns the model over and still cannot read.
+      if (Array.isArray(o.material)) {
+        const area = [D * H, D * H, W * D, W * D, W * H, W * H];
+        const biggest = Math.max(...area);
+        if (area[i] < biggest * .75) {
+          out.push({ part: o.userData.part, face: names[i], why: "on a narrow face",
+                     texture: +tex.toFixed(2), faceAspect: +face.toFixed(2),
+                     stretch: +(area[i] / biggest).toFixed(2) });
+        }
+      }
+    });
+  });
+  return out;
+}
+
 window.QC = function () {
   const out = {};
   for (const kind of R360Models.kinds) {
@@ -125,12 +173,16 @@ window.QC = function () {
       });
     }
     const mis = orientation(b);
+    const lab = labels(b);
     out[kind] = {
       coverage,
       parts: b.parts.map((p, i) => ({ name: p.name, pixels: best[i] })),
       misoriented: mis.map(m => ({ name: (b.parts[m.part] || {}).name || "?",
                                    thin: m.thin, boardThin: m.boardThin,
-                                   buried: m.buried, size: m.size }))
+                                   buried: m.buried, size: m.size })),
+      stretched: lab.map(l => ({ name: (b.parts[l.part] || {}).name || "?",
+                                 face: l.face, stretch: l.stretch,
+                                 texture: l.texture, faceAspect: l.faceAspect }))
     };
     r.dispose(); canvas.remove();
   }
