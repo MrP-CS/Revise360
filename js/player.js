@@ -365,16 +365,27 @@
     if (!window.R360Models) return;
     if (!prog.info.includes(u.id)) { prog.info.push(u.id); save(); refreshSprites(); }
     lastFocus = document.activeElement; modal.classList.add("open"); closeDrawer();
-    shell(u.md.title, "#ffa028", `<p class="qn">Drag to turn the model. Click a part, or a button below, to find out what it does.</p>
-      <div id="m3d" style="height:min(46vh,380px);background:radial-gradient(circle,#243656,#0e1628);border-radius:12px;border:1px solid var(--line)"></div>
-      <div class="fb show ok" id="mpart" style="margin-top:12px"><strong>${esc(u.md.title)}</strong>${esc(u.md.text || "Select a part to learn about it.")}</div>
-      <div class="chips" id="mchips" style="margin-top:12px"></div>`);
+    box.classList.add("huge");
+    shell(u.md.title, "#ffa028", `<div class="vwrap">
+        <div class="vstage model" id="m3d"></div>
+        <div class="vside">
+          <div class="vnow"><b id="mname">${esc(u.md.title)}</b><span id="mpart">${esc(u.md.text || "Choose a part to find out what it does.")}</span></div>
+          <p class="vhint">Drag the model to turn it, or scroll to zoom. Select any part to read about it.</p>
+          <h3>Parts</h3>
+          <div class="vlist" id="mchips"></div>
+        </div>
+      </div>`);
     const chips = $("#mchips");
     modelView = R360Models.viewer($("#m3d"), u.md.model, (i, p) => {
-      $("#mpart").innerHTML = `<strong>${esc(p.name)}</strong>${esc(p.text)}`;
-      chips.querySelectorAll(".chip").forEach((c, j) => c.setAttribute("aria-pressed", j === i));
+      $("#mname").textContent = p.name;
+      $("#mpart").textContent = p.text;
+      chips.querySelectorAll("button").forEach((c, j) => c.setAttribute("aria-pressed", j === i));
     });
-    modelView.parts.forEach((p, i) => { const b = document.createElement("button"); b.className = "chip"; b.setAttribute("aria-pressed", "false"); b.textContent = p.name; b.onclick = () => modelView.select(i); chips.appendChild(b); });
+    modelView.parts.forEach((p, i) => {
+      const b = document.createElement("button");
+      b.setAttribute("aria-pressed", "false"); b.textContent = p.name;
+      b.onclick = () => modelView.select(i); chips.appendChild(b);
+    });
   }
   let diagView = null;
   function openDiagram(u) {
@@ -382,17 +393,17 @@
     if (!prog.info.includes(u.id)) { prog.info.push(u.id); save(); refreshSprites(); }
     lastFocus = document.activeElement; modal.classList.add("open"); closeDrawer();
     box.classList.add("huge");
-    shell(u.dg.title, "#40c4ff", `<div class="dgwrap">
-        <div class="dgstage" id="d2d"></div>
-        <div class="dgside">
-          <div class="dgnow"><b id="dstep"></b><span id="dcap"></span></div>
-          <div class="dgtrans">
+    shell(u.dg.title, "#40c4ff", `<div class="vwrap">
+        <div class="vstage" id="d2d"></div>
+        <div class="vside">
+          <div class="vnow"><b id="dstep"></b><span id="dcap"></span></div>
+          <div class="vrow">
             <button class="btn ghost" id="dprev">‹ Back</button>
             <button class="btn" id="dplay">Replay</button>
             <button class="btn ghost" id="dnext">Next ›</button>
           </div>
           <h3>Steps</h3>
-          <div class="dgsteps" id="dchips"></div>
+          <div class="vlist" id="dchips"></div>
         </div>
       </div>`);
     const chips = $("#dchips");
