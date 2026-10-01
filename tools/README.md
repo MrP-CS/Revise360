@@ -62,6 +62,9 @@ mkspecs15.py           regenerates specs15.py; walls15.py holds the 1.5 wall
                        content that survived only in the rendered scenes
 mkdeck.py              derives a deck spec from a topic's specs module
 reconstruct.py         rebuilds deck content for a lesson with no specs module
+newmodels.py           which 3D model belongs on which station, and why
+applymodels.py         writes those into the experiences and puts every 3D
+                       button at its tile's top right
 l1/l2/l4/l6/l7.py      bespoke one-off scenes that predate kit.py
 rp3/rp4.py, lib23.py   topic 2.3 scenes
 *_scene.py             the standalone game rooms (sprint, blitz, defence, arena)
@@ -125,6 +128,29 @@ reproduces the committed `AL_L11_TraceRoom_360.jpg`, its `_hi` variant, the
 experience JSON and the worksheet's `document.xml` byte for byte — that is the
 check to run after touching a renderer.
 
+## 3D models
+
+`js/models.js` builds every model in code - shapes plus textures painted on
+canvases - with each part clickable and described. `R360Models.kinds` lists what
+exists. A model is worth adding when the thing is physical and turning it over
+shows something a flat diagram cannot: the layers inside a fibre cable, the fact
+that nothing inside an SSD moves, how much of a phone had to be mined. Topics
+that are about process rather than objects (2.1, 2.3, 2.5) deliberately have
+none.
+
+A model marker is a player sprite positioned from the experience JSON, not drawn
+into the 360 image, so adding or moving one needs no re-render:
+
+```
+python3 applymodels.py          # show what would change
+python3 applymodels.py --write
+```
+
+Placements live in `newmodels.py` and are written into the specs as well, so a
+rebuild keeps them. Two lessons have no spec to write to - nw-l04 is drawn by
+l4.py and 1.6's spec was lost - so for those `applymodels.py` is the only record
+and must be re-run if those scenes are ever rebuilt.
+
 ## Marker geometry — do not drift from this
 
 Station panels, and the markers that belong to them, are fixed. `kit.py`:
@@ -132,13 +158,27 @@ Station panels, and the markers that belong to them, are fixed. `kit.py`:
 ```python
 STATION_WALLS = [("right",100),("right",1068),("back",100),("back",1068),("left",100),("left",1068)]
 PANEL_CENTRE  = [540, 1508]     # centre of the left and right panel on a wall
+MODEL_INSET   = 790             # 3D button: 90px in from the panel's right edge
 INFO_Y, STATION_Y = 240, 1840   # info icon above the panel, station badge below
+MODEL_Y = INFO_Y
 ```
 
-Panels are 880 wide, top 330, bottom 1800. The info "i" icon is centred above
-the panel it relates to and the station badge centred below it, in every
-experience — rows 220–260 and 1820–1840 were chosen because they are clear of
-text in every scene. If you move them, re-run `qcscenes.py`.
+Panels are 880 wide, top 330, bottom 1800. In every experience the info "i" icon
+is centred above the panel it relates to, the 3D button sits at that panel's top
+right corner, and the station badge is centred below:
+
+```
+       (i)              [3D]
+    +-------------------------+
+    |        the panel        |
+    +-------------------------+
+             (1)
+```
+
+Rows 220–260 and 1820–1840 were chosen because they are clear of text in every
+scene, and the 3D button clears the info icon by about 12 degrees of view. If you
+move any of them, re-run `applymodels.py --write` so the deployed experiences
+follow.
 
 `fixoverlap.py` has deliberately **not** been kept: it nudged markers away from
 each other case by case, which is exactly what the uniform placement replaced.

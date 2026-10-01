@@ -60,6 +60,9 @@ L1 = dict(id="ms-l01", topic="1.2", lesson=1, title="Memory bay", img="MS_L01_Me
       ["Can be written to by the operating system", "RAM"], ["Keeps its contents with no power", "ROM"], ["Is found on the motherboard", "Both"],
       ["Holds the programs you currently have open", "RAM"], ["Is read-only in normal use", "ROM"]],
       "Copy any you got wrong onto your worksheet comparison table.")]),
+  models=[
+   (1, "ram", "Inside a memory module", "Turn the module over and look at the contacts and the chips. Every program you have open is held on these chips as charge, and charge needs power to stay put."),
+  ],
   info=[(0, "Core memory", "Early computers used 'core memory': tiny magnetic rings threaded on wires by hand. A few kilobytes filled a cabinet."),
         (1, "How fast?", "RAM can be read in tens of nanoseconds. A hard disk takes milliseconds, which is around a hundred thousand times longer."),
         (2, "Flashable ROM", "Modern boot ROM is usually flash memory, so it can be updated. That's what a 'BIOS update' or 'firmware update' does."),
@@ -129,6 +132,9 @@ L2 = dict(id="ms-l02", topic="1.2", lesson=2, title="Swap space", img="MS_L02_Sw
       ["It is slower than using RAM", "True"], ["It is needed because RAM is limited", "True"],
       ["Adding more RAM reduces how much it is used", "True"], ["It makes a computer faster than having enough RAM", "False"]],
       "Virtual memory is a rescue, not an upgrade.")]),
+  models=[
+   (2, "harddisk", "Where the swapping happens", "Virtual memory is space on this. Watch the arm: every swap means moving the head, which is why a machine that is swapping heavily feels so slow."),
+  ],
   info=[(0, "Page file", "On Windows this space is called the page file; on Linux it's the swap partition. You can see it using up disk space."),
         (1, "How big?", "Virtual memory is often set to around the same size as the installed RAM, but the operating system usually manages it automatically."),
         (2, "Thrashing sounds", "On old computers with spinning hard disks, you could hear thrashing: the drive clicking constantly while nothing happened on screen."),
@@ -195,6 +201,11 @@ L3 = dict(id="ms-l03", topic="1.2", lesson=3, title="Storage warehouse", img="MS
       ["Backup tape", "Magnetic"], ["DVD", "Optical"], ["SD card in a camera", "Solid state"],
       ["Spinning platters and a read/write head", "Magnetic"], ["A laser reading pits and lands", "Optical"], ["Flash memory with no moving parts", "Solid state"]],
       "Use these for your Top Trumps cards next lesson.")]),
+  models=[
+   (1, "harddisk", "Inside a hard disk", "Magnetic storage with moving parts. Find the platters and the head, and notice how little space there is between them."),
+   (2, "opticaldisc", "Inside an optical disc", "Follow the spiral track out from the centre and find the pits. The laser reads the change from pit to land as the 1s and 0s."),
+   (3, "ssd", "Inside a solid state drive", "Open it up and look for something that moves. There is nothing: that is the whole difference, and the reason an SSD is faster and survives being dropped."),
+  ],
   info=[(0, "The first hard disk", "IBM's first hard disk, in 1956, stored about 3.75 MB, weighed over a tonne and was delivered by forklift."),
         (1, "Heads that fly", "A hard disk's head floats just nanometres above the platter, closer than a speck of dust. That's why a knock can wreck it."),
         (2, "Why Blu-ray?", "A blue laser has a shorter wavelength than a red one, so it can read smaller pits, which means more data on the same-sized disc."),
@@ -339,6 +350,9 @@ L5 = dict(id="ms-l05", topic="1.2", lesson=5, title="Pick the storage", img="MS_
       ["Storing a computer's operating system", "Solid state"], ["Long-term storage of training videos", "Magnetic"],
       ["Long-term backup of photos", "Magnetic"]],
       "In the exam, always name the characteristic that makes it suitable.")]),
+  models=[
+   (1, "opticaldisc", "Why a disc for a film?", "Cheap to stamp out by the million, read-only so it cannot be altered, and it survives a shelf for years. Turn it over while you weigh up the options."),
+  ],
   info=[(0, "Downloads changed things", "Games and films increasingly arrive as downloads, so optical drives are vanishing from computers and consoles."),
         (1, "Cloud is still disks", "Cloud storage is someone else's secondary storage: racks of hard disks and SSDs in a data centre."),
         (2, "Cameras and cards", "Professional cameras use fast memory cards because 4K video writes hundreds of megabytes every second."),

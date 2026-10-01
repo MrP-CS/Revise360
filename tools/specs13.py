@@ -159,6 +159,9 @@ L5 = dict(id="nw-l05", topic="1.3", lesson=5, title="Inside the internet", img="
       ["There's a bill every month for as long as you use it", "Disadvantage"], ["No servers to buy, power or replace", "Advantage"],
       ["Nothing works if the internet goes down", "Disadvantage"], ["The same files open on any device, anywhere", "Advantage"]],
       "Group these on your worksheet, and add one more of your own to each column.")]),
+  models=[
+   (3, "rack", "What the cloud actually is", "The cloud is this: racks of other people's computers in a building somewhere, with a switch at the top and a great deal of cooling. Nothing is stored in the sky."),
+  ],
   info=[(0, "How many people?", "Around two-thirds of the world's population now use the internet, and most of them connect through phones."),
         (1, "8.8.8.8", "The address 8.8.8.8 actually belongs to Google's public DNS service. Some people set their devices to use it instead of their internet provider's DNS."),
         (2, "Cool servers", "Data centres use a lot of electricity for cooling. Some are built in cold countries to cut cooling costs."),

@@ -156,9 +156,16 @@ for n, eid in enumerate(LESSONS, 1):
         w(f'   ({i}, {py(inf["title"])}, {py(inf["text"])}),')
     w('  ],')
     if sc.get("models"):
+        # A model belongs to a station, and the button is placed from that: the
+        # original coordinates were hand-placed and are not uniform.
+        WALLS = [("right",100),("right",1068),("back",100),("back",1068),("left",100),("left",1068)]
+        def station_of(face, x):
+            for i, (f, x0) in enumerate(WALLS):
+                if f == face and x0 <= x <= x0 + 880: return i
+            raise SystemExit(f"{eid}: model at ({face},{x}) is not on a station panel")
         w('  models=[')
         for m in sc["models"]:
-            w(f'   (("{m["face"]}", {m["x"]}, {m["y"]}), {py(m["model"])}, {py(m["title"])}, {py(m["text"])}),')
+            w(f'   ({station_of(m["face"], m["x"])}, {py(m["model"])}, {py(m["title"])}, {py(m["text"])}),')
         w('  ],')
     w(f'  ws=dict(')
     for k, v in ws.items():

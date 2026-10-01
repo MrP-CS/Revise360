@@ -286,7 +286,17 @@
      "text": "Heavy swapping writes a lot of data, which slowly wears out an SSD. Another reason to fit enough RAM."
     }
    ],
-   "models": []
+   "models": [
+    {
+     "id": "m1",
+     "face": "back",
+     "x": 890,
+     "y": 240,
+     "model": "harddisk",
+     "title": "Where the swapping happens",
+     "text": "Virtual memory is space on this. Watch the arm: every swap means moving the head, which is why a machine that is swapping heavily feels so slow."
+    }
+   ]
   }
  ]
 }

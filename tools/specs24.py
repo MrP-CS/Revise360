@@ -51,6 +51,9 @@ L1 = dict(id="bl-l01", topic="2.4", lesson=1, title="Logic gate lab", img="BL_L0
     ill=("tiles", [("AND ∧", "b"), ("OR ∨", "p"), ("NOT ¬", "o")], 3),
     tasks=[circuit("Build the circuit for Q = (A AND B) OR (C AND D).", "(A AND B) OR (C AND D)", "Two AND gates feed one OR gate."),
            expr_("Write the Boolean expression for this logic diagram.", "NOT (A OR B)", "The OR gate comes first, then its output is reversed.")]),
+  models=[
+   (0, "logicchip", "An AND gate you could hold", "Four AND gates on one sliver of silicon, with the lid made see-through. The truth table you fill in is a description of what this chip physically does."),
+  ],
   info=[(0, "George Boole", "Boolean logic is named after George Boole, an English mathematician who described this kind of algebra in 1854, long before computers existed."),
         (1, "Made of transistors", "Inside a CPU, logic gates are built from transistors, tiny electronic switches. A modern CPU contains billions of them."),
         (2, "Claude Shannon", "In 1937, a student called Claude Shannon showed that Boole's logic could be built with electrical switches. That idea is the basis of every digital computer."),
