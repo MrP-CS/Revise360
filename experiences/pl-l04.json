@@ -1,330 +1,330 @@
 {
-  "id": "pl-l04",
-  "lesson": 4,
-  "title": "IDE control room",
-  "scenes": [
+ "id": "pl-l04",
+ "lesson": 4,
+ "title": "IDE control room",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "IDE control room",
+   "img": "img/PL_L04_IDEControlRoom_360.jpg",
+   "imgHi": "img/PL_L04_IDEControlRoom_360_hi.jpg",
+   "stations": [
     {
-      "id": "main",
-      "title": "IDE control room",
-      "img": "img/PL_L04_IDEControlRoom_360.jpg",
-      "imgHi": "img/PL_L04_IDEControlRoom_360_hi.jpg",
-      "stations": [
-        {
-          "label": "1",
-          "name": "Tools in one place",
-          "col": "#40c4ff",
-          "face": "right",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "What is an IDE?",
-              "a": [
-                "An application combining programming facilities",
-                "A processor instruction set",
-                "A programming language itself",
-                "A type of secondary storage"
-              ],
-              "fb": "An IDE provides tools used while developing programs."
-            },
-            {
-              "t": "match",
-              "q": "Match the facility to its role.",
-              "pairs": [
-                [
-                  "Editor",
-                  "Write and change source"
-                ],
-                [
-                  "Error diagnostics",
-                  "Report detected problems"
-                ],
-                [
-                  "Translator",
-                  "Translate program instructions"
-                ]
-              ],
-              "fb": "The four facilities support different parts of development."
-            }
-          ]
-        },
-        {
-          "label": "2",
-          "name": "Writing source code",
-          "col": "#aa6eeb",
-          "face": "right",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "match",
-              "q": "Match the editor feature to the benefit.",
-              "pairs": [
-                [
-                  "Syntax highlighting",
-                  "Makes code elements easier to distinguish"
-                ],
-                [
-                  "Auto-completion",
-                  "Suggests names and reduces typing"
-                ],
-                [
-                  "Automatic indentation",
-                  "Helps align blocks consistently"
-                ]
-              ],
-              "fb": "Editing support improves productivity and readability, but programmers still need to check their code."
-            },
-            {
-              "t": "mcq",
-              "q": "Does syntax highlighting prove that a calculation is correct?",
-              "a": [
-                "No, it mainly helps distinguish code elements",
-                "Yes, all coloured code is correct",
-                "Yes, if every line is blue",
-                "Only when the font is large"
-              ],
-              "fb": "Colour is a reading aid. It does not prove the algorithm gives the intended result."
-            }
-          ]
-        },
-        {
-          "label": "3",
-          "name": "The run-time environment",
-          "col": "#ff785a",
-          "face": "back",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "Which facility runs the program so you can observe its output?",
-              "a": [
-                "Run-time environment",
-                "Editor colour theme",
-                "Auto-completion alone",
-                "Source filename"
-              ],
-              "fb": "The run-time environment supports execution and lets the programmer observe the result."
-            },
-            {
-              "t": "mcq",
-              "q": "Where would you look to see the result of print(6 * 4)?",
-              "a": [
-                "The output area or console",
-                "Only in the filename",
-                "Only in the colour legend",
-                "In a font menu"
-              ],
-              "fb": "The statement sends 24 to the output area."
-            }
-          ]
-        },
-        {
-          "label": "4",
-          "name": "Diagnostic messages",
-          "col": "#ffa028",
-          "face": "back",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "Which repair addresses the visible syntax error on line 4?",
-              "a": [
-                "Add the closing ) after the string",
-                "Delete every print statement",
-                "Change Ready to Go",
-                "Change the font only"
-              ],
-              "fb": "The opening bracket needs a matching closing bracket."
-            },
-            {
-              "t": "multi",
-              "q": "Select TWO sensible uses of diagnostics.",
-              "opts": [
-                "Read the message to identify the kind of problem",
-                "Assume the IDE repairs every fault automatically",
-                "Inspect nearby lines as well as the highlighted one",
-                "Ignore testing once the message disappears"
-              ],
-              "correct": [
-                "Read the message to identify the kind of problem",
-                "Inspect nearby lines as well as the highlighted one"
-              ],
-              "fb": "Diagnostics guide investigation. The reported location may be where a problem was noticed."
-            }
-          ]
-        },
-        {
-          "label": "5",
-          "name": "Translators in an IDE",
-          "col": "#50dc96",
-          "face": "left",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "What is the translator’s role in an IDE?",
-              "a": [
-                "Process source into instructions that can be executed",
-                "Choose the editor font",
-                "Write the user’s requirements automatically",
-                "Guarantee every result is correct"
-              ],
-              "fb": "Translation enables high-level source to execute."
-            },
-            {
-              "t": "match",
-              "q": "Match each facility with its action.",
-              "pairs": [
-                [
-                  "Editor",
-                  "Change a source instruction"
-                ],
-                [
-                  "Translator",
-                  "Process the source for execution"
-                ],
-                [
-                  "Run-time environment",
-                  "Execute the program"
-                ]
-              ],
-              "fb": "Writing, translation and running are different jobs, even when one application provides them."
-            }
-          ]
-        },
-        {
-          "label": "6",
-          "name": "Using your class IDE",
-          "col": "#f05aaa",
-          "face": "left",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "Which action demonstrates using the editor?",
-              "a": [
-                "Change a message in the source",
-                "Read output without changing code",
-                "Look at the monitor brand",
-                "Close the computer lid"
-              ],
-              "fb": "The editor is where the programmer writes and changes source."
-            },
-            {
-              "t": "mcq",
-              "q": "A diagnostic reports a missing closing bracket. Which IDE facility lets you correct it?",
-              "a": [
-                "The editor",
-                "The output alone",
-                "The display brightness control",
-                "The filename only"
-              ],
-              "fb": "Read the diagnostic, then use the editor to correct the source."
-            }
-          ]
-        },
-        {
-          "label": "★",
-          "name": "Final challenge",
-          "col": "#ffd046",
-          "face": "down",
-          "x": 1024,
-          "y": 800,
-          "tasks": [
-            {
-              "t": "match",
-              "q": "Choose the facility for each job.",
-              "pairs": [
-                [
-                  "Change the source text",
-                  "Editor"
-                ],
-                [
-                  "Read a reported error",
-                  "Error diagnostics"
-                ],
-                [
-                  "Translate source instructions",
-                  "Translator"
-                ],
-                [
-                  "Run the program and see output",
-                  "Run-time environment"
-                ]
-              ],
-              "fb": "Explain what each facility does for the programmer."
-            },
-            {
-              "t": "mcq",
-              "q": "After correcting source using a diagnostic, which facility lets you observe the new output?",
-              "a": [
-                "Run-time environment",
-                "Only the editor’s colour scheme",
-                "Only the source filename",
-                "Only auto-completion"
-              ],
-              "fb": "Execute the corrected program to see its output."
-            }
-          ]
-        }
-      ],
-      "info": [
-        {
-          "id": "f1",
-          "face": "right",
-          "x": 920,
-          "y": 540,
-          "title": "Tools in one place",
-          "text": "An IDE combines programming facilities in one application.\n\nEditors and diagnostics help create and correct source.\n\nTranslators and a run-time environment help execute it.\n\nChallenge: How does an IDE help a programmer work on a program?\n\nAn IDE combines these facilities so the programmer can work without repeatedly switching between separate applications."
-        },
-        {
-          "id": "f2",
-          "face": "right",
-          "x": 1888,
-          "y": 540,
-          "title": "Writing source code",
-          "text": "Syntax highlighting uses colour to distinguish code elements.\n\nAuto-completion suggests names or code as you type.\n\nIndentation tools help present blocks clearly.\n\nChallenge: How can auto-completion reduce mistakes without guaranteeing correct code?\n\nColour meanings vary between themes and IDEs. Recognise what highlighting does rather than memorising one colour scheme."
-        },
-        {
-          "id": "f3",
-          "face": "back",
-          "x": 920,
-          "y": 540,
-          "title": "The run-time environment",
-          "text": "A run-time environment lets a programmer execute a program.\n\nInput and output can be handled during the run.\n\nThe programmer can observe the program’s behaviour.\n\nChallenge: What is the difference between the editor and the output area?\n\nUse the Run control in your class IDE and find where it displays output. Names and layouts differ between IDEs."
-        },
-        {
-          "id": "f4",
-          "face": "back",
-          "x": 1888,
-          "y": 540,
-          "title": "Diagnostic messages",
-          "text": "Diagnostics identify detected problems in the code.\n\nA message can include a line number and an error description.\n\nRead the surrounding code before deciding on a repair.\n\nChallenge: A message points to line 5. Why might you also inspect line 4?\n\nA warning can differ from an error that prevents execution. Read the message rather than treating every highlight as the same kind of problem."
-        },
-        {
-          "id": "f5",
-          "face": "left",
-          "x": 920,
-          "y": 540,
-          "title": "Translators in an IDE",
-          "text": "An IDE can use a compiler or an interpreter.\n\nThe translator processes the program’s source instructions.\n\nTranslation and execution have different roles.\n\nChallenge: Why does an IDE need access to a translator for high-level source?\n\nThe IDE may call a compiler or interpreter installed separately. The translator is a tool used by the IDE."
-        },
-        {
-          "id": "f6",
-          "face": "left",
-          "x": 1888,
-          "y": 540,
-          "title": "Using your class IDE",
-          "text": "Open the IDE your teacher uses for programming.\n\nUse its editor, Run control and output area.\n\nRead a diagnostic message and correct its cause.\n\nChallenge: In your class IDE, change a printed message and run it. Which two facilities did you use?\n\nPractical task: in your class IDE, run print(\"Ready\"), change the message and run it again. Remove the closing bracket, run to see the diagnostic, then restore it and rerun. Identify the translator used by the IDE. Record the IDE name and the facilities you used."
-        }
-      ],
-      "models": []
+     "label": "1",
+     "name": "Tools in one place",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is an IDE?",
+       "a": [
+        "An application combining programming facilities",
+        "A processor instruction set",
+        "A programming language itself",
+        "A type of secondary storage"
+       ],
+       "fb": "An IDE provides tools used while developing programs."
+      },
+      {
+       "t": "match",
+       "q": "Match the facility to its role.",
+       "pairs": [
+        [
+         "Editor",
+         "Write and change source"
+        ],
+        [
+         "Error diagnostics",
+         "Report detected problems"
+        ],
+        [
+         "Translator",
+         "Translate program instructions"
+        ]
+       ],
+       "fb": "The four facilities support different parts of development."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Writing source code",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "match",
+       "q": "Match the editor feature to the benefit.",
+       "pairs": [
+        [
+         "Syntax highlighting",
+         "Makes code elements easier to distinguish"
+        ],
+        [
+         "Auto-completion",
+         "Suggests names and reduces typing"
+        ],
+        [
+         "Automatic indentation",
+         "Helps align blocks consistently"
+        ]
+       ],
+       "fb": "Editing support improves productivity and readability, but programmers still need to check their code."
+      },
+      {
+       "t": "mcq",
+       "q": "Does syntax highlighting prove that a calculation is correct?",
+       "a": [
+        "No, it mainly helps distinguish code elements",
+        "Yes, all coloured code is correct",
+        "Yes, if every line is blue",
+        "Only when the font is large"
+       ],
+       "fb": "Colour is a reading aid. It does not prove the algorithm gives the intended result."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "The run-time environment",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which facility runs the program so you can observe its output?",
+       "a": [
+        "Run-time environment",
+        "Editor colour theme",
+        "Auto-completion alone",
+        "Source filename"
+       ],
+       "fb": "The run-time environment supports execution and lets the programmer observe the result."
+      },
+      {
+       "t": "mcq",
+       "q": "Where would you look to see the result of print(6 * 4)?",
+       "a": [
+        "The output area or console",
+        "Only in the filename",
+        "Only in the colour legend",
+        "In a font menu"
+       ],
+       "fb": "The statement sends 24 to the output area."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Diagnostic messages",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which repair addresses the visible syntax error on line 4?",
+       "a": [
+        "Add the closing ) after the string",
+        "Delete every print statement",
+        "Change Ready to Go",
+        "Change the font only"
+       ],
+       "fb": "The opening bracket needs a matching closing bracket."
+      },
+      {
+       "t": "multi",
+       "q": "Select TWO sensible uses of diagnostics.",
+       "opts": [
+        "Read the message to identify the kind of problem",
+        "Assume the IDE repairs every fault automatically",
+        "Inspect nearby lines as well as the highlighted one",
+        "Ignore testing once the message disappears"
+       ],
+       "correct": [
+        "Read the message to identify the kind of problem",
+        "Inspect nearby lines as well as the highlighted one"
+       ],
+       "fb": "Diagnostics guide investigation. The reported location may be where a problem was noticed."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Translators in an IDE",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is the translator’s role in an IDE?",
+       "a": [
+        "Process source into instructions that can be executed",
+        "Choose the editor font",
+        "Write the user’s requirements automatically",
+        "Guarantee every result is correct"
+       ],
+       "fb": "Translation enables high-level source to execute."
+      },
+      {
+       "t": "match",
+       "q": "Match each facility with its action.",
+       "pairs": [
+        [
+         "Editor",
+         "Change a source instruction"
+        ],
+        [
+         "Translator",
+         "Process the source for execution"
+        ],
+        [
+         "Run-time environment",
+         "Execute the program"
+        ]
+       ],
+       "fb": "Writing, translation and running are different jobs, even when one application provides them."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Using your class IDE",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which action demonstrates using the editor?",
+       "a": [
+        "Change a message in the source",
+        "Read output without changing code",
+        "Look at the monitor brand",
+        "Close the computer lid"
+       ],
+       "fb": "The editor is where the programmer writes and changes source."
+      },
+      {
+       "t": "mcq",
+       "q": "A diagnostic reports a missing closing bracket. Which IDE facility lets you correct it?",
+       "a": [
+        "The editor",
+        "The output alone",
+        "The display brightness control",
+        "The filename only"
+       ],
+       "fb": "Read the diagnostic, then use the editor to correct the source."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 800,
+     "tasks": [
+      {
+       "t": "match",
+       "q": "Choose the facility for each job.",
+       "pairs": [
+        [
+         "Change the source text",
+         "Editor"
+        ],
+        [
+         "Read a reported error",
+         "Error diagnostics"
+        ],
+        [
+         "Translate source instructions",
+         "Translator"
+        ],
+        [
+         "Run the program and see output",
+         "Run-time environment"
+        ]
+       ],
+       "fb": "Explain what each facility does for the programmer."
+      },
+      {
+       "t": "mcq",
+       "q": "After correcting source using a diagnostic, which facility lets you observe the new output?",
+       "a": [
+        "Run-time environment",
+        "Only the editor’s colour scheme",
+        "Only the source filename",
+        "Only auto-completion"
+       ],
+       "fb": "Execute the corrected program to see its output."
+      }
+     ]
     }
-  ]
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 540,
+     "y": 240,
+     "title": "Tools in one place",
+     "text": "An IDE combines programming facilities in one application.\n\nEditors and diagnostics help create and correct source.\n\nTranslators and a run-time environment help execute it.\n\nChallenge: How does an IDE help a programmer work on a program?\n\nAn IDE combines these facilities so the programmer can work without repeatedly switching between separate applications."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1508,
+     "y": 240,
+     "title": "Writing source code",
+     "text": "Syntax highlighting uses colour to distinguish code elements.\n\nAuto-completion suggests names or code as you type.\n\nIndentation tools help present blocks clearly.\n\nChallenge: How can auto-completion reduce mistakes without guaranteeing correct code?\n\nColour meanings vary between themes and IDEs. Recognise what highlighting does rather than memorising one colour scheme."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 540,
+     "y": 240,
+     "title": "The run-time environment",
+     "text": "A run-time environment lets a programmer execute a program.\n\nInput and output can be handled during the run.\n\nThe programmer can observe the program’s behaviour.\n\nChallenge: What is the difference between the editor and the output area?\n\nUse the Run control in your class IDE and find where it displays output. Names and layouts differ between IDEs."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1508,
+     "y": 240,
+     "title": "Diagnostic messages",
+     "text": "Diagnostics identify detected problems in the code.\n\nA message can include a line number and an error description.\n\nRead the surrounding code before deciding on a repair.\n\nChallenge: A message points to line 5. Why might you also inspect line 4?\n\nA warning can differ from an error that prevents execution. Read the message rather than treating every highlight as the same kind of problem."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 540,
+     "y": 240,
+     "title": "Translators in an IDE",
+     "text": "An IDE can use a compiler or an interpreter.\n\nThe translator processes the program’s source instructions.\n\nTranslation and execution have different roles.\n\nChallenge: Why does an IDE need access to a translator for high-level source?\n\nThe IDE may call a compiler or interpreter installed separately. The translator is a tool used by the IDE."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1508,
+     "y": 240,
+     "title": "Using your class IDE",
+     "text": "Open the IDE your teacher uses for programming.\n\nUse its editor, Run control and output area.\n\nRead a diagnostic message and correct its cause.\n\nChallenge: In your class IDE, change a printed message and run it. Which two facilities did you use?\n\nPractical task: in your class IDE, run print(\"Ready\"), change the message and run it again. Remove the closing bracket, run to see the diagnostic, then restore it and rerun. Identify the translator used by the IDE. Record the IDE name and the facilities you used."
+    }
+   ],
+   "models": []
+  }
+ ]
 }

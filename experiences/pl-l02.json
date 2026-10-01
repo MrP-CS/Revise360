@@ -1,354 +1,354 @@
 {
-  "id": "pl-l02",
-  "lesson": 2,
-  "title": "Language choice workshop",
-  "scenes": [
+ "id": "pl-l02",
+ "lesson": 2,
+ "title": "Language choice workshop",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Language choice workshop",
+   "img": "img/PL_L02_InstructionWorkshop_360.jpg",
+   "imgHi": "img/PL_L02_InstructionWorkshop_360_hi.jpg",
+   "stations": [
     {
-      "id": "main",
-      "title": "Language choice workshop",
-      "img": "img/PL_L02_InstructionWorkshop_360.jpg",
-      "imgHi": "img/PL_L02_InstructionWorkshop_360_hi.jpg",
-      "stations": [
-        {
-          "label": "1",
-          "name": "Reading and changing code",
-          "col": "#40c4ff",
-          "face": "right",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "Which priority most strongly supports high-level code for a changing school quiz?",
-              "a": [
-                "Staff need to understand and edit it easily",
-                "Staff need binary instructions on paper",
-                "The code must never be translated",
-                "Every processor must share an instruction set"
-              ],
-              "fb": "Readability helps programmers maintain a frequently updated program."
-            },
-            {
-              "t": "match",
-              "q": "Match the characteristic to its effect.",
-              "pairs": [
-                [
-                  "Readable source",
-                  "Easier to understand changes"
-                ],
-                [
-                  "Hidden hardware details",
-                  "Less processor knowledge needed"
-                ],
-                [
-                  "Close to processor instructions",
-                  "More hardware knowledge needed"
-                ]
-              ],
-              "fb": "A useful explanation connects a characteristic with its effect."
-            }
-          ]
-        },
-        {
-          "label": "2",
-          "name": "Development time",
-          "col": "#aa6eeb",
-          "face": "right",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "Why can high-level code be quicker to develop?",
-              "a": [
-                "It can express a task with fewer instructions",
-                "It guarantees there are no errors",
-                "It never needs a translator",
-                "It executes directly as English"
-              ],
-              "fb": "Higher-level operations reduce the detail a programmer must write."
-            },
-            {
-              "t": "multi",
-              "q": "Select TWO reasonable comparisons.",
-              "opts": [
-                "High-level code usually takes less effort to write",
-                "High-level code can never contain mistakes",
-                "Low-level code requires more processor detail",
-                "Low-level code is always easiest to maintain"
-              ],
-              "correct": [
-                "High-level code usually takes less effort to write",
-                "Low-level code requires more processor detail"
-              ],
-              "fb": "Compare typical characteristics without claiming that a language guarantees correctness."
-            }
-          ]
-        },
-        {
-          "label": "3",
-          "name": "Moving to another system",
-          "col": "#ff785a",
-          "face": "back",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "sort",
-              "q": "Classify the language characteristic.",
-              "items": [
-                [
-                  "Usually easier to move between systems",
-                  "High-level"
-                ],
-                [
-                  "Closely tied to a processor instruction set",
-                  "Low-level"
-                ],
-                [
-                  "Needs suitable translation on the new system",
-                  "High-level"
-                ],
-                [
-                  "May require processor-specific rewriting",
-                  "Low-level"
-                ]
-              ],
-              "cats": [
-                "High-level",
-                "Low-level"
-              ],
-              "fb": "High-level source is usually more portable, with a suitable translator."
-            },
-            {
-              "t": "mcq",
-              "q": "What must be checked when moving high-level source to another system?",
-              "a": [
-                "A suitable translator is available",
-                "The keyboard has the same colour",
-                "Every CPU uses identical instructions",
-                "The source contains only binary"
-              ],
-              "fb": "Portability still depends on translation support on the target system."
-            }
-          ]
-        },
-        {
-          "label": "4",
-          "name": "Control of hardware",
-          "col": "#ffa028",
-          "face": "back",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "Which requirement most strongly favours low-level code?",
-              "a": [
-                "Precise control over processor operations",
-                "Readable code for weekly staff edits",
-                "Minimum processor knowledge",
-                "Rapid writing of a general school app"
-              ],
-              "fb": "Low-level languages expose hardware operations in more detail."
-            },
-            {
-              "t": "multi",
-              "q": "Select TWO valid trade-offs.",
-              "opts": [
-                "Low-level code can offer detailed hardware control",
-                "Low-level code is independent of every processor",
-                "Low-level code can be harder to maintain",
-                "Low-level code is always quickest to develop"
-              ],
-              "correct": [
-                "Low-level code can offer detailed hardware control",
-                "Low-level code can be harder to maintain"
-              ],
-              "fb": "Detailed control must be balanced against the effort needed to write and maintain the code."
-            }
-          ]
-        },
-        {
-          "label": "5",
-          "name": "Speed and memory",
-          "col": "#50dc96",
-          "face": "left",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "Which benefit fits a routine with strict memory limits?",
-              "a": [
-                "Detailed control over memory use",
-                "Guaranteed zero memory use",
-                "No need to understand hardware",
-                "Automatic portability to every CPU"
-              ],
-              "fb": "Low-level code can give precise control, but it still uses memory."
-            },
-            {
-              "t": "match",
-              "q": "Match each priority to the relevant characteristic.",
-              "pairs": [
-                [
-                  "Easy staff updates",
-                  "Readable high-level source"
-                ],
-                [
-                  "Precise memory use",
-                  "Detailed low-level control"
-                ],
-                [
-                  "Short development deadline",
-                  "High-level operations reduce coding detail"
-                ]
-              ],
-              "fb": "Choose a characteristic that directly addresses the requirement."
-            }
-          ]
-        },
-        {
-          "label": "6",
-          "name": "A justified recommendation",
-          "col": "#f05aaa",
-          "face": "left",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "Which recommendation best fits the school app?",
-              "a": [
-                "High-level code supports readability and portability",
-                "Low-level code always runs on every system",
-                "Machine code is easiest for staff to read",
-                "Language choice never affects maintenance"
-              ],
-              "fb": "Link readability to updates and portability to use on different systems."
-            },
-            {
-              "t": "mcq",
-              "q": "What drawback should accompany this recommendation?",
-              "a": [
-                "The source still needs suitable translation",
-                "The source can never be changed",
-                "High-level code cannot store values",
-                "High-level code is always binary"
-              ],
-              "fb": "A balanced recommendation includes the need for a suitable translator."
-            }
-          ]
-        },
-        {
-          "label": "★",
-          "name": "Final challenge",
-          "col": "#ffd046",
-          "face": "down",
-          "x": 1024,
-          "y": 800,
-          "tasks": [
-            {
-              "t": "sort",
-              "q": "Choose a language level for each priority.",
-              "items": [
-                [
-                  "Easy weekly updates to a quiz",
-                  "High-level"
-                ],
-                [
-                  "Precise processor control",
-                  "Low-level"
-                ],
-                [
-                  "Quick development of a school app",
-                  "High-level"
-                ],
-                [
-                  "Careful control of a tiny routine’s memory use",
-                  "Low-level"
-                ]
-              ],
-              "cats": [
-                "High-level",
-                "Low-level"
-              ],
-              "fb": "Match readability and development speed to high-level code, and detailed hardware control to low-level code."
-            },
-            {
-              "t": "match",
-              "q": "Match each choice to a relevant drawback.",
-              "pairs": [
-                [
-                  "High-level source on a new system",
-                  "Needs a suitable translator"
-                ],
-                [
-                  "Low-level source for one processor",
-                  "May need rewriting for another processor"
-                ],
-                [
-                  "Detailed low-level routine",
-                  "Usually takes more effort to maintain"
-                ]
-              ],
-              "fb": "Explain the trade-off, not just the choice."
-            }
-          ]
-        }
-      ],
-      "info": [
-        {
-          "id": "f1",
-          "face": "right",
-          "x": 920,
-          "y": 540,
-          "title": "Reading and changing code",
-          "text": "High-level code uses readable words and structures.\n\nReadable code is usually easier to understand and change.\n\nLow-level code requires more knowledge of the processor.\n\nChallenge: Why might a high-level language help staff update a quiz each week?\n\nMaintenance includes correcting and changing a program. High-level languages usually reduce the effort needed."
-        },
-        {
-          "id": "f2",
-          "face": "right",
-          "x": 1888,
-          "y": 540,
-          "title": "Development time",
-          "text": "High-level operations can express a task in fewer instructions.\n\nLow-level code often needs more detailed instructions.\n\nMore detailed code can take longer to write and check.\n\nChallenge: Why can high-level code reduce development time?\n\nDevelopment time is the time spent creating the program. It is different from the time the finished program takes to run."
-        },
-        {
-          "id": "f3",
-          "face": "back",
-          "x": 920,
-          "y": 540,
-          "title": "Moving to another system",
-          "text": "High-level source is usually more portable.\n\nThe new system needs a suitable translator.\n\nLow-level code is tied more closely to a processor.\n\nChallenge: Why may low-level code need rewriting for a different processor?\n\nPortability does not mean every source program works unchanged on every device. Compare the language levels using the requirement given."
-        },
-        {
-          "id": "f4",
-          "face": "back",
-          "x": 1888,
-          "y": 540,
-          "title": "Control of hardware",
-          "text": "Low-level code closely matches processor operations.\n\nIt allows detailed control of hardware and memory use.\n\nThis control comes with greater development effort.\n\nChallenge: Why might low-level code suit a routine needing precise hardware control?\n\nA strong answer explains why detailed hardware control matters to the stated task."
-        },
-        {
-          "id": "f5",
-          "face": "left",
-          "x": 920,
-          "y": 540,
-          "title": "Speed and memory",
-          "text": "Low-level code can be carefully tuned for a processor.\n\nThis can help control execution speed and memory use.\n\nHigh-level code usually makes development easier.\n\nChallenge: A tiny routine must use little memory. Give one benefit and one drawback of low-level code.\n\nAvoid claiming low-level code is always faster. Its relevant advantage is the detailed control it can give a programmer."
-        },
-        {
-          "id": "f6",
-          "face": "left",
-          "x": 1888,
-          "y": 540,
-          "title": "A justified recommendation",
-          "text": "Identify the main requirement in the project.\n\nChoose the language level that addresses it.\n\nExplain both the benefit and a relevant drawback.\n\nChallenge: Recommend a level for a school app that needs frequent changes on several systems.\n\nUse the scenario to decide which characteristics matter. There is no single language level that is best for every task."
-        }
-      ],
-      "models": []
+     "label": "1",
+     "name": "Reading and changing code",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which priority most strongly supports high-level code for a changing school quiz?",
+       "a": [
+        "Staff need to understand and edit it easily",
+        "Staff need binary instructions on paper",
+        "The code must never be translated",
+        "Every processor must share an instruction set"
+       ],
+       "fb": "Readability helps programmers maintain a frequently updated program."
+      },
+      {
+       "t": "match",
+       "q": "Match the characteristic to its effect.",
+       "pairs": [
+        [
+         "Readable source",
+         "Easier to understand changes"
+        ],
+        [
+         "Hidden hardware details",
+         "Less processor knowledge needed"
+        ],
+        [
+         "Close to processor instructions",
+         "More hardware knowledge needed"
+        ]
+       ],
+       "fb": "A useful explanation connects a characteristic with its effect."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Development time",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Why can high-level code be quicker to develop?",
+       "a": [
+        "It can express a task with fewer instructions",
+        "It guarantees there are no errors",
+        "It never needs a translator",
+        "It executes directly as English"
+       ],
+       "fb": "Higher-level operations reduce the detail a programmer must write."
+      },
+      {
+       "t": "multi",
+       "q": "Select TWO reasonable comparisons.",
+       "opts": [
+        "High-level code usually takes less effort to write",
+        "High-level code can never contain mistakes",
+        "Low-level code requires more processor detail",
+        "Low-level code is always easiest to maintain"
+       ],
+       "correct": [
+        "High-level code usually takes less effort to write",
+        "Low-level code requires more processor detail"
+       ],
+       "fb": "Compare typical characteristics without claiming that a language guarantees correctness."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Moving to another system",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Classify the language characteristic.",
+       "items": [
+        [
+         "Usually easier to move between systems",
+         "High-level"
+        ],
+        [
+         "Closely tied to a processor instruction set",
+         "Low-level"
+        ],
+        [
+         "Needs suitable translation on the new system",
+         "High-level"
+        ],
+        [
+         "May require processor-specific rewriting",
+         "Low-level"
+        ]
+       ],
+       "cats": [
+        "High-level",
+        "Low-level"
+       ],
+       "fb": "High-level source is usually more portable, with a suitable translator."
+      },
+      {
+       "t": "mcq",
+       "q": "What must be checked when moving high-level source to another system?",
+       "a": [
+        "A suitable translator is available",
+        "The keyboard has the same colour",
+        "Every CPU uses identical instructions",
+        "The source contains only binary"
+       ],
+       "fb": "Portability still depends on translation support on the target system."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Control of hardware",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which requirement most strongly favours low-level code?",
+       "a": [
+        "Precise control over processor operations",
+        "Readable code for weekly staff edits",
+        "Minimum processor knowledge",
+        "Rapid writing of a general school app"
+       ],
+       "fb": "Low-level languages expose hardware operations in more detail."
+      },
+      {
+       "t": "multi",
+       "q": "Select TWO valid trade-offs.",
+       "opts": [
+        "Low-level code can offer detailed hardware control",
+        "Low-level code is independent of every processor",
+        "Low-level code can be harder to maintain",
+        "Low-level code is always quickest to develop"
+       ],
+       "correct": [
+        "Low-level code can offer detailed hardware control",
+        "Low-level code can be harder to maintain"
+       ],
+       "fb": "Detailed control must be balanced against the effort needed to write and maintain the code."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Speed and memory",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which benefit fits a routine with strict memory limits?",
+       "a": [
+        "Detailed control over memory use",
+        "Guaranteed zero memory use",
+        "No need to understand hardware",
+        "Automatic portability to every CPU"
+       ],
+       "fb": "Low-level code can give precise control, but it still uses memory."
+      },
+      {
+       "t": "match",
+       "q": "Match each priority to the relevant characteristic.",
+       "pairs": [
+        [
+         "Easy staff updates",
+         "Readable high-level source"
+        ],
+        [
+         "Precise memory use",
+         "Detailed low-level control"
+        ],
+        [
+         "Short development deadline",
+         "High-level operations reduce coding detail"
+        ]
+       ],
+       "fb": "Choose a characteristic that directly addresses the requirement."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "A justified recommendation",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which recommendation best fits the school app?",
+       "a": [
+        "High-level code supports readability and portability",
+        "Low-level code always runs on every system",
+        "Machine code is easiest for staff to read",
+        "Language choice never affects maintenance"
+       ],
+       "fb": "Link readability to updates and portability to use on different systems."
+      },
+      {
+       "t": "mcq",
+       "q": "What drawback should accompany this recommendation?",
+       "a": [
+        "The source still needs suitable translation",
+        "The source can never be changed",
+        "High-level code cannot store values",
+        "High-level code is always binary"
+       ],
+       "fb": "A balanced recommendation includes the need for a suitable translator."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 800,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Choose a language level for each priority.",
+       "items": [
+        [
+         "Easy weekly updates to a quiz",
+         "High-level"
+        ],
+        [
+         "Precise processor control",
+         "Low-level"
+        ],
+        [
+         "Quick development of a school app",
+         "High-level"
+        ],
+        [
+         "Careful control of a tiny routine’s memory use",
+         "Low-level"
+        ]
+       ],
+       "cats": [
+        "High-level",
+        "Low-level"
+       ],
+       "fb": "Match readability and development speed to high-level code, and detailed hardware control to low-level code."
+      },
+      {
+       "t": "match",
+       "q": "Match each choice to a relevant drawback.",
+       "pairs": [
+        [
+         "High-level source on a new system",
+         "Needs a suitable translator"
+        ],
+        [
+         "Low-level source for one processor",
+         "May need rewriting for another processor"
+        ],
+        [
+         "Detailed low-level routine",
+         "Usually takes more effort to maintain"
+        ]
+       ],
+       "fb": "Explain the trade-off, not just the choice."
+      }
+     ]
     }
-  ]
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 540,
+     "y": 240,
+     "title": "Reading and changing code",
+     "text": "High-level code uses readable words and structures.\n\nReadable code is usually easier to understand and change.\n\nLow-level code requires more knowledge of the processor.\n\nChallenge: Why might a high-level language help staff update a quiz each week?\n\nMaintenance includes correcting and changing a program. High-level languages usually reduce the effort needed."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1508,
+     "y": 240,
+     "title": "Development time",
+     "text": "High-level operations can express a task in fewer instructions.\n\nLow-level code often needs more detailed instructions.\n\nMore detailed code can take longer to write and check.\n\nChallenge: Why can high-level code reduce development time?\n\nDevelopment time is the time spent creating the program. It is different from the time the finished program takes to run."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 540,
+     "y": 240,
+     "title": "Moving to another system",
+     "text": "High-level source is usually more portable.\n\nThe new system needs a suitable translator.\n\nLow-level code is tied more closely to a processor.\n\nChallenge: Why may low-level code need rewriting for a different processor?\n\nPortability does not mean every source program works unchanged on every device. Compare the language levels using the requirement given."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1508,
+     "y": 240,
+     "title": "Control of hardware",
+     "text": "Low-level code closely matches processor operations.\n\nIt allows detailed control of hardware and memory use.\n\nThis control comes with greater development effort.\n\nChallenge: Why might low-level code suit a routine needing precise hardware control?\n\nA strong answer explains why detailed hardware control matters to the stated task."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 540,
+     "y": 240,
+     "title": "Speed and memory",
+     "text": "Low-level code can be carefully tuned for a processor.\n\nThis can help control execution speed and memory use.\n\nHigh-level code usually makes development easier.\n\nChallenge: A tiny routine must use little memory. Give one benefit and one drawback of low-level code.\n\nAvoid claiming low-level code is always faster. Its relevant advantage is the detailed control it can give a programmer."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1508,
+     "y": 240,
+     "title": "A justified recommendation",
+     "text": "Identify the main requirement in the project.\n\nChoose the language level that addresses it.\n\nExplain both the benefit and a relevant drawback.\n\nChallenge: Recommend a level for a school app that needs frequent changes on several systems.\n\nUse the scenario to decide which characteristics matter. There is no single language level that is best for every task."
+    }
+   ],
+   "models": []
+  }
+ ]
 }
