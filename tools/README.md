@@ -138,6 +138,25 @@ that nothing inside an SSD moves, how much of a phone had to be mined. Topics
 that are about process rather than objects (2.1, 2.3, 2.5) deliberately have
 none.
 
+Check the models after changing one:
+
+```
+R360_THREE=<path to three.min.js> python3 qcmodels.py
+```
+
+Every part is labelled and clickable, so a part that is buried inside an opaque
+case, hidden behind another, or has no size is a button a pupil presses to no
+effect - invisible to code review and easy to miss by eye. qcmodels.py renders
+each model from five angles, hides one part at a time and diffs, and flags any
+part that changes no pixels from any angle. It caught a switch whose "Switching
+chip" was sealed inside an opaque case, and status lights buried inside the port
+blocks.
+
+Mind the orientation of anything mounted on a board. `chip()` prints its
+markings on the +Y face, which is right for a board lying flat; a board standing
+upright (the RAM module) needs `chipFacing()` with the +Z or -Z face instead, or
+the chips end up lying flat and sunk edge-on into the board.
+
 A model marker is a player sprite positioned from the experience JSON, not drawn
 into the 360 image, so adding or moving one needs no re-render:
 

@@ -116,6 +116,17 @@
     return { group, parts, part };
   }
   function chip(w, h, d, lines, x, y, z, accent) { const side = std({ color: 0x16181d, roughness: .6 }); return topBox(w, h, d, side, std({ map: epoxy("chip" + lines.join(), lines, accent), roughness: .5 }), x, y, z); }
+  // Same chip, but printed on a vertical face: for anything mounted on a board
+  // that stands upright, where the markings face the viewer rather than the sky.
+  // BoxGeometry material order is +X, -X, +Y, -Y, +Z, -Z.
+  function chipFacing(w, h, d, lines, x, y, z, faceIdx, accent) {
+    const side = std({ color: 0x16181d, roughness: .6 });
+    const m = [side, side, side, side, side, side];
+    m[faceIdx] = std({ map: epoxy("chip" + lines.join(), lines, accent), roughness: .5 });
+    const o = new T.Mesh(new T.BoxGeometry(w, h, d), m);
+    o.position.set(x || 0, y || 0, z || 0);
+    return o;
+  }
 
   const BUILD = {
     cpu() {
@@ -253,32 +264,39 @@
     ram() {
       const { group, parts, part } = kit();
       const rp = pcb("rammod", [["R360  DDR  16GB", .08, .18], ["PC5-44800", .08, .3]], { edge: true, base: "#1e4f6b" });
-      const stick = topBox(5.4, 1.5, .09, board(rp), board(rp));
+      // The module stands upright: the board is thin in Z, so everything mounted
+      // on it is thin in Z too, standing proud of the face rather than lying flat.
+      const TH = .09;                                  // board thickness
+      const stick = topBox(5.4, 1.4, TH, board(rp), board(rp));
       part(stick, "Circuit board", "The module is a small circuit board that slots into the motherboard. Everything the CPU is working on right now is held on the chips mounted here.");
       const chips = new T.Group();
       for (let k = 0; k < 8; k++) {
-        chips.add(chip(.52, .1, .42, ["R360", "2Gb"], -2.3 + k * .66, .22, .08));
-        chips.add(chip(.52, .1, .42, ["R360", "2Gb"], -2.3 + k * .66, .22, -.08));
+        const cx = -2.31 + k * .66;
+        chips.add(chipFacing(.52, .44, .07, ["R360", "2Gb"], cx, .18, TH / 2 + .035, 4));
+        chips.add(chipFacing(.52, .44, .07, ["R360", "2Gb"], cx, .18, -TH / 2 - .035, 5));
       }
       part(chips, "Memory chips", "Each chip holds billions of tiny cells, and each cell stores one bit as a charge. The charge leaks away in a fraction of a second, so every cell is refreshed thousands of times a second. Cut the power and all of it is gone: this is why RAM is volatile.");
+      // Contacts are plated onto each face of the board along the bottom edge,
+      // with a gap where the notch is.
       const pins = new T.Group();
+      const NOTCH_AT = -.52, NOTCH_W = .17;
       for (let k = 0; k < 44; k++) {
-        const w = .07;
-        pins.add(box(w, .3, .11, gold(), -2.55 + k * .116, -.88, .055));
-        pins.add(box(w, .3, .11, gold(), -2.55 + k * .116, -.88, -.055));
+        const px = -2.56 + k * .119;
+        if (Math.abs(px - NOTCH_AT) < NOTCH_W) continue;
+        pins.add(box(.075, .3, .012, gold(), px, -.82, TH / 2 + .006));
+        pins.add(box(.075, .3, .012, gold(), px, -.82, -TH / 2 - .006));
       }
-      part(pins, "Contacts", "Gold-plated contacts carry data, addresses and power between the module and the memory controller. Gold is used because it does not corrode, so the connection stays reliable.");
-      const notch = box(.16, .34, .14, std({ color: 0x0d1018, roughness: .8 }), -.5, -.86, 0);
-      part(notch, "The notch", "A gap in the contacts, positioned differently for each generation of memory. It stops a module being fitted the wrong way round, or into a motherboard that cannot use it.");
-      part(box(5.4, .5, .22, metal(brushed("ramspread", "#aeb5c0")), 0, 1.0, 0), "Heat spreader", "A thin metal cover that draws heat away from the chips. Memory running at high speed gets warm, and heat makes errors more likely.");
-      return { group, parts, scale: .62 };
+      part(pins, "Contacts", "Gold-plated contacts along the bottom edge carry data, addresses and power between the module and the memory controller. Gold is used because it does not corrode, so the connection stays reliable.");
+      const notch = box(NOTCH_W * 1.5, .40, TH + .05, std({ color: 0x080a10, roughness: .9, emissive: 0x0a1626 }), NOTCH_AT, -.80, 0);
+      part(notch, "The notch", "A gap cut through the contacts, in a different position for each generation of memory. It stops a module being fitted the wrong way round, or into a motherboard that cannot use it.");
+      return { group, parts, scale: .66 };
     },
 
     // A solid state drive: the point is that nothing moves
     ssd() {
       const { group, parts, part } = kit();
       const shell = std({ map: brushed("ssdcase", "#c3c8cf"), metalness: .85, roughness: .4, transparent: true, opacity: .3 });
-      part(box(4.4, .3, 3.2, shell, 0, .5, 0), "Casing", "A plain metal shell with nothing inside it that turns. There is no motor, no disc and no arm, so an SSD makes no noise and is not damaged by being knocked while it works.");
+      part(box(4.7, .78, 3.5, shell, 0, .16, 0), "Casing", "A plain metal shell with nothing inside it that turns. There is no motor, no disc and no arm, so an SSD makes no noise and is not damaged by being knocked while it works.");
       const bp = pcb("ssdpcb", [["R360-SSD", .06, .1], ["NAND x8", .6, .9]], { base: "#13303f" });
       part(topBox(4.1, .08, 2.9, std({ color: 0x13303f }), board(bp), 0, 0, 0), "Circuit board", "Everything sits flat on one board. With no moving parts to wait for, the drive can start reading any block as soon as it is asked.");
       const nand = new T.Group();
@@ -326,7 +344,7 @@
     // A network switch, for building a LAN and for where traffic can be intercepted
     switch() {
       const { group, parts, part } = kit();
-      const caseM = metal(brushed("swcase", "#51596b"), { metalness: .7, roughness: .45 });
+      const caseM = metal(brushed("swcase", "#51596b"), { metalness: .7, roughness: .45, transparent: true, opacity: .34 });
       part(topBox(6.2, .9, 2.6, caseM, caseM, 0, 0, 0), "Casing", "A switch is usually a flat box in a cabinet. A school might have one in each corridor, with every room's cable running back to it.");
       const ports = new T.Group(); const pm = std({ color: 0x11151d, roughness: .8 });
       for (let r = 0; r < 2; r++) for (let c = 0; c < 12; c++) {
@@ -338,7 +356,7 @@
       const leds = new T.Group();
       for (let c = 0; c < 12; c++) {
         const on = c % 3 !== 1;
-        leds.add(box(.1, .06, .04, std({ color: on ? 0x50dc96 : 0x2a3140, emissive: on ? 0x12402a : 0 }), -2.75 + c * .5, .33, 1.33));
+        leds.add(box(.12, .07, .05, std({ color: on ? 0x50dc96 : 0x2a3140, emissive: on ? 0x1d6b44 : 0 }), -2.75 + c * .5, -.36, 1.33));
       }
       part(leds, "Status lights", "One light per port. It tells you whether anything is plugged in, how fast the link is running, and whether data is flowing. The first thing to check when a room has no network.");
       const asic = new T.Group();
@@ -368,14 +386,15 @@
            "Strengthening and buffer", "Strands of tough fibre take the strain if the cable is pulled, and a soft buffer stops the glass being crushed. Bend a fibre too tightly and the light escapes instead of reflecting.");
       part(layer(.26, 2.8, std({ color: 0x9fd8ff, roughness: .15, metalness: .1, transparent: true, opacity: .55 })),
            "Cladding", "Glass with a lower refractive index than the core. That difference is what makes the light bounce back in instead of leaking out: total internal reflection.");
-      part(layer(.1, 3.8, std({ color: 0xeaf6ff, roughness: .05, emissive: 0x16304a }), 24),
+      part(layer(.1, 3.8, std({ color: 0xeaf6ff, roughness: .05, emissive: 0x16304a, transparent: true, opacity: .42 }), 24),
            "Glass core", "A thread of extremely pure glass, thinner than a human hair. The signal is pulses of light travelling down this core: on for a 1, off for a 0.");
       const ray = new T.Group();
-      const beam = std({ color: 0xff5a6e, emissive: 0x7a1427, transparent: true, opacity: .9 });
-      let x = X0 + .2, up = true;
-      for (let i = 0; i < 9; i++) {
-        const nx = x + .78;
-        ray.add(tube(new T.Vector3(x, up ? -.2 : .2, 0), new T.Vector3(nx, up ? .2 : -.2, 0), .035, beam));
+      const beam = std({ color: 0xff5a6e, emissive: 0xb02038 });
+      const A = .085;                       // stays inside the core, where it belongs
+      let x = X0 + .15, up = true;
+      for (let i = 0; i < 14; i++) {
+        const nx = x + .52;
+        ray.add(tube(new T.Vector3(x, up ? -A : A, 0), new T.Vector3(nx, up ? A : -A, 0), .028, beam));
         x = nx; up = !up;
       }
       part(ray, "The light bouncing", "The beam hits the boundary at a shallow angle and reflects, over and over, all the way along. Because it is light rather than electricity, it carries far more data, goes much further without a boost, and nothing electrical nearby can interfere with it.");
@@ -455,7 +474,7 @@
     phone() {
       const { group, parts, part } = kit();
       const glass = std({ color: 0x1b2433, roughness: .08, metalness: .3, transparent: true, opacity: .55 });
-      part(box(2.6, .07, 5.2, glass, 0, 1.0, 0), "Screen", "The display needs indium, a rare metal, for its transparent conducting layer. Very little of it is ever recovered: once a screen is crushed, the indium is effectively gone.");
+      part(box(2.6, .07, 5.2, glass, 0, .62, 0), "Screen", "The display needs indium, a rare metal, for its transparent conducting layer. Very little of it is ever recovered: once a screen is crushed, the indium is effectively gone.");
       part(box(2.7, .16, 5.3, metal(brushed("phoneframe", "#9aa2ae")), 0, -.75, 0), "Aluminium body", "The case is mined bauxite, smelted using a great deal of electricity. Recycling aluminium takes a small fraction of that energy, which is why the casing is worth recovering.");
       const batt = box(2.1, .42, 3.0, std({ color: 0x2f7d5a, roughness: .5 }), 0, -.35, -.7);
       part(batt, "Battery", "Lithium, cobalt and nickel. Cobalt in particular is concentrated in a few countries, and mining it has well documented human costs. The battery is also the part that wears out first, which is often what sends a working phone to the bin.");
@@ -468,8 +487,8 @@
       part(logic, "Circuit board", "Gold, silver, copper, tantalum and a dozen rare earth elements, in quantities too small to see. A tonne of old phones contains far more gold than a tonne of ore, which is why recovering them is worth doing.");
       const cam = new T.Group();
       [[-.65, -1.8], [-.65, -2.45], [.1, -2.1]].forEach(([x, z]) => {
-        cam.add(cyl(.3, .3, .2, metal(null, { color: 0x2a3140 }), x, -.62, z, 32));
-        cam.add(cyl(.2, .2, .08, std({ color: 0x0d1018, roughness: .05, metalness: .5 }), x, -.52, z, 32));
+        cam.add(cyl(.3, .3, .2, metal(null, { color: 0x2a3140 }), x, -.96, z, 32));
+        cam.add(cyl(.2, .2, .08, std({ color: 0x0d1018, roughness: .05, metalness: .5 }), x, -1.07, z, 32));
       });
       part(cam, "Cameras", "Ground glass and rare earth elements. Each new model adds more of them, and a device is often replaced while the old one still works perfectly.");
       part(box(2.4, .05, 4.9, std({ color: 0x3a4150, roughness: .8 }), 0, -.62, 0), "Adhesive and plastics", "Glued together rather than screwed, which makes a phone thin and waterproof but hard to repair or take apart. Parts that cannot be separated cannot be recycled, so they are burned or buried.");

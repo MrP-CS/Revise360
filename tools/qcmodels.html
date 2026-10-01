@@ -1,0 +1,81 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>3D model QC</title></head>
+<body style="margin:0;background:#101828">
+<!--
+  Checks every 3D model for the failure that matters most: a part that is
+  labelled and clickable, so a pupil can select it, but contributes no visible
+  pixels from any angle - because it sits inside an opaque case, is hidden
+  behind another part, or has no size.
+
+  For each part it renders the model with that part hidden and diffs against the
+  baseline. A part that changes nothing is a part nobody can see.
+-->
+<div id="host"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="../js/models.js"></script>
+<script>
+const T = THREE;
+const ANGLES = [[.45, -.6], [.45, 1.0], [.2, 2.4], [1.0, 3.9], [-.3, 5.2]];
+
+function renderOnce(r, scene, cam, b, rx, ry) {
+  b.group.rotation.set(0, ry, 0);
+  b.group.scale.setScalar(b.scale);
+  const dist = 5;
+  cam.position.set(0, Math.sin(rx) * dist, Math.cos(rx) * dist);
+  cam.lookAt(0, 0, 0);
+  r.render(scene, cam);
+  const gl = r.getContext();
+  const px = new Uint8Array(gl.drawingBufferWidth * gl.drawingBufferHeight * 4);
+  gl.readPixels(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight, gl.RGBA, gl.UNSIGNED_BYTE, px);
+  return px;
+}
+function diff(a, b2) {
+  let n = 0;
+  for (let i = 0; i < a.length; i += 4) {
+    if (Math.abs(a[i] - b2[i]) + Math.abs(a[i+1] - b2[i+1]) + Math.abs(a[i+2] - b2[i+2]) > 18) n++;
+  }
+  return n;
+}
+function setVisible(part, v) { part.obj.traverse(o => { if (o.isMesh) o.visible = v; }); }
+
+window.QC = function () {
+  const out = {};
+  for (const kind of R360Models.kinds) {
+    // A fresh canvas per model: a canvas can only ever hold one WebGL context,
+    // so reusing one silently returns blank frames for every model after the first.
+    const canvas = document.createElement("canvas");
+    canvas.width = 420; canvas.height = 340;
+    document.getElementById("host").appendChild(canvas);
+    const r = new T.WebGLRenderer({ antialias: false, canvas, preserveDrawingBuffer: true });
+    r.setPixelRatio(1); r.setSize(420, 340, false);
+    const scene = new T.Scene();
+    const b = R360Models.build(kind);
+    scene.add(b.group);
+    R360Models.lights(scene, r);
+    const cam = new T.PerspectiveCamera(38, 420 / 340, .1, 100);
+
+    const best = b.parts.map(() => 0);
+    let coverage = 0;
+    for (const [rx, ry] of ANGLES) {
+      const base = renderOnce(r, scene, cam, b, rx, ry);
+      // how much of the frame the whole model occupies, as a sanity check
+      let ink = 0;
+      for (let i = 0; i < base.length; i += 4) if (base[i] + base[i+1] + base[i+2] > 60) ink++;
+      coverage = Math.max(coverage, ink);
+      b.parts.forEach((p, i) => {
+        setVisible(p, false);
+        const without = renderOnce(r, scene, cam, b, rx, ry);
+        setVisible(p, true);
+        best[i] = Math.max(best[i], diff(base, without));
+      });
+    }
+    out[kind] = {
+      coverage,
+      parts: b.parts.map((p, i) => ({ name: p.name, pixels: best[i] }))
+    };
+    r.dispose(); canvas.remove();
+  }
+  return out;
+};
+</script>
+</body></html>
