@@ -189,6 +189,57 @@
         "Because false is faster"
        ],
        "fb": "Without it the variable has no value if nothing matches."
+      },
+      {
+       "t": "code",
+       "marks": 4,
+       "q": "Write a linear search. The program should say at which position a name is found, or that it is not there.",
+       "brief": [
+        "The list is already written for you - do not change it.",
+        "Read one name from the user.",
+        "If the name is in the list, print the position it is at, counting from 0.",
+        "If it is not in the list, print: not found"
+       ],
+       "starter": "names = ['Ava', 'Ben', 'Chi', 'Dev', 'Eve']\n\n# Read a name, search the list, print the position or 'not found'\n",
+       "tests": [
+        {
+         "in": [
+          "Chi"
+         ],
+         "out": [
+          "2"
+         ],
+         "why": "Chi is the third name, and counting from 0 that is position 2."
+        },
+        {
+         "in": [
+          "Ava"
+         ],
+         "out": [
+          "0"
+         ],
+         "why": "The first item is at position 0, not 1."
+        },
+        {
+         "in": [
+          "Eve"
+         ],
+         "out": [
+          "4"
+         ],
+         "why": "The last item has to be checked too - a loop that stops early will miss it."
+        },
+        {
+         "in": [
+          "Zoe"
+         ],
+         "out": [
+          "not found"
+         ],
+         "why": "A name that is not in the list must print exactly: not found"
+        }
+       ],
+       "fb": "Go through the list one at a time and compare. Remember the answer for a name that is never found."
       }
      ]
     },

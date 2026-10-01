@@ -280,6 +280,46 @@ python3 applydiagrams.py          # show what would change
 python3 applydiagrams.py --write
 ```
 
+## Code questions and the Python editor
+
+A `code` task is a Paper 2 Section B question: a brief, a starter file, and a
+set of test cases. The pupil writes Python in the built-in editor, runs it as
+often as they like, and presses Check to have it marked.
+
+**It is marked by running it.** Comparing an answer with one model solution
+would fail every pupil who solved it a different way, which is most of them, so
+each test supplies the lines the program will read with `input()` and the
+output it should print. Marks are the share of tests passed. Output is compared
+with leading and trailing space, repeated spaces and capitals ignored - nothing
+else, so the brief has to say exactly what to print.
+
+`forbid` is the escape hatch for the one kind of rule running cannot check: a
+bubble sort written by hand and `sorted()` look identical from the outside. Use
+it sparingly, because a structural rule punishes a pupil who found another
+valid route.
+
+Questions live in `codequestions.py` and go in with `applycode.py --write`.
+
+```
+PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers node tools/tests/smokecode.js
+```
+
+That opens every code question in a browser, types a correct solution and a
+wrong one, and checks the marking agrees with both. Write the wrong one as a
+mistake a pupil really makes - an off-by-one, `<` for `<=` - not nonsense: a
+test suite that only catches gibberish is not testing anything. Any question
+whose tests let a realistic mistake through needs another test case.
+
+The runtime is real CPython (`vendor/pyodide`, served from this site, see the
+README there) in a **module worker**, which is what makes `while True:`
+survivable - nothing can interrupt Python once it is running, so the only cure
+is to kill the thread, and you can only do that to a worker. It is fetched when
+a code question is first opened, not on every page.
+
+Code shown on the trace and bug-finding boards is syntax highlighted by
+`codeLine()` in `js/algo.js`, drawn token by token in a monospace font so the
+indentation lines up down the page.
+
 ## The window things open in
 
 A question, a 3D model and a 2D diagram all open in one frame, built by

@@ -295,3 +295,39 @@ textarea{width:100%;background:#0f1930;color:var(--fg);border:1px solid var(--li
 
 .page .btn, .hero .btn, .cta .btn{color:#0f1626}
 .page .btn.ghost, .hero .btn.ghost, .cta .btn.ghost{color:var(--fg)}
+
+/* ---------- Python editor ---------- */
+.pyed{display:flex;background:#0b1322;border:2px solid var(--line);border-radius:14px;overflow:hidden;font-family:Consolas,"DejaVu Sans Mono",monospace}
+.pygut{flex:0 0 auto;padding:12px 10px 12px 14px;text-align:right;color:#4a5a78;background:#0a1120;
+  font-size:15px;line-height:1.55;white-space:pre;overflow:hidden;user-select:none}
+.pywrap{position:relative;flex:1;min-width:0}
+.pyhl,.pysrc{margin:0;padding:12px 14px;font:inherit;font-size:15px;line-height:1.55;
+  white-space:pre;overflow:auto;tab-size:4}
+.pyhl{position:absolute;inset:0;pointer-events:none;color:var(--fg)}
+.pysrc{position:relative;width:100%;height:100%;background:transparent;color:transparent;
+  caret-color:var(--edge);border:0;resize:none;outline:none;display:block}
+.pysrc:focus-visible{outline:none}
+.pyed:focus-within{border-color:var(--edge)}
+.pyhl .k{color:#c792ea;font-style:normal}
+.pyhl .b{color:#7fb2ff;font-style:normal}
+.pyhl .s{color:#9fe6a0;font-style:normal}
+.pyhl .n{color:#ffcb6b;font-style:normal}
+.pyhl .c{color:#5d7290;font-style:normal}
+.pyhl .o{color:#b4c4dc;font-style:normal}
+.pyout{margin:0;background:#0a1120;border:2px solid var(--line);border-radius:14px;padding:12px 14px;
+  font-family:Consolas,"DejaVu Sans Mono",monospace;font-size:15px;line-height:1.5;white-space:pre-wrap;
+  color:var(--soft);min-height:76px;max-height:26vh;overflow:auto}
+.pyout .err{color:#ff9a9a}
+.pyout .muted{color:#4a5a78}
+.pybar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:10px 0}
+.pybar .grow{flex:1}
+.pystate{font-size:14px;color:var(--soft)}
+.pytests{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.pytest{display:flex;gap:10px;align-items:flex-start;background:#15223b;border:2px solid var(--line);
+  border-radius:12px;padding:10px 14px;font-size:15px}
+.pytest.pass{border-color:var(--ok)}
+.pytest.fail{border-color:var(--bad)}
+.pytest b{flex:0 0 auto;font-family:Consolas,monospace}
+.pytest .why{color:var(--soft)}
+.pybrief{margin:0 0 12px;padding-left:22px}
+.pybrief li{margin:4px 0;font-size:17px;line-height:1.45}

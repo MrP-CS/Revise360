@@ -33,7 +33,9 @@
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
   const asset = p => /^(data:|blob:|https?:)/.test(p) ? p : "experiences/" + p;
-  const marks = t => (t.t === "mcq" || t.t === "multi" || t.t === "circuit" || t.t === "expr" || t.t === "convert" || t.t === "addshift" || t.t === "pixels" || t.t === "sound" || t.t === "memory" || t.t === "permissions" || t.t === "defrag" || t.t === "impact" || t.t === "searchstep" || t.t === "sortstep") ? 1 : t.t === "trace" ? t.answer.reduce((n, r, i) => n + r.filter((v, c) => t.rows[i][c] === "").length, 0) : t.t === "bugline" ? 2 : t.t === "table" ? (1 << (t.inputs ? t.inputs.length : new Set((t.expr || "").replace(/AND|OR|NOT/g, "").match(/[A-Z]/g) || []).size)) : (t.t === "sprint" || t.t === "defence" || t.t === "blitz" || t.t === "lawgame" || t.t === "arena") ? 0 : t.t === "order" ? t.steps.length : t.t === "sort" ? t.items.length : t.pairs.length;
+  // One definition, in store.js, so a new task type cannot be added to one
+  // copy of this table and not the other.
+  const marks = t => Store.marks(t);
 
   let exp;
   try { exp = await (await fetch("experiences/" + encodeURIComponent(expId) + ".json", { cache: "no-cache" })).json(); }
@@ -377,6 +379,102 @@
       ask();
     }
   }
+  /* ---------------- writing code (Paper 2 Section B) ----------------
+   * The pupil writes Python, runs it as often as they like, then has it marked
+   * by running it against test cases. Marking by running it is the only honest
+   * way: comparing an answer against one model solution would fail every pupil
+   * who solved it a different way, which is most of them.
+   */
+  function norm(s) {
+    return String(s).replace(/\r/g, "").split("\n").map(l => l.trim().replace(/\s+/g, " "))
+      .filter((l, i, a) => l !== "" || i < a.length - 1).join("\n").replace(/\n+$/, "").toLowerCase();
+  }
+  function runCode(k, list, n, task, head, qn) {
+    const brief = (task.brief || []).map(b => `<li>${esc(b)}</li>`).join("");
+    shell(head, "#50dc96", `<div class="vwrap">
+        <div class="vside" style="flex:0 0 400px">
+          ${qn}<p class="q" style="font-size:19px">${esc(task.q)}</p>
+          ${brief ? `<ul class="pybrief">${brief}</ul>` : ""}
+          <div class="pybar">
+            <button class="btn ghost" id="pyrun">▶ Run</button>
+            <button class="btn" id="pycheck">Check my answer</button>
+            <span class="pystate" id="pystate"></span>
+          </div>
+          <div class="pytests" id="pytests"></div>
+          <div class="fb" id="fb" aria-live="polite"></div>
+          <div class="mrow" id="mrow"></div>
+        </div>
+        <div class="vstage" style="flex-direction:column;background:none;border:0;gap:10px">
+          <div id="pyed" style="flex:1;min-height:0"></div>
+          <pre class="pyout" id="pyout"><span class="muted">Press Run and anything your program prints appears here.</span></pre>
+        </div>
+      </div>`);
+
+    const ed = R360Py.editor($("#pyed"), task.starter || "");
+    const out = $("#pyout"), state = $("#pystate");
+    const tests = task.tests || [];
+    let marked = false;
+
+    const say = (html, bad) => { out.innerHTML = bad ? `<span class="err">${html}</span>` : html; };
+    const busy = (on, msg) => {
+      $("#pyrun").disabled = on; $("#pycheck").disabled = on || marked;
+      state.textContent = msg || "";
+    };
+    // The runtime is a few megabytes, so it is fetched when a code question is
+    // opened rather than on every page, and the wait is said out loud.
+    busy(true, "Starting Python\u2026");
+    R360Py.ready().then(() => busy(false, ""));
+
+    $("#pyrun").onclick = async () => {
+      busy(true, "Running\u2026"); say('<span class="muted">Running\u2026</span>');
+      const first = tests[0] || {};
+      const r = await R360Py.run(ed.get(), { stdin: (first.in || []).slice(), echo: true, timeoutMs: 6000 });
+      busy(false, "");
+      if (r.error) say(esc(r.stdout) + (r.stdout ? "\n" : "") + esc(r.error), true);
+      else say(r.stdout ? esc(r.stdout) : '<span class="muted">Your program ran but printed nothing.</span>');
+    };
+
+    $("#pycheck").onclick = async () => {
+      if (!tests.length) return;
+      /* Running the code cannot see "write the sort yourself" - sorted() looks
+       * the same from the outside - so that one kind of rule is checked here. */
+      const broke = (task.forbid || []).find(f => ed.get().indexOf(f[0]) >= 0);
+      if (broke) {
+        feedback(false, "Not allowed here.", broke[1]);
+        return;
+      }
+      busy(true, "Marking\u2026");
+      const list2 = $("#pytests"); list2.innerHTML = "";
+      let passed = 0;
+      for (const t of tests) {
+        const r = await R360Py.run(ed.get(), { stdin: (t.in || []).slice(), echo: false, timeoutMs: 6000 });
+        const want = (t.out || []).join("\n");
+        const ok = !r.error && norm(r.stdout) === norm(want);
+        if (ok) passed++;
+        const row = document.createElement("div");
+        row.className = "pytest " + (ok ? "pass" : "fail");
+        const given = (t.in || []).join(", ");
+        row.innerHTML = `<b>${ok ? "\u2713" : "\u2717"}</b><div>` +
+          `<div>${given ? `Input <b>${esc(given)}</b> \u2192 ` : ""}expected <b>${esc(want)}</b></div>` +
+          (ok ? "" : `<div class="why">${r.error ? esc(r.error.split("\n")[0])
+                      : "your program printed " + (r.stdout.trim() ? "<b>" + esc(r.stdout.trim()) + "</b>" : "nothing")}</div>`) +
+          (t.why && !ok ? `<div class="why">${esc(t.why)}</div>` : "") + "</div>";
+        list2.appendChild(row);
+      }
+      busy(false, "");
+      marked = true; $("#pycheck").disabled = true;
+      const max = marks(task), got = Math.round(max * passed / tests.length);
+      award(k, i2(k, list, n), got);
+      const all = passed === tests.length;
+      feedback(all, all ? null : `${passed} of ${tests.length} tests passed - ${got} of ${max} marks.`,
+        all ? `All ${tests.length} tests passed. ${task.fb || ""}`
+            : (task.fb || "Look at the first test that failed and work out what your program printed instead."));
+      nextBtn(k, list, n);
+    };
+  }
+  // the index of the task being run, which award() needs
+  function i2(k, list, n) { return list[n]; }
+
   let modelView = null;
   function openModel(u) {
     if (!window.R360Models) return;
@@ -521,6 +619,8 @@
         chips.forEach(c => { c.disabled = true; const want = task.correct.includes(c.textContent), got = c.getAttribute("aria-pressed") === "true"; if (want) c.classList.add("right"); else if (got) c.classList.add("wrong"); });
         award(k, i, ok ? 1 : 0); ck.remove(); feedback(ok, null, (ok ? "" : "The correct answers are shown in green. ") + task.fb); nextBtn(k, list, n);
       };
+    } else if (task.t === "code") {
+      runCode(k, list, n, task, head, qn);
     } else if (task.t === "sort") {
       const items = shuffle(task.items), pickd = {};
       shell(head, st.col, `${qn}${img}<p class="q">${esc(task.q)}</p>${items.map((it, x) => `<div class="item${task.cats.length > 3 ? " stack" : ""}" data-n="${x}"><span>${esc(it[0])}</span><div class="seg">${task.cats.map(c => `<button aria-pressed="false" data-c="${esc(c)}">${esc(c)}</button>`).join("")}</div></div>`).join("")}${tail}`);
@@ -654,7 +754,8 @@
   window.NVRCore = core;
   document.dispatchEvent(new Event("nvr-ready"));
   // Hooks for keyboard/switch access and automated testing
-  window.NVR = { openStation, goTo, openModel: n => { const sp = sprites.filter(x => x.userData.type === "model")[n]; if (sp) openModel(sp.userData); }, openDiagram: n => { const sp = sprites.filter(x => x.userData.type === "diagram")[n]; if (sp) openDiagram(sp.userData); }, showInfo: n => { const sp = sprites.filter(x => x.userData.type === "info")[n]; if (sp) showInfo(sp.userData); }, setReview, loadScene };
+  window.NVR = { openStation, goTo,
+    openStationTask: (k, i) => { lastFocus = document.activeElement; modal.classList.add("open"); closeDrawer(); run(k, [i], 0); }, openModel: n => { const sp = sprites.filter(x => x.userData.type === "model")[n]; if (sp) openModel(sp.userData); }, openDiagram: n => { const sp = sprites.filter(x => x.userData.type === "diagram")[n]; if (sp) openDiagram(sp.userData); }, showInfo: n => { const sp = sprites.filter(x => x.userData.type === "info")[n]; if (sp) showInfo(sp.userData); }, setReview, loadScene };
   const go = params.get("go");
   const startScene = go ? Math.max(0, exp.scenes.findIndex(s => s.id === go.split(":")[0])) : 0;
   loadScene(startScene);

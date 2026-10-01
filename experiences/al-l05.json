@@ -137,6 +137,47 @@
         "It depends on i"
        ],
        "fb": "Both ends are included in the reference language."
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Write a program that adds up the numbers from 1 to a number the user types in.",
+       "brief": [
+        "Read one whole number from the user.",
+        "Add up every whole number from 1 up to and including that number.",
+        "Print only the total."
+       ],
+       "starter": "# Read the number, add up 1 to that number, print the total\n",
+       "tests": [
+        {
+         "in": [
+          "5"
+         ],
+         "out": [
+          "15"
+         ],
+         "why": "1+2+3+4+5 is 15."
+        },
+        {
+         "in": [
+          "1"
+         ],
+         "out": [
+          "1"
+         ],
+         "why": "With 1, the loop should run once and the total is 1."
+        },
+        {
+         "in": [
+          "10"
+         ],
+         "out": [
+          "55"
+         ],
+         "why": "A program that only works for one number will fail here."
+        }
+       ],
+       "fb": "A for loop over a range, with a running total that starts at 0, is the shortest way."
       }
      ]
     },

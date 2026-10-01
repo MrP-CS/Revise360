@@ -212,6 +212,70 @@
         "7, 5, 9"
        ],
        "fb": "Compare 9 and 5 and swap, then compare 9 and 7 and swap."
+      },
+      {
+       "t": "code",
+       "marks": 4,
+       "q": "Write a bubble sort. Sort five numbers into order, smallest first.",
+       "brief": [
+        "Read five whole numbers, one at a time.",
+        "Sort them into order using a bubble sort - compare neighbours and swap them.",
+        "Print the sorted numbers on one line, separated by a single space.",
+        "Do not use Python's own sort."
+       ],
+       "starter": "nums = []\nfor i in range(5):\n    nums.append(int(input()))\n\n# Sort nums with a bubble sort, then print them separated by spaces\n",
+       "forbid": [
+        [
+         "sorted(",
+         "The brief asks you to write the sort yourself, not use Python's sorted()."
+        ],
+        [
+         ".sort(",
+         "The brief asks you to write the sort yourself, not use Python's .sort()."
+        ]
+       ],
+       "tests": [
+        {
+         "in": [
+          "5",
+          "1",
+          "4",
+          "2",
+          "8"
+         ],
+         "out": [
+          "1 2 4 5 8"
+         ],
+         "why": "Check your swap: both values have to move."
+        },
+        {
+         "in": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         "out": [
+          "1 2 3 4 5"
+         ],
+         "why": "A list already in order should come back unchanged."
+        },
+        {
+         "in": [
+          "9",
+          "7",
+          "5",
+          "3",
+          "1"
+         ],
+         "out": [
+          "1 3 5 7 9"
+         ],
+         "why": "Reversed is the hardest case - it needs every pass."
+        }
+       ],
+       "fb": "Two loops: the outer one repeats the passes, the inner one compares each neighbouring pair."
       }
      ]
     },

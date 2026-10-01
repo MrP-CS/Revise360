@@ -206,6 +206,63 @@
         "A format check"
        ],
        "fb": "A type check makes sure the input is a whole number. A range check would then make sure it is between 11 and 19."
+      },
+      {
+       "t": "code",
+       "marks": 4,
+       "q": "Write a program that checks a password is long enough and keeps asking until it is.",
+       "brief": [
+        "Read a password from the user.",
+        "If it is fewer than 8 characters, print: too short - and ask again.",
+        "Keep asking until a password of 8 characters or more is typed.",
+        "When one is accepted, print: accepted"
+       ],
+       "starter": "# Keep asking until the password is 8 characters or more\n",
+       "tests": [
+        {
+         "in": [
+          "longenough"
+         ],
+         "out": [
+          "accepted"
+         ],
+         "why": "A password that is already long enough needs no second go."
+        },
+        {
+         "in": [
+          "abc",
+          "password1"
+         ],
+         "out": [
+          "too short",
+          "accepted"
+         ],
+         "why": "A short one should print 'too short' and then ask again."
+        },
+        {
+         "in": [
+          "a",
+          "bb",
+          "ccccccccc"
+         ],
+         "out": [
+          "too short",
+          "too short",
+          "accepted"
+         ],
+         "why": "It has to keep asking, however many times it takes."
+        },
+        {
+         "in": [
+          "12345678"
+         ],
+         "out": [
+          "accepted"
+         ],
+         "why": "Exactly 8 characters is allowed - check whether you used < or <=."
+        }
+       ],
+       "fb": "A while loop with the condition on the length, and the input inside it, is the usual shape."
       }
      ]
     },
