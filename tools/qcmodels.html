@@ -38,6 +38,61 @@ function diff(a, b2) {
 }
 function setVisible(part, v) { part.obj.traverse(o => { if (o.isMesh) o.visible = v; }); }
 
+// ---- orientation -----------------------------------------------------------
+// Plenty of things stand perpendicular to a board quite correctly: heatsink
+// fins, port blocks, a memory module in its slot. What is always wrong is a
+// component that passes THROUGH the board instead of sitting on its face -
+// which is what happens when a chip meant for a flat board is put on an upright
+// one, or is rotated about the wrong axis. So the measure is how much of the
+// component is buried inside the board's own volume.
+function orientation(b) {
+  // Measure in the model's own frame. The render loop leaves the group spun to
+  // whatever angle it finished on, and measuring through that rotation makes
+  // every axis reading meaningless.
+  b.group.rotation.set(0, 0, 0);
+  b.group.scale.setScalar(1);
+  b.group.updateMatrixWorld(true);
+  const meshes = [];
+  b.group.traverse(o => {
+    if (!o.isMesh || o.userData.part === undefined) return;
+    const bb = new T.Box3().setFromObject(o);
+    meshes.push({ part: o.userData.part,
+                  min: [bb.min.x, bb.min.y, bb.min.z], max: [bb.max.x, bb.max.y, bb.max.z],
+                  s: [bb.max.x - bb.min.x, bb.max.y - bb.min.y, bb.max.z - bb.min.z] });
+  });
+  const thinAxis = d => d.indexOf(Math.min(...d));
+  const span = Math.max(...meshes.map(m => Math.max(...m.s)), .001);
+  // Truly flat: a case or chassis is a box things are mounted INSIDE, and a
+  // component sitting within one is correct, not a fault.
+  const boards = meshes.filter(m => Math.min(...m.s) < Math.max(...m.s) * .10
+                                 && Math.max(...m.s) > span * .45);
+  const out = [];
+  for (const m of meshes) {
+    if (Math.min(...m.s) > Math.max(...m.s) * .5) continue;   // no clear thin axis
+    const ta = thinAxis(m.s);
+    for (const bd of boards) {
+      const ba = thinAxis(bd.s);
+      if (ba === ta) continue;                                 // agrees: fine
+      if (Math.max(...m.s) > Math.max(...bd.s) * .9) continue;  // not a component
+      // how much of the component lies inside the board, along the board's thin axis
+      const lo = Math.max(m.min[ba], bd.min[ba]), hi = Math.min(m.max[ba], bd.max[ba]);
+      const buried = Math.max(0, hi - lo) / Math.max(m.s[ba], 1e-6);
+      if (buried < .2) continue;                               // sits on the face: fine
+      // and it has to actually be over the board, not beside it
+      let over = true;
+      for (let a = 0; a < 3; a++) {
+        if (a === ba) continue;
+        if (m.min[a] > bd.max[a] || m.max[a] < bd.min[a]) over = false;
+      }
+      if (!over) continue;
+      out.push({ part: m.part, thin: "xyz"[ta], boardThin: "xyz"[ba],
+                 buried: Math.round(buried * 100), size: m.s.map(v => +v.toFixed(2)) });
+      break;
+    }
+  }
+  return out;
+}
+
 window.QC = function () {
   const out = {};
   for (const kind of R360Models.kinds) {
@@ -69,9 +124,13 @@ window.QC = function () {
         best[i] = Math.max(best[i], diff(base, without));
       });
     }
+    const mis = orientation(b);
     out[kind] = {
       coverage,
-      parts: b.parts.map((p, i) => ({ name: p.name, pixels: best[i] }))
+      parts: b.parts.map((p, i) => ({ name: p.name, pixels: best[i] })),
+      misoriented: mis.map(m => ({ name: (b.parts[m.part] || {}).name || "?",
+                                   thin: m.thin, boardThin: m.boardThin,
+                                   buried: m.buried, size: m.size }))
     };
     r.dispose(); canvas.remove();
   }
