@@ -11,6 +11,10 @@ station index places the button at that panel's top right; see kit.py.
 """
 
 PLACEMENTS = [
+ # ---- 1.1 Systems architecture -----------------------------------------------
+ ("sa-l04", 5, "system", "A general purpose computer",
+  "The other side of the comparison. The washing machine runs one program it was built for; this runs whatever you install. Open the case and find the parts the embedded system does without: expansion slots, a graphics card, room to add storage."),
+
  # ---- 1.2 Memory and storage -------------------------------------------------
  ("ms-l01", 1, "ram", "Inside a memory module",
   "Turn the module over and look at the contacts and the chips. Every program you have open is held on these chips as charge, and charge needs power to stay put."),
