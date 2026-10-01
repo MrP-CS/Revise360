@@ -1,0 +1,16 @@
+# Build output. Generated files are reviewed here, then copied into the site
+# deliberately — see tools/README.md. Nothing in here belongs in the repository,
+# and answer sheets in particular must never be committed: this repo is public.
+build/
+answers/
+
+# Python
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+
+# Editor / OS
+.DS_Store
+*.swp

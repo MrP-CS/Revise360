@@ -1,0 +1,1533 @@
+[
+ {
+  "id": "al-l01",
+  "lesson": 1,
+  "title": "Abstraction studio",
+  "topic": "2.1",
+  "kicker": "2.1 Algorithms  |  Lesson 1",
+  "subtitle": "OCR J277 Paper 2  |  Computational thinking, algorithms and programming",
+  "intro": "A map that showed every blade of grass would be useless. Abstraction is deciding what to keep and what to throw away, and it is the first of the three computational thinking skills.",
+  "keywords": [
+   "Computational thinking",
+   "Abstraction",
+   "Necessary detail",
+   "Unnecessary detail",
+   "Model"
+  ],
+  "objectives": [
+   "know what is meant by the term abstraction",
+   "know some examples of abstraction",
+   "understand why abstraction is needed in computational thinking"
+  ],
+  "starter": "Sketch a map that would get a new pupil from the school gate to your classroom. What did you leave out, and why?",
+  "keyq": "What is abstraction, and why is it needed?",
+  "keyterms": [
+   "Abstraction",
+   "Computational thinking"
+  ],
+  "stations": [
+   {
+    "name": "Computational thinking",
+    "bullets": [
+     "Computational thinking is how you approach a problem so a computer can solve it.",
+     "It has three parts: abstraction, decomposition and algorithmic thinking.",
+     "They are used together, not one after the other."
+    ],
+    "challenge": "Name the three parts of computational thinking and write one line on each.",
+    "fact": "Computational thinking means..."
+   },
+   {
+    "name": "What abstraction is",
+    "bullets": [
+     "Abstraction means removing detail that does not matter to the problem.",
+     "What is left is a model: simpler than reality, and good enough to work with.",
+     "What counts as unnecessary depends entirely on the problem you are solving."
+    ],
+    "challenge": "Write your own definition of abstraction, with an example that is not a map.",
+    "fact": "Abstraction is..."
+   },
+   {
+    "name": "A worked example",
+    "bullets": [
+     "A school register needs a name, a form group and present or absent.",
+     "It does not need eye colour, shoe size or favourite subject.",
+     "Adding unnecessary data makes the system slower, larger and harder to keep correct."
+    ],
+    "challenge": "List four things a school register stores and three it deliberately does not.",
+    "fact": "In a register, the necessary detail is..."
+   },
+   {
+    "name": "Models of the world",
+    "bullets": [
+     "A weather forecast is a model: it keeps pressure and temperature, and ignores individual raindrops.",
+     "A satnav keeps roads, junctions and speeds, and ignores what the buildings look like.",
+     "Every model is wrong in some way. A useful model is wrong about things that don't matter."
+    ],
+    "challenge": "Choose a program you use and say what it deliberately ignores about the real world.",
+    "fact": "Models use abstraction because..."
+   },
+   {
+    "name": "Abstraction in programs",
+    "bullets": [
+     "A variable name like score is an abstraction: it hides which memory address holds the value.",
+     "A subprogram is an abstraction: you call it without needing to know how it works inside.",
+     "Layers of abstraction let one person work on a game without understanding the graphics card."
+    ],
+    "challenge": "Explain how calling a subprogram is an example of abstraction.",
+    "fact": "Programs use abstraction when..."
+   },
+   {
+    "name": "Answering abstraction questions",
+    "bullets": [
+     "Say what is kept and what is removed, and why each decision was made.",
+     "Link the decision to the purpose of the system.",
+     "One mark is usually for an example, so always give one."
+    ],
+    "challenge": "Plan a four-mark answer on abstraction in a bus timetable app.",
+    "fact": "To answer an abstraction question, I should..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: keep or cut",
+   "intro": "A cycle hire app needs a model of the city. Tap the star and decide what it keeps and what it cuts."
+  },
+  "info": [
+   {
+    "title": "Where the word comes from",
+    "text": "To abstract something originally meant to draw it away. In computing you draw the important parts away from everything else."
+   },
+   {
+    "title": "The famous map",
+    "text": "Harry Beck's 1933 underground diagram threw away real distances and geography, and became the model for transit maps worldwide."
+   },
+   {
+    "title": "Wrong but useful",
+    "text": "The statistician George Box wrote that all models are wrong but some are useful, which is abstraction in five words."
+   },
+   {
+    "title": "Too much abstraction",
+    "text": "Remove something that mattered and the model gives confident wrong answers, which is worse than no model at all."
+   },
+   {
+    "title": "Abstraction in hardware",
+    "text": "You type a letter without knowing which transistors switched. Every layer below your program is hidden by abstraction."
+   },
+   {
+    "title": "Exam tip",
+    "text": "Questions often show a picture and ask how abstraction was used. Name the details removed, not just the fact that some were."
+   }
+  ],
+  "exam": [
+   {
+    "q": "State what is meant by abstraction.",
+    "marks": 2
+   },
+   {
+    "q": "Give two examples of abstraction in a computer system.",
+    "marks": 2
+   },
+   {
+    "q": "A company is writing a program to plan delivery routes. Explain how abstraction would be used, giving examples of detail kept and removed.",
+    "marks": 6
+   }
+  ],
+  "confidence": [
+   "The three parts of computational thinking",
+   "What abstraction is",
+   "Judging necessary and unnecessary detail"
+  ],
+  "wsfile": "AL_L01_Abstractionstudio_Worksheet.docx"
+ },
+ {
+  "id": "al-l02",
+  "lesson": 2,
+  "title": "Breakdown bay",
+  "topic": "2.1",
+  "kicker": "2.1 Algorithms  |  Lesson 2",
+  "subtitle": "OCR J277 Paper 2  |  Computational thinking, algorithms and programming",
+  "intro": "Nobody writes a whole game in one go. Decomposition breaks a problem into parts small enough to understand, test and share out, and a structure diagram shows the result.",
+  "keywords": [
+   "Decomposition",
+   "Sub-problem",
+   "Structure diagram",
+   "Top-down design",
+   "Subprogram",
+   "Reuse"
+  ],
+  "objectives": [
+   "know what is meant by problem decomposition",
+   "know the advantages of decomposition when programming",
+   "know how to produce a structure diagram"
+  ],
+  "starter": "You have been asked to organise a charity bake sale. Write down every separate job it involves, then group them.",
+  "keyq": "What is decomposition, and how does a structure diagram help?",
+  "keyterms": [
+   "Decomposition",
+   "Structure diagram"
+  ],
+  "stations": [
+   {
+    "name": "What decomposition is",
+    "bullets": [
+     "Decomposition means breaking a problem into smaller sub-problems.",
+     "You keep splitting until each part is small enough to solve on its own.",
+     "The parts become subprograms, modules or separate jobs for different people."
+    ],
+    "challenge": "Break 'run a school sports day' into five sub-problems.",
+    "fact": "Decomposition means..."
+   },
+   {
+    "name": "Why it helps",
+    "bullets": [
+     "Smaller problems are easier to understand and to get right.",
+     "Different people can work on different parts at the same time.",
+     "Each part can be tested on its own, and reused in another program."
+    ],
+    "challenge": "State three advantages of decomposition when programming.",
+    "fact": "Decomposition helps because..."
+   },
+   {
+    "name": "Structure diagrams",
+    "bullets": [
+     "A structure diagram shows the parts of a problem as a tree, from the whole system down.",
+     "The top box is the whole problem; each level below breaks the level above into parts.",
+     "It is a top-down design: general at the top, detailed at the bottom."
+    ],
+    "challenge": "Draw a structure diagram for a cinema booking system, with three levels.",
+    "fact": "A structure diagram shows..."
+   },
+   {
+    "name": "Worked example",
+    "bullets": [
+     "A quiz program breaks into: load questions, ask a question, check the answer, keep the score, show the result.",
+     "Each of those breaks down further: 'check the answer' needs to compare, mark and give feedback.",
+     "The bottom of the diagram is where the code gets written."
+    ],
+    "challenge": "Decompose a program that works out the cost of a pizza order.",
+    "fact": "Decomposing a quiz program gives..."
+   },
+   {
+    "name": "Decomposition and abstraction together",
+    "bullets": [
+     "Abstraction decides what matters; decomposition splits what is left into parts.",
+     "They are used together on the same problem, usually more than once.",
+     "Getting the abstraction wrong means decomposing the wrong problem."
+    ],
+    "challenge": "For a parking app, give one abstraction decision and one decomposition decision.",
+    "fact": "Abstraction and decomposition differ because..."
+   },
+   {
+    "name": "Answering decomposition questions",
+    "bullets": [
+     "Name the sub-problems: vague answers like 'break it into parts' score nothing.",
+     "Say why the split helps: testing, reuse, sharing the work, or understanding.",
+     "If a structure diagram is asked for, draw levels, not a list."
+    ],
+    "challenge": "Plan a six-mark answer on decomposing a school library system.",
+    "fact": "To answer a decomposition question, I should..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: build the tree",
+   "intro": "A takeaway ordering system needs decomposing. Tap the star and sort each item into its level."
+  },
+  "info": [
+   {
+    "title": "Also called top-down",
+    "text": "Structure diagrams are sometimes called top-down design, because you start with the whole and work down into detail."
+   },
+   {
+    "title": "Hidden problems",
+    "text": "Decomposing usually uncovers parts nobody thought of, which is one of the best reasons to do it before writing code."
+   },
+   {
+    "title": "Divide and conquer",
+    "text": "Some algorithms decompose as they run: merge sort splits a list in half over and over, which you meet later in this topic."
+   },
+   {
+    "title": "Real teams",
+    "text": "A large app may have hundreds of modules. No one person knows them all, which is only possible because the problem was decomposed."
+   },
+   {
+    "title": "Reuse pays twice",
+    "text": "A well-separated 'check a date is valid' subprogram gets used in five places and tested once."
+   },
+   {
+    "title": "Exam wording",
+    "text": "Watch for 'state the advantages of decomposition': the marks are for named benefits, not a definition."
+   }
+  ],
+  "exam": [
+   {
+    "q": "State what is meant by decomposition.",
+    "marks": 2
+   },
+   {
+    "q": "State three advantages of decomposing a problem before programming it.",
+    "marks": 3
+   },
+   {
+    "q": "A company is building an online shop. Describe how the problem could be decomposed, and draw a structure diagram to show it.",
+    "marks": 6
+   }
+  ],
+  "confidence": [
+   "What decomposition is",
+   "The advantages of decomposition",
+   "Drawing a structure diagram"
+  ],
+  "wsfile": "AL_L02_Breakdownbay_Worksheet.docx"
+ },
+ {
+  "id": "al-l03",
+  "lesson": 3,
+  "title": "Algorithm workshop",
+  "topic": "2.1",
+  "kicker": "2.1 Algorithms  |  Lesson 3",
+  "subtitle": "OCR J277 Paper 2  |  Computational thinking, algorithms and programming",
+  "intro": "An algorithm is a set of steps that always finishes and always gives the right answer. Find out what counts, what doesn't, and how to spot the inputs, processes and outputs in any problem.",
+  "keywords": [
+   "Algorithm",
+   "Algorithmic thinking",
+   "Input",
+   "Process",
+   "Output",
+   "Sequence"
+  ],
+  "objectives": [
+   "understand how to solve problems by applying algorithmic thinking",
+   "be able to identify the inputs, processes and outputs of a problem"
+  ],
+  "starter": "Write the steps you take to get from waking up to leaving the house. Swap with a partner: could they follow yours exactly?",
+  "keyq": "What do we mean by thinking algorithmically?",
+  "keyterms": [
+   "Algorithm",
+   "Process"
+  ],
+  "stations": [
+   {
+    "name": "What an algorithm is",
+    "bullets": [
+     "An algorithm is a sequence of steps that solves a problem.",
+     "It must be unambiguous: every step means exactly one thing.",
+     "It must finish: a set of steps that never ends is not an algorithm."
+    ],
+    "challenge": "Write your own definition of an algorithm, then say why a recipe qualifies.",
+    "fact": "An algorithm is..."
+   },
+   {
+    "name": "Algorithmic thinking",
+    "bullets": [
+     "Algorithmic thinking means working out the steps, and the order they must happen in.",
+     "It includes spotting when steps repeat, and when a decision changes what happens next.",
+     "A solution found this way works for every similar problem, not just one case."
+    ],
+    "challenge": "Write the steps to find the largest number in a list, without naming a language.",
+    "fact": "Algorithmic thinking means..."
+   },
+   {
+    "name": "Inputs, processes and outputs",
+    "bullets": [
+     "Input: the data the problem needs to start.",
+     "Process: what is done with that data.",
+     "Output: what comes back out at the end."
+    ],
+    "challenge": "Give the inputs, processes and outputs for a program that works out a pizza bill.",
+    "fact": "Inputs, processes and outputs are..."
+   },
+   {
+    "name": "Working a problem",
+    "bullets": [
+     "Start by asking what the answer needs to be, then what data is needed to get it.",
+     "Write the steps in the order they must happen, then check for missing cases.",
+     "Test the steps on paper with a small example before writing any code."
+    ],
+    "challenge": "Work out the inputs, processes and outputs for a program that decides if a year is a leap year.",
+    "fact": "To work a problem, I should..."
+   },
+   {
+    "name": "A worked example",
+    "bullets": [
+     "A game of pick-up sticks: 27 sticks, two players, each takes one, two or three.",
+     "The one who takes the last stick loses.",
+     "Decompose it, then write the steps: set up, take turns, check for the end, declare the loser."
+    ],
+    "challenge": "Write the steps for a two-player pick-up sticks game.",
+    "fact": "The steps of pick-up sticks are..."
+   },
+   {
+    "name": "Answering algorithm questions",
+    "bullets": [
+     "Write steps, not prose: one instruction per line.",
+     "Use the same names throughout, and say where a step repeats.",
+     "If the question gives a scenario, use its words: sticks, players, pile."
+    ],
+    "challenge": "Plan a six-mark answer describing the steps of a vending machine.",
+    "fact": "To answer an algorithm question, I should..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: in, through, out",
+   "intro": "A self-service library kiosk. Tap the star and sort every part into input, process or output."
+  },
+  "info": [
+   {
+    "title": "Where the word comes from",
+    "text": "Algorithm comes from the name of the ninth-century scholar al-Khwarizmi, whose book on calculation reached Europe in translation."
+   },
+   {
+    "title": "Older than computers",
+    "text": "Euclid wrote an algorithm for the greatest common divisor around 300 BC. It is still taught, and still works."
+   },
+   {
+    "title": "Ambiguity kills",
+    "text": "A famous early spacecraft was lost because two teams used different units. The steps were clear to each of them, and to nobody else."
+   },
+   {
+    "title": "Terminating matters",
+    "text": "Deciding whether an arbitrary program will ever stop is provably impossible in general, a result from Alan Turing in 1936."
+   },
+   {
+    "title": "Same problem, many algorithms",
+    "text": "Sorting a list can be done a dozen different ways. You meet three of them later in this topic."
+   },
+   {
+    "title": "Exam tip",
+    "text": "If a question says 'write an algorithm', numbered steps in plain English earn the marks. You are not required to use a language."
+   }
+  ],
+  "exam": [
+   {
+    "q": "State what is meant by an algorithm.",
+    "marks": 2
+   },
+   {
+    "q": "A program asks for a temperature in Celsius and outputs it in Fahrenheit. Identify the input, the process and the output.",
+    "marks": 3
+   },
+   {
+    "q": "In a game, two players take turns removing one, two or three counters from a pile of twenty. The player who takes the last counter loses. Write an algorithm for this game.",
+    "marks": 6
+   }
+  ],
+  "confidence": [
+   "What makes something an algorithm",
+   "Algorithmic thinking",
+   "Inputs, processes and outputs"
+  ],
+  "wsfile": "AL_L03_Algorithmworkshop_Worksheet.docx"
+ },
+ {
+  "id": "al-l04",
+  "lesson": 4,
+  "title": "Flowchart factory",
+  "topic": "2.1",
+  "kicker": "2.1 Algorithms  |  Lesson 4",
+  "subtitle": "OCR J277 Paper 2  |  Computational thinking, algorithms and programming",
+  "intro": "A flowchart shows an algorithm as a picture, with a shape for each kind of step. Learn the five symbols, then build and read flowcharts that branch and repeat.",
+  "keywords": [
+   "Flowchart",
+   "Terminal",
+   "Process",
+   "Input/output",
+   "Decision",
+   "Subprogram"
+  ],
+  "objectives": [
+   "know the flowchart symbols",
+   "know how to make a flowchart",
+   "understand how to construct a program from a flowchart"
+  ],
+  "starter": "Draw a diagram showing how you decide what to wear each morning. Where does your diagram branch?",
+  "keyq": "How can an algorithm be described without ambiguity?",
+  "keyterms": [
+   "Flowchart",
+   "Decision"
+  ],
+  "stations": [
+   {
+    "name": "The five symbols",
+    "bullets": [
+     "Rounded box: start or stop, called a terminal.",
+     "Parallelogram: input or output.",
+     "Rectangle: a process. Diamond: a decision. Double-sided box: a subprogram."
+    ],
+    "challenge": "Draw all five symbols and label what each one is for.",
+    "fact": "The flowchart symbols are..."
+   },
+   {
+    "name": "Reading a flowchart",
+    "bullets": [
+     "Start at the terminal marked Start and follow the arrows.",
+     "At a diamond, read the condition and take the yes or no path.",
+     "Stop when you reach the terminal marked Stop."
+    ],
+    "challenge": "Follow a flowchart by hand with an input of 7 and record the output.",
+    "fact": "To read a flowchart, I..."
+   },
+   {
+    "name": "Decisions",
+    "bullets": [
+     "A diamond holds a condition that is either true or false.",
+     "Label the two arrows leaving it, usually Yes and No.",
+     "Nested decisions let a flowchart pick between more than two outcomes."
+    ],
+    "challenge": "Draw a flowchart that reports pass, merit or distinction from a mark.",
+    "fact": "A decision in a flowchart..."
+   },
+   {
+    "name": "Loops in flowcharts",
+    "bullets": [
+     "A loop is drawn as an arrow back to an earlier point.",
+     "A condition decides whether to go round again or carry on.",
+     "Without a way out, the flowchart describes a program that never stops."
+    ],
+    "challenge": "Draw a flowchart that adds up ten numbers entered by the user.",
+    "fact": "A loop in a flowchart is drawn as..."
+   },
+   {
+    "name": "Flowchart or pseudocode?",
+    "bullets": [
+     "Flowcharts show the shape of an algorithm, which suits explaining it to someone else.",
+     "They get unwieldy for long algorithms, where pseudocode is clearer.",
+     "Both describe the same thing; the exam may ask for either."
+    ],
+    "challenge": "Give one advantage of a flowchart and one of pseudocode.",
+    "fact": "Flowcharts and pseudocode differ because..."
+   },
+   {
+    "name": "Drawing a flowchart in the exam",
+    "bullets": [
+     "Use the right shape for each kind of step: marks are lost for a rectangle where a diamond belongs.",
+     "Label both arrows leaving a decision.",
+     "Start and stop with terminals, and check every path reaches a stop."
+    ],
+    "challenge": "Draw a flowchart for a login system that allows three attempts.",
+    "fact": "When drawing a flowchart, I must..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: build the flowchart",
+   "intro": "A ticket machine charges £2 for under-16s and £4 for everyone else. Tap the star and put its flowchart together."
+  },
+  "info": [
+   {
+    "title": "Older than software",
+    "text": "Flowcharts were used to plan industrial processes in the 1920s, long before they were used for programs."
+   },
+   {
+    "title": "Standard shapes",
+    "text": "The symbols are set out in an international standard, which is why a flowchart drawn in one country is readable in another."
+   },
+   {
+    "title": "Why diamonds",
+    "text": "The diamond was chosen because two arrows can leave it cleanly, one from each side."
+   },
+   {
+    "title": "Too big to draw",
+    "text": "Real programs are far too large to flowchart. They are used for the tricky part, not the whole thing."
+   },
+   {
+    "title": "Drawing tools",
+    "text": "Any diagram tool will do, and drawing one by hand on paper is perfectly acceptable in the exam."
+   },
+   {
+    "title": "Exam tip",
+    "text": "Read a flowchart with a specific input and follow the arrows with your finger. Most reading errors come from skipping a branch."
+   }
+  ],
+  "exam": [
+   {
+    "q": "State what the diamond symbol represents in a flowchart.",
+    "marks": 1
+   },
+   {
+    "q": "Explain why a decision symbol must have two arrows leaving it.",
+    "marks": 2
+   },
+   {
+    "q": "A cinema charges £5 for under-18s and £9 for everyone else. Draw a flowchart for a program that inputs an age and outputs the price.",
+    "marks": 6
+   }
+  ],
+  "confidence": [
+   "The five flowchart symbols",
+   "Reading a flowchart",
+   "Drawing flowcharts with decisions and loops"
+  ],
+  "wsfile": "AL_L04_Flowchartfactory_Worksheet.docx"
+ },
+ {
+  "id": "al-l05",
+  "lesson": 5,
+  "title": "Pseudocode press",
+  "topic": "2.1",
+  "kicker": "2.1 Algorithms  |  Lesson 5",
+  "subtitle": "OCR J277 Paper 2  |  Computational thinking, algorithms and programming",
+  "intro": "Pseudocode is the halfway house between English and code: precise enough to follow exactly, free of the fuss of a real language. The exam uses its own version, so learn to read it.",
+  "keywords": [
+   "Pseudocode",
+   "Reference language",
+   "Variable",
+   "Selection",
+   "Iteration",
+   "Assignment"
+  ],
+  "objectives": [
+   "know what is meant by the term pseudocode",
+   "understand how to write pseudocode",
+   "understand the OCR reference language"
+  ],
+  "starter": "Write instructions for making a cup of tea so precise that someone who has never seen a kettle could follow them.",
+  "keyq": "How is an algorithm written so that anyone can follow it exactly?",
+  "keyterms": [
+   "Pseudocode",
+   "Iteration"
+  ],
+  "stations": [
+   {
+    "name": "What pseudocode is",
+    "bullets": [
+     "Pseudocode describes an algorithm in a structured, language-free way.",
+     "It cannot be run: it is written for a human reader, not a computer.",
+     "It lets you plan the logic before choosing a language."
+    ],
+    "challenge": "Explain why pseudocode is written even though it cannot be run.",
+    "fact": "Pseudocode is..."
+   },
+   {
+    "name": "Variables and assignment",
+    "bullets": [
+     "A variable is a named place to store a value that can change.",
+     "Assignment puts a value into a variable: total = 0.",
+     "In the reference language, input is written name = input('...') and output is print(...)."
+    ],
+    "challenge": "Write three lines of pseudocode that input a name and greet the user.",
+    "fact": "Variables and assignment work by..."
+   },
+   {
+    "name": "Selection",
+    "bullets": [
+     "Selection chooses between paths using if, elseif and else.",
+     "The condition uses comparison operators: ==, !=, <, >, <=, >=.",
+     "In the reference language a block ends with endif."
+    ],
+    "challenge": "Write pseudocode that reports whether a mark is a pass or a fail.",
+    "fact": "Selection in pseudocode uses..."
+   },
+   {
+    "name": "Iteration",
+    "bullets": [
+     "Iteration repeats steps. A for loop repeats a known number of times.",
+     "A while loop repeats as long as a condition is true, and may never run at all.",
+     "A do-until loop always runs at least once, then checks."
+    ],
+    "challenge": "Write a loop that prints the numbers one to five.",
+    "fact": "Iteration in pseudocode uses..."
+   },
+   {
+    "name": "Arrays and subprograms",
+    "bullets": [
+     "An array holds several values under one name, numbered from zero.",
+     "scores[0] is the first item, scores[1] the second.",
+     "A subprogram is defined with function or procedure and called by name."
+    ],
+    "challenge": "Write pseudocode that outputs the third item of an array called names.",
+    "fact": "Arrays and subprograms in pseudocode..."
+   },
+   {
+    "name": "Reading the reference language",
+    "bullets": [
+     "The exam uses OCR's own reference language, close to Python but not identical.",
+     "You are never asked to write in a specific language: any clear pseudocode is accepted.",
+     "You do need to read the reference language accurately."
+    ],
+    "challenge": "Read a short reference-language program and state its output.",
+    "fact": "The OCR reference language..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: read the code",
+   "intro": "Three short programs in the reference language. Tap the star and work out what each one does."
+  },
+  "info": [
+   {
+    "title": "No standard",
+    "text": "There is no official pseudocode. Every exam board and textbook has its own, which is why OCR publishes a reference guide."
+   },
+   {
+    "title": "Close to Python",
+    "text": "The reference language looks like Python on purpose, because so many schools teach Python, but the endif and next keywords are not Python."
+   },
+   {
+    "title": "Zero indexing",
+    "text": "Arrays start at zero in most languages, a habit that comes from the arithmetic of memory addresses."
+   },
+   {
+    "title": "Off by one",
+    "text": "The commonest loop bug in the world is running one time too many or too few. Count the repeats by hand when checking."
+   },
+   {
+    "title": "Write what you know",
+    "text": "Examiners accept any clear language. Answering in the one you actually use is almost always safer."
+   },
+   {
+    "title": "Comments",
+    "text": "Two slashes start a comment in the reference language. Comments are for people; the computer skips them."
+   }
+  ],
+  "exam": [
+   {
+    "q": "State what is meant by pseudocode.",
+    "marks": 2
+   },
+   {
+    "q": "Explain the difference between a for loop and a while loop.",
+    "marks": 3
+   },
+   {
+    "q": "Write an algorithm, using pseudocode, that inputs ten numbers and outputs the largest.",
+    "marks": 6
+   }
+  ],
+  "confidence": [
+   "What pseudocode is",
+   "Selection and iteration",
+   "Reading the OCR reference language"
+  ],
+  "wsfile": "AL_L05_Pseudocodepress_Worksheet.docx"
+ },
+ {
+  "id": "al-l06",
+  "lesson": 6,
+  "title": "Search corridor",
+  "topic": "2.1",
+  "kicker": "2.1 Algorithms  |  Lesson 6",
+  "subtitle": "OCR J277 Paper 2  |  Computational thinking, algorithms and programming",
+  "intro": "The simplest way to find something is to look at everything in turn. Learn how a linear search works, why it is used despite being slow, and step through one yourself.",
+  "keywords": [
+   "Linear search",
+   "Sequential search",
+   "Unordered list",
+   "Efficiency",
+   "Worst case"
+  ],
+  "objectives": [
+   "understand the linear search algorithm",
+   "understand that it is inefficient but simple and needs no ordering"
+  ],
+  "starter": "You have lost a photo in an album of 200 pictures. Describe exactly how you would look for it, and how many you would expect to check.",
+  "keyq": "How does a linear search work, and when is it the right choice?",
+  "keyterms": [
+   "Linear search",
+   "Worst case"
+  ],
+  "stations": [
+   {
+    "name": "How it works",
+    "bullets": [
+     "Start at the first item and compare it to what you are looking for.",
+     "If it doesn't match, move to the next and compare again.",
+     "Stop when it matches, or when you reach the end without finding it."
+    ],
+    "challenge": "Describe a linear search in three steps of your own.",
+    "fact": "A linear search works by..."
+   },
+   {
+    "name": "Its one great advantage",
+    "bullets": [
+     "The list does not need to be in order.",
+     "It works on any data that can be compared, including text.",
+     "It is short and easy to program, so mistakes are less likely."
+    ],
+    "challenge": "Give two situations where a linear search is the right choice.",
+    "fact": "A linear search is useful because..."
+   },
+   {
+    "name": "Counting the checks",
+    "bullets": [
+     "Best case: the item is first, so one check.",
+     "Worst case: the item is last or missing, so one check per item.",
+     "On average, about half the list is checked."
+    ],
+    "challenge": "For a list of 100 items, state the best, worst and average number of checks.",
+    "fact": "A linear search needs..."
+   },
+   {
+    "name": "Why it gets slow",
+    "bullets": [
+     "Double the list and you double the work.",
+     "For a million items, the worst case is a million comparisons.",
+     "This is why large systems sort their data and use a faster search instead."
+    ],
+    "challenge": "Explain why a linear search becomes unusable on very large data.",
+    "fact": "A linear search gets slower because..."
+   },
+   {
+    "name": "Writing it down",
+    "bullets": [
+     "Set a flag to false, then loop through every index.",
+     "If the item at that index matches, set the flag to true and stop.",
+     "After the loop, the flag says whether it was found."
+    ],
+    "challenge": "Write pseudocode for a linear search that outputs true or false.",
+    "fact": "Pseudocode for a linear search..."
+   },
+   {
+    "name": "Answering search questions",
+    "bullets": [
+     "Name the algorithm and say what it does step by step.",
+     "Say whether the list must be in order: for a linear search, it need not be.",
+     "If asked to count checks, count comparisons, not loops."
+    ],
+    "challenge": "Plan a four-mark answer describing a linear search.",
+    "fact": "To answer a search question, I should..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: search it",
+   "intro": "Two searches and a judgement call. Tap the star to begin."
+  },
+  "info": [
+   {
+    "title": "Also called sequential",
+    "text": "A linear search is sometimes called a sequential search, because it goes through the list in sequence."
+   },
+   {
+    "title": "Sometimes unbeatable",
+    "text": "If the list is unsorted and you search it once, a linear search is the fastest possible: anything else would have to look at every item too."
+   },
+   {
+    "title": "Your eyes do it",
+    "text": "Scanning a shelf for a particular book is a linear search, which is why bookshops sort their shelves."
+   },
+   {
+    "title": "Early exit",
+    "text": "A well-written linear search stops the moment it finds a match, which halves the average work."
+   },
+   {
+    "title": "Big O",
+    "text": "At A level this is written O(n): the work grows in proportion to the number of items."
+   },
+   {
+    "title": "Exam tip",
+    "text": "Questions often ask for the number of comparisons. Count how many items are looked at, including the matching one."
+   }
+  ],
+  "exam": [
+   {
+    "q": "Describe how a linear search works.",
+    "marks": 3
+   },
+   {
+    "q": "State one advantage of a linear search over a binary search.",
+    "marks": 1
+   },
+   {
+    "q": "A list contains 2,000 unsorted items. Explain why a linear search may take a long time, and state the maximum number of comparisons needed.",
+    "marks": 4
+   }
+  ],
+  "confidence": [
+   "How a linear search works",
+   "Its advantages and disadvantages",
+   "Counting the comparisons"
+  ],
+  "wsfile": "AL_L06_Searchcorridor_Worksheet.docx"
+ },
+ {
+  "id": "al-l07",
+  "lesson": 7,
+  "title": "Halving hall",
+  "topic": "2.1",
+  "kicker": "2.1 Algorithms  |  Lesson 7",
+  "subtitle": "OCR J277 Paper 2  |  Computational thinking, algorithms and programming",
+  "intro": "Look at the middle item and you can throw away half the list in one comparison. A binary search is dramatically faster than a linear search, at one price: the list must be in order.",
+  "keywords": [
+   "Binary search",
+   "Sorted list",
+   "Midpoint",
+   "Divide and conquer",
+   "Efficiency"
+  ],
+  "objectives": [
+   "understand the binary search algorithm",
+   "know the condition a list must meet for a binary search to work",
+   "understand which searching algorithm is quicker"
+  ],
+  "starter": "Think of a number between 1 and 100. How many yes/no questions would a friend need to guess it? What is the best question to ask first?",
+  "keyq": "How does a binary search work, and why is it so much faster?",
+  "keyterms": [
+   "Binary search",
+   "Midpoint"
+  ],
+  "stations": [
+   {
+    "name": "How it works",
+    "bullets": [
+     "Check the middle item of the list.",
+     "If it matches, stop. If the target is larger, discard the lower half; if smaller, discard the upper half.",
+     "Repeat on what is left until you find it or nothing remains."
+    ],
+    "challenge": "Describe a binary search in four steps of your own.",
+    "fact": "A binary search works by..."
+   },
+   {
+    "name": "The one condition",
+    "bullets": [
+     "The list must be in order, or the algorithm cannot know which half to discard.",
+     "If the data is unsorted, it must be sorted first, which takes time.",
+     "Sorting once and searching many times is the situation where it pays."
+    ],
+    "challenge": "Explain why a binary search cannot be used on an unsorted list.",
+    "fact": "A binary search requires..."
+   },
+   {
+    "name": "Why it is so fast",
+    "bullets": [
+     "Each comparison halves what is left.",
+     "A list of 1,000 items takes about 10 checks; a million takes about 20.",
+     "Doubling the list adds one comparison, not a thousand."
+    ],
+    "challenge": "Work out roughly how many checks a binary search needs for 64 items.",
+    "fact": "A binary search is fast because..."
+   },
+   {
+    "name": "Comparing the two searches",
+    "bullets": [
+     "Linear: any order, simple, slow on large data.",
+     "Binary: must be sorted, more complex, very fast on large data.",
+     "For a handful of items the difference doesn't matter; for millions it decides whether the system works."
+    ],
+    "challenge": "Make a table comparing linear and binary search on three points.",
+    "fact": "Linear and binary searches differ because..."
+   },
+   {
+    "name": "Writing it down",
+    "bullets": [
+     "Keep two pointers: left at 0 and right at the last index.",
+     "The midpoint is (left + right) divided by two, rounded down.",
+     "Move left or right past the midpoint depending on the comparison."
+    ],
+    "challenge": "Write pseudocode for a binary search.",
+    "fact": "Pseudocode for a binary search..."
+   },
+   {
+    "name": "Answering binary search questions",
+    "bullets": [
+     "Always state that the list must be sorted: it is usually worth a mark.",
+     "Describe the midpoint comparison and the discarding of half.",
+     "If asked to show the steps, write down the midpoint checked at each stage."
+    ],
+    "challenge": "Plan a five-mark answer describing a binary search on a list of 15 names.",
+    "fact": "To answer a binary search question, I should..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: halve it",
+   "intro": "A sorted list of eleven values. Tap the star and run two binary searches."
+  },
+  "info": [
+   {
+    "title": "The dictionary method",
+    "text": "Opening a dictionary in the middle and deciding which half to keep is a binary search. Most people do it without being taught."
+   },
+   {
+    "title": "Famously hard to write",
+    "text": "A study found most programmers write a buggy binary search on the first attempt, usually getting the midpoint or the pointers wrong."
+   },
+   {
+    "title": "Twenty questions",
+    "text": "The game works because twenty yes/no questions can distinguish about a million possibilities, exactly the binary search maths."
+   },
+   {
+    "title": "Big O",
+    "text": "At A level this is O(log n): the work grows with the logarithm of the list size, which is why it barely grows at all."
+   },
+   {
+    "title": "Databases do this",
+    "text": "A database index exists precisely so that searches can halve the data instead of scanning it."
+   },
+   {
+    "title": "Exam tip",
+    "text": "If you forget to say the list must be sorted, you are likely to drop a mark, whatever else you write."
+   }
+  ],
+  "exam": [
+   {
+    "q": "Describe how a binary search works.",
+    "marks": 4
+   },
+   {
+    "q": "State the condition a list must meet before a binary search can be used.",
+    "marks": 1
+   },
+   {
+    "q": "A sorted list contains 1,000 items. Compare the number of comparisons needed by a linear search and a binary search in the worst case.",
+    "marks": 4
+   }
+  ],
+  "confidence": [
+   "How a binary search works",
+   "Why the list must be sorted",
+   "Comparing linear and binary searches"
+  ],
+  "wsfile": "AL_L07_Halvinghall_Worksheet.docx"
+ },
+ {
+  "id": "al-l08",
+  "lesson": 8,
+  "title": "Bubble bay",
+  "topic": "2.1",
+  "kicker": "2.1 Algorithms  |  Lesson 8",
+  "subtitle": "OCR J277 Paper 2  |  Computational thinking, algorithms and programming",
+  "intro": "The bubble sort is the simplest sorting algorithm there is, and the slowest you will meet. Learn how a pass works, why the largest value ends up at the end, and when it stops.",
+  "keywords": [
+   "Bubble sort",
+   "Pass",
+   "Swap",
+   "Comparison",
+   "In place"
+  ],
+  "objectives": [
+   "understand the bubble sort algorithm",
+   "be able to show the steps of a bubble sort",
+   "know the advantages and disadvantages of a bubble sort"
+  ],
+  "starter": "You have seven cards in a random order. Describe, precisely, how you would put them in order using only swaps between neighbours.",
+  "keyq": "How does a bubble sort work, and why is it slow?",
+  "keyterms": [
+   "Bubble sort",
+   "Pass"
+  ],
+  "stations": [
+   {
+    "name": "One comparison",
+    "bullets": [
+     "Compare the first two items.",
+     "If they are in the wrong order, swap them.",
+     "Move along one and compare the next pair."
+    ],
+    "challenge": "Describe what happens to one pair of items in a bubble sort.",
+    "fact": "One comparison in a bubble sort..."
+   },
+   {
+    "name": "One pass",
+    "bullets": [
+     "A pass goes from one end of the list to the other, comparing every neighbouring pair.",
+     "After one pass the largest value has moved all the way to the end.",
+     "That is why it is called a bubble sort: values bubble up to their place."
+    ],
+    "challenge": "Carry out one pass on 5, 2, 9, 1 and write the result.",
+    "fact": "One pass of a bubble sort..."
+   },
+   {
+    "name": "Repeating the passes",
+    "bullets": [
+     "After each pass, one more value is in its final place.",
+     "The algorithm repeats until a pass makes no swaps at all.",
+     "A list of n items needs up to n minus 1 passes."
+    ],
+    "challenge": "How many passes would 5, 4, 3, 2, 1 need? Explain why.",
+    "fact": "A bubble sort repeats until..."
+   },
+   {
+    "name": "Why it is slow",
+    "bullets": [
+     "Each pass makes almost as many comparisons as there are items.",
+     "There can be almost as many passes as items, so the work grows with the square of the list size.",
+     "Doubling the list roughly quadruples the work."
+    ],
+    "challenge": "Explain why a bubble sort is unsuitable for a list of 100,000 items.",
+    "fact": "A bubble sort is slow because..."
+   },
+   {
+    "name": "Its advantages",
+    "bullets": [
+     "It is very simple to write, so it is hard to get wrong.",
+     "It sorts in place: it needs no second copy of the list.",
+     "On a nearly sorted list it finishes quickly, because the first pass makes almost no swaps."
+    ],
+    "challenge": "Give two situations where a bubble sort is an acceptable choice.",
+    "fact": "A bubble sort is useful because..."
+   },
+   {
+    "name": "Answering bubble sort questions",
+    "bullets": [
+     "Show the list after each pass, not after each swap, unless asked otherwise.",
+     "Say which items are being compared.",
+     "State the stopping condition: a pass with no swaps."
+    ],
+    "challenge": "Show every pass of a bubble sort on 4, 1, 3, 2.",
+    "fact": "To answer a bubble sort question, I should..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: bubble it",
+   "intro": "One pass, then some judgement about when this algorithm is worth using. Tap the star to begin."
+  },
+  "info": [
+   {
+    "title": "Also called sinking sort",
+    "text": "Depending on the direction, the largest value bubbles up or the smallest sinks down. Both names describe the same algorithm."
+   },
+   {
+    "title": "Famously criticised",
+    "text": "The computer scientist Donald Knuth wrote that the bubble sort has nothing to recommend it except its catchy name."
+   },
+   {
+    "title": "One optimisation",
+    "text": "After each pass the end of the list is settled, so later passes can stop earlier. Most versions include this."
+   },
+   {
+    "title": "Nearly sorted is different",
+    "text": "If a list is almost in order, a bubble sort finishes in about one pass, which beats more complex sorts."
+   },
+   {
+    "title": "Big O",
+    "text": "At A level this is O(n²): the work grows with the square of the list size."
+   },
+   {
+    "title": "Exam tip",
+    "text": "If asked for the list after a given pass, do the passes on paper and cross out as you go. Rushing this costs more marks than anything else in the topic."
+   }
+  ],
+  "exam": [
+   {
+    "q": "Describe how a bubble sort works.",
+    "marks": 3
+   },
+   {
+    "q": "Show the contents of the list 5, 2, 9, 1 after the first pass of a bubble sort.",
+    "marks": 2
+   },
+   {
+    "q": "Explain one advantage and one disadvantage of using a bubble sort.",
+    "marks": 4
+   }
+  ],
+  "confidence": [
+   "How one pass works",
+   "Repeating passes and stopping",
+   "Advantages and disadvantages"
+  ],
+  "wsfile": "AL_L08_Bubblebay_Worksheet.docx"
+ },
+ {
+  "id": "al-l09",
+  "lesson": 9,
+  "title": "Split and insert",
+  "topic": "2.1",
+  "kicker": "2.1 Algorithms  |  Lesson 9",
+  "subtitle": "OCR J277 Paper 2  |  Computational thinking, algorithms and programming",
+  "intro": "Two more sorting algorithms, both faster than a bubble sort on real data. Merge sort splits the list until nothing is left to split; insertion sort builds a sorted section one item at a time.",
+  "keywords": [
+   "Merge sort",
+   "Insertion sort",
+   "Divide and conquer",
+   "Merge",
+   "Sorted section"
+  ],
+  "objectives": [
+   "understand the merge sort algorithm",
+   "understand the insertion sort algorithm",
+   "be able to compare the three sorting algorithms"
+  ],
+  "starter": "Deal yourself seven playing cards. Sort them into order and write down exactly what you did. Which algorithm was it closest to?",
+  "keyq": "How do merge sort and insertion sort work, and how do they compare with a bubble sort?",
+  "keyterms": [
+   "Merge sort",
+   "Insertion sort"
+  ],
+  "stations": [
+   {
+    "name": "Merge sort: splitting",
+    "bullets": [
+     "Split the list in half, then split each half, and keep going.",
+     "Stop when every piece holds a single item, which is sorted by definition.",
+     "This is the divide part of divide and conquer."
+    ],
+    "challenge": "Show how 8, 3, 5, 1 is split down to single items.",
+    "fact": "Merge sort splits by..."
+   },
+   {
+    "name": "Merge sort: merging",
+    "bullets": [
+     "Take two sorted pieces and combine them into one sorted piece.",
+     "Compare the first item of each, take the smaller, and repeat.",
+     "Keep merging pairs until one sorted list remains."
+    ],
+    "challenge": "Merge 3, 8 with 1, 5 and show each comparison.",
+    "fact": "Merge sort merges by..."
+   },
+   {
+    "name": "Merge sort: the whole thing",
+    "bullets": [
+     "Split all the way down, then merge all the way back up.",
+     "It is much faster than a bubble sort on large lists.",
+     "It needs extra memory to hold the pieces, so it does not sort in place."
+    ],
+    "challenge": "Describe merge sort in two sentences: one for splitting, one for merging.",
+    "fact": "A merge sort works by..."
+   },
+   {
+    "name": "Insertion sort",
+    "bullets": [
+     "Treat the first item as a sorted section of one.",
+     "Take the next item and move it left until it is in the right place within that section.",
+     "Repeat until every item has been inserted."
+    ],
+    "challenge": "Run an insertion sort on 4, 2, 7, 1 and show each step.",
+    "fact": "An insertion sort works by..."
+   },
+   {
+    "name": "Comparing the three sorts",
+    "bullets": [
+     "Bubble: simplest, slowest, sorts in place.",
+     "Insertion: simple, faster than bubble, sorts in place, very fast on nearly sorted data.",
+     "Merge: most complex, much faster on large lists, needs extra memory."
+    ],
+    "challenge": "Make a table comparing the three sorts on speed, memory and complexity.",
+    "fact": "The three sorts compare as..."
+   },
+   {
+    "name": "Answering sorting questions",
+    "bullets": [
+     "Name the algorithm and describe its distinctive action: swap neighbours, insert into a sorted section, or split and merge.",
+     "If asked to show the steps, show the list after each pass or insertion.",
+     "Comparisons usually mean 'when does it stop' and 'how much memory'."
+    ],
+    "challenge": "Plan a six-mark answer comparing bubble sort and merge sort.",
+    "fact": "To answer a sorting question, I should..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: sort it out",
+   "intro": "An insertion sort to run, then the three algorithms to tell apart. Tap the star to begin."
+  },
+  "info": [
+   {
+    "title": "Merge sort is old",
+    "text": "John von Neumann described the merge sort in 1945, on one of the first stored-program computers."
+   },
+   {
+    "title": "Recursion",
+    "text": "Merge sort naturally calls itself on each half, which is called recursion. You meet it properly at A level."
+   },
+   {
+    "title": "Real sorts are hybrids",
+    "text": "The sort built into most programming languages switches to insertion sort for small pieces, because it is faster there."
+   },
+   {
+    "title": "Cards in your hand",
+    "text": "Almost everyone sorts a hand of cards with an insertion sort without being taught it."
+   },
+   {
+    "title": "Stable sorts",
+    "text": "Merge and insertion sorts keep equal items in their original order, which matters when sorting records by more than one field."
+   },
+   {
+    "title": "Exam tip",
+    "text": "Show the list after each pass, clearly labelled. Marks are given for the intermediate states, not just the final answer."
+   }
+  ],
+  "exam": [
+   {
+    "q": "Describe how an insertion sort works.",
+    "marks": 3
+   },
+   {
+    "q": "Show the stages of a merge sort on the list 6, 2, 9, 4.",
+    "marks": 4
+   },
+   {
+    "q": "Compare a bubble sort with a merge sort, giving one advantage of each.",
+    "marks": 4
+   }
+  ],
+  "confidence": [
+   "Merge sort: splitting and merging",
+   "Insertion sort",
+   "Comparing the three sorts"
+  ],
+  "wsfile": "AL_L09_Splitandinsert_Worksheet.docx"
+ },
+ {
+  "id": "al-l10",
+  "lesson": 10,
+  "title": "Fault finder",
+  "topic": "2.1",
+  "kicker": "2.1 Algorithms  |  Lesson 10",
+  "subtitle": "OCR J277 Paper 2  |  Computational thinking, algorithms and programming",
+  "intro": "A program that will not run and a program that runs but gives the wrong answer are two very different problems. Learn to name each kind of error, find it in the code and say how to fix it.",
+  "keywords": [
+   "Syntax error",
+   "Logic error",
+   "Bug",
+   "Debugging",
+   "Fix"
+  ],
+  "objectives": [
+   "know what a syntax error is",
+   "know what a logic error is",
+   "be able to identify errors in code and suggest fixes"
+  ],
+  "starter": "Write down the last time a program of yours didn't work. Did it refuse to run, or run and do the wrong thing?",
+  "keyq": "What kinds of error occur when programming, and how are they found?",
+  "keyterms": [
+   "Syntax error",
+   "Logic error"
+  ],
+  "stations": [
+   {
+    "name": "Syntax errors",
+    "bullets": [
+     "A syntax error breaks the rules of the language.",
+     "The program will not run at all: the translator reports the problem.",
+     "Typical causes: a missing bracket, a missing quotation mark, a misspelt keyword."
+    ],
+    "challenge": "Write three examples of syntax errors in a language you use.",
+    "fact": "A syntax error is..."
+   },
+   {
+    "name": "Logic errors",
+    "bullets": [
+     "A logic error follows the rules of the language but does the wrong thing.",
+     "The program runs to the end and produces an answer, which is wrong.",
+     "Typical causes: the wrong operator, the wrong order of tests, a loop that runs the wrong number of times."
+    ],
+    "challenge": "Describe a logic error that would not stop a program running.",
+    "fact": "A logic error is..."
+   },
+   {
+    "name": "Telling them apart",
+    "bullets": [
+     "Ask one question: does the program run?",
+     "If it will not run, it is a syntax error.",
+     "If it runs but the answer is wrong, it is a logic error."
+    ],
+    "challenge": "Sort six mistakes into syntax and logic errors.",
+    "fact": "To tell the two apart, I ask..."
+   },
+   {
+    "name": "Finding the line",
+    "bullets": [
+     "For a syntax error, the translator usually names the line, or the one just after it.",
+     "For a logic error, work through the program by hand with a known input.",
+     "Compare what should happen at each line with what actually happens."
+    ],
+    "challenge": "Work through a short program by hand and find where it goes wrong.",
+    "fact": "To find an error, I..."
+   },
+   {
+    "name": "Suggesting a fix",
+    "bullets": [
+     "A fix should say what to change and what to change it to.",
+     "'Correct the error' earns nothing: 'change > to >=' earns the mark.",
+     "Check the fix does not break another case."
+    ],
+    "challenge": "Write a fix for a loop that runs one time too many.",
+    "fact": "A good fix says..."
+   },
+   {
+    "name": "Answering error questions",
+    "bullets": [
+     "State the line number, the type of error, and the fix.",
+     "Use the words syntax and logic: the marks are attached to them.",
+     "If the question gives line numbers, always quote them."
+    ],
+    "challenge": "Plan a four-mark answer identifying and fixing an error.",
+    "fact": "To answer an error question, I should..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: debug it",
+   "intro": "Two faulty programs and a sorting task. Tap the star to begin."
+  },
+  "info": [
+   {
+    "title": "The first bug",
+    "text": "In 1947 a moth was found jammed in a relay of the Harvard Mark II. The team taped it into the logbook and called it the first actual case of a bug being found."
+   },
+   {
+    "title": "Syntax errors are the friendly ones",
+    "text": "They stop the program immediately and tell you roughly where. Logic errors can survive into released software for years."
+   },
+   {
+    "title": "Off by one",
+    "text": "Loops that run one time too many or too few are so common they have their own name: off-by-one errors."
+   },
+   {
+    "title": "Runtime errors",
+    "text": "There is a third kind: errors that appear only while running, such as dividing by zero. At GCSE the focus is syntax and logic."
+   },
+   {
+    "title": "Rubber ducking",
+    "text": "Programmers explain their code line by line to an inanimate object to find logic errors. It works surprisingly often."
+   },
+   {
+    "title": "Exam tip",
+    "text": "Always give the line number. Describing the error without locating it usually loses a mark."
+   }
+  ],
+  "exam": [
+   {
+    "q": "State the difference between a syntax error and a logic error.",
+    "marks": 2
+   },
+   {
+    "q": "A program runs but always outputs one more than it should. What type of error is this? Explain your answer.",
+    "marks": 3
+   },
+   {
+    "q": "Identify the error in the following program, state its type, and describe how to correct it.",
+    "marks": 3
+   }
+  ],
+  "confidence": [
+   "Syntax errors",
+   "Logic errors",
+   "Finding the line and suggesting a fix"
+  ],
+  "wsfile": "AL_L10_Faultfinder_Worksheet.docx"
+ },
+ {
+  "id": "al-l11",
+  "lesson": 11,
+  "title": "Trace room",
+  "topic": "2.1",
+  "kicker": "2.1 Algorithms  |  Lesson 11",
+  "subtitle": "OCR J277 Paper 2  |  Computational thinking, algorithms and programming",
+  "intro": "A trace table records what every variable holds as a program runs. It is how you find a logic error without a computer, and it appears on the exam paper every year.",
+  "keywords": [
+   "Trace table",
+   "Dry run",
+   "Variable",
+   "Iteration",
+   "Output"
+  ],
+  "objectives": [
+   "know what a trace table is",
+   "understand how and why trace tables help with debugging",
+   "know how to complete a trace table"
+  ],
+  "starter": "Work out, on paper, what this gives:  total = 0, then add 1, then 2, then 3, then 4. Write down the total after each step.",
+  "keyq": "How and why do programmers use a trace table?",
+  "keyterms": [
+   "Trace table",
+   "Dry run"
+  ],
+  "stations": [
+   {
+    "name": "What a trace table is",
+    "bullets": [
+     "A trace table has one column per variable, plus one for output.",
+     "You work through the program line by line, writing down each value as it changes.",
+     "This is also called a dry run: running the program in your head."
+    ],
+    "challenge": "Explain why a programmer would trace a program by hand.",
+    "fact": "A trace table is..."
+   },
+   {
+    "name": "Filling one in",
+    "bullets": [
+     "Only write a value when it changes, so the table stays readable.",
+     "Work strictly line by line, in the order the program actually runs.",
+     "Take loops round as many times as the program does, not as many as you expect."
+    ],
+    "challenge": "Trace a short loop by hand and record every change.",
+    "fact": "To fill in a trace table, I..."
+   },
+   {
+    "name": "Tracing a loop",
+    "bullets": [
+     "Each time round the loop, write a new row.",
+     "Check the loop condition each time before going round again.",
+     "The last row shows the values when the loop stops."
+    ],
+    "challenge": "Trace a while loop that halves a number until it reaches one.",
+    "fact": "Tracing a loop means..."
+   },
+   {
+    "name": "Tracing selection",
+    "bullets": [
+     "At an if statement, decide which branch runs with the current values.",
+     "Only the lines in that branch change anything.",
+     "Write down which branch was taken if the table has a column for it."
+    ],
+    "challenge": "Trace a program that reports a grade from a mark.",
+    "fact": "Tracing selection means..."
+   },
+   {
+    "name": "Finding the bug with a trace",
+    "bullets": [
+     "Trace the program with an input you know the answer for.",
+     "Compare each value with what it should be.",
+     "The first row where they differ points at the line with the error."
+    ],
+    "challenge": "Trace a faulty program and identify the line that is wrong.",
+    "fact": "A trace table finds a bug by..."
+   },
+   {
+    "name": "Trace tables in the exam",
+    "bullets": [
+     "Fill in every row asked for, even if a value repeats.",
+     "Put the output in the output column, not in a variable column.",
+     "Work slowly: almost all lost marks here come from rushing."
+    ],
+    "challenge": "Complete a full trace table for a given program.",
+    "fact": "In the exam, a trace table must..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: trace it",
+   "intro": "One last program to follow line by line. Tap the star and complete the table."
+  },
+  "info": [
+   {
+    "title": "Also called a dry run",
+    "text": "Running a program in your head with pen and paper is a dry run; the trace table is where you write it down."
+   },
+   {
+    "title": "Before debuggers",
+    "text": "Early programmers had no way to inspect a running program, so tracing by hand was the only debugging technique there was."
+   },
+   {
+    "title": "Still used",
+    "text": "Professional programmers still trace tricky loops by hand, because a debugger shows what happens and a trace shows why."
+   },
+   {
+    "title": "Watch the loop condition",
+    "text": "Most trace table mistakes come from going round a loop one time too many or too few. Check the condition every time."
+   },
+   {
+    "title": "Output is not a variable",
+    "text": "A common exam error is writing the output in a variable column. Give it a column of its own."
+   },
+   {
+    "title": "Exam tip",
+    "text": "If a table has six rows printed, the examiner expects six rows used. An unused row is a hint that you stopped too early."
+   }
+  ],
+  "exam": [
+   {
+    "q": "State what is meant by a trace table.",
+    "marks": 2
+   },
+   {
+    "q": "Explain how a trace table helps a programmer find a logic error.",
+    "marks": 3
+   },
+   {
+    "q": "Complete the trace table for the program shown, which is run with an input of 9.",
+    "marks": 6
+   }
+  ],
+  "confidence": [
+   "What a trace table is",
+   "Tracing loops and selection",
+   "Using a trace to find a bug"
+  ],
+  "wsfile": "AL_L11_Traceroom_Worksheet.docx"
+ }
+]
