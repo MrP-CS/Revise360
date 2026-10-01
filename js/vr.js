@@ -245,6 +245,71 @@
     }
     function closeModelVR() { if (!vrModel) return; scene.remove(vrModel.holder); vrModel = null; modelPanel.hide(); core.refreshSprites(); }
 
+    // ---------------- 2D diagrams ----------------
+    // A diagram draws to a canvas, so in here it becomes a texture on a plane in
+    // front of the viewer, driven by the frame hook rather than by the web
+    // viewer's own loop - that one owns a DOM element and a ResizeObserver.
+    let vrDiag = null; const diagPanel = new Panel(.75, 1000); panels.push(diagPanel);
+    const DIAG_DWELL = 3400;
+    function openDiagramVR(u) {
+      if (!window.R360Diagrams) return;
+      closeDiagramVR(); closeModelVR(); infoPanel.hide(); menuPanel.hide();
+      core.markInfo(u.id);
+      const dg = R360Diagrams.build(u.dg.diagram);
+      const cv = document.createElement("canvas"); cv.width = dg.w; cv.height = dg.h;
+      const cx = cv.getContext("2d");
+      const tex = new T.CanvasTexture(cv); tex.minFilter = T.LinearFilter; tex.generateMipmaps = false;
+      const mesh = new T.Mesh(new T.PlaneGeometry(1.15, 1.15 * dg.h / dg.w),
+        new T.MeshBasicMaterial({ map: tex, depthTest: false, depthWrite: false }));
+      mesh.renderOrder = 19;
+      const { pos, dir } = headPose(); const yaw = Math.atan2(dir.x, dir.z);
+      mesh.position.set(pos.x + Math.sin(yaw) * 1.3, pos.y + .12, pos.z + Math.cos(yaw) * 1.3);
+      mesh.lookAt(pos); scene.add(mesh);
+      vrDiag = { dg, cx, tex, mesh, u, d: R360Diagrams.Draw(cx, dg.w, dg.h), step: 0, t: 0, playing: true };
+      showDiagPanel();
+      diagPanel.mesh.position.set(pos.x + Math.sin(yaw - .72) * 1.2, pos.y - .3, pos.z + Math.cos(yaw - .72) * 1.2);
+      diagPanel.mesh.lookAt(pos);
+      toast("It plays through on its own. Use the buttons to go back over a step.");
+    }
+    function showDiagPanel() {
+      const v = vrDiag; if (!v) return;
+      const st = v.dg.steps[v.step];
+      diagPanel.set({ title: v.u.dg.title, color: "#40c4ff", onClose: closeDiagramVR, blocks: [
+        { p: st.name, size: 32, bold: true, color: "#40c4ff" },
+        { p: st.caption, size: 28 }, { gap: 6 },
+        { row: [
+          { btn: "Back", id: "dback", center: true, size: 24, state: v.step === 0 ? "off" : "", onClick: () => stepDiag(-1) },
+          { btn: v.playing ? "Pause" : "Replay", id: "dplay", center: true, size: 24, onClick: () => {
+              v.playing = !v.playing; if (v.playing && v.step >= v.dg.steps.length - 1 && v.t >= 1) v.step = 0;
+              if (v.playing) v.t = 0; showDiagPanel(); } },
+          { btn: "Next", id: "dnext", center: true, size: 24, state: v.step === v.dg.steps.length - 1 ? "off" : "", onClick: () => stepDiag(1) }] },
+        { btn: "Close diagram", id: "dclose", center: true, onClick: closeDiagramVR }] });
+    }
+    function stepDiag(n) {
+      const v = vrDiag; if (!v) return;
+      v.step = Math.max(0, Math.min(v.dg.steps.length - 1, v.step + n));
+      v.t = 1; v.playing = false; showDiagPanel();
+    }
+    function closeDiagramVR() {
+      if (!vrDiag) return;
+      scene.remove(vrDiag.mesh); vrDiag.tex.dispose(); vrDiag = null;
+      diagPanel.hide(); core.refreshSprites();
+    }
+    core.frameHooks.push((dt) => {
+      const v = vrDiag; if (!v || !r.xr.isPresenting) return;
+      if (v.playing) {
+        v.t += Math.min(dt || 16, 100) / DIAG_DWELL;
+        if (v.t >= 1) {
+          if (v.step < v.dg.steps.length - 1) { v.t = 0; v.step++; showDiagPanel(); }
+          else { v.t = 1; v.playing = false; showDiagPanel(); }
+        }
+      }
+      v.cx.setTransform(1, 0, 0, 1, 0, 0);
+      v.cx.fillStyle = "#0e1628"; v.cx.fillRect(0, 0, v.dg.w, v.dg.h);
+      v.dg.render(v.d, v.step, Math.min(v.t, 1));
+      v.tex.needsUpdate = true;
+    });
+
     const BOARD_TASKS = ["circuit", "expr", "table", "convert", "addshift", "pixels", "sound", "memory", "permissions", "defrag", "impact", "trace", "bugline", "searchstep", "sortstep"];
     // ---------------- boards (drag, paint and tap in VR) ----------------
     let vrBoard = null;
@@ -486,7 +551,7 @@
     });
     function targets() {
       if (qPanel.open) return { panels: vrBoard ? [qPanel.mesh, vrBoard.mesh] : [qPanel.mesh], sprites: [], model: null };   // questions are modal, like on the web page
-      return { panels: [menuPanel, infoPanel, modelPanel, menuBtn].filter(p => p.open).map(p => p.mesh), sprites: core.sprites, model: vrModel };
+      return { panels: [menuPanel, infoPanel, modelPanel, diagPanel, menuBtn].filter(p => p.open).map(p => p.mesh), sprites: core.sprites, model: vrModel };
     }
     const vS = new T.Vector3(), vTo = new T.Vector3();
     function hitFor(c) {
@@ -513,7 +578,7 @@
       if (h.modelPart !== undefined) { pulse(c, .5, 30); showModelPanel(h.modelPart); return; }
       if (h.panel) { const hit = h.panel.hitAt(h.uv); if (hit && hit.fn) { pulse(c, .5, 30); hit.fn(); } return; }
       const u = h.sprite.userData; pulse(c, .5, 30);
-      if (u.type === "info") showInfo(u); else if (u.type === "model") openModelVR(u); else openStation(u.k);
+      if (u.type === "info") showInfo(u); else if (u.type === "model") openModelVR(u); else if (u.type === "diagram") openDiagramVR(u); else openStation(u.k);
     }
     function pulse(c, v, ms) { try { const g = c.userData.source && c.userData.source.gamepad; g && g.hapticActuators && g.hapticActuators[0] && g.hapticActuators[0].pulse(v, ms); } catch (e) {} }
 
@@ -552,7 +617,7 @@
       if (vrBoard && vrBoard.board.dirty) { vrBoard.tex.needsUpdate = true; vrBoard.board.dirty = false; }
     });
     core.sceneHooks.push(() => { if (core.inVR) { closeAll(); closeModelVR(); } });
-    window.NVRVR = { get vrBoard() { return vrBoard; }, modelPanel, get vrModel() { return vrModel; }, openModelVR: n => { const sp = core.sprites.filter(x => x.userData.type === "model")[n]; if (sp) openModelVR(sp.userData); }, qPanel, infoPanel, menuPanel, menuBtn, toastPanel, enter, exitVR };  // for testing
+    window.NVRVR = { get vrBoard() { return vrBoard; }, modelPanel, get vrModel() { return vrModel; }, openModelVR: n => { const sp = core.sprites.filter(x => x.userData.type === "model")[n]; if (sp) openModelVR(sp.userData); }, openDiagramVR: n => { const sp = core.sprites.filter(x => x.userData.type === "diagram")[n]; if (sp) openDiagramVR(sp.userData); }, diagPanel, get vrDiag() { return vrDiag; }, qPanel, infoPanel, menuPanel, menuBtn, toastPanel, enter, exitVR };  // for testing
   }
   if (window.NVRCore) start(window.NVRCore);
   else document.addEventListener("nvr-ready", () => start(window.NVRCore), { once: true });

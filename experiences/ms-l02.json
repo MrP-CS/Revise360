@@ -296,6 +296,17 @@
      "title": "Where the swapping happens",
      "text": "Virtual memory is space on this. Watch the arm: every swap means moving the head, which is why a machine that is swapping heavily feels so slow."
     }
+   ],
+   "diagrams": [
+    {
+     "id": "d1",
+     "face": "back",
+     "x": 190,
+     "y": 240,
+     "diagram": "virtualmemory",
+     "title": "Watch a swap happen",
+     "text": "RAM fills, something not in use is moved out to storage, and is fetched back when it is wanted. Notice how far it has to travel."
+    }
    ]
   }
  ]

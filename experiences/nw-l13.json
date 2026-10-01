@@ -314,7 +314,27 @@
      "text": "Different organisations look after different layers, such as the IEEE for Ethernet and Wi-Fi, and the IETF for TCP/IP."
     }
    ],
-   "models": []
+   "models": [],
+   "diagrams": [
+    {
+     "id": "d1",
+     "face": "right",
+     "x": 1158,
+     "y": 240,
+     "diagram": "packets",
+     "title": "Split, routed, reassembled",
+     "text": "One file cut into numbered packets that take different routes, arrive out of order, lose one, and are put back together in order."
+    },
+    {
+     "id": "d2",
+     "face": "back",
+     "x": 1158,
+     "y": 240,
+     "diagram": "tcpip",
+     "title": "Headers on, headers off",
+     "text": "Data going down the four layers picking up a header at each one, crossing the network, then having them stripped off in reverse."
+    }
+   ]
   }
  ]
 }

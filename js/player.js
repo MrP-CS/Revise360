@@ -152,12 +152,20 @@
     x.fillStyle = seen ? "#b4c4dc" : "#ffffff"; x.textAlign = "center"; x.textBaseline = "middle"; x.font = "bold 92px Segoe UI, sans-serif"; x.fillText("3D", 128, 134);
     return new THREE.CanvasTexture(c);
   }
+  function diagTex(seen) {
+    const c = document.createElement("canvas"); c.width = c.height = 256; const x = c.getContext("2d");
+    x.beginPath(); x.arc(128, 128, 110, 0, Math.PI * 2); x.fillStyle = seen ? "rgba(40,50,70,.92)" : "rgba(14,60,70,.95)"; x.fill();
+    x.lineWidth = 14; x.strokeStyle = seen ? "#8a98b0" : "#40c4ff"; x.stroke();
+    x.fillStyle = seen ? "#b4c4dc" : "#ffffff"; x.textAlign = "center"; x.textBaseline = "middle"; x.font = "bold 92px Segoe UI, sans-serif"; x.fillText("2D", 128, 134);
+    return new THREE.CanvasTexture(c);
+  }
   function refreshSprites() {
     const sc = exp.scenes[cur];
     sprites.forEach(s => {
       const u = s.userData;
       if (u.type === "info") { s.material.map = infoTex(prog.info.includes(u.id)); }
       else if (u.type === "model") { s.material.map = modelTex(prog.info.includes(u.id)); }
+      else if (u.type === "diagram") { s.material.map = diagTex(prog.info.includes(u.id)); }
       else {
         const st = stationState(sc, u.k), def = sc.stations[u.k];
         let mode;
@@ -184,6 +192,10 @@
     (sc.models || []).forEach(md => {
       const s = new THREE.Sprite(new THREE.SpriteMaterial({ depthTest: false, transparent: true }));
       s.position.copy(world(cubeFrom(md))); s.scale.set(3.4, 3.4, 1); s.userData = { type: "model", id: sc.id + ":3d:" + md.id, md }; s.renderOrder = 1; grp.add(s); sprites.push(s);
+    });
+    (sc.diagrams || []).forEach(dg => {
+      const s = new THREE.Sprite(new THREE.SpriteMaterial({ depthTest: false, transparent: true }));
+      s.position.copy(world(cubeFrom(dg))); s.scale.set(3.4, 3.4, 1); s.userData = { type: "diagram", id: sc.id + ":2d:" + dg.id, dg }; s.renderOrder = 1; grp.add(s); sprites.push(s);
     });
     closeDrawer(); refreshSprites(); drawNav(); hud();
     (core.sceneHooks || []).forEach(f => f(i));
@@ -229,7 +241,7 @@
   });
   function pick(e) {
     ray.setFromCamera(ndc(e), cam); const h = ray.intersectObjects(sprites).sort((a, b) => b.object.renderOrder - a.object.renderOrder)[0]; if (!h) return;
-    const u = h.object.userData; if (u.type === "info") showInfo(u); else if (u.type === "model") openModel(u); else openStation(u.k);
+    const u = h.object.userData; if (u.type === "info") showInfo(u); else if (u.type === "model") openModel(u); else if (u.type === "diagram") openDiagram(u); else openStation(u.k);
   }
   const still = matchMedia("(prefers-reduced-motion: reduce)");
   let lastT = performance.now();
@@ -364,9 +376,46 @@
     });
     modelView.parts.forEach((p, i) => { const b = document.createElement("button"); b.className = "chip"; b.setAttribute("aria-pressed", "false"); b.textContent = p.name; b.onclick = () => modelView.select(i); chips.appendChild(b); });
   }
+  let diagView = null;
+  function openDiagram(u) {
+    if (!window.R360Diagrams) return;
+    if (!prog.info.includes(u.id)) { prog.info.push(u.id); save(); refreshSprites(); }
+    lastFocus = document.activeElement; modal.classList.add("open"); closeDrawer();
+    box.classList.add("wide");
+    shell(u.dg.title, "#40c4ff", `<p class="qn">It plays through on its own. Use the buttons to go back over a step.</p>
+      <div id="d2d" style="height:min(52vh,420px);background:#0e1628;border-radius:12px;border:1px solid var(--line)"></div>
+      <div class="fb show ok" id="dcap" style="margin-top:12px"></div>
+      <div class="mrow" style="margin-top:12px;justify-content:flex-start;gap:8px">
+        <button class="btn small ghost" id="dprev">‹ Back</button>
+        <button class="btn small" id="dplay">Replay</button>
+        <button class="btn small ghost" id="dnext">Next ›</button>
+      </div>
+      <div class="chips" id="dchips" style="margin-top:12px"></div>`);
+    const chips = $("#dchips");
+    let nSteps = 0;
+    diagView = R360Diagrams.viewer($("#d2d"), u.dg.diagram, (i, st, playing) => {
+      $("#dcap").innerHTML = `<strong>${esc(st.name)}</strong>${esc(st.caption)}`;
+      $("#dplay").textContent = playing ? "Pause" : "Replay";
+      chips.querySelectorAll(".chip").forEach((c, j) => c.setAttribute("aria-pressed", j === i));
+      $("#dprev").disabled = i === 0;
+      $("#dnext").disabled = i === nSteps - 1;
+    });
+    nSteps = diagView.steps.length;
+    diagView.steps.forEach((st, i) => {
+      const b = document.createElement("button"); b.className = "chip";
+      b.setAttribute("aria-pressed", "false"); b.textContent = st.name;
+      b.onclick = () => diagView.select(i); chips.appendChild(b);
+    });
+    $("#dplay").onclick = () => diagView.toggle();
+    $("#dprev").onclick = () => diagView.prev();
+    $("#dnext").onclick = () => diagView.next();
+    diagView.announce();
+  }
   function closeModal() {
     if (sprintTimer) { clearInterval(sprintTimer); sprintTimer = null; }
-    if (modelView) { modelView.dispose(); modelView = null; } modal.classList.remove("open"); refreshSprites(); hud(); drawNav(); if (lastFocus && lastFocus.focus) lastFocus.focus(); }
+    if (modelView) { modelView.dispose(); modelView = null; }
+    if (diagView) { diagView.dispose(); diagView = null; }
+    modal.classList.remove("open"); refreshSprites(); hud(); drawNav(); if (lastFocus && lastFocus.focus) lastFocus.focus(); }
   modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
   function openStation(k) {
     const sc = exp.scenes[cur], st = sc.stations[k]; if (!st) return;
@@ -573,7 +622,7 @@
   window.NVRCore = core;
   document.dispatchEvent(new Event("nvr-ready"));
   // Hooks for keyboard/switch access and automated testing
-  window.NVR = { openStation, goTo, openModel: n => { const sp = sprites.filter(x => x.userData.type === "model")[n]; if (sp) openModel(sp.userData); }, showInfo: n => { const sp = sprites.filter(x => x.userData.type === "info")[n]; if (sp) showInfo(sp.userData); }, setReview, loadScene };
+  window.NVR = { openStation, goTo, openModel: n => { const sp = sprites.filter(x => x.userData.type === "model")[n]; if (sp) openModel(sp.userData); }, openDiagram: n => { const sp = sprites.filter(x => x.userData.type === "diagram")[n]; if (sp) openDiagram(sp.userData); }, showInfo: n => { const sp = sprites.filter(x => x.userData.type === "info")[n]; if (sp) showInfo(sp.userData); }, setReview, loadScene };
   const go = params.get("go");
   const startScene = go ? Math.max(0, exp.scenes.findIndex(s => s.id === go.split(":")[0])) : 0;
   loadScene(startScene);

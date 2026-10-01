@@ -368,17 +368,19 @@ def build_faces(L):
 # the station badge centred below it. The two upper rows share a y, which is clear
 # of panel text on every wall, so nothing ever needs nudging.
 #
-#        (i)              [3D]      <- INFO_Y / MODEL_Y
+#   [2D]       (i)        [3D]    <- DIAG_Y / INFO_Y / MODEL_Y
 #     +-------------------------+
 #     |        the panel        |
 #     +-------------------------+
 #              (1)              <- STATION_Y
 PANEL_CENTRE = [540, 1508]          # the two panel centres on a station wall
 MODEL_INSET = 790                   # from the panel's left edge: 90px in from its right
+DIAG_INSET = 90                     # and the 2D diagram button the same in from its left
 INFO_Y, STATION_Y = 240, 1840
-MODEL_Y = INFO_Y
+MODEL_Y = DIAG_Y = INFO_Y
 INFO_POS = [(fc, PANEL_CENTRE[k % 2]) for k, (fc, _) in enumerate(STATION_WALLS)]
 MODEL_POS = [(fc, x0 + MODEL_INSET) for fc, x0 in STATION_WALLS]
+DIAG_POS = [(fc, x0 + DIAG_INSET) for fc, x0 in STATION_WALLS]
 def export(L, site=SITE_S):
     import os
     faces = build_faces(L)
@@ -401,13 +403,19 @@ def export(L, site=SITE_S):
         if isinstance(where, int): fc, x = MODEL_POS[where]; y = MODEL_Y
         else: fc, x, y = where
         models.append(dict(id=f"m{i+1}", face=fc, x=x, y=y, model=kind, title=title, text=text))
+    diagrams = []
+    for i, dg in enumerate(L.get("diagrams", [])):
+        where, kind, title, text = dg
+        if isinstance(where, int): fc, x = DIAG_POS[where]; y = DIAG_Y
+        else: fc, x, y = where
+        diagrams.append(dict(id=f"d{i+1}", face=fc, x=x, y=y, diagram=kind, title=title, text=text))
     info = []
     for i, it in enumerate(L["info"]):
         where = it[0]
         if isinstance(where, int): fc, x = INFO_POS[where]; y = INFO_Y
         else: fc, x, y = where
         info.append(dict(id=f"f{i+1}", face=fc, x=x, y=y, title=it[1], text=it[2]))
-    exp = dict(id=L["id"], lesson=L["lesson"], title=L["title"], scenes=[dict(id="main", title=L["title"], img=f"img/{base}.jpg", imgHi=f"img/{base}_hi.jpg", stations=stations, info=info, models=models)])
+    exp = dict(id=L["id"], lesson=L["lesson"], title=L["title"], scenes=[dict(id="main", title=L["title"], img=f"img/{base}.jpg", imgHi=f"img/{base}_hi.jpg", stations=stations, info=info, models=models, diagrams=diagrams)])
     json.dump(exp, open(site + f"experiences/{L['id']}.json", "w"), indent=1, ensure_ascii=False)
     def marks(t):
         if t["t"] in ("mcq", "multi", "circuit", "expr", "convert", "addshift", "pixels", "sound", "memory", "permissions", "defrag", "impact", "searchstep", "sortstep"): return 1
