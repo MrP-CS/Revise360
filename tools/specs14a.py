@@ -3,7 +3,7 @@ from kit import mcq, multi, sort, match, order
 K14 = "1.4 Network security"
 SUB14 = "OCR J277 Paper 1  |  Computer systems"
 
-L1 = dict(id="ns-lesson1", topic="1.4", lesson=1, title="Threat map", img="NS_L01_ThreatMap",
+L1 = dict(id="ns-l01", topic="1.4", lesson=1, title="Threat map", img="NS_L01_ThreatMap_360",
   description="Meet the six forms of attack on the OCR specification, find out why attackers do it, and follow the CryptoLocker story.",
   kicker=f"{K14}  |  Lesson 1", scene_title="Threat map", subtitle=SUB14,
   intro="Every network is under attack, all the time. In the threat map room you'll meet the six forms of attack you need to know, find out what attackers want, and follow the CryptoLocker story from your starter.",
@@ -77,7 +77,7 @@ L1 = dict(id="ns-lesson1", topic="1.4", lesson=1, title="Threat map", img="NS_L0
           ("A small business is hit by ransomware. Describe three costs it will face beyond the ransom itself.", 6, 6)],
     confidence=["The six forms of attack", "Why attackers attack", "The costs of a successful attack"]))
 
-L2 = dict(id="ns-lesson2", topic="1.4", lesson=2, title="Malware lab", img="NS_L02_MalwareLab",
+L2 = dict(id="ns-l02", topic="1.4", lesson=2, title="Malware lab", img="NS_L02_MalwareLab_360",
   description="Study viruses, worms, trojans, ransomware and spyware under the microscope, and learn how to stop them.",
   kicker=f"{K14}  |  Lesson 2", scene_title="Malware lab", subtitle=SUB14,
   intro="Malware is any software written to do harm. In the lab you'll meet each type, see how it spreads and what it does, and learn the defences that stop it.",
@@ -149,7 +149,7 @@ L2 = dict(id="ns-lesson2", topic="1.4", lesson=2, title="Malware lab", img="NS_L
           ("Describe three measures a school could take to reduce malware infections.", 6, 6)],
     confidence=["What malware is", "Viruses, worms, trojans, ransomware and spyware", "Protecting against malware"]))
 
-L3 = dict(id="ns-lesson3", topic="1.4", lesson=3, title="Database break-in", img="NS_L03_DatabaseBreakIn",
+L3 = dict(id="ns-l03", topic="1.4", lesson=3, title="Database break-in", img="NS_L03_DatabaseBreakIn_360",
   description="See how a single quotation mark in a login box can hand over a database, and learn how programmers stop it.",
   kicker=f"{K14}  |  Lesson 3", scene_title="Database break-in", subtitle=SUB14,
   intro="A login box is just a text box, and a text box can accept anything, including code. Find out how SQL injection works, what it lets attackers do, and how to shut it down.",
@@ -221,7 +221,7 @@ L3 = dict(id="ns-lesson3", topic="1.4", lesson=3, title="Database break-in", img
     exam=[("Describe what happens during an SQL injection attack.", 3, 3), ("Explain two techniques a programmer can use to prevent SQL injection.", 4, 4)],
     confidence=["What SQL injection is", "How the attack works", "How to protect against it"]))
 
-L4 = dict(id="ns-lesson4", topic="1.4", lesson=4, title="Phishing inbox", img="NS_L04_PhishingInbox",
+L4 = dict(id="ns-l04", topic="1.4", lesson=4, title="Phishing inbox", img="NS_L04_PhishingInbox_360",
   description="Work through a suspicious inbox: learn what phishing is, what attackers gain, and how to spot the signs.",
   kicker=f"{K14}  |  Lesson 4", scene_title="Phishing inbox", subtitle=SUB14,
   intro="Phishing doesn't attack the computer: it attacks you. Work through an inbox of suspicious messages and learn the signs that give a phishing attempt away.",
@@ -292,7 +292,7 @@ L4 = dict(id="ns-lesson4", topic="1.4", lesson=4, title="Phishing inbox", img="N
           ("Explain two measures an organisation can take to reduce the risk of staff being phished.", 4, 4)],
     confidence=["What phishing is", "What attackers gain", "Spotting and reporting phishing"]))
 
-L5 = dict(id="ns-lesson5", topic="1.4", lesson=5, title="Social engineering HQ", img="NS_L05_SocialEngineeringHQ",
+L5 = dict(id="ns-l05", topic="1.4", lesson=5, title="Social engineering HQ", img="NS_L05_SocialEngineeringHQ_360",
   description="People are the weakest link: blagging, shouldering, baiting and the everyday habits that let attackers in.",
   kicker=f"{K14}  |  Lesson 5", scene_title="Social engineering HQ", subtitle=SUB14,
   intro="Why break the security when you can just ask someone to open the door? This is social engineering: the techniques attackers use on people, and the habits that make it easy for them.",

@@ -5,7 +5,7 @@ SUB12 = "OCR J277 Paper 1  |  Computer systems"
 def convert(q, frm, to, value, fb=""): return dict(t="convert", q=q, **{"from": frm}, to=to, value=value, fb=fb)
 def addshift(q, fb="", **kw): return dict(t="addshift", q=q, fb=fb, **kw)
 
-L7 = dict(id="ms-lesson7", topic="1.2", lesson=7, title="Capacity calculator", img="MS_L07_CapacityCalculator",
+L7 = dict(id="ms-l07", topic="1.2", lesson=7, title="Capacity calculator", img="MS_L07_CapacityCalculator_360",
   description="Work out how much storage images, sound and text really need, and how many files will fit.",
   kicker=f"{K12}  |  Lesson 7", scene_title="Capacity calculator", subtitle=SUB12,
   intro="How many photos fit on a 64 GB card? How big is a three-minute song? Learn the three file size formulas and use them on real scenarios.",
@@ -78,7 +78,7 @@ L7 = dict(id="ms-lesson7", topic="1.2", lesson=7, title="Capacity calculator", i
           ("A sound is sampled at 16,000 Hz with a bit depth of 8 for 20 seconds. Calculate the file size in kilobytes.", 3, 4)],
     confidence=["Image file size calculations", "Sound file size calculations", "Converting to sensible units"]))
 
-L8 = dict(id="ms-lesson8", topic="1.2", lesson=8, title="Binary workshop", img="MS_L08_BinaryWorkshop",
+L8 = dict(id="ms-l08", topic="1.2", lesson=8, title="Binary workshop", img="MS_L08_BinaryWorkshop_360",
   description="Convert between denary and 8-bit binary, add binary numbers, and see what happens when they overflow.",
   kicker=f"{K12}  |  Lesson 8", scene_title="Binary workshop", subtitle=SUB12,
   intro="Time to work in binary. Convert both ways, learn which bit is most significant, add two 8-bit numbers, and find out what an overflow error is.",
@@ -140,7 +140,7 @@ L8 = dict(id="ms-lesson8", topic="1.2", lesson=8, title="Binary workshop", img="
           ("Add the binary numbers 11000110 and 01010111. State whether an overflow error occurs.", 3, 3), ("Explain what is meant by an overflow error.", 2, 2)],
     confidence=["Denary to binary", "Binary to denary", "Binary addition and overflow"]))
 
-L10 = dict(id="ms-lesson10", topic="1.2", lesson=10, title="Shift and hex lab", img="MS_L10_ShiftAndHexLab",
+L10 = dict(id="ms-l10", topic="1.2", lesson=10, title="Shift and hex lab", img="MS_L10_ShiftAndHexLab_360",
   description="Multiply and divide with binary shifts, and learn why programmers write binary in hexadecimal.",
   kicker=f"{K12}  |  Lesson 10", scene_title="Shift and hex lab", subtitle=SUB12,
   intro="Two tools of the trade: binary shifts, which multiply and divide in one move, and hexadecimal, which makes long binary numbers readable.",
@@ -202,7 +202,7 @@ L10 = dict(id="ms-lesson10", topic="1.2", lesson=10, title="Shift and hex lab", 
           ("Convert the denary number 207 into hexadecimal.", 1, 1), ("Convert the binary number 10111010 into hexadecimal.", 1, 1)],
     confidence=["Left and right shifts", "Denary and hexadecimal", "Binary and hexadecimal"]))
 
-L11 = dict(id="ms-lesson11", topic="1.2", lesson=11, title="Revision HQ 1.2 part 1", img="MS_L11_RevisionHQ12Part1",
+L11 = dict(id="ms-l11", topic="1.2", lesson=11, title="Revision HQ 1.2 part 1", img="MS_L11_RevisionHQ12Part1_360",
   description="Recap lessons 1 to 10: memory, storage, units, capacity, binary, shifts and hexadecimal.",
   kicker=f"{K12}  |  Lesson 11", scene_title="Revision HQ 1.2 part 1", subtitle="Catch up and revise lessons 1 to 10",
   intro="Each station sums up one part of the first half of the topic. Answer its quiz, and your score screen will show what to revise. Finish any outstanding tasks too.",
@@ -263,7 +263,7 @@ L11 = dict(id="ms-lesson11", topic="1.2", lesson=11, title="Revision HQ 1.2 part
     rag=["RAM and ROM", "Virtual memory", "Types of secondary storage", "Characteristics and suitability", "Units of storage", "Capacity calculations", "Binary conversion and addition", "Shifts and hexadecimal"],
     confidence=["Memory and storage", "Units and capacity", "Binary, shifts and hex"]))
 
-L12 = dict(id="ms-lesson12", topic="1.2", lesson=12, title="Character foundry", img="MS_L12_CharacterFoundry",
+L12 = dict(id="ms-l12", topic="1.2", lesson=12, title="Character foundry", img="MS_L12_CharacterFoundry_360",
   description="How text becomes binary: character sets, ASCII and Unicode, and why more bits means more characters.",
   kicker=f"{K12}  |  Lesson 12", scene_title="Character foundry", subtitle=SUB12,
   intro="Computers store text as numbers. Find out what a character set is, why ASCII ran out of room, and how Unicode fits every writing system in the world.",

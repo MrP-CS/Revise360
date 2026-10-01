@@ -170,9 +170,18 @@ def ill(d, spec, x0, y0, x1, y1, col):
             c = TONE.get(tone, col); r, q = divmod(i, cols)
             bx, by = x0 + q*(w+gap), y0 + r*(h+gap)
             d.rounded_rectangle((bx, by, bx+w, by+h), 14, fill=(20, 28, 44), outline=c, width=5)
+            # Shrink until the label fits the tile in BOTH directions. The height
+            # and line-count tests alone are not enough: a single long word such
+            # as "Defragmentation" cannot be wrapped, so it silently ran past the
+            # edge of its tile and collided with its neighbour.
             fs = int(min(40, max(22, h * 0.3))); f = font(fs, True)
             lines = _wrap(d, text, f, w - 30)
-            while (len(lines) > 2 or len(lines) * fs * 1.15 > h - 10) and fs > 18: fs -= 2; f = font(fs, True); lines = _wrap(d, text, f, w - 30)
+            def _over(lines, f):
+                return (len(lines) > 2
+                        or len(lines) * f.size * 1.15 > h - 10
+                        or max(d.textlength(ln, font=f) for ln in lines) > w - 24)
+            while _over(lines, f) and fs > 13:
+                fs -= 1; f = font(fs, True); lines = _wrap(d, text, f, w - 30)
             for j, ln in enumerate(lines):
                 d.text((bx + w/2, by + h/2 + (j - (len(lines)-1)/2) * f.size * 1.15), ln, font=f, fill=WHITE, anchor="mm")
     elif kind == "compare":
@@ -201,13 +210,21 @@ def ill(d, spec, x0, y0, x1, y1, col):
                 d.line((ax, ay, ax + gap - 14, ay), fill=YELLOW, width=6); d.polygon([(ax+gap-8, ay), (ax+gap-22, ay-10), (ax+gap-22, ay+10)], fill=YELLOW)
     elif kind == "table":
         head, rows = a[0], a[1]; n = len(head); w = (x1 - x0) / n; h = min(60, (y1 - y0) / (len(rows) + 1))
+        # A cell's text has to fit its column. The old rule dropped one size and
+        # gave up, so a long value ran out past the table's edge; headings were
+        # never measured at all.
+        def _fit(t, bold, start=24, floor=14):
+            f = font(start, bold)
+            while d.textlength(t, font=f) > w - 20 and f.size > floor:
+                f = font(f.size - 1, bold)
+            return f
         for i, t in enumerate(head):
-            d.rectangle((x0 + i*w, y0, x0 + (i+1)*w - 4, y0 + h - 4), fill=(36, 54, 88)); d.text((x0 + i*w + w/2, y0 + h/2), t, font=font(24, True), fill=YELLOW, anchor="mm")
+            d.rectangle((x0 + i*w, y0, x0 + (i+1)*w - 4, y0 + h - 4), fill=(36, 54, 88))
+            d.text((x0 + i*w + w/2, y0 + h/2), t, font=_fit(t, True), fill=YELLOW, anchor="mm")
         for r, row in enumerate(rows):
             for i, t in enumerate(row):
                 d.rectangle((x0 + i*w, y0 + (r+1)*h, x0 + (i+1)*w - 4, y0 + (r+2)*h - 4), fill=(20, 28, 44))
-                f = font(22) if d.textlength(t, font=font(24)) > w - 20 else font(24)
-                d.text((x0 + i*w + w/2, y0 + (r+1)*h + h/2), t, font=f, fill=WHITE, anchor="mm")
+                d.text((x0 + i*w + w/2, y0 + (r+1)*h + h/2), t, font=_fit(t, False), fill=WHITE, anchor="mm")
     elif kind == "big":
         txt, sub = a[0], (a[1] if len(a) > 1 else "")
         f = ImageFont.truetype(MONOB, 56)

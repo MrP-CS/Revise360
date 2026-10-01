@@ -3,7 +3,7 @@ from kit import mcq, multi, sort, match, order
 K23 = "2.3 Producing robust programs"
 SUB23 = "OCR J277 Paper 2  |  Computational thinking, algorithms and programming"
 
-L1 = dict(id="rp-lesson1", topic="2.3", lesson=1, title="Security desk", img="RP_L01_SecurityDesk",
+L1 = dict(id="rp-l01", topic="2.3", lesson=1, title="Security desk", img="RP_L01_SecurityDesk_360",
   description="Check every sign-up at the security desk: learn the validation checks that stop bad data getting in.",
   kicker=f"{K23}  |  Lesson 1", scene_title="Security desk", subtitle=SUB23,
   intro="Nothing gets into the program without passing the security desk. Learn the validation checks programmers use to make sure input data is sensible before it's processed.",
@@ -64,7 +64,7 @@ L1 = dict(id="rp-lesson1", topic="2.3", lesson=1, title="Security desk", img="RP
           ("Explain the difference between a range check and a type check, using an example of each.", 4, 4)],
     confidence=["What defensive design means", "Why input validation is necessary", "The five types of validation check"]))
 
-L2 = dict(id="rp-lesson2", topic="2.3", lesson=2, title="Cyber defence HQ", img="RP_L02_CyberDefenceHQ",
+L2 = dict(id="rp-l02", topic="2.3", lesson=2, title="Cyber defence HQ", img="RP_L02_CyberDefenceHQ_360",
   description="Defend a program against misuse, bots and weak passwords with authentication and defensive design.",
   kicker=f"{K23}  |  Lesson 2", scene_title="Cyber defence HQ", subtitle=SUB23,
   intro="Programs are under attack from careless users, clever attackers and automated bots. Find out how programmers anticipate misuse and use authentication to keep programs safe.",
@@ -133,7 +133,7 @@ L2 = dict(id="rp-lesson2", topic="2.3", lesson=2, title="Cyber defence HQ", img=
           ("A program divides one number by another entered by the user. Explain how the programmer should handle a division by zero.", 3, 3)],
     confidence=["What defensive design considerations are", "Problems that can occur when a program runs", "Authentication techniques"]))
 
-L5 = dict(id="rp-lesson5", topic="2.3", lesson=5, title="Test lab", img="RP_L05_TestLab",
+L5 = dict(id="rp-l05", topic="2.3", lesson=5, title="Test lab", img="RP_L05_TestLab_360",
   description="Choose normal, boundary, invalid and erroneous test data, and build a test table that really tests a program.",
   kicker=f"{K23}  |  Lesson 5", scene_title="Test lab", subtitle=SUB23,
   intro="Just because a program works for one input doesn't mean it works for all of them. In the test lab you'll learn the four types of test data and build a proper test plan.",
@@ -188,7 +188,7 @@ L5 = dict(id="rp-lesson5", topic="2.3", lesson=5, title="Test lab", img="RP_L05_
     exam=[("A booking form accepts a number of tickets from 1 to 6. Give four pieces of test data, name the type of each, and state why the test is needed.", 8, 8)],
     confidence=["Why a range of test data is needed", "Normal, boundary, invalid and erroneous data", "Writing a test plan"]))
 
-L6 = dict(id="rp-lesson6", topic="2.3", lesson=6, title="Revision HQ 2.3", img="RP_L06_RevisionHQ23",
+L6 = dict(id="rp-l06", topic="2.3", lesson=6, title="Revision HQ 2.3", img="RP_L06_RevisionHQ23_360",
   description="Recap lessons 1 to 5 of Producing robust programs and find out what to revise before your test.",
   kicker=f"{K23}  |  Lesson 6", scene_title="Revision HQ 2.3", subtitle="Get ready for your end-of-topic test on lessons 1 to 5",
   intro="Each station sums up one lesson. Answer its quiz, and your score screen will show which lessons are secure and which need work. Then plan a 12-mark answer on robust programs.",

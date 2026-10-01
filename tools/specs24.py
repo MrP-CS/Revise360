@@ -11,7 +11,7 @@ def table(q, expr, fb="", cols=None, out=None, inputs=None, diagram=True):
     if inputs: d["inputs"] = inputs
     return d
 
-L1 = dict(id="bl-lesson1", topic="2.4", lesson=1, title="Logic gate lab", img="BL_L01_LogicGateLab",
+L1 = dict(id="bl-l01", topic="2.4", lesson=1, title="Logic gate lab", img="BL_L01_LogicGateLab_360",
   description="Meet AND, OR and NOT, fill in their truth tables, then build your own logic circuits by dragging gates and wires.",
   kicker=f"{K24}  |  Lesson 1", scene_title="Logic gate lab", subtitle=SUB24,
   intro="Every decision a computer makes comes down to three logic gates: AND, OR and NOT. Learn how each one works, then build real logic circuits by dragging gates onto a board and wiring them up.",
@@ -64,7 +64,7 @@ L1 = dict(id="bl-lesson1", topic="2.4", lesson=1, title="Logic gate lab", img="B
     draw_exam=True,
     confidence=["The symbols for AND, OR and NOT", "The truth tables for AND, OR and NOT", "Combining operators in logic diagrams"]))
 
-L2 = dict(id="bl-lesson2", topic="2.4", lesson=2, title="Truth table detectives", img="BL_L02_TruthTableDetectives",
+L2 = dict(id="bl-l02", topic="2.4", lesson=2, title="Truth table detectives", img="BL_L02_TruthTableDetectives_360",
   description="Crack two- and three-input truth tables, including intermediate columns, and work out logic from electric circuits.",
   kicker=f"{K24}  |  Lesson 2", scene_title="Truth table detectives", subtitle=SUB24,
   intro="A truth table shows the output of a circuit for every possible combination of inputs. Learn how to set one out, then solve one- and two-level circuits using intermediate columns.",
@@ -110,7 +110,7 @@ L2 = dict(id="bl-lesson2", topic="2.4", lesson=2, title="Truth table detectives"
     exam=[("State how many rows a truth table needs for four inputs.", 1, 1), ("Complete a truth table for Q = NOT P OR (Q AND R) on the back of this sheet.", 8, 0)],
     confidence=["Setting out a truth table", "One-level truth tables", "Two-level truth tables with intermediate columns"]))
 
-L3 = dict(id="bl-lesson3", topic="2.4", lesson=3, title="Circuit workshop", img="BL_L03_CircuitWorkshop",
+L3 = dict(id="bl-l03", topic="2.4", lesson=3, title="Circuit workshop", img="BL_L03_CircuitWorkshop_360",
   description="Turn real scenarios into logic circuits and truth tables: a shop alarm, a hospital lift and a greenhouse heater.",
   kicker=f"{K24}  |  Lesson 3", scene_title="Circuit workshop", subtitle=SUB24,
   intro="Engineers turn real problems into logic. In the workshop you'll read three scenarios, build the circuit for each one, and complete its truth table.",

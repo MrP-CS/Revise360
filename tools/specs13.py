@@ -3,7 +3,7 @@ from kit import mcq, multi, sort, match, order
 K13 = "1.3 Computer networks, connections and protocols"
 SUB13 = "OCR J277 Paper 1  |  Computer systems"
 
-L3 = dict(id="net-lesson3", topic="1.3", lesson=3, title="Network showdown", img="NW_L03_NetworkShowdown",
+L3 = dict(id="nw-l03", topic="1.3", lesson=3, title="Network showdown", img="NW_L03_NetworkShowdown_360",
   description="Client-server takes on peer-to-peer. Find out who does what in each model, then settle the torrent debate.",
   kicker=f"{K13}  |  Lesson 3", scene_title="Network showdown", subtitle=SUB13,
   intro="Two ways to organise a network go head to head: client-server and peer-to-peer. Find out which computers do what in each model, then decide which one wins for different situations.",
@@ -95,7 +95,7 @@ L3 = dict(id="net-lesson3", topic="1.3", lesson=3, title="Network showdown", img
           ("A school is choosing between client-server and peer-to-peer. Recommend one and justify your choice using two characteristics.", 6, 6)],
     confidence=["What a client-server model is", "What a peer-to-peer model is", "The roles of servers, clients and peers"]))
 
-L5 = dict(id="net-lesson5", topic="1.3", lesson=5, title="Inside the internet", img="NW_L05_InsideTheInternet",
+L5 = dict(id="nw-l05", topic="1.3", lesson=5, title="Inside the internet", img="NW_L05_InsideTheInternet_360",
   description="Find out what the internet really is, how DNS finds websites, and what hosting and the cloud mean.",
   kicker=f"{K13}  |  Lesson 5", scene_title="Inside the internet", subtitle=SUB13,
   intro="You use the internet every day, but what actually is it? Find out how websites are found, where they live, and what people really mean by 'the cloud'.",
@@ -173,7 +173,7 @@ L5 = dict(id="net-lesson5", topic="1.3", lesson=5, title="Inside the internet", 
           ("A school is considering moving its files to the cloud. Discuss the benefits and the risks.", 8, 8)],
     confidence=["What the internet is", "How DNS works", "Hosting, the cloud, web servers and clients"]))
 
-L9 = dict(id="net-lesson9", topic="1.3", lesson=9, title="Connection café", img="NW_L09_ConnectionCafe",
+L9 = dict(id="nw-l09", topic="1.3", lesson=9, title="Connection café", img="NW_L09_ConnectionCafe_360",
   description="Ethernet, Wi-Fi or Bluetooth? Compare wired and wireless connections and recommend the right one for each job.",
   kicker=f"{K13}  |  Lesson 9", scene_title="Connection café", subtitle=SUB13,
   intro="Every device in this café needs to connect, but which way is best? Compare Ethernet, Wi-Fi and Bluetooth, then recommend the right connection for each job.",
@@ -244,7 +244,7 @@ L9 = dict(id="net-lesson9", topic="1.3", lesson=9, title="Connection café", img
           ("A café wants to offer internet access to customers. Recommend a connection type and justify your choice.", 4, 5)],
     confidence=["Ethernet as a wired connection", "Wi-Fi and Bluetooth", "Recommending a connection for a scenario"]))
 
-L10 = dict(id="net-lesson10", topic="1.3", lesson=10, title="Cipher room", img="NW_L10_CipherRoom",
+L10 = dict(id="nw-l10", topic="1.3", lesson=10, title="Cipher room", img="NW_L10_CipherRoom_360",
   description="Crack a cipher, learn how keys work, and find out how Wi-Fi keeps your data secret with WPA2.",
   kicker=f"{K13}  |  Lesson 10", scene_title="Cipher room", subtitle=SUB13,
   intro="Wireless signals travel through the air, so anyone nearby could pick them up. In the cipher room you'll crack a code, learn how keys work, and see how Wi-Fi keeps data secret.",
@@ -316,7 +316,7 @@ L10 = dict(id="net-lesson10", topic="1.3", lesson=10, title="Cipher room", img="
           ("Explain why the Wi-Fi key itself is never sent between the device and the access point.", 3, 3)],
     confidence=["How a simple substitution cipher works", "How devices authenticate with WPA2", "Public and private keys"]))
 
-L11 = dict(id="net-lesson11", topic="1.3", lesson=11, title="Address sorting office", img="NW_L11_AddressSortingOffice",
+L11 = dict(id="nw-l11", topic="1.3", lesson=11, title="Address sorting office", img="NW_L11_AddressSortingOffice_360",
   description="Sort MAC, IPv4 and IPv6 addresses, and find out why the world needed IPv6.",
   kicker=f"{K13}  |  Lesson 11", scene_title="Address sorting office", subtitle=SUB13,
   intro="Every piece of data needs an address, just like a parcel. Learn to tell MAC, IPv4 and IPv6 addresses apart, and find out why the world ran out of IPv4 addresses.",
@@ -378,7 +378,7 @@ L11 = dict(id="net-lesson11", topic="1.3", lesson=11, title="Address sorting off
           ("Explain why a device keeps its MAC address but can be given a different IP address.", 3, 3)],
     confidence=["Uses of MAC and IP addresses", "The difference between IPv4 and IPv6", "Why IPv6 is needed"]))
 
-L12 = dict(id="net-lesson12", topic="1.3", lesson=12, title="Protocol city", img="NW_L12_ProtocolCity",
+L12 = dict(id="nw-l12", topic="1.3", lesson=12, title="Protocol city", img="NW_L12_ProtocolCity_360",
   description="Explore the standards and protocols that make networks work, from HTTP to TCP/IP.",
   kicker=f"{K13}  |  Lesson 12", scene_title="Protocol city", subtitle=SUB13,
   intro="Networks only work because everyone follows the same rules. Tour Protocol city to learn why standards matter and what the seven common protocols do.",
@@ -438,7 +438,7 @@ L12 = dict(id="net-lesson12", topic="1.3", lesson=12, title="Protocol city", img
           ("Describe what HTTPS adds to HTTP and why it matters.", 3, 3), ("Explain how TCP and IP work together when a web page is requested.", 4, 4)],
     confidence=["Why standards are needed", "The common protocols and what they do", "The difference between standards and protocols"]))
 
-L13 = dict(id="net-lesson13", topic="1.3", lesson=13, title="Parcel depot", img="NW_L13_ParcelDepot",
+L13 = dict(id="nw-l13", topic="1.3", lesson=13, title="Parcel depot", img="NW_L13_ParcelDepot_360",
   description="Follow a parcel from box to sack to van, and find out why layering protocols makes networks easier to build.",
   kicker=f"{K13}  |  Lesson 13", scene_title="Parcel depot", subtitle=SUB13,
   intro="A parcel travels inside a box, inside a sack, inside a van, and each stage only deals with the one next to it. Networking works the same way. Find out why protocols are layered and what each layer does.",
@@ -506,7 +506,7 @@ L13 = dict(id="net-lesson13", topic="1.3", lesson=13, title="Parcel depot", img=
          "The internet, DNS, hosting and the cloud", "Star and mesh topologies", "Modes of connection", "Wi-Fi encryption", "IP and MAC addressing", "Standards and protocols", "Layers"],
     confidence=["Why protocols are layered", "The advantages of layering", "Which protocols belong in which layer"]))
 
-L14 = dict(id="net-lesson14", topic="1.3", lesson=14, title="Revision HQ 2", img="NW_L14_RevisionHQ2",
+L14 = dict(id="nw-l14", topic="1.3", lesson=14, title="Revision HQ 2", img="NW_L14_RevisionHQ2_360",
   description="Recap lessons 9 to 13 and find out what to revise before your end-of-unit assessment.",
   kicker=f"{K13}  |  Lesson 14", scene_title="Revision HQ 2", subtitle="Get ready for your end-of-unit assessment on lessons 9 to 13",
   intro="Each station sums up one lesson from the second half of the unit. Answer its quiz, and your score screen will show which topics are secure and which to revise before the test.",

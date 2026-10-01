@@ -17,6 +17,7 @@ import json, importlib
 # topic -> (module names, lesson attribute names in teaching order)
 TOPICS = {
     "1.4": (["specs14a", "specs14b"], None),
+    "1.5": (["specs15"], None),
     "2.3": (["specs23"], None),
     "2.4": (["specs24"], None),
     "2.1": (["specs21"], None),
