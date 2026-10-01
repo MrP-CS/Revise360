@@ -255,14 +255,23 @@ an experience that is not registered - `build()` falls back to the first
 diagram for an unknown name, so a typo in a placement would otherwise open the
 wrong picture silently.
 
-It cannot tell you a diagram is confusing. Look at the images for that.
+It cannot tell you a diagram is confusing, and it does not see text sitting on a
+box border - it compares text against text, not against the shapes. Look at the
+images for those.
 
-Two things it took a wrong turn on first, both worth knowing: it compared text
-drawn *inside* `d.box` and `d.chip`, so a chip flying over a cell read as two
-captions colliding; and it modelled `d.box`'s own label padding instead of
-recording the size `d.box` actually drew, which invented four overflows that
-were not there. Both times the fix was to observe what was drawn rather than
-predict it.
+It also only compares a shape's label against free-standing text, never against
+another shape's label, because a value in flight over the cell it is heading for
+is the animation working. Suppressing shape labels altogether, which is where
+that rule started, hid a chip parked on top of a subtitle for a whole step.
+
+Three wrong turns it took first, all worth knowing. It modelled `d.box`'s own
+label padding instead of recording the size `d.box` actually drew, which
+invented four overflows that were not there - the fix was to observe what was
+drawn rather than predict it. It compared text drawn *inside* `d.box` and
+`d.chip`, so a chip flying over a cell read as two captions colliding. And the
+fix for that went too far the other way, skipping shape labels entirely, which
+hid a chip sitting on top of a subtitle; the rule now skips only the pair where
+one string contains the other, which is what a value in flight looks like.
 
 Placements live in `newdiagrams.py`, in the same form as the 3D models:
 

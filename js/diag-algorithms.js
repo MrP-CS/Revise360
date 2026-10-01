@@ -551,7 +551,7 @@
       ["term", "Terminal", "Terminal - the single place a program starts, and where it stops."],
       ["proc", "Process", "Process - do something, such as working out or storing a value."],
       ["io", "In / Out", "Input / output - read a value in, or print a value out."],
-      ["dec", "Choice", "Decision - a yes/no question with exactly two labelled ways out."]
+      ["dec", "Decision", "Decision - a yes/no question with exactly two labelled ways out."]
     ];
 
     const steps = [
@@ -595,7 +595,8 @@
         const y = 76 + i * 96, lit = cyc === i;
         const o = { label: L[1], size: 12, fill: lit ? "#2a3f68" : c.panel,
                     stroke: lit ? c.edge : c.line, on: lit };
-        const n = { x: 34, y, w: 96, h: 40, cx: 82, cy: y + 20 };
+        const wide = L[0] === "dec" ? 124 : 96;   // a diamond gives its label only its middle
+        const n = { x: 34, y, w: wide, h: 40, cx: 34 + wide / 2, cy: y + 20 };
         if (L[0] === "term") term(d, n, o);
         else if (L[0] === "proc") proc(d, n, o);
         else if (L[0] === "io") io(d, n, o);

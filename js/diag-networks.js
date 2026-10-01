@@ -457,7 +457,7 @@
       const notes = [
         ["Plain means readable", "Plaintext is not only text: it could be a photo, a password or a bank balance. Encryption treats it all the same way.", [CX + 174, ROWA + 48]],
         ["A real key is huge", "A shift of 3 has only 25 possible keys, so it is easy to break. Real keys are long enough that guessing would take centuries.", [577, ROWA + 102]],
-        ["Watch one letter", "W is near the end of the alphabet, so shifting it by 3 wraps round past Z: W becomes Z, and X would become A.", [AX + 22 * ASTEP, 384]],
+        ["Running off the end", "W has just enough room: W becomes Z. X, Y and Z do not, so they wrap round to the start - X becomes A, Y becomes B, Z becomes C.", [AX + 22 * ASTEP, 384]],
         ["No protection from copying", "Encryption does nothing to stop the signal being captured, especially over Wi-Fi where the radio waves reach outside the building.", [620, WIRE_Y]],
         ["Useless, not unseen", "That is the whole teaching point. You cannot stop interception, so you make what is intercepted worthless.", [800, 402]],
         ["Both ends, same key", "This cipher uses one shared key for both jobs. Getting that key to the other end safely is the hard part of encryption.", [577, ROWA + 102]]

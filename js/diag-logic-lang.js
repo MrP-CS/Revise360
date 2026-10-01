@@ -737,8 +737,8 @@
       const ial = s === 0 ? 0.16 : inte ? 1 : 0.4;
       d.box(280, 268, 500, 200, { fill: c.panel, stroke: inte ? c.violet : c.line, on: inte, r: 12, alpha: ial });
       d.text(296, 290, "Interpreter", { size: 15, weight: 800, baseline: "middle", fill: c.violet, max: 160, alpha: ial });
-      d.text(766, 291, "translates one line, runs it, moves on", {
-        size: 11.5, weight: 600, align: "right", baseline: "middle", fill: c.dim, max: 300, alpha: ial });
+      d.text(766, 291, "one line at a time", {
+        size: 11.5, weight: 600, align: "right", baseline: "middle", fill: c.dim, max: 140, alpha: ial });
       const reach = s === 3 ? Math.min(3, 1 + Math.floor(d.seg(t, 0.04, 0.3) * 3.2)) : inte ? 4 : 0;
       for (let i = 0; i < 5; i++) {
         const ix = 296 + i * 68, done = i + 1 <= Math.min(reach, 3);
@@ -792,12 +792,10 @@
         d.line(541, 242, 519, 264, { stroke: c.bad, width: 5 });
         d.text(530, 228, "a processor cannot run high level code as it is", {
           size: 13, weight: 800, align: "center", baseline: "middle", fill: c.bad, max: 460 });
-      } else if (s === 5) {
-        d.text(530, 246, "Compiler: every error found before anything runs.", {
-          size: 12, weight: 700, align: "center", baseline: "middle", fill: c.teal, max: 470 });
-        d.text(530, 262, "Interpreter: the first error found only on reaching it.", {
-          size: 12, weight: 700, align: "center", baseline: "middle", fill: c.violet, max: 470 });
       }
+      // The gap between the two lanes is 36px, which is not enough for a two-line
+      // summary without it landing on one box edge or the other. The step caption
+      // and the note already make the same contrast, so it is said once.
 
       const notes = [
         ["Two ways, same job", "Both end up producing machine code for this processor. They differ in when they do it, and in what you are left with afterwards.", [529, 253]],

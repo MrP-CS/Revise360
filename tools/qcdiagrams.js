@@ -64,14 +64,18 @@ const srv = http.createServer((q, r) => {
         // roughly mid-animation; a label can be clear in one and not the other.
         for (const t of [0.4, 1]) {
           const d = R360Diagrams.Draw(x, W, H);
-          const texts = [], all = [];
-          // d.box and d.chip draw their own labels through d.text, and a chip
-          // flying over a cell is the animation working, not two captions
-          // colliding. Only free-standing text is compared.
+          const texts = [], inside = [], all = [];
+          /* d.box and d.chip draw their own labels through d.text. A chip flying
+           * over a cell is the animation working, so label-against-label is not
+           * compared - but a chip or box landing on a free-standing caption is a
+           * real fault, and suppressing those wholesale hid a chip sitting on top
+           * of a subtitle. So: free text against free text, and anything drawn
+           * inside a shape against free text, but never shape against shape. */
           let nested = 0;
           const note = (r, kind, what) => {
             all.push(r);
-            if (kind === "text" && !nested) texts.push(Object.assign({ what }, r));
+            if (kind !== "text") return;
+            (nested ? inside : texts).push(Object.assign({ what }, r));
           };
           // --- wrap the helper, keeping return values intact
           const oDot = d.dot.bind(d);
@@ -129,16 +133,26 @@ const srv = http.createServer((q, r) => {
               `"${(r.text || "").slice(0, 30)}" by ${Math.round(over)}px`]);
           }
           // --- 2. text on top of text
-          for (let i = 0; i < texts.length; i++)
-            for (let j = i + 1; j < texts.length; j++) {
-              const A = texts[i], B = texts[j];
-              const ow = Math.min(A.x + A.w, B.x + B.w) - Math.max(A.x, B.x);
-              const oh = Math.min(A.y + A.h, B.y + B.h) - Math.max(A.y, B.y);
-              if (ow <= 1 || oh <= 1) continue;
-              const frac = (ow * oh) / Math.max(1, Math.min(A.w * A.h, B.w * B.h));
-              if (frac > .34) out.push([k, s, t, "overlap",
-                `"${(A.text || "").slice(0, 24)}" and "${(B.text || "").slice(0, 24)}" ${Math.round(frac * 100)}%`]);
-            }
+          const pairs = [];
+          for (let i = 0; i < texts.length; i++) {
+            for (let j = i + 1; j < texts.length; j++) pairs.push([texts[i], texts[j]]);
+            for (let j = 0; j < inside.length; j++) pairs.push([texts[i], inside[j]]);
+          }
+          for (const pr of pairs) {
+            const A = pr[0], B = pr[1];
+            const ow = Math.min(A.x + A.w, B.x + B.w) - Math.max(A.x, B.x);
+            const oh = Math.min(A.y + A.h, B.y + B.h) - Math.max(A.y, B.y);
+            if (ow <= 1 || oh <= 1) continue;
+            /* A value in flight over the place it is going shows the same text
+             * twice, and text being typed shows a prefix of itself. Neither is
+             * two captions colliding. Unrelated text still is - which is how the
+             * chip sitting on top of the interpreter's subtitle was found. */
+            const ta = String(A.text || ""), tb = String(B.text || "");
+            if (ta && tb && (ta.indexOf(tb) >= 0 || tb.indexOf(ta) >= 0)) continue;
+            const frac = (ow * oh) / Math.max(1, Math.min(A.w * A.h, B.w * B.h));
+            if (frac > .34) out.push([k, s, t, "overlap",
+              `"${(A.text || "").slice(0, 24)}" and "${(B.text || "").slice(0, 24)}" ${Math.round(frac * 100)}%`]);
+          }
         }
       }
     }
