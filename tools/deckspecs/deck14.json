@@ -1,0 +1,1394 @@
+[
+ {
+  "id": "ns-l01",
+  "lesson": 1,
+  "title": "Threat map",
+  "topic": "1.4",
+  "kicker": "1.4 Network security  |  Lesson 1",
+  "subtitle": "OCR J277 Paper 1  |  Computer systems",
+  "intro": "Every network is under attack, all the time. In the threat map room you'll meet the six forms of attack you need to know, find out what attackers want, and follow the CryptoLocker story from your starter.",
+  "keywords": [
+   "Malware",
+   "Phishing",
+   "Brute force",
+   "Denial of service",
+   "Data interception",
+   "SQL injection"
+  ],
+  "objectives": [
+   "understand the different forms of attack against computer systems"
+  ],
+  "starter": "Choose a cyberattack that has been in the news. Write down who was attacked, what the attackers wanted, and what it cost the organisation.",
+  "keyq": "What forms of attack threaten a network, and what do attackers want?",
+  "keyterms": [
+   "Malware",
+   "Social engineering"
+  ],
+  "stations": [
+   {
+    "name": "What is a cyberattack?",
+    "bullets": [
+     "An attempt to damage or disrupt a system, or to gain unauthorised access to it or its data.",
+     "Attacks can come from outside the network or from inside it.",
+     "The people who carry them out are often called hackers or attackers."
+    ],
+    "challenge": "Write your own definition of a cyberattack.",
+    "fact": "A cyberattack is..."
+   },
+   {
+    "name": "The six forms of attack",
+    "bullets": [
+     "Malware, social engineering (including phishing), brute-force attacks, denial of service, data interception and theft, and SQL injection.",
+     "Some attack the technology; others attack the people using it."
+    ],
+    "challenge": "Which of the six forms of attack targets people rather than computers?",
+    "fact": "The six forms of attack are..."
+   },
+   {
+    "name": "What do attackers want?",
+    "bullets": [
+     "Money: ransoms, fraud and selling stolen data.",
+     "Data: personal details, passwords, company secrets.",
+     "Disruption: damaging a rival, making a political point, or simply showing off."
+    ],
+    "challenge": "Suggest two reasons someone might attack a school's network.",
+    "fact": "Attackers are usually after..."
+   },
+   {
+    "name": "CryptoLocker",
+    "bullets": [
+     "CryptoLocker was ransomware that appeared in 2013 and encrypted victims' files.",
+     "Victims were told to pay a ransom in Bitcoin to get their files back.",
+     "It spread through infected email attachments and a botnet."
+    ],
+    "challenge": "Answer the starter questions about CryptoLocker.",
+    "fact": "CryptoLocker was..."
+   },
+   {
+    "name": "Operation Tovar",
+    "bullets": [
+     "In 2014, police forces and security companies from several countries worked together to take down the botnet behind CryptoLocker.",
+     "The operation was called Operation Tovar.",
+     "The FBI offered a reward of up to $3 million for information leading to the arrest of Evgeniy Bogachev, who has never been caught."
+    ],
+    "challenge": "Why do cybercrime investigations need international cooperation?",
+    "fact": "Operation Tovar was..."
+   },
+   {
+    "name": "How much damage?",
+    "bullets": [
+     "CryptoLocker is estimated to have extorted around $3 million from victims before it was shut down.",
+     "The cost of an attack isn't only the ransom: there's downtime, lost data, recovery and damage to reputation.",
+     "Organisations can also be fined if they fail to protect personal data."
+    ],
+    "challenge": "List four costs to a school if its network were attacked.",
+    "fact": "The costs of an attack include..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: name that attack",
+   "intro": "Eight incidents have been reported to the security team. Tap the star and sort each one into the form of attack it describes."
+  },
+  "info": [
+   {
+    "title": "White hats and black hats",
+    "text": "Attackers who break in illegally are called black hats. White hats do the same thing with permission, to help organisations find weaknesses before criminals do."
+   },
+   {
+    "title": "Attacks per day",
+    "text": "Large organisations see thousands of attempted attacks every day. Most are automated programs scanning for weaknesses, not people."
+   },
+   {
+    "title": "Hacktivism",
+    "text": "Some attacks are political: groups attack organisations they disagree with to make a point. This is called hacktivism."
+   },
+   {
+    "title": "Paying doesn't help",
+    "text": "Police advise against paying ransoms: it funds more crime and the files often stay locked. Good backups are a far better defence."
+   },
+   {
+    "title": "Still wanted",
+    "text": "Evgeniy Bogachev is still on the FBI's most wanted cyber list, with a reward of up to $3 million."
+   },
+   {
+    "title": "The law",
+    "text": "In the UK, the Computer Misuse Act 1990 makes unauthorised access to a computer system a crime, even if nothing is damaged."
+   }
+  ],
+  "exam": [
+   {
+    "q": "Name two forms of attack that target people rather than software.",
+    "marks": 2
+   },
+   {
+    "q": "Explain why most criminal cyberattacks happen.",
+    "marks": 2
+   },
+   {
+    "q": "A small business is hit by ransomware. Describe three costs it will face beyond the ransom itself.",
+    "marks": 6
+   }
+  ],
+  "confidence": [
+   "The six forms of attack",
+   "Why attackers attack",
+   "The costs of a successful attack"
+  ],
+  "wsfile": "NS_L01_ThreatMap_Worksheet.docx"
+ },
+ {
+  "id": "ns-l02",
+  "lesson": 2,
+  "title": "Malware lab",
+  "topic": "1.4",
+  "kicker": "1.4 Network security  |  Lesson 2",
+  "subtitle": "OCR J277 Paper 1  |  Computer systems",
+  "intro": "Malware is any software written to do harm. In the lab you'll meet each type, see how it spreads and what it does, and learn the defences that stop it.",
+  "keywords": [
+   "Malware",
+   "Virus",
+   "Worm",
+   "Trojan",
+   "Ransomware",
+   "Spyware",
+   "Anti-malware"
+  ],
+  "objectives": [
+   "understand the threats of various forms of malware",
+   "understand how to identify and protect against malware"
+  ],
+  "starter": "A school laptop suddenly runs slowly, shows pop-ups and its files have odd names. Suggest three things that might have happened to it.",
+  "keyq": "How do the different types of malware spread, and what damage do they do?",
+  "keyterms": [
+   "Virus",
+   "Ransomware"
+  ],
+  "stations": [
+   {
+    "name": "What is malware?",
+    "bullets": [
+     "Malware is short for malicious software: any program written to damage or gain access to a system.",
+     "It can delete or change files, steal data, spy on users or take control of a computer.",
+     "It spreads through downloads, attachments, websites and USB sticks."
+    ],
+    "challenge": "Write a definition of malware in your own words.",
+    "fact": "Malware is..."
+   },
+   {
+    "name": "Viruses",
+    "bullets": [
+     "A virus attaches itself to a file or program.",
+     "It needs the user to run that file before it can do anything.",
+     "Once running, it copies itself into other files and spreads when those files are shared."
+    ],
+    "challenge": "Why does a virus need a user to do something?",
+    "fact": "A virus..."
+   },
+   {
+    "name": "Worms",
+    "bullets": [
+     "A worm is self-replicating: it copies itself without any user action.",
+     "It spreads across networks by finding weaknesses in software.",
+     "Worms can spread extremely fast and use up bandwidth and processing time."
+    ],
+    "challenge": "Why can a worm spread faster than a virus?",
+    "fact": "A worm..."
+   },
+   {
+    "name": "Trojans",
+    "bullets": [
+     "A trojan is disguised as legitimate software, such as a free game or a useful tool.",
+     "The user installs it themselves, and it then does something harmful.",
+     "Trojans don't replicate, but they often open a backdoor for the attacker."
+    ],
+    "challenge": "Why is the trojan named after the wooden horse?",
+    "fact": "A trojan..."
+   },
+   {
+    "name": "Ransomware and spyware",
+    "bullets": [
+     "Ransomware encrypts the user's files and demands a payment for the key.",
+     "Spyware secretly records what the user does, including keystrokes, and sends it to the attacker.",
+     "A keylogger is a common form of spyware used to capture passwords."
+    ],
+    "challenge": "Why are good backups the best defence against ransomware?",
+    "fact": "Ransomware... Spyware..."
+   },
+   {
+    "name": "Stopping malware",
+    "bullets": [
+     "Anti-malware software scans files and checks them against known threats.",
+     "Keep operating systems and applications patched and up to date.",
+     "Don't open unexpected attachments, and back up important files regularly.",
+     "Firewalls and user access levels limit what malware can reach."
+    ],
+    "challenge": "Suggest four things a school could do to reduce malware infections.",
+    "fact": "To protect against malware, you should..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: identify the malware",
+   "intro": "Eight infections have arrived in the lab. Tap the star and sort each description into the type of malware it describes."
+  },
+  "info": [
+   {
+    "title": "The first worm",
+    "text": "The Morris worm of 1988 was one of the first. It was meant as an experiment, but it slowed thousands of computers and led to the first conviction under a US computer crime law."
+   },
+   {
+    "title": "WannaCry",
+    "text": "In 2017, the WannaCry ransomware worm spread worldwide in hours and hit NHS hospitals, cancelling thousands of appointments. A patch already existed, but many systems hadn't installed it."
+   },
+   {
+    "title": "Signatures and behaviour",
+    "text": "Anti-malware spots known malware by its 'signature', and unknown malware by watching for suspicious behaviour, such as a program encrypting lots of files."
+   },
+   {
+    "title": "Sandbox",
+    "text": "Security researchers run suspected malware inside a sandbox: an isolated virtual machine where it can do no harm."
+   },
+   {
+    "title": "Not just PCs",
+    "text": "Phones, smart TVs and even fridges can be infected. Any device that runs software can run malicious software."
+   },
+   {
+    "title": "3-2-1 backups",
+    "text": "A common rule is 3 copies of your data, on 2 types of storage, with 1 kept off-site. Ransomware can't encrypt a backup that isn't connected."
+   }
+  ],
+  "exam": [
+   {
+    "q": "Name two types of malware and state what each one does.",
+    "marks": 4
+   },
+   {
+    "q": "Explain why a worm can spread through a network faster than a virus.",
+    "marks": 3
+   },
+   {
+    "q": "Describe three measures a school could take to reduce malware infections.",
+    "marks": 6
+   }
+  ],
+  "confidence": [
+   "What malware is",
+   "Viruses, worms, trojans, ransomware and spyware",
+   "Protecting against malware"
+  ],
+  "wsfile": "NS_L02_MalwareLab_Worksheet.docx"
+ },
+ {
+  "id": "ns-l03",
+  "lesson": 3,
+  "title": "Database break-in",
+  "topic": "1.4",
+  "kicker": "1.4 Network security  |  Lesson 3",
+  "subtitle": "OCR J277 Paper 1  |  Computer systems",
+  "intro": "A login box is just a text box, and a text box can accept anything, including code. Find out how SQL injection works, what it lets attackers do, and how to shut it down.",
+  "keywords": [
+   "SQL",
+   "Database",
+   "Injection",
+   "Concatenation",
+   "Validation",
+   "Sanitisation"
+  ],
+  "objectives": [
+   "understand the concept of SQL injection",
+   "understand how to protect against SQL injection"
+  ],
+  "starter": "A website login box passes whatever you type straight into a database query. Suggest what could go wrong, and who might take advantage of it.",
+  "keyq": "How does an SQL injection attack work, and how can it be prevented?",
+  "keyterms": [
+   "SQL injection",
+   "Input validation"
+  ],
+  "stations": [
+   {
+    "name": "Databases and SQL",
+    "bullets": [
+     "Websites store usernames, passwords and records in a database.",
+     "SQL (Structured Query Language) is used to ask the database for records, and to add, change or delete them.",
+     "SELECT * FROM users WHERE name = 'Sam' asks for Sam's record."
+    ],
+    "challenge": "Write in your own words what SQL is used for.",
+    "fact": "SQL is used to..."
+   },
+   {
+    "name": "The dangerous line",
+    "bullets": [
+     "The code in your starter joins the user's input onto the query as text.",
+     "Joining a string to a variable like this is called concatenation.",
+     "Whatever the user types becomes part of the SQL command."
+    ],
+    "challenge": "Which line of the starter code is the dangerous one, and why?",
+    "fact": "The problem with the code is..."
+   },
+   {
+    "name": "The attack",
+    "bullets": [
+     "An attacker types SQL into the text box instead of a username.",
+     "Entering ' OR 1=1 -- makes the condition always true and comments out the rest.",
+     "The database returns every record, and the attacker is logged in."
+    ],
+    "challenge": "Explain how typing ' OR 1=1 -- into a login box can work.",
+    "fact": "An SQL injection attack works by..."
+   },
+   {
+    "name": "What attackers gain",
+    "bullets": [
+     "Log in as another user, including an administrator.",
+     "Read every record: names, emails, passwords and card details.",
+     "Change or delete records, or even destroy whole tables."
+    ],
+    "challenge": "What could an attacker do with a school's student database?",
+    "fact": "A successful SQL injection lets an attacker..."
+   },
+   {
+    "name": "Stopping injection",
+    "bullets": [
+     "Validate input: check it matches what's expected, such as letters and numbers only.",
+     "Sanitise input: remove or escape dangerous characters like quotation marks.",
+     "Use parameterised queries, which keep the user's input separate from the SQL command.",
+     "Give the website's database account only the permissions it needs."
+    ],
+    "challenge": "Which defence is the strongest, and why?",
+    "fact": "SQL injection can be prevented by..."
+   },
+   {
+    "name": "Testing for holes",
+    "bullets": [
+     "Penetration testers deliberately try injection attacks to find weaknesses.",
+     "Detailed error messages help attackers, so live sites should hide them.",
+     "Old, unpatched website software is a common way in."
+    ],
+    "challenge": "Why should a live website never show detailed database errors?",
+    "fact": "To find weaknesses, organisations..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: secure the login",
+   "intro": "The security team is reviewing a login page. Tap the star and sort each practice into safe or risky."
+  },
+  "info": [
+   {
+    "title": "Little Bobby Tables",
+    "text": "A famous web comic shows a pupil named 'Robert'); DROP TABLE Students;--' whose name deletes a school's database. It's a joke, but the attack is real."
+   },
+   {
+    "title": "Still in the top ten",
+    "text": "Injection attacks have been in the OWASP list of the ten most serious web security risks for over 20 years."
+   },
+   {
+    "title": "TalkTalk",
+    "text": "In 2015, a UK telecoms company was fined £400,000 after an SQL injection attack exposed the details of around 157,000 customers."
+   },
+   {
+    "title": "It's not just logins",
+    "text": "Search boxes, contact forms and even web addresses can all be injection points if the input isn't handled safely."
+   },
+   {
+    "title": "Hashing passwords",
+    "text": "Even if attackers steal a database, properly hashed passwords are extremely hard to reverse. Storing plain-text passwords is a serious mistake."
+   },
+   {
+    "title": "Automated scanners",
+    "text": "Attackers use automated tools that test thousands of sites for injection flaws, so even small websites are targets."
+   }
+  ],
+  "exam": [
+   {
+    "q": "Describe what happens during an SQL injection attack.",
+    "marks": 3
+   },
+   {
+    "q": "Explain two techniques a programmer can use to prevent SQL injection.",
+    "marks": 4
+   }
+  ],
+  "confidence": [
+   "What SQL injection is",
+   "How the attack works",
+   "How to protect against it"
+  ],
+  "wsfile": "NS_L03_DatabaseBreakIn_Worksheet.docx"
+ },
+ {
+  "id": "ns-l04",
+  "lesson": 4,
+  "title": "Phishing inbox",
+  "topic": "1.4",
+  "kicker": "1.4 Network security  |  Lesson 4",
+  "subtitle": "OCR J277 Paper 1  |  Computer systems",
+  "intro": "Phishing doesn't attack the computer: it attacks you. Work through an inbox of suspicious messages and learn the signs that give a phishing attempt away.",
+  "keywords": [
+   "Phishing",
+   "Social engineering",
+   "Spoofing",
+   "Link",
+   "Attachment",
+   "Urgency"
+  ],
+  "objectives": [
+   "understand what phishing is",
+   "understand how to identify and protect against phishing"
+  ],
+  "starter": "Think of a message you have received that looked suspicious. What made you doubt it? If you have never had one, describe what you would look for.",
+  "keyq": "How can you recognise a phishing message, and what should you do about it?",
+  "keyterms": [
+   "Phishing",
+   "Social engineering"
+  ],
+  "stations": [
+   {
+    "name": "What is phishing?",
+    "bullets": [
+     "An online fraud technique: fake messages designed to trick people into giving away personal information.",
+     "The message pretends to come from a trustworthy organisation, such as a bank or a school.",
+     "It's a form of social engineering: it targets people, not software."
+    ],
+    "challenge": "Write the exam definition of phishing in your own words.",
+    "fact": "Phishing is..."
+   },
+   {
+    "name": "What attackers gain",
+    "bullets": [
+     "Usernames and passwords, which open email, banking and school accounts.",
+     "Bank and card details, used for fraud or sold on.",
+     "A way into an organisation's network, by stealing a staff login."
+    ],
+    "challenge": "What could an attacker do with a teacher's school password?",
+    "fact": "A successful phish gives the attacker..."
+   },
+   {
+    "name": "Spot the signs",
+    "bullets": [
+     "Check the sender's address, not just the display name.",
+     "Look for urgency or threats: 'act now or your account will be closed'.",
+     "Generic greetings, spelling mistakes and odd formatting are clues.",
+     "Unexpected attachments or links asking you to log in."
+    ],
+    "challenge": "List four signs that an email might be phishing.",
+    "fact": "Signs of a phishing message include..."
+   },
+   {
+    "name": "Check the link",
+    "bullets": [
+     "Hover over a link to see where it really goes.",
+     "Attackers use lookalike addresses, such as barclays-secure-login.com.",
+     "A padlock only means the connection is encrypted; it doesn't mean the site is honest."
+    ],
+    "challenge": "Which of the addresses on the wall is genuine, and how can you tell?",
+    "fact": "To check a link, you should..."
+   },
+   {
+    "name": "Targeted phishing",
+    "bullets": [
+     "Spear phishing targets one person, using details about them to look convincing.",
+     "Whaling targets senior staff, such as a head teacher or finance director.",
+     "Smishing uses text messages and vishing uses phone calls."
+    ],
+    "challenge": "Why is spear phishing more likely to succeed than a mass email?",
+    "fact": "Targeted phishing includes..."
+   },
+   {
+    "name": "What to do",
+    "bullets": [
+     "Don't click links or open attachments in suspicious messages.",
+     "Check with the organisation using a number or address you already know.",
+     "Report it: to the teacher, the IT team, or a national reporting service.",
+     "If you did click, change your password straight away and tell someone."
+    ],
+    "challenge": "Write the three steps you would take if you thought you had been phished.",
+    "fact": "If a message looks like phishing, you should..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: phish or safe?",
+   "intro": "Eight messages are waiting in the inbox. Tap the star and sort each one: is it a phishing sign, or normal?"
+  },
+  "info": [
+   {
+    "title": "Where the name comes from",
+    "text": "'Phishing' is a play on 'fishing': attackers cast out bait and wait to see who bites. The 'ph' comes from 'phreaking', an old form of phone hacking."
+   },
+   {
+    "title": "Millions a day",
+    "text": "Billions of phishing emails are sent every day. Even a success rate far below 1% makes it worth the attackers' time."
+   },
+   {
+    "title": "Report it",
+    "text": "In the UK, suspicious emails can be forwarded to report@phishing.gov.uk, and suspicious texts to 7726."
+   },
+   {
+    "title": "Clever fakes",
+    "text": "Attackers register domains that look almost identical to real ones, sometimes using letters from other alphabets that look the same."
+   },
+   {
+    "title": "Two-factor helps",
+    "text": "Even if a password is phished, a second factor, such as a code on your phone, usually stops the attacker getting in."
+   },
+   {
+    "title": "Simulated phishing",
+    "text": "Many organisations send their own fake phishing emails to staff as training, then offer extra help to anyone who clicks."
+   }
+  ],
+  "exam": [
+   {
+    "q": "Describe what phishing is and what the attacker is trying to obtain.",
+    "marks": 3
+   },
+   {
+    "q": "Give two features of a message that suggest it is phishing.",
+    "marks": 2
+   },
+   {
+    "q": "Explain two measures an organisation can take to reduce the risk of staff being phished.",
+    "marks": 4
+   }
+  ],
+  "confidence": [
+   "What phishing is",
+   "What attackers gain",
+   "Spotting and reporting phishing"
+  ],
+  "wsfile": "NS_L04_PhishingInbox_Worksheet.docx"
+ },
+ {
+  "id": "ns-l05",
+  "lesson": 5,
+  "title": "Social engineering HQ",
+  "topic": "1.4",
+  "kicker": "1.4 Network security  |  Lesson 5",
+  "subtitle": "OCR J277 Paper 1  |  Computer systems",
+  "intro": "Why break the security when you can just ask someone to open the door? This is social engineering: the techniques attackers use on people, and the habits that make it easy for them.",
+  "keywords": [
+   "Social engineering",
+   "Blagging",
+   "Shouldering",
+   "Baiting",
+   "Weak point",
+   "Policy"
+  ],
+  "objectives": [
+   "understand what phishing is",
+   "understand how to identify and protect against phishing",
+   "understand the ways people are a weak point"
+  ],
+  "starter": "What do we mean by people as a weak point in a secure system?",
+  "keyq": "What does a phishing attack set out to achieve?",
+  "keyterms": [
+   "Blagging",
+   "Shouldering"
+  ],
+  "stations": [
+   {
+    "name": "People as a weak point",
+    "bullets": [
+     "Human actions cause many security problems: not installing updates, not locking doors, not logging off.",
+     "Passwords written on sticky notes, or shared with a friend.",
+     "Printouts with personal data left lying around, and attachments opened without thinking."
+    ],
+    "challenge": "List five ways people at your school could accidentally weaken security.",
+    "fact": "People are a weak point because..."
+   },
+   {
+    "name": "Blagging",
+    "bullets": [
+     "Blagging, also called pretexting, means inventing a story to get information.",
+     "For example, phoning the IT desk pretending to be a head teacher locked out of an account.",
+     "Attackers research their target first so the story sounds real."
+    ],
+    "challenge": "Write a blagging script an attacker might use on a school receptionist. How should staff respond?",
+    "fact": "Blagging is..."
+   },
+   {
+    "name": "Shouldering and tailgating",
+    "bullets": [
+     "Shouldering, or shoulder surfing, means watching someone enter a password or PIN.",
+     "Tailgating means following an authorised person through a secure door.",
+     "Both rely on people being polite or not paying attention."
+    ],
+    "challenge": "How could a school reduce shouldering at its computers?",
+    "fact": "Shouldering is... Tailgating is..."
+   },
+   {
+    "name": "Baiting",
+    "bullets": [
+     "Baiting leaves something tempting for the victim to pick up, such as a USB stick labelled 'Payroll'.",
+     "When it's plugged in, malware installs itself.",
+     "Online baiting offers free downloads, prizes or games."
+    ],
+    "challenge": "Why should you never plug in a USB stick you found?",
+    "fact": "Baiting is..."
+   },
+   {
+    "name": "Phishing, vishing and smishing",
+    "bullets": [
+     "Phishing by email, vishing by phone call, smishing by text message.",
+     "All three use the same trick: pretend to be trusted, then create urgency.",
+     "Recorded messages and spoofed caller IDs make vishing convincing."
+    ],
+    "challenge": "How is vishing different from blagging?",
+    "fact": "Phishing, vishing and smishing are..."
+   },
+   {
+    "name": "Turning people into a strength",
+    "bullets": [
+     "Training staff and students to recognise attacks.",
+     "Clear policies: never share passwords, always lock screens, challenge strangers.",
+     "Two-factor authentication, so a stolen password isn't enough.",
+     "An acceptable use policy that everyone agrees to."
+    ],
+    "challenge": "Write three rules you'd put in a school's acceptable use policy.",
+    "fact": "To stop social engineering, organisations..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: name the technique",
+   "intro": "Eight incidents from around the school. Tap the star and sort each one into the social engineering technique it describes."
+  },
+  "info": [
+   {
+    "title": "The famous social engineer",
+    "text": "Kevin Mitnick, once the FBI's most wanted hacker, said he got most of his access by simply asking people, rather than by breaking software."
+   },
+   {
+    "title": "USB drops work",
+    "text": "In one study, researchers dropped USB sticks around a university car park. Around half were picked up and plugged into a computer."
+   },
+   {
+    "title": "Politeness is a weakness",
+    "text": "Holding a door open is polite, but it also defeats an expensive door lock. Good security training tells staff it's fine to ask for a pass."
+   },
+   {
+    "title": "Caller ID lies",
+    "text": "Phone numbers can be spoofed, so a call that appears to come from your bank may not. Hang up and call back on a number you know."
+   },
+   {
+    "title": "Screen privacy",
+    "text": "Privacy filters make a screen look black from the side, which makes shouldering much harder in public places."
+   },
+   {
+    "title": "Clean desk",
+    "text": "Many organisations have a clean-desk policy: no printouts or notes left out when you leave, so nothing sensitive is on show."
+   }
+  ],
+  "exam": [
+   {
+    "q": "Explain, with examples, why people are often the easiest way into a secure system.",
+    "marks": 8
+   },
+   {
+    "q": "Describe two measures that reduce the risk of social engineering.",
+    "marks": 4
+   }
+  ],
+  "confidence": [
+   "Ways people are a weak point",
+   "Blagging, shouldering and baiting",
+   "Protecting against social engineering"
+  ],
+  "wsfile": "NS_L05_SocialEngineeringHQ_Worksheet.docx"
+ },
+ {
+  "id": "ns-l06",
+  "lesson": 6,
+  "title": "Cracking lab",
+  "topic": "1.4",
+  "kicker": "1.4 Network security  |  Lesson 6",
+  "subtitle": "OCR J277 Paper 1  |  Computer systems",
+  "intro": "A brute-force attack simply tries passwords until one works. In the cracking lab you'll see how fast that is, what makes a password strong, and how a login page fights back.",
+  "keywords": [
+   "Brute force",
+   "Dictionary attack",
+   "Password",
+   "Lockout",
+   "Two-factor",
+   "Hashing"
+  ],
+  "objectives": [
+   "understand what a brute-force attack is",
+   "understand how to identify and protect against brute-force attacks"
+  ],
+  "starter": "Estimate how many guesses a computer would need to find a 4-digit PIN, then a 6-letter lower-case password. What does that tell you about password length?",
+  "keyq": "How does a brute-force attack work?",
+  "keyterms": [
+   "Brute-force attack",
+   "Password"
+  ],
+  "stations": [
+   {
+    "name": "What is a brute-force attack?",
+    "bullets": [
+     "Software tries every possible combination of characters until it finds the password.",
+     "No clever trick is needed: just speed, and modern computers are very fast.",
+     "It's often automated and aimed at thousands of accounts at once."
+    ],
+    "challenge": "Why is a brute-force attack described as 'trial and error'?",
+    "fact": "A brute-force attack is..."
+   },
+   {
+    "name": "Dictionary attacks",
+    "bullets": [
+     "A dictionary attack tries lists of common passwords and real words first.",
+     "Lists from previous data breaches are used, because people reuse passwords.",
+     "'password', '123456' and 'qwerty' are tried within the first second."
+    ],
+    "challenge": "Why is 'Liverpool2015' a weaker password than it looks?",
+    "fact": "A dictionary attack works by..."
+   },
+   {
+    "name": "How long would it take?",
+    "bullets": [
+     "Each extra character multiplies the number of possible passwords.",
+     "Using upper case, numbers and symbols increases the choices per character.",
+     "A short password can fall in seconds; a long passphrase could take centuries."
+    ],
+    "challenge": "Use the starter site to test a password you don't use. How could you improve it?",
+    "fact": "Password strength depends on..."
+   },
+   {
+    "name": "Password policies",
+    "bullets": [
+     "Organisations set rules: a minimum length, a mix of character types, and no reuse.",
+     "Passphrases of three random words are long, strong and memorable.",
+     "Password managers create and store a different strong password for every site."
+    ],
+    "challenge": "Write three rules for a school password policy, and explain each.",
+    "fact": "A good password policy says..."
+   },
+   {
+    "name": "Fighting back",
+    "bullets": [
+     "Account lockouts: after a few failed attempts the account is locked or delayed.",
+     "CAPTCHA tests block automated software.",
+     "Two-factor authentication means a stolen password isn't enough.",
+     "Rate limiting slows down repeated attempts from the same source."
+    ],
+    "challenge": "Why does a delay of a few seconds after a failed login make brute force much harder?",
+    "fact": "Login pages defend against brute force by..."
+   },
+   {
+    "name": "Behind the scenes",
+    "bullets": [
+     "Websites should store a hash of your password, not the password itself.",
+     "Hashing is one-way: you can check a password, but not work it out from the hash.",
+     "A 'salt' adds random data so identical passwords have different hashes."
+    ],
+    "challenge": "Why is it serious if a website stores passwords as plain text?",
+    "fact": "Websites should store passwords by..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: password strength",
+   "intro": "Six passwords have been submitted to the security team. Tap the star and put them in order, weakest first."
+  },
+  "info": [
+   {
+    "title": "Billions per second",
+    "text": "A powerful computer with graphics cards can test billions of password guesses per second against a stolen list of hashes."
+   },
+   {
+    "title": "The top password",
+    "text": "Lists of leaked passwords are still topped by '123456'. It's usually the first guess an attacker makes."
+   },
+   {
+    "title": "Have I been pwned",
+    "text": "Free services let you check whether your email address has appeared in a known data breach, so you know which passwords to change."
+   },
+   {
+    "title": "Three random words",
+    "text": "The UK's National Cyber Security Centre recommends three random words as a password: long, strong and easy to remember."
+   },
+   {
+    "title": "Rainbow tables",
+    "text": "Attackers precompute huge tables of hashes to look up stolen ones instantly. Adding a random 'salt' to each password defeats this."
+   },
+   {
+    "title": "Not just logins",
+    "text": "Wi-Fi passwords, phone PINs and even bike locks can be brute-forced. A four-digit PIN has only 10,000 combinations."
+   }
+  ],
+  "exam": [
+   {
+    "q": "Describe how a brute-force attack works.",
+    "marks": 2
+   },
+   {
+    "q": "Explain two measures a website can use to make brute-force attacks impractical.",
+    "marks": 4
+   },
+   {
+    "q": "Explain why a long passphrase is harder to crack than a short complex password.",
+    "marks": 3
+   }
+  ],
+  "confidence": [
+   "What a brute-force attack is",
+   "What makes a password strong",
+   "How login pages defend against brute force"
+  ],
+  "wsfile": "NS_L06_CrackingLab_Worksheet.docx"
+ },
+ {
+  "id": "ns-l07",
+  "lesson": 7,
+  "title": "Traffic flood",
+  "topic": "1.4",
+  "kicker": "1.4 Network security  |  Lesson 7",
+  "subtitle": "OCR J277 Paper 1  |  Computer systems",
+  "intro": "A denial-of-service attack doesn't steal anything: it stops a service working at all. Find out how one computer, or a million, can take a website offline, and what defenders can do.",
+  "keywords": [
+   "Denial of service",
+   "DDoS",
+   "Botnet",
+   "Zombie",
+   "Bandwidth",
+   "Downtime"
+  ],
+  "objectives": [
+   "understand what a denial-of-service attack is",
+   "understand how to identify and protect against denial-of-service attacks"
+  ],
+  "starter": "An online shop is unreachable for a whole Saturday. List everything that costs the company while the site is down.",
+  "keyq": "How does a denial-of-service attack work, and how can it be defended against?",
+  "keyterms": [
+   "Denial of service",
+   "Botnet"
+  ],
+  "stations": [
+   {
+    "name": "Denial of service",
+    "bullets": [
+     "A denial-of-service (DoS) attack floods a server with requests so it can't respond to real users.",
+     "Nothing is stolen: the aim is disruption.",
+     "The service slows down or goes offline completely."
+    ],
+    "challenge": "What does a DoS attack set out to achieve?",
+    "fact": "A denial-of-service attack..."
+   },
+   {
+    "name": "DDoS and botnets",
+    "bullets": [
+     "A distributed denial-of-service (DDoS) attack uses many computers at once.",
+     "Infected computers under an attacker's control are called zombies, and the network of them is a botnet.",
+     "The owners usually have no idea their device is taking part."
+    ],
+    "challenge": "Why is a DDoS attack harder to block than a DoS attack?",
+    "fact": "A DDoS attack uses..."
+   },
+   {
+    "name": "21 October 2016",
+    "bullets": [
+     "A huge DDoS attack hit Dyn, a company that runs DNS servers for much of the internet.",
+     "Netflix, Twitter, Spotify, Reddit, PayPal and many news sites became unreachable.",
+     "The Mirai botnet was made of hacked smart devices, such as cameras and routers, using default passwords."
+    ],
+    "challenge": "Why did taking down one company affect so many websites?",
+    "fact": "In the 2016 attack..."
+   },
+   {
+    "name": "Effects",
+    "bullets": [
+     "Customers can't reach the service, so sales and trust are lost.",
+     "Staff can't work if internal systems are affected.",
+     "Sometimes a DDoS is a smokescreen while another attack happens elsewhere."
+    ],
+    "challenge": "List three effects of a week-long DDoS attack on an online shop.",
+    "fact": "The effects of a DoS attack are..."
+   },
+   {
+    "name": "Defending the server",
+    "bullets": [
+     "Firewalls and filters can block suspicious traffic patterns.",
+     "Rate limiting caps how many requests one source can make.",
+     "Extra capacity and traffic-spreading services absorb large floods.",
+     "Intrusion detection systems and monitoring spot attacks early."
+    ],
+    "challenge": "Which defence would you buy first for a small online shop, and why?",
+    "fact": "To defend against DoS attacks, organisations..."
+   },
+   {
+    "name": "Watching the attacks",
+    "bullets": [
+     "Attack maps show DDoS traffic around the world in near real time.",
+     "Monitoring normal traffic makes unusual spikes obvious.",
+     "Many attacks are bought as a service for a few pounds, which is illegal."
+    ],
+    "challenge": "Discuss what the digital attack map shows and what patterns you notice.",
+    "fact": "Attacks can be detected by..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: the anatomy of a DDoS",
+   "intro": "Put the stages of a DDoS attack in the right order, from the attacker's first move to the website going offline."
+  },
+  "info": [
+   {
+    "title": "It's not always an attack",
+    "text": "A sudden rush of genuine visitors, such as tickets going on sale, can knock a site over too. That's sometimes called the 'hug of death'."
+   },
+   {
+    "title": "Mirai's source code",
+    "text": "The code behind the Mirai botnet was published online, so copies of it are still scanning the internet for weak devices today."
+   },
+   {
+    "title": "Attack sizes",
+    "text": "The largest recorded DDoS attacks have exceeded the capacity of entire countries' internet connections, measured in terabits per second."
+   },
+   {
+    "title": "Smart devices",
+    "text": "Your fridge, doorbell or camera can join a botnet. Change default passwords and install updates on anything you connect to the internet."
+   },
+   {
+    "title": "Absorbing floods",
+    "text": "Large providers protect customers by spreading traffic across many data centres, so no single server has to take the whole flood."
+   },
+   {
+    "title": "Ransom DDoS",
+    "text": "Some criminals threaten a DDoS attack unless a company pays. Police advise reporting it and not paying."
+   }
+  ],
+  "exam": [
+   {
+    "q": "Describe what a denial-of-service attack does to a service.",
+    "marks": 2
+   },
+   {
+    "q": "Explain why an attack from a botnet is harder to block than one from a single computer.",
+    "marks": 3
+   },
+   {
+    "q": "Describe two measures that reduce the impact of a DDoS attack on a website.",
+    "marks": 4
+   }
+  ],
+  "confidence": [
+   "What a denial-of-service attack is",
+   "Botnets and zombies",
+   "Defending against DDoS attacks"
+  ],
+  "wsfile": "NS_L07_TrafficFlood_Worksheet.docx"
+ },
+ {
+  "id": "ns-l08",
+  "lesson": 8,
+  "title": "Packet sniffers",
+  "topic": "1.4",
+  "kicker": "1.4 Network security  |  Lesson 8",
+  "subtitle": "OCR J277 Paper 1  |  Computer systems",
+  "intro": "Every message you send crosses networks you don't control. Find out how attackers capture data in transit, what they can do with it, and why encryption is the answer.",
+  "keywords": [
+   "Interception",
+   "Packet sniffing",
+   "Encryption",
+   "Man in the middle",
+   "VPN",
+   "HTTPS"
+  ],
+  "objectives": [
+   "understand the threat that data interception and theft poses",
+   "understand how to identify and protect against data interception"
+  ],
+  "starter": "You are working on a train and open your email over the free Wi-Fi. List everything that could go wrong, and what would prevent each one.",
+  "keyq": "How is data captured in transit, and how can it be protected?",
+  "keyterms": [
+   "Data interception",
+   "Encryption"
+  ],
+  "stations": [
+   {
+    "name": "Data interception and theft",
+    "bullets": [
+     "Data is captured as it travels across a network, without the sender or receiver knowing.",
+     "Attackers can also steal data at rest: from a stolen laptop, USB stick or printout.",
+     "The aim is usually personal details, passwords or company secrets."
+    ],
+    "challenge": "Write a definition of data interception and theft.",
+    "fact": "Data interception and theft is..."
+   },
+   {
+    "name": "Packet sniffing",
+    "bullets": [
+     "Packet sniffer software captures the packets travelling on a network.",
+     "Network managers use it legitimately to find faults; attackers use the same tools to steal data.",
+     "Unsecured or public Wi-Fi makes sniffing much easier."
+    ],
+    "challenge": "Name a piece of software or hardware used for packet sniffing.",
+    "fact": "Packet sniffing means..."
+   },
+   {
+    "name": "Man in the middle",
+    "bullets": [
+     "The attacker sits between you and the service, passing messages on.",
+     "Both sides think they're talking directly to each other.",
+     "A fake Wi-Fi hotspot, such as 'Free Airport WiFi', is a common trick."
+    ],
+    "challenge": "Why is a fake hotspot so effective?",
+    "fact": "A man-in-the-middle attack is..."
+   },
+   {
+    "name": "What attackers gain",
+    "bullets": [
+     "Usernames and passwords typed into unencrypted sites.",
+     "Bank details, private messages and company documents.",
+     "Enough personal information to commit identity fraud."
+    ],
+    "challenge": "What could someone do with an intercepted school login?",
+    "fact": "Intercepted data can be used to..."
+   },
+   {
+    "name": "Encryption is the answer",
+    "bullets": [
+     "Encryption scrambles data so intercepted packets are useless without the key.",
+     "HTTPS encrypts traffic between a browser and a website; WPA2 encrypts Wi-Fi.",
+     "A VPN encrypts everything between your device and a trusted server."
+    ],
+    "challenge": "Why does encryption not stop interception, but still protect you?",
+    "fact": "Encryption protects data by..."
+   },
+   {
+    "name": "Other protections",
+    "bullets": [
+     "Don't send sensitive data over open Wi-Fi; use mobile data or a VPN.",
+     "Log off, lock screens and shred printouts.",
+     "Physical security: locked server rooms and cabinets.",
+     "Access levels mean a stolen login only reaches part of the data."
+    ],
+    "challenge": "List five things a company could do to reduce data interception and theft.",
+    "fact": "To protect against interception and theft, organisations..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: safe or risky?",
+   "intro": "Eight habits from around the office. Tap the star and sort each one into safe or risky for data interception and theft."
+  },
+  "info": [
+   {
+    "title": "Wireshark",
+    "text": "Wireshark is a free packet sniffer used by network managers worldwide. The same tool in the wrong hands is an attacker's dream."
+   },
+   {
+    "title": "HTTPS everywhere",
+    "text": "Most websites now use HTTPS by default, which is why intercepting browsing is far less useful than it once was."
+   },
+   {
+    "title": "Evil twin",
+    "text": "A fake hotspot with the same name as a real one is called an evil twin. Phones may join it automatically."
+   },
+   {
+    "title": "Data protection law",
+    "text": "UK law requires organisations to protect personal data. Serious breaches can lead to very large fines."
+   },
+   {
+    "title": "Shoulder to shoulder",
+    "text": "Interception isn't always technical: reading a screen on a train, or a document on a printer, works too."
+   },
+   {
+    "title": "Encrypted devices",
+    "text": "Modern phones and laptops encrypt their storage, so a stolen device doesn't hand over its data."
+   }
+  ],
+  "exam": [
+   {
+    "q": "Describe how data can be intercepted as it travels across a network.",
+    "marks": 2
+   },
+   {
+    "q": "Explain why encryption makes intercepted data useless to an attacker.",
+    "marks": 3
+   },
+   {
+    "q": "Describe two further measures that reduce the risk of data theft in an office.",
+    "marks": 4
+   }
+  ],
+  "confidence": [
+   "What data interception and theft is",
+   "How packet sniffing works",
+   "Protecting data in transit"
+  ],
+  "wsfile": "NS_L08_PacketSniffers_Worksheet.docx"
+ },
+ {
+  "id": "ns-l09",
+  "lesson": 9,
+  "title": "Defence depot",
+  "topic": "1.4",
+  "kicker": "1.4 Network security  |  Lesson 9",
+  "subtitle": "OCR J277 Paper 1  |  Computer systems",
+  "intro": "Now for the defences. In the first half of the depot you'll meet penetration testing, anti-malware software, firewalls and user access levels, and learn which attacks each one stops.",
+  "keywords": [
+   "Penetration testing",
+   "Anti-malware",
+   "Firewall",
+   "Access levels",
+   "Policy",
+   "Forensics"
+  ],
+  "objectives": [
+   "understand the ways people are a weak point in system security",
+   "know how penetration testing, anti-malware, firewalls and user access levels help against cyberattack"
+  ],
+  "starter": "Your school has £5,000 to spend on security. List what you would buy, in order, and say what each purchase protects against.",
+  "keyq": "Which protections stop which attacks, and why does no single one stop everything?",
+  "keyterms": [
+   "Penetration testing",
+   "Firewall"
+  ],
+  "stations": [
+   {
+    "name": "Penetration testing",
+    "bullets": [
+     "Evaluating the security of a system by safely trying to exploit its weaknesses.",
+     "It's done with the owner's permission, and the findings are reported so they can be fixed.",
+     "Testers act like attackers, including trying social engineering."
+    ],
+    "challenge": "Write the definition of penetration testing in your own words.",
+    "fact": "Penetration testing is..."
+   },
+   {
+    "name": "Anti-malware software",
+    "bullets": [
+     "Scans files and programs and compares them against known malware.",
+     "Watches for suspicious behaviour to catch new threats.",
+     "Must be kept up to date, because new malware appears daily.",
+     "Quarantines or removes anything it finds."
+    ],
+    "challenge": "Why does anti-malware need updating so often?",
+    "fact": "Anti-malware software..."
+   },
+   {
+    "name": "Firewalls",
+    "bullets": [
+     "A firewall controls the traffic entering and leaving a network.",
+     "It checks packets against a set of rules and blocks anything not allowed.",
+     "It can block suspicious ports, addresses and programs.",
+     "Firewalls can be hardware, software, or both."
+    ],
+    "challenge": "Explain the difference between a firewall and anti-malware software.",
+    "fact": "A firewall..."
+   },
+   {
+    "name": "User access levels",
+    "bullets": [
+     "Each user only gets access to what they need for their role.",
+     "Students, teachers and network managers have different rights.",
+     "If an account is compromised, the damage is limited to that user's access."
+    ],
+    "challenge": "Why shouldn't every teacher have network manager rights?",
+    "fact": "User access levels..."
+   },
+   {
+    "name": "Monitoring and policies",
+    "bullets": [
+     "Network forensics means watching network traffic to detect intrusions and collect evidence.",
+     "An acceptable use policy is the set of rules a user signs up to before being allowed on the network.",
+     "Logs record who did what and when."
+    ],
+    "challenge": "Write three rules from your school's acceptable use policy.",
+    "fact": "Network forensics is... An acceptable use policy is..."
+   },
+   {
+    "name": "Which defence?",
+    "bullets": [
+     "Match the defence to the threat: anti-malware for malware, firewalls for unwanted traffic.",
+     "Access levels limit the damage when an account is compromised.",
+     "Penetration testing finds the gaps before attackers do."
+    ],
+    "challenge": "Which defence would you buy first for a small business, and why?",
+    "fact": "To choose a defence, you should..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: defence definitions",
+   "intro": "Match each prevention method to what it does. These definitions come up in every exam series."
+  },
+  "info": [
+   {
+    "title": "Bug bounties",
+    "text": "Big companies pay 'bug bounties' to anyone who reports a security flaw responsibly. Some researchers earn a full-time living this way."
+   },
+   {
+    "title": "Red team, blue team",
+    "text": "In large organisations, a red team attacks and a blue team defends, so both sides practise against a real opponent."
+   },
+   {
+    "title": "Zero-day",
+    "text": "A 'zero-day' is a weakness nobody has patched yet. Anti-malware may miss it, which is why behaviour monitoring matters."
+   },
+   {
+    "title": "Two firewalls",
+    "text": "Many networks have a hardware firewall at the boundary and software firewalls on each computer, so one mistake isn't fatal."
+   },
+   {
+    "title": "Least privilege",
+    "text": "Giving everyone the minimum access they need is called the principle of least privilege. It's one of the oldest rules in security."
+   },
+   {
+    "title": "Logs matter",
+    "text": "After an incident, logs are what let investigators work out what happened, which accounts were used and what was taken."
+   }
+  ],
+  "exam": [
+   {
+    "q": "Describe what happens during a penetration test, and why organisations pay for one.",
+    "marks": 3
+   },
+   {
+    "q": "Explain how a firewall reduces the risk of unauthorised access.",
+    "marks": 3
+   },
+   {
+    "q": "Explain how user access levels limit the damage caused by a stolen password.",
+    "marks": 3
+   }
+  ],
+  "confidence": [
+   "Penetration testing",
+   "Anti-malware and firewalls",
+   "User access levels and policies"
+  ],
+  "wsfile": "NS_L09_DefenceDepot_Worksheet.docx"
+ },
+ {
+  "id": "ns-l10",
+  "lesson": 10,
+  "title": "Defence depot 2",
+  "topic": "1.4",
+  "kicker": "1.4 Network security  |  Lesson 10",
+  "subtitle": "OCR J277 Paper 1  |  Computer systems",
+  "intro": "The second half of the depot: passwords, encryption and physical security. Then the real skill: choosing the right defence for each threat, and layering them so one failure isn't a disaster.",
+  "keywords": [
+   "Password",
+   "Encryption",
+   "Physical security",
+   "Backups",
+   "Two-factor",
+   "Layers"
+  ],
+  "objectives": [
+   "know how passwords, encryption and physical security help against cyberattack",
+   "be able to choose suitable protections for a given threat"
+  ],
+  "starter": "A company has been hit by ransomware and lost a week of work. List the three changes you would insist on before it reopens.",
+  "keyq": "How can we protect ourselves against hackers?",
+  "keyterms": [
+   "Encryption",
+   "Physical security"
+  ],
+  "stations": [
+   {
+    "name": "Passwords",
+    "bullets": [
+     "Long passwords, ideally passphrases, with a mix of characters.",
+     "Different password for every account, never shared or written down.",
+     "Backed up by lockouts and two-factor authentication."
+    ],
+    "challenge": "Describe a situation where a password alone isn't enough.",
+    "fact": "Passwords protect systems by..."
+   },
+   {
+    "name": "Encryption",
+    "bullets": [
+     "Scrambles data so it can't be understood without the key.",
+     "Protects data in transit (HTTPS, WPA2, VPN) and at rest (encrypted drives).",
+     "It doesn't stop data being stolen: it makes stolen data useless."
+    ],
+    "challenge": "Give an example of when each type of encryption would be used.",
+    "fact": "Encryption protects..."
+   },
+   {
+    "name": "Physical security",
+    "bullets": [
+     "Locked doors, server cabinets and equipment cages.",
+     "Keycards, visitor passes, CCTV and staffed reception desks.",
+     "Locking screens, shredding printouts and secure disposal of old drives."
+    ],
+    "challenge": "Survey your classroom: what physical security can you see?",
+    "fact": "Physical security means..."
+   },
+   {
+    "name": "Backups and updates",
+    "bullets": [
+     "Regular backups mean ransomware doesn't have to be paid.",
+     "Keep at least one backup disconnected or off-site.",
+     "Patching software closes the weaknesses worms and attackers use."
+    ],
+    "challenge": "Explain why a backup stored on the same computer isn't much use.",
+    "fact": "Backups and updates help because..."
+   },
+   {
+    "name": "Match the defence",
+    "bullets": [
+     "Each threat has defences that work best against it.",
+     "Most real protection comes from combining several.",
+     "Your task: place each protection with the threat it stops."
+    ],
+    "challenge": "Complete the matching task on your worksheet.",
+    "fact": "The best defence for each threat is..."
+   },
+   {
+    "name": "Layers of defence",
+    "bullets": [
+     "No single protection stops everything, and any one can fail.",
+     "Layering means an attacker has to beat several defences in a row.",
+     "Technology, people and physical measures all matter."
+    ],
+    "challenge": "Describe three layers protecting a school's data, from the door to the database.",
+    "fact": "Layered security means..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: build the defences",
+   "intro": "Eight security measures are waiting to be installed. Tap the star and sort each one into the type of protection it is."
+  },
+  "info": [
+   {
+    "title": "Change it only when needed",
+    "text": "Modern advice is to stop forcing regular password changes: it pushes people towards weak, predictable patterns. Change passwords when there's a reason."
+   },
+   {
+    "title": "Encryption by default",
+    "text": "Messaging apps like WhatsApp and Signal use end-to-end encryption, so even the company running the service can't read the messages."
+   },
+   {
+    "title": "The cleaner test",
+    "text": "Security teams ask: could someone dressed as a cleaner walk in and plug something into a server? Often the answer used to be yes."
+   },
+   {
+    "title": "Test your backups",
+    "text": "A backup that has never been restored isn't a backup. Organisations practise restoring, so they know it works before they need it."
+   },
+   {
+    "title": "Patch Tuesday",
+    "text": "Microsoft releases security patches on the second Tuesday of each month. Attackers study them to work out what to exploit on unpatched systems."
+   },
+   {
+    "title": "Cheapest first",
+    "text": "Many of the strongest protections, like updates, backups, training and locking doors, cost very little compared with the damage they prevent."
+   }
+  ],
+  "exam": [
+   {
+    "q": "Explain how encryption protects data stored on a stolen laptop.",
+    "marks": 3
+   },
+   {
+    "q": "Give two examples of physical security and state what each one prevents.",
+    "marks": 4
+   },
+   {
+    "q": "A company has lost data to ransomware. Recommend three measures it should introduce, and justify each one.",
+    "marks": 6
+   }
+  ],
+  "confidence": [
+   "Passwords and encryption",
+   "Physical security",
+   "Choosing the right defence for a threat"
+  ],
+  "wsfile": "NS_L10_DefenceDepot2_Worksheet.docx"
+ }
+]

@@ -1,0 +1,544 @@
+[
+ {
+  "id": "ss-l01",
+  "lesson": 1,
+  "title": "Control room",
+  "topic": "1.5",
+  "kicker": "1.5 Systems software  |  Lesson 1",
+  "subtitle": "OCR J277 Paper 1  |  Computer systems",
+  "intro": "Nothing on a computer happens without the operating system. It hands out the processor, the memory and the files, and it decides how you talk to the machine in the first place. Every device you have ever used made that choice about you.",
+  "keywords": [
+   "Operating system",
+   "User interface"
+  ],
+  "objectives": [
+   "know the purpose and functionality of operating systems",
+   "know the different types of user interface and the features of each"
+  ],
+  "starter": "How many operating systems can you name? For each one, say what kind of device it runs on.",
+  "keyq": "What does an operating system do, and why does every computer need one?",
+  "keyterms": [
+   "Operating system",
+   "User interface"
+  ],
+  "stations": [
+   {
+    "name": "What is systems software?",
+    "bullets": [
+     "Software is split into two kinds: systems software and application software.",
+     "Systems software runs the computer itself: the operating system and utility programs.",
+     "Application software is what the user runs to do a job: a browser, a game, a word processor."
+    ],
+    "challenge": "Write your own definition of systems software, with two examples.",
+    "fact": "Systems software is..."
+   },
+   {
+    "name": "What the OS does",
+    "bullets": [
+     "It manages the processor, sharing it between programs.",
+     "It manages memory, deciding what is held where.",
+     "It manages files, users, and input and output devices.",
+     "It provides a user interface so people can work with the machine."
+    ],
+    "challenge": "List the five jobs an operating system does, in your own words.",
+    "fact": "An operating system manages..."
+   },
+   {
+    "name": "Graphical user interface",
+    "bullets": [
+     "A GUI uses windows, icons, menus and a pointer.",
+     "It is easy to learn, and needs no commands to be memorised.",
+     "It uses more memory and processing power than a text interface."
+    ],
+    "challenge": "Give one advantage and one disadvantage of a GUI.",
+    "fact": "A graphical user interface..."
+   },
+   {
+    "name": "Command line interface",
+    "bullets": [
+     "A CLI is text only: the user types commands.",
+     "It uses very little memory and processing power.",
+     "It is powerful and easy to automate with scripts, but commands must be learned."
+    ],
+    "challenge": "Give one situation where a CLI is a better choice than a GUI.",
+    "fact": "A command line interface..."
+   },
+   {
+    "name": "Menu driven and voice",
+    "bullets": [
+     "A menu driven interface offers a set of choices, one screen at a time: a cash machine, a ticket machine, an old MP3 player.",
+     "It is very easy to use, but slow, and you can only do what the menus allow.",
+     "A voice interface listens for spoken commands: useful hands free, and for users who can't use a screen, but it mishears and needs a quiet room."
+    ],
+    "challenge": "Choose an interface for a cash machine, a games console and a server, and justify each choice.",
+    "fact": "A menu driven interface... A voice interface..."
+   },
+   {
+    "name": "Choosing an interface",
+    "bullets": [
+     "Think about the user: their skill, their situation and what they need to do.",
+     "Think about the hardware: a device with no screen can't use a GUI.",
+     "Exam answers need the choice, the characteristic and the reason."
+    ],
+    "challenge": "Explain which interface you would choose for a self-service checkout, and why.",
+    "fact": "To choose an interface, you..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: pick the interface",
+   "intro": "Which interface suits each device best?"
+  },
+  "info": [
+   {
+    "title": "Where the name comes from",
+    "text": "Early computers ran one job at a time, loaded by hand. The first 'operating systems' were programs that loaded the next job automatically, so the operator didn't have to."
+   },
+   {
+    "title": "Bigger than you think",
+    "text": "A modern operating system is tens of millions of lines of code, and is being updated somewhere in the world every day."
+   },
+   {
+    "title": "Xerox first",
+    "text": "The windows, icons and pointer idea was developed at Xerox PARC in the 1970s, before either Apple or Microsoft shipped a graphical system."
+   },
+   {
+    "title": "The command line never died",
+    "text": "Most servers, cloud platforms and developer tools are still driven from a command line, because a typed command can be repeated exactly and stored in a script."
+   },
+   {
+    "title": "Interfaces for access",
+    "text": "Voice control, screen readers and switch devices are interfaces too. Choosing the right one can be the difference between a computer being usable or useless to someone."
+   },
+   {
+    "title": "Embedded systems",
+    "text": "The washing machine from topic 1.1 has an operating system too, but a tiny one, with a menu driven interface of dials and buttons."
+   }
+  ],
+  "exam": [
+   {
+    "q": "State what is meant by systems software, and give two examples.",
+    "marks": 3
+   },
+   {
+    "q": "Describe two jobs carried out by an operating system.",
+    "marks": 4
+   },
+   {
+    "q": "A museum is building an information point for visitors. Recommend a type of user interface and justify your choice.",
+    "marks": 4
+   }
+  ],
+  "confidence": [
+   "Systems and application software",
+   "What an operating system does",
+   "The four types of user interface"
+  ],
+  "wsfile": "SS_L01_ControlRoom_Worksheet.docx"
+ },
+ {
+  "id": "ss-l02",
+  "lesson": 2,
+  "title": "Multitasking floor",
+  "topic": "1.5",
+  "kicker": "1.5 Systems software  |  Lesson 2",
+  "subtitle": "OCR J277 Paper 1  |  Computer systems",
+  "intro": "Your laptop looks like it runs five programs at once. It does not. One core runs one instruction at a time, and the operating system switches between jobs so fast that your eyes cannot see the joins.",
+  "keywords": [
+   "Multitasking",
+   "Device driver"
+  ],
+  "objectives": [
+   "know what is meant by the term multitasking",
+   "understand how the operating system manages memory",
+   "understand the need for device drivers"
+  ],
+  "starter": "How does a computer manage having lots of programs open at the same time? Write what you think happens.",
+  "keyq": "How does an operating system share out the processor and the memory?",
+  "keyterms": [
+   "Multitasking",
+   "Device driver"
+  ],
+  "stations": [
+   {
+    "name": "Multitasking",
+    "bullets": [
+     "Multitasking means several programs appear to run at the same time.",
+     "A single processor core can only run one instruction at a time.",
+     "The OS switches between programs so quickly that it looks simultaneous."
+    ],
+    "challenge": "Explain how one core can appear to run five programs at once.",
+    "fact": "Multitasking means..."
+   },
+   {
+    "name": "Sharing the processor",
+    "bullets": [
+     "Each process gets a short time slice, then the OS interrupts it and moves to the next.",
+     "Saving one process and loading the next is called a context switch.",
+     "Important jobs can be given priority, so they run sooner."
+    ],
+    "challenge": "Why does a computer feel slower when many programs are open?",
+    "fact": "The processor is shared by..."
+   },
+   {
+    "name": "Managing memory",
+    "bullets": [
+     "Every running process needs space in RAM, and the OS decides where it goes.",
+     "The OS keeps processes apart, so one crashing program can't damage another.",
+     "When RAM fills up, data that isn't being used is moved to virtual memory on the disk."
+    ],
+    "challenge": "Fit the programs into RAM in the experience, then explain what happens when RAM is full.",
+    "fact": "The OS manages memory by..."
+   },
+   {
+    "name": "Virtual memory",
+    "bullets": [
+     "Virtual memory is space on secondary storage used as extra RAM.",
+     "Data not being used right now is swapped out to disk to make room.",
+     "It is far slower than RAM, so it is a last resort, not a plan."
+    ],
+    "challenge": "Describe what the user notices when a computer relies on virtual memory.",
+    "fact": "Virtual memory is..."
+   },
+   {
+    "name": "Device drivers",
+    "bullets": [
+     "A driver is software that lets the OS communicate with a piece of hardware.",
+     "Each device needs a driver written for it, and for that operating system.",
+     "Without the right driver, the device either doesn't work or loses its special features."
+    ],
+    "challenge": "Why does a printer need a driver, when the OS already knows how to print?",
+    "fact": "A device driver..."
+   },
+   {
+    "name": "Updates and plug and play",
+    "bullets": [
+     "Plug and play means the OS recognises a device and finds a driver automatically.",
+     "Drivers are updated to fix faults, improve speed and close security holes.",
+     "A faulty driver can crash the whole machine, because drivers run with high privileges."
+    ],
+    "challenge": "Why is it important to keep drivers up to date?",
+    "fact": "Plug and play means..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: the busy machine",
+   "intro": "Load these six programs. RAM has 8 blocks."
+  },
+  "info": [
+   {
+    "title": "Milliseconds",
+    "text": "A typical time slice is a few milliseconds. In the time it takes to blink, a processor may have switched between programs a hundred times."
+   },
+   {
+    "title": "Task manager",
+    "text": "Open the task manager on any computer and you'll see dozens of processes running that you never started. Most belong to the operating system."
+   },
+   {
+    "title": "Thrashing",
+    "text": "If RAM is so full that the OS spends more time swapping than working, it's called thrashing. The disk light stays on and nothing happens."
+   },
+   {
+    "title": "Cores help",
+    "text": "A four-core processor really can run four things at once, and the OS still time slices on top of that, which is why a modern machine copes with so much."
+   },
+   {
+    "title": "Driver disks",
+    "text": "Hardware used to come with a driver disk in the box. Now the OS downloads drivers automatically, which is why a new mouse works the moment you plug it in."
+   },
+   {
+    "title": "Blue screens",
+    "text": "Most famous crash screens are caused by drivers rather than by the operating system itself, because drivers run with the deepest access to the hardware."
+   }
+  ],
+  "exam": [
+   {
+    "q": "Explain what is meant by multitasking.",
+    "marks": 2
+   },
+   {
+    "q": "Describe how an operating system manages memory when RAM is full.",
+    "marks": 4
+   },
+   {
+    "q": "Explain why a computer needs device drivers.",
+    "marks": 3
+   }
+  ],
+  "confidence": [
+   "Multitasking and time slices",
+   "Memory management and virtual memory",
+   "Device drivers"
+  ],
+  "wsfile": "SS_L02_MultitaskingFloor_Worksheet.docx"
+ },
+ {
+  "id": "ss-l03",
+  "lesson": 3,
+  "title": "Accounts office",
+  "topic": "1.5",
+  "kicker": "1.5 Systems software  |  Lesson 3",
+  "subtitle": "OCR J277 Paper 1  |  Computer systems",
+  "intro": "A school network holds work belonging to a thousand people on the same machines. Accounts, access levels and groups are how the operating system keeps all of it apart, and how it knows what you are allowed to open.",
+  "keywords": [
+   "User account",
+   "File management"
+  ],
+  "objectives": [
+   "understand what is meant by user management",
+   "understand the ways an operating system manages files"
+  ],
+  "starter": "Sign in to a school computer and list everything that is yours rather than the machine's. How does it know?",
+  "keyq": "How does an operating system manage users and their files?",
+  "keyterms": [
+   "User account",
+   "File management"
+  ],
+  "stations": [
+   {
+    "name": "User accounts",
+    "bullets": [
+     "Each person gets an account: a username, a password and their own settings and files.",
+     "The OS checks the password before letting anyone in. This is authentication.",
+     "Accounts mean the same machine can be shared without anyone seeing anyone else's work."
+    ],
+    "challenge": "List three things stored with your school account.",
+    "fact": "A user account holds..."
+   },
+   {
+    "name": "Access levels",
+    "bullets": [
+     "An access level decides what a user may do with a file: nothing, read it, or read and change it.",
+     "Give each user the least access their job needs.",
+     "The OS checks the level every time a file is opened."
+    ],
+    "challenge": "Set the access levels in the experience, then explain your choices.",
+    "fact": "An access level is..."
+   },
+   {
+    "name": "Groups and profiles",
+    "bullets": [
+     "Setting permissions for thousands of people one at a time is impossible, so users are put into groups.",
+     "A permission set on a group applies to everyone in it.",
+     "A profile holds a user's settings, so their desktop follows them to any machine on the network."
+    ],
+    "challenge": "Why do network managers set permissions on groups rather than on individuals?",
+    "fact": "A user group is..."
+   },
+   {
+    "name": "Files and folders",
+    "bullets": [
+     "The OS stores data as files, and organises them in folders.",
+     "Folders sit inside folders, forming a hierarchy that starts at the root.",
+     "A path describes the route to a file, for example Documents\\Computing\\1.5\\notes.docx."
+    ],
+    "challenge": "Draw three levels of your own folder structure, starting at the root.",
+    "fact": "Files and folders are organised..."
+   },
+   {
+    "name": "What the OS does with files",
+    "bullets": [
+     "It creates, opens, renames, moves, copies and deletes files.",
+     "It records where each file is physically stored, and how much space is free.",
+     "It shows a tidy hierarchy to the user, even though the blocks may be scattered across the disk."
+    ],
+    "challenge": "Explain the difference between moving and copying a file.",
+    "fact": "File management means..."
+   },
+   {
+    "name": "File extensions",
+    "bullets": [
+     "The extension is the part after the dot: .docx, .jpg, .mp3, .exe.",
+     "It tells the OS which program should open the file.",
+     "Changing the extension doesn't change what is inside the file."
+    ],
+    "challenge": "Name five extensions and the type of file each one is.",
+    "fact": "A file extension..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: lock down the network",
+   "intro": "A school's shared drive. Give each group the least access that lets it work."
+  },
+  "info": [
+   {
+    "title": "Least privilege",
+    "text": "Security teams call this the principle of least privilege: give every account the smallest access that still lets the work happen. It limits the damage when an account is stolen."
+   },
+   {
+    "title": "Who did what",
+    "text": "Operating systems keep logs of who signed in, and what they opened. It's how a school can find out who deleted a shared file."
+   },
+   {
+    "title": "The root",
+    "text": "On Windows the top of a drive is C:\\; on Linux and macOS it is simply /. Either way, everything else hangs below it."
+   },
+   {
+    "title": "Long names",
+    "text": "Early systems allowed eight characters and a three-letter extension, which is why old files have names like REPORT01.DOC."
+   },
+   {
+    "title": "Hidden extensions",
+    "text": "Many systems hide extensions by default, which attackers exploit: invoice.pdf.exe looks like invoice.pdf in the file list."
+   },
+   {
+    "title": "Deleted isn't gone",
+    "text": "Deleting a file usually removes the entry, not the data. Proper deletion overwrites the blocks, which is why organisations wipe drives before disposal."
+   }
+  ],
+  "exam": [
+   {
+    "q": "State what is meant by user management.",
+    "marks": 2
+   },
+   {
+    "q": "Explain why a network manager sets permissions on groups rather than on individual users.",
+    "marks": 3
+   },
+   {
+    "q": "Describe three file management tasks carried out by an operating system.",
+    "marks": 6
+   }
+  ],
+  "confidence": [
+   "User accounts and authentication",
+   "Access levels and groups",
+   "Files, folders and file management"
+  ],
+  "wsfile": "SS_L03_AccountsOffice_Worksheet.docx"
+ },
+ {
+  "id": "ss-l04",
+  "lesson": 4,
+  "title": "Utility workshop",
+  "topic": "1.5",
+  "kicker": "1.5 Systems software  |  Lesson 4",
+  "subtitle": "OCR J277 Paper 1  |  Computer systems",
+  "intro": "Utility software is the quiet half of systems software. It never produces a document or a picture: its whole job is to look after the machine itself, by encrypting it, tidying it, shrinking files and keeping a copy of everything.",
+  "keywords": [
+   "Utility software",
+   "Defragmentation"
+  ],
+  "objectives": [
+   "understand encryption utilities",
+   "understand defragmentation utilities",
+   "understand data compression utilities"
+  ],
+  "starter": "Your laptop is slow, nearly full, and goes everywhere with you. List the three things you would most want software to do about it.",
+  "keyq": "What is the purpose of utility software?",
+  "keyterms": [
+   "Utility software",
+   "Defragmentation"
+  ],
+  "stations": [
+   {
+    "name": "What is utility software?",
+    "bullets": [
+     "Utility software is systems software that maintains and protects the computer.",
+     "It works on the machine itself, not on the user's documents.",
+     "Examples: encryption, defragmentation, compression, backup and anti-malware."
+    ],
+    "challenge": "Name three utility programs and say what each one does.",
+    "fact": "Utility software is..."
+   },
+   {
+    "name": "Encryption",
+    "bullets": [
+     "Encryption scrambles data using a key, turning plaintext into cyphertext.",
+     "Without the key it is meaningless, so a stolen file or laptop gives nothing away.",
+     "The same key, or a matching one, decrypts it back to the original."
+    ],
+    "challenge": "Explain why an encrypted laptop is safer than a password-protected one.",
+    "fact": "Encryption utilities..."
+   },
+   {
+    "name": "Defragmentation",
+    "bullets": [
+     "Over time, files get split into pieces scattered across a disk. This is fragmentation.",
+     "The read/write head then has to jump about to collect one file, which is slow.",
+     "A defragmentation utility gathers each file into one run and groups the free space together."
+    ],
+    "challenge": "Defragment the disk in the experience, then explain what changed and why it helps.",
+    "fact": "Defragmentation works by..."
+   },
+   {
+    "name": "Compression",
+    "bullets": [
+     "A compression utility makes files smaller so they use less space and send faster.",
+     "Lossless compression restores the original exactly: used for text, programs and archives.",
+     "Lossy compression throws data away for a much smaller file: used for photos, music and video."
+    ],
+    "challenge": "Which type of compression would you use for a program file, and why?",
+    "fact": "Compression utilities..."
+   },
+   {
+    "name": "Backup and updates",
+    "bullets": [
+     "A backup utility copies files so they can be restored after loss, theft or ransomware.",
+     "A full backup copies everything; an incremental backup copies only what has changed since last time.",
+     "Update utilities keep the OS and drivers patched, closing security holes."
+    ],
+    "challenge": "Design a backup routine for a school, saying what runs and how often.",
+    "fact": "Backup utilities..."
+   },
+   {
+    "name": "Choosing the right utility",
+    "bullets": [
+     "Match the utility to the problem: slow mechanical disk, risk of theft, files too large, data loss.",
+     "Exam answers need the utility, what it does, and why it fits the situation."
+    ],
+    "challenge": "A laptop is slow, nearly full, and taken home nightly. Recommend three utilities and justify each.",
+    "fact": "To choose a utility, you..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: service the machine",
+   "intro": "Defragment this disk, then say what the read/write head no longer has to do."
+  },
+  "info": [
+   {
+    "title": "Utilities used to be separate",
+    "text": "Defragmenters, backup tools and antivirus were once programs you bought. Most are now built into the operating system."
+   },
+   {
+    "title": "Keys, not passwords",
+    "text": "An encryption key is far longer than a password. A 256-bit key has more combinations than there are atoms in the observable universe."
+   },
+   {
+    "title": "Why disks fragment",
+    "text": "When a file grows and the space after it is taken, the extra has to go elsewhere. Do that for years and files end up in dozens of pieces."
+   },
+   {
+    "title": "Zip is everywhere",
+    "text": "A .docx file is really a zip archive: rename one to .zip and open it to find the document's parts inside."
+   },
+   {
+    "title": "SSDs do their own thing",
+    "text": "Solid state drives run a process called TRIM instead of defragmentation, marking deleted blocks so they can be reused quickly."
+   },
+   {
+    "title": "3-2-1",
+    "text": "The standard backup advice: three copies, on two types of media, with one off-site. Most data loss stories come from ignoring the last part."
+   }
+  ],
+  "exam": [
+   {
+    "q": "State what is meant by utility software, and give two examples.",
+    "marks": 3
+   },
+   {
+    "q": "Describe how a defragmentation utility improves the performance of a hard disk drive.",
+    "marks": 4
+   },
+   {
+    "q": "A company gives every employee a laptop that leaves the building. Recommend two utilities and justify each choice.",
+    "marks": 6
+   }
+  ],
+  "confidence": [
+   "What utility software is",
+   "Encryption and compression",
+   "Defragmentation, and why SSDs don't need it"
+  ],
+  "wsfile": "SS_L04_UtilityWorkshop_Worksheet.docx"
+ }
+]

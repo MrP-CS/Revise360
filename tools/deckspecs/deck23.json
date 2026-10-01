@@ -1,0 +1,799 @@
+[
+ {
+  "id": "rp-l01",
+  "lesson": 1,
+  "title": "Security desk",
+  "topic": "2.3",
+  "kicker": "2.3 Producing robust programs  |  Lesson 1",
+  "subtitle": "OCR J277 Paper 2  |  Computational thinking, algorithms and programming",
+  "intro": "Nothing gets into the program without passing the security desk. Learn the validation checks programmers use to make sure input data is sensible before it's processed.",
+  "keywords": [
+   "Defensive design",
+   "Validation",
+   "Type check",
+   "Range check",
+   "Presence check",
+   "Format check",
+   "Length check"
+  ],
+  "objectives": [
+   "know what is meant by defensive design when writing programs",
+   "understand why input validation is necessary",
+   "know a range of validation techniques used to write robust programs"
+  ],
+  "starter": "A club membership form asks for a name, a date of birth and a mobile number. For each field, write down one check the program should make before it accepts the data.",
+  "keyq": "How can a programmer make sure a program copes with anything a user types?",
+  "keyterms": [
+   "Defensive design",
+   "Anticipating misuse"
+  ],
+  "stations": [
+   {
+    "name": "Defensive design",
+    "bullets": [
+     "Designing a program so it can't be broken by mistakes or deliberate misuse.",
+     "Includes input validation, authentication, anticipating misuse and maintainable code.",
+     "Assume users will do something unexpected."
+    ],
+    "challenge": "List three things that could go wrong if a program trusted every input.",
+    "fact": "Defensive design means..."
+   },
+   {
+    "name": "Type check",
+    "bullets": [
+     "Checks the data is the correct data type, such as a whole number rather than text.",
+     "Stops a program crashing when it tries to do maths with text."
+    ],
+    "challenge": "Which inputs on a sign-up form need a type check?",
+    "fact": "A type check makes sure..."
+   },
+   {
+    "name": "Range check",
+    "bullets": [
+     "Checks data falls within acceptable limits, such as 1 to 3.",
+     "Anything outside the range is rejected."
+    ],
+    "challenge": "Suggest a sensible range check for a month and for a percentage score.",
+    "fact": "A range check makes sure..."
+   },
+   {
+    "name": "Presence check",
+    "bullets": [
+     "Checks that some data has been entered.",
+     "Stops required fields, like a username, being left blank."
+    ],
+    "challenge": "Which fields on a sign-up form must have a presence check?",
+    "fact": "A presence check makes sure..."
+   },
+   {
+    "name": "Format and length checks",
+    "bullets": [
+     "A format check makes sure data matches a pattern, such as DD/MM/YYYY or a postcode.",
+     "A length check makes sure data has the right number of characters, such as 11 digits for a mobile number."
+    ],
+    "challenge": "Describe a format check and a length check for a UK postcode.",
+    "fact": "A format check... A length check..."
+   },
+   {
+    "name": "Whitelists and blacklists",
+    "bullets": [
+     "A whitelist stores the only inputs a program should accept, e.g. A, B and C.",
+     "A blacklist stores inputs a program should reject, e.g. illegal characters in file names.",
+     "A string can be cast to a number after it has been checked."
+    ],
+    "challenge": "Would you use a whitelist or a blacklist for a menu with options A, B and C? Why?",
+    "fact": "A whitelist... A blacklist..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: date checks",
+   "intro": "A club membership form checks a date of birth in the format DD/MM/YYYY. Tap the star and sort each rule into the type of check it is."
+  },
+  "info": [
+   {
+    "title": "Valid isn't correct",
+    "text": "Validation checks data is sensible, not true. A birthday of 01/01/2000 passes every check even if it's wrong. Asking twice, called verification, helps catch that."
+   },
+   {
+    "title": "Leap years",
+    "text": "A year is a leap year if it divides by 4, except century years, which must divide by 400. So 2000 was a leap year, but 1900 wasn't."
+   },
+   {
+    "title": "Double checking",
+    "text": "Websites usually validate in your browser for speed, then again on the server, because a clever user can skip the browser's checks."
+   },
+   {
+    "title": "Postcodes",
+    "text": "UK postcodes follow patterns like LLN NLL or LLNN NLL, where L is a letter and N a number. A format check can test for this."
+   },
+   {
+    "title": "Why it matters",
+    "text": "Unvalidated input is one of the main ways attackers break into systems, for example with SQL injection, which you'll meet in topic 1.4."
+   },
+   {
+    "title": "Casting",
+    "text": "input() always gives a string. int() casts it to a whole number, but it will crash on 'abc', so check it's numeric first."
+   }
+  ],
+  "exam": [
+   {
+    "q": "Describe what input validation is and why programmers use it.",
+    "marks": 2
+   },
+   {
+    "q": "A form asks for a UK mobile number. Describe two validation checks it should make, and say what each one catches.",
+    "marks": 4
+   },
+   {
+    "q": "Explain the difference between a range check and a type check, using an example of each.",
+    "marks": 4
+   }
+  ],
+  "confidence": [
+   "What defensive design means",
+   "Why input validation is necessary",
+   "The five types of validation check"
+  ],
+  "wsfile": "RP_L01_SecurityDesk_Worksheet.docx"
+ },
+ {
+  "id": "rp-l02",
+  "lesson": 2,
+  "title": "Cyber defence HQ",
+  "topic": "2.3",
+  "kicker": "2.3 Producing robust programs  |  Lesson 2",
+  "subtitle": "OCR J277 Paper 2  |  Computational thinking, algorithms and programming",
+  "intro": "Programs are under attack from careless users, clever attackers and automated bots. Find out how programmers anticipate misuse and use authentication to keep programs safe.",
+  "keywords": [
+   "Authentication",
+   "Anticipating misuse",
+   "CAPTCHA",
+   "Bot",
+   "Password",
+   "Two-factor"
+  ],
+  "objectives": [
+   "know what is meant by defensive design considerations",
+   "know a range of problems that can occur when a program is running",
+   "understand some authentication techniques programmers use"
+  ],
+  "starter": "Think of three ways someone could get into a school computer account without ever breaking the software. How could the school stop each one?",
+  "keyq": "How can a program defend itself against careless users and deliberate attackers?",
+  "keyterms": [
+   "Authentication",
+   "Input validation"
+  ],
+  "stations": [
+   {
+    "name": "Anticipating misuse",
+    "bullets": [
+     "Thinking ahead about how users might accidentally or deliberately misuse a program.",
+     "E.g. typing text where a number is expected, or clicking a button many times.",
+     "Plan for every eventuality."
+    ],
+    "challenge": "List three ways a user might misuse a program that asks for their age.",
+    "fact": "Anticipating misuse means..."
+   },
+   {
+    "name": "When things go wrong",
+    "bullets": [
+     "Even with valid input, a program can crash: dividing by zero, a lost connection, a printer out of paper, or a full disk.",
+     "Programmers use exception handling so the program copes instead of crashing."
+    ],
+    "challenge": "Fill in the four problems shown on the wall.",
+    "fact": "Problems that could crash a running program include..."
+   },
+   {
+    "name": "Authentication",
+    "bullets": [
+     "Checking a user is who they say they are before they can use a system.",
+     "Usually a username and password.",
+     "Strong passwords are long and mix upper and lower case, numbers and symbols."
+    ],
+    "challenge": "Explain the difference between validation and authentication.",
+    "fact": "Authentication means..."
+   },
+   {
+    "name": "Forgotten passwords and new users",
+    "bullets": [
+     "A reset link or code can be sent to a registered email address or phone.",
+     "New users often confirm their email address before the account is activated.",
+     "Two-factor authentication adds a code sent to your phone."
+    ],
+    "challenge": "Why is a reset link sent to your email, not shown on screen?",
+    "fact": "If a user forgets their password..."
+   },
+   {
+    "name": "Bots and CAPTCHA",
+    "bullets": [
+     "Bots are programs that fill in forms automatically, e.g. to make fake accounts or guess passwords.",
+     "CAPTCHA tests like 'I'm not a robot' are easy for humans but hard for bots.",
+     "Audio CAPTCHAs help users who can't see the images."
+    ],
+    "challenge": "Why would an attacker want a program that fills in forms automatically? Suggest two ways a website can stop one.",
+    "fact": "CAPTCHA is used to..."
+   },
+   {
+    "name": "Validate a password",
+    "bullets": [
+     "It must be at least 10 characters long.",
+     "It must contain a digit and a letter.",
+     "It must not be one of the 100 most common passwords."
+    ],
+    "challenge": "Write the first three lines of a password validation program.",
+    "fact": "A password is accepted if..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: defend the program",
+   "intro": "Eight defences have been set up around the program. Tap the star and sort each one into validation, authentication or anticipating misuse."
+  },
+  "info": [
+   {
+    "title": "Most common password",
+    "text": "Lists of leaked passwords are still topped by '123456'. Attackers try these first, which is why systems should reject common passwords."
+   },
+   {
+    "title": "Try and except",
+    "text": "In Python, try and except let a program catch an error, like a missing file, and show a message instead of crashing."
+   },
+   {
+    "title": "Brute force maths",
+    "text": "An 8-letter password using only lowercase letters has about 200 billion combinations. A computer can try that many surprisingly quickly."
+   },
+   {
+    "title": "Password managers",
+    "text": "A password manager stores a different strong password for every site, so you only need to remember one master password."
+   },
+   {
+    "title": "Invisible checks",
+    "text": "Newer bot detection works mostly in the background, judging whether a visitor is human from how they move and click, so most people never see a puzzle."
+   },
+   {
+    "title": "Sanitising input",
+    "text": "Sanitisation cleans input before it's checked, such as trimming spaces or converting to lower case, so the same data is always treated the same way."
+   }
+  ],
+  "exam": [
+   {
+    "q": "Describe what is meant by authentication, using an example.",
+    "marks": 2
+   },
+   {
+    "q": "Describe two techniques a website can use to stop automated programs creating accounts.",
+    "marks": 4
+   },
+   {
+    "q": "A program divides one number by another entered by the user. Explain how the programmer should handle a division by zero.",
+    "marks": 3
+   }
+  ],
+  "confidence": [
+   "What defensive design considerations are",
+   "Problems that can occur when a program runs",
+   "Authentication techniques"
+  ],
+  "wsfile": "RP_L02_CyberDefenceHQ_Worksheet.docx"
+ },
+ {
+  "id": "rp-l03",
+  "lesson": 3,
+  "title": "Code clinic",
+  "topic": "2.3",
+  "kicker": "2.3 Producing robust programs  |  Lesson 3",
+  "subtitle": "OCR J277 Paper 2  |  Computational thinking, algorithms and programming",
+  "intro": "Code is read far more often than it is written, and usually by someone who was not there when it was written. Maintainability is everything you do to the person who opens your program in six months, which is often you.",
+  "keywords": [
+   "Maintainability",
+   "Naming conventions"
+  ],
+  "objectives": [
+   "know why creating code that is easy to read is important with large projects",
+   "understand what programmers can do to make their code more readable",
+   "understand how to refine algorithms to make them more robust"
+  ],
+  "starter": "List seven habits that make a program hard for another programmer to read.",
+  "keyq": "What does code maintainability mean?",
+  "keyterms": [
+   "Maintainability",
+   "Naming conventions"
+  ],
+  "stations": [
+   {
+    "name": "Naming conventions",
+    "bullets": [
+     "Use descriptive names that say what data a variable holds, like totalScore rather than x.",
+     "Stick to one style throughout, such as camelCase or snake_case."
+    ],
+    "challenge": "Why is f1 a poor name for a list of factors? Suggest a better one.",
+    "fact": "Good variable names are..."
+   },
+   {
+    "name": "Commenting",
+    "bullets": [
+     "Comments explain what a section of code does and why.",
+     "The translator ignores them, so they don't change how the program runs.",
+     "They help other programmers, and you in six months' time."
+    ],
+    "challenge": "Write a comment for a sub-program that checks whether a password is at least 8 characters long.",
+    "fact": "Comments are used to... The translator..."
+   },
+   {
+    "name": "Indentation and white space",
+    "bullets": [
+     "Indentation shows which lines belong inside a loop, selection statement or sub-program.",
+     "Blank lines and spaces separate sections, so code is quicker to scan."
+    ],
+    "challenge": "Look at the two loops on the wall. Which lines are inside the loop? How can you tell?",
+    "fact": "Indentation shows..."
+   },
+   {
+    "name": "Sub-programs",
+    "bullets": [
+     "Procedures and functions split a program into named, reusable parts.",
+     "Each part can be written, tested and fixed on its own.",
+     "Code is reused by calling it, instead of being copied."
+    ],
+    "challenge": "A program repeats the same 10 lines in five places, and a bug is found. How would a sub-program help?",
+    "fact": "Sub-programs help because..."
+   },
+   {
+    "name": "Why maintainability matters",
+    "bullets": [
+     "Maintainability means techniques that make code easier to debug, update and maintain.",
+     "Large projects have many programmers working on the same code, often for years.",
+     "Code that is hard to read takes longer, and costs more, to fix."
+    ],
+    "challenge": "Why is readable code more important in a large project than in a program you write on your own?",
+    "fact": "Maintainability is especially important in large projects because..."
+   },
+   {
+    "name": "Refining an algorithm",
+    "bullets": [
+     "This program builds a locker code but accepts anything the user types.",
+     "Refining it means adding validation so it only accepts sensible input.",
+     "The highlighted lines are where checks are needed."
+    ],
+    "challenge": "Suggest a validation check for each highlighted line.",
+    "fact": ""
+   }
+  ],
+  "final": {
+   "name": "Final challenge: good practice or bad?",
+   "intro": "Sort each habit: is it good practice, or bad practice that makes code hard to maintain?"
+  },
+  "info": [
+   {
+    "title": "Read more than written",
+    "text": "Programmers spend much more time reading existing code than writing new code; it's often quoted as around 10 times more. That's why readable code saves so much time."
+   },
+   {
+    "title": "Python's style guide",
+    "text": "Python has an official style guide called PEP 8. It recommends snake_case for variable and function names, like total_score, and 4 spaces for each level of indentation."
+   },
+   {
+    "title": "Indentation in Python",
+    "text": "In most languages indentation is just for readability. In Python it's part of the syntax: the translator uses it to work out which lines are inside a loop or if statement."
+   },
+   {
+    "title": "The millennium bug",
+    "text": "Old programs saved space by storing years as two digits, like 99. Before the year 2000, programmers worldwide had to find and fix this code, which was much harder where it was badly documented."
+   },
+   {
+    "title": "Really big code",
+    "text": "The Linux operating system kernel has tens of millions of lines of code, written by thousands of developers. Without naming conventions, comments and sub-programs, nobody could maintain it."
+   },
+   {
+    "title": "Sanitising input",
+    "text": "As well as validating input, programs often sanitise it first: removing extra spaces or converting to lower case, so ' SMITH ' and 'smith' are treated the same."
+   }
+  ],
+  "exam": [
+   {
+    "q": "Describe three techniques that make a program easier for another programmer to maintain.",
+    "marks": 3
+   },
+   {
+    "q": "Rewrite the first five lines of Exhibit A (on the floor of the clinic) using good practice.",
+    "marks": 4
+   }
+  ],
+  "confidence": [
+   "Why readable code matters in large projects",
+   "Ways to make code more readable",
+   "Refining an algorithm to make it more robust"
+  ],
+  "wsfile": "RP_L03_CodeClinic_Worksheet.docx"
+ },
+ {
+  "id": "rp-l04",
+  "lesson": 4,
+  "title": "Bug hunt lab",
+  "topic": "2.3",
+  "kicker": "2.3 Producing robust programs  |  Lesson 4",
+  "subtitle": "OCR J277 Paper 2  |  Computational thinking, algorithms and programming",
+  "intro": "Every program has bugs in it before it is tested. The question is only whether you find them or your users do, and whether the bug stops the program dead or quietly gives the wrong answer for years.",
+  "keywords": [
+   "Why test a program?",
+   "Iterative testing",
+   "Final (terminal) testing",
+   "Syntax errors",
+   "Logic errors"
+  ],
+  "objectives": [
+   "know four reasons why a program should be tested",
+   "know what iterative testing is",
+   "know what final/terminal testing is",
+   "know what a syntax error is",
+   "know what a logic error is"
+  ],
+  "starter": "The total cost program on station 6 contains syntax and logic errors. How many can you find before you start?",
+  "keyq": "What are the different types of errors that can occur in a program?",
+  "keyterms": [],
+  "stations": [
+   {
+    "name": "Why test a program?",
+    "bullets": [
+     "To find and fix errors before users do.",
+     "To check it does everything it is meant to (meets the requirements).",
+     "To check it can't be misused, crashed or exploited."
+    ],
+    "challenge": "Give four reasons why a program should be tested before it is released.",
+    "fact": ""
+   },
+   {
+    "name": "Iterative testing",
+    "bullets": [
+     "Testing done while the program is being developed.",
+     "Each module or section is tested as it is written, then fixed and tested again.",
+     "Checks that new code hasn't broken code that already worked."
+    ],
+    "challenge": "Suggest three things you would test iteratively while writing a date of birth validation program.",
+    "fact": "Iterative testing takes place... It involves..."
+   },
+   {
+    "name": "Final (terminal) testing",
+    "bullets": [
+     "Testing done at the end, when the program is complete, before release.",
+     "Checks that all the parts work together and the program meets every requirement."
+    ],
+    "challenge": "Suggest three things you would test in final testing of a game before it goes on sale.",
+    "fact": "Final testing takes place... It checks..."
+   },
+   {
+    "name": "Syntax errors",
+    "bullets": [
+     "An error that breaks the rules (grammar) of the programming language.",
+     "The translator can't understand the code, so the program won't run.",
+     "Examples: misspelt keywords, missing brackets, colons or quotes."
+    ],
+    "challenge": "Find the three syntax errors on the wall and say how to fix each one.",
+    "fact": "A syntax error is..."
+   },
+   {
+    "name": "Logic errors",
+    "bullets": [
+     "The program runs, but doesn't do what the programmer intended.",
+     "The translator can't spot them, because the code follows the language's rules.",
+     "Found by testing and checking the output."
+    ],
+    "challenge": "Explain the logic error in the pass mark program and how to fix it.",
+    "fact": "A logic error is... It is hard to find because..."
+   },
+   {
+    "name": "Error detective",
+    "bullets": [
+     "This program should add up the cost of a number of items at £3 each.",
+     "It contains both syntax and logic errors."
+    ],
+    "challenge": "Find every error. For each one, state whether it is a syntax or logic error.",
+    "fact": ""
+   }
+  ],
+  "final": {
+   "name": "Final challenge: syntax or logic?",
+   "intro": "Sort each bug: is it a syntax error or a logic error?"
+  },
+  "info": [
+   {
+    "title": "The first actual bug",
+    "text": "In 1947, engineers working on the Harvard Mark II computer found a moth trapped in a relay. They taped it into their logbook as the 'first actual case of bug being found'."
+   },
+   {
+    "title": "Tests that run themselves",
+    "text": "Professional programmers write automated tests that re-run every time the code changes, so iterative testing happens in seconds instead of by hand."
+   },
+   {
+    "title": "Alpha and beta testing",
+    "text": "Many games and apps are tested by the developers (alpha testing), then released early to real users (beta testing) to find bugs the developers missed."
+   },
+   {
+    "title": "Red squiggly lines",
+    "text": "Most IDEs spot syntax errors as you type and underline them, just like a spell checker. They can't spot logic errors, though."
+   },
+   {
+    "title": "A logic error in space",
+    "text": "In 1999, NASA lost the Mars Climate Orbiter because one team's software used imperial units while another expected metric. The code ran perfectly, but the answer was wrong."
+   },
+   {
+    "title": "A very expensive bug",
+    "text": "In 1996, the Ariane 5 rocket self-destructed about 40 seconds after launch. Software reused from the older Ariane 4 tried to store a number too big for its variable."
+   }
+  ],
+  "exam": [
+   {
+    "q": "Describe what iterative testing is and when it happens.",
+    "marks": 3
+   },
+   {
+    "q": "A program calculates an average with average = total / count, where count is 0. State the logic error.",
+    "marks": 1
+   },
+   {
+    "q": "Describe what a syntax error is, and give an example.",
+    "marks": 2
+   }
+  ],
+  "confidence": [
+   "Reasons for testing a program",
+   "Iterative and final/terminal testing",
+   "Telling syntax errors from logic errors"
+  ],
+  "wsfile": "RP_L04_BugHuntLab_Worksheet.docx"
+ },
+ {
+  "id": "rp-l05",
+  "lesson": 5,
+  "title": "Test lab",
+  "topic": "2.3",
+  "kicker": "2.3 Producing robust programs  |  Lesson 5",
+  "subtitle": "OCR J277 Paper 2  |  Computational thinking, algorithms and programming",
+  "intro": "Just because a program works for one input doesn't mean it works for all of them. In the test lab you'll learn the four types of test data and build a proper test plan.",
+  "keywords": [
+   "Test data",
+   "Normal",
+   "Boundary",
+   "Invalid",
+   "Erroneous",
+   "Test plan"
+  ],
+  "objectives": [
+   "understand that just because a program works doesn't mean it works for all inputs",
+   "understand that test data should include normal, boundary, invalid and erroneous data"
+  ],
+  "starter": "A program asks for a school year group from 7 to 11. Suggest five pieces of test data for it, and explain what each one is testing.",
+  "keyq": "What makes a good testing strategy?",
+  "keyterms": [
+   "Testing",
+   "Iterative testing"
+  ],
+  "stations": [
+   {
+    "name": "Why test with different data?",
+    "bullets": [
+     "A program that works for one input may still fail for others.",
+     "A test plan lists each test, the data used, the type of test and the expected result.",
+     "Good testing covers valid, invalid and erroneous inputs."
+    ],
+    "challenge": "What makes a good testing strategy?",
+    "fact": "A test plan should include..."
+   },
+   {
+    "name": "Normal data",
+    "bullets": [
+     "Typical, valid data that the program should accept.",
+     "For a school-age field from 11 to 19: 14."
+    ],
+    "challenge": "Give two more examples of normal data for an age from 11 to 19.",
+    "fact": "Normal data is..."
+   },
+   {
+    "name": "Boundary data",
+    "bullets": [
+     "Valid data on the very edge of the accepted range.",
+     "For an age from 11 to 19: 11 and 19.",
+     "Boundaries are where programmers most often make mistakes, like < instead of <=."
+    ],
+    "challenge": "What are the boundary values for a canteen menu that accepts 1 to 4?",
+    "fact": "Boundary data is..."
+   },
+   {
+    "name": "Invalid data",
+    "bullets": [
+     "Data of the correct type, but outside the accepted range.",
+     "For an age from 11 to 19: 24 or -3.",
+     "The program should reject it."
+    ],
+    "challenge": "Give an example of invalid data for a month number.",
+    "fact": "Invalid data is..."
+   },
+   {
+    "name": "Erroneous data",
+    "bullets": [
+     "Data of the wrong type that should be rejected.",
+     "For an age from 11 to 19: 'fourteen'.",
+     "Without a type check, erroneous data can crash a program."
+    ],
+    "challenge": "What would happen to a program that doubles a number if the user typed 'five'?",
+    "fact": "Erroneous data is..."
+   },
+   {
+    "name": "Test a comment box",
+    "bullets": [
+     "A comment box allows up to 200 characters.",
+     "Test just under, exactly at, and just over the limit.",
+     "The program should show how many characters are left, or how many are over."
+    ],
+    "challenge": "Fill in five tests for the comment box on your worksheet.",
+    "fact": "To test the comment box, I would..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: sort the test data",
+   "intro": "A form accepts a school-age value from 11 to 19. Tap the star and sort each piece of test data into normal, boundary, invalid or erroneous."
+  },
+  "info": [
+   {
+    "title": "Off by one",
+    "text": "Using < instead of <= is so common it has a name: an off-by-one error. Boundary tests are designed to catch it."
+   },
+   {
+    "title": "Fuzz testing",
+    "text": "Fuzz testing sends thousands of random inputs to a program automatically, to find ones that crash it."
+   },
+   {
+    "title": "Where limits come from",
+    "text": "Character limits are often inherited from older systems. Text messages were capped at 160 characters because of the space left in the mobile signalling channel."
+   },
+   {
+    "title": "Test first",
+    "text": "Some programmers write their tests before the code. This is called test-driven development."
+   },
+   {
+    "title": "Expected vs actual",
+    "text": "A test only passes if the actual result matches the expected result. Writing the expected result first stops you fooling yourself."
+   },
+   {
+    "title": "Paid to break things",
+    "text": "Penetration testers are paid to try to break into systems, finding weaknesses before criminals do."
+   }
+  ],
+  "exam": [
+   {
+    "q": "A booking form accepts a number of tickets from 1 to 6. Give four pieces of test data, name the type of each, and state why the test is needed.",
+    "marks": 8
+   }
+  ],
+  "confidence": [
+   "Why a range of test data is needed",
+   "Normal, boundary, invalid and erroneous data",
+   "Writing a test plan"
+  ],
+  "wsfile": "RP_L05_TestLab_Worksheet.docx"
+ },
+ {
+  "id": "rp-l06",
+  "lesson": 6,
+  "title": "Revision HQ 2.3",
+  "topic": "2.3",
+  "kicker": "2.3 Producing robust programs  |  Lesson 6",
+  "subtitle": "Get ready for your end-of-topic test on lessons 1 to 5",
+  "intro": "Each station sums up one lesson. Answer its quiz, and your score screen will show which lessons are secure and which need work. Then plan a 12-mark answer on robust programs.",
+  "keywords": [
+   "Validation",
+   "Authentication",
+   "Maintainability",
+   "Testing",
+   "Test data",
+   "Robust"
+  ],
+  "objectives": [
+   "understand how robust programs are made",
+   "know which lessons I'm secure on and which to revise"
+  ],
+  "starter": "A school is about to publish an app written by students. List everything you would check before it goes live.",
+  "keyq": "What makes a robust program?",
+  "keyterms": [
+   "Logical error",
+   "Test data"
+  ],
+  "stations": [
+   {
+    "name": "Lesson 1: Input validation",
+    "bullets": [
+     "Validation checks input is sensible before it's processed.",
+     "Type, range, presence, format and length checks.",
+     "Whitelists accept; blacklists reject."
+    ],
+    "challenge": "Explain what is meant by a length check and give an example."
+   },
+   {
+    "name": "Lesson 2: Defensive design",
+    "bullets": [
+     "Anticipating misuse: planning for mistakes and deliberate misuse.",
+     "Authentication: checking identity with passwords, 2FA and CAPTCHA.",
+     "Exception handling stops crashes."
+    ],
+    "challenge": "Describe two authentication techniques."
+   },
+   {
+    "name": "Lesson 3: Maintainability",
+    "bullets": [
+     "Descriptive names, comments, indentation and white space.",
+     "Sub-programs split code into reusable parts.",
+     "Makes code easier to debug, update and maintain."
+    ],
+    "challenge": "Describe three ways a programmer can make their code easier to maintain."
+   },
+   {
+    "name": "Lesson 4: Testing and errors",
+    "bullets": [
+     "Iterative testing: during development. Final testing: at the end, before release.",
+     "Syntax errors break the language's rules, so the code won't run.",
+     "Logic errors run but give the wrong result."
+    ],
+    "challenge": "Explain what is meant by the term iterative testing."
+   },
+   {
+    "name": "Lesson 5: Test data",
+    "bullets": [
+     "Normal: typical valid data.",
+     "Boundary: valid data on the edge of the range.",
+     "Invalid: right type, out of range. Erroneous: wrong type."
+    ],
+    "challenge": "Suggest test data for an order form accepting quantities 1 to 10."
+   },
+   {
+    "name": "Plan a 12-mark answer",
+    "bullets": [
+     "What does it mean to produce a robust program?",
+     "Cover validation, authentication, anticipating misuse, maintainability and testing.",
+     "For each point, explain why it makes the program more robust."
+    ],
+    "challenge": "Plan the points you would include in a long answer about producing robust programs."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: key terms",
+   "intro": "Match each key term from topic 2.3 to its meaning. These are the terms from your key terminology sheet."
+  },
+  "info": [
+   {
+    "title": "Revision tip",
+    "text": "Explain each topic out loud to someone else. If you can teach it, you know it."
+   },
+   {
+    "title": "Common mix-up",
+    "text": "Validation checks data; authentication checks people. Examiners love this difference."
+   },
+   {
+    "title": "Program practice",
+    "text": "Finish your outstanding programs: date of birth validation, the password strength checker, the comment box counter and the menu whitelist."
+   },
+   {
+    "title": "Error spotting",
+    "text": "In exam code, read each line slowly. Look for misspelt keywords (syntax) and wrong operators or variables (logic)."
+   },
+   {
+    "title": "Super challenge",
+    "text": "Try converting a decimal to a fraction: 0.75 is 75/100, then divide both by their greatest common factor (25) to get 3/4."
+   },
+   {
+    "title": "Robust means...",
+    "text": "A robust program keeps working correctly whatever users throw at it: that's the thread that links every lesson in this topic."
+   }
+  ],
+  "exam": [
+   {
+    "q": "A program will be used by hundreds of students. Explain the techniques a programmer should use to make it robust.",
+    "marks": 8
+   }
+  ],
+  "confidence": [
+   "Validation and defensive design",
+   "Maintainability",
+   "Testing and test data"
+  ],
+  "wsfile": "RP_L06_RevisionHQ23_Worksheet.docx"
+ }
+]
