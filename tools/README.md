@@ -280,13 +280,63 @@ python3 applydiagrams.py          # show what would change
 python3 applydiagrams.py --write
 ```
 
-## The window a model or a diagram opens in
+## Code questions and the Python editor
 
-Both open the same way: nearly full screen, the thing itself filling the left,
-and what you can do with it down the right - the steps of a diagram, or the
-parts of a model. The classes are shared (`vwrap`, `vstage`, `vside`, `vnow`,
-`vlist`), and the accent colour comes from the marker, so a model window is
-orange and a diagram window blue without either knowing about the other.
+A `code` task is a Paper 2 Section B question: a brief, a starter file, and a
+set of test cases. The pupil writes Python in the built-in editor, runs it as
+often as they like, and presses Check to have it marked.
+
+**It is marked by running it.** Comparing an answer with one model solution
+would fail every pupil who solved it a different way, which is most of them, so
+each test supplies the lines the program will read with `input()` and the
+output it should print. Marks are the share of tests passed. Output is compared
+with leading and trailing space, repeated spaces and capitals ignored - nothing
+else, so the brief has to say exactly what to print.
+
+`forbid` is the escape hatch for the one kind of rule running cannot check: a
+bubble sort written by hand and `sorted()` look identical from the outside. Use
+it sparingly, because a structural rule punishes a pupil who found another
+valid route.
+
+Questions live in `codequestions.py` and go in with `applycode.py --write`.
+
+```
+PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers node tools/tests/smokecode.js
+```
+
+That opens every code question in a browser, types a correct solution and a
+wrong one, and checks the marking agrees with both. Write the wrong one as a
+mistake a pupil really makes - an off-by-one, `<` for `<=` - not nonsense: a
+test suite that only catches gibberish is not testing anything. Any question
+whose tests let a realistic mistake through needs another test case.
+
+The runtime is real CPython (`vendor/pyodide`, served from this site, see the
+README there) in a **module worker**, which is what makes `while True:`
+survivable - nothing can interrupt Python once it is running, so the only cure
+is to kill the thread, and you can only do that to a worker. It is fetched when
+a code question is first opened, not on every page.
+
+Code shown on the trace and bug-finding boards is syntax highlighted by
+`codeLine()` in `js/algo.js`, drawn token by token in a monospace font so the
+indentation lines up down the page.
+
+## The window things open in
+
+A question, a 3D model and a 2D diagram all open in one frame, built by
+`shell()` in `player.js`. A model or a diagram lays its own insides out in two
+columns - the thing itself on the left, what you can do with it on the right -
+through the shared `vwrap` / `vstage` / `vside` / `vnow` / `vlist` classes.
+Everything else gets a readable centred column, and the frame follows what is
+in it: `plain` for a question (1040px, because four options in a 1680px window
+is mostly margin), `hasboard` for an interactive board (1240px, since a board is
+capped by height anyway). The accent colour comes from the marker or the
+station, so a model window is orange and a diagram window blue without either
+knowing about the other.
+
+The scene behind is blurred while a window is open, with `backdrop-filter` on
+the overlay. That blurs what is behind in one composited pass; putting a CSS
+filter on the WebGL canvas itself would have to be redone every animated frame.
+Browsers without it get a darker overlay instead.
 
 Size is not decoration here. A diagram is drawn at 980x580 and scaled to fit its
 box, so the box decides how big the lettering is: at the old 420px height a

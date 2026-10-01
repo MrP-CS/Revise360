@@ -99,6 +99,50 @@
         "32 is the size of a byte"
        ],
        "fb": "It's a neat trick built into the character set."
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Write a program that prints the character code of every letter in a word.",
+       "brief": [
+        "Read one word from the user.",
+        "For each character in turn, print the character, a space, then its character code.",
+        "Use ord() to find the code."
+       ],
+       "starter": "# Read a word and print each character with its code\n",
+       "tests": [
+        {
+         "in": [
+          "Cat"
+         ],
+         "out": [
+          "C 67",
+          "a 97",
+          "t 116"
+         ],
+         "why": "One line per character, in the order they appear."
+        },
+        {
+         "in": [
+          "A"
+         ],
+         "out": [
+          "A 65"
+         ],
+         "why": "A single letter should still work."
+        },
+        {
+         "in": [
+          "hi"
+         ],
+         "out": [
+          "h 104",
+          "i 105"
+         ],
+         "why": "Lower case letters have different codes to capitals."
+        }
+       ],
+       "fb": "A for loop over the word gives you each character; ord() turns a character into its number."
       }
      ]
     },

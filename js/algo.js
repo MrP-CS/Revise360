@@ -18,6 +18,71 @@
   }
   const hitAt = (hits, px, py) => hits.find(h => px > h.px && px < h.px + h.w && py > h.py && py < h.py + h.h);
 
+  /* ---------- syntax highlighting ----------
+   * Code on these boards is OCR Exam Reference Language, and it was being drawn
+   * in one flat colour, which is harder to read than it needs to be and is not
+   * what any editor a student has used looks like. This splits a line into
+   * tokens and draws each in its own colour, keeping a monospace font so the
+   * indentation still lines up down the page.
+   */
+  const CODE = { key: "#c792ea", built: "#7fb2ff", str: "#9fe6a0", num: "#ffcb6b",
+                 comment: "#5d7290", op: "#b4c4dc", name: "#f0f4fa" };
+  const KEYWORDS = ("if then else elseif endif for to step next while endwhile do until " +
+    "switch case default endswitch function endfunction procedure endprocedure return " +
+    "and or not true false global array new").split(" ");
+  const BUILTINS = ("print input len substring left right int str float bool real " +
+    "random round mod div ucase lcase position open readline writeline close endoffile " +
+    "range append remove append").split(" ");
+  // Longest first, so <= is never read as < followed by =
+  const OPS = ["==", "!=", "<=", ">=", "<-", "+=", "-=", "*=", "/=", "<", ">", "=", "+", "-",
+               "*", "/", "^", "(", ")", "[", "]", "{", "}", ",", ":", ".", ";"];
+
+  function tokenise(line) {
+    const out = [];
+    let i = 0;
+    while (i < line.length) {
+      const c = line[i];
+      if (c === " " || c === "\t") { let j = i; while (j < line.length && (line[j] === " " || line[j] === "\t")) j++;
+                                      out.push({ t: line.slice(i, j), c: CODE.name }); i = j; continue; }
+      if (c === "/" && line[i + 1] === "/") { out.push({ t: line.slice(i), c: CODE.comment }); break; }
+      if (c === "#") { out.push({ t: line.slice(i), c: CODE.comment }); break; }
+      if (c === "'" || c === '"') {                       // a string, closed or not
+        let j = i + 1; while (j < line.length && line[j] !== c) j++;
+        out.push({ t: line.slice(i, Math.min(j + 1, line.length)), c: CODE.str });
+        i = j + 1; continue;
+      }
+      if (c >= "0" && c <= "9") { let j = i; while (j < line.length && /[0-9.]/.test(line[j])) j++;
+                                  out.push({ t: line.slice(i, j), c: CODE.num }); i = j; continue; }
+      if (/[A-Za-z_]/.test(c)) {
+        let j = i; while (j < line.length && /[A-Za-z0-9_]/.test(line[j])) j++;
+        const w = line.slice(i, j), lw = w.toLowerCase();
+        out.push({ t: w, c: KEYWORDS.indexOf(lw) >= 0 ? CODE.key
+                        : BUILTINS.indexOf(lw) >= 0 ? CODE.built : CODE.name });
+        i = j; continue;
+      }
+      const op = OPS.find(o => line.startsWith(o, i));
+      if (op) { out.push({ t: op, c: CODE.op }); i += op.length; continue; }
+      out.push({ t: c, c: CODE.name }); i++;
+    }
+    return out;
+  }
+
+  /* Draws a line of code, token by token, and returns the width it took.
+   * `fade` dims the whole line, for code that is not the focus right now. */
+  function codeLine(x, line, px, py, size, fade) {
+    x.font = `${size}px Consolas, "DejaVu Sans Mono", monospace`;
+    x.textAlign = "left"; x.textBaseline = "middle";
+    let w = 0;
+    if (fade) x.save(), x.globalAlpha = fade;
+    for (const tok of tokenise(line)) {
+      x.fillStyle = tok.c;
+      x.fillText(tok.t, px + w, py);
+      w += x.measureText(tok.t).width;
+    }
+    if (fade) x.restore();
+    return w;
+  }
+
   // ---------- 1. trace table ----------
   // Code down the left, a trace table on the right. Tap a cell, then type with the keypad.
   function Trace(opts) {
@@ -30,7 +95,7 @@
       label(x, opts.title || "Complete the trace table", 36, 42, 25, C.edge, "left", true);
       (opts.code || []).forEach((ln, i) => {
         label(x, String(i + 1).padStart(2, " "), 36, 106 + i * 29, 16, "#587193", "left", false, true);
-        label(x, ln, 74, 106 + i * 29, 17, C.fg, "left", false, true);
+        codeLine(x, ln, 74, 106 + i * 29, 17);
       });
       cols.forEach((c, i) => {
         rr(x, CX + i * CW, CY - 40, CW - 4, 34, 6); x.fillStyle = "#1b2b48"; x.fill();
@@ -118,7 +183,7 @@
         }
         if (right || wrong) { x.lineWidth = 3; x.strokeStyle = right ? C.ok : C.bad; x.stroke(); }
         label(x, String(n).padStart(2, " "), 48, py, 16, "#587193", "left", false, true);
-        label(x, ln, 88, py, 18, C.fg, "left", false, true);
+        codeLine(x, ln, 88, py, 18);
         st.hits.push({ id: "l" + n, px: 36, py: py - 15, w: W - 316, h: 30 });
       });
       ["Syntax", "Logic"].forEach((k, i) => {
@@ -336,5 +401,6 @@
     if (task.t === "sortstep") return SortStep(task);
     return null;
   }
-  window.R360Algo = { make, Trace, BugLine, SearchStep, SortStep, arenaCase, TYPES: ["trace", "bugline", "searchstep", "sortstep"] };
+  window.R360Algo = { make, Trace, BugLine, SearchStep, SortStep, arenaCase, codeLine, tokenise, CODE,
+                      TYPES: ["trace", "bugline", "searchstep", "sortstep"] };
 })();

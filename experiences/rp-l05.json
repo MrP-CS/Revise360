@@ -198,6 +198,65 @@
         "It is accepted"
        ],
        "fb": "5 is invalid data."
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Write a program that accepts a mark only if it is from 0 to 50 inclusive.",
+       "brief": [
+        "Read one whole number.",
+        "If it is from 0 to 50 inclusive, print: valid",
+        "Otherwise print: invalid"
+       ],
+       "starter": "# Read a mark and decide whether it is valid\n",
+       "tests": [
+        {
+         "in": [
+          "27"
+         ],
+         "out": [
+          "valid"
+         ],
+         "why": "An ordinary mark inside the range."
+        },
+        {
+         "in": [
+          "0"
+         ],
+         "out": [
+          "valid"
+         ],
+         "why": "0 is the bottom boundary and is allowed."
+        },
+        {
+         "in": [
+          "50"
+         ],
+         "out": [
+          "valid"
+         ],
+         "why": "50 is the top boundary and is allowed."
+        },
+        {
+         "in": [
+          "51"
+         ],
+         "out": [
+          "invalid"
+         ],
+         "why": "Just outside the range - this is where < and <= get mixed up."
+        },
+        {
+         "in": [
+          "-1"
+         ],
+         "out": [
+          "invalid"
+         ],
+         "why": "Below the range as well as above it."
+        }
+       ],
+       "fb": "Inclusive means the boundaries pass. The test data here is exactly what boundary testing is for."
       }
      ]
     },

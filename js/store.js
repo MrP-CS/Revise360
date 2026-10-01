@@ -143,10 +143,28 @@
     }
   };
 
+  /* How many marks a task is worth. This lives here, once, because it used to
+   * exist twice - an identical copy in player.js - and adding a task type to
+   * one and not the other meant an undefined read the moment a pupil opened the
+   * station. Everything that needs it reads Store.marks. */
+  Store.marks = function (t) {
+    if (t.t === "code") return t.marks || 3;
+    if (["mcq", "multi", "circuit", "expr", "convert", "addshift", "pixels", "sound",
+         "memory", "permissions", "defrag", "impact", "searchstep", "sortstep"].indexOf(t.t) >= 0) return 1;
+    if (t.t === "trace") return t.answer.reduce((n, r, i) => n + r.filter((v, c) => t.rows[i][c] === "").length, 0);
+    if (t.t === "bugline") return 2;
+    if (t.t === "table") return 1 << (t.inputs ? t.inputs.length
+      : new Set((t.expr || "").replace(/AND|OR|NOT/g, "").match(/[A-Z]/g) || []).size);
+    if (["sprint", "defence", "blitz", "lawgame", "arena"].indexOf(t.t) >= 0) return 0;
+    if (t.t === "order") return t.steps.length;
+    if (t.t === "sort") return t.items.length;
+    return (t.pairs || []).length;
+  };
+
   // Summarise an experience's progress for hub cards and the teacher view
   Store.summarise = function (exp, prog) {
     const out = { score: 0, total: 0, done: 0, count: 0, stations: [], infoSeen: (prog && prog.info || []).length, infoTotal: 0 };
-    const marks = t => (t.t === "mcq" || t.t === "multi" || t.t === "circuit" || t.t === "expr" || t.t === "convert" || t.t === "addshift" || t.t === "pixels" || t.t === "sound" || t.t === "memory" || t.t === "permissions" || t.t === "defrag" || t.t === "impact" || t.t === "searchstep" || t.t === "sortstep") ? 1 : t.t === "trace" ? t.answer.reduce((n, r, i) => n + r.filter((v, c) => t.rows[i][c] === "").length, 0) : t.t === "bugline" ? 2 : t.t === "table" ? (1 << (t.inputs ? t.inputs.length : new Set((t.expr || "").replace(/AND|OR|NOT/g, "").match(/[A-Z]/g) || []).size)) : (t.t === "sprint" || t.t === "defence" || t.t === "blitz" || t.t === "lawgame" || t.t === "arena") ? 0 : t.t === "order" ? t.steps.length : t.t === "sort" ? t.items.length : t.pairs.length;
+    const marks = Store.marks;
     exp.scenes.forEach(sc => {
       out.infoTotal += (sc.info || []).length;
       const sp = prog && prog.scenes && prog.scenes[sc.id] || { ans: {}, done: {} };
