@@ -1,362 +1,362 @@
 {
-  "id": "pl-l05",
-  "lesson": 5,
-  "title": "Language review HQ",
-  "scenes": [
+ "id": "pl-l05",
+ "lesson": 5,
+ "title": "Language review HQ",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Language review HQ",
+   "img": "img/PL_L05_LanguageReviewHQ_360.jpg",
+   "imgHi": "img/PL_L05_LanguageReviewHQ_360_hi.jpg",
+   "stations": [
     {
-      "id": "main",
-      "title": "Language review HQ",
-      "img": "img/PL_L05_LanguageReviewHQ_360.jpg",
-      "imgHi": "img/PL_L05_LanguageReviewHQ_360_hi.jpg",
-      "stations": [
-        {
-          "label": "1",
-          "name": "Language decisions",
-          "col": "#40c4ff",
-          "face": "right",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "sort",
-              "q": "Choose the level that fits the priority.",
-              "items": [
-                [
-                  "Readable code for frequent updates",
-                  "High-level"
-                ],
-                [
-                  "Direct processor-register control",
-                  "Low-level"
-                ],
-                [
-                  "Rapid use of existing libraries",
-                  "High-level"
-                ],
-                [
-                  "Instructions for one processor family",
-                  "Low-level"
-                ]
-              ],
-              "cats": [
-                "High-level",
-                "Low-level"
-              ],
-              "fb": "Link the language characteristic to the priority in the brief."
-            },
-            {
-              "t": "mcq",
-              "q": "Why is “low-level is always better” a weak recommendation?",
-              "a": [
-                "It ignores the requirements and development trade-offs",
-                "Low-level languages do not exist",
-                "Every task needs machine code written by hand",
-                "High-level code never uses memory"
-              ],
-              "fb": "Different priorities lead to different language choices."
-            }
-          ]
-        },
-        {
-          "label": "2",
-          "name": "Source and execution",
-          "col": "#aa6eeb",
-          "face": "right",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "match",
-              "q": "Match each description.",
-              "pairs": [
-                [
-                  "Program text written by a programmer",
-                  "Source code"
-                ],
-                [
-                  "Binary instructions a CPU executes",
-                  "Machine code"
-                ],
-                [
-                  "Processes source for execution",
-                  "Translator"
-                ]
-              ],
-              "fb": "Distinguish the program representation from the tool used to translate it."
-            },
-            {
-              "t": "mcq",
-              "q": "Which representation does a compatible CPU execute directly?",
-              "a": [
-                "Machine code",
-                "High-level source",
-                "An English problem statement",
-                "A worksheet diagram"
-              ],
-              "fb": "The CPU executes its machine instructions."
-            }
-          ]
-        },
-        {
-          "label": "3",
-          "name": "Translator choices",
-          "col": "#ff785a",
-          "face": "back",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "sort",
-              "q": "Use the usual GCSE translator comparison.",
-              "items": [
-                [
-                  "Translate before executing the built program",
-                  "Compiler"
-                ],
-                [
-                  "Process source during the run",
-                  "Interpreter"
-                ],
-                [
-                  "Produce target code for later use",
-                  "Compiler"
-                ],
-                [
-                  "Translate source on each run",
-                  "Interpreter"
-                ]
-              ],
-              "cats": [
-                "Compiler",
-                "Interpreter"
-              ],
-              "fb": "Compilation translates before running the result. Interpretation translates during each run."
-            },
-            {
-              "t": "mcq",
-              "q": "Which is a compiler benefit when distributing a finished program?",
-              "a": [
-                "Users can run the executable without the original compiler",
-                "Every CPU can run any executable",
-                "The program can never contain an error",
-                "The original source must always be supplied"
-              ],
-              "fb": "A compiled executable separates running the program from translating its source."
-            }
-          ]
-        },
-        {
-          "label": "4",
-          "name": "Editing and diagnostics",
-          "col": "#ffa028",
-          "face": "back",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "match",
-              "q": "Choose the tool for the job.",
-              "pairs": [
-                [
-                  "Suggest a variable name while typing",
-                  "Auto-completion"
-                ],
-                [
-                  "Distinguish keywords using colour",
-                  "Syntax highlighting"
-                ],
-                [
-                  "Explain a detected problem",
-                  "Error diagnostics"
-                ],
-                [
-                  "Change a source instruction",
-                  "Editor"
-                ]
-              ],
-              "fb": "Editing features support writing, while diagnostics help locate problems."
-            },
-            {
-              "t": "mcq",
-              "q": "Which feature mainly makes keywords and strings easier to distinguish?",
-              "a": [
-                "Syntax highlighting",
-                "Compilation",
-                "The output console",
-                "A filename"
-              ],
-              "fb": "Syntax highlighting changes the appearance of code elements."
-            }
-          ]
-        },
-        {
-          "label": "5",
-          "name": "Translation and running",
-          "col": "#50dc96",
-          "face": "left",
-          "x": 540,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "Which facility processes source instructions for execution?",
-              "a": [
-                "Translator",
-                "Editor colour theme",
-                "File title",
-                "Auto-completion only"
-              ],
-              "fb": "The translator processes source so its instructions can execute."
-            },
-            {
-              "t": "mcq",
-              "q": "Which facility lets a programmer run a program and observe output?",
-              "a": [
-                "Run-time environment",
-                "Source-code highlighting alone",
-                "A printed worksheet",
-                "A spelling suggestion"
-              ],
-              "fb": "The run-time environment supports execution and interaction."
-            }
-          ]
-        },
-        {
-          "label": "6",
-          "name": "Writing an explanation",
-          "col": "#f05aaa",
-          "face": "left",
-          "x": 1508,
-          "y": 1770,
-          "tasks": [
-            {
-              "t": "mcq",
-              "q": "Which response explains a relevant IDE benefit?",
-              "a": [
-                "Diagnostics describe a problem and its location so the programmer can correct it",
-                "An IDE is good because it is modern",
-                "An IDE makes every program correct",
-                "An IDE is a processor"
-              ],
-              "fb": "The explanation connects a specific facility to how it helps the programmer."
-            },
-            {
-              "t": "multi",
-              "q": "Select TWO useful parts of an explanation.",
-              "opts": [
-                "Name the relevant facility",
-                "Only repeat the question",
-                "Link its benefit to the problem",
-                "Claim the IDE fixes every error"
-              ],
-              "correct": [
-                "Name the relevant facility",
-                "Link its benefit to the problem"
-              ],
-              "fb": "Use a specific facility and explain its effect in the scenario."
-            }
-          ]
-        },
-        {
-          "label": "★",
-          "name": "Final challenge",
-          "col": "#ffd046",
-          "face": "down",
-          "x": 1024,
-          "y": 800,
-          "tasks": [
-            {
-              "t": "match",
-              "q": "Recommend an approach or facility.",
-              "pairs": [
-                [
-                  "Quickly try frequent source edits",
-                  "Interpreter"
-                ],
-                [
-                  "Maintain a frequently updated app",
-                  "High-level language"
-                ],
-                [
-                  "Describe a detected source problem",
-                  "Error diagnostics"
-                ],
-                [
-                  "Run the program and see output",
-                  "Run-time environment"
-                ]
-              ],
-              "fb": "Link each choice to the requirement."
-            },
-            {
-              "t": "multi",
-              "q": "Select TWO accurate comparisons.",
-              "opts": [
-                "Low-level code gives detailed hardware control",
-                "Every IDE automatically repairs every program",
-                "Compiled code can run again without source translation",
-                "High-level source executes directly on the CPU"
-              ],
-              "correct": [
-                "Low-level code gives detailed hardware control",
-                "Compiled code can run again without source translation"
-              ],
-              "fb": "Language characteristics and translator behaviour support different development needs."
-            }
-          ]
-        }
-      ],
-      "info": [
-        {
-          "id": "f1",
-          "face": "right",
-          "x": 920,
-          "y": 540,
-          "title": "Language decisions",
-          "text": "High-level languages hide many hardware details.\n\nLow-level languages expose processor operations.\n\nThe project requirements should guide the choice.\n\nChallenge: Choose a level for a school app that needs frequent updates. Explain why.\n\nA strong explanation names a characteristic and shows how it meets a requirement. A language name alone is often not enough."
-        },
-        {
-          "id": "f2",
-          "face": "right",
-          "x": 1888,
-          "y": 540,
-          "title": "Source and execution",
-          "text": "Programmers write source code.\n\nHigh-level source needs translation before the CPU can execute its instructions.\n\nA CPU executes compatible machine code.\n\nChallenge: Why can the CPU not execute a high-level source file directly?\n\nSaving source code preserves the program text. It does not itself perform translation."
-        },
-        {
-          "id": "f3",
-          "face": "back",
-          "x": 920,
-          "y": 540,
-          "title": "Translator choices",
-          "text": "Compilers process source before the translated program runs.\n\nInterpreters process source during execution.\n\nCompiled code can run again without source translation.\n\nChallenge: Which route supports quick testing of frequent source edits? Why?\n\nWhen comparing two approaches, make paired points. Explain what each does rather than listing unrelated advantages."
-        },
-        {
-          "id": "f4",
-          "face": "back",
-          "x": 1888,
-          "y": 540,
-          "title": "Editing and diagnostics",
-          "text": "An editor lets a programmer write and change source.\n\nHighlighting helps distinguish code elements.\n\nDiagnostics describe detected problems.\n\nChallenge: How do the editor and diagnostics work together when an error is reported?\n\nA diagnostic helps the programmer decide what to change. It does not guarantee an automatic repair."
-        },
-        {
-          "id": "f5",
-          "face": "left",
-          "x": 920,
-          "y": 540,
-          "title": "Translation and running",
-          "text": "An IDE can call a compiler or interpreter.\n\nThe run-time environment executes the program.\n\nInput and output let the programmer interact with a run.\n\nChallenge: Which IDE facility translates source, and which lets you observe a running program?\n\nIdentify these facilities in your class IDE. The translator and run-time environment may work together behind a single Run button."
-        },
-        {
-          "id": "f6",
-          "face": "left",
-          "x": 1888,
-          "y": 540,
-          "title": "Writing an explanation",
-          "text": "Read the programmer’s requirement.\n\nName a relevant language characteristic or IDE facility.\n\nExplain how it helps in that situation.\n\nChallenge: Improve “Use an IDE because it is good” for a programmer with a reported source error.\n\nUse the available marks to judge how much explanation is needed. Accurate terminology and a clear link to the task matter."
-        }
-      ],
-      "models": []
+     "label": "1",
+     "name": "Language decisions",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Choose the level that fits the priority.",
+       "items": [
+        [
+         "Readable code for frequent updates",
+         "High-level"
+        ],
+        [
+         "Direct processor-register control",
+         "Low-level"
+        ],
+        [
+         "Rapid use of existing libraries",
+         "High-level"
+        ],
+        [
+         "Instructions for one processor family",
+         "Low-level"
+        ]
+       ],
+       "cats": [
+        "High-level",
+        "Low-level"
+       ],
+       "fb": "Link the language characteristic to the priority in the brief."
+      },
+      {
+       "t": "mcq",
+       "q": "Why is “low-level is always better” a weak recommendation?",
+       "a": [
+        "It ignores the requirements and development trade-offs",
+        "Low-level languages do not exist",
+        "Every task needs machine code written by hand",
+        "High-level code never uses memory"
+       ],
+       "fb": "Different priorities lead to different language choices."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Source and execution",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "match",
+       "q": "Match each description.",
+       "pairs": [
+        [
+         "Program text written by a programmer",
+         "Source code"
+        ],
+        [
+         "Binary instructions a CPU executes",
+         "Machine code"
+        ],
+        [
+         "Processes source for execution",
+         "Translator"
+        ]
+       ],
+       "fb": "Distinguish the program representation from the tool used to translate it."
+      },
+      {
+       "t": "mcq",
+       "q": "Which representation does a compatible CPU execute directly?",
+       "a": [
+        "Machine code",
+        "High-level source",
+        "An English problem statement",
+        "A worksheet diagram"
+       ],
+       "fb": "The CPU executes its machine instructions."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Translator choices",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Use the usual GCSE translator comparison.",
+       "items": [
+        [
+         "Translate before executing the built program",
+         "Compiler"
+        ],
+        [
+         "Process source during the run",
+         "Interpreter"
+        ],
+        [
+         "Produce target code for later use",
+         "Compiler"
+        ],
+        [
+         "Translate source on each run",
+         "Interpreter"
+        ]
+       ],
+       "cats": [
+        "Compiler",
+        "Interpreter"
+       ],
+       "fb": "Compilation translates before running the result. Interpretation translates during each run."
+      },
+      {
+       "t": "mcq",
+       "q": "Which is a compiler benefit when distributing a finished program?",
+       "a": [
+        "Users can run the executable without the original compiler",
+        "Every CPU can run any executable",
+        "The program can never contain an error",
+        "The original source must always be supplied"
+       ],
+       "fb": "A compiled executable separates running the program from translating its source."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Editing and diagnostics",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "match",
+       "q": "Choose the tool for the job.",
+       "pairs": [
+        [
+         "Suggest a variable name while typing",
+         "Auto-completion"
+        ],
+        [
+         "Distinguish keywords using colour",
+         "Syntax highlighting"
+        ],
+        [
+         "Explain a detected problem",
+         "Error diagnostics"
+        ],
+        [
+         "Change a source instruction",
+         "Editor"
+        ]
+       ],
+       "fb": "Editing features support writing, while diagnostics help locate problems."
+      },
+      {
+       "t": "mcq",
+       "q": "Which feature mainly makes keywords and strings easier to distinguish?",
+       "a": [
+        "Syntax highlighting",
+        "Compilation",
+        "The output console",
+        "A filename"
+       ],
+       "fb": "Syntax highlighting changes the appearance of code elements."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Translation and running",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which facility processes source instructions for execution?",
+       "a": [
+        "Translator",
+        "Editor colour theme",
+        "File title",
+        "Auto-completion only"
+       ],
+       "fb": "The translator processes source so its instructions can execute."
+      },
+      {
+       "t": "mcq",
+       "q": "Which facility lets a programmer run a program and observe output?",
+       "a": [
+        "Run-time environment",
+        "Source-code highlighting alone",
+        "A printed worksheet",
+        "A spelling suggestion"
+       ],
+       "fb": "The run-time environment supports execution and interaction."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Writing an explanation",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which response explains a relevant IDE benefit?",
+       "a": [
+        "Diagnostics describe a problem and its location so the programmer can correct it",
+        "An IDE is good because it is modern",
+        "An IDE makes every program correct",
+        "An IDE is a processor"
+       ],
+       "fb": "The explanation connects a specific facility to how it helps the programmer."
+      },
+      {
+       "t": "multi",
+       "q": "Select TWO useful parts of an explanation.",
+       "opts": [
+        "Name the relevant facility",
+        "Only repeat the question",
+        "Link its benefit to the problem",
+        "Claim the IDE fixes every error"
+       ],
+       "correct": [
+        "Name the relevant facility",
+        "Link its benefit to the problem"
+       ],
+       "fb": "Use a specific facility and explain its effect in the scenario."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 800,
+     "tasks": [
+      {
+       "t": "match",
+       "q": "Recommend an approach or facility.",
+       "pairs": [
+        [
+         "Quickly try frequent source edits",
+         "Interpreter"
+        ],
+        [
+         "Maintain a frequently updated app",
+         "High-level language"
+        ],
+        [
+         "Describe a detected source problem",
+         "Error diagnostics"
+        ],
+        [
+         "Run the program and see output",
+         "Run-time environment"
+        ]
+       ],
+       "fb": "Link each choice to the requirement."
+      },
+      {
+       "t": "multi",
+       "q": "Select TWO accurate comparisons.",
+       "opts": [
+        "Low-level code gives detailed hardware control",
+        "Every IDE automatically repairs every program",
+        "Compiled code can run again without source translation",
+        "High-level source executes directly on the CPU"
+       ],
+       "correct": [
+        "Low-level code gives detailed hardware control",
+        "Compiled code can run again without source translation"
+       ],
+       "fb": "Language characteristics and translator behaviour support different development needs."
+      }
+     ]
     }
-  ]
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 540,
+     "y": 240,
+     "title": "Language decisions",
+     "text": "High-level languages hide many hardware details.\n\nLow-level languages expose processor operations.\n\nThe project requirements should guide the choice.\n\nChallenge: Choose a level for a school app that needs frequent updates. Explain why.\n\nA strong explanation names a characteristic and shows how it meets a requirement. A language name alone is often not enough."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1508,
+     "y": 240,
+     "title": "Source and execution",
+     "text": "Programmers write source code.\n\nHigh-level source needs translation before the CPU can execute its instructions.\n\nA CPU executes compatible machine code.\n\nChallenge: Why can the CPU not execute a high-level source file directly?\n\nSaving source code preserves the program text. It does not itself perform translation."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 540,
+     "y": 240,
+     "title": "Translator choices",
+     "text": "Compilers process source before the translated program runs.\n\nInterpreters process source during execution.\n\nCompiled code can run again without source translation.\n\nChallenge: Which route supports quick testing of frequent source edits? Why?\n\nWhen comparing two approaches, make paired points. Explain what each does rather than listing unrelated advantages."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1508,
+     "y": 240,
+     "title": "Editing and diagnostics",
+     "text": "An editor lets a programmer write and change source.\n\nHighlighting helps distinguish code elements.\n\nDiagnostics describe detected problems.\n\nChallenge: How do the editor and diagnostics work together when an error is reported?\n\nA diagnostic helps the programmer decide what to change. It does not guarantee an automatic repair."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 540,
+     "y": 240,
+     "title": "Translation and running",
+     "text": "An IDE can call a compiler or interpreter.\n\nThe run-time environment executes the program.\n\nInput and output let the programmer interact with a run.\n\nChallenge: Which IDE facility translates source, and which lets you observe a running program?\n\nIdentify these facilities in your class IDE. The translator and run-time environment may work together behind a single Run button."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1508,
+     "y": 240,
+     "title": "Writing an explanation",
+     "text": "Read the programmer’s requirement.\n\nName a relevant language characteristic or IDE facility.\n\nExplain how it helps in that situation.\n\nChallenge: Improve “Use an IDE because it is good” for a programmer with a reported source error.\n\nUse the available marks to judge how much explanation is needed. Accurate terminology and a clear link to the task matter."
+    }
+   ],
+   "models": []
+  }
+ ]
 }
