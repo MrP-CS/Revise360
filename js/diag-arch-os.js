@@ -26,7 +26,7 @@
   /* The caption and the one annotation, drawn the same way everywhere. A short
    * maxLead keeps the leader from being dragged right across the picture. */
   function foot(d, steps, s, t, note) {
-    d.wrap(24, 496, steps[s].caption, 520, { size: 14, fill: d.c.soft });
+    d.caption(steps[s].caption);
     d.note(590, 492, note[1], {
       title: note[0], to: note[2], w: 360, anchor: "centre",
       maxLead: 150, alpha: d.seg(t, 0, .25)

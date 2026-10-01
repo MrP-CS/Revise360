@@ -13,7 +13,7 @@
   /* Caption strip plus the one annotation, drawn the same way in every
    * diagram so the whole batch lines up with the rest of the set. */
   function foot(d, steps, s, t, n) {
-    d.wrap(24, 496, steps[s].caption, 520, { size: 14, fill: d.c.soft });
+    d.caption(steps[s].caption);
     if (n) d.note(590, 492, n[1], { title: n[0], to: n[2], w: 360, maxLead: 210,
                                     anchor: "centre", alpha: d.seg(t, 0, .25) });
   }

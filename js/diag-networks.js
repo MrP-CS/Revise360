@@ -179,7 +179,7 @@
         ["Choose by need", "A school picks client-server to control hundreds of accounts. Two people sharing one folder do not need a server at all.", [84, 291]]
       ];
       const n = notes[s];
-      d.wrap(24, 496, steps[s].caption, 520, { size: 14, fill: c.soft });
+      d.caption(steps[s].caption);
       if (n) d.note(590, 492, n[1], { title: n[0], to: n[2], w: 360, anchor: "centre",
                                       maxLead: 190, alpha: d.seg(t, 0, .25) });
     } };
@@ -332,7 +332,7 @@
         ["It gets worse fast", "Ten devices would need 45 cables in a full mesh. That is why wired full mesh is rare and wireless mesh is common.", [ST[3].x, ST[3].y]]
       ];
       const n = notes[s];
-      d.wrap(24, 496, steps[s].caption, 520, { size: 14, fill: c.soft });
+      d.caption(steps[s].caption);
       if (n) d.note(590, 492, n[1], { title: n[0], to: n[2], w: 360, anchor: "centre",
                                       maxLead: 170, alpha: d.seg(t, 0, .25) });
     } };
@@ -463,7 +463,7 @@
         ["Both ends, same key", "This cipher uses one shared key for both jobs. Getting that key to the other end safely is the hard part of encryption.", [577, ROWA + 102]]
       ];
       const n = notes[s];
-      d.wrap(24, 496, steps[s].caption, 520, { size: 14, fill: c.soft });
+      d.caption(steps[s].caption);
       if (n) d.note(590, 492, n[1], { title: n[0], to: n[2], w: 360, anchor: "centre",
                                       maxLead: 170, alpha: d.seg(t, 0, .25) });
     } };
@@ -595,7 +595,7 @@
         ["Caches can go stale", "A cached entry has a time limit. If a site moves to a new IP address before that runs out, the cached answer stops working.", [BR.x + 130, BR.y + 194]]
       ];
       const n = notes[s];
-      d.wrap(24, 496, steps[s].caption, 520, { size: 14, fill: c.soft });
+      d.caption(steps[s].caption);
       if (n) d.note(590, 492, n[1], { title: n[0], to: n[2], w: 360, anchor: "centre",
                                       maxLead: 180, alpha: d.seg(t, 0, .25) });
     } };
@@ -752,7 +752,7 @@
         ["That is the promise", "Layering only works because each layer hands up precisely what it was handed down. Same data, both ends.", [RX, MID[0]]]
       ];
       const n = notes[s];
-      d.wrap(24, 496, steps[s].caption, 520, { size: 14, fill: c.soft });
+      d.caption(steps[s].caption);
       if (n) d.note(590, 492, n[1], { title: n[0], to: n[2], w: 360, anchor: "centre",
                                       maxLead: 160, alpha: d.seg(t, 0, .25) });
     } };
@@ -921,7 +921,7 @@
         ["Reassembly is the last job", "Only when every sequence number is present can the file be put back together. Until then it is held in a buffer.", [794, SLOT(2) + 15]]
       ];
       const n = notes[s];
-      d.wrap(24, 496, steps[s].caption, 520, { size: 14, fill: c.soft });
+      d.caption(steps[s].caption);
       if (n) d.note(590, 492, n[1], { title: n[0], to: n[2], w: 360, anchor: "centre",
                                       maxLead: 170, alpha: d.seg(t, 0, .25) });
     } };

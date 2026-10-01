@@ -280,6 +280,38 @@ python3 applydiagrams.py          # show what would change
 python3 applydiagrams.py --write
 ```
 
+## In the headset
+
+A board or a diagram and the panel that explains it are one thing to read, so
+they are stacked: the picture straight ahead, its words directly underneath at
+the same yaw. They used to sit about sixty degrees apart, which meant turning
+your head to take in one window.
+
+What decides whether lettering can be read is how much of the view a plane
+fills, not how wide it is - pushing it further away cancels out making it
+bigger. A diagram is 2.3m across at 1.8m, which is 65 degrees, against 48
+before; that takes a step caption from 0.72 to 1.27 degrees of arc.
+
+Placement comes from one anchor - head position, yaw and pitch - taken when a
+station or a diagram opens and kept until it closes. Reading the head pose
+again for each new question is what made the windows seem to follow the viewer
+around. `setAnchor(true)` takes a new one, `clearAnchor()` releases it. The menu
+button is the exception and still drifts after your gaze, because it has to be
+findable from anywhere.
+
+```
+R360_THREE=... R360_IWER=... PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers \
+  python3 tests/smokevrdiag.py nw-l13
+```
+
+That opens a diagram in an emulated headset and checks it paints, steps and
+closes, that the panel is stacked under the picture and not beside it, and that
+turning the head and re-placing a panel leaves it exactly where it was. The
+head-following check is the one worth knowing about: walking the interface does
+not reliably reach the code that re-places a panel, so it calls the placement
+directly and compares coordinates. An earlier version only turned the head and
+pressed Next, which passed just as happily with the bug put back in.
+
 ## Marker geometry — do not drift from this
 
 Station panels, and the markers that belong to them, are fixed. `kit.py`:

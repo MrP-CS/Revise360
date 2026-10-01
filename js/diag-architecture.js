@@ -99,7 +99,7 @@
         ["Not always +1", "A jump instruction writes a different address into the PC. That is how loops and branches work.", [R.PC.x, R.PC.y + 27]]
       ];
       const n = notes[s];
-      d.wrap(24, 496, steps[s].caption, 520, { size: 14, fill: c.soft });
+      d.caption(steps[s].caption);
       if (n) d.note(590, 492, n[1], { title: n[0], to: n[2], w: 360, anchor: "centre", alpha: d.seg(t, 0, .25) });
     } };
   });

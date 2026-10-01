@@ -142,7 +142,7 @@
     }
     function rr(c, x, y, w, h, rad) { c.beginPath(); c.moveTo(x + rad, y); c.arcTo(x + w, y, x + w, y + h, rad); c.arcTo(x + w, y + h, x, y + h, rad); c.arcTo(x, y + h, x, y, rad); c.arcTo(x, y, x + w, y, rad); c.closePath(); }
 
-    const qPanel = new Panel(1.1), infoPanel = new Panel(.8, 1000), menuPanel = new Panel(.8, 1000), toastPanel = new Panel(.7, 1000), menuBtn = new Panel(.2, 360);
+    const qPanel = new Panel(1.5), infoPanel = new Panel(.8, 1000), menuPanel = new Panel(.8, 1000), toastPanel = new Panel(.7, 1000), menuBtn = new Panel(.2, 360);
     const panels = [qPanel, infoPanel, menuPanel, toastPanel, menuBtn];
     toastPanel.mesh.renderOrder = 30;
 
@@ -160,6 +160,32 @@
       panel.mesh.position.copy(pos).add(off); panel.mesh.lookAt(pos);
     }
     function gazePitch() { const { dir } = headPose(); return T.MathUtils.radToDeg(Math.asin(T.MathUtils.clamp(dir.y, -1, 1))); }
+
+    /* A board or a diagram and the panel that explains it are one thing to read,
+     * so they are stacked: the picture straight ahead, its words directly
+     * underneath at the same yaw. They used to sit side by side about 60 degrees
+     * apart, which meant turning your head to take in one window.
+     *
+     * The anchor is taken once, when a station or a diagram opens, and every
+     * panel after that is placed against it. Re-reading the head pose for each
+     * new question is what made the windows seem to follow the viewer around. */
+    let anchor = null;
+    function setAnchor(force) {
+      if (anchor && !force) return anchor;
+      const { pos, dir } = headPose();
+      anchor = { pos: pos.clone(), yaw: Math.atan2(dir.x, dir.z),
+                 pitch: T.MathUtils.degToRad(T.MathUtils.clamp(gazePitch(), -14, 8)) };
+      return anchor;
+    }
+    function clearAnchor() { anchor = null; }
+    function atAnchor(mesh, dist, pitchOffDeg) {
+      const a = setAnchor();
+      const pitch = a.pitch + T.MathUtils.degToRad(pitchOffDeg || 0);
+      mesh.position.set(a.pos.x + Math.sin(a.yaw) * Math.cos(pitch) * dist,
+                        a.pos.y + Math.sin(pitch) * dist,
+                        a.pos.z + Math.cos(a.yaw) * Math.cos(pitch) * dist);
+      mesh.lookAt(a.pos);
+    }
     let menuYaw = null;
     function placeMenuButton(force) {
       const { pos, dir } = headPose(); const yaw = Math.atan2(dir.x, dir.z);
@@ -225,12 +251,12 @@
       if (!lit) { R360Models.lights(scene, r); lit = true; }
       core.markInfo(u.id);
       const b = R360Models.build(u.md.model); const holder = new T.Group(); holder.add(b.group);
-      const { pos, dir } = headPose(); const yaw = Math.atan2(dir.x, dir.z);
-      holder.position.set(pos.x + Math.sin(yaw) * 1.1, pos.y - .15, pos.z + Math.cos(yaw) * 1.1);
+      setAnchor(true);
+      atAnchor(holder, 1.15, -2);
       holder.scale.setScalar(.12 * b.scale / .7); b.group.rotation.x = .35; scene.add(holder);
       vrModel = { b, holder, sel: -1, u };
       showModelPanel(-1);
-      modelPanel.mesh.position.set(pos.x + Math.sin(yaw - .62) * 1.15, pos.y - .05, pos.z + Math.cos(yaw - .62) * 1.15); modelPanel.mesh.lookAt(pos);
+      atAnchor(modelPanel.mesh, 1.5, -24);          // its words below it, not beside it
       toast("Point at a part and pull the trigger to learn about it. Push the thumbstick to turn the model.");
     }
     function showModelPanel(i) {
@@ -243,13 +269,13 @@
         m.b.parts.length > 6 ? { row: m.b.parts.slice(6, 9).map((q, j) => ({ btn: q.name, id: "mp" + (j + 6), center: true, size: 22, state: j + 6 === i ? "on" : "", onClick: () => showModelPanel(j + 6) })) } : null,
         { btn: "Close model", id: "mclose", center: true, onClick: closeModelVR }] });
     }
-    function closeModelVR() { if (!vrModel) return; scene.remove(vrModel.holder); vrModel = null; modelPanel.hide(); core.refreshSprites(); }
+    function closeModelVR() { if (!vrModel) return; scene.remove(vrModel.holder); vrModel = null; modelPanel.hide(); clearAnchor(); core.refreshSprites(); }
 
     // ---------------- 2D diagrams ----------------
     // A diagram draws to a canvas, so in here it becomes a texture on a plane in
     // front of the viewer, driven by the frame hook rather than by the web
     // viewer's own loop - that one owns a DOM element and a ResizeObserver.
-    let vrDiag = null; const diagPanel = new Panel(.75, 1000); panels.push(diagPanel);
+    let vrDiag = null; const diagPanel = new Panel(1.8, 1200); panels.push(diagPanel);
     const DIAG_DWELL = 3400;
     function openDiagramVR(u) {
       if (!window.R360Diagrams) return;
@@ -259,16 +285,18 @@
       const cv = document.createElement("canvas"); cv.width = dg.w; cv.height = dg.h;
       const cx = cv.getContext("2d");
       const tex = new T.CanvasTexture(cv); tex.minFilter = T.LinearFilter; tex.generateMipmaps = false;
-      const mesh = new T.Mesh(new T.PlaneGeometry(1.15, 1.15 * dg.h / dg.w),
+      // What decides whether the lettering can be read is how much of the view
+      // this fills, not how big the plane is - pushing it further away cancels
+      // out making it wider. 2.3m at 1.8m is 65 degrees across, against 48 before.
+      const mesh = new T.Mesh(new T.PlaneGeometry(2.3, 2.3 * dg.h / dg.w),
         new T.MeshBasicMaterial({ map: tex, depthTest: false, depthWrite: false }));
       mesh.renderOrder = 19;
-      const { pos, dir } = headPose(); const yaw = Math.atan2(dir.x, dir.z);
-      mesh.position.set(pos.x + Math.sin(yaw) * 1.3, pos.y + .12, pos.z + Math.cos(yaw) * 1.3);
-      mesh.lookAt(pos); scene.add(mesh);
+      setAnchor(true);
+      atAnchor(mesh, 1.8, 8);
+      scene.add(mesh);
       vrDiag = { dg, cx, tex, mesh, u, d: R360Diagrams.Draw(cx, dg.w, dg.h), step: 0, t: 0, playing: true };
       showDiagPanel();
-      diagPanel.mesh.position.set(pos.x + Math.sin(yaw - .72) * 1.2, pos.y - .3, pos.z + Math.cos(yaw - .72) * 1.2);
-      diagPanel.mesh.lookAt(pos);
+      atAnchor(diagPanel.mesh, 1.8, -25);          // the words directly under the picture
       toast("It plays through on its own. Use the buttons to go back over a step.");
     }
     function showDiagPanel() {
@@ -293,7 +321,7 @@
     function closeDiagramVR() {
       if (!vrDiag) return;
       scene.remove(vrDiag.mesh); vrDiag.tex.dispose(); vrDiag = null;
-      diagPanel.hide(); core.refreshSprites();
+      diagPanel.hide(); clearAnchor(); core.refreshSprites();
     }
     core.frameHooks.push((dt) => {
       const v = vrDiag; if (!v || !r.xr.isPresenting) return;
@@ -316,13 +344,12 @@
     function openBoard(board) {
       closeBoard();
       const tex = new T.CanvasTexture(board.canvas); tex.minFilter = T.LinearFilter; tex.generateMipmaps = false;
-      const w = 1.35, h = w * board.canvas.height / board.canvas.width;
+      const w = 2.0, h = w * board.canvas.height / board.canvas.width;
       const mesh = new T.Mesh(new T.PlaneGeometry(w, h), new T.MeshBasicMaterial({ map: tex, depthTest: false, depthWrite: false }));
       mesh.renderOrder = 22; mesh.userData.board = true; root.add(mesh);
-      const { pos, dir } = headPose(); const yaw = Math.atan2(dir.x, dir.z) + .28, pitch = T.MathUtils.degToRad(T.MathUtils.clamp(gazePitch(), -15, 10) - 4);
-      mesh.position.set(pos.x + Math.sin(yaw) * Math.cos(pitch) * 1.3, pos.y + Math.sin(pitch) * 1.3, pos.z + Math.cos(yaw) * Math.cos(pitch) * 1.3); mesh.lookAt(pos);
+      atAnchor(mesh, 1.55, 10);                    // straight ahead, a little high
       vrBoard = { board, mesh, tex, last: 0, lastXY: null };
-      return yaw;
+      return mesh;
     }
     function closeBoard() { if (!vrBoard) return; root.remove(vrBoard.mesh); vrBoard.tex.dispose(); vrBoard = null; }
     const boardXY = uv => [uv.x * vrBoard.board.canvas.width, (1 - uv.y) * vrBoard.board.canvas.height];
@@ -331,7 +358,8 @@
     function openStation(k) {
       const list = core.taskList(k); if (!list) return;
       infoPanel.hide(); menuPanel.hide();
-      placeInFront(qPanel, 1.35, T.MathUtils.clamp(gazePitch(), -18, 12));
+      setAnchor(true);                              // one pose for this whole station
+      atAnchor(qPanel.mesh, 1.5, 0);
       run(k, list, 0);
     }
     function run(k, list, n) {
@@ -342,7 +370,7 @@
       if (core.reviewMode) head.push({ p: "Review: this won't change your score, but shows whether you've fixed it.", size: 24, color: COL.edge });
       let img = null; if (task.img) { img = new Image(); img.src = core.asset ? core.asset(task.img) : "experiences/" + task.img; }
       const top = () => [...head, img ? { img } : null, { p: task.q, size: 34, bold: true }, { gap: 6 }];
-      const close = () => { qPanel.hide(); closeBoard(); core.refreshSprites(); core.hud(); };
+      const close = () => { qPanel.hide(); closeBoard(); clearAnchor(); core.refreshSprites(); core.hud(); };
       let fb = null, done = false;
       const fbBlocks = () => fb ? [{ gap: 4 }, { p: fb.head, size: 32, bold: true, color: fb.ok ? COL.ok : COL.bad }, { p: fb.text, size: 28 },
         { btn: n === list.length - 1 ? "Finish" : "Next question", id: "next", primary: true, onClick: () => n === list.length - 1 ? finish(k) : run(k, list, n + 1) }] : [];
@@ -358,11 +386,11 @@
             d.attempts++; d.lastScore = r.score; d.best = Math.max(d.best, r.score); d.history = [[r.score, r.rounds, r.correct, Date.now()]].concat(d.history || []).slice(0, 10);
             core.prog.scenes[core.exp.scenes[core.cur].id].done[k] = true; core.save(); core.refreshSprites(); core.hud(); } });
         window.__def = board;
-        const yaw = openBoard(board); const { pos } = headPose(); const qy = yaw - .28 - .8;
-        qPanel.set({ title: st.name, color: st.col, onClose: () => { qPanel.hide(); closeBoard(); core.refreshSprites(); core.hud(); }, blocks: [
+        openBoard(board);
+        qPanel.set({ title: st.name, color: st.col, onClose: () => { qPanel.hide(); closeBoard(); clearAnchor(); core.refreshSprites(); core.hud(); }, blocks: [
           { p: "Point at the board and pull the trigger to choose. Spend your budget, then face each threat.", size: 26 },
           { p: "Personal best: " + rec.best, size: 30, bold: true, color: COL.edge }] });
-        qPanel.mesh.position.set(pos.x + Math.sin(qy) * 1.2, pos.y - .05, pos.z + Math.cos(qy) * 1.2); qPanel.mesh.lookAt(pos);
+        atAnchor(qPanel.mesh, 1.55, -24);         // directly below the board
         return;
       }
       if (task.t === "sprint" || task.t === "blitz" || task.t === "lawgame" || task.t === "arena") { sprintVR(k, st, task); return; }
@@ -374,9 +402,8 @@
           : R360Algo.TYPES.includes(task.t) ? R360Algo.make(task)
         : R360OS.TYPES.includes(task.t) ? R360OS.make(task)
           : R360Data.make(task);
-        const yaw = openBoard(board);
-        const { pos } = headPose(); const qy = yaw - .28 - .75;
-        qPanel.mesh.position.set(pos.x + Math.sin(qy) * 1.25, pos.y - .05, pos.z + Math.cos(qy) * 1.25); qPanel.mesh.lookAt(pos);
+        openBoard(board);
+        atAnchor(qPanel.mesh, 1.55, -24);         // directly below the board
         let lastOk = true, shown = false;
         const tips = { circuit: "Point at a gate at the top of the board, hold the trigger and drag it down. To wire, hold the trigger on an output dot and release on an input.",
           expr: "Hold the trigger on a tile and drag it into the answer row, or just pull the trigger on a tile to add it to the end.", table: "Point at a ? and pull the trigger to change it to 0 or 1.",
@@ -469,7 +496,7 @@
     function sprintVR(k, st, task) {
       const Lg = window.R360Logic, rec = core.prog.sprint || { best: 0, attempts: 0 };
       stopSprint(); closeBoard();
-      const closeAllSprint = () => { stopSprint(); closeBoard(); qPanel.hide(); core.refreshSprites(); core.hud(); };
+      const closeAllSprint = () => { stopSprint(); closeBoard(); qPanel.hide(); clearAnchor(); core.refreshSprites(); core.hud(); };
       qPanel.set({ title: st.name, color: st.col, onClose: closeAllSprint, blocks: [
         { p: task.t === "blitz" ? "How fast are your conversions?" : "How fast is your logic?", size: 34, bold: true },
         { p: `You have ${task.duration || 120} seconds. ${task.t === "blitz" ? "Each question asks you to convert between denary, binary and hexadecimal." : "Each question asks you to build a circuit or write an expression."} Correct answers score 100 plus a speed bonus, and streaks multiply your points. A wrong answer resets your streak.`, size: 27 },
@@ -488,8 +515,8 @@
           q = s.next(); busy = false; fb = null;
           board = R360Algo.TYPES.includes(q.t) ? R360Algo.make(q) : q.t === "law" ? R360OS.make(q) : q.t === "convert" ? R360Data.make(q) : q.t === "circuit" ? Lg.CircuitBoard({ inputs: Lg.vars(Lg.parse(q.expr)), hit: 34 }) : Lg.ExprBoard({ expr: q.expr });
           window.__sprint = { s, board, q };
-          const yaw = openBoard(board), { pos } = headPose(), qy = yaw - .28 - .75;
-          panel(); qPanel.mesh.position.set(pos.x + Math.sin(qy) * 1.25, pos.y - .05, pos.z + Math.cos(qy) * 1.25); qPanel.mesh.lookAt(pos);
+          openBoard(board); panel();
+          atAnchor(qPanel.mesh, 1.55, -24);       // the anchor is already set, so this does not move
         }
         function check() {
           const res = board.check(q.expr); if (res.incomplete) { toast(res.msg); return; }
@@ -617,7 +644,7 @@
       if (vrBoard && vrBoard.board.dirty) { vrBoard.tex.needsUpdate = true; vrBoard.board.dirty = false; }
     });
     core.sceneHooks.push(() => { if (core.inVR) { closeAll(); closeModelVR(); } });
-    window.NVRVR = { get vrBoard() { return vrBoard; }, modelPanel, get vrModel() { return vrModel; }, openModelVR: n => { const sp = core.sprites.filter(x => x.userData.type === "model")[n]; if (sp) openModelVR(sp.userData); }, openDiagramVR: n => { const sp = core.sprites.filter(x => x.userData.type === "diagram")[n]; if (sp) openDiagramVR(sp.userData); }, diagPanel, get vrDiag() { return vrDiag; }, qPanel, infoPanel, menuPanel, menuBtn, toastPanel, enter, exitVR };  // for testing
+    window.NVRVR = { get vrBoard() { return vrBoard; }, modelPanel, get vrModel() { return vrModel; }, openModelVR: n => { const sp = core.sprites.filter(x => x.userData.type === "model")[n]; if (sp) openModelVR(sp.userData); }, openDiagramVR: n => { const sp = core.sprites.filter(x => x.userData.type === "diagram")[n]; if (sp) openDiagramVR(sp.userData); }, diagPanel, get vrDiag() { return vrDiag; }, atAnchor, setAnchor, clearAnchor, get anchor() { return anchor; }, qPanel, infoPanel, menuPanel, menuBtn, toastPanel, enter, exitVR };  // for testing
   }
   if (window.NVRCore) start(window.NVRCore);
   else document.addEventListener("nvr-ready", () => start(window.NVRCore), { once: true });
