@@ -90,21 +90,30 @@ body.player .tools{width:max-content}
 @media (max-width:640px){.drawer{top:auto;bottom:calc(60px + env(safe-area-inset-bottom,0px));right:10px;max-height:45%;transform:translateY(calc(100% + 80px))}}
 @media (prefers-reduced-motion: reduce){.drawer{transition:none}}
 /* question modal */
-#modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(4,8,18,.55);padding:16px}
+/* With a window open the 360 scene behind it is just noise, so it is pushed out
+   of focus. backdrop-filter blurs what is behind the overlay in one composited
+   pass, rather than filtering the WebGL canvas itself, which would have to be
+   redone every animated frame. Where it is not supported the overlay simply
+   goes darker. */
+#modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:16px;
+  background:rgba(6,11,24,.58);backdrop-filter:blur(14px) saturate(.7);-webkit-backdrop-filter:blur(14px) saturate(.7)}
+@supports not ((backdrop-filter:blur(2px)) or (-webkit-backdrop-filter:blur(2px))){
+  #modal{background:rgba(6,11,24,.9)}
+}
 #modal.open{display:flex}
 .box{background:var(--panel);border:3px solid var(--c,#ffd046);border-radius:22px;max-width:660px;width:100%;max-height:90%;overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,.5)}
 .head{background:var(--c,#ffd046);color:#0f1626;padding:14px 20px;font-weight:700;font-size:19px;display:flex;justify-content:space-between;align-items:center;border-radius:18px 18px 0 0;position:sticky;top:0;z-index:1}
 .head button{background:none;border:0;font-size:26px;color:#0f1626;line-height:1}
 .mbody{padding:18px 20px 22px}
-.qn{color:var(--soft);font-size:14px;margin:0 0 6px}
-.q{font-size:19px;font-weight:600;margin:0 0 14px;line-height:1.35}
+.qn{color:var(--soft);font-size:15px;margin:0 0 8px}
+.q{font-size:22px;font-weight:600;margin:0 0 16px;line-height:1.35}
 .opts{display:grid;gap:10px}
-.opt{text-align:left;background:var(--bg2);color:var(--fg);border:2px solid var(--line);border-radius:14px;padding:12px 16px;font-size:16px;line-height:1.35}
+.opt{text-align:left;background:var(--bg2);color:var(--fg);border:2px solid var(--line);border-radius:14px;padding:14px 18px;font-size:18px;line-height:1.35}
 .opt:hover:not(:disabled){border-color:var(--c)}
 .opt:disabled{cursor:default}
 .right{border-color:var(--ok)!important;background:#143a2c!important}
 .wrong{border-color:var(--bad)!important;background:#40161c!important}
-.fb{margin-top:14px;padding:12px 16px;border-radius:14px;font-size:15px;display:none}
+.fb{margin-top:14px;padding:14px 18px;border-radius:14px;font-size:17px;line-height:1.45;display:none}
 .fb.show{display:block}
 .fb.ok{background:#143a2c;border:1px solid var(--ok)}
 .fb.no{background:#40161c;border:1px solid var(--bad)}
@@ -121,7 +130,7 @@ body.player .tools{width:max-content}
 .center{text-align:center}
 .diag{width:100%;border-radius:12px;border:1px solid var(--line);margin:0 0 12px;display:block}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{background:var(--bg2);color:var(--fg);border:2px solid var(--line);border-radius:999px;padding:9px 16px;font-size:15px}
+.chip{background:var(--bg2);color:var(--fg);border:2px solid var(--line);border-radius:999px;padding:10px 18px;font-size:17px}
 .chip[aria-pressed="true"]{border-color:var(--edge);color:var(--edge)}
 .olist{counter-reset:o;list-style:none;padding:0;margin:0 0 12px;display:grid;gap:8px}
 .olist li{background:var(--bg2);border:2px solid var(--line);border-radius:12px;padding:10px 12px 10px 48px;position:relative;font-size:15px;min-height:44px}
@@ -160,7 +169,15 @@ h2.group{font-size:16px;color:var(--soft);font-weight:600;margin:26px 0 12px}
    its box, so a bigger box is bigger text: at the old 420px height a 14-unit
    caption landed at about 10px on screen. */
 .box.huge{max-width:1680px;width:97vw;max-height:96vh;display:flex;flex-direction:column}
-.box.huge .mbody{flex:1;min-height:0;padding:14px 16px 16px}
+.box.huge .mbody{flex:1;min-height:0;padding:14px 16px 18px;overflow:auto}
+/* A four-option question does not want to be 1680px wide, so the content
+   sits in a column; a board gets more room because it has more to show. */
+.box.huge.plain{max-width:1040px}
+/* A board is capped by height, so a 1680px frame around an 850px board is
+   mostly margin. The frame follows the board instead. */
+.box.huge.hasboard{max-width:1240px}
+.taskwrap{max-width:880px;margin:0 auto}
+.taskwrap.board{max-width:1320px}
 .vwrap{display:flex;gap:16px;height:100%;min-height:0}
 .vstage{flex:1 1 auto;min-width:0;background:#0e1628;border-radius:14px;border:1px solid var(--line);display:flex}
 .vstage.model{background:radial-gradient(circle,#243656,#0e1628)}

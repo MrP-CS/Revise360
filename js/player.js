@@ -299,24 +299,41 @@
   const BOARD_TASKS = ["circuit", "expr", "table", "convert", "addshift", "pixels", "sound", "memory", "permissions", "defrag", "impact", "trace", "bugline", "searchstep", "sortstep"];
   // Boards draw to a canvas; map mouse and touch events onto it
   function mountBoard(host, board) {
-    const cv = board.canvas; cv.style.cssText = "width:100%;display:block;border-radius:12px;touch-action:none;cursor:pointer"; host.appendChild(cv);
+    const cv = board.canvas;
+    // Cap the width so the board cannot grow taller than the window. xy() below
+    // divides by the rendered rect, so scaling it in CSS keeps the pointer true.
+    const ar = cv.width / Math.max(cv.height, 1);
+    cv.style.cssText = "width:100%;max-width:min(100%," + (ar * 62).toFixed(2) + "vh);display:block;margin:0 auto;"
+      + "border-radius:12px;touch-action:none;cursor:pointer";
+    host.appendChild(cv);
     const xy = e => { const r = cv.getBoundingClientRect(); return [(e.clientX - r.left) * cv.width / r.width, (e.clientY - r.top) * cv.height / r.height]; };
     cv.addEventListener("pointerdown", e => { cv.setPointerCapture(e.pointerId); board.down(...xy(e)); e.preventDefault(); });
     cv.addEventListener("pointermove", e => board.move(...xy(e)));
     cv.addEventListener("pointerup", e => board.up(...xy(e)));
     cv.addEventListener("pointerleave", () => board.leave && board.leave());
   }
+  /* Every window - a question, a 3D model, a 2D diagram - opens in the same
+   * frame, at the same size. The model and diagram windows lay their own insides
+   * out in two columns; everything else gets a readable centred column, wider
+   * when there is an interactive board to fit in it. */
   function shell(title, col, inner) {
     box.style.setProperty("--c", col);
-    if (!/class="lboard"/.test(inner)) box.classList.remove("wide");
-    box.innerHTML = `<div class="head"><span id="mt">${esc(title)}</span><button aria-label="Close" id="x">×</button></div><div class="mbody">${inner}</div>`;
+    const ownLayout = /class="vwrap"/.test(inner);
+    const board = /class="lboard"/.test(inner);
+    box.classList.remove("wide");
+    box.classList.add("huge");
+    // A four-option question in a 1680px frame is mostly empty margin, so a
+    // window with nothing wide in it is sized to the column it holds.
+    box.classList.toggle("plain", !ownLayout && !board);
+    box.classList.toggle("hasboard", board);
+    const body = ownLayout ? inner : `<div class="taskwrap${board ? " board" : ""}">${inner}</div>`;
+    box.innerHTML = `<div class="head"><span id="mt">${esc(title)}</span><button aria-label="Close" id="x">×</button></div><div class="mbody">${body}</div>`;
     $("#x").onclick = closeModal; box.scrollTop = 0;
   }
   // ---------------- Logic sprint (laptop) ----------------
   let sprintTimer = null;
   function runSprint(k, st, task) {
     const Lg = window.R360Logic, rec = prog.sprint || { best: 0, attempts: 0 };
-    box.classList.add("wide");
     shell(st.name, st.col, `<p class="q">${task.t === "blitz" ? "How fast are your conversions?" : "How fast is your logic?"}</p>
       <p>You have <b>${task.duration || 120} seconds</b>. ${task.t === "blitz" ? "Each question asks you to convert a number between denary, binary and hexadecimal." : "Each question asks you to either build a circuit or write the expression for a diagram."} Questions get harder as you go.</p>
       <p>Each correct answer scores 100 points, plus a speed bonus of up to 60. Get several right in a row for a streak multiplier of up to ×3. A wrong answer resets your streak. Skip a question if you're stuck.</p>
@@ -431,7 +448,7 @@
     if (sprintTimer) { clearInterval(sprintTimer); sprintTimer = null; }
     if (modelView) { modelView.dispose(); modelView = null; }
     if (diagView) { diagView.dispose(); diagView = null; }
-    box.classList.remove("huge");
+    box.classList.remove("huge", "plain", "hasboard");
     modal.classList.remove("open"); refreshSprites(); hud(); drawNav(); if (lastFocus && lastFocus.focus) lastFocus.focus(); }
   modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
   function openStation(k) {
@@ -525,7 +542,6 @@
       };
     } else if (task.t === "defence") {
       const rec = prog.defence || { best: 0, attempts: 0 };
-      box.classList.add("wide");
       shell(st.name, st.col, `<div class="lboard" id="lb"></div>`);
       const board = R360Defence.Defence({ best: rec.best, isBest: () => lastEnd && lastEnd.score > rec.best,
         onEnd: r => { lastEnd = r; const d = prog.defence || (prog.defence = { best: 0, attempts: 0, history: [] });
@@ -537,7 +553,6 @@
       runSprint(k, st, task);
     } else if (BOARD_TASKS.includes(task.t)) {
       const Lg = window.R360Logic;
-      box.classList.add("wide");
       shell(head, st.col, `${qn}<p class="q">${esc(task.q)}</p><div class="lboard" id="lb"></div>${tail}`);
       const board = task.t === "circuit" ? Lg.CircuitBoard({ inputs: task.inputs || Lg.vars(Lg.parse(task.expr)) })
         : task.t === "expr" ? Lg.ExprBoard({ expr: task.expr, out: task.out })
