@@ -56,6 +56,21 @@ def main():
         b.close()
     srv.shutdown()
 
+    mis = []
+    for kind, v in res.items():
+        seen = set()
+        for m in v.get("misoriented", []):
+            key = (kind, m["name"], tuple(m["size"]))
+            if key in seen: continue
+            seen.add(key)
+            mis.append((kind, m["name"], m["thin"], m["boardThin"], m["buried"], m["size"]))
+    mis.sort(key=lambda r: -r[4])
+    if mis:
+        print("components buried in the board they sit on (thin axis disagrees):")
+        for kind, name, thin, bt, bur, size in mis:
+            print(f"  {kind:14} {name[:32]:34} {bur:>3}% buried   thin {thin}, board thin {bt}   {size}")
+        print()
+
     flagged = []
     for kind, v in res.items():
         if v["coverage"] < 2000:
@@ -71,7 +86,8 @@ def main():
     print(f"\n{len(res)} models, {parts} parts checked; {len(flagged)} flagged")
     if errs:
         print("page errors:", errs)
-    return 1 if [f for f in flagged if f[3] != "barely visible"] or errs else 0
+    print(f"{len(mis)} misoriented component group(s)")
+    return 1 if mis or [f for f in flagged if f[3] != "barely visible"] or errs else 0
 
 if __name__ == "__main__":
     sys.exit(main())

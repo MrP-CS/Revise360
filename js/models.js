@@ -160,7 +160,9 @@
       part(blk("Cache", "#c9a227", 3, .3, .5, -.7, 0, 1.25), "Cache", "Fast memory inside the CPU for frequently used instructions and data.");
       const ram = new T.Group(); const rp = pcb("vnram", [["RAM  8GB", .05, .1]], { edge: true, base: "#1e4f6b" });
       ram.add(topBox(.14, 1.5, 2.6, board(rp), std({ color: 0x1e4f6b }), 2.4, .55, 0)); ram.children[0].material[0] = board(rp); ram.children[0].material[1] = board(rp);
-      for (let k = 0; k < 5; k++) { const c = chip(.06, .3, .4, ["R360", "DDR5"], 2.49, .6, -1 + k * .5); c.rotation.z = Math.PI / 2; ram.add(c); }
+      // The module board is thin in X, so its chips are thin in X too, standing
+      // proud of the face with their markings printed on it (+X is material 0).
+      for (let k = 0; k < 5; k++) ram.add(chipFacing(.07, .34, .42, ["R360", "DDR5"], 2.505, .6, -1 + k * .5, 0));
       part(ram, "Main memory (RAM)", "The key idea of von Neumann architecture: instructions and data are stored together in this one memory, and the CPU fetches both from it.");
       const buses = new T.Group();
       buses.add(tube(new T.Vector3(-1.2, .25, .35), new T.Vector3(2.3, .9, .35), .05, std({ color: 0xf05aaa, emissive: 0x3a0c24, metalness: .6, roughness: .3 })));
@@ -306,7 +308,7 @@
       part(chip(.95, .2, .95, ["CONTROLLER", "R360-S1"], 1.5, .14, 0, "#40c4ff"), "Controller", "Decides which chips to write to, spreads writes evenly so no part wears out early, and keeps track of where every file is.");
       part(chip(.6, .16, .45, ["DRAM", "CACHE"], 1.5, .12, 1.1), "Cache", "A small amount of fast memory holding the map of where data lives, so the controller does not have to look it up from flash every time.");
       const conn = new T.Group();
-      for (let k = 0; k < 14; k++) conn.add(box(.08, .09, .3, gold(), -2.0, .02, -1.0 + k * .155));
+      for (let k = 0; k < 14; k++) conn.add(box(.22, .07, .12, gold(), -2.14, 0, -1.0 + k * .155));
       part(conn, "Connector", "Carries data and power to the motherboard. The drive is faster than a hard disk partly because this connection is faster, and partly because there is no head to move.");
       return { group, parts, scale: .68 };
     },
