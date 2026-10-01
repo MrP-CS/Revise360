@@ -180,7 +180,7 @@
         ["When linear wins", "For a one-off search of an unsorted list, sorting it first costs more than just walking through it. Binary search pays off when you search the same list again and again.", [RP.x + 200, 314]]
       ];
       const n = notes[s];
-      d.wrap(24, 496, steps[s].caption, 520, { size: 14, fill: c.soft });
+      d.caption(steps[s].caption);
       if (n) d.note(590, 492, n[1], { title: n[0], to: n[2], w: 360, anchor: "centre",
                                       maxLead: 120, alpha: d.seg(t, 0, .25) });
     } };
@@ -325,7 +325,7 @@
         ["Comparisons, not time", "Counting comparisons and swaps is how you compare two sorting algorithms fairly, whatever computer they run on.", [674 + 62, 200]]
       ];
       const n = notes[s];
-      d.wrap(24, 496, steps[s].caption, 520, { size: 14, fill: c.soft });
+      d.caption(steps[s].caption);
       if (n) d.note(590, 492, n[1], { title: n[0], to: n[2], w: 360, anchor: "centre",
                                       maxLead: 120, alpha: d.seg(t, 0, .25) });
     } };
@@ -518,7 +518,7 @@
         ["Divide and conquer", "A big problem is broken into smaller copies of itself until they are trivial, then the answers are combined.", [MID + 155, RY[6] + CH / 2]]
       ];
       const n = notes[s];
-      d.wrap(24, 496, steps[s].caption, 520, { size: 14, fill: c.soft });
+      d.caption(steps[s].caption);
       if (n) d.note(590, 492, n[1], { title: n[0], to: n[2], w: 360, anchor: "centre",
                                       maxLead: 110, alpha: d.seg(t, 0, .25) });
     } };
@@ -707,7 +707,7 @@
         ["Trace tables", "Writing out the variables after every step is how you check a flowchart without running it.", [800, 214]]
       ];
       const n = notes[s];
-      d.wrap(24, 496, steps[s].caption, 520, { size: 14, fill: c.soft });
+      d.caption(steps[s].caption);
       if (n) d.note(590, 492, n[1], { title: n[0], to: n[2], w: 360, anchor: "centre",
                                       maxLead: 120, alpha: d.seg(t, 0, .25) });
     } };

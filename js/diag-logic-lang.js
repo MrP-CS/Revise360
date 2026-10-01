@@ -281,7 +281,7 @@
         ["Reading a truth table", "Find the row that matches your inputs, then read across to the column for the gate you want."]
       ];
       const n = notes[s];
-      d.wrap(24, 496, steps[s].caption, 520, { size: 14, fill: c.soft });
+      d.caption(steps[s].caption);
       d.note(590, 492, n[1], { title: n[0], to: noteTo, w: 360, anchor: "centre",
                                maxLead: 150, alpha: d.seg(t, 0, 0.2) });
     } };
@@ -432,7 +432,7 @@
         ["Checking your work", "Count the 1s in the Q column. If a circuit with one AND gate gives more than one row of 1, something has gone wrong.", side]
       ];
       const n = notes[s];
-      d.wrap(24, 496, steps[s].caption, 520, { size: 14, fill: c.soft });
+      d.caption(steps[s].caption);
       d.note(590, 492, n[1], { title: n[0], to: n[2], w: 360, anchor: "centre",
                                maxLead: 150, alpha: d.seg(t, 0, 0.2) });
     } };
@@ -637,7 +637,7 @@
         ["Both, not either", "Iterative testing on its own misses problems between the parts. Final testing on its own leaves you hunting a bug through the whole program."]
       ];
       const n = notes[s];
-      d.wrap(24, 496, steps[s].caption, 520, { size: 14, fill: c.soft });
+      d.caption(steps[s].caption);
       d.note(590, 492, n[1], { title: n[0], to: noteTo, w: 360, anchor: "centre",
                                maxLead: 150, alpha: d.seg(t, 0, 0.2) });
     } };
@@ -806,7 +806,7 @@
         ["Horses for courses", "Interpreters suit writing and testing, because you can run a half-finished program. Compilers suit releasing it.", [530, 254]]
       ];
       const n = notes[s];
-      d.wrap(24, 496, steps[s].caption, 520, { size: 14, fill: c.soft });
+      d.caption(steps[s].caption);
       d.note(590, 492, n[1], { title: n[0], to: n[2], w: 360, anchor: "centre",
                                maxLead: 150, alpha: d.seg(t, 0, 0.2) });
     } };

@@ -236,7 +236,7 @@
         ["Data stays data", "With a placeholder the command is finished before the value arrives, so the value has nowhere to escape to.", [SEE.x + 24, SEE.y + 100]]
       ];
       const n = notes[s];
-      d.wrap(24, 496, steps[s].caption, 520, { size: 14, fill: c.soft });
+      d.caption(steps[s].caption);
       d.note(590, 492, n[1], { title: n[0], to: n[2], w: 360, anchor: "centre", alpha: d.seg(t, 0, .25) });
     } };
   });
@@ -485,7 +485,7 @@
         ["Something you have", "Two-factor pairs something known with something held. One stolen password is no longer enough.", [845, 362]]
       ];
       const n = notes[s];
-      d.wrap(24, 496, steps[s].caption, 520, { size: 14, fill: c.soft });
+      d.caption(steps[s].caption);
       d.note(590, 492, n[1], { title: n[0], to: n[2], w: 360, anchor: "centre", alpha: d.seg(t, 0, .25) });
     } };
   });
@@ -552,7 +552,7 @@
                                               max: 230, alpha: ap });
             d.wrap(88 + i * 280, 396, r[1], 230, { size: 11.5, fill: c.soft, alpha: ap });
           });
-        d.wrap(24, 496, steps[s].caption, 520, { size: 14, fill: c.soft });
+        d.caption(steps[s].caption);
         d.note(590, 492, "Exam answers often say data is stolen in a DoS attack. It is not: the service is made unavailable, and that alone costs money.",
                { title: "The usual mistake", to: [715, 300], w: 360, anchor: "centre", alpha: d.seg(t, 0, .25) });
         return;
@@ -693,7 +693,7 @@
         ["The real cost", "Downtime, lost orders and customers who go elsewhere - all without a single record being touched.", [ME.x + ME.w, ME.y + 20]]
       ];
       const n = notes[s];
-      d.wrap(24, 496, steps[s].caption, 520, { size: 14, fill: c.soft });
+      d.caption(steps[s].caption);
       d.note(590, 492, n[1], { title: n[0], to: n[2], w: 360, anchor: "centre", alpha: d.seg(t, 0, .25) });
     } };
   });
@@ -894,7 +894,7 @@
         ["No single wall", "Exam answers that stop at 'install a firewall' lose marks. Name the layer and say what it covers.", [TAB.x + 300, TAB.y + 150]]
       ];
       const n = notes[s];
-      d.wrap(24, 496, steps[s].caption, 520, { size: 14, fill: c.soft });
+      d.caption(steps[s].caption);
       d.note(590, 492, n[1], { title: n[0], to: n[2], w: 360, anchor: "centre", alpha: d.seg(t, 0, .25) });
     } };
   });
@@ -1121,7 +1121,7 @@
         ["Longer life, lower share", "Same device, same making cost, spread over more years - so the cost per year of use falls.", [490, BAR.y + 43]]
       ];
       const n = notes[s];
-      d.wrap(24, 496, steps[s].caption, 520, { size: 14, fill: c.soft });
+      d.caption(steps[s].caption);
       d.note(590, 492, n[1], { title: n[0], to: n[2], w: 360, anchor: "centre", alpha: d.seg(t, 0, .25) });
     } };
   });

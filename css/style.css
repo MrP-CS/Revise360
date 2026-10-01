@@ -153,6 +153,31 @@ h2.group{font-size:16px;color:var(--soft);font-weight:600;margin:26px 0 12px}
 .exp .thumb.ws b{font-size:54px}
 
 .box.wide{max-width:920px}
+
+/* A diagram is the whole point of the window it opens in, so it gets the screen:
+   the drawing fills the left, the step list and transport sit down the right.
+   The drawing is scaled to fit its box, so a bigger box is bigger text - at the
+   old 420px height a 14-unit caption landed at about 10px on screen. */
+.box.huge{max-width:1680px;width:97vw;max-height:96vh;display:flex;flex-direction:column}
+.box.huge .mbody{flex:1;min-height:0;padding:14px 16px 16px}
+.dgwrap{display:flex;gap:16px;height:100%;min-height:0}
+.dgstage{flex:1 1 auto;min-width:0;background:#0e1628;border-radius:14px;border:1px solid var(--line);display:flex}
+.dgstage canvas{flex:1;min-width:0}
+.dgside{flex:0 0 310px;display:flex;flex-direction:column;gap:12px;overflow:auto}
+.dgside h3{margin:0;font-size:15px;color:var(--soft);font-weight:700;letter-spacing:.02em}
+.dgnow{background:#15223b;border:2px solid var(--c,#40c4ff);border-radius:14px;padding:14px 16px}
+.dgnow b{display:block;font-size:20px;margin-bottom:6px;color:var(--c,#40c4ff)}
+.dgnow span{font-size:17px;line-height:1.45;color:var(--fg)}
+.dgsteps{display:flex;flex-direction:column;gap:6px}
+.dgsteps button{text-align:left;background:var(--bg2);color:var(--fg);border:2px solid var(--line);border-radius:12px;padding:11px 14px;font-size:16px;font-weight:600}
+.dgsteps button[aria-pressed=true]{border-color:var(--c,#40c4ff);background:#15223b;color:var(--c,#40c4ff)}
+.dgtrans{display:flex;gap:8px;flex-wrap:wrap}
+.dgtrans .btn{font-size:16px;padding:10px 16px}
+@media (max-width:900px){
+  .dgwrap{flex-direction:column}
+  .dgside{flex:0 0 auto}
+  .dgstage{min-height:46vh}
+}
 .lboard{margin:6px 0 4px}
 
 .sprinthud{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px}.sprinthud span{background:#15223b;border:1px solid var(--line);border-radius:10px;padding:6px 12px}.sprinthud b{color:var(--edge);font-size:18px}

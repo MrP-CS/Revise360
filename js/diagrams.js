@@ -66,6 +66,19 @@
         if (o.alpha !== undefined) x.restore();
         return size;
       },
+      // how tall wrap() would be, without drawing it
+      wrapHeight(s, maxW, o) {
+        o = o || {};
+        const size = o.size || 14, lh = o.lh || size * 1.35;
+        d.font(size, o.weight);
+        const words = String(s).split(" ");
+        let line = "", n = 1;
+        for (const w of words) {
+          const t2 = line ? line + " " + w : w;
+          if (x.measureText(t2).width > maxW && line) { n++; line = w; } else line = t2;
+        }
+        return n * lh;
+      },
       // word-wrapped block; returns the height it used
       wrap(tx, ty, s, maxW, o) {
         o = o || {};
@@ -267,6 +280,12 @@
       note(nx, ny, s, o) {
         o = o || {};
         const w = o.w || 190, col = o.fill || PAL.edge;
+        /* Notes are positioned by each diagram, from when the text was smaller.
+         * Rather than move thirty-odd call sites every time the type size
+         * changes, a note that would run off the bottom pulls itself up. */
+        const bodyH = d.wrapHeight(s, w, { size: 15, lh: 20 });
+        const total = (o.title ? 20 : 0) + bodyH;
+        if (ny + total > H - 8) ny = Math.max(8, H - 8 - total);
         if (o.to) {
           const sx = nx + (o.anchor === "right" ? -6 : o.anchor === "centre" ? 0 : w + 6), sy = ny + 7;
           const len = Math.hypot(o.to[0] - sx, o.to[1] - sy);
@@ -283,12 +302,25 @@
         x.save();
         if (o.alpha !== undefined) x.globalAlpha = o.alpha;
         if (o.title) {
-          d.text(nx, ny, o.title, { size: 13, weight: 800, fill: col, baseline: "top",
+          d.text(nx, ny, o.title, { size: 15.5, weight: 800, fill: col, baseline: "top",
                                     align: o.align || "left", max: w });
-          ny += 17;
+          ny += 20;
         }
-        d.wrap(nx, ny, s, w, { size: 12.5, fill: o.textFill || PAL.soft, align: o.align || "left" });
+        d.wrap(nx, ny, s, w, { size: 15, lh: 20, fill: o.textFill || PAL.soft, align: o.align || "left" });
         x.restore();
+      },
+      /* The step caption. Every diagram draws one, so its size lives here rather
+       * than at thirty-one call sites - this is the sentence that carries the
+       * teaching point, and it has to be readable at the back of a classroom and
+       * inside a headset. */
+      caption(text, o) {
+        o = o || {};
+        // On the web the caption is also rendered as real text beside the
+        // diagram, where it is crisper, selectable and reachable by a screen
+        // reader, so the canvas copy is turned off there. In a headset there is
+        // no DOM to put it in, so it stays.
+        if (d.noCaption) return 0;
+        return d.wrap(24, 488, text, 560, { size: 17, lh: 23, fill: o.fill || PAL.soft });
       },
       // a caption strip along the bottom of the diagram
       banner(s, o) {
@@ -346,7 +378,8 @@
     return f();
   }
 
-  function viewer(container, kind, onStep) {
+  function viewer(container, kind, onStep, opts) {
+    opts = opts || {};
     const dg = build(kind);
     const canvas = document.createElement("canvas");
     canvas.style.cssText = "width:100%;height:100%;display:block;border-radius:12px";
@@ -355,6 +388,7 @@
     container.appendChild(canvas);
     const x = canvas.getContext("2d");
     const d = Draw(x, dg.w, dg.h);
+    d.noCaption = !!opts.hideCaption;
 
     // mode: "all" runs on through the steps, "one" animates the chosen step and
     // holds it finished, false is frozen. Picking a step must not leave t at 0,

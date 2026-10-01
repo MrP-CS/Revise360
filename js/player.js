@@ -381,28 +381,33 @@
     if (!window.R360Diagrams) return;
     if (!prog.info.includes(u.id)) { prog.info.push(u.id); save(); refreshSprites(); }
     lastFocus = document.activeElement; modal.classList.add("open"); closeDrawer();
-    box.classList.add("wide");
-    shell(u.dg.title, "#40c4ff", `<p class="qn">It plays through on its own. Use the buttons to go back over a step.</p>
-      <div id="d2d" style="height:min(52vh,420px);background:#0e1628;border-radius:12px;border:1px solid var(--line)"></div>
-      <div class="fb show ok" id="dcap" style="margin-top:12px"></div>
-      <div class="mrow" style="margin-top:12px;justify-content:flex-start;gap:8px">
-        <button class="btn small ghost" id="dprev">‹ Back</button>
-        <button class="btn small" id="dplay">Replay</button>
-        <button class="btn small ghost" id="dnext">Next ›</button>
-      </div>
-      <div class="chips" id="dchips" style="margin-top:12px"></div>`);
+    box.classList.add("huge");
+    shell(u.dg.title, "#40c4ff", `<div class="dgwrap">
+        <div class="dgstage" id="d2d"></div>
+        <div class="dgside">
+          <div class="dgnow"><b id="dstep"></b><span id="dcap"></span></div>
+          <div class="dgtrans">
+            <button class="btn ghost" id="dprev">‹ Back</button>
+            <button class="btn" id="dplay">Replay</button>
+            <button class="btn ghost" id="dnext">Next ›</button>
+          </div>
+          <h3>Steps</h3>
+          <div class="dgsteps" id="dchips"></div>
+        </div>
+      </div>`);
     const chips = $("#dchips");
     let nSteps = 0;
     diagView = R360Diagrams.viewer($("#d2d"), u.dg.diagram, (i, st, playing) => {
-      $("#dcap").innerHTML = `<strong>${esc(st.name)}</strong>${esc(st.caption)}`;
+      $("#dstep").textContent = st.name;
+      $("#dcap").textContent = st.caption;
       $("#dplay").textContent = playing ? "Pause" : "Replay";
-      chips.querySelectorAll(".chip").forEach((c, j) => c.setAttribute("aria-pressed", j === i));
+      chips.querySelectorAll("button").forEach((c, j) => c.setAttribute("aria-pressed", j === i));
       $("#dprev").disabled = i === 0;
       $("#dnext").disabled = i === nSteps - 1;
-    });
+    }, { hideCaption: true });
     nSteps = diagView.steps.length;
     diagView.steps.forEach((st, i) => {
-      const b = document.createElement("button"); b.className = "chip";
+      const b = document.createElement("button");
       b.setAttribute("aria-pressed", "false"); b.textContent = st.name;
       b.onclick = () => diagView.select(i); chips.appendChild(b);
     });
@@ -415,6 +420,7 @@
     if (sprintTimer) { clearInterval(sprintTimer); sprintTimer = null; }
     if (modelView) { modelView.dispose(); modelView = null; }
     if (diagView) { diagView.dispose(); diagView = null; }
+    box.classList.remove("huge");
     modal.classList.remove("open"); refreshSprites(); hud(); drawNav(); if (lastFocus && lastFocus.focus) lastFocus.focus(); }
   modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
   function openStation(k) {
