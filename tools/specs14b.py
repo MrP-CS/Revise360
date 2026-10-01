@@ -3,7 +3,7 @@ from kit import mcq, multi, sort, match, order
 K14 = "1.4 Network security"
 SUB14 = "OCR J277 Paper 1  |  Computer systems"
 
-L6 = dict(id="ns-lesson6", topic="1.4", lesson=6, title="Cracking lab", img="NS_L06_CrackingLab",
+L6 = dict(id="ns-l06", topic="1.4", lesson=6, title="Cracking lab", img="NS_L06_CrackingLab_360",
   description="See how fast a computer can guess passwords, and learn what makes a password, and a login page, hard to crack.",
   kicker=f"{K14}  |  Lesson 6", scene_title="Cracking lab", subtitle=SUB14,
   intro="A brute-force attack simply tries passwords until one works. In the cracking lab you'll see how fast that is, what makes a password strong, and how a login page fights back.",
@@ -76,7 +76,7 @@ L6 = dict(id="ns-lesson6", topic="1.4", lesson=6, title="Cracking lab", img="NS_
           ("Explain why a long passphrase is harder to crack than a short complex password.", 3, 3)],
     confidence=["What a brute-force attack is", "What makes a password strong", "How login pages defend against brute force"]))
 
-L7 = dict(id="ns-lesson7", topic="1.4", lesson=7, title="Traffic flood", img="NS_L07_TrafficFlood",
+L7 = dict(id="ns-l07", topic="1.4", lesson=7, title="Traffic flood", img="NS_L07_TrafficFlood_360",
   description="Watch a website drown under fake traffic: DoS, DDoS, botnets and zombies, and the day half the internet went down.",
   kicker=f"{K14}  |  Lesson 7", scene_title="Traffic flood", subtitle=SUB14,
   intro="A denial-of-service attack doesn't steal anything: it stops a service working at all. Find out how one computer, or a million, can take a website offline, and what defenders can do.",
@@ -149,7 +149,7 @@ L7 = dict(id="ns-lesson7", topic="1.4", lesson=7, title="Traffic flood", img="NS
           ("Describe two measures that reduce the impact of a DDoS attack on a website.", 4, 4)],
     confidence=["What a denial-of-service attack is", "Botnets and zombies", "Defending against DDoS attacks"]))
 
-L8 = dict(id="ns-lesson8", topic="1.4", lesson=8, title="Packet sniffers", img="NS_L08_PacketSniffers",
+L8 = dict(id="ns-l08", topic="1.4", lesson=8, title="Packet sniffers", img="NS_L08_PacketSniffers_360",
   description="Data can be read as it travels. Learn how interception works, what it gives attackers, and how encryption stops it.",
   kicker=f"{K14}  |  Lesson 8", scene_title="Packet sniffers", subtitle=SUB14,
   intro="Every message you send crosses networks you don't control. Find out how attackers capture data in transit, what they can do with it, and why encryption is the answer.",
@@ -225,7 +225,7 @@ L8 = dict(id="ns-lesson8", topic="1.4", lesson=8, title="Packet sniffers", img="
           ("Describe two further measures that reduce the risk of data theft in an office.", 4, 4)],
     confidence=["What data interception and theft is", "How packet sniffing works", "Protecting data in transit"]))
 
-L9 = dict(id="ns-lesson9", topic="1.4", lesson=9, title="Defence depot", img="NS_L09_DefenceDepot",
+L9 = dict(id="ns-l09", topic="1.4", lesson=9, title="Defence depot", img="NS_L09_DefenceDepot_360",
   description="The first four prevention methods: penetration testing, anti-malware, firewalls and user access levels.",
   kicker=f"{K14}  |  Lesson 9", scene_title="Defence depot", subtitle=SUB14,
   intro="Now for the defences. In the first half of the depot you'll meet penetration testing, anti-malware software, firewalls and user access levels, and learn which attacks each one stops.",
@@ -297,7 +297,7 @@ L9 = dict(id="ns-lesson9", topic="1.4", lesson=9, title="Defence depot", img="NS
           ("Explain how user access levels limit the damage caused by a stolen password.", 3, 3)],
     confidence=["Penetration testing", "Anti-malware and firewalls", "User access levels and policies"]))
 
-L10 = dict(id="ns-lesson10", topic="1.4", lesson=10, title="Defence depot 2", img="NS_L10_DefenceDepot2",
+L10 = dict(id="ns-l10", topic="1.4", lesson=10, title="Defence depot 2", img="NS_L10_DefenceDepot2_360",
   description="Passwords, encryption and physical security, and choosing the right defence for each threat.",
   kicker=f"{K14}  |  Lesson 10", scene_title="Defence depot 2", subtitle=SUB14,
   intro="The second half of the depot: passwords, encryption and physical security. Then the real skill: choosing the right defence for each threat, and layering them so one failure isn't a disaster.",

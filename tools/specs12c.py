@@ -16,7 +16,7 @@ ARROW = [[0,0,0,1,1,0,0,0],[0,0,1,1,1,1,0,0],[0,1,1,1,1,1,1,0],[1,1,0,1,1,0,1,1]
 FLAG4 = [[3,3,3,3,3,3,0,0],[3,1,1,1,1,3,0,0],[3,1,2,2,1,3,0,0],[3,1,2,2,1,3,0,0],[3,1,1,1,1,3,0,0],[3,3,3,3,3,3,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]]
 STRIPES = [[1,1,1,1,1,1,1,1],[0,0,0,0,1,1,1,1],[1,1,0,0,0,0,1,1],[0,0,0,0,0,0,0,0],[1,1,1,1,0,0,0,0],[0,0,1,1,1,1,0,0],[1,1,1,1,1,1,1,1],[0,0,0,0,0,0,0,0]]
 
-L13 = dict(id="ms-lesson13", topic="1.2", lesson=13, title="Pixel studio", img="MS_L13_PixelStudio",
+L13 = dict(id="ms-l13", topic="1.2", lesson=13, title="Pixel studio", img="MS_L13_PixelStudio_360",
   description="Colour pixels and watch the bits add up: resolution, colour depth, metadata and image file size.",
   kicker=f"{K12}  |  Lesson 13", scene_title="Pixel studio", subtitle=SUB12,
   intro="Zoom in far enough and every image is a grid of coloured squares, each stored as a binary number. Colour your own, and see exactly how the file size is built.",
@@ -88,7 +88,7 @@ L13 = dict(id="ms-lesson13", topic="1.2", lesson=13, title="Pixel studio", img="
           ("Explain what happens to the quality and the file size when colour depth is increased.", 3, 3)],
     confidence=["Pixels and bitmaps", "Colour depth and resolution", "Metadata and file size"]))
 
-L14 = dict(id="ms-lesson14", topic="1.2", lesson=14, title="Sound studio", img="MS_L14_SoundStudio",
+L14 = dict(id="ms-l14", topic="1.2", lesson=14, title="Sound studio", img="MS_L14_SoundStudio_360",
   description="Turn a sound wave into binary: sampling, sample rate, bit depth, and the effect on quality and file size.",
   kicker=f"{K12}  |  Lesson 14", scene_title="Sound studio", subtitle=SUB12,
   intro="Sound is a wave, and computers only store numbers. Find out how sampling turns one into the other, and what sample rate and bit depth do to quality and file size.",
@@ -159,7 +159,7 @@ L14 = dict(id="ms-lesson14", topic="1.2", lesson=14, title="Sound studio", img="
           ("A recording lasts 45 seconds at 12,000 Hz with a bit depth of 16. Calculate the file size in kilobytes, showing your working.", 4, 5)],
     confidence=["How sampling works", "Sample rate and bit depth", "Calculating sound file size"]))
 
-L15 = dict(id="ms-lesson15", topic="1.2", lesson=15, title="Compression works", img="MS_L15_CompressionWorks",
+L15 = dict(id="ms-l15", topic="1.2", lesson=15, title="Compression works", img="MS_L15_CompressionWorks_360",
   description="Why files are compressed, the difference between lossy and lossless, and run-length encoding in action.",
   kicker=f"{K12}  |  Lesson 15", scene_title="Compression works", subtitle=SUB12,
   intro="Raw files are enormous. Compression shrinks them, but there's a choice to make: throw data away for a smaller file, or keep every bit and shrink it more carefully.",
@@ -240,7 +240,7 @@ L15 = dict(id="ms-lesson15", topic="1.2", lesson=15, title="Compression works", 
           ("Explain why run-length encoding shrinks a cartoon image more than a photograph.", 3, 3)],
     confidence=["Why data is compressed", "Lossy and lossless", "Run-length encoding"]))
 
-L16 = dict(id="ms-lesson16", topic="1.2", lesson=16, title="Revision HQ 1.2 part 2", img="MS_L16_RevisionHQ12Part2",
+L16 = dict(id="ms-l16", topic="1.2", lesson=16, title="Revision HQ 1.2 part 2", img="MS_L16_RevisionHQ12Part2_360",
   description="Recap lessons 12 to 15: character sets, images, sound and compression, ready for the second test.",
   kicker=f"{K12}  |  Lesson 16", scene_title="Revision HQ 1.2 part 2", subtitle="Catch up and revise lessons 12 to 15",
   intro="Each station sums up one part of data representation. Answer its quiz, and your results will show what to revise before the test. Then finish any outstanding tasks.",

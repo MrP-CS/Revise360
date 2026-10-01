@@ -4,7 +4,7 @@ K12 = "1.2 Memory and storage"
 SUB12 = "OCR J277 Paper 1  |  Computer systems"
 def convert(q, frm, to, value, fb=""): return dict(t="convert", q=q, **{"from": frm}, to=to, value=value, fb=fb)
 
-L1 = dict(id="ms-lesson1", topic="1.2", lesson=1, title="Memory bay", img="MS_L01_MemoryBay",
+L1 = dict(id="ms-l01", topic="1.2", lesson=1, title="Memory bay", img="MS_L01_MemoryBay_360",
   description="Primary storage up close: what RAM and ROM do, and why one forgets everything when you switch off.",
   kicker=f"{K12}  |  Lesson 1", scene_title="Memory bay", subtitle=SUB12,
   intro="The CPU can only work with data that's in primary storage. Find out what RAM and ROM are for, which one forgets everything at power off, and why your computer needs both.",
@@ -73,7 +73,7 @@ L1 = dict(id="ms-lesson1", topic="1.2", lesson=1, title="Memory bay", img="MS_L0
     exam=[("State what is meant by the term volatile.", 1, 1), ("Describe the purpose of ROM in a computer system.", 2, 2), ("Explain why a computer needs primary storage.", 3, 3)],
     confidence=["The need for primary storage", "The purpose of RAM", "The purpose of ROM"]))
 
-L2 = dict(id="ms-lesson2", topic="1.2", lesson=2, title="Swap space", img="MS_L02_SwapSpace",
+L2 = dict(id="ms-l02", topic="1.2", lesson=2, title="Swap space", img="MS_L02_SwapSpace_360",
   description="What happens when RAM runs out: paging, virtual memory and why the computer grinds to a halt.",
   kicker=f"{K12}  |  Lesson 2", scene_title="Swap space", subtitle=SUB12,
   intro="Open too many programs and RAM fills up. Rather than refusing to work, the computer borrows space from secondary storage. Find out how virtual memory works, and why it's slow.",
@@ -142,7 +142,7 @@ L2 = dict(id="ms-lesson2", topic="1.2", lesson=2, title="Swap space", img="MS_L0
           ("State one way a user could reduce the need for virtual memory.", 1, 1)],
     confidence=["What virtual memory is", "How data is swapped between RAM and disk", "Why virtual memory is slow"]))
 
-L3 = dict(id="ms-lesson3", topic="1.2", lesson=3, title="Storage warehouse", img="MS_L03_StorageWarehouse",
+L3 = dict(id="ms-l03", topic="1.2", lesson=3, title="Storage warehouse", img="MS_L03_StorageWarehouse_360",
   description="Why computers need secondary storage, and how magnetic, optical and solid state devices actually work.",
   kicker=f"{K12}  |  Lesson 3", scene_title="Storage warehouse", subtitle=SUB12,
   intro="Everything you keep lives in secondary storage. Find out why it's needed, then look inside the three types: magnetic, optical and solid state.",
@@ -207,7 +207,7 @@ L3 = dict(id="ms-lesson3", topic="1.2", lesson=3, title="Storage warehouse", img
     exam=[("State what is meant by non-volatile storage.", 1, 1), ("Describe how a hard disk drive stores data.", 2, 2), ("Describe how data is read from an optical disc.", 2, 2)],
     confidence=["The need for secondary storage", "Magnetic, optical and solid state", "How each type works"]))
 
-L4 = dict(id="ms-lesson4", topic="1.2", lesson=4, title="Top Trumps", img="MS_L04_TopTrumps",
+L4 = dict(id="ms-l04", topic="1.2", lesson=4, title="Top Trumps", img="MS_L04_TopTrumps_360",
   description="Compare storage devices on capacity, speed, portability, durability, reliability and cost.",
   kicker=f"{K12}  |  Lesson 4", scene_title="Top Trumps", subtitle=SUB12,
   intro="Every storage device is a compromise. Learn the six characteristics examiners ask about, then compare the devices like a set of Top Trumps cards.",
@@ -284,7 +284,7 @@ L4 = dict(id="ms-lesson4", topic="1.2", lesson=4, title="Top Trumps", img="MS_L0
     exam=[("State two characteristics used to compare storage devices.", 2, 2), ("Explain why an SSD is more suitable than a hard disk for a laptop.", 4, 4)],
     confidence=["The six characteristics", "Comparing the three types", "Justifying a choice of device"]))
 
-L5 = dict(id="ms-lesson5", topic="1.2", lesson=5, title="Pick the storage", img="MS_L05_PickTheStorage",
+L5 = dict(id="ms-l05", topic="1.2", lesson=5, title="Pick the storage", img="MS_L05_PickTheStorage_360",
   description="Nine real situations, from distributing a film to backing up photos: choose the right device and justify it.",
   kicker=f"{K12}  |  Lesson 5", scene_title="Pick the storage", subtitle=SUB12,
   intro="Now put it to work. Nine customers each need storage, and each needs a different answer. Choose the device, name the characteristic, and justify the choice.",
@@ -356,7 +356,7 @@ L5 = dict(id="ms-lesson5", topic="1.2", lesson=5, title="Pick the storage", img=
           ("Explain why a school uses magnetic hard disks rather than SSDs for its main file storage.", 3, 3)],
     confidence=["Choosing a device for a situation", "Justifying with characteristics", "Advantages and disadvantages"]))
 
-L6 = dict(id="ms-lesson6", topic="1.2", lesson=6, title="Units lab", img="MS_L06_UnitsLab",
+L6 = dict(id="ms-l06", topic="1.2", lesson=6, title="Units lab", img="MS_L06_UnitsLab_360",
   description="From a single bit to a petabyte: why computers use binary, and how to convert between the units.",
   kicker=f"{K12}  |  Lesson 6", scene_title="Units lab", subtitle=SUB12,
   intro="Everything a computer stores is measured in bits. Learn the units from bit to petabyte, why data has to be binary in the first place, and practise converting between them.",

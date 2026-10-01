@@ -57,7 +57,11 @@ paths.py / paths.js    where everything lives; every script resolves through the
 lib360.py              equirectangular projection, fonts, panel/card primitives
 kit.py                 scene renderer + export(); the station/info/model geometry
 specs*.py              per-topic lesson content (specs11, specs12a-c, specs13,
-                       specs14a-b, specs21, specs23, specs24)
+                       specs14a-b, specs15, specs21, specs23, specs24)
+mkspecs15.py           regenerates specs15.py; walls15.py holds the 1.5 wall
+                       content that survived only in the rendered scenes
+mkdeck.py              derives a deck spec from a topic's specs module
+reconstruct.py         rebuilds deck content for a lesson with no specs module
 l1/l2/l4/l6/l7.py      bespoke one-off scenes that predate kit.py
 rp3/rp4.py, lib23.py   topic 2.3 scenes
 *_scene.py             the standalone game rooms (sprint, blitz, defence, arena)
@@ -68,8 +72,11 @@ deckspecs/             deck content (deck16.json, deck21.json)
 wsspecs/               generated worksheet specs; committed so a .docx rebuild is
                        reproducible without re-running the Python
 cardgen.py             the 1200x520 flat preview card on each lesson tile
-qcscenes.py            QC: text overflow, empty illustration boxes, collisions
-qcstack.py             QC: the stack-row label/description collision detector
+qcfit.py               QC: text overflowing a tile or table cell (see below)
+qcscenes.py            QC: panel-level overflow. Over-reports badly - it counts
+                       box borders as text - so treat its output as candidates
+qcstack.py             QC: stack-row label/description collisions. Also
+                       over-reports; verify each candidate by eye before acting
 tests/                 smoke tests, including Playwright VR reachability checks
 ```
 
@@ -102,9 +109,16 @@ python3 cardgen.py
 QC every rendered scene:
 
 ```
-python3 qcscenes.py
-python3 qcstack.py
+python3 qcfit.py              # text that overflows its tile or table cell
+python3 qcfit.py --changed    # scenes needing a rebuild after a sizing change
+python3 qcstack.py            # candidate stack-row collisions, verify by eye
 ```
+
+`qcfit.py` replays kit.py's layout arithmetic against the spec data instead of
+measuring pixels, so it is exact and fast. It exists because the pixel-based
+checks only ever measured text against the station *panel*, and so could not see
+a label overflowing a tile *inside* a panel - which is how topic 1.5 shipped with
+"Defragmentation" overlapping its neighbours for months.
 
 Builds are deterministic. Rebuilding `specs21 L11` on a clean checkout
 reproduces the committed `AL_L11_TraceRoom_360.jpg`, its `_hi` variant, the
