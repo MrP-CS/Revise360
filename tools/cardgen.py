@@ -11,7 +11,8 @@ BG, PANEL, LINE, FG, SOFT, EDGE = (14, 22, 40), (21, 34, 59), (60, 90, 135), (24
 TOPIC_COL = {"1.1": (64, 196, 255), "1.2": (200, 140, 255), "1.3": (80, 220, 150),
              "1.4": (255, 120, 90), "1.5": (255, 176, 64), "1.6": (255, 140, 120),
              "2.1": (120, 200, 255), "2.2": (110, 230, 190), "2.3": (120, 160, 255),
-             "2.4": (255, 95, 162)}
+             "2.4": (255, 95, 162), "PY": (120, 230, 170)}
+TOPIC_NAME = {"PY": "Python"}
 FONTS = ["/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
          "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"]
 
@@ -44,7 +45,8 @@ def card(out, topic, lesson, title, keywords=(), stations=None, badge=None, extr
     d.rectangle((0, 0, 16, H), fill=col)
     d.rounded_rectangle((52, 44, W - 52, H - 44), 26, fill=PANEL, outline=LINE, width=3)
 
-    label = f"{topic}  ·  " + ("Bonus challenge" if is_bonus else f"Lesson {lesson}")
+    # The Python course is not a numbered topic, so the card names it.
+    label = f"{TOPIC_NAME.get(topic, topic)}  ·  " + ("Bonus challenge" if is_bonus else f"Lesson {lesson}")
     d.text((100, 96), label.upper(), font=font(26, True), fill=col, anchor="lm")
 
     size = 66

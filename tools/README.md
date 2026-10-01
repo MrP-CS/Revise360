@@ -283,15 +283,24 @@ python3 applydiagrams.py          # show what would change
 python3 applydiagrams.py --write
 ```
 
-## Topic 2.2 - the coding practice
+## Topic `PY` - the Python course
 
-Thirteen lessons of Python practice, `pr-l01` to `pr-l13`, which is the only
-topic on the site made entirely of code questions. It covers the OCR J277 list
-of programming techniques in the order they are usually taught, from printing
-one line to writing a merge sort and a SQL query, and is meant to be worked
-through across the two years rather than in one go.
+Thirteen lessons of Python practice, `pr-l01` to `pr-l13`, built from
+`specspy.py`. It is the only topic on the site made entirely of code questions,
+and the only one that is **not** a specification topic: it sits below the two
+papers on the topic screen as "Learning to program", so a teacher can teach
+programming and track progress through it without it being mistaken for 2.2
+Programming techniques. The two are closely related - the lessons follow the
+J277 list of techniques in the order they are usually taught - but 2.2 is an
+exam topic and this is a course, worked through across the two years.
 
-The questions live in `codebank/`, one JSON file per lesson, and `specs22.py`
+Because the topic id is not a spec number, three things read it rather than
+assume a number: `topics.json` carries the group's `kicker` and `blurb` and the
+topic's `eyebrow`, `cardgen.py` has `TOPIC_NAME` so the preview card says
+"Python" instead of "PY", and `hub.js` drops the spec numbering for any topic
+whose id does not begin with a digit.
+
+The questions live in `codebank/`, one JSON file per lesson, and `specspy.py`
 reads them: station names and tasks both come from the bank, so nothing is
 retyped and nothing can drift.
 
