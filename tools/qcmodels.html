@@ -206,6 +206,50 @@ function collisions(b) {
   return Object.values(worst);
 }
 
+// ---- parts escaping the case ------------------------------------------------
+// A model built around a case has every other part inside it. The washing
+// machine's heater ran straight out through the floor of its casing and its
+// control panel poked out of the front, and nothing noticed: both are boxes, but
+// a part leaving the case collides with nothing, so the collision check is blind
+// to it. This measures each part against whichever part encloses the rest.
+function escapes(b) {
+  b.group.rotation.set(0, 0, 0);
+  b.group.scale.setScalar(1);
+  b.group.updateMatrixWorld(true);
+  const byPart = new Map();
+  b.group.traverse(o => {
+    if (!o.isMesh || o.userData.part === undefined) return;
+    const bb = new T.Box3().setFromObject(o);
+    const cur = byPart.get(o.userData.part);
+    byPart.set(o.userData.part, cur ? cur.union(bb) : bb);
+  });
+  if (byPart.size < 3) return [];
+  const items = [...byPart].map(([part, bb]) => ({ part, bb,
+    s: [bb.max.x - bb.min.x, bb.max.y - bb.min.y, bb.max.z - bb.min.z] }));
+  const vol = m => m.s[0] * m.s[1] * m.s[2];
+  // The case is the biggest part, it has to be the biggest along every axis, and
+  // it has to hold most of the others. The all-three-axes test is what keeps the
+  // fibre cable out of this: its layers are stripped back on purpose, so the core
+  // runs well past the jacket, and the jacket is wider but not longer.
+  const cs = items.slice().sort((a, b2) => vol(b2) - vol(a))[0];
+  for (const m of items)
+    if (m !== cs) for (let a = 0; a < 3; a++) if (m.s[a] > cs.s[a] + 1e-6) return [];
+  const held = items.filter(m => m !== cs && cs.bb.containsPoint(m.bb.getCenter(new T.Vector3())));
+  if (held.length < (items.length - 1) * .67) return [];
+  const span = Math.max(...cs.s);
+  const out = [];
+  for (const m of held) {
+    let worst = 0, where = "";
+    for (const a of ["x", "y", "z"]) {
+      const lo = cs.bb.min[a] - m.bb.min[a], hi = m.bb.max[a] - cs.bb.max[a];
+      if (lo > worst) { worst = lo; where = "-" + a; }
+      if (hi > worst) { worst = hi; where = "+" + a; }
+    }
+    if (worst / span > .02) out.push({ part: m.part, out: +(worst / span).toFixed(3), face: where });
+  }
+  return out;
+}
+
 window.QC = function () {
   const out = {};
   for (const kind of R360Models.kinds) {
@@ -240,6 +284,7 @@ window.QC = function () {
     const mis = orientation(b);
     const lab = labels(b);
     const col = collisions(b);
+    const esc = escapes(b);
     out[kind] = {
       coverage,
       parts: b.parts.map((p, i) => ({ name: p.name, pixels: best[i] })),
@@ -251,7 +296,9 @@ window.QC = function () {
                                   overlap: Math.round(c.frac * 100) })),
       stretched: lab.map(l => ({ name: (b.parts[l.part] || {}).name || "?",
                                  face: l.face, stretch: l.stretch,
-                                 texture: l.texture, faceAspect: l.faceAspect }))
+                                 texture: l.texture, faceAspect: l.faceAspect })),
+      escaped: esc.map(e => ({ name: (b.parts[e.part] || {}).name || "?",
+                               out: e.out, face: e.face }))
     };
     r.dispose(); canvas.remove();
   }
