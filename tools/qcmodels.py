@@ -98,6 +98,17 @@ def main():
             print(f"  {kind:14} {name[:30]:32} face {face}  {detail}")
         print()
 
+    escaped = []
+    for kind, v in res.items():
+        for e in v.get("escaped", []):
+            escaped.append((kind, e["name"], e["face"], e["out"]))
+    escaped.sort(key=lambda r: -r[3])
+    if escaped:
+        print("parts sticking out of the case:")
+        for kind, name, face, out in escaped:
+            print(f"  {kind:14} {name[:30]:32} {int(out*100):>3}% of the case past its {face} side")
+        print()
+
     flagged = []
     for kind, v in res.items():
         if v["coverage"] < 2000:
@@ -113,8 +124,9 @@ def main():
     print(f"\n{len(res)} models, {parts} parts checked; {len(flagged)} flagged")
     if errs:
         print("page errors:", errs)
-    print(f"{len(mis)} misoriented, {len(stretched)} label problem(s), {len(cols)} collision(s)")
-    return 1 if mis or stretched or cols or [f for f in flagged if f[3] != "barely visible"] or errs else 0
+    print(f"{len(mis)} misoriented, {len(stretched)} label problem(s), "
+          f"{len(cols)} collision(s), {len(escaped)} part(s) out of the case")
+    return 1 if mis or stretched or cols or escaped or [f for f in flagged if f[3] != "barely visible"] or errs else 0
 
 if __name__ == "__main__":
     sys.exit(main())

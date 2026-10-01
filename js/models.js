@@ -427,21 +427,47 @@
     },
     washingmachine() {
       const { group, parts, part } = kit();
-      part(box(3, 3.4, 3, std({ map: plastic("wmcase", "#eef1f5"), transparent: true, opacity: .28, roughness: .35 })), "Casing", "The washing machine is the larger device. The computer inside it is the embedded system. The casing is see-through so you can look inside.");
-      const drum = new T.Group(); const d = cyl(1.1, 1.1, 1.8, metal(drumTex()), 0, -.1, -.1, 48); d.rotation.x = Math.PI / 2; drum.add(d);
-      const ring = new T.Mesh(new T.TorusGeometry(1.05, .13, 20, 64), std({ color: 0x3a404a, roughness: .35, metalness: .4 })); ring.position.set(0, -.1, 1.52); drum.add(ring);
-      const glass = new T.Mesh(new T.CircleGeometry(.95, 48), std({ color: 0x9fc4e8, transparent: true, opacity: .35, roughness: .05, metalness: .2 })); glass.position.set(0, -.1, 1.53); drum.add(glass);
+      // Case 3 x 3.4 x 3, so x +-1.5, y +-1.7, z +-1.5. Everything below is laid
+      // out against those edges: the drum and door low and forward, the control
+      // panel in the strip above the door, the motor in the gap behind the drum,
+      // and the heater lying along the floor under the drum.
+      part(box(3, 3.4, 3, std({ map: plastic("wmcase", "#eef1f5"), transparent: true, opacity: .28, roughness: .35 })),
+           "Casing", "The washing machine is the larger device. The computer inside it is the embedded system. The casing is see-through so you can look inside.");
+
+      const DY = -.35;                                  // the drum and door sit low
+      const drum = new T.Group();
+      const d = cyl(.95, .95, 1.7, metal(drumTex()), 0, DY, .45, 48); d.rotation.x = Math.PI / 2; drum.add(d);
+      const ring = new T.Mesh(new T.TorusGeometry(1.0, .11, 20, 64), std({ color: 0x3a404a, roughness: .35, metalness: .4 }));
+      ring.position.set(0, DY, 1.38); drum.add(ring);
+      const glass = new T.Mesh(new T.CircleGeometry(.92, 48), std({ color: 0x9fc4e8, transparent: true, opacity: .35, roughness: .05, metalness: .2 }));
+      glass.position.set(0, DY, 1.39); drum.add(glass);
       part(drum, "Drum and door", "The steel drum holds the clothes. A door lock stops the door opening while the machine is running.");
-      part(topBox(2.9, .12, .55, std({ color: 0xe9edf3 }), std({ map: plastic("wmtop", "#e9edf3") }), 0, 1.33, 1.2), "Control panel", "Input: the user chooses a wash program and temperature with the dial and buttons.");
-      group.children[group.children.length - 1].add((() => { const f = new T.Mesh(new T.PlaneGeometry(2.8, .7), std({ map: panelTex(), roughness: .4 })); f.position.set(0, -.05, .28); f.rotation.x = -.2; f.userData.part = parts.length - 1; return f; })());
+
+      // The panel's lettering goes on the +Z face alone: a single material maps to
+      // all six, and the face it is read on has to match the canvas aspect.
+      const pSide = std({ color: 0xe9edf3, roughness: .45 });
+      const pFace = std({ map: panelTex(), roughness: .4 });
+      const pnl = new T.Mesh(new T.BoxGeometry(2.2, .55, .16), [pSide, pSide, pSide, pSide, pFace, pSide]);
+      pnl.position.set(0, 1.325, 1.38);
+      part(pnl, "Control panel", "Input: the user chooses a wash program and temperature with the dial and buttons.");
+
       const mcu = new T.Group(); const mp = pcb("mcu", [["WASH-CTRL v2", .06, .12]], { base: "#1a5a36" });
-      mcu.add(topBox(1.1, .06, .8, std({ color: 0x1a5a36 }), board(mp), .6, 1.2, -.6)); mcu.add(chip(.4, .06, .4, ["MCU", "32-bit"], .6, 1.26, -.6));
+      mcu.add(topBox(1.1, .06, .8, std({ color: 0x1a5a36 }), board(mp), .6, 1.2, -.6));
+      mcu.add(chip(.4, .06, .4, ["MCU", "32-bit"], .6, 1.26, -.6));
       part(mcu, "Microcontroller", "Process: a small embedded computer on this board runs one dedicated program that controls the whole wash cycle.");
-      const motor = new T.Group(); const mbody = cyl(.4, .4, .9, metal(brushed("motor", "#8a929e")), .7, -1.3, -.9); mbody.rotation.z = Math.PI / 2; motor.add(mbody);
-      const coil = cyl(.3, .3, .5, std({ color: 0xc7773b, metalness: 1, roughness: .35 }), .1, -1.3, -.9); coil.rotation.z = Math.PI / 2; motor.add(coil);
+
+      const motor = new T.Group();                       // in the gap behind the drum
+      const mbody = cyl(.33, .33, .8, metal(brushed("motor", "#8a929e")), .55, -.95, -.9); mbody.rotation.z = Math.PI / 2; motor.add(mbody);
+      const coil = cyl(.26, .26, .45, std({ color: 0xc7773b, metalness: 1, roughness: .35 }), -.02, -.95, -.9); coil.rotation.z = Math.PI / 2; motor.add(coil);
       part(motor, "Motor", "Output: the microcontroller switches the motor on and off, and controls its speed to turn the drum.");
-      part(chip(.5, .3, .5, ["TEMP", "SENSOR"], -.9, -1.5, .6, "#ff785a"), "Temperature sensor", "Input: tells the microcontroller how hot the water is, so it can switch the heater on or off.");
-      part(cyl(.07, .07, 1.6, std({ color: 0xb8322a, emissive: 0x3a0806, metalness: .6, roughness: .3 }), -.4, -1.5, 0), "Heater", "Output: heats the water to the temperature the user chose.");
+
+      part(chip(.5, .3, .5, ["TEMP", "SENSOR"], -.9, -1.5, .6, "#ff785a"), "Temperature sensor",
+           "Input: tells the microcontroller how hot the water is, so it can switch the heater on or off.");
+
+      // A heater lies along the floor under the drum; upright it ran out of the case.
+      const heat = cyl(.07, .07, 1.4, std({ color: 0xb8322a, emissive: 0x3a0806, metalness: .6, roughness: .3 }), -.35, -1.45, .3);
+      heat.rotation.x = Math.PI / 2;
+      part(heat, "Heater", "Output: heats the water to the temperature the user chose.");
       return { group, parts, scale: .6 };
     },
 
