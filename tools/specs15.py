@@ -127,8 +127,8 @@ L1 = dict(id="ss-l01", topic="1.5", lesson=1, title='Control room', img='SS_L01_
    (5, 'Embedded systems', 'The washing machine from topic 1.1 has an operating system too, but a tiny one, with a menu driven interface of dials and buttons.'),
   ],
   models=[
-   (("right", 363, 411), 'stack', 'The software stack', 'Pull the layers apart: hardware at the bottom, the operating system in the middle, applications on top.'),
-   (("right", 1258, 401), 'stack', 'What sits where', 'Every request from an application goes through the operating system before it reaches the hardware.'),
+   (0, 'stack', 'The software stack', 'Pull the layers apart: hardware at the bottom, the operating system in the middle, applications on top.'),
+   (1, 'stack', 'What sits where', 'Every request from an application goes through the operating system before it reaches the hardware.'),
   ],
   ws=dict(
     title='The purpose and functionality of operating systems',
@@ -264,6 +264,9 @@ L2 = dict(id="ss-l02", topic="1.5", lesson=2, title='Multitasking floor', img='S
    (3, 'Cores help', 'A four-core processor really can run four things at once, and the OS still time slices on top of that, which is why a modern machine copes with so much.'),
    (4, 'Driver disks', 'Hardware used to come with a driver disk in the box. Now the OS downloads drivers automatically, which is why a new mouse works the moment you plug it in.'),
    (5, 'Blue screens', 'Most famous crash screens are caused by drivers rather than by the operating system itself, because drivers run with the deepest access to the hardware.'),
+  ],
+  models=[
+   (2, 'ram', 'The memory being managed', "This is what the operating system is handing out. Each running process is given its own area on these chips, and kept out of everyone else's."),
   ],
   ws=dict(
     title='Operating systems: multitasking, memory and drivers',
@@ -539,8 +542,8 @@ L4 = dict(id="ss-l04", topic="1.5", lesson=4, title='Utility workshop', img='SS_
    (5, '3-2-1', 'The standard backup advice: three copies, on two types of media, with one off-site. Most data loss stories come from ignoring the last part.'),
   ],
   models=[
-   (("back", 363, 411), 'harddisk', 'Inside a hard disk', 'The platters spin and the head swings across them. On a fragmented disk it jumps between tracks for a single file.'),
-   (("left", 1178, 540), 'harddisk', 'Why defragmenting helps', 'Tracks are concentric rings. A file written in one run sits on neighbouring tracks, so the head barely moves.'),
+   (2, 'harddisk', 'Inside a hard disk', 'The platters spin and the head swings across them. On a fragmented disk it jumps between tracks for a single file.'),
+   (5, 'harddisk', 'Why defragmenting helps', 'Tracks are concentric rings. A file written in one run sits on neighbouring tracks, so the head barely moves.'),
   ],
   ws=dict(
     title='Utility system software',

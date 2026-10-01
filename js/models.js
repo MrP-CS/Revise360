@@ -247,6 +247,263 @@
       part(chip(.5, .3, .5, ["TEMP", "SENSOR"], -.9, -1.5, .6, "#ff785a"), "Temperature sensor", "Input: tells the microcontroller how hot the water is, so it can switch the heater on or off.");
       part(cyl(.07, .07, 1.6, std({ color: 0xb8322a, emissive: 0x3a0806, metalness: .6, roughness: .3 }), -.4, -1.5, 0), "Heater", "Output: heats the water to the temperature the user chose.");
       return { group, parts, scale: .6 };
+    },
+
+    // A memory module, for primary storage and virtual memory
+    ram() {
+      const { group, parts, part } = kit();
+      const rp = pcb("rammod", [["R360  DDR  16GB", .08, .18], ["PC5-44800", .08, .3]], { edge: true, base: "#1e4f6b" });
+      const stick = topBox(5.4, 1.5, .09, board(rp), board(rp));
+      part(stick, "Circuit board", "The module is a small circuit board that slots into the motherboard. Everything the CPU is working on right now is held on the chips mounted here.");
+      const chips = new T.Group();
+      for (let k = 0; k < 8; k++) {
+        chips.add(chip(.52, .1, .42, ["R360", "2Gb"], -2.3 + k * .66, .22, .08));
+        chips.add(chip(.52, .1, .42, ["R360", "2Gb"], -2.3 + k * .66, .22, -.08));
+      }
+      part(chips, "Memory chips", "Each chip holds billions of tiny cells, and each cell stores one bit as a charge. The charge leaks away in a fraction of a second, so every cell is refreshed thousands of times a second. Cut the power and all of it is gone: this is why RAM is volatile.");
+      const pins = new T.Group();
+      for (let k = 0; k < 44; k++) {
+        const w = .07;
+        pins.add(box(w, .3, .11, gold(), -2.55 + k * .116, -.88, .055));
+        pins.add(box(w, .3, .11, gold(), -2.55 + k * .116, -.88, -.055));
+      }
+      part(pins, "Contacts", "Gold-plated contacts carry data, addresses and power between the module and the memory controller. Gold is used because it does not corrode, so the connection stays reliable.");
+      const notch = box(.16, .34, .14, std({ color: 0x0d1018, roughness: .8 }), -.5, -.86, 0);
+      part(notch, "The notch", "A gap in the contacts, positioned differently for each generation of memory. It stops a module being fitted the wrong way round, or into a motherboard that cannot use it.");
+      part(box(5.4, .5, .22, metal(brushed("ramspread", "#aeb5c0")), 0, 1.0, 0), "Heat spreader", "A thin metal cover that draws heat away from the chips. Memory running at high speed gets warm, and heat makes errors more likely.");
+      return { group, parts, scale: .62 };
+    },
+
+    // A solid state drive: the point is that nothing moves
+    ssd() {
+      const { group, parts, part } = kit();
+      const shell = std({ map: brushed("ssdcase", "#c3c8cf"), metalness: .85, roughness: .4, transparent: true, opacity: .3 });
+      part(box(4.4, .3, 3.2, shell, 0, .5, 0), "Casing", "A plain metal shell with nothing inside it that turns. There is no motor, no disc and no arm, so an SSD makes no noise and is not damaged by being knocked while it works.");
+      const bp = pcb("ssdpcb", [["R360-SSD", .06, .1], ["NAND x8", .6, .9]], { base: "#13303f" });
+      part(topBox(4.1, .08, 2.9, std({ color: 0x13303f }), board(bp), 0, 0, 0), "Circuit board", "Everything sits flat on one board. With no moving parts to wait for, the drive can start reading any block as soon as it is asked.");
+      const nand = new T.Group();
+      for (let r = 0; r < 2; r++) for (let c = 0; c < 4; c++)
+        nand.add(chip(.78, .16, .6, ["NAND", "FLASH", "512Gb"], -1.45 + c * .97, .12, -.75 + r * 1.5));
+      part(nand, "Flash memory chips", "Data is stored as a trapped charge inside each cell, and the charge stays put with the power off. This is what makes an SSD non-volatile, and why it keeps your files when the machine is switched off.");
+      part(chip(.95, .2, .95, ["CONTROLLER", "R360-S1"], 1.5, .14, 0, "#40c4ff"), "Controller", "Decides which chips to write to, spreads writes evenly so no part wears out early, and keeps track of where every file is.");
+      part(chip(.6, .16, .45, ["DRAM", "CACHE"], 1.5, .12, 1.1), "Cache", "A small amount of fast memory holding the map of where data lives, so the controller does not have to look it up from flash every time.");
+      const conn = new T.Group();
+      for (let k = 0; k < 14; k++) conn.add(box(.08, .09, .3, gold(), -2.0, .02, -1.0 + k * .155));
+      part(conn, "Connector", "Carries data and power to the motherboard. The drive is faster than a hard disk partly because this connection is faster, and partly because there is no head to move.");
+      return { group, parts, scale: .68 };
+    },
+
+    // An optical disc, cut open so the track and the laser are visible
+    opticaldisc() {
+      const { group, parts, part } = kit();
+      const discM = std({ color: 0xdfe6ef, metalness: .35, roughness: .12, transparent: true, opacity: .45, side: T.DoubleSide });
+      part(cyl(2.4, 2.4, .04, discM, 0, 0, 0, 96), "Polycarbonate layer", "A clear plastic disc. The laser shines up through it, so a scratch on this surface blurs the beam rather than destroying the data itself.");
+      const refl = cyl(2.3, 2.3, .015, metal(null, { color: 0xd8dde6, metalness: 1, roughness: .08 }), 0, .035, 0, 96);
+      part(refl, "Reflective layer", "A mirror-thin coating of aluminium. The laser bounces off it, and how much light comes back is what the drive actually measures.");
+      const track = new T.Group();
+      for (let i = 0; i < 26; i++) {
+        const r = .75 + i * .058;
+        const ring = new T.Mesh(new T.TorusGeometry(r, .009, 6, 128), std({ color: 0x40c4ff, emissive: 0x0d2740 }));
+        ring.rotation.x = Math.PI / 2; ring.position.y = .05; track.add(ring);
+      }
+      part(track, "The spiral track", "One continuous groove winding out from the centre. On a CD it is about five kilometres long. The disc spins and the laser follows the groove outwards.");
+      const pits = new T.Group();
+      for (let i = 0; i < 90; i++) {
+        const a = i * .42, r = .8 + (i % 24) * .058;
+        pits.add(box(.055, .03, .1, std({ color: 0x1b2433, roughness: .6 }), Math.cos(a) * r, .055, Math.sin(a) * r));
+      }
+      part(pits, "Pits and lands", "The groove is moulded with pits. A pit scatters the light and a land reflects it straight back, so the drive sees a change in brightness. Those changes are read as the 1s and 0s.");
+      const laser = new T.Group();
+      laser.add(cyl(.22, .3, .45, metal(brushed("lens", "#9aa2ae")), 1.4, -.9, 0));
+      laser.add(tube(new T.Vector3(1.4, -.68, 0), new T.Vector3(1.4, .03, 0), .035, std({ color: 0xff5a6e, emissive: 0x6a1020, transparent: true, opacity: .85 })));
+      part(laser, "Laser and lens", "The lens focuses the beam to a spot smaller than the pits. A shorter wavelength makes a smaller spot, which is how a DVD and then Blu-ray fitted far more data on the same size disc.");
+      const hub = new T.Mesh(new T.RingGeometry(.38, .72, 48), std({ color: 0x2a3140, roughness: .7, side: T.DoubleSide }));
+      hub.rotation.x = -Math.PI / 2; hub.position.y = .07;
+      part(hub, "Centre hole", "The spindle grips here and spins the disc. The drive changes the speed as the head moves out, so the track passes the laser at a steady rate.");
+      return { group, parts, scale: .78 };
+    },
+
+    // A network switch, for building a LAN and for where traffic can be intercepted
+    switch() {
+      const { group, parts, part } = kit();
+      const caseM = metal(brushed("swcase", "#51596b"), { metalness: .7, roughness: .45 });
+      part(topBox(6.2, .9, 2.6, caseM, caseM, 0, 0, 0), "Casing", "A switch is usually a flat box in a cabinet. A school might have one in each corridor, with every room's cable running back to it.");
+      const ports = new T.Group(); const pm = std({ color: 0x11151d, roughness: .8 });
+      for (let r = 0; r < 2; r++) for (let c = 0; c < 12; c++) {
+        const px = -2.75 + c * .5, py = -.12 + r * .36;
+        ports.add(box(.36, .3, .1, pm, px, py, 1.31));
+        ports.add(box(.12, .1, .06, std({ color: 0x2a3140 }), px, py + .13, 1.34));
+      }
+      part(ports, "Ports", "Each device on the network plugs into its own port with a twisted pair cable. The switch learns which device is on which port, so it can send a frame to just that one.");
+      const leds = new T.Group();
+      for (let c = 0; c < 12; c++) {
+        const on = c % 3 !== 1;
+        leds.add(box(.1, .06, .04, std({ color: on ? 0x50dc96 : 0x2a3140, emissive: on ? 0x12402a : 0 }), -2.75 + c * .5, .33, 1.33));
+      }
+      part(leds, "Status lights", "One light per port. It tells you whether anything is plugged in, how fast the link is running, and whether data is flowing. The first thing to check when a room has no network.");
+      const asic = new T.Group();
+      const sp = pcb("swpcb", [["R360-SW24", .08, .12]], { base: "#17323f" });
+      asic.add(topBox(5.8, .06, 2.2, std({ color: 0x17323f }), board(sp), 0, -.35, 0));
+      asic.add(chip(1.1, .18, 1.1, ["SWITCH", "ASIC"], 0, -.22, -.1, "#40c4ff"));
+      part(asic, "Switching chip", "Holds a table matching each device's MAC address to a port. When a frame arrives the chip looks up the destination and forwards it out of that one port, instead of to everybody.");
+      part(box(.5, .34, .1, std({ color: 0x1b2433, roughness: .7 }), 2.75, .1, 1.31), "Uplink port", "A faster port for the cable that runs to the next switch or to the router. All the traffic leaving this part of the network squeezes through here, so it needs to be the quickest link.");
+      return { group, parts, scale: .55 };
+    },
+
+    // Fibre optic cable, cut away so total internal reflection is visible
+    fibre() {
+      const { group, parts, part } = kit();
+      // Drawn like a cable stripped back in stages, so each layer is visible as
+      // a ring at the cut end rather than hidden inside the one outside it.
+      const X0 = -3.6;
+      const layer = (rad, endX, mat, segs) => {
+        const len = endX - X0;
+        const c = cyl(rad, rad, len, mat, X0 + len / 2, 0, 0, segs || 40);
+        c.rotation.z = Math.PI / 2;
+        return c;
+      };
+      part(layer(.62, 0.6, std({ color: 0xf4b942, roughness: .7 })),
+           "Outer jacket", "Tough plastic that takes the wear. The colour is a convention: yellow usually means a single mode fibre, the kind used for long distances.");
+      part(layer(.42, 1.7, std({ color: 0x8a6bd1, roughness: .6 })),
+           "Strengthening and buffer", "Strands of tough fibre take the strain if the cable is pulled, and a soft buffer stops the glass being crushed. Bend a fibre too tightly and the light escapes instead of reflecting.");
+      part(layer(.26, 2.8, std({ color: 0x9fd8ff, roughness: .15, metalness: .1, transparent: true, opacity: .55 })),
+           "Cladding", "Glass with a lower refractive index than the core. That difference is what makes the light bounce back in instead of leaking out: total internal reflection.");
+      part(layer(.1, 3.8, std({ color: 0xeaf6ff, roughness: .05, emissive: 0x16304a }), 24),
+           "Glass core", "A thread of extremely pure glass, thinner than a human hair. The signal is pulses of light travelling down this core: on for a 1, off for a 0.");
+      const ray = new T.Group();
+      const beam = std({ color: 0xff5a6e, emissive: 0x7a1427, transparent: true, opacity: .9 });
+      let x = X0 + .2, up = true;
+      for (let i = 0; i < 9; i++) {
+        const nx = x + .78;
+        ray.add(tube(new T.Vector3(x, up ? -.2 : .2, 0), new T.Vector3(nx, up ? .2 : -.2, 0), .035, beam));
+        x = nx; up = !up;
+      }
+      part(ray, "The light bouncing", "The beam hits the boundary at a shallow angle and reflects, over and over, all the way along. Because it is light rather than electricity, it carries far more data, goes much further without a boost, and nothing electrical nearby can interfere with it.");
+      return { group, parts, scale: .48 };
+    },
+
+    // Twisted pair cable and its connector, for wired connections
+    rj45() {
+      const { group, parts, part } = kit();
+      const L = 6;
+      const sheath = cyl(.62, .62, L, std({ color: 0x3f6fd8, roughness: .65, transparent: true, opacity: .26 }), -.6, 0, 0, 40);
+      sheath.rotation.z = Math.PI / 2;
+      part(sheath, "Outer sheath", "The plastic jacket holding the four pairs together. Cable is sold in categories: a higher category is made to tighter tolerances and carries data faster.");
+      const COLS = [0xff785a, 0x50dc96, 0x40c4ff, 0xc8a24a];
+      const pairs = new T.Group();
+      COLS.forEach((c, p) => {
+        const ang = p * Math.PI / 2;
+        for (let s = 0; s < 2; s++) {
+          const m = std({ color: s ? 0xf0f3f7 : c, roughness: .5 });
+          const pts = [];
+          for (let i = 0; i <= 40; i++) {
+            const t = i / 40, xx = -L / 2 - .6 + t * L, a = ang + t * 22 + s * Math.PI;
+            pts.push(new T.Vector3(xx, Math.cos(a) * .22 + Math.sin(ang) * .0, Math.sin(a) * .22));
+          }
+          const g = new T.TubeGeometry(new T.CatmullRomCurve3(pts), 60, .055, 8, false);
+          pairs.add(new T.Mesh(g, m));
+        }
+      });
+      part(pairs, "Four twisted pairs", "Eight wires in four pairs, and every pair is twisted along its length at a slightly different rate, so neighbouring pairs do not pick each other up. Interference hits both wires of a pair almost equally, and the receiver listens to the difference between them, so the interference cancels out. Untwist too much at the ends and the connection becomes unreliable.");
+      const plug = new T.Group();
+      plug.add(box(1.25, .95, .75, std({ color: 0xdfe6ef, roughness: .25, transparent: true, opacity: .55 }), 3.1, 0, 0));
+      const clip = box(.5, .28, .1, std({ color: 0xdfe6ef, roughness: .3, transparent: true, opacity: .65 }), 3.0, .58, 0);
+      clip.rotation.z = -.18; plug.add(clip);
+      part(plug, "The connector", "The familiar clip-in plug. The clip is the part that snaps off, and a cable with a broken clip works loose and drops the connection.");
+      const pins = new T.Group();
+      for (let k = 0; k < 8; k++) pins.add(box(.06, .42, .07, gold(), 3.45, .12, -.3 + k * .085));
+      part(pins, "Eight pins", "Each wire is pressed onto its own gold pin, in a fixed order. Get the order wrong at one end and the cable either will not work or will only run at a fraction of its speed.");
+      return { group, parts, scale: .47 };
+    },
+
+    // A server rack: what "the cloud" actually is
+    rack() {
+      const { group, parts, part } = kit();
+      const frame = new T.Group();
+      const railM = metal(brushed("rackrail", "#464d5c"), { roughness: .5 });
+      [[-1.7, -1.1], [1.7, -1.1], [-1.7, 1.1], [1.7, 1.1]].forEach(([x, z]) => frame.add(box(.16, 6.2, .16, railM, x, 0, z)));
+      frame.add(box(3.56, .14, 2.36, railM, 0, -3.1, 0));
+      frame.add(box(3.56, .14, 2.36, railM, 0, 3.1, 0));
+      part(frame, "The rack", "A standard steel frame. Every piece of equipment is built to the same width and fixed height steps, so kit from any manufacturer bolts into any rack anywhere in the world.");
+      const servers = new T.Group();
+      for (let k = 0; k < 7; k++) {
+        const y = -2.5 + k * .62;
+        const body = topBox(3.3, .46, 2.2, metal(brushed("srv" + k, "#6b7382")), metal(brushed("srvtop" + k, "#767e8d")), 0, y, 0);
+        servers.add(body);
+        for (let d = 0; d < 6; d++) servers.add(box(.18, .34, .06, std({ color: 0x323a49, roughness: .6 }), -1.3 + d * .3, y, 1.13));
+        servers.add(box(.08, .06, .04, std({ color: 0x50dc96, emissive: 0x12402a }), 1.35, y + .12, 1.13));
+      }
+      part(servers, "Servers", "Each slot is a complete computer: processors, memory and storage, but no screen or keyboard. Nobody sits at these. They are reached over the network, and one rack can serve many thousands of people at once.");
+      const net = new T.Group();
+      net.add(topBox(3.3, .4, 2.2, metal(brushed("rsw", "#51596b")), metal(brushed("rswt", "#5a6274")), 0, 1.72, 0));
+      for (let k = 0; k < 14; k++) net.add(box(.14, .12, .06, std({ color: 0x11151d }), -1.35 + k * .2, 1.72, 1.13));
+      part(net, "Switch and patch panel", "Everything in the rack plugs into the switch at the top, and the switch connects out to the rest of the data centre and then the internet. This is the route your request takes to reach the server.");
+      const cables = new T.Group();
+      [0x40c4ff, 0x50dc96, 0xff785a, 0xffd046].forEach((c, i) => {
+        for (let k = 0; k < 3; k++) {
+          const y0 = -2.5 + (i + k) * .42;
+          const pts = [new T.Vector3(1.2 - i * .2, y0, 1.2), new T.Vector3(1.9, (y0 + 1.72) / 2, 1.5), new T.Vector3(1.0 - i * .2, 1.72, 1.2)];
+          cables.add(new T.Mesh(new T.TubeGeometry(new T.CatmullRomCurve3(pts), 24, .035, 6, false), std({ color: c, roughness: .6 })));
+        }
+      });
+      part(cables, "Patch cables", "Short cables from each server to the switch. A data centre holds thousands of these, which is why they are colour coded and routed so carefully.");
+      part(box(3.4, .3, .5, std({ color: 0x2a3140, roughness: .7 }), 0, -3.4, 1.0), "Cooling", "All that electricity turns into heat. Cold air is pushed in at the front and hot air pulled out at the back, and cooling can use nearly as much power as the computers do. This is the main reason data centres are built where power and cooling are cheap.");
+      return { group, parts, scale: .70 };
+    },
+
+    // A smartphone opened up, for the environmental cost of making and binning devices
+    phone() {
+      const { group, parts, part } = kit();
+      const glass = std({ color: 0x1b2433, roughness: .08, metalness: .3, transparent: true, opacity: .55 });
+      part(box(2.6, .07, 5.2, glass, 0, 1.0, 0), "Screen", "The display needs indium, a rare metal, for its transparent conducting layer. Very little of it is ever recovered: once a screen is crushed, the indium is effectively gone.");
+      part(box(2.7, .16, 5.3, metal(brushed("phoneframe", "#9aa2ae")), 0, -.75, 0), "Aluminium body", "The case is mined bauxite, smelted using a great deal of electricity. Recycling aluminium takes a small fraction of that energy, which is why the casing is worth recovering.");
+      const batt = box(2.1, .42, 3.0, std({ color: 0x2f7d5a, roughness: .5 }), 0, -.35, -.7);
+      part(batt, "Battery", "Lithium, cobalt and nickel. Cobalt in particular is concentrated in a few countries, and mining it has well documented human costs. The battery is also the part that wears out first, which is often what sends a working phone to the bin.");
+      const bp = pcb("phonepcb", [["R360-MOBILE", .1, .14], ["RF", .7, .8]], { base: "#163a2c" });
+      const logic = new T.Group();
+      logic.add(topBox(2.1, .07, 1.6, std({ color: 0x163a2c }), board(bp), 0, -.3, 1.7));
+      logic.add(chip(.7, .14, .7, ["SoC", "R360"], -.4, -.2, 1.7, "#40c4ff"));
+      logic.add(chip(.45, .12, .45, ["RAM"], .55, -.2, 1.45));
+      for (let k = 0; k < 10; k++) logic.add(box(.08, .04, .5, gold(), -.9 + k * .2, -.25, 2.35));
+      part(logic, "Circuit board", "Gold, silver, copper, tantalum and a dozen rare earth elements, in quantities too small to see. A tonne of old phones contains far more gold than a tonne of ore, which is why recovering them is worth doing.");
+      const cam = new T.Group();
+      [[-.65, -1.8], [-.65, -2.45], [.1, -2.1]].forEach(([x, z]) => {
+        cam.add(cyl(.3, .3, .2, metal(null, { color: 0x2a3140 }), x, -.62, z, 32));
+        cam.add(cyl(.2, .2, .08, std({ color: 0x0d1018, roughness: .05, metalness: .5 }), x, -.52, z, 32));
+      });
+      part(cam, "Cameras", "Ground glass and rare earth elements. Each new model adds more of them, and a device is often replaced while the old one still works perfectly.");
+      part(box(2.4, .05, 4.9, std({ color: 0x3a4150, roughness: .8 }), 0, -.62, 0), "Adhesive and plastics", "Glued together rather than screwed, which makes a phone thin and waterproof but hard to repair or take apart. Parts that cannot be separated cannot be recycled, so they are burned or buried.");
+      return { group, parts, scale: .62 };
+    },
+
+    // A logic chip, to anchor Boolean logic in something physical
+    logicchip() {
+      const { group, parts, part } = kit();
+      const body = topBox(1.6, .5, 3.4, std({ color: 0x16181d, roughness: .62 }),
+                          std({ map: epoxy("lgc", ["R360", "7408", "QUAD 2-IN AND"], "#40c4ff"), roughness: .5 }),
+                          0, 0, 0);
+      body.material[2].transparent = true; body.material[2].opacity = .32;
+      part(body, "The package", "A black plastic case about a centimetre across. Inside it is a single sliver of silicon: the four gates in here would once have filled a cupboard. The lid is see-through so you can look in.");
+      const pins = new T.Group();
+      for (let s = 0; s < 2; s++) for (let k = 0; k < 7; k++) {
+        const z = -1.35 + k * .45, x = s ? .95 : -.95;
+        pins.add(box(.12, .5, .14, metal(null, { color: 0xc9ced6 }), x, -.42, z));
+        pins.add(box(.5, .12, .14, metal(null, { color: 0xc9ced6 }), s ? .72 : -.72, -.18, z));
+      }
+      part(pins, "The pins", "Fourteen legs. Twelve carry the inputs and outputs of the four gates, and the other two are power and ground, because a gate needs electricity to do anything at all.");
+      const dieM = std({ map: die(), roughness: .35, metalness: .25, emissive: 0x0a1424 });
+      part(box(.9, .05, 2.2, dieM, 0, .2, 0), "Silicon die", "The chip itself. Every gate is built from transistors: tiny switches with no moving parts, each one either letting current through or not. That on-or-off behaviour is where the 1s and 0s come from.");
+      const gates = new T.Group();
+      for (let k = 0; k < 4; k++) {
+        const z = -.85 + k * .57;
+        const g = new T.Mesh(new T.BoxGeometry(.52, .04, .3), std({ color: 0x40c4ff, emissive: 0x0d2740 }));
+        g.position.set(0, .24, z); gates.add(g);
+        gates.add(tube(new T.Vector3(-.75, .24, z - .07), new T.Vector3(-.26, .24, z - .07), .02, std({ color: 0x50dc96, emissive: 0x12402a })));
+        gates.add(tube(new T.Vector3(-.75, .24, z + .07), new T.Vector3(-.26, .24, z + .07), .02, std({ color: 0x50dc96, emissive: 0x12402a })));
+        gates.add(tube(new T.Vector3(.26, .24, z), new T.Vector3(.75, .24, z), .02, std({ color: 0xffd046, emissive: 0x3a2e00 })));
+      }
+      part(gates, "Four AND gates", "One chip, four separate gates, each with two inputs and one output. The output goes high only when both of its inputs are high. The truth table you fill in on paper is a description of what this piece of silicon physically does.");
+      return { group, parts, scale: .9 };
     }
   };
 

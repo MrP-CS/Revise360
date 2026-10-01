@@ -212,6 +212,9 @@ L8 = dict(id="ns-l08", topic="1.4", lesson=8, title="Packet sniffers", img="NS_L
       ["Writing the Wi-Fi password on the office whiteboard", "Risky"], ["Using a VPN when working away from the office", "Safe"],
       ["Emailing a spreadsheet of personal data unencrypted", "Risky"], ["Keeping the server room locked", "Safe"]],
       "Most of the risky ones are about people, not technology.")]),
+  models=[
+   (1, "switch", "Where a sniffer sits", "Traffic for the whole network passes through here. Anything plugged into a port, or the switch itself if an attacker reaches it, can be made to copy what goes by."),
+  ],
   info=[(0, "Wireshark", "Wireshark is a free packet sniffer used by network managers worldwide. The same tool in the wrong hands is an attacker's dream."),
         (1, "HTTPS everywhere", "Most websites now use HTTPS by default, which is why intercepting browsing is far less useful than it once was."),
         (2, "Evil twin", "A fake hotspot with the same name as a real one is called an evil twin. Phones may join it automatically."),
