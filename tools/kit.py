@@ -364,11 +364,21 @@ def build_faces(L):
 
 # ---------------------------------------------------------------- export
 # Interactive markers sit in a fixed place relative to the panel they belong to:
-# the info icon centred above it, the station badge centred below it. Both rows are
-# clear of panel text on every wall, so nothing ever needs nudging.
+# the info icon centred above it, the 3D model button at its top right corner, and
+# the station badge centred below it. The two upper rows share a y, which is clear
+# of panel text on every wall, so nothing ever needs nudging.
+#
+#        (i)              [3D]      <- INFO_Y / MODEL_Y
+#     +-------------------------+
+#     |        the panel        |
+#     +-------------------------+
+#              (1)              <- STATION_Y
 PANEL_CENTRE = [540, 1508]          # the two panel centres on a station wall
+MODEL_INSET = 790                   # from the panel's left edge: 90px in from its right
 INFO_Y, STATION_Y = 240, 1840
+MODEL_Y = INFO_Y
 INFO_POS = [(fc, PANEL_CENTRE[k % 2]) for k, (fc, _) in enumerate(STATION_WALLS)]
+MODEL_POS = [(fc, x0 + MODEL_INSET) for fc, x0 in STATION_WALLS]
 def export(L, site=SITE_S):
     import os
     faces = build_faces(L)
@@ -386,7 +396,9 @@ def export(L, site=SITE_S):
     models = []
     for i, md in enumerate(L.get("models", [])):
         where, kind, title, text = md
-        if isinstance(where, int): fc, x0 = STATION_WALLS[where]; x, y = x0 + 110, 540
+        # An int is the station the model belongs to; the button then sits at that
+        # panel's top right, the same place in every experience.
+        if isinstance(where, int): fc, x = MODEL_POS[where]; y = MODEL_Y
         else: fc, x, y = where
         models.append(dict(id=f"m{i+1}", face=fc, x=x, y=y, model=kind, title=title, text=text))
     info = []
