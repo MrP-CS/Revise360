@@ -35,7 +35,7 @@
     return { map: canvas(key, 1024, 1024, draw(false)), bump: canvas(key + "b", 512, 512, draw(true)) };
   }
   function brushed(key, tint, text) {
-    return canvas(key, 1024, 1024, (x, w, h) => {
+    const t = canvas(key, 1024, 1024, (x, w, h) => {
       x.fillStyle = tint || "#b9bec7"; x.fillRect(0, 0, w, h);
       for (let i = 0; i < 2200; i++) { const y = rand() * h, v = 150 + rand() * 90; x.strokeStyle = `rgba(${v},${v},${v + 6},.18)`; x.lineWidth = 1; x.beginPath(); x.moveTo(0, y); x.lineTo(w, y + rand() * 4 - 2); x.stroke(); }
       if (text) {
@@ -45,14 +45,55 @@
         x.beginPath(); x.moveTo(60, 60); x.lineTo(130, 60); x.lineTo(60, 130); x.closePath(); x.fill();
       }
     });
+    if (text) { t.userData = t.userData || {}; t.userData.isLabel = true; }
+    return t;
   }
-  function epoxy(key, lines, accent) {
-    return canvas(key, 512, 512, (x, w, h) => {
+  // A label texture has to be drawn at the aspect of the face it lands on, or
+  // the stretch applied when it is mapped squashes the lettering. "Cache" sat on
+  // a face six times wider than it was deep and was drawn on a square canvas.
+  function labelCanvas(key, aspect, draw) {
+    const B = 512;
+    const w = aspect >= 1 ? Math.round(B * Math.min(aspect, 8)) : B;
+    const h = aspect >= 1 ? B : Math.round(B / Math.max(aspect, .125));
+    const t = canvas(key + "@" + aspect.toFixed(2), w, h, draw);
+    t.userData = t.userData || {};
+    t.userData.isLabel = true;   // only lettering has to match its face aspect
+    return t;
+  }
+  // Largest size at which the text still fits the face, so nothing is clipped.
+  function fitFont(x, text, maxW, start, weight, family) {
+    let fs = start;
+    const set = () => x.font = `${weight || "bold"} ${fs}px ${family || "Segoe UI, sans-serif"}`;
+    set();
+    while (x.measureText(text).width > maxW && fs > 14) { fs -= 2; set(); }
+    return fs;
+  }
+  function epoxy(key, lines, accent, aspect) {
+    return labelCanvas(key, aspect || 1, (x, w, h) => {
       x.fillStyle = "#16181d"; x.fillRect(0, 0, w, h); noise(x, w, h, 2500, .06);
-      if (accent) { x.fillStyle = accent; x.fillRect(0, 0, w, 70); x.fillStyle = "#0f1626"; x.font = "bold 50px Segoe UI, sans-serif"; x.textAlign = "center"; x.fillText(lines[0], w / 2, 52); lines = lines.slice(1); }
-      x.fillStyle = "rgba(230,232,236,.9)"; x.textAlign = "center";
-      lines.forEach((t, i) => { x.font = i === 0 ? "bold 58px Segoe UI, sans-serif" : "34px monospace"; x.fillText(t, w / 2, (accent ? 190 : 180) + i * 70); });
-      x.beginPath(); x.arc(46, h - 46, 16, 0, 7); x.strokeStyle = "rgba(230,232,236,.6)"; x.lineWidth = 4; x.stroke();
+      x.textAlign = "center"; x.textBaseline = "middle";
+      const inner = w * .86;
+      let band = 0;
+      if (accent) {
+        band = h * .17;
+        x.fillStyle = accent; x.fillRect(0, 0, w, band);
+        x.fillStyle = "#0f1626";
+        fitFont(x, lines[0], inner, Math.round(band * .62));
+        x.fillText(lines[0], w / 2, band * .52);
+        lines = lines.slice(1);
+      }
+      x.fillStyle = "rgba(230,232,236,.9)";
+      // Centre the remaining lines in the space that is left
+      const top = band, avail = h - band;
+      const step = Math.min(avail / (lines.length + 1), h * .3);
+      lines.forEach((t, i) => {
+        const size = fitFont(x, t, inner, Math.round(step * (i === 0 ? .62 : .46)),
+                             i === 0 ? "bold" : "", i === 0 ? null : "monospace");
+        x.fillText(t, w / 2, top + step * (i + 1) - size * .1);
+      });
+      const r = Math.min(w, h) * .055;
+      x.beginPath(); x.arc(r * 1.6, h - r * 1.6, r, 0, 7);
+      x.strokeStyle = "rgba(230,232,236,.6)"; x.lineWidth = Math.max(2, r * .25); x.stroke();
     });
   }
   function die() {
@@ -69,12 +110,15 @@
       x.fillStyle = "rgba(255,255,255,.95)"; x.font = "bold 88px Segoe UI, sans-serif"; x.textAlign = "center"; x.textBaseline = "middle"; x.fillText("Core " + n, w / 2, h / 2);
     });
   }
-  function blockTex(key, label, color) {
-    return canvas(key, 512, 512, (x, w, h) => {
+  function blockTex(key, label, color, aspect) {
+    return labelCanvas(key, aspect || 1, (x, w, h) => {
       const g = x.createLinearGradient(0, 0, 0, h); g.addColorStop(0, color); g.addColorStop(1, "#1a2238"); x.fillStyle = g; x.fillRect(0, 0, w, h);
       for (let i = 0; i < 260; i++) { x.fillStyle = `rgba(255,255,255,${.04 + rand() * .08})`; x.fillRect(rand() * w, rand() * h, 6 + rand() * 24, 4 + rand() * 12); }
-      x.strokeStyle = "rgba(255,255,255,.55)"; x.lineWidth = 10; x.strokeRect(12, 12, w - 24, h - 24);
-      x.fillStyle = "#fff"; x.font = `bold ${label.length > 4 ? 90 : 130}px Segoe UI, sans-serif`; x.textAlign = "center"; x.textBaseline = "middle"; x.fillText(label, w / 2, h / 2);
+      const inset = Math.min(w, h) * .025, lw = Math.min(w, h) * .02;
+      x.strokeStyle = "rgba(255,255,255,.55)"; x.lineWidth = lw; x.strokeRect(inset, inset, w - inset * 2, h - inset * 2);
+      x.fillStyle = "#fff"; x.textAlign = "center"; x.textBaseline = "middle";
+      fitFont(x, label, w * .82, Math.round(Math.min(h * .55, w * .5)));
+      x.fillText(label, w / 2, h / 2);
     });
   }
   function plastic(key, c) { return canvas(key, 256, 256, (x, w, h) => { x.fillStyle = c; x.fillRect(0, 0, w, h); noise(x, w, h, 3000, .05); }); }
@@ -115,14 +159,21 @@
     const part = (obj, name, text) => { obj.traverse(o => { if (o.isMesh) o.userData.part = parts.length; }); group.add(obj); parts.push({ obj, name, text }); return obj; };
     return { group, parts, part };
   }
-  function chip(w, h, d, lines, x, y, z, accent) { const side = std({ color: 0x16181d, roughness: .6 }); return topBox(w, h, d, side, std({ map: epoxy("chip" + lines.join(), lines, accent), roughness: .5 }), x, y, z); }
+  function chip(w, h, d, lines, x, y, z, accent) {
+    const side = std({ color: 0x16181d, roughness: .6 });
+    // the markings land on +Y, so the face is w by d
+    const m = std({ map: epoxy("chip" + lines.join(), lines, accent, w / d), roughness: .5 });
+    return topBox(w, h, d, side, m, x, y, z);
+  }
   // Same chip, but printed on a vertical face: for anything mounted on a board
   // that stands upright, where the markings face the viewer rather than the sky.
   // BoxGeometry material order is +X, -X, +Y, -Y, +Z, -Z.
   function chipFacing(w, h, d, lines, x, y, z, faceIdx, accent) {
     const side = std({ color: 0x16181d, roughness: .6 });
     const m = [side, side, side, side, side, side];
-    m[faceIdx] = std({ map: epoxy("chip" + lines.join(), lines, accent), roughness: .5 });
+    // +X/-X see d by h, +Y/-Y see w by d, +Z/-Z see w by h
+    const aspect = faceIdx < 2 ? d / h : faceIdx < 4 ? w / d : w / h;
+    m[faceIdx] = std({ map: epoxy("chip" + lines.join(), lines, accent, aspect), roughness: .5 });
     const o = new T.Mesh(new T.BoxGeometry(w, h, d), m);
     o.position.set(x || 0, y || 0, z || 0);
     return o;
@@ -141,7 +192,7 @@
       const cores = new T.Group();
       [[-.5, -.62], [.5, -.62], [-.5, .28], [.5, .28]].forEach(([x, z], k) => cores.add(topBox(.85, .05, .75, std({ color: 0x1e4f7a }), std({ map: coreTex(k + 1), roughness: .3, metalness: .3 }), x, .155, z)));
       part(cores, "Cores", "Each core is a complete processing unit that can fetch, decode and execute instructions on its own. A quad-core CPU can process four sets of instructions at the same time.");
-      part(topBox(1.85, .05, .38, std({ color: 0x8a6d1a }), std({ map: blockTex("cachecpu", "Cache", "#c9a227"), roughness: .3, metalness: .3 }), 0, .155, .88), "Cache", "Very fast memory on the CPU itself. It holds frequently used instructions and data, so the CPU doesn't have to wait for slower RAM.");
+      part(topBox(1.85, .05, .38, std({ color: 0x8a6d1a }), std({ map: blockTex("cachecpu", "Cache", "#c9a227", 1.85 / .38), roughness: .3, metalness: .3 }), 0, .155, .88), "Cache", "Very fast memory on the CPU itself. It holds frequently used instructions and data, so the CPU doesn't have to wait for slower RAM.");
       const lid = metal(brushed("ihs", "#c3c8cf", ["REVISE 360", "R3-9000  3.5 GHz", "4 CORES  8 MB CACHE"]), { transparent: true, opacity: .42 });
       part(topBox(3.2, .16, 3.2, metal(null, { color: 0xc3c8cf, transparent: true, opacity: .42 }), lid, 0, .32, 0), "Heat spreader", "A metal lid that spreads heat from the die out to the cooler. It's see-through here so you can look inside.");
       return { group, parts, scale: .9 };
@@ -150,7 +201,7 @@
       const { group, parts, part } = kit();
       const base = pcb("vnbase", [["CPU", .04, .08]], { base: "#16304f" });
       part(topBox(3.7, .1, 3.2, std({ color: 0x16304f }), board(base), -.7, -.2, 0), "CPU", "The central processing unit. Everything on this dark blue board is inside the CPU.");
-      const blk = (label, color, w, h, d, x, y, z) => topBox(w, h, d, std({ color: new T.Color(color).multiplyScalar(.6), roughness: .4 }), std({ map: blockTex("vn" + label, label, color), roughness: .35, metalness: .2 }), x, y, z);
+      const blk = (label, color, w, h, d, x, y, z) => topBox(w, h, d, std({ color: new T.Color(color).multiplyScalar(.6), roughness: .4 }), std({ map: blockTex("vn" + label, label, color, w / d), roughness: .35, metalness: .2 }), x, y, z);
       part(blk("CU", "#8f5bd6", 1.3, .5, .9, -1.6, .1, -.9), "Control unit (CU)", "Decodes instructions and sends signals to control how data moves around the CPU.");
       part(blk("ALU", "#e0603f", 1.3, .5, .9, .2, .1, -.9), "Arithmetic logic unit (ALU)", "Performs calculations, such as addition and subtraction, and logical decisions, such as comparing two values.");
       part(blk("PC", "#2e8fc7", .75, .35, .6, -2.05, .02, .35), "Program counter (PC)", "A register that holds the address of the next instruction. It is incremented after each instruction is fetched.");
@@ -164,9 +215,22 @@
       // proud of the face with their markings printed on it (+X is material 0).
       for (let k = 0; k < 5; k++) ram.add(chipFacing(.07, .34, .42, ["R360", "DDR5"], 2.505, .6, -1 + k * .5, 0));
       part(ram, "Main memory (RAM)", "The key idea of von Neumann architecture: instructions and data are stored together in this one memory, and the CPU fetches both from it.");
+      // The buses used to run straight across the tops of MAR, MDR and ACC, lying
+      // over their labels. They now leave the front edge of their own register
+      // and route in front of the row, so nothing is covered.
       const buses = new T.Group();
-      buses.add(tube(new T.Vector3(-1.2, .25, .35), new T.Vector3(2.3, .9, .35), .05, std({ color: 0xf05aaa, emissive: 0x3a0c24, metalness: .6, roughness: .3 })));
-      buses.add(tube(new T.Vector3(-.35, .25, .5), new T.Vector3(2.3, .6, .6), .05, std({ color: 0x50dc96, emissive: 0x0c3020, metalness: .6, roughness: .3 })));
+      const busLine = (pts, col, emis) => {
+        const g = new T.TubeGeometry(new T.CatmullRomCurve3(pts.map(p => new T.Vector3(...p))), 48, .05, 10, false);
+        return new T.Mesh(g, std({ color: col, emissive: emis, metalness: .6, roughness: .3 }));
+      };
+      // Two clear corridors across the board: one between the back row (CU, ALU,
+      // which end at z = -0.45) and the registers (which start at z = 0.05), and
+      // one between the registers (ending 0.65) and the cache (starting 1.0).
+      // Each bus leaves its own register and runs down one of them.
+      buses.add(busLine([[-1.2, .21, .04], [-1.2, .3, -.2], [.9, .36, -.2], [2.0, .44, -.18], [2.33, .5, -.1]],
+                        0xf05aaa, 0x3a0c24));
+      buses.add(busLine([[-.35, .21, .62], [-.35, .3, .84], [.9, .36, .84], [2.0, .42, .8], [2.33, .46, .6]],
+                        0x50dc96, 0x0c3020));
       part(buses, "Buses", "Wires that carry addresses from the MAR to RAM (pink), and data and instructions between RAM and the MDR (green).");
       return { group, parts, scale: .75 };
     },
@@ -175,7 +239,7 @@
       const { group, parts, part } = kit();
       const slab = (label, color, y, h, note) => {
         const g = new T.Group();
-        const top = std({ map: blockTex("stk" + label, label, color), roughness: .4, metalness: .2 });
+        const top = std({ map: blockTex("stk" + label, label, color, 1), roughness: .4, metalness: .2 });
         const side = std({ color: new T.Color(color).multiplyScalar(.55), roughness: .5 });
         g.add(topBox(3.6, h, 3.6, side, top, 0, y, 0));
         return g;
@@ -234,7 +298,13 @@
       const ring = new T.Mesh(new T.TorusGeometry(.56, .03, 8, 48), std({ color: 0x1b1e24 })); ring.rotation.x = Math.PI / 2; ring.position.set(-1, 1.12, -.6); cool.add(ring);
       part(cool, "Heatsink and fan", "Copper heat pipes carry heat into aluminium fins, and the fan blows it away. Without cooling, a fast CPU would overheat and slow itself down.");
       const ram = new T.Group(); const rp = pcb("ramstick", [["DDR5 16GB", .05, .12]], { edge: true, base: "#1e4f6b" });
-      [.6, .9].forEach(x => { const s = box(.1, .9, 2.4, board(rp), x, .5, -.3); ram.add(s); for (let k = 0; k < 6; k++) ram.add(chip(.12, .22, .3, ["R360", "16Gb"], x, .6, -1.25 + k * .38)); });
+      // The module boards stand upright and are thin in X, so their chips are
+      // thin in X too, standing proud of the outward face with the marking on it.
+      [.6, .9].forEach(x => {
+        ram.add(box(.1, .9, 2.4, board(rp), x, .5, -.3));
+        for (let k = 0; k < 6; k++)
+          ram.add(chipFacing(.06, .3, .34, ["R360", "16Gb"], x + .08, .6, -1.25 + k * .38, 0));
+      });
       part(ram, "RAM", "Main memory: holds the programs and data currently in use. The CPU fetches instructions from here.");
       part(chip(.8, .12, .8, ["CHIPSET", "R360-X"], 1.3, .1, 1.3), "Chipset", "Controls communication between the CPU and other parts, such as storage and USB ports.");
       const ports = new T.Group(); ports.add(box(.4, .5, 2.2, metal(brushed("ports", "#9aa2ae")), 2.3, .3, -.2));
@@ -501,9 +571,9 @@
     logicchip() {
       const { group, parts, part } = kit();
       const body = topBox(1.6, .5, 3.4, std({ color: 0x16181d, roughness: .62 }),
-                          std({ map: epoxy("lgc", ["R360", "7408", "QUAD 2-IN AND"], "#40c4ff"), roughness: .5 }),
+                          std({ map: epoxy("lgc", ["R360  7408  QUAD 2-IN AND"], "#40c4ff", 1.6 / 3.4), roughness: .5 }),
                           0, 0, 0);
-      body.material[2].transparent = true; body.material[2].opacity = .32;
+      body.material[2].transparent = true; body.material[2].opacity = .42;
       part(body, "The package", "A black plastic case about a centimetre across. Inside it is a single sliver of silicon: the four gates in here would once have filled a cupboard. The lid is see-through so you can look in.");
       const pins = new T.Group();
       for (let s = 0; s < 2; s++) for (let k = 0; k < 7; k++) {

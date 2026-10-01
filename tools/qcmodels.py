@@ -71,6 +71,22 @@ def main():
             print(f"  {kind:14} {name[:32]:34} {bur:>3}% buried   thin {thin}, board thin {bt}   {size}")
         print()
 
+    stretched = []
+    for kind, v in res.items():
+        seen2 = set()
+        for l in v.get("stretched", []):
+            key = (kind, l["name"], l["face"], l.get("why"))
+            if key in seen2: continue
+            seen2.add(key)
+            stretched.append((kind, l["name"], l["face"], l["stretch"], l.get("why", "stretched")))
+    stretched.sort(key=lambda r: -abs(r[3] - 1))
+    if stretched:
+        print("label problems:")
+        for kind, name, face, st, why in stretched:
+            detail = f"stretched x{st}" if why == "stretched" else f"{why} ({int(st*100)}% of the broad face)"
+            print(f"  {kind:14} {name[:30]:32} face {face}  {detail}")
+        print()
+
     flagged = []
     for kind, v in res.items():
         if v["coverage"] < 2000:
@@ -86,8 +102,8 @@ def main():
     print(f"\n{len(res)} models, {parts} parts checked; {len(flagged)} flagged")
     if errs:
         print("page errors:", errs)
-    print(f"{len(mis)} misoriented component group(s)")
-    return 1 if mis or [f for f in flagged if f[3] != "barely visible"] or errs else 0
+    print(f"{len(mis)} misoriented component group(s), {len(stretched)} stretched label(s)")
+    return 1 if mis or stretched or [f for f in flagged if f[3] != "barely visible"] or errs else 0
 
 if __name__ == "__main__":
     sys.exit(main())
