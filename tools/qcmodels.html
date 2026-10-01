@@ -74,6 +74,11 @@ function orientation(b) {
       const ba = thinAxis(bd.s);
       if (ba === ta) continue;                                 // agrees: fine
       if (Math.max(...m.s) > Math.max(...bd.s) * .9) continue;  // not a component
+      // A mounting surface is much larger than what sits on it in both of its
+      // broad directions; otherwise this is some other nearby flat thing.
+      let broad = true;
+      for (let a = 0; a < 3; a++) if (a !== ba && bd.s[a] < m.s[a] * 3) broad = false;
+      if (!broad) continue;
       // how much of the component lies inside the board, along the board's thin axis
       const lo = Math.max(m.min[ba], bd.min[ba]), hi = Math.min(m.max[ba], bd.max[ba]);
       const buried = Math.max(0, hi - lo) / Math.max(m.s[ba], 1e-6);
@@ -141,6 +146,66 @@ function labels(b) {
   return out;
 }
 
+// ---- parts passing through each other ---------------------------------------
+// Only axis-aligned boxes are compared, because for those a bounding-box overlap
+// IS the real overlap; for a cylinder or a torus it is a loose over-estimate and
+// produces nonsense. A large box swallowing a small one is a case or a chassis
+// with something mounted inside it, which is correct, so those are skipped.
+function collisions(b) {
+  b.group.rotation.set(0, 0, 0);
+  b.group.scale.setScalar(1);
+  b.group.updateMatrixWorld(true);
+  const items = [];
+  const q = new T.Quaternion(), e = new T.Euler();
+  b.group.traverse(o => {
+    if (!o.isMesh || o.userData.part === undefined) return;
+    if (!o.geometry || o.geometry.type !== "BoxGeometry") return;
+    o.getWorldQuaternion(q); e.setFromQuaternion(q);
+    const axisAligned = [e.x, e.y, e.z].every(a => {
+      const m = Math.abs(a) % (Math.PI / 2);
+      return m < .02 || Math.PI / 2 - m < .02;
+    });
+    if (!axisAligned) return;
+    const bb = new T.Box3().setFromObject(o);
+    items.push({ part: o.userData.part, bb,
+                 s: [bb.max.x - bb.min.x, bb.max.y - bb.min.y, bb.max.z - bb.min.z] });
+  });
+  const encloses = (A, B) => A.bb.min.x <= B.bb.min.x && A.bb.max.x >= B.bb.max.x
+                          && A.bb.min.y <= B.bb.min.y && A.bb.max.y >= B.bb.max.y
+                          && A.bb.min.z <= B.bb.min.z && A.bb.max.z >= B.bb.max.z;
+  // Components routinely sink a little way into the board they are mounted on,
+  // so that there is no daylight under them. Only component-against-component
+  // overlaps are a mistake.
+  const span = Math.max(...items.map(m => Math.max(...m.s)), .001);
+  const isBoard = m => Math.min(...m.s) < Math.max(...m.s) * .12 && Math.max(...m.s) > span * .4;
+  const worst = {};
+  for (let i = 0; i < items.length; i++) for (let j = i + 1; j < items.length; j++) {
+    const A = items[i], B = items[j];
+    if (A.part === B.part) continue;
+    if (isBoard(A) || isBoard(B)) continue;                  // sitting on a board: fine
+    if (encloses(A, B) || encloses(B, A)) continue;          // mounted inside: fine
+    // A part mounted in the surface of a case always stands a little proud of
+    // it, so "not fully enclosed" is not enough on its own. If one part dwarfs
+    // the other and holds its centre, the small one is mounted in or on it.
+    const vol = X => X.s[0] * X.s[1] * X.s[2];
+    const holds = (X, Y) => {
+      const c = Y.bb.getCenter(new T.Vector3());
+      return vol(X) > vol(Y) * 8 && X.bb.containsPoint(c);
+    };
+    if (holds(A, B) || holds(B, A)) continue;
+    const d = [Math.min(A.bb.max.x, B.bb.max.x) - Math.max(A.bb.min.x, B.bb.min.x),
+               Math.min(A.bb.max.y, B.bb.max.y) - Math.max(A.bb.min.y, B.bb.min.y),
+               Math.min(A.bb.max.z, B.bb.max.z) - Math.max(A.bb.min.z, B.bb.min.z)];
+    const EPS = 1e-3;
+    if (d[0] <= EPS || d[1] <= EPS || d[2] <= EPS) continue;  // touching, not through
+    const small = Math.min(A.s[0] * A.s[1] * A.s[2], B.s[0] * B.s[1] * B.s[2]);
+    const frac = (d[0] * d[1] * d[2]) / Math.max(small, 1e-9);
+    const key = A.part + ":" + B.part;
+    if (!worst[key] || frac > worst[key].frac) worst[key] = { a: A.part, c: B.part, frac };
+  }
+  return Object.values(worst);
+}
+
 window.QC = function () {
   const out = {};
   for (const kind of R360Models.kinds) {
@@ -174,12 +239,16 @@ window.QC = function () {
     }
     const mis = orientation(b);
     const lab = labels(b);
+    const col = collisions(b);
     out[kind] = {
       coverage,
       parts: b.parts.map((p, i) => ({ name: p.name, pixels: best[i] })),
       misoriented: mis.map(m => ({ name: (b.parts[m.part] || {}).name || "?",
                                    thin: m.thin, boardThin: m.boardThin,
                                    buried: m.buried, size: m.size })),
+      collisions: col.map(c => ({ a: (b.parts[c.a] || {}).name || "?",
+                                  b: (b.parts[c.c] || {}).name || "?",
+                                  overlap: Math.round(c.frac * 100) })),
       stretched: lab.map(l => ({ name: (b.parts[l.part] || {}).name || "?",
                                  face: l.face, stretch: l.stretch,
                                  texture: l.texture, faceAspect: l.faceAspect }))

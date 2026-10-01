@@ -154,6 +154,35 @@
   const cyl = (rt, rb, h, m, x, y, z, seg) => { const o = new T.Mesh(new T.CylinderGeometry(rt, rb, h, seg || 40), m); o.position.set(x || 0, y || 0, z || 0); return o; };
   const tube = (a, b, r, m) => { const d = new T.Vector3().subVectors(b, a); const o = new T.Mesh(new T.CylinderGeometry(r, r, d.length(), 16), m);
     o.position.copy(a).add(b).multiplyScalar(.5); o.quaternion.setFromUnitVectors(new T.Vector3(0, 1, 0), d.clone().normalize()); return o; };
+  // A fan. Each blade is pitched about its own long axis inside an arm that
+  // swings it round the hub, so the pitch tilts the blade without sliding it
+  // out of place - rotating the blade itself and then translating does both.
+  // axis is the direction the air travels: "y" for a downdraught, "z" otherwise.
+  function fanUnit(r, axis, opts) {
+    opts = opts || {};
+    const bladeM = std({ color: opts.blade || 0x7b838f, roughness: .45 });
+    const hubM = std({ color: 0x1b1f26, roughness: .5 });
+    const frameM = std({ color: opts.frame || 0x343a45, roughness: .62 });
+    const f = new T.Group(), n = opts.blades || 9;
+    for (let k = 0; k < n; k++) {
+      const arm = new T.Group();
+      const bl = axis === "y" ? box(r * .78, .03, r * .46, bladeM) : box(r * .78, r * .46, .03, bladeM);
+      bl.position.x = r * .58;
+      bl.rotation.x = .5;                                  // pitch, so it moves air
+      arm.add(bl);
+      if (axis === "y") arm.rotation.y = k * Math.PI * 2 / n; else arm.rotation.z = k * Math.PI * 2 / n;
+      f.add(arm);
+    }
+    const hub = cyl(r * .3, r * .3, .14, hubM, 0, 0, 0, 20);
+    if (axis !== "y") hub.rotation.x = Math.PI / 2;
+    f.add(hub);
+    // an open frame, so it reads as a fan and the air has somewhere to go
+    const t = r * .14, o = r * 1.12, L = o * 2 + t;
+    for (const [a, b] of [[-1, 0], [1, 0], [0, -1], [0, 1]])
+      f.add(axis === "y" ? box(a ? t : L, t, a ? L : t, frameM, a * o, 0, b * o)
+                         : box(a ? t : L, a ? L : t, t, frameM, a * o, b * o, 0));
+    return f;
+  }
   function kit() {
     const group = new T.Group(), parts = [];
     const part = (obj, name, text) => { obj.traverse(o => { if (o.isMesh) o.userData.part = parts.length; }); group.add(obj); parts.push({ obj, name, text }); return obj; };
@@ -285,32 +314,116 @@
     },
     motherboard() {
       const { group, parts, part } = kit();
-      const mb = pcb("mb", [["REVISE 360  MB-1", .62, .95], ["CPU_FAN", .05, .06], ["DIMM_A1", .6, .12], ["PCIE_1", .1, .8], ["USB 3.2", .82, .5]]);
-      part(topBox(5, .1, 4.2, std({ color: 0x1a5a36 }), board(mb)), "Motherboard", "The main circuit board. Copper traces connect the CPU, memory, storage and other components so they can communicate.");
-      const cpu = new T.Group(); cpu.add(box(1.25, .1, 1.25, std({ color: 0x2b2f36, metalness: .5 }), -1, .1, -.6));
-      cpu.add(topBox(1, .1, 1, metal(null, { color: 0xc3c8cf }), metal(brushed("ihs2", "#c3c8cf", ["REVISE 360", "R3-9000"])), -1, .2, -.6));
-      part(cpu, "CPU", "The processor sits in a socket on the motherboard. A faster clock speed means more instructions per second, but also more heat.");
-      const cool = new T.Group(); const fin = metal(brushed("fin", "#aeb5c0"));
-      for (let k = 0; k < 11; k++) cool.add(box(1.5, .7, .04, fin, -1, .62, -1.2 + k * .12));
-      [-.25, .25].forEach(dx => cool.add(tube(new T.Vector3(-1 + dx, .25, -.6), new T.Vector3(-1 + dx, .95, -.6), .05, std({ color: 0xc7773b, metalness: 1, roughness: .3 }))));
-      const hub = cyl(.56, .56, .1, std({ color: 0x1b1e24, roughness: .7 }), -1, 1.04, -.6); cool.add(hub);
-      for (let k = 0; k < 9; k++) { const b = box(.48, .02, .16, std({ color: 0x2c3038, roughness: .5 }), -1, 1.1, -.6); b.rotation.y = k * Math.PI * 2 / 9; b.rotation.x = .3; b.translateX(.26); cool.add(b); }
-      const ring = new T.Mesh(new T.TorusGeometry(.56, .03, 8, 48), std({ color: 0x1b1e24 })); ring.rotation.x = Math.PI / 2; ring.position.set(-1, 1.12, -.6); cool.add(ring);
-      part(cool, "Heatsink and fan", "Copper heat pipes carry heat into aluminium fins, and the fan blows it away. Without cooling, a fast CPU would overheat and slow itself down.");
-      const ram = new T.Group(); const rp = pcb("ramstick", [["DDR5 16GB", .05, .12]], { edge: true, base: "#1e4f6b" });
-      // The module boards stand upright and are thin in X, so their chips are
-      // thin in X too, standing proud of the outward face with the marking on it.
+      const mb = pcb("mb", [["REVISE 360  MB-1", .60, .95], ["CPU_FAN", .05, .06], ["DIMM_A1", .60, .12],
+                            ["PCIE_1", .08, .72], ["USB 3.2", .84, .46], ["M.2_1", .34, .60],
+                            ["SATA", .70, .80], ["ATX_PWR", .90, .18]]);
+      part(topBox(5, .1, 4.2, std({ color: 0x1a5a36 }), board(mb)), "Motherboard",
+           "The main circuit board. Copper traces printed into it connect the processor, memory, storage and expansion cards, so every part of the system can reach every other.");
+
+      // ---- processor in its socket
+      const cpu = new T.Group();
+      cpu.add(box(1.35, .09, 1.35, std({ color: 0x24282f, metalness: .5, roughness: .6 }), -1, .095, -.6));
+      for (let a = 0; a < 2; a++) {                        // socket retention arm
+        const arm = box(a ? .08 : 1.2, .05, a ? 1.2 : .08, metal(null, { color: 0x8a929e }),
+                        -1 + (a ? .74 : 0), .16, -.6 + (a ? 0 : .74));
+        cpu.add(arm);
+      }
+      cpu.add(topBox(1, .1, 1, metal(null, { color: 0xc3c8cf }),
+                     metal(brushed("ihs2", "#c3c8cf", ["REVISE 360", "R3-9000"])), -1, .2, -.6));
+      part(cpu, "Processor and socket",
+           "The processor drops into a socket rather than being soldered down, so it can be replaced or upgraded. A faster clock speed means more instructions each second, and more heat to get rid of.");
+
+      // ---- power delivery beside the socket: chokes, capacitors and their heatsink
+      const vrm = new T.Group();
+      const sinkM = metal(brushed("vrmfin", "#8d949e"));
+      for (let k = 0; k < 7; k++) vrm.add(box(.5, .34, .05, sinkM, -1, .27, .25 + k * .085));
+      vrm.add(box(.5, .06, .66, sinkM, -1, .46, .5));
+      for (let k = 0; k < 6; k++) {
+        vrm.add(box(.17, .14, .17, std({ color: 0x2b2f36, roughness: .5 }), -1.85, .17, -1.5 + k * .34));
+        vrm.add(cyl(.09, .09, .26, metal(null, { color: 0x6e7684 }), -2.15, .23, -1.5 + k * .34, 20));
+      }
+      part(vrm, "Power delivery",
+           "The supply gives 12 volts; a processor needs about 1. These chokes and capacitors step it down and smooth it, and they get hot enough to need a heatsink of their own.");
+
+      // ---- cooler: heat pipes, fin stack, and a fan that air can actually pass through
+      const cool = new T.Group();
+      const fin = metal(brushed("fin", "#aeb5c0"));
+      for (let k = 0; k < 13; k++) cool.add(box(1.5, .72, .035, fin, -1, .63, -1.26 + k * .105));
+      [-.28, 0, .28].forEach(dx => cool.add(tube(new T.Vector3(-1 + dx, .25, -.6),
+                                                 new T.Vector3(-1 + dx, 1.0, -.6), .05,
+                                                 std({ color: 0xc7773b, metalness: 1, roughness: .3 }))));
+      part(cool, "Heatsink",
+           "Copper pipes carry heat up out of the processor into a stack of thin aluminium fins, which hand it to the air. The fins are thin and many so there is as much surface touching the air as possible.");
+
+      // A real fan is an open square frame with a small hub and angled blades; the
+      // old one had a solid disc filling the frame, which no air could pass through.
+      const fan = fanUnit(.62, "y", { blade: 0x5d646f });
+      fan.position.set(-1, 1.12, -.6);
+      part(fan, "Fan",
+           "Nine angled blades spin on the hub and push air down through the fins. The frame is open so air can get through: a fan is useless without somewhere for the air to go.");
+
+      // ---- memory
+      const ram = new T.Group();
+      const rp = pcb("ramstick", [["DDR5 16GB", .05, .12]], { edge: true, base: "#1e4f6b" });
       [.6, .9].forEach(x => {
         ram.add(box(.1, .9, 2.4, board(rp), x, .5, -.3));
         for (let k = 0; k < 6; k++)
           ram.add(chipFacing(.06, .3, .34, ["R360", "16Gb"], x + .08, .6, -1.25 + k * .38, 0));
+        [-1.3, .9].forEach(z => ram.add(box(.26, .5, .12, std({ color: 0xe0e4ea, roughness: .5 }), x, .22, z)));
       });
-      part(ram, "RAM", "Main memory: holds the programs and data currently in use. The CPU fetches instructions from here.");
-      part(chip(.8, .12, .8, ["CHIPSET", "R360-X"], 1.3, .1, 1.3), "Chipset", "Controls communication between the CPU and other parts, such as storage and USB ports.");
-      const ports = new T.Group(); ports.add(box(.4, .5, 2.2, metal(brushed("ports", "#9aa2ae")), 2.3, .3, -.2));
-      for (let k = 0; k < 4; k++) ports.add(box(.05, .12, .3, std({ color: 0x2a6ad8 }), 2.52, .35, -1 + k * .45));
-      part(ports, "Ports", "Connections for devices such as USB peripherals, displays and network cables.");
-      return { group, parts, scale: .7 };
+      part(ram, "Memory and its slots",
+           "Main memory holds whatever is running right now. The modules clip into slots so they can be added to or replaced, and the clips at each end hold them down.");
+
+      // ---- expansion slot with a card edge
+      const pcie = new T.Group();
+      pcie.add(box(2.4, .22, .22, std({ color: 0x4a3a7a, roughness: .5 }), -.2, .16, 1.5));
+      for (let k = 0; k < 26; k++)
+        pcie.add(box(.05, .1, .04, gold(), -1.3 + k * .088, .17, 1.5));
+      pcie.add(box(.22, .18, .3, std({ color: 0x3a2e60, roughness: .5 }), 1.08, .18, 1.5));
+      part(pcie, "Expansion slot",
+           "A long slot for a card such as a graphics card. The processor talks to whatever is plugged in here over a bundle of high speed lanes.");
+
+      // ---- M.2 drive lying flat on the board
+      const m2 = new T.Group();
+      m2.add(box(1.5, .05, .4, board(pcb("m2pcb", [["R360 NVMe", .1, .3]], { base: "#13303f" })), -1.6, .13, 1.12));
+      m2.add(chip(.4, .09, .28, ["NAND"], -1.9, .18, 1.12));
+      m2.add(chip(.3, .09, .24, ["CTRL"], -1.25, .18, 1.12));
+      m2.add(cyl(.07, .07, .09, metal(null, { color: 0x9aa2ae }), -.83, .17, 1.12, 14));
+      part(m2, "Storage slot",
+           "A solid state drive slots straight onto the board, with no cable at all. It holds everything that has to survive the power being switched off.");
+
+      // ---- chipset under a heatsink
+      const cs = new T.Group();
+      cs.add(chip(.8, .12, .8, ["CHIPSET", "R360-X"], 1.5, .1, -.1));
+      const csfin = metal(brushed("csfin", "#7f8792"));
+      for (let k = 0; k < 6; k++) cs.add(box(.9, .22, .07, csfin, 1.5, .29, -.4 + k * .12));
+      part(cs, "Chipset",
+           "The traffic controller. It connects the processor to everything that does not need the very fastest route: storage, USB, networking and the expansion slots.");
+
+      // ---- power connector and the coin cell
+      const pwr = new T.Group();
+      pwr.add(box(.34, .42, 1.1, std({ color: 0x2a2f38, roughness: .6 }), 2.15, .26, 1.5));
+      for (let r = 0; r < 2; r++) for (let k = 0; k < 12; k++)
+        pwr.add(box(.1, .1, .09, std({ color: 0x8a929e, metalness: .7 }), 2.15 + (r ? .09 : -.09), .38, 1.0 + k * .09));
+      part(pwr, "Power connector",
+           "The thick bundle from the power supply lands here, bringing 12, 5 and 3.3 volt rails for the board to share out.");
+
+      const cmos = new T.Group();
+      cmos.add(cyl(.28, .28, .09, metal(null, { color: 0xd3d8df, metalness: .9, roughness: .2 }), 1.9, .15, -1.3, 28));
+      cmos.add(new T.Mesh(new T.TorusGeometry(.3, .04, 8, 28), std({ color: 0x2a2f38 })));
+      cmos.children[1].rotation.x = Math.PI / 2; cmos.children[1].position.set(1.9, .13, -1.3);
+      part(cmos, "CMOS battery",
+           "A coin cell that keeps the clock running and the BIOS settings remembered while the machine is unplugged. When it dies, a computer forgets the date every time it is switched off.");
+
+      // ---- rear ports
+      const ports = new T.Group();
+      ports.add(box(.4, .62, 2.2, metal(brushed("ports", "#9aa2ae")), 2.3, .36, -.2));
+      for (let k = 0; k < 4; k++) ports.add(box(.06, .14, .32, std({ color: 0x2a6ad8 }), 2.52, .3, -1 + k * .45));
+      ports.add(box(.06, .3, .5, std({ color: 0x1b1e24 }), 2.52, .56, -.75));
+      ports.add(box(.06, .26, .34, std({ color: 0x2f7d5a }), 2.52, .56, .1));
+      part(ports, "Rear ports",
+           "Where the outside world plugs in: USB for peripherals, a socket for the network, and a connector for the display.");
+      return { group, parts, scale: .62 };
     },
     washingmachine() {
       const { group, parts, part } = kit();
@@ -319,7 +432,7 @@
       const ring = new T.Mesh(new T.TorusGeometry(1.05, .13, 20, 64), std({ color: 0x3a404a, roughness: .35, metalness: .4 })); ring.position.set(0, -.1, 1.52); drum.add(ring);
       const glass = new T.Mesh(new T.CircleGeometry(.95, 48), std({ color: 0x9fc4e8, transparent: true, opacity: .35, roughness: .05, metalness: .2 })); glass.position.set(0, -.1, 1.53); drum.add(glass);
       part(drum, "Drum and door", "The steel drum holds the clothes. A door lock stops the door opening while the machine is running.");
-      part(topBox(2.9, .12, .55, std({ color: 0xe9edf3 }), std({ map: plastic("wmtop", "#e9edf3") }), 0, 1.5, 1.2), "Control panel", "Input: the user chooses a wash program and temperature with the dial and buttons.");
+      part(topBox(2.9, .12, .55, std({ color: 0xe9edf3 }), std({ map: plastic("wmtop", "#e9edf3") }), 0, 1.33, 1.2), "Control panel", "Input: the user chooses a wash program and temperature with the dial and buttons.");
       group.children[group.children.length - 1].add((() => { const f = new T.Mesh(new T.PlaneGeometry(2.8, .7), std({ map: panelTex(), roughness: .4 })); f.position.set(0, -.05, .28); f.rotation.x = -.2; f.userData.part = parts.length - 1; return f; })());
       const mcu = new T.Group(); const mp = pcb("mcu", [["WASH-CTRL v2", .06, .12]], { base: "#1a5a36" });
       mcu.add(topBox(1.1, .06, .8, std({ color: 0x1a5a36 }), board(mp), .6, 1.2, -.6)); mcu.add(chip(.4, .06, .4, ["MCU", "32-bit"], .6, 1.26, -.6));
@@ -372,11 +485,11 @@
       const bp = pcb("ssdpcb", [["R360-SSD", .06, .1], ["NAND x8", .6, .9]], { base: "#13303f" });
       part(topBox(4.1, .08, 2.9, std({ color: 0x13303f }), board(bp), 0, 0, 0), "Circuit board", "Everything sits flat on one board. With no moving parts to wait for, the drive can start reading any block as soon as it is asked.");
       const nand = new T.Group();
-      for (let r = 0; r < 2; r++) for (let c = 0; c < 4; c++)
-        nand.add(chip(.78, .16, .6, ["NAND", "FLASH", "512Gb"], -1.45 + c * .97, .12, -.75 + r * 1.5));
+      for (let r = 0; r < 2; r++) for (let c = 0; c < 3; c++)
+        nand.add(chip(.78, .16, .6, ["NAND", "FLASH", "512Gb"], -1.5 + c * .92, .12, -.75 + r * 1.5));
       part(nand, "Flash memory chips", "Data is stored as a trapped charge inside each cell, and the charge stays put with the power off. This is what makes an SSD non-volatile, and why it keeps your files when the machine is switched off.");
-      part(chip(.95, .2, .95, ["CONTROLLER", "R360-S1"], 1.5, .14, 0, "#40c4ff"), "Controller", "Decides which chips to write to, spreads writes evenly so no part wears out early, and keeps track of where every file is.");
-      part(chip(.6, .16, .45, ["DRAM", "CACHE"], 1.5, .12, 1.1), "Cache", "A small amount of fast memory holding the map of where data lives, so the controller does not have to look it up from flash every time.");
+      part(chip(.95, .2, .95, ["CONTROLLER", "R360-S1"], 1.42, .14, -.52, "#40c4ff"), "Controller", "Decides which chips to write to, spreads writes evenly so no part wears out early, and keeps track of where every file is.");
+      part(chip(.6, .16, .45, ["DRAM", "CACHE"], 1.42, .12, .72), "Cache", "A small amount of fast memory holding the map of where data lives, so the controller does not have to look it up from flash every time.");
       const conn = new T.Group();
       for (let k = 0; k < 14; k++) conn.add(box(.22, .07, .12, gold(), -2.14, 0, -1.0 + k * .155));
       part(conn, "Connector", "Carries data and power to the motherboard. The drive is faster than a hard disk partly because this connection is faster, and partly because there is no head to move.");
@@ -420,15 +533,15 @@
       part(topBox(6.2, .9, 2.6, caseM, caseM, 0, 0, 0), "Casing", "A switch is usually a flat box in a cabinet. A school might have one in each corridor, with every room's cable running back to it.");
       const ports = new T.Group(); const pm = std({ color: 0x11151d, roughness: .8 });
       for (let r = 0; r < 2; r++) for (let c = 0; c < 12; c++) {
-        const px = -2.75 + c * .5, py = -.12 + r * .36;
-        ports.add(box(.36, .3, .1, pm, px, py, 1.31));
-        ports.add(box(.12, .1, .06, std({ color: 0x2a3140 }), px, py + .13, 1.34));
+        const px = -2.78 + c * .455, py = -.12 + r * .36;
+        ports.add(box(.36, .3, .1, pm, px, py, 1.26));
+        ports.add(box(.12, .1, .06, std({ color: 0x2a3140 }), px, py + .13, 1.27));
       }
       part(ports, "Ports", "Each device on the network plugs into its own port with a twisted pair cable. The switch learns which device is on which port, so it can send a frame to just that one.");
       const leds = new T.Group();
       for (let c = 0; c < 12; c++) {
         const on = c % 3 !== 1;
-        leds.add(box(.12, .07, .05, std({ color: on ? 0x50dc96 : 0x2a3140, emissive: on ? 0x1d6b44 : 0 }), -2.75 + c * .5, -.36, 1.33));
+        leds.add(box(.12, .07, .05, std({ color: on ? 0x50dc96 : 0x2a3140, emissive: on ? 0x1d6b44 : 0 }), -2.78 + c * .455, -.36, 1.29));
       }
       part(leds, "Status lights", "One light per port. It tells you whether anything is plugged in, how fast the link is running, and whether data is flowing. The first thing to check when a room has no network.");
       const asic = new T.Group();
@@ -436,7 +549,7 @@
       asic.add(topBox(5.8, .06, 2.2, std({ color: 0x17323f }), board(sp), 0, -.35, 0));
       asic.add(chip(1.1, .18, 1.1, ["SWITCH", "ASIC"], 0, -.22, -.1, "#40c4ff"));
       part(asic, "Switching chip", "Holds a table matching each device's MAC address to a port. When a frame arrives the chip looks up the destination and forwards it out of that one port, instead of to everybody.");
-      part(box(.5, .34, .1, std({ color: 0x1b2433, roughness: .7 }), 2.75, .1, 1.31), "Uplink port", "A faster port for the cable that runs to the next switch or to the router. All the traffic leaving this part of the network squeezes through here, so it needs to be the quickest link.");
+      part(box(.5, .34, .1, std({ color: 0x1b2433, roughness: .7 }), 2.75, .1, 1.26), "Uplink port", "A faster port for the cable that runs to the next switch or to the router. All the traffic leaving this part of the network squeezes through here, so it needs to be the quickest link.");
       return { group, parts, scale: .55 };
     },
 
@@ -568,6 +681,147 @@
     },
 
     // A logic chip, to anchor Boolean logic in something physical
+    // A whole desktop computer, so the parts met one at a time can be seen in
+    // the machine they belong to. The near side panel is glass, as on a real one.
+    system() {
+      const { group, parts, part } = kit();
+      // A tower, seen as a cutaway: an open steel frame with the panels left as
+      // glass, so the machine still reads as a box but every part inside is
+      // visible from any angle. Front is +Z, the motherboard tray is the -X side.
+      const W = 3.0, H = 5.8, D = 5.4, HW = W / 2, HH = H / 2, HD = D / 2;
+      const MBX = -HW + .18;                               // the tray, and the board on it
+      const rail = metal(brushed("caseRail", "#5c6472"), { roughness: .45 });
+      const skin = std({ color: 0xbcd4ef, transparent: true, opacity: .11, roughness: .05, metalness: .2, side: T.DoubleSide });
+      const trim = std({ color: 0x343a45, roughness: .62 });
+      const fan = (x, y, z, r, axis) => { const f = fanUnit(r, axis); f.position.set(x, y, z); return f; };
+
+      // ---- the case: frame, floor, glass
+      const shell = new T.Group();
+      const R = .13;
+      [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach(([sx, sz]) => shell.add(box(R, H, R, rail, sx * HW, 0, sz * HD)));
+      [-1, 1].forEach(sy => {
+        [-1, 1].forEach(sz => shell.add(box(W, R, R, rail, 0, sy * HH, sz * HD)));
+        [-1, 1].forEach(sx => shell.add(box(R, R, D, rail, sx * HW, sy * HH, 0)));
+      });
+      shell.add(box(W, .1, D, rail, 0, -HH, 0));                       // floor
+      shell.add(box(W, .04, D, skin, 0, HH, 0));                       // lid
+      shell.add(box(.04, H, D, skin, HW, 0, 0));                       // glass side
+      shell.add(box(.06, H, D, std({ color: 0x5c6472, transparent: true, opacity: .55, metalness: .6, roughness: .4 }), -HW, 0, 0));
+      shell.add(box(W, H, .05, skin, 0, 0, -HD));                      // back
+      shell.add(box(.26, H - .3, .1, trim, -HW + .2, 0, HD));          // front bezel edges
+      shell.add(box(.26, H - .3, .1, trim, HW - .2, 0, HD));
+      for (let k = 0; k < 7; k++)                                      // intake slots, sparse so you can see in
+        shell.add(box(W - .9, .09, .07, trim, 0, -HH + .5 + k * .66, HD));
+      shell.add(cyl(.12, .12, .08, std({ color: 0x40c4ff, emissive: 0x16475f }), 0, HH - .32, HD, 18).rotateX(Math.PI / 2));
+      part(shell, "The case",
+           "A steel frame that holds everything in place, keeps dust out and guides the air through. The panels are shown as glass here so you can see inside. The button at the top is the one you press to start the machine.");
+
+      // ---- motherboard on the tray
+      const mb = new T.Group();
+      const mbp = pcb("sysmb", [["R360 MB-1", .07, .95], ["SOCKET R3", .06, .2]], { base: "#1a5a36" });
+      mb.add(box(.09, 3.9, 3.7, board(mbp), MBX, .55, -.6));
+      for (let k = 0; k < 4; k++)                                      // standoffs
+        mb.add(cyl(.08, .08, .18, metal(null, { color: 0x9aa2ae }), MBX + .12, .55 + (k < 2 ? 1.75 : -1.75), -.6 + (k % 2 ? 1.6 : -1.6), 12));
+      mb.add(chipFacing(.1, .62, .62, ["CHIPSET"], MBX + .1, -.75, .55, 0, "#40c4ff"));
+      [[.08, -1.3], [.08, -.55]].forEach(([w, y]) =>                   // expansion slots
+        mb.add(box(w, .1, 1.9, std({ color: 0x3b3f4a }), MBX + .1, y, -1.0)));
+      mb.add(box(.1, .5, .22, std({ color: 0x1d2026 }), MBX + .1, 1.9, 1.2));   // power connector
+      part(mb, "Motherboard",
+           "Everything plugs into this one board, which is screwed to the side of the case on little pillars so its soldered joints never touch the metal. Copper traces printed into it carry every signal between the parts.");
+
+      // ---- rear ports and slot covers
+      const rear = new T.Group();
+      rear.add(box(1.0, .95, .12, std({ color: 0x23272f, roughness: .6 }), MBX + .55, 1.95, -HD + .1));
+      [[-.3, .3], [.05, .3], [.4, .3]].forEach(([dx, w], i) =>
+        rear.add(box(w, .24, .1, std({ color: i === 2 ? 0x2f6fd0 : 0x3a4049 }), MBX + .55 + dx, 2.2, -HD + .16)));
+      rear.add(box(.34, .26, .1, std({ color: 0x1a3c22 }), MBX + .55 - .28, 1.72, -HD + .16));
+      rear.add(box(.34, .26, .1, std({ color: 0x5a2f3a }), MBX + .55 + .2, 1.72, -HD + .16));
+      for (let k = 0; k < 4; k++)
+        rear.add(box(.62, .14, .08, metal(null, { color: 0x9aa2ae }), MBX + .5, -.3 - k * .22, -HD + .1));
+      part(rear, "Rear ports",
+           "The sockets that stick out of the back of the case: display, network, USB, sound. They are soldered straight onto the motherboard, which is why they never move.");
+
+      // ---- processor under a tower cooler
+      const cpu = new T.Group();
+      cpu.add(box(.08, .9, .9, std({ color: 0x2b3038, metalness: .5, roughness: .4 }), MBX + .09, 1.3, -1.5));
+      cpu.add(box(.06, .66, .66, metal(null, { color: 0xc3c8cf }), MBX + .15, 1.3, -1.5));
+      const fin = metal(brushed("sysfin", "#c2c9d4"), { roughness: .38 });
+      cpu.add(box(.5, .3, .9, metal(null, { color: 0xb9c0cb }), MBX + .4, 1.3, -1.5));   // base block
+      for (let k = 0; k < 4; k++)                                                          // heat pipes
+        cpu.add(cyl(.07, .07, 1.4, metal(null, { color: 0xc98a3f }), MBX + .4, 1.75, -1.85 + k * .23, 12));
+      for (let k = 0; k < 14; k++) cpu.add(box(1.2, 1.5, .045, fin, MBX + .75, 2.05, -2.15 + k * .1));
+      cpu.add(fan(MBX + .75, 2.05, -.72, .62, "z"));
+      part(cpu, "Processor and cooler",
+           "The processor is the small square under all that metal. Nearly everything above it is there to carry its heat away: copper pipes lift the heat into the fins and the fan blows it out towards the back of the case.");
+
+      // ---- memory
+      const ram = new T.Group();
+      const rp = pcb("sysram", [["DDR5", .06, .2]], { edge: true, base: "#1e4f6b" });
+      [0, 1].forEach(i => {
+        const z = .35 + i * .3;
+        ram.add(box(.07, 1.3, .24, board(rp), MBX + .3, 1.95, z));
+        ram.add(box(.12, .2, .3, std({ color: 0x1d2026 }), MBX + .3, 1.25, z));        // the slot
+        for (let k = 0; k < 4; k++)
+          ram.add(box(.05, .24, .16, std({ color: 0x16181d }), MBX + .35, 2.3 - k * .3, z));
+        ram.add(box(.16, .34, .26, metal(null, { color: 0xc6ccd6, roughness: .35 }), MBX + .3, 2.43, z));
+      });
+      part(ram, "Memory",
+           "Two modules standing in their slots. Whatever is open right now lives here, and it all disappears the moment the power goes off.");
+
+      // ---- graphics card in the long slot
+      const gpu = new T.Group();
+      gpu.add(box(1.9, .09, 2.4, board(pcb("sysgpu", [["R360 GFX", .1, .2]], { base: "#17323f" })), MBX + 1.09, -.5, -1.0));
+      gpu.add(box(1.75, .44, 2.2, std({ color: 0x343b46, roughness: .55 }), MBX + 1.14, -.78, -1.0));
+      gpu.add(box(.1, .78, .36, metal(null, { color: 0x9aa2ae }), MBX + .2, -.68, -2.0));   // bracket
+      [-.55, .55].forEach(dz => gpu.add(fan(MBX + 1.14, -1.02, -1.0 + dz, .5, "y")));
+      part(gpu, "Graphics card",
+           "Its own processor and its own memory, on a card in the long slot. It draws what appears on the screen, and in a gaming machine it often costs more and uses more power than everything else together.");
+
+      // ---- power supply in the basement
+      const psu = new T.Group();
+      psu.add(box(W - .4, 1.2, 2.4, metal(brushed("psu", "#474e59")), 0, -HH + .75, -HD + 1.3));
+      const psuSide = std({ color: 0x474e59, roughness: .5 });
+      const psuLbl = [std({ map: blockTex("psulbl", "650 W", "#2f6fd0", 1.3 / .5), roughness: .5 }),
+                      psuSide, psuSide, psuSide, psuSide, psuSide];
+      const plate = new T.Mesh(new T.BoxGeometry(.03, .5, 1.3), psuLbl);
+      plate.position.set((W - .4) / 2, -HH + .75, -HD + 1.3);
+      psu.add(plate);
+      psu.add(fan(0, -HH + .75, -HD + .08, .62, "z"));
+      [0x2b313b, 0xc7773b, 0x50dc96].forEach((c, i) => {
+        const pts = [new T.Vector3(-.4 + i * .3, -HH + .7, -HD + 2.5),
+                     new T.Vector3(MBX + .55, -HH + 1.4, .1),
+                     new T.Vector3(MBX + .2, 1.9 - i * .35, 1.0)];
+        psu.add(new T.Mesh(new T.TubeGeometry(new T.CatmullRomCurve3(pts), 26, .07, 8, false),
+                           std({ color: c, roughness: .6 })));
+      });
+      part(psu, "Power supply",
+           "Takes mains electricity and turns it into the steady low voltages everything else needs, then sends them out on the bundle of cables. Its own fan keeps it cool.");
+
+      // ---- storage on the shelf above the supply
+      const stor = new T.Group();
+      [0, 1].forEach(k => {
+        const y = -1.22 + k * .6;
+        stor.add(box(1.5, .4, 1.5, metal(brushed("drv" + k, "#6f7784")), .45, y, 1.2));
+        stor.add(box(1.4, .05, 1.4, board(pcb("drvpcb" + k, [["R360 SSD", .1, .3]], { base: "#13303f" })), .45, y - .22, 1.2));
+      });
+      part(stor, "Storage",
+           "Solid state drives in a cage behind the front panel. The operating system, the programs and every file live here, and unlike memory they keep their contents with the power off.");
+
+      // ---- airflow: in at the front, out at the back
+      const air = new T.Group();
+      air.add(fan(.1, 1.5, HD - .4, .68, "z"));
+      air.add(fan(.1, -.3, HD - .4, .68, "z"));
+      air.add(fan(.1, 2.05, -HD + .4, .62, "z"));
+      [[HD - .9, 1.5], [HD - .9, -.3]].forEach(([z, y]) => {
+        const pts = [new T.Vector3(.1, y, z), new T.Vector3(.35, y + .5, 0), new T.Vector3(.1, 2.05, -HD + .9)];
+        air.add(new T.Mesh(new T.TubeGeometry(new T.CatmullRomCurve3(pts), 24, .045, 6, false),
+                           std({ color: 0x40c4ff, emissive: 0x0d2740, transparent: true, opacity: .5 })));
+      });
+      part(air, "Airflow",
+           "Fans at the front pull cool air in and a fan at the back pushes warm air out, so there is a current through the whole case. Every watt a computer uses ends up as heat that has to leave somewhere.");
+
+      return { group, parts, scale: .4 };
+    },
     logicchip() {
       const { group, parts, part } = kit();
       const body = topBox(1.6, .5, 3.4, std({ color: 0x16181d, roughness: .62 }),

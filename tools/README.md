@@ -152,9 +152,21 @@ part that changes no pixels from any angle. It caught a switch whose "Switching
 chip" was sealed inside an opaque case, and status lights buried inside the port
 blocks.
 
-qcmodels.py makes three checks: a part that renders no pixels from any angle,
-a component buried in the board it is supposed to sit on, and a label that is
-stretched or put somewhere nobody can read it.
+qcmodels.py makes four checks: a part that renders no pixels from any angle, a
+component buried in the board it is supposed to sit on, a label that is stretched
+or put somewhere nobody can read it, and two parts occupying the same space.
+
+Trust a clean run only once you have seen the checks fire. Reverting a known
+fault and confirming it is flagged is the cheap way to do that; the first version
+of the part-visibility check reused one canvas across every model, which returns
+blank frames after the first, so it called four healthy models broken, and the
+first collision check both flooded on legitimate mounting and would have missed a
+real overlap of only 7% of the smaller volume.
+
+The label check assumes a single material is on +Y, because that is where `chip()`
+and `topBox()` put one. A texture passed as a plain `std({ map })` is on all six
+faces, so it is stretched on five of them - put a label on one face with a
+material array, as `chipFacing()` does.
 
 Labels are drawn on a canvas and then mapped onto a face, so the canvas has to
 be made at that face's aspect or the lettering is squashed - "Cache" sat on a
@@ -163,6 +175,12 @@ and `epoxy()` take the aspect as their last argument, and `chip()` and
 `chipFacing()` work theirs out from their own dimensions. A marking also belongs
 on a component's broad face, never on its edge, and anything routed over a model
 (a bus, a cable) must not come to rest across a label.
+
+Fans are built by one shared `fanUnit(r, axis)`, because getting one right is
+fiddly and getting it wrong is obvious: each blade is pitched about its own long
+axis inside an arm that swings it round the hub. Rotating a blade and then
+translating it outwards - which is what the motherboard and the first case fans
+did - slides the blades out of the disc as well as tilting them.
 
 Mind the orientation of anything mounted on a board. `chip()` prints its
 markings on the +Y face, which is right for a board lying flat; a board standing
@@ -224,11 +242,14 @@ the Cloudflare Worker and nowhere in this tree.
 
 ## Known gaps
 
-- `specs15.py` and `specs16.py` were lost when the machine they sat on was
-  reclaimed. Topics 1.5 and 1.6 therefore cannot be re-rendered from a spec as
-  the other topics can; their committed scenes and worksheets are intact, but a
-  change to those scenes means reconstructing the spec first.
-  `deckspecs/spec_el_l03.json` is one such reconstruction, done from the deck
-  JSON, the experience JSON and the rendered image, and verified to re-render
-  the scene identically — it is the worked example to follow for the rest.
-- Lesson PowerPoints do not yet exist for 1.4, 1.5, 2.3 or 2.4 (23 experiences).
+- `specs16.py` was lost when the machine it sat on was reclaimed. Topic 1.6
+  therefore cannot be re-rendered from a spec as the other topics can; its
+  committed scenes and worksheets are intact, but a change to those scenes means
+  reconstructing the spec first. `specs15.py` was reconstructed that way and
+  re-renders all eight of 1.5's committed images byte for byte;
+  `deckspecs/spec_el_l03.json` is the same job done from a deck JSON. Those two
+  are the worked examples to follow.
+- `ss-l01` carries the `stack` model twice, on stations 0 and 1. Two buttons for
+  the same model on one wall is noise; one of them should move or go.
+- Nothing detects something *routed over* a label — a bus or a cable coming to
+  rest across lettering. That still needs eyes.

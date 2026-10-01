@@ -71,6 +71,17 @@ def main():
             print(f"  {kind:14} {name[:32]:34} {bur:>3}% buried   thin {thin}, board thin {bt}   {size}")
         print()
 
+    cols = []
+    for kind, v in res.items():
+        for c in v.get("collisions", []):
+            cols.append((kind, c["a"], c["b"], c["overlap"]))
+    cols.sort(key=lambda r: -r[3])
+    if cols:
+        print("parts passing through each other:")
+        for kind, a, bb, ov in cols:
+            print(f"  {kind:14} {a[:26]:28} through {bb[:26]:28} {ov:>3}%")
+        print()
+
     stretched = []
     for kind, v in res.items():
         seen2 = set()
@@ -102,8 +113,8 @@ def main():
     print(f"\n{len(res)} models, {parts} parts checked; {len(flagged)} flagged")
     if errs:
         print("page errors:", errs)
-    print(f"{len(mis)} misoriented component group(s), {len(stretched)} stretched label(s)")
-    return 1 if mis or stretched or [f for f in flagged if f[3] != "barely visible"] or errs else 0
+    print(f"{len(mis)} misoriented, {len(stretched)} label problem(s), {len(cols)} collision(s)")
+    return 1 if mis or stretched or cols or [f for f in flagged if f[3] != "barely visible"] or errs else 0
 
 if __name__ == "__main__":
     sys.exit(main())
