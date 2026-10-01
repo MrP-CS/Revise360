@@ -280,6 +280,18 @@ python3 applydiagrams.py          # show what would change
 python3 applydiagrams.py --write
 ```
 
+## The window a model or a diagram opens in
+
+Both open the same way: nearly full screen, the thing itself filling the left,
+and what you can do with it down the right - the steps of a diagram, or the
+parts of a model. The classes are shared (`vwrap`, `vstage`, `vside`, `vnow`,
+`vlist`), and the accent colour comes from the marker, so a model window is
+orange and a diagram window blue without either knowing about the other.
+
+Size is not decoration here. A diagram is drawn at 980x580 and scaled to fit its
+box, so the box decides how big the lettering is: at the old 420px height a
+14-unit caption landed at about 10px on screen.
+
 ## In the headset
 
 A board or a diagram and the panel that explains it are one thing to read, so
