@@ -211,6 +211,75 @@ rebuild keeps them. Two lessons have no spec to write to - nw-l04 is drawn by
 l4.py and 1.6's spec was lost - so for those `applymodels.py` is the only record
 and must be re-run if those scenes are ever rebuilt.
 
+## 2D diagrams
+
+`js/diagrams.js` is the engine - a drawing helper and a viewer - and the
+diagrams themselves live in `js/diag-*.js`, one file per group of topics. Each
+registers itself:
+
+```js
+R360Diagrams.add("fde", () => ({ w, h, steps, render(d, step, t) { ... } }));
+```
+
+`render` draws the whole frame every time: there is no retained scene, so a
+diagram is one readable function. `t` runs 0 to 1 across a step, which is what
+makes them animate. The viewer has the same shape as `R360Models.viewer`, so the
+player opens a diagram the same way it opens a model, and `js/vr.js` drives the
+same `render` into a canvas texture on a panel.
+
+A diagram earns its place when the teaching point is a process over time, or a
+structure whose shape is the point, and a panel of text cannot carry it: the
+fetch-execute cycle running, headers wrapped and unwrapped down and up a
+protocol stack, a wave being sampled, a list being sorted. A labelled picture
+that never moves does not need any of this machinery.
+
+`tools/diagrams/BRIEF.md` is the contract for writing one, and
+`tools/diagrams/shoot.js` renders one PNG per step to look at:
+
+```
+DIAG_OUT=/tmp/shots node tools/diagrams/shoot.js fde packets
+```
+
+Check them all after a change:
+
+```
+PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers node tools/qcdiagrams.js
+```
+
+Nothing throws when a label runs off the edge or two captions land on top of
+each other, and there are thirty-odd diagrams of six steps each, so this wraps
+the drawing helper, records what every call drew, and reports four things: a
+part drawn outside the diagram, two pieces of text overlapping, a label squeezed
+smaller than it asked for because its box is too narrow, and a diagram named in
+an experience that is not registered - `build()` falls back to the first
+diagram for an unknown name, so a typo in a placement would otherwise open the
+wrong picture silently.
+
+It cannot tell you a diagram is confusing, and it does not see text sitting on a
+box border - it compares text against text, not against the shapes. Look at the
+images for those.
+
+It also only compares a shape's label against free-standing text, never against
+another shape's label, because a value in flight over the cell it is heading for
+is the animation working. Suppressing shape labels altogether, which is where
+that rule started, hid a chip parked on top of a subtitle for a whole step.
+
+Three wrong turns it took first, all worth knowing. It modelled `d.box`'s own
+label padding instead of recording the size `d.box` actually drew, which
+invented four overflows that were not there - the fix was to observe what was
+drawn rather than predict it. It compared text drawn *inside* `d.box` and
+`d.chip`, so a chip flying over a cell read as two captions colliding. And the
+fix for that went too far the other way, skipping shape labels entirely, which
+hid a chip sitting on top of a subtitle; the rule now skips only the pair where
+one string contains the other, which is what a value in flight looks like.
+
+Placements live in `newdiagrams.py`, in the same form as the 3D models:
+
+```
+python3 applydiagrams.py          # show what would change
+python3 applydiagrams.py --write
+```
+
 ## Marker geometry — do not drift from this
 
 Station panels, and the markers that belong to them, are fixed. `kit.py`:
@@ -225,10 +294,11 @@ MODEL_Y = INFO_Y
 
 Panels are 880 wide, top 330, bottom 1800. In every experience the info "i" icon
 is centred above the panel it relates to, the 3D button sits at that panel's top
-right corner, and the station badge is centred below:
+right corner, the 2D diagram button at its top left, and the station badge is
+centred below:
 
 ```
-       (i)              [3D]
+    [2D]       (i)        [3D]
     +-------------------------+
     |        the panel        |
     +-------------------------+
@@ -237,8 +307,8 @@ right corner, and the station badge is centred below:
 
 Rows 220–260 and 1820–1840 were chosen because they are clear of text in every
 scene, and the 3D button clears the info icon by about 12 degrees of view. If you
-move any of them, re-run `applymodels.py --write` so the deployed experiences
-follow.
+move any of them, re-run `applymodels.py --write` and `applydiagrams.py --write`
+so the deployed experiences follow.
 
 `fixoverlap.py` has deliberately **not** been kept: it nudged markers away from
 each other case by case, which is exactly what the uniform placement replaced.
