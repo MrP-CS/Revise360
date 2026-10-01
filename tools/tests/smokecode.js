@@ -22,35 +22,35 @@ const srv = http.createServer((q, r) => {
   r.end(fs.readFileSync(f));
 });
 
-/* A right answer and a wrong one for each question, keyed by the start of the
- * prompt. The wrong one is a mistake a pupil really makes, not nonsense: it has
- * to be caught by a test rather than by failing to run. */
-const ANSWERS = {
-  "Write a program that adds up": {
-    right: "n = int(input())\ntotal = 0\nfor i in range(1, n + 1):\n    total += i\nprint(total)\n",
-    wrong: "n = int(input())\ntotal = 0\nfor i in range(1, n):\n    total += i\nprint(total)\n"
-  },
-  "Write a linear search": {
-    right: "names = ['Ava', 'Ben', 'Chi', 'Dev', 'Eve']\nw = input()\nf = -1\nfor i in range(len(names)):\n    if names[i] == w:\n        f = i\nprint('not found' if f == -1 else f)\n",
-    wrong: "names = ['Ava', 'Ben', 'Chi', 'Dev', 'Eve']\nw = input()\nf = -1\nfor i in range(len(names)):\n    if names[i] == w:\n        f = i + 1\nprint('not found' if f == -1 else f)\n"
-  },
-  "Write a bubble sort": {
-    right: "nums = []\nfor i in range(5):\n    nums.append(int(input()))\nfor a in range(4):\n    for b in range(4 - a):\n        if nums[b] > nums[b + 1]:\n            nums[b], nums[b + 1] = nums[b + 1], nums[b]\nprint(' '.join(str(v) for v in nums))\n",
-    wrong: "nums = []\nfor i in range(5):\n    nums.append(int(input()))\nprint(' '.join(str(v) for v in nums))\n"
-  },
-  "Write a program that checks a password": {
-    right: "pw = input()\nwhile len(pw) < 8:\n    print('too short')\n    pw = input()\nprint('accepted')\n",
-    wrong: "pw = input()\nif len(pw) < 8:\n    print('too short')\nelse:\n    print('accepted')\n"
-  },
-  "Write a program that accepts a mark": {
-    right: "m = int(input())\nprint('valid' if m >= 0 and m <= 50 else 'invalid')\n",
-    wrong: "m = int(input())\nprint('valid' if m >= 0 and m < 50 else 'invalid')\n"
-  },
-  "Write a program that prints the character code": {
-    right: "w = input()\nfor c in w:\n    print(c, ord(c))\n",
-    wrong: "w = input()\nfor c in w:\n    print(ord(c))\n"
+/* Right answers come from answers/codebank/, which git ignores because this
+ * repository is public and a model solution is answer-sheet material. They
+ * never reach a browser in normal use either - they exist so a question can be
+ * proved answerable. The wrong answer is generated: a program that just prints
+ * the first test's expected output. verifycode.py already proves that fails at
+ * least one test on every question, so if the browser marks it full marks, the
+ * pipeline is broken.
+ *
+ * verifycode.py checks all 144 under CPython in seconds. This is the slow
+ * end-to-end check - editor, worker, test cases, marking - so it samples.
+ * CODE_SAMPLE sets how many per lesson, CODE_ONLY limits it to one.
+ */
+const SAMPLE = Number(process.env.CODE_SAMPLE || 2);
+
+function bank() {
+  const dir = path.join(ROOT, "tools", "codebank");
+  const sdir = path.join(ROOT, "answers", "codebank");
+  const out = new Map();
+  for (const f of fs.readdirSync(dir).filter(x => x.endsWith(".json"))) {
+    const d = JSON.parse(fs.readFileSync(path.join(dir, f), "utf8"));
+    const sf = path.join(sdir, f);
+    if (!fs.existsSync(sf)) continue;        // no solutions here, nothing to type
+    const sols = JSON.parse(fs.readFileSync(sf, "utf8")).solutions || {};
+    for (const q of d.questions)
+      if (sols[q.id]) out.set(q.q, { lesson: d.lesson, solution: sols[q.id] });
   }
-};
+  if (!out.size) console.log("No model solutions found in answers/codebank/ - this check needs them.");
+  return out;
+}
 
 function findQuestions() {
   const dir = path.join(ROOT, "experiences");
@@ -60,7 +60,8 @@ function findQuestions() {
     for (const sc of d.scenes || []) {
       const core = (sc.stations || []).filter(s => s.label !== "\u2605");
       core.forEach((st, k) => (st.tasks || []).forEach((t, ti) => {
-        if (t.t === "code") out.push({ id: f.replace(".json", ""), station: k, index: ti, q: t.q, marks: t.marks, tests: (t.tests || []).length });
+        if (t.t === "code") out.push({ id: f.replace(".json", ""), station: k, index: ti, q: t.q,
+          marks: t.marks, tests: (t.tests || []).length, firstOut: ((t.tests || [])[0] || {}).out || [] });
       }));
     }
   }
@@ -68,8 +69,18 @@ function findQuestions() {
 }
 
 (async () => {
-  const qs = findQuestions();
-  console.log(`${qs.length} code question(s) in the experiences\n`);
+  const BANK = bank();
+  const only = process.env.CODE_ONLY;
+  const all = findQuestions();
+  const seen = {};
+  const qs = all.filter(q => {
+    const e = BANK.get(q.q);
+    if (!e) return false;                       // the six older ones, not in the bank
+    if (only && e.lesson !== only) return false;
+    seen[e.lesson] = (seen[e.lesson] || 0) + 1;
+    return seen[e.lesson] <= SAMPLE;
+  });
+  console.log(`${all.length} code questions placed, ${BANK.size} in the bank, testing ${qs.length}\n`);
   if (!qs.length) { console.log("nothing to test"); process.exit(1); }
 
   await new Promise(r => srv.listen(PORT, r));
@@ -95,8 +106,8 @@ function findQuestions() {
     if (!there) { console.log(`${q.id}: the editor did not appear`); bad++; await pg.close(); continue; }
     await pg.waitForFunction(() => !document.querySelector("#pycheck").disabled, null, { timeout: 90000 });
 
-    const key = Object.keys(ANSWERS).find(k => q.q.startsWith(k));
-    if (!key) { console.log(`${q.id}: no answer written for "${q.q.slice(0, 40)}"`); bad++; await pg.close(); continue; }
+    const entry = BANK.get(q.q);
+    const wrong = "print('''" + (q.firstOut || []).join("\n") + "''')";
 
     const type = async (code) => pg.evaluate(c => {
       const ta = document.querySelector("#pyed .pysrc");
@@ -114,7 +125,7 @@ function findQuestions() {
       }));
     };
 
-    await type(ANSWERS[key].right);
+    await type(entry.solution);
     const good = await check();
     console.log(`${q.id.padEnd(8)} ${q.q.slice(0, 44).padEnd(46)} right: ${good.pass}/${good.pass + good.fail} pass`);
     if (good.fail > 0 || !good.ok) { console.log(`   a correct solution did not pass: ${good.fb.slice(0, 110)}`); bad++; }
@@ -123,7 +134,7 @@ function findQuestions() {
     await pg.evaluate(([k, i]) => window.NVR.openStationTask(k, i), [q.station, q.index]);
     await pg.waitForTimeout(900);
     await pg.waitForFunction(() => !document.querySelector("#pycheck").disabled, null, { timeout: 90000 });
-    await type(ANSWERS[key].wrong);
+    await type(wrong);
     const poor = await check();
     console.log(`${"".padEnd(8)} ${"".padEnd(46)} wrong: ${poor.pass}/${poor.pass + poor.fail} pass`);
     if (poor.fail === 0) { console.log("   a wrong solution was marked correct"); bad++; }

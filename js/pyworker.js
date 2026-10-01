@@ -28,11 +28,21 @@ function load() {
 }
 
 self.onmessage = async (e) => {
-  const { id, kind, code, stdin, echo } = e.data || {};
+  const { id, kind, code, stdin, echo, files } = e.data || {};
   try {
     if (kind === "init") { await load(); self.postMessage({ id, kind: "ready" }); return; }
     if (kind !== "run") return;
     await load();
+
+    /* File-handling questions need their file to exist. Pyodide has a virtual
+     * filesystem, so each test writes its own fixtures before the program runs
+     * and they are removed afterwards - otherwise a file written by one test
+     * would still be there for the next one, and a program that never creates
+     * it would pass. */
+    const made = [];
+    for (const name of Object.keys(files || {})) {
+      try { py.FS.writeFile(name, files[name]); made.push(name); } catch (err) { /* nothing to undo */ }
+    }
 
     const lines = (stdin || []).slice();
     let out = "";
@@ -64,6 +74,8 @@ self.onmessage = async (e) => {
     } catch (err) {
       error = String(err.message || err);
     }
+    // tidy up, including anything the program itself created
+    for (const name of made) { try { py.FS.unlink(name); } catch (err) { /* already gone */ } }
     self.postMessage({ id, kind: "result", stdout: out, error });
   } catch (err) {
     self.postMessage({ id, kind: "result", stdout: "", error: String(err && err.message || err) });

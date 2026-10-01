@@ -1,0 +1,744 @@
+{
+ "lesson": "pr-l10",
+ "title": "Files and records",
+ "stations": [
+  "Reading a whole file",
+  "Reading line by line",
+  "Writing to a file",
+  "Adding to a file",
+  "Records in a file",
+  "Putting it together"
+ ],
+ "questions": [
+  {
+   "id": "pr-l10-q1",
+   "station": 0,
+   "marks": 2,
+   "q": "Open a text file, read all of it in one go, and print it.",
+   "brief": [
+    "A file called notice.txt is already there.",
+    "Open it in read mode with the mode letter r.",
+    "Read the whole file in one go with .read().",
+    "Close the file.",
+    "Print what you read, exactly as it came out of the file. Add nothing of your own."
+   ],
+   "starter": "# Open notice.txt in read mode, read it all, close it, print it\n",
+   "tests": [
+    {
+     "files": {
+      "notice.txt": "Fire drill Friday\nMeet on the field\n"
+     },
+     "out": [
+      "Fire drill Friday",
+      "Meet on the field"
+     ],
+     "why": "Both lines come out of one .read(). If you only got the first line you used .readline(), which stops after one."
+    },
+    {
+     "files": {
+      "notice.txt": "Library closed at 3\n"
+     },
+     "out": [
+      "Library closed at 3"
+     ],
+     "why": "A one-line file reads just as easily. If nothing printed, you read the file into a variable but never printed it."
+    },
+    {
+     "files": {
+      "notice.txt": "Bus bay 4\nLeaves at 2 15\nBring your pass\n"
+     },
+     "out": [
+      "Bus bay 4",
+      "Leaves at 2 15",
+      "Bring your pass"
+     ],
+     "why": "Three lines, one .read(). If you printed a heading of your own as well, the output will not match - print only the file."
+    }
+   ],
+   "fb": "open() needs the file name and the mode. 'r' means read. .read() brings back the whole file as one string, newlines and all, and .close() lets go of it."
+  },
+  {
+   "id": "pr-l10-q2",
+   "station": 0,
+   "marks": 3,
+   "q": "Count how many characters are in a file, including the ones you cannot see.",
+   "brief": [
+    "A file called log.txt is already there. It may be empty.",
+    "Open it in read mode and read the whole file in one go.",
+    "Close the file.",
+    "Print one line: the word characters, a space, then how many characters the file holds.",
+    "Count every character, including each newline at the end of a line.",
+    "An empty file holds 0 characters."
+   ],
+   "starter": "# Open log.txt, read it all, close it, then print: characters <how many>\n",
+   "tests": [
+    {
+     "files": {
+      "log.txt": "abc\n"
+     },
+     "out": [
+      "characters 4"
+     ],
+     "why": "Three letters and the newline on the end make 4. If you got 3 you stripped the newline off, and the brief says to count it."
+    },
+    {
+     "files": {
+      "log.txt": ""
+     },
+     "out": [
+      "characters 0"
+     ],
+     "why": "An empty file is still a file. .read() gives back an empty string, so the length is 0 - a program that crashes or prints nothing here assumed there would always be something to read."
+    },
+    {
+     "files": {
+      "log.txt": "Door open\nDoor shut\n"
+     },
+     "out": [
+      "characters 20"
+     ],
+     "why": "Nine characters, a newline, nine characters, a newline is 20. If you got 18 you counted the lines separately and lost the newlines."
+    },
+    {
+     "files": {
+      "log.txt": "x"
+     },
+     "out": [
+      "characters 1"
+     ],
+     "why": "The last line of a file does not have to end with a newline. If this gave 2 you are adding one on yourself."
+    }
+   ],
+   "fb": "len() on what .read() gave back counts the characters in the whole file. Newlines are real characters, which is why a file usually looks longer than you expect."
+  },
+  {
+   "id": "pr-l10-q3",
+   "station": 1,
+   "marks": 3,
+   "q": "Read only the first line of a file, tidy the newline off the end of it, and measure what is left.",
+   "brief": [
+    "A file called rota.txt is already there. It may be empty.",
+    "Open it in read mode.",
+    "Read only the FIRST line, using .readline(). Do not read the rest.",
+    "Close the file.",
+    "Strip the newline off the end of what you read.",
+    "Print one line: the word first, a space, then that stripped line. If the file is empty there is nothing to add after the word first.",
+    "Then print one more line: the word length, a space, then how many characters the stripped line has.",
+    "Two lines of output."
+   ],
+   "starter": "# Open rota.txt, read just the first line with .readline(), close the file\n# Strip the newline, then print: first <that line>\n# Then print: length <how many characters the stripped line has>\n",
+   "tests": [
+    {
+     "files": {
+      "rota.txt": "Monday Ava\nTuesday Ben\n"
+     },
+     "out": [
+      "first Monday Ava",
+      "length 10"
+     ],
+     "why": "Only the first line is wanted, and Monday Ava is 10 characters. If Tuesday Ben appeared too you used .read() or .readlines() instead of .readline()."
+    },
+    {
+     "files": {
+      "rota.txt": "Sun Zoe\n"
+     },
+     "out": [
+      "first Sun Zoe",
+      "length 7"
+     ],
+     "why": "A file with one line in it. A length of 8 means the newline is still counted, so the line was never stripped."
+    },
+    {
+     "files": {
+      "rota.txt": ""
+     },
+     "out": [
+      "first",
+      "length 0"
+     ],
+     "why": "An empty file gives .readline() an empty string back, not an error. A program that crashes here assumed there is always a first line to read."
+    },
+    {
+     "files": {
+      "rota.txt": "Wednesday Dev\nThursday Eve\nFriday Fay\n"
+     },
+     "out": [
+      "first Wednesday Dev",
+      "length 13"
+     ],
+     "why": "The first line of a long file is still just the first line. If a blank line appeared between the two outputs, the newline is still stuck on the end of what you printed."
+    }
+   ],
+   "fb": ".readline() reads up to and including the next newline, so what comes back has \\n on the end. .strip() takes that off, along with any stray spaces, and the length shows whether it really went."
+  },
+  {
+   "id": "pr-l10-q4",
+   "station": 1,
+   "marks": 4,
+   "q": "Read every line of a file into a list, say how many there are, and number them.",
+   "brief": [
+    "A file called names.txt is already there. It may be empty.",
+    "Open it in read mode and use .readlines() to get a list of all the lines. Close the file.",
+    "First print one line: the word lines, a space, then how many lines there are.",
+    "Then loop through the list and print one line for each name: its position, a space, then the name with the newline stripped.",
+    "Number the positions from 1, not 0.",
+    "If the file is empty, print only the line: lines 0"
+   ],
+   "starter": "# Open names.txt, use .readlines() to get a list, close the file\n# Print: lines <how many>\n# Then loop through and print each one as: <position> <name>\n",
+   "tests": [
+    {
+     "files": {
+      "names.txt": "Ava\nBen\nChi\n"
+     },
+     "out": [
+      "lines 3",
+      "1 Ava",
+      "2 Ben",
+      "3 Chi"
+     ],
+     "why": "Three names, numbered from 1. If your numbers ran 0 1 2 you used the list position straight, and the brief asks you to start at 1."
+    },
+    {
+     "files": {
+      "names.txt": "Dev\n"
+     },
+     "out": [
+      "lines 1",
+      "1 Dev"
+     ],
+     "why": "One name is one line. If the count said 3 you may have counted characters rather than lines."
+    },
+    {
+     "files": {
+      "names.txt": ""
+     },
+     "out": [
+      "lines 0"
+     ],
+     "why": "An empty file gives .readlines() an empty list, so the count is 0 and the loop simply does not run. A crash here means you went straight for lines[0] without checking."
+    },
+    {
+     "files": {
+      "names.txt": "Fay\nGus\n"
+     },
+     "out": [
+      "lines 2",
+      "1 Fay",
+      "2 Gus"
+     ],
+     "why": "If each name printed with a blank line after it, the newline from the file is still attached - strip it before printing."
+    }
+   ],
+   "fb": ".readlines() gives you a list with one string per line, so len() tells you how many lines there are. Each string still ends with \\n until you strip it."
+  },
+  {
+   "id": "pr-l10-q5",
+   "station": 2,
+   "marks": 4,
+   "q": "Write a two-line report file, then read it back and print it to prove it is there.",
+   "brief": [
+    "Read one line of input - the title of the report.",
+    "Open a file called report.txt in write mode with the mode letter w.",
+    "Write the title, then a newline. Then write the word ready, then a newline.",
+    "Close the file.",
+    "Now open report.txt again in read mode, read the whole file, and print it.",
+    "Two lines of output: the title, then the word ready."
+   ],
+   "starter": "# Read the title\n# Open report.txt in write mode, write the title and then 'ready', close it\n# Open it again in read mode, read it all, and print it\n",
+   "tests": [
+    {
+     "in": [
+      "Term 1 totals"
+     ],
+     "out": [
+      "Term 1 totals",
+      "ready"
+     ],
+     "why": "The file has to exist before you can read it back. A crash saying no such file means the write never happened, or you opened the wrong name."
+    },
+    {
+     "in": [
+      "Club sign up"
+     ],
+     "out": [
+      "Club sign up",
+      "ready"
+     ],
+     "why": "The title comes from input, the word ready is fixed. If both ended up on one line you forgot the \\n after the title - .write() adds nothing of its own."
+    },
+    {
+     "in": [
+      "Trip list"
+     ],
+     "out": [
+      "Trip list",
+      "ready"
+     ],
+     "why": "If the output was empty, you read the file before closing it after writing - what you wrote may still be waiting to be saved."
+    }
+   ],
+   "fb": "print() puts a newline on the end for you. .write() does not, so you have to write \\n yourself when you want a new line in the file."
+  },
+  {
+   "id": "pr-l10-q6",
+   "station": 2,
+   "marks": 4,
+   "q": "Show what write mode does to a file that already has something in it.",
+   "brief": [
+    "A file called stock.txt is already there, and it may already have lines in it.",
+    "Read one line of input - a new stock entry.",
+    "Open stock.txt in write mode, write that entry and a newline, then close the file.",
+    "Now open stock.txt in read mode, get the lines with .readlines(), and close it.",
+    "Print each line in the file with the newline stripped, one per line of output.",
+    "Then print one last line: the word lines, a space, then how many lines the file now holds.",
+    "Write mode throws away whatever was in the file before, so there should only ever be one."
+   ],
+   "starter": "# Read the new entry\n# Open stock.txt in WRITE mode, write the entry and a newline, close it\n# Read the file back with .readlines() and print each line, then: lines <how many>\n",
+   "tests": [
+    {
+     "files": {
+      "stock.txt": "old bolts\nold nuts\n"
+     },
+     "in": [
+      "new screws"
+     ],
+     "out": [
+      "new screws",
+      "lines 1"
+     ],
+     "why": "The two old lines are gone, because write mode empties the file first. If you still see old bolts you opened it with 'a' instead of 'w'."
+    },
+    {
+     "files": {
+      "stock.txt": ""
+     },
+     "in": [
+      "first item"
+     ],
+     "out": [
+      "first item",
+      "lines 1"
+     ],
+     "why": "Writing to an empty file works the same way. If the count said 0 you read the file before closing it."
+    },
+    {
+     "files": {
+      "stock.txt": "a\nb\nc\n"
+     },
+     "in": [
+      "tape rolls"
+     ],
+     "out": [
+      "tape rolls",
+      "lines 1"
+     ],
+     "why": "Three old lines, still only one left. A count of 4 means the new entry was added to the end rather than replacing the file."
+    },
+    {
+     "files": {
+      "stock.txt": "pens\n"
+     },
+     "in": [
+      "pens"
+     ],
+     "out": [
+      "pens",
+      "lines 1"
+     ],
+     "why": "Writing the same text that was already there still leaves one line, not two."
+    }
+   ],
+   "fb": "Opening a file with 'w' empties it the moment it opens, even if you then write nothing. That is the difference between 'w' and 'a', and it is easy to lose work to."
+  },
+  {
+   "id": "pr-l10-q7",
+   "station": 3,
+   "marks": 4,
+   "q": "Add a visitor to the end of a log without losing the visitors already in it.",
+   "brief": [
+    "A file called visits.txt is already there. It may be empty.",
+    "Read one line of input - the name of a new visitor.",
+    "Open visits.txt in append mode with the mode letter a, write the name and a newline, then close the file.",
+    "Now open visits.txt in read mode, get the lines with .readlines(), and close it.",
+    "Print one line: the word latest, a space, then the LAST line of the file with the newline stripped.",
+    "Then print one more line: the word total, a space, then how many lines the file now holds.",
+    "Two lines of output."
+   ],
+   "starter": "# Read the new visitor's name\n# Open visits.txt in APPEND mode, write the name and a newline, close it\n# Read it back with .readlines(), then print: latest <last line>, then: total <how many>\n",
+   "tests": [
+    {
+     "files": {
+      "visits.txt": "Ava\nBen\n"
+     },
+     "in": [
+      "Chi"
+     ],
+     "out": [
+      "latest Chi",
+      "total 3"
+     ],
+     "why": "Two names were there, so adding one makes three. A total of 1 means you opened the file with 'w', which wiped Ava and Ben."
+    },
+    {
+     "files": {
+      "visits.txt": ""
+     },
+     "in": [
+      "Dev"
+     ],
+     "out": [
+      "latest Dev",
+      "total 1"
+     ],
+     "why": "Append mode works on an empty file too, and the one name you added is also the last line. A crash here means you went for lines[1] rather than the end of the list."
+    },
+    {
+     "files": {
+      "visits.txt": "Eve\n"
+     },
+     "in": [
+      "Ada"
+     ],
+     "out": [
+      "latest Ada",
+      "total 2"
+     ],
+     "why": "The new name goes on the end, so the last line is the one just added, not Eve. Printing Eve means you took lines[0]."
+    },
+    {
+     "files": {
+      "visits.txt": "Fay\nGus\nHal\nIvy\n"
+     },
+     "in": [
+      "Jay"
+     ],
+     "out": [
+      "latest Jay",
+      "total 5"
+     ],
+     "why": "If a blank line appeared between the two lines of output, the newline is still on the end of the line you read - strip it before printing."
+    }
+   ],
+   "fb": "'a' for append opens the file with the writing point already at the end, so what you write is added. 'w' would throw the whole log away first."
+  },
+  {
+   "id": "pr-l10-q8",
+   "station": 4,
+   "marks": 4,
+   "q": "Each line of a file is a record with two fields. Find the record for one name and report it.",
+   "brief": [
+    "A file called members.txt holds one record per line, in the form name,age with a comma between the two fields. It may be empty.",
+    "Read one line of input - the name to look for.",
+    "Open the file in read mode, loop through its lines, and split each line at the comma to get the two fields.",
+    "Strip the newline before you split, or the age will have a newline stuck on it.",
+    "If a record's name field matches the name that was read, print: that name, a space, the word is, a space, then the age.",
+    "If no record matches, print: not a member",
+    "Then, as a final line either way, print: the word checked, a space, then how many records you looked at.",
+    "Two lines of output."
+   ],
+   "starter": "# Read the name to look for\n# Open members.txt, loop through the lines, strip and split each one at the comma\n# Print '<name> is <age>' on a match, or 'not a member' if there is none\n# Then print: checked <how many records you looked at>\n",
+   "tests": [
+    {
+     "files": {
+      "members.txt": "Ava,14\nBen,15\nChi,13\n"
+     },
+     "in": [
+      "Ben"
+     ],
+     "out": [
+      "Ben is 15",
+      "checked 3"
+     ],
+     "why": "Ben is the second record, and all three were looked at. If a blank line appeared before the checked line, you split the record before stripping it, so the newline is still part of the age field."
+    },
+    {
+     "files": {
+      "members.txt": "Ava,14\nBen,15\nChi,13\n"
+     },
+     "in": [
+      "Zoe"
+     ],
+     "out": [
+      "not a member",
+      "checked 3"
+     ],
+     "why": "Nobody matches, so the message is printed once after the loop. Printing it three times means the message sits inside the loop instead of after it."
+    },
+    {
+     "files": {
+      "members.txt": ""
+     },
+     "in": [
+      "Ava"
+     ],
+     "out": [
+      "not a member",
+      "checked 0"
+     ],
+     "why": "An empty file has no records, so nobody matches and nothing was checked. A crash here means you read a record before checking there was one."
+    },
+    {
+     "files": {
+      "members.txt": "Dev,16\n"
+     },
+     "in": [
+      "Dev"
+     ],
+     "out": [
+      "Dev is 16",
+      "checked 1"
+     ],
+     "why": "A file with a single record still has to be searched. If nothing was found, the loop may be stopping before it looks at the only line."
+    },
+    {
+     "files": {
+      "members.txt": "Eve,12\nFay,17\n"
+     },
+     "in": [
+      "Fay"
+     ],
+     "out": [
+      "Fay is 17",
+      "checked 2"
+     ],
+     "why": "The last record must be checked too. Printing not a member here means the loop gave up as soon as the first line failed to match."
+    }
+   ],
+   "fb": "A record is one line made of fields. .split(',') breaks the line into a list of those fields, so fields[0] is the name and fields[1] is the age."
+  },
+  {
+   "id": "pr-l10-q9",
+   "station": 4,
+   "marks": 5,
+   "q": "Total one column of a file of records, and report who scored the highest.",
+   "brief": [
+    "A file called scores.txt holds one record per line, in the form name,score, where the score is a whole number. It may be empty.",
+    "Open the file in read mode, read its lines, and close it.",
+    "If the file holds no records, print only: no scores",
+    "Otherwise print two lines. First: the word total, a space, then all the scores added together.",
+    "Second: the word best, a space, then the name with the highest score.",
+    "If two names share the highest score, print whichever comes first in the file."
+   ],
+   "starter": "# Open scores.txt, read the lines, close it\n# Add up the score field of every record, and keep track of the highest\n# Print 'no scores' if there are none, otherwise 'total <sum>' then 'best <name>'\n",
+   "tests": [
+    {
+     "files": {
+      "scores.txt": "Ava,7\nBen,9\nChi,4\n"
+     },
+     "out": [
+      "total 20",
+      "best Ben"
+     ],
+     "why": "7 plus 9 plus 4 is 20, and Ben's 9 is the highest. A total of 794 means the score field was joined as text instead of turned into a number with int()."
+    },
+    {
+     "files": {
+      "scores.txt": "Dev,5\n"
+     },
+     "out": [
+      "total 5",
+      "best Dev"
+     ],
+     "why": "One record is its own total and its own best. If the best came out blank, the highest is only being updated when a later score beats a starting value you never set."
+    },
+    {
+     "files": {
+      "scores.txt": ""
+     },
+     "out": [
+      "no scores"
+     ],
+     "why": "No records at all. A program that prints total 0 here, or crashes looking for the highest, assumed the file always has data in it."
+    },
+    {
+     "files": {
+      "scores.txt": "Eve,3\nFay,3\n"
+     },
+     "out": [
+      "total 6",
+      "best Eve"
+     ],
+     "why": "A tie goes to the first one in the file, so the test for the highest has to be strictly greater than, not greater than or equal to."
+    },
+    {
+     "files": {
+      "scores.txt": "Gus,0\nHal,0\n"
+     },
+     "out": [
+      "total 0",
+      "best Gus"
+     ],
+     "why": "Scores of zero are still records. If best came out blank, you started the highest at 0 and nothing ever beat it - start from the first record instead."
+    }
+   ],
+   "fb": "Totalling a column means reading each record, pulling out one field, turning it into a number and adding it on. The running total starts at 0 before the loop, never inside it."
+  },
+  {
+   "id": "pr-l10-q10",
+   "station": 5,
+   "marks": 5,
+   "q": "Read a file of sales records, work out each line's value, write a report file, then read the report back and print it.",
+   "brief": [
+    "A file called sales.txt holds one record per line, in the form item,quantity,price - three fields, with the price in whole pence. It may be empty.",
+    "Work out the value of each record: the quantity multiplied by the price.",
+    "Open a file called report.txt in write mode and write one line per record: the item, a space, then that record's value.",
+    "Then write one final line: the word total, a space, then every value added together.",
+    "Close report.txt.",
+    "Now open report.txt in read mode and print the whole file.",
+    "If sales.txt is empty, report.txt holds just the one line: total 0"
+   ],
+   "starter": "# Open sales.txt, read the records, close it\n# Open report.txt in write mode, write '<item> <value>' per record, then 'total <sum>'\n# Close it, then open it in read mode and print it\n",
+   "tests": [
+    {
+     "files": {
+      "sales.txt": "pens,3,50\nglue,2,120\n"
+     },
+     "out": [
+      "pens 150",
+      "glue 240",
+      "total 390"
+     ],
+     "why": "3 times 50 is 150, 2 times 120 is 240, and the two make 390. If the total line came first, it was written before the loop rather than after."
+    },
+    {
+     "files": {
+      "sales.txt": "tape,1,99\n"
+     },
+     "out": [
+      "tape 99",
+      "total 99"
+     ],
+     "why": "One record, so its value is also the total. Two identical lines is right here - do not skip the total line just because it matches."
+    },
+    {
+     "files": {
+      "sales.txt": ""
+     },
+     "out": [
+      "total 0"
+     ],
+     "why": "No records, so nothing is written for them, but the total line still has to be written. A program that writes nothing and then reads an empty report prints nothing at all."
+    },
+    {
+     "files": {
+      "sales.txt": "card,10,15\nink,2,250\nclips,4,5\n"
+     },
+     "out": [
+      "card 150",
+      "ink 500",
+      "clips 20",
+      "total 670"
+     ],
+     "why": "The records must come out in the order they were in the file. If the values were right but the total was 0, the running total is being reset inside the loop."
+    },
+    {
+     "files": {
+      "sales.txt": "rubber,0,40\n"
+     },
+     "out": [
+      "rubber 0",
+      "total 0"
+     ],
+     "why": "A quantity of zero is worth zero, and the record still gets a line of its own in the report."
+    }
+   ],
+   "fb": "Reading one file and writing another is the usual shape of a report. Only what you print is seen, so reading the report back is how you prove you really wrote it."
+  },
+  {
+   "id": "pr-l10-q11",
+   "station": 5,
+   "marks": 6,
+   "q": "Filter a file of sensor readings into a new alerts file, then read that file back and count what is in it.",
+   "brief": [
+    "A file called readings.txt holds one record per line, in the form sensor,reading, where the reading is a whole number. It may be empty.",
+    "Read one line of input - a limit, a whole number.",
+    "Open a file called alerts.txt in write mode. Write one line for every record whose reading is ABOVE the limit, in the form: the sensor, a space, then the reading. A reading equal to the limit is not above it.",
+    "Keep the records in the order they were in readings.txt. Close alerts.txt.",
+    "Now open alerts.txt in read mode, get its lines, and close it.",
+    "Print every line of alerts.txt with the newline stripped, one per line of output.",
+    "Then print one last line: the word alerts, a space, then how many lines alerts.txt holds."
+   ],
+   "starter": "# Read the limit\n# Open readings.txt and read its records; open alerts.txt in write mode\n# Write '<sensor> <reading>' for every reading above the limit, then close alerts.txt\n# Read alerts.txt back, print each line, then: alerts <how many>\n",
+   "tests": [
+    {
+     "files": {
+      "readings.txt": "t1,20\nt2,35\nt3,28\n"
+     },
+     "in": [
+      "25"
+     ],
+     "out": [
+      "t2 35",
+      "t3 28",
+      "alerts 2"
+     ],
+     "why": "35 and 28 are both over 25, and t1 is not. If t1 appeared too, the readings are being compared as text - '20' is bigger than '2' as text, so int() is needed."
+    },
+    {
+     "files": {
+      "readings.txt": "t1,20\nt2,35\n"
+     },
+     "in": [
+      "50"
+     ],
+     "out": [
+      "alerts 0"
+     ],
+     "why": "Nothing is over 50, so alerts.txt is written empty and the count is 0. A crash here means you tried to read a file you only opened when there was something to put in it - open it either way."
+    },
+    {
+     "files": {
+      "readings.txt": ""
+     },
+     "in": [
+      "10"
+     ],
+     "out": [
+      "alerts 0"
+     ],
+     "why": "No readings at all, so no alerts. The count line still has to be printed."
+    },
+    {
+     "files": {
+      "readings.txt": "t9,41\n"
+     },
+     "in": [
+      "40"
+     ],
+     "out": [
+      "t9 41",
+      "alerts 1"
+     ],
+     "why": "41 is above 40 by one. If this was missed you used >= on the wrong side, or compared the limit to the sensor name instead of the reading."
+    },
+    {
+     "files": {
+      "readings.txt": "t5,30\n"
+     },
+     "in": [
+      "30"
+     ],
+     "out": [
+      "alerts 0"
+     ],
+     "why": "Exactly the limit is not above the limit, so nothing is written. This is the boundary - >= instead of > fails only here."
+    },
+    {
+     "files": {
+      "readings.txt": "a1,5\na2,90\na3,5\na4,90\n"
+     },
+     "in": [
+      "50"
+     ],
+     "out": [
+      "a2 90",
+      "a4 90",
+      "alerts 2"
+     ],
+     "why": "Two separate records can hold the same reading and both count. If only one line printed, you stopped the loop at the first match."
+    }
+   ],
+   "fb": "This is the whole pattern in one program: read records in, decide about each one, write the chosen ones out, then read the new file back. Opening alerts.txt before the loop is what makes the empty case work."
+  }
+ ]
+}

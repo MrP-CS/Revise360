@@ -67,7 +67,8 @@
     opts = opts || {};
     await ready();
     RUN.say("running");
-    const r = await post({ kind: "run", code, stdin: opts.stdin || [], echo: !!opts.echo }, opts.timeoutMs || 6000);
+    const r = await post({ kind: "run", code, stdin: opts.stdin || [], echo: !!opts.echo,
+                          files: opts.files || {} }, opts.timeoutMs || 6000);
     RUN.say("idle");
     if (r.error === "__timeout__")
       return { stdout: "", error: "Your program was still running after " +
@@ -189,5 +190,23 @@
     };
   }
 
-  window.R360Py = { ready, run, editor, paint, on: RUN.on, get state() { return RUN.state; } };
+  /* The same split the editor's highlighter uses, as data rather than HTML, so
+   * the headset can paint code onto a canvas with the identical colours. */
+  const COLS = { k: "#c792ea", b: "#7fb2ff", s: "#9fe6a0", n: "#ffcb6b", c: "#5d7290", o: "#b4c4dc", t: "#f0f4fa" };
+  function tokens(line) {
+    const out = [];
+    const re = /(#[^\n]*)|('(?:\\.|[^'\\])*'|"(?:\\.|[^"\\])*")|(\b\d+\.?\d*\b)|([A-Za-z_]\w*)|(\s+)|(.)/g;
+    let m;
+    while ((m = re.exec(line))) {
+      if (m[1]) out.push({ t: m[1], c: COLS.c });
+      else if (m[2]) out.push({ t: m[2], c: COLS.s });
+      else if (m[3]) out.push({ t: m[3], c: COLS.n });
+      else if (m[4]) out.push({ t: m[4], c: KEY.indexOf(m[4]) >= 0 ? COLS.k : BUILT.indexOf(m[4]) >= 0 ? COLS.b : COLS.t });
+      else if (m[5]) out.push({ t: m[5], c: COLS.t });
+      else out.push({ t: m[6], c: COLS.o });
+    }
+    return out;
+  }
+
+  window.R360Py = { ready, run, editor, paint, tokens, colours: COLS, on: RUN.on, get state() { return RUN.state; } };
 })();

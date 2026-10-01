@@ -1,0 +1,727 @@
+{
+ "lesson": "pr-l06",
+ "title": "Working with text",
+ "stations": [
+  "Length and position",
+  "Taking part of a string",
+  "Upper and lower case",
+  "Searching inside text",
+  "Character codes",
+  "Putting it together"
+ ],
+ "questions": [
+  {
+   "id": "pr-l06-q1",
+   "station": 0,
+   "marks": 2,
+   "q": "Write a program that reports the length of a word and the characters at each end of it.",
+   "brief": [
+    "Read one word.",
+    "Print how many characters it has on the first line.",
+    "Print its first character on the second line.",
+    "Print its last character on the third line."
+   ],
+   "starter": "# Read a word, then print its length, its first character and its last character\n",
+   "tests": [
+    {
+     "in": [
+      "bridge"
+     ],
+     "out": [
+      "6",
+      "b",
+      "e"
+     ],
+     "why": "bridge has 6 characters. The first character is at position 0, so w[1] would give you r instead of b."
+    },
+    {
+     "in": [
+      "x"
+     ],
+     "out": [
+      "1",
+      "x",
+      "x"
+     ],
+     "why": "With one character the first and the last are the same one. A crash here means you used a fixed position such as w[5] rather than working from the length."
+    },
+    {
+     "in": [
+      "kayak"
+     ],
+     "out": [
+      "5",
+      "k",
+      "k"
+     ],
+     "why": "The last character is w[-1], or w[len(w) - 1]. Using w[len(w)] goes one past the end and crashes."
+    },
+    {
+     "in": [
+      "pond"
+     ],
+     "out": [
+      "4",
+      "p",
+      "d"
+     ],
+     "why": "A different word, to check nothing was typed in by hand instead of being worked out."
+    }
+   ],
+   "fb": "len() counts the characters. Positions run from 0 to len() - 1, so the last one is len() - 1, which is also written as -1."
+  },
+  {
+   "id": "pr-l06-q2",
+   "station": 0,
+   "marks": 3,
+   "q": "Write a program that prints the character at a position the user chooses, and says so politely when there is no character there.",
+   "brief": [
+    "Read one word, then read one whole number - a position counting from 0.",
+    "If that position exists in the word, print the character at it.",
+    "Otherwise print: no such position"
+   ],
+   "starter": "# Read a word and a position, then print the character there if it exists\n",
+   "tests": [
+    {
+     "in": [
+      "planet",
+      "0"
+     ],
+     "out": [
+      "p"
+     ],
+     "why": "Position 0 is the first character. If you got l, you added 1 to the position somewhere."
+    },
+    {
+     "in": [
+      "planet",
+      "5"
+     ],
+     "out": [
+      "t"
+     ],
+     "why": "planet has 6 characters, so the highest position is 5. Rejecting this means you tested p < len(w) - 1 instead of p < len(w)."
+    },
+    {
+     "in": [
+      "planet",
+      "6"
+     ],
+     "out": [
+      "no such position"
+     ],
+     "why": "Position 6 is one past the end. This is the classic off-by-one: the number of characters is 6, but the last position is 5."
+    },
+    {
+     "in": [
+      "a",
+      "0"
+     ],
+     "out": [
+      "a"
+     ],
+     "why": "A one-character word still has position 0."
+    },
+    {
+     "in": [
+      "a",
+      "1"
+     ],
+     "out": [
+      "no such position"
+     ],
+     "why": "There is no position 1 in a word of one character. Comparing against the length rather than a fixed number is what makes this work for any word."
+    }
+   ],
+   "fb": "A string of length n has positions 0 to n - 1. Check against the length, never against a number you typed in yourself."
+  },
+  {
+   "id": "pr-l06-q3",
+   "station": 1,
+   "marks": 3,
+   "q": "Write a program that makes a three-letter code from the start of a word.",
+   "brief": [
+    "Read one word.",
+    "If it has 3 or more characters, print its first 3 characters and nothing else.",
+    "If it has fewer than 3 characters, print: too short"
+   ],
+   "starter": "# Read a word and print its first three characters, or say it is too short\n",
+   "tests": [
+    {
+     "in": [
+      "harbour"
+     ],
+     "out": [
+      "har"
+     ],
+     "why": "The slice w[0:3] takes positions 0, 1 and 2 - three characters. A harb means you wrote w[0:4], which takes four."
+    },
+    {
+     "in": [
+      "cat"
+     ],
+     "out": [
+      "cat"
+     ],
+     "why": "A word of exactly 3 characters gives all three. Getting ca means you wrote w[0:2] and counted the end of a slice as included."
+    },
+    {
+     "in": [
+      "no"
+     ],
+     "out": [
+      "too short"
+     ],
+     "why": "Two characters is fewer than 3. Python would happily give you no for w[0:3] without complaining, so you have to check the length yourself."
+    },
+    {
+     "in": [
+      "q"
+     ],
+     "out": [
+      "too short"
+     ],
+     "why": "One character. If you printed q, your length check used < 2 or a wrong comparison."
+    },
+    {
+     "in": [
+      "zebra"
+     ],
+     "out": [
+      "zeb"
+     ],
+     "why": "A different word, so a program that printed a code it had been told in advance will fail here."
+    }
+   ],
+   "fb": "In a slice w[a:b], a is included and b is not. So w[0:3] is three characters, and the 3 is the position after the last one you want."
+  },
+  {
+   "id": "pr-l06-q4",
+   "station": 1,
+   "marks": 3,
+   "q": "A label is wrapped in one marker character at each end. Write a program that prints what is inside the markers.",
+   "brief": [
+    "Read one line of text.",
+    "If it has 3 or more characters, print it with the first and the last character removed.",
+    "If it has fewer than 3 characters, print: nothing inside"
+   ],
+   "starter": "# Print the line without its first and last characters\n",
+   "tests": [
+    {
+     "in": [
+      "#tulip#"
+     ],
+     "out": [
+      "tulip"
+     ],
+     "why": "Start at position 1 and stop before the last position. A tulip# means you took the first character off but left the last one on."
+    },
+    {
+     "in": [
+      "(ab)"
+     ],
+     "out": [
+      "ab"
+     ],
+     "why": "Two characters are left. Getting a means you stopped one too early - try s[1:len(s) - 1], not s[1:len(s) - 2]."
+    },
+    {
+     "in": [
+      "[x]"
+     ],
+     "out": [
+      "x"
+     ],
+     "why": "Exactly 3 characters leaves one in the middle. An empty line here means your slice ended before the character you wanted."
+    },
+    {
+     "in": [
+      "ab"
+     ],
+     "out": [
+      "nothing inside"
+     ],
+     "why": "Two characters means both of them are markers, so there is nothing inside. A slice would quietly return an empty string, which is why the length check is needed."
+    },
+    {
+     "in": [
+      ""
+     ],
+     "out": [
+      "nothing inside"
+     ],
+     "why": "An empty line has no characters at all. A crash here means you looked at s[0] before checking the length."
+    }
+   ],
+   "fb": "s[1:len(s) - 1] drops one character from each end. Taking a slice off the end of a string never crashes, it just gives you less than you expected, so check the length first."
+  },
+  {
+   "id": "pr-l06-q5",
+   "station": 2,
+   "marks": 4,
+   "q": "Write a program that compares two words, treating capitals as the same as small letters, and puts them in order when they differ.",
+   "brief": [
+    "Read two words, one per line.",
+    "If they are the same word once capitals are ignored, print: match - and nothing else.",
+    "Otherwise print: different - and then on a second line print whichever of the two words comes first in alphabetical order, again ignoring capitals.",
+    "Print that word exactly as it was typed."
+   ],
+   "starter": "# Compare the two words ignoring capitals, and say which comes first if they differ\n",
+   "tests": [
+    {
+     "in": [
+      "Harbour",
+      "harbour"
+     ],
+     "out": [
+      "match"
+     ],
+     "why": "Only the capital H differs. Comparing a == b directly says these are different, because H and h are not the same character to Python."
+    },
+    {
+     "in": [
+      "HARBOUR",
+      "HarBour"
+     ],
+     "out": [
+      "match"
+     ],
+     "why": "Both words have to be changed to the same case before comparing. Changing only one of them still leaves them unequal."
+    },
+    {
+     "in": [
+      "harbour",
+      "harbours"
+     ],
+     "out": [
+      "different",
+      "harbour"
+     ],
+     "why": "An extra s makes them different words, and the shorter one comes first. Ignoring capitals does not mean ignoring letters."
+    },
+    {
+     "in": [
+      "a",
+      "A"
+     ],
+     "out": [
+      "match"
+     ],
+     "why": "A single letter in either case. This is the smallest possible version of the same test."
+    },
+    {
+     "in": [
+      "Zebra",
+      "apple"
+     ],
+     "out": [
+      "different",
+      "apple"
+     ],
+     "why": "Every capital letter has a lower code than every small letter, so comparing the words as typed puts Zebra first. Lower the case of both before comparing them with <, as well as before testing them with ==."
+    }
+   ],
+   "fb": "Put both strings into the same case before comparing - .lower() on both, or .upper() on both. This matters for < just as much as for ==, because A has code 65 and a has code 97."
+  },
+  {
+   "id": "pr-l06-q6",
+   "station": 2,
+   "marks": 4,
+   "q": "Write a program that counts how many of the characters in a line are capital letters.",
+   "brief": [
+    "Read one line of text.",
+    "Count how many of its characters are capital letters.",
+    "Print only that count."
+   ],
+   "starter": "# Go through the line one character at a time and count the capitals\n",
+   "tests": [
+    {
+     "in": [
+      "Anna Likes Figs"
+     ],
+     "out": [
+      "3"
+     ],
+     "why": "A, L and F are capitals; the rest are not. A 15 here means you counted every character instead of testing each one."
+    },
+    {
+     "in": [
+      "all small"
+     ],
+     "out": [
+      "0"
+     ],
+     "why": "No capitals at all, so the answer is 0. Your counter has to be set to 0 before the loop so it still prints something."
+    },
+    {
+     "in": [
+      "X"
+     ],
+     "out": [
+      "1"
+     ],
+     "why": "One capital letter on its own."
+    },
+    {
+     "in": [
+      "Mix3D Case"
+     ],
+     "out": [
+      "3"
+     ],
+     "why": "M, D and C are capitals. The digit 3 and the space are not letters, so they must not be counted - a test like ch < 'a' would wrongly count both."
+    },
+    {
+     "in": [
+      ""
+     ],
+     "out": [
+      "0"
+     ],
+     "why": "An empty line has nothing to count. The loop runs zero times and the counter is still 0."
+    }
+   ],
+   "fb": "A character is a capital when it is different from its own lower-case version. Digits and spaces are the same in either case, so this test leaves them out on its own."
+  },
+  {
+   "id": "pr-l06-q7",
+   "station": 3,
+   "marks": 4,
+   "q": "Write a program that checks whether one piece of text appears somewhere inside another, and says whether it is right at the start.",
+   "brief": [
+    "Read one line of text, then read the word to look for.",
+    "If the word does not appear anywhere in the text, print: missing - and nothing else.",
+    "If it does appear, print: found - and then on a second line print: at the start - if the text begins with that word, or: inside - if it does not."
+   ],
+   "starter": "# Say whether the word is in the text, and whether the text begins with it\n",
+   "tests": [
+    {
+     "in": [
+      "the tide is out",
+      "tide"
+     ],
+     "out": [
+      "found",
+      "inside"
+     ],
+     "why": "tide appears in the middle of the text. The in operator looks anywhere, so it tells you the word is there but not where - a slice from position 0 is what answers that."
+    },
+    {
+     "in": [
+      "the tide is out",
+      "sand"
+     ],
+     "out": [
+      "missing"
+     ],
+     "why": "sand is not there at all, so there should be no second line. A program that always prints found will fail here."
+    },
+    {
+     "in": [
+      "the tide is out",
+      "the"
+     ],
+     "out": [
+      "found",
+      "at the start"
+     ],
+     "why": "The text begins with the. Comparing text[0:len(word)] with the word is what checks this - text[0:3] only works for words of exactly 3 characters."
+    },
+    {
+     "in": [
+      "abc",
+      "abcd"
+     ],
+     "out": [
+      "missing"
+     ],
+     "why": "The word to look for is longer than the text, so it cannot be inside it. Check you have word in text and not text in word - the order matters."
+    },
+    {
+     "in": [
+      "abc",
+      "a"
+     ],
+     "out": [
+      "found",
+      "at the start"
+     ],
+     "why": "A single character counts as appearing inside the text, and here it is also the first one."
+    },
+    {
+     "in": [
+      "the tide is out",
+      "e t"
+     ],
+     "out": [
+      "found",
+      "inside"
+     ],
+     "why": "A space is a character like any other, so e t does appear - at the end of the and the start of tide. Splitting the text into words first would make you miss this."
+    }
+   ],
+   "fb": "word in text asks whether word appears anywhere inside text - the thing being looked for comes first. in cannot tell you where, so a slice from position 0 is needed for the second part."
+  },
+  {
+   "id": "pr-l06-q8",
+   "station": 3,
+   "marks": 4,
+   "q": "Write a program that reports the position at which a word starts inside a line of text.",
+   "brief": [
+    "Read one line of text, then read the word to look for.",
+    "If the word is in the text, print the position where it starts, counting from 0.",
+    "If it is not in the text, print: not found"
+   ],
+   "starter": "# Find where the word starts in the text, or say it is not there\n",
+   "tests": [
+    {
+     "in": [
+      "copper kettle",
+      "kettle"
+     ],
+     "out": [
+      "7"
+     ],
+     "why": "copper and the space take up positions 0 to 6, so kettle starts at 7. An 8 means you counted from 1 instead of 0."
+    },
+    {
+     "in": [
+      "copper kettle",
+      "copper"
+     ],
+     "out": [
+      "0"
+     ],
+     "why": "A word at the very start is at position 0. A 1 here means you added 1 to make it look more natural - the brief asks for counting from 0."
+    },
+    {
+     "in": [
+      "copper kettle",
+      "silver"
+     ],
+     "out": [
+      "not found"
+     ],
+     "why": "find() returns -1 when nothing matches. Printing -1 is not what the brief asks for, so you have to test for it and print the words instead."
+    },
+    {
+     "in": [
+      "copper kettle",
+      "e"
+     ],
+     "out": [
+      "4"
+     ],
+     "why": "There are three letter e characters, and find() reports only the first, at position 4. Printing a later one means you kept looking after the first match."
+    },
+    {
+     "in": [
+      "aaa",
+      "aa"
+     ],
+     "out": [
+      "0"
+     ],
+     "why": "The first place aa fits is right at the start, so the answer is 0 and not 1."
+    }
+   ],
+   "fb": "find() gives the position of the first match, or -1 when there is none. -1 is not a position, so always test for it before you print."
+  },
+  {
+   "id": "pr-l06-q9",
+   "station": 4,
+   "marks": 4,
+   "q": "Write a program that prints the letter that comes after the one given, going back to the start of the alphabet after z.",
+   "brief": [
+    "Read one lower-case letter.",
+    "If it is z, print: a",
+    "Otherwise print the letter that comes next in the alphabet.",
+    "Use ord() and chr() to work it out."
+   ],
+   "starter": "# Turn the letter into its code, add one, turn it back into a letter\n",
+   "tests": [
+    {
+     "in": [
+      "d"
+     ],
+     "out": [
+      "e"
+     ],
+     "why": "ord('d') is 100, so the next code is 101, which chr() turns back into e. Forgetting chr() prints the number 101 instead of a letter."
+    },
+    {
+     "in": [
+      "a"
+     ],
+     "out": [
+      "b"
+     ],
+     "why": "a has code 97, so b has code 98. Taking 1 away instead of adding it would give the letter before."
+    },
+    {
+     "in": [
+      "z"
+     ],
+     "out": [
+      "a"
+     ],
+     "why": "ord('z') is 122, and 123 is the { character, not a letter. The alphabet has to be wrapped round by hand, which is what the special case for z is for."
+    },
+    {
+     "in": [
+      "y"
+     ],
+     "out": [
+      "z"
+     ],
+     "why": "y is the last letter that needs no wrapping. Treating y as the special case as well would wrongly skip z."
+    }
+   ],
+   "fb": "ord() turns a character into its code and chr() turns a code back into a character. ord('a') is 97 and ord('z') is 122, so code 123 is past the end of the alphabet."
+  },
+  {
+   "id": "pr-l06-q10",
+   "station": 4,
+   "marks": 5,
+   "q": "Write a program that separates the letters and the digits in a line of text.",
+   "brief": [
+    "Read one line of text.",
+    "Build up two new strings: one of its letters in the order they appear, one of its digits in the order they appear.",
+    "Anything that is neither a letter nor a digit is thrown away.",
+    "Print the letters on the first line, or print: none - if there are no letters.",
+    "Print the digits on the second line, or print: none - if there are no digits."
+   ],
+   "starter": "# Build two new strings, one character at a time\n",
+   "tests": [
+    {
+     "in": [
+      "Lab7Room12"
+     ],
+     "out": [
+      "LabRoom",
+      "712"
+     ],
+     "why": "The letters keep their order and so do the digits. Printing each character as you meet it gives ten lines instead of two - build the strings up first and print them at the end."
+    },
+    {
+     "in": [
+      "2026"
+     ],
+     "out": [
+      "none",
+      "2026"
+     ],
+     "why": "No letters at all, so the first line is the word none. An empty first line means you printed the empty string instead of testing for it."
+    },
+    {
+     "in": [
+      "hello"
+     ],
+     "out": [
+      "hello",
+      "none"
+     ],
+     "why": "No digits this time. Both the letters string and the digits string need to be set to an empty string before the loop."
+    },
+    {
+     "in": [
+      "a1"
+     ],
+     "out": [
+      "a",
+      "1"
+     ],
+     "why": "One of each. Codes 97 to 122 are the small letters and 48 to 57 are the digits."
+    },
+    {
+     "in": [
+      ""
+     ],
+     "out": [
+      "none",
+      "none"
+     ],
+     "why": "Nothing to sort at all, so both lines are none. The loop runs zero times, which is why the two strings must start out empty rather than unset."
+    }
+   ],
+   "fb": "Adding to a string makes a new one: letters = letters + ch. The codes are 65 to 90 for capitals, 97 to 122 for small letters and 48 to 57 for the digits 0 to 9."
+  },
+  {
+   "id": "pr-l06-q11",
+   "station": 5,
+   "marks": 6,
+   "q": "Write a program that reverses a word and says whether it reads the same both ways.",
+   "brief": [
+    "Read one word.",
+    "Build the word backwards one character at a time - do not use a slice with a negative step and do not use reversed().",
+    "Print the reversed word on the first line.",
+    "If the word reads the same forwards and backwards once capitals are ignored, print: palindrome - on the second line.",
+    "Otherwise print: not a palindrome - on the second line."
+   ],
+   "starter": "# Build the reversed word one character at a time, then compare\n",
+   "tests": [
+    {
+     "in": [
+      "stream"
+     ],
+     "out": [
+      "maerts",
+      "not a palindrome"
+     ],
+     "why": "Each new character goes in front of what you have so far: rev = ch + rev. Writing rev = rev + ch just copies the word unchanged, which would also wrongly call it a palindrome."
+    },
+    {
+     "in": [
+      "Level"
+     ],
+     "out": [
+      "leveL",
+      "palindrome"
+     ],
+     "why": "The reversed word keeps the letters where they are, so the capital L moves to the end. The palindrome test has to ignore capitals, or Level would not match leveL."
+    },
+    {
+     "in": [
+      "q"
+     ],
+     "out": [
+      "q",
+      "palindrome"
+     ],
+     "why": "A single character is its own reverse, so it is always a palindrome. A crash here means your loop used positions that assumed more than one character."
+    },
+    {
+     "in": [
+      "kayaks"
+     ],
+     "out": [
+      "skayak",
+      "not a palindrome"
+     ],
+     "why": "kayak is a palindrome but kayaks is not - the extra s at one end only. This catches a comparison that stopped before the last character."
+    },
+    {
+     "in": [
+      "noon"
+     ],
+     "out": [
+      "noon",
+      "palindrome"
+     ],
+     "why": "A palindrome of an even number of characters has no middle letter, so a loop that stopped at the middle would get this wrong."
+    }
+   ],
+   "fb": "Putting each character in front of what you have already built reverses a string. Compare the reversed version with the original in the same case to test for a palindrome.",
+   "forbid": [
+    [
+     "[::-1]",
+     "The brief asks you to build the reversed word yourself, one character at a time, not with a reversing slice."
+    ],
+    [
+     "reversed(",
+     "The brief asks you to build the reversed word yourself, one character at a time, not with reversed()."
+    ]
+   ]
+  }
+ ]
+}

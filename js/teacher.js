@@ -85,7 +85,7 @@
     }
     $("#main").innerHTML = `
       <div class="row" style="justify-content:space-between">
-        <div class="row"><label for="tf" class="muted">Topic</label><select id="tf" class="btn small ghost">${topicList.map(t => `<option value="${esc(t.id)}" ${t.id === topicSel ? "selected" : ""}>${esc(t.id)} ${esc(t.title)}</option>`).join("")}</select>
+        <div class="row"><label for="tf" class="muted">Topic</label><select id="tf" class="btn small ghost">${topicList.map(t => `<option value="${esc(t.id)}" ${t.id === topicSel ? "selected" : ""}>${esc(/^\d/.test(t.id) ? t.id + " " + t.title : t.title)}</option>`).join("")}</select>
         <label for="cf" class="muted">Class</label><select id="cf" class="btn small ghost">${['<option value="">All classes</option>', ...classes.map(c => `<option ${c === cls ? "selected" : ""}>${esc(c)}</option>`)].join("")}</select></div>
         <div class="row"><button class="btn small ghost" id="rf">Refresh</button><button class="btn small" id="csv">Download CSV</button></div>
       </div>

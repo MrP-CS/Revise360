@@ -40,7 +40,8 @@ def main():
         bad += 0 if ok else 1
 
     # every topic with content should be linked from the course preview
-    linked = set(re.findall(r'topics\.html\?topic=([0-9.]+)', html))
+    # Topic ids are not all spec numbers - the Python course is "PY"
+    linked = set(re.findall(r'topics\.html\?topic=([0-9A-Za-z.]+)', html))
     reg = json.load(open(SITE / "experiences" / "registry.json"))["experiences"]
     live = {e["topic"] for e in reg if e.get("topic")}
     missing = sorted(live - linked)

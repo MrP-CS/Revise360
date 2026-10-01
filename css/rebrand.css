@@ -131,6 +131,11 @@ body:not(.player) .sync { color:var(--soft); }
 .course-paper { border:1px solid var(--line);border-radius:9px;background:#fff;overflow:hidden; }
 .course-paper-head { min-height:121px;padding:21px 24px;background:#152342;color:#fff; }
 .course-paper:nth-child(2) .course-paper-head { background:#134E53; }
+/* The Python course is not an exam paper, so it sits across the full width
+   below the two that are, with a colour of its own. */
+.course-extra { grid-column:1 / -1; }
+.course-extra .course-paper-head { background:#14402F;min-height:0; }
+.course-extra .course-paper-head span { color:#8FE6B8; }
 .course-paper-head span { font:600 11px 'IBM Plex Mono',ui-monospace,monospace;color:#AFC5FF;letter-spacing:.1em; }
 .course-paper:nth-child(2) .course-paper-head span { color:#A6ECE6; }
 .course-paper-head h3 { font-size:24px;line-height:1.15;letter-spacing:-.035em;margin:9px 0 0;max-width:290px; }

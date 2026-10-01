@@ -72,7 +72,12 @@
         return `<a class="topic" href="?topic=${encodeURIComponent(t.id)}"><span class="code">${esc(t.id)}</span><div class="topic-copy"><h3>${esc(t.title)}</h3><p>${esc(t.description || "")}</p><div class="topic-progress"><div class="bar" role="progressbar" aria-label="${esc(t.title)} experiences complete" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100"><i style="width:${pct}%"></i></div><span>${complete} / ${list.length} complete${started ? ` · ${score}/${total} marks` : ""}</span>${weak ? `<span class="rag a">${weak} to review</span>` : ""}</div></div><span class="topic-action" aria-hidden="true">${started ? "Continue" : "Explore"} <span>↗</span></span></a>`;
       }).join("");
       const name = g.name.replace(/^Paper [12]:\s*/, "");
-      return `<section class="paper-section"><div class="paper-heading"><span class="paper-kicker">PAPER 0${gi + 1}</span><div><h2>${esc(name)}</h2><p>${gi === 0 ? "Hardware, data, networks and security" : "Algorithms, programming and logic"}</p></div></div><div class="course-list">${rows}</div></section>`;
+      /* The kicker and the line under the heading come from topics.json. They
+       * used to be worked out from the group's position, which only held while
+       * every group was an exam paper - the Python course is not one. */
+      const kicker = g.kicker || `PAPER 0${gi + 1}`;
+      const blurb = g.blurb || "";
+      return `<section class="paper-section"><div class="paper-heading"><span class="paper-kicker">${esc(kicker)}</span><div><h2>${esc(name)}</h2>${blurb ? `<p>${esc(blurb)}</p>` : ""}</div></div><div class="course-list">${rows}</div></section>`;
     }).join("");
     $("#main").innerHTML = `<div class="vrnote" id="vrnote" hidden><span>VR READY</span> This headset supports VR. Open an experience and select Enter VR.</div><div class="dashboard-intro"><p class="eyebrow">YOUR COURSE / OCR J277</p><h1>What are you revising today?</h1><p>Open an experience on a PC or tablet, or step inside with a VR headset. Choose a topic to begin.</p></div>${groups}`;
     vrNote();
@@ -82,7 +87,9 @@
   async function topicPage(id) {
     await header();
     const t = allTopics.find(x => x.id === id) || { id, title: "Topic " + id };
-    $("#topic").textContent = `${t.id} ${t.title}`;
+    // A spec topic is "2.1 Algorithms"; one that is not numbered reads as its
+    // title alone, so the Python course is not labelled with a spec number.
+    $("#topic").textContent = /^\d/.test(t.id) ? `${t.id} ${t.title}` : t.title;
     const list = expsFor(id), sums = await summaries(list);
     const rows = [], weak = []; let totS = 0, totT = 0, doneE = 0;
     for (const e of allFor(id)) {
@@ -108,7 +115,7 @@
     }
     weak.sort((a, b) => (a.st.got / a.st.tot) - (b.st.got / b.st.tot));
     $("#main").innerHTML = `<a class="crumb" href="?">← All topics</a>
-      <div class="topic-intro"><div><p class="eyebrow">TOPIC ${esc(t.id)} / OCR J277</p><h1>${esc(t.title)}</h1><p>${esc(t.description || "")}</p></div><span class="topic-count">${list.length} experiences</span></div>
+      <div class="topic-intro"><div><p class="eyebrow">${esc(t.eyebrow || `TOPIC ${t.id} / OCR J277`)}</p><h1>${esc(t.title)}</h1><p>${esc(t.description || "")}</p></div><span class="topic-count">${list.length} experiences</span></div>
       ${list.length ? `<div class="topic-summary"><div><span>Experiences complete</span><strong>${doneE} / ${list.length}</strong></div><div><span>Marks so far</span><strong>${totS} / ${totT}</strong></div><div><span>Areas to review</span><strong>${weak.length}</strong></div></div>
       <section class="learning-section"><div class="section-title"><span>YOUR LEARNING PATH</span><h2>Experiences and assessments</h2></div><div class="learning-list">${rows.join("")}</div></section>
       <section class="review-section"><div class="section-title"><span>NEXT STEPS</span><h2>My areas to work on</h2></div>${weak.length ? `<div class="weak">${weak.map(w => `<a href="experience.html?id=${encodeURIComponent(w.e.id)}&review=1&go=${encodeURIComponent(w.st.scene + ":" + w.st.k)}"><span><span class="muted">${w.e.lesson ? `Lesson ${esc(w.e.lesson)} · ` : ""}${esc(w.st.sceneTitle)}</span><br>${esc(w.st.name)}</span><span>${w.st.got}/${w.st.tot} <span class="rag ${w.st.band}">${Store.BAND_LABEL[w.st.band]}</span></span></a>`).join("")}</div>`

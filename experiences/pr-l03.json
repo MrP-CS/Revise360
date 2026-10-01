@@ -1,0 +1,890 @@
+{
+ "id": "pr-l03",
+ "lesson": 3,
+ "title": "Decision gate",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Decision gate",
+   "img": "img/PR_L03_DecisionGate_360.jpg",
+   "imgHi": "img/PR_L03_DecisionGate_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Comparing values",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Two weather stations each report a wind speed. Write a program that says whether the first one is the higher of the two.",
+       "brief": [
+        "Read two whole numbers, one on each line - the first station's wind speed, then the second station's.",
+        "Print True if the first number is greater than the second.",
+        "Otherwise print False.",
+        "Print nothing else."
+       ],
+       "starter": "# Read two wind speeds and print True or False\n",
+       "tests": [
+        {
+         "in": [
+          "34",
+          "19"
+         ],
+         "out": [
+          "True"
+         ],
+         "why": "34 is greater than 19, so the comparison is True."
+        },
+        {
+         "in": [
+          "19",
+          "34"
+         ],
+         "out": [
+          "False"
+         ],
+         "why": "The order matters. If you printed True here you may have compared them the wrong way round."
+        },
+        {
+         "in": [
+          "25",
+          "25"
+         ],
+         "out": [
+          "False"
+         ],
+         "why": "Equal is not greater. This is the case that tells > apart from >=."
+        }
+       ],
+       "fb": "A comparison is already True or False, so you can print it straight out without an if."
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Write a program that reports three different comparisons of two numbers.",
+       "brief": [
+        "Read two whole numbers, one on each line.",
+        "Print three lines, in this order:",
+        "Line 1: True if the two numbers are equal, otherwise False.",
+        "Line 2: True if the first number is less than the second, otherwise False.",
+        "Line 3: True if the first number is greater than or equal to the second, otherwise False."
+       ],
+       "starter": "# Read two numbers, then print the three comparisons on three lines\n",
+       "tests": [
+        {
+         "in": [
+          "4",
+          "9"
+         ],
+         "out": [
+          "False",
+          "True",
+          "False"
+         ],
+         "why": "4 is not equal to 9, it is less than 9, and it is not greater than or equal to 9."
+        },
+        {
+         "in": [
+          "6",
+          "6"
+         ],
+         "out": [
+          "True",
+          "False",
+          "True"
+         ],
+         "why": "Two equal numbers. If line 1 came out False you used = instead of ==, and if line 3 came out False you used > instead of >=."
+        },
+        {
+         "in": [
+          "10",
+          "2"
+         ],
+         "out": [
+          "False",
+          "False",
+          "True"
+         ],
+         "why": "Check you have the three lines in the order the brief asks for."
+        }
+       ],
+       "fb": "== asks a question, = stores a value. The two are easy to mix up and Python will not let you use = in a comparison."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "if and else",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "A greenhouse logs its overnight temperature. Write a program that adds a warning only when it is below freezing.",
+       "brief": [
+        "Read one whole number - the temperature in degrees Celsius.",
+        "Always print: recorded",
+        "Then, only if the temperature is below 0, print a second line: frost warning"
+       ],
+       "starter": "# Read the temperature, print recorded, and add a warning if needed\n",
+       "tests": [
+        {
+         "in": [
+          "-4"
+         ],
+         "out": [
+          "recorded",
+          "frost warning"
+         ],
+         "why": "Below freezing, so both lines are printed and 'recorded' comes first."
+        },
+        {
+         "in": [
+          "5"
+         ],
+         "out": [
+          "recorded"
+         ],
+         "why": "Above freezing. An extra 'frost warning' here means your print is not indented inside the if."
+        },
+        {
+         "in": [
+          "0"
+         ],
+         "out": [
+          "recorded"
+         ],
+         "why": "Exactly 0 is not below 0. If you warned here you used <= where the brief says below."
+        }
+       ],
+       "fb": "An if on its own is allowed - you only need an else when something has to happen in the other case."
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "A service lift carries up to 450 kg. Write a program that decides whether a load may go.",
+       "brief": [
+        "Read one whole number - the total load in kilograms.",
+        "If the load is 450 or less, print: safe to go",
+        "Otherwise print: too heavy",
+        "Print one line only."
+       ],
+       "starter": "# Read the load and decide whether the lift may go\n",
+       "tests": [
+        {
+         "in": [
+          "300"
+         ],
+         "out": [
+          "safe to go"
+         ],
+         "why": "Well inside the limit."
+        },
+        {
+         "in": [
+          "450"
+         ],
+         "out": [
+          "safe to go"
+         ],
+         "why": "The limit is '450 or less', so 450 itself is allowed. 'too heavy' here means you wrote < instead of <=."
+        },
+        {
+         "in": [
+          "451"
+         ],
+         "out": [
+          "too heavy"
+         ],
+         "why": "One kilogram over. If this printed 'safe to go' your comparison lets too much through."
+        },
+        {
+         "in": [
+          "0"
+         ],
+         "out": [
+          "safe to go"
+         ],
+         "why": "An empty lift is still a valid load, so it must not fall through to the else."
+        }
+       ],
+       "fb": "'450 or less' means <= 450. Always test the exact boundary number, because that is where < and <= behave differently."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "elif",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "A reservoir is measured each week. Write a program that says whether the level is rising, falling or steady.",
+       "brief": [
+        "Read one whole number - the change in the level in centimetres since last week.",
+        "If the change is above 0, print: rising",
+        "If the change is below 0, print: falling",
+        "If the change is exactly 0, print: steady",
+        "Print one line only."
+       ],
+       "starter": "# Read the change in level and describe it\n",
+       "tests": [
+        {
+         "in": [
+          "12"
+         ],
+         "out": [
+          "rising"
+         ],
+         "why": "A positive change means the level went up."
+        },
+        {
+         "in": [
+          "-5"
+         ],
+         "out": [
+          "falling"
+         ],
+         "why": "A negative change. If this printed 'rising' you may have tested the number rather than comparing it with 0."
+        },
+        {
+         "in": [
+          "0"
+         ],
+         "out": [
+          "steady"
+         ],
+         "why": "Exactly 0 is the third case. It is the one students forget, because it belongs to neither > 0 nor < 0."
+        },
+        {
+         "in": [
+          "-120"
+         ],
+         "out": [
+          "falling"
+         ],
+         "why": "A large fall still only prints one word, so make sure your branches do not run one after another."
+        }
+       ],
+       "fb": "elif means 'only ask this if the question above was False', so the three branches cannot both run."
+      },
+      {
+       "t": "code",
+       "marks": 4,
+       "q": "A courier charges by the weight band of a package. Write a program that names the band.",
+       "brief": [
+        "Read one whole number - the weight in grams.",
+        "100 or less: print letter",
+        "More than 100 and up to and including 750: print large letter",
+        "More than 750 and up to and including 2000: print small parcel",
+        "More than 2000: print parcel",
+        "Print one line only."
+       ],
+       "starter": "# Read the weight in grams and print the band it falls in\n",
+       "tests": [
+        {
+         "in": [
+          "60"
+         ],
+         "out": [
+          "letter"
+         ],
+         "why": "Inside the lightest band."
+        },
+        {
+         "in": [
+          "100"
+         ],
+         "out": [
+          "letter"
+         ],
+         "why": "Exactly 100 belongs to the first band because it says '100 or less'."
+        },
+        {
+         "in": [
+          "101"
+         ],
+         "out": [
+          "large letter"
+         ],
+         "why": "One gram over 100 moves it up a band. Getting 'letter' here means your first test is too generous."
+        },
+        {
+         "in": [
+          "750"
+         ],
+         "out": [
+          "large letter"
+         ],
+         "why": "The top of a band is included in it. 'small parcel' here means you used < 750 instead of <= 750."
+        },
+        {
+         "in": [
+          "751"
+         ],
+         "out": [
+          "small parcel"
+         ],
+         "why": "Just over the second boundary."
+        },
+        {
+         "in": [
+          "2000"
+         ],
+         "out": [
+          "small parcel"
+         ],
+         "why": "The last included weight before the final band."
+        },
+        {
+         "in": [
+          "2001"
+         ],
+         "out": [
+          "parcel"
+         ],
+         "why": "Anything over 2000 falls through to the else."
+        }
+       ],
+       "fb": "Write the bands in order from lightest upwards and each elif only needs the top of its own band, because everything lighter has already been dealt with."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "AND, OR and NOT",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "code",
+       "marks": 4,
+       "q": "A survey drone may only fly when the wind is light and the visibility is good. Write a program that decides.",
+       "brief": [
+        "Read two whole numbers, one on each line - the wind speed in mph, then the visibility in kilometres.",
+        "If the wind speed is under 20 and the visibility is 5 or more, print: clear to fly",
+        "Otherwise print: grounded",
+        "Print one line only."
+       ],
+       "starter": "# Read the wind speed and visibility, then decide\n",
+       "tests": [
+        {
+         "in": [
+          "12",
+          "8"
+         ],
+         "out": [
+          "clear to fly"
+         ],
+         "why": "Both conditions are met, which is what and requires."
+        },
+        {
+         "in": [
+          "20",
+          "8"
+         ],
+         "out": [
+          "grounded"
+         ],
+         "why": "Exactly 20 is not under 20. 'clear to fly' here means you used <= 20."
+        },
+        {
+         "in": [
+          "12",
+          "5"
+         ],
+         "out": [
+          "clear to fly"
+         ],
+         "why": "Exactly 5 km counts as '5 or more', so this one must pass."
+        },
+        {
+         "in": [
+          "12",
+          "4"
+         ],
+         "out": [
+          "grounded"
+         ],
+         "why": "The wind is fine but the visibility is not. With and, one failing condition is enough to ground it - if this passed you may have written or."
+        },
+        {
+         "in": [
+          "31",
+          "9"
+         ],
+         "out": [
+          "grounded"
+         ],
+         "why": "The visibility is fine but the wind is too strong, so the other half of the and is doing the work here."
+        }
+       ],
+       "fb": "and needs both sides True. Each side still needs its own comparison - wind < 20 and vis >= 5, not wind < 20 and >= 5."
+      },
+      {
+       "t": "code",
+       "marks": 4,
+       "q": "A stock room door opens for two particular staff numbers, but never while the alarm is set. Write a program that decides.",
+       "brief": [
+        "Read a whole number - the staff number.",
+        "Read a word on the next line - either yes or no, in lower case, saying whether the alarm is set.",
+        "If the staff number is 7 or 9, and the alarm is not set, print: open",
+        "Otherwise print: locked",
+        "Print one line only."
+       ],
+       "starter": "# Read the staff number and the alarm state, then decide\n",
+       "tests": [
+        {
+         "in": [
+          "7",
+          "no"
+         ],
+         "out": [
+          "open"
+         ],
+         "why": "An allowed staff number with the alarm off."
+        },
+        {
+         "in": [
+          "9",
+          "no"
+         ],
+         "out": [
+          "open"
+         ],
+         "why": "The second allowed number must work too. 'locked' here means your or only checked one of them."
+        },
+        {
+         "in": [
+          "8",
+          "no"
+         ],
+         "out": [
+          "locked"
+         ],
+         "why": "Not one of the two allowed numbers. If this opened, your or may be written as num == 7 or 9, which Python always treats as True."
+        },
+        {
+         "in": [
+          "7",
+          "yes"
+         ],
+         "out": [
+          "locked"
+         ],
+         "why": "The staff number is allowed but the alarm is set, and not turns that into a refusal."
+        },
+        {
+         "in": [
+          "9",
+          "yes"
+         ],
+         "out": [
+          "locked"
+         ],
+         "why": "The alarm beats everything, so the alarm check has to be joined on with and, not or."
+        }
+       ],
+       "fb": "Each or needs a full comparison on both sides: num == 7 or num == 9. Brackets round the or keep it from being swallowed by the and."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Decisions inside decisions",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "code",
+       "marks": 4,
+       "q": "A hockey club decides each Saturday fixture from the weather and how many players turn up. Write a program that announces the decision.",
+       "brief": [
+        "Read a word on the first line - either dry or wet, in lower case.",
+        "Read a whole number on the second line - how many players are available.",
+        "If it is dry: print match on when 11 or more players are available, otherwise print friendly instead.",
+        "If it is wet: print indoor training when 11 or more players are available, otherwise print cancelled.",
+        "Print one line only."
+       ],
+       "starter": "# Read the weather and the number of players, then announce the decision\n",
+       "tests": [
+        {
+         "in": [
+          "dry",
+          "14"
+         ],
+         "out": [
+          "match on"
+         ],
+         "why": "Dry with a full side, so the outer if and the inner if are both True."
+        },
+        {
+         "in": [
+          "dry",
+          "11"
+         ],
+         "out": [
+          "match on"
+         ],
+         "why": "Exactly 11 is enough, because the rule says 11 or more. 'friendly instead' here means you used > 11."
+        },
+        {
+         "in": [
+          "dry",
+          "10"
+         ],
+         "out": [
+          "friendly instead"
+         ],
+         "why": "Dry but short of players, so the inner else runs while the outer if is still True."
+        },
+        {
+         "in": [
+          "wet",
+          "13"
+         ],
+         "out": [
+          "indoor training"
+         ],
+         "why": "Enough players, but the weather sends it down the other branch. This fails if you tested the players first and forgot the weather."
+        },
+        {
+         "in": [
+          "wet",
+          "9"
+         ],
+         "out": [
+          "cancelled"
+         ],
+         "why": "Both conditions fail, which is the inner else of the outer else."
+        }
+       ],
+       "fb": "The weather chooses which pair of answers you are picking from, and the number of players chooses which of that pair you print. That is why one decision sits inside the other."
+      },
+      {
+       "t": "code",
+       "marks": 5,
+       "q": "A parcel locker sorts deliveries by box size and weight. Write a program that says where each delivery goes.",
+       "brief": [
+        "Read a word on the first line - either small or large, in lower case.",
+        "Read a whole number on the second line - the weight in kilograms.",
+        "For a small box: print locker A if the weight is 5 or less, otherwise print counter.",
+        "For a large box: print locker B if the weight is 5 or less, print counter if the weight is 25 or less, and print too heavy for anything heavier.",
+        "Print one line only."
+       ],
+       "starter": "# Read the box size and the weight, then print where the delivery goes\n",
+       "tests": [
+        {
+         "in": [
+          "small",
+          "3"
+         ],
+         "out": [
+          "locker A"
+         ],
+         "why": "A light small box."
+        },
+        {
+         "in": [
+          "small",
+          "5"
+         ],
+         "out": [
+          "locker A"
+         ],
+         "why": "Exactly 5 is '5 or less', so it still goes to the locker."
+        },
+        {
+         "in": [
+          "small",
+          "6"
+         ],
+         "out": [
+          "counter"
+         ],
+         "why": "A small box over 5 kg has only one other place to go, so no weight is too heavy for it."
+        },
+        {
+         "in": [
+          "large",
+          "5"
+         ],
+         "out": [
+          "locker B"
+         ],
+         "why": "The same weight goes to a different locker because the size is different. 'locker A' here means the size is not being checked."
+        },
+        {
+         "in": [
+          "large",
+          "20"
+         ],
+         "out": [
+          "counter"
+         ],
+         "why": "The middle band of the large box, which needs an elif inside the outer else."
+        },
+        {
+         "in": [
+          "large",
+          "25"
+         ],
+         "out": [
+          "counter"
+         ],
+         "why": "Exactly 25 is still allowed at the counter. 'too heavy' here means you used < 25."
+        },
+        {
+         "in": [
+          "large",
+          "26"
+         ],
+         "out": [
+          "too heavy"
+         ],
+         "why": "Only large boxes can be too heavy, so this answer must sit inside the large branch."
+        }
+       ],
+       "fb": "Only the large branch needs three answers, so the elif belongs inside it rather than in the outer chain."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Putting it together",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "code",
+       "marks": 6,
+       "q": "Three judges score a gymnastics routine out of 10. Write a program that works out the medal.",
+       "brief": [
+        "Read three whole numbers, one on each line - the three judges' scores.",
+        "If all three scores are 9 or more, print: gold",
+        "Otherwise, if at least two of the scores are 8 or more, print: silver",
+        "Otherwise, if the three scores add up to 18 or more, print: bronze",
+        "Otherwise print: no medal",
+        "Print one line only, and check the rules in that order."
+       ],
+       "starter": "# Read three scores and work out the medal\n",
+       "tests": [
+        {
+         "in": [
+          "10",
+          "9",
+          "9"
+         ],
+         "out": [
+          "gold"
+         ],
+         "why": "Every score is 9 or more, so the first rule wins."
+        },
+        {
+         "in": [
+          "9",
+          "9",
+          "9"
+         ],
+         "out": [
+          "gold"
+         ],
+         "why": "Exactly 9 counts as '9 or more'. 'silver' here means you used > 9 somewhere in the and."
+        },
+        {
+         "in": [
+          "9",
+          "9",
+          "8"
+         ],
+         "out": [
+          "silver"
+         ],
+         "why": "Not all three reach 9, so gold is out, but two of them reach 8. The order of the rules decides this one."
+        },
+        {
+         "in": [
+          "8",
+          "8",
+          "2"
+         ],
+         "out": [
+          "silver"
+         ],
+         "why": "These add up to 18, but silver is checked before bronze, so silver is the answer. A program that tests the total first gets this wrong."
+        },
+        {
+         "in": [
+          "10",
+          "7",
+          "7"
+         ],
+         "out": [
+          "bronze"
+         ],
+         "why": "Only one score reaches 8, so silver fails and the total of 24 earns bronze."
+        },
+        {
+         "in": [
+          "6",
+          "6",
+          "6"
+         ],
+         "out": [
+          "bronze"
+         ],
+         "why": "The total is exactly 18, and '18 or more' includes it. 'no medal' here means you used > 18."
+        },
+        {
+         "in": [
+          "6",
+          "6",
+          "5"
+         ],
+         "out": [
+          "no medal"
+         ],
+         "why": "A total of 17 is one short, so nothing matches and the else runs."
+        },
+        {
+         "in": [
+          "2",
+          "1",
+          "0"
+         ],
+         "out": [
+          "no medal"
+         ],
+         "why": "Low scores all round, which is the plain else at the bottom of the chain."
+        }
+       ],
+       "fb": "'At least two are 8 or more' needs each pair joined with and, and the three pairs joined with or. Keep the rules in the brief's order, because an earlier branch wins even when a later one would also be True."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: true or false",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "With wind 15, visibility 8 and the alarm off, is each condition True or False?",
+       "cats": [
+        "True",
+        "False"
+       ],
+       "items": [
+        [
+         "wind < 20",
+         "True"
+        ],
+        [
+         "wind > 20",
+         "False"
+        ],
+        [
+         "vis >= 8",
+         "True"
+        ],
+        [
+         "vis > 8",
+         "False"
+        ],
+        [
+         "wind < 20 and vis > 5",
+         "True"
+        ],
+        [
+         "wind > 20 or vis > 5",
+         "True"
+        ],
+        [
+         "not alarm",
+         "True"
+        ],
+        [
+         "alarm and vis > 5",
+         "False"
+        ]
+       ],
+       "fb": "Work each side out on its own first, then join them with and, or or not."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 540,
+     "y": 240,
+     "title": "One = or two",
+     "text": "A single = stores a value and == compares two. Mixing them up is one of the first bugs every programmer meets."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1508,
+     "y": 240,
+     "title": "No switch here",
+     "text": "Some languages have a switch statement for choosing between many options. Python does the same job with elif."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 540,
+     "y": 240,
+     "title": "Unreachable code",
+     "text": "If a band that catches everything is tested first, no branch below it can ever run - those lines are unreachable."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1508,
+     "y": 240,
+     "title": "Same as the gates",
+     "text": "and, or and not behave exactly like the AND, OR and NOT gates you draw truth tables for in topic 2.4."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 540,
+     "y": 240,
+     "title": "Flatten it",
+     "text": "A nested if can often be replaced by one condition joined with and, which is easier to read and easier to test."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1508,
+     "y": 240,
+     "title": "Read the wording",
+     "text": "'At least', 'no more than' and 'over' all mean different things. Write the boundary value down before you code it."
+    }
+   ],
+   "models": [],
+   "diagrams": []
+  }
+ ]
+}
