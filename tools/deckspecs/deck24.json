@@ -1,0 +1,409 @@
+[
+ {
+  "id": "bl-l01",
+  "lesson": 1,
+  "title": "Logic gate lab",
+  "topic": "2.4",
+  "kicker": "2.4 Boolean logic  |  Lesson 1",
+  "subtitle": "OCR J277 Paper 2  |  Computational thinking, algorithms and programming",
+  "intro": "Every decision a computer makes comes down to three logic gates: AND, OR and NOT. Learn how each one works, then build real logic circuits by dragging gates onto a board and wiring them up.",
+  "keywords": [
+   "AND",
+   "OR",
+   "NOT",
+   "Truth table",
+   "Logic diagram",
+   "Input",
+   "Output"
+  ],
+  "objectives": [
+   "know the symbols for the logic gates AND, OR and NOT",
+   "understand the truth tables for AND, OR and NOT",
+   "combine Boolean operators using AND, OR and NOT"
+  ],
+  "starter": "A cash machine checks that a card is present AND the PIN is correct before it pays out. Write down two more everyday decisions that need both conditions to be true.",
+  "keyq": "How do you draw a logic diagram?",
+  "keyterms": [
+   "AND gate",
+   "Logic gate"
+  ],
+  "stations": [
+   {
+    "name": "The AND gate",
+    "bullets": [
+     "The output is 1 (true) only if both inputs are 1.",
+     "In a Boolean expression: A AND B, or A ∧ B.",
+     "Think: 'A and B must both be true'."
+    ],
+    "challenge": "Give an everyday example of an AND decision.",
+    "fact": "An AND gate outputs 1 when..."
+   },
+   {
+    "name": "The OR gate",
+    "bullets": [
+     "The output is 1 if either input is 1, or both are.",
+     "In a Boolean expression: A OR B, or A ∨ B.",
+     "Think: 'at least one of them is true'."
+    ],
+    "challenge": "Give an everyday example of an OR decision.",
+    "fact": "An OR gate outputs 1 when..."
+   },
+   {
+    "name": "The NOT gate",
+    "bullets": [
+     "NOT has one input, and it reverses it: 1 becomes 0 and 0 becomes 1.",
+     "In a Boolean expression: NOT A, or ¬A.",
+     "The small circle on the symbol means 'invert'."
+    ],
+    "challenge": "Why does the NOT gate only have one input?",
+    "fact": "A NOT gate..."
+   },
+   {
+    "name": "Symbols and pseudocode",
+    "bullets": [
+     "AND can be written ∧, OR can be written ∨, and NOT can be written ¬.",
+     "Programs use the same logic in if statements.",
+     "In the cash machine program, the card is present and the PIN matches, so the AND is true."
+    ],
+    "challenge": "What does the cash machine program output, and why?",
+    "fact": "The symbols for AND, OR and NOT are..."
+   },
+   {
+    "name": "Two-level circuits",
+    "bullets": [
+     "Gates can feed into other gates.",
+     "In (A OR B) AND C, the brackets are worked out first: the OR gate feeds the AND gate.",
+     "Work from the inputs on the left to the output on the right."
+    ],
+    "challenge": "Build the circuits on the board: drag gates from the top and wire outputs to inputs.",
+    "fact": "In a two-level circuit..."
+   },
+   {
+    "name": "NOT and brackets",
+    "bullets": [
+     "NOT is worked out before AND and OR, unless there are brackets.",
+     "NOT A OR B means (NOT A) OR B.",
+     "NOT (A AND B) means work out A AND B first, then reverse it."
+    ],
+    "challenge": "What's the difference between NOT A AND B and NOT (A AND B)?",
+    "fact": "NOT is worked out..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: build and read",
+   "intro": "Build a four-input circuit, then write the expression for a diagram. Drag the tiles into the answer row to write an expression."
+  },
+  "info": [
+   {
+    "title": "George Boole",
+    "text": "Boolean logic is named after George Boole, an English mathematician who described this kind of algebra in 1854, long before computers existed."
+   },
+   {
+    "title": "Made of transistors",
+    "text": "Inside a CPU, logic gates are built from transistors, tiny electronic switches. A modern CPU contains billions of them."
+   },
+   {
+    "title": "Claude Shannon",
+    "text": "In 1937, a student called Claude Shannon showed that Boole's logic could be built with electrical switches. That idea is the basis of every digital computer."
+   },
+   {
+    "title": "Search engines",
+    "text": "Many search engines and library catalogues let you use AND, OR and NOT to narrow down your search results."
+   },
+   {
+    "title": "One gate to rule them all",
+    "text": "A NAND gate (NOT AND) is 'universal': any other gate, and so any computer, can be built using only NAND gates."
+   },
+   {
+    "title": "1 and 0",
+    "text": "True and false, on and off, 1 and 0: they all mean the same thing in logic. Computers use the voltage in a wire to represent them."
+   }
+  ],
+  "exam": [
+   {
+    "q": "Draw the logic diagram for Q = NOT (P AND R).",
+    "marks": 2
+   },
+   {
+    "q": "Give the output of an OR gate when its inputs are 0 and 1.",
+    "marks": 1
+   },
+   {
+    "q": "Complete a truth table for NOT S.",
+    "marks": 2
+   }
+  ],
+  "confidence": [
+   "The symbols for AND, OR and NOT",
+   "The truth tables for AND, OR and NOT",
+   "Combining operators in logic diagrams"
+  ],
+  "wsfile": "BL_L01_LogicGateLab_Worksheet.docx"
+ },
+ {
+  "id": "bl-l02",
+  "lesson": 2,
+  "title": "Truth table detectives",
+  "topic": "2.4",
+  "kicker": "2.4 Boolean logic  |  Lesson 2",
+  "subtitle": "OCR J277 Paper 2  |  Computational thinking, algorithms and programming",
+  "intro": "A truth table shows the output of a circuit for every possible combination of inputs. Learn how to set one out, then solve one- and two-level circuits using intermediate columns.",
+  "keywords": [
+   "Truth table",
+   "Input",
+   "Output",
+   "Intermediate",
+   "Combination",
+   "2ⁿ rows"
+  ],
+  "objectives": [
+   "understand how to complete truth tables from one- and two-level logic diagrams"
+  ],
+  "starter": "A microwave only runs when the door is shut and the start button is pressed. A car beeps if either front door is open. Which logic gate does each one behave like?",
+  "keyq": "How do you complete a truth table?",
+  "keyterms": [
+   "Truth table",
+   "Boolean operator"
+  ],
+  "stations": [
+   {
+    "name": "Setting out a truth table",
+    "bullets": [
+     "List every combination of inputs. Each input doubles the rows: 2 inputs give 4 rows, 3 give 8, 4 give 16.",
+     "Count up in binary: 00, 01, 10, 11.",
+     "Then work out the output for each row."
+    ],
+    "challenge": "How many rows would a truth table with 5 inputs need?",
+    "fact": "To complete a truth table, you..."
+   },
+   {
+    "name": "Electric circuits",
+    "bullets": [
+     "Two switches in a row (series): the bulb lights only if both are on. That's AND.",
+     "Two switches side by side (parallel): the bulb lights if either is on. That's OR."
+    ],
+    "challenge": "Design a circuit with switches that behaves like an OR gate.",
+    "fact": "Switches in series... Switches in parallel..."
+   },
+   {
+    "name": "NOT AND, NOT OR",
+    "bullets": [
+     "NOT (A AND B): work out A AND B, then reverse every result.",
+     "NOT (A OR B): work out A OR B, then reverse every result.",
+     "An intermediate column for the bracket makes this easier."
+    ],
+    "challenge": "Complete both truth tables at this station.",
+    "fact": "To find NOT (A AND B)..."
+   },
+   {
+    "name": "Three inputs",
+    "bullets": [
+     "With three inputs there are 8 rows.",
+     "Use intermediate columns for each gate.",
+     "(A AND B) AND NOT C: work out A AND B, then NOT C, then AND them together."
+    ],
+    "challenge": "Which rows of (A AND B) AND NOT C output 1?",
+    "fact": "With three inputs..."
+   },
+   {
+    "name": "NOT A AND (B OR C)",
+    "bullets": [
+     "Work out NOT A in one column and B OR C in another.",
+     "Then AND those two columns together.",
+     "The output is 1 only when A is 0 and at least one of B and C is 1."
+    ],
+    "challenge": "Explain why every row where A = 1 gives an output of 0.",
+    "fact": "For NOT A AND (B OR C)..."
+   },
+   {
+    "name": "Four inputs",
+    "bullets": [
+     "Four inputs need 16 rows.",
+     "Group the inputs: (A OR B) and (C AND D) can be worked out separately.",
+     "Then combine the two intermediate columns."
+    ],
+    "challenge": "Write the expression for the diagram in the experience.",
+    "fact": "With four inputs..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: detective's table",
+   "intro": "Complete the full truth table, using the intermediate columns to help you."
+  },
+  "info": [
+   {
+    "title": "Binary counting",
+    "text": "The input columns of a truth table are just binary numbers counting up: 000, 001, 010 and so on. That's why there are 2ⁿ rows."
+   },
+   {
+    "title": "De Morgan's law",
+    "text": "NOT (A AND B) always gives the same result as NOT A OR NOT B. This rule, called De Morgan's law, lets engineers simplify circuits."
+   },
+   {
+    "title": "Light switches",
+    "text": "The two-way light switches at the top and bottom of many staircases work like an XOR gate: flipping either switch changes the light."
+   },
+   {
+    "title": "Truth tables everywhere",
+    "text": "Engineers use truth tables to test that circuits do exactly what they should, before building them."
+   },
+   {
+    "title": "Short circuits",
+    "text": "In real circuits, each extra gate adds a tiny delay. Designers try to use as few gates as possible."
+   },
+   {
+    "title": "Big tables",
+    "text": "A circuit with 10 inputs would need a truth table with 1,024 rows, so computers check large circuits automatically."
+   }
+  ],
+  "exam": [
+   {
+    "q": "State how many rows a truth table needs for four inputs.",
+    "marks": 1
+   },
+   {
+    "q": "Complete a truth table for Q = NOT P OR (Q AND R) on the back of this sheet.",
+    "marks": 8
+   }
+  ],
+  "confidence": [
+   "Setting out a truth table",
+   "One-level truth tables",
+   "Two-level truth tables with intermediate columns"
+  ],
+  "wsfile": "BL_L02_TruthTableDetectives_Worksheet.docx"
+ },
+ {
+  "id": "bl-l03",
+  "lesson": 3,
+  "title": "Circuit workshop",
+  "topic": "2.4",
+  "kicker": "2.4 Boolean logic  |  Lesson 3",
+  "subtitle": "OCR J277 Paper 2  |  Computational thinking, algorithms and programming",
+  "intro": "Engineers turn real problems into logic. In the workshop you'll read three scenarios, build the circuit for each one, and complete its truth table.",
+  "keywords": [
+   "Scenario",
+   "Logic diagram",
+   "Truth table",
+   "Intermediate output",
+   "AND",
+   "OR",
+   "NOT"
+  ],
+  "objectives": [
+   "understand how to create, complete or edit logic diagrams and truth tables for given scenarios"
+  ],
+  "starter": "A security light should come on when it is dark AND movement is detected, unless the test switch is on. Write that rule in your own words, then underline the logic words.",
+  "keyq": "How do you create logic diagrams from truth tables?",
+  "keyterms": [
+   "Logic diagram",
+   "Intermediate output"
+  ],
+  "stations": [
+   {
+    "name": "From words to logic",
+    "bullets": [
+     "Find the inputs and the output in the scenario.",
+     "Look for the words 'and', 'or', 'not', 'either' and 'regardless'.",
+     "Decide which parts go in brackets, then build from the inputs to the output."
+    ],
+    "challenge": "How do you create a logic diagram from a scenario?",
+    "fact": "To turn a scenario into logic..."
+   },
+   {
+    "name": "Scenario 1: the shop alarm",
+    "bullets": [
+     "A shop alarm sounds (X) if the door sensor is triggered (A) AND the shop is closed (B).",
+     "Whatever the sensors say, it always sounds if the panic button is pressed (C)."
+    ],
+    "challenge": "Build the shop alarm circuit, then complete its truth table.",
+    "fact": "The shop alarm expression is..."
+   },
+   {
+    "name": "Scenario 2: the hospital lift",
+    "bullets": [
+     "A hospital lift has two doors (A and B). An alarm sounds (X)...",
+     "if either door is still open,",
+     "AND either the lift is moving (C) OR it is overloaded (D)."
+    ],
+    "challenge": "Why do both halves of this circuit use OR gates?",
+    "fact": "The hospital lift expression is..."
+   },
+   {
+    "name": "Scenario 3: the greenhouse",
+    "bullets": [
+     "A greenhouse heater runs (X) if the gardener switches it on (A) OR the timer starts it (B).",
+     "A window sensor (C) normally sends 0.",
+     "When a window is opened it sends 1, and the heater must switch off."
+    ],
+    "challenge": "Why does the window sensor need a NOT gate?",
+    "fact": "The greenhouse expression is..."
+   },
+   {
+    "name": "Editing a diagram",
+    "bullets": [
+     "Sometimes a diagram needs changing to match a new rule.",
+     "Check each gate against the scenario, one at a time.",
+     "Test your change with a truth table."
+    ],
+    "challenge": "The shop alarm should now need the panic button AND the shop to be closed. How would the circuit change?",
+    "fact": "To edit a logic diagram..."
+   },
+   {
+    "name": "Reading diagrams",
+    "bullets": [
+     "To write an expression from a diagram, start at the output and work backwards.",
+     "Each gate becomes an operator, and each gate feeding another becomes brackets."
+    ],
+    "challenge": "Write the expression for the diagram in the experience.",
+    "fact": "To write an expression from a diagram..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: design and test",
+   "intro": "A security light turns on (Q) if it's dark (A) AND movement is detected (B), unless the test switch (C) is on. Build it, then complete its truth table."
+  },
+  "info": [
+   {
+    "title": "Logic in everyday rules",
+    "text": "Nearly every automatic device hides a logic expression: a boiler, a lift, a car alarm. Reading the rule and underlining the words and, or and not is most of the work."
+   },
+   {
+    "title": "Real alarms",
+    "text": "Burglar alarms really are built from logic like this, often with extra inputs for doors, windows and a timer."
+   },
+   {
+    "title": "Fail-safe design",
+    "text": "Emergency stops are usually wired so that a broken wire also stops the machine. Safety engineers call this fail-safe design."
+   },
+   {
+    "title": "Programmable logic",
+    "text": "Factories use programmable logic controllers (PLCs), which are programmed with logic diagrams very like the ones you're drawing."
+   },
+   {
+    "title": "Test everything",
+    "text": "A truth table tests every possible combination, so engineers can prove a safety circuit will always behave correctly."
+   },
+   {
+    "title": "Simplify it",
+    "text": "Different circuits can give identical truth tables. Engineers choose the one with the fewest gates, because it's cheaper and faster."
+   }
+  ],
+  "exam": [
+   {
+    "q": "A fire door alarm sounds (Q) when the door is open (D) AND the building is locked (L), or when the test button (T) is pressed. Write the Boolean expression.",
+    "marks": 2
+   },
+   {
+    "q": "Draw the logic diagram for your expression.",
+    "marks": 3
+   }
+  ],
+  "confidence": [
+   "Creating diagrams for scenarios",
+   "Completing truth tables with intermediate outputs",
+   "Editing and reading logic diagrams"
+  ],
+  "wsfile": "BL_L03_CircuitWorkshop_Worksheet.docx"
+ }
+]
