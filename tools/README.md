@@ -152,16 +152,27 @@ part that changes no pixels from any angle. It caught a switch whose "Switching
 chip" was sealed inside an opaque case, and status lights buried inside the port
 blocks.
 
-qcmodels.py makes four checks: a part that renders no pixels from any angle, a
+qcmodels.py makes five checks: a part that renders no pixels from any angle, a
 component buried in the board it is supposed to sit on, a label that is stretched
-or put somewhere nobody can read it, and two parts occupying the same space.
+or put somewhere nobody can read it, two parts occupying the same space, and a
+part sticking out of the case it is meant to be inside.
+
+The last one exists because the collision check only looks at boxes, and a part
+leaving its case collides with nothing anyway: the washing machine's heater ran
+straight out through the floor of the casing, and its control panel poked out of
+the front and down across the door, and nothing noticed either. The case is taken
+to be the largest part, and it has to be the largest along all three axes - which
+is what keeps the fibre cable out of it, since its layers are stripped back on
+purpose so the core runs well past the jacket.
 
 Trust a clean run only once you have seen the checks fire. Reverting a known
 fault and confirming it is flagged is the cheap way to do that; the first version
 of the part-visibility check reused one canvas across every model, which returns
-blank frames after the first, so it called four healthy models broken, and the
-first collision check both flooded on legitimate mounting and would have missed a
-real overlap of only 7% of the smaller volume.
+blank frames after the first, so it called four healthy models broken; the first
+collision check both flooded on legitimate mounting and would have missed a real
+overlap of only 7% of the smaller volume; and the first out-of-the-case check
+picked its case by volume alone and so reported all four layers of the fibre
+cable.
 
 The label check assumes a single material is on +Y, because that is where `chip()`
 and `topBox()` put one. A texture passed as a plain `std({ map })` is on all six
