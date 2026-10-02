@@ -39,6 +39,29 @@ A solution is required for every question — it is what proves the question can
 be answered — and the checks below name any that is missing. Keep that folder
 with the teacher keys, not in a clone.
 
+## How a question is worded
+
+One to three flowing imperative sentences, in this order:
+
+1. what to **ask** for, in the order it is typed in;
+2. what to **work out**;
+3. what to **display**, stated as a template with the varying parts in square
+   brackets — "display the answer as `Total is [total]`".
+
+Separate lines of output must be named as separate lines ("on the next line",
+"one on each line"): the marker distinguishes them, and not saying so was the
+commonest defect found when this pattern was applied. Where a value is fixed in
+the program rather than typed in, the sentence says so.
+
+`brief` carries only what the sentence cannot: tie-breaks, boundary cases, a
+forbidden method, a file that must already exist, exact spacing. One to three
+bullets, and never none.
+
+Four output shapes cannot be a bracketed template, and are written out instead:
+a list printed as itself (the brackets are literal output), "display the whole
+of the file", the rows a SQL query returns, and repeated snapshots of one list
+during a sort.
+
 ## Rules
 
 - **Two tests minimum**, and they must not all expect the same output, or a

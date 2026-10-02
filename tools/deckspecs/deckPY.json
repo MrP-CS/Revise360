@@ -36,7 +36,7 @@
     "bullets": [
      "print() shows a value on the screen and then moves down to the next line.",
      "Text to be printed exactly goes inside quotes, and one print() gives one line of output.",
-     "Mistake: leaving the quotes off, so Python hunts for a variable with that name instead."
+     "Common mistake: leaving the quotes off, so Python hunts for a variable with that name instead."
     ],
     "challenge": "Why does Python treat Juice and \"Juice\" as two completely different things?",
     "fact": "Printing one line of text is still the first program most programmers ever write."
@@ -46,7 +46,7 @@
     "bullets": [
      "A variable is a named box in memory holding one value you can use again later.",
      "name = value stores it, and the name always goes on the left of the equals sign.",
-     "Mistake: a second assignment replaces the value, it does not add to it."
+     "Common mistake: a second assignment replaces the value, it does not add to it."
     ],
     "challenge": "Name two values the till has to remember while it is running.",
     "fact": "In programming = means 'put this in here', not 'is the same as'."
@@ -56,7 +56,7 @@
     "bullets": [
      "input() stops the program, waits for a line to be typed and hands that line back.",
      "Store what comes back in a variable, or the value the user typed is thrown away.",
-     "Mistake: forgetting that input() always gives text, even when digits were typed."
+     "Common mistake: forgetting that input() always gives text, even when digits were typed."
     ],
     "challenge": "What is the difference between printing a prompt and reading the reply?",
     "fact": "input() is patient: a program will sit on that line for as long as it takes."
@@ -66,7 +66,7 @@
     "bullets": [
      "Integers count whole things, floats hold decimals, strings hold text and booleans hold True or False.",
      "+ adds two numbers but joins two strings, so the data type decides what happens.",
-     "Mistake: joining a number to a string with +, which Python refuses to do."
+     "Common mistake: joining a number to a string with +, which Python refuses to do."
     ],
     "challenge": "Which data type would you choose for a library fine of 1.50, and why?",
     "fact": "Joining strings end to end has its own name: concatenation."
@@ -76,7 +76,7 @@
     "bullets": [
      "Casting changes a value from one data type into another.",
      "int() and float() turn text into a number, and str() turns a number into text.",
-     "Mistake: casting with int() before checking the text really is a whole number."
+     "Common mistake: casting with int() before checking the text really is a whole number."
     ],
     "challenge": "Why does int(input()) appear in so many programs?",
     "fact": "Cast is borrowed from metalwork: the value is poured into a new shape."
@@ -86,7 +86,7 @@
     "bullets": [
      "Real programs read several values, work something out and print a tidy report.",
      "Decide the data type each value needs before you write a single line.",
-     "Mistake: printing the lines in a different order from the one the task asked for."
+     "Common mistake: printing the lines in a different order from the one the task asked for."
     ],
     "challenge": "Plan the inputs, the variables and the output lines of a competitor card.",
     "fact": "Input, process, output is such a common pattern that it has its own initials: IPO."
@@ -180,7 +180,7 @@
     "bullets": [
      "+ adds, - subtracts, * multiplies and / divides.",
      "/ always gives a float, so 10 / 2 prints 5.0 rather than 5.",
-     "Mistake: writing 2n for two lots of n, when Python needs 2 * n."
+     "Common mistake: writing 2n for two lots of n, when Python needs 2 * n."
     ],
     "challenge": "Which operator would you use to halve the price of a pencil?",
     "fact": "The * was chosen for multiply because early keyboards had no times sign on them."
@@ -190,7 +190,7 @@
     "bullets": [
      "// divides and throws the remainder away, giving a whole number.",
      "% gives only the remainder, and is called the modulus.",
-     "Mistake: using / when the answer must be whole, which leaves a .0 on the end."
+     "Common mistake: using / when the answer must be whole, which leaves a .0 on the end."
     ],
     "challenge": "How many full crates of 12 do 50 returned books fill, and how many are left over?",
     "fact": "% is the quickest test for an even number: n % 2 is 0 whenever n is even."
@@ -200,7 +200,7 @@
     "bullets": [
      "** raises a number to a power, so 5 ** 2 is 25 and 5 ** 3 is 125.",
      "A square root is the power of 0.5, or math.sqrt() once math has been imported.",
-     "Mistake: writing 5 ^ 2, which does something else entirely in Python."
+     "Common mistake: writing 5 ^ 2, which does something else entirely in Python."
     ],
     "challenge": "Give two different ways of working out the square root of 49.",
     "fact": "** is the exponent operator, and exponent is simply another word for power."
@@ -210,7 +210,7 @@
     "bullets": [
      "round(x) gives the nearest whole number, and round(x, 2) keeps two decimal places.",
      "abs() removes the sign, so a difference can be reported without saying which way.",
-     "Mistake: rounding early, then carrying the rounded value into the next calculation."
+     "Common mistake: rounding early, then carrying the rounded value into the next calculation."
     ],
     "challenge": "Why does a till round to 2 decimal places rather than to a whole number?",
     "fact": "Python rounds a value ending in exactly .5 towards the even number, so round(2.5) is 2."
@@ -220,7 +220,7 @@
     "bullets": [
      "import random first, then random.randint(a, b) gives a whole number from a to b, both included.",
      "random.seed(n) makes the same sequence come out every time, so an answer can be marked.",
-     "Mistake: calling randint again instead of storing the number you have already drawn."
+     "Common mistake: calling randint again instead of storing the number you have already drawn."
     ],
     "challenge": "Why would a program ever want its random numbers to be predictable?",
     "fact": "A computer works its random numbers out with a formula, so they are really pseudo-random."
@@ -230,7 +230,7 @@
     "bullets": [
      "Work out the order of a calculation before you type it: brackets, powers, then * / // %, then + -.",
      "Store a part-finished answer in a named variable to keep a long calculation readable.",
-     "Mistake: rounding part way through, which makes every figure after it slightly wrong."
+     "Common mistake: rounding part way through, which makes every figure after it slightly wrong."
     ],
     "challenge": "In what order does Python work through 2 + 3 * 4 ** 2?",
     "fact": "BIDMAS is the same rule in a maths lesson as it is in a Python program."
@@ -326,7 +326,7 @@
     "bullets": [
      "A comparison gives a boolean back: either True or False.",
      "The comparison operators are ==, !=, >, <, >= and <=.",
-     "Mistake: comparing with one =, when one = stores a value and two compare them."
+     "Common mistake: comparing with one =, when one = stores a value and two compare them."
     ],
     "challenge": "What does a > b print when a is 5 and b is 5?",
     "fact": "A value that can only be True or False is named after George Boole, who returns in topic 2.4."
@@ -336,7 +336,7 @@
     "bullets": [
      "if runs the indented block below it only when its condition is True.",
      "else catches every other case, and needs no condition of its own.",
-     "Mistake: missing the colon, or not indenting the block underneath it."
+     "Common mistake: missing the colon, or not indenting the block underneath it."
     ],
     "challenge": "Why does a lift loaded to exactly its 450 kg limit need careful wording?",
     "fact": "Python uses indentation where most languages use brackets, so layout is part of the code."
@@ -346,7 +346,7 @@
     "bullets": [
      "elif adds another condition, which is only tested if the ones above it were False.",
      "Python stops at the first branch that is True and skips everything below.",
-     "Mistake: putting a wide band first, so it catches everything and the later branches never run."
+     "Common mistake: putting a wide band first, so it catches everything and the later branches never run."
     ],
     "challenge": "Why must the weight bands of a courier's price list be tested in order?",
     "fact": "elif is short for 'else if', and some languages make you write both words out."
@@ -356,7 +356,7 @@
     "bullets": [
      "and is True only when both sides are, and or is True when at least one side is.",
      "not flips a condition over, so not raining is True whenever raining is False.",
-     "Mistake: writing wind < 20 or 30, which Python reads as something quite different."
+     "Common mistake: writing wind < 20 or 30, which Python reads as something quite different."
     ],
     "challenge": "Write the condition for a drone allowed up in light wind and good visibility.",
     "fact": "Python stops reading an and as soon as one side is False, which is called short-circuiting."
@@ -366,7 +366,7 @@
     "bullets": [
      "A decision can sit inside another, and the inner one is only reached if the outer was True.",
      "Each level of nesting is indented one more step in than the one above.",
-     "Mistake: nesting where a single and would have said the same thing far more clearly."
+     "Common mistake: nesting where a single and would have said the same thing far more clearly."
     ],
     "challenge": "Rewrite a nested if as one condition joined with and.",
     "fact": "Deeply nested ifs are so hard to follow that programmers call the shape the arrow of doom."
@@ -376,7 +376,7 @@
     "bullets": [
      "Work the boundaries out first, then write the bands in the order the rules apply.",
      "Test on the edge of every band, because that is exactly where conditions go wrong.",
-     "Mistake: using > where the rule says 'or more', which loses the boundary value."
+     "Common mistake: using > where the rule says 'or more', which loses the boundary value."
     ],
     "challenge": "Which three totals would you test on a medal program with cut-offs at 27 and 24?",
     "fact": "An off-by-one error at a boundary is one of the most common bugs there is."
@@ -470,7 +470,7 @@
     "bullets": [
      "for i in range(4): runs the indented block below it four times.",
      "Count-controlled iteration is used when the number of repeats is known in advance.",
-     "Mistake: leaving the line to repeat outside the loop, so it only runs once."
+     "Common mistake: leaving the line to repeat outside the loop, so it only runs once."
     ],
     "challenge": "How would you repeat an announcement as many times as the user asks for?",
     "fact": "Iteration is the proper name for repetition, and it is one of the three basic program structures."
@@ -480,7 +480,7 @@
     "bullets": [
      "The loop variable holds the count on each pass, so you can print it or calculate with it.",
      "range(n) counts from 0, so the values are 0 up to n - 1.",
-     "Mistake: expecting range(5) to include 5, or to start at 1."
+     "Common mistake: expecting range(5) to include 5, or to start at 1."
     ],
     "challenge": "What numbers does range(5) actually count through?",
     "fact": "Counting from 0 is normal in programming, and it is why the first item of a list is item 0."
@@ -490,7 +490,7 @@
     "bullets": [
      "range(start, stop) counts from start up to but not including stop.",
      "A third value is the step, so range(10, 0, -2) counts back down in twos.",
-     "Mistake: forgetting stop is never reached, which quietly loses the last value."
+     "Common mistake: forgetting stop is never reached, which quietly loses the last value."
     ],
     "challenge": "Which range lists the hall rows from 4 to 9 inclusive?",
     "fact": "A range does not build a list of its numbers: it works each one out as the loop asks for it."
@@ -500,7 +500,7 @@
     "bullets": [
      "A running total is set to 0 before the loop and grows inside it.",
      "total = total + value adds this pass's value to whatever is already there.",
-     "Mistake: setting the total back to 0 inside the loop, which loses everything counted so far."
+     "Common mistake: setting the total back to 0 inside the loop, which loses everything counted so far."
     ],
     "challenge": "Where must a running total be set to zero, and why there?",
     "fact": "A counter and a running total work the same way: one adds 1, the other adds a value."
@@ -510,7 +510,7 @@
     "bullets": [
      "A nested loop runs the whole inner loop on every single pass of the outer one.",
      "Rows and columns are the usual job: the outer loop picks the row, the inner one the column.",
-     "Mistake: indenting the inner loop's body wrongly, so all the rows run together."
+     "Common mistake: indenting the inner loop's body wrongly, so all the rows run together."
     ],
     "challenge": "How many lines does a loop of 4 columns inside a loop of 3 rows print?",
     "fact": "Two nested loops of 10 run 100 times, so nesting multiplies the work rather than adding to it."
@@ -520,7 +520,7 @@
     "bullets": [
      "Decide what each loop counts before you write it, and name the variable after that.",
      "Build the total, the count and the best value in the same single pass through the data.",
-     "Mistake: printing inside the loop when the task asks for one line at the end."
+     "Common mistake: printing inside the loop when the task asks for one line at the end."
     ],
     "challenge": "Plan the loop, the counter and the total for a report on a set of words.",
     "fact": "One pass that gathers several answers at once beats looping over the same data again and again."
@@ -613,7 +613,7 @@
     "bullets": [
      "while repeats its block for as long as its condition stays True.",
      "The condition is tested before every pass, so a while loop can run no times at all.",
-     "Mistake: never changing the condition inside the loop, which leaves it running forever."
+     "Common mistake: never changing the condition inside the loop, which leaves it running forever."
     ],
     "challenge": "What has to change inside a while loop for it ever to stop?",
     "fact": "A loop whose condition never becomes False is an infinite loop, and it will freeze the program."
@@ -623,7 +623,7 @@
     "bullets": [
      "A validation loop reads a value, then asks again for as long as it breaks the rules.",
      "Read once above the loop, then read again at the bottom of it.",
-     "Mistake: leaving the second read out, so the same bad value is tested forever."
+     "Common mistake: leaving the second read out, so the same bad value is tested forever."
     ],
     "challenge": "Why does a validation loop need an input() in two different places?",
     "fact": "This shape has a name of its own: input validation, which is the heart of topic 2.3."
@@ -633,7 +633,7 @@
     "bullets": [
      "A sentinel is an agreed value meaning 'no more data', such as -1 or the word end.",
      "The loop keeps going until the sentinel arrives, however many items came before it.",
-     "Mistake: counting the sentinel itself as one of the real values."
+     "Common mistake: counting the sentinel itself as one of the real values."
     ],
     "challenge": "Why must a sentinel be a value the real data can never take?",
     "fact": "Sentinel means guard: the value stands at the end of the data keeping watch."
@@ -643,7 +643,7 @@
     "bullets": [
      "A counter and a running total are set up before the loop and updated inside it.",
      "The same pass can count the items and test each one against a rule.",
-     "Mistake: updating the counter after the loop has already finished."
+     "Common mistake: updating the counter after the loop has already finished."
     ],
     "challenge": "How would you count how many of the scores read reached 40?",
     "fact": "A while loop with a counter can do anything a for loop can, but a for loop says it more clearly."
@@ -653,7 +653,7 @@
     "bullets": [
      "Use for when the number of repeats is known before the loop starts.",
      "Use while when it depends on the data, or on what the user chooses to type.",
-     "Mistake: a while loop with its own counter where a for loop would be shorter and safer."
+     "Common mistake: a while loop with its own counter where a for loop would be shorter and safer."
     ],
     "challenge": "Which loop would you use to read a known number of parcel weights?",
     "fact": "Both kinds are called iteration, and the exam expects you to name which one you have used."
@@ -663,7 +663,7 @@
     "bullets": [
      "Set every total and counter up before the loop, and report them after it.",
      "One while loop can both validate what comes in and gather the figures you need.",
-     "Mistake: reporting inside the loop, which prints a line for every item read."
+     "Common mistake: reporting inside the loop, which prints a line for every item read."
     ],
     "challenge": "Plan the variables a swimming session report needs before its loop starts.",
     "fact": "A loop that reads until a sentinel copes with no data at all, as long as the totals start at zero."
@@ -758,7 +758,7 @@
     "bullets": [
      "len() gives the number of characters in a string, spaces included.",
      "Characters are numbered from 0, so the last one sits at len() - 1.",
-     "Mistake: asking for position len(), which is one past the end and stops the program."
+     "Common mistake: asking for position len(), which is one past the end and stops the program."
     ],
     "challenge": "Which position holds the last character of a six-letter word?",
     "fact": "A negative index counts from the end, so word[-1] is always the last character."
@@ -768,7 +768,7 @@
     "bullets": [
      "A slice takes a run of characters, so word[0:3] gives the first three.",
      "The first number is included and the second is not, exactly like range().",
-     "Mistake: expecting word[0:3] to give four characters rather than three."
+     "Common mistake: expecting word[0:3] to give four characters rather than three."
     ],
     "challenge": "Which slice gives everything except the first and last characters?",
     "fact": "Python's way of slicing is so useful that several other languages have copied it."
@@ -778,7 +778,7 @@
     "bullets": [
      "upper() and lower() hand back a new string and leave the original untouched.",
      "Comparing two strings in the same case ignores how they happened to be typed.",
-     "Mistake: calling lower() but never storing or using what it gives back."
+     "Common mistake: calling lower() but never storing or using what it gives back."
     ],
     "challenge": "Why does a program compare two names in lower case before deciding they match?",
     "fact": "Strings are compared by character code, so in Python every capital sorts before every small letter."
@@ -788,7 +788,7 @@
     "bullets": [
      "in tests whether one string appears anywhere inside another.",
      "find() gives the position it starts at, or -1 when it is not there at all.",
-     "Mistake: treating find()'s 0 as 'not found', when 0 means the very start."
+     "Common mistake: treating find()'s 0 as 'not found', when 0 means the very start."
     ],
     "challenge": "How can a program tell 'not found' apart from 'found at the start'?",
     "fact": "startswith() and endswith() answer the two most common search questions on their own."
@@ -798,7 +798,7 @@
     "bullets": [
      "Every character is stored as a number, and ord() gives that number.",
      "chr() goes the other way, turning a code back into its character.",
-     "Mistake: forgetting to wrap round after z, which gives a punctuation mark instead."
+     "Common mistake: forgetting to wrap round after z, which gives a punctuation mark instead."
     ],
     "challenge": "How would you work out the letter that comes after y?",
     "fact": "A is 65 and a is 97, so the gap between a capital and its small letter is always 32."
@@ -808,7 +808,7 @@
     "bullets": [
      "Build a new string one character at a time inside a loop.",
      "isalpha() and isdigit() sort the letters from the digits as you go.",
-     "Mistake: trying to change one character in place, when a string cannot be edited."
+     "Common mistake: trying to change one character in place, when a string cannot be edited."
     ],
     "challenge": "Plan how you would build a reversed copy of a word.",
     "fact": "A word that reads the same backwards is a palindrome, and reversing a string is how you test for one."
@@ -902,7 +902,7 @@
     "bullets": [
      "Square brackets make a list, with the items separated by commas.",
      "A list can start out empty and be filled by a loop as the data arrives.",
-     "Mistake: creating the empty list inside the loop, which throws each item away again."
+     "Common mistake: creating the empty list inside the loop, which throws each item away again."
     ],
     "challenge": "Which line must go above the loop that fills a list, and why?",
     "fact": "The exam calls these arrays. Python calls them lists, and unlike an array they can grow and shrink."
@@ -912,7 +912,7 @@
     "bullets": [
      "A list is indexed from 0, so the third item sits at position 2.",
      "len() gives how many items there are, which makes the last index len() - 1.",
-     "Mistake: an index past the end, which stops the program with an error."
+     "Common mistake: an index past the end, which stops the program with an error."
     ],
     "challenge": "Which index holds the last of seven scores?",
     "fact": "Counting from 0 means an index is the number of items you step over to reach it."
@@ -922,7 +922,7 @@
     "bullets": [
      "for item in list: hands you each value in turn.",
      "for i in range(len(list)): gives the positions instead, for when you need the index too.",
-     "Mistake: printing the index when the task asked for the value, or the other way round."
+     "Common mistake: printing the index when the task asked for the value, or the other way round."
     ],
     "challenge": "When do you need the position rather than the value itself?",
     "fact": "Going through every item of a list in turn is called traversing it."
@@ -932,7 +932,7 @@
     "bullets": [
      "append() adds one item onto the end of the list.",
      "remove() takes out the first item with that value, and pop(i) takes out the one at position i.",
-     "Mistake: removing items while looping over the same list, which makes the loop skip some."
+     "Common mistake: removing items while looping over the same list, which makes the loop skip some."
     ],
     "challenge": "What is the difference between remove(\"Ada\") and pop(0)?",
     "fact": "pop() hands the removed item back, so it can be used as well as deleted."
@@ -942,7 +942,7 @@
     "bullets": [
      "Total the list in a loop, then divide by len() to get the mean.",
      "Track the highest and lowest by comparing each item against the best found so far.",
-     "Mistake: starting the highest at 0, which fails on a list of negative numbers."
+     "Common mistake: starting the highest at 0, which fails on a list of negative numbers."
     ],
     "challenge": "What should the highest-so-far start as, if the data could be negative?",
     "fact": "Dividing by len() on an empty list crashes, so check the list is not empty first."
@@ -952,7 +952,7 @@
     "bullets": [
      "One pass can build the total, count the items and remember where the best mark was.",
      "Report the figures after the loop has finished, not while it is still running.",
-     "Mistake: finding the best value but forgetting to record the position it was found at."
+     "Common mistake: finding the best value but forgetting to record the position it was found at."
     ],
     "challenge": "Plan the variables needed to report on eight marks in a single pass.",
     "fact": "Keeping the position of the best value as well as the value answers 'which one' as well as 'how much'."
@@ -1045,7 +1045,7 @@
     "bullets": [
      "A two-dimensional array is a list whose items are themselves lists.",
      "Each inner list is one row, and the rows normally all hold the same number of items.",
-     "Mistake: expecting len() on a grid to count the cells, when it counts the rows."
+     "Common mistake: expecting len() on a grid to count the cells, when it counts the rows."
     ],
     "challenge": "How many rows and how many columns does [[1, 2, 3], [4, 5, 6]] have?",
     "fact": "A table in a database and a grid in a program are stored much the same way: rows made of fields."
@@ -1055,7 +1055,7 @@
     "bullets": [
      "grid[row][col] reads one cell, with the row first and the column second.",
      "grid[row] on its own gives back that whole row as a list.",
-     "Mistake: swapping the two indexes over, which reads a completely different cell."
+     "Common mistake: swapping the two indexes over, which reads a completely different cell."
     ],
     "challenge": "Which index comes first when you read a cell, the row or the column?",
     "fact": "The exam writes this cell as array[1,2]; Python writes exactly the same cell as grid[1][2]."
@@ -1065,7 +1065,7 @@
     "bullets": [
      "Two nested loops visit every cell: the outer picks the row, the inner the column.",
      "Print a new line after the inner loop ends, to start the next row.",
-     "Mistake: putting that new line inside the inner loop, which prints one value per line."
+     "Common mistake: putting that new line inside the inner loop, which prints one value per line."
     ],
     "challenge": "Which loop should be the outer one if you want to print row by row?",
     "fact": "A grid of 10 rows by 10 columns holds 100 cells, so a nested loop over it runs 100 times."
@@ -1075,7 +1075,7 @@
     "bullets": [
      "To total one row, loop across the columns with the row index held still.",
      "sum(grid[r]) does the same job in one step, once you know which row you want.",
-     "Mistake: letting the row index change inside the loop, which totals the wrong cells."
+     "Common mistake: letting the row index change inside the loop, which totals the wrong cells."
     ],
     "challenge": "Which index stays the same all the way through a row total?",
     "fact": "Totalling every row and then totalling those totals gives the grand total of the whole grid."
@@ -1085,7 +1085,7 @@
     "bullets": [
      "To total one column, loop down the rows with the column index held still.",
      "The loop runs once for every row, so its range is len(grid).",
-     "Mistake: using the number of columns as the range when travelling down a column."
+     "Common mistake: using the number of columns as the range when travelling down a column."
     ],
     "challenge": "Why does a column total loop over the rows rather than the columns?",
     "fact": "Swapping the two loops over turns a row total into a column total, and nothing else changes."
@@ -1095,7 +1095,7 @@
     "bullets": [
      "To search a grid, loop every cell and record the row and column where you found it.",
      "A found flag, set before the loops start, says whether anything matched at all.",
-     "Mistake: reporting only the row when the task asks where in the row it was too."
+     "Common mistake: reporting only the row when the task asks where in the row it was too."
     ],
     "challenge": "Plan how you would find a name in a seating plan and report its row.",
     "fact": "Searching every cell of a grid in turn is a linear search, just in two dimensions."
@@ -1190,7 +1190,7 @@
     "bullets": [
      "def names a subprogram, and the indented block below it is what that subprogram does.",
      "Nothing happens until the name is called, with brackets after it.",
-     "Mistake: defining a procedure and never calling it, so none of it ever runs."
+     "Common mistake: defining a procedure and never calling it, so none of it ever runs."
     ],
     "challenge": "What is the difference between defining a procedure and calling it?",
     "fact": "Writing a job once and calling it many times has a name of its own: code reuse."
@@ -1200,7 +1200,7 @@
     "bullets": [
      "A parameter in the brackets lets whoever calls the subprogram pass a value in.",
      "The value handed over is the argument, and inside it is used like any other variable.",
-     "Mistake: giving the arguments in a different order from the parameters."
+     "Common mistake: giving the arguments in a different order from the parameters."
     ],
     "challenge": "Why is a procedure with a parameter more useful than one without?",
     "fact": "The names in the definition are the parameters; the values handed over when it is called are the arguments."
@@ -1210,7 +1210,7 @@
     "bullets": [
      "return hands a value back to whatever called the subprogram.",
      "The call can then be stored in a variable, printed, or used inside a bigger sum.",
-     "Mistake: printing inside when the task says return, so nothing is handed back."
+     "Common mistake: printing inside when the task says return, so nothing is handed back."
     ],
     "challenge": "Why would a task insist a subprogram returns a value rather than prints it?",
     "fact": "return ends the subprogram there and then, so any line written after it never runs."
@@ -1220,7 +1220,7 @@
     "bullets": [
      "A function returns a value; a procedure just does a job and returns nothing.",
      "Both are subprograms, and in Python both are written with def.",
-     "Mistake: calling something a function when all it does is print."
+     "Common mistake: calling something a function when all it does is print."
     ],
     "challenge": "Decide whether each subprogram in your program is a function or a procedure.",
     "fact": "The exam marks this difference, so say 'function' only when a value actually comes back."
@@ -1230,7 +1230,7 @@
     "bullets": [
      "A variable made inside a subprogram is local: it exists only while that subprogram runs.",
      "A global variable belongs to the main program, and global lets a subprogram change it.",
-     "Mistake: expecting a local variable's value to survive after the subprogram ends."
+     "Common mistake: expecting a local variable's value to survive after the subprogram ends."
     ],
     "challenge": "Why can two subprograms both use a variable called total without clashing?",
     "fact": "Keeping variables local is good practice: it stops one part of a program quietly breaking another."
@@ -1240,7 +1240,7 @@
     "bullets": [
      "A subprogram may call another one, so a big job splits into small named steps.",
      "Calling a function inside a loop lets one piece of code answer the same question many times.",
-     "Mistake: repeating the same lines instead of writing one subprogram and calling it."
+     "Common mistake: repeating the same lines instead of writing one subprogram and calling it."
     ],
     "challenge": "Plan which parts of a booking receipt program should become subprograms.",
     "fact": "Breaking a problem into named parts is decomposition, which you met in topic 2.1."
@@ -1335,7 +1335,7 @@
     "bullets": [
      "open(name, \"r\") opens a file for reading and hands back a file object.",
      ".read() gives the whole file as one string, and .close() lets go of it when you are done.",
-     "Mistake: opening a file that is not there, which stops the program with an error."
+     "Common mistake: opening a file that is not there, which stops the program with an error."
     ],
     "challenge": "Why should a program close a file as soon as it has finished with it?",
     "fact": "A file left open can keep other programs out, and may lose data that was not written yet."
@@ -1345,7 +1345,7 @@
     "bullets": [
      ".readline() reads one line, while .readlines() gives a list of every line.",
      "Each line still carries its newline, so .strip() tidies that off before you use it.",
-     "Mistake: measuring a line before stripping it, which counts the newline as a character."
+     "Common mistake: measuring a line before stripping it, which counts the newline as a character."
     ],
     "challenge": "Why is a stripped line one character shorter than the line that was read?",
     "fact": "A newline is one single invisible character, which is why a stripped line comes out shorter."
@@ -1355,7 +1355,7 @@
     "bullets": [
      "open(name, \"w\") opens a file for writing and empties whatever was in it.",
      ".write() adds no newline of its own, so put a newline on the end of each line yourself.",
-     "Mistake: using write mode on a file you meant to add to, which wipes it completely."
+     "Common mistake: using write mode on a file you meant to add to, which wipes it completely."
     ],
     "challenge": "What happens to the contents of a file the moment it is opened in w mode?",
     "fact": "Write mode creates the file if it is not there, which is handy and dangerous in equal measure."
@@ -1365,7 +1365,7 @@
     "bullets": [
      "open(name, \"a\") is append mode: new text goes on the end and nothing is lost.",
      "Logs are always appended, so yesterday's entries are still there tomorrow.",
-     "Mistake: leaving the newline out, so the new entry runs straight into the last one."
+     "Common mistake: leaving the newline out, so the new entry runs straight into the last one."
     ],
     "challenge": "Which mode would a visitor log use, and why that one?",
     "fact": "Three modes cover everything you need: r to read, w to write from scratch and a to add on the end."
@@ -1375,7 +1375,7 @@
     "bullets": [
      "A record is one line of the file, and its fields are the parts separated by a comma.",
      ".split(\",\") breaks a line into a list of its fields.",
-     "Mistake: splitting before stripping, which leaves a newline stuck on the last field."
+     "Common mistake: splitting before stripping, which leaves a newline stuck on the last field."
     ],
     "challenge": "How does a program find the record for one particular name?",
     "fact": "A file of comma-separated records is a CSV file, and a spreadsheet will open one straight away."
@@ -1385,7 +1385,7 @@
     "bullets": [
      "Read the whole file first, close it, then work on the lines you are holding.",
      "A program can read one file and write a second one in the same run.",
-     "Mistake: looping over a file you have already closed, or reading and writing one file at once."
+     "Common mistake: looping over a file you have already closed, or reading and writing one file at once."
     ],
     "challenge": "Plan the two files a sales report program would need.",
     "fact": "Skipping blank lines is worth doing every time: a stray newline at the end of a file is very common."
@@ -1479,7 +1479,7 @@
     "bullets": [
      "A linear search checks each item in turn until it finds the one it wants.",
      "It works on any list, in order or not, and reports the position or that nothing matched.",
-     "Mistake: printing 'not found' inside the loop, once for every item that did not match."
+     "Common mistake: printing 'not found' inside the loop, once for every item that did not match."
     ],
     "challenge": "Why must 'not found' be decided after the loop has finished?",
     "fact": "A linear search over a million items may need a million comparisons, which is why sorted data is worth having."
@@ -1489,7 +1489,7 @@
     "bullets": [
      "A binary search looks at the middle item, then throws away the half that cannot hold the answer.",
      "It only works on a list that is already in order.",
-     "Mistake: not moving low or high, which leaves the loop checking the same middle forever."
+     "Common mistake: not moving low or high, which leaves the loop checking the same middle forever."
     ],
     "challenge": "How much of the list can a binary search rule out with its first comparison?",
     "fact": "Doubling the list adds only one more comparison, so a million items need about twenty."
@@ -1499,7 +1499,7 @@
     "bullets": [
      "A bubble sort compares each neighbouring pair and swaps them if they are the wrong way round.",
      "Every pass pushes the largest remaining value to the end, so n items need up to n - 1 passes.",
-     "Mistake: a swap that loses a value, because one side was overwritten before it was copied."
+     "Common mistake: a swap that loses a value, because one side was overwritten before it was copied."
     ],
     "challenge": "How does a bubble sort know that it can stop early?",
     "fact": "A whole pass with no swaps at all means the list is already in order, so the sort can stop there."
@@ -1509,7 +1509,7 @@
     "bullets": [
      "An insertion sort takes the next item and slides it back into place among the sorted ones.",
      "The front of the list is always in order, and it grows by one item each time round.",
-     "Mistake: overwriting an item instead of shifting it along to make room."
+     "Common mistake: overwriting an item instead of shifting it along to make room."
     ],
     "challenge": "Which part of the list is already sorted part way through an insertion sort?",
     "fact": "An insertion sort is how most people sort a hand of cards without ever being taught to."
@@ -1519,7 +1519,7 @@
     "bullets": [
      "A merge sort splits the list in half over and over, then merges the pieces back in order.",
      "Merging compares the front of each sorted list and takes the smaller one each time.",
-     "Mistake: stopping when one list runs out, instead of copying the rest of the other."
+     "Common mistake: stopping when one list runs out, instead of copying the rest of the other."
     ],
     "challenge": "Why is merging two sorted lists easier than sorting one unsorted one?",
     "fact": "A merge sort usually beats a bubble sort, but it needs extra memory to hold the pieces."
@@ -1529,7 +1529,7 @@
     "bullets": [
      "Count the comparisons to compare two algorithms fairly on exactly the same data.",
      "A binary search needs sorted data, so sort the list first and search it afterwards.",
-     "Mistake: binary searching an unsorted list, which quietly gives the wrong answer."
+     "Common mistake: binary searching an unsorted list, which quietly gives the wrong answer."
     ],
     "challenge": "Plan an experiment that shows a binary search beating a linear one.",
     "fact": "Sorting costs time too, so for one single search a linear search of unsorted data can still win."
@@ -1623,7 +1623,7 @@
     "bullets": [
      "A presence check refuses input that is empty once any stray spaces are stripped off.",
      "A type check uses isdigit(), so text typed where a number was wanted cannot crash the program.",
-     "Mistake: casting with int() before checking, which stops the program instead of rejecting the value."
+     "Common mistake: casting with int() before checking, which stops the program instead of rejecting the value."
     ],
     "challenge": "Why must a type check happen before the value is cast?",
     "fact": "Validation checks data is sensible, not that it is true: a wrong but sensible date passes every check."
@@ -1633,7 +1633,7 @@
     "bullets": [
      "A range check refuses anything that falls outside the allowed limits.",
      "Inclusive limits need >= and <=, so the boundary values themselves are accepted.",
-     "Mistake: using > where the rule says 'or more', which rejects a perfectly valid boundary."
+     "Common mistake: using > where the rule says 'or more', which rejects a perfectly valid boundary."
     ],
     "challenge": "Which two values would you test on a score that must be 1 to 10?",
     "fact": "Negative values are fine for a temperature but never for an age, so a range check must suit its data."
@@ -1643,7 +1643,7 @@
     "bullets": [
      "A length check counts the characters with len(), against a minimum and a maximum.",
      "A format check tests the pattern: which positions must be letters and which must be digits.",
-     "Mistake: checking the pattern before the length, which can read past the end of the string."
+     "Common mistake: checking the pattern before the length, which can read past the end of the string."
     ],
     "challenge": "Describe the checks a reference of two letters then four digits needs.",
     "fact": "isalpha(), isdigit() and isnumeric() each answer one format question about a whole string at once."
@@ -1653,7 +1653,7 @@
     "bullets": [
      "A validation loop reads once, then repeats for as long as the value breaks a rule.",
      "Saying which rule was broken makes the program far easier to use.",
-     "Mistake: leaving the second input() out, so the loop tests the same bad value forever."
+     "Common mistake: leaving the second input() out, so the loop tests the same bad value forever."
     ],
     "challenge": "Why should a program say what was wrong rather than just 'invalid'?",
     "fact": "A loop that keeps asking until the data is right is the simplest defensive design there is."
@@ -1663,7 +1663,7 @@
     "bullets": [
      "Authentication checks who the user is, usually with a username and a password.",
      "An attempt counter lets a program lock the account after a set number of tries.",
-     "Mistake: counting the attempts but never stopping, so guessing can carry on forever."
+     "Common mistake: counting the attempts but never stopping, so guessing can carry on forever."
     ],
     "challenge": "What is the difference between validation and authentication?",
     "fact": "Validation checks data and authentication checks people, and the exam asks for that difference often."
@@ -1673,7 +1673,7 @@
     "bullets": [
      "Validate each value in its own loop before the program moves on to the next one.",
      "A program that keeps going when one line of data is wrong is more useful than one that stops.",
-     "Mistake: validating at the end, when the first bad value has already been used."
+     "Common mistake: validating at the end, when the first bad value has already been used."
     ],
     "challenge": "Plan the checks a club sign-up needs for a username and an age.",
     "fact": "Skipping a bad line and counting it is often better than stopping: the report still comes out."
@@ -1769,7 +1769,7 @@
     "bullets": [
      "SELECT names the fields you want, and FROM names the table they live in.",
      "SELECT * means every field, and with no WHERE every record comes back.",
-     "Mistake: listing the fields in the wrong order, since results come out in the order you asked for."
+     "Common mistake: listing the fields in the wrong order, since results come out in the order you asked for."
     ],
     "challenge": "Which part of a query decides how many records come back?",
     "fact": "SQL stands for Structured Query Language, and it is a language for asking rather than for programming."
@@ -1779,7 +1779,7 @@
     "bullets": [
      "WHERE filters the records, keeping only the ones whose condition is true.",
      "Text to match goes inside quotes, and numbers do not.",
-     "Mistake: leaving the quotes off text, so SQL looks for a field with that name instead."
+     "Common mistake: leaving the quotes off text, so SQL looks for a field with that name instead."
     ],
     "challenge": "Which records come back from a query that has no WHERE at all?",
     "fact": "WHERE looks at each record on its own and decides whether to keep it or drop it."
@@ -1789,7 +1789,7 @@
     "bullets": [
      "The comparisons are =, <>, >, <, >= and <=, and they work on numbers and on text.",
      "'Longer than 45' is > 45, but '45 or longer' is >= 45.",
-     "Mistake: using > where the question says 'or more', which loses the boundary record."
+     "Common mistake: using > where the question says 'or more', which loses the boundary record."
     ],
     "challenge": "Write the WHERE clause for games lasting 45 minutes or longer.",
     "fact": "SQL writes 'not equal to' as <>, where Python writes it as !=."
@@ -1799,7 +1799,7 @@
     "bullets": [
      "AND keeps a record only when both conditions hold; OR keeps it when either one does.",
      "Brackets make the meaning clear when AND and OR appear in the same WHERE.",
-     "Mistake: using AND where the question means OR, which often gives no records at all."
+     "Common mistake: using AND where the question means OR, which often gives no records at all."
     ],
     "challenge": "Why would AND give nothing for 'under 20 minutes or over 60'?",
     "fact": "AND narrows the results down and OR widens them out, which is worth saying out loud as you write."
@@ -1809,7 +1809,7 @@
     "bullets": [
      "ORDER BY sorts the results by a field, smallest or earliest first.",
      "DESC reverses that, so the largest or latest comes first instead.",
-     "Mistake: putting ORDER BY before WHERE, when it always comes last."
+     "Common mistake: putting ORDER BY before WHERE, when it always comes last."
     ],
     "challenge": "Which clause lists the longest games first?",
     "fact": "Ascending is the default order, which SQL calls ASC, so it is almost never typed out."
@@ -1819,7 +1819,7 @@
     "bullets": [
      "The clauses always come in the order SELECT, FROM, WHERE, ORDER BY.",
      "Build a query one clause at a time and check what comes back at every step.",
-     "Mistake: mixing up the quotes, so a word is read as a field name and the query finds nothing."
+     "Common mistake: mixing up the quotes, so a word is read as a field name and the query finds nothing."
     ],
     "challenge": "Write a query for games that are not card games and last an hour or less, longest first.",
     "fact": "One line of SQL can do the work of a loop, an if statement and a sort put together."

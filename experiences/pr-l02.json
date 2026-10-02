@@ -20,10 +20,8 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Print the total of two numbers the user types in, then their difference.",
+       "q": "Ask the user for two whole numbers. Work out their total, then take the second from the first. Display [total], then [difference] on the next line.",
        "brief": [
-        "The user types in two whole numbers, one on each line.",
-        "Print their total, then the first take away the second.",
         "The difference may be negative."
        ],
        "starter": "# Two whole numbers in. Total first, then the difference.\n",
@@ -79,10 +77,8 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Print the cost of some pencils, then half of one price.",
+       "q": "Ask the user for the price of one pencil in pence and how many are bought. Display [total cost of the pencils], then [half of one price] on the next line.",
        "brief": [
-        "The user types in two lines: the price of one pencil in pence, then how many are bought.",
-        "Print the total cost of all the pencils.",
         "Then print half the price of one pencil, worked out with / ."
        ],
        "starter": "# Price in pence, then how many. Total cost, then half a price.\n",
@@ -150,11 +146,9 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Print how many full crates the books fill, and the leftovers.",
+       "q": "Ask the user for the number of books and how many one crate holds. Display [full crates], then [books left over] on the next line.",
        "brief": [
-        "The user types in two lines: the number of books, then how many one crate holds.",
-        "Print how many full crates can be packed.",
-        "Then print how many books are left over."
+        "The user types in two lines: the number of books, then how many one crate holds."
        ],
        "starter": "# Books, then crate size. Full crates, then books left over.\n",
        "tests": [
@@ -209,11 +203,9 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Print how many stickers each of 8 pupils gets, and the leftovers.",
+       "q": "Ask the user for the total number of stickers. There are always 8 pupils, fixed in your program. Display [stickers each], then [stickers left over] on the next line.",
        "brief": [
-        "The user types in one whole number: the total number of stickers.",
-        "There are always 8 pupils, so the 8 is fixed in your program, not typed in.",
-        "Print how many stickers each pupil gets, then how many are left over."
+        "There are always 8 pupils, so the 8 is fixed in your program, not typed in."
        ],
        "starter": "# Stickers in. Each pupil's share, then the leftovers.\n",
        "tests": [
@@ -276,11 +268,9 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Print the area and the volume for a side length the user types in.",
+       "q": "Ask the user for the length of a side. Work out the side to the power 2, then the side to the power 3. Display [area], then [volume] on the next line.",
        "brief": [
-        "The user types in one whole number: the length of a side.",
-        "Print the side to the power 2, the area of the square.",
-        "Then print the side to the power 3, the volume of the cube."
+        "The user types in one whole number: the length of a side."
        ],
        "starter": "# One side length in. Power 2, then power 3.\n",
        "tests": [
@@ -332,10 +322,9 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Print the length of one side of a square, from an area the user types in.",
+       "q": "Ask the user for the area of a square, which may have a decimal point. Work out its square root and display [length of one side] and nothing else.",
        "brief": [
-        "The user types in the area, which may have a decimal point.",
-        "Print only the length of one side."
+        "The user types in the area, which may have a decimal point."
        ],
        "starter": "# Area in, side length out\n",
        "tests": [
@@ -392,11 +381,9 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Round an amount to a whole number, then to 2 decimal places.",
+       "q": "Ask the user for an amount, which may have a decimal point. Use round() to display [amount to the nearest whole number], then [amount to 2 decimal places] on the next line.",
        "brief": [
-        "The user types in one amount, which may have a decimal point.",
-        "Print it rounded to the nearest whole number, using round().",
-        "Then print it rounded to 2 decimal places."
+        "The user types in one amount, which may have a decimal point."
        ],
        "starter": "# One amount in. Nearest whole number, then 2 decimal places.\n",
        "tests": [
@@ -448,10 +435,9 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Print the average of three scores, rounded to 1 decimal place.",
+       "q": "Ask the user for three whole numbers. Work out their average, rounded to 1 decimal place, and display [average] and nothing else.",
        "brief": [
-        "The user types in three whole numbers, one on each line.",
-        "Print only their average, rounded to 1 decimal place."
+        "The user types in three whole numbers, one on each line."
        ],
        "starter": "# Three scores in, one rounded average out\n",
        "tests": [
@@ -516,10 +502,9 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Print two random dice rolls from 1 to 6.",
+       "q": "Ask the user for a seed to start the random number generator. Display [first roll], then [second roll] on the next line, each a random whole number from 1 to 6.",
        "brief": [
-        "Start with import random, then random.seed(int(input())). The user types in one whole number, the seed.",
-        "Print two random whole numbers from 1 to 6, one on each line."
+        "Start with import random, then random.seed(int(input())). The user types in one whole number, the seed."
        ],
        "starter": "# Import random, seed it from the input, then roll twice\n",
        "tests": [
@@ -571,11 +556,9 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Print three random numbers from 10 to 20, then their total.",
+       "q": "Ask the user for a seed to start the random number generator. Display three random whole numbers from 10 to 20, one on each line, then [total].",
        "brief": [
-        "Start with import random, then random.seed(int(input())). The user types in one whole number, the seed.",
-        "Print three random whole numbers from 10 to 20, one on each line.",
-        "Then print their total."
+        "Start with import random, then random.seed(int(input())). The user types in one whole number, the seed."
        ],
        "starter": "# Import random, seed it from the input, then three numbers and a total\n",
        "tests": [
@@ -641,11 +624,9 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Print the takings in pence, then in whole pounds and pence.",
+       "q": "Ask the user for how many rolls were sold and the price of one in pence. Display [total pence], then [whole pounds in that total], then [pence left over], one on each line.",
        "brief": [
-        "The user types in two lines: how many rolls were sold, then the price of one in pence.",
-        "Print the total takings in pence.",
-        "Then print the whole pounds in that total, then the pence left over."
+        "The user types in two lines: how many rolls were sold, then the price of one in pence."
        ],
        "starter": "# Rolls and price in. Total pence, whole pounds, pence left over.\n",
        "tests": [

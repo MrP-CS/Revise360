@@ -20,11 +20,9 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Count down to 1 with a while loop, then print go.",
+       "q": "Ask the user for a whole number. Using a while loop, display every number from it down to 1, one on each line, and then display go.",
        "brief": [
-        "The user types in one whole number.",
-        "Print every number from it down to 1, one on each line.",
-        "Then print exactly: go"
+        "The user types in one whole number."
        ],
        "starter": "# Count down to 1, then print go\n",
        "tests": [
@@ -94,11 +92,9 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Count how many doublings it takes to reach a target.",
+       "q": "Ask the user for a target. Start a size at 1 in your program, then keep doubling it until it is equal to or greater than the target. Display [number of doublings].",
        "brief": [
-        "The user types in one whole number: the target.",
-        "Start a size at 1 in your program, then keep doubling it until it is equal to or greater than the target.",
-        "Print only how many doublings that took."
+        "The user types in one whole number: the target."
        ],
        "starter": "# Double until the target is reached, then print the number of doublings\n",
        "tests": [
@@ -167,11 +163,9 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Keep asking until a number from 1 to 20 is typed.",
+       "q": "Keep asking the user for a whole number until one is from 1 to 20. Display out of range for each number refused, then locker [accepted number].",
        "brief": [
-        "The user types in whole numbers, one on each line, until one of them is from 1 to 20.",
-        "For each number that is refused, print exactly: out of range",
-        "Then print the word locker, a space, and the accepted number."
+        "The user types in whole numbers, one on each line, until one of them is from 1 to 20."
        ],
        "starter": "# Keep asking until the number is from 1 to 20\n",
        "tests": [
@@ -233,11 +227,9 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Keep asking until the answer is yes or no.",
+       "q": "Keep asking the user for a word until it is yes or no. Display please answer yes or no for each other word, then accepted [word].",
        "brief": [
-        "The user types in words, one on each line, until one of them is yes or no.",
-        "For each other word, print exactly: please answer yes or no",
-        "Then print the word accepted, a space, and the word that was accepted."
+        "The user types in words, one on each line, until one of them is yes or no."
        ],
        "starter": "# Keep asking until the answer is yes or no\n",
        "tests": [
@@ -308,11 +300,9 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Total the numbers typed in, stopping at -1.",
+       "q": "Ask the user for whole numbers until they type -1, which is the signal to stop and is not added. Display [total] and nothing else.",
        "brief": [
-        "The user types in whole numbers, one on each line, until they type -1.",
-        "The -1 is the signal to stop, not a number to add.",
-        "Print only the total."
+        "The user types in whole numbers, one on each line, until they type -1."
        ],
        "starter": "# Add up the numbers until -1 stops you\n",
        "tests": [
@@ -376,11 +366,9 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Print the highest number typed in before the word end.",
+       "q": "Ask the user for whole numbers until they type the word end. Display [highest number typed], or no readings when end is the very first line.",
        "brief": [
-        "The user types in whole numbers, one on each line, then the word end to finish.",
-        "Print only the highest number that was typed in.",
-        "If end is the very first line, print exactly: no readings"
+        "The user types in whole numbers, one on each line, then the word end to finish."
        ],
        "starter": "# Read numbers until the word end, then print the highest\n",
        "tests": [
@@ -453,11 +441,9 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Count the numbers typed before -1, and how many reach 40.",
+       "q": "Ask the user for whole numbers until they type -1. Display [how many numbers were typed], not counting the -1, then [how many of them were 40 or more] on the next line.",
        "brief": [
-        "The user types in whole numbers, one on each line, until they type -1.",
-        "Print how many numbers were typed in, not counting the -1.",
-        "Then print how many of them were 40 or more."
+        "The user types in whole numbers, one on each line, until they type -1."
        ],
        "starter": "# Count the numbers, and count how many reach 40\n",
        "tests": [
@@ -528,11 +514,9 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Add up the digits of a whole number with a while loop.",
+       "q": "Ask the user for a whole number that is 0 or more. Add up its digits without turning the number into text, and display [total of the digits].",
        "brief": [
-        "The user types in one whole number that is 0 or more.",
-        "Add up its digits without turning the number into text.",
-        "Print only the total of the digits."
+        "The user types in one whole number that is 0 or more."
        ],
        "starter": "# Take the last digit off the number each time round\n",
        "tests": [
@@ -610,10 +594,8 @@
       {
        "t": "code",
        "marks": 5,
-       "q": "Read the parcels the user types in with a for loop, then check the limits with a while loop.",
+       "q": "Ask the user for how many parcels there are, which may be 0, then read that many weights with a for loop. Then use a while loop to ask for limits until one is not below the heaviest parcel. Display limit too low for each limit refused, then ok.",
        "brief": [
-        "The user types in how many parcels there are, which may be 0, then that many whole number weights, one on each line.",
-        "Then the user types in limits, one at a time, until one of them is not below the heaviest parcel. For each limit that is refused, print exactly: limit too low",
         "With no parcels at all, the first limit is accepted. When a limit is accepted, print exactly: ok"
        ],
        "starter": "# A for loop for the parcels, a while loop for the limit\n",
@@ -709,11 +691,9 @@
       {
        "t": "code",
        "marks": 5,
-       "q": "Give a higher or lower hint until 37 is guessed.",
+       "q": "The secret number is 37, fixed in your program. Keep asking the user for a guess, displaying higher when the guess is below 37 and lower when it is above, then correct when 37 is guessed.",
        "brief": [
-        "The secret number is 37, fixed in your program and not typed in.",
-        "The user types in guesses, one at a time, until 37 is guessed. For each wrong guess print exactly higher when the guess is below 37, or exactly lower when it is above.",
-        "When 37 is guessed, print exactly: correct"
+        "The secret number is 37, fixed in your program and not typed in."
        ],
        "starter": "# The secret is 37. Hint at every wrong guess.\n",
        "tests": [
@@ -779,11 +759,9 @@
       {
        "t": "code",
        "marks": 6,
-       "q": "Print how many swims there were, the total and the longest.",
+       "q": "Ask the user for whole numbers of minutes until they type the word close. Display [how many swims], then [total minutes], then [longest swim], one on each line, or just no swimmers when close is the very first line.",
        "brief": [
-        "The user types in whole numbers of minutes, one on each line, then the word close to finish.",
-        "Print how many swims there were, then the total of the minutes, then the longest swim.",
-        "If close is the very first line, print only: no swimmers"
+        "The user types in whole numbers of minutes, one on each line, then the word close to finish."
        ],
        "starter": "# Count the swims, total the minutes, remember the longest\n",
        "tests": [

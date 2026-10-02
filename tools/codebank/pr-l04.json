@@ -14,7 +14,7 @@
    "id": "pr-l04-q1",
    "station": 0,
    "marks": 2,
-   "q": "Print the word the user types in four times.",
+   "q": "Ask the user for one word. Display [word] four times, one on each of four lines.",
    "teach": {
     "say": "for i in range(3): repeats the indented lines three times, because range(3) counts 0, 1, 2.",
     "code": [
@@ -28,8 +28,7 @@
     ]
    },
    "brief": [
-    "Ask the user for one word.",
-    "Print it four times, one on each line."
+    "Ask the user for one word."
    ],
    "hint": "pyrange",
    "starter": "# Read the word, then print it four times\n",
@@ -77,7 +76,7 @@
    "id": "pr-l04-q2",
    "station": 0,
    "marks": 2,
-   "q": "Print start, then a word as many times as the user asks.",
+   "q": "Ask the user for a word and then a whole number. Display start, then [word] on that many lines.",
    "teach": {
     "say": "range() can use a number read from the user, once int() has made it a whole number. A line before the loop is not indented, so it runs once.",
     "code": [
@@ -91,9 +90,7 @@
     ]
    },
    "brief": [
-    "The user types in two lines: a word, then a whole number.",
-    "Print exactly: start",
-    "Then print the word that many times, one on each line."
+    "The user types in two lines: a word, then a whole number."
    ],
    "hint": "pyrange",
    "starter": "# Read a word and a count, print start, then repeat the word\n",
@@ -154,7 +151,7 @@
    "id": "pr-l04-q3",
    "station": 1,
    "marks": 2,
-   "q": "Number the lanes of a pool from 1 upwards.",
+   "q": "Ask the user for how many lanes there are. Display the lane numbers from 1 up to and including that number, one on each line.",
    "teach": {
     "say": "range stops before its second number, so range(1, 4) counts 1, 2, 3. To finish on n you write range(1, n + 1).",
     "code": [
@@ -168,8 +165,7 @@
     ]
    },
    "brief": [
-    "The user types in one whole number: how many lanes there are.",
-    "Print the lane numbers from 1 up to and including that number, one on each line."
+    "The user types in one whole number: how many lanes there are."
    ],
    "hint": "pyrange",
    "starter": "# Read how many lanes there are, then number them from 1\n",
@@ -214,7 +210,7 @@
    "id": "pr-l04-q4",
    "station": 1,
    "marks": 3,
-   "q": "List each side length from 1 upwards with its area.",
+   "q": "Ask the user for the largest side length. For every side from 1 up to and including that number, display a line in the form [side] [side times itself].",
    "teach": {
     "say": "The counter is an ordinary number, so you can calculate with it inside the loop. Two values in one print() come out with a space between them.",
     "code": [
@@ -228,9 +224,7 @@
     ]
    },
    "brief": [
-    "The user types in one whole number: the largest side length.",
-    "Print one line for each side from 1 up to and including that number.",
-    "Each line holds the side, a space, then the side times itself."
+    "The user types in one whole number: the largest side length."
    ],
    "hint": "pyrange",
    "starter": "# Read the largest side, then print each side and its area\n",
@@ -285,7 +279,7 @@
    "id": "pr-l04-q5",
    "station": 2,
    "marks": 3,
-   "q": "List every row number from a first row to a last row.",
+   "q": "Ask the user for the first row number and then the last row number. Display every row number from the first to the last, both included, one on each line.",
    "teach": {
     "say": "range takes a start and a stop, and the stop is never reached, so add 1 to the last value you want.",
     "code": [
@@ -299,8 +293,7 @@
     ]
    },
    "brief": [
-    "The user types in two lines: the first row number, then the last row number.",
-    "Print every row number from the first to the last, both included, one on each line."
+    "The user types in two lines: the first row number, then the last row number."
    ],
    "hint": "pyrange",
    "starter": "# Read the first and last row numbers, then list every row\n",
@@ -361,7 +354,7 @@
    "id": "pr-l04-q6",
    "station": 2,
    "marks": 4,
-   "q": "Count down from a number the user types to 1.",
+   "q": "Ask the user for a whole number. Display every number from it down to 1, one on each line.",
    "teach": {
     "say": "range takes a third number, the step. A step of -1 counts down, and the stop is still never reached.",
     "code": [
@@ -375,8 +368,7 @@
     ]
    },
    "brief": [
-    "The user types in one whole number.",
-    "Print every number from it down to 1, one on each line."
+    "The user types in one whole number."
    ],
    "hint": "pyrange",
    "starter": "# Read a number, then count down from it to 1\n",
@@ -431,7 +423,7 @@
    "id": "pr-l04-q7",
    "station": 3,
    "marks": 3,
-   "q": "Add up the amounts the user types and print the total.",
+   "q": "Ask the user for how many amounts there are, then for that many whole numbers. Add up the amounts and display [total] and nothing else.",
    "teach": {
     "say": "A running total is set to 0 before the loop, added to inside the loop, and printed after it.",
     "code": [
@@ -445,9 +437,7 @@
     ]
    },
    "brief": [
-    "The user types in a whole number: how many amounts follow.",
-    "Then the user types in that many whole numbers, one on each line.",
-    "Print only the total."
+    "Then the user types in that many whole numbers, one on each line."
    ],
    "hint": "constructs",
    "starter": "# Read how many amounts there are, add them up, print the total\n",
@@ -519,7 +509,7 @@
    "id": "pr-l04-q8",
    "station": 3,
    "marks": 4,
-   "q": "Print the total of the readings and how many are below zero.",
+   "q": "Ask the user for how many readings there are, then for that many whole numbers. Display [total], then [how many of the readings are below 0] on the next line.",
    "teach": {
     "say": "Each thing you are tracking needs its own variable, set up before the loop and updated inside it.",
     "code": [
@@ -534,9 +524,7 @@
     ]
    },
    "brief": [
-    "The user types in a whole number: how many readings follow.",
-    "Then the user types in that many whole numbers, one on each line.",
-    "Print the total, then how many of the readings are below 0."
+    "Then the user types in that many whole numbers, one on each line."
    ],
    "hint": "constructs",
    "starter": "# Read the readings, then print the total and the frosty count\n",
@@ -613,7 +601,7 @@
    "id": "pr-l04-q9",
    "station": 4,
    "marks": 4,
-   "q": "Draw a rectangle of stars of any size.",
+   "q": "Ask the user for the number of rows and then the number of stars in each row. Display one line for each row, made of that many * characters and nothing else.",
    "teach": {
     "say": "The outer loop counts the rows and the inner loop builds one row. Build the row up as a string, then print it once the inner loop has finished.",
     "code": [
@@ -627,8 +615,7 @@
     ]
    },
    "brief": [
-    "The user types in two lines: the number of rows, then the number of stars in each row.",
-    "Print one line per row, each made of that many * characters and nothing else."
+    "The user types in two lines: the number of rows, then the number of stars in each row."
    ],
    "hint": "pyrange",
    "starter": "# Read the rows and the width, then draw the rectangle\n",
@@ -686,7 +673,7 @@
    "id": "pr-l04-q10",
    "station": 4,
    "marks": 5,
-   "q": "Print a multiplication square of a given size.",
+   "q": "Ask the user for the size of the square. Display one line for each row from 1 up to that size: the row number times 1, times 2, and so on up to the size.",
    "teach": {
     "say": "The outer counter stays still while the inner one runs all the way through, so the value you print is the two counters multiplied.",
     "code": [
@@ -702,8 +689,6 @@
     ]
    },
    "brief": [
-    "The user types in one whole number: the size of the square.",
-    "Print one line for each row from 1 up to that size. A row holds the row number times 1, times 2, and so on up to the size.",
     "Put a single space between the numbers on a line."
    ],
    "hint": "pyrange",
@@ -758,7 +743,7 @@
    "id": "pr-l04-q11",
    "station": 5,
    "marks": 6,
-   "q": "Print each amount with the total so far, then the average.",
+   "q": "Ask the user for how many amounts there are, then for that many whole numbers. After each one display a line in the form [amount] [total so far]. At the end display [average] rounded to 1 decimal place.",
    "teach": {
     "say": "Printing inside the loop shows the total so far, while anything printed after the loop uses the finished total.",
     "code": [
@@ -773,9 +758,7 @@
     ]
    },
    "brief": [
-    "The user types in a whole number: how many amounts follow, then that many whole numbers, one on each line.",
-    "After each amount print the amount, a space, then the total so far.",
-    "After the last one print the average of the amounts, rounded to 1 decimal place."
+    "The user types in a whole number: how many amounts follow, then that many whole numbers, one on each line."
    ],
    "hint": "pyrange",
    "starter": "# Read the amounts, print each with the running total, then the average\n",

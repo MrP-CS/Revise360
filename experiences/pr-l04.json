@@ -20,10 +20,9 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Print the word the user types in four times.",
+       "q": "Ask the user for one word. Display [word] four times, one on each of four lines.",
        "brief": [
-        "Ask the user for one word.",
-        "Print it four times, one on each line."
+        "Ask the user for one word."
        ],
        "starter": "# Read the word, then print it four times\n",
        "tests": [
@@ -82,11 +81,9 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Print start, then a word as many times as the user asks.",
+       "q": "Ask the user for a word and then a whole number. Display start, then [word] on that many lines.",
        "brief": [
-        "The user types in two lines: a word, then a whole number.",
-        "Print exactly: start",
-        "Then print the word that many times, one on each line."
+        "The user types in two lines: a word, then a whole number."
        ],
        "starter": "# Read a word and a count, print start, then repeat the word\n",
        "tests": [
@@ -168,10 +165,9 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Number the lanes of a pool from 1 upwards.",
+       "q": "Ask the user for how many lanes there are. Display the lane numbers from 1 up to and including that number, one on each line.",
        "brief": [
-        "The user types in one whole number: how many lanes there are.",
-        "Print the lane numbers from 1 up to and including that number, one on each line."
+        "The user types in one whole number: how many lanes there are."
        ],
        "starter": "# Read how many lanes there are, then number them from 1\n",
        "tests": [
@@ -227,11 +223,9 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "List each side length from 1 upwards with its area.",
+       "q": "Ask the user for the largest side length. For every side from 1 up to and including that number, display a line in the form [side] [side times itself].",
        "brief": [
-        "The user types in one whole number: the largest side length.",
-        "Print one line for each side from 1 up to and including that number.",
-        "Each line holds the side, a space, then the side times itself."
+        "The user types in one whole number: the largest side length."
        ],
        "starter": "# Read the largest side, then print each side and its area\n",
        "tests": [
@@ -307,10 +301,9 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "List every row number from a first row to a last row.",
+       "q": "Ask the user for the first row number and then the last row number. Display every row number from the first to the last, both included, one on each line.",
        "brief": [
-        "The user types in two lines: the first row number, then the last row number.",
-        "Print every row number from the first to the last, both included, one on each line."
+        "The user types in two lines: the first row number, then the last row number."
        ],
        "starter": "# Read the first and last row numbers, then list every row\n",
        "tests": [
@@ -382,10 +375,9 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Count down from a number the user types to 1.",
+       "q": "Ask the user for a whole number. Display every number from it down to 1, one on each line.",
        "brief": [
-        "The user types in one whole number.",
-        "Print every number from it down to 1, one on each line."
+        "The user types in one whole number."
        ],
        "starter": "# Read a number, then count down from it to 1\n",
        "tests": [
@@ -461,11 +453,9 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Add up the amounts the user types and print the total.",
+       "q": "Ask the user for how many amounts there are, then for that many whole numbers. Add up the amounts and display [total] and nothing else.",
        "brief": [
-        "The user types in a whole number: how many amounts follow.",
-        "Then the user types in that many whole numbers, one on each line.",
-        "Print only the total."
+        "Then the user types in that many whole numbers, one on each line."
        ],
        "starter": "# Read how many amounts there are, add them up, print the total\n",
        "tests": [
@@ -548,11 +538,9 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Print the total of the readings and how many are below zero.",
+       "q": "Ask the user for how many readings there are, then for that many whole numbers. Display [total], then [how many of the readings are below 0] on the next line.",
        "brief": [
-        "The user types in a whole number: how many readings follow.",
-        "Then the user types in that many whole numbers, one on each line.",
-        "Print the total, then how many of the readings are below 0."
+        "Then the user types in that many whole numbers, one on each line."
        ],
        "starter": "# Read the readings, then print the total and the frosty count\n",
        "tests": [
@@ -651,10 +639,9 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Draw a rectangle of stars of any size.",
+       "q": "Ask the user for the number of rows and then the number of stars in each row. Display one line for each row, made of that many * characters and nothing else.",
        "brief": [
-        "The user types in two lines: the number of rows, then the number of stars in each row.",
-        "Print one line per row, each made of that many * characters and nothing else."
+        "The user types in two lines: the number of rows, then the number of stars in each row."
        ],
        "starter": "# Read the rows and the width, then draw the rectangle\n",
        "tests": [
@@ -723,10 +710,8 @@
       {
        "t": "code",
        "marks": 5,
-       "q": "Print a multiplication square of a given size.",
+       "q": "Ask the user for the size of the square. Display one line for each row from 1 up to that size: the row number times 1, times 2, and so on up to the size.",
        "brief": [
-        "The user types in one whole number: the size of the square.",
-        "Print one line for each row from 1 up to that size. A row holds the row number times 1, times 2, and so on up to the size.",
         "Put a single space between the numbers on a line."
        ],
        "starter": "# Read the size, then print the multiplication square\n",
@@ -804,11 +789,9 @@
       {
        "t": "code",
        "marks": 6,
-       "q": "Print each amount with the total so far, then the average.",
+       "q": "Ask the user for how many amounts there are, then for that many whole numbers. After each one display a line in the form [amount] [total so far]. At the end display [average] rounded to 1 decimal place.",
        "brief": [
-        "The user types in a whole number: how many amounts follow, then that many whole numbers, one on each line.",
-        "After each amount print the amount, a space, then the total so far.",
-        "After the last one print the average of the amounts, rounded to 1 decimal place."
+        "The user types in a whole number: how many amounts follow, then that many whole numbers, one on each line."
        ],
        "starter": "# Read the amounts, print each with the running total, then the average\n",
        "tests": [

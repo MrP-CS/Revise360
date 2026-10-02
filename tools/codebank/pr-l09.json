@@ -14,7 +14,7 @@
    "id": "pr-l09-q1",
    "station": 0,
    "marks": 2,
-   "q": "Write a procedure that prints a sign-off, then call it.",
+   "q": "Ask the user for a title. Write a procedure called signoff that prints end of report, then display [title] and call signoff, so the title comes first.",
    "teach": {
     "say": "def gives a block of code a name. The indented lines do nothing until a line calls that name.",
     "code": [
@@ -27,9 +27,7 @@
     ]
    },
    "brief": [
-    "Write a procedure signoff that takes nothing and prints exactly: end of report",
-    "The user types in one line: a title.",
-    "Print the title, then call signoff - two lines, the title first."
+    "signoff takes nothing, prints that one line, and is called once."
    ],
    "hint": "pyfunc",
    "starter": "# signoff first, then the title\n",
@@ -71,11 +69,9 @@
    "id": "pr-l09-q2",
    "station": 0,
    "marks": 3,
-   "q": "Write a rule procedure and call it three times around two headings.",
+   "q": "Ask the user for two headings, one on each line. Write a procedure called rule that prints =====, then display the rule, the first heading, the rule, the second heading and the rule, one on each line.",
    "brief": [
-    "Write a procedure rule that prints exactly: =====",
-    "The user types in two headings, one on each line.",
-    "Print the rule, the first heading, the rule, the second heading, then the rule - five lines in all."
+    "Five lines in all, printed by one procedure called three times."
    ],
    "hint": "pyfunc",
    "starter": "# one procedure, called three times\n",
@@ -129,7 +125,7 @@
    "id": "pr-l09-q3",
    "station": 1,
    "marks": 3,
-   "q": "Write a procedure with one parameter that labels an item.",
+   "q": "Ask the user for two item names, one on each line. Write a procedure called label that takes one word and prints item: [word]. Call it once for each name, in the order they were typed.",
    "teach": {
     "say": "A parameter is a name in the brackets of the def line. Whatever you pass in when you call it arrives under that name.",
     "code": [
@@ -142,9 +138,7 @@
     ]
    },
    "brief": [
-    "Write a procedure label that takes one word and prints exactly item: followed by a space and that word.",
-    "The user types in two item names, one on each line.",
-    "Call label once for each, in the order they were typed, and print nothing else."
+    "Nothing but those two lines is printed."
    ],
    "hint": "pyfunc",
    "starter": "# one procedure, two different items\n",
@@ -189,11 +183,9 @@
    "id": "pr-l09-q4",
    "station": 1,
    "marks": 3,
-   "q": "Write a procedure with two parameters that prints an order's cost.",
+   "q": "Ask the user for the number of packs and then the price of one pack in pence. Write a procedure called charge that takes both and prints total [packs times price]. Call it, and print nothing else.",
    "brief": [
-    "The user types in two whole numbers: the number of packs, then the price of one pack in pence.",
-    "Write a procedure charge that takes both of them and prints exactly total, a space, then the packs times the price.",
-    "The procedure does the printing, and nothing else is printed."
+    "Both are whole numbers, and the procedure does the printing."
    ],
    "hint": "pyfunc",
    "starter": "# charge takes two parameters\n",
@@ -245,7 +237,7 @@
    "id": "pr-l09-q5",
    "station": 2,
    "marks": 3,
-   "q": "Write a function that returns double a number, then print it.",
+   "q": "Ask the user for a whole number. Write a function called double that returns twice its parameter and prints nothing at all, then display [what double hands back] and nothing else.",
    "teach": {
     "say": "return hands a value back to the line that called the function, so the caller is the one that prints or stores it.",
     "code": [
@@ -258,9 +250,7 @@
     ]
    },
    "brief": [
-    "The user types in one whole number.",
-    "Write a function double that returns twice its parameter and prints nothing at all.",
-    "Print only the value double hands back."
+    "The number may be negative or zero."
    ],
    "hint": "pyfunc",
    "starter": "# double returns, it does not print\n",
@@ -308,11 +298,9 @@
    "id": "pr-l09-q6",
    "station": 2,
    "marks": 4,
-   "q": "Write a function that returns a rectangle's area, then label it.",
+   "q": "Ask the user for a width and then a height, both whole numbers. Write a function called area that returns width times height and holds no print at all. Store what it returns and display one line, area [that value].",
    "brief": [
-    "The user types in two whole numbers: the width, then the height.",
-    "Write a function area that returns width times height and holds no print at all.",
-    "Store what it returns, then print one line: exactly area, a space, then that value."
+    "A single space goes after area, and nothing else is printed."
    ],
    "hint": "pyfunc",
    "starter": "# store the returned value before printing it\n",
@@ -364,7 +352,7 @@
    "id": "pr-l09-q7",
    "station": 3,
    "marks": 4,
-   "q": "Use a function to decide a grade and a procedure to print it.",
+   "q": "Ask the user for a name and then a whole number mark. Write a function called grade that returns pass for a mark of 40 or more and fail below 40, and a procedure called report that displays [name]: [that word].",
    "teach": {
     "say": "A function ends with return and hands a value back; a procedure only prints. So a function's answer can be passed straight into a procedure.",
     "code": [
@@ -377,9 +365,7 @@
     ]
    },
    "brief": [
-    "The user types in two lines: a name, then a whole number mark.",
-    "Write a function grade that returns exactly pass for a mark of 40 or more, and exactly fail below 40.",
-    "Write a procedure report that prints the name, then a colon and a space, then that word. Use both, and print one line only."
+    "Use both subprograms, and print one line only."
    ],
    "hint": "pyfunc",
    "starter": "# grade returns a word, report prints the line\n",
@@ -431,7 +417,7 @@
    "id": "pr-l09-q8",
    "station": 4,
    "marks": 4,
-   "q": "Show that a variable made inside a procedure is local.",
+   "q": "Ask the user for a whole number and keep it in a variable called total. Write a procedure called boost with a local total of its own, set to 99, that prints it. Call boost, then display [the main total].",
    "teach": {
     "say": "A name given a value inside a subprogram is local and vanishes when the subprogram ends. To change a variable from outside instead, the subprogram must say global first.",
     "code": [
@@ -445,9 +431,7 @@
     ]
    },
    "brief": [
-    "The user types in one whole number, which the main program stores in a variable called total.",
-    "Write a procedure boost with a local variable of its own, also called total, set to 99, which prints it.",
-    "Call boost, then print the main program's total - two lines, the 99 first."
+    "Two lines, the 99 first. The main program's total must not change."
    ],
    "hint": "pyfunc",
    "starter": "# two variables, one name\n",
@@ -499,11 +483,9 @@
    "id": "pr-l09-q9",
    "station": 4,
    "marks": 4,
-   "q": "Write two procedures that both change one shared score.",
+   "q": "Write a procedure called win that adds 3 to a shared score and a procedure called draw that adds 1. Ask the user for the number of rounds, call win and then draw once per round, and display [the final score].",
    "brief": [
-    "Start with a score of 0 that the whole program shares. It is fixed in the program, not typed in.",
-    "Write a procedure win that adds 3 to that score and a procedure draw that adds 1 to it.",
-    "The user types in one whole number: how many rounds. Call win and then draw once per round, then print only the score at the end."
+    "The score starts at 0, fixed in the program and shared by the whole program, not typed in."
    ],
    "hint": "pyfunc",
    "starter": "# win and draw change the main program's score\n",
@@ -551,7 +533,7 @@
    "id": "pr-l09-q10",
    "station": 5,
    "marks": 5,
-   "q": "Call a function once per match in a loop and total what it returns.",
+   "q": "Write a function called points that returns 3 for 2 or more goals, 1 for one goal and 0 for none. Ask the user for the number of matches, then that many goal counts, one on each line. Display [the points added up].",
    "teach": {
     "say": "What a function returns is an ordinary value, so it can be added up. Called inside a loop, it runs once per turn.",
     "code": [
@@ -564,9 +546,7 @@
     ]
    },
    "brief": [
-    "Write a function points that returns 3 for 2 or more goals, 1 for exactly 1 goal, and 0 for none.",
-    "The user types in how many matches there were, then that many goal counts, one on each line.",
-    "Call points once per match, add up what it returns, and print only that total."
+    "Call points once per match, inside the loop, and print only that one total."
    ],
    "hint": "pyfunc",
    "starter": "# one call per match, added to a running total\n",
@@ -633,11 +613,10 @@
    "id": "pr-l09-q11",
    "station": 5,
    "marks": 6,
-   "q": "Build a booking receipt from three subprograms, each calling the next.",
+   "q": "Ask the user for a number of nights and then a number of guests. Display nights [the number of nights], then total [the total cost] on the next line.",
    "brief": [
-    "The user types in two whole numbers: the number of nights, then the number of guests.",
     "Write a function fee that returns nights times 25, and a function total that calls fee and returns fee times guests, plus 10.",
-    "Write a procedure receipt that calls total and prints two lines: exactly nights then the number of nights, then exactly total then that value."
+    "Write a procedure receipt that calls total and prints both lines."
    ],
    "hint": "pyfunc",
    "starter": "# receipt calls total, total calls fee\n",

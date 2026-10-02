@@ -20,11 +20,9 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Linear search a line of codes for one number and print its position.",
+       "q": "Ask the user for a line of whole numbers separated by single spaces, then the number to find. Step through the list position by position, without .index(), and display [the position it is at], counting from 0, or not found.",
        "brief": [
-        "The user types in one line of whole numbers separated by single spaces, then on the next line the number to find.",
-        "Step through the list position by position, with no .index(), and print only the position where it is, counting from 0.",
-        "If it is not in the list, print exactly: not found"
+        "Print nothing but that one line."
        ],
        "starter": "# where the value sits, not just whether it is there\n",
        "tests": [
@@ -104,11 +102,9 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Search one list and print the value at the same position in another.",
+       "q": "Ask the user for a line of names, then a line of minutes in the same order, then one name to find. Search the names yourself and display [the minutes at the same position], or no record when the name is not there.",
        "brief": [
-        "The user types in three lines: names separated by single spaces, then minutes separated by single spaces in the same order, then one name to find.",
-        "Search the names yourself and print only the minutes stored at the same position as that name.",
-        "If the name is not there, print exactly: no record"
+        "Both lines are separated by single spaces, and one line only is printed."
        ],
        "starter": "# one name in, one number out\n",
        "tests": [
@@ -190,11 +186,9 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Binary search a line of numbers that is already in order.",
+       "q": "Ask the user for a line of whole numbers already in order and separated by single spaces, then the number to find. Find it with a binary search and display [its position], counting from 0, or not found.",
        "brief": [
-        "The user types in one line of whole numbers already in order and separated by single spaces, then on the next line the number to find.",
-        "Find it with a binary search and print only its position, counting from 0.",
-        "If it is not in the list, print exactly: not found"
+        "Print nothing but that one line."
        ],
        "starter": "# a binary search over the numbers read in\n",
        "tests": [
@@ -283,11 +277,10 @@
       {
        "t": "code",
        "marks": 5,
-       "q": "Binary search the line and say how many items you checked.",
+       "q": "Ask the user for a line of whole numbers already in order, then the number to find. Binary search it, counting every middle you compare, and display [its position] or not found, then checks: [that count] on the next line.",
        "brief": [
-        "The user types in one line of whole numbers already in order and separated by single spaces, then on the next line the number to find.",
-        "Binary search it, working the middle out as mid = (low + high) // 2 and counting every middle you compare, the matching one included.",
-        "Print its position counting from 0, or exactly not found; then on the next line exactly checks: a space, then that count."
+        "The numbers are separated by single spaces, and the middle is mid = (low + high) // 2.",
+        "The matching middle counts as a check."
        ],
        "starter": "# the position, and how many checks it took\n",
        "tests": [
@@ -369,11 +362,9 @@
       {
        "t": "code",
        "marks": 5,
-       "q": "Sort a line of numbers smallest first with a bubble sort.",
+       "q": "Ask the user for a line of whole numbers separated by single spaces. Sort them smallest first by swapping neighbouring pairs, writing the sort yourself rather than using sorted() or .sort(), and display [the sorted numbers].",
        "brief": [
-        "The user types in one line of whole numbers separated by single spaces.",
-        "Sort them smallest first by swapping neighbouring pairs. Write the sort yourself, not sorted() or .sort().",
-        "Print them on one line, separated by single spaces."
+        "One line, the values separated by single spaces, and nothing else."
        ],
        "starter": "# a bubble sort of the numbers read in\n",
        "tests": [
@@ -441,11 +432,9 @@
       {
        "t": "code",
        "marks": 6,
-       "q": "Bubble sort that stops early, and say how many passes it needed.",
+       "q": "Ask the user for a line of whole numbers separated by single spaces. Sort them smallest first by swapping neighbouring pairs, stopping after a pass that makes no swaps, and display [the sorted numbers], then passes: [how many].",
        "brief": [
-        "The user types in one line of whole numbers separated by single spaces.",
-        "Sort them smallest first by swapping neighbouring pairs, stopping after a pass that makes no swaps at all. Write the sort yourself.",
-        "Print them on one line separated by single spaces; then exactly passes: a space, then how many passes it took, the quiet one included."
+        "Write the sort yourself, count the quiet last pass too, and separate the sorted values with single spaces."
        ],
        "starter": "# the sorted numbers, then the pass count\n",
        "tests": [
@@ -516,11 +505,9 @@
       {
        "t": "code",
        "marks": 6,
-       "q": "Sort a line of numbers with an insertion sort.",
+       "q": "Ask the user for a line of whole numbers separated by single spaces. Sort them smallest first with an insertion sort of your own, moving each item back among the items before it, and display [the sorted numbers].",
        "brief": [
-        "The user types in one line of whole numbers separated by single spaces.",
-        "Sort them smallest first with an insertion sort, moving each item back among the items before it. Write the sort yourself.",
-        "Print them on one line, separated by single spaces."
+        "One line, the values separated by single spaces, and nothing else."
        ],
        "starter": "# an insertion sort of the numbers read in\n",
        "tests": [
@@ -588,11 +575,9 @@
       {
        "t": "code",
        "marks": 6,
-       "q": "Print the whole list each time an insertion sort places a word.",
+       "q": "Ask the user for a line of five words separated by single spaces. Insertion sort them into alphabetical order, writing the sort yourself, and display [the whole list] after each word from the second onwards, one list per line.",
        "brief": [
-        "The user types in one line of five words separated by single spaces.",
-        "Insertion sort them into alphabetical order, writing the sort yourself.",
-        "After placing each word from the second onwards, print the whole list on one line separated by single spaces - four lines in all."
+        "Four lines in all, the values separated by single spaces."
        ],
        "starter": "# five words, one line printed per insertion\n",
        "tests": [
@@ -671,11 +656,9 @@
       {
        "t": "code",
        "marks": 6,
-       "q": "Merge two lines that are already in order into one list.",
+       "q": "Ask the user for two lines of whole numbers, each already in order and separated by single spaces. Merge them into one list by taking the smaller front value each time, writing the merge yourself, and display [the merged list].",
        "brief": [
-        "The user types in two lines of whole numbers, each already in order and separated by single spaces.",
-        "Merge them into one list in order by taking the smaller front value each time. Write the merge yourself.",
-        "Print the merged list on one line, separated by single spaces."
+        "One line, the values separated by single spaces, and nothing else."
        ],
        "starter": "# two ordered lines in, one ordered list out\n",
        "tests": [
@@ -748,11 +731,9 @@
       {
        "t": "code",
        "marks": 7,
-       "q": "Write a full merge sort: split the list down, then merge back up.",
+       "q": "Ask the user for a line of whole numbers separated by single spaces. Sort them smallest first by splitting the list in half, sorting each half the same way and merging the two, and display [the sorted numbers].",
        "brief": [
-        "The user types in one line of whole numbers separated by single spaces.",
-        "Sort them smallest first by splitting the list in half, sorting each half the same way, then merging the two. Write it yourself.",
-        "Print them on one line, separated by single spaces."
+        "Write it yourself, on one line, the values separated by single spaces."
        ],
        "starter": "# split, sort each half the same way, merge\n",
        "tests": [
@@ -828,11 +809,10 @@
       {
        "t": "code",
        "marks": 8,
-       "q": "Count the comparisons a linear search and a binary search each need.",
+       "q": "Ask the user for a line of whole numbers already in order, then the number to find. Count what a linear search compares and what a binary search compares, and display linear: [the first count], then binary: [the second count].",
        "brief": [
-        "The user types in one line of whole numbers already in order and separated by single spaces, then on the next line the number to find.",
-        "Count every item a linear search compares, starting at the front and stopping as soon as it matches; then count every middle a binary search compares, working it out as mid = (low + high) // 2. The matching one counts in both.",
-        "Print exactly linear: a space and the first count, then on the next line exactly binary: a space and the second count."
+        "The numbers are separated by single spaces, and the linear search starts at the front and stops as soon as it matches.",
+        "The binary search works the middle out as mid = (low + high) // 2, and the matching one counts in both."
        ],
        "starter": "# two searches over the same list, counted separately\n",
        "tests": [
@@ -898,11 +878,10 @@
       {
        "t": "code",
        "marks": 8,
-       "q": "Sort the numbers yourself, then binary search them for a value.",
+       "q": "Ask the user for a line of whole numbers separated by single spaces, then the number to find. Sort them smallest first with a sort of your own and display [the sorted numbers], then [its position in them] or not found.",
        "brief": [
-        "The user types in one line of whole numbers separated by single spaces, then on the next line the number to find.",
-        "Sort them smallest first with a sort you write yourself, and print them on one line separated by single spaces.",
-        "Then binary search the sorted list and print the position it sits at in it, counting from 0, or exactly: not found"
+        "Print the sorted values on one line, separated by single spaces.",
+        "Find the position with a binary search, counting from 0."
        ],
        "starter": "# sort it first, then search it\n",
        "tests": [

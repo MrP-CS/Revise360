@@ -20,11 +20,9 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Refuse a sign-in name that has not really been typed.",
+       "q": "Ask the user for a name, ignoring any spaces at each end of it. Display no name given when nothing is left, or welcome [the name without those spaces].",
        "brief": [
-        "The user types in one line, and any spaces at each end of it are ignored.",
-        "If nothing is left, print exactly: no name given",
-        "Otherwise print exactly welcome, a space, then the name without those spaces."
+        "One line only: a line of nothing but spaces is not a name."
        ],
        "starter": "# spaces are not a name\n",
        "tests": [
@@ -81,11 +79,9 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Refuse anything that is not a whole number, without crashing.",
+       "q": "Ask the user for a whole number. Display number: [the number] when every character typed is a digit, or not a number when it is not.",
        "brief": [
-        "The user types in one line. It counts as a whole number only if every character is a digit.",
-        "If it does, print exactly number: a space, then the number.",
-        "Otherwise print exactly not a number - a minus sign and a decimal point are not digits."
+        "A minus sign and a decimal point are not digits, and an empty line is not a number."
        ],
        "starter": "# digits only\n",
        "tests": [
@@ -160,11 +156,9 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Range check a satisfaction score from 1 to 10 inclusive.",
+       "q": "Ask the user for a whole number score. Display valid when it is from 1 to 10 inclusive, too low below that range and too high above it.",
        "brief": [
-        "The user types in one whole number.",
-        "If it is from 1 to 10 inclusive, print exactly: valid",
-        "Below the range print exactly too low, and above it exactly too high."
+        "Both 1 and 10 are allowed, and one line only is printed."
        ],
        "starter": "# both boundaries are allowed\n",
        "tests": [
@@ -229,11 +223,10 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Check a temperature that may be negative, and refuse what is not numeric.",
+       "q": "Ask the user for a temperature. Display not a number when it is not a whole number, ok when it is from -5 to 35 inclusive, or out of range when it is outside that.",
        "brief": [
-        "The user types in one line. A minus sign at the front is allowed, a decimal point is not.",
-        "If it is not a whole number, print exactly: not a number",
-        "Otherwise print exactly ok for -5 to 35 inclusive, and exactly out of range outside that."
+        "A minus sign at the front is allowed, but a decimal point is not.",
+        "Both -5 and 35 are allowed, and one line only is printed."
        ],
        "starter": "# a negative number is still a number\n",
        "tests": [
@@ -317,11 +310,9 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Length check a password of 8 to 16 characters.",
+       "q": "Ask the user for a password. Display too short when it is under 8 characters, too long when it is over 16, and ok for anything in between.",
        "brief": [
-        "The user types in one line, counted exactly as it is typed with no stripping.",
-        "Under 8 characters print exactly too short; over 16 characters print exactly too long.",
-        "Otherwise print exactly: ok"
+        "Count the line exactly as it is typed, with no stripping, so an empty line is too short."
        ],
        "starter": "# 8 to 16 characters\n",
        "tests": [
@@ -386,11 +377,9 @@
       {
        "t": "code",
        "marks": 5,
-       "q": "Format check a booking reference: two letters then four digits.",
+       "q": "Ask the user for a booking reference, ignoring any spaces at each end. Display valid reference when it is two letters and then four digits, or invalid reference when it is not.",
        "brief": [
-        "The user types in one line, and any spaces at each end of it are ignored.",
-        "It is valid only if it is 6 characters: the first two letters, the last four digits. Capitals and small letters both count as letters.",
-        "Print exactly valid reference or exactly invalid reference, one line only."
+        "It must be exactly 6 characters, and capitals and small letters both count as letters."
        ],
        "starter": "# two letters then four digits\n",
        "tests": [
@@ -474,11 +463,9 @@
       {
        "t": "code",
        "marks": 5,
-       "q": "Keep asking for a lift number until one from 1 to 5 arrives.",
+       "q": "Keep asking the user for a whole number until one is from 1 to 5 inclusive. Display please enter 1 to 5 for every wrong one, then lift [the number] for the one you accept.",
        "brief": [
-        "The user types in whole numbers, one on each line, until one of them is from 1 to 5 inclusive.",
-        "Print exactly please enter 1 to 5 for every wrong one, and nothing at all for a right one.",
-        "Once a valid one arrives, print exactly lift, a space, then that number, and read no more."
+        "Print nothing else, and read no more lines once one is accepted."
        ],
        "starter": "# keep going until it is 1 to 5\n",
        "tests": [
@@ -544,11 +531,10 @@
       {
        "t": "code",
        "marks": 6,
-       "q": "Keep asking for a house number, naming the rule broken each time.",
+       "q": "Keep asking the user for a house number until one is a whole number from 10 to 99 inclusive. Display that is not a whole number or that is outside 10 to 99 for each wrong one, then accepted: [the number].",
        "brief": [
-        "The user types in lines, one at a time, until one is a whole number from 10 to 99 inclusive.",
-        "If a line is not all digits print exactly that is not a whole number - check this before the range.",
-        "If it is digits but outside the range print exactly that is outside 10 to 99; for the accepted one print exactly accepted: a space, then the number."
+        "Check whether it is all digits before checking the range.",
+        "Both 10 and 99 are allowed, and nothing more is read once one is accepted."
        ],
        "starter": "# two rules, two messages\n",
        "tests": [
@@ -626,11 +612,10 @@
       {
        "t": "code",
        "marks": 6,
-       "q": "Check a sign-in against a list of accounts.",
+       "q": "Ask the user for a line of usernames, a line of passwords in the same order, then one username and one password to check. Display unknown user when the username is not listed, wrong password when the password does not match, or access granted.",
        "brief": [
-        "The user types in four lines: usernames separated by single spaces, then passwords separated by single spaces in the same order, then one username and one password to check.",
-        "If that username is not in the list - matched exactly, with capitals counting - print exactly: unknown user",
-        "If it is listed but its password is not matched exactly, capitals included, print exactly wrong password; otherwise print exactly access granted."
+        "Both lines are separated by single spaces, and matching is exact, with capitals counting.",
+        "One line only is printed."
        ],
        "starter": "# a username and a password to check\n",
        "tests": [
@@ -725,11 +710,10 @@
       {
        "t": "code",
        "marks": 6,
-       "q": "Allow three attempts at a passcode, then lock the account.",
+       "q": "Ask the user for the correct passcode and then one attempt at a time. Display wrong passcode for each miss and access granted as soon as one matches, then account locked if a third attempt has missed too.",
        "brief": [
-        "The user types in the correct passcode on the first line, then one attempt on each line after it.",
-        "As soon as an attempt matches exactly, capitals included, print exactly access granted and read no more.",
-        "Print exactly wrong passcode for each miss, and if a third attempt misses print exactly account locked and read no more."
+        "Matching is exact, with capitals counting.",
+        "No more than three attempts are read, and nothing is read after a match."
        ],
        "starter": "# three attempts, no more\n",
        "tests": [
@@ -835,12 +819,11 @@
       {
        "t": "code",
        "marks": 7,
-       "q": "Validate a username, then an age, then print: registered <username> <age>",
+       "q": "Keep asking the user for a username until one is 5 to 12 characters of letters and digits only, then for an age until one is 11 to 19. Display registered [username] [age] at the end.",
        "brief": [
-        "The user types in usernames, one on each line, until one is 5 to 12 characters and made only of letters and digits.",
-        "Reject each wrong one with exactly username must be 5 to 12 characters, or, if the length is fine, exactly username must be letters and digits only.",
-        "Then they type in ages, one on each line, until one is 11 to 19: reject with exactly age must be a whole number, or exactly age must be 11 to 19.",
-        "Finally print exactly registered, then the accepted username, then the accepted age, separated by single spaces."
+        "Reject a username with exactly username must be 5 to 12 characters, or, when the length is fine, exactly username must be letters and digits only.",
+        "Reject an age with exactly age must be a whole number, or exactly age must be 11 to 19.",
+        "Separate the three values on the last line with single spaces."
        ],
        "starter": "# each rule its own message, checked in order\n",
        "tests": [
@@ -929,12 +912,10 @@
       {
        "t": "code",
        "marks": 8,
-       "q": "Keep stock-taking even when a line of data is wrong.",
+       "q": "Keep asking the user for item,quantity lines until one is exactly done. Display added [the item name] for each good line, then accepted: [how many were added] and total: [their quantities added up] on the last two lines.",
        "brief": [
-        "The user types in item,quantity lines, one on each line, until a line that is exactly done. Spaces around either field are ignored.",
-        "Check each line in this order and print exactly bad line if it has not got exactly one comma, exactly bad quantity if the quantity is not all digits, exactly out of range if it is outside 1 to 99.",
-        "Otherwise print exactly added, a space, then the item name. A wrong line must never stop the run.",
-        "At done print exactly accepted: a space and how many were added, then exactly total: a space and their quantities added up."
+        "Spaces around either field are ignored, and a wrong line must never stop the run.",
+        "Check in this order and print exactly bad line when there is not exactly one comma, bad quantity when the quantity is not all digits, and out of range when it is outside 1 to 99."
        ],
        "starter": "# report a bad line and carry on to the next one\n",
        "tests": [

@@ -14,7 +14,7 @@
    "id": "pr-l06-q1",
    "station": 0,
    "marks": 2,
-   "q": "Print a word's length, then its first and last characters.",
+   "q": "Ask the user for one word. Display [length], then [first character], then [last character], one on each line.",
    "teach": {
     "say": "len() counts the characters. The first one sits at position 0, so the last one is at len() - 1, which is also written as -1.",
     "code": [
@@ -28,9 +28,7 @@
     ]
    },
    "brief": [
-    "The user types in one word.",
-    "Print its length, then its first character, then its last.",
-    "One on each line."
+    "The user types in one word."
    ],
    "hint": "pystring",
    "starter": "# A length, a first character and a last character\n",
@@ -86,7 +84,7 @@
    "id": "pr-l06-q2",
    "station": 0,
    "marks": 3,
-   "q": "Print the character at a typed position, if there is one.",
+   "q": "Ask the user for a word and then a position counting from 0. Display [character at that position], or no such position when the word is too short to have one.",
    "teach": {
     "say": "A word of length n has positions 0 to n - 1, so test the position against len() before you use it.",
     "code": [
@@ -99,9 +97,7 @@
     ]
    },
    "brief": [
-    "The user types in two lines: one word, then a position counting from 0.",
-    "Print the character at that position.",
-    "If the word has no such position, print exactly: no such position"
+    "The user types in two lines: one word, then a position counting from 0."
    ],
    "hint": "pystring",
    "starter": "# Print the character at that position, if it exists\n",
@@ -163,7 +159,7 @@
    "id": "pr-l06-q3",
    "station": 1,
    "marks": 3,
-   "q": "Print the first three characters of a word.",
+   "q": "Ask the user for one word. Display [first three characters] and nothing else, or too short when the word has fewer than three characters.",
    "teach": {
     "say": "In a slice w[a:b] the start is included and the end is not, so w[0:2] gives two characters.",
     "code": [
@@ -175,9 +171,7 @@
     ]
    },
    "brief": [
-    "The user types in one word.",
-    "Print its first three characters and nothing else.",
-    "If it has fewer than three characters, print exactly: too short"
+    "The user types in one word."
    ],
    "hint": "pystring",
    "starter": "# The first three characters, or too short\n",
@@ -234,7 +228,7 @@
    "id": "pr-l06-q4",
    "station": 1,
    "marks": 3,
-   "q": "Print a line of text without its first and last characters.",
+   "q": "Ask the user for a line of text. Display [the text without its first and last characters], or nothing inside when it has fewer than three characters.",
    "teach": {
     "say": "A slice can measure the string with len(), so s[1:len(s)] drops the first character and keeps everything else.",
     "code": [
@@ -246,9 +240,7 @@
     ]
    },
    "brief": [
-    "The user types in one line of text.",
-    "Print it with its first and last characters removed.",
-    "If it has fewer than three characters, print exactly: nothing inside"
+    "The user types in one line of text."
    ],
    "hint": "pystring",
    "starter": "# Drop one character from each end\n",
@@ -305,7 +297,7 @@
    "id": "pr-l06-q5",
    "station": 2,
    "marks": 4,
-   "q": "Compare two words ignoring capitals, and order them if they differ.",
+   "q": "Ask the user for two words. Ignoring capitals, display match when they are the same word, or different and then [the word that comes first alphabetically] on the next line, exactly as it was typed.",
    "teach": {
     "say": "A capital is not the same character as a small letter, so put both strings in the same case before you compare them.",
     "code": [
@@ -318,9 +310,7 @@
     ]
    },
    "brief": [
-    "The user types in two words, one on each line.",
-    "If they are the same word once capitals are ignored, print exactly: match",
-    "Otherwise print exactly different, then the word that comes first alphabetically, exactly as it was typed. Ignore capitals when deciding which comes first."
+    "The user types in two words, one on each line."
    ],
    "hint": "pystring",
    "starter": "# Same word? If not, which one comes first?\n",
@@ -384,7 +374,7 @@
    "id": "pr-l06-q6",
    "station": 2,
    "marks": 4,
-   "q": "Count the capital letters in a line of text.",
+   "q": "Ask the user for a line of text. Count its capital letters and display [how many] and nothing else.",
    "teach": {
     "say": "A for loop over a string hands you one character at a time. A character is a capital when it is different from its own lower-case version.",
     "code": [
@@ -398,8 +388,7 @@
     ]
    },
    "brief": [
-    "The user types in one line of text.",
-    "Print only how many of its characters are capital letters."
+    "The user types in one line of text."
    ],
    "hint": "pystring",
    "starter": "# Count the capitals\n",
@@ -456,7 +445,7 @@
    "id": "pr-l06-q7",
    "station": 3,
    "marks": 4,
-   "q": "Say whether a word is in the text, and at its start.",
+   "q": "Ask the user for a line of text and then a word to look for. Display missing when the word is not in the text. Otherwise display found, then at the start on the next line when the text begins with the word, or inside when it does not.",
    "teach": {
     "say": "word in text is True when the word appears anywhere inside the text. It cannot say where, so a slice from position 0 answers that part.",
     "code": [
@@ -470,9 +459,7 @@
     ]
    },
    "brief": [
-    "The user types in two lines: a line of text, then the word to look for.",
-    "If the word is not in the text, print exactly: missing",
-    "Otherwise print exactly found, then exactly at the start when the text begins with the word, or exactly inside when it does not."
+    "The user types in two lines: a line of text, then the word to look for."
    ],
    "hint": "pystring",
    "starter": "# Is the word there, and does the text begin with it?\n",
@@ -548,7 +535,7 @@
    "id": "pr-l06-q8",
    "station": 3,
    "marks": 4,
-   "q": "Print where a word starts inside a line of text.",
+   "q": "Ask the user for a line of text and then a word to look for. Display [the position where the word starts], counting from 0, or not found when the word is not there.",
    "teach": {
     "say": "find() gives the position of the first match, or -1 when there is no match at all. -1 is not a position, so test for it.",
     "code": [
@@ -562,9 +549,7 @@
     ]
    },
    "brief": [
-    "The user types in two lines: a line of text, then the word to look for.",
-    "Print the position where the word starts, counting from 0.",
-    "If the word is not in the text, print exactly: not found"
+    "The user types in two lines: a line of text, then the word to look for."
    ],
    "hint": "pystring",
    "starter": "# Where does the word start?\n",
@@ -626,7 +611,7 @@
    "id": "pr-l06-q9",
    "station": 4,
    "marks": 4,
-   "q": "Print the letter after the one given, with z becoming a.",
+   "q": "Ask the user for one lower-case letter. Display [the next letter of the alphabet], with a coming after z.",
    "teach": {
     "say": "ord() gives a character's code and chr() turns a code back into a character. ord('a') is 97 and ord('z') is 122.",
     "code": [
@@ -639,9 +624,7 @@
     ]
    },
    "brief": [
-    "The user types in one lower-case letter.",
-    "Print the letter that comes next in the alphabet.",
-    "After z comes a."
+    "The user types in one lower-case letter."
    ],
    "hint": "pystring",
    "starter": "# The next letter, wrapping z round to a\n",
@@ -689,7 +672,7 @@
    "id": "pr-l06-q10",
    "station": 4,
    "marks": 5,
-   "q": "Separate the letters and the digits of a line of text.",
+   "q": "Ask the user for a line of text. Build a string of its letters and a string of its digits, each in the order they appear. Display [letters], then [digits] on the next line, with none in place of either one that is empty.",
    "teach": {
     "say": "Adding to a string makes a longer one: keep = keep + ch. The codes are 48 to 57 for digits, 65 to 90 for capitals and 97 to 122 for small letters.",
     "code": [
@@ -703,9 +686,7 @@
     ]
    },
    "brief": [
-    "The user types in one line of text.",
-    "Build a string of its letters and a string of its digits, each in the order they appear.",
-    "Print the letters, then the digits. For either one that is empty, print exactly: none"
+    "The user types in one line of text."
    ],
    "hint": "pystring",
    "starter": "# Build two strings, one character at a time\n",
@@ -767,7 +748,7 @@
    "id": "pr-l06-q11",
    "station": 5,
    "marks": 6,
-   "q": "Reverse a word and say whether it reads the same both ways.",
+   "q": "Ask the user for one word. Build it backwards one character at a time, not with a slice or reversed(). Display [the reversed word], then on the next line palindrome when it reads the same both ways once capitals are ignored, or not a palindrome when it does not.",
    "teach": {
     "say": "Adding a character in front of a string is not the same as adding it on the end, and only one of those builds a string backwards.",
     "code": [
@@ -781,9 +762,7 @@
     ]
    },
    "brief": [
-    "The user types in one word.",
-    "Build it backwards one character at a time, not with a slice or reversed().",
-    "Print the reversed word, then exactly palindrome when it reads the same both ways once capitals are ignored, or exactly not a palindrome when it does not."
+    "The user types in one word."
    ],
    "hint": "pystring",
    "starter": "# Build the word backwards, then compare\n",

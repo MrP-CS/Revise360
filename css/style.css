@@ -169,7 +169,7 @@ h2.group{font-size:16px;color:var(--soft);font-weight:600;margin:26px 0 12px}
    its box, so a bigger box is bigger text: at the old 420px height a 14-unit
    caption landed at about 10px on screen. */
 .box.huge{max-width:1680px;width:97vw;max-height:96vh;display:flex;flex-direction:column}
-.box.huge .mbody{flex:1;min-height:0;padding:14px 16px 18px;overflow:auto}
+.box.huge .mbody{flex:1;min-height:0;padding:14px 16px 18px;overflow:auto;display:flex;flex-direction:column}
 /* A four-option question does not want to be 1680px wide, so the content
    sits in a column; a board gets more room because it has more to show. */
 .box.huge.plain{max-width:1040px}
@@ -178,7 +178,7 @@ h2.group{font-size:16px;color:var(--soft);font-weight:600;margin:26px 0 12px}
 .box.huge.hasboard{max-width:1240px}
 .taskwrap{max-width:880px;margin:0 auto}
 .taskwrap.board{max-width:1320px}
-.vwrap{display:flex;gap:16px;height:100%;min-height:0}
+.vwrap{display:flex;gap:16px;height:100%;min-height:0;flex:1 1 auto}
 .vstage{flex:1 1 auto;min-width:0;background:#0e1628;border-radius:14px;border:1px solid var(--line);display:flex}
 .vstage.model{background:radial-gradient(circle,#243656,#0e1628)}
 .vhint{margin:0;font-size:14px;color:var(--soft);line-height:1.4}
@@ -319,7 +319,8 @@ textarea{width:100%;background:#0f1930;color:var(--fg);border:1px solid var(--li
   color:var(--soft);min-height:76px;max-height:26vh;overflow:auto}
 .pyout .err{color:#ff9a9a}
 .pyout .muted{color:#4a5a78}
-.pybar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:10px 0}
+.pybar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:10px 0}
+.pyfixed .pybar .btn{padding:9px 14px;font-size:15px}
 .pybar .grow{flex:1}
 .pystate{font-size:14px;color:var(--soft)}
 .pytests{display:flex;flex-direction:column;gap:8px;margin-top:10px}
@@ -339,6 +340,15 @@ textarea{width:100%;background:#0f1930;color:var(--fg);border:1px solid var(--li
   font:15px/1.5 Consolas,monospace;color:#cfe3ff;white-space:pre-wrap}
 .pyegout{display:flex;gap:8px;align-items:baseline;margin:0;font-size:15px;color:var(--soft)}
 .pyegout span{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--info)}
+/* The code question's left column: reading scrolls, doing does not */
+.pyside{flex:0 0 420px;overflow:hidden;gap:0}
+.pyscroll{flex:1 1 auto;min-height:0;overflow:auto;padding-right:8px}
+.pyfixed{flex:0 0 auto;padding-top:10px;margin-top:6px;border-top:2px solid var(--line);
+  display:flex;flex-direction:column;gap:8px;max-height:58%}
+.pyfixed .pytests{flex:1 1 auto;min-height:0;overflow:auto;margin-top:0}
+.pyfixed .pybar{margin:0}
+@media (max-width:1100px){.pyside{flex:0 0 auto;overflow:visible}.pyscroll{overflow:visible}
+  .pyfixed{max-height:none}.pyfixed .pytests{overflow:visible}}
 /* One real run of the program: what is typed in, and what must be printed */
 .pyrun{border:2px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 12px;background:#101c31}
 .pyrunh{margin:0 0 8px;font-size:13px;letter-spacing:.07em;text-transform:uppercase;color:var(--edge)}

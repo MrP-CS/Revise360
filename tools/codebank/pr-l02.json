@@ -14,7 +14,7 @@
    "id": "pr-l02-q1",
    "station": 0,
    "marks": 2,
-   "q": "Print the total of two numbers the user types in, then their difference.",
+   "q": "Ask the user for two whole numbers. Work out their total, then take the second from the first. Display [total], then [difference] on the next line.",
    "teach": {
     "say": "+ adds, - subtracts and * multiplies. They work on numbers, so cast each input with int() first.",
     "code": [
@@ -27,8 +27,6 @@
     ]
    },
    "brief": [
-    "The user types in two whole numbers, one on each line.",
-    "Print their total, then the first take away the second.",
     "The difference may be negative."
    ],
    "hint": "pyarith",
@@ -74,7 +72,7 @@
    "id": "pr-l02-q2",
    "station": 0,
    "marks": 3,
-   "q": "Print the cost of some pencils, then half of one price.",
+   "q": "Ask the user for the price of one pencil in pence and how many are bought. Display [total cost of the pencils], then [half of one price] on the next line.",
    "teach": {
     "say": "* multiplies and / divides. In Python / always gives a real number, so the answer keeps a decimal part even when it divides exactly.",
     "code": [
@@ -89,8 +87,6 @@
     ]
    },
    "brief": [
-    "The user types in two lines: the price of one pencil in pence, then how many are bought.",
-    "Print the total cost of all the pencils.",
     "Then print half the price of one pencil, worked out with / ."
    ],
    "hint": "pyarith",
@@ -136,7 +132,7 @@
    "id": "pr-l02-q3",
    "station": 1,
    "marks": 3,
-   "q": "Print how many full crates the books fill, and the leftovers.",
+   "q": "Ask the user for the number of books and how many one crate holds. Display [full crates], then [books left over] on the next line.",
    "teach": {
     "say": "// divides and throws the fraction away, so it says how many whole lots fit. % gives what is left over. OCR calls them DIV and MOD.",
     "code": [
@@ -149,9 +145,7 @@
     ]
    },
    "brief": [
-    "The user types in two lines: the number of books, then how many one crate holds.",
-    "Print how many full crates can be packed.",
-    "Then print how many books are left over."
+    "The user types in two lines: the number of books, then how many one crate holds."
    ],
    "hint": "pyarith",
    "starter": "# Books, then crate size. Full crates, then books left over.\n",
@@ -196,7 +190,7 @@
    "id": "pr-l02-q4",
    "station": 1,
    "marks": 3,
-   "q": "Print how many stickers each of 8 pupils gets, and the leftovers.",
+   "q": "Ask the user for the total number of stickers. There are always 8 pupils, fixed in your program. Display [stickers each], then [stickers left over] on the next line.",
    "teach": {
     "say": "The number you divide by can be a fixed one. // gives the whole lots and % the remainder, so between them nothing is lost.",
     "code": [
@@ -210,9 +204,7 @@
     ]
    },
    "brief": [
-    "The user types in one whole number: the total number of stickers.",
-    "There are always 8 pupils, so the 8 is fixed in your program, not typed in.",
-    "Print how many stickers each pupil gets, then how many are left over."
+    "There are always 8 pupils, so the 8 is fixed in your program, not typed in."
    ],
    "hint": "pyarith",
    "starter": "# Stickers in. Each pupil's share, then the leftovers.\n",
@@ -254,7 +246,7 @@
    "id": "pr-l02-q5",
    "station": 2,
    "marks": 3,
-   "q": "Print the area and the volume for a side length the user types in.",
+   "q": "Ask the user for the length of a side. Work out the side to the power 2, then the side to the power 3. Display [area], then [volume] on the next line.",
    "teach": {
     "say": "** raises a number to a power, so 2 ** 5 is 2 multiplied by itself five times. Do not use ^ , which means something else in Python.",
     "code": [
@@ -267,9 +259,7 @@
     ]
    },
    "brief": [
-    "The user types in one whole number: the length of a side.",
-    "Print the side to the power 2, the area of the square.",
-    "Then print the side to the power 3, the volume of the cube."
+    "The user types in one whole number: the length of a side."
    ],
    "hint": "pypower",
    "starter": "# One side length in. Power 2, then power 3.\n",
@@ -311,7 +301,7 @@
    "id": "pr-l02-q6",
    "station": 2,
    "marks": 3,
-   "q": "Print the length of one side of a square, from an area the user types in.",
+   "q": "Ask the user for the area of a square, which may have a decimal point. Work out its square root and display [length of one side] and nothing else.",
    "teach": {
     "say": "The power 0.5 is the square root, and it always gives a real number. Use float() for an input that may have a decimal point.",
     "code": [
@@ -322,8 +312,7 @@
     ]
    },
    "brief": [
-    "The user types in the area, which may have a decimal point.",
-    "Print only the length of one side."
+    "The user types in the area, which may have a decimal point."
    ],
    "hint": "pyarith",
    "starter": "# Area in, side length out\n",
@@ -362,7 +351,7 @@
    "id": "pr-l02-q7",
    "station": 3,
    "marks": 3,
-   "q": "Round an amount to a whole number, then to 2 decimal places.",
+   "q": "Ask the user for an amount, which may have a decimal point. Use round() to display [amount to the nearest whole number], then [amount to 2 decimal places] on the next line.",
    "teach": {
     "say": "round(x) rounds to a whole number, and a second number says how many decimal places to keep. An exact half goes to the nearest even number.",
     "code": [
@@ -375,9 +364,7 @@
     ]
    },
    "brief": [
-    "The user types in one amount, which may have a decimal point.",
-    "Print it rounded to the nearest whole number, using round().",
-    "Then print it rounded to 2 decimal places."
+    "The user types in one amount, which may have a decimal point."
    ],
    "hint": "pyround",
    "starter": "# One amount in. Nearest whole number, then 2 decimal places.\n",
@@ -419,7 +406,7 @@
    "id": "pr-l02-q8",
    "station": 3,
    "marks": 3,
-   "q": "Print the average of three scores, rounded to 1 decimal place.",
+   "q": "Ask the user for three whole numbers. Work out their average, rounded to 1 decimal place, and display [average] and nothing else.",
    "teach": {
     "say": "Dividing often leaves a long string of decimals. round(x, 1) keeps one decimal place and tidies the rest away.",
     "code": [
@@ -432,8 +419,7 @@
     ]
    },
    "brief": [
-    "The user types in three whole numbers, one on each line.",
-    "Print only their average, rounded to 1 decimal place."
+    "The user types in three whole numbers, one on each line."
    ],
    "hint": "pyround",
    "starter": "# Three scores in, one rounded average out\n",
@@ -478,7 +464,7 @@
    "id": "pr-l02-q9",
    "station": 4,
    "marks": 3,
-   "q": "Print two random dice rolls from 1 to 6.",
+   "q": "Ask the user for a seed to start the random number generator. Display [first roll], then [second roll] on the next line, each a random whole number from 1 to 6.",
    "teach": {
     "say": "random.randint(1, 6) picks a whole number from 1 to 6, and both ends can come up. Seeding first fixes the numbers, so the same seed always gives the same ones.",
     "code": [
@@ -491,8 +477,7 @@
     ]
    },
    "brief": [
-    "Start with import random, then random.seed(int(input())). The user types in one whole number, the seed.",
-    "Print two random whole numbers from 1 to 6, one on each line."
+    "Start with import random, then random.seed(int(input())). The user types in one whole number, the seed."
    ],
    "hint": "pyoutput",
    "starter": "# Import random, seed it from the input, then roll twice\n",
@@ -534,7 +519,7 @@
    "id": "pr-l02-q10",
    "station": 4,
    "marks": 4,
-   "q": "Print three random numbers from 10 to 20, then their total.",
+   "q": "Ask the user for a seed to start the random number generator. Display three random whole numbers from 10 to 20, one on each line, then [total].",
    "teach": {
     "say": "Store each random number in a variable as you make it, then add the variables. Calling randint again gives a new number, never the same one back.",
     "code": [
@@ -545,9 +530,7 @@
     ]
    },
    "brief": [
-    "Start with import random, then random.seed(int(input())). The user types in one whole number, the seed.",
-    "Print three random whole numbers from 10 to 20, one on each line.",
-    "Then print their total."
+    "Start with import random, then random.seed(int(input())). The user types in one whole number, the seed."
    ],
    "hint": "pyoutput",
    "starter": "# Import random, seed it from the input, then three numbers and a total\n",
@@ -595,7 +578,7 @@
    "id": "pr-l02-q11",
    "station": 5,
    "marks": 4,
-   "q": "Print the takings in pence, then in whole pounds and pence.",
+   "q": "Ask the user for how many rolls were sold and the price of one in pence. Display [total pence], then [whole pounds in that total], then [pence left over], one on each line.",
    "teach": {
     "say": "Work the total out once and store it, then use // and % on that variable instead of working it out again.",
     "code": [
@@ -609,9 +592,7 @@
     ]
    },
    "brief": [
-    "The user types in two lines: how many rolls were sold, then the price of one in pence.",
-    "Print the total takings in pence.",
-    "Then print the whole pounds in that total, then the pence left over."
+    "The user types in two lines: how many rolls were sold, then the price of one in pence."
    ],
    "hint": "pyarith",
    "starter": "# Rolls and price in. Total pence, whole pounds, pence left over.\n",

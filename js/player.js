@@ -423,12 +423,19 @@
       <div class="pyrunrow"><span>typed in</span><code>${given.length ? given.map(esc).join("\n") : "nothing"}</code></div>
       <div class="pyrunrow out"><span>prints</span><code>${shows.map(esc).join("\n")}</code></div>
     </div>`;
+    /* The left column is split in two on purpose. The task, the example and the
+     * worked example scroll; the buttons, the test results and the feedback do
+     * not. Checking an answer should never mean scrolling to find the button,
+     * and reading why a test failed should never mean scrolling back up. */
     shell(head, "#50dc96", `<div class="vwrap">
-        <div class="vside" style="flex:0 0 400px">
+        <div class="vside pyside">
+         <div class="pyscroll">
           ${qn}<p class="q" style="font-size:19px">${esc(task.q)}</p>
+          ${runEg}
           ${teach}
           ${brief ? `<ul class="pybrief">${brief}</ul>` : ""}
-          ${runEg}
+         </div>
+         <div class="pyfixed">
           <div class="pybar">
             <button class="btn ghost" id="pyrun">▶ Run</button>
             <button class="btn" id="pycheck">Check my answer</button>
@@ -440,6 +447,7 @@
           <div class="pytests" id="pytests"></div>
           <div class="fb" id="fb" aria-live="polite"></div>
           <div class="mrow" id="mrow"></div>
+         </div>
         </div>
         <div class="vstage" style="flex-direction:column;background:none;border:0;gap:10px">
           <div id="pyed" style="flex:1;min-height:0"></div>

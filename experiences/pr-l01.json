@@ -20,9 +20,8 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Print one line of text: Oak Lane tuck shop.",
+       "q": "Display the message Oak Lane tuck shop.",
        "brief": [
-        "Print exactly: Oak Lane tuck shop",
         "Nothing is typed in by the user, and nothing else is printed."
        ],
        "starter": "# Print one line\n",
@@ -50,10 +49,9 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Print Oak Lane tuck shop, then the item the user types in.",
+       "q": "Ask the user for an item. Display two lines, the first Oak Lane tuck shop and the second [item].",
        "brief": [
-        "Print exactly: Oak Lane tuck shop",
-        "Then ask the user for an item, and print what they type on the next line."
+        "Print exactly: Oak Lane tuck shop"
        ],
        "starter": "# Print the shop name, then the item\n",
        "tests": [
@@ -106,11 +104,9 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Print a three line receipt around the item the user types in.",
+       "q": "Ask the user for an item. Display three lines: ===== Tuck shop ===== at the top, then [item], then Thank you.",
        "brief": [
-        "Print exactly: ===== Tuck shop =====",
-        "Then ask the user for an item, and print what they type.",
-        "Then print exactly: Thank you"
+        "Print exactly: ===== Tuck shop ====="
        ],
        "starter": "# Three lines of output\n",
        "tests": [
@@ -175,11 +171,9 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Print the customer's name, then a price kept in a constant.",
+       "q": "Ask the user for the customer's name. Keep the fixed price 90 in a constant called PRICE. Display [name], then [price] on the next line.",
        "brief": [
-        "Ask the user for the customer's name.",
-        "Put the whole number 90 in a constant called PRICE. It is fixed in the program, not typed in.",
-        "Print the name, then the value in PRICE on the next line."
+        "Put the whole number 90 in a constant called PRICE. It is fixed in the program, not typed in."
        ],
        "starter": "# Make the constant, then print the name and the price\n",
        "tests": [
@@ -230,11 +224,9 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Show a noticeboard changing from Closed to a new message the user types in.",
+       "q": "Put the text Closed in a variable and display it. Then ask for a new message, store it in that same variable and display [message].",
        "brief": [
-        "Put the text Closed in a variable and print it.",
-        "Ask the user for a new message and store it in that same variable.",
-        "Print the variable again."
+        "Put the text Closed in a variable and print it."
        ],
        "starter": "# One variable, printed twice, with a new value in between\n",
        "tests": [
@@ -296,10 +288,9 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Print a word the user types in on three separate lines.",
+       "q": "Ask the user for one word. Display [word] three times, one on each of three lines.",
        "brief": [
-        "Ask the user for one word.",
-        "Print that word three times, one on each line."
+        "Ask the user for one word."
        ],
        "starter": "# Read the word, then print it three times\n",
        "tests": [
@@ -355,9 +346,8 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Print a bus stop and a time the user types in, with the time first.",
+       "q": "Ask the user for a stop name and then a time. Display two lines, the first [time] and the second [stop name].",
        "brief": [
-        "The user types in two lines: the stop name, then the time.",
         "Print the time, then the stop name on the next line."
        ],
        "starter": "# Two inputs in, two lines out, the time first\n",
@@ -423,9 +413,8 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Join a first and last name into one line of text.",
+       "q": "Ask the user for a first name and a last name. Join them and display one line in the form [first name] [last name] is a member.",
        "brief": [
-        "The user types in two lines: a first name, then a last name.",
         "Print one line: the first name, a space, the last name, a space, then exactly: is a member"
        ],
        "starter": "# Read two names, join them, print one line\n",
@@ -477,11 +466,9 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Print a name the user types in, then the number 3, then 0.25, then True.",
+       "q": "Ask the user for a name. Display four lines: [name], then the integer 3, then the real number 0.25, then the Boolean True.",
        "brief": [
-        "Ask the user for a name, and print it.",
-        "Then print the integer 3, then the real number 0.25.",
-        "Then print the Boolean True. Four lines in all."
+        "Ask the user for a name, and print it."
        ],
        "starter": "# A string, an integer, a real number and a Boolean, one per line\n",
        "tests": [
@@ -551,10 +538,9 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Print the total of two whole numbers the user types in.",
+       "q": "Ask the user for two whole numbers. Add the second to the first and display [total] and nothing else.",
        "brief": [
-        "The user types in two whole numbers, one on each line.",
-        "Print only their total."
+        "The user types in two whole numbers, one on each line."
        ],
        "starter": "# Two whole numbers in, one total out\n",
        "tests": [
@@ -605,11 +591,9 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Print a fine amount inside a sentence, as a real number.",
+       "q": "Ask the user for an amount, which may have a decimal point. Display one line in the form Fine due: [amount] pounds, with the amount as a real number, so 3 shows as 3.0.",
        "brief": [
-        "The user types in one amount, which may have a decimal point.",
-        "Print one line like this: Fine due: 2.5 pounds",
-        "The amount must print as a real number, so 3 prints as 3.0."
+        "The user types in one amount, which may have a decimal point."
        ],
        "starter": "# Read the amount, make it a real number, print the sentence\n",
        "tests": [
@@ -667,11 +651,9 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Print a competitor's name and house, then their next race number.",
+       "q": "Ask the user for a name and then the whole number of races already run. Display [name] of Elm, then [races plus 1] on the next line.",
        "brief": [
-        "The user types in two lines: a name, then a whole number of races already run.",
-        "Print the name, a space, then exactly: of Elm",
-        "Then print the number of races with 1 added."
+        "The user types in two lines: a name, then a whole number of races already run."
        ],
        "starter": "# A name and a number in. Name of Elm, then one more race.\n",
        "tests": [

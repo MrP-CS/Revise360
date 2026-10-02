@@ -14,7 +14,7 @@
    "id": "pr-l05-q1",
    "station": 0,
    "marks": 2,
-   "q": "Count down to 1 with a while loop, then print go.",
+   "q": "Ask the user for a whole number. Using a while loop, display every number from it down to 1, one on each line, and then display go.",
    "teach": {
     "say": "A while loop keeps going while its condition is true. Change the variable the condition uses inside the loop, or it never stops.",
     "code": [
@@ -30,9 +30,7 @@
     ]
    },
    "brief": [
-    "The user types in one whole number.",
-    "Print every number from it down to 1, one on each line.",
-    "Then print exactly: go"
+    "The user types in one whole number."
    ],
    "hint": "pywhile",
    "starter": "# Count down to 1, then print go\n",
@@ -89,7 +87,7 @@
    "id": "pr-l05-q2",
    "station": 0,
    "marks": 3,
-   "q": "Count how many doublings it takes to reach a target.",
+   "q": "Ask the user for a target. Start a size at 1 in your program, then keep doubling it until it is equal to or greater than the target. Display [number of doublings].",
    "teach": {
     "say": "You cannot know in advance how many turns this takes, so a while loop is the right choice. Keep a separate variable to count the turns.",
     "code": [
@@ -103,9 +101,7 @@
     ]
    },
    "brief": [
-    "The user types in one whole number: the target.",
-    "Start a size at 1 in your program, then keep doubling it until it is equal to or greater than the target.",
-    "Print only how many doublings that took."
+    "The user types in one whole number: the target."
    ],
    "hint": "pywhile",
    "starter": "# Double until the target is reached, then print the number of doublings\n",
@@ -153,7 +149,7 @@
    "id": "pr-l05-q3",
    "station": 1,
    "marks": 3,
-   "q": "Keep asking until a number from 1 to 20 is typed.",
+   "q": "Keep asking the user for a whole number until one is from 1 to 20. Display out of range for each number refused, then locker [accepted number].",
    "teach": {
     "say": "Read once before the loop. Then, while the value is still wrong, warn and read again.",
     "code": [
@@ -164,9 +160,7 @@
     ]
    },
    "brief": [
-    "The user types in whole numbers, one on each line, until one of them is from 1 to 20.",
-    "For each number that is refused, print exactly: out of range",
-    "Then print the word locker, a space, and the accepted number."
+    "The user types in whole numbers, one on each line, until one of them is from 1 to 20."
    ],
    "hint": "pyvalidate",
    "starter": "# Keep asking until the number is from 1 to 20\n",
@@ -220,7 +214,7 @@
    "id": "pr-l05-q4",
    "station": 1,
    "marks": 3,
-   "q": "Keep asking until the answer is yes or no.",
+   "q": "Keep asking the user for a word until it is yes or no. Display please answer yes or no for each other word, then accepted [word].",
    "teach": {
     "say": "Two answers are allowed, so the condition has to rule out both of them with and.",
     "code": [
@@ -230,9 +224,7 @@
     ]
    },
    "brief": [
-    "The user types in words, one on each line, until one of them is yes or no.",
-    "For each other word, print exactly: please answer yes or no",
-    "Then print the word accepted, a space, and the word that was accepted."
+    "The user types in words, one on each line, until one of them is yes or no."
    ],
    "hint": "pyvalidate",
    "starter": "# Keep asking until the answer is yes or no\n",
@@ -286,7 +278,7 @@
    "id": "pr-l05-q5",
    "station": 2,
    "marks": 3,
-   "q": "Total the numbers typed in, stopping at -1.",
+   "q": "Ask the user for whole numbers until they type -1, which is the signal to stop and is not added. Display [total] and nothing else.",
    "teach": {
     "say": "Read one value before the loop. Use it inside the loop, then read the next one at the bottom of the loop.",
     "code": [
@@ -297,9 +289,7 @@
     ]
    },
    "brief": [
-    "The user types in whole numbers, one on each line, until they type -1.",
-    "The -1 is the signal to stop, not a number to add.",
-    "Print only the total."
+    "The user types in whole numbers, one on each line, until they type -1."
    ],
    "hint": "pywhile",
    "starter": "# Add up the numbers until -1 stops you\n",
@@ -355,7 +345,7 @@
    "id": "pr-l05-q6",
    "station": 2,
    "marks": 4,
-   "q": "Print the highest number typed in before the word end.",
+   "q": "Ask the user for whole numbers until they type the word end. Display [highest number typed], or no readings when end is the very first line.",
    "teach": {
     "say": "A sentinel can be a word, so read the line as text and only turn it into a number once you know it is not the sentinel.",
     "code": [
@@ -366,9 +356,7 @@
     ]
    },
    "brief": [
-    "The user types in whole numbers, one on each line, then the word end to finish.",
-    "Print only the highest number that was typed in.",
-    "If end is the very first line, print exactly: no readings"
+    "The user types in whole numbers, one on each line, then the word end to finish."
    ],
    "hint": "pywhile",
    "starter": "# Read numbers until the word end, then print the highest\n",
@@ -423,7 +411,7 @@
    "id": "pr-l05-q7",
    "station": 3,
    "marks": 4,
-   "q": "Count the numbers typed before -1, and how many reach 40.",
+   "q": "Ask the user for whole numbers until they type -1. Display [how many numbers were typed], not counting the -1, then [how many of them were 40 or more] on the next line.",
    "teach": {
     "say": "Each thing you count needs its own variable, set to 0 before the loop and changed only when it should be.",
     "code": [
@@ -437,9 +425,7 @@
     ]
    },
    "brief": [
-    "The user types in whole numbers, one on each line, until they type -1.",
-    "Print how many numbers were typed in, not counting the -1.",
-    "Then print how many of them were 40 or more."
+    "The user types in whole numbers, one on each line, until they type -1."
    ],
    "hint": "pywhile",
    "starter": "# Count the numbers, and count how many reach 40\n",
@@ -499,7 +485,7 @@
    "id": "pr-l05-q8",
    "station": 3,
    "marks": 4,
-   "q": "Add up the digits of a whole number with a while loop.",
+   "q": "Ask the user for a whole number that is 0 or more. Add up its digits without turning the number into text, and display [total of the digits].",
    "teach": {
     "say": "n % 10 gives the last digit and n // 10 takes it off. // keeps the answer whole, so the number can reach 0 exactly.",
     "code": [
@@ -513,9 +499,7 @@
     ]
    },
    "brief": [
-    "The user types in one whole number that is 0 or more.",
-    "Add up its digits without turning the number into text.",
-    "Print only the total of the digits."
+    "The user types in one whole number that is 0 or more."
    ],
    "hint": "pywhile",
    "starter": "# Take the last digit off the number each time round\n",
@@ -572,7 +556,7 @@
    "id": "pr-l05-q9",
    "station": 4,
    "marks": 5,
-   "q": "Read the parcels the user types in with a for loop, then check the limits with a while loop.",
+   "q": "Ask the user for how many parcels there are, which may be 0, then read that many weights with a for loop. Then use a while loop to ask for limits until one is not below the heaviest parcel. Display limit too low for each limit refused, then ok.",
    "teach": {
     "say": "Use for when you know how many turns there will be, and while when it depends on what the user types next. One program can use both.",
     "code": [
@@ -583,8 +567,6 @@
     ]
    },
    "brief": [
-    "The user types in how many parcels there are, which may be 0, then that many whole number weights, one on each line.",
-    "Then the user types in limits, one at a time, until one of them is not below the heaviest parcel. For each limit that is refused, print exactly: limit too low",
     "With no parcels at all, the first limit is accepted. When a limit is accepted, print exactly: ok"
    ],
    "hint": "constructs",
@@ -662,7 +644,7 @@
    "id": "pr-l05-q10",
    "station": 5,
    "marks": 5,
-   "q": "Give a higher or lower hint until 37 is guessed.",
+   "q": "The secret number is 37, fixed in your program. Keep asking the user for a guess, displaying higher when the guess is below 37 and lower when it is above, then correct when 37 is guessed.",
    "teach": {
     "say": "The condition tests only whether the guess is right. An if inside the loop chooses which hint to give.",
     "code": [
@@ -673,9 +655,7 @@
     ]
    },
    "brief": [
-    "The secret number is 37, fixed in your program and not typed in.",
-    "The user types in guesses, one at a time, until 37 is guessed. For each wrong guess print exactly higher when the guess is below 37, or exactly lower when it is above.",
-    "When 37 is guessed, print exactly: correct"
+    "The secret number is 37, fixed in your program and not typed in."
    ],
    "hint": "pyvalidate",
    "starter": "# The secret is 37. Hint at every wrong guess.\n",
@@ -733,7 +713,7 @@
    "id": "pr-l05-q11",
    "station": 5,
    "marks": 6,
-   "q": "Print how many swims there were, the total and the longest.",
+   "q": "Ask the user for whole numbers of minutes until they type the word close. Display [how many swims], then [total minutes], then [longest swim], one on each line, or just no swimmers when close is the very first line.",
    "teach": {
     "say": "A best-so-far is set up before the loop and replaced only when a bigger value turns up.",
     "code": [
@@ -747,9 +727,7 @@
     ]
    },
    "brief": [
-    "The user types in whole numbers of minutes, one on each line, then the word close to finish.",
-    "Print how many swims there were, then the total of the minutes, then the longest swim.",
-    "If close is the very first line, print only: no swimmers"
+    "The user types in whole numbers of minutes, one on each line, then the word close to finish."
    ],
    "hint": "pywhile",
    "starter": "# Count the swims, total the minutes, remember the longest\n",

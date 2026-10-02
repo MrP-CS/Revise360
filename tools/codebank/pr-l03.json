@@ -14,7 +14,7 @@
    "id": "pr-l03-q1",
    "station": 0,
    "marks": 2,
-   "q": "Print whether the first number is greater than the second.",
+   "q": "Ask the user for two whole numbers. Display True when the first is greater than the second, and False when it is not.",
    "teach": {
     "say": "A comparison is already True or False, so it can be printed straight out. Equal values are not greater.",
     "code": [
@@ -27,8 +27,7 @@
     ]
    },
    "brief": [
-    "The user types in two whole numbers, one on each line.",
-    "Print True if the first is greater than the second, otherwise False."
+    "The user types in two whole numbers, one on each line."
    ],
    "hint": "pyif",
    "starter": "# Read two numbers and print True or False\n",
@@ -70,7 +69,7 @@
    "id": "pr-l03-q2",
    "station": 0,
    "marks": 2,
-   "q": "Print three comparisons of two numbers, one on each line.",
+   "q": "Ask the user for two whole numbers. Display True or False for three tests, one on each line: whether they are equal, whether the first is less than the second, then whether the first is greater than or equal to the second.",
    "teach": {
     "say": "== asks whether two values are the same; = stores a value. The rest are < > <= >= and != for not equal.",
     "code": [
@@ -85,9 +84,7 @@
     ]
    },
    "brief": [
-    "The user types in two whole numbers, one on each line.",
-    "Print whether they are equal, then whether the first is less than the second.",
-    "Then print whether the first is greater than or equal to the second. Three lines in all."
+    "The user types in two whole numbers, one on each line."
    ],
    "hint": "pyif",
    "starter": "# Read two numbers, then print the three comparisons\n",
@@ -135,7 +132,7 @@
    "id": "pr-l03-q3",
    "station": 1,
    "marks": 2,
-   "q": "Print recorded, and a frost warning if it is below zero.",
+   "q": "Ask the user for the temperature in Celsius. Display the line recorded, and then the line frost warning only when the temperature is below 0.",
    "teach": {
     "say": "An if runs the indented lines only when its question is True. When it is False nothing happens, and no else is needed.",
     "code": [
@@ -148,9 +145,7 @@
     ]
    },
    "brief": [
-    "The user types in one whole number: the temperature in Celsius.",
-    "Always print exactly: recorded",
-    "Then, only when the temperature is below 0, print exactly: frost warning"
+    "The user types in one whole number: the temperature in Celsius."
    ],
    "hint": "pyif",
    "starter": "# Read the temperature, print recorded, add a warning if needed\n",
@@ -190,7 +185,7 @@
    "id": "pr-l03-q4",
    "station": 1,
    "marks": 3,
-   "q": "Say whether a lift load of up to 450 kg may go.",
+   "q": "Ask the user for the load in kilograms. Display safe to go when the load is 450 or less, and too heavy when it is more.",
    "teach": {
     "say": "else catches every case the if did not. Mind the boundary: 7 or less means <= 7, so 7 itself still counts.",
     "code": [
@@ -205,9 +200,7 @@
     ]
    },
    "brief": [
-    "The user types in one whole number: the load in kilograms.",
-    "If the load is 450 or less, print exactly: safe to go",
-    "Otherwise print exactly: too heavy"
+    "The user types in one whole number: the load in kilograms."
    ],
    "hint": "pyif",
    "starter": "# Read the load and decide whether the lift may go\n",
@@ -255,7 +248,7 @@
    "id": "pr-l03-q5",
    "station": 2,
    "marks": 3,
-   "q": "Say whether a reservoir level is rising, falling or steady.",
+   "q": "Ask the user for the change in level since last week. Display one word: rising above 0, falling below 0, or steady at exactly 0.",
    "teach": {
     "say": "elif is only asked when the if above it was False, so two branches can never both run. Here neither was True and nothing printed at all, which is what else is for.",
     "code": [
@@ -267,9 +260,7 @@
     ]
    },
    "brief": [
-    "The user types in one whole number: the change in level since last week.",
-    "Above 0: print exactly rising. Below 0: print exactly falling.",
-    "Exactly 0: print exactly steady. One word only, whichever it is."
+    "The user types in one whole number: the change in level since last week."
    ],
    "hint": "pyif",
    "starter": "# Read the change in level and describe it\n",
@@ -317,7 +308,7 @@
    "id": "pr-l03-q6",
    "station": 2,
    "marks": 4,
-   "q": "Print which postage band a package falls in.",
+   "q": "Ask the user for the weight in grams. Display one line: letter for 100 or less, large letter for over 100 up to 750, or parcel for anything heavier.",
    "teach": {
     "say": "Each elif only needs the top of its own band, because everything smaller was already dealt with above it.",
     "code": [
@@ -331,9 +322,7 @@
     ]
    },
    "brief": [
-    "The user types in one whole number: the weight in grams.",
-    "100 or less: print exactly letter. Over 100 but 750 or less: print exactly large letter.",
-    "Heavier than 750: print exactly parcel. One line only, whichever it is."
+    "The user types in one whole number: the weight in grams."
    ],
    "hint": "pyif",
    "starter": "# Read the weight in grams and print its band\n",
@@ -390,7 +379,7 @@
    "id": "pr-l03-q7",
    "station": 3,
    "marks": 4,
-   "q": "Say whether a drone may fly, from wind speed and visibility.",
+   "q": "Ask the user for the wind speed in mph and then the visibility in km. Display clear to fly when the wind is under 20 and the visibility is 5 or more, otherwise grounded.",
    "teach": {
     "say": "and is True only when both sides are True. Each side needs its own complete comparison.",
     "code": [
@@ -403,9 +392,7 @@
     ]
    },
    "brief": [
-    "The user types in two lines: the wind speed in mph, then the visibility in km.",
-    "If the wind is under 20 and the visibility is 5 or more, print exactly: clear to fly",
-    "Otherwise print exactly: grounded"
+    "The user types in two lines: the wind speed in mph, then the visibility in km."
    ],
    "hint": "pyif",
    "starter": "# Read the wind speed and the visibility, then decide\n",
@@ -467,7 +454,7 @@
    "id": "pr-l03-q8",
    "station": 3,
    "marks": 4,
-   "q": "Decide whether the door opens, from a staff number and the alarm.",
+   "q": "Ask the user for a staff number and then the word yes or no for the alarm. Display open when the number is 7 or 9 and the alarm is not yes, otherwise locked.",
    "teach": {
     "say": "or is True when either side is True, and each side needs its own comparison. not flips True and False over.",
     "code": [
@@ -481,9 +468,7 @@
     ]
    },
    "brief": [
-    "The user types in two lines: a staff number, then the word yes or no for the alarm.",
-    "If the number is 7 or 9 and the alarm is not yes, print exactly: open",
-    "Otherwise print exactly: locked"
+    "The user types in two lines: a staff number, then the word yes or no for the alarm."
    ],
    "hint": "pyif",
    "starter": "# Read the staff number and the alarm, then decide\n",
@@ -545,7 +530,7 @@
    "id": "pr-l03-q9",
    "station": 4,
    "marks": 4,
-   "q": "Announce the fixture from the weather and the number of players.",
+   "q": "Ask the user for the word dry or wet and then the number of available players. If dry, display match on for 11 or more players, otherwise friendly instead. If wet, display indoor training for 11 or more, otherwise cancelled.",
    "teach": {
     "say": "An if inside another if is only reached when the outer one was True, so the outer question decides which pair of answers you choose between.",
     "code": [
@@ -560,9 +545,7 @@
     ]
    },
    "brief": [
-    "The user types in two lines: the word dry or wet, then a whole number of available players.",
-    "If dry: print exactly match on for 11 or more players, otherwise exactly friendly instead.",
-    "If wet: print exactly indoor training for 11 or more players, otherwise exactly cancelled."
+    "The user types in two lines: the word dry or wet, then a whole number of available players."
    ],
    "hint": "pyif",
    "starter": "# Read the weather and the players, then announce the decision\n",
@@ -624,7 +607,7 @@
    "id": "pr-l03-q10",
    "station": 4,
    "marks": 5,
-   "q": "Say where a delivery goes, from its box size and weight.",
+   "q": "Ask the user for the word small or large and then the weight in kilograms. For a small box display locker A for 5 kg or less, otherwise counter. For a large box display counter for 25 kg or less, otherwise too heavy.",
    "teach": {
     "say": "Comparing words uses == and the spelling has to match exactly. The size chooses which pair of answers you are picking from, and the weight chooses which of the pair.",
     "code": [
@@ -638,9 +621,7 @@
     ]
    },
    "brief": [
-    "The user types in two lines: the word small or large, then a whole number of kilograms.",
-    "Small box: print exactly locker A for 5 kg or less, otherwise exactly counter.",
-    "Large box: print exactly counter for 25 kg or less, otherwise exactly too heavy."
+    "The user types in two lines: the word small or large, then a whole number of kilograms."
    ],
    "hint": "pyif",
    "starter": "# Read the box size and the weight, then print where it goes\n",
@@ -712,7 +693,7 @@
    "id": "pr-l03-q11",
    "station": 5,
    "marks": 6,
-   "q": "Work out the medal from three judges' scores.",
+   "q": "Ask the user for three judges' scores out of 10. Display gold when all three are 9 or more, otherwise silver for a total of 24 or more, otherwise bronze for a total of 18 or more, otherwise no medal.",
    "teach": {
     "say": "Both of these are True, so the order of your branches decides the answer: the first True branch wins and the rest are skipped.",
     "code": [
@@ -727,8 +708,7 @@
    },
    "brief": [
     "The user types in three whole numbers out of 10, one on each line.",
-    "Check these rules in order and print only the words from the first rule that matches.",
-    "All three 9 or more: gold. Total 24 or more: silver. Total 18 or more: bronze. Otherwise: no medal."
+    "Check these rules in order and print only the words from the first rule that matches."
    ],
    "hint": "pyif",
    "starter": "# Read three scores and work out the medal\n",
