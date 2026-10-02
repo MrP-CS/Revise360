@@ -77,7 +77,7 @@
    "id": "pr-l05-q2",
    "station": 0,
    "marks": 2,
-   "q": "Ask the user for a whole number. Using a while loop, display every number from it down to 1, one on each line, and then display go on the last line.",
+   "q": "Ask the user for a whole number. Using a while loop, display every number from it down to 1, one on each line. Then display go on the last line.",
    "teach": {
     "say": "A line written after the loop is not indented, so it runs once, when the loop has finished.",
     "code": [
@@ -138,7 +138,7 @@
    "id": "pr-l05-q3",
    "station": 0,
    "marks": 3,
-   "q": "Ask the user for two whole numbers, the second never smaller than the first. Using a while loop, display every number from the first to the second, both included, one on each line.",
+   "q": "Ask the user for a whole number. Then ask for a second whole number, which is never smaller than the first. Using a while loop, display every number from the first to the second, both included, one on each line.",
    "teach": {
     "say": "A while loop can count upwards too: set the variable to the first value, test it against the last one, and add 1 at the bottom of the loop.",
     "code": [
@@ -215,7 +215,7 @@
    "id": "pr-l05-q4",
    "station": 1,
    "marks": 2,
-   "q": "Keep asking the user for a whole number until one of them is 10 or more. Display too small for each number refused, then [the accepted number] on a line of its own.",
+   "q": "Keep asking the user for a whole number until one of them is 10 or more. Display too small for each number refused. Then display [the accepted number] on a line of its own.",
    "teach": {
     "say": "Read once before the loop. Then, while the value is still wrong, warn and read again.",
     "code": [
@@ -286,7 +286,7 @@
    "id": "pr-l05-q5",
    "station": 1,
    "marks": 3,
-   "q": "Keep asking the user for a whole number until one of them is from 1 to 20. Display out of range for each number refused, then [the accepted number] on a line of its own.",
+   "q": "Keep asking the user for a whole number until one of them is from 1 to 20. Display out of range for each number refused. Then display [the accepted number] on a line of its own.",
    "teach": {
     "say": "Two ways of being wrong are joined with or, because either one of them means asking again.",
     "code": [
@@ -357,7 +357,7 @@
    "id": "pr-l05-q6",
    "station": 1,
    "marks": 3,
-   "q": "Keep asking the user for a word until it is yes or no. Display please answer yes or no for each other word, then [the accepted word] on a line of its own.",
+   "q": "Keep asking the user for a word until it is yes or no. Display please answer yes or no for each other word. Then display [the accepted word] on a line of its own.",
    "teach": {
     "say": "Two answers are allowed, so the loop has to keep going while the word is neither of them - which means and, not or.",
     "code": [
@@ -430,7 +430,7 @@
    "id": "pr-l05-q7",
    "station": 2,
    "marks": 2,
-   "q": "Ask the user for whole numbers until they type -1, which is the signal to stop. Display each number as it is typed, one on each line, and do not display the -1.",
+   "q": "Ask the user for whole numbers until they type -1, which is the signal to stop. Display each number as it is typed, one on each line. Do not display the -1.",
    "teach": {
     "say": "Read one value before the loop. Use it inside the loop, then read the next one at the bottom of the body, so the condition is tested again before that value is used.",
     "code": [
@@ -493,7 +493,7 @@
    "id": "pr-l05-q8",
    "station": 2,
    "marks": 3,
-   "q": "Ask the user for whole numbers until they type -1, which is the signal to stop and is not added. Display [the total] and nothing else.",
+   "q": "Ask the user for whole numbers until they type -1, which is the signal to stop and is not added. Add the numbers up. Display [the total] and nothing else.",
    "teach": {
     "say": "The total is set to 0 before the loop, added to inside it, and printed once the loop has finished.",
     "code": [
@@ -566,7 +566,7 @@
    "id": "pr-l05-q9",
    "station": 2,
    "marks": 3,
-   "q": "Ask the user for whole numbers until they type the word end, which is the signal to stop. Display [the total] and nothing else.",
+   "q": "Ask the user for whole numbers until they type the word end, which is the signal to stop. Add the numbers up. Display [the total] and nothing else.",
    "teach": {
     "say": "A sentinel can be a word, so read the line as text and only turn it into a number once you know it is not the sentinel.",
     "code": [
@@ -635,7 +635,7 @@
    "id": "pr-l05-q10",
    "station": 3,
    "marks": 2,
-   "q": "Ask the user for whole numbers until they type -1. Display [how many numbers were typed], not counting the -1, and nothing else.",
+   "q": "Ask the user for whole numbers until they type -1. Count how many numbers were typed. Display [the count] and nothing else.",
    "teach": {
     "say": "A counter is a total that goes up by 1, so it is set to 0 before the loop and raised once on every turn.",
     "code": [
@@ -708,7 +708,7 @@
    "id": "pr-l05-q11",
    "station": 3,
    "marks": 3,
-   "q": "Ask the user for whole numbers until they type -1. Display [how many of them are 40 or more] and nothing else.",
+   "q": "Ask the user for whole numbers until they type -1. Count how many of them are 40 or more. Display [the count] and nothing else.",
    "teach": {
     "say": "An if inside the loop decides which turns count, so the counter goes up on some turns and not on others.",
     "code": [
@@ -782,7 +782,7 @@
    "id": "pr-l05-q12",
    "station": 3,
    "marks": 3,
-   "q": "Ask the user for whole numbers until they type -1. Display [how many numbers were typed], not counting the -1, then [how many of them are 40 or more] on the next line.",
+   "q": "Ask the user for whole numbers until they type -1. Count how many numbers were typed, not counting the -1. Count how many of them are 40 or more. Display [how many were typed]. Then display [how many reach 40] on the next line.",
    "teach": {
     "say": "Each thing you are tracking needs its own variable, set up before the loop and changed only where it should be.",
     "code": [
@@ -863,7 +863,7 @@
    "id": "pr-l05-q13",
    "station": 4,
    "marks": 2,
-   "q": "Ask the user for a whole number. Start a value at 1 in your program, then keep doubling it until it is equal to or greater than that number. Display [how many doublings were needed] and nothing else.",
+   "q": "Ask the user for a whole number. Start a value at 1 in your program. Keep doubling that value until it is equal to or greater than the number typed in. Count how many doublings that took. Display [how many doublings were needed] and nothing else.",
    "teach": {
     "say": "When you cannot know how many turns are needed before you start, a while loop is the right choice and a for loop is not. Count the turns in a variable of your own.",
     "code": [
@@ -928,7 +928,7 @@
    "id": "pr-l05-q14",
    "station": 4,
    "marks": 3,
-   "q": "Ask the user for how many numbers there are, then for that many whole numbers, using a for loop. Display [the largest of them] and nothing else.",
+   "q": "Ask the user for how many numbers there are. Then ask for that many whole numbers, using a for loop. Work out the largest of them. Display [the largest] and nothing else.",
    "teach": {
     "say": "When the count is known before the loop starts, a for loop is the right choice. A best so far starts at the first value, because a guess of 0 could never be beaten by a negative one.",
     "code": [
@@ -944,7 +944,8 @@
     ]
    },
    "brief": [
-    "The user types in a whole number saying how many follow, which is never less than 1, then that many whole numbers, one on each line.",
+    "The user types in a whole number saying how many follow, which is never less than 1.",
+    "Then come that many whole numbers, one on each line.",
     "The numbers may be negative."
    ],
    "hint": "constructs",
@@ -1005,7 +1006,7 @@
    "id": "pr-l05-q15",
    "station": 4,
    "marks": 4,
-   "q": "Ask the user for how many numbers there are, then for that many whole numbers, using a for loop. Then, using a while loop, keep asking for one more number at a time until one of them is equal to or greater than the largest number read. Display too small for each number refused, then ok on a line of its own.",
+   "q": "Ask the user for how many numbers there are. Then ask for that many whole numbers, using a for loop. Work out the largest of them. Then, using a while loop, keep asking for one more number at a time until one of them is equal to or greater than that largest number. Display too small for each number refused. Then display ok on a line of its own.",
    "teach": {
     "say": "One program can use both kinds of loop: for while the count is known, while for the part that depends on what the user types next.",
     "code": [
@@ -1023,7 +1024,8 @@
     ]
    },
    "brief": [
-    "The user types in a whole number saying how many follow, which may be 0, then that many whole numbers, one on each line, none of them below 0.",
+    "The user types in a whole number saying how many follow, which may be 0.",
+    "Then come that many whole numbers, one on each line, none of them below 0.",
     "With no numbers at all the first number tested is accepted.",
     "Print exactly: too small, and then ok"
    ],
@@ -1102,7 +1104,7 @@
    "id": "pr-l05-q16",
    "station": 5,
    "marks": 3,
-   "q": "Ask the user for a whole number that is 0 or more. Add up its digits without turning the number into text, and display [the total of the digits] and nothing else.",
+   "q": "Ask the user for a whole number that is 0 or more. Add up its digits without turning the number into text. Display [the total of the digits] and nothing else.",
    "teach": {
     "say": "n % 10 gives the last digit and n // 10 takes it off. // keeps the answer whole, so the number reaches 0 exactly.",
     "code": [
@@ -1174,7 +1176,7 @@
    "id": "pr-l05-q17",
    "station": 5,
    "marks": 4,
-   "q": "The whole number 37 is fixed in your program. Keep asking the user for a whole number until they type 37. Display higher when the number typed is below 37, lower when it is above, and correct when it is 37.",
+   "q": "The whole number 37 is fixed in your program. Keep asking the user for a whole number until they type 37. Display higher when the number typed is below 37. Display lower when it is above 37. Display correct when it is 37.",
    "teach": {
     "say": "The condition tests only whether the value is the one wanted. An if inside the loop chooses which of the two messages to print.",
     "code": [
@@ -1253,7 +1255,7 @@
    "id": "pr-l05-q18",
    "station": 5,
    "marks": 4,
-   "q": "Ask the user for whole numbers until they type the word end. Display [how many numbers were typed], then [the total] on the next line, then [the largest] on the next line, or none on a line of its own when end is the very first line.",
+   "q": "Ask the user for whole numbers until they type the word end. Count how many numbers were typed. Add them up. Work out the largest of them. Display [how many were typed]. Then display [the total] on the next line. Then display [the largest] on the next line. Display none on a line of its own instead when end is the very first line.",
    "teach": {
     "say": "One pass can keep a count, a running total and a best so far at the same time, as long as each has its own variable set up before the loop.",
     "code": [

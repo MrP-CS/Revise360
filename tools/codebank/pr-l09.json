@@ -14,7 +14,7 @@
    "id": "pr-l09-q1",
    "station": 0,
    "marks": 2,
-   "q": "Ask the user for a word. Write a procedure called finish that prints done, then display [word] and call finish, so the word comes first.",
+   "q": "Ask the user for a word. Write a procedure called finish that prints done. Display [word]. Then call finish, so the word is printed first.",
    "teach": {
     "say": "def gives a block of code a name. The indented lines do nothing until a line calls that name.",
     "code": [
@@ -27,7 +27,9 @@
     ]
    },
    "brief": [
-    "finish takes nothing, prints that one line, and is called once.",
+    "finish takes nothing.",
+    "It prints that one line.",
+    "Call it once.",
     "Print exactly: done"
    ],
    "hint": "pyfunc",
@@ -70,9 +72,10 @@
    "id": "pr-l09-q2",
    "station": 0,
    "marks": 3,
-   "q": "Ask the user for two words, one on each line. Write a procedure called rule that prints =====, then display the rule, the first word, the rule, the second word and the rule, one on each line.",
+   "q": "Ask the user for two words, one on each line. Write a procedure called rule that prints =====. Call rule, so the first line is the rule. Then display the first word on the next line. Then call rule again. Then display the second word on the next line. Then call rule a third time.",
    "brief": [
-    "Five lines in all, printed by one procedure called three times.",
+    "Five lines in all.",
+    "The same procedure prints all three rules.",
     "Print exactly: ====="
    ],
    "hint": "pyfunc",
@@ -127,7 +130,7 @@
    "id": "pr-l09-q3",
    "station": 1,
    "marks": 3,
-   "q": "Ask the user for two words, one on each line. Write a procedure called show that takes one word and prints value [that word]. Call it once for each word, in the order they were typed.",
+   "q": "Ask the user for two words, one on each line. Write a procedure called show that takes one word and prints value [that word]. Call show once for each word, in the order they were typed.",
    "teach": {
     "say": "A parameter is a name in the brackets of the def line. Whatever you pass in when you call it arrives under that name.",
     "code": [
@@ -140,7 +143,8 @@
     ]
    },
    "brief": [
-    "Two lines only, and nothing but those two lines is printed.",
+    "Two lines only.",
+    "Nothing but those two lines is printed.",
     "One space after the word value."
    ],
    "hint": "pyfunc",
@@ -186,10 +190,11 @@
    "id": "pr-l09-q4",
    "station": 1,
    "marks": 3,
-   "q": "Ask the user for two whole numbers, one on each line. Write a procedure called product that takes both and prints total [the first times the second]. Call it, and print nothing else.",
+   "q": "Ask the user for two whole numbers, one on each line. Write a procedure called product that takes both numbers and prints total [the first times the second]. Call product once.",
    "brief": [
-    "Two whole numbers, one on each line, and the procedure does the printing.",
-    "One space after the word total."
+    "The procedure does the printing, not the main program.",
+    "One space after the word total.",
+    "One line of output."
    ],
    "hint": "pyfunc",
    "starter": "# product takes two parameters\n",
@@ -241,7 +246,7 @@
    "id": "pr-l09-q5",
    "station": 2,
    "marks": 3,
-   "q": "Ask the user for a whole number. Write a function called double that returns twice its parameter and prints nothing at all, then display [what double hands back] and nothing else.",
+   "q": "Ask the user for a whole number. Write a function called double that returns twice its parameter. Display [what double hands back] and nothing else.",
    "teach": {
     "say": "return hands a value back to the line that called the function, so the caller is the one that prints or stores it.",
     "code": [
@@ -254,6 +259,7 @@
     ]
    },
    "brief": [
+    "double prints nothing at all.",
     "The number may be negative or zero.",
     "One line of output, holding the number and nothing else."
    ],
@@ -303,9 +309,10 @@
    "id": "pr-l09-q6",
    "station": 2,
    "marks": 3,
-   "q": "Ask the user for a whole number. Write a function called sign that returns the word up for a number above 0, down for a number below 0 and flat for 0, and display [what sign hands back] and nothing else.",
+   "q": "Ask the user for a whole number. Write a function called sign that returns the word up for a number above 0. Make sign return down for a number below 0. Make sign return flat for 0. Display [what sign hands back] and nothing else.",
    "brief": [
-    "sign holds no print of its own, and one line only is printed.",
+    "sign holds no print of its own.",
+    "One line only is printed.",
     "Print exactly one of: up, down, flat"
    ],
    "hint": "pyfunc",
@@ -363,9 +370,11 @@
    "id": "pr-l09-q7",
    "station": 2,
    "marks": 4,
-   "q": "Ask the user for two whole numbers, one on each line. Write a function called area that returns the first times the second and holds no print at all. Store what it returns and display one line, area [that value].",
+   "q": "Ask the user for two whole numbers, one on each line. Write a function called area that returns the first times the second. Store what area returns in a variable. Display one line in the form area [that value].",
    "brief": [
-    "A single space goes after the word area, and nothing else is printed.",
+    "area holds no print at all.",
+    "A single space goes after the word area.",
+    "Nothing else is printed.",
     "Store the returned value in a variable before you print it."
    ],
    "hint": "pyfunc",
@@ -418,7 +427,7 @@
    "id": "pr-l09-q8",
    "station": 3,
    "marks": 4,
-   "q": "Ask the user for a word and then a whole number. Write a function called tag that returns high for a number of 40 or more and low below 40, and a procedure called show that displays [word]: [that returned word]. Use both, and print one line only.",
+   "q": "Ask the user for a word. Then ask for a whole number. Write a function called tag that returns high for a number of 40 or more. Make tag return low for a number below 40. Write a procedure called show that displays [word]: [the word tag handed back]. Use both subprograms to print that one line.",
    "teach": {
     "say": "A function ends with return and hands a value back; a procedure only prints. So a function's answer can be passed straight into a procedure.",
     "code": [
@@ -433,7 +442,9 @@
    "brief": [
     "A colon and one space separate the word from the answer.",
     "Exactly 40 counts as high.",
-    "tag holds no print and show holds no return."
+    "tag holds no print.",
+    "show holds no return.",
+    "One line only is printed."
    ],
    "hint": "pyfunc",
    "starter": "# tag returns a word, show prints the line\n",
@@ -485,11 +496,13 @@
    "id": "pr-l09-q9",
    "station": 3,
    "marks": 4,
-   "q": "Ask the user for two whole numbers, one on each line. Write a function called larger that returns the bigger of its two parameters and a procedure called announce that displays largest [that value]. Use both, and print one line only.",
+   "q": "Ask the user for two whole numbers, one on each line. Write a function called larger that returns the bigger of its two parameters. Write a procedure called announce that displays largest [that value]. Use both subprograms to print that one line.",
    "brief": [
     "When the two numbers are equal, that value is the larger.",
-    "larger holds no print of its own and announce holds no return.",
-    "One space after the word largest."
+    "larger holds no print of its own.",
+    "announce holds no return.",
+    "One space after the word largest.",
+    "One line only is printed."
    ],
    "hint": "pyfunc",
    "starter": "# larger works it out, announce prints it\n",
@@ -551,7 +564,7 @@
    "id": "pr-l09-q10",
    "station": 4,
    "marks": 4,
-   "q": "Ask the user for a whole number and keep it in a variable called total. Write a procedure called boost with a local total of its own, set to 99, that prints it. Call boost, then display [the main total] on the next line.",
+   "q": "Ask the user for a whole number. Keep it in a variable called total. Write a procedure called boost with a local total of its own, set to 99. Make boost print its own total. Call boost. Then display [the main total] on the next line.",
    "teach": {
     "say": "A name given a value inside a subprogram is local and vanishes when the subprogram ends. To change a variable from outside instead, the subprogram must say global first.",
     "code": [
@@ -565,7 +578,8 @@
     ]
    },
    "brief": [
-    "Two lines, the 99 first.",
+    "Two lines of output.",
+    "The 99 comes first.",
     "The main program's total must not change."
    ],
    "hint": "pyfunc",
@@ -618,9 +632,10 @@
    "id": "pr-l09-q11",
    "station": 4,
    "marks": 4,
-   "q": "Ask the user for a whole number and keep it in a variable called count. Write a procedure called bump that takes one whole number, adds 1 to its parameter and prints the result. Call bump with count, then display [count] on the next line.",
+   "q": "Ask the user for a whole number. Keep it in a variable called count. Write a procedure called bump that takes one whole number. Make bump add 1 to its parameter. Make bump print the result. Call bump with count. Then display [count] on the next line.",
    "brief": [
-    "Two lines, the raised number first.",
+    "Two lines of output.",
+    "The raised number comes first.",
     "count itself must not change, because a parameter is a copy."
    ],
    "hint": "pyfunc",
@@ -673,9 +688,11 @@
    "id": "pr-l09-q12",
    "station": 4,
    "marks": 4,
-   "q": "Write a procedure called up that adds 3 to a shared total and a procedure called down that adds 1 to the same total. Ask the user for a whole number of turns, call up and then down once per turn, and display [the final total] and nothing else.",
+   "q": "Write a procedure called up that adds 3 to a shared total. Write a procedure called down that adds 1 to the same total. Ask the user for a whole number of turns. Call up and then down once per turn. Display [the final total] and nothing else.",
    "brief": [
-    "The total starts at 0, fixed in the program and shared by the whole program, not typed in.",
+    "The total starts at 0.",
+    "That 0 is fixed in the program, not typed in.",
+    "The total is shared by the whole program.",
     "A number of 0 turns means neither procedure is called."
    ],
    "hint": "pyfunc",
@@ -724,7 +741,7 @@
    "id": "pr-l09-q13",
    "station": 5,
    "marks": 5,
-   "q": "Write a function called score that returns 3 for a number of 2 or more, 1 for a number of 1 and 0 for 0. Ask the user for how many numbers there are, then for that many whole numbers, one on each line. Display [everything score hands back, added up] and nothing else.",
+   "q": "Write a function called score that returns 3 for a number of 2 or more. Make score return 1 for a number of 1. Make score return 0 for 0. Ask the user for how many numbers there are. Then ask for that many whole numbers, one on each line. Add up everything score hands back. Display [that total] and nothing else.",
    "teach": {
     "say": "What a function returns is an ordinary value, so it can be added up. Called inside a loop, it runs once per turn.",
     "code": [
@@ -737,8 +754,10 @@
     ]
    },
    "brief": [
-    "Call score once per number, inside the loop, and print only that one total.",
-    "The numbers are never below 0, and there may be none at all."
+    "Call score once per number, inside the loop.",
+    "Print only that one total.",
+    "The numbers are never below 0.",
+    "There may be none at all."
    ],
    "hint": "pyfunc",
    "starter": "# one call per number, added to a running total\n",
@@ -805,10 +824,13 @@
    "id": "pr-l09-q14",
    "station": 5,
    "marks": 6,
-   "q": "Ask the user for two whole numbers, one on each line. Write a function called base that returns the first number times 25, a function called whole that calls base and returns what base gave times the second number, plus 10, and a procedure called report that calls whole and displays first [the first number], then whole [that value] on the next line.",
+   "q": "Ask the user for two whole numbers, one on each line. Write a function called base that returns the first number times 25. Write a function called whole that calls base. Make whole return what base gave times the second number, plus 10. Write a procedure called report that calls whole. Make report display first [the first number]. Then make report display whole [that value] on the next line.",
    "brief": [
-    "Two lines of output, in that order, with one space after each word.",
-    "base and whole both return and never print; report prints and never returns.",
+    "Two lines of output, in that order.",
+    "One space after each word.",
+    "base returns and never prints.",
+    "whole returns and never prints.",
+    "report prints and never returns.",
     "The 10 is added after the multiplying, not before."
    ],
    "hint": "pyfunc",

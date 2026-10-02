@@ -14,7 +14,7 @@
    "id": "pr-l11-q1",
    "station": 0,
    "marks": 3,
-   "q": "Ask the user for a line of whole numbers separated by single spaces, then the number to find. Step through the list position by position, without .index(), and display [the position it is at], counting from 0, or not found.",
+   "q": "Ask the user for a line of whole numbers separated by single spaces. Then ask for the number to find. Step through the list position by position, without .index(). Display [the position it is at], counting from 0. Display not found instead when the number is not in the list.",
    "teach": {
     "say": "A linear search walks the list by position, so it can report where a value is, not just whether it is there.",
     "code": [
@@ -98,7 +98,7 @@
    "id": "pr-l11-q2",
    "station": 0,
    "marks": 3,
-   "q": "Ask the user for a line of whole numbers separated by single spaces, then the number to find. Step through the whole list yourself, without .count(), and display [how many times that number appears] and nothing else.",
+   "q": "Ask the user for a line of whole numbers separated by single spaces. Then ask for the number to find. Step through the whole list yourself, without .count(). Count how many times that number appears. Display [that count] and nothing else.",
    "brief": [
     "A number that is not in the list at all appears 0 times.",
     "One line of output, holding the count and nothing else."
@@ -169,9 +169,10 @@
    "id": "pr-l11-q3",
    "station": 0,
    "marks": 4,
-   "q": "Ask the user for a line of words, then a line of whole numbers in the same order, then one word to find. Search the words yourself, without .index(), and display [the number at the same position], or no match when the word is not there.",
+   "q": "Ask the user for a line of words. Then ask for a line of whole numbers in the same order. Then ask for one word to find. Search the words yourself, without .index(). Display [the number at the same position]. Display no match instead when the word is not there.",
    "brief": [
-    "Both lines are separated by single spaces, and one line only is printed.",
+    "Both lines are separated by single spaces.",
+    "One line only is printed.",
     "Print exactly: no match"
    ],
    "hint": "searches",
@@ -245,7 +246,7 @@
    "id": "pr-l11-q4",
    "station": 1,
    "marks": 4,
-   "q": "Ask the user for a line of whole numbers already in order and separated by single spaces, then the number to find. Find it with a binary search and display [its position], counting from 0, or not found.",
+   "q": "Ask the user for a line of whole numbers already in order and separated by single spaces. Then ask for the number to find. Find it with a binary search, without .index(). Display [its position], counting from 0. Display not found instead when the number is not in the list.",
    "teach": {
     "say": "A binary search keeps two markers, low and high, and looks at the middle between them. Each turn throws away the half the value cannot be in.",
     "code": [
@@ -338,9 +339,10 @@
    "id": "pr-l11-q5",
    "station": 1,
    "marks": 5,
-   "q": "Ask the user for a line of whole numbers already in order, then the number to find. Binary search it, counting every middle you compare, and display [its position] or not found, then checks: [that count] on the next line.",
+   "q": "Ask the user for a line of whole numbers already in order. Then ask for the number to find. Find it with a binary search. Count every middle you compare. Display [its position], counting from 0. Display not found instead when the number is not in the list. Then display checks: [that count] on the next line.",
    "brief": [
-    "The numbers are separated by single spaces, and the middle is mid = (low + high) // 2.",
+    "The numbers are separated by single spaces.",
+    "The middle is mid = (low + high) // 2.",
     "The matching middle counts as a check."
    ],
    "hint": "searches",
@@ -414,7 +416,7 @@
    "id": "pr-l11-q6",
    "station": 2,
    "marks": 5,
-   "q": "Ask the user for a line of whole numbers separated by single spaces. Sort them smallest first by swapping neighbouring pairs, writing the sort yourself rather than using sorted() or .sort(), and display [the sorted numbers] on one line.",
+   "q": "Ask the user for a line of whole numbers separated by single spaces. Sort them smallest first by swapping neighbouring pairs. Write the sort yourself rather than using sorted() or .sort(). Display [the sorted numbers] on one line.",
    "teach": {
     "say": "A bubble sort compares each neighbouring pair and swaps them when they are the wrong way round, over and over until nothing is left out of order.",
     "code": [
@@ -427,7 +429,8 @@
     ]
    },
    "brief": [
-    "One line, the values separated by single spaces, and nothing else."
+    "One line only, and nothing else.",
+    "Separate the values with single spaces."
    ],
    "hint": "bubblesort",
    "starter": "# a bubble sort of the numbers read in\n",
@@ -485,9 +488,10 @@
    "id": "pr-l11-q7",
    "station": 2,
    "marks": 6,
-   "q": "Ask the user for a line of whole numbers separated by single spaces. Sort them smallest first by swapping neighbouring pairs, stopping after a pass that makes no swaps, and display [the sorted numbers] on one line, then passes: [how many] on the next line.",
+   "q": "Ask the user for a line of whole numbers separated by single spaces. Sort them smallest first by swapping neighbouring pairs. Write the sort yourself rather than using sorted() or .sort(). Stop after a pass that makes no swaps. Count how many passes you make. Display [the sorted numbers] on one line. Then display passes: [how many] on the next line.",
    "brief": [
-    "Write the sort yourself, count the quiet last pass too, and separate the sorted values with single spaces."
+    "Count the quiet last pass too.",
+    "Separate the sorted values with single spaces."
    ],
    "hint": "bubblesort",
    "starter": "# the sorted numbers, then the pass count\n",
@@ -549,10 +553,12 @@
    "id": "pr-l11-q8",
    "station": 2,
    "marks": 6,
-   "q": "Ask the user for a line of whole numbers separated by single spaces. Sort them smallest first by swapping neighbouring pairs, writing the sort yourself, and display [the whole list] after each pass, one list per line, with single spaces between the values.",
+   "q": "Ask the user for a line of whole numbers separated by single spaces. Sort them smallest first by swapping neighbouring pairs. Write the sort yourself rather than using sorted() or .sort(). Display [the whole list] after each pass, one list per line.",
    "brief": [
     "Make exactly one pass fewer than there are values, however soon the list comes into order.",
-    "One line per pass, printed after that pass has finished, and nothing else."
+    "One line per pass, printed after that pass has finished.",
+    "Nothing else is printed.",
+    "Put single spaces between the values."
    ],
    "hint": "bubblesort",
    "starter": "# one line printed after every pass\n",
@@ -625,7 +631,7 @@
    "id": "pr-l11-q9",
    "station": 3,
    "marks": 6,
-   "q": "Ask the user for a line of whole numbers separated by single spaces. Sort them smallest first with an insertion sort of your own, moving each item back among the items before it, and display [the sorted numbers] on one line.",
+   "q": "Ask the user for a line of whole numbers separated by single spaces. Sort them smallest first with an insertion sort of your own, moving each item back among the items before it. Display [the sorted numbers] on one line.",
    "teach": {
     "say": "An insertion sort holds one value aside, copies the larger items before it one place to the right, then drops the held value into the gap it has made.",
     "code": [
@@ -638,7 +644,9 @@
     ]
    },
    "brief": [
-    "One line, the values separated by single spaces, and nothing else."
+    "Write the sort yourself rather than using sorted() or .sort().",
+    "One line only, and nothing else.",
+    "Separate the values with single spaces."
    ],
    "hint": "bubblesort",
    "starter": "# an insertion sort of the numbers read in\n",
@@ -696,9 +704,11 @@
    "id": "pr-l11-q10",
    "station": 3,
    "marks": 6,
-   "q": "Ask the user for a line of five words separated by single spaces. Insertion sort them into alphabetical order, writing the sort yourself, and display [the whole list] after each word from the second onwards, one list per line, with single spaces between the words.",
+   "q": "Ask the user for a line of five words separated by single spaces. Insertion sort them into alphabetical order. Write the sort yourself rather than using sorted() or .sort(). Display [the whole list] after each word from the second onwards, one list per line.",
    "brief": [
-    "Four lines in all, each printed once that word has been put down.",
+    "Four lines in all.",
+    "Each line is printed once that word has been put down.",
+    "Put single spaces between the words.",
     "All five words are in small letters, so comparing them with > is enough."
    ],
    "hint": "bubblesort",
@@ -769,7 +779,7 @@
    "id": "pr-l11-q11",
    "station": 4,
    "marks": 6,
-   "q": "Ask the user for two lines of whole numbers, each already in order and separated by single spaces. Merge them into one list by taking the smaller front value each time, writing the merge yourself, and display [the merged list] on one line.",
+   "q": "Ask the user for a line of whole numbers already in order and separated by single spaces. Then ask for a second line of whole numbers, also already in order. Merge the two into one list by taking the smaller front value each time. Write the merge yourself. Display [the merged list] on one line.",
    "teach": {
     "say": "A merge keeps a position marker in each list, compares the two fronts, takes the smaller and moves that marker on.",
     "code": [
@@ -783,7 +793,8 @@
     ]
    },
    "brief": [
-    "One line, the values separated by single spaces, and nothing else."
+    "One line only, and nothing else.",
+    "Separate the values with single spaces."
    ],
    "hint": "mergesort",
    "starter": "# two ordered lines in, one ordered list out\n",
@@ -845,10 +856,11 @@
    "id": "pr-l11-q12",
    "station": 4,
    "marks": 7,
-   "q": "Ask the user for a line of whole numbers separated by single spaces. Sort them smallest first by splitting the list in half, sorting each half the same way and merging the two, and display [the sorted numbers] on one line.",
+   "q": "Ask the user for a line of whole numbers separated by single spaces. Sort them smallest first by splitting the list in half, sorting each half the same way and merging the two. Write the sort yourself rather than using sorted() or .sort(). Display [the sorted numbers] on one line.",
    "brief": [
-    "Write it yourself, on one line, the values separated by single spaces.",
-    "A list of one value is already sorted, which is what stops the splitting."
+    "A list of one value is already sorted, which is what stops the splitting.",
+    "One line only, and nothing else.",
+    "Separate the values with single spaces."
    ],
    "hint": "mergesort",
    "starter": "# split, sort each half the same way, merge\n",
@@ -915,10 +927,12 @@
    "id": "pr-l11-q13",
    "station": 5,
    "marks": 8,
-   "q": "Ask the user for a line of whole numbers already in order, then the number to find. Count what a linear search compares and what a binary search compares, and display linear: [the first count], then binary: [the second count] on the next line.",
+   "q": "Ask the user for a line of whole numbers already in order. Then ask for the number to find. Count what a linear search compares. Count what a binary search compares. Display linear: [the first count]. Then display binary: [the second count] on the next line.",
    "brief": [
-    "The numbers are separated by single spaces, and the linear search starts at the front and stops as soon as it matches.",
-    "The binary search works the middle out as mid = (low + high) // 2, and the matching one counts in both."
+    "The numbers are separated by single spaces.",
+    "The linear search starts at the front and stops as soon as it matches.",
+    "The binary search works the middle out as mid = (low + high) // 2.",
+    "The matching one counts in both."
    ],
    "hint": "searches",
    "starter": "# two searches over the same list, counted separately\n",
@@ -991,7 +1005,7 @@
    "id": "pr-l11-q14",
    "station": 5,
    "marks": 8,
-   "q": "Ask the user for a line of whole numbers separated by single spaces, then the number to find. Sort them smallest first with a sort of your own and display [the sorted numbers] on one line, then [its position in them], counting from 0, or not found on the next line.",
+   "q": "Ask the user for a line of whole numbers separated by single spaces. Then ask for the number to find. Sort them smallest first with a sort of your own. Display [the sorted numbers] on one line. Then find where that number is in the sorted list. Display [its position], counting from 0, on the next line. Display not found instead when the number is not there.",
    "brief": [
     "Print the sorted values on one line, separated by single spaces.",
     "Find the position with a binary search over the sorted list.",

@@ -1,13 +1,13 @@
 {
  "id": "pr-l07",
  "lesson": 7,
- "title": "Stock shelves",
+ "title": "Lists",
  "scenes": [
   {
    "id": "main",
-   "title": "Stock shelves",
-   "img": "img/PR_L07_StockShelves_360.jpg",
-   "imgHi": "img/PR_L07_StockShelves_360_hi.jpg",
+   "title": "Lists",
+   "img": "img/PR_L07_Lists_360.jpg",
+   "imgHi": "img/PR_L07_Lists_360_hi.jpg",
    "stations": [
     {
      "label": "1",
@@ -20,9 +20,10 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for five whole numbers, one on each line. Store them in a list and display the list itself, in the form [8, 3, 5, 1, 9].",
+       "q": "Ask the user for five whole numbers, one on each line. Store them in a list. Display the list itself, in the form [8, 3, 5, 1, 9].",
        "brief": [
-        "Store them as whole numbers, in the order they were typed.",
+        "Store them as whole numbers.",
+        "Keep them in the order they were typed.",
         "Print the list itself, square brackets and commas and all."
        ],
        "starter": "# Read five numbers into a list, then print the list\n",
@@ -85,7 +86,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for five words, one on each line. Store them in a list and display the list itself, in the form ['red', 'blue', 'green', 'teal', 'grey'].",
+       "q": "Ask the user for five words, one on each line. Store them in a list. Display the list itself, in the form ['red', 'blue', 'green', 'teal', 'grey'].",
        "brief": [
         "Keep them in the order they were typed.",
         "Print the list itself, brackets and quote marks and all."
@@ -138,10 +139,11 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for how many whole numbers there are and then that many whole numbers, one on each line. Store them in a list and display the list itself, in the form [8, 3, 5].",
+       "q": "Ask the user for how many whole numbers there are. Then ask for that many whole numbers, one on each line. Store them in a list. Display the list itself, in the form [8, 3, 5].",
        "brief": [
-        "The user types in a whole number saying how many follow, which is never less than 1, then that many whole numbers.",
-        "The first number read says how many follow and is not one of them."
+        "The user types in a whole number saying how many follow, which is never less than 1.",
+        "Then come that many whole numbers, one on each line.",
+        "The first number read is not one of them."
        ],
        "starter": "# Read as many numbers as the first line says\n",
        "tests": [
@@ -209,7 +211,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for four words, one on each line, and then a position counting from 0. Store the words in a list and display [the word at that position] and nothing else.",
+       "q": "Ask the user for four words, one on each line. Then ask for a position counting from 0. Store the words in a list. Display [the word at that position] and nothing else.",
        "brief": [
         "The user types in five lines: four words, then a position counting from 0.",
         "The position is always one the list has."
@@ -287,7 +289,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for five whole numbers, one on each line. Store them in a list and display [the first one], then [the last one] on the next line.",
+       "q": "Ask the user for five whole numbers, one on each line. Store them in a list. Display [the first one]. Then display [the last one] on the next line.",
        "brief": [
         "Take the last one from the list using its length, not by typing the position in yourself.",
         "Two lines of output."
@@ -355,9 +357,10 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for five whole numbers, one on each line, and then a position counting from 0. Store the numbers in a list and display [the number at that position], or no such position when the list has no item there.",
+       "q": "Ask the user for five whole numbers, one on each line. Then ask for a position counting from 0. Store the numbers in a list. Display [the number at that position]. Display no such position instead when the list has no item there.",
        "brief": [
-        "The user types in six lines: five whole numbers, then a position counting from 0, never below 0.",
+        "The user types in six lines: five whole numbers, then a position.",
+        "Positions count from 0, and are never below 0.",
         "Print exactly: no such position"
        ],
        "starter": "# Print the item at that position, if there is one\n",
@@ -435,7 +438,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for four words, one on each line. Store them in a list and display a line for each, in the form [word] [how many letters it has].",
+       "q": "Ask the user for four words, one on each line. Store them in a list. Display a line for each word, in the form [word] [how many letters it has].",
        "brief": [
         "One line per word, in the order they were typed.",
         "One space between the word and the number."
@@ -505,7 +508,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for five whole numbers, one on each line. Store them in a list and display a line for each, in the form [position] [number], with the positions counting from 0.",
+       "q": "Ask the user for five whole numbers, one on each line. Store them in a list. Display a line for each number, in the form [position] [number], with the positions counting from 0.",
        "brief": [
         "One line per number, in the order they were typed.",
         "One space between the position and the number."
@@ -582,7 +585,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for five whole numbers, one on each line. Store them in a list and display [how many of them are 10 or more] and nothing else.",
+       "q": "Ask the user for five whole numbers, one on each line. Store them in a list. Count how many of them are 10 or more. Display [the count] and nothing else.",
        "brief": [
         "Exactly 10 counts as 10 or more.",
         "One line of output."
@@ -658,7 +661,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for four words and then one more word, one on each line. Append the last word onto the list of the first four and display every item, one on each line.",
+       "q": "Ask the user for four words, one on each line. Store them in a list. Then ask for one more word. Append that word onto the same list. Display every item, one on each line.",
        "brief": [
         "Append onto that same list - do not build a second one.",
         "One line per item, in the order they are in the list."
@@ -723,7 +726,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for five words and then a word to remove, one on each line. Take that word out of the list and display every remaining word, one on each line.",
+       "q": "Ask the user for five words, one on each line. Store them in a list. Then ask for a word to remove. Take that word out of the list. Display every remaining word, one on each line.",
        "brief": [
         "The word to remove is always one the list holds.",
         "One line per remaining word, in the order they are in the list."
@@ -816,7 +819,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for five words and then a position counting from 0, one on each line. Delete the item at that position and display every remaining word, one on each line.",
+       "q": "Ask the user for five words, one on each line. Store them in a list. Then ask for a position counting from 0. Delete the item at that position. Display every remaining word, one on each line.",
        "brief": [
         "The position is always one the list has.",
         "One line per remaining word, in the order they are in the list."
@@ -919,7 +922,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for five whole numbers, one on each line. Store them in a list and display [the total] and nothing else.",
+       "q": "Ask the user for five whole numbers, one on each line. Store them in a list. Add them up. Display [the total] and nothing else.",
        "brief": [
         "The numbers may be negative.",
         "One line of output."
@@ -985,7 +988,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for five whole numbers, one on each line. Store them in a list and display [the average to 1 decimal place] and nothing else, so 5 shows as 5.0.",
+       "q": "Ask the user for five whole numbers, one on each line. Store them in a list. Work out their average. Round it to 1 decimal place. Display [the average] and nothing else, so 5 shows as 5.0.",
        "brief": [
         "Divide the total by how many items the list holds, not by a number of your own.",
         "Round the average to 1 decimal place."
@@ -1063,9 +1066,10 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for seven whole numbers, one on each line. Store them in a list and find the largest with a loop of your own, not with max(). Display [the largest] and nothing else.",
+       "q": "Ask the user for seven whole numbers, one on each line. Store them in a list. Find the largest with a loop of your own, not with max(). Display [the largest] and nothing else.",
        "brief": [
-        "The numbers may be negative, and may all be the same.",
+        "The numbers may be negative.",
+        "They may all be the same.",
         "Find the largest yourself rather than using max()."
        ],
        "starter": "# Find the largest item yourself\n",
@@ -1153,7 +1157,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for eight whole numbers, one on each line. Store them in a list and display [the total], then [the average to 1 decimal place] on the next line.",
+       "q": "Ask the user for eight whole numbers, one on each line. Store them in a list. Add them up. Work out their average. Round the average to 1 decimal place. Display [the total]. Then display [the average] on the next line.",
        "brief": [
         "Divide the total by how many items the list holds.",
         "Round the average to 1 decimal place, so 5 shows as 5.0."
@@ -1235,9 +1239,10 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Ask the user for seven whole numbers, one on each line. Store them in a list and find the largest and the smallest with loops of your own, not with max() or min(). Display [the largest], then [the smallest] on the next line.",
+       "q": "Ask the user for seven whole numbers, one on each line. Store them in a list. Find the largest with a loop of your own, not with max(). Find the smallest with a loop of your own, not with min(). Display [the largest]. Then display [the smallest] on the next line.",
        "brief": [
-        "The numbers may be negative, and may all be the same.",
+        "The numbers may be negative.",
+        "They may all be the same.",
         "Largest first, smallest second.",
         "Find them yourself rather than using max() or min()."
        ],
@@ -1324,7 +1329,7 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Ask the user for eight whole numbers, one on each line. Store them in a list and display [how many of them are 12 or more], then [the position of the largest] on the next line, counting from 0.",
+       "q": "Ask the user for eight whole numbers, one on each line. Store them in a list. Count how many of them are 12 or more. Find the position of the largest, counting from 0. Display [the count]. Then display [the position of the largest] on the next line.",
        "brief": [
         "Exactly 12 counts as 12 or more.",
         "When two items are equally large, the earlier position wins.",

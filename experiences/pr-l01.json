@@ -1,13 +1,13 @@
 {
  "id": "pr-l01",
  "lesson": 1,
- "title": "Tuck shop till",
+ "title": "Printing and variables",
  "scenes": [
   {
    "id": "main",
-   "title": "Tuck shop till",
-   "img": "img/PR_L01_TuckShopTill_360.jpg",
-   "imgHi": "img/PR_L01_TuckShopTill_360_hi.jpg",
+   "title": "Printing and variables",
+   "img": "img/PR_L01_PrintingAndVariables_360.jpg",
+   "imgHi": "img/PR_L01_PrintingAndVariables_360_hi.jpg",
    "stations": [
     {
      "label": "1",
@@ -22,7 +22,8 @@
        "marks": 1,
        "q": "Display the message Hello world.",
        "brief": [
-        "Nothing is typed in by the user, and nothing else is printed."
+        "Nothing is typed in by the user.",
+        "Nothing else is printed."
        ],
        "starter": "# Print one line\n",
        "tests": [
@@ -51,7 +52,8 @@
        "marks": 1,
        "q": "Ask the user for a word. Display [word].",
        "brief": [
-        "The user types in one word, and nothing else is printed."
+        "The user types in one word.",
+        "Nothing else is printed."
        ],
        "starter": "# Read one word, then print it\n",
        "tests": [
@@ -99,7 +101,7 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Ask the user for a word. Display two lines, the first Ready and the second [word].",
+       "q": "Ask the user for a word. Display Ready. Then display [word] on the next line.",
        "brief": [
         "Print exactly: Ready"
        ],
@@ -154,9 +156,10 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for a word. Display three lines: ----- on the first, [word] on the second, and ----- on the third.",
+       "q": "Ask the user for a word. Display -----. Then display [word] on the next line. Then display ----- again on the next line.",
        "brief": [
-        "Print exactly five hyphens on the first line, and five again on the third."
+        "Print exactly five hyphens on the first line.",
+        "Print five hyphens again on the third line."
        ],
        "starter": "# Three lines of output, the word in the middle\n",
        "tests": [
@@ -223,9 +226,10 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for a word and keep it in a variable. Display [word], then [word] again on the next line.",
+       "q": "Ask the user for a word and keep it in a variable. Display [word]. Then display [word] again on the next line.",
        "brief": [
-        "Read the word once only, then print the same variable twice."
+        "Read the word once only.",
+        "Print the same variable twice."
        ],
        "starter": "# One word in, the same word on two lines\n",
        "tests": [
@@ -278,7 +282,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Keep the fixed whole number 100 in a constant called LIMIT. Ask the user for a word. Display two lines, the first [word] and the second [limit].",
+       "q": "Keep the fixed whole number 100 in a constant called LIMIT. Ask the user for a word. Display [word]. Then display [limit] on the next line.",
        "brief": [
         "The 100 is fixed in your program, not typed in.",
         "Name the constant LIMIT, in capitals."
@@ -332,7 +336,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for a word and keep it in a variable. Display [first word]. Then ask for a second word, keep it in that same variable, and display [second word].",
+       "q": "Ask the user for a word and keep it in a variable. Display [first word]. Then ask for a second word and keep it in that same variable. Display [second word] on the next line.",
        "brief": [
         "Use one variable for both words.",
         "Print the first word before the second one replaces it."
@@ -392,7 +396,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a word and keep it in a variable called a. Copy the value of a into a second variable called b. Then ask for another word and keep it in a. Display three lines: [a], then [b], then [a] again.",
+       "q": "Ask the user for a word and keep it in a variable called a. Copy the value of a into a second variable called b. Then ask for another word and keep it in a. Display [a]. Then display [b] on the next line. Then display [a] again on the next line.",
        "brief": [
         "b = a copies the value, so b keeps the first word.",
         "Print a first, then b, then a again."
@@ -466,7 +470,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for one word. Display [word] three times, one on each of three lines.",
+       "q": "Ask the user for one word. Display [word]. Then display [word] again on the next line. Then display [word] a third time on the next line.",
        "brief": [
         "The user types in one word only."
        ],
@@ -524,7 +528,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for a word and then a second word. Display two lines, the first [second word] and the second [first word].",
+       "q": "Ask the user for a word. Then ask for a second word. Display [second word]. Then display [first word] on the next line.",
        "brief": [
         "The user types in two lines, one word on each.",
         "Print the second word first."
@@ -582,7 +586,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for two words. Display four lines: [first word], then [second word], then [first word] again, then [second word] again.",
+       "q": "Ask the user for a word. Then ask for a second word. Display [first word]. Then display [second word] on the next line. Then display [first word] again on the next line. Then display [second word] again on the next line.",
        "brief": [
         "The user types in two lines, one word on each.",
         "Four lines of output from two words."
@@ -650,7 +654,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for three words, keeping each one in its own variable. Display three lines: [third word], then [first word], then [second word].",
+       "q": "Ask the user for a word and keep it in its own variable. Then ask for a second word and keep it in its own variable. Then ask for a third word and keep it in its own variable. Display [third word]. Then display [first word] on the next line. Then display [second word] on the next line.",
        "brief": [
         "The user types in three lines, one word on each.",
         "Print them in the order given, not the order they were typed."
@@ -778,9 +782,10 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for two words. Join them with one space between them and display one line in the form [first word] [second word].",
+       "q": "Ask the user for a word. Then ask for a second word. Join them with one space between them. Display one line in the form [first word] [second word].",
        "brief": [
-        "One line only, with exactly one space between the two words.",
+        "One line only.",
+        "Exactly one space between the two words.",
         "No other text is printed."
        ],
        "starter": "# Two words in, one joined line out\n",
@@ -833,7 +838,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for a word. Display three lines: [word], then the whole number 7, then the real number 1.5.",
+       "q": "Ask the user for a word. Display [word]. Then display the whole number 7 on the next line. Then display the real number 1.5 on the next line.",
        "brief": [
         "The 7 and the 1.5 are fixed in your program, not typed in.",
         "A number printed on its own needs no quotation marks."
@@ -891,7 +896,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for a word. Display three lines: [word], then the Boolean True, then the Boolean False.",
+       "q": "Ask the user for a word. Display [word]. Then display the Boolean True on the next line. Then display the Boolean False on the next line.",
        "brief": [
         "True and False are fixed in your program, not typed in.",
         "Write them with a capital letter and no quotation marks."
@@ -959,7 +964,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for a whole number. Add 1 to it and display [answer] and nothing else.",
+       "q": "Ask the user for a whole number. Add 1 to it. Display [answer] and nothing else.",
        "brief": [
         "The user types in one whole number.",
         "Cast it with int() before adding."
@@ -1010,7 +1015,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for two whole numbers. Add them together and display [total] and nothing else.",
+       "q": "Ask the user for a whole number. Then ask for a second whole number. Add them together. Display [total] and nothing else.",
        "brief": [
         "The user types in two whole numbers, one on each line."
        ],
@@ -1117,7 +1122,8 @@
        "q": "Ask the user for a number, which may have a decimal point. Display one line in the form Value is [number], with the number as a real number, so 4 shows as 4.0.",
        "brief": [
         "The user types in one number, which may have a decimal point.",
-        "Cast it in with float() and back with str() to join it to the text."
+        "Cast it in with float().",
+        "Cast it back with str() to join it to the text."
        ],
        "starter": "# Read the number, make it real, print the line\n",
        "tests": [
@@ -1175,10 +1181,11 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a word and then a whole number. Display two lines, the first [word] and the second [the number with 1 added].",
+       "q": "Ask the user for a word. Then ask for a whole number. Add 1 to the number. Display [word]. Then display [answer] on the next line.",
        "brief": [
         "The user types in two lines: a word, then a whole number.",
-        "Only the number is cast with int(); the word stays as text."
+        "Only the number is cast with int().",
+        "The word stays as text."
        ],
        "starter": "# A word and a number in. The word, then one more.\n",
        "tests": [
@@ -1235,10 +1242,11 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a word and then a whole number. Add 1 to the number and display one line in the form [word] [answer], with one space between them.",
+       "q": "Ask the user for a word. Then ask for a whole number. Add 1 to the number. Display one line in the form [word] [answer], with one space between them.",
        "brief": [
         "The user types in two lines: a word, then a whole number.",
-        "One line of output, with exactly one space between the word and the answer."
+        "One line of output.",
+        "Exactly one space between the word and the answer."
        ],
        "starter": "# A word and a number in, one joined line out\n",
        "tests": [
@@ -1289,7 +1297,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for two whole numbers. Add them together and display one line in the form Total: [total].",
+       "q": "Ask the user for a whole number. Then ask for a second whole number. Add them together. Display one line in the form Total: [total].",
        "brief": [
         "The user types in two whole numbers, one on each line.",
         "Print exactly: Total:"
@@ -1344,7 +1352,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a word, then two whole numbers. Add the two numbers together and display two lines, the first [word] and the second Total: [total].",
+       "q": "Ask the user for a word. Then ask for a whole number. Then ask for a second whole number. Add the two numbers together. Display [word]. Then display Total: [total] on the next line.",
        "brief": [
         "The user types in three lines: a word, then two whole numbers.",
         "Print exactly: Total:",

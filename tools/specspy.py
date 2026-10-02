@@ -63,17 +63,17 @@ def stn(lesson, i, bullets, challenge, ill, fact):
 
 
 # ---------------------------------------------------------------- Lesson 1
-L1 = dict(id="pr-l01", topic="PY", lesson=1, title="Tuck shop till", img="PR_L01_TuckShopTill_360",
+L1 = dict(id="pr-l01", topic="PY", lesson=1, title="Printing and variables", img="PR_L01_PrintingAndVariables_360",
   description="Write your first working programs: print to the screen, store values in variables, read what the user types and cast between data types.",
-  kicker=f"{KPY}  |  Lesson 1", scene_title="Tuck shop till", subtitle=SUBPY,
-  intro="Every program you will ever write starts here: showing something on the screen, storing a value and asking the user for one. Work the tuck shop till and you will have written your first real programs.",
+  kicker=f"{KPY}  |  Lesson 1", scene_title="Printing and variables", subtitle=SUBPY,
+  intro="Every program you will ever write starts here: showing something on the screen, storing a value and asking the user for one. Work through this room and you will have written your first real programs.",
   keywords=["print", "Variable", "input", "String", "Integer", "Casting", "Concatenation"],
   stations=[
    stn("pr-l01", 0, ["print() shows a value on the screen and then moves down to the next line.",
         "Text to be printed exactly goes inside quotes, and one print() gives one line of output.",
         "Common mistake: leaving the quotes off, so Python hunts for a variable with that name instead."],
        "Why does Python treat Juice and \"Juice\" as two completely different things?",
-       ("code", ['print("Tuck shop")', 'print("Juice 60p")', 'print("Thank you")'], 28),
+       ("code", ['print("Hello")', 'print("Line two")', 'print("Done")'], 28),
        "Printing one line of text is still the first program most programmers ever write."),
    stn("pr-l01", 1, ["A variable is a named box in memory holding one value you can use again later.",
         "name = value stores it, and the name always goes on the left of the equals sign.",
@@ -131,9 +131,9 @@ L1 = dict(id="pr-l01", topic="PY", lesson=1, title="Tuck shop till", img="PR_L01
     confidence=["Printing output and storing a value in a variable", "Reading input and choosing its data type", "Casting between text and numbers"]))
 
 # ---------------------------------------------------------------- Lesson 2
-L2 = dict(id="pr-l02", topic="PY", lesson=2, title="Number workshop", img="PR_L02_NumberWorkshop_360",
+L2 = dict(id="pr-l02", topic="PY", lesson=2, title="Arithmetic", img="PR_L02_Arithmetic_360",
   description="Every arithmetic operator you need: add, subtract, multiply, divide, integer division, modulus, powers, rounding and random numbers.",
-  kicker=f"{KPY}  |  Lesson 2", scene_title="Number workshop", subtitle=SUBPY,
+  kicker=f"{KPY}  |  Lesson 2", scene_title="Arithmetic", subtitle=SUBPY,
   intro="Computers were built to calculate, and Python has an operator for every kind of sum in the specification. Work through the number workshop and learn which one to reach for.",
   keywords=["Arithmetic", "Integer division", "Modulus", "Exponent", "round()", "abs()", "random"],
   stations=[
@@ -201,9 +201,9 @@ L2 = dict(id="pr-l02", topic="PY", lesson=2, title="Number workshop", img="PR_L0
     confidence=["Choosing the right arithmetic operator", "Using // and % for whole-number answers", "Rounding a result and drawing a random number"]))
 
 # ---------------------------------------------------------------- Lesson 3
-L3 = dict(id="pr-l03", topic="PY", lesson=3, title="Decision gate", img="PR_L03_DecisionGate_360",
+L3 = dict(id="pr-l03", topic="PY", lesson=3, title="Selection", img="PR_L03_Selection_360",
   description="Selection from the ground up: comparisons, if, else, elif, the logical operators and decisions nested inside other decisions.",
-  kicker=f"{KPY}  |  Lesson 3", scene_title="Decision gate", subtitle=SUBPY,
+  kicker=f"{KPY}  |  Lesson 3", scene_title="Selection", subtitle=SUBPY,
   intro="A program that always does the same thing is not much use. At the decision gate you will write the conditions that let a program choose, from a single comparison to a whole nest of them.",
   keywords=["Selection", "Condition", "Boolean", "if", "else", "elif", "and", "or", "not"],
   stations=[
@@ -270,9 +270,9 @@ L3 = dict(id="pr-l03", topic="PY", lesson=3, title="Decision gate", img="PR_L03_
     confidence=["Writing a condition with a comparison operator", "Choosing between if, elif and else", "Joining conditions with and, or and not"]))
 
 # ---------------------------------------------------------------- Lesson 4
-L4 = dict(id="pr-l04", topic="PY", lesson=4, title="Lap counter", img="PR_L04_LapCounter_360",
+L4 = dict(id="pr-l04", topic="PY", lesson=4, title="Count-controlled loops", img="PR_L04_CountControlledLoops_360",
   description="Count-controlled iteration: the for loop, the range it counts through, running totals and loops nested inside other loops.",
-  kicker=f"{KPY}  |  Lesson 4", scene_title="Lap counter", subtitle=SUBPY,
+  kicker=f"{KPY}  |  Lesson 4", scene_title="Count-controlled loops", subtitle=SUBPY,
   intro="When you know how many times something has to happen, a counting loop does it for you. At the lap counter you will learn to control a for loop and to use the number it counts with.",
   keywords=["Iteration", "Count-controlled", "for", "range", "Counter", "Running total", "Nested loop"],
   stations=[
@@ -339,9 +339,9 @@ L4 = dict(id="pr-l04", topic="PY", lesson=4, title="Lap counter", img="PR_L04_La
     confidence=["Writing a for loop with the right range", "Keeping a running total inside a loop", "Using one loop inside another"]))
 
 # ---------------------------------------------------------------- Lesson 5
-L5 = dict(id="pr-l05", topic="PY", lesson=5, title="Waiting room", img="PR_L05_WaitingRoom_360",
+L5 = dict(id="pr-l05", topic="PY", lesson=5, title="Condition-controlled loops", img="PR_L05_ConditionControlledLoops_360",
   description="Condition-controlled iteration: while loops, validation loops that ask again, sentinel values and choosing between for and while.",
-  kicker=f"{KPY}  |  Lesson 5", scene_title="Waiting room", subtitle=SUBPY,
+  kicker=f"{KPY}  |  Lesson 5", scene_title="Condition-controlled loops", subtitle=SUBPY,
   intro="Sometimes a program cannot know how many repeats it needs until it is already running. In the waiting room you will write condition-controlled loops that keep going until something changes.",
   keywords=["Condition-controlled", "while", "Validation loop", "Sentinel", "Infinite loop", "Counter"],
   stations=[
@@ -409,9 +409,9 @@ L5 = dict(id="pr-l05", topic="PY", lesson=5, title="Waiting room", img="PR_L05_W
     confidence=["Writing a while loop that stops", "Writing a validation loop that asks again", "Using a sentinel value to end a loop"]))
 
 # ---------------------------------------------------------------- Lesson 6
-L6 = dict(id="pr-l06", topic="PY", lesson=6, title="Letter press", img="PR_L06_LetterPress_360",
+L6 = dict(id="pr-l06", topic="PY", lesson=6, title="String handling", img="PR_L06_StringHandling_360",
   description="String handling: length and position, slicing, upper and lower case, searching inside text and the character codes behind every letter.",
-  kicker=f"{KPY}  |  Lesson 6", scene_title="Letter press", subtitle=SUBPY,
+  kicker=f"{KPY}  |  Lesson 6", scene_title="String handling", subtitle=SUBPY,
   intro="Text is the data programs handle most, and Python has a tool for every part of it. At the letter press you will measure, cut, compare and search strings.",
   keywords=["String", "len()", "Index", "Slice", "upper()", "lower()", "ord()", "chr()"],
   stations=[
@@ -477,9 +477,9 @@ L6 = dict(id="pr-l06", topic="PY", lesson=6, title="Letter press", img="PR_L06_L
     confidence=["Using len() and an index on a string", "Taking a slice out of a string", "Searching text and using ord() and chr()"]))
 
 # ---------------------------------------------------------------- Lesson 7
-L7 = dict(id="pr-l07", topic="PY", lesson=7, title="Stock shelves", img="PR_L07_StockShelves_360",
+L7 = dict(id="pr-l07", topic="PY", lesson=7, title="Lists", img="PR_L07_Lists_360",
   description="One-dimensional arrays: making a list, reading an item by its index, traversing it, adding and removing items, and totals and averages.",
-  kicker=f"{KPY}  |  Lesson 7", scene_title="Stock shelves", subtitle=SUBPY,
+  kicker=f"{KPY}  |  Lesson 7", scene_title="Lists", subtitle=SUBPY,
   intro="One variable holds one value, which is no use at all for a whole class of marks. A list holds many values under one name, and the stock shelves are where you learn to use one.",
   keywords=["Array", "List", "Index", "append()", "remove()", "pop()", "Traverse"],
   stations=[
@@ -546,9 +546,9 @@ L7 = dict(id="pr-l07", topic="PY", lesson=7, title="Stock shelves", img="PR_L07_
     confidence=["Creating a list and reading an item by its index", "Traversing a list to total or compare its items", "Adding items to a list and removing them"]))
 
 # ---------------------------------------------------------------- Lesson 8
-L8 = dict(id="pr-l08", topic="PY", lesson=8, title="Seating plan hall", img="PR_L08_SeatingPlanHall_360",
+L8 = dict(id="pr-l08", topic="PY", lesson=8, title="Two-dimensional lists", img="PR_L08_TwoDimensionalLists_360",
   description="Two-dimensional arrays: a list of lists, reading a cell by row and column, nested loops over a grid, and totalling rows and columns.",
-  kicker=f"{KPY}  |  Lesson 8", scene_title="Seating plan hall", subtitle=SUBPY,
+  kicker=f"{KPY}  |  Lesson 8", scene_title="Two-dimensional lists", subtitle=SUBPY,
   intro="A register, a seating plan and a scoreboard are all grids. A two-dimensional array stores one by putting a list inside a list, and the hall is where you learn to read and total it.",
   keywords=["Two-dimensional", "Array", "Row", "Column", "Nested loop", "Index"],
   stations=[
@@ -614,9 +614,9 @@ L8 = dict(id="pr-l08", topic="PY", lesson=8, title="Seating plan hall", img="PR_
     confidence=["Creating a list of lists", "Reading a cell with a row index and a column index", "Totalling rows and columns with nested loops"]))
 
 # ---------------------------------------------------------------- Lesson 9
-L9 = dict(id="pr-l09", topic="PY", lesson=9, title="Assembly line", img="PR_L09_AssemblyLine_360",
+L9 = dict(id="pr-l09", topic="PY", lesson=9, title="Subprograms", img="PR_L09_Subprograms_360",
   description="Subprograms: writing a procedure, passing values in through parameters, returning a value, and the difference between local and global variables.",
-  kicker=f"{KPY}  |  Lesson 9", scene_title="Assembly line", subtitle=SUBPY,
+  kicker=f"{KPY}  |  Lesson 9", scene_title="Subprograms", subtitle=SUBPY,
   intro="Long programs are built out of small named parts. On the assembly line you will write procedures and functions, pass values into them and get answers back out.",
   keywords=["Subprogram", "Procedure", "Function", "Parameter", "Argument", "return", "Local", "Global"],
   stations=[
@@ -684,9 +684,9 @@ L9 = dict(id="pr-l09", topic="PY", lesson=9, title="Assembly line", img="PR_L09_
     confidence=["Defining a subprogram and calling it", "Passing values in with parameters and back with return", "Telling a local variable from a global one"]))
 
 # ---------------------------------------------------------------- Lesson 10
-L10 = dict(id="pr-l10", topic="PY", lesson=10, title="Records office", img="PR_L10_RecordsOffice_360",
+L10 = dict(id="pr-l10", topic="PY", lesson=10, title="File handling", img="PR_L10_FileHandling_360",
   description="File handling: opening a file, reading it whole or line by line, the write and append modes, and splitting a line of records into its fields.",
-  kicker=f"{KPY}  |  Lesson 10", scene_title="Records office", subtitle=SUBPY,
+  kicker=f"{KPY}  |  Lesson 10", scene_title="File handling", subtitle=SUBPY,
   intro="Data in variables disappears the moment a program ends. A file keeps it, and the records office is where you learn to open one, read it, write it and search it.",
   keywords=["File handling", "open()", "read()", "readlines()", "Write mode", "Append mode", "Record", "Field"],
   stations=[
@@ -754,9 +754,9 @@ L10 = dict(id="pr-l10", topic="PY", lesson=10, title="Records office", img="PR_L
     confidence=["Opening, reading and closing a file", "Choosing between write mode and append mode", "Splitting a record into its fields"]))
 
 # ---------------------------------------------------------------- Lesson 11
-L11 = dict(id="pr-l11", topic="PY", lesson=11, title="Sorting depot", img="PR_L11_SortingDepot_360",
+L11 = dict(id="pr-l11", topic="PY", lesson=11, title="Searching and sorting", img="PR_L11_SearchingAndSorting_360",
   description="Code the standard algorithms yourself: linear and binary search, then bubble, insertion and merge sort, and count the comparisons each one needs.",
-  kicker=f"{KPY}  |  Lesson 11", scene_title="Sorting depot", subtitle=SUBPY,
+  kicker=f"{KPY}  |  Lesson 11", scene_title="Searching and sorting", subtitle=SUBPY,
   intro="You met these algorithms in topic 2.1 and traced them on paper. Now you will write them. At the sorting depot every search and every sort is yours to code, not just to describe.",
   keywords=["Linear search", "Binary search", "Bubble sort", "Insertion sort", "Merge sort", "Pass", "Comparison"],
   stations=[
@@ -824,9 +824,9 @@ L11 = dict(id="pr-l11", topic="PY", lesson=11, title="Sorting depot", img="PR_L1
     confidence=["Coding a linear search and a binary search", "Coding a bubble, insertion or merge sort", "Explaining why a binary search needs sorted data"]))
 
 # ---------------------------------------------------------------- Lesson 12
-L12 = dict(id="pr-l12", topic="PY", lesson=12, title="Gatehouse", img="PR_L12_Gatehouse_360",
+L12 = dict(id="pr-l12", topic="PY", lesson=12, title="Validation and authentication", img="PR_L12_ValidationAndAuthentication_360",
   description="Write the validation a robust program needs: presence, type, range, length and format checks, loops that keep asking, and authentication.",
-  kicker=f"{KPY}  |  Lesson 12", scene_title="Gatehouse", subtitle=SUBPY,
+  kicker=f"{KPY}  |  Lesson 12", scene_title="Validation and authentication", subtitle=SUBPY,
   intro="Users mistype, and some of them try it on. At the gatehouse you will write the checks that keep bad data out and the loops that keep asking until the data is right.",
   keywords=["Validation", "Presence check", "Type check", "Range check", "Length check", "Format check", "Authentication"],
   stations=[
@@ -894,9 +894,9 @@ L12 = dict(id="pr-l12", topic="PY", lesson=12, title="Gatehouse", img="PR_L12_Ga
     confidence=["Coding a presence, type and range check", "Coding a length check and a format check", "Writing a validation loop and an authentication check"]))
 
 # ---------------------------------------------------------------- Lesson 13
-L13 = dict(id="pr-l13", topic="PY", lesson=13, title="Query desk", img="PR_L13_QueryDesk_360",
+L13 = dict(id="pr-l13", topic="PY", lesson=13, title="SQL queries", img="PR_L13_SQLQueries_360",
   description="Ask a database a question with SQL: SELECT and FROM, filtering with WHERE, comparing values, joining conditions with AND and OR, and sorting with ORDER BY.",
-  kicker=f"{KPY}  |  Lesson 13", scene_title="Query desk", subtitle=SUBPY,
+  kicker=f"{KPY}  |  Lesson 13", scene_title="SQL queries", subtitle=SUBPY,
   intro="A database holds far more than a program could ever keep in memory, and SQL is how you ask it a question. At the query desk you will write queries against a table of games.",
   keywords=["SQL", "Database", "Table", "Field", "Record", "SELECT", "FROM", "WHERE", "ORDER BY"],
   stations=[

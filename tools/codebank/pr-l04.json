@@ -72,7 +72,7 @@
    "id": "pr-l04-q2",
    "station": 0,
    "marks": 2,
-   "q": "Ask the user for a word and then a whole number. Display [word] on that many lines.",
+   "q": "Ask the user for a word. Then ask for a whole number. Display [word] on that many lines.",
    "teach": {
     "say": "range() can count up to a number read from the user, once int() has made it a whole number.",
     "code": [
@@ -134,7 +134,7 @@
    "id": "pr-l04-q3",
    "station": 0,
    "marks": 2,
-   "q": "Ask the user for a word and then a whole number. Display start, then [word] on that many lines.",
+   "q": "Ask the user for a word. Then ask for a whole number. Display start. Then display [word] on that many lines.",
    "teach": {
     "say": "A line written before the loop is not indented, so it runs once, before the repeating begins.",
     "code": [
@@ -211,7 +211,7 @@
    "id": "pr-l04-q4",
    "station": 0,
    "marks": 3,
-   "q": "Ask the user for two words and then a whole number. Display [first word], then [second word] on the next line, and repeat those two lines as many times as the number says.",
+   "q": "Ask the user for a word. Then ask for a second word. Then ask for a whole number. Display [first word]. Then display [second word] on the next line. Repeat those two lines as many times as the number says.",
    "teach": {
     "say": "Every indented line repeats, so two print() statements inside the loop give two lines on every turn.",
     "code": [
@@ -536,7 +536,7 @@
    "id": "pr-l04-q9",
    "station": 2,
    "marks": 2,
-   "q": "Ask the user for two whole numbers, the second never smaller than the first. Display every number from the first to the second, both included, one on each line.",
+   "q": "Ask the user for a whole number. Then ask for a second whole number, which is never smaller than the first. Display every number from the first to the second, both included, one on each line.",
    "teach": {
     "say": "range takes a start and a stop, and the stop is never reached, so the last value you want is written as last + 1.",
     "code": [
@@ -696,7 +696,8 @@
    },
    "brief": [
     "The user types in one whole number, which is never less than 2.",
-    "Start at 2 and use a step of 2."
+    "Start at 2.",
+    "Use a step of 2."
    ],
    "hint": "pyrange",
    "starter": "# Read the number, then count up in twos\n",
@@ -741,7 +742,7 @@
    "id": "pr-l04-q12",
    "station": 2,
    "marks": 3,
-   "q": "Ask the user for two whole numbers, the second never larger than the first. Display every number from the first down to the second, both included, one on each line.",
+   "q": "Ask the user for a whole number. Then ask for a second whole number, which is never larger than the first. Display every number from the first down to the second, both included, one on each line.",
    "teach": {
     "say": "Counting down, the stop still has to be one past the last value you want, which means the last value minus 1.",
     "code": [
@@ -818,7 +819,7 @@
    "id": "pr-l04-q13",
    "station": 3,
    "marks": 2,
-   "q": "Ask the user for how many numbers there are, then for that many whole numbers. Add them up and display [total] and nothing else.",
+   "q": "Ask the user for how many numbers there are. Then ask for that many whole numbers. Add them up. Display [total] and nothing else.",
    "teach": {
     "say": "A running total is set to 0 before the loop, added to inside the loop, and printed after it.",
     "code": [
@@ -832,7 +833,8 @@
     ]
    },
    "brief": [
-    "The user types in a whole number saying how many follow, then that many whole numbers, one on each line."
+    "The user types in a whole number saying how many follow.",
+    "Then come that many whole numbers, one on each line."
    ],
    "hint": "constructs",
    "starter": "# Read how many numbers there are, add them up, print the total\n",
@@ -890,7 +892,7 @@
    "id": "pr-l04-q14",
    "station": 3,
    "marks": 2,
-   "q": "Ask the user for how many numbers there are, then for that many whole numbers. Display [how many of them are below 0] and nothing else.",
+   "q": "Ask the user for how many numbers there are. Then ask for that many whole numbers. Count how many of them are below 0. Display [the count] and nothing else.",
    "teach": {
     "say": "A counter works like a total, except that it goes up by 1 and only on the turns where the if inside the loop is True.",
     "code": [
@@ -905,7 +907,8 @@
     ]
    },
    "brief": [
-    "The user types in a whole number saying how many follow, then that many whole numbers, one on each line.",
+    "The user types in a whole number saying how many follow.",
+    "Then come that many whole numbers, one on each line.",
     "Exactly 0 is not below 0."
    ],
    "hint": "constructs",
@@ -964,7 +967,7 @@
    "id": "pr-l04-q15",
    "station": 3,
    "marks": 3,
-   "q": "Ask the user for how many numbers there are, then for that many whole numbers. Display [total], then [how many of them are below 0] on the next line.",
+   "q": "Ask the user for how many numbers there are. Then ask for that many whole numbers. Add them up. Count how many of them are below 0. Display [total]. Then display [the count] on the next line.",
    "teach": {
     "say": "Each thing you are tracking needs its own variable, set up before the loop and updated inside it.",
     "code": [
@@ -982,7 +985,8 @@
     ]
    },
    "brief": [
-    "The user types in a whole number saying how many follow, then that many whole numbers, one on each line.",
+    "The user types in a whole number saying how many follow.",
+    "Then come that many whole numbers, one on each line.",
     "Two lines of output: the total, then the count."
    ],
    "hint": "constructs",
@@ -1060,7 +1064,7 @@
    "id": "pr-l04-q16",
    "station": 3,
    "marks": 3,
-   "q": "Ask the user for how many numbers there are, then for that many whole numbers. After each one, display a line in the form [number] [total so far].",
+   "q": "Ask the user for how many numbers there are. Then ask for that many whole numbers. After each one, display a line in the form [number] [total so far].",
    "teach": {
     "say": "Printing inside the loop shows the total as it grows, because that line runs again on every turn.",
     "code": [
@@ -1076,7 +1080,8 @@
     ]
    },
    "brief": [
-    "The user types in a whole number saying how many follow, then that many whole numbers, one on each line.",
+    "The user types in a whole number saying how many follow.",
+    "Then come that many whole numbers, one on each line.",
     "One space between the two numbers on a line.",
     "Nothing is printed after the last line."
    ],
@@ -1142,7 +1147,7 @@
    "id": "pr-l04-q17",
    "station": 4,
    "marks": 2,
-   "q": "Ask the user for two whole numbers. As many times as the first number says, display every number from 1 up to and including the second number, one on each line.",
+   "q": "Ask the user for a whole number. Then ask for a second whole number. As many times as the first number says, display every number from 1 up to and including the second number, one on each line.",
    "teach": {
     "say": "A loop inside a loop runs the whole of the inner loop on every single turn of the outer one.",
     "code": [
@@ -1208,7 +1213,7 @@
    "id": "pr-l04-q18",
    "station": 4,
    "marks": 3,
-   "q": "Ask the user for the number of rows and then the number of * characters in each row. Display one line for each row, made of that many * characters and nothing else.",
+   "q": "Ask the user for the number of rows. Then ask for the number of * characters in each row. Display one line for each row, made of that many * characters and nothing else.",
    "teach": {
     "say": "The outer loop counts the rows and the inner loop builds one row. Build the row up as a string, then print it once the inner loop has finished.",
     "code": [
@@ -1343,7 +1348,7 @@
    "id": "pr-l04-q20",
    "station": 4,
    "marks": 3,
-   "q": "Ask the user for a whole number. Display one line for every row from 1 up to and including it, holding that row number multiplied by 1, then by 2, and so on up to that number.",
+   "q": "Ask the user for a whole number. For every row from 1 up to and including it, display one line holding that row number multiplied by 1, then by 2, and so on up to that number.",
    "teach": {
     "say": "The outer counter stays still while the inner one runs all the way through, so the value printed is the two counters multiplied.",
     "code": [
@@ -1360,7 +1365,8 @@
    },
    "brief": [
     "The user types in one whole number, which is never less than 1.",
-    "One space between the numbers on a line, and nothing after the last one."
+    "One space between the numbers on a line.",
+    "Nothing is printed after the last number on a line."
    ],
    "hint": "pyrange",
    "starter": "# Read the number, then print the multiplication square\n",
@@ -1414,7 +1420,7 @@
    "id": "pr-l04-q21",
    "station": 5,
    "marks": 3,
-   "q": "Ask the user for how many numbers there are, then for that many whole numbers. Display [total], then [the average to 1 decimal place] on the next line.",
+   "q": "Ask the user for how many numbers there are. Then ask for that many whole numbers. Add them up. Work out their average. Round the average to 1 decimal place. Display [total]. Then display [average] on the next line.",
    "teach": {
     "say": "The average is the finished total divided by how many there were, so it belongs after the loop.",
     "code": [
@@ -1428,7 +1434,8 @@
     ]
    },
    "brief": [
-    "The user types in a whole number saying how many follow, then that many whole numbers, one on each line.",
+    "The user types in a whole number saying how many follow.",
+    "Then come that many whole numbers, one on each line.",
     "Round the average to 1 decimal place."
    ],
    "hint": "constructs",
@@ -1491,7 +1498,7 @@
    "id": "pr-l04-q22",
    "station": 5,
    "marks": 3,
-   "q": "Ask the user for how many numbers there are, then for that many whole numbers. Add up only the ones above 0 and display [total] and nothing else.",
+   "q": "Ask the user for how many numbers there are. Then ask for that many whole numbers. Add up only the ones above 0. Display [total] and nothing else.",
    "teach": {
     "say": "An if inside the loop decides which turns add to the total, and the other turns simply pass by.",
     "code": [
@@ -1506,7 +1513,8 @@
     ]
    },
    "brief": [
-    "The user types in a whole number saying how many follow, then that many whole numbers, one on each line.",
+    "The user types in a whole number saying how many follow.",
+    "Then come that many whole numbers, one on each line.",
     "Exactly 0 is not above 0."
    ],
    "hint": "constructs",
@@ -1571,7 +1579,7 @@
    "id": "pr-l04-q23",
    "station": 5,
    "marks": 3,
-   "q": "Ask the user for how many numbers there are, then for that many whole numbers. After each one, display a line in the form [number] [total so far]. At the end display [the average to 1 decimal place] on a line of its own.",
+   "q": "Ask the user for how many numbers there are. Then ask for that many whole numbers. After each one, display a line in the form [number] [total so far]. At the end work out the average. Round it to 1 decimal place. Then display [average] on a line of its own.",
    "teach": {
     "say": "Printing inside the loop shows the total so far, while anything printed after the loop uses the finished total.",
     "code": [
@@ -1588,7 +1596,8 @@
     ]
    },
    "brief": [
-    "The user types in a whole number saying how many follow, then that many whole numbers, one on each line.",
+    "The user types in a whole number saying how many follow.",
+    "Then come that many whole numbers, one on each line.",
     "One space between the two numbers on a line.",
     "Round the average to 1 decimal place."
    ],

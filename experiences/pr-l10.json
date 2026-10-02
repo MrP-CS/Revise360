@@ -1,13 +1,13 @@
 {
  "id": "pr-l10",
  "lesson": 10,
- "title": "Records office",
+ "title": "File handling",
  "scenes": [
   {
    "id": "main",
-   "title": "Records office",
-   "img": "img/PR_L10_RecordsOffice_360.jpg",
-   "imgHi": "img/PR_L10_RecordsOffice_360_hi.jpg",
+   "title": "File handling",
+   "img": "img/PR_L10_FileHandling_360.jpg",
+   "imgHi": "img/PR_L10_FileHandling_360_hi.jpg",
    "stations": [
     {
      "label": "1",
@@ -20,9 +20,10 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "A file called notes.txt is already there. Read the whole of it in one go, close it, and display exactly what was in it and nothing of your own.",
+       "q": "A file called notes.txt is already there. Read the whole of notes.txt in one go. Close the file. Display exactly what was in it and nothing of your own.",
        "brief": [
-        "Nothing is typed in, and the program only reads the file."
+        "Nothing is typed in.",
+        "The program only reads notes.txt."
        ],
        "starter": "# read it all, close it, print it\n",
        "tests": [
@@ -71,9 +72,11 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "A file called data.txt is already there and may be empty. Read the whole of it and count every character, newlines included, then display characters [the count] and nothing else.",
+       "q": "A file called data.txt is already there, and it may be empty. Read the whole of data.txt. Count every character in it, newlines included. Display characters [the count] and nothing else.",
        "brief": [
-        "Nothing is typed in, the program only reads the file, and an empty file holds 0 characters.",
+        "Nothing is typed in.",
+        "The program only reads data.txt.",
+        "An empty file holds 0 characters.",
         "One space after the word characters."
        ],
        "starter": "# count the characters, newlines too\n",
@@ -131,9 +134,10 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "A file called words.txt is already there and may be empty. Read its first line only, close the file and strip the newline off, then display first [that line], then length [how many characters are left] on the next line.",
+       "q": "A file called words.txt is already there, and it may be empty. Read the first line of words.txt only. Close the file. Strip the newline off that line. Display first [that line]. Then display length [how many characters are left] on the next line.",
        "brief": [
-        "Nothing is typed in, and the program only reads the file.",
+        "Nothing is typed in.",
+        "The program only reads words.txt.",
         "An empty file has no first line, so the word first is printed on its own."
        ],
        "starter": "# one line only, then strip it\n",
@@ -195,9 +199,10 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "A file called words.txt is already there with one word per line, and may be empty. Read it and display lines [how many lines it holds] and nothing else.",
+       "q": "A file called words.txt is already there, with one word per line, and it may be empty. Read words.txt. Count how many lines it holds. Display lines [that count] and nothing else.",
        "brief": [
-        "Nothing is typed in, and the program only reads the file.",
+        "Nothing is typed in.",
+        "The program only reads words.txt.",
         "An empty file holds 0 lines."
        ],
        "starter": "# how many lines are in there\n",
@@ -245,9 +250,10 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "A file called words.txt is already there with one word per line, and may be empty. Read it and display one line for each word in the form [position] [word], counting from 1, or none on a line of its own when the file holds no words.",
+       "q": "A file called words.txt is already there, with one word per line, and it may be empty. Read words.txt. Display one line for each word, in the form [position] [word], counting the positions from 1. Display none instead, on a line of its own, when the file holds no words.",
        "brief": [
-        "Nothing is typed in, and the program only reads the file.",
+        "Nothing is typed in.",
+        "The program only reads words.txt.",
         "Strip each word's newline before printing it.",
         "Print exactly: none"
        ],
@@ -309,9 +315,10 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Ask the user for a word. Make a file called out.txt, write that word on one line and ready on the next, and close it. Then read out.txt back in one go and display it.",
+       "q": "Ask the user for a word. Make a file called out.txt. Write that word into out.txt on one line. Write ready on the next line. Close the file. Then read out.txt back in one go. Display what you read.",
        "brief": [
-        "There is no file to start with, and .write() adds no newline of its own.",
+        "There is no out.txt to start with, so the program creates it.",
+        ".write() adds no newline of its own.",
         "Print exactly: ready"
        ],
        "starter": "# write it, close it, read it back\n",
@@ -361,7 +368,7 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Ask the user for a word. Open the file data.txt in write mode, which empties whatever it held, write that word on a line of its own and close it. Read it back and display [every line in it], then lines [how many] on the last line.",
+       "q": "Ask the user for a word. Open the file data.txt in write mode, which empties whatever it held. Write that word into data.txt on a line of its own. Close the file. Then read data.txt back. Display [every line in it], one on each line. Then display lines [how many] on the last line.",
        "brief": [
         "data.txt is already there and may already hold lines.",
         "Strip each line's newline before printing it."
@@ -437,10 +444,11 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a word and add it to the end of the file log.txt on a line of its own, without losing the lines already there. Then read the whole file back and display [every line in it], one on each line, and nothing else.",
+       "q": "Ask the user for a word. Add that word to the end of the file log.txt, on a line of its own. Keep the lines log.txt already holds. Then read the whole of log.txt back. Display [every line in it], one on each line, and nothing else.",
        "brief": [
         "log.txt is already there and may be empty.",
-        "Strip each line's newline before printing it, and the word just added is the last line."
+        "Strip each line's newline before printing it.",
+        "The word just added is the last line."
        ],
        "starter": "# add to the end, then print the whole file\n",
        "tests": [
@@ -513,7 +521,7 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Ask the user for a word and append it to the file log.txt on a line of its own, without losing the lines already there. Then read the whole file back and display latest [the last line], then total [how many lines] on the next line.",
+       "q": "Ask the user for a word. Append that word to the file log.txt, on a line of its own. Keep the lines log.txt already holds. Then read the whole of log.txt back. Display latest [the last line]. Then display total [how many lines] on the next line.",
        "brief": [
         "log.txt is already there and may be empty.",
         "Strip the newline off the last line before printing it."
@@ -589,9 +597,10 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "A file called data.txt is already there, holding one word,number record per line, and may be empty. Read it and display one line for each record in the form [word] [number], or none on a line of its own when the file holds no records.",
+       "q": "A file called data.txt is already there, holding one word,number record per line, and it may be empty. Read data.txt. Display one line for each record, in the form [word] [number]. Display none instead, on a line of its own, when the file holds no records.",
        "brief": [
-        "Nothing is typed in, and the program only reads the file.",
+        "Nothing is typed in.",
+        "The program only reads data.txt.",
         "One space between the two fields, in place of the comma.",
         "Print exactly: none"
        ],
@@ -653,9 +662,10 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Ask the user for a word to find in the file data.txt, which holds one word,number record per line. Look at every record and display [word] is [its number], or no record when none matches, then checked [how many records you looked at] on the next line.",
+       "q": "Ask the user for a word to find. The file data.txt is already there, holding one word,number record per line. Look at every record in data.txt. Display [word] is [its number] when a record matches. Display no record instead when none matches. Then display checked [how many records you looked at] on the next line.",
        "brief": [
-        "data.txt is already there and may be empty, and the program only reads it.",
+        "data.txt may be empty.",
+        "The program only reads data.txt.",
         "Look at every record, even after one has matched.",
         "Print exactly: no record"
        ],
@@ -733,9 +743,10 @@
       {
        "t": "code",
        "marks": 5,
-       "q": "A file called data.txt is already there, holding one word,number record per line, and may be empty. Read it and display no records when it holds none, or total [every number added up], then best [the word on the record with the highest number] on the next line.",
+       "q": "A file called data.txt is already there, holding one word,number record per line, and it may be empty. Read data.txt. Display no records when it holds none. Otherwise add up every number. Find the word on the record with the highest number. Display total [the numbers added up]. Then display best [that word] on the next line.",
        "brief": [
-        "Nothing is typed in, and the program only reads the file.",
+        "Nothing is typed in.",
+        "The program only reads data.txt.",
         "The earlier record wins a tie for the highest number.",
         "Print exactly: no records"
        ],
@@ -807,9 +818,10 @@
       {
        "t": "code",
        "marks": 5,
-       "q": "A file called data.txt is already there, holding one word,first,second record per line, and may be empty. Make a file called out.txt holding a line of [word] [the first number times the second] for each record, then total [all those values added up] on the last line. Close it, read it back and display the whole of it.",
+       "q": "A file called data.txt is already there, holding one word,first,second record per line, and it may be empty. Read data.txt. Make a file called out.txt. Write a line of [word] [the first number times the second] into out.txt for each record. Then write total [all those values added up] on the last line. Close out.txt. Then read out.txt back. Display the whole of it.",
        "brief": [
-        "Nothing is typed in, and out.txt does not exist to start with.",
+        "Nothing is typed in.",
+        "There is no out.txt to start with, so the program creates it.",
         "The total line is written last, after every record's line."
        ],
        "starter": "# one file in, another out, then read it back\n",
@@ -881,10 +893,12 @@
       {
        "t": "code",
        "marks": 6,
-       "q": "Ask the user for a limit. The file data.txt is already there, holding one word,number record per line: make a file called picked.txt holding a line of [word] [number] for each record whose number is above the limit. Then read picked.txt back and display [every line in it], then picked [how many] on the last line.",
+       "q": "Ask the user for a limit. The file data.txt is already there, holding one word,number record per line. Read data.txt. Make a file called picked.txt. Write a line of [word] [number] into picked.txt for each record whose number is above the limit. Then read picked.txt back. Display [every line in it], one on each line. Then display picked [how many] on the last line.",
        "brief": [
-        "data.txt may be empty, and the limit is a whole number.",
-        "Make picked.txt even when nothing matches, and a number equal to the limit does not count.",
+        "data.txt may be empty.",
+        "The limit is a whole number.",
+        "Make picked.txt even when nothing matches.",
+        "A number equal to the limit does not count.",
         "One space between the two fields of a line, in place of the comma."
        ],
        "starter": "# pick some out, then read the new file back\n",

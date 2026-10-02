@@ -1,13 +1,13 @@
 {
  "id": "pr-l08",
  "lesson": 8,
- "title": "Seating plan hall",
+ "title": "Two-dimensional lists",
  "scenes": [
   {
    "id": "main",
-   "title": "Seating plan hall",
-   "img": "img/PR_L08_SeatingPlanHall_360.jpg",
-   "imgHi": "img/PR_L08_SeatingPlanHall_360_hi.jpg",
+   "title": "Two-dimensional lists",
+   "img": "img/PR_L08_TwoDimensionalLists_360.jpg",
+   "imgHi": "img/PR_L08_TwoDimensionalLists_360_hi.jpg",
    "stations": [
     {
      "label": "1",
@@ -20,9 +20,10 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for six whole numbers, one on each line. Store them in a grid of two rows of three and display the grid itself, in the form [[9, 4, 1], [7, 0, 2]].",
+       "q": "Ask the user for six whole numbers, one on each line. Store them in a grid of two rows of three. Display the grid itself, in the form [[9, 4, 1], [7, 0, 2]].",
        "brief": [
-        "The first three numbers typed fill row 0 and the last three fill row 1.",
+        "The first three numbers typed fill row 0.",
+        "The last three fill row 1.",
         "Print the grid itself, both sets of brackets and all."
        ],
        "starter": "# Two rows of three, then print the grid\n",
@@ -88,9 +89,11 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for six words, one on each line. Store them in a grid of three rows of two and display the grid itself, in the form [['red', 'blue'], ['green', 'teal'], ['grey', 'pink']].",
+       "q": "Ask the user for six words, one on each line. Store them in a grid of three rows of two. Display the grid itself, in the form [['red', 'blue'], ['green', 'teal'], ['grey', 'pink']].",
        "brief": [
-        "The first two words typed fill row 0, the next two row 1 and the last two row 2.",
+        "The first two words typed fill row 0.",
+        "The next two fill row 1.",
+        "The last two fill row 2.",
         "Print the grid itself, both sets of brackets and the quote marks and all."
        ],
        "starter": "# Three rows of two words, then print the grid\n",
@@ -144,9 +147,9 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for six whole numbers, one on each line, and then a row number counting from 0. Store the numbers in a grid of three rows of two and display [that whole row as a list], square brackets and all.",
+       "q": "Ask the user for six whole numbers, one on each line. Then ask for a row number, counting from 0. Store the numbers in a grid of three rows of two. Display [that whole row as a list], square brackets and all.",
        "brief": [
-        "The first two numbers typed fill row 0, and the row number counts from 0.",
+        "The first two numbers typed fill row 0.",
         "The row number is always one the grid has."
        ],
        "starter": "# Three rows of two, then print one whole row\n",
@@ -228,9 +231,10 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for nine whole numbers, one on each line, then a row number and then a column number. Store the numbers in a grid of three rows of three and display [the value stored there] and nothing else.",
+       "q": "Ask the user for nine whole numbers, one on each line. Then ask for a row number. Then ask for a column number. Store the numbers in a grid of three rows of three. Display [the value stored there] and nothing else.",
        "brief": [
-        "The first three numbers typed fill row 0, and both the row and the column count from 0.",
+        "The first three numbers typed fill row 0.",
+        "Both the row and the column count from 0.",
         "Both numbers are always ones the grid has."
        ],
        "starter": "# Three rows of three, then one value out of it\n",
@@ -349,10 +353,11 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for nine whole numbers, one on each line, and then a row number counting from 0. Store the numbers in a grid of three rows of three and display [that whole row] on one line, with single spaces between the values and no brackets or commas.",
+       "q": "Ask the user for nine whole numbers, one on each line. Then ask for a row number, counting from 0. Store the numbers in a grid of three rows of three. Display [that whole row] on one line.",
        "brief": [
-        "The first three numbers typed fill row 0, and the row number counts from 0.",
-        "One line of output, with single spaces between the values."
+        "The first three numbers typed fill row 0.",
+        "Put single spaces between the values.",
+        "Print no brackets and no commas."
        ],
        "starter": "# Print one whole row across the screen\n",
        "tests": [
@@ -435,10 +440,12 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Ask the user for nine whole numbers, one on each line, and then a column number counting from 0. Store the numbers in a grid of three rows of three and display [that whole column] on one line, with single spaces between the values and no brackets or commas.",
+       "q": "Ask the user for nine whole numbers, one on each line. Then ask for a column number, counting from 0. Store the numbers in a grid of three rows of three. Display [that whole column] on one line.",
        "brief": [
-        "The first three numbers typed fill row 0, and the column number counts from 0.",
-        "One line of output, with the values in order from the top row down."
+        "The first three numbers typed fill row 0.",
+        "The values go in order from the top row down.",
+        "Put single spaces between the values.",
+        "Print no brackets and no commas."
        ],
        "starter": "# Print one whole column across the screen\n",
        "tests": [
@@ -531,10 +538,13 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for six whole numbers, one on each line. Store them in a grid of two rows of three and display each row on its own line, with single spaces between the values and no brackets or commas.",
+       "q": "Ask the user for six whole numbers, one on each line. Store them in a grid of two rows of three. Display each row on its own line.",
        "brief": [
-        "The first three numbers typed fill row 0, and row 0 is printed first.",
-        "Two lines of output."
+        "The first three numbers typed fill row 0.",
+        "Row 0 is printed first.",
+        "Two lines of output.",
+        "Put single spaces between the values.",
+        "Print no brackets and no commas."
        ],
        "starter": "# Two rows in, two tidy lines out\n",
        "tests": [
@@ -604,10 +614,13 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for nine whole numbers, one on each line. Store them in a grid of three rows of three and display one line for every value, in the form [row] [column] [value], all of row 0 first.",
+       "q": "Ask the user for nine whole numbers, one on each line. Store them in a grid of three rows of three. Display one line for every value, in the form [row] [column] [value].",
        "brief": [
-        "The first three numbers typed fill row 0, and rows and columns count from 0.",
-        "Nine lines of output, with single spaces between the three numbers on a line."
+        "The first three numbers typed fill row 0.",
+        "Rows and columns count from 0.",
+        "All of row 0 is printed first.",
+        "Nine lines of output.",
+        "Put single spaces between the three numbers on a line."
        ],
        "starter": "# Visit every value and say where it is\n",
        "tests": [
@@ -693,9 +706,10 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Ask the user for nine whole numbers, one on each line. Store them in a grid of three rows of three and display every value that is 10 or more, one on each line, all of row 0 first, or none on a line of its own when there are no such values.",
+       "q": "Ask the user for nine whole numbers, one on each line. Store them in a grid of three rows of three. Display every value that is 10 or more, one on each line. Display none instead, on a line of its own, when there are no such values.",
        "brief": [
-        "The first three numbers typed fill row 0, and row 0 is searched first.",
+        "The first three numbers typed fill row 0.",
+        "Row 0 is searched first.",
         "Exactly 10 counts as 10 or more.",
         "Print exactly: none"
        ],
@@ -788,9 +802,9 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for twelve whole numbers, one on each line, and then a row number counting from 0. Store the numbers in a grid of three rows of four and display [the total of that row] and nothing else.",
+       "q": "Ask the user for twelve whole numbers, one on each line. Then ask for a row number, counting from 0. Store the numbers in a grid of three rows of four. Add up that row. Display [the total] and nothing else.",
        "brief": [
-        "The first four numbers typed fill row 0, and the row number counts from 0.",
+        "The first four numbers typed fill row 0.",
         "The row number is always one the grid has."
        ],
        "starter": "# Three rows of four, then the total of one row\n",
@@ -898,9 +912,10 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for twelve whole numbers, one on each line. Store them in a grid of three rows of four and display [the total of each row], one on each line.",
+       "q": "Ask the user for twelve whole numbers, one on each line. Store them in a grid of three rows of four. Add up each row in turn. Display [the total of each row], one on each line.",
        "brief": [
-        "The first four numbers typed fill row 0, and its total is printed first.",
+        "The first four numbers typed fill row 0.",
+        "The total of row 0 is printed first.",
         "Three lines of output."
        ],
        "starter": "# A total for each row in turn\n",
@@ -978,10 +993,11 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Ask the user for twelve whole numbers, one on each line. Store them in a grid of three rows of four and display [the total of each row], one on each line, then [the total of the whole grid] on the last line.",
+       "q": "Ask the user for twelve whole numbers, one on each line. Store them in a grid of three rows of four. Add up each row in turn. Add up the whole grid as well. Display [the total of each row], one on each line. Then display [the total of the whole grid] on the last line.",
        "brief": [
-        "The first four numbers typed fill row 0, and its total is printed first.",
-        "Four lines of output: the three row totals, then the whole grid."
+        "The first four numbers typed fill row 0.",
+        "The total of row 0 is printed first.",
+        "Four lines of output in all."
        ],
        "starter": "# A total for each row, then one for everything\n",
        "tests": [
@@ -1071,9 +1087,9 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for twelve whole numbers, one on each line, and then a column number counting from 0. Store the numbers in a grid of four rows of three and display [the total of that column] and nothing else.",
+       "q": "Ask the user for twelve whole numbers, one on each line. Then ask for a column number, counting from 0. Store the numbers in a grid of four rows of three. Add up that column. Display [the total] and nothing else.",
        "brief": [
-        "The first three numbers typed fill row 0, and the column number counts from 0.",
+        "The first three numbers typed fill row 0.",
         "The column number is always one the grid has."
        ],
        "starter": "# Four rows of three, then the total of one column\n",
@@ -1181,9 +1197,10 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for twelve whole numbers, one on each line. Store them in a grid of four rows of three and display [the total of each column], one on each line.",
+       "q": "Ask the user for twelve whole numbers, one on each line. Store them in a grid of four rows of three. Add up each column in turn. Display [the total of each column], one on each line.",
        "brief": [
-        "The first three numbers typed fill row 0, and the total of column 0 is printed first.",
+        "The first three numbers typed fill row 0.",
+        "The total of column 0 is printed first.",
         "Three lines of output."
        ],
        "starter": "# A total for each column in turn\n",
@@ -1261,10 +1278,11 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Ask the user for twelve whole numbers, one on each line. Store them in a grid of four rows of three and display [the total of each column], one on each line, then [the total of the whole grid] on the last line.",
+       "q": "Ask the user for twelve whole numbers, one on each line. Store them in a grid of four rows of three. Add up each column in turn. Add up the whole grid as well. Display [the total of each column], one on each line. Then display [the total of the whole grid] on the last line.",
        "brief": [
-        "The first three numbers typed fill row 0, and the total of column 0 is printed first.",
-        "Four lines of output: the three column totals, then the whole grid."
+        "The first three numbers typed fill row 0.",
+        "The total of column 0 is printed first.",
+        "Four lines of output in all."
        ],
        "starter": "# A total for each column, then one for everything\n",
        "tests": [
@@ -1354,9 +1372,10 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for nine whole numbers, one on each line, and then one more whole number. Store the nine in a grid of three rows of three and display [how many values in the grid are equal to or greater than that last number] and nothing else.",
+       "q": "Ask the user for nine whole numbers, one on each line. Then ask for one more whole number. Store the nine in a grid of three rows of three. Count how many values in the grid are equal to or greater than that last number. Display [the count] and nothing else.",
        "brief": [
-        "The first three numbers typed fill row 0, and the tenth number is not part of the grid.",
+        "The first three numbers typed fill row 0.",
+        "The tenth number is not part of the grid.",
         "A value exactly equal to it does count.",
         "One line of output."
        ],
@@ -1456,9 +1475,10 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Ask the user for nine words, one on each line, and then a word to look for. Store the nine in a grid of three rows of three and display [the row] and [the column] where the word is, on one line with a single space between them, or not in the grid when the word is not there.",
+       "q": "Ask the user for nine words, one on each line. Then ask for a word to look for. Store the nine words in a grid of three rows of three. Find where that word is in the grid. Display [the row] and [the column] on one line, with a single space between them. Display not in the grid instead when the word is not there.",
        "brief": [
-        "The first three words typed fill row 0, and rows and columns count from 0.",
+        "The first three words typed fill row 0.",
+        "Rows and columns count from 0.",
         "The word appears at most once in the grid.",
         "Print exactly: not in the grid"
        ],
@@ -1561,9 +1581,10 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Ask the user for nine whole numbers, one on each line, and then a whole number to look for. Store the nine in a grid of three rows of three and display not in the grid when the number is not there, or [the row] and [the column] on one line with a single space between them and [the total of that row] on the next line.",
+       "q": "Ask the user for nine whole numbers, one on each line. Then ask for a whole number to look for. Store the nine in a grid of three rows of three. Find where that number is in the grid. Display not in the grid when the number is not there. Otherwise display [the row] and [the column] on one line, with a single space between them. Then add up the row the number is in. Then display [that total] on the next line.",
        "brief": [
-        "The first three numbers typed fill row 0, and rows and columns count from 0.",
+        "The first three numbers typed fill row 0.",
+        "Rows and columns count from 0.",
         "The number appears at most once in the grid.",
         "Print exactly: not in the grid"
        ],

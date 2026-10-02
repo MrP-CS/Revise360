@@ -14,7 +14,7 @@
    "id": "pr-l02-q1",
    "station": 0,
    "marks": 2,
-   "q": "Ask the user for two whole numbers. Take the second away from the first and display [difference] and nothing else.",
+   "q": "Ask the user for a whole number. Then ask for a second whole number. Take the second away from the first. Display [difference] and nothing else.",
    "teach": {
     "say": "- subtracts and + adds. They work on numbers, so cast each input with int() first.",
     "code": [
@@ -70,7 +70,7 @@
    "id": "pr-l02-q2",
    "station": 0,
    "marks": 2,
-   "q": "Ask the user for two whole numbers. Multiply them together and display [product] and nothing else.",
+   "q": "Ask the user for a whole number. Then ask for a second whole number. Multiply them together. Display [product] and nothing else.",
    "teach": {
     "say": "* multiplies two numbers. If one side is still text, * repeats the text instead, so cast both with int().",
     "code": [
@@ -125,7 +125,7 @@
    "id": "pr-l02-q3",
    "station": 0,
    "marks": 2,
-   "q": "Ask the user for two whole numbers. Divide the first by the second and display [answer] and nothing else.",
+   "q": "Ask the user for a whole number. Then ask for a second whole number. Divide the first by the second. Display [answer] and nothing else.",
    "teach": {
     "say": "In Python / always gives a real number, so the answer keeps a decimal part even when it divides exactly.",
     "code": [
@@ -181,7 +181,7 @@
    "id": "pr-l02-q4",
    "station": 0,
    "marks": 2,
-   "q": "Ask the user for three whole numbers. Add all three together and display [total] and nothing else.",
+   "q": "Ask the user for a whole number. Then ask for a second whole number. Then ask for a third whole number. Add all three together. Display [total] and nothing else.",
    "teach": {
     "say": "A calculation can use as many values as you like, as long as every one of them has been cast to a number.",
     "code": [
@@ -240,7 +240,7 @@
    "id": "pr-l02-q5",
    "station": 0,
    "marks": 2,
-   "q": "Ask the user for three whole numbers. Add the first two together, multiply that answer by the third, and display [answer] and nothing else.",
+   "q": "Ask the user for a whole number. Then ask for a second whole number. Then ask for a third whole number. Add the first two together. Multiply that answer by the third. Display [answer] and nothing else.",
    "teach": {
     "say": "Python does * and / before + and - , so brackets are how you force an addition to happen first.",
     "code": [
@@ -299,7 +299,7 @@
    "id": "pr-l02-q6",
    "station": 1,
    "marks": 2,
-   "q": "Ask the user for two whole numbers. Work out how many whole times the second goes into the first and display [answer] and nothing else.",
+   "q": "Ask the user for a whole number. Then ask for a second whole number. Work out how many whole times the second goes into the first. Display [answer] and nothing else.",
    "teach": {
     "say": "// divides and throws the fraction away, so it says how many whole lots fit. OCR calls it DIV.",
     "code": [
@@ -355,7 +355,7 @@
    "id": "pr-l02-q7",
    "station": 1,
    "marks": 2,
-   "q": "Ask the user for two whole numbers. Work out what is left over when the first is divided by the second and display [remainder] and nothing else.",
+   "q": "Ask the user for a whole number. Then ask for a second whole number. Work out what is left over when the first is divided by the second. Display [remainder] and nothing else.",
    "teach": {
     "say": "% gives what is left over after a whole division. OCR calls it MOD.",
     "code": [
@@ -411,7 +411,7 @@
    "id": "pr-l02-q8",
    "station": 1,
    "marks": 2,
-   "q": "Ask the user for one whole number. Divide it by the fixed number 8. Display [whole lots], then [what is left over] on the next line.",
+   "q": "Ask the user for one whole number. Divide it by the fixed number 8. Display [whole lots]. Then display [what is left over] on the next line.",
    "teach": {
     "say": "The number you divide by can be a fixed one. // gives the whole lots and % the remainder, so between them nothing is lost.",
     "code": [
@@ -426,7 +426,8 @@
    },
    "brief": [
     "The 8 is fixed in your program, not typed in.",
-    "Use // for the first line and % for the second."
+    "Use // for the first line.",
+    "Use % for the second line."
    ],
    "hint": "pyarith",
    "starter": "# One whole number in. Whole lots, then the remainder.\n",
@@ -468,7 +469,7 @@
    "id": "pr-l02-q9",
    "station": 1,
    "marks": 3,
-   "q": "Ask the user for two whole numbers. Display [how many whole times the second goes into the first], then [what is left over] on the next line.",
+   "q": "Ask the user for a whole number. Then ask for a second whole number. Display [how many whole times the second goes into the first]. Then display [what is left over] on the next line.",
    "teach": {
     "say": "// and % are a pair: // says how many whole lots fit, % says what is left behind. Together they lose nothing.",
     "code": [
@@ -482,7 +483,8 @@
    },
    "brief": [
     "The second number is never 0.",
-    "Use // for the first line and % for the second."
+    "Use // for the first line.",
+    "Use % for the second line."
    ],
    "hint": "pyarith",
    "starter": "# Two whole numbers in. Whole lots, then the remainder.\n",
@@ -527,7 +529,7 @@
    "id": "pr-l02-q10",
    "station": 2,
    "marks": 2,
-   "q": "Ask the user for a whole number. Raise it to the power 2 and display [answer] and nothing else.",
+   "q": "Ask the user for a whole number. Raise it to the power 2. Display [answer] and nothing else.",
    "teach": {
     "say": "** raises a number to a power, so 2 ** 5 is 2 multiplied by itself five times.",
     "code": [
@@ -580,7 +582,7 @@
    "id": "pr-l02-q11",
    "station": 2,
    "marks": 2,
-   "q": "Ask the user for a whole number. Raise it to the power 3 and display [answer] and nothing else.",
+   "q": "Ask the user for a whole number. Raise it to the power 3. Display [answer] and nothing else.",
    "teach": {
     "say": "The power says how many times the number is multiplied by itself, so ** 3 is three of them multiplied together.",
     "code": [
@@ -633,7 +635,7 @@
    "id": "pr-l02-q12",
    "station": 2,
    "marks": 2,
-   "q": "Ask the user for a whole number. Raise the fixed number 2 to that power and display [answer] and nothing else.",
+   "q": "Ask the user for a whole number. Raise the fixed number 2 to that power. Display [answer] and nothing else.",
    "teach": {
     "say": "Either side of ** can be a variable. Here the number being raised is fixed and the power is the one that varies.",
     "code": [
@@ -645,7 +647,8 @@
     ]
    },
    "brief": [
-    "The 2 is fixed in your program; the power is what the user types in.",
+    "The 2 is fixed in your program.",
+    "The power is what the user types in.",
     "Use ** , not ^ ."
    ],
    "hint": "pypower",
@@ -685,7 +688,7 @@
    "id": "pr-l02-q13",
    "station": 2,
    "marks": 3,
-   "q": "Ask the user for a number, which may have a decimal point. Work out its square root and display [answer] and nothing else.",
+   "q": "Ask the user for a number, which may have a decimal point. Work out its square root. Display [answer] and nothing else.",
    "teach": {
     "say": "The power 0.5 is the square root, and it always gives a real number.",
     "code": [
@@ -737,7 +740,7 @@
    "id": "pr-l02-q14",
    "station": 3,
    "marks": 2,
-   "q": "Ask the user for a number, which may have a decimal point. Use round() to display [the number to the nearest whole number] and nothing else.",
+   "q": "Ask the user for a number, which may have a decimal point. Round it to the nearest whole number with round(). Display [answer] and nothing else.",
    "teach": {
     "say": "round(x) rounds to the nearest whole number. int(x) is a different thing: it throws the decimals away without looking at them.",
     "code": [
@@ -751,7 +754,8 @@
    },
    "brief": [
     "The user types in one number, which may have a decimal point.",
-    "Cast it with float(), then round it."
+    "Cast it with float().",
+    "Then round it."
    ],
    "hint": "pyround",
    "starter": "# One number in, the nearest whole number out\n",
@@ -790,7 +794,7 @@
    "id": "pr-l02-q15",
    "station": 3,
    "marks": 2,
-   "q": "Ask the user for a number, which may have a decimal point. Use round() to display [the number to 2 decimal places] and nothing else.",
+   "q": "Ask the user for a number, which may have a decimal point. Round it to 2 decimal places with round(). Display [answer] and nothing else.",
    "teach": {
     "say": "A second number inside round() says how many decimal places to keep.",
     "code": [
@@ -804,7 +808,8 @@
    },
    "brief": [
     "The user types in one number, which may have a decimal point.",
-    "Cast it with float(), then round it to 2 decimal places."
+    "Cast it with float().",
+    "Then round it to 2 decimal places."
    ],
    "hint": "pyround",
    "starter": "# One number in, 2 decimal places out\n",
@@ -843,7 +848,7 @@
    "id": "pr-l02-q16",
    "station": 3,
    "marks": 3,
-   "q": "Ask the user for two whole numbers. Divide the first by the second and display [the answer to 1 decimal place] and nothing else.",
+   "q": "Ask the user for a whole number. Then ask for a second whole number. Divide the first by the second. Round the answer to 1 decimal place. Display [answer] and nothing else.",
    "teach": {
     "say": "Dividing often leaves a long string of decimals. round(x, 1) keeps one decimal place and tidies the rest away.",
     "code": [
@@ -857,7 +862,8 @@
    },
    "brief": [
     "The second number is never 0.",
-    "Divide with / , then round the answer to 1 decimal place."
+    "Divide with / .",
+    "Round the answer to 1 decimal place."
    ],
    "hint": "pyround",
    "starter": "# Two whole numbers in, one rounded answer out\n",
@@ -899,7 +905,7 @@
    "id": "pr-l02-q17",
    "station": 3,
    "marks": 3,
-   "q": "Ask the user for three whole numbers. Work out their average, rounded to 1 decimal place, and display [average] and nothing else.",
+   "q": "Ask the user for a whole number. Then ask for a second whole number. Then ask for a third whole number. Work out their average. Round the average to 1 decimal place. Display [average] and nothing else.",
    "teach": {
     "say": "Add the values inside brackets so the whole total is divided, then round what comes out.",
     "code": [
@@ -958,7 +964,7 @@
    "id": "pr-l02-q18",
    "station": 4,
    "marks": 2,
-   "q": "Ask the user for a seed to start the random number generator. Display [one random whole number from 1 to 6] and nothing else.",
+   "q": "Ask the user for a seed to start the random number generator. Pick a random whole number from 1 to 6. Display [the number] and nothing else.",
    "teach": {
     "say": "random.randint(1, 6) picks a whole number from 1 to 6, and both ends can come up. Seeding first fixes the numbers, so the same seed always gives the same ones.",
     "code": [
@@ -971,7 +977,9 @@
     ]
    },
    "brief": [
-    "Start with import random, then random.seed(int(input())). The user types in one whole number, the seed.",
+    "Start with import random.",
+    "Then seed it with random.seed(int(input())).",
+    "The user types in one whole number, the seed.",
     "Use randint(1, 6), which can give 1 and 6 as well as everything between."
    ],
    "hint": "pyoutput",
@@ -1011,7 +1019,7 @@
    "id": "pr-l02-q19",
    "station": 4,
    "marks": 2,
-   "q": "Ask the user for a seed to start the random number generator. Display [first number], then [second number] on the next line, each a random whole number from 1 to 6.",
+   "q": "Ask the user for a seed to start the random number generator. Pick a random whole number from 1 to 6. Then pick a second random whole number from 1 to 6. Display [first number]. Then display [second number] on the next line.",
    "teach": {
     "say": "Each call to randint gives a new number. It never hands the same one back, so two numbers need two calls.",
     "code": [
@@ -1026,7 +1034,9 @@
     ]
    },
    "brief": [
-    "Start with import random, then random.seed(int(input())). The user types in one whole number, the seed.",
+    "Start with import random.",
+    "Then seed it with random.seed(int(input())).",
+    "The user types in one whole number, the seed.",
     "Use randint(1, 6) for both numbers."
    ],
    "hint": "pyoutput",
@@ -1069,7 +1079,7 @@
    "id": "pr-l02-q20",
    "station": 4,
    "marks": 3,
-   "q": "Ask the user for a seed to start the random number generator. Display three random whole numbers from 10 to 20, one on each line, then [total] on the next line.",
+   "q": "Ask the user for a seed to start the random number generator. Pick three random whole numbers from 10 to 20. Display them one on each line. Add the three numbers together. Then display [total] on the next line.",
    "teach": {
     "say": "Store each random number in a variable as you make it, then add the variables. Calling randint again gives a new number, never the same one back.",
     "code": [
@@ -1088,7 +1098,9 @@
     ]
    },
    "brief": [
-    "Start with import random, then random.seed(int(input())). The user types in one whole number, the seed.",
+    "Start with import random.",
+    "Then seed it with random.seed(int(input())).",
+    "The user types in one whole number, the seed.",
     "Use randint(10, 20) for all three numbers.",
     "Four lines of output: the three numbers, then their total."
    ],
@@ -1138,7 +1150,7 @@
    "id": "pr-l02-q21",
    "station": 5,
    "marks": 3,
-   "q": "Ask the user for a whole number of pence. Display [whole pounds in that amount], then [pence left over] on the next line.",
+   "q": "Ask the user for a whole number of pence. Work out how many whole pounds are in that amount. Work out how many pence are left over. Display [whole pounds]. Then display [pence left over] on the next line.",
    "teach": {
     "say": "There are 100 pence in a pound, so // 100 gives the whole pounds and % 100 gives the pence that are left.",
     "code": [
@@ -1152,8 +1164,10 @@
     ]
    },
    "brief": [
-    "There are 100 pence in a pound, and the 100 is fixed in your program, not typed in.",
-    "Use // for the pounds and % for the pence."
+    "There are 100 pence in a pound.",
+    "The 100 is fixed in your program, not typed in.",
+    "Use // for the pounds.",
+    "Use % for the pence."
    ],
    "hint": "pyarith",
    "starter": "# Pence in. Whole pounds, then the pence left over.\n",
@@ -1195,7 +1209,7 @@
    "id": "pr-l02-q22",
    "station": 5,
    "marks": 3,
-   "q": "Ask the user for a whole number. Display [the number to the power 2], then [its square root to 2 decimal places] on the next line.",
+   "q": "Ask the user for a whole number. Raise it to the power 2. Work out its square root. Round the square root to 2 decimal places. Display [the number to the power 2]. Then display [the square root] on the next line.",
    "teach": {
     "say": "Two calculations on the same value: store it once, then use that variable in both of them.",
     "code": [
@@ -1210,7 +1224,8 @@
    },
    "brief": [
     "The user types in one whole number.",
-    "Use ** for both: the power 2 and the power 0.5.",
+    "Use ** with the power 2 for the first line.",
+    "Use ** with the power 0.5 for the square root.",
     "Round the square root to 2 decimal places."
    ],
    "hint": "pypower",
@@ -1253,7 +1268,7 @@
    "id": "pr-l02-q23",
    "station": 5,
    "marks": 3,
-   "q": "Ask the user for three whole numbers. Display [total], then [their average to 1 decimal place] on the next line.",
+   "q": "Ask the user for a whole number. Then ask for a second whole number. Then ask for a third whole number. Add all three together. Work out their average. Round the average to 1 decimal place. Display [total]. Then display [average] on the next line.",
    "teach": {
     "say": "Work the total out once and store it, then use that variable again instead of adding everything up twice.",
     "code": [
@@ -1268,7 +1283,8 @@
    },
    "brief": [
     "The user types in three whole numbers, one on each line.",
-    "The total is a whole number; the average is rounded to 1 decimal place."
+    "The total is a whole number.",
+    "The average is rounded to 1 decimal place."
    ],
    "hint": "pyround",
    "starter": "# Three whole numbers in. Total, then the rounded average.\n",
@@ -1316,7 +1332,7 @@
    "id": "pr-l02-q24",
    "station": 5,
    "marks": 3,
-   "q": "Ask the user for how many items are bought and then the price of one item in pence. Work out the total cost in pence. Display [total pence], then [whole pounds in the total], then [pence left over], one on each line.",
+   "q": "Ask the user for how many items are bought. Then ask for the price of one item in pence. Work out the total cost in pence. Work out how many whole pounds are in that total. Work out how many pence are left over. Display [total pence]. Then display [whole pounds] on the next line. Then display [pence left over] on the next line.",
    "teach": {
     "say": "Work the total out once and store it, then use // and % on that variable instead of working it out again.",
     "code": [

@@ -1,13 +1,13 @@
 {
  "id": "pr-l03",
  "lesson": 3,
- "title": "Decision gate",
+ "title": "Selection",
  "scenes": [
   {
    "id": "main",
-   "title": "Decision gate",
-   "img": "img/PR_L03_DecisionGate_360.jpg",
-   "imgHi": "img/PR_L03_DecisionGate_360_hi.jpg",
+   "title": "Selection",
+   "img": "img/PR_L03_Selection_360.jpg",
+   "imgHi": "img/PR_L03_Selection_360_hi.jpg",
    "stations": [
     {
      "label": "1",
@@ -20,7 +20,7 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Ask the user for a whole number. Display True when it is greater than 10, and False when it is not.",
+       "q": "Ask the user for a whole number. Display True when it is greater than 10. Display False when it is not.",
        "brief": [
         "The user types in one whole number.",
         "The 10 is fixed in your program, not typed in."
@@ -71,7 +71,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for two whole numbers. Display True when they are equal, and False when they are not.",
+       "q": "Ask the user for a whole number. Then ask for a second whole number. Display True when they are equal. Display False when they are not.",
        "brief": [
         "The user types in two whole numbers, one on each line."
        ],
@@ -125,7 +125,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for two whole numbers. Display True when the first is greater than the second, and False when it is not.",
+       "q": "Ask the user for a whole number. Then ask for a second whole number. Display True when the first is greater than the second. Display False when it is not.",
        "brief": [
         "The user types in two whole numbers, one on each line."
        ],
@@ -179,7 +179,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for two whole numbers. Display True when the first is greater than or equal to the second, and False when it is not.",
+       "q": "Ask the user for a whole number. Then ask for a second whole number. Display True when the first is greater than or equal to the second. Display False when it is not.",
        "brief": [
         "The user types in two whole numbers, one on each line."
        ],
@@ -235,7 +235,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for two words. Display True when they are the same word, and False when they are not.",
+       "q": "Ask the user for a word. Then ask for a second word. Display True when they are the same word. Display False when they are not.",
        "brief": [
         "The user types in two words, one on each line."
        ],
@@ -355,7 +355,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for a whole number. Display yes when it is 20 or more, and no when it is less.",
+       "q": "Ask the user for a whole number. Display yes when it is 20 or more. Display no when it is less.",
        "brief": [
         "The user types in one whole number.",
         "Print exactly one word: yes or no"
@@ -418,7 +418,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for a word. Display match when the word is amber, and no match when it is not.",
+       "q": "Ask the user for a word. Display match when the word is amber. Display no match when it is not.",
        "brief": [
         "The user types in one word.",
         "Print exactly: match",
@@ -473,7 +473,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for two whole numbers. Work out which of them is the larger and display [larger] and nothing else.",
+       "q": "Ask the user for a whole number. Then ask for a second whole number. Work out which of them is the larger. Display [larger] and nothing else.",
        "brief": [
         "The user types in two whole numbers, one on each line.",
         "When the two are equal, print that value."
@@ -541,7 +541,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for a whole number. Display positive when it is above 0, negative when it is below 0, and zero when it is exactly 0.",
+       "q": "Ask the user for a whole number. Display positive when it is above 0. Display negative when it is below 0. Display zero when it is exactly 0.",
        "brief": [
         "The user types in one whole number.",
         "Print exactly one word: positive, negative or zero"
@@ -606,7 +606,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for a whole number. Display small when it is 10 or less, medium when it is more than 10 but 100 or less, and large when it is more than 100.",
+       "q": "Ask the user for a whole number. Display small when it is 10 or less. Display medium when it is more than 10 but 100 or less. Display large when it is more than 100.",
        "brief": [
         "The user types in one whole number.",
         "Print exactly one word: small, medium or large"
@@ -677,10 +677,11 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a whole number. Display A when it is 70 or more, B when it is 50 or more, C when it is 30 or more, and D for anything less.",
+       "q": "Ask the user for a whole number. Display A when it is 70 or more. Display B when it is 50 or more. Display C when it is 30 or more. Display D for anything less.",
        "brief": [
         "The user types in one whole number.",
-        "Check the rules in that order and print only the letter of the first one that matches."
+        "Check the rules in that order.",
+        "Print only the letter of the first rule that matches."
        ],
        "starter": "# Read the number and print one letter\n",
        "tests": [
@@ -751,7 +752,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a word. Display 1 when the word is red, 2 when it is amber, 3 when it is green, and 0 for any other word.",
+       "q": "Ask the user for a word. Display 1 when the word is red. Display 2 when it is amber. Display 3 when it is green. Display 0 for any other word.",
        "brief": [
         "The user types in one word.",
         "Print the number only, with no other text."
@@ -826,7 +827,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for two whole numbers. Display True when both of them are above 0, and False when they are not.",
+       "q": "Ask the user for a whole number. Then ask for a second whole number. Display True when both of them are above 0. Display False when they are not.",
        "brief": [
         "The user types in two whole numbers, one on each line."
        ],
@@ -892,7 +893,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for a whole number. Display special when it is 3 or 7, and ordinary when it is not.",
+       "q": "Ask the user for a whole number. Display special when it is 3 or 7. Display ordinary when it is not.",
        "brief": [
         "The user types in one whole number.",
         "Print exactly one word: special or ordinary"
@@ -952,7 +953,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for a word. Display True when the word is not stop, and False when it is.",
+       "q": "Ask the user for a word. Display True when the word is not stop. Display False when it is.",
        "brief": [
         "The user types in one word."
        ],
@@ -1004,7 +1005,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a whole number and then a word. Display open when the number is 3 or 7 and the word is not locked. Otherwise display refused.",
+       "q": "Ask the user for a whole number. Then ask for a word. Display open when the number is 3 or 7 and the word is not locked. Otherwise display refused.",
        "brief": [
         "The user types in two lines: a whole number, then a word.",
         "Put brackets round the or so that the and cannot swallow it.",
@@ -1090,7 +1091,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a word and then a whole number. When the word is check, display high if the number is above 50 and low if it is not. When the word is anything else, display skipped.",
+       "q": "Ask the user for a word. Then ask for a whole number. When the word is check and the number is above 50, display high. When the word is check and the number is 50 or less, display low. When the word is anything else, display skipped.",
        "brief": [
         "The user types in two lines: a word, then a whole number.",
         "One line of output only.",
@@ -1162,7 +1163,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for two whole numbers. When the first is above 0, display both if the second is above 0 as well and first only if it is not. When the first is not above 0, display second only if the second is above 0 and neither if it is not.",
+       "q": "Ask the user for a whole number. Then ask for a second whole number. When both are above 0, display both. When the first is above 0 and the second is not, display first only. When the first is not above 0 and the second is above 0, display second only. When neither is above 0, display neither.",
        "brief": [
         "The user types in two whole numbers, one on each line.",
         "One line of output only.",
@@ -1244,7 +1245,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for three whole numbers. Work out which of them is the largest and display [largest] and nothing else.",
+       "q": "Ask the user for a whole number. Then ask for a second whole number. Then ask for a third whole number. Work out which of them is the largest. Display [largest] and nothing else.",
        "brief": [
         "The user types in three whole numbers, one on each line.",
         "When two of them are equal and both the largest, print that value."
@@ -1326,7 +1327,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a whole number. Display [number], then even on the next line when it divides exactly by 2, or odd when it does not.",
+       "q": "Ask the user for a whole number. Display [number]. Then display even on the next line when it divides exactly by 2. Display odd on the next line when it does not.",
        "brief": [
         "The user types in one whole number.",
         "Two lines of output: the number, then the word.",
@@ -1383,7 +1384,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for two whole numbers. When the second is 0, display cannot divide. Otherwise divide the first by the second and display [answer].",
+       "q": "Ask the user for a whole number. Then ask for a second whole number. When the second is 0, display cannot divide. Otherwise divide the first by the second. Then display [answer].",
        "brief": [
         "The user types in two whole numbers, one on each line.",
         "Divide with / , so the answer is a real number.",
@@ -1452,7 +1453,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for three whole numbers. Display all the same when all three are equal, two the same when exactly two of them are equal, and all different when no two are equal.",
+       "q": "Ask the user for a whole number. Then ask for a second whole number. Then ask for a third whole number. Display all the same when all three are equal. Display two the same when exactly two of them are equal. Display all different when no two are equal.",
        "brief": [
         "The user types in three whole numbers, one on each line.",
         "One line of output only.",
@@ -1525,10 +1526,11 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for three whole numbers. Display top when all three are 9 or more, high when they add up to 24 or more, middle when they add up to 18 or more, and low for anything else.",
+       "q": "Ask the user for a whole number. Then ask for a second whole number. Then ask for a third whole number. Display top when all three are 9 or more. Display high when they add up to 24 or more. Display middle when they add up to 18 or more. Display low for anything else.",
        "brief": [
         "The user types in three whole numbers, one on each line.",
-        "Check the rules in that order and print only the word of the first one that matches.",
+        "Check the rules in that order.",
+        "Print only the word of the first rule that matches.",
         "Print exactly one word: top, high, middle or low"
        ],
        "starter": "# Read three numbers and work out which band they are in\n",

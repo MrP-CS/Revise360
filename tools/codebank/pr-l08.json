@@ -14,7 +14,7 @@
    "id": "pr-l08-q1",
    "station": 0,
    "marks": 2,
-   "q": "Ask the user for six whole numbers, one on each line. Store them in a grid of two rows of three and display the grid itself, in the form [[9, 4, 1], [7, 0, 2]].",
+   "q": "Ask the user for six whole numbers, one on each line. Store them in a grid of two rows of three. Display the grid itself, in the form [[9, 4, 1], [7, 0, 2]].",
    "teach": {
     "say": "A two-dimensional list is a list whose items are themselves lists. Build each row as its own list, then append that row to the grid.",
     "code": [
@@ -28,7 +28,8 @@
     ]
    },
    "brief": [
-    "The first three numbers typed fill row 0 and the last three fill row 1.",
+    "The first three numbers typed fill row 0.",
+    "The last three fill row 1.",
     "Print the grid itself, both sets of brackets and all."
    ],
    "hint": "pygrid",
@@ -83,9 +84,11 @@
    "id": "pr-l08-q2",
    "station": 0,
    "marks": 2,
-   "q": "Ask the user for six words, one on each line. Store them in a grid of three rows of two and display the grid itself, in the form [['red', 'blue'], ['green', 'teal'], ['grey', 'pink']].",
+   "q": "Ask the user for six words, one on each line. Store them in a grid of three rows of two. Display the grid itself, in the form [['red', 'blue'], ['green', 'teal'], ['grey', 'pink']].",
    "brief": [
-    "The first two words typed fill row 0, the next two row 1 and the last two row 2.",
+    "The first two words typed fill row 0.",
+    "The next two fill row 1.",
+    "The last two fill row 2.",
     "Print the grid itself, both sets of brackets and the quote marks and all."
    ],
    "hint": "pygrid",
@@ -140,9 +143,9 @@
    "id": "pr-l08-q3",
    "station": 0,
    "marks": 3,
-   "q": "Ask the user for six whole numbers, one on each line, and then a row number counting from 0. Store the numbers in a grid of three rows of two and display [that whole row as a list], square brackets and all.",
+   "q": "Ask the user for six whole numbers, one on each line. Then ask for a row number, counting from 0. Store the numbers in a grid of three rows of two. Display [that whole row as a list], square brackets and all.",
    "brief": [
-    "The first two numbers typed fill row 0, and the row number counts from 0.",
+    "The first two numbers typed fill row 0.",
     "The row number is always one the grid has."
    ],
    "hint": "pygrid",
@@ -215,7 +218,7 @@
    "id": "pr-l08-q4",
    "station": 1,
    "marks": 2,
-   "q": "Ask the user for nine whole numbers, one on each line, then a row number and then a column number. Store the numbers in a grid of three rows of three and display [the value stored there] and nothing else.",
+   "q": "Ask the user for nine whole numbers, one on each line. Then ask for a row number. Then ask for a column number. Store the numbers in a grid of three rows of three. Display [the value stored there] and nothing else.",
    "teach": {
     "say": "Two sets of brackets: the first picks a row out of the grid, the second picks an item out of that row.",
     "code": [
@@ -229,7 +232,8 @@
     ]
    },
    "brief": [
-    "The first three numbers typed fill row 0, and both the row and the column count from 0.",
+    "The first three numbers typed fill row 0.",
+    "Both the row and the column count from 0.",
     "Both numbers are always ones the grid has."
    ],
    "hint": "pygrid",
@@ -337,10 +341,11 @@
    "id": "pr-l08-q5",
    "station": 1,
    "marks": 3,
-   "q": "Ask the user for nine whole numbers, one on each line, and then a row number counting from 0. Store the numbers in a grid of three rows of three and display [that whole row] on one line, with single spaces between the values and no brackets or commas.",
+   "q": "Ask the user for nine whole numbers, one on each line. Then ask for a row number, counting from 0. Store the numbers in a grid of three rows of three. Display [that whole row] on one line.",
    "brief": [
-    "The first three numbers typed fill row 0, and the row number counts from 0.",
-    "One line of output, with single spaces between the values."
+    "The first three numbers typed fill row 0.",
+    "Put single spaces between the values.",
+    "Print no brackets and no commas."
    ],
    "hint": "pygrid",
    "starter": "# Print one whole row across the screen\n",
@@ -424,10 +429,12 @@
    "id": "pr-l08-q6",
    "station": 1,
    "marks": 4,
-   "q": "Ask the user for nine whole numbers, one on each line, and then a column number counting from 0. Store the numbers in a grid of three rows of three and display [that whole column] on one line, with single spaces between the values and no brackets or commas.",
+   "q": "Ask the user for nine whole numbers, one on each line. Then ask for a column number, counting from 0. Store the numbers in a grid of three rows of three. Display [that whole column] on one line.",
    "brief": [
-    "The first three numbers typed fill row 0, and the column number counts from 0.",
-    "One line of output, with the values in order from the top row down."
+    "The first three numbers typed fill row 0.",
+    "The values go in order from the top row down.",
+    "Put single spaces between the values.",
+    "Print no brackets and no commas."
    ],
    "hint": "pygrid",
    "starter": "# Print one whole column across the screen\n",
@@ -511,7 +518,7 @@
    "id": "pr-l08-q7",
    "station": 2,
    "marks": 2,
-   "q": "Ask the user for six whole numbers, one on each line. Store them in a grid of two rows of three and display each row on its own line, with single spaces between the values and no brackets or commas.",
+   "q": "Ask the user for six whole numbers, one on each line. Store them in a grid of two rows of three. Display each row on its own line.",
    "teach": {
     "say": "A loop over a grid hands you one row at a time, and a loop inside it walks along that row.",
     "code": [
@@ -527,8 +534,11 @@
     ]
    },
    "brief": [
-    "The first three numbers typed fill row 0, and row 0 is printed first.",
-    "Two lines of output."
+    "The first three numbers typed fill row 0.",
+    "Row 0 is printed first.",
+    "Two lines of output.",
+    "Put single spaces between the values.",
+    "Print no brackets and no commas."
    ],
    "hint": "pygrid",
    "starter": "# Two rows in, two tidy lines out\n",
@@ -585,10 +595,13 @@
    "id": "pr-l08-q8",
    "station": 2,
    "marks": 3,
-   "q": "Ask the user for nine whole numbers, one on each line. Store them in a grid of three rows of three and display one line for every value, in the form [row] [column] [value], all of row 0 first.",
+   "q": "Ask the user for nine whole numbers, one on each line. Store them in a grid of three rows of three. Display one line for every value, in the form [row] [column] [value].",
    "brief": [
-    "The first three numbers typed fill row 0, and rows and columns count from 0.",
-    "Nine lines of output, with single spaces between the three numbers on a line."
+    "The first three numbers typed fill row 0.",
+    "Rows and columns count from 0.",
+    "All of row 0 is printed first.",
+    "Nine lines of output.",
+    "Put single spaces between the three numbers on a line."
    ],
    "hint": "pygrid",
    "starter": "# Visit every value and say where it is\n",
@@ -675,9 +688,10 @@
    "id": "pr-l08-q9",
    "station": 2,
    "marks": 4,
-   "q": "Ask the user for nine whole numbers, one on each line. Store them in a grid of three rows of three and display every value that is 10 or more, one on each line, all of row 0 first, or none on a line of its own when there are no such values.",
+   "q": "Ask the user for nine whole numbers, one on each line. Store them in a grid of three rows of three. Display every value that is 10 or more, one on each line. Display none instead, on a line of its own, when there are no such values.",
    "brief": [
-    "The first three numbers typed fill row 0, and row 0 is searched first.",
+    "The first three numbers typed fill row 0.",
+    "Row 0 is searched first.",
     "Exactly 10 counts as 10 or more.",
     "Print exactly: none"
    ],
@@ -761,7 +775,7 @@
    "id": "pr-l08-q10",
    "station": 3,
    "marks": 2,
-   "q": "Ask the user for twelve whole numbers, one on each line, and then a row number counting from 0. Store the numbers in a grid of three rows of four and display [the total of that row] and nothing else.",
+   "q": "Ask the user for twelve whole numbers, one on each line. Then ask for a row number, counting from 0. Store the numbers in a grid of three rows of four. Add up that row. Display [the total] and nothing else.",
    "teach": {
     "say": "grid[r] is one whole row, and a row is an ordinary list, so you can total it the way you would total any list.",
     "code": [
@@ -775,7 +789,7 @@
     ]
    },
    "brief": [
-    "The first four numbers typed fill row 0, and the row number counts from 0.",
+    "The first four numbers typed fill row 0.",
     "The row number is always one the grid has."
    ],
    "hint": "pygrid",
@@ -872,9 +886,10 @@
    "id": "pr-l08-q11",
    "station": 3,
    "marks": 3,
-   "q": "Ask the user for twelve whole numbers, one on each line. Store them in a grid of three rows of four and display [the total of each row], one on each line.",
+   "q": "Ask the user for twelve whole numbers, one on each line. Store them in a grid of three rows of four. Add up each row in turn. Display [the total of each row], one on each line.",
    "brief": [
-    "The first four numbers typed fill row 0, and its total is printed first.",
+    "The first four numbers typed fill row 0.",
+    "The total of row 0 is printed first.",
     "Three lines of output."
    ],
    "hint": "pygrid",
@@ -953,10 +968,11 @@
    "id": "pr-l08-q12",
    "station": 3,
    "marks": 4,
-   "q": "Ask the user for twelve whole numbers, one on each line. Store them in a grid of three rows of four and display [the total of each row], one on each line, then [the total of the whole grid] on the last line.",
+   "q": "Ask the user for twelve whole numbers, one on each line. Store them in a grid of three rows of four. Add up each row in turn. Add up the whole grid as well. Display [the total of each row], one on each line. Then display [the total of the whole grid] on the last line.",
    "brief": [
-    "The first four numbers typed fill row 0, and its total is printed first.",
-    "Four lines of output: the three row totals, then the whole grid."
+    "The first four numbers typed fill row 0.",
+    "The total of row 0 is printed first.",
+    "Four lines of output in all."
    ],
    "hint": "pygrid",
    "starter": "# A total for each row, then one for everything\n",
@@ -1037,7 +1053,7 @@
    "id": "pr-l08-q13",
    "station": 4,
    "marks": 2,
-   "q": "Ask the user for twelve whole numbers, one on each line, and then a column number counting from 0. Store the numbers in a grid of four rows of three and display [the total of that column] and nothing else.",
+   "q": "Ask the user for twelve whole numbers, one on each line. Then ask for a column number, counting from 0. Store the numbers in a grid of four rows of three. Add up that column. Display [the total] and nothing else.",
    "teach": {
     "say": "A column is not stored anywhere, so you gather it one row at a time: the column number stays still while the row number changes.",
     "code": [
@@ -1051,7 +1067,7 @@
     ]
    },
    "brief": [
-    "The first three numbers typed fill row 0, and the column number counts from 0.",
+    "The first three numbers typed fill row 0.",
     "The column number is always one the grid has."
    ],
    "hint": "pygrid",
@@ -1148,9 +1164,10 @@
    "id": "pr-l08-q14",
    "station": 4,
    "marks": 3,
-   "q": "Ask the user for twelve whole numbers, one on each line. Store them in a grid of four rows of three and display [the total of each column], one on each line.",
+   "q": "Ask the user for twelve whole numbers, one on each line. Store them in a grid of four rows of three. Add up each column in turn. Display [the total of each column], one on each line.",
    "brief": [
-    "The first three numbers typed fill row 0, and the total of column 0 is printed first.",
+    "The first three numbers typed fill row 0.",
+    "The total of column 0 is printed first.",
     "Three lines of output."
    ],
    "hint": "pygrid",
@@ -1229,10 +1246,11 @@
    "id": "pr-l08-q15",
    "station": 4,
    "marks": 4,
-   "q": "Ask the user for twelve whole numbers, one on each line. Store them in a grid of four rows of three and display [the total of each column], one on each line, then [the total of the whole grid] on the last line.",
+   "q": "Ask the user for twelve whole numbers, one on each line. Store them in a grid of four rows of three. Add up each column in turn. Add up the whole grid as well. Display [the total of each column], one on each line. Then display [the total of the whole grid] on the last line.",
    "brief": [
-    "The first three numbers typed fill row 0, and the total of column 0 is printed first.",
-    "Four lines of output: the three column totals, then the whole grid."
+    "The first three numbers typed fill row 0.",
+    "The total of column 0 is printed first.",
+    "Four lines of output in all."
    ],
    "hint": "pygrid",
    "starter": "# A total for each column, then one for everything\n",
@@ -1313,7 +1331,7 @@
    "id": "pr-l08-q16",
    "station": 5,
    "marks": 3,
-   "q": "Ask the user for nine whole numbers, one on each line, and then one more whole number. Store the nine in a grid of three rows of three and display [how many values in the grid are equal to or greater than that last number] and nothing else.",
+   "q": "Ask the user for nine whole numbers, one on each line. Then ask for one more whole number. Store the nine in a grid of three rows of three. Count how many values in the grid are equal to or greater than that last number. Display [the count] and nothing else.",
    "teach": {
     "say": "Two loops over range(len(...)) visit every cell of a grid in turn, row by row, and a counter outside them both keeps the answer.",
     "code": [
@@ -1330,7 +1348,8 @@
     ]
    },
    "brief": [
-    "The first three numbers typed fill row 0, and the tenth number is not part of the grid.",
+    "The first three numbers typed fill row 0.",
+    "The tenth number is not part of the grid.",
     "A value exactly equal to it does count.",
     "One line of output."
    ],
@@ -1416,9 +1435,10 @@
    "id": "pr-l08-q17",
    "station": 5,
    "marks": 4,
-   "q": "Ask the user for nine words, one on each line, and then a word to look for. Store the nine in a grid of three rows of three and display [the row] and [the column] where the word is, on one line with a single space between them, or not in the grid when the word is not there.",
+   "q": "Ask the user for nine words, one on each line. Then ask for a word to look for. Store the nine words in a grid of three rows of three. Find where that word is in the grid. Display [the row] and [the column] on one line, with a single space between them. Display not in the grid instead when the word is not there.",
    "brief": [
-    "The first three words typed fill row 0, and rows and columns count from 0.",
+    "The first three words typed fill row 0.",
+    "Rows and columns count from 0.",
     "The word appears at most once in the grid.",
     "Print exactly: not in the grid"
    ],
@@ -1522,9 +1542,10 @@
    "id": "pr-l08-q18",
    "station": 5,
    "marks": 4,
-   "q": "Ask the user for nine whole numbers, one on each line, and then a whole number to look for. Store the nine in a grid of three rows of three and display not in the grid when the number is not there, or [the row] and [the column] on one line with a single space between them and [the total of that row] on the next line.",
+   "q": "Ask the user for nine whole numbers, one on each line. Then ask for a whole number to look for. Store the nine in a grid of three rows of three. Find where that number is in the grid. Display not in the grid when the number is not there. Otherwise display [the row] and [the column] on one line, with a single space between them. Then add up the row the number is in. Then display [that total] on the next line.",
    "brief": [
-    "The first three numbers typed fill row 0, and rows and columns count from 0.",
+    "The first three numbers typed fill row 0.",
+    "Rows and columns count from 0.",
     "The number appears at most once in the grid.",
     "Print exactly: not in the grid"
    ],

@@ -14,7 +14,7 @@
    "id": "pr-l12-q1",
    "station": 0,
    "marks": 2,
-   "q": "Ask the user for a word, ignoring any spaces at each end of it. Display nothing typed when nothing is left, or value [the word without those spaces].",
+   "q": "Ask the user for a word. Take off any spaces at each end of it. Display nothing typed when nothing is left. Otherwise display value [the word without those spaces].",
    "teach": {
     "say": ".strip() takes the spaces off each end of what was typed, so a line of nothing but spaces becomes the empty string and can be caught.",
     "code": [
@@ -26,7 +26,8 @@
     ]
    },
    "brief": [
-    "One line only: a line of nothing but spaces is not a word.",
+    "One line only is printed.",
+    "A line of nothing but spaces is not a word.",
     "Print exactly: nothing typed"
    ],
    "hint": "pyvalidate",
@@ -75,9 +76,11 @@
    "id": "pr-l12-q2",
    "station": 0,
    "marks": 3,
-   "q": "Ask the user for a whole number. Display number: [the number] when every character typed is a digit, or not a number when it is not.",
+   "q": "Ask the user for a whole number. Check whether every character typed is a digit. Display number: [the number] when they are all digits. Display not a number instead when any one of them is not.",
    "brief": [
-    "A minus sign and a decimal point are not digits, and an empty line is not a number.",
+    "A minus sign is not a digit.",
+    "A decimal point is not a digit.",
+    "An empty line is not a number.",
     "One line only is printed."
    ],
    "hint": "pyvalidate",
@@ -144,7 +147,7 @@
    "id": "pr-l12-q3",
    "station": 0,
    "marks": 3,
-   "q": "Ask the user for a word. Display known when it is one of red, green or blue, which are fixed in the program, or unknown when it is not.",
+   "q": "Ask the user for a word. Check it against red, green and blue, which are fixed in the program. Display known when it is one of those three. Display unknown instead when it is not.",
    "brief": [
     "The three allowed words are written into the program, not typed in.",
     "Matching is exact, so a capital letter makes a word unknown.",
@@ -214,9 +217,10 @@
    "id": "pr-l12-q4",
    "station": 1,
    "marks": 3,
-   "q": "Ask the user for a whole number. Display valid when it is from 1 to 10 inclusive, too low below that range and too high above it.",
+   "q": "Ask the user for a whole number. Display valid when it is from 1 to 10 inclusive. Display too low instead when it is below 1. Display too high instead when it is above 10.",
    "brief": [
-    "Both 1 and 10 are allowed, and one line only is printed."
+    "Both 1 and 10 are allowed.",
+    "One line only is printed."
    ],
    "hint": "pyvalidate",
    "starter": "# both boundaries are allowed\n",
@@ -282,10 +286,12 @@
    "id": "pr-l12-q5",
    "station": 1,
    "marks": 4,
-   "q": "Ask the user for a whole number. Display not a number when what was typed is not a whole number, ok when it is from -5 to 35 inclusive, or out of range when it is outside that.",
+   "q": "Ask the user for a whole number. Display not a number when what was typed is not a whole number. Display ok when it is from -5 to 35 inclusive. Display out of range when it is outside that range.",
    "brief": [
-    "A minus sign at the front is allowed, but a decimal point is not.",
-    "Both -5 and 35 are allowed, and one line only is printed."
+    "A minus sign at the front is allowed.",
+    "A decimal point is not allowed.",
+    "Both -5 and 35 are allowed.",
+    "One line only is printed."
    ],
    "hint": "pyvalidate",
    "starter": "# a negative number is still a number\n",
@@ -360,9 +366,10 @@
    "id": "pr-l12-q6",
    "station": 2,
    "marks": 4,
-   "q": "Ask the user for a word. Display too short when it is under 8 characters, too long when it is over 16, and ok for anything in between.",
+   "q": "Ask the user for a word. Display too short when it is under 8 characters. Display too long when it is over 16 characters. Display ok for anything in between.",
    "brief": [
-    "Count the line exactly as it is typed, with no stripping, so an empty line is too short.",
+    "Count the line exactly as it is typed, with no stripping.",
+    "An empty line is too short.",
     "One line only is printed."
    ],
    "hint": "pyvalidate",
@@ -429,9 +436,10 @@
    "id": "pr-l12-q7",
    "station": 2,
    "marks": 5,
-   "q": "Ask the user for a code, ignoring any spaces at each end. Display valid code when it is two letters and then four digits, or invalid code when it is not.",
+   "q": "Ask the user for a code. Take off any spaces at each end of it. Display valid code when it is two letters and then four digits. Display invalid code instead when it is not.",
    "brief": [
-    "It must be exactly 6 characters, and capitals and small letters both count as letters.",
+    "It must be exactly 6 characters.",
+    "Capitals and small letters both count as letters.",
     "One line only is printed."
    ],
    "hint": "pystring",
@@ -507,9 +515,10 @@
    "id": "pr-l12-q8",
    "station": 3,
    "marks": 4,
-   "q": "Keep asking the user for a word until one still has something in it once the spaces at each end have been taken off. Display that is empty for every wrong one, then accepted [the word without those spaces] for the one you take.",
+   "q": "Keep asking the user for a word until one still has something in it once the spaces at each end have been taken off. Display that is empty for every wrong one. Then display accepted [the word without those spaces] for the one you take.",
    "brief": [
-    "Print nothing else, and read no more lines once one is accepted.",
+    "Print nothing else.",
+    "Read no more lines once one is accepted.",
     "Print exactly: that is empty"
    ],
    "hint": "pyvalidate",
@@ -570,9 +579,10 @@
    "id": "pr-l12-q9",
    "station": 3,
    "marks": 5,
-   "q": "Keep asking the user for a whole number until one is from 1 to 5 inclusive. Display please enter 1 to 5 for every wrong one, then chosen [the number] for the one you accept.",
+   "q": "Keep asking the user for a whole number until one is from 1 to 5 inclusive. Display please enter 1 to 5 for every wrong one. Then display chosen [the number] for the one you accept.",
    "brief": [
-    "Print nothing else, and read no more lines once one is accepted.",
+    "Print nothing else.",
+    "Read no more lines once one is accepted.",
     "Both 1 and 5 are allowed."
    ],
    "hint": "pyvalidate",
@@ -640,10 +650,11 @@
    "id": "pr-l12-q10",
    "station": 3,
    "marks": 6,
-   "q": "Keep asking the user for a whole number until one is from 10 to 99 inclusive. Display that is not a whole number or that is outside 10 to 99 for each wrong one, then accepted: [the number].",
+   "q": "Keep asking the user for a whole number until one is from 10 to 99 inclusive. Display that is not a whole number when what was typed is not all digits. Display that is outside 10 to 99 when it is a number outside that range. Then display accepted: [the number] for the one you accept.",
    "brief": [
     "Check whether it is all digits before checking the range.",
-    "Both 10 and 99 are allowed, and nothing more is read once one is accepted."
+    "Both 10 and 99 are allowed.",
+    "Nothing more is read once one is accepted."
    ],
    "hint": "pyvalidate",
    "starter": "# two rules, two messages\n",
@@ -712,9 +723,10 @@
    "id": "pr-l12-q11",
    "station": 4,
    "marks": 6,
-   "q": "Ask the user for a line of usernames, a line of passwords in the same order, then one username and one password to check. Display unknown user when the username is not listed, wrong password when the password does not match, or access granted.",
+   "q": "Ask the user for a line of usernames. Then ask for a line of passwords in the same order. Then ask for one username to check. Then ask for one password to check. Display unknown user when the username is not listed. Display wrong password when the password does not match. Display access granted when both match.",
    "brief": [
-    "Both lines are separated by single spaces, and matching is exact, with capitals counting.",
+    "Both lines are separated by single spaces.",
+    "Matching is exact, with capitals counting.",
     "One line only is printed."
    ],
    "hint": "searches",
@@ -811,10 +823,11 @@
    "id": "pr-l12-q12",
    "station": 4,
    "marks": 6,
-   "q": "Ask the user for the correct passcode and then one attempt at a time. Display wrong passcode for each miss and access granted as soon as one matches, then account locked if a third attempt has missed too.",
+   "q": "Ask the user for the correct passcode. Then ask for one attempt at a time. Display wrong passcode for each miss. Display access granted as soon as one matches. Then display account locked if a third attempt has missed too.",
    "brief": [
     "Matching is exact, with capitals counting.",
-    "No more than three attempts are read, and nothing is read after a match."
+    "No more than three attempts are read.",
+    "Nothing is read after a match."
    ],
    "hint": "pyvalidate",
    "starter": "# three attempts, no more\n",
@@ -911,10 +924,12 @@
    "id": "pr-l12-q13",
    "station": 5,
    "marks": 7,
-   "q": "Keep asking the user for a username until one is 5 to 12 characters of letters and digits only, then for a whole number until one is from 11 to 19 inclusive. Display registered [the username] [the number] at the end.",
+   "q": "Keep asking the user for a username until one is 5 to 12 characters of letters and digits only. Then keep asking for a whole number until one is from 11 to 19 inclusive. Display registered [the username] [the number] at the end.",
    "brief": [
-    "Reject a username with exactly username must be 5 to 12 characters, or, when the length is fine, exactly username must be letters and digits only.",
-    "Reject a number with exactly number must be a whole number, or exactly number must be 11 to 19.",
+    "Reject a username of the wrong length with exactly username must be 5 to 12 characters.",
+    "When the length is fine but a character is not a letter or digit, reject it with exactly username must be letters and digits only.",
+    "Reject something that is not a whole number with exactly number must be a whole number.",
+    "Reject a number outside the range with exactly number must be 11 to 19.",
     "Separate the three parts of the last line with single spaces."
    ],
    "hint": "pyvalidate",
@@ -1005,10 +1020,13 @@
    "id": "pr-l12-q14",
    "station": 5,
    "marks": 8,
-   "q": "Keep asking the user for word,number lines until one is exactly done. Display added [the word] for each good line, then accepted: [how many were added] and total: [their numbers added up] on the last two lines.",
+   "q": "Keep asking the user for word,number lines until one is exactly done. Display added [the word] for each good line. Then display accepted: [how many were added] on the next line. Then display total: [their numbers added up] on the last line.",
    "brief": [
-    "Spaces around either field are ignored, and a wrong line must never stop the run.",
-    "Check in this order and print exactly bad line when there is not exactly one comma, bad number when the number is not all digits, and out of range when it is outside 1 to 99."
+    "Spaces around either field are ignored.",
+    "A wrong line must never stop the run.",
+    "Check the commas first, and print exactly bad line when there is not exactly one.",
+    "Then print exactly bad number when the number is not all digits.",
+    "Then print exactly out of range when the number is outside 1 to 99."
    ],
    "hint": "pyvalidate",
    "starter": "# report a bad line and carry on to the next one\n",

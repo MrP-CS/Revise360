@@ -25,7 +25,8 @@
     ]
    },
    "brief": [
-    "Nothing is typed in by the user, and nothing else is printed."
+    "Nothing is typed in by the user.",
+    "Nothing else is printed."
    ],
    "hint": "pyoutput",
    "starter": "# Print one line\n",
@@ -57,7 +58,8 @@
     ]
    },
    "brief": [
-    "The user types in one word, and nothing else is printed."
+    "The user types in one word.",
+    "Nothing else is printed."
    ],
    "hint": "pyoutput",
    "starter": "# Read one word, then print it\n",
@@ -96,7 +98,7 @@
    "id": "pr-l01-q3",
    "station": 0,
    "marks": 1,
-   "q": "Ask the user for a word. Display two lines, the first Ready and the second [word].",
+   "q": "Ask the user for a word. Display Ready. Then display [word] on the next line.",
    "teach": {
     "say": "print() shows fixed text when you put it in quotation marks, and the value of a variable when you leave them off.",
     "code": [
@@ -152,7 +154,7 @@
    "id": "pr-l01-q4",
    "station": 0,
    "marks": 2,
-   "q": "Ask the user for a word. Display three lines: ----- on the first, [word] on the second, and ----- on the third.",
+   "q": "Ask the user for a word. Display -----. Then display [word] on the next line. Then display ----- again on the next line.",
    "teach": {
     "say": "Each print() makes a new line, and they run in the order you write them.",
     "code": [
@@ -167,7 +169,8 @@
     ]
    },
    "brief": [
-    "Print exactly five hyphens on the first line, and five again on the third."
+    "Print exactly five hyphens on the first line.",
+    "Print five hyphens again on the third line."
    ],
    "hint": "pyoutput",
    "starter": "# Three lines of output, the word in the middle\n",
@@ -212,7 +215,7 @@
    "id": "pr-l01-q5",
    "station": 1,
    "marks": 2,
-   "q": "Ask the user for a word and keep it in a variable. Display [word], then [word] again on the next line.",
+   "q": "Ask the user for a word and keep it in a variable. Display [word]. Then display [word] again on the next line.",
    "teach": {
     "say": "A variable keeps the value you put in it, so you can print it as often as you like.",
     "code": [
@@ -226,7 +229,8 @@
     ]
    },
    "brief": [
-    "Read the word once only, then print the same variable twice."
+    "Read the word once only.",
+    "Print the same variable twice."
    ],
    "hint": "pyoutput",
    "starter": "# One word in, the same word on two lines\n",
@@ -268,7 +272,7 @@
    "id": "pr-l01-q6",
    "station": 1,
    "marks": 2,
-   "q": "Keep the fixed whole number 100 in a constant called LIMIT. Ask the user for a word. Display two lines, the first [word] and the second [limit].",
+   "q": "Keep the fixed whole number 100 in a constant called LIMIT. Ask the user for a word. Display [word]. Then display [limit] on the next line.",
    "teach": {
     "say": "A constant is a variable whose value never changes. Its name is written in capitals so everyone can see it must stay as it is.",
     "code": [
@@ -323,7 +327,7 @@
    "id": "pr-l01-q7",
    "station": 1,
    "marks": 2,
-   "q": "Ask the user for a word and keep it in a variable. Display [first word]. Then ask for a second word, keep it in that same variable, and display [second word].",
+   "q": "Ask the user for a word and keep it in a variable. Display [first word]. Then ask for a second word and keep it in that same variable. Display [second word] on the next line.",
    "teach": {
     "say": "= replaces whatever the variable held before, so only the newest value is left. Print the old value before you overwrite it.",
     "code": [
@@ -384,7 +388,7 @@
    "id": "pr-l01-q8",
    "station": 1,
    "marks": 3,
-   "q": "Ask the user for a word and keep it in a variable called a. Copy the value of a into a second variable called b. Then ask for another word and keep it in a. Display three lines: [a], then [b], then [a] again.",
+   "q": "Ask the user for a word and keep it in a variable called a. Copy the value of a into a second variable called b. Then ask for another word and keep it in a. Display [a]. Then display [b] on the next line. Then display [a] again on the next line.",
    "teach": {
     "say": "b = a copies across the value a is holding at that moment. Changing a afterwards leaves b exactly as it was.",
     "code": [
@@ -449,7 +453,7 @@
    "id": "pr-l01-q9",
    "station": 2,
    "marks": 2,
-   "q": "Ask the user for one word. Display [word] three times, one on each of three lines.",
+   "q": "Ask the user for one word. Display [word]. Then display [word] again on the next line. Then display [word] a third time on the next line.",
    "teach": {
     "say": "A variable keeps its value, so you can use it as many times as you like.",
     "code": [
@@ -508,7 +512,7 @@
    "id": "pr-l01-q10",
    "station": 2,
    "marks": 2,
-   "q": "Ask the user for a word and then a second word. Display two lines, the first [second word] and the second [first word].",
+   "q": "Ask the user for a word. Then ask for a second word. Display [second word]. Then display [first word] on the next line.",
    "teach": {
     "say": "One input() reads one line, so two lines need two calls. Each value goes in its own variable, and then you print them in any order.",
     "code": [
@@ -567,7 +571,7 @@
    "id": "pr-l01-q11",
    "station": 2,
    "marks": 2,
-   "q": "Ask the user for two words. Display four lines: [first word], then [second word], then [first word] again, then [second word] again.",
+   "q": "Ask the user for a word. Then ask for a second word. Display [first word]. Then display [second word] on the next line. Then display [first word] again on the next line. Then display [second word] again on the next line.",
    "teach": {
     "say": "Both variables are still there after they have been printed, so you can print either of them again.",
     "code": [
@@ -636,7 +640,7 @@
    "id": "pr-l01-q12",
    "station": 2,
    "marks": 3,
-   "q": "Ask the user for three words, keeping each one in its own variable. Display three lines: [third word], then [first word], then [second word].",
+   "q": "Ask the user for a word and keep it in its own variable. Then ask for a second word and keep it in its own variable. Then ask for a third word and keep it in its own variable. Display [third word]. Then display [first word] on the next line. Then display [second word] on the next line.",
    "teach": {
     "say": "Three values need three variables, and each one keeps whatever was put in it whatever order you print them in.",
     "code": [
@@ -756,7 +760,7 @@
    "id": "pr-l01-q14",
    "station": 3,
    "marks": 2,
-   "q": "Ask the user for two words. Join them with one space between them and display one line in the form [first word] [second word].",
+   "q": "Ask the user for a word. Then ask for a second word. Join them with one space between them. Display one line in the form [first word] [second word].",
    "teach": {
     "say": "Two variables can be joined the same way as text and a variable, as long as the space between them is joined in as well.",
     "code": [
@@ -769,7 +773,8 @@
     ]
    },
    "brief": [
-    "One line only, with exactly one space between the two words.",
+    "One line only.",
+    "Exactly one space between the two words.",
     "No other text is printed."
    ],
    "hint": "pystring",
@@ -812,7 +817,7 @@
    "id": "pr-l01-q15",
    "station": 3,
    "marks": 2,
-   "q": "Ask the user for a word. Display three lines: [word], then the whole number 7, then the real number 1.5.",
+   "q": "Ask the user for a word. Display [word]. Then display the whole number 7 on the next line. Then display the real number 1.5 on the next line.",
    "teach": {
     "say": "Python values come in types: text in quotation marks is a string, 4 is an integer and 0.5 is a real number.",
     "code": [
@@ -871,7 +876,7 @@
    "id": "pr-l01-q16",
    "station": 3,
    "marks": 2,
-   "q": "Ask the user for a word. Display three lines: [word], then the Boolean True, then the Boolean False.",
+   "q": "Ask the user for a word. Display [word]. Then display the Boolean True on the next line. Then display the Boolean False on the next line.",
    "teach": {
     "say": "A Boolean holds one of only two values. They are written True and False, with a capital letter and no quotation marks.",
     "code": [
@@ -930,7 +935,7 @@
    "id": "pr-l01-q17",
    "station": 4,
    "marks": 2,
-   "q": "Ask the user for a whole number. Add 1 to it and display [answer] and nothing else.",
+   "q": "Ask the user for a whole number. Add 1 to it. Display [answer] and nothing else.",
    "teach": {
     "say": "input() always hands back text, and arithmetic needs a number. int() turns the text into a whole number first.",
     "code": [
@@ -982,7 +987,7 @@
    "id": "pr-l01-q18",
    "station": 4,
    "marks": 2,
-   "q": "Ask the user for two whole numbers. Add them together and display [total] and nothing else.",
+   "q": "Ask the user for a whole number. Then ask for a second whole number. Add them together. Display [total] and nothing else.",
    "teach": {
     "say": "+ adds two numbers but joins two strings, so each input has to be cast with int() before you add them.",
     "code": [
@@ -1101,7 +1106,8 @@
    },
    "brief": [
     "The user types in one number, which may have a decimal point.",
-    "Cast it in with float() and back with str() to join it to the text."
+    "Cast it in with float().",
+    "Cast it back with str() to join it to the text."
    ],
    "hint": "pyinput",
    "starter": "# Read the number, make it real, print the line\n",
@@ -1140,7 +1146,7 @@
    "id": "pr-l01-q21",
    "station": 5,
    "marks": 3,
-   "q": "Ask the user for a word and then a whole number. Display two lines, the first [word] and the second [the number with 1 added].",
+   "q": "Ask the user for a word. Then ask for a whole number. Add 1 to the number. Display [word]. Then display [answer] on the next line.",
    "teach": {
     "say": "Read each value, cast the ones you need as numbers, then print the answers in the order the question asks for.",
     "code": [
@@ -1156,7 +1162,8 @@
    },
    "brief": [
     "The user types in two lines: a word, then a whole number.",
-    "Only the number is cast with int(); the word stays as text."
+    "Only the number is cast with int().",
+    "The word stays as text."
    ],
    "hint": "pyinput",
    "starter": "# A word and a number in. The word, then one more.\n",
@@ -1201,7 +1208,7 @@
    "id": "pr-l01-q22",
    "station": 5,
    "marks": 3,
-   "q": "Ask the user for a word and then a whole number. Add 1 to the number and display one line in the form [word] [answer], with one space between them.",
+   "q": "Ask the user for a word. Then ask for a whole number. Add 1 to the number. Display one line in the form [word] [answer], with one space between them.",
    "teach": {
     "say": "A number cannot be joined to text with + until str() has turned it back into text.",
     "code": [
@@ -1214,7 +1221,8 @@
    },
    "brief": [
     "The user types in two lines: a word, then a whole number.",
-    "One line of output, with exactly one space between the word and the answer."
+    "One line of output.",
+    "Exactly one space between the word and the answer."
    ],
    "hint": "pystring",
    "starter": "# A word and a number in, one joined line out\n",
@@ -1256,7 +1264,7 @@
    "id": "pr-l01-q23",
    "station": 5,
    "marks": 3,
-   "q": "Ask the user for two whole numbers. Add them together and display one line in the form Total: [total].",
+   "q": "Ask the user for a whole number. Then ask for a second whole number. Add them together. Display one line in the form Total: [total].",
    "teach": {
     "say": "Cast on the way in with int() so the arithmetic works, and on the way out with str() so the joining works.",
     "code": [
@@ -1312,7 +1320,7 @@
    "id": "pr-l01-q24",
    "station": 5,
    "marks": 3,
-   "q": "Ask the user for a word, then two whole numbers. Add the two numbers together and display two lines, the first [word] and the second Total: [total].",
+   "q": "Ask the user for a word. Then ask for a whole number. Then ask for a second whole number. Add the two numbers together. Display [word]. Then display Total: [total] on the next line.",
    "teach": {
     "say": "Most programs are this shape: read the inputs, cast each one to the type you need, work something out, then print it in the form asked for.",
     "code": [

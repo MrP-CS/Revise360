@@ -1,13 +1,13 @@
 {
  "id": "pr-l05",
  "lesson": 5,
- "title": "Waiting room",
+ "title": "Condition-controlled loops",
  "scenes": [
   {
    "id": "main",
-   "title": "Waiting room",
-   "img": "img/PR_L05_WaitingRoom_360.jpg",
-   "imgHi": "img/PR_L05_WaitingRoom_360_hi.jpg",
+   "title": "Condition-controlled loops",
+   "img": "img/PR_L05_ConditionControlledLoops_360.jpg",
+   "imgHi": "img/PR_L05_ConditionControlledLoops_360_hi.jpg",
    "stations": [
     {
      "label": "1",
@@ -82,7 +82,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for a whole number. Using a while loop, display every number from it down to 1, one on each line, and then display go on the last line.",
+       "q": "Ask the user for a whole number. Using a while loop, display every number from it down to 1, one on each line. Then display go on the last line.",
        "brief": [
         "The user types in one whole number, which may be 0.",
         "Print exactly: go"
@@ -142,7 +142,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for two whole numbers, the second never smaller than the first. Using a while loop, display every number from the first to the second, both included, one on each line.",
+       "q": "Ask the user for a whole number. Then ask for a second whole number, which is never smaller than the first. Using a while loop, display every number from the first to the second, both included, one on each line.",
        "brief": [
         "The user types in two whole numbers, one on each line."
        ],
@@ -228,7 +228,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Keep asking the user for a whole number until one of them is 10 or more. Display too small for each number refused, then [the accepted number] on a line of its own.",
+       "q": "Keep asking the user for a whole number until one of them is 10 or more. Display too small for each number refused. Then display [the accepted number] on a line of its own.",
        "brief": [
         "The user types in whole numbers, one on each line, until one of them is 10 or more.",
         "Print exactly: too small"
@@ -298,7 +298,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Keep asking the user for a whole number until one of them is from 1 to 20. Display out of range for each number refused, then [the accepted number] on a line of its own.",
+       "q": "Keep asking the user for a whole number until one of them is from 1 to 20. Display out of range for each number refused. Then display [the accepted number] on a line of its own.",
        "brief": [
         "The user types in whole numbers, one on each line, until one of them is from 1 to 20.",
         "Print exactly: out of range"
@@ -368,7 +368,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Keep asking the user for a word until it is yes or no. Display please answer yes or no for each other word, then [the accepted word] on a line of its own.",
+       "q": "Keep asking the user for a word until it is yes or no. Display please answer yes or no for each other word. Then display [the accepted word] on a line of its own.",
        "brief": [
         "The user types in words, one on each line, until one of them is yes or no.",
         "Print exactly: please answer yes or no"
@@ -450,7 +450,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for whole numbers until they type -1, which is the signal to stop. Display each number as it is typed, one on each line, and do not display the -1.",
+       "q": "Ask the user for whole numbers until they type -1, which is the signal to stop. Display each number as it is typed, one on each line. Do not display the -1.",
        "brief": [
         "The user types in whole numbers, one on each line, until they type -1.",
         "At least one number comes before the -1."
@@ -512,7 +512,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for whole numbers until they type -1, which is the signal to stop and is not added. Display [the total] and nothing else.",
+       "q": "Ask the user for whole numbers until they type -1, which is the signal to stop and is not added. Add the numbers up. Display [the total] and nothing else.",
        "brief": [
         "The user types in whole numbers, one on each line, until they type -1.",
         "With no numbers at all the total is 0."
@@ -584,7 +584,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for whole numbers until they type the word end, which is the signal to stop. Display [the total] and nothing else.",
+       "q": "Ask the user for whole numbers until they type the word end, which is the signal to stop. Add the numbers up. Display [the total] and nothing else.",
        "brief": [
         "The user types in whole numbers, one on each line, then the word end to finish.",
         "With no numbers at all the total is 0."
@@ -662,7 +662,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for whole numbers until they type -1. Display [how many numbers were typed], not counting the -1, and nothing else.",
+       "q": "Ask the user for whole numbers until they type -1. Count how many numbers were typed. Display [the count] and nothing else.",
        "brief": [
         "The user types in whole numbers, one on each line, until they type -1.",
         "The -1 is not counted."
@@ -734,7 +734,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for whole numbers until they type -1. Display [how many of them are 40 or more] and nothing else.",
+       "q": "Ask the user for whole numbers until they type -1. Count how many of them are 40 or more. Display [the count] and nothing else.",
        "brief": [
         "The user types in whole numbers, one on each line, until they type -1.",
         "Exactly 40 counts as 40 or more."
@@ -807,7 +807,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for whole numbers until they type -1. Display [how many numbers were typed], not counting the -1, then [how many of them are 40 or more] on the next line.",
+       "q": "Ask the user for whole numbers until they type -1. Count how many numbers were typed, not counting the -1. Count how many of them are 40 or more. Display [how many were typed]. Then display [how many reach 40] on the next line.",
        "brief": [
         "The user types in whole numbers, one on each line, until they type -1.",
         "Two lines of output: how many were typed, then how many reach 40.",
@@ -897,7 +897,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for a whole number. Start a value at 1 in your program, then keep doubling it until it is equal to or greater than that number. Display [how many doublings were needed] and nothing else.",
+       "q": "Ask the user for a whole number. Start a value at 1 in your program. Keep doubling that value until it is equal to or greater than the number typed in. Count how many doublings that took. Display [how many doublings were needed] and nothing else.",
        "brief": [
         "The user types in one whole number, which is never less than 1.",
         "The value starts at 1, fixed in your program, and is not typed in."
@@ -961,9 +961,10 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for how many numbers there are, then for that many whole numbers, using a for loop. Display [the largest of them] and nothing else.",
+       "q": "Ask the user for how many numbers there are. Then ask for that many whole numbers, using a for loop. Work out the largest of them. Display [the largest] and nothing else.",
        "brief": [
-        "The user types in a whole number saying how many follow, which is never less than 1, then that many whole numbers, one on each line.",
+        "The user types in a whole number saying how many follow, which is never less than 1.",
+        "Then come that many whole numbers, one on each line.",
         "The numbers may be negative."
        ],
        "starter": "# Read the numbers with a for loop, keeping the largest\n",
@@ -1037,9 +1038,10 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Ask the user for how many numbers there are, then for that many whole numbers, using a for loop. Then, using a while loop, keep asking for one more number at a time until one of them is equal to or greater than the largest number read. Display too small for each number refused, then ok on a line of its own.",
+       "q": "Ask the user for how many numbers there are. Then ask for that many whole numbers, using a for loop. Work out the largest of them. Then, using a while loop, keep asking for one more number at a time until one of them is equal to or greater than that largest number. Display too small for each number refused. Then display ok on a line of its own.",
        "brief": [
-        "The user types in a whole number saying how many follow, which may be 0, then that many whole numbers, one on each line, none of them below 0.",
+        "The user types in a whole number saying how many follow, which may be 0.",
+        "Then come that many whole numbers, one on each line, none of them below 0.",
         "With no numbers at all the first number tested is accepted.",
         "Print exactly: too small, and then ok"
        ],
@@ -1143,7 +1145,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a whole number that is 0 or more. Add up its digits without turning the number into text, and display [the total of the digits] and nothing else.",
+       "q": "Ask the user for a whole number that is 0 or more. Add up its digits without turning the number into text. Display [the total of the digits] and nothing else.",
        "brief": [
         "The user types in one whole number that is 0 or more.",
         "Take the digits off with arithmetic rather than turning the number into text."
@@ -1214,7 +1216,7 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "The whole number 37 is fixed in your program. Keep asking the user for a whole number until they type 37. Display higher when the number typed is below 37, lower when it is above, and correct when it is 37.",
+       "q": "The whole number 37 is fixed in your program. Keep asking the user for a whole number until they type 37. Display higher when the number typed is below 37. Display lower when it is above 37. Display correct when it is 37.",
        "brief": [
         "The 37 is fixed in your program and not typed in.",
         "One line of output for every number typed.",
@@ -1292,7 +1294,7 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Ask the user for whole numbers until they type the word end. Display [how many numbers were typed], then [the total] on the next line, then [the largest] on the next line, or none on a line of its own when end is the very first line.",
+       "q": "Ask the user for whole numbers until they type the word end. Count how many numbers were typed. Add them up. Work out the largest of them. Display [how many were typed]. Then display [the total] on the next line. Then display [the largest] on the next line. Display none on a line of its own instead when end is the very first line.",
        "brief": [
         "The user types in whole numbers, one on each line, then the word end to finish.",
         "The numbers may be negative.",

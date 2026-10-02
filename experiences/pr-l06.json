@@ -1,13 +1,13 @@
 {
  "id": "pr-l06",
  "lesson": 6,
- "title": "Letter press",
+ "title": "String handling",
  "scenes": [
   {
    "id": "main",
-   "title": "Letter press",
-   "img": "img/PR_L06_LetterPress_360.jpg",
-   "imgHi": "img/PR_L06_LetterPress_360_hi.jpg",
+   "title": "String handling",
+   "img": "img/PR_L06_StringHandling_360.jpg",
+   "imgHi": "img/PR_L06_StringHandling_360_hi.jpg",
    "stations": [
     {
      "label": "1",
@@ -71,7 +71,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for one word. Display [its first character], then [its last character] on the next line.",
+       "q": "Ask the user for one word. Display [its first character]. Then display [its last character] on the next line.",
        "brief": [
         "The user types in one word.",
         "Two lines of output: the first character, then the last."
@@ -137,9 +137,10 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a word and then a position counting from 0. Display [the character at that position], or no such position when the word has no character there.",
+       "q": "Ask the user for a word. Then ask for a position counting from 0. Display [the character at that position]. Display no such position instead when the word has no character there.",
        "brief": [
-        "The user types in two lines: one word, then a position counting from 0, never below 0.",
+        "The user types in two lines: one word, then a position.",
+        "Positions count from 0, and are never below 0.",
         "Print exactly: no such position"
        ],
        "starter": "# Print the character at that position, if there is one\n",
@@ -276,7 +277,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for one word. Display [its first three characters], or too short when the word has fewer than three characters.",
+       "q": "Ask the user for one word. Display [its first three characters]. Display too short instead when the word has fewer than three characters.",
        "brief": [
         "The user types in one word.",
         "Print exactly: too short"
@@ -338,7 +339,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a line of text. Display [the text without its first and last characters], or nothing inside when it has fewer than three characters.",
+       "q": "Ask the user for a line of text. Display [the text without its first and last characters]. Display nothing inside instead when it has fewer than three characters.",
        "brief": [
         "The user types in one line of text, which may be empty.",
         "Print exactly: nothing inside"
@@ -419,7 +420,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for two words. Ignoring capitals, display match when they are the same word, or different when they are not.",
+       "q": "Ask the user for a word. Then ask for a second word. Ignoring capitals, display match when they are the same word. Display different when they are not.",
        "brief": [
         "The user types in two words, one on each line.",
         "Print exactly: match or different"
@@ -496,7 +497,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a line of text. Display [how many of its characters are capital letters] and nothing else.",
+       "q": "Ask the user for a line of text. Count how many of its characters are capital letters. Display [the count] and nothing else.",
        "brief": [
         "The user types in one line of text, which may be empty.",
         "Digits and spaces are not capital letters."
@@ -567,9 +568,10 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for two words. Ignoring capitals, display [the word that comes first alphabetically] and nothing else.",
+       "q": "Ask the user for a word. Then ask for a second word. Ignoring capitals, work out which of them comes first alphabetically. Display [that word] and nothing else.",
        "brief": [
-        "The user types in two words, one on each line, and they are never the same word.",
+        "The user types in two words, one on each line.",
+        "They are never the same word.",
         "A shorter word that starts the other one comes first."
        ],
        "starter": "# Which of the two words comes first alphabetically?\n",
@@ -642,7 +644,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for a line of text and then a word to look for. Display found when the word appears anywhere in the text, or missing when it does not.",
+       "q": "Ask the user for a line of text. Then ask for a word to look for. Display found when the word appears anywhere in the text. Display missing when it does not.",
        "brief": [
         "The user types in two lines: a line of text, then the word to look for.",
         "Print exactly: found or missing"
@@ -708,7 +710,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a line of text and then a word to look for. Display [the position where the word starts], counting from 0, or not found when the word is not there.",
+       "q": "Ask the user for a line of text. Then ask for a word to look for. Display [the position where the word starts], counting from 0. Display not found instead when the word is not there.",
        "brief": [
         "The user types in two lines: a line of text, then the word to look for.",
         "Positions count from 0.",
@@ -785,7 +787,7 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Ask the user for a line of text and then a word to look for. Display at the start when the text begins with the word, inside when the word appears but not at the start, or missing when it is not there at all.",
+       "q": "Ask the user for a line of text. Then ask for a word to look for. Display at the start when the text begins with the word. Display inside when the word appears but not at the start. Display missing when it is not there at all.",
        "brief": [
         "The user types in two lines: a line of text, then the word to look for.",
         "Print exactly one of: at the start, inside, missing"
@@ -933,7 +935,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for one lower-case letter. Display [the next letter of the alphabet], with a coming after z.",
+       "q": "Ask the user for one lower-case letter. Work out the next letter of the alphabet. Display [that letter] and nothing else.",
        "brief": [
         "The user types in one lower-case letter.",
         "After z the answer is a."
@@ -994,7 +996,7 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Ask the user for a line of text. Display [a string of only its digits, in the order they appear], or none when the text has no digits.",
+       "q": "Ask the user for a line of text. Build a string of only its digits, in the order they appear. Display [that string]. Display none instead when the text has no digits.",
        "brief": [
         "The user types in one line of text, which may be empty.",
         "The digit characters have codes 48 to 57.",
@@ -1076,7 +1078,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for one word. Build it backwards one character at a time, not with a slice or with reversed(), and display [the reversed word] and nothing else.",
+       "q": "Ask the user for one word. Build it backwards one character at a time, not with a slice or with reversed(). Display [the reversed word] and nothing else.",
        "brief": [
         "The user types in one word.",
         "Build the reversed word yourself, one character at a time."
@@ -1148,7 +1150,7 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Ask the user for one word. Display palindrome when it reads the same both ways once capitals are ignored, or not a palindrome when it does not.",
+       "q": "Ask the user for one word. Display palindrome when it reads the same both ways once capitals are ignored. Display not a palindrome when it does not.",
        "brief": [
         "The user types in one word.",
         "Ignore capitals when comparing.",
@@ -1223,10 +1225,11 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Ask the user for a line of text. Display [a string of only its letters, in the order they appear], then [a string of only its digits] on the next line, with none in place of either one that is empty.",
+       "q": "Ask the user for a line of text. Build a string of only its letters, in the order they appear. Build a string of only its digits, in the order they appear. Display [the letters], or none when there are no letters. Then display [the digits] on the next line, or none when there are no digits.",
        "brief": [
         "The user types in one line of text, which may be empty.",
-        "Letters have codes 65 to 90 and 97 to 122, and digits 48 to 57.",
+        "Letters have codes 65 to 90 and 97 to 122.",
+        "Digits have codes 48 to 57.",
         "Print exactly: none"
        ],
        "starter": "# Build one string of letters and one of digits\n",
