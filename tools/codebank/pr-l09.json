@@ -14,109 +14,111 @@
    "id": "pr-l09-q1",
    "station": 0,
    "marks": 2,
-   "q": "Ask the user for a title. Write a procedure called signoff that prints end of report, then display [title] and call signoff, so the title comes first.",
+   "q": "Ask the user for a word. Write a procedure called finish that prints done, then display [word] and call finish, so the word comes first.",
    "teach": {
     "say": "def gives a block of code a name. The indented lines do nothing until a line calls that name.",
     "code": [
      "def warn():",
-     "    print('check the seals')",
+     "    print('ready')",
      "warn()"
     ],
     "out": [
-     "check the seals"
+     "ready"
     ]
    },
    "brief": [
-    "signoff takes nothing, prints that one line, and is called once."
+    "finish takes nothing, prints that one line, and is called once.",
+    "Print exactly: done"
    ],
    "hint": "pyfunc",
-   "starter": "# signoff first, then the title\n",
+   "starter": "# the word first, then finish\n",
    "tests": [
     {
      "in": [
-      "Weekly attendance"
+      "carriage"
      ],
      "out": [
-      "Weekly attendance",
-      "end of report"
+      "carriage",
+      "done"
      ],
-     "why": "The title is printed first, then the procedure prints the sign-off. If you only see one line you have defined signoff but never called it - defining a procedure does not run it."
+     "why": "The word is printed first, then the procedure prints done. If you only see one line you have defined finish but never called it - defining a procedure does not run it."
     },
     {
      "in": [
-      "Kit cupboard check"
+      "x"
      ],
      "out": [
-      "Kit cupboard check",
-      "end of report"
+      "x",
+      "done"
      ],
-     "why": "A different title, the same sign-off. If this failed you may have typed the title into the procedure instead of reading it with input()."
+     "why": "A one letter word is printed just the same. If this failed you may have typed the word into the procedure instead of reading it with input()."
     },
     {
      "in": [
-      "Lost property"
+      "two words"
      ],
      "out": [
-      "Lost property",
-      "end of report"
+      "two words",
+      "done"
      ],
-     "why": "The sign-off wording never changes, so it belongs inside the procedure. Printing it twice means you called signoff twice."
+     "why": "input() hands back the whole line, so both words are printed together. The word done never changes, so it belongs inside the procedure."
     }
    ],
-   "fb": "A procedure is a named block of code you can run whenever you like. Writing def signoff(): only creates it - the line signoff() is what runs it."
+   "fb": "A procedure is a named block of code you can run whenever you like. Writing def finish(): only creates it - the line finish() is what runs it."
   },
   {
    "id": "pr-l09-q2",
    "station": 0,
    "marks": 3,
-   "q": "Ask the user for two headings, one on each line. Write a procedure called rule that prints =====, then display the rule, the first heading, the rule, the second heading and the rule, one on each line.",
+   "q": "Ask the user for two words, one on each line. Write a procedure called rule that prints =====, then display the rule, the first word, the rule, the second word and the rule, one on each line.",
    "brief": [
-    "Five lines in all, printed by one procedure called three times."
+    "Five lines in all, printed by one procedure called three times.",
+    "Print exactly: ====="
    ],
    "hint": "pyfunc",
    "starter": "# one procedure, called three times\n",
    "tests": [
     {
      "in": [
-      "Attendance",
-      "Behaviour"
+      "alpha",
+      "bravo"
      ],
      "out": [
       "=====",
-      "Attendance",
+      "alpha",
       "=====",
-      "Behaviour",
+      "bravo",
       "====="
      ],
-     "why": "There is a rule above, between and below the two headings, so rule() is called three times."
+     "why": "There is a rule above, between and below the two words, so rule() is called three times."
     },
     {
      "in": [
-      "Clubs",
-      "Trips"
+      "one",
+      "two"
      ],
      "out": [
       "=====",
-      "Clubs",
+      "one",
       "=====",
-      "Trips",
+      "two",
       "====="
      ],
-     "why": "Different headings, same layout. If the headings came out in the wrong order, check you stored the first input() before reading the second."
+     "why": "Different words, same layout. If the words came out in the wrong order, check you stored the first input() before reading the second."
     },
     {
      "in": [
-      "Term 1",
-      "Term 2"
+      "x",
+      "y"
      ],
      "out": [
       "=====",
-      "Term 1",
+      "x",
       "=====",
-      "Term 2",
+      "y",
       "====="
      ],
-     "why": "Exactly five equals signs each time. Four or six will not match, and a rule printed inside the heading line will not either."
+     "why": "Exactly five equals signs each time. Four or six will not match, and a rule printed on the same line as a word will not either."
     }
    ],
    "fb": "The point of a procedure is that the code for the rule is written once. If you copied print('=====') out three times you have not used a subprogram at all."
@@ -125,7 +127,7 @@
    "id": "pr-l09-q3",
    "station": 1,
    "marks": 3,
-   "q": "Ask the user for two item names, one on each line. Write a procedure called label that takes one word and prints item: [word]. Call it once for each name, in the order they were typed.",
+   "q": "Ask the user for two words, one on each line. Write a procedure called show that takes one word and prints value [that word]. Call it once for each word, in the order they were typed.",
    "teach": {
     "say": "A parameter is a name in the brackets of the def line. Whatever you pass in when you call it arrives under that name.",
     "code": [
@@ -138,32 +140,33 @@
     ]
    },
    "brief": [
-    "Nothing but those two lines is printed."
+    "Two lines only, and nothing but those two lines is printed.",
+    "One space after the word value."
    ],
    "hint": "pyfunc",
-   "starter": "# one procedure, two different items\n",
+   "starter": "# one procedure, two different words\n",
    "tests": [
     {
      "in": [
-      "pen",
-      "glue"
+      "copper",
+      "slate"
      ],
      "out": [
-      "item: pen",
-      "item: glue"
+      "value copper",
+      "value slate"
      ],
-     "why": "The parameter is what makes one procedure work for both items. If both lines say the same word, you printed the same variable twice instead of passing each one in."
+     "why": "The parameter is what makes one procedure work for both words. If both lines say the same word, you printed the same variable twice instead of passing each one in."
     },
     {
      "in": [
-      "ruler",
-      "tape"
+      "ridge",
+      "hollow"
      ],
      "out": [
-      "item: ruler",
-      "item: tape"
+      "value ridge",
+      "value hollow"
      ],
-     "why": "Nothing about the item is written inside the procedure - it arrives as the parameter."
+     "why": "Nothing about the word is written inside the procedure - it arrives as the parameter."
     },
     {
      "in": [
@@ -171,8 +174,8 @@
       "ink"
      ],
      "out": [
-      "item: ink",
-      "item: ink"
+      "value ink",
+      "value ink"
      ],
      "why": "The same word twice should print twice. If only one line appeared you may have skipped the second call, or only read one line of input."
     }
@@ -183,12 +186,13 @@
    "id": "pr-l09-q4",
    "station": 1,
    "marks": 3,
-   "q": "Ask the user for the number of packs and then the price of one pack in pence. Write a procedure called charge that takes both and prints total [packs times price]. Call it, and print nothing else.",
+   "q": "Ask the user for two whole numbers, one on each line. Write a procedure called product that takes both and prints total [the first times the second]. Call it, and print nothing else.",
    "brief": [
-    "Both are whole numbers, and the procedure does the printing."
+    "Two whole numbers, one on each line, and the procedure does the printing.",
+    "One space after the word total."
    ],
    "hint": "pyfunc",
-   "starter": "# charge takes two parameters\n",
+   "starter": "# product takes two parameters\n",
    "tests": [
     {
      "in": [
@@ -198,7 +202,7 @@
      "out": [
       "total 300"
      ],
-     "why": "4 packs at 75 pence is 300. If you got total 475 you joined the two inputs as text instead of turning them into numbers with int()."
+     "why": "4 times 75 is 300. If you got total 475 you joined the two inputs as text instead of turning them into numbers with int()."
     },
     {
      "in": [
@@ -208,7 +212,7 @@
      "out": [
       "total 99"
      ],
-     "why": "One pack costs the price of one pack. A multiplication that gives 99 only here but fails elsewhere usually means the arguments were passed the wrong way round."
+     "why": "One times anything is that number. A multiplication that works only here usually means the arguments were passed the wrong way round."
     },
     {
      "in": [
@@ -218,7 +222,7 @@
      "out": [
       "total 0"
      ],
-     "why": "Zero packs cost nothing, and the procedure still has to print a line. Printing nothing at all for this case is a common slip."
+     "why": "Nothing times 50 is 0, and the procedure still has to print a line. Printing nothing at all for this case is a common slip."
     },
     {
      "in": [
@@ -250,7 +254,8 @@
     ]
    },
    "brief": [
-    "The number may be negative or zero."
+    "The number may be negative or zero.",
+    "One line of output, holding the number and nothing else."
    ],
    "hint": "pyfunc",
    "starter": "# double returns, it does not print\n",
@@ -289,7 +294,7 @@
      "out": [
       "500"
      ],
-     "why": "If this one failed, check you used int(input()) - doubling the text '250' gives 250250."
+     "why": "If this one failed, check you used int(input()) - doubling the text 250 as text gives 250250."
     }
    ],
    "fb": "return hands a value back to whatever called the function, so print(double(7)) prints 14. Without return the function hands back None."
@@ -297,10 +302,71 @@
   {
    "id": "pr-l09-q6",
    "station": 2,
-   "marks": 4,
-   "q": "Ask the user for a width and then a height, both whole numbers. Write a function called area that returns width times height and holds no print at all. Store what it returns and display one line, area [that value].",
+   "marks": 3,
+   "q": "Ask the user for a whole number. Write a function called sign that returns the word up for a number above 0, down for a number below 0 and flat for 0, and display [what sign hands back] and nothing else.",
    "brief": [
-    "A single space goes after area, and nothing else is printed."
+    "sign holds no print of its own, and one line only is printed.",
+    "Print exactly one of: up, down, flat"
+   ],
+   "hint": "pyfunc",
+   "starter": "# a function can hand back a word\n",
+   "tests": [
+    {
+     "in": [
+      "7"
+     ],
+     "out": [
+      "up"
+     ],
+     "why": "Above 0, so the word handed back is up. Nothing printed at all means the function returns it but the main program never printed it."
+    },
+    {
+     "in": [
+      "-4"
+     ],
+     "out": [
+      "down"
+     ],
+     "why": "Below 0 gives down. A function with only one return works for one case and hands back None for the rest."
+    },
+    {
+     "in": [
+      "0"
+     ],
+     "out": [
+      "flat"
+     ],
+     "why": "Exactly 0 is neither above nor below, so it is flat. This is the case a > and < pair always forgets."
+    },
+    {
+     "in": [
+      "250"
+     ],
+     "out": [
+      "up"
+     ],
+     "why": "A large number is still only up. If this crashed, check you used int(input()) - text comparisons would not sort it."
+    },
+    {
+     "in": [
+      "-1"
+     ],
+     "out": [
+      "down"
+     ],
+     "why": "One below 0 is still down, so the test has to be against 0 rather than against 1."
+    }
+   ],
+   "fb": "A function can hand back text just as easily as a number, and return stops the function the moment it runs - so the lines after it never happen."
+  },
+  {
+   "id": "pr-l09-q7",
+   "station": 2,
+   "marks": 4,
+   "q": "Ask the user for two whole numbers, one on each line. Write a function called area that returns the first times the second and holds no print at all. Store what it returns and display one line, area [that value].",
+   "brief": [
+    "A single space goes after the word area, and nothing else is printed.",
+    "Store the returned value in a variable before you print it."
    ],
    "hint": "pyfunc",
    "starter": "# store the returned value before printing it\n",
@@ -323,7 +389,7 @@
      "out": [
       "area 1"
      ],
-     "why": "A one by one rectangle has area 1. If the line read area None, the function printed the answer instead of returning it, so there was nothing to hand back."
+     "why": "One times one is 1. If the line read area None, the function printed the answer instead of returning it, so there was nothing to hand back."
     },
     {
      "in": [
@@ -333,7 +399,7 @@
      "out": [
       "area 0"
      ],
-     "why": "A height of 0 gives an area of 0, and the line must still be printed."
+     "why": "A second number of 0 gives 0, and the line must still be printed."
     },
     {
      "in": [
@@ -349,75 +415,143 @@
    "fb": "Printing and returning are not the same thing. A function that prints shows the value once and throws it away; a function that returns gives it to the caller, which can store it, add to it or print it."
   },
   {
-   "id": "pr-l09-q7",
+   "id": "pr-l09-q8",
    "station": 3,
    "marks": 4,
-   "q": "Ask the user for a name and then a whole number mark. Write a function called grade that returns pass for a mark of 40 or more and fail below 40, and a procedure called report that displays [name]: [that word].",
+   "q": "Ask the user for a word and then a whole number. Write a function called tag that returns high for a number of 40 or more and low below 40, and a procedure called show that displays [word]: [that returned word]. Use both, and print one line only.",
    "teach": {
     "say": "A function ends with return and hands a value back; a procedure only prints. So a function's answer can be passed straight into a procedure.",
     "code": [
-     "def tag(n):",
+     "def mark(n):",
      "    return 'B' + str(n)",
-     "print(tag(4))"
+     "print(mark(4))"
     ],
     "out": [
      "B4"
     ]
    },
    "brief": [
-    "Use both subprograms, and print one line only."
+    "A colon and one space separate the word from the answer.",
+    "Exactly 40 counts as high.",
+    "tag holds no print and show holds no return."
    ],
    "hint": "pyfunc",
-   "starter": "# grade returns a word, report prints the line\n",
+   "starter": "# tag returns a word, show prints the line\n",
    "tests": [
     {
      "in": [
-      "Ada",
+      "copper",
       "55"
      ],
      "out": [
-      "Ada: pass"
+      "copper: high"
      ],
-     "why": "55 is a pass, and the procedure does the printing. Two lines of output means grade printed as well as returned."
+     "why": "55 is 40 or more, so the answer is high, and the procedure does the printing. Two lines of output means tag printed as well as returned."
     },
     {
      "in": [
-      "Jo",
+      "slate",
       "40"
      ],
      "out": [
-      "Jo: pass"
+      "slate: high"
      ],
-     "why": "Exactly 40 is a pass. Getting fail here means you tested mark > 40 instead of mark >= 40."
+     "why": "Exactly 40 is high. Getting low here means you tested > 40 instead of >= 40."
     },
     {
      "in": [
-      "Sam",
+      "ridge",
       "39"
      ],
      "out": [
-      "Sam: fail"
+      "ridge: low"
      ],
-     "why": "39 is under 40. If this printed pass, your function may be returning a value only on the pass branch and None otherwise."
+     "why": "39 is under 40. If this printed high, your function may be returning a value only on one branch and None otherwise."
     },
     {
      "in": [
-      "Kit",
+      "hollow",
       "0"
      ],
      "out": [
-      "Kit: fail"
+      "hollow: low"
      ],
-     "why": "A mark of 0 is still a mark and must be reported. Crashing here usually means int() was never used on the second input."
+     "why": "A number of 0 is still a number and must be reported. Crashing here usually means int() was never used on the second input."
     }
    ],
-   "fb": "OCR asks for the difference by name: a function returns a value, a procedure does not. In this program grade is the function and report is the procedure, and the program needs both."
+   "fb": "OCR asks for the difference by name: a function returns a value, a procedure does not. In this program tag is the function and show is the procedure, and the program needs both."
   },
   {
-   "id": "pr-l09-q8",
+   "id": "pr-l09-q9",
+   "station": 3,
+   "marks": 4,
+   "q": "Ask the user for two whole numbers, one on each line. Write a function called larger that returns the bigger of its two parameters and a procedure called announce that displays largest [that value]. Use both, and print one line only.",
+   "brief": [
+    "When the two numbers are equal, that value is the larger.",
+    "larger holds no print of its own and announce holds no return.",
+    "One space after the word largest."
+   ],
+   "hint": "pyfunc",
+   "starter": "# larger works it out, announce prints it\n",
+   "tests": [
+    {
+     "in": [
+      "9",
+      "4"
+     ],
+     "out": [
+      "largest 9"
+     ],
+     "why": "The first number is the bigger one here. If nothing printed, larger returns the answer but announce was never called with it."
+    },
+    {
+     "in": [
+      "4",
+      "9"
+     ],
+     "out": [
+      "largest 9"
+     ],
+     "why": "The same two numbers the other way round, so a function that always returns its first parameter fails here."
+    },
+    {
+     "in": [
+      "5",
+      "5"
+     ],
+     "out": [
+      "largest 5"
+     ],
+     "why": "Equal numbers, so that value is the answer. A function that only returns on one branch hands back None here."
+    },
+    {
+     "in": [
+      "-8",
+      "-20"
+     ],
+     "out": [
+      "largest -8"
+     ],
+     "why": "With negatives the bigger number is the one closer to 0, so -8 is the answer rather than -20."
+    },
+    {
+     "in": [
+      "0",
+      "0"
+     ],
+     "out": [
+      "largest 0"
+     ],
+     "why": "Two zeros still have an answer, and the line still has to be printed."
+    }
+   ],
+   "fb": "larger works the answer out and hands it back; announce only prints. Keeping the two jobs apart is exactly what the words function and procedure mean."
+  },
+  {
+   "id": "pr-l09-q10",
    "station": 4,
    "marks": 4,
-   "q": "Ask the user for a whole number and keep it in a variable called total. Write a procedure called boost with a local total of its own, set to 99, that prints it. Call boost, then display [the main total].",
+   "q": "Ask the user for a whole number and keep it in a variable called total. Write a procedure called boost with a local total of its own, set to 99, that prints it. Call boost, then display [the main total] on the next line.",
    "teach": {
     "say": "A name given a value inside a subprogram is local and vanishes when the subprogram ends. To change a variable from outside instead, the subprogram must say global first.",
     "code": [
@@ -431,7 +565,8 @@
     ]
    },
    "brief": [
-    "Two lines, the 99 first. The main program's total must not change."
+    "Two lines, the 99 first.",
+    "The main program's total must not change."
    ],
    "hint": "pyfunc",
    "starter": "# two variables, one name\n",
@@ -480,25 +615,72 @@
    "fb": "A variable created inside a subprogram is local: it exists only while the subprogram runs and disappears afterwards. The main program's total is a different variable that happens to share a name."
   },
   {
-   "id": "pr-l09-q9",
+   "id": "pr-l09-q11",
    "station": 4,
    "marks": 4,
-   "q": "Write a procedure called win that adds 3 to a shared score and a procedure called draw that adds 1. Ask the user for the number of rounds, call win and then draw once per round, and display [the final score].",
+   "q": "Ask the user for a whole number and keep it in a variable called count. Write a procedure called bump that takes one whole number, adds 1 to its parameter and prints the result. Call bump with count, then display [count] on the next line.",
    "brief": [
-    "The score starts at 0, fixed in the program and shared by the whole program, not typed in."
+    "Two lines, the raised number first.",
+    "count itself must not change, because a parameter is a copy."
    ],
    "hint": "pyfunc",
-   "starter": "# win and draw change the main program's score\n",
+   "starter": "# the parameter is a copy, not the variable itself\n",
    "tests": [
+    {
+     "in": [
+      "5"
+     ],
+     "out": [
+      "6",
+      "5"
+     ],
+     "why": "6 then 5. If the second line says 6 as well, you changed count itself rather than the parameter inside the procedure."
+    },
     {
      "in": [
       "0"
      ],
      "out": [
+      "1",
       "0"
      ],
-     "why": "No rounds, so nothing is added and the starting score is printed. A program that prints something else here never handled the loop running zero times."
+     "why": "One more than 0 is 1, and count is still 0 afterwards."
     },
+    {
+     "in": [
+      "-3"
+     ],
+     "out": [
+      "-2",
+      "-3"
+     ],
+     "why": "Adding 1 to a negative number moves it up towards 0, and count is unchanged. A crash here means int() was never used."
+    },
+    {
+     "in": [
+      "99"
+     ],
+     "out": [
+      "100",
+      "99"
+     ],
+     "why": "If the two lines came out the other way round, the printing inside bump happens after the main program's line - call bump first."
+    }
+   ],
+   "fb": "A parameter is a local name holding a copy of the value, so adding to it inside the subprogram leaves the caller's variable exactly as it was."
+  },
+  {
+   "id": "pr-l09-q12",
+   "station": 4,
+   "marks": 4,
+   "q": "Write a procedure called up that adds 3 to a shared total and a procedure called down that adds 1 to the same total. Ask the user for a whole number of turns, call up and then down once per turn, and display [the final total] and nothing else.",
+   "brief": [
+    "The total starts at 0, fixed in the program and shared by the whole program, not typed in.",
+    "A number of 0 turns means neither procedure is called."
+   ],
+   "hint": "pyfunc",
+   "starter": "# up and down change the main program's total\n",
+   "tests": [
     {
      "in": [
       "1"
@@ -506,7 +688,7 @@
      "out": [
       "4"
      ],
-     "why": "One round is 3 plus 1. If you got 0, the procedures made their own local score instead of changing the main program's - they need global score."
+     "why": "One turn is 3 plus 1. If you got 0, the procedures made their own local total instead of changing the main program's - they need global total."
     },
     {
      "in": [
@@ -515,7 +697,7 @@
      "out": [
       "20"
      ],
-     "why": "Five rounds at 4 each is 20. Getting 4 means the score is being reset to 0 somewhere inside the loop or inside a procedure."
+     "why": "Five turns at 4 each. Getting 4 means the total is being set back to 0 somewhere inside the loop or inside a procedure."
     },
     {
      "in": [
@@ -524,16 +706,25 @@
      "out": [
       "12"
      ],
-     "why": "If this gave 15 or 9, only one of the two procedures is being called inside the loop."
+     "why": "If this gave 9 or 3, only one of the two procedures is being called inside the loop."
+    },
+    {
+     "in": [
+      "0"
+     ],
+     "out": [
+      "0"
+     ],
+     "why": "No turns, so nothing is added and the starting 0 is printed. A program that prints something else here never handled the loop running zero times."
     }
    ],
    "fb": "A global variable is one the whole program can see. A subprogram may read it without saying anything, but to change it the subprogram must declare global first, or Python makes a local copy instead."
   },
   {
-   "id": "pr-l09-q10",
+   "id": "pr-l09-q13",
    "station": 5,
    "marks": 5,
-   "q": "Write a function called points that returns 3 for 2 or more goals, 1 for one goal and 0 for none. Ask the user for the number of matches, then that many goal counts, one on each line. Display [the points added up].",
+   "q": "Write a function called score that returns 3 for a number of 2 or more, 1 for a number of 1 and 0 for 0. Ask the user for how many numbers there are, then for that many whole numbers, one on each line. Display [everything score hands back, added up] and nothing else.",
    "teach": {
     "say": "What a function returns is an ordinary value, so it can be added up. Called inside a loop, it runs once per turn.",
     "code": [
@@ -546,10 +737,11 @@
     ]
    },
    "brief": [
-    "Call points once per match, inside the loop, and print only that one total."
+    "Call score once per number, inside the loop, and print only that one total.",
+    "The numbers are never below 0, and there may be none at all."
    ],
    "hint": "pyfunc",
-   "starter": "# one call per match, added to a running total\n",
+   "starter": "# one call per number, added to a running total\n",
    "tests": [
     {
      "in": [
@@ -571,7 +763,7 @@
      "out": [
       "3"
      ],
-     "why": "Five goals is still just 3 points, because the function returns 3 for anything from 2 upwards."
+     "why": "A 5 is still just 3, because the function returns 3 for anything from 2 upwards."
     },
     {
      "in": [
@@ -580,7 +772,7 @@
      "out": [
       "0"
      ],
-     "why": "No matches at all, so the loop never runs and the total is still 0. The program must still print a line. Crashing here means you read a goals line before checking how many matches there were."
+     "why": "No numbers at all, so the loop never runs and the total is still 0. The program must still print a line. Crashing here means you read a number before checking how many there were."
     },
     {
      "in": [
@@ -593,7 +785,7 @@
      "out": [
       "2"
      ],
-     "why": "Two draws and two losses is 2. If this crashed with an input error, your loop is reading more lines than there are matches."
+     "why": "Two zeros and two ones. If this crashed with an input error, your loop is reading more lines than it was told there were."
     },
     {
      "in": [
@@ -604,22 +796,23 @@
      "out": [
       "6"
      ],
-     "why": "Two wins is 6. If the total came out as 3, the function is being called once outside the loop rather than once per match."
+     "why": "Two numbers of 2 are worth 3 each. If the total came out as 3, the function is being called once outside the loop rather than once per number."
     }
    ],
-   "fb": "Calling a subprogram inside a loop is how one piece of code gets reused on every item. The loop deals with how many times; the function deals with one match at a time."
+   "fb": "Calling a subprogram inside a loop is how one piece of code gets reused on every item. The loop deals with how many times; the function deals with one number at a time."
   },
   {
-   "id": "pr-l09-q11",
+   "id": "pr-l09-q14",
    "station": 5,
    "marks": 6,
-   "q": "Ask the user for a number of nights and then a number of guests. Display nights [the number of nights], then total [the total cost] on the next line.",
+   "q": "Ask the user for two whole numbers, one on each line. Write a function called base that returns the first number times 25, a function called whole that calls base and returns what base gave times the second number, plus 10, and a procedure called report that calls whole and displays first [the first number], then whole [that value] on the next line.",
    "brief": [
-    "Write a function fee that returns nights times 25, and a function total that calls fee and returns fee times guests, plus 10.",
-    "Write a procedure receipt that calls total and prints both lines."
+    "Two lines of output, in that order, with one space after each word.",
+    "base and whole both return and never print; report prints and never returns.",
+    "The 10 is added after the multiplying, not before."
    ],
    "hint": "pyfunc",
-   "starter": "# receipt calls total, total calls fee\n",
+   "starter": "# report calls whole, whole calls base\n",
    "tests": [
     {
      "in": [
@@ -627,10 +820,10 @@
       "3"
      ],
      "out": [
-      "nights 2",
-      "total 160"
+      "first 2",
+      "whole 160"
      ],
-     "why": "2 nights is a fee of 50, times 3 guests is 150, plus 10 is 160. Getting 60 means the 10 was added before multiplying by the guests."
+     "why": "2 times 25 is 50, times 3 is 150, plus 10 is 160. Getting 60 means the 10 was added before multiplying by the second number."
     },
     {
      "in": [
@@ -638,10 +831,10 @@
       "1"
      ],
      "out": [
-      "nights 1",
-      "total 35"
+      "first 1",
+      "whole 35"
      ],
-     "why": "25 for one night, times one guest, plus 10. If the second line said total None, total prints instead of returning, so receipt had nothing to print."
+     "why": "25 for the first number, times 1, plus 10. If the second line said whole None, whole prints instead of returning, so report had nothing to print."
     },
     {
      "in": [
@@ -649,10 +842,10 @@
       "4"
      ],
      "out": [
-      "nights 0",
-      "total 10"
+      "first 0",
+      "whole 10"
      ],
-     "why": "No nights still costs the 10 booking charge. A program that skips the whole calculation when nights is 0 will print the wrong thing here."
+     "why": "A first number of 0 still leaves the 10. A program that skips the whole calculation when it is 0 prints the wrong thing here."
     },
     {
      "in": [
@@ -660,13 +853,13 @@
       "2"
      ],
      "out": [
-      "nights 5",
-      "total 260"
+      "first 5",
+      "whole 260"
      ],
-     "why": "125 for the nights, times 2 guests, plus 10. If this failed, check total is calling fee rather than repeating the times 25 itself."
+     "why": "125 for the first number, times 2, plus 10. If this failed, check whole is calling base rather than repeating the times 25 itself."
     }
    ],
-   "fb": "Subprograms can call subprograms. receipt calls total, total calls fee, and each one only has to know its own job - that is how a big program is broken into small ones."
+   "fb": "Subprograms can call subprograms. report calls whole, whole calls base, and each one only has to know its own job - that is how a big program is broken into small ones."
   }
  ]
 }

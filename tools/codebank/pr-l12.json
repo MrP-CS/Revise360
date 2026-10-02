@@ -14,7 +14,7 @@
    "id": "pr-l12-q1",
    "station": 0,
    "marks": 2,
-   "q": "Ask the user for a name, ignoring any spaces at each end of it. Display no name given when nothing is left, or welcome [the name without those spaces].",
+   "q": "Ask the user for a word, ignoring any spaces at each end of it. Display nothing typed when nothing is left, or value [the word without those spaces].",
    "teach": {
     "say": ".strip() takes the spaces off each end of what was typed, so a line of nothing but spaces becomes the empty string and can be caught.",
     "code": [
@@ -26,26 +26,27 @@
     ]
    },
    "brief": [
-    "One line only: a line of nothing but spaces is not a name."
+    "One line only: a line of nothing but spaces is not a word.",
+    "Print exactly: nothing typed"
    ],
    "hint": "pyvalidate",
-   "starter": "# spaces are not a name\n",
+   "starter": "# spaces are not a word\n",
    "tests": [
     {
      "in": [
-      "Nadia"
+      "copper"
      ],
      "out": [
-      "welcome Nadia"
+      "value copper"
      ],
-     "why": "An ordinary name should be accepted and printed back after the word welcome."
+     "why": "An ordinary word should be accepted and printed back after the word value."
     },
     {
      "in": [
       ""
      ],
      "out": [
-      "no name given"
+      "nothing typed"
      ],
      "why": "Pressing enter with nothing typed is the empty string, and that is the case a presence check exists for."
     },
@@ -54,18 +55,18 @@
       "     "
      ],
      "out": [
-      "no name given"
+      "nothing typed"
      ],
-     "why": "Four spaces look like nothing on screen but are not the empty string - strip them before you test for empty."
+     "why": "Five spaces look like nothing on screen but are not the empty string - strip them before you test for empty."
     },
     {
      "in": [
-      "  Jonah  "
+      "  slate  "
      ],
      "out": [
-      "welcome Jonah"
+      "value slate"
      ],
-     "why": "The name is real but padded. Strip it once and use the stripped version, or the stray spaces end up in your output."
+     "why": "The word is real but padded. Strip it once and use the stripped version, or the stray spaces end up in your output."
     }
    ],
    "fb": "A presence check means checking the input is not empty once the spaces around it have been removed."
@@ -76,7 +77,8 @@
    "marks": 3,
    "q": "Ask the user for a whole number. Display number: [the number] when every character typed is a digit, or not a number when it is not.",
    "brief": [
-    "A minus sign and a decimal point are not digits, and an empty line is not a number."
+    "A minus sign and a decimal point are not digits, and an empty line is not a number.",
+    "One line only is printed."
    ],
    "hint": "pyvalidate",
    "starter": "# digits only\n",
@@ -140,9 +142,79 @@
   },
   {
    "id": "pr-l12-q3",
+   "station": 0,
+   "marks": 3,
+   "q": "Ask the user for a word. Display known when it is one of red, green or blue, which are fixed in the program, or unknown when it is not.",
+   "brief": [
+    "The three allowed words are written into the program, not typed in.",
+    "Matching is exact, so a capital letter makes a word unknown.",
+    "One line only is printed."
+   ],
+   "hint": "pyvalidate",
+   "starter": "# only three words are allowed\n",
+   "tests": [
+    {
+     "in": [
+      "red"
+     ],
+     "out": [
+      "known"
+     ],
+     "why": "The first of the three allowed words. A check that only looks at one of them passes here and fails the next test."
+    },
+    {
+     "in": [
+      "green"
+     ],
+     "out": [
+      "known"
+     ],
+     "why": "Every one of the three has to be allowed, so all three belong in the condition."
+    },
+    {
+     "in": [
+      "blue"
+     ],
+     "out": [
+      "known"
+     ],
+     "why": "The last of the three. If this came out unknown, your or is missing its third comparison."
+    },
+    {
+     "in": [
+      "yellow"
+     ],
+     "out": [
+      "unknown"
+     ],
+     "why": "A word that is not on the list at all must be refused, whatever else it looks like."
+    },
+    {
+     "in": [
+      "Red"
+     ],
+     "out": [
+      "unknown"
+     ],
+     "why": "A capital R makes a different word, because == compares exactly. This is the case a look-up check is usually asked about."
+    },
+    {
+     "in": [
+      ""
+     ],
+     "out": [
+      "unknown"
+     ],
+     "why": "Nothing typed is not one of the three either, so it is unknown rather than a crash."
+    }
+   ],
+   "fb": "A look-up check compares what was typed against the values the program already holds, so each allowed value needs its own complete comparison: entry == 'red' or entry == 'green', not entry == 'red' or 'green'."
+  },
+  {
+   "id": "pr-l12-q4",
    "station": 1,
    "marks": 3,
-   "q": "Ask the user for a whole number score. Display valid when it is from 1 to 10 inclusive, too low below that range and too high above it.",
+   "q": "Ask the user for a whole number. Display valid when it is from 1 to 10 inclusive, too low below that range and too high above it.",
    "brief": [
     "Both 1 and 10 are allowed, and one line only is printed."
    ],
@@ -156,7 +228,7 @@
      "out": [
       "valid"
      ],
-     "why": "An ordinary score comfortably inside the range."
+     "why": "An ordinary number comfortably inside the range."
     },
     {
      "in": [
@@ -207,10 +279,10 @@
    "fb": "Inclusive means both boundaries pass, so the four values worth testing are 0, 1, 10 and 11."
   },
   {
-   "id": "pr-l12-q4",
+   "id": "pr-l12-q5",
    "station": 1,
    "marks": 4,
-   "q": "Ask the user for a temperature. Display not a number when it is not a whole number, ok when it is from -5 to 35 inclusive, or out of range when it is outside that.",
+   "q": "Ask the user for a whole number. Display not a number when what was typed is not a whole number, ok when it is from -5 to 35 inclusive, or out of range when it is outside that.",
    "brief": [
     "A minus sign at the front is allowed, but a decimal point is not.",
     "Both -5 and 35 are allowed, and one line only is printed."
@@ -225,7 +297,7 @@
      "out": [
       "ok"
      ],
-     "why": "An ordinary reading inside the range."
+     "why": "An ordinary value inside the range."
     },
     {
      "in": [
@@ -265,7 +337,7 @@
     },
     {
      "in": [
-      "mild"
+      "seven"
      ],
      "out": [
       "not a number"
@@ -285,12 +357,13 @@
    "fb": "try and except around int() catch the wrong type; the range test then runs only on a value you know is a number."
   },
   {
-   "id": "pr-l12-q5",
+   "id": "pr-l12-q6",
    "station": 2,
    "marks": 4,
-   "q": "Ask the user for a password. Display too short when it is under 8 characters, too long when it is over 16, and ok for anything in between.",
+   "q": "Ask the user for a word. Display too short when it is under 8 characters, too long when it is over 16, and ok for anything in between.",
    "brief": [
-    "Count the line exactly as it is typed, with no stripping, so an empty line is too short."
+    "Count the line exactly as it is typed, with no stripping, so an empty line is too short.",
+    "One line only is printed."
    ],
    "hint": "pyvalidate",
    "starter": "# 8 to 16 characters\n",
@@ -353,12 +426,13 @@
    "fb": "len() gives the length; the two boundaries worth testing are 7 and 8 at one end, 16 and 17 at the other."
   },
   {
-   "id": "pr-l12-q6",
+   "id": "pr-l12-q7",
    "station": 2,
    "marks": 5,
-   "q": "Ask the user for a booking reference, ignoring any spaces at each end. Display valid reference when it is two letters and then four digits, or invalid reference when it is not.",
+   "q": "Ask the user for a code, ignoring any spaces at each end. Display valid code when it is two letters and then four digits, or invalid code when it is not.",
    "brief": [
-    "It must be exactly 6 characters, and capitals and small letters both count as letters."
+    "It must be exactly 6 characters, and capitals and small letters both count as letters.",
+    "One line only is printed."
    ],
    "hint": "pystring",
    "starter": "# two letters then four digits\n",
@@ -368,7 +442,7 @@
       "BX2047"
      ],
      "out": [
-      "valid reference"
+      "valid code"
      ],
      "why": "Two letters then four digits, so this is the shape the check is looking for."
     },
@@ -377,7 +451,7 @@
       "bx2047"
      ],
      "out": [
-      "valid reference"
+      "valid code"
      ],
      "why": "Small letters are allowed, so isalpha() is the right test rather than comparing against the capitals."
     },
@@ -386,7 +460,7 @@
       "BX204"
      ],
      "out": [
-      "invalid reference"
+      "invalid code"
      ],
      "why": "Only five characters. Check the length first, or slicing a short string quietly gives you a shorter piece and the check passes."
     },
@@ -395,7 +469,7 @@
       "BX20477"
      ],
      "out": [
-      "invalid reference"
+      "invalid code"
      ],
      "why": "Seven characters. A check that only looks at the first six characters would let this through."
     },
@@ -404,7 +478,7 @@
       "B12047"
      ],
      "out": [
-      "invalid reference"
+      "invalid code"
      ],
      "why": "The second character is a digit, not a letter, so the letters part fails."
     },
@@ -413,7 +487,7 @@
       "BXX047"
      ],
      "out": [
-      "invalid reference"
+      "invalid code"
      ],
      "why": "The third character is a letter, so the four digits are not all digits."
     },
@@ -422,7 +496,7 @@
       ""
      ],
      "out": [
-      "invalid reference"
+      "invalid code"
      ],
      "why": "Nothing typed must be refused rather than crash - the length test catches it before any slicing matters."
     }
@@ -430,12 +504,76 @@
    "fb": "A format check is a length check and a check on what each part contains, and both have to pass."
   },
   {
-   "id": "pr-l12-q7",
+   "id": "pr-l12-q8",
+   "station": 3,
+   "marks": 4,
+   "q": "Keep asking the user for a word until one still has something in it once the spaces at each end have been taken off. Display that is empty for every wrong one, then accepted [the word without those spaces] for the one you take.",
+   "brief": [
+    "Print nothing else, and read no more lines once one is accepted.",
+    "Print exactly: that is empty"
+   ],
+   "hint": "pyvalidate",
+   "starter": "# keep going until something is really typed\n",
+   "tests": [
+    {
+     "in": [
+      "copper"
+     ],
+     "out": [
+      "accepted copper"
+     ],
+     "why": "A word first time needs no message at all - do not print the warning before you have checked."
+    },
+    {
+     "in": [
+      "",
+      "slate"
+     ],
+     "out": [
+      "that is empty",
+      "accepted slate"
+     ],
+     "why": "One empty line, one message, then the word is accepted. A loop that only checks once would accept the empty line."
+    },
+    {
+     "in": [
+      "   ",
+      "",
+      "  moss  "
+     ],
+     "out": [
+      "that is empty",
+      "that is empty",
+      "accepted moss"
+     ],
+     "why": "Spaces and then nothing are both empty, and the accepted word is printed without its padding."
+    },
+    {
+     "in": [
+      "",
+      "",
+      "",
+      "ridge"
+     ],
+     "out": [
+      "that is empty",
+      "that is empty",
+      "that is empty",
+      "accepted ridge"
+     ],
+     "why": "It has to keep asking however many times it takes, so the message appears once for each empty line."
+    }
+   ],
+   "fb": "The usual shape is to read once, then a while loop that prints the message and reads again while the value is still wrong."
+  },
+  {
+   "id": "pr-l12-q9",
    "station": 3,
    "marks": 5,
-   "q": "Keep asking the user for a whole number until one is from 1 to 5 inclusive. Display please enter 1 to 5 for every wrong one, then lift [the number] for the one you accept.",
+   "q": "Keep asking the user for a whole number until one is from 1 to 5 inclusive. Display please enter 1 to 5 for every wrong one, then chosen [the number] for the one you accept.",
    "brief": [
-    "Print nothing else, and read no more lines once one is accepted."
+    "Print nothing else, and read no more lines once one is accepted.",
+    "Both 1 and 5 are allowed."
    ],
    "hint": "pyvalidate",
    "starter": "# keep going until it is 1 to 5\n",
@@ -445,7 +583,7 @@
       "3"
      ],
      "out": [
-      "lift 3"
+      "chosen 3"
      ],
      "why": "A valid number first time needs no message at all - do not print the warning before you have checked."
     },
@@ -456,7 +594,7 @@
      ],
      "out": [
       "please enter 1 to 5",
-      "lift 2"
+      "chosen 2"
      ],
      "why": "One bad go, one message, then the good one is accepted. A loop that only checks once would accept the 9."
     },
@@ -471,7 +609,7 @@
       "please enter 1 to 5",
       "please enter 1 to 5",
       "please enter 1 to 5",
-      "lift 5"
+      "chosen 5"
      ],
      "why": "It has to keep asking however many times it takes, and 5 is the top boundary so it is allowed."
     },
@@ -480,7 +618,7 @@
       "1"
      ],
      "out": [
-      "lift 1"
+      "chosen 1"
      ],
      "why": "1 is the bottom boundary. If this prints a warning, your condition is refusing the value it should accept."
     },
@@ -491,18 +629,18 @@
      ],
      "out": [
       "please enter 1 to 5",
-      "lift 5"
+      "chosen 5"
      ],
      "why": "6 is one over the top. Reading the next number inside the loop is what gives the user another go."
     }
    ],
-   "fb": "The usual shape is to read once, then a while loop that prints the message and reads again while the value is still wrong."
+   "fb": "The condition on the while is the opposite of the one that accepts, so read once before the loop and again at the bottom of it."
   },
   {
-   "id": "pr-l12-q8",
+   "id": "pr-l12-q10",
    "station": 3,
    "marks": 6,
-   "q": "Keep asking the user for a house number until one is a whole number from 10 to 99 inclusive. Display that is not a whole number or that is outside 10 to 99 for each wrong one, then accepted: [the number].",
+   "q": "Keep asking the user for a whole number until one is from 10 to 99 inclusive. Display that is not a whole number or that is outside 10 to 99 for each wrong one, then accepted: [the number].",
    "brief": [
     "Check whether it is all digits before checking the range.",
     "Both 10 and 99 are allowed, and nothing more is read once one is accepted."
@@ -571,7 +709,7 @@
    "fb": "Check the type first and the range second, because a range test on text that is not a number is what crashes the program."
   },
   {
-   "id": "pr-l12-q9",
+   "id": "pr-l12-q11",
    "station": 4,
    "marks": 6,
    "q": "Ask the user for a line of usernames, a line of passwords in the same order, then one username and one password to check. Display unknown user when the username is not listed, wrong password when the password does not match, or access granted.",
@@ -670,7 +808,7 @@
    "fb": "Find the username first; only once you know where it is can you look up the password that belongs with it."
   },
   {
-   "id": "pr-l12-q10",
+   "id": "pr-l12-q12",
    "station": 4,
    "marks": 6,
    "q": "Ask the user for the correct passcode and then one attempt at a time. Display wrong passcode for each miss and access granted as soon as one matches, then account locked if a third attempt has missed too.",
@@ -770,14 +908,14 @@
    "fb": "Count the attempts and stop on either condition: three used up, or the right passcode given."
   },
   {
-   "id": "pr-l12-q11",
+   "id": "pr-l12-q13",
    "station": 5,
    "marks": 7,
-   "q": "Keep asking the user for a username until one is 5 to 12 characters of letters and digits only, then for an age until one is 11 to 19. Display registered [username] [age] at the end.",
+   "q": "Keep asking the user for a username until one is 5 to 12 characters of letters and digits only, then for a whole number until one is from 11 to 19 inclusive. Display registered [the username] [the number] at the end.",
    "brief": [
     "Reject a username with exactly username must be 5 to 12 characters, or, when the length is fine, exactly username must be letters and digits only.",
-    "Reject an age with exactly age must be a whole number, or exactly age must be 11 to 19.",
-    "Separate the three values on the last line with single spaces."
+    "Reject a number with exactly number must be a whole number, or exactly number must be 11 to 19.",
+    "Separate the three parts of the last line with single spaces."
    ],
    "hint": "pyvalidate",
    "starter": "# each rule its own message, checked in order\n",
@@ -802,7 +940,7 @@
       "username must be 5 to 12 characters",
       "registered abcde 11"
      ],
-     "why": "Four characters is one short, five is the boundary and allowed, and 11 is the bottom of the age range."
+     "why": "Four characters is one short, five is the boundary and allowed, and 11 is the bottom of the number range."
     },
     {
      "in": [
@@ -812,7 +950,7 @@
      "out": [
       "registered twelvecharac 19"
      ],
-     "why": "Twelve characters is the top boundary for the username and 19 the top of the age range, so both are accepted."
+     "why": "Twelve characters is the top boundary for the username and 19 the top of the number range, so both are accepted."
     },
     {
      "in": [
@@ -852,10 +990,10 @@
       "17"
      ],
      "out": [
-      "age must be a whole number",
-      "age must be a whole number",
-      "age must be 11 to 19",
-      "age must be 11 to 19",
+      "number must be a whole number",
+      "number must be a whole number",
+      "number must be 11 to 19",
+      "number must be 11 to 19",
       "registered mcrae7 17"
      ],
      "why": "Nothing typed and a word both fail the type check; 10 and 20 are one outside each end of the range."
@@ -864,13 +1002,13 @@
    "fb": "Each rule gets its own message and the checks go in order, so the user is told the one thing that is actually wrong."
   },
   {
-   "id": "pr-l12-q12",
+   "id": "pr-l12-q14",
    "station": 5,
    "marks": 8,
-   "q": "Keep asking the user for item,quantity lines until one is exactly done. Display added [the item name] for each good line, then accepted: [how many were added] and total: [their quantities added up] on the last two lines.",
+   "q": "Keep asking the user for word,number lines until one is exactly done. Display added [the word] for each good line, then accepted: [how many were added] and total: [their numbers added up] on the last two lines.",
    "brief": [
     "Spaces around either field are ignored, and a wrong line must never stop the run.",
-    "Check in this order and print exactly bad line when there is not exactly one comma, bad quantity when the quantity is not all digits, and out of range when it is outside 1 to 99."
+    "Check in this order and print exactly bad line when there is not exactly one comma, bad number when the number is not all digits, and out of range when it is outside 1 to 99."
    ],
    "hint": "pyvalidate",
    "starter": "# report a bad line and carry on to the next one\n",
@@ -887,7 +1025,7 @@
       "accepted: 2",
       "total: 16"
      ],
-     "why": "Two good lines, so both are added and the total is the two quantities added together."
+     "why": "Two good lines, so both are added and the total is the two numbers added together."
     },
     {
      "in": [
@@ -920,12 +1058,12 @@
       "done"
      ],
      "out": [
-      "bad quantity",
+      "bad number",
       "added bolt",
       "accepted: 1",
       "total: 7"
      ],
-     "why": "A quantity in words must be reported rather than passed to int(), which would crash the whole run."
+     "why": "A number in words must be reported rather than passed to int(), which would crash the whole run."
     },
     {
      "in": [
@@ -955,7 +1093,7 @@
       "accepted: 1",
       "total: 6"
      ],
-     "why": "The spaces round the name and the quantity must be stripped, or the name prints padded and the digit check fails."
+     "why": "The spaces round the word and the number must be stripped, or the word prints padded and the digit check fails."
     }
    ],
    "fb": "Defensive design means a wrong line is reported and skipped, not allowed to stop the whole run."

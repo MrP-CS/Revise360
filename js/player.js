@@ -437,11 +437,8 @@
          </div>
          <div class="pyfixed">
           <div class="pybar">
-            <button class="btn ghost" id="pyrun">▶ Run</button>
             <button class="btn" id="pycheck">Check my answer</button>
             ${task.hint ? '<button class="btn ghost" id="pyhint">Hint</button>' : ""}
-            ${window.R360Ref ? '<button class="btn ghost" id="pyref">Syntax</button>' : ""}
-            <span class="pystate" id="pystate"></span>
           </div>
           <p class="pytry" id="pytry"></p>
           <div class="pytests" id="pytests"></div>
@@ -451,6 +448,14 @@
         </div>
         <div class="vstage" style="flex-direction:column;background:none;border:0;gap:10px">
           <div id="pyed" style="flex:1;min-height:0"></div>
+          <!-- The bar an editor has: Run sits between the program and the output
+               it produces, which is where every IDE puts it. Marking stays on
+               the left with the task, because that is a different kind of act. -->
+          <div class="pyidebar">
+            <button class="btn ghost" id="pyrun">▶ Run</button>
+            ${window.R360Ref ? '<button class="btn ghost" id="pyref">Syntax reminder</button>' : ""}
+            <span class="pystate" id="pystate"></span>
+          </div>
           <pre class="pyout" id="pyout"><span class="muted">Press Run and anything your program prints appears here.</span></pre>
         </div>
       </div>`);

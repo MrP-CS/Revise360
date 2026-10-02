@@ -20,11 +20,12 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for two whole numbers. Work out their total, then take the second from the first. Display [total], then [difference] on the next line.",
+       "q": "Ask the user for two whole numbers. Take the second away from the first and display [difference] and nothing else.",
        "brief": [
+        "The user types in two whole numbers, one on each line.",
         "The difference may be negative."
        ],
-       "starter": "# Two whole numbers in. Total first, then the difference.\n",
+       "starter": "# Two whole numbers in, one difference out\n",
        "tests": [
         {
          "in": [
@@ -32,10 +33,9 @@
           "5"
          ],
          "out": [
-          "23",
           "13"
          ],
-         "why": "185 instead of 23 means the two lines were joined as text. Cast each one with int() before any arithmetic."
+         "why": "A crash or a joined-up answer means the inputs were still text. Cast each one with int() before subtracting."
         },
         {
          "in": [
@@ -43,10 +43,9 @@
           "7"
          ],
          "out": [
-          "14",
           "0"
          ],
-         "why": "Two equal numbers give a difference of 0, which is a real answer. An empty second line means the subtraction is missing."
+         "why": "Two equal numbers give 0, which is a real answer. An empty line means nothing was printed."
         },
         {
          "in": [
@@ -54,16 +53,69 @@
           "9"
          ],
          "out": [
-          "13",
           "-5"
          ],
-         "why": "5 instead of -5 means you subtracted the other way round. Keep the order the brief gives, even below zero."
+         "why": "5 instead of -5 means you subtracted the other way round. Keep the order the question gives, even below zero."
         }
        ],
-       "fb": "The four operators are + - * and / and they work on numbers only, so anything from input() is cast first.",
+       "fb": "Arithmetic works on numbers only, so anything that came from input() is cast with int() before you touch it.",
        "hint": "pyarith",
        "teach": {
-        "say": "+ adds, - subtracts and * multiplies. They work on numbers, so cast each input with int() first.",
+        "say": "- subtracts and + adds. They work on numbers, so cast each input with int() first.",
+        "code": [
+         "a = int(input(\"First? \"))   # the user types 9",
+         "b = int(input(\"Second? \"))  # then 4",
+         "print(a + b)"
+        ],
+        "out": [
+         "13"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Ask the user for two whole numbers. Multiply them together and display [product] and nothing else.",
+       "brief": [
+        "The user types in two whole numbers, one on each line."
+       ],
+       "starter": "# Two whole numbers in, one product out\n",
+       "tests": [
+        {
+         "in": [
+          "6",
+          "7"
+         ],
+         "out": [
+          "42"
+         ],
+         "why": "A long row of repeated digits means a string was multiplied: '6' * 7 repeats the text. Cast both with int()."
+        },
+        {
+         "in": [
+          "12",
+          "0"
+         ],
+         "out": [
+          "0"
+         ],
+         "why": "Anything multiplied by 0 is 0, which is a real answer and still has to be printed."
+        },
+        {
+         "in": [
+          "25",
+          "4"
+         ],
+         "out": [
+          "100"
+         ],
+         "why": "Printing one of the numbers back means the multiplication is missing."
+        }
+       ],
+       "fb": "* on two numbers multiplies, but * on a string repeats it, so the cast decides which of the two you get.",
+       "hint": "pyarith",
+       "teach": {
+        "say": "* multiplies two numbers. If one side is still text, * repeats the text instead, so cast both with int().",
         "code": [
          "a = int(input(\"First? \"))   # the user types 3",
          "b = int(input(\"Second? \"))  # then 4",
@@ -76,60 +128,172 @@
       },
       {
        "t": "code",
-       "marks": 3,
-       "q": "Ask the user for the price of one pencil in pence and how many are bought. Display [total cost of the pencils], then [half of one price] on the next line.",
+       "marks": 2,
+       "q": "Ask the user for two whole numbers. Divide the first by the second and display [answer] and nothing else.",
        "brief": [
-        "Then print half the price of one pencil, worked out with / ."
+        "The second number is never 0.",
+        "Use / , so the answer is a real number."
        ],
-       "starter": "# Price in pence, then how many. Total cost, then half a price.\n",
+       "starter": "# Two whole numbers in, one division out\n",
        "tests": [
         {
          "in": [
-          "30",
-          "4"
-         ],
-         "out": [
-          "120",
-          "15.0"
-         ],
-         "why": "15 instead of 15.0 means the half was worked out another way. / always gives a real number, even when it divides exactly."
-        },
-        {
-         "in": [
-          "45",
-          "3"
-         ],
-         "out": [
-          "135",
-          "22.5"
-         ],
-         "why": "A whole number here means // was used. Half of 45 is 22.5, and throwing the .5 away is a different calculation."
-        },
-        {
-         "in": [
-          "99",
+          "9",
           "2"
          ],
          "out": [
-          "198",
-          "49.5"
+          "4.5"
          ],
-         "why": "A long row of repeated digits on the first line means a string was multiplied: '99' * 2 repeats the text. Cast both with int()."
+         "why": "4 instead of 4.5 means // was used, which throws the fraction away."
+        },
+        {
+         "in": [
+          "8",
+          "2"
+         ],
+         "out": [
+          "4.0"
+         ],
+         "why": "4 instead of 4.0 means the answer was cast back to an integer. / keeps the decimal part even when it divides exactly."
+        },
+        {
+         "in": [
+          "7",
+          "4"
+         ],
+         "out": [
+          "1.75"
+         ],
+         "why": "2 instead of 1.75 means the answer was rounded. Print the division as it comes out."
         }
        ],
-       "fb": "In Python / always gives a real number, which matters when you print it: 15.0 and 15 are not the same output.",
+       "fb": "In Python / always gives a real number, which matters when you print it: 4.0 and 4 are not the same output.",
        "hint": "pyarith",
        "teach": {
-        "say": "* multiplies and / divides. In Python / always gives a real number, so the answer keeps a decimal part even when it divides exactly.",
+        "say": "In Python / always gives a real number, so the answer keeps a decimal part even when it divides exactly.",
         "code": [
-         "print(6 * 4)",
          "print(6 / 4)",
          "print(8 / 2)"
         ],
         "out": [
-         "24",
          "1.5",
          "4.0"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Ask the user for three whole numbers. Add all three together and display [total] and nothing else.",
+       "brief": [
+        "The user types in three whole numbers, one on each line."
+       ],
+       "starter": "# Three whole numbers in, one total out\n",
+       "tests": [
+        {
+         "in": [
+          "5",
+          "6",
+          "6"
+         ],
+         "out": [
+          "17"
+         ],
+         "why": "566 instead of 17 means the three lines were joined as text. Cast every one with int()."
+        },
+        {
+         "in": [
+          "7",
+          "8",
+          "9"
+         ],
+         "out": [
+          "24"
+         ],
+         "why": "Missing one of the numbers out gives a smaller total. All three lines have to be read."
+        },
+        {
+         "in": [
+          "1",
+          "1",
+          "2"
+         ],
+         "out": [
+          "4"
+         ],
+         "why": "Three inputs need three separate input() calls, one for each line."
+        }
+       ],
+       "fb": "Every value in a calculation has to be a number first, however many of them there are.",
+       "hint": "pyarith",
+       "teach": {
+        "say": "A calculation can use as many values as you like, as long as every one of them has been cast to a number.",
+        "code": [
+         "a = int(input(\"First? \"))   # the user types 2",
+         "b = int(input(\"Second? \"))  # then 3",
+         "c = int(input(\"Third? \"))   # then 4",
+         "print(a + b + c)"
+        ],
+        "out": [
+         "9"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Ask the user for three whole numbers. Add the first two together, multiply that answer by the third, and display [answer] and nothing else.",
+       "brief": [
+        "The user types in three whole numbers, one on each line.",
+        "Brackets decide the order, because * is worked out before + ."
+       ],
+       "starter": "# Three whole numbers in. Add two, then multiply.\n",
+       "tests": [
+        {
+         "in": [
+          "2",
+          "3",
+          "4"
+         ],
+         "out": [
+          "20"
+         ],
+         "why": "14 means the brackets are missing, so Python multiplied 3 by 4 before adding the 2."
+        },
+        {
+         "in": [
+          "10",
+          "1",
+          "3"
+         ],
+         "out": [
+          "33"
+         ],
+         "why": "13 means only the first two were added. The third number multiplies the whole of that answer."
+        },
+        {
+         "in": [
+          "0",
+          "7",
+          "5"
+         ],
+         "out": [
+          "35"
+         ],
+         "why": "A 0 is still a number to be read, and adding it changes nothing, which is the right answer here."
+        }
+       ],
+       "fb": "Operators have an order, and brackets are how you say the order you actually want.",
+       "hint": "pyarith",
+       "teach": {
+        "say": "Python does * and / before + and - , so brackets are how you force an addition to happen first.",
+        "code": [
+         "print(1 + 2 * 5)",
+         "print((1 + 2) * 5)"
+        ],
+        "out": [
+         "11",
+         "15"
         ]
        }
       }
@@ -145,12 +309,13 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 3,
-       "q": "Ask the user for the number of books and how many one crate holds. Display [full crates], then [books left over] on the next line.",
+       "marks": 2,
+       "q": "Ask the user for two whole numbers. Work out how many whole times the second goes into the first and display [answer] and nothing else.",
        "brief": [
-        "The user types in two lines: the number of books, then how many one crate holds."
+        "The second number is never 0.",
+        "Use // , which leaves a whole number."
        ],
-       "starter": "# Books, then crate size. Full crates, then books left over.\n",
+       "starter": "# Two whole numbers in, whole lots out\n",
        "tests": [
         {
          "in": [
@@ -158,10 +323,9 @@
           "6"
          ],
          "out": [
-          "7",
-          "5"
+          "7"
          ],
-         "why": "7.833 means / was used. A part filled crate is not a full one, so use // , which leaves a whole number."
+         "why": "7.8333 means / was used. A part lot is not a whole one, so use // , which leaves a whole number."
         },
         {
          "in": [
@@ -169,10 +333,9 @@
           "6"
          ],
          "out": [
-          "4",
-          "0"
+          "4"
          ],
-         "why": "When the books divide exactly there is nothing left over, so the second answer is 0."
+         "why": "4.0 instead of 4 means / was used and it divided exactly. // gives a whole number with no decimal part."
         },
         {
          "in": [
@@ -180,34 +343,89 @@
           "6"
          ],
          "out": [
-          "0",
-          "5"
+          "0"
          ],
-         "why": "1 instead of 0 means you rounded up. Fewer books than a crate holds fills no crates at all."
+         "why": "1 instead of 0 means you rounded up. Six goes into five no whole times at all."
         }
        ],
-       "fb": "// and % are a pair: // says how many whole lots fit, % says what is left behind. Together they lose nothing.",
+       "fb": "// is division that keeps only the whole lots, and it rounds down rather than to the nearest.",
        "hint": "pyarith",
        "teach": {
-        "say": "// divides and throws the fraction away, so it says how many whole lots fit. % gives what is left over. OCR calls them DIV and MOD.",
+        "say": "// divides and throws the fraction away, so it says how many whole lots fit. OCR calls it DIV.",
         "code": [
          "print(17 // 5)",
-         "print(17 % 5)"
+         "print(4 // 5)"
         ],
         "out": [
          "3",
-         "2"
+         "0"
         ]
        }
       },
       {
        "t": "code",
-       "marks": 3,
-       "q": "Ask the user for the total number of stickers. There are always 8 pupils, fixed in your program. Display [stickers each], then [stickers left over] on the next line.",
+       "marks": 2,
+       "q": "Ask the user for two whole numbers. Work out what is left over when the first is divided by the second and display [remainder] and nothing else.",
        "brief": [
-        "There are always 8 pupils, so the 8 is fixed in your program, not typed in."
+        "The second number is never 0.",
+        "Use % , which gives the remainder."
        ],
-       "starter": "# Stickers in. Each pupil's share, then the leftovers.\n",
+       "starter": "# Two whole numbers in, the remainder out\n",
+       "tests": [
+        {
+         "in": [
+          "47",
+          "6"
+         ],
+         "out": [
+          "5"
+         ],
+         "why": "7 means // was used, which gives the whole lots rather than what is left behind."
+        },
+        {
+         "in": [
+          "24",
+          "6"
+         ],
+         "out": [
+          "0"
+         ],
+         "why": "An exact division leaves 0, and that 0 still has to be printed."
+        },
+        {
+         "in": [
+          "5",
+          "6"
+         ],
+         "out": [
+          "5"
+         ],
+         "why": "When the first number is the smaller one, none of it is used up, so all of it is left over."
+        }
+       ],
+       "fb": "% is the partner of // : one takes the whole lots away, the other reports what they left behind.",
+       "hint": "pyarith",
+       "teach": {
+        "say": "% gives what is left over after a whole division. OCR calls it MOD.",
+        "code": [
+         "print(17 % 5)",
+         "print(20 % 5)"
+        ],
+        "out": [
+         "2",
+         "0"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Ask the user for one whole number. Divide it by the fixed number 8. Display [whole lots], then [what is left over] on the next line.",
+       "brief": [
+        "The 8 is fixed in your program, not typed in.",
+        "Use // for the first line and % for the second."
+       ],
+       "starter": "# One whole number in. Whole lots, then the remainder.\n",
        "tests": [
         {
          "in": [
@@ -217,7 +435,7 @@
           "6",
           "2"
          ],
-         "why": "6.25 means / was used for the share. A pupil cannot have a quarter of a sticker, so use // ."
+         "why": "6.25 means / was used on the first line. // leaves a whole number."
         },
         {
          "in": [
@@ -227,7 +445,7 @@
           "25",
           "0"
          ],
-         "why": "They divide exactly here, so nothing is left. An empty second line means the % is missing."
+         "why": "This one divides exactly, so nothing is left. An empty second line means the % is missing."
         },
         {
          "in": [
@@ -237,21 +455,79 @@
           "0",
           "5"
          ],
-         "why": "Fewer stickers than pupils means everyone gets 0 and all 5 are left over. A 1 here means the division rounded up."
+         "why": "Fewer than 8 means 0 whole lots and all 5 left over. A 1 here means the division rounded up."
         }
        ],
-       "fb": "Splitting a quantity up is always // for the whole lots and % for the remainder, whether it is stickers, pence or pupils in a minibus.",
+       "fb": "// and % answer two halves of the same question, and a fixed divisor works exactly like one that was typed in.",
        "hint": "pyarith",
        "teach": {
         "say": "The number you divide by can be a fixed one. // gives the whole lots and % the remainder, so between them nothing is lost.",
         "code": [
-         "sweets = 30",
-         "print(sweets // 7)",
-         "print(sweets % 7)"
+         "n = 30",
+         "print(n // 7)",
+         "print(n % 7)"
         ],
         "out": [
          "4",
          "2"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for two whole numbers. Display [how many whole times the second goes into the first], then [what is left over] on the next line.",
+       "brief": [
+        "The second number is never 0.",
+        "Use // for the first line and % for the second."
+       ],
+       "starter": "# Two whole numbers in. Whole lots, then the remainder.\n",
+       "tests": [
+        {
+         "in": [
+          "38",
+          "5"
+         ],
+         "out": [
+          "7",
+          "3"
+         ],
+         "why": "7.6 means / was used. The first line is whole lots only, so it needs // ."
+        },
+        {
+         "in": [
+          "40",
+          "5"
+         ],
+         "out": [
+          "8",
+          "0"
+         ],
+         "why": "They divide exactly here, so the second line is 0. An empty line means the % is missing."
+        },
+        {
+         "in": [
+          "3",
+          "5"
+         ],
+         "out": [
+          "0",
+          "3"
+         ],
+         "why": "0 whole lots and 3 left over. A 1 on the first line means the division rounded up."
+        }
+       ],
+       "fb": "Multiply the whole lots by the divisor, add the remainder, and you are back where you started: that is what makes them a pair.",
+       "hint": "pyarith",
+       "teach": {
+        "say": "// and % are a pair: // says how many whole lots fit, % says what is left behind. Together they lose nothing.",
+        "code": [
+         "print(23 // 4)",
+         "print(23 % 4)"
+        ],
+        "out": [
+         "5",
+         "3"
         ]
        }
       }
@@ -267,66 +543,169 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 3,
-       "q": "Ask the user for the length of a side. Work out the side to the power 2, then the side to the power 3. Display [area], then [volume] on the next line.",
+       "marks": 2,
+       "q": "Ask the user for a whole number. Raise it to the power 2 and display [answer] and nothing else.",
        "brief": [
-        "The user types in one whole number: the length of a side."
+        "The user types in one whole number.",
+        "Use ** , not ^ , which means something else in Python."
        ],
-       "starter": "# One side length in. Power 2, then power 3.\n",
+       "starter": "# One whole number in, the power 2 out\n",
        "tests": [
         {
          "in": [
           "4"
          ],
          "out": [
-          "16",
-          "64"
+          "16"
          ],
-         "why": "8 instead of 16 means you multiplied by 2. Squaring 4 means 4 times 4, written 4 ** 2."
+         "why": "8 instead of 16 means you multiplied by 2. The power 2 means 4 times 4, written 4 ** 2."
         },
         {
          "in": [
           "7"
          ],
          "out": [
-          "49",
-          "343"
+          "49"
          ],
-         "why": "21 on the second line means you multiplied by 3. A cube is 7 * 7 * 7, written 7 ** 3."
+         "why": "14 means you multiplied by 2 again. A number to the power 2 is that number times itself."
         },
         {
          "in": [
           "1"
          ],
          "out": [
-          "1",
           "1"
          ],
-         "why": "A side of 1 gives 1 twice, which looks suspicious but is right. One line only means a calculation is missing."
+         "why": "1 to the power 2 is still 1, which looks suspicious but is right."
         }
        ],
-       "fb": "** is the power operator. Watch out for ^ , which looks like a power in maths but does something else in Python.",
+       "fb": "** is the power operator, and watch out for ^ , which looks like a power in maths but does something else in Python.",
        "hint": "pypower",
        "teach": {
-        "say": "** raises a number to a power, so 2 ** 5 is 2 multiplied by itself five times. Do not use ^ , which means something else in Python.",
+        "say": "** raises a number to a power, so 2 ** 5 is 2 multiplied by itself five times.",
         "code": [
          "print(2 ** 5)",
-         "print(10 ** 3)"
+         "print(10 ** 2)"
         ],
         "out": [
          "32",
-         "1000"
+         "100"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Ask the user for a whole number. Raise it to the power 3 and display [answer] and nothing else.",
+       "brief": [
+        "The user types in one whole number.",
+        "Use ** , not ^ ."
+       ],
+       "starter": "# One whole number in, the power 3 out\n",
+       "tests": [
+        {
+         "in": [
+          "4"
+         ],
+         "out": [
+          "64"
+         ],
+         "why": "12 means you multiplied by 3. The power 3 means 4 times 4 times 4, written 4 ** 3."
+        },
+        {
+         "in": [
+          "7"
+         ],
+         "out": [
+          "343"
+         ],
+         "why": "49 means the power 2 was used. Check the number after the ** ."
+        },
+        {
+         "in": [
+          "10"
+         ],
+         "out": [
+          "1000"
+         ],
+         "why": "A power of 10 is easy to check by counting the zeros: three of them for the power 3."
+        }
+       ],
+       "fb": "Changing the number after ** changes how many times the value is multiplied by itself, and nothing else.",
+       "hint": "pypower",
+       "teach": {
+        "say": "The power says how many times the number is multiplied by itself, so ** 3 is three of them multiplied together.",
+        "code": [
+         "print(2 ** 3)",
+         "print(5 ** 3)"
+        ],
+        "out": [
+         "8",
+         "125"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Ask the user for a whole number. Raise the fixed number 2 to that power and display [answer] and nothing else.",
+       "brief": [
+        "The 2 is fixed in your program; the power is what the user types in.",
+        "Use ** , not ^ ."
+       ],
+       "starter": "# One whole number in, 2 to that power out\n",
+       "tests": [
+        {
+         "in": [
+          "5"
+         ],
+         "out": [
+          "32"
+         ],
+         "why": "25 means the two values are the wrong way round. The 2 goes before the ** and the input after it."
+        },
+        {
+         "in": [
+          "10"
+         ],
+         "out": [
+          "1024"
+         ],
+         "why": "20 means you multiplied instead of raising to a power."
+        },
+        {
+         "in": [
+          "0"
+         ],
+         "out": [
+          "1"
+         ],
+         "why": "Anything to the power 0 is 1. A 0 here means the input was used as the number being raised."
+        }
+       ],
+       "fb": "The order matters: a ** b and b ** a are different sums, so read which value is the power.",
+       "hint": "pypower",
+       "teach": {
+        "say": "Either side of ** can be a variable. Here the number being raised is fixed and the power is the one that varies.",
+        "code": [
+         "n = 4",
+         "print(3 ** n)"
+        ],
+        "out": [
+         "81"
         ]
        }
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for the area of a square, which may have a decimal point. Work out its square root and display [length of one side] and nothing else.",
+       "q": "Ask the user for a number, which may have a decimal point. Work out its square root and display [answer] and nothing else.",
        "brief": [
-        "The user types in the area, which may have a decimal point."
+        "The user types in one number, which may have a decimal point.",
+        "Cast it with float(), not int().",
+        "Raise it to the power 0.5."
        ],
-       "starter": "# Area in, side length out\n",
+       "starter": "# One number in, its square root out\n",
        "tests": [
         {
          "in": [
@@ -335,7 +714,7 @@
          "out": [
           "9.0"
          ],
-         "why": "40.5 means the area was halved rather than rooted. The power 0.5 undoes the power 2."
+         "why": "40.5 means the number was halved rather than rooted. The power 0.5 undoes the power 2."
         },
         {
          "in": [
@@ -344,7 +723,7 @@
          "out": [
           "1.5"
          ],
-         "why": "A crash here means int() was used, and it cannot handle a decimal point. Use float()."
+         "why": "A crash here means int() was used, and int() cannot handle a decimal point. Use float()."
         },
         {
          "in": [
@@ -357,9 +736,9 @@
         }
        ],
        "fb": "Raising to the power 0.5 is the square root, and the answer is a real number even for a perfect square.",
-       "hint": "pyarith",
+       "hint": "pypower",
        "teach": {
-        "say": "The power 0.5 is the square root, and it always gives a real number. Use float() for an input that may have a decimal point.",
+        "say": "The power 0.5 is the square root, and it always gives a real number.",
         "code": [
          "print(36 ** 0.5)"
         ],
@@ -380,55 +759,160 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 3,
-       "q": "Ask the user for an amount, which may have a decimal point. Use round() to display [amount to the nearest whole number], then [amount to 2 decimal places] on the next line.",
+       "marks": 2,
+       "q": "Ask the user for a number, which may have a decimal point. Use round() to display [the number to the nearest whole number] and nothing else.",
        "brief": [
-        "The user types in one amount, which may have a decimal point."
+        "The user types in one number, which may have a decimal point.",
+        "Cast it with float(), then round it."
        ],
-       "starter": "# One amount in. Nearest whole number, then 2 decimal places.\n",
+       "starter": "# One number in, the nearest whole number out\n",
        "tests": [
         {
          "in": [
           "4.567"
          ],
          "out": [
-          "5",
-          "4.57"
+          "5"
          ],
-         "why": "4 on the first line is right; 4.0 means the decimals were cut off rather than rounded. int() throws them away, round() looks at them."
+         "why": "4 means int() was used, which cuts the decimals off instead of looking at them."
         },
         {
          "in": [
-          "2.5"
+          "2.3"
          ],
          "out": [
-          "2",
-          "2.5"
+          "2"
          ],
-         "why": "This one surprises everybody: an exact half goes to the nearest even whole number, so round(2.5) is 2. Rounding 2.5 to 2 places changes nothing."
+         "why": "3 means you rounded up regardless. round() goes to whichever whole number is nearer."
         },
         {
          "in": [
-          "3.5"
+          "9.8"
          ],
          "out": [
-          "4",
-          "3.5"
+          "10"
          ],
-         "why": "3.5 goes up to 4 because 4 is the even neighbour. Compare this with the 2.5 test to see the rule."
+         "why": "9 means the decimals were thrown away. 9.8 is nearer to 10 than to 9."
         }
        ],
-       "fb": "round(x) gives a whole number and round(x, 2) keeps two decimal places. Exact halves go to the nearest even value.",
+       "fb": "round() looks at the decimals and goes to the nearer whole number, while int() simply drops them.",
        "hint": "pyround",
        "teach": {
-        "say": "round(x) rounds to a whole number, and a second number says how many decimal places to keep. An exact half goes to the nearest even number.",
+        "say": "round(x) rounds to the nearest whole number. int(x) is a different thing: it throws the decimals away without looking at them.",
         "code": [
-         "print(round(8.47))",
-         "print(round(8.476, 2))"
+         "print(round(8.7))",
+         "print(int(8.7))"
         ],
         "out": [
-         "8",
-         "8.48"
+         "9",
+         "8"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Ask the user for a number, which may have a decimal point. Use round() to display [the number to 2 decimal places] and nothing else.",
+       "brief": [
+        "The user types in one number, which may have a decimal point.",
+        "Cast it with float(), then round it to 2 decimal places."
+       ],
+       "starter": "# One number in, 2 decimal places out\n",
+       "tests": [
+        {
+         "in": [
+          "4.567"
+         ],
+         "out": [
+          "4.57"
+         ],
+         "why": "5 means the second number inside round() is missing, so it rounded to a whole number."
+        },
+        {
+         "in": [
+          "2.341"
+         ],
+         "out": [
+          "2.34"
+         ],
+         "why": "2.35 means you rounded up. The third decimal is a 1, so the second one stays as it is."
+        },
+        {
+         "in": [
+          "9.999"
+         ],
+         "out": [
+          "10.0"
+         ],
+         "why": "Rounding 9.999 to 2 places carries all the way to 10.0, and Python drops the trailing zero."
+        }
+       ],
+       "fb": "round() takes a second number for the decimal places to keep, which is how a long answer is made readable.",
+       "hint": "pyround",
+       "teach": {
+        "say": "A second number inside round() says how many decimal places to keep.",
+        "code": [
+         "print(round(8.476, 2))",
+         "print(round(8.476, 1))"
+        ],
+        "out": [
+         "8.48",
+         "8.5"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for two whole numbers. Divide the first by the second and display [the answer to 1 decimal place] and nothing else.",
+       "brief": [
+        "The second number is never 0.",
+        "Divide with / , then round the answer to 1 decimal place."
+       ],
+       "starter": "# Two whole numbers in, one rounded answer out\n",
+       "tests": [
+        {
+         "in": [
+          "10",
+          "3"
+         ],
+         "out": [
+          "3.3"
+         ],
+         "why": "3.3333333333333335 means the division is right but the round() is missing."
+        },
+        {
+         "in": [
+          "9",
+          "2"
+         ],
+         "out": [
+          "4.5"
+         ],
+         "why": "4 means // was used. Divide with / first, then round what comes out."
+        },
+        {
+         "in": [
+          "8",
+          "2"
+         ],
+         "out": [
+          "4.0"
+         ],
+         "why": "4 instead of 4.0: / gives a real number and round() leaves it real, so the decimal part still shows."
+        }
+       ],
+       "fb": "Rounding is something you do to an answer, so the division happens first and round() tidies the result.",
+       "hint": "pyround",
+       "teach": {
+        "say": "Dividing often leaves a long string of decimals. round(x, 1) keeps one decimal place and tidies the rest away.",
+        "code": [
+         "print(9 / 4)",
+         "print(round(22 / 7, 1))"
+        ],
+        "out": [
+         "2.25",
+         "3.1"
         ]
        }
       },
@@ -437,9 +921,10 @@
        "marks": 3,
        "q": "Ask the user for three whole numbers. Work out their average, rounded to 1 decimal place, and display [average] and nothing else.",
        "brief": [
-        "The user types in three whole numbers, one on each line."
+        "The user types in three whole numbers, one on each line.",
+        "Add all three before dividing: brackets decide the order."
        ],
-       "starter": "# Three scores in, one rounded average out\n",
+       "starter": "# Three whole numbers in, one rounded average out\n",
        "tests": [
         {
          "in": [
@@ -472,20 +957,20 @@
          "out": [
           "1.3"
          ],
-         "why": "Add all three before dividing: (a + b + c) / 3. Dividing only the last one gives a much smaller answer."
+         "why": "Add all three before dividing: (a + b + c) / 3. Without the brackets only the last one is divided."
         }
        ],
-       "fb": "round() takes a second number for the decimal places to keep, which is how a long division result is made readable.",
+       "fb": "An average is a total divided by how many there were, and the brackets are what make the whole total get divided.",
        "hint": "pyround",
        "teach": {
-        "say": "Dividing often leaves a long string of decimals. round(x, 1) keeps one decimal place and tidies the rest away.",
+        "say": "Add the values inside brackets so the whole total is divided, then round what comes out.",
         "code": [
-         "print(10 / 3)",
-         "print(round(10 / 3, 1))"
+         "print((1 + 2 + 4) / 3)",
+         "print(round((1 + 2 + 4) / 3, 1))"
         ],
         "out": [
-         "3.3333333333333335",
-         "3.3"
+         "2.3333333333333335",
+         "2.3"
         ]
        }
       }
@@ -501,42 +986,40 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 3,
-       "q": "Ask the user for a seed to start the random number generator. Display [first roll], then [second roll] on the next line, each a random whole number from 1 to 6.",
+       "marks": 2,
+       "q": "Ask the user for a seed to start the random number generator. Display [one random whole number from 1 to 6] and nothing else.",
        "brief": [
-        "Start with import random, then random.seed(int(input())). The user types in one whole number, the seed."
+        "Start with import random, then random.seed(int(input())). The user types in one whole number, the seed.",
+        "Use randint(1, 6), which can give 1 and 6 as well as everything between."
        ],
-       "starter": "# Import random, seed it from the input, then roll twice\n",
+       "starter": "# Import random, seed it from the input, then one number\n",
        "tests": [
         {
          "in": [
-          "188"
+          "4"
          ],
          "out": [
-          "6",
           "2"
          ],
-         "why": "Different numbers from these usually means the wrong ends: randrange(1, 6) stops at 5, and randint(1, 7) can roll a 7."
+         "why": "A different number usually means the wrong ends: randrange(1, 6) stops at 5, and randint(1, 7) can give a 7."
         },
         {
          "in": [
-          "216"
+          "7"
          ],
          "out": [
-          "2",
-          "6"
+          "3"
          ],
-         "why": "Two identical numbers mean one roll was stored and printed twice. Two rolls needs two separate calls."
+         "why": "The same answer for every seed means the seed was never used. Seed the generator with the number typed in."
         },
         {
          "in": [
-          "264"
+          "9"
          ],
          "out": [
-          "5",
-          "6"
+          "4"
          ],
-         "why": "If the first line matches but the second does not, the random module was called an extra time. Every call moves the sequence on."
+         "why": "Seeding after the number is drawn is too late. The seed has to be set first."
         }
        ],
        "fb": "A seeded random sequence is fixed, which is the only way random code can be marked at all.",
@@ -555,45 +1038,104 @@
       },
       {
        "t": "code",
-       "marks": 4,
-       "q": "Ask the user for a seed to start the random number generator. Display three random whole numbers from 10 to 20, one on each line, then [total].",
+       "marks": 2,
+       "q": "Ask the user for a seed to start the random number generator. Display [first number], then [second number] on the next line, each a random whole number from 1 to 6.",
        "brief": [
-        "Start with import random, then random.seed(int(input())). The user types in one whole number, the seed."
+        "Start with import random, then random.seed(int(input())). The user types in one whole number, the seed.",
+        "Use randint(1, 6) for both numbers."
+       ],
+       "starter": "# Import random, seed it from the input, then two numbers\n",
+       "tests": [
+        {
+         "in": [
+          "188"
+         ],
+         "out": [
+          "6",
+          "2"
+         ],
+         "why": "Different numbers from these usually means the wrong ends: randrange(1, 6) stops at 5, and randint(1, 7) can give a 7."
+        },
+        {
+         "in": [
+          "216"
+         ],
+         "out": [
+          "2",
+          "6"
+         ],
+         "why": "Two identical numbers mean one was stored and printed twice. Two numbers needs two separate calls."
+        },
+        {
+         "in": [
+          "264"
+         ],
+         "out": [
+          "5",
+          "6"
+         ],
+         "why": "If the first line matches but the second does not, the random module was called an extra time. Every call moves the sequence on."
+        }
+       ],
+       "fb": "Every call to randint moves the sequence on by one, so calling it twice is what gives you two different numbers.",
+       "hint": "pyoutput",
+       "teach": {
+        "say": "Each call to randint gives a new number. It never hands the same one back, so two numbers need two calls.",
+        "code": [
+         "import random",
+         "random.seed(3)",
+         "print(random.randint(1, 10))",
+         "print(random.randint(1, 10))"
+        ],
+        "out": [
+         "4",
+         "10"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for a seed to start the random number generator. Display three random whole numbers from 10 to 20, one on each line, then [total] on the next line.",
+       "brief": [
+        "Start with import random, then random.seed(int(input())). The user types in one whole number, the seed.",
+        "Use randint(10, 20) for all three numbers.",
+        "Four lines of output: the three numbers, then their total."
        ],
        "starter": "# Import random, seed it from the input, then three numbers and a total\n",
        "tests": [
         {
          "in": [
-          "12"
+          "7"
          ],
          "out": [
-          "17",
-          "14",
-          "20",
-          "51"
+          "15",
+          "12",
+          "16",
+          "43"
          ],
          "why": "If the three numbers are right but the total is not, randint was called again inside the total. That draws a fourth number."
         },
         {
          "in": [
-          "19"
+          "33"
          ],
          "out": [
+          "19",
+          "12",
           "20",
-          "10",
-          "18",
-          "48"
+          "51"
          ],
-         "why": "Both ends turn up here. A missing 20 points at randrange(10, 20), which stops at 19; a missing 10 points at randint(11, 20)."
+         "why": "Both ends turn up in these tests. A missing 20 points at randrange(10, 20), which stops at 19; a missing 10 points at randint(11, 20)."
         },
         {
          "in": [
-          "59"
+          "41"
          ],
          "out": [
+          "16",
+          "15",
           "13",
-          "11",
-          "20",
           "44"
          ],
          "why": "A different order from these means something called the random module before your three draws."
@@ -605,9 +1147,17 @@
         "say": "Store each random number in a variable as you make it, then add the variables. Calling randint again gives a new number, never the same one back.",
         "code": [
          "import random",
+         "random.seed(5)",
          "a = random.randint(1, 6)",
          "b = random.randint(1, 6)",
+         "print(a)",
+         "print(b)",
          "print(a + b)"
+        ],
+        "out": [
+         "5",
+         "3",
+         "8"
         ]
        }
       }
@@ -623,12 +1173,189 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 4,
-       "q": "Ask the user for how many rolls were sold and the price of one in pence. Display [total pence], then [whole pounds in that total], then [pence left over], one on each line.",
+       "marks": 3,
+       "q": "Ask the user for a whole number of pence. Display [whole pounds in that amount], then [pence left over] on the next line.",
        "brief": [
-        "The user types in two lines: how many rolls were sold, then the price of one in pence."
+        "There are 100 pence in a pound, and the 100 is fixed in your program, not typed in.",
+        "Use // for the pounds and % for the pence."
        ],
-       "starter": "# Rolls and price in. Total pence, whole pounds, pence left over.\n",
+       "starter": "# Pence in. Whole pounds, then the pence left over.\n",
+       "tests": [
+        {
+         "in": [
+          "396"
+         ],
+         "out": [
+          "3",
+          "96"
+         ],
+         "why": "3.96 means / was used. The pounds line is whole pounds only, so it needs // ."
+        },
+        {
+         "in": [
+          "100"
+         ],
+         "out": [
+          "1",
+          "0"
+         ],
+         "why": "Exactly one pound leaves 0 pence over, and that 0 still has to be printed."
+        },
+        {
+         "in": [
+          "45"
+         ],
+         "out": [
+          "0",
+          "45"
+         ],
+         "why": "Less than a pound gives 0 pounds and all 45 pence left over."
+        }
+       ],
+       "fb": "Breaking a quantity into bigger units and a remainder is always the same pair: // for the units, % for what is left.",
+       "hint": "pyarith",
+       "teach": {
+        "say": "There are 100 pence in a pound, so // 100 gives the whole pounds and % 100 gives the pence that are left.",
+        "code": [
+         "n = 250",
+         "print(n // 100)",
+         "print(n % 100)"
+        ],
+        "out": [
+         "2",
+         "50"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for a whole number. Display [the number to the power 2], then [its square root to 2 decimal places] on the next line.",
+       "brief": [
+        "The user types in one whole number.",
+        "Use ** for both: the power 2 and the power 0.5.",
+        "Round the square root to 2 decimal places."
+       ],
+       "starter": "# One whole number in. Power 2, then the rounded root.\n",
+       "tests": [
+        {
+         "in": [
+          "10"
+         ],
+         "out": [
+          "100",
+          "3.16"
+         ],
+         "why": "3.1622776601683795 means the round() is missing from the second line."
+        },
+        {
+         "in": [
+          "4"
+         ],
+         "out": [
+          "16",
+          "2.0"
+         ],
+         "why": "2 instead of 2.0 means the root was cast to an integer. Rounding a real number leaves it real."
+        },
+        {
+         "in": [
+          "2"
+         ],
+         "out": [
+          "4",
+          "1.41"
+         ],
+         "why": "1.0 means int() was used somewhere, and 1.42 means you rounded up: the third decimal is a 4, so the second stays."
+        }
+       ],
+       "fb": "A rounded answer is still a real number, so a whole-looking root like 2.0 keeps its decimal part.",
+       "hint": "pypower",
+       "teach": {
+        "say": "Two calculations on the same value: store it once, then use that variable in both of them.",
+        "code": [
+         "n = 9",
+         "print(n ** 2)",
+         "print(round(n ** 0.5, 2))"
+        ],
+        "out": [
+         "81",
+         "3.0"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for three whole numbers. Display [total], then [their average to 1 decimal place] on the next line.",
+       "brief": [
+        "The user types in three whole numbers, one on each line.",
+        "The total is a whole number; the average is rounded to 1 decimal place."
+       ],
+       "starter": "# Three whole numbers in. Total, then the rounded average.\n",
+       "tests": [
+        {
+         "in": [
+          "5",
+          "6",
+          "6"
+         ],
+         "out": [
+          "17",
+          "5.7"
+         ],
+         "why": "17.0 on the first line means / crept into the total. Adding whole numbers leaves a whole number."
+        },
+        {
+         "in": [
+          "7",
+          "8",
+          "9"
+         ],
+         "out": [
+          "24",
+          "8.0"
+         ],
+         "why": "This average is exact, and / still gives a real number, so the second line is 8.0 and not 8."
+        },
+        {
+         "in": [
+          "1",
+          "1",
+          "2"
+         ],
+         "out": [
+          "4",
+          "1.3"
+         ],
+         "why": "Divide the stored total, not just the last number: round(total / 3, 1)."
+        }
+       ],
+       "fb": "Storing a value you need twice saves working it out twice, and it means both answers are certain to agree.",
+       "hint": "pyround",
+       "teach": {
+        "say": "Work the total out once and store it, then use that variable again instead of adding everything up twice.",
+        "code": [
+         "total = 4 + 5 + 9",
+         "print(total)",
+         "print(round(total / 3, 1))"
+        ],
+        "out": [
+         "18",
+         "6.0"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for how many items are bought and then the price of one item in pence. Work out the total cost in pence. Display [total pence], then [whole pounds in the total], then [pence left over], one on each line.",
+       "brief": [
+        "The user types in two lines: how many items, then the price of one in pence.",
+        "There are 100 pence in a pound.",
+        "Three lines of output: the total, the pounds, then the pence."
+       ],
+       "starter": "# How many and the price in. Total, pounds, pence.\n",
        "tests": [
         {
          "in": [

@@ -20,11 +20,11 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for one word. Display [word] four times, one on each of four lines.",
+       "q": "Ask the user for a word. Display [word] three times, one on each of three lines.",
        "brief": [
-        "Ask the user for one word."
+        "The user types in one word."
        ],
-       "starter": "# Read the word, then print it four times\n",
+       "starter": "# Read the word, then print it three times\n",
        "tests": [
         {
          "in": [
@@ -33,22 +33,9 @@
          "out": [
           "boarding",
           "boarding",
-          "boarding",
           "boarding"
          ],
-         "why": "Four lines exactly. Five means range(5): range(4) already gives four turns, counting 0, 1, 2, 3."
-        },
-        {
-         "in": [
-          "delayed"
-         ],
-         "out": [
-          "delayed",
-          "delayed",
-          "delayed",
-          "delayed"
-         ],
-         "why": "The word is read from the user, so a program with the word typed into it will fail here."
+         "why": "Three lines exactly. Four means range(4): range(3) already gives three turns, counting 0, 1, 2."
         },
         {
          "in": [
@@ -57,22 +44,31 @@
          "out": [
           "x",
           "x",
-          "x",
           "x"
          ],
-         "why": "A one letter word is still printed four times."
+         "why": "A one letter word is still printed three times."
+        },
+        {
+         "in": [
+          "two words"
+         ],
+         "out": [
+          "two words",
+          "two words",
+          "two words"
+         ],
+         "why": "input() hands back the whole line, so both words are printed together on each of the three lines."
         }
        ],
-       "fb": "range(4) counts 0, 1, 2, 3, which is four numbers, so the loop body runs four times without ever reaching 4.",
+       "fb": "range(3) counts 0, 1, 2, which is three numbers, so the body runs three times without ever reaching 3.",
        "hint": "pyrange",
        "teach": {
         "say": "for i in range(3): repeats the indented lines three times, because range(3) counts 0, 1, 2.",
         "code": [
-         "for i in range(3):",
+         "for i in range(2):",
          "    print(\"tick\")"
         ],
         "out": [
-         "tick",
          "tick",
          "tick"
         ]
@@ -81,9 +77,71 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for a word and then a whole number. Display start, then [word] on that many lines.",
+       "q": "Ask the user for a word and then a whole number. Display [word] on that many lines.",
        "brief": [
         "The user types in two lines: a word, then a whole number."
+       ],
+       "starter": "# Read a word and a count, then repeat the word\n",
+       "tests": [
+        {
+         "in": [
+          "drip",
+          "3"
+         ],
+         "out": [
+          "drip",
+          "drip",
+          "drip"
+         ],
+         "why": "Three lines, because the count came from the second line of input."
+        },
+        {
+         "in": [
+          "tap",
+          "1"
+         ],
+         "out": [
+          "tap"
+         ],
+         "why": "A count of 1 means one line. Two means the loop ran one turn too many."
+        },
+        {
+         "in": [
+          "beep",
+          "5"
+         ],
+         "out": [
+          "beep",
+          "beep",
+          "beep",
+          "beep",
+          "beep"
+         ],
+         "why": "The count comes from input(), so it needs int() before range() can use it."
+        }
+       ],
+       "fb": "range(n) uses whatever number is in n, so how many turns the loop takes can be decided while the program runs.",
+       "hint": "pyrange",
+       "teach": {
+        "say": "range() can count up to a number read from the user, once int() has made it a whole number.",
+        "code": [
+         "n = int(input(\"How many? \"))   # the user types 2",
+         "for i in range(n):",
+         "    print(\"beep\")"
+        ],
+        "out": [
+         "beep",
+         "beep"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Ask the user for a word and then a whole number. Display start, then [word] on that many lines.",
+       "brief": [
+        "The user types in two lines: a word, then a whole number.",
+        "Print exactly: start"
        ],
        "starter": "# Read a word and a count, print start, then repeat the word\n",
        "tests": [
@@ -109,7 +167,7 @@
           "start",
           "tap"
          ],
-         "why": "A count of 1 means one line. Two means the loop ran to n + 1."
+         "why": "A count of 1 gives one line after start."
         },
         {
          "in": [
@@ -137,18 +195,89 @@
          "why": "The count comes from input(), so it needs int() before range() can use it."
         }
        ],
-       "fb": "range(n) uses whatever number is in n, including 0, which simply means the body never runs.",
+       "fb": "Indentation is what says which lines repeat, so a line outside the loop runs once however many turns the loop takes.",
        "hint": "pyrange",
        "teach": {
-        "say": "range() can use a number read from the user, once int() has made it a whole number. A line before the loop is not indented, so it runs once.",
+        "say": "A line written before the loop is not indented, so it runs once, before the repeating begins.",
         "code": [
-         "n = int(input(\"How many? \"))   # the user types 2",
-         "for i in range(n):",
+         "print(\"go\")",
+         "for i in range(2):",
          "    print(\"beep\")"
         ],
         "out": [
+         "go",
          "beep",
          "beep"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for two words and then a whole number. Display [first word], then [second word] on the next line, and repeat those two lines as many times as the number says.",
+       "brief": [
+        "The user types in three lines: two words, then a whole number.",
+        "The two lines repeat together, so there are twice as many lines as the number says."
+       ],
+       "starter": "# Read two words and a count, then repeat the pair\n",
+       "tests": [
+        {
+         "in": [
+          "up",
+          "down",
+          "2"
+         ],
+         "out": [
+          "up",
+          "down",
+          "up",
+          "down"
+         ],
+         "why": "Two turns, two lines each, and the words keep their order."
+        },
+        {
+         "in": [
+          "left",
+          "right",
+          "1"
+         ],
+         "out": [
+          "left",
+          "right"
+         ],
+         "why": "One turn gives both lines once. Only one word means the second print is outside the loop."
+        },
+        {
+         "in": [
+          "red",
+          "amber",
+          "3"
+         ],
+         "out": [
+          "red",
+          "amber",
+          "red",
+          "amber",
+          "red",
+          "amber"
+         ],
+         "why": "Both words on every turn. All of one word and then all of the other means the loop was written twice."
+        }
+       ],
+       "fb": "Everything indented under the for repeats together, so two lines inside the loop means two lines on every turn.",
+       "hint": "pyrange",
+       "teach": {
+        "say": "Every indented line repeats, so two print() statements inside the loop give two lines on every turn.",
+        "code": [
+         "for i in range(2):",
+         "    print(\"in\")",
+         "    print(\"out\")"
+        ],
+        "out": [
+         "in",
+         "out",
+         "in",
+         "out"
         ]
        }
       }
@@ -165,11 +294,71 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for how many lanes there are. Display the lane numbers from 1 up to and including that number, one on each line.",
+       "q": "Ask the user for a whole number. Display every number from 0 up to but not including it, one on each line.",
        "brief": [
-        "The user types in one whole number: how many lanes there are."
+        "The user types in one whole number, which is never less than 1."
        ],
-       "starter": "# Read how many lanes there are, then number them from 1\n",
+       "starter": "# Read the number, then print the counter on every turn\n",
+       "tests": [
+        {
+         "in": [
+          "4"
+         ],
+         "out": [
+          "0",
+          "1",
+          "2",
+          "3"
+         ],
+         "why": "Four lines, starting at 0 and stopping before 4."
+        },
+        {
+         "in": [
+          "1"
+         ],
+         "out": [
+          "0"
+         ],
+         "why": "One turn only, and the count starts at 0. Nothing at all means the range was empty."
+        },
+        {
+         "in": [
+          "6"
+         ],
+         "out": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         "why": "The number itself is never printed, because range stops before it."
+        }
+       ],
+       "fb": "range(n) counts from 0 and stops before n, so the last number printed is always one less than n.",
+       "hint": "pyrange",
+       "teach": {
+        "say": "The loop variable holds the count on each turn, so printing it shows 0, 1, 2 and so on. range stops before its number.",
+        "code": [
+         "for i in range(3):",
+         "    print(i)"
+        ],
+        "out": [
+         "0",
+         "1",
+         "2"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Ask the user for a whole number. Display every number from 1 up to and including it, one on each line.",
+       "brief": [
+        "The user types in one whole number, which is never less than 1."
+       ],
+       "starter": "# Read the number, then count from 1 up to it\n",
        "tests": [
         {
          "in": [
@@ -191,7 +380,7 @@
          "out": [
           "1"
          ],
-         "why": "One lane gives one line. Nothing at all means range(1, n) stopped before it started."
+         "why": "One number gives one line. Nothing at all means range(1, n) stopped before it started."
         },
         {
          "in": [
@@ -208,7 +397,7 @@
        "fb": "range stops before its second number, so to finish on n you write range(1, n + 1).",
        "hint": "pyrange",
        "teach": {
-        "say": "range stops before its second number, so range(1, 4) counts 1, 2, 3. To finish on n you write range(1, n + 1).",
+        "say": "range takes a start as well as a stop, so range(1, 4) counts 1, 2, 3. To finish on n you write range(1, n + 1).",
         "code": [
          "for i in range(1, 4):",
          "    print(i)"
@@ -222,12 +411,13 @@
       },
       {
        "t": "code",
-       "marks": 3,
-       "q": "Ask the user for the largest side length. For every side from 1 up to and including that number, display a line in the form [side] [side times itself].",
+       "marks": 2,
+       "q": "Ask the user for a whole number. For every number from 1 up to and including it, display a line in the form [number] [number times itself].",
        "brief": [
-        "The user types in one whole number: the largest side length."
+        "The user types in one whole number, which is never less than 1.",
+        "One space between the two numbers on a line."
        ],
-       "starter": "# Read the largest side, then print each side and its area\n",
+       "starter": "# Read the number, then print each counter and its square\n",
        "tests": [
         {
          "in": [
@@ -247,7 +437,7 @@
          "out": [
           "1 1"
          ],
-         "why": "A side of 1 has an area of 1, so the two numbers match here."
+         "why": "A number of 1 gives one line, and 1 times itself is 1, so the two match here."
         },
         {
          "in": [
@@ -260,7 +450,7 @@
           "4 16",
           "5 25"
          ],
-         "why": "Every line uses its own counter value. Lines that all show the same number mean n was printed rather than i."
+         "why": "Every line uses its own counter value. Lines that all show the same number mean the input was printed instead of the counter."
         },
         {
          "in": [
@@ -287,6 +477,69 @@
          "3 30"
         ]
        }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for a whole number. For every number from 1 up to and including it, display a line in the form [number] [how many numbers still come after it].",
+       "brief": [
+        "The user types in one whole number, which is never less than 1.",
+        "One space between the two numbers on a line.",
+        "The last line ends with 0, because nothing comes after the last number."
+       ],
+       "starter": "# Read the number, then print each counter and what is left\n",
+       "tests": [
+        {
+         "in": [
+          "4"
+         ],
+         "out": [
+          "1 3",
+          "2 2",
+          "3 1",
+          "4 0"
+         ],
+         "why": "The second number counts down as the first counts up, so both the input and the counter are used."
+        },
+        {
+         "in": [
+          "1"
+         ],
+         "out": [
+          "1 0"
+         ],
+         "why": "One line, and nothing comes after it, so the second number is 0."
+        },
+        {
+         "in": [
+          "6"
+         ],
+         "out": [
+          "1 5",
+          "2 4",
+          "3 3",
+          "4 2",
+          "5 1",
+          "6 0"
+         ],
+         "why": "A second number that never changes means the counter was left out of the subtraction."
+        }
+       ],
+       "fb": "Both the counter and the number typed in are there inside the loop, so a line can use the two together.",
+       "hint": "pyrange",
+       "teach": {
+        "say": "The number typed in is still there inside the loop, so a line can be worked out from it and the counter together.",
+        "code": [
+         "n = 10",
+         "for i in range(1, 4):",
+         "    print(i, n - i)"
+        ],
+        "out": [
+         "1 9",
+         "2 8",
+         "3 7"
+        ]
+       }
       }
      ]
     },
@@ -300,12 +553,12 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 3,
-       "q": "Ask the user for the first row number and then the last row number. Display every row number from the first to the last, both included, one on each line.",
+       "marks": 2,
+       "q": "Ask the user for two whole numbers, the second never smaller than the first. Display every number from the first to the second, both included, one on each line.",
        "brief": [
-        "The user types in two lines: the first row number, then the last row number."
+        "The user types in two whole numbers, one on each line."
        ],
-       "starter": "# Read the first and last row numbers, then list every row\n",
+       "starter": "# Read the first and last numbers, then list every one of them\n",
        "tests": [
         {
          "in": [
@@ -329,7 +582,7 @@
          "out": [
           "5"
          ],
-         "why": "The first and last row are the same, so exactly one line prints. Nothing means the range was empty."
+         "why": "The two numbers are the same, so exactly one line prints. Nothing means the range was empty."
         },
         {
          "in": [
@@ -354,13 +607,13 @@
           "3",
           "4"
          ],
-         "why": "Four lines. Five means 1 was added to the start as well as the end."
+         "why": "Four lines. Five means 1 was added to the start as well as the stop."
         }
        ],
        "fb": "range takes a start and a stop, and the stop is never reached, so the last value you want is last + 1.",
        "hint": "pyrange",
        "teach": {
-        "say": "range takes a start and a stop, and the stop is never reached, so add 1 to the last value you want.",
+        "say": "range takes a start and a stop, and the stop is never reached, so the last value you want is written as last + 1.",
         "code": [
          "for n in range(4, 7):",
          "    print(n)"
@@ -374,10 +627,10 @@
       },
       {
        "t": "code",
-       "marks": 4,
+       "marks": 2,
        "q": "Ask the user for a whole number. Display every number from it down to 1, one on each line.",
        "brief": [
-        "The user types in one whole number."
+        "The user types in one whole number, which is never less than 1."
        ],
        "starter": "# Read a number, then count down from it to 1\n",
        "tests": [
@@ -425,7 +678,7 @@
          "why": "Two lines, counting down. Lines in the other order mean the start and stop are swapped."
         }
        ],
-       "fb": "range(start, stop, step) counts by the step, and a negative step counts down. The stop is still never reached.",
+       "fb": "range(start, stop, step) counts by the step, and a negative step counts down without ever reaching the stop.",
        "hint": "pyrange",
        "teach": {
         "say": "range takes a third number, the step. A step of -1 counts down, and the stop is still never reached.",
@@ -437,6 +690,142 @@
          "10",
          "9",
          "8"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Ask the user for a whole number. Display every even number from 2 up to and including it, one on each line.",
+       "brief": [
+        "The user types in one whole number, which is never less than 2.",
+        "Start at 2 and use a step of 2."
+       ],
+       "starter": "# Read the number, then count up in twos\n",
+       "tests": [
+        {
+         "in": [
+          "10"
+         ],
+         "out": [
+          "2",
+          "4",
+          "6",
+          "8",
+          "10"
+         ],
+         "why": "Starts at 2 and includes 10, counting in twos."
+        },
+        {
+         "in": [
+          "7"
+         ],
+         "out": [
+          "2",
+          "4",
+          "6"
+         ],
+         "why": "An odd number is never reached, so the count stops at the last even number below it."
+        },
+        {
+         "in": [
+          "2"
+         ],
+         "out": [
+          "2"
+         ],
+         "why": "One line only. Nothing at all means the stop was the number itself rather than one past it."
+        }
+       ],
+       "fb": "range(start, stop, step) adds the step on every turn, so a step of 2 lands only on every other number.",
+       "hint": "pyrange",
+       "teach": {
+        "say": "The step says how much is added each turn, so a step of 2 counts in twos and skips everything between.",
+        "code": [
+         "for n in range(1, 8, 2):",
+         "    print(n)"
+        ],
+        "out": [
+         "1",
+         "3",
+         "5",
+         "7"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for two whole numbers, the second never larger than the first. Display every number from the first down to the second, both included, one on each line.",
+       "brief": [
+        "The user types in two whole numbers, one on each line.",
+        "Use a step of -1."
+       ],
+       "starter": "# Read the two numbers, then count down between them\n",
+       "tests": [
+        {
+         "in": [
+          "8",
+          "4"
+         ],
+         "out": [
+          "8",
+          "7",
+          "6",
+          "5",
+          "4"
+         ],
+         "why": "Both ends are included, so the stop is one below the second number."
+        },
+        {
+         "in": [
+          "5",
+          "5"
+         ],
+         "out": [
+          "5"
+         ],
+         "why": "Both ends are the same, so one line prints. Nothing means the stop was the second number itself."
+        },
+        {
+         "in": [
+          "3",
+          "1"
+         ],
+         "out": [
+          "3",
+          "2",
+          "1"
+         ],
+         "why": "A missing 1 is the off by one a step of -1 always causes."
+        },
+        {
+         "in": [
+          "12",
+          "9"
+         ],
+         "out": [
+          "12",
+          "11",
+          "10",
+          "9"
+         ],
+         "why": "Lines in the other order mean the start and stop are the wrong way round."
+        }
+       ],
+       "fb": "A step of -1 counts down, and the stop is one below the last value you want.",
+       "hint": "pyrange",
+       "teach": {
+        "say": "Counting down, the stop still has to be one past the last value you want, which means the last value minus 1.",
+        "code": [
+         "for n in range(9, 5, -1):",
+         "    print(n)"
+        ],
+        "out": [
+         "9",
+         "8",
+         "7",
+         "6"
         ]
        }
       }
@@ -452,12 +841,12 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 3,
-       "q": "Ask the user for how many amounts there are, then for that many whole numbers. Add up the amounts and display [total] and nothing else.",
+       "marks": 2,
+       "q": "Ask the user for how many numbers there are, then for that many whole numbers. Add them up and display [total] and nothing else.",
        "brief": [
-        "Then the user types in that many whole numbers, one on each line."
+        "The user types in a whole number saying how many follow, then that many whole numbers, one on each line."
        ],
-       "starter": "# Read how many amounts there are, add them up, print the total\n",
+       "starter": "# Read how many numbers there are, add them up, print the total\n",
        "tests": [
         {
          "in": [
@@ -479,7 +868,7 @@
          "out": [
           "7"
          ],
-         "why": "One amount. A 0 means the total was printed before the loop had added anything."
+         "why": "One number. A 0 means the total was printed before the loop had added anything."
         },
         {
          "in": [
@@ -492,7 +881,7 @@
          "out": [
           "85"
          ],
-         "why": "A refund is negative, so write total = total + amount rather than only adding the large ones."
+         "why": "A negative number lowers the total, so write total = total + number rather than only adding the large ones."
         },
         {
          "in": [
@@ -504,20 +893,6 @@
           "0"
          ],
          "why": "Two zeros total 0, and that single line still has to be printed."
-        },
-        {
-         "in": [
-          "5",
-          "11",
-          "11",
-          "11",
-          "11",
-          "11"
-         ],
-         "out": [
-          "55"
-         ],
-         "why": "The loop runs exactly as many times as the first number says, and only the total is printed."
         }
        ],
        "fb": "A running total needs three things: set it to 0 before the loop, add to it inside the loop, print it after the loop.",
@@ -537,26 +912,100 @@
       },
       {
        "t": "code",
-       "marks": 4,
-       "q": "Ask the user for how many readings there are, then for that many whole numbers. Display [total], then [how many of the readings are below 0] on the next line.",
+       "marks": 2,
+       "q": "Ask the user for how many numbers there are, then for that many whole numbers. Display [how many of them are below 0] and nothing else.",
        "brief": [
-        "Then the user types in that many whole numbers, one on each line."
+        "The user types in a whole number saying how many follow, then that many whole numbers, one on each line.",
+        "Exactly 0 is not below 0."
        ],
-       "starter": "# Read the readings, then print the total and the frosty count\n",
+       "starter": "# Read the numbers, then print how many are below 0\n",
        "tests": [
         {
          "in": [
           "4",
           "3",
           "-2",
-          "0",
+          "-9",
           "5"
          ],
          "out": [
-          "6",
-          "1"
+          "2"
          ],
-         "why": "One reading is below 0, and the total keeps all four."
+         "why": "Two of the four are below 0, and the count is all that is printed."
+        },
+        {
+         "in": [
+          "3",
+          "-5",
+          "-8",
+          "-1"
+         ],
+         "out": [
+          "3"
+         ],
+         "why": "Every one of them is below 0, so the count reaches 3."
+        },
+        {
+         "in": [
+          "2",
+          "0",
+          "0"
+         ],
+         "out": [
+          "0"
+         ],
+         "why": "Exactly 0 is not below 0, so the count stays at 0 and that 0 still has to be printed."
+        },
+        {
+         "in": [
+          "1",
+          "7"
+         ],
+         "out": [
+          "0"
+         ],
+         "why": "Nothing below 0 at all. A 1 here means the counter went up on every turn rather than inside the if."
+        }
+       ],
+       "fb": "A counter is a total that goes up by 1, and the if inside the loop decides which turns count.",
+       "hint": "constructs",
+       "teach": {
+        "say": "A counter works like a total, except that it goes up by 1 and only on the turns where the if inside the loop is True.",
+        "code": [
+         "count = 0",
+         "for i in range(3):",
+         "    if i > 0:",
+         "        count = count + 1",
+         "print(count)"
+        ],
+        "out": [
+         "2"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for how many numbers there are, then for that many whole numbers. Display [total], then [how many of them are below 0] on the next line.",
+       "brief": [
+        "The user types in a whole number saying how many follow, then that many whole numbers, one on each line.",
+        "Two lines of output: the total, then the count."
+       ],
+       "starter": "# Read the numbers, then print the total and the count\n",
+       "tests": [
+        {
+         "in": [
+          "4",
+          "3",
+          "-2",
+          "-9",
+          "5"
+         ],
+         "out": [
+          "-3",
+          "2"
+         ],
+         "why": "Two numbers are below 0, and the total keeps all four of them."
         },
         {
          "in": [
@@ -569,7 +1018,7 @@
           "-14",
           "3"
          ],
-         "why": "Every reading is below 0, so the count is 3 and the total is negative."
+         "why": "Every number is below 0, so the count is 3 and the total is negative."
         },
         {
          "in": [
@@ -580,7 +1029,7 @@
           "7",
           "0"
          ],
-         "why": "One reading, nothing below 0, and the count still has to be printed as 0."
+         "why": "One number, nothing below 0, and the count still has to be printed as 0."
         },
         {
          "in": [
@@ -607,7 +1056,7 @@
           "25",
           "1"
          ],
-         "why": "A repeated value is counted every time it appears in the total, but only the -3 is below 0."
+         "why": "A repeated value is added every time it appears, but only the -3 is below 0."
         }
        ],
        "fb": "Keep a separate variable for each thing you are tracking, and update them all inside the same loop.",
@@ -617,12 +1066,96 @@
         "code": [
          "total = 0",
          "count = 0",
-         "total = total + 7",
-         "count = count + 1",
-         "print(total, count)"
+         "for i in range(1, 4):",
+         "    total = total + i",
+         "    count = count + 1",
+         "print(total)",
+         "print(count)"
         ],
         "out": [
-         "7 1"
+         "6",
+         "3"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for how many numbers there are, then for that many whole numbers. After each one, display a line in the form [number] [total so far].",
+       "brief": [
+        "The user types in a whole number saying how many follow, then that many whole numbers, one on each line.",
+        "One space between the two numbers on a line.",
+        "Nothing is printed after the last line."
+       ],
+       "starter": "# Read the numbers, printing each one with the total so far\n",
+       "tests": [
+        {
+         "in": [
+          "3",
+          "40",
+          "55",
+          "60"
+         ],
+         "out": [
+          "40 40",
+          "55 95",
+          "60 155"
+         ],
+         "why": "The total so far is printed on every turn, so the second number grows down the lines."
+        },
+        {
+         "in": [
+          "1",
+          "7"
+         ],
+         "out": [
+          "7 7"
+         ],
+         "why": "One number is its own total, so the two numbers match on the only line."
+        },
+        {
+         "in": [
+          "4",
+          "100",
+          "-20",
+          "0",
+          "5"
+         ],
+         "out": [
+          "100 100",
+          "-20 80",
+          "0 80",
+          "5 85"
+         ],
+         "why": "A negative number brings the running total down, and the line is still printed."
+        },
+        {
+         "in": [
+          "2",
+          "0",
+          "0"
+         ],
+         "out": [
+          "0 0",
+          "0 0"
+         ],
+         "why": "Two zeros leave the total at 0, and both lines still print."
+        }
+       ],
+       "fb": "A line inside the loop runs on every turn, which is what makes the total appear as it grows.",
+       "hint": "constructs",
+       "teach": {
+        "say": "Printing inside the loop shows the total as it grows, because that line runs again on every turn.",
+        "code": [
+         "total = 0",
+         "for i in range(1, 4):",
+         "    total = total + i",
+         "    print(i, total)"
+        ],
+        "out": [
+         "1 1",
+         "2 3",
+         "3 6"
         ]
        }
       }
@@ -638,10 +1171,76 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 4,
-       "q": "Ask the user for the number of rows and then the number of stars in each row. Display one line for each row, made of that many * characters and nothing else.",
+       "marks": 2,
+       "q": "Ask the user for two whole numbers. As many times as the first number says, display every number from 1 up to and including the second number, one on each line.",
        "brief": [
-        "The user types in two lines: the number of rows, then the number of stars in each row."
+        "The user types in two whole numbers, one on each line, neither less than 1."
+       ],
+       "starter": "# Read the two numbers, then put one loop inside the other\n",
+       "tests": [
+        {
+         "in": [
+          "2",
+          "3"
+         ],
+         "out": [
+          "1",
+          "2",
+          "3",
+          "1",
+          "2",
+          "3"
+         ],
+         "why": "The inner count runs all the way through twice, which is six lines from two small numbers."
+        },
+        {
+         "in": [
+          "1",
+          "2"
+         ],
+         "out": [
+          "1",
+          "2"
+         ],
+         "why": "One turn of the outer loop gives one run of the inner one."
+        },
+        {
+         "in": [
+          "3",
+          "1"
+         ],
+         "out": [
+          "1",
+          "1",
+          "1"
+         ],
+         "why": "An inner loop of one number still runs on every outer turn, so check the two numbers are not swapped."
+        }
+       ],
+       "fb": "The inner loop runs all the way through on every single turn of the outer loop.",
+       "hint": "pyrange",
+       "teach": {
+        "say": "A loop inside a loop runs the whole of the inner loop on every single turn of the outer one.",
+        "code": [
+         "for r in range(2):",
+         "    for c in range(1, 3):",
+         "        print(c)"
+        ],
+        "out": [
+         "1",
+         "2",
+         "1",
+         "2"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for the number of rows and then the number of * characters in each row. Display one line for each row, made of that many * characters and nothing else.",
+       "brief": [
+        "The user types in two whole numbers, one on each line, neither less than 1.",
+        "Nothing but * characters is printed."
        ],
        "starter": "# Read the rows and the width, then draw the rectangle\n",
        "tests": [
@@ -709,12 +1308,74 @@
       },
       {
        "t": "code",
-       "marks": 5,
-       "q": "Ask the user for the size of the square. Display one line for each row from 1 up to that size: the row number times 1, times 2, and so on up to the size.",
+       "marks": 3,
+       "q": "Ask the user for a whole number. Display that many lines: the first with one * character, the second with two, and so on, so the last line has as many as the number says.",
        "brief": [
-        "Put a single space between the numbers on a line."
+        "The user types in one whole number, which is never less than 1.",
+        "The first line has one * character and each line after it has one more."
        ],
-       "starter": "# Read the size, then print the multiplication square\n",
+       "starter": "# Read the number, then draw a growing triangle\n",
+       "tests": [
+        {
+         "in": [
+          "4"
+         ],
+         "out": [
+          "*",
+          "**",
+          "***",
+          "****"
+         ],
+         "why": "Four lines, each one star longer than the one above."
+        },
+        {
+         "in": [
+          "1"
+         ],
+         "out": [
+          "*"
+         ],
+         "why": "One line with one star. Nothing printed means the inner range never ran."
+        },
+        {
+         "in": [
+          "3"
+         ],
+         "out": [
+          "*",
+          "**",
+          "***"
+         ],
+         "why": "Rows that are all the same length mean the inner loop used a fixed number instead of the outer counter."
+        }
+       ],
+       "fb": "An inner loop that counts up to the outer counter makes every row a different length.",
+       "hint": "pyrange",
+       "teach": {
+        "say": "The inner loop can count up to the outer counter instead of a fixed number, which makes every row a different length.",
+        "code": [
+         "for r in range(1, 4):",
+         "    row = \"\"",
+         "    for c in range(r):",
+         "        row = row + \"#\"",
+         "    print(row)"
+        ],
+        "out": [
+         "#",
+         "##",
+         "###"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for a whole number. Display one line for every row from 1 up to and including it, holding that row number multiplied by 1, then by 2, and so on up to that number.",
+       "brief": [
+        "The user types in one whole number, which is never less than 1.",
+        "One space between the numbers on a line, and nothing after the last one."
+       ],
+       "starter": "# Read the number, then print the multiplication square\n",
        "tests": [
         {
          "in": [
@@ -734,7 +1395,7 @@
          "out": [
           "1"
          ],
-         "why": "A size of 1 gives one line holding 1 times 1."
+         "why": "A number of 1 gives one line holding 1 times 1."
         },
         {
          "in": [
@@ -762,7 +1423,7 @@
        "fb": "The outer counter stays still while the inner one runs all the way through.",
        "hint": "pyrange",
        "teach": {
-        "say": "The outer counter stays still while the inner one runs all the way through, so the value you print is the two counters multiplied.",
+        "say": "The outer counter stays still while the inner one runs all the way through, so the value printed is the two counters multiplied.",
         "code": [
          "for r in range(1, 3):",
          "    for c in range(1, 3):",
@@ -788,12 +1449,169 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 6,
-       "q": "Ask the user for how many amounts there are, then for that many whole numbers. After each one display a line in the form [amount] [total so far]. At the end display [average] rounded to 1 decimal place.",
+       "marks": 3,
+       "q": "Ask the user for how many numbers there are, then for that many whole numbers. Display [total], then [the average to 1 decimal place] on the next line.",
        "brief": [
-        "The user types in a whole number: how many amounts follow, then that many whole numbers, one on each line."
+        "The user types in a whole number saying how many follow, then that many whole numbers, one on each line.",
+        "Round the average to 1 decimal place."
        ],
-       "starter": "# Read the amounts, print each with the running total, then the average\n",
+       "starter": "# Read the numbers, then print the total and the average\n",
+       "tests": [
+        {
+         "in": [
+          "3",
+          "40",
+          "55",
+          "60"
+         ],
+         "out": [
+          "155",
+          "51.7"
+         ],
+         "why": "The total is printed as a whole number and the average rounded to one decimal place."
+        },
+        {
+         "in": [
+          "1",
+          "7"
+         ],
+         "out": [
+          "7",
+          "7.0"
+         ],
+         "why": "One number is its own average, and / gives a real number, so 7.0 and not 7."
+        },
+        {
+         "in": [
+          "4",
+          "100",
+          "-20",
+          "0",
+          "5"
+         ],
+         "out": [
+          "85",
+          "21.2"
+         ],
+         "why": "A long row of decimals on the second line means the round() is missing."
+        },
+        {
+         "in": [
+          "2",
+          "0",
+          "0"
+         ],
+         "out": [
+          "0",
+          "0.0"
+         ],
+         "why": "Divide by how many there were rather than by a number written into the program."
+        }
+       ],
+       "fb": "The total grows inside the loop and the average is worked out after it, from the finished total and how many there were.",
+       "hint": "constructs",
+       "teach": {
+        "say": "The average is the finished total divided by how many there were, so it belongs after the loop.",
+        "code": [
+         "total = 12",
+         "print(total)",
+         "print(round(total / 5, 1))"
+        ],
+        "out": [
+         "12",
+         "2.4"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for how many numbers there are, then for that many whole numbers. Add up only the ones above 0 and display [total] and nothing else.",
+       "brief": [
+        "The user types in a whole number saying how many follow, then that many whole numbers, one on each line.",
+        "Exactly 0 is not above 0."
+       ],
+       "starter": "# Read the numbers, adding up only the ones above 0\n",
+       "tests": [
+        {
+         "in": [
+          "4",
+          "100",
+          "-20",
+          "6",
+          "5"
+         ],
+         "out": [
+          "111"
+         ],
+         "why": "The -20 is left out while the three numbers above 0 are added."
+        },
+        {
+         "in": [
+          "4",
+          "100",
+          "-20",
+          "0",
+          "5"
+         ],
+         "out": [
+          "105"
+         ],
+         "why": "Exactly 0 is not above 0, so it is skipped along with the -20."
+        },
+        {
+         "in": [
+          "3",
+          "-5",
+          "-8",
+          "-1"
+         ],
+         "out": [
+          "0"
+         ],
+         "why": "None of them is above 0, so the total stays at 0 and that 0 still has to be printed."
+        },
+        {
+         "in": [
+          "5",
+          "12",
+          "12",
+          "-3",
+          "0",
+          "4"
+         ],
+         "out": [
+          "28"
+         ],
+         "why": "Every number above 0 is added, repeats included, while the 0 and the -3 are skipped."
+        }
+       ],
+       "fb": "An if inside the loop is what makes a total add up some of the numbers and ignore the rest.",
+       "hint": "constructs",
+       "teach": {
+        "say": "An if inside the loop decides which turns add to the total, and the other turns simply pass by.",
+        "code": [
+         "total = 0",
+         "for i in range(-2, 3):",
+         "    if i > 0:",
+         "        total = total + i",
+         "print(total)"
+        ],
+        "out": [
+         "3"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for how many numbers there are, then for that many whole numbers. After each one, display a line in the form [number] [total so far]. At the end display [the average to 1 decimal place] on a line of its own.",
+       "brief": [
+        "The user types in a whole number saying how many follow, then that many whole numbers, one on each line.",
+        "One space between the two numbers on a line.",
+        "Round the average to 1 decimal place."
+       ],
+       "starter": "# Read the numbers, print each with the running total, then the average\n",
        "tests": [
         {
          "in": [
@@ -819,7 +1637,7 @@
           "7 7",
           "7.0"
          ],
-         "why": "One amount is its own total and its own average, and / always gives a real number, so 7.0 and not 7."
+         "why": "One number is its own total and its own average, and / always gives a real number, so 7.0 and not 7."
         },
         {
          "in": [
@@ -836,7 +1654,7 @@
           "5 85",
           "21.2"
          ],
-         "why": "A negative amount brings the total down. If the last line is a long row of decimals, the round() is missing."
+         "why": "A negative number brings the total down. If the last line is a long row of decimals, the round() is missing."
         },
         {
          "in": [
@@ -849,7 +1667,7 @@
           "0 0",
           "0.0"
          ],
-         "why": "Two zeros, so every line is 0 and the average is 0.0. Dividing by the count, not by 2, is what makes it work for any number of amounts."
+         "why": "Two zeros, so every line is 0 and the average is 0.0. Dividing by the count rather than by 2 is what makes it work for any number of them."
         },
         {
          "in": [
@@ -868,22 +1686,98 @@
           "4 25",
           "5.0"
          ],
-         "why": "Five amounts, five lines, then the average. A sixth line of a single number means the total was printed as well."
+         "why": "Five numbers, five lines, then the average. A line holding the total on its own means it was printed as well."
         }
        ],
        "fb": "The total so far belongs inside the loop and the average after it, worked out from the finished total and how many there were.",
-       "hint": "pyrange",
+       "hint": "constructs",
        "teach": {
         "say": "Printing inside the loop shows the total so far, while anything printed after the loop uses the finished total.",
         "code": [
          "total = 0",
          "for i in range(2):",
          "    total = total + 3",
-         "    print(total)"
+         "    print(total)",
+         "print(round(total / 2, 1))"
         ],
         "out": [
          "3",
-         "6"
+         "6",
+         "3.0"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for a whole number. For every row from 1 up to and including it, display a line in the form [row] [the total of all the numbers from 1 up to that row].",
+       "brief": [
+        "The user types in one whole number, which is never less than 1.",
+        "One space between the two numbers on a line.",
+        "Each line works its total out from 1 again."
+       ],
+       "starter": "# Read the number, then total up to each row in turn\n",
+       "tests": [
+        {
+         "in": [
+          "4"
+         ],
+         "out": [
+          "1 1",
+          "2 3",
+          "3 6",
+          "4 10"
+         ],
+         "why": "Each total adds every number up to that row, so the gaps between the totals grow."
+        },
+        {
+         "in": [
+          "1"
+         ],
+         "out": [
+          "1 1"
+         ],
+         "why": "One line, and the total of just 1 is 1."
+        },
+        {
+         "in": [
+          "5"
+         ],
+         "out": [
+          "1 1",
+          "2 3",
+          "3 6",
+          "4 10",
+          "5 15"
+         ],
+         "why": "A second number equal to the first on every line means the inner loop never ran more than once."
+        },
+        {
+         "in": [
+          "2"
+         ],
+         "out": [
+          "1 1",
+          "2 3"
+         ],
+         "why": "Two lines. A second line of 2 means only the row number was added rather than everything up to it."
+        }
+       ],
+       "fb": "Setting the total back to 0 at the top of the outer loop is what keeps each row's answer its own.",
+       "hint": "pyrange",
+       "teach": {
+        "say": "A loop inside a loop can work a total out from scratch on every outer turn, as long as the total is set back to 0 at the top of the outer loop.",
+        "code": [
+         "for r in range(1, 4):",
+         "    total = 0",
+         "    for c in range(1, r + 1):",
+         "        total = total + 10",
+         "    print(r, total)"
+        ],
+        "out": [
+         "1 10",
+         "2 20",
+         "3 30"
         ]
        }
       }

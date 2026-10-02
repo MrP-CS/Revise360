@@ -340,6 +340,11 @@ textarea{width:100%;background:#0f1930;color:var(--fg);border:1px solid var(--li
   font:15px/1.5 Consolas,monospace;color:#cfe3ff;white-space:pre-wrap}
 .pyegout{display:flex;gap:8px;align-items:baseline;margin:0;font-size:15px;color:var(--soft)}
 .pyegout span{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--info)}
+/* The editor's own bar, between the program and its output */
+.pyidebar{display:flex;gap:10px;align-items:center;flex:0 0 auto;
+  padding:8px 12px;background:#101c31;border:1px solid var(--line);border-radius:12px}
+.pyidebar .btn{padding:8px 14px;font-size:15px}
+.pyidebar .pystate{margin-left:4px}
 /* The code question's left column: reading scrolls, doing does not */
 .pyside{flex:0 0 420px;overflow:hidden;gap:0}
 .pyscroll{flex:1 1 auto;min-height:0;overflow:auto;padding-right:8px}

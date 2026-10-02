@@ -91,20 +91,20 @@
         {
           syntax: 'input(prompt)',
           what: "Waits for the user to type a line and hands back what they typed, always as text.",
-          eg: ['animal = input("Animal? ")   # the user types otter', 'print(animal)'],
-          egOut: ["otter"]
+          eg: ['animal = input("Animal? ")   # the user types otter', 'print("You chose", animal)'],
+          egOut: ["You chose otter"]
         },
         {
           syntax: 'int(text)',
           what: "Turns text into a whole number, so that sums can be done with what was typed.",
-          eg: ['age = int(input("Age? "))   # the user types 14', 'print(age + 1)'],
-          egOut: ["15"]
+          eg: ['age = int(input("Age? "))   # the user types 14', 'print("Next year", age + 1)'],
+          egOut: ["Next year 15"]
         },
         {
           syntax: 'float(text)',
           what: "Turns text into a number that is allowed a decimal part.",
-          eg: ['mass = float(input("Mass? "))   # the user types 2', 'print(mass)'],
-          egOut: ["2.0"]
+          eg: ['mass = float(input("Mass? "))   # the user types 2', 'print("Mass is", mass)'],
+          egOut: ["Mass is 2.0"]
         },
         {
           syntax: 'str(number)',
@@ -496,8 +496,8 @@
         {
           syntax: 'file.read()',
           what: "Brings the whole file back as one piece of text, newlines and all.",
-          eg: ['f = open("notes.txt", "r")   # it holds red then blue', 'print(f.read())'],
-          egOut: ["red", "blue", ""]
+          eg: ['f = open("notes.txt", "r")   # it holds red then blue', 'print("Contents:")', 'print(f.read())'],
+          egOut: ["Contents:", "red", "blue", ""]
         },
         {
           syntax: 'file.readline()',

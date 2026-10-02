@@ -18,18 +18,19 @@
    "teach": {
     "say": "A linear search walks the list by position, so it can report where a value is, not just whether it is there.",
     "code": [
-     "pets = ['cat', 'dog', 'ant']",
-     "for i in range(len(pets)):",
-     "    print(i, pets[i])"
+     "items = [40, 15, 9]",
+     "for i in range(len(items)):",
+     "    print(i, items[i])"
     ],
     "out": [
-     "0 cat",
-     "1 dog",
-     "2 ant"
+     "0 40",
+     "1 15",
+     "2 9"
     ]
    },
    "brief": [
-    "Print nothing but that one line."
+    "Print nothing but that one line.",
+    "Print exactly: not found"
    ],
    "hint": "searches",
    "starter": "# where the value sits, not just whether it is there\n",
@@ -88,7 +89,7 @@
      "out": [
       "2"
      ],
-     "why": "A different line of codes, so a position typed in by hand will fail here - and 7640 has moved."
+     "why": "A different line of numbers, so a position typed in by hand will fail here - and 7640 has moved."
     }
    ],
    "fb": "Walk the list by position, remember the position when it matches, and decide what to print only after the loop ends."
@@ -96,13 +97,85 @@
   {
    "id": "pr-l11-q2",
    "station": 0,
-   "marks": 4,
-   "q": "Ask the user for a line of names, then a line of minutes in the same order, then one name to find. Search the names yourself and display [the minutes at the same position], or no record when the name is not there.",
+   "marks": 3,
+   "q": "Ask the user for a line of whole numbers separated by single spaces, then the number to find. Step through the whole list yourself, without .count(), and display [how many times that number appears] and nothing else.",
    "brief": [
-    "Both lines are separated by single spaces, and one line only is printed."
+    "A number that is not in the list at all appears 0 times.",
+    "One line of output, holding the count and nothing else."
    ],
    "hint": "searches",
-   "starter": "# one name in, one number out\n",
+   "starter": "# count the matches, do not stop at the first\n",
+   "forbid": [
+    [
+     ".count(",
+     "The point of this one is the loop, so .count() is not allowed - it does the counting for you."
+    ]
+   ],
+   "tests": [
+    {
+     "in": [
+      "12 7 12 4 12",
+      "12"
+     ],
+     "out": [
+      "3"
+     ],
+     "why": "12 appears three times. A count of 1 means the loop stopped at the first match instead of looking at the rest."
+    },
+    {
+     "in": [
+      "12 7 12 4 12",
+      "7"
+     ],
+     "out": [
+      "1"
+     ],
+     "why": "One match only. The counter has to go up inside the if, not on every turn of the loop."
+    },
+    {
+     "in": [
+      "12 7 12 4 12",
+      "9"
+     ],
+     "out": [
+      "0"
+     ],
+     "why": "Nothing matches, so the count stays at 0 - and that 0 still has to be printed."
+    },
+    {
+     "in": [
+      "5 5 5 5",
+      "5"
+     ],
+     "out": [
+      "4"
+     ],
+     "why": "Every item matches, so the count is the length of the list. A 1 here means the loop left after the first match."
+    },
+    {
+     "in": [
+      "3 8 1",
+      "1"
+     ],
+     "out": [
+      "1"
+     ],
+     "why": "The last item matches, so a loop that stops one position short of the end finds nothing."
+    }
+   ],
+   "fb": "A search that counts cannot stop early: the loop has to run all the way to the end, with the counter going up each time the if is true."
+  },
+  {
+   "id": "pr-l11-q3",
+   "station": 0,
+   "marks": 4,
+   "q": "Ask the user for a line of words, then a line of whole numbers in the same order, then one word to find. Search the words yourself, without .index(), and display [the number at the same position], or no match when the word is not there.",
+   "brief": [
+    "Both lines are separated by single spaces, and one line only is printed.",
+    "Print exactly: no match"
+   ],
+   "hint": "searches",
+   "starter": "# one word in, one number out\n",
    "forbid": [
     [
      ".index(",
@@ -112,31 +185,31 @@
    "tests": [
     {
      "in": [
-      "Nadia Omar Priya Quinn Rosa",
+      "copper slate moss ridge flint",
       "37 12 58 41 25",
-      "Priya"
+      "moss"
      ],
      "out": [
       "58"
      ],
-     "why": "Priya is at position 2, so the answer comes from position 2 of the minutes - 58."
+     "why": "moss is at position 2, so the answer comes from position 2 of the numbers - 58."
     },
     {
      "in": [
-      "Nadia Omar Priya Quinn Rosa",
+      "copper slate moss ridge flint",
       "37 12 58 41 25",
-      "Nadia"
+      "copper"
      ],
      "out": [
       "37"
      ],
-     "why": "The first name lines up with the first number. Printing the name back instead of the minutes is the usual slip here."
+     "why": "The first word lines up with the first number. Printing the word back instead of the number is the usual slip here."
     },
     {
      "in": [
-      "Nadia Omar Priya Quinn Rosa",
+      "copper slate moss ridge flint",
       "37 12 58 41 25",
-      "Rosa"
+      "flint"
      ],
      "out": [
       "25"
@@ -145,20 +218,20 @@
     },
     {
      "in": [
-      "Nadia Omar Priya Quinn Rosa",
+      "copper slate moss ridge flint",
       "37 12 58 41 25",
-      "Tariq"
+      "willow"
      ],
      "out": [
-      "no record"
+      "no match"
      ],
-     "why": "No match anywhere, so print: no record - do not print a number left over from the loop."
+     "why": "No match anywhere, so print: no match - do not print a number left over from the loop."
     },
     {
      "in": [
-      "Ida Jun Kofi",
+      "ember glass lantern",
       "9 4 7",
-      "Jun"
+      "glass"
      ],
      "out": [
       "4"
@@ -166,10 +239,10 @@
      "why": "Different lists entirely, so both have to be read in rather than written into the program."
     }
    ],
-   "fb": "The position is the link between the two lists: once you know where the name is, the same index gives you the minutes."
+   "fb": "The position is the link between the two lists: once you know where the word is, the same index gives you the number."
   },
   {
-   "id": "pr-l11-q3",
+   "id": "pr-l11-q4",
    "station": 1,
    "marks": 4,
    "q": "Ask the user for a line of whole numbers already in order and separated by single spaces, then the number to find. Find it with a binary search and display [its position], counting from 0, or not found.",
@@ -186,7 +259,8 @@
     ]
    },
    "brief": [
-    "Print nothing but that one line."
+    "Print nothing but that one line.",
+    "Print exactly: not found"
    ],
    "hint": "searches",
    "starter": "# a binary search over the numbers read in\n",
@@ -261,7 +335,7 @@
    "fb": "Move low to mid + 1 or high to mid - 1, never to mid itself, or the loop will never end when the value is missing."
   },
   {
-   "id": "pr-l11-q4",
+   "id": "pr-l11-q5",
    "station": 1,
    "marks": 5,
    "q": "Ask the user for a line of whole numbers already in order, then the number to find. Binary search it, counting every middle you compare, and display [its position] or not found, then checks: [that count] on the next line.",
@@ -337,10 +411,10 @@
    "fb": "Add one to the counter as soon as you have worked out mid, before you compare - that way the matching item is counted too."
   },
   {
-   "id": "pr-l11-q5",
+   "id": "pr-l11-q6",
    "station": 2,
    "marks": 5,
-   "q": "Ask the user for a line of whole numbers separated by single spaces. Sort them smallest first by swapping neighbouring pairs, writing the sort yourself rather than using sorted() or .sort(), and display [the sorted numbers].",
+   "q": "Ask the user for a line of whole numbers separated by single spaces. Sort them smallest first by swapping neighbouring pairs, writing the sort yourself rather than using sorted() or .sort(), and display [the sorted numbers] on one line.",
    "teach": {
     "say": "A bubble sort compares each neighbouring pair and swaps them when they are the wrong way round, over and over until nothing is left out of order.",
     "code": [
@@ -408,10 +482,10 @@
    "fb": "Two loops: the inner one compares neighbours across the list, the outer one repeats that enough times for the smallest value to travel all the way back."
   },
   {
-   "id": "pr-l11-q6",
+   "id": "pr-l11-q7",
    "station": 2,
    "marks": 6,
-   "q": "Ask the user for a line of whole numbers separated by single spaces. Sort them smallest first by swapping neighbouring pairs, stopping after a pass that makes no swaps, and display [the sorted numbers], then passes: [how many].",
+   "q": "Ask the user for a line of whole numbers separated by single spaces. Sort them smallest first by swapping neighbouring pairs, stopping after a pass that makes no swaps, and display [the sorted numbers] on one line, then passes: [how many] on the next line.",
    "brief": [
     "Write the sort yourself, count the quiet last pass too, and separate the sorted values with single spaces."
    ],
@@ -472,10 +546,86 @@
    "fb": "A flag set to False at the top of each pass and True inside the swap is what lets the sort notice it has finished."
   },
   {
-   "id": "pr-l11-q7",
+   "id": "pr-l11-q8",
+   "station": 2,
+   "marks": 6,
+   "q": "Ask the user for a line of whole numbers separated by single spaces. Sort them smallest first by swapping neighbouring pairs, writing the sort yourself, and display [the whole list] after each pass, one list per line, with single spaces between the values.",
+   "brief": [
+    "Make exactly one pass fewer than there are values, however soon the list comes into order.",
+    "One line per pass, printed after that pass has finished, and nothing else."
+   ],
+   "hint": "bubblesort",
+   "starter": "# one line printed after every pass\n",
+   "forbid": [
+    [
+     "sorted(",
+     "The brief asks you to write the sort yourself, not use Python's sorted()."
+    ],
+    [
+     ".sort(",
+     "The brief asks you to write the sort yourself, not use Python's .sort()."
+    ]
+   ],
+   "tests": [
+    {
+     "in": [
+      "34 7 19 2 25 11"
+     ],
+     "out": [
+      "7 19 2 25 11 34",
+      "7 2 19 11 25 34",
+      "2 7 11 19 25 34",
+      "2 7 11 19 25 34",
+      "2 7 11 19 25 34"
+     ],
+     "why": "Six values means five lines. The largest value reaches the end on the first pass, which is why a bubble sort is named after bubbles rising."
+    },
+    {
+     "in": [
+      "3 8 12 20 31 44"
+     ],
+     "out": [
+      "3 8 12 20 31 44",
+      "3 8 12 20 31 44",
+      "3 8 12 20 31 44",
+      "3 8 12 20 31 44",
+      "3 8 12 20 31 44"
+     ],
+     "why": "Already in order, so all five lines are identical - the passes still have to happen and still have to be printed."
+    },
+    {
+     "in": [
+      "60 50 40 30 20 10"
+     ],
+     "out": [
+      "50 40 30 20 10 60",
+      "40 30 20 10 50 60",
+      "30 20 10 40 50 60",
+      "20 10 30 40 50 60",
+      "10 20 30 40 50 60"
+     ],
+     "why": "Reversed, so every line moves one more value into place. If the first line is already sorted, you printed inside the inner loop rather than after the pass."
+    },
+    {
+     "in": [
+      "9 4 9 1 4"
+     ],
+     "out": [
+      "4 9 1 4 9",
+      "4 1 4 9 9",
+      "1 4 4 9 9",
+      "1 4 4 9 9"
+     ],
+     "why": "Five values means four lines. Repeats must all survive every pass."
+    }
+   ],
+   "fb": "Printing after each pass of the outer loop is how a trace of a sort is made - the snapshot belongs to the outer loop, not the inner one."
+  },
+  {
+   "id": "pr-l11-q9",
    "station": 3,
    "marks": 6,
-   "q": "Ask the user for a line of whole numbers separated by single spaces. Sort them smallest first with an insertion sort of your own, moving each item back among the items before it, and display [the sorted numbers].",
+   "q": "Ask the user for a line of whole numbers separated by single spaces. Sort them smallest first with an insertion sort of your own, moving each item back among the items before it, and display [the sorted numbers] on one line.",
    "teach": {
     "say": "An insertion sort holds one value aside, copies the larger items before it one place to the right, then drops the held value into the gap it has made.",
     "code": [
@@ -543,12 +693,13 @@
    "fb": "Start the outer loop at the second item - the first item on its own is already a sorted list of one."
   },
   {
-   "id": "pr-l11-q8",
+   "id": "pr-l11-q10",
    "station": 3,
    "marks": 6,
-   "q": "Ask the user for a line of five words separated by single spaces. Insertion sort them into alphabetical order, writing the sort yourself, and display [the whole list] after each word from the second onwards, one list per line.",
+   "q": "Ask the user for a line of five words separated by single spaces. Insertion sort them into alphabetical order, writing the sort yourself, and display [the whole list] after each word from the second onwards, one list per line, with single spaces between the words.",
    "brief": [
-    "Four lines in all, the values separated by single spaces."
+    "Four lines in all, each printed once that word has been put down.",
+    "All five words are in small letters, so comparing them with > is enough."
    ],
    "hint": "bubblesort",
    "starter": "# five words, one line printed per insertion\n",
@@ -565,49 +716,49 @@
    "tests": [
     {
      "in": [
-      "pear kiwi fig mango damson"
+      "slate copper moss ridge flint"
      ],
      "out": [
-      "kiwi pear fig mango damson",
-      "fig kiwi pear mango damson",
-      "fig kiwi mango pear damson",
-      "damson fig kiwi mango pear"
+      "copper slate moss ridge flint",
+      "copper moss slate ridge flint",
+      "copper moss ridge slate flint",
+      "copper flint moss ridge slate"
      ],
      "why": "Print inside the outer loop, after the word has been put down - printing before the insertion shows the wrong list."
     },
     {
      "in": [
-      "apple berry cherry damson elder"
+      "copper ember flint glass moss"
      ],
      "out": [
-      "apple berry cherry damson elder",
-      "apple berry cherry damson elder",
-      "apple berry cherry damson elder",
-      "apple berry cherry damson elder"
+      "copper ember flint glass moss",
+      "copper ember flint glass moss",
+      "copper ember flint glass moss",
+      "copper ember flint glass moss"
      ],
      "why": "Already alphabetical, so all four lines are identical - the sort still has to do the four insertions."
     },
     {
      "in": [
-      "violet plum nectar lime grape"
+      "willow slate ridge moss flint"
      ],
      "out": [
-      "plum violet nectar lime grape",
-      "nectar plum violet lime grape",
-      "lime nectar plum violet grape",
-      "grape lime nectar plum violet"
+      "slate willow ridge moss flint",
+      "ridge slate willow moss flint",
+      "moss ridge slate willow flint",
+      "flint moss ridge slate willow"
      ],
-     "why": "Reversed means each word moves to the front, so each line shifts everything along by one."
+     "why": "Reverse alphabetical means each word moves to the front, so each line shifts everything along by one."
     },
     {
      "in": [
-      "melon fig quince apricot lemon"
+      "moss flint willow copper ridge"
      ],
      "out": [
-      "fig melon quince apricot lemon",
-      "fig melon quince apricot lemon",
-      "apricot fig melon quince lemon",
-      "apricot fig lemon melon quince"
+      "flint moss willow copper ridge",
+      "flint moss willow copper ridge",
+      "copper flint moss willow ridge",
+      "copper flint moss ridge willow"
      ],
      "why": "Four lines exactly. A fifth line means you printed before the first insertion as well as after each one."
     }
@@ -615,10 +766,10 @@
    "fb": "The left-hand part of the list is the sorted part and it grows by one on every line - that is the whole idea of an insertion sort."
   },
   {
-   "id": "pr-l11-q9",
+   "id": "pr-l11-q11",
    "station": 4,
    "marks": 6,
-   "q": "Ask the user for two lines of whole numbers, each already in order and separated by single spaces. Merge them into one list by taking the smaller front value each time, writing the merge yourself, and display [the merged list].",
+   "q": "Ask the user for two lines of whole numbers, each already in order and separated by single spaces. Merge them into one list by taking the smaller front value each time, writing the merge yourself, and display [the merged list] on one line.",
    "teach": {
     "say": "A merge keeps a position marker in each list, compares the two fronts, takes the smaller and moves that marker on.",
     "code": [
@@ -691,12 +842,13 @@
    "fb": "Two position markers, one per list, and a tidying-up loop at the end for whichever list still has numbers in it."
   },
   {
-   "id": "pr-l11-q10",
+   "id": "pr-l11-q12",
    "station": 4,
    "marks": 7,
-   "q": "Ask the user for a line of whole numbers separated by single spaces. Sort them smallest first by splitting the list in half, sorting each half the same way and merging the two, and display [the sorted numbers].",
+   "q": "Ask the user for a line of whole numbers separated by single spaces. Sort them smallest first by splitting the list in half, sorting each half the same way and merging the two, and display [the sorted numbers] on one line.",
    "brief": [
-    "Write it yourself, on one line, the values separated by single spaces."
+    "Write it yourself, on one line, the values separated by single spaces.",
+    "A list of one value is already sorted, which is what stops the splitting."
    ],
    "hint": "mergesort",
    "starter": "# split, sort each half the same way, merge\n",
@@ -760,16 +912,22 @@
    "fb": "The base case is the important part: a list of one item is already in order, and that is what stops the splitting."
   },
   {
-   "id": "pr-l11-q11",
+   "id": "pr-l11-q13",
    "station": 5,
    "marks": 8,
-   "q": "Ask the user for a line of whole numbers already in order, then the number to find. Count what a linear search compares and what a binary search compares, and display linear: [the first count], then binary: [the second count].",
+   "q": "Ask the user for a line of whole numbers already in order, then the number to find. Count what a linear search compares and what a binary search compares, and display linear: [the first count], then binary: [the second count] on the next line.",
    "brief": [
     "The numbers are separated by single spaces, and the linear search starts at the front and stops as soon as it matches.",
     "The binary search works the middle out as mid = (low + high) // 2, and the matching one counts in both."
    ],
    "hint": "searches",
    "starter": "# two searches over the same list, counted separately\n",
+   "forbid": [
+    [
+     ".index(",
+     "The point of this one is the search loop, so .index() is not allowed - it does the searching for you."
+    ]
+   ],
    "tests": [
     {
      "in": [
@@ -830,13 +988,14 @@
    "fb": "This is why the specification says a binary search is more efficient - but it only works because the list is already in order."
   },
   {
-   "id": "pr-l11-q12",
+   "id": "pr-l11-q14",
    "station": 5,
    "marks": 8,
-   "q": "Ask the user for a line of whole numbers separated by single spaces, then the number to find. Sort them smallest first with a sort of your own and display [the sorted numbers], then [its position in them] or not found.",
+   "q": "Ask the user for a line of whole numbers separated by single spaces, then the number to find. Sort them smallest first with a sort of your own and display [the sorted numbers] on one line, then [its position in them], counting from 0, or not found on the next line.",
    "brief": [
     "Print the sorted values on one line, separated by single spaces.",
-    "Find the position with a binary search, counting from 0."
+    "Find the position with a binary search over the sorted list.",
+    "Print exactly: not found"
    ],
    "hint": "searches",
    "starter": "# sort it first, then search it\n",
