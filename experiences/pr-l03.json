@@ -22,7 +22,7 @@
        "marks": 2,
        "q": "Print whether the first number is greater than the second.",
        "brief": [
-        "Read two whole numbers, one on each line.",
+        "The user types in two whole numbers, one on each line.",
         "Print True if the first is greater than the second, otherwise False."
        ],
        "starter": "# Read two numbers and print True or False\n",
@@ -77,9 +77,9 @@
        "marks": 2,
        "q": "Print three comparisons of two numbers, one on each line.",
        "brief": [
-        "Read two whole numbers, one on each line.",
+        "The user types in two whole numbers, one on each line.",
         "Print whether they are equal, then whether the first is less than the second.",
-        "Then print whether the first is greater than or equal to the second."
+        "Then print whether the first is greater than or equal to the second. Three lines in all."
        ],
        "starter": "# Read two numbers, then print the three comparisons\n",
        "tests": [
@@ -151,9 +151,9 @@
        "marks": 2,
        "q": "Print recorded, and a frost warning if it is below zero.",
        "brief": [
-        "Read one whole number: the temperature in Celsius.",
-        "Always print: recorded",
-        "Then print frost warning only if the temperature is below 0."
+        "The user types in one whole number: the temperature in Celsius.",
+        "Always print exactly: recorded",
+        "Then, only when the temperature is below 0, print exactly: frost warning"
        ],
        "starter": "# Read the temperature, print recorded, add a warning if needed\n",
        "tests": [
@@ -205,9 +205,9 @@
        "marks": 3,
        "q": "Say whether a lift load of up to 450 kg may go.",
        "brief": [
-        "Read one whole number: the load in kilograms.",
-        "Print safe to go if the load is 450 or less.",
-        "Otherwise print too heavy."
+        "The user types in one whole number: the load in kilograms.",
+        "If the load is 450 or less, print exactly: safe to go",
+        "Otherwise print exactly: too heavy"
        ],
        "starter": "# Read the load and decide whether the lift may go\n",
        "tests": [
@@ -279,9 +279,9 @@
        "marks": 3,
        "q": "Say whether a reservoir level is rising, falling or steady.",
        "brief": [
-        "Read one whole number: the change in level since last week.",
-        "Print rising if it is above 0, or falling if it is below 0.",
-        "Print steady if it is exactly 0."
+        "The user types in one whole number: the change in level since last week.",
+        "Above 0: print exactly rising. Below 0: print exactly falling.",
+        "Exactly 0: print exactly steady. One word only, whichever it is."
        ],
        "starter": "# Read the change in level and describe it\n",
        "tests": [
@@ -340,9 +340,9 @@
        "marks": 4,
        "q": "Print which postage band a package falls in.",
        "brief": [
-        "Read one whole number: the weight in grams.",
-        "100 or less: print letter. 750 or less: print large letter.",
-        "Heavier than 750: print parcel."
+        "The user types in one whole number: the weight in grams.",
+        "100 or less: print exactly letter. Over 100 but 750 or less: print exactly large letter.",
+        "Heavier than 750: print exactly parcel. One line only, whichever it is."
        ],
        "starter": "# Read the weight in grams and print its band\n",
        "tests": [
@@ -422,9 +422,9 @@
        "marks": 4,
        "q": "Say whether a drone may fly, from wind speed and visibility.",
        "brief": [
-        "Read the wind speed in mph, then the visibility in km.",
-        "Print clear to fly if the wind is under 20 and the visibility is 5 or more.",
-        "Otherwise print grounded."
+        "The user types in two lines: the wind speed in mph, then the visibility in km.",
+        "If the wind is under 20 and the visibility is 5 or more, print exactly: clear to fly",
+        "Otherwise print exactly: grounded"
        ],
        "starter": "# Read the wind speed and the visibility, then decide\n",
        "tests": [
@@ -498,9 +498,9 @@
        "marks": 4,
        "q": "Decide whether the door opens, from a staff number and the alarm.",
        "brief": [
-        "Read a staff number, then the word yes or no for the alarm.",
-        "Print open if the number is 7 or 9 and the alarm is not yes.",
-        "Otherwise print locked."
+        "The user types in two lines: a staff number, then the word yes or no for the alarm.",
+        "If the number is 7 or 9 and the alarm is not yes, print exactly: open",
+        "Otherwise print exactly: locked"
        ],
        "starter": "# Read the staff number and the alarm, then decide\n",
        "tests": [
@@ -585,9 +585,9 @@
        "marks": 4,
        "q": "Announce the fixture from the weather and the number of players.",
        "brief": [
-        "Read dry or wet, then a whole number of available players.",
-        "If dry: print match on for 11 or more players, otherwise friendly instead.",
-        "If wet: print indoor training for 11 or more players, otherwise cancelled."
+        "The user types in two lines: the word dry or wet, then a whole number of available players.",
+        "If dry: print exactly match on for 11 or more players, otherwise exactly friendly instead.",
+        "If wet: print exactly indoor training for 11 or more players, otherwise exactly cancelled."
        ],
        "starter": "# Read the weather and the players, then announce the decision\n",
        "tests": [
@@ -663,9 +663,9 @@
        "marks": 5,
        "q": "Say where a delivery goes, from its box size and weight.",
        "brief": [
-        "Read small or large, then a whole number of kilograms.",
-        "Small box: print locker A for 5 kg or less, otherwise counter.",
-        "Large box: print counter for 25 kg or less, otherwise too heavy."
+        "The user types in two lines: the word small or large, then a whole number of kilograms.",
+        "Small box: print exactly locker A for 5 kg or less, otherwise exactly counter.",
+        "Large box: print exactly counter for 25 kg or less, otherwise exactly too heavy."
        ],
        "starter": "# Read the box size and the weight, then print where it goes\n",
        "tests": [
@@ -760,9 +760,9 @@
        "marks": 6,
        "q": "Work out the medal from three judges' scores.",
        "brief": [
-        "Read three whole numbers out of 10, one on each line.",
-        "All three 9 or more: print gold. Total 24 or more: print silver.",
-        "Total 18 or more: print bronze. Otherwise print no medal."
+        "The user types in three whole numbers out of 10, one on each line.",
+        "Check these rules in order and print only the words from the first rule that matches.",
+        "All three 9 or more: gold. Total 24 or more: silver. Total 18 or more: bronze. Otherwise: no medal."
        ],
        "starter": "# Read three scores and work out the medal\n",
        "tests": [

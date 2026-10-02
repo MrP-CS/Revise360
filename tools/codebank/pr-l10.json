@@ -24,8 +24,9 @@
     ]
    },
    "brief": [
-    "A file called notice.txt is already there.",
-    "Read it all in one go, close it, then print exactly what was in it."
+    "A file called notice.txt is already there. Your program only reads it, and nothing is typed in.",
+    "Read the whole file in one go, then close it.",
+    "Print exactly what was in it, and nothing of your own."
    ],
    "hint": "pyfile",
    "starter": "# read it all, close it, print it\n",
@@ -69,9 +70,9 @@
    "marks": 3,
    "q": "Count every character in log.txt, newlines included.",
    "brief": [
-    "A file called log.txt is already there, and it may be empty.",
-    "Print one line: characters <how many characters the whole file holds>",
-    "Each newline counts as one character, and an empty file holds 0."
+    "A file called log.txt is already there and may be empty. Your program only reads it, and nothing is typed in.",
+    "Count every character in the whole file. Each newline counts as one, and an empty file holds 0.",
+    "Print one line: exactly characters, a space, then that count."
    ],
    "hint": "pyfile",
    "starter": "# count the characters, newlines too\n",
@@ -131,9 +132,9 @@
     ]
    },
    "brief": [
-    "A file called rota.txt is already there, and it may be empty.",
-    "Read the first line only, close the file, then strip the newline off it.",
-    "Print: first <that line>, then: length <how many characters it has>"
+    "A file called rota.txt is already there and may be empty. Your program only reads it, and nothing is typed in.",
+    "Read the first line only, close the file, then strip the newline off that line.",
+    "Print exactly first, a space, then that stripped line; then on the next line exactly length, a space, then how many characters it has."
    ],
    "hint": "pyfile",
    "starter": "# one line only, then strip it\n",
@@ -187,9 +188,9 @@
    "marks": 4,
    "q": "Count the lines of names.txt, then number them from 1.",
    "brief": [
-    "A file called names.txt is already there, and it may be empty.",
-    "Print: lines <how many lines there are>",
-    "Then print one line per name: <its position from 1> <the name>"
+    "A file called names.txt is already there, one name per line, and may be empty. Your program only reads it, and nothing is typed in.",
+    "Print exactly lines, a space, then how many lines the file holds.",
+    "Then print one line per name: its position counting from 1, a space, then the name with its newline stripped."
    ],
    "hint": "pyfile",
    "starter": "# how many, then each one numbered\n",
@@ -253,9 +254,9 @@
     ]
    },
    "brief": [
-    "Read a title.",
-    "Write the title, then the word ready, each on its own line of report.txt.",
-    "Close it, then open it again, read it all and print it."
+    "The user types in one line: a title. There is no file to start with.",
+    "Make a file called report.txt and write two lines into it: the title, then exactly ready. Close it.",
+    "Then open report.txt again, read it all in one go and print it."
    ],
    "hint": "pyfile",
    "starter": "# write it, close it, read it back\n",
@@ -299,9 +300,9 @@
    "marks": 4,
    "q": "Show what write mode does to a file that already holds lines.",
    "brief": [
-    "A file called stock.txt is already there, and it may already hold lines.",
-    "Read one entry, write it into stock.txt in write mode, and close it.",
-    "Read the file back, print every line stripped, then: lines <how many it holds>"
+    "A file called stock.txt is already there and may already hold lines. The user types in one line: an entry.",
+    "Open stock.txt in write mode, which empties it, write that entry on a line of its own, and close it.",
+    "Read stock.txt back, print every line of it with the newline stripped, then exactly lines, a space, then how many lines it holds."
    ],
    "hint": "pyfile",
    "starter": "# write mode, then count what survived\n",
@@ -375,9 +376,9 @@
     ]
    },
    "brief": [
-    "A file called visits.txt is already there, and it may be empty.",
-    "Read a name and add it to the end of visits.txt on a line of its own.",
-    "Read the file back, then print: latest <the last line>, then: total <how many lines>"
+    "A file called visits.txt is already there and may be empty. The user types in one line: a name.",
+    "Open visits.txt in append mode, add that name on a line of its own without losing the names already there, and close it.",
+    "Read the whole file back, then print exactly latest, a space, the last line stripped; then exactly total, a space, then how many lines it holds."
    ],
    "hint": "pyfile",
    "starter": "# add to the end, then report on the whole log\n",
@@ -453,9 +454,9 @@
     ]
    },
    "brief": [
-    "A file called members.txt holds one name,age record per line, and may be empty.",
-    "Read a name. On a match print: <name> is <age>, and if nothing matches: not a member",
-    "Then print: checked <how many records you looked at>"
+    "A file called members.txt is already there, holding one name,age record per line, and may be empty. The user types in one line: a name to find. Your program only reads the file.",
+    "Look at every record, even after one has matched. For a match print the name, then exactly is, then that age, separated by single spaces; if no record matches, print exactly: not a member",
+    "Then print exactly checked, a space, then how many records you looked at."
    ],
    "hint": "pyfile",
    "starter": "# one record per line, one name to find\n",
@@ -534,9 +535,9 @@
    "marks": 5,
    "q": "Total the scores in a file and name the highest scorer.",
    "brief": [
-    "A file called scores.txt holds one name,score record per line, and may be empty.",
+    "A file called scores.txt is already there, holding one name,score record per line, and may be empty. Your program only reads it, and nothing is typed in.",
     "If it holds no records, print only: no scores",
-    "Otherwise print: total <the scores added up>, then: best <the highest scorer, the earlier of a tie>"
+    "Otherwise print exactly total, a space, then every score added up; then exactly best, a space, then the name with the highest score, the earlier record winning a tie."
    ],
    "hint": "pyfile",
    "starter": "# the total and the best of one column\n",
@@ -607,9 +608,9 @@
     ]
    },
    "brief": [
-    "A file called sales.txt holds one item,quantity,price record per line, and may be empty.",
-    "Write one line per record into report.txt: <item> <quantity times price>",
-    "Then write: total <every value added up>, close it, and print the whole report."
+    "A file called sales.txt is already there, holding one item,quantity,price record per line, and may be empty. Nothing is typed in.",
+    "Make a file called report.txt and write one line per record: the item, a space, then quantity times price. Then write one more line: exactly total, a space, then all those values added up. Close it.",
+    "Then read report.txt back and print the whole of it."
    ],
    "hint": "pyfile",
    "starter": "# one file in, another out, then read it back\n",
@@ -675,9 +676,9 @@
    "marks": 6,
    "q": "Filter readings above a typed limit into an alerts file.",
    "brief": [
-    "A file called readings.txt holds one sensor,reading record per line, and may be empty.",
-    "Read a limit, then write every record above it - equal does not count - into alerts.txt as: <sensor> <reading>",
-    "Print every line of alerts.txt, then: alerts <how many lines it holds>"
+    "A file called readings.txt is already there, holding one sensor,reading record per line, and may be empty. The user types in one whole number: the limit.",
+    "Make a file called alerts.txt - always, even when nothing matches - and write one line for each record whose reading is above the limit: the sensor, a space, then the reading. Equal to the limit does not count.",
+    "Then read alerts.txt back, print every line of it, then exactly alerts, a space, then how many lines it holds."
    ],
    "hint": "pyfile",
    "starter": "# filter out, then read the new file back\n",

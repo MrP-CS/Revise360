@@ -22,7 +22,7 @@
        "marks": 2,
        "q": "Print a word's length, then its first and last characters.",
        "brief": [
-        "Read one word.",
+        "The user types in one word.",
         "Print its length, then its first character, then its last.",
         "One on each line."
        ],
@@ -93,9 +93,9 @@
        "marks": 3,
        "q": "Print the character at a typed position, if there is one.",
        "brief": [
-        "Read one word, then a position counting from 0.",
+        "The user types in two lines: one word, then a position counting from 0.",
         "Print the character at that position.",
-        "If there is no such position, print: no such position"
+        "If the word has no such position, print exactly: no such position"
        ],
        "starter": "# Print the character at that position, if it exists\n",
        "tests": [
@@ -179,9 +179,9 @@
        "marks": 3,
        "q": "Print the first three characters of a word.",
        "brief": [
-        "Read one word.",
+        "The user types in one word.",
         "Print its first three characters and nothing else.",
-        "If it has fewer than three, print: too short"
+        "If it has fewer than three characters, print exactly: too short"
        ],
        "starter": "# The first three characters, or too short\n",
        "tests": [
@@ -249,9 +249,9 @@
        "marks": 3,
        "q": "Print a line of text without its first and last characters.",
        "brief": [
-        "Read one line of text.",
+        "The user types in one line of text.",
         "Print it with its first and last characters removed.",
-        "If it has fewer than three characters, print: nothing inside"
+        "If it has fewer than three characters, print exactly: nothing inside"
        ],
        "starter": "# Drop one character from each end\n",
        "tests": [
@@ -329,9 +329,9 @@
        "marks": 4,
        "q": "Compare two words ignoring capitals, and order them if they differ.",
        "brief": [
-        "Read two words, one on each line.",
-        "If they are the same word once capitals are ignored, print: match",
-        "Otherwise print: different - then the word that comes first alphabetically, exactly as typed."
+        "The user types in two words, one on each line.",
+        "If they are the same word once capitals are ignored, print exactly: match",
+        "Otherwise print exactly different, then the word that comes first alphabetically, exactly as it was typed. Ignore capitals when deciding which comes first."
        ],
        "starter": "# Same word? If not, which one comes first?\n",
        "tests": [
@@ -407,8 +407,8 @@
        "marks": 4,
        "q": "Count the capital letters in a line of text.",
        "brief": [
-        "Read one line of text.",
-        "Print how many of its characters are capital letters."
+        "The user types in one line of text.",
+        "Print only how many of its characters are capital letters."
        ],
        "starter": "# Count the capitals\n",
        "tests": [
@@ -488,9 +488,9 @@
        "marks": 4,
        "q": "Say whether a word is in the text, and at its start.",
        "brief": [
-        "Read one line of text, then the word to look for.",
-        "If the word is not in the text, print: missing",
-        "Otherwise print: found - then: at the start - or: inside"
+        "The user types in two lines: a line of text, then the word to look for.",
+        "If the word is not in the text, print exactly: missing",
+        "Otherwise print exactly found, then exactly at the start when the text begins with the word, or exactly inside when it does not."
        ],
        "starter": "# Is the word there, and does the text begin with it?\n",
        "tests": [
@@ -579,9 +579,9 @@
        "marks": 4,
        "q": "Print where a word starts inside a line of text.",
        "brief": [
-        "Read one line of text, then the word to look for.",
+        "The user types in two lines: a line of text, then the word to look for.",
         "Print the position where the word starts, counting from 0.",
-        "If it is not in the text, print: not found"
+        "If the word is not in the text, print exactly: not found"
        ],
        "starter": "# Where does the word start?\n",
        "tests": [
@@ -666,7 +666,7 @@
        "marks": 4,
        "q": "Print the letter after the one given, with z becoming a.",
        "brief": [
-        "Read one lower-case letter.",
+        "The user types in one lower-case letter.",
         "Print the letter that comes next in the alphabet.",
         "After z comes a."
        ],
@@ -728,9 +728,9 @@
        "marks": 5,
        "q": "Separate the letters and the digits of a line of text.",
        "brief": [
-        "Read one line of text.",
+        "The user types in one line of text.",
         "Build a string of its letters and a string of its digits, each in the order they appear.",
-        "Print the letters, then the digits, using: none - for either one that is empty."
+        "Print the letters, then the digits. For either one that is empty, print exactly: none"
        ],
        "starter": "# Build two strings, one character at a time\n",
        "tests": [
@@ -815,9 +815,9 @@
        "marks": 6,
        "q": "Reverse a word and say whether it reads the same both ways.",
        "brief": [
-        "Read one word.",
+        "The user types in one word.",
         "Build it backwards one character at a time, not with a slice or reversed().",
-        "Print the reversed word, then: palindrome - or: not a palindrome"
+        "Print the reversed word, then exactly palindrome when it reads the same both ways once capitals are ignored, or exactly not a palindrome when it does not."
        ],
        "starter": "# Build the word backwards, then compare\n",
        "tests": [

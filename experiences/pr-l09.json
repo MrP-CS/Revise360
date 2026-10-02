@@ -22,8 +22,9 @@
        "marks": 2,
        "q": "Write a procedure that prints a sign-off, then call it.",
        "brief": [
-        "Write a procedure signoff that prints: end of report",
-        "Read a title, print it, then call signoff."
+        "Write a procedure signoff that takes nothing and prints exactly: end of report",
+        "The user types in one line: a title.",
+        "Print the title, then call signoff - two lines, the title first."
        ],
        "starter": "# signoff first, then the title\n",
        "tests": [
@@ -78,8 +79,8 @@
        "q": "Write a rule procedure and call it three times around two headings.",
        "brief": [
         "Write a procedure rule that prints exactly: =====",
-        "Read two headings.",
-        "Print the rule, the first heading, the rule, the second heading, the rule."
+        "The user types in two headings, one on each line.",
+        "Print the rule, the first heading, the rule, the second heading, then the rule - five lines in all."
        ],
        "starter": "# one procedure, called three times\n",
        "tests": [
@@ -144,8 +145,9 @@
        "marks": 3,
        "q": "Write a procedure with one parameter that labels an item.",
        "brief": [
-        "Write a procedure label that takes one word and prints: item: <that word>",
-        "Read two item names and call label once for each, in order."
+        "Write a procedure label that takes one word and prints exactly item: followed by a space and that word.",
+        "The user types in two item names, one on each line.",
+        "Call label once for each, in the order they were typed, and print nothing else."
        ],
        "starter": "# one procedure, two different items\n",
        "tests": [
@@ -202,8 +204,8 @@
        "marks": 3,
        "q": "Write a procedure with two parameters that prints an order's cost.",
        "brief": [
-        "Read the number of packs, then the price of one pack in pence.",
-        "Write a procedure charge that takes both and prints: total <packs times price>",
+        "The user types in two whole numbers: the number of packs, then the price of one pack in pence.",
+        "Write a procedure charge that takes both of them and prints exactly total, a space, then the packs times the price.",
         "The procedure does the printing, and nothing else is printed."
        ],
        "starter": "# charge takes two parameters\n",
@@ -267,8 +269,8 @@
        "marks": 3,
        "q": "Write a function that returns double a number, then print it.",
        "brief": [
-        "Read one whole number.",
-        "Write a function double that returns twice its parameter and prints nothing.",
+        "The user types in one whole number.",
+        "Write a function double that returns twice its parameter and prints nothing at all.",
         "Print only the value double hands back."
        ],
        "starter": "# double returns, it does not print\n",
@@ -329,9 +331,9 @@
        "marks": 4,
        "q": "Write a function that returns a rectangle's area, then label it.",
        "brief": [
-        "Read the width, then the height.",
+        "The user types in two whole numbers: the width, then the height.",
         "Write a function area that returns width times height and holds no print at all.",
-        "Store what it returns, then print one line: area <that value>"
+        "Store what it returns, then print one line: exactly area, a space, then that value."
        ],
        "starter": "# store the returned value before printing it\n",
        "tests": [
@@ -394,9 +396,9 @@
        "marks": 4,
        "q": "Use a function to decide a grade and a procedure to print it.",
        "brief": [
-        "Read a name, then a whole number mark.",
-        "Write a function grade returning pass for 40 or more, otherwise fail.",
-        "Write a procedure report that prints: <name>: <word> - use both."
+        "The user types in two lines: a name, then a whole number mark.",
+        "Write a function grade that returns exactly pass for a mark of 40 or more, and exactly fail below 40.",
+        "Write a procedure report that prints the name, then a colon and a space, then that word. Use both, and print one line only."
        ],
        "starter": "# grade returns a word, report prints the line\n",
        "tests": [
@@ -470,9 +472,9 @@
        "marks": 4,
        "q": "Show that a variable made inside a procedure is local.",
        "brief": [
-        "Read one whole number into a variable called total.",
-        "Write a procedure boost with its own total, set to 99, which prints it.",
-        "Call boost, then print the main program's total."
+        "The user types in one whole number, which the main program stores in a variable called total.",
+        "Write a procedure boost with a local variable of its own, also called total, set to 99, which prints it.",
+        "Call boost, then print the main program's total - two lines, the 99 first."
        ],
        "starter": "# two variables, one name\n",
        "tests": [
@@ -537,9 +539,9 @@
        "marks": 4,
        "q": "Write two procedures that both change one shared score.",
        "brief": [
-        "Start a score of 0 that both procedures change: win adds 3, draw adds 1.",
-        "Read the number of rounds, then call win and then draw once per round.",
-        "Print only the score the loop finished on."
+        "Start with a score of 0 that the whole program shares. It is fixed in the program, not typed in.",
+        "Write a procedure win that adds 3 to that score and a procedure draw that adds 1 to it.",
+        "The user types in one whole number: how many rounds. Call win and then draw once per round, then print only the score at the end."
        ],
        "starter": "# win and draw change the main program's score\n",
        "tests": [
@@ -598,9 +600,9 @@
        "marks": 5,
        "q": "Call a function once per match in a loop and total what it returns.",
        "brief": [
-        "Write a function points returning 3 for 2 or more goals, 1 for exactly 1, else 0.",
-        "Read how many matches there were, then that many goal counts.",
-        "Print only the total points."
+        "Write a function points that returns 3 for 2 or more goals, 1 for exactly 1 goal, and 0 for none.",
+        "The user types in how many matches there were, then that many goal counts, one on each line.",
+        "Call points once per match, add up what it returns, and print only that total."
        ],
        "starter": "# one call per match, added to a running total\n",
        "tests": [
@@ -679,9 +681,9 @@
        "marks": 6,
        "q": "Build a booking receipt from three subprograms, each calling the next.",
        "brief": [
-        "Read the number of nights, then the number of guests.",
-        "Write fee, returning nights times 25, and total, which calls fee and returns fee times guests plus 10.",
-        "Write a procedure receipt that calls total and prints: nights <nights> then total <value>"
+        "The user types in two whole numbers: the number of nights, then the number of guests.",
+        "Write a function fee that returns nights times 25, and a function total that calls fee and returns fee times guests, plus 10.",
+        "Write a procedure receipt that calls total and prints two lines: exactly nights then the number of nights, then exactly total then that value."
        ],
        "starter": "# receipt calls total, total calls fee\n",
        "tests": [

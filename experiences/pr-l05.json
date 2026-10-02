@@ -22,9 +22,9 @@
        "marks": 2,
        "q": "Count down to 1 with a while loop, then print go.",
        "brief": [
-        "Read one whole number.",
+        "The user types in one whole number.",
         "Print every number from it down to 1, one on each line.",
-        "Then print: go"
+        "Then print exactly: go"
        ],
        "starter": "# Count down to 1, then print go\n",
        "tests": [
@@ -96,8 +96,8 @@
        "marks": 3,
        "q": "Count how many doublings it takes to reach a target.",
        "brief": [
-        "Read one whole number: the target.",
-        "Start at 1 and keep doubling until the target is reached.",
+        "The user types in one whole number: the target.",
+        "Start a size at 1 in your program, then keep doubling it until it is equal to or greater than the target.",
         "Print only how many doublings that took."
        ],
        "starter": "# Double until the target is reached, then print the number of doublings\n",
@@ -109,7 +109,7 @@
          "out": [
           "3"
          ],
-         "why": "1 doubles to 2, then 4, then 8 - that is 3 weeks. A 4 here means you stopped one week early, before the target was actually reached."
+         "why": "1 doubles to 2, then 4, then 8, which is three doublings. A 4 here means the loop went round once more after the target had been reached."
         },
         {
          "in": [
@@ -118,7 +118,7 @@
          "out": [
           "0"
          ],
-         "why": "The weed already covers 1 square metre, so no weeks are needed. If you printed 1 you used a loop that always runs once instead of testing the condition first."
+         "why": "The size starts at 1, which already matches the target, so no doublings are needed. If you printed 1 you used a loop that always runs once instead of testing the condition first."
         },
         {
          "in": [
@@ -127,7 +127,7 @@
          "out": [
           "3"
          ],
-         "why": "After 2 weeks the weed covers 4, which is not yet 5, so a third week is needed. The loop stops when the area is reached or passed, not only when it matches exactly."
+         "why": "After two doublings the size is 4, which is not yet 5, so a third is needed. The loop stops once the target is reached or passed, not only when it matches exactly."
         },
         {
          "in": [
@@ -169,21 +169,12 @@
        "marks": 3,
        "q": "Keep asking until a number from 1 to 20 is typed.",
        "brief": [
-        "Read whole numbers until one is from 1 to 20.",
-        "Print: out of range - for each number that is refused.",
+        "The user types in whole numbers, one on each line, until one of them is from 1 to 20.",
+        "For each number that is refused, print exactly: out of range",
         "Then print the word locker, a space, and the accepted number."
        ],
        "starter": "# Keep asking until the number is from 1 to 20\n",
        "tests": [
-        {
-         "in": [
-          "7"
-         ],
-         "out": [
-          "locker 7"
-         ],
-         "why": "The first number is already valid, so nothing should be printed about the range. If you printed out of range here, your check runs before the loop condition, or you used a loop that always runs once."
-        },
         {
          "in": [
           "0",
@@ -196,6 +187,15 @@
           "locker 12"
          ],
          "why": "Two bad numbers means two warnings. If you only got one, you used an if instead of a while - an if checks once and then gives up."
+        },
+        {
+         "in": [
+          "7"
+         ],
+         "out": [
+          "locker 7"
+         ],
+         "why": "The first number is already valid, so nothing should be printed about the range. If you printed out of range here, your check runs before the loop condition, or you used a loop that always runs once."
         },
         {
          "in": [
@@ -235,12 +235,25 @@
        "marks": 3,
        "q": "Keep asking until the answer is yes or no.",
        "brief": [
-        "Read words until one of them is yes or no.",
-        "Print: please answer yes or no - for each other word.",
-        "Then print the word accepted, a space, and the word given."
+        "The user types in words, one on each line, until one of them is yes or no.",
+        "For each other word, print exactly: please answer yes or no",
+        "Then print the word accepted, a space, and the word that was accepted."
        ],
        "starter": "# Keep asking until the answer is yes or no\n",
        "tests": [
+        {
+         "in": [
+          "maybe",
+          "dunno",
+          "yes"
+         ],
+         "out": [
+          "please answer yes or no",
+          "please answer yes or no",
+          "accepted yes"
+         ],
+         "why": "Two wrong answers, so two warnings. One warning only means an if was used where a while was needed."
+        },
         {
          "in": [
           "no"
@@ -258,19 +271,6 @@
           "accepted yes"
          ],
          "why": "Both yes and no are accepted. If only one of them works, your condition tests for a single word instead of ruling out both."
-        },
-        {
-         "in": [
-          "maybe",
-          "dunno",
-          "yes"
-         ],
-         "out": [
-          "please answer yes or no",
-          "please answer yes or no",
-          "accepted yes"
-         ],
-         "why": "Two wrong answers, so two warnings. One warning only means an if was used where a while was needed."
         },
         {
          "in": [
@@ -310,7 +310,7 @@
        "marks": 3,
        "q": "Total the numbers typed in, stopping at -1.",
        "brief": [
-        "Read whole numbers until -1 is typed.",
+        "The user types in whole numbers, one on each line, until they type -1.",
         "The -1 is the signal to stop, not a number to add.",
         "Print only the total."
        ],
@@ -378,9 +378,9 @@
        "marks": 4,
        "q": "Print the highest number typed in before the word end.",
        "brief": [
-        "Read lines until the word end is read.",
-        "Print the highest number that was read.",
-        "If end is the very first line, print: no readings"
+        "The user types in whole numbers, one on each line, then the word end to finish.",
+        "Print only the highest number that was typed in.",
+        "If end is the very first line, print exactly: no readings"
        ],
        "starter": "# Read numbers until the word end, then print the highest\n",
        "tests": [
@@ -455,8 +455,8 @@
        "marks": 4,
        "q": "Count the numbers typed before -1, and how many reach 40.",
        "brief": [
-        "Read whole numbers until -1 is typed.",
-        "Print how many numbers were read.",
+        "The user types in whole numbers, one on each line, until they type -1.",
+        "Print how many numbers were typed in, not counting the -1.",
         "Then print how many of them were 40 or more."
        ],
        "starter": "# Count the numbers, and count how many reach 40\n",
@@ -530,8 +530,8 @@
        "marks": 4,
        "q": "Add up the digits of a whole number with a while loop.",
        "brief": [
-        "Read one whole number that is 0 or more.",
-        "Add up its digits without turning it into text.",
+        "The user types in one whole number that is 0 or more.",
+        "Add up its digits without turning the number into text.",
         "Print only the total of the digits."
        ],
        "starter": "# Take the last digit off the number each time round\n",
@@ -610,27 +610,14 @@
       {
        "t": "code",
        "marks": 5,
-       "q": "Read the parcels with a for loop, then check limits with while.",
+       "q": "Read the parcels the user types in with a for loop, then check the limits with a while loop.",
        "brief": [
-        "Read how many parcels there are, then that many weights.",
-        "Read a limit; while it is below the heaviest parcel, print: limit too low - and read another.",
-        "When a limit is accepted, print: ok"
+        "The user types in how many parcels there are, which may be 0, then that many whole number weights, one on each line.",
+        "Then the user types in limits, one at a time, until one of them is not below the heaviest parcel. For each limit that is refused, print exactly: limit too low",
+        "With no parcels at all, the first limit is accepted. When a limit is accepted, print exactly: ok"
        ],
        "starter": "# A for loop for the parcels, a while loop for the limit\n",
        "tests": [
-        {
-         "in": [
-          "3",
-          "12",
-          "25",
-          "18",
-          "30"
-         ],
-         "out": [
-          "ok"
-         ],
-         "why": "The heaviest parcel is 25 and the limit is 30, so the while loop runs zero times. A warning here means you compared the limit with the last parcel rather than the heaviest."
-        },
         {
          "in": [
           "3",
@@ -647,6 +634,19 @@
           "ok"
          ],
          "why": "Two limits are refused before one is accepted. One warning only means you used an if where a while was needed."
+        },
+        {
+         "in": [
+          "3",
+          "12",
+          "25",
+          "18",
+          "30"
+         ],
+         "out": [
+          "ok"
+         ],
+         "why": "The heaviest parcel is 25 and the limit is 30, so the while loop runs zero times. A warning here means you compared the limit with the last parcel rather than the heaviest."
         },
         {
          "in": [
@@ -711,21 +711,12 @@
        "marks": 5,
        "q": "Give a higher or lower hint until 37 is guessed.",
        "brief": [
-        "The secret number is 37.",
-        "While the guess is wrong, print: higher - or: lower - then read another guess.",
-        "Once 37 is guessed, print: correct"
+        "The secret number is 37, fixed in your program and not typed in.",
+        "The user types in guesses, one at a time, until 37 is guessed. For each wrong guess print exactly higher when the guess is below 37, or exactly lower when it is above.",
+        "When 37 is guessed, print exactly: correct"
        ],
        "starter": "# The secret is 37. Hint at every wrong guess.\n",
        "tests": [
-        {
-         "in": [
-          "37"
-         ],
-         "out": [
-          "correct"
-         ],
-         "why": "The first guess is right, so no hint should appear at all. A hint here means your loop body runs before the condition is tested."
-        },
         {
          "in": [
           "10",
@@ -738,6 +729,15 @@
           "correct"
          ],
          "why": "10 is too low so the answer is higher; 50 is too high so it is lower. Swapping these two means you read the hint as what the guess was, not what the player should try next."
+        },
+        {
+         "in": [
+          "37"
+         ],
+         "out": [
+          "correct"
+         ],
+         "why": "The first guess is right, so no hint should appear at all. A hint here means your loop body runs before the condition is tested."
         },
         {
          "in": [
@@ -781,8 +781,8 @@
        "marks": 6,
        "q": "Print how many swims there were, the total and the longest.",
        "brief": [
-        "Read whole numbers until the word close is read.",
-        "Print how many there were, then the total, then the longest.",
+        "The user types in whole numbers of minutes, one on each line, then the word close to finish.",
+        "Print how many swims there were, then the total of the minutes, then the longest swim.",
         "If close is the very first line, print only: no swimmers"
        ],
        "starter": "# Count the swims, total the minutes, remember the longest\n",

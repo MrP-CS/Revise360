@@ -27,9 +27,9 @@
     ]
    },
    "brief": [
-    "The table games has the columns title, kind, players and minutes.",
-    "Write one query giving the title of every game, in the order they are stored.",
-    "Print each row on its own line, values separated by single spaces."
+    "The table games holds one row per game, with the columns title, kind, players and minutes; the starter code fills it from the lines typed in.",
+    "Write one query giving one column, title, for every game, in the order the rows are stored.",
+    "Print each row the query finds on its own line, values separated by single spaces."
    ],
    "hint": "sqlwhere",
    "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\n",
@@ -103,9 +103,9 @@
    "marks": 2,
    "q": "List the title and the number of players of every game.",
    "brief": [
-    "Write one query giving two columns: title first, then players.",
-    "Keep the order they are stored in the table.",
-    "Print each row on its own line, values separated by single spaces."
+    "The table games holds one row per game, with the columns title, kind, players and minutes; the starter code fills it from the lines typed in.",
+    "Write one query giving two columns, title then players, for every game, in the order the rows are stored.",
+    "Print each row the query finds on its own line, the two values separated by a single space."
    ],
    "hint": "sqlwhere",
    "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\n",
@@ -185,9 +185,9 @@
     ]
    },
    "brief": [
-    "The kind column holds words such as strategy, card, party, dice and word.",
-    "Write one query giving the title of every game whose kind is card, in stored order.",
-    "Print each row on its own line, values separated by single spaces."
+    "The table games holds one row per game, with the columns title, kind, players and minutes; kind holds words such as strategy, card, party, dice and word.",
+    "Write one query giving one column, title, for every game whose kind is card, in the order the rows are stored.",
+    "Print each row the query finds on its own line, values separated by single spaces."
    ],
    "hint": "sqlwhere",
    "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\n",
@@ -251,9 +251,9 @@
    "marks": 4,
    "q": "List the title and kind of every two-player game.",
    "brief": [
-    "Write one query giving two columns, title then kind, where players is exactly 2.",
-    "Numbers need no quotes round them in SQL. Keep the stored order.",
-    "Print each row on its own line, values separated by single spaces."
+    "The table games holds one row per game, with the columns title, kind, players and minutes; the starter code fills it from the lines typed in.",
+    "Write one query giving two columns, title then kind, for every game where players is exactly 2, in the order the rows are stored. A number needs no quotes in SQL.",
+    "Print each row the query finds on its own line, the two values separated by a single space."
    ],
    "hint": "sqlwhere",
    "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\n",
@@ -322,9 +322,9 @@
     ]
    },
    "brief": [
-    "Write one query giving two columns, title then minutes, in stored order.",
-    "Include a game only if it lasts more than 45 minutes - exactly 45 does not count.",
-    "Print each row on its own line, values separated by single spaces."
+    "The table games holds one row per game, with the columns title, kind, players and minutes; the starter code fills it from the lines typed in.",
+    "Write one query giving two columns, title then minutes, for every game lasting more than 45 minutes - exactly 45 does not count - in the order the rows are stored.",
+    "Print each row the query finds on its own line, the two values separated by a single space."
    ],
    "hint": "sqlwhere",
    "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\n",
@@ -389,9 +389,9 @@
    "marks": 5,
    "q": "List the title and length of every game of 45 minutes or more.",
    "brief": [
-    "Write one query giving two columns, title then minutes, in stored order.",
-    "Include a game of exactly 45 minutes this time.",
-    "Print each row on its own line, values separated by single spaces."
+    "The table games holds one row per game, with the columns title, kind, players and minutes; the starter code fills it from the lines typed in.",
+    "Write one query giving two columns, title then minutes, for every game lasting 45 minutes or more - exactly 45 counts this time - in the order the rows are stored.",
+    "Print each row the query finds on its own line, the two values separated by a single space."
    ],
    "hint": "sqlwhere",
    "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\n",
@@ -463,9 +463,9 @@
     ]
    },
    "brief": [
-    "Write one query giving the title where kind is card and players is 3 or more.",
-    "Both parts must be true, and the stored order is kept.",
-    "Print each row on its own line, values separated by single spaces."
+    "The table games holds one row per game, with the columns title, kind, players and minutes; the starter code fills it from the lines typed in.",
+    "Write one query giving one column, title, for every game whose kind is card and whose players is 3 or more - both must be true - in the order the rows are stored.",
+    "Print each row the query finds on its own line, values separated by single spaces."
    ],
    "hint": "sqlwhere",
    "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\n",
@@ -528,9 +528,9 @@
    "marks": 6,
    "q": "List the games under 20 minutes or over 60, with their length.",
    "brief": [
-    "Write one query giving two columns, title then minutes, in stored order.",
-    "Include a game only if it lasts fewer than 20 minutes or more than 60.",
-    "Print each row on its own line, values separated by single spaces."
+    "The table games holds one row per game, with the columns title, kind, players and minutes; the starter code fills it from the lines typed in.",
+    "Write one query giving two columns, title then minutes, for every game lasting fewer than 20 minutes or more than 60 - either one on its own is enough - in the order the rows are stored.",
+    "Print each row the query finds on its own line, the two values separated by a single space."
    ],
    "hint": "sqlwhere",
    "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\n",
@@ -601,9 +601,9 @@
     ]
    },
    "brief": [
-    "Write one query giving two columns, title then minutes, for every game.",
-    "Order the rows by minutes, shortest first.",
-    "Print each row on its own line, values separated by single spaces."
+    "The table games holds one row per game, with the columns title, kind, players and minutes; the starter code fills it from the lines typed in.",
+    "Write one query giving two columns, title then minutes, for every game, with the rows ordered by minutes, shortest first.",
+    "Print each row the query finds on its own line, the two values separated by a single space."
    ],
    "hint": "sqlwhere",
    "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\n",
@@ -683,10 +683,9 @@
     ]
    },
    "brief": [
-    "Write one query giving two columns, title then minutes.",
-    "Include a game only if its kind is not card and it lasts 60 minutes or fewer - exactly 60 counts.",
-    "Order the rows by minutes with the longest first.",
-    "Print each row on its own line, values separated by single spaces."
+    "The table games holds one row per game, with the columns title, kind, players and minutes; the starter code fills it from the lines typed in.",
+    "Write one query giving two columns, title then minutes, for every game whose kind is not card and which lasts 60 minutes or fewer - exactly 60 counts.",
+    "Order the rows by minutes, longest first, and print each row on its own line with the two values separated by a single space."
    ],
    "hint": "sqlwhere",
    "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\n",

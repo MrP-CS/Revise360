@@ -26,9 +26,9 @@
     ]
    },
    "brief": [
-    "Read one line and ignore any spaces at each end.",
-    "If nothing is left, print: no name given",
-    "Otherwise print: welcome <the name without those spaces>"
+    "The user types in one line, and any spaces at each end of it are ignored.",
+    "If nothing is left, print exactly: no name given",
+    "Otherwise print exactly welcome, a space, then the name without those spaces."
    ],
    "hint": "pyvalidate",
    "starter": "# spaces are not a name\n",
@@ -78,9 +78,9 @@
    "marks": 3,
    "q": "Refuse anything that is not a whole number, without crashing.",
    "brief": [
-    "Read one line. It only counts if every character is a digit.",
-    "If it is, print: number: <the number>",
-    "Otherwise print: not a number - a minus sign and a point are not digits."
+    "The user types in one line. It counts as a whole number only if every character is a digit.",
+    "If it does, print exactly number: a space, then the number.",
+    "Otherwise print exactly not a number - a minus sign and a decimal point are not digits."
    ],
    "hint": "pyvalidate",
    "starter": "# digits only\n",
@@ -148,9 +148,9 @@
    "marks": 3,
    "q": "Range check a satisfaction score from 1 to 10 inclusive.",
    "brief": [
-    "Read one whole number.",
-    "If it is from 1 to 10 inclusive, print: valid",
-    "Below the range print: too low, and above it: too high"
+    "The user types in one whole number.",
+    "If it is from 1 to 10 inclusive, print exactly: valid",
+    "Below the range print exactly too low, and above it exactly too high."
    ],
    "hint": "pyvalidate",
    "starter": "# both boundaries are allowed\n",
@@ -218,9 +218,9 @@
    "marks": 4,
    "q": "Check a temperature that may be negative, and refuse what is not numeric.",
    "brief": [
-    "Read one line. A minus sign at the front is allowed, a decimal point is not.",
-    "If it is not a whole number, print: not a number",
-    "Otherwise print ok for -5 to 35 inclusive, or: out of range"
+    "The user types in one line. A minus sign at the front is allowed, a decimal point is not.",
+    "If it is not a whole number, print exactly: not a number",
+    "Otherwise print exactly ok for -5 to 35 inclusive, and exactly out of range outside that."
    ],
    "hint": "pyvalidate",
    "starter": "# a negative number is still a number\n",
@@ -297,9 +297,9 @@
    "marks": 4,
    "q": "Length check a password of 8 to 16 characters.",
    "brief": [
-    "Read one line, exactly as it is typed.",
-    "Under 8 characters print: too short, and over 16: too long",
-    "Otherwise print: ok"
+    "The user types in one line, counted exactly as it is typed with no stripping.",
+    "Under 8 characters print exactly too short; over 16 characters print exactly too long.",
+    "Otherwise print exactly: ok"
    ],
    "hint": "pyvalidate",
    "starter": "# 8 to 16 characters\n",
@@ -367,9 +367,9 @@
    "marks": 5,
    "q": "Format check a booking reference: two letters then four digits.",
    "brief": [
-    "Read one line and ignore any spaces at each end.",
-    "It is valid only if it is 6 characters: the first two letters, the last four digits.",
-    "Print valid reference or invalid reference; capitals and small letters both count."
+    "The user types in one line, and any spaces at each end of it are ignored.",
+    "It is valid only if it is 6 characters: the first two letters, the last four digits. Capitals and small letters both count as letters.",
+    "Print exactly valid reference or exactly invalid reference, one line only."
    ],
    "hint": "pystring",
    "starter": "# two letters then four digits\n",
@@ -446,9 +446,9 @@
    "marks": 5,
    "q": "Keep asking for a lift number until one from 1 to 5 arrives.",
    "brief": [
-    "Read a whole number, and keep reading while it is outside 1 to 5 inclusive.",
-    "Print please enter 1 to 5 for every wrong one, and nothing for a right one.",
-    "Once it is valid, print: lift <the number>"
+    "The user types in whole numbers, one on each line, until one of them is from 1 to 5 inclusive.",
+    "Print exactly please enter 1 to 5 for every wrong one, and nothing at all for a right one.",
+    "Once a valid one arrives, print exactly lift, a space, then that number, and read no more."
    ],
    "hint": "pyvalidate",
    "starter": "# keep going until it is 1 to 5\n",
@@ -517,9 +517,9 @@
    "marks": 6,
    "q": "Keep asking for a house number, naming the rule broken each time.",
    "brief": [
-    "Read lines until one is a whole number from 10 to 99 inclusive.",
-    "If it is not all digits print: that is not a whole number - check this first.",
-    "Otherwise print: that is outside 10 to 99, and at the end: accepted: <the number>"
+    "The user types in lines, one at a time, until one is a whole number from 10 to 99 inclusive.",
+    "If a line is not all digits print exactly that is not a whole number - check this before the range.",
+    "If it is digits but outside the range print exactly that is outside 10 to 99; for the accepted one print exactly accepted: a space, then the number."
    ],
    "hint": "pyvalidate",
    "starter": "# two rules, two messages\n",
@@ -590,9 +590,9 @@
    "marks": 6,
    "q": "Check a sign-in against a list of accounts.",
    "brief": [
-    "Read a line of usernames, then a line of passwords in the same order.",
-    "Then read a username and a password. If the username is not listed, print: unknown user",
-    "If it is listed but the password does not match exactly, print: wrong password, else: access granted"
+    "The user types in four lines: usernames separated by single spaces, then passwords separated by single spaces in the same order, then one username and one password to check.",
+    "If that username is not in the list - matched exactly, with capitals counting - print exactly: unknown user",
+    "If it is listed but its password is not matched exactly, capitals included, print exactly wrong password; otherwise print exactly access granted."
    ],
    "hint": "searches",
    "starter": "# a username and a password to check\n",
@@ -690,9 +690,9 @@
    "marks": 6,
    "q": "Allow three attempts at a passcode, then lock the account.",
    "brief": [
-    "Read the correct passcode, then read attempts one line at a time.",
-    "As soon as one matches exactly, print access granted and stop asking.",
-    "Print wrong passcode for each miss, and after a third print: account locked"
+    "The user types in the correct passcode on the first line, then one attempt on each line after it.",
+    "As soon as an attempt matches exactly, capitals included, print exactly access granted and read no more.",
+    "Print exactly wrong passcode for each miss, and if a third attempt misses print exactly account locked and read no more."
    ],
    "hint": "pyvalidate",
    "starter": "# three attempts, no more\n",
@@ -791,9 +791,10 @@
    "marks": 7,
    "q": "Validate a username, then an age, then print: registered <username> <age>",
    "brief": [
-    "Read usernames until one is 5 to 12 characters and only letters and digits.",
-    "Reject each with: username must be 5 to 12 characters, or: username must be letters and digits only",
-    "Then read ages until one is 11 to 19, rejecting with: age must be a whole number, or: age must be 11 to 19"
+    "The user types in usernames, one on each line, until one is 5 to 12 characters and made only of letters and digits.",
+    "Reject each wrong one with exactly username must be 5 to 12 characters, or, if the length is fine, exactly username must be letters and digits only.",
+    "Then they type in ages, one on each line, until one is 11 to 19: reject with exactly age must be a whole number, or exactly age must be 11 to 19.",
+    "Finally print exactly registered, then the accepted username, then the accepted age, separated by single spaces."
    ],
    "hint": "pyvalidate",
    "starter": "# each rule its own message, checked in order\n",
@@ -885,10 +886,10 @@
    "marks": 8,
    "q": "Keep stock-taking even when a line of data is wrong.",
    "brief": [
-    "Read item,quantity lines until done, ignoring spaces around each field.",
-    "Check in order: bad line (not exactly one comma), bad quantity (not all digits), out of range (outside 1 to 99).",
-    "Otherwise print: added <the item name> - and a wrong line must never stop the run.",
-    "At done print: accepted: <how many were added>, then: total: <their quantities added up>"
+    "The user types in item,quantity lines, one on each line, until a line that is exactly done. Spaces around either field are ignored.",
+    "Check each line in this order and print exactly bad line if it has not got exactly one comma, exactly bad quantity if the quantity is not all digits, exactly out of range if it is outside 1 to 99.",
+    "Otherwise print exactly added, a space, then the item name. A wrong line must never stop the run.",
+    "At done print exactly accepted: a space and how many were added, then exactly total: a space and their quantities added up."
    ],
    "hint": "pyvalidate",
    "starter": "# report a bad line and carry on to the next one\n",

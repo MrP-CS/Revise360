@@ -28,8 +28,8 @@
     ]
    },
    "brief": [
-    "Read five whole numbers, one on each line.",
-    "Store them in a list, in the order they are typed.",
+    "The user types in five whole numbers, one on each line.",
+    "Store them in a list as whole numbers, in the order they are typed.",
     "Print the list itself, for example: [8, 3, 5, 1, 9]"
    ],
    "hint": "pylist",
@@ -83,9 +83,9 @@
    "marks": 2,
    "q": "Print how many colours were typed, then the last one.",
    "brief": [
-    "Read one whole number: how many colours follow.",
-    "Read that many colours into a list.",
-    "Print how many are in the list, then the last one."
+    "The user types in a whole number saying how many colours follow, then that many colours, one on each line.",
+    "Store the colours in a list.",
+    "Print how many colours the list holds, then the last one on the next line."
    ],
    "hint": "pylist",
    "starter": "# Read the colours into a list, then report on it\n",
@@ -147,13 +147,26 @@
     ]
    },
    "brief": [
-    "Read four words into a list, one on each line.",
-    "Then read one whole number: a position counting from 0.",
-    "Print the item at that position, and nothing else."
+    "The user types in four words, one on each line, then one more line: a position counting from 0.",
+    "Store the four words in a list.",
+    "Print the word at that position, and nothing else."
    ],
    "hint": "pylist",
    "starter": "# Read four words, then print the one at the position given\n",
    "tests": [
+    {
+     "in": [
+      "pliers",
+      "hammer",
+      "chisel",
+      "wrench",
+      "2"
+     ],
+     "out": [
+      "chisel"
+     ],
+     "why": "Position 2 is the third item, because the counting starts at 0."
+    },
     {
      "in": [
       "pliers",
@@ -182,19 +195,6 @@
     },
     {
      "in": [
-      "pliers",
-      "hammer",
-      "chisel",
-      "wrench",
-      "2"
-     ],
-     "out": [
-      "chisel"
-     ],
-     "why": "Position 2 is the third item, because the counting starts at 0."
-    },
-    {
-     "in": [
       "nut",
       "bolt",
       "screw",
@@ -215,30 +215,13 @@
    "marks": 3,
    "q": "Print the numbers at two typed positions, then their total.",
    "brief": [
-    "Read five whole numbers into a list, one on each line.",
-    "Then read two positions, counting from 0.",
-    "Print the number at the first position, then at the second, then their total."
+    "The user types in five whole numbers, one on each line, then two more lines: two positions counting from 0.",
+    "Store the numbers in a list.",
+    "Print the number at the first position, then the number at the second position, then the two of them added together."
    ],
    "hint": "pylist",
    "starter": "# Read five numbers, then look two of them up and add them\n",
    "tests": [
-    {
-     "in": [
-      "14",
-      "9",
-      "22",
-      "5",
-      "17",
-      "0",
-      "4"
-     ],
-     "out": [
-      "14",
-      "17",
-      "31"
-     ],
-     "why": "0 is the first number and 4 is the last of five. If either came out wrong you are counting the positions from 1."
-    },
     {
      "in": [
       "14",
@@ -255,6 +238,23 @@
       "27"
      ],
      "why": "Read the positions in the order the brief gives them - swapping them swaps the first two lines."
+    },
+    {
+     "in": [
+      "14",
+      "9",
+      "22",
+      "5",
+      "17",
+      "0",
+      "4"
+     ],
+     "out": [
+      "14",
+      "17",
+      "31"
+     ],
+     "why": "0 is the first number and 4 is the last of five. If either came out wrong you are counting the positions from 1."
     },
     {
      "in": [
@@ -310,8 +310,8 @@
     ]
    },
    "brief": [
-    "Read four words into a list, one on each line.",
-    "Print each word, a single space, then how many letters it has.",
+    "The user types in four words, one on each line.",
+    "Store them in a list, then print each word, a single space, then how many letters it has.",
     "One line per word, in the order they were typed."
    ],
    "hint": "pylist",
@@ -383,9 +383,9 @@
     ]
    },
    "brief": [
-    "Read five whole numbers into a list, one on each line.",
-    "Print each position, a single space, then the number stored there.",
-    "Positions count from 0."
+    "The user types in five whole numbers, one on each line.",
+    "Store them in a list, then print each position, a single space, then the number stored there.",
+    "One line per number, with the positions counting from 0."
    ],
    "hint": "pylist",
    "starter": "# Loop over the positions, not the items\n",
@@ -450,9 +450,9 @@
    "marks": 3,
    "q": "Append two items to a basket of four, then list it.",
    "brief": [
-    "Read four items into a list, one on each line.",
-    "Read two more and append them to the same list.",
-    "Print how many items there are, then every item on its own line."
+    "The user types in four items, one on each line, then two more items on two more lines.",
+    "Put the first four in a list and append the last two onto the end of that same list.",
+    "Print how many items the list now holds, then every item on its own line in order."
    ],
    "hint": "pylist",
    "starter": "# Four items, then two more on the end\n",
@@ -538,9 +538,9 @@
     ]
    },
    "brief": [
-    "Read five names into a list, one on each line.",
-    "Read a name to take out, then a position to delete from what is left.",
-    "Print the names still in the list, one on each line."
+    "The user types in five names, one on each line, then a name to take out, then a position counting from 0.",
+    "Take that name out of the list first, then delete the item at that position in the shortened list.",
+    "Print the names still in the list, one on each line, in order."
    ],
    "hint": "pylist",
    "starter": "# One name out by value, one by position\n",
@@ -634,9 +634,9 @@
     ]
    },
    "brief": [
-    "Read five whole numbers into a list, one on each line.",
+    "The user types in five whole numbers, one on each line.",
     "Print their total.",
-    "Then print the average, rounded to 1 decimal place, so 5 shows as 5.0"
+    "Then print their average rounded to 1 decimal place, so 5 shows as 5.0"
    ],
    "hint": "pylist",
    "starter": "# Total the list, then work out the average\n",
@@ -706,9 +706,9 @@
    "marks": 4,
    "q": "Find the largest and smallest of seven numbers with a loop.",
    "brief": [
-    "Read seven whole numbers into a list, one on each line.",
-    "Find the largest and the smallest with a loop of your own.",
-    "Print the largest, then the smallest."
+    "The user types in seven whole numbers, one on each line.",
+    "Find the largest and the smallest with a loop of your own, not with max() or min().",
+    "Print the largest, then the smallest on the next line."
    ],
    "hint": "pylist",
    "starter": "# Find the largest and the smallest yourself\n",
@@ -796,9 +796,10 @@
    "marks": 6,
    "q": "Report the total, average, passes and best mark of a quiz.",
    "brief": [
-    "Read eight marks out of 20 into a list, one on each line.",
+    "The user types in eight marks out of 20, one on each line.",
     "Print the total, then the average rounded to 1 decimal place.",
-    "Then how many marks reach 12, then the position of the first highest mark."
+    "Then print how many of the marks are 12 or more.",
+    "Then print the position of the highest mark, counting from 0, and the earlier one if two marks tie."
    ],
    "hint": "pylist",
    "starter": "# Total, average, passes, and where the best mark sits\n",

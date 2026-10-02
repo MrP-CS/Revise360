@@ -14,7 +14,7 @@
    "id": "pr-l02-q1",
    "station": 0,
    "marks": 2,
-   "q": "Read two numbers and print their total, then their difference.",
+   "q": "Print the total of two numbers the user types in, then their difference.",
    "teach": {
     "say": "+ adds, - subtracts and * multiplies. They work on numbers, so cast each input with int() first.",
     "code": [
@@ -27,8 +27,8 @@
     ]
    },
    "brief": [
-    "Read two whole numbers, one on each line.",
-    "Print the total, then the first take away the second.",
+    "The user types in two whole numbers, one on each line.",
+    "Print their total, then the first take away the second.",
     "The difference may be negative."
    ],
    "hint": "pyarith",
@@ -89,9 +89,9 @@
     ]
    },
    "brief": [
-    "Read the price of one pencil in pence, then how many are bought.",
-    "Print the total cost.",
-    "Then print half of one price, worked out with / ."
+    "The user types in two lines: the price of one pencil in pence, then how many are bought.",
+    "Print the total cost of all the pencils.",
+    "Then print half the price of one pencil, worked out with / ."
    ],
    "hint": "pyarith",
    "starter": "# Price in pence, then how many. Total cost, then half a price.\n",
@@ -149,7 +149,7 @@
     ]
    },
    "brief": [
-    "Read the number of books, then how many one crate holds.",
+    "The user types in two lines: the number of books, then how many one crate holds.",
     "Print how many full crates can be packed.",
     "Then print how many books are left over."
    ],
@@ -210,23 +210,13 @@
     ]
    },
    "brief": [
-    "Read the total number of stickers.",
-    "Print how many each of the 8 pupils gets.",
-    "Then print how many stickers are left over."
+    "The user types in one whole number: the total number of stickers.",
+    "There are always 8 pupils, so the 8 is fixed in your program, not typed in.",
+    "Print how many stickers each pupil gets, then how many are left over."
    ],
    "hint": "pyarith",
    "starter": "# Stickers in. Each pupil's share, then the leftovers.\n",
    "tests": [
-    {
-     "in": [
-      "200"
-     ],
-     "out": [
-      "25",
-      "0"
-     ],
-     "why": "They divide exactly here, so nothing is left. An empty second line means the % is missing."
-    },
     {
      "in": [
       "50"
@@ -236,6 +226,16 @@
       "2"
      ],
      "why": "6.25 means / was used for the share. A pupil cannot have a quarter of a sticker, so use // ."
+    },
+    {
+     "in": [
+      "200"
+     ],
+     "out": [
+      "25",
+      "0"
+     ],
+     "why": "They divide exactly here, so nothing is left. An empty second line means the % is missing."
     },
     {
      "in": [
@@ -254,7 +254,7 @@
    "id": "pr-l02-q5",
    "station": 2,
    "marks": 3,
-   "q": "Read a side length, then print the area and the volume.",
+   "q": "Print the area and the volume for a side length the user types in.",
    "teach": {
     "say": "** raises a number to a power, so 2 ** 5 is 2 multiplied by itself five times. Do not use ^ , which means something else in Python.",
     "code": [
@@ -267,7 +267,7 @@
     ]
    },
    "brief": [
-    "Read one whole number: the length of a side.",
+    "The user types in one whole number: the length of a side.",
     "Print the side to the power 2, the area of the square.",
     "Then print the side to the power 3, the volume of the cube."
    ],
@@ -311,7 +311,7 @@
    "id": "pr-l02-q6",
    "station": 2,
    "marks": 3,
-   "q": "Read a square's area and print the length of one side.",
+   "q": "Print the length of one side of a square, from an area the user types in.",
    "teach": {
     "say": "The power 0.5 is the square root, and it always gives a real number. Use float() for an input that may have a decimal point.",
     "code": [
@@ -322,8 +322,8 @@
     ]
    },
    "brief": [
-    "Read the area, which may have a decimal point.",
-    "Print the length of one side."
+    "The user types in the area, which may have a decimal point.",
+    "Print only the length of one side."
    ],
    "hint": "pyarith",
    "starter": "# Area in, side length out\n",
@@ -375,8 +375,8 @@
     ]
    },
    "brief": [
-    "Read an amount, which may have a decimal point.",
-    "Print it rounded to the nearest whole number.",
+    "The user types in one amount, which may have a decimal point.",
+    "Print it rounded to the nearest whole number, using round().",
     "Then print it rounded to 2 decimal places."
    ],
    "hint": "pyround",
@@ -432,23 +432,12 @@
     ]
    },
    "brief": [
-    "Read three whole numbers, one on each line.",
-    "Print their average, rounded to 1 decimal place."
+    "The user types in three whole numbers, one on each line.",
+    "Print only their average, rounded to 1 decimal place."
    ],
    "hint": "pyround",
    "starter": "# Three scores in, one rounded average out\n",
    "tests": [
-    {
-     "in": [
-      "7",
-      "8",
-      "9"
-     ],
-     "out": [
-      "8.0"
-     ],
-     "why": "This average is exact, and / still gives a real number, so the answer is 8.0 and not 8."
-    },
     {
      "in": [
       "5",
@@ -459,6 +448,17 @@
       "5.7"
      ],
      "why": "5.666666666666667 means the division is right but the round() is missing. 5 means // was used instead of / ."
+    },
+    {
+     "in": [
+      "7",
+      "8",
+      "9"
+     ],
+     "out": [
+      "8.0"
+     ],
+     "why": "This average is exact, and / still gives a real number, so the answer is 8.0 and not 8."
     },
     {
      "in": [
@@ -491,7 +491,7 @@
     ]
    },
    "brief": [
-    "Start with import random, then random.seed(int(input())) to read the seed.",
+    "Start with import random, then random.seed(int(input())). The user types in one whole number, the seed.",
     "Print two random whole numbers from 1 to 6, one on each line."
    ],
    "hint": "pyoutput",
@@ -545,7 +545,7 @@
     ]
    },
    "brief": [
-    "Start with import random, then random.seed(int(input())) to read the seed.",
+    "Start with import random, then random.seed(int(input())). The user types in one whole number, the seed.",
     "Print three random whole numbers from 10 to 20, one on each line.",
     "Then print their total."
    ],
@@ -609,7 +609,7 @@
     ]
    },
    "brief": [
-    "Read how many rolls were sold, then the price of one in pence.",
+    "The user types in two lines: how many rolls were sold, then the price of one in pence.",
     "Print the total takings in pence.",
     "Then print the whole pounds in that total, then the pence left over."
    ],

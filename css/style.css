@@ -339,6 +339,21 @@ textarea{width:100%;background:#0f1930;color:var(--fg);border:1px solid var(--li
   font:15px/1.5 Consolas,monospace;color:#cfe3ff;white-space:pre-wrap}
 .pyegout{display:flex;gap:8px;align-items:baseline;margin:0;font-size:15px;color:var(--soft)}
 .pyegout span{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--info)}
+/* One real run of the program: what is typed in, and what must be printed */
+.pyrun{border:2px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 12px;background:#101c31}
+.pyrunh{margin:0 0 8px;font-size:13px;letter-spacing:.07em;text-transform:uppercase;color:var(--edge)}
+.pyrunrow{display:flex;gap:12px;align-items:flex-start;margin:4px 0}
+.pyrunrow span{flex:0 0 76px;font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--soft);padding-top:3px}
+.pyrunrow code{flex:1;white-space:pre-wrap;font:16px/1.5 Consolas,monospace;color:#cfe3ff}
+.pyrunrow.out code{color:var(--ok);font-weight:600}
+/* The syntax reference, looked up while working */
+.refpane .reflist{flex:1;min-height:0;overflow:auto;padding-right:6px}
+.reflist section{margin:0 0 18px}
+.reflist h3{margin:0 0 8px;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--edge)}
+.refit{border-left:3px solid var(--line);padding:0 0 0 12px;margin:0 0 12px}
+.refit code{display:inline-block;font:17px/1.5 Consolas,monospace;color:#9fe6a0}
+.refit p{margin:2px 0 4px;font-size:16px;line-height:1.45}
+@media (min-width:1100px){.reflist{column-count:2;column-gap:28px}.reflist section{break-inside:avoid}}
 /* The line under the buttons that says where the pupil is up to across attempts */
 .pytry{margin:0 0 8px;font-size:15px;color:var(--soft);min-height:1.2em}
 /* After two failed checks the Hint button asks to be noticed, once */

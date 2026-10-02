@@ -26,7 +26,7 @@
    },
    "brief": [
     "Print exactly: Oak Lane tuck shop",
-    "Nothing else, and nothing to read in."
+    "Nothing is typed in by the user, and nothing else is printed."
    ],
    "hint": "pyoutput",
    "starter": "# Print one line\n",
@@ -46,7 +46,7 @@
    "id": "pr-l01-q2",
    "station": 0,
    "marks": 1,
-   "q": "Print Oak Lane tuck shop, then the item the user types.",
+   "q": "Print Oak Lane tuck shop, then the item the user types in.",
    "teach": {
     "say": "print() shows one line of text, inside quotation marks. input() hands back whatever the user typed, and a variable holds it until you print it.",
     "code": [
@@ -61,7 +61,7 @@
    },
    "brief": [
     "Print exactly: Oak Lane tuck shop",
-    "Then print the item the user types."
+    "Then ask the user for an item, and print what they type on the next line."
    ],
    "hint": "pyoutput",
    "starter": "# Print the shop name, then the item\n",
@@ -103,7 +103,7 @@
    "id": "pr-l01-q3",
    "station": 0,
    "marks": 2,
-   "q": "Print a three line receipt around the item the user types.",
+   "q": "Print a three line receipt around the item the user types in.",
    "teach": {
     "say": "Each print() makes a new line, and they run in the order you write them.",
     "code": [
@@ -117,7 +117,7 @@
    },
    "brief": [
     "Print exactly: ===== Tuck shop =====",
-    "Then print the item the user types.",
+    "Then ask the user for an item, and print what they type.",
     "Then print exactly: Thank you"
    ],
    "hint": "pyoutput",
@@ -175,9 +175,9 @@
     ]
    },
    "brief": [
-    "Read the customer's name.",
-    "Make a constant called PRICE holding the whole number 90.",
-    "Print the name, then PRICE."
+    "Ask the user for the customer's name.",
+    "Put the whole number 90 in a constant called PRICE. It is fixed in the program, not typed in.",
+    "Print the name, then the value in PRICE on the next line."
    ],
    "hint": "pyoutput",
    "starter": "# Make the constant, then print the name and the price\n",
@@ -219,7 +219,7 @@
    "id": "pr-l01-q5",
    "station": 1,
    "marks": 2,
-   "q": "Show a noticeboard changing from Closed to a new message.",
+   "q": "Show a noticeboard changing from Closed to a new message the user types in.",
    "teach": {
     "say": "= replaces whatever the variable held before, so only the newest value is left. Print the old value before you overwrite it.",
     "code": [
@@ -233,7 +233,7 @@
    },
    "brief": [
     "Put the text Closed in a variable and print it.",
-    "Read a new message into that same variable.",
+    "Ask the user for a new message and store it in that same variable.",
     "Print the variable again."
    ],
    "hint": "pyoutput",
@@ -276,7 +276,7 @@
    "id": "pr-l01-q6",
    "station": 2,
    "marks": 2,
-   "q": "Read a word and print it on three separate lines.",
+   "q": "Print a word the user types in on three separate lines.",
    "teach": {
     "say": "A variable keeps its value, so you can use it as many times as you like.",
     "code": [
@@ -290,8 +290,8 @@
     ]
    },
    "brief": [
-    "Read one line of input.",
-    "Print it three times, one on each line."
+    "Ask the user for one word.",
+    "Print that word three times, one on each line."
    ],
    "hint": "pyinput",
    "starter": "# Read the word, then print it three times\n",
@@ -336,7 +336,7 @@
    "id": "pr-l01-q7",
    "station": 2,
    "marks": 2,
-   "q": "Read a bus stop and a time, then print the time first.",
+   "q": "Print a bus stop and a time the user types in, with the time first.",
    "teach": {
     "say": "One input() reads one line, so two lines need two calls. Each value goes in its own variable, and you print them in any order.",
     "code": [
@@ -349,8 +349,8 @@
     ]
    },
    "brief": [
-    "Read the stop name, then the time.",
-    "Print the time, then the stop name."
+    "The user types in two lines: the stop name, then the time.",
+    "Print the time, then the stop name on the next line."
    ],
    "hint": "pyinput",
    "starter": "# Two inputs in, two lines out, the time first\n",
@@ -407,9 +407,8 @@
     ]
    },
    "brief": [
-    "Read a first name, then a last name.",
-    "Print one line: the first name, a space, the last name, then the words is a member.",
-    "For Anna and Lee that line reads: Anna Lee is a member"
+    "The user types in two lines: a first name, then a last name.",
+    "Print one line: the first name, a space, the last name, a space, then exactly: is a member"
    ],
    "hint": "pystring",
    "starter": "# Read two names, join them, print one line\n",
@@ -451,7 +450,7 @@
    "id": "pr-l01-q9",
    "station": 3,
    "marks": 3,
-   "q": "Print a name, then the number 3, then 0.25, then True.",
+   "q": "Print a name the user types in, then the number 3, then 0.25, then True.",
    "teach": {
     "say": "Python values come in different types: 7 is an integer, 1.5 a real number, False a Boolean, and text in quotation marks a string.",
     "code": [
@@ -466,9 +465,9 @@
     ]
    },
    "brief": [
-    "Read a name and print it.",
+    "Ask the user for a name, and print it.",
     "Then print the integer 3, then the real number 0.25.",
-    "Then print the Boolean True."
+    "Then print the Boolean True. Four lines in all."
    ],
    "hint": "pyoutput",
    "starter": "# A string, an integer, a real number and a Boolean, one per line\n",
@@ -516,7 +515,7 @@
    "id": "pr-l01-q10",
    "station": 4,
    "marks": 3,
-   "q": "Read two whole numbers and print their total.",
+   "q": "Print the total of two whole numbers the user types in.",
    "teach": {
     "say": "input() always hands back text, and + joins text instead of adding it. int() turns the text into a whole number first.",
     "code": [
@@ -528,8 +527,8 @@
     ]
    },
    "brief": [
-    "Read two whole numbers, one on each line.",
-    "Print their total."
+    "The user types in two whole numbers, one on each line.",
+    "Print only their total."
    ],
    "hint": "pyinput",
    "starter": "# Two whole numbers in, one total out\n",
@@ -583,13 +582,22 @@
     ]
    },
    "brief": [
-    "Read an amount, which may have a decimal point.",
+    "The user types in one amount, which may have a decimal point.",
     "Print one line like this: Fine due: 2.5 pounds",
     "The amount must print as a real number, so 3 prints as 3.0."
    ],
    "hint": "pyinput",
    "starter": "# Read the amount, make it a real number, print the sentence\n",
    "tests": [
+    {
+     "in": [
+      "0.75"
+     ],
+     "out": [
+      "Fine due: 0.75 pounds"
+     ],
+     "why": "A crash here is joining a number to text with +. Cast it back with str(fine) first."
+    },
     {
      "in": [
       "2.50"
@@ -607,15 +615,6 @@
       "Fine due: 3.0 pounds"
      ],
      "why": "3 instead of 3.0 means int() was used. An integer has no decimal part; a real number always shows one."
-    },
-    {
-     "in": [
-      "0.75"
-     ],
-     "out": [
-      "Fine due: 0.75 pounds"
-     ],
-     "why": "A crash here is joining a number to text with +. Cast it back with str(fine) first."
     }
    ],
    "fb": "float() casts text to a real number and str() casts a number back to text. One line often needs both."
@@ -636,8 +635,8 @@
     ]
    },
    "brief": [
-    "Read a name, then a whole number of races already run.",
-    "Print one line: the name, then the words of Elm.",
+    "The user types in two lines: a name, then a whole number of races already run.",
+    "Print the name, a space, then exactly: of Elm",
     "Then print the number of races with 1 added."
    ],
    "hint": "pyinput",

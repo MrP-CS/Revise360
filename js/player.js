@@ -407,15 +407,33 @@
     const teach = !t ? "" : `<div class="pyteach"><p>${esc(t.say)}</p>` +
       (t.code ? `<pre class="pyeg">${t.code.map(esc).join("\n")}</pre>` : "") +
       (t.out ? `<p class="pyegout"><span>shows</span>${t.out.map(esc).join("<br>")}</p>` : "") + "</div>";
+
+    /* What the program is given and what it must print, shown as one real run.
+     * It is built from the first test rather than written by hand, so it is on
+     * every question, in the same place, and can never disagree with marking.
+     * This is what stops a pupil guessing whether a value is typed in or just
+     * written into the program - the commonest way a correct-looking answer
+     * fails. It shows the required OUTPUT, not the program that makes it. */
+    const t0 = (task.tests || [])[0] || {};
+    const given = (t0.in || []), shows = (t0.out || []);
+    const files = Object.keys(t0.files || {});
+    const runEg = !shows.length ? "" : `<div class="pyrun">
+      <p class="pyrunh">One run of your program</p>
+      ${files.length ? `<div class="pyrunrow"><span>file</span><code>${files.map(esc).join(", ")}</code></div>` : ""}
+      <div class="pyrunrow"><span>typed in</span><code>${given.length ? given.map(esc).join("\n") : "nothing"}</code></div>
+      <div class="pyrunrow out"><span>prints</span><code>${shows.map(esc).join("\n")}</code></div>
+    </div>`;
     shell(head, "#50dc96", `<div class="vwrap">
         <div class="vside" style="flex:0 0 400px">
           ${qn}<p class="q" style="font-size:19px">${esc(task.q)}</p>
           ${teach}
           ${brief ? `<ul class="pybrief">${brief}</ul>` : ""}
+          ${runEg}
           <div class="pybar">
             <button class="btn ghost" id="pyrun">▶ Run</button>
             <button class="btn" id="pycheck">Check my answer</button>
             ${task.hint ? '<button class="btn ghost" id="pyhint">Hint</button>' : ""}
+            ${window.R360Ref ? '<button class="btn ghost" id="pyref">Syntax</button>' : ""}
             <span class="pystate" id="pystate"></span>
           </div>
           <p class="pytry" id="pytry"></p>
@@ -449,6 +467,7 @@
     R360Py.ready().then(() => busy(false, ""));
 
     if ($("#pyhint")) $("#pyhint").onclick = () => openHint(task);
+    if ($("#pyref")) $("#pyref").onclick = () => openRef();
 
     $("#pyrun").onclick = async () => {
       busy(true, "Running\u2026"); say('<span class="muted">Running\u2026</span>');
@@ -596,6 +615,29 @@
     if (hintView) { hintView.dispose(); hintView = null; }
     const p = document.getElementById("pyhintpane"); if (p) p.remove();
     const b = $("#pyhint"); if (b) { b.classList.remove("nudge"); b.focus(); }
+  }
+
+  /* The syntax reference: every command the course has taught up to this lesson,
+   * each with what it does and a one-line example. It is a thing to look up, not
+   * a hint - it never mentions the question, and no entry is a solution to one.
+   * It opens over the editor like the hint, so the program is kept. */
+  function openRef() {
+    if (!window.R360Ref || hintOpen()) return;
+    const upto = Number(String(exp.id).match(/-l0*(\d+)/) ? String(exp.id).match(/-l0*(\d+)/)[1] : 99);
+    const groups = R360Ref.upTo(upto);
+    if (!groups.length) return;
+    const pane = document.createElement("div");
+    pane.id = "pyhintpane"; pane.className = "hintpane refpane";
+    pane.innerHTML = `<div class="hinthead"><b>Python syntax</b><span>Everything the course has used so far. Look things up here as often as you like.</span>
+        <button class="btn ghost" id="hintclose">Close</button></div>
+      <div class="reflist">${groups.map(g => `<section><h3>${esc(g.name)}</h3>${g.items.map(it => `
+        <div class="refit"><code>${esc(it.syntax)}</code><p>${esc(it.what)}</p>` +
+        (it.eg ? `<pre class="pyeg">${(Array.isArray(it.eg) ? it.eg : [it.eg]).map(esc).join("\n")}</pre>` : "") +
+        (it.egOut ? `<p class="pyegout"><span>shows</span>${(Array.isArray(it.egOut) ? it.egOut : [it.egOut]).map(esc).join("<br>")}</p>` : "") +
+        `</div>`).join("")}</section>`).join("")}</div>`;
+    box.appendChild(pane);
+    $("#hintclose").onclick = closeHint;
+    $("#hintclose").focus();
   }
   function openHint(task) {
     if (!task.hint || !window.R360Diagrams || hintOpen()) return;

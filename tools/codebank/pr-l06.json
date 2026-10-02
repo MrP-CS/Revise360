@@ -28,7 +28,7 @@
     ]
    },
    "brief": [
-    "Read one word.",
+    "The user types in one word.",
     "Print its length, then its first character, then its last.",
     "One on each line."
    ],
@@ -99,9 +99,9 @@
     ]
    },
    "brief": [
-    "Read one word, then a position counting from 0.",
+    "The user types in two lines: one word, then a position counting from 0.",
     "Print the character at that position.",
-    "If there is no such position, print: no such position"
+    "If the word has no such position, print exactly: no such position"
    ],
    "hint": "pystring",
    "starter": "# Print the character at that position, if it exists\n",
@@ -175,9 +175,9 @@
     ]
    },
    "brief": [
-    "Read one word.",
+    "The user types in one word.",
     "Print its first three characters and nothing else.",
-    "If it has fewer than three, print: too short"
+    "If it has fewer than three characters, print exactly: too short"
    ],
    "hint": "pystring",
    "starter": "# The first three characters, or too short\n",
@@ -246,9 +246,9 @@
     ]
    },
    "brief": [
-    "Read one line of text.",
+    "The user types in one line of text.",
     "Print it with its first and last characters removed.",
-    "If it has fewer than three characters, print: nothing inside"
+    "If it has fewer than three characters, print exactly: nothing inside"
    ],
    "hint": "pystring",
    "starter": "# Drop one character from each end\n",
@@ -318,9 +318,9 @@
     ]
    },
    "brief": [
-    "Read two words, one on each line.",
-    "If they are the same word once capitals are ignored, print: match",
-    "Otherwise print: different - then the word that comes first alphabetically, exactly as typed."
+    "The user types in two words, one on each line.",
+    "If they are the same word once capitals are ignored, print exactly: match",
+    "Otherwise print exactly different, then the word that comes first alphabetically, exactly as it was typed. Ignore capitals when deciding which comes first."
    ],
    "hint": "pystring",
    "starter": "# Same word? If not, which one comes first?\n",
@@ -398,8 +398,8 @@
     ]
    },
    "brief": [
-    "Read one line of text.",
-    "Print how many of its characters are capital letters."
+    "The user types in one line of text.",
+    "Print only how many of its characters are capital letters."
    ],
    "hint": "pystring",
    "starter": "# Count the capitals\n",
@@ -470,9 +470,9 @@
     ]
    },
    "brief": [
-    "Read one line of text, then the word to look for.",
-    "If the word is not in the text, print: missing",
-    "Otherwise print: found - then: at the start - or: inside"
+    "The user types in two lines: a line of text, then the word to look for.",
+    "If the word is not in the text, print exactly: missing",
+    "Otherwise print exactly found, then exactly at the start when the text begins with the word, or exactly inside when it does not."
    ],
    "hint": "pystring",
    "starter": "# Is the word there, and does the text begin with it?\n",
@@ -562,9 +562,9 @@
     ]
    },
    "brief": [
-    "Read one line of text, then the word to look for.",
+    "The user types in two lines: a line of text, then the word to look for.",
     "Print the position where the word starts, counting from 0.",
-    "If it is not in the text, print: not found"
+    "If the word is not in the text, print exactly: not found"
    ],
    "hint": "pystring",
    "starter": "# Where does the word start?\n",
@@ -639,7 +639,7 @@
     ]
    },
    "brief": [
-    "Read one lower-case letter.",
+    "The user types in one lower-case letter.",
     "Print the letter that comes next in the alphabet.",
     "After z comes a."
    ],
@@ -703,9 +703,9 @@
     ]
    },
    "brief": [
-    "Read one line of text.",
+    "The user types in one line of text.",
     "Build a string of its letters and a string of its digits, each in the order they appear.",
-    "Print the letters, then the digits, using: none - for either one that is empty."
+    "Print the letters, then the digits. For either one that is empty, print exactly: none"
    ],
    "hint": "pystring",
    "starter": "# Build two strings, one character at a time\n",
@@ -781,9 +781,9 @@
     ]
    },
    "brief": [
-    "Read one word.",
+    "The user types in one word.",
     "Build it backwards one character at a time, not with a slice or reversed().",
-    "Print the reversed word, then: palindrome - or: not a palindrome"
+    "Print the reversed word, then exactly palindrome when it reads the same both ways once capitals are ignored, or exactly not a palindrome when it does not."
    ],
    "hint": "pystring",
    "starter": "# Build the word backwards, then compare\n",

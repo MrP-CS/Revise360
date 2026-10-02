@@ -22,8 +22,8 @@
        "marks": 2,
        "q": "Read six numbers into a grid of two rows of three.",
        "brief": [
-        "Read six whole numbers, one on each line.",
-        "The first three are row 0 and the last three are row 1.",
+        "The user types in six whole numbers, one on each line.",
+        "Store them in a grid of two rows of three: the first three typed are row 0, the last three are row 1.",
         "Print the grid itself, for example: [[9, 4, 1], [7, 0, 2]]"
        ],
        "starter": "# Two rows of three, then print the grid\n",
@@ -91,29 +91,12 @@
        "marks": 2,
        "q": "Print the number of rows, the row length, then one row.",
        "brief": [
-        "Read six names into a grid of three rows of two.",
-        "Then read one whole number: a row number counting from 0.",
-        "Print how many rows there are, how many names are in a row, then that row."
+        "The user types in six names, one on each line, then one more line: a row number counting from 0.",
+        "Store the names in a grid of three rows of two, filling row 0 first.",
+        "Print how many rows there are, then how many names are in one row, then that whole row as a list."
        ],
        "starter": "# Three rows of two names, then report on one row\n",
        "tests": [
-        {
-         "in": [
-          "Ada",
-          "Bram",
-          "Cleo",
-          "Dilan",
-          "Ella",
-          "Faye",
-          "0"
-         ],
-         "out": [
-          "3",
-          "2",
-          "['Ada', 'Bram']"
-         ],
-         "why": "len(grid) counts the rows and len(grid[0]) counts the names in one row - here that is 3 and 2, so mixing them up shows at once."
-        },
         {
          "in": [
           "Ada",
@@ -130,6 +113,23 @@
           "['Cleo', 'Dilan']"
          ],
          "why": "Row 1 is the second row. Printing Ada and Bram means you counted the rows from 1."
+        },
+        {
+         "in": [
+          "Ada",
+          "Bram",
+          "Cleo",
+          "Dilan",
+          "Ella",
+          "Faye",
+          "0"
+         ],
+         "out": [
+          "3",
+          "2",
+          "['Ada', 'Bram']"
+         ],
+         "why": "len(grid) counts the rows and len(grid[0]) counts the names in one row - here that is 3 and 2, so mixing them up shows at once."
         },
         {
          "in": [
@@ -184,31 +184,12 @@
        "marks": 2,
        "q": "Print the value stored at a typed row and column.",
        "brief": [
-        "Read nine whole numbers into a grid of three rows of three.",
-        "Then read a row number and a column number, both counting from 0.",
-        "Print the value stored there, and nothing else."
+        "The user types in nine whole numbers, one on each line, then two more lines: a row number, then a column number, both counting from 0.",
+        "Store the numbers in a grid of three rows of three, filling row 0 first.",
+        "Print the value stored at that row and column, and nothing else."
        ],
        "starter": "# Three rows of three, then one value out of it\n",
        "tests": [
-        {
-         "in": [
-          "4",
-          "9",
-          "2",
-          "7",
-          "8",
-          "1",
-          "6",
-          "3",
-          "5",
-          "0",
-          "0"
-         ],
-         "out": [
-          "4"
-         ],
-         "why": "Row 0, column 0 is the very first value. Printing 8 means you took grid[1][1], so both numbers were counted from 1."
-        },
         {
          "in": [
           "4",
@@ -239,13 +220,32 @@
           "6",
           "3",
           "5",
+          "0",
+          "0"
+         ],
+         "out": [
+          "4"
+         ],
+         "why": "Row 0, column 0 is the very first value. Printing 8 means you took grid[1][1], so both numbers were counted from 1."
+        },
+        {
+         "in": [
+          "4",
+          "9",
+          "2",
+          "7",
+          "8",
+          "1",
+          "6",
+          "3",
+          "5",
           "2",
           "1"
          ],
          "out": [
           "3"
          ],
-         "why": "This is the test above with the two numbers swapped, so it fails any program that reads the column first."
+         "why": "This is the first test with the two numbers swapped round, so it fails any program that reads the column first."
         },
         {
          "in": [
@@ -304,12 +304,32 @@
        "marks": 3,
        "q": "Print one whole row and one whole column of the grid.",
        "brief": [
-        "Read nine whole numbers into a grid of three rows of three.",
-        "Then read a row number and a column number, both counting from 0.",
-        "Print that row on one line, then that column, with single spaces between the values."
+        "The user types in nine whole numbers, one on each line, then two more lines: a row number, then a column number, both counting from 0.",
+        "Store the numbers in a grid of three rows of three, filling row 0 first.",
+        "Print that whole row on one line, then that whole column on the next line, values separated by single spaces."
        ],
        "starter": "# One row across, one column down\n",
        "tests": [
+        {
+         "in": [
+          "3",
+          "6",
+          "1",
+          "5",
+          "2",
+          "9",
+          "7",
+          "0",
+          "4",
+          "1",
+          "1"
+         ],
+         "out": [
+          "5 2 9",
+          "6 2 0"
+         ],
+         "why": "A whole row is just grid[r], but a column has to be gathered by taking grid[i][c] from every row in turn."
+        },
         {
          "in": [
           "3",
@@ -349,26 +369,6 @@
           "1 9 4"
          ],
          "why": "Row 2 and column 2 are the last of each. Counting from 1 would crash or give the wrong line here."
-        },
-        {
-         "in": [
-          "3",
-          "6",
-          "1",
-          "5",
-          "2",
-          "9",
-          "7",
-          "0",
-          "4",
-          "1",
-          "1"
-         ],
-         "out": [
-          "5 2 9",
-          "6 2 0"
-         ],
-         "why": "A whole row is just grid[r], but a column has to be gathered by taking grid[i][c] from every row in turn."
         }
        ],
        "fb": "A row is one item of the grid; a column is not stored anywhere, so you collect it one row at a time.",
@@ -389,9 +389,9 @@
        "marks": 3,
        "q": "Print six numbers back as two tidy rows of three.",
        "brief": [
-        "Read six whole numbers into a grid of two rows of three.",
-        "Print each row on its own line, with single spaces between the values.",
-        "Print no square brackets and no commas."
+        "The user types in six whole numbers, one on each line.",
+        "Store them in a grid of two rows of three, filling row 0 first.",
+        "Print each row on its own line, values separated by single spaces, with no square brackets and no commas."
        ],
        "starter": "# Two rows in, two tidy lines out\n",
        "tests": [
@@ -463,9 +463,9 @@
        "marks": 3,
        "q": "Print the row, column and value of every cell.",
        "brief": [
-        "Read nine whole numbers into a grid of three rows of three.",
-        "Print each cell's row, column and value, separated by single spaces.",
-        "One line per cell, all of row 0 first, counting from 0."
+        "The user types in nine whole numbers, one on each line.",
+        "Store them in a grid of three rows of three, filling row 0 first.",
+        "Print one line per cell: its row, its column, then its value, separated by single spaces, all of row 0 first and counting from 0."
        ],
        "starter": "# Visit every cell and say where it is\n",
        "tests": [
@@ -563,33 +563,12 @@
        "marks": 3,
        "q": "Print the total of one row of the grid.",
        "brief": [
-        "Read twelve whole numbers into a grid of three rows of four.",
-        "Then read one whole number: a row number counting from 0.",
+        "The user types in twelve whole numbers, one on each line, then one more line: a row number counting from 0.",
+        "Store the numbers in a grid of three rows of four, filling row 0 first.",
         "Print the total of that row, and nothing else."
        ],
        "starter": "# Three rows of four, then the total of one row\n",
        "tests": [
-        {
-         "in": [
-          "2",
-          "5",
-          "3",
-          "1",
-          "4",
-          "4",
-          "0",
-          "7",
-          "0",
-          "0",
-          "9",
-          "3",
-          "0"
-         ],
-         "out": [
-          "11"
-         ],
-         "why": "Row 0 is 2, 5, 3, 1 which comes to 11. An answer of 15 is row 1, which means you counted the rows from 1."
-        },
         {
          "in": [
           "2",
@@ -610,6 +589,27 @@
           "15"
          ],
          "why": "Total the four values in one row, not the first value of every row - that would give 6 whichever row was asked for."
+        },
+        {
+         "in": [
+          "2",
+          "5",
+          "3",
+          "1",
+          "4",
+          "4",
+          "0",
+          "7",
+          "0",
+          "0",
+          "9",
+          "3",
+          "0"
+         ],
+         "out": [
+          "11"
+         ],
+         "why": "Row 0 is 2, 5, 3, 1 which comes to 11. An answer of 15 is row 1, which means you counted the rows from 1."
         },
         {
          "in": [
@@ -674,9 +674,9 @@
        "marks": 4,
        "q": "Print the total of each row, then of the whole grid.",
        "brief": [
-        "Read twelve whole numbers into a grid of three rows of four.",
-        "Print the total of each row, one on each line, starting with row 0.",
-        "Then print the total of the whole grid."
+        "The user types in twelve whole numbers, one on each line.",
+        "Store them in a grid of three rows of four, filling row 0 first.",
+        "Print the total of each row, one on each line starting with row 0, then the total of the whole grid on the last line."
        ],
        "starter": "# A total for each row, then one for everything\n",
        "tests": [
@@ -768,33 +768,12 @@
        "marks": 4,
        "q": "Print the total of one column of the grid.",
        "brief": [
-        "Read twelve whole numbers into a grid of four rows of three.",
-        "Then read one whole number: a column number counting from 0.",
+        "The user types in twelve whole numbers, one on each line, then one more line: a column number counting from 0.",
+        "Store the numbers in a grid of four rows of three, filling row 0 first.",
         "Print the total of that column, and nothing else."
        ],
        "starter": "# Four rows of three, then the total of one column\n",
        "tests": [
-        {
-         "in": [
-          "3",
-          "7",
-          "2",
-          "5",
-          "1",
-          "4",
-          "0",
-          "6",
-          "8",
-          "9",
-          "2",
-          "1",
-          "0"
-         ],
-         "out": [
-          "17"
-         ],
-         "why": "Column 0 is 3, 5, 0, 9 which comes to 17. An answer of 12 means you totalled row 0 instead."
-        },
         {
          "in": [
           "3",
@@ -815,6 +794,27 @@
           "16"
          ],
          "why": "Gather the column with grid[r][c] from every row - the column number stays the same while the row number changes."
+        },
+        {
+         "in": [
+          "3",
+          "7",
+          "2",
+          "5",
+          "1",
+          "4",
+          "0",
+          "6",
+          "8",
+          "9",
+          "2",
+          "1",
+          "0"
+         ],
+         "out": [
+          "17"
+         ],
+         "why": "Column 0 is 3, 5, 0, 9 which comes to 17. An answer of 12 means you totalled row 0 instead."
         },
         {
          "in": [
@@ -879,9 +879,9 @@
        "marks": 5,
        "q": "Print the total of each column, then of the whole grid.",
        "brief": [
-        "Read twelve whole numbers into a grid of four rows of three.",
-        "Print the total of each column, one on each line, starting with column 0.",
-        "Then print the total of the whole grid."
+        "The user types in twelve whole numbers, one on each line.",
+        "Store them in a grid of four rows of three, filling row 0 first.",
+        "Print the total of each column, one on each line starting with column 0, then the total of the whole grid on the last line."
        ],
        "starter": "# A total for each column, then one for everything\n",
        "tests": [
@@ -973,31 +973,12 @@
        "marks": 6,
        "q": "Find where a name sits, and how many share its row.",
        "brief": [
-        "Read nine names into three rows of three. A free seat holds the word empty.",
-        "Then read a name. If it is nowhere in the grid, print only: not seated",
-        "Otherwise print its row and column, then how many seats in that row are not empty."
+        "The user types in nine names, one on each line, filling a grid of three rows of three; a free seat is typed as the word empty.",
+        "Then one more line: a name to look for. If it is nowhere in the grid, print only: not seated",
+        "Otherwise print its row and column on one line, separated by a space and counting from 0, then on the next line how many seats in that row are not empty."
        ],
        "starter": "# Search the grid for the name, then count that row\n",
        "tests": [
-        {
-         "in": [
-          "Nia",
-          "Omar",
-          "empty",
-          "Quin",
-          "empty",
-          "Rafi",
-          "Vik",
-          "Wren",
-          "Yves",
-          "Nia"
-         ],
-         "out": [
-          "0 0",
-          "2"
-         ],
-         "why": "Nia is in the top left, which is row 0 column 0. Printing 1 1 means you counted rows and columns from 1."
-        },
         {
          "in": [
           "Nia",
@@ -1016,6 +997,25 @@
           "2"
          ],
          "why": "Row first, then column. Printing 2 1 means the two were the wrong way round."
+        },
+        {
+         "in": [
+          "Nia",
+          "Omar",
+          "empty",
+          "Quin",
+          "empty",
+          "Rafi",
+          "Vik",
+          "Wren",
+          "Yves",
+          "Nia"
+         ],
+         "out": [
+          "0 0",
+          "2"
+         ],
+         "why": "Nia is in the top left, which is row 0 column 0. Printing 1 1 means you counted rows and columns from 1."
         },
         {
          "in": [

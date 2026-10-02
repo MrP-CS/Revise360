@@ -23,7 +23,7 @@
        "q": "Print one line of text: Oak Lane tuck shop.",
        "brief": [
         "Print exactly: Oak Lane tuck shop",
-        "Nothing else, and nothing to read in."
+        "Nothing is typed in by the user, and nothing else is printed."
        ],
        "starter": "# Print one line\n",
        "tests": [
@@ -50,10 +50,10 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Print Oak Lane tuck shop, then the item the user types.",
+       "q": "Print Oak Lane tuck shop, then the item the user types in.",
        "brief": [
         "Print exactly: Oak Lane tuck shop",
-        "Then print the item the user types."
+        "Then ask the user for an item, and print what they type on the next line."
        ],
        "starter": "# Print the shop name, then the item\n",
        "tests": [
@@ -106,10 +106,10 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Print a three line receipt around the item the user types.",
+       "q": "Print a three line receipt around the item the user types in.",
        "brief": [
         "Print exactly: ===== Tuck shop =====",
-        "Then print the item the user types.",
+        "Then ask the user for an item, and print what they type.",
         "Then print exactly: Thank you"
        ],
        "starter": "# Three lines of output\n",
@@ -177,9 +177,9 @@
        "marks": 2,
        "q": "Print the customer's name, then a price kept in a constant.",
        "brief": [
-        "Read the customer's name.",
-        "Make a constant called PRICE holding the whole number 90.",
-        "Print the name, then PRICE."
+        "Ask the user for the customer's name.",
+        "Put the whole number 90 in a constant called PRICE. It is fixed in the program, not typed in.",
+        "Print the name, then the value in PRICE on the next line."
        ],
        "starter": "# Make the constant, then print the name and the price\n",
        "tests": [
@@ -230,10 +230,10 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Show a noticeboard changing from Closed to a new message.",
+       "q": "Show a noticeboard changing from Closed to a new message the user types in.",
        "brief": [
         "Put the text Closed in a variable and print it.",
-        "Read a new message into that same variable.",
+        "Ask the user for a new message and store it in that same variable.",
         "Print the variable again."
        ],
        "starter": "# One variable, printed twice, with a new value in between\n",
@@ -296,10 +296,10 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Read a word and print it on three separate lines.",
+       "q": "Print a word the user types in on three separate lines.",
        "brief": [
-        "Read one line of input.",
-        "Print it three times, one on each line."
+        "Ask the user for one word.",
+        "Print that word three times, one on each line."
        ],
        "starter": "# Read the word, then print it three times\n",
        "tests": [
@@ -355,10 +355,10 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Read a bus stop and a time, then print the time first.",
+       "q": "Print a bus stop and a time the user types in, with the time first.",
        "brief": [
-        "Read the stop name, then the time.",
-        "Print the time, then the stop name."
+        "The user types in two lines: the stop name, then the time.",
+        "Print the time, then the stop name on the next line."
        ],
        "starter": "# Two inputs in, two lines out, the time first\n",
        "tests": [
@@ -425,9 +425,8 @@
        "marks": 3,
        "q": "Join a first and last name into one line of text.",
        "brief": [
-        "Read a first name, then a last name.",
-        "Print one line: the first name, a space, the last name, then the words is a member.",
-        "For Anna and Lee that line reads: Anna Lee is a member"
+        "The user types in two lines: a first name, then a last name.",
+        "Print one line: the first name, a space, the last name, a space, then exactly: is a member"
        ],
        "starter": "# Read two names, join them, print one line\n",
        "tests": [
@@ -478,11 +477,11 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Print a name, then the number 3, then 0.25, then True.",
+       "q": "Print a name the user types in, then the number 3, then 0.25, then True.",
        "brief": [
-        "Read a name and print it.",
+        "Ask the user for a name, and print it.",
         "Then print the integer 3, then the real number 0.25.",
-        "Then print the Boolean True."
+        "Then print the Boolean True. Four lines in all."
        ],
        "starter": "# A string, an integer, a real number and a Boolean, one per line\n",
        "tests": [
@@ -552,10 +551,10 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Read two whole numbers and print their total.",
+       "q": "Print the total of two whole numbers the user types in.",
        "brief": [
-        "Read two whole numbers, one on each line.",
-        "Print their total."
+        "The user types in two whole numbers, one on each line.",
+        "Print only their total."
        ],
        "starter": "# Two whole numbers in, one total out\n",
        "tests": [
@@ -608,12 +607,21 @@
        "marks": 3,
        "q": "Print a fine amount inside a sentence, as a real number.",
        "brief": [
-        "Read an amount, which may have a decimal point.",
+        "The user types in one amount, which may have a decimal point.",
         "Print one line like this: Fine due: 2.5 pounds",
         "The amount must print as a real number, so 3 prints as 3.0."
        ],
        "starter": "# Read the amount, make it a real number, print the sentence\n",
        "tests": [
+        {
+         "in": [
+          "0.75"
+         ],
+         "out": [
+          "Fine due: 0.75 pounds"
+         ],
+         "why": "A crash here is joining a number to text with +. Cast it back with str(fine) first."
+        },
         {
          "in": [
           "2.50"
@@ -631,15 +639,6 @@
           "Fine due: 3.0 pounds"
          ],
          "why": "3 instead of 3.0 means int() was used. An integer has no decimal part; a real number always shows one."
-        },
-        {
-         "in": [
-          "0.75"
-         ],
-         "out": [
-          "Fine due: 0.75 pounds"
-         ],
-         "why": "A crash here is joining a number to text with +. Cast it back with str(fine) first."
         }
        ],
        "fb": "float() casts text to a real number and str() casts a number back to text. One line often needs both.",
@@ -670,8 +669,8 @@
        "marks": 4,
        "q": "Print a competitor's name and house, then their next race number.",
        "brief": [
-        "Read a name, then a whole number of races already run.",
-        "Print one line: the name, then the words of Elm.",
+        "The user types in two lines: a name, then a whole number of races already run.",
+        "Print the name, a space, then exactly: of Elm",
         "Then print the number of races with 1 added."
        ],
        "starter": "# A name and a number in. Name of Elm, then one more race.\n",
