@@ -14,13 +14,14 @@
    "id": "pr-l08-q1",
    "station": 0,
    "marks": 2,
-   "q": "Write a program that puts six numbers into a grid of two rows and three columns.",
+   "q": "Put six numbers into a grid of two rows and three columns.",
    "brief": [
     "Read six whole numbers, one on each line.",
     "The first three are row 0 and the last three are row 1.",
     "Store them as a list of two lists.",
     "Print the grid itself, the way Python prints it - for example: [[1, 2, 3], [4, 5, 6]]"
    ],
+   "hint": "array2d",
    "starter": "grid = []\n\n# Read six numbers into two rows of three, then print grid\n",
    "tests": [
     {
@@ -72,13 +73,14 @@
    "id": "pr-l08-q2",
    "station": 0,
    "marks": 2,
-   "q": "Write a program that reports the size and contents of one tutor group taken from a list of lists.",
+   "q": "Print how many names one tutor group holds, then the whole group.",
    "brief": [
     "The list of groups is written for you - do not change it.",
     "Read one whole number. It is a row number, counting from 0.",
     "Print how many names are in that row.",
     "Print that whole row on the next line, the way Python prints a list - for example: ['Jo']"
    ],
+   "hint": "array2d",
    "starter": "groups = [['Ada', 'Bram', 'Cleo'],\n          ['Dilan', 'Ella'],\n          ['Faye', 'Gus', 'Hari', 'Isla'],\n          ['Jo']]\n\n# Read a row number, print how many names are in that row, then print the row\n",
    "tests": [
     {
@@ -128,13 +130,14 @@
    "id": "pr-l08-q3",
    "station": 1,
    "marks": 2,
-   "q": "Write a program that prints the points a team scored in one round, from a grid of rows and columns.",
+   "q": "Print the points stored at one row and column of the grid.",
    "brief": [
     "The grid is written for you - do not change it.",
     "Each row is a team and each column is a round.",
     "Read two whole numbers: the row number, then the column number. Both count from 0.",
     "Print the value stored there, and nothing else."
    ],
+   "hint": "array2d",
    "starter": "points = [[4, 9, 2, 7],\n          [8, 1, 6, 3],\n          [5, 0, 12, 11],\n          [10, 13, 14, 15]]\n\n# Read a row number then a column number, and print the value there\n",
    "tests": [
     {
@@ -194,13 +197,14 @@
    "id": "pr-l08-q4",
    "station": 1,
    "marks": 3,
-   "q": "Write a program that prints one whole row and one whole column of a grid.",
+   "q": "Print one whole row and one whole column of the grid.",
    "brief": [
     "The grid is written for you - do not change it.",
     "Read two whole numbers: a row number, then a column number. Both count from 0.",
     "Print that whole row on one line, the values separated by a single space.",
     "Print that whole column on the next line, the values separated by a single space, working down from the top."
    ],
+   "hint": "array2d",
    "starter": "table = [[3, 6, 1, 8],\n         [5, 2, 9, 4],\n         [7, 0, 11, 10]]\n\n# Read a row number and a column number, then print that row and that column\n",
    "tests": [
     {
@@ -243,7 +247,7 @@
    "id": "pr-l08-q5",
    "station": 2,
    "marks": 3,
-   "q": "Write a program that reads six numbers and prints them back as a tidy grid of two rows.",
+   "q": "Print six numbers back as a tidy grid of two rows.",
    "brief": [
     "Read six whole numbers, one on each line.",
     "The first three are row 0 and the last three are row 1.",
@@ -251,6 +255,7 @@
     "On each line put the three values separated by a single space.",
     "Do not print any square brackets or commas."
    ],
+   "hint": "array2d",
    "starter": "grid = []\n\n# Read six numbers into two rows of three, then print the grid tidily\n",
    "tests": [
     {
@@ -305,13 +310,14 @@
    "id": "pr-l08-q6",
    "station": 2,
    "marks": 3,
-   "q": "Write a program that reads nine numbers into a three by three grid and prints where each one is stored.",
+   "q": "Print the row, column and value of every cell in a 3 by 3 grid.",
    "brief": [
     "Read nine whole numbers, one on each line, filling the grid row by row.",
     "Go through every cell with two loops, using range(len(...)) for both.",
     "For each cell print the row number, a space, the column number, a space, then the value.",
     "Rows and columns count from 0. Work along row 0 first, then row 1, then row 2."
    ],
+   "hint": "array2d",
    "starter": "grid = []\n\n# Read nine numbers into a 3 by 3 grid, then print the row, column and value of each cell\n",
    "tests": [
     {
@@ -396,13 +402,14 @@
    "id": "pr-l08-q7",
    "station": 3,
    "marks": 3,
-   "q": "Write a program that totals the merit points one class earned, from a grid of classes and weeks.",
+   "q": "Print the total of one row of the merit points grid.",
    "brief": [
     "The grid is written for you - do not change it.",
     "Each row is a class and each column is a week.",
     "Read one whole number. It is a row number, counting from 0.",
     "Print the total of that row, and nothing else."
    ],
+   "hint": "array2d",
    "starter": "merits = [[2, 5, 3, 1],\n          [4, 4, 0, 7],\n          [6, 1, 2, 2],\n          [0, 0, 9, 3],\n          [8, 2, 1, 5]]\n\n# Read a row number and print the total of that row\n",
    "tests": [
     {
@@ -448,12 +455,13 @@
    "id": "pr-l08-q8",
    "station": 3,
    "marks": 4,
-   "q": "Write a program that reads a grid of three rows by four columns and totals every row, then everything.",
+   "q": "Total every row of a 3 by 4 grid, then the whole grid.",
    "brief": [
     "Read twelve whole numbers, one on each line, filling the grid row by row.",
     "Print the total of each row, one on each line, starting with row 0.",
     "Print the total of the whole grid on the last line."
    ],
+   "hint": "array2d",
    "starter": "grid = []\n\n# Read twelve numbers into 3 rows of 4, print each row total, then the total of everything\n",
    "tests": [
     {
@@ -532,13 +540,14 @@
    "id": "pr-l08-q9",
    "station": 4,
    "marks": 4,
-   "q": "Write a program that totals one column of a sales grid.",
+   "q": "Total one column of the sales grid.",
    "brief": [
     "The grid is written for you - do not change it.",
     "Each row is a day and each column is a shop.",
     "Read one whole number. It is a column number, counting from 0.",
     "Print the total of that column, and nothing else."
    ],
+   "hint": "array2d",
    "starter": "sales = [[3, 7, 2],\n         [5, 1, 4],\n         [0, 6, 8],\n         [9, 2, 1]]\n\n# Read a column number and print the total of that column\n",
    "tests": [
     {
@@ -575,12 +584,13 @@
    "id": "pr-l08-q10",
    "station": 4,
    "marks": 5,
-   "q": "Write a program that reads a grid of four rows by three columns and totals every column, then everything.",
+   "q": "Total every column of a 4 by 3 grid, then the whole grid.",
    "brief": [
     "Read twelve whole numbers, one on each line, filling the grid row by row.",
     "Print the total of each column, one on each line, starting with column 0.",
     "Print the total of the whole grid on the last line."
    ],
+   "hint": "array2d",
    "starter": "grid = []\n\n# Read twelve numbers into 4 rows of 3, print each column total, then the total of everything\n",
    "tests": [
     {
@@ -659,7 +669,7 @@
    "id": "pr-l08-q11",
    "station": 5,
    "marks": 6,
-   "q": "Write a program that finds where a pupil sits in a seating plan and says how many pupils share that row.",
+   "q": "Find where a pupil sits, and how many pupils share that row.",
    "brief": [
     "The seating plan is written for you - do not change it.",
     "A seat holding the word empty has nobody in it.",
@@ -668,6 +678,7 @@
     "Then print, on the next line, how many seats in that same row are not empty.",
     "If the name is not in the plan anywhere, print only: not seated"
    ],
+   "hint": "array2d",
    "starter": "plan = [['Nia', 'Omar', 'empty', 'Pia'],\n        ['Quin', 'empty', 'Rafi', 'Sol'],\n        ['empty', 'Tam', 'Uma', 'empty'],\n        ['Vik', 'Wren', 'Xan', 'Yves']]\n\n# Read a name, find it in the plan, print its row and column and how many\n# pupils are in that row - or print 'not seated'\n",
    "tests": [
     {

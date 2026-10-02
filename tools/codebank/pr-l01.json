@@ -14,13 +14,14 @@
    "id": "pr-l01-q1",
    "station": 0,
    "marks": 1,
-   "q": "The tuck shop screen shows the shop's name above whatever item has been scanned.",
+   "q": "At the tuck shop till, print the shop name above the item scanned.",
    "brief": [
     "The line item = input() is already written. Leave it where it is.",
     "The line print(item) is already written at the end. Leave it there too.",
     "Add one line of your own that prints exactly: Oak Lane tuck shop",
     "Your line must print before the item."
    ],
+   "hint": "pyoutput",
    "starter": "item = input()\n\n# Write one line here that prints:  Oak Lane tuck shop\n\nprint(item)\n",
    "tests": [
     {
@@ -60,13 +61,14 @@
    "id": "pr-l01-q2",
    "station": 0,
    "marks": 2,
-   "q": "The tuck shop till prints a three line receipt around the item that was scanned.",
+   "q": "Print a three line tuck shop receipt around the item scanned.",
    "brief": [
     "Keep the first line, item = input(). It puts the scanned item into item.",
     "Print this line exactly: ===== Tuck shop =====",
     "Next print the item, using print(item) with no quotation marks.",
     "Print this line last: Thank you"
    ],
+   "hint": "pyoutput",
    "starter": "item = input()\n\n# Three lines of output, in this order:\n#   ===== Tuck shop =====\n#   the item\n#   Thank you\n",
    "tests": [
     {
@@ -109,13 +111,14 @@
    "id": "pr-l01-q3",
    "station": 1,
    "marks": 2,
-   "q": "Every drink at the sports day stall costs the same, so the price never changes while the program runs.",
+   "q": "Print a customer's name, then a drink price kept in a constant.",
    "brief": [
     "Keep the first line, name = input(). It puts the customer's name into name.",
     "Make a constant called PRICE holding the whole number 90. A constant is a value the program never changes, and is written in capital letters.",
     "Print the customer's name.",
     "On the next line print the value held in PRICE."
    ],
+   "hint": "pyoutput",
    "starter": "name = input()\n\n# Make your constant here, then print the name and then the price.\n",
    "tests": [
     {
@@ -155,7 +158,7 @@
    "id": "pr-l01-q4",
    "station": 1,
    "marks": 2,
-   "q": "The noticeboard outside the library has one slot. It starts the day saying Closed and is then replaced with a new message.",
+   "q": "Print the noticeboard message, then replace it with a new one and print again.",
    "brief": [
     "Keep the first line, later = input(). It holds the message that replaces the first one.",
     "Put the text Closed into a variable of your own.",
@@ -163,6 +166,7 @@
     "Now give the same variable the value held in later.",
     "Print that same variable again."
    ],
+   "hint": "pyoutput",
    "starter": "later = input()\n\n# One variable, printed twice, with a new value in between.\n",
    "tests": [
     {
@@ -202,12 +206,13 @@
    "id": "pr-l01-q5",
    "station": 2,
    "marks": 2,
-   "q": "The library self-service screen asks a borrower for their name, then logs them in.",
+   "q": "Read a borrower's name, then print Welcome above it.",
    "brief": [
     "Read one line of input: the borrower's name. Leave the brackets of input() empty, with no prompt text inside.",
     "Print this line exactly: Welcome",
     "Print the name on the next line."
    ],
+   "hint": "pyinput",
    "starter": "# Read the name, then print Welcome and then the name.\n",
    "tests": [
     {
@@ -247,13 +252,14 @@
    "id": "pr-l01-q6",
    "station": 2,
    "marks": 2,
-   "q": "A bus stop screen is told which stop it is at and the time of the next bus, and shows the time above the stop name.",
+   "q": "Read a bus stop name and a bus time, then print the time first.",
    "brief": [
     "Read two lines of input: first the stop name, then the time.",
     "Print the time.",
     "Print the stop name on the next line.",
     "Use input() with empty brackets both times."
    ],
+   "hint": "pyinput",
    "starter": "# Two inputs: the stop first, then the time.\n# Two lines of output: the time first, then the stop.\n",
    "tests": [
     {
@@ -296,12 +302,13 @@
    "id": "pr-l01-q7",
    "station": 3,
    "marks": 3,
-   "q": "A library ticket joins a borrower's two names into one line of text.",
+   "q": "Join a borrower's two names into one line and print it.",
    "brief": [
     "Read two lines of input: the first name, then the last name.",
     "Print one single line in this form: Anna Lee is a member",
     "That is the first name, one space, the last name, then a space and the words is a member."
    ],
+   "hint": "strslice",
    "starter": "# Read two names, join them, and print one line.\n",
    "tests": [
     {
@@ -341,7 +348,7 @@
    "id": "pr-l01-q8",
    "station": 3,
    "marks": 3,
-   "q": "A library account record holds four different kinds of value: a name, a count of books, a daily fine and a flag saying the account is open.",
+   "q": "Print four values of four different data types, one per line.",
    "brief": [
     "Read one line of input: the borrower's name. This is a string.",
     "Print the name.",
@@ -350,6 +357,7 @@
     "Print the Boolean True, meaning the account is open.",
     "Four lines of output in that order."
    ],
+   "hint": "pyoutput",
    "starter": "# A string, an integer, a real number and a Boolean, one per line.\n",
    "tests": [
     {
@@ -395,12 +403,13 @@
    "id": "pr-l01-q9",
    "station": 4,
    "marks": 3,
-   "q": "The tuck shop gets two deliveries of juice cartons in one week and needs the total.",
+   "q": "Read two whole numbers and print their total.",
    "brief": [
     "Read two lines of input. Each one is a whole number of cartons.",
     "Print the total number of cartons as a whole number.",
     "One line of output."
    ],
+   "hint": "pyinput",
    "starter": "# Two whole numbers in, one total out.\n",
    "tests": [
     {
@@ -440,13 +449,14 @@
    "id": "pr-l01-q10",
    "station": 4,
    "marks": 3,
-   "q": "The library fine screen shows the amount owed inside a sentence, always as a real number.",
+   "q": "Print a fine amount inside a sentence, as a real number.",
    "brief": [
     "Read one line of input: the fine in pounds. It may or may not have a decimal point.",
     "Print one line in this form: Fine due: 2.5 pounds",
     "The amount must be printed as a real number, so an input of 3 prints as 3.0 and an input of 2.50 prints as 2.5.",
     "Keep the colon after Fine due and the word pounds at the end."
    ],
+   "hint": "pyinput",
    "starter": "# Read the amount, turn it into a real number, print it in the sentence.\n",
    "tests": [
     {
@@ -483,7 +493,7 @@
    "id": "pr-l01-q11",
    "station": 5,
    "marks": 4,
-   "q": "A sports day card is printed for each competitor in Elm house, showing their name, how many races they still have to run and their best time so far.",
+   "q": "Print a sports day card showing a competitor's name, house, races and time.",
    "brief": [
     "Read three lines of input: the competitor's name, then a whole number of races already run, then a time in seconds which may have a decimal point.",
     "Make a constant called HOUSE holding the text Elm.",
@@ -492,6 +502,7 @@
     "Print the time as a real number, so an input of 60 prints as 60.0.",
     "Three lines of output."
    ],
+   "hint": "pyinput",
    "starter": "# A name, a whole number and a real number.\n# Then: name of HOUSE / races plus one / the time as a real number.\n",
    "tests": [
     {

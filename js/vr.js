@@ -498,7 +498,8 @@
         ] },
         { row: [
           { btn: v.busy ? "\u2026" : "\u25b6 Run", id: "crun", center: true, size: 26, onClick: runCodeVR },
-          { btn: v.busy || v.marked ? "\u2026" : "Check my answer", id: "ccheck", center: true, size: 26, onClick: checkCodeVR },
+          { btn: v.busy ? "\u2026" : "Check my answer", id: "ccheck", center: true, size: 26, onClick: checkCodeVR },
+          ...(v.task.hint ? [{ btn: "Hint", id: "chint", center: true, size: 26, onClick: hintCodeVR }] : []),
           { btn: "Close", id: "cclose", center: true, size: 26, onClick: closeCodeVR }
         ] }] });
     }
@@ -515,8 +516,18 @@
       v.busy = false; v.state = ""; showKeyboard(); paintCode(); paintCode();
     }
 
+    /* The hint in the headset is the same diagram the screen shows, opened the
+     * way any diagram opens in here. The code panel stays where it is behind
+     * it, so closing the diagram puts the pupil back in front of their
+     * program with every character still there. */
+    function hintCodeVR() {
+      const v = vrCode; if (!v || !v.task.hint || !window.R360Diagrams) return;
+      if (!R360Diagrams.kinds.includes(v.task.hint)) return;
+      openDiagramVR({ id: "hint:" + v.task.hint, dg: { diagram: v.task.hint, title: "Hint: how this technique works" } });
+    }
+
     async function checkCodeVR() {
-      const v = vrCode; if (!v || v.busy || v.marked) return;
+      const v = vrCode; if (!v || v.busy) return;
       const tests = v.task.tests || []; if (!tests.length) return;
       const broke = (v.task.forbid || []).find(f => v.text.indexOf(f[0]) >= 0);
       if (broke) { v.result = broke[1]; v.resultOk = false; showKeyboard(); paintCode(); return; }
@@ -532,11 +543,15 @@
           + (r.error ? r.error.split("\n")[0] : "Yours printed " + (r.stdout.trim() || "nothing") + ".");
       }
       const max = core.marks(v.task), got = Math.round(max * passed / tests.length);
-      core.award(v.k, v.list[v.n], got);
-      v.busy = false; v.state = ""; v.marked = true;
+      // Same rule as on screen: keep trying, keep the best mark reached.
+      v.attempts = (v.attempts || 0) + 1;
+      v.best = Math.max(v.best || 0, got);
+      core.awardBest(v.k, v.list[v.n], v.best);
+      v.busy = false; v.state = "";
       v.resultOk = passed === tests.length;
-      v.result = passed + " of " + tests.length + " tests passed - " + got + " of " + max + " marks."
-        + (firstFail ? "  " + firstFail : "");
+      v.result = passed + " of " + tests.length + " tests passed - best so far " + v.best + " of " + max + " marks."
+        + (firstFail ? "  " + firstFail : "")
+        + (!v.resultOk && v.attempts >= 2 && v.task.hint ? "  Press Hint: it explains the technique this one needs." : "");
       showKeyboard(); paintCode();
     }
 

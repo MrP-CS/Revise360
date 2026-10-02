@@ -66,12 +66,13 @@
          "why": "The name is real but padded. Strip it once and use the stripped version, or the stray spaces end up in your output."
         }
        ],
-       "fb": "A presence check means checking the input is not empty once the spaces around it have been removed."
+       "fb": "A presence check means checking the input is not empty once the spaces around it have been removed.",
+       "hint": "pyvalidate"
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "Write a type check that refuses anything which is not a whole number, without the program crashing.",
+       "q": "Write a type check that refuses anything that is not a whole number.",
        "brief": [
         "Read one line of text.",
         "It only counts as a whole number if every character is a digit - a minus sign or a decimal point means it is not.",
@@ -136,7 +137,8 @@
          "why": "Zero is a perfectly good whole number. A check that tests whether the number is true rather than whether it is digits would reject it."
         }
        ],
-       "fb": "isdigit() asks the question safely, before int() gets the chance to crash."
+       "fb": "isdigit() asks the question safely, before int() gets the chance to crash.",
+       "hint": "pyvalidate"
       }
      ]
     },
@@ -151,7 +153,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Write a range check for a satisfaction score that must be from 1 to 10 inclusive.",
+       "q": "Write a range check for a satisfaction score from 1 to 10 inclusive.",
        "brief": [
         "Read one whole number.",
         "If it is from 1 to 10 inclusive, print: valid",
@@ -215,12 +217,13 @@
          "why": "Well below the range, and still too low rather than too high."
         }
        ],
-       "fb": "Inclusive means both boundaries pass, so the four values worth testing are 0, 1, 10 and 11."
+       "fb": "Inclusive means both boundaries pass, so the four values worth testing are 0, 1, 10 and 11.",
+       "hint": "pyvalidate"
       },
       {
        "t": "code",
        "marks": 4,
-       "q": "Check a temperature reading that may be negative, and refuse anything that is not a number at all.",
+       "q": "Check a temperature that may be negative, and refuse anything that is not a number.",
        "brief": [
         "Read one line of text.",
         "A minus sign at the front is allowed here, but a decimal point is not.",
@@ -295,7 +298,8 @@
          "why": "int() refuses a decimal point too, so this is reported as not a number rather than rounded."
         }
        ],
-       "fb": "try and except around int() catch the wrong type; the range test then runs only on a value you know is a number."
+       "fb": "try and except around int() catch the wrong type; the range test then runs only on a value you know is a number.",
+       "hint": "pyvalidate"
       }
      ]
     },
@@ -374,7 +378,8 @@
          "why": "Nothing typed has length 0, which is fewer than 8 - so too short, not a crash."
         }
        ],
-       "fb": "len() gives the length; the two boundaries worth testing are 7 and 8 at one end, 16 and 17 at the other."
+       "fb": "len() gives the length; the two boundaries worth testing are 7 and 8 at one end, 16 and 17 at the other.",
+       "hint": "pyvalidate"
       },
       {
        "t": "code",
@@ -454,7 +459,8 @@
          "why": "Nothing typed must be refused rather than crash - the length test catches it before any slicing matters."
         }
        ],
-       "fb": "A format check is a length check and a check on what each part contains, and both have to pass."
+       "fb": "A format check is a length check and a check on what each part contains, and both have to pass.",
+       "hint": "strslice"
       }
      ]
     },
@@ -535,7 +541,8 @@
          "why": "6 is one over the top. Reading the next number inside the loop is what gives the user another go."
         }
        ],
-       "fb": "The usual shape is to read once, then a while loop that prints the message and reads again while the value is still wrong."
+       "fb": "The usual shape is to read once, then a while loop that prints the message and reads again while the value is still wrong.",
+       "hint": "pyvalidate"
       },
       {
        "t": "code",
@@ -609,7 +616,8 @@
          "why": "0 is digits, so it gets the range message and not the type message."
         }
        ],
-       "fb": "Check the type first and the range second, because a range test on text that is not a number is what crashes the program."
+       "fb": "Check the type first and the range second, because a range test on text that is not a number is what crashes the program.",
+       "hint": "pyvalidate"
       }
      ]
     },
@@ -696,7 +704,8 @@
          "why": "The username is in capitals and the brief says the match is exact, so this counts as an unknown user."
         }
        ],
-       "fb": "Find the username first; only once you know where it is can you look up the password that belongs with it."
+       "fb": "Find the username first; only once you know where it is can you look up the password that belongs with it.",
+       "hint": "searches"
       },
       {
        "t": "code",
@@ -781,7 +790,8 @@
          "why": "A passcode in the wrong case is wrong, so the first attempt fails - passwords are case sensitive."
         }
        ],
-       "fb": "Count the attempts and stop on either condition: three used up, or the right passcode given."
+       "fb": "Count the attempts and stop on either condition: three used up, or the right passcode given.",
+       "hint": "pyvalidate"
       }
      ]
     },
@@ -796,7 +806,7 @@
       {
        "t": "code",
        "marks": 7,
-       "q": "Write the sign-up part of a club system: a username and an age, each re-asked until valid.",
+       "q": "Keep asking for a username, then an age, until each one is valid.",
        "brief": [
         "First read usernames until one is valid, checking in this order:",
         "if it is fewer than 5 or more than 12 characters, print: username must be 5 to 12 characters",
@@ -889,7 +899,8 @@
          "why": "Nothing typed and a word both fail the type check; 10 and 20 are one outside each end of the range."
         }
        ],
-       "fb": "Each rule gets its own message and the checks go in order, so the user is told the one thing that is actually wrong."
+       "fb": "Each rule gets its own message and the checks go in order, so the user is told the one thing that is actually wrong.",
+       "hint": "pyvalidate"
       },
       {
        "t": "code",
@@ -993,7 +1004,8 @@
          "why": "The spaces round the name and the quantity must be stripped, or the name prints padded and the digit check fails."
         }
        ],
-       "fb": "Defensive design means a wrong line is reported and skipped, not allowed to stop the whole run."
+       "fb": "Defensive design means a wrong line is reported and skipped, not allowed to stop the whole run.",
+       "hint": "pyvalidate"
       }
      ]
     },

@@ -20,7 +20,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "A tannoy repeats every announcement four times. Write a program that prints a message four times.",
+       "q": "Print the same message four times.",
        "brief": [
         "Read one word - the message.",
         "Print it four times, one on each line.",
@@ -65,12 +65,13 @@
          "why": "A one letter message is still repeated four times."
         }
        ],
-       "fb": "range(4) counts 0, 1, 2, 3 - four numbers, so the loop body runs four times even though it never reaches 4."
+       "fb": "range(4) counts 0, 1, 2, 3 - four numbers, so the loop body runs four times even though it never reaches 4.",
+       "hint": "pyrange"
       },
       {
        "t": "code",
        "marks": 2,
-       "q": "Write a program that repeats a word as many times as the user asks for.",
+       "q": "Print start, then a word as many times as the user asks.",
        "brief": [
         "Read one word on the first line.",
         "Read one whole number on the second line - how many times to repeat it.",
@@ -129,7 +130,8 @@
          "why": "The number has to come from input(), and remember int() - range() cannot use the text '5'."
         }
        ],
-       "fb": "range(n) uses whatever number is in n, including 0, which simply means the body never runs."
+       "fb": "range(n) uses whatever number is in n, including 0, which simply means the body never runs.",
+       "hint": "pyrange"
       }
      ]
     },
@@ -144,7 +146,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Write a program that numbers the lanes of a swimming pool.",
+       "q": "Number the lanes of a swimming pool.",
        "brief": [
         "Read one whole number - how many lanes there are.",
         "Print the lane numbers from 1 up to and including that number, one on each line.",
@@ -186,12 +188,13 @@
          "why": "The last number must appear. Missing 3 is the off by one that range(1, n) always causes."
         }
        ],
-       "fb": "range stops before its second number, so to finish on n you have to write range(1, n + 1)."
+       "fb": "range stops before its second number, so to finish on n you have to write range(1, n + 1).",
+       "hint": "pyrange"
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "A tiler needs the area of each square slab from 1 metre upwards. Write a program that lists them.",
+       "q": "List each side length from 1 upwards with the area of that square.",
        "brief": [
         "Read one whole number - the largest side length in metres.",
         "For every side length from 1 up to and including that number, print one line:",
@@ -244,7 +247,8 @@
          "why": "Two lines only. A third line means your range went one too far."
         }
        ],
-       "fb": "The loop variable is an ordinary number, so you can calculate with it inside the loop - i * i changes on every turn."
+       "fb": "The loop variable is an ordinary number, so you can calculate with it inside the loop - i * i changes on every turn.",
+       "hint": "pyrange"
       }
      ]
     },
@@ -259,7 +263,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "A school hall has numbered rows. Write a program that lists the rows in a block from a first row to a last row.",
+       "q": "List every row number from a first row to a last row.",
        "brief": [
         "Read two whole numbers, one on each line - the first row number, then the last row number.",
         "Print every row number from the first up to and including the last, one on each line.",
@@ -318,12 +322,13 @@
          "why": "Four lines. Five means you added 1 to the start as well as the end."
         }
        ],
-       "fb": "range takes a start and a stop, and the stop is never reached, so include the last value by writing last + 1."
+       "fb": "range takes a start and a stop, and the stop is never reached, so include the last value by writing last + 1.",
+       "hint": "pyrange"
       },
       {
        "t": "code",
        "marks": 4,
-       "q": "A gauge is read five times, going up or down by a fixed amount each time. Write a program that prints the five readings.",
+       "q": "Print five gauge readings that change by a fixed step each time.",
        "brief": [
         "Read two whole numbers, one on each line - the first reading, then the step.",
         "Print five readings, one on each line, starting at the first reading and changing by the step each time.",
@@ -404,7 +409,8 @@
          "why": "A negative start with a positive step. The start is just a number - there is nothing special to do about the minus sign."
         }
        ],
-       "fb": "range takes a third number, the step: range(start, stop, step). A negative step counts down, and the stop still has to be past the last value you want."
+       "fb": "range takes a third number, the step: range(start, stop, step). A negative step counts down, and the stop still has to be past the last value you want.",
+       "hint": "pyrange"
       }
      ]
     },
@@ -419,7 +425,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "A tuck shop counts up the day's takings. Write a program that totals a set of amounts.",
+       "q": "Print the total of a set of amounts.",
        "brief": [
         "Read one whole number - how many amounts follow.",
         "Then read that many whole numbers, one on each line.",
@@ -488,12 +494,13 @@
          "why": "The loop must run exactly as many times as the first number says, and only the total is printed - not each amount."
         }
        ],
-       "fb": "A running total needs three things: set it to 0 before the loop, add to it inside the loop, print it after the loop."
+       "fb": "A running total needs three things: set it to 0 before the loop, add to it inside the loop, print it after the loop.",
+       "hint": "constructs"
       },
       {
        "t": "code",
        "marks": 4,
-       "q": "A weather club logs the overnight temperature for a week. Write a program that reports on the readings.",
+       "q": "Print the total, how many are below 0, the highest and the lowest reading.",
        "brief": [
         "Read one whole number - how many readings follow.",
         "Then read that many whole numbers, one on each line - temperatures in degrees Celsius.",
@@ -581,7 +588,8 @@
          "why": "The highest value appears twice, which must not be counted twice in the total or change the answer."
         }
        ],
-       "fb": "Keep a separate variable for each thing you are tracking, and update them all inside the same loop. For a highest or lowest, start from the first reading, not from 0."
+       "fb": "Keep a separate variable for each thing you are tracking, and update them all inside the same loop. For a highest or lowest, start from the first reading, not from 0.",
+       "hint": "constructs"
       }
      ]
     },
@@ -596,7 +604,7 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Write a program that draws a rectangle of stars of any size.",
+       "q": "Draw a rectangle of stars of any size.",
        "brief": [
         "Read two whole numbers, one on each line - the number of rows, then the number of stars in each row.",
         "Print the rectangle: one line per row, each line made of that many * characters with nothing between them.",
@@ -651,12 +659,13 @@
          "why": "More rows than stars per row. If you got two rows of four stars, the two inputs are the wrong way round."
         }
        ],
-       "fb": "The outer loop counts the rows and the inner loop builds one row. Build the row into a string first, then print it once the inner loop has finished."
+       "fb": "The outer loop counts the rows and the inner loop builds one row. Build the row into a string first, then print it once the inner loop has finished.",
+       "hint": "pyrange"
       },
       {
        "t": "code",
        "marks": 5,
-       "q": "Write a program that prints a multiplication square.",
+       "q": "Print a multiplication square.",
        "brief": [
         "Read one whole number - the size of the square.",
         "Print that many lines. The line for row r holds r times 1, r times 2, and so on up to r times the size.",
@@ -708,7 +717,8 @@
          "why": "The row number is fixed while the inner loop runs, so the outer counter must be used in the multiplication too."
         }
        ],
-       "fb": "The outer counter stays still while the inner one runs all the way through, and the number you print is the two counters multiplied together."
+       "fb": "The outer counter stays still while the inner one runs all the way through, and the number you print is the two counters multiplied together.",
+       "hint": "pyrange"
       }
      ]
     },
@@ -723,7 +733,7 @@
       {
        "t": "code",
        "marks": 6,
-       "q": "A spelling game scores words by how many vowels they hold. Write a program that reports on a set of words.",
+       "q": "Count the vowels in each of a set of words.",
        "brief": [
         "Read one whole number - how many words follow.",
         "Then read that many words, one on each line, all in lower case.",
@@ -797,7 +807,8 @@
          "why": "The same vowel twice counts twice, so go through the letters one at a time rather than checking whether a letter is present."
         }
        ],
-       "fb": "Two counters do different jobs here: one resets for each word, inside the outer loop, and the total is set up once before it and printed once after it."
+       "fb": "Two counters do different jobs here: one resets for each word, inside the outer loop, and the total is set up once before it and printed once after it.",
+       "hint": "pyrange"
       }
      ]
     },

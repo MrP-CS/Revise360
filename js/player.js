@@ -236,7 +236,9 @@
   function zoom(d) { cam.fov = Math.min(100, Math.max(35, cam.fov + d)); cam.updateProjectionMatrix(); }
   el.addEventListener("wheel", e => { e.preventDefault(); zoom(e.deltaY * .03); }, { passive: false });
   addEventListener("keydown", e => {
-    if ($("#modal").classList.contains("open")) { if (e.key === "Escape") closeModal(); return; }
+    // Escape closes the hint first, so a pupil who opened it does not lose the
+    // code they have written by pressing Escape once too often.
+    if ($("#modal").classList.contains("open")) { if (e.key === "Escape") { if (hintOpen()) closeHint(); else closeModal(); } return; }
     if (e.key === "Escape") closeDrawer();
     const step = 8; if (e.target !== document.body) return;
     if (e.key === "ArrowLeft") lon -= step; if (e.key === "ArrowRight") lon += step; if (e.key === "ArrowUp") lat += step; if (e.key === "ArrowDown") lat -= step;
@@ -403,8 +405,10 @@
           <div class="pybar">
             <button class="btn ghost" id="pyrun">▶ Run</button>
             <button class="btn" id="pycheck">Check my answer</button>
+            ${task.hint ? '<button class="btn ghost" id="pyhint">Hint</button>' : ""}
             <span class="pystate" id="pystate"></span>
           </div>
+          <p class="pytry" id="pytry"></p>
           <div class="pytests" id="pytests"></div>
           <div class="fb" id="fb" aria-live="polite"></div>
           <div class="mrow" id="mrow"></div>
@@ -418,17 +422,23 @@
     const ed = R360Py.editor($("#pyed"), task.starter || "");
     const out = $("#pyout"), state = $("#pystate");
     const tests = task.tests || [];
-    let marked = false;
+    /* Programming is trial and error, so a code question is never locked after
+     * one check the way a multiple-choice question is: the pupil keeps the best
+     * mark they reach, and the help gets more specific the more they try. */
+    let attempts = 0, best = 0;
 
     const say = (html, bad) => { out.innerHTML = bad ? `<span class="err">${html}</span>` : html; };
     const busy = (on, msg) => {
-      $("#pyrun").disabled = on; $("#pycheck").disabled = on || marked;
+      $("#pyrun").disabled = on; $("#pycheck").disabled = on;
+      if ($("#pyhint")) $("#pyhint").disabled = on;
       state.textContent = msg || "";
     };
     // The runtime is a few megabytes, so it is fetched when a code question is
     // opened rather than on every page, and the wait is said out loud.
     busy(true, "Starting Python\u2026");
     R360Py.ready().then(() => busy(false, ""));
+
+    if ($("#pyhint")) $("#pyhint").onclick = () => openHint(task);
 
     $("#pyrun").onclick = async () => {
       busy(true, "Running\u2026"); say('<span class="muted">Running\u2026</span>');
@@ -467,13 +477,31 @@
         list2.appendChild(row);
       }
       busy(false, "");
-      marked = true; $("#pycheck").disabled = true;
+      attempts++;
       const max = marks(task), got = Math.round(max * passed / tests.length);
-      award(k, i2(k, list, n), got);
+      best = Math.max(best, got);
+      awardBest(k, i2(k, list, n), best);
       const all = passed === tests.length;
-      feedback(all, all ? null : `${passed} of ${tests.length} tests passed - ${got} of ${max} marks.`,
+
+      /* The help gets more specific the more times they have checked: the first
+       * failure is theirs to read, the second points at the hint, and by the
+       * third the hint is one button press away in the feedback itself. */
+      const tryLine = $("#pytry");
+      if (all) tryLine.textContent = "";
+      else if (attempts === 1) tryLine.textContent = "Change one thing and check again. Keeping your best mark.";
+      else if (attempts === 2) tryLine.textContent = "Still not there. The Hint button explains the technique this question needs.";
+      else tryLine.textContent = `Attempt ${attempts}. Open the hint, then come back and change one thing at a time.`;
+      if (!all && attempts >= 2 && $("#pyhint")) $("#pyhint").classList.add("nudge");
+
+      const row = $("#mrow"); row.innerHTML = "";
+      feedback(all, all ? null : `${passed} of ${tests.length} tests passed - best so far ${best} of ${max} marks.`,
         all ? `All ${tests.length} tests passed. ${task.fb || ""}`
             : (task.fb || "Look at the first test that failed and work out what your program printed instead."));
+      if (!all && attempts >= 3 && task.hint) {
+        const h = document.createElement("button");
+        h.className = "btn ghost"; h.textContent = "Show me the hint";
+        h.onclick = () => openHint(task); row.appendChild(h);
+      }
       nextBtn(k, list, n);
     };
   }
@@ -547,7 +575,51 @@
     $("#dnext").onclick = () => diagView.next();
     diagView.announce();
   }
+  /* The hint for a code question: the diagram that teaches the technique the
+   * question needs, over the editor rather than instead of it. It is a panel
+   * inside the same window, so the pupil's program is still there, untouched,
+   * when they close it - losing their code to look something up would be a
+   * reason never to look anything up. */
+  let hintView = null;
+  const hintOpen = () => !!document.getElementById("pyhintpane");
+  function closeHint() {
+    if (hintView) { hintView.dispose(); hintView = null; }
+    const p = document.getElementById("pyhintpane"); if (p) p.remove();
+    const b = $("#pyhint"); if (b) { b.classList.remove("nudge"); b.focus(); }
+  }
+  function openHint(task) {
+    if (!task.hint || !window.R360Diagrams || hintOpen()) return;
+    if (!R360Diagrams.kinds.includes(task.hint)) return;
+    const pane = document.createElement("div");
+    pane.id = "pyhintpane"; pane.className = "hintpane";
+    pane.innerHTML = `<div class="hinthead"><b>Hint</b><span>How this technique works — not the answer to this question.</span>
+        <button class="btn ghost" id="hintclose">Close hint</button></div>
+      <div class="vwrap">
+        <div class="vstage" id="hint2d"></div>
+        <div class="vside">
+          <div class="vnow"><b id="hstep"></b><span id="hcap"></span></div>
+          <div class="vrow"><button class="btn ghost" id="hprev">‹ Back</button><button class="btn" id="hplay">Pause</button><button class="btn ghost" id="hnext">Next ›</button></div>
+        </div>
+      </div>`;
+    box.appendChild(pane);
+    let nSteps = 0;
+    hintView = R360Diagrams.viewer($("#hint2d"), task.hint, (i, st, playing) => {
+      $("#hstep").textContent = st.name;
+      $("#hcap").textContent = st.caption;
+      $("#hplay").textContent = playing ? "Pause" : "Replay";
+      $("#hprev").disabled = i === 0;
+      $("#hnext").disabled = i === nSteps - 1;
+    }, { hideCaption: true });
+    nSteps = hintView.steps.length;
+    $("#hplay").onclick = () => hintView.toggle();
+    $("#hprev").onclick = () => hintView.prev();
+    $("#hnext").onclick = () => hintView.next();
+    $("#hintclose").onclick = closeHint;
+    hintView.announce();
+    $("#hintclose").focus();
+  }
   function closeModal() {
+    if (hintOpen()) closeHint();
     if (sprintTimer) { clearInterval(sprintTimer); sprintTimer = null; }
     if (modelView) { modelView.dispose(); modelView = null; }
     if (diagView) { diagView.dispose(); diagView = null; }
@@ -591,6 +663,19 @@
     const sc = exp.scenes[cur], key = k + "-" + i, m = marks(sc.stations[k].tasks[i]);
     if (reviewMode) { if (got === m) prog.review[sc.id + ":" + key] = true; }
     else if (prog.scenes[sc.id].ans[key] === undefined) prog.scenes[sc.id].ans[key] = got;
+    save(); hud();
+  }
+  /* A knowledge question keeps the first answer, which is the point of it. A
+   * code question keeps the best, because getting it working on the third try
+   * is what programming is, and a pupil who improves their program should see
+   * the mark improve with it. */
+  function awardBest(k, i, got) {
+    const sc = exp.scenes[cur], key = k + "-" + i, m = marks(sc.stations[k].tasks[i]);
+    if (reviewMode) { if (got === m) prog.review[sc.id + ":" + key] = true; }
+    else {
+      const had = prog.scenes[sc.id].ans[key];
+      if (had === undefined || got > had) prog.scenes[sc.id].ans[key] = got;
+    }
     save(); hud();
   }
   function feedback(ok, partial, text) { const fb = $("#fb"); fb.className = "fb show " + (ok ? "ok" : "no"); fb.innerHTML = `<strong>${ok ? "Correct!" : partial || "Not quite."}</strong>${esc(text)}`; }
@@ -750,7 +835,7 @@
 
   Object.assign(core, {
     exp, prog, student, CFG, publicDemo, scene, cam, renderer: r, grp, mat, marks, shuffle, esc, save, hud, drawNav, refreshSprites,
-    stationState, taskList, award, asset, completeStation, markInfo, setReview, loadScene, cubeFrom, world, texFor, sameOutput,
+    stationState, taskList, award, awardBest, asset, completeStation, markInfo, setReview, loadScene, cubeFrom, world, texFor, sameOutput,
     sceneHooks: [], closeUI() { closeDrawer(); if (modal.classList.contains("open")) closeModal(); }
   });
   // Live values (getters, so VR always sees the current scene and mode)

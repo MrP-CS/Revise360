@@ -180,18 +180,27 @@ const srv = http.createServer((q, r) => {
   const registered = await pg.evaluate(() => R360Diagrams.kinds);
   const expDir = path.join(ROOT, "experiences");
   const placed = new Map();
+  const hinted = new Map();
   for (const f of fs.readdirSync(expDir).filter(f => f.endsWith(".json") && f !== "registry.json")) {
     let d; try { d = JSON.parse(fs.readFileSync(path.join(expDir, f), "utf8")); } catch (e) { continue; }
-    for (const sc of d.scenes || [])
+    for (const sc of d.scenes || []) {
       for (const g of sc.diagrams || [])
         placed.set(g.diagram, (placed.get(g.diagram) || 0) + 1);
+      /* A diagram does not have to be a button on a wall. The Hint button on a
+       * code question opens one too, and those are reached only that way - so
+       * counting stations alone would report seven live diagrams as orphans. */
+      for (const st of sc.stations || [])
+        for (const t of st.tasks || [])
+          if (t.hint) hinted.set(t.hint, (hinted.get(t.hint) || 0) + 1);
+    }
   }
-  const missing = [...placed.keys()].filter(k => registered.indexOf(k) < 0);
-  const unplaced = registered.filter(k => !placed.has(k));
+  const reachable = new Set([...placed.keys(), ...hinted.keys()]);
+  const missing = [...reachable].filter(k => registered.indexOf(k) < 0);
+  const unplaced = registered.filter(k => !reachable.has(k));
   if (missing.length) console.log("\nnamed in an experience but not registered:", missing.join(", "));
-  if (unplaced.length) console.log("\nregistered but on no station yet:", unplaced.join(", "));
-  console.log(`\n${registered.length} diagrams checked, ${placed.size} of them placed; ` +
-              `${rows.length} layout problem(s)`);
+  if (unplaced.length) console.log("\nregistered but nothing opens it:", unplaced.join(", "));
+  console.log(`\n${registered.length} diagrams checked, ${placed.size} on a station and ` +
+              `${hinted.size} used as a hint; ${rows.length} layout problem(s)`);
   rows.push(...missing.map(m => ({ k: m, s: 0, kind: "missing", msg: "not registered" })));
   if (pageErrs.length) console.log("page errors:", pageErrs.slice(0, 5));
   await b.close(); srv.close();

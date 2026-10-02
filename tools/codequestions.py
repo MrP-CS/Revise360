@@ -27,7 +27,7 @@ Writing one of these:
 QUESTIONS = [
  # ---- 2.1 Algorithms: writing one down ---------------------------------------
  ("al-l05", 3, {
-   "t": "code", "marks": 3,
+   "hint": "pywhile", "t": "code", "marks": 3,
    "q": "Write a program that adds up the numbers from 1 to a number the user types in.",
    "brief": [
      "Read one whole number from the user.",
@@ -45,7 +45,7 @@ QUESTIONS = [
 
  # ---- 2.1 Searching ----------------------------------------------------------
  ("al-l06", 4, {
-   "t": "code", "marks": 4,
+   "hint": "searches", "t": "code", "marks": 4,
    "q": "Write a linear search. The program should say at which position a name is found, or that it is not there.",
    "brief": [
      "The list is already written for you - do not change it.",
@@ -65,7 +65,7 @@ QUESTIONS = [
 
  # ---- 2.1 Sorting ------------------------------------------------------------
  ("al-l08", 5, {
-   "t": "code", "marks": 4,
+   "hint": "bubblesort", "t": "code", "marks": 4,
    "q": "Write a bubble sort. Sort five numbers into order, smallest first.",
    "brief": [
      "Read five whole numbers, one at a time.",
@@ -88,7 +88,7 @@ QUESTIONS = [
 
  # ---- 2.3 Validation ---------------------------------------------------------
  ("rp-l03", 5, {
-   "t": "code", "marks": 4,
+   "hint": "pyvalidate", "t": "code", "marks": 4,
    "q": "Write a program that checks a password is long enough and keeps asking until it is.",
    "brief": [
      "Read a password from the user.",
@@ -108,7 +108,7 @@ QUESTIONS = [
 
  # ---- 2.3 Test data ----------------------------------------------------------
  ("rp-l05", 5, {
-   "t": "code", "marks": 3,
+   "hint": "pyvalidate", "t": "code", "marks": 3,
    "q": "Write a program that accepts a mark only if it is from 0 to 50 inclusive.",
    "brief": [
      "Read one whole number.",
@@ -128,7 +128,7 @@ QUESTIONS = [
 
  # ---- 1.2 Working with text --------------------------------------------------
  ("ms-l12", 2, {
-   "t": "code", "marks": 3,
+   "hint": "strslice", "t": "code", "marks": 3,
    "q": "Write a program that prints the character code of every letter in a word.",
    "brief": [
      "Read one word from the user.",

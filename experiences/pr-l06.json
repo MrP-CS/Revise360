@@ -20,7 +20,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Write a program that reports the length of a word and the characters at each end of it.",
+       "q": "Print a word's length, then its first and last characters.",
        "brief": [
         "Read one word.",
         "Print how many characters it has on the first line.",
@@ -74,12 +74,13 @@
          "why": "A different word, to check nothing was typed in by hand instead of being worked out."
         }
        ],
-       "fb": "len() counts the characters. Positions run from 0 to len() - 1, so the last one is len() - 1, which is also written as -1."
+       "fb": "len() counts the characters. Positions run from 0 to len() - 1, so the last one is len() - 1, which is also written as -1.",
+       "hint": "strslice"
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "Write a program that prints the character at a position the user chooses, and says so politely when there is no character there.",
+       "q": "Print the character at a chosen position in a word, if there is one.",
        "brief": [
         "Read one word, then read one whole number - a position counting from 0.",
         "If that position exists in the word, print the character at it.",
@@ -138,7 +139,8 @@
          "why": "There is no position 1 in a word of one character. Comparing against the length rather than a fixed number is what makes this work for any word."
         }
        ],
-       "fb": "A string of length n has positions 0 to n - 1. Check against the length, never against a number you typed in yourself."
+       "fb": "A string of length n has positions 0 to n - 1. Check against the length, never against a number you typed in yourself.",
+       "hint": "strslice"
       }
      ]
     },
@@ -153,7 +155,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Write a program that makes a three-letter code from the start of a word.",
+       "q": "Make a three-letter code from the start of a word.",
        "brief": [
         "Read one word.",
         "If it has 3 or more characters, print its first 3 characters and nothing else.",
@@ -207,12 +209,13 @@
          "why": "A different word, so a program that printed a code it had been told in advance will fail here."
         }
        ],
-       "fb": "In a slice w[a:b], a is included and b is not. So w[0:3] is three characters, and the 3 is the position after the last one you want."
+       "fb": "In a slice w[a:b], a is included and b is not. So w[0:3] is three characters, and the 3 is the position after the last one you want.",
+       "hint": "strslice"
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "A label is wrapped in one marker character at each end. Write a program that prints what is inside the markers.",
+       "q": "Print a line of text without its first and last characters.",
        "brief": [
         "Read one line of text.",
         "If it has 3 or more characters, print it with the first and the last character removed.",
@@ -266,7 +269,8 @@
          "why": "An empty line has no characters at all. A crash here means you looked at s[0] before checking the length."
         }
        ],
-       "fb": "s[1:len(s) - 1] drops one character from each end. Taking a slice off the end of a string never crashes, it just gives you less than you expected, so check the length first."
+       "fb": "s[1:len(s) - 1] drops one character from each end. Taking a slice off the end of a string never crashes, it just gives you less than you expected, so check the length first.",
+       "hint": "strslice"
       }
      ]
     },
@@ -281,7 +285,7 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Write a program that compares two words, treating capitals as the same as small letters, and puts them in order when they differ.",
+       "q": "Compare two words ignoring capitals, and order them if they differ.",
        "brief": [
         "Read two words, one per line.",
         "If they are the same word once capitals are ignored, print: match - and nothing else.",
@@ -343,12 +347,13 @@
          "why": "Every capital letter has a lower code than every small letter, so comparing the words as typed puts Zebra first. Lower the case of both before comparing them with <, as well as before testing them with ==."
         }
        ],
-       "fb": "Put both strings into the same case before comparing - .lower() on both, or .upper() on both. This matters for < just as much as for ==, because A has code 65 and a has code 97."
+       "fb": "Put both strings into the same case before comparing - .lower() on both, or .upper() on both. This matters for < just as much as for ==, because A has code 65 and a has code 97.",
+       "hint": "strslice"
       },
       {
        "t": "code",
        "marks": 4,
-       "q": "Write a program that counts how many of the characters in a line are capital letters.",
+       "q": "Count the capital letters in a line of text.",
        "brief": [
         "Read one line of text.",
         "Count how many of its characters are capital letters.",
@@ -402,7 +407,8 @@
          "why": "An empty line has nothing to count. The loop runs zero times and the counter is still 0."
         }
        ],
-       "fb": "A character is a capital when it is different from its own lower-case version. Digits and spaces are the same in either case, so this test leaves them out on its own."
+       "fb": "A character is a capital when it is different from its own lower-case version. Digits and spaces are the same in either case, so this test leaves them out on its own.",
+       "hint": "strslice"
       }
      ]
     },
@@ -417,7 +423,7 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Write a program that checks whether one piece of text appears somewhere inside another, and says whether it is right at the start.",
+       "q": "Say whether a word is inside a line of text, and whether it starts it.",
        "brief": [
         "Read one line of text, then read the word to look for.",
         "If the word does not appear anywhere in the text, print: missing - and nothing else.",
@@ -490,12 +496,13 @@
          "why": "A space is a character like any other, so e t does appear - at the end of the and the start of tide. Splitting the text into words first would make you miss this."
         }
        ],
-       "fb": "word in text asks whether word appears anywhere inside text - the thing being looked for comes first. in cannot tell you where, so a slice from position 0 is needed for the second part."
+       "fb": "word in text asks whether word appears anywhere inside text - the thing being looked for comes first. in cannot tell you where, so a slice from position 0 is needed for the second part.",
+       "hint": "strslice"
       },
       {
        "t": "code",
        "marks": 4,
-       "q": "Write a program that reports the position at which a word starts inside a line of text.",
+       "q": "Print the position where a word starts inside a line of text.",
        "brief": [
         "Read one line of text, then read the word to look for.",
         "If the word is in the text, print the position where it starts, counting from 0.",
@@ -554,7 +561,8 @@
          "why": "The first place aa fits is right at the start, so the answer is 0 and not 1."
         }
        ],
-       "fb": "find() gives the position of the first match, or -1 when there is none. -1 is not a position, so always test for it before you print."
+       "fb": "find() gives the position of the first match, or -1 when there is none. -1 is not a position, so always test for it before you print.",
+       "hint": "strslice"
       }
      ]
     },
@@ -569,7 +577,7 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Write a program that prints the letter that comes after the one given, going back to the start of the alphabet after z.",
+       "q": "Print the letter after the one given, with z wrapping round to a.",
        "brief": [
         "Read one lower-case letter.",
         "If it is z, print: a",
@@ -615,12 +623,13 @@
          "why": "y is the last letter that needs no wrapping. Treating y as the special case as well would wrongly skip z."
         }
        ],
-       "fb": "ord() turns a character into its code and chr() turns a code back into a character. ord('a') is 97 and ord('z') is 122, so code 123 is past the end of the alphabet."
+       "fb": "ord() turns a character into its code and chr() turns a code back into a character. ord('a') is 97 and ord('z') is 122, so code 123 is past the end of the alphabet.",
+       "hint": "strslice"
       },
       {
        "t": "code",
        "marks": 5,
-       "q": "Write a program that separates the letters and the digits in a line of text.",
+       "q": "Separate the letters and the digits in a line of text.",
        "brief": [
         "Read one line of text.",
         "Build up two new strings: one of its letters in the order they appear, one of its digits in the order they appear.",
@@ -681,7 +690,8 @@
          "why": "Nothing to sort at all, so both lines are none. The loop runs zero times, which is why the two strings must start out empty rather than unset."
         }
        ],
-       "fb": "Adding to a string makes a new one: letters = letters + ch. The codes are 65 to 90 for capitals, 97 to 122 for small letters and 48 to 57 for the digits 0 to 9."
+       "fb": "Adding to a string makes a new one: letters = letters + ch. The codes are 65 to 90 for capitals, 97 to 122 for small letters and 48 to 57 for the digits 0 to 9.",
+       "hint": "strslice"
       }
      ]
     },
@@ -696,7 +706,7 @@
       {
        "t": "code",
        "marks": 6,
-       "q": "Write a program that reverses a word and says whether it reads the same both ways.",
+       "q": "Reverse a word and say whether it reads the same both ways.",
        "brief": [
         "Read one word.",
         "Build the word backwards one character at a time - do not use a slice with a negative step and do not use reversed().",
@@ -758,6 +768,7 @@
         }
        ],
        "fb": "Putting each character in front of what you have already built reverses a string. Compare the reversed version with the original in the same case to test for a palindrome.",
+       "hint": "strslice",
        "forbid": [
         [
          "[::-1]",

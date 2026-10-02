@@ -20,7 +20,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Write a program that collects five numbers into a list and prints the list.",
+       "q": "Collect five numbers into a list and print the list.",
        "brief": [
         "Read five whole numbers, one on each line.",
         "Put them in a list, in the order they are typed.",
@@ -68,12 +68,13 @@
          "why": "If you got ['30', '5', '100', '5', '12'] with quote marks you stored the text from input() instead of turning it into a number with int()."
         }
        ],
-       "fb": "Start with an empty list and .append() each number as you read it - printing the list shows the square brackets and commas for you."
+       "fb": "Start with an empty list and .append() each number as you read it - printing the list shows the square brackets and commas for you.",
+       "hint": "arrayindex"
       },
       {
        "t": "code",
        "marks": 2,
-       "q": "Write a program that is told how many colours are coming, reads them, then reports how many it got and what the last one was.",
+       "q": "Read some colours into a list, then print how many and the last one.",
        "brief": [
         "Read one whole number saying how many colours follow.",
         "Read that many colours, one on each line, into a list.",
@@ -121,7 +122,8 @@
          "why": "The count must come from len(), not from printing the number you read at the start - they only match if every colour was appended."
         }
        ],
-       "fb": "len(list) tells you how many items there are, so the highest position you can read is len(list) - 1."
+       "fb": "len(list) tells you how many items there are, so the highest position you can read is len(list) - 1.",
+       "hint": "arrayindex"
       }
      ]
     },
@@ -136,7 +138,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Write a program that prints the lunch at a position the user types in.",
+       "q": "Print the lunch at the position typed in.",
        "brief": [
         "The list is written for you - do not change it.",
         "Read one whole number. It is a position in the list, counting from 0.",
@@ -181,12 +183,13 @@
          "why": "Position 1 is the second item, not the first."
         }
        ],
-       "fb": "A list of six items has positions 0 to 5 - the last position is always one less than the length."
+       "fb": "A list of six items has positions 0 to 5 - the last position is always one less than the length.",
+       "hint": "arrayindex"
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "Write a program that reads two positions in a list of scores and reports both scores and their total.",
+       "q": "Print the scores at two positions in the list, then their total.",
        "brief": [
         "The list is written for you - do not change it.",
         "Read two whole numbers, each a position counting from 0: the first position, then the second.",
@@ -245,7 +248,8 @@
          "why": "Add the two scores you looked up, not the two position numbers."
         }
        ],
-       "fb": "Looking an item up with scores[a] gives you a number you can use in a sum like any other."
+       "fb": "Looking an item up with scores[a] gives you a number you can use in a sum like any other.",
+       "hint": "arrayindex"
       }
      ]
     },
@@ -260,7 +264,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Write a program that reads four plant names and reports how many letters each one has.",
+       "q": "Print each of four plant names with how many letters it has.",
        "brief": [
         "Read four plant names, one on each line, into a list.",
         "Go through the list with a for loop.",
@@ -315,12 +319,13 @@
          "why": "If you only got one line you printed after the loop instead of inside it - check the indentation."
         }
        ],
-       "fb": "A for loop over a list hands you the items one at a time, so you never need a position number for this job."
+       "fb": "A for loop over a list hands you the items one at a time, so you never need a position number for this job.",
+       "hint": "arrayindex"
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "Write a program that reads five numbers and prints each one next to the position it is stored at.",
+       "q": "Print each of five numbers next to the position it is stored at.",
        "brief": [
         "Read five whole numbers, one on each line, into a list.",
         "Go through the positions of the list using range(len(...)).",
@@ -381,7 +386,8 @@
          "why": "range(len(nums)) gives 0 up to 4 for five items - range(1, len(nums)) would miss the first one."
         }
        ],
-       "fb": "range(len(nums)) counts the positions, so nums[i] is the item at the position the loop is on."
+       "fb": "range(len(nums)) counts the positions, so nums[i] is the item at the position the loop is on.",
+       "hint": "arrayindex"
       }
      ]
     },
@@ -396,7 +402,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Write a program that adds two more items to a shopping basket and then lists the whole basket.",
+       "q": "Add two items to the basket, then list the whole basket.",
        "brief": [
         "The four items already in the list are written for you - do not change them.",
         "Read two more items, one on each line, and add each one to the end of the list with .append().",
@@ -454,12 +460,13 @@
          "why": "If an item is missing you may have replaced the list with the new value instead of appending to it."
         }
        ],
-       "fb": "basket.append(x) changes the list you already have - it does not make a new one, so there is nothing to assign."
+       "fb": "basket.append(x) changes the list you already have - it does not make a new one, so there is nothing to assign.",
+       "hint": "arrayindex"
       },
       {
        "t": "code",
        "marks": 4,
-       "q": "Write a program that takes one named person out of a queue and then drops whoever is at a given position.",
+       "q": "Remove a named person from the queue, then the one at a given position.",
        "brief": [
         "The queue is written for you - do not change it.",
         "Read one name, then read one whole number.",
@@ -522,7 +529,8 @@
          "why": ".remove() takes a name, del takes a position - mixing them up is the usual slip here."
         }
        ],
-       "fb": ".remove() is given the value to take out; del is given the position - and each one makes the list shorter straight away."
+       "fb": ".remove() is given the value to take out; del is given the position - and each one makes the list shorter straight away.",
+       "hint": "arrayindex"
       }
      ]
     },
@@ -537,7 +545,7 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Write a program that totals five numbers and works out their average.",
+       "q": "Total five numbers and work out their average.",
        "brief": [
         "Read five whole numbers, one on each line, into a list.",
         "Print the total of the five numbers.",
@@ -603,12 +611,13 @@
          "why": "All zeros should still work - a running total that starts at 0 handles this, one that starts at the first number does too, but one that starts at 1 does not."
         }
        ],
-       "fb": "Start the running total at 0 before the loop, add each item inside the loop, and divide only once the loop has finished."
+       "fb": "Start the running total at 0 before the loop, add each item inside the loop, and divide only once the loop has finished.",
+       "hint": "arrayindex"
       },
       {
        "t": "code",
        "marks": 4,
-       "q": "Write a program that finds the largest and the smallest of seven numbers, without using max() or min().",
+       "q": "Find the largest and smallest of seven numbers without max() or min().",
        "brief": [
         "Read seven whole numbers, one on each line, into a list.",
         "Find the largest and the smallest yourself, with a loop.",
@@ -684,6 +693,7 @@
         }
        ],
        "fb": "Start both answers at the first item, then compare every item against them in turn - the first item is the only safe starting guess.",
+       "hint": "arrayindex",
        "forbid": [
         [
          "max(",
@@ -708,7 +718,7 @@
       {
        "t": "code",
        "marks": 6,
-       "q": "Write a program that reports on eight quiz marks: the total, the average, how many passed, and where the best mark is.",
+       "q": "Report on eight quiz marks: total, average, passes and where the best is.",
        "brief": [
         "Read eight whole numbers, one on each line, into a list. Each one is a mark out of 20.",
         "Print the total of the eight marks.",
@@ -816,6 +826,7 @@
         }
        ],
        "fb": "Four separate jobs over the same list: one running total, one counter with a condition, and one remembered position that you keep updating.",
+       "hint": "arrayindex",
        "forbid": [
         [
          "max(",

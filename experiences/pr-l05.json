@@ -20,7 +20,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Write a program that counts down to the start of a race, using a while loop.",
+       "q": "Count down to the start of a race with a while loop.",
        "brief": [
         "Read one whole number.",
         "Using a while loop, print each number from that number down to 1, one number per line.",
@@ -74,12 +74,13 @@
          "why": "If this one never finished, you forgot to change n inside the loop - the condition stays true for ever."
         }
        ],
-       "fb": "A while loop tests its condition before each go, so it can run zero times. Change the variable the condition uses inside the loop, or the loop never ends."
+       "fb": "A while loop tests its condition before each go, so it can run zero times. Change the variable the condition uses inside the loop, or the loop never ends.",
+       "hint": "pywhile"
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "A pond is covered by 1 square metre of weed, and the weed doubles every week. Write a program that works out how many weeks it takes to cover a given area.",
+       "q": "Work out how many weeks doubling weed takes to cover a given area.",
        "brief": [
         "Read one whole number - the area to reach, in square metres.",
         "Start the weed at 1 square metre and count the weeks from 0.",
@@ -125,7 +126,8 @@
          "why": "The sizes go 1, 2, 4, 8, 16, 32, 64, 128. A program that only worked for small numbers will be wrong here."
         }
        ],
-       "fb": "This is a condition-controlled loop: you cannot know the number of weeks in advance, so while is the right choice and for is not."
+       "fb": "This is a condition-controlled loop: you cannot know the number of weeks in advance, so while is the right choice and for is not.",
+       "hint": "pywhile"
       }
      ]
     },
@@ -140,7 +142,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Lockers are numbered 1 to 20. Write a program that keeps asking until a locker number in that range is given.",
+       "q": "Keep asking until a locker number from 1 to 20 is given.",
        "brief": [
         "Read one whole number.",
         "If it is not from 1 to 20 inclusive, print: out of range - and then read another number.",
@@ -192,12 +194,13 @@
          "why": "21 is just outside and 1 is the bottom boundary. Getting this wrong usually means a < where a <= was needed, or the other way round."
         }
        ],
-       "fb": "The shape is: read once, then while the value is still wrong, warn and read again. Putting the read inside the loop as well as before it is what lets the loop run zero times."
+       "fb": "The shape is: read once, then while the value is still wrong, warn and read again. Putting the read inside the loop as well as before it is what lets the loop run zero times.",
+       "hint": "pyvalidate"
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "Write a program that keeps asking a yes or no question until the answer is one of those two words.",
+       "q": "Keep asking until the answer is yes or no.",
        "brief": [
         "Read one word.",
         "If it is not yes and not no, print: please answer yes or no - and then read another word.",
@@ -249,7 +252,8 @@
          "why": "y is not the word yes, so it must be rejected. Comparing only the first letter accepts things the brief says to refuse."
         }
        ],
-       "fb": "Two words are allowed, so the condition has to rule out both: use and, not or. 'not yes or not no' is always true and gives an endless loop."
+       "fb": "Two words are allowed, so the condition has to rule out both: use and, not or. 'not yes or not no' is always true and gives an endless loop.",
+       "hint": "pyvalidate"
       }
      ]
     },
@@ -264,7 +268,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "A till reads prices in pence until -1 is typed to mean the end of the shopping. Write a program that prints the total.",
+       "q": "Total the prices typed in until -1 ends the shopping.",
        "brief": [
         "Keep reading whole numbers.",
         "Stop as soon as -1 is read. The -1 is a signal to stop and must not be added to the total.",
@@ -317,12 +321,13 @@
          "why": "Four prices, however many there are. A program that handles a fixed number of prices will fail here."
         }
        ],
-       "fb": "A sentinel is a value that cannot be real data and means stop. Read one value before the loop, add it inside, then read the next at the end of the body."
+       "fb": "A sentinel is a value that cannot be real data and means stop. Read one value before the loop, add it inside, then read the next at the end of the body.",
+       "hint": "pywhile"
       },
       {
        "t": "code",
        "marks": 4,
-       "q": "A weather station reads temperatures until the word end is typed. Write a program that prints the highest temperature read.",
+       "q": "Print the highest temperature typed in before the word end.",
        "brief": [
         "Keep reading lines. Each line is either a whole number or the word end.",
         "Stop as soon as end is read.",
@@ -375,7 +380,8 @@
          "why": "All the readings are below zero. A 0 here means you started your highest at 0, so no real reading could ever beat it. Start from the first reading instead."
         }
        ],
-       "fb": "Never start a highest-so-far at 0 - a reading below zero can never beat it. Start it from the first value you read, or mark it as not set yet."
+       "fb": "Never start a highest-so-far at 0 - a reading below zero can never beat it. Start it from the first value you read, or mark it as not set yet.",
+       "hint": "pywhile"
       }
      ]
     },
@@ -390,7 +396,7 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Write a program that reads test scores until -1 and reports how many there were and how many of them reached 40.",
+       "q": "Count the scores typed in before -1, and how many reached 40.",
        "brief": [
         "Keep reading whole numbers. Stop as soon as -1 is read - that is the signal to stop, not a score.",
         "Print how many scores were read on the first line.",
@@ -447,12 +453,13 @@
          "why": "Exactly 40 counts as reaching 40. If you got 1 here, you used > 40 instead of >= 40."
         }
        ],
-       "fb": "Two counters, both set to 0 before the loop. One counts every time round, the other only counts when the if is true."
+       "fb": "Two counters, both set to 0 before the loop. One counts every time round, the other only counts when the if is true.",
+       "hint": "pywhile"
       },
       {
        "t": "code",
        "marks": 4,
-       "q": "Write a program that adds up the digits of a whole number, using a while loop.",
+       "q": "Add up the digits of a whole number using a while loop.",
        "brief": [
         "Read one whole number that is 0 or more.",
         "Using a while loop, add up its digits. Do not turn the number into text.",
@@ -506,7 +513,8 @@
          "why": "Five nines make 45. A program that only looked at two or three digits will be short here."
         }
        ],
-       "fb": "n % 10 gives the last digit and n // 10 removes it. Using / instead of // leaves a decimal, the condition never becomes false and the loop runs for ever."
+       "fb": "n % 10 gives the last digit and n // 10 removes it. Using / instead of // leaves a decimal, the condition never becomes false and the loop runs for ever.",
+       "hint": "pywhile"
       }
      ]
     },
@@ -521,7 +529,7 @@
       {
        "t": "code",
        "marks": 5,
-       "q": "A van is loaded with parcels. The number of parcels is known, but the number of tries at setting a weight limit is not. Write a program that uses the right loop for each job.",
+       "q": "Read the parcel weights with a for loop, then the van limit with a while loop.",
        "brief": [
         "Read one whole number - how many parcels there are.",
         "Read that many parcel weights, one per line. Use a count-controlled loop for this part.",
@@ -598,7 +606,8 @@
          "why": "Two parcels of the same weight, then one refused limit. If this went wrong, check you only read one limit per go round the while loop."
         }
        ],
-       "fb": "Use for when the number of repeats is known before you start, and while when it depends on what the user does next. This question needs one of each."
+       "fb": "Use for when the number of repeats is known before you start, and while when it depends on what the user does next. This question needs one of each.",
+       "hint": "constructs"
       }
      ]
     },
@@ -613,7 +622,7 @@
       {
        "t": "code",
        "marks": 5,
-       "q": "Write a guessing helper. The secret number is 37 and the program keeps giving hints until the guess is right.",
+       "q": "Give a higher or lower hint until the secret number 37 is guessed.",
        "brief": [
         "The secret number is 37.",
         "Read one whole number.",
@@ -671,12 +680,13 @@
          "why": "36 is one below, so the player should go higher. An off-by-one here usually means you compared with <= 37 instead of < 37."
         }
        ],
-       "fb": "The condition tests only whether the guess is right; the if inside the loop chooses the hint. Reading the next guess must be inside the loop, or it never changes."
+       "fb": "The condition tests only whether the guess is right; the if inside the loop chooses the hint. Reading the next guess must be inside the loop, or it never changes.",
+       "hint": "pyvalidate"
       },
       {
        "t": "code",
        "marks": 6,
-       "q": "A swimming club logs how long each member swam, in minutes, until the word close is typed. Write a program that reports the session.",
+       "q": "Print how many swims there were, the total minutes and the longest swim.",
        "brief": [
         "Keep reading lines until the word close is read. Every other line is a whole number of minutes.",
         "If close is the very first line, print only: no swimmers",
@@ -751,7 +761,8 @@
          "why": "The longest swim is in the middle, not at either end, so a program that only checked the first or last value will be wrong."
         }
        ],
-       "fb": "One pass through the data can keep a count, a running total and a best-so-far at the same time. Set all three before the loop, so the empty session still has sensible values to test."
+       "fb": "One pass through the data can keep a count, a running total and a best-so-far at the same time. Set all three before the loop, so the empty session still has sensible values to test.",
+       "hint": "pywhile"
       }
      ]
     },

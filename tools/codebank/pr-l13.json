@@ -21,6 +21,7 @@
     "Print the titles in the order they are stored in the table.",
     "Print each row the query finds on its own line, with the values separated by a single space and nothing else."
    ],
+   "hint": "sqlwhere",
    "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table for you. Leave them exactly as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Write your query inside the double quotes, then print each row it finds.\n# Use single quotes inside the query for any text you compare against.\n# for row in db.execute(\"SELECT ... FROM games\"):\n#     print(' '.join(str(value) for value in row))\n",
    "forbid": [
     [
@@ -96,6 +97,7 @@
     "Print one line per game, in the order they are stored in the table, with the title and the number separated by a single space.",
     "Print each row the query finds on its own line, with the values separated by a single space and nothing else."
    ],
+   "hint": "sqlwhere",
    "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table for you. Leave them exactly as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Write your query inside the double quotes, then print each row it finds.\n# Use single quotes inside the query for any text you compare against.\n# for row in db.execute(\"SELECT ... FROM games\"):\n#     print(' '.join(str(value) for value in row))\n",
    "forbid": [
     [
@@ -172,6 +174,7 @@
     "Print them in the order they are stored in the table.",
     "Print each row the query finds on its own line, with the values separated by a single space and nothing else."
    ],
+   "hint": "sqlwhere",
    "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table for you. Leave them exactly as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Write your query inside the double quotes, then print each row it finds.\n# Use single quotes inside the query for any text you compare against.\n# for row in db.execute(\"SELECT ... FROM games\"):\n#     print(' '.join(str(value) for value in row))\n",
    "forbid": [
     [
@@ -238,6 +241,7 @@
     "Print them in the order they are stored in the table.",
     "Print each row the query finds on its own line, with the values separated by a single space and nothing else."
    ],
+   "hint": "sqlwhere",
    "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table for you. Leave them exactly as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Write your query inside the double quotes, then print each row it finds.\n# Use single quotes inside the query for any text you compare against.\n# for row in db.execute(\"SELECT ... FROM games\"):\n#     print(' '.join(str(value) for value in row))\n",
    "forbid": [
     [
@@ -303,6 +307,7 @@
     "Print them in the order they are stored in the table.",
     "Print each row the query finds on its own line, with the values separated by a single space and nothing else."
    ],
+   "hint": "sqlwhere",
    "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table for you. Leave them exactly as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Write your query inside the double quotes, then print each row it finds.\n# Use single quotes inside the query for any text you compare against.\n# for row in db.execute(\"SELECT ... FROM games\"):\n#     print(' '.join(str(value) for value in row))\n",
    "forbid": [
     [
@@ -370,6 +375,7 @@
     "Print them in the order they are stored in the table.",
     "Print each row the query finds on its own line, with the values separated by a single space and nothing else."
    ],
+   "hint": "sqlwhere",
    "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table for you. Leave them exactly as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Write your query inside the double quotes, then print each row it finds.\n# Use single quotes inside the query for any text you compare against.\n# for row in db.execute(\"SELECT ... FROM games\"):\n#     print(' '.join(str(value) for value in row))\n",
    "forbid": [
     [
@@ -438,6 +444,7 @@
     "Print them in the order they are stored in the table.",
     "Print each row the query finds on its own line, with the values separated by a single space and nothing else."
    ],
+   "hint": "sqlwhere",
    "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table for you. Leave them exactly as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Write your query inside the double quotes, then print each row it finds.\n# Use single quotes inside the query for any text you compare against.\n# for row in db.execute(\"SELECT ... FROM games\"):\n#     print(' '.join(str(value) for value in row))\n",
    "forbid": [
     [
@@ -503,6 +510,7 @@
     "Print them in the order they are stored in the table.",
     "Print each row the query finds on its own line, with the values separated by a single space and nothing else."
    ],
+   "hint": "sqlwhere",
    "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table for you. Leave them exactly as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Write your query inside the double quotes, then print each row it finds.\n# Use single quotes inside the query for any text you compare against.\n# for row in db.execute(\"SELECT ... FROM games\"):\n#     print(' '.join(str(value) for value in row))\n",
    "forbid": [
     [
@@ -570,6 +578,7 @@
     "Print them in that order, one game per line.",
     "Print each row the query finds on its own line, with the values separated by a single space and nothing else."
    ],
+   "hint": "sqlwhere",
    "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table for you. Leave them exactly as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Write your query inside the double quotes, then print each row it finds.\n# Use single quotes inside the query for any text you compare against.\n# for row in db.execute(\"SELECT ... FROM games\"):\n#     print(' '.join(str(value) for value in row))\n",
    "forbid": [
     [
@@ -648,6 +657,7 @@
     "Print them in that order, one game per line.",
     "Print each row the query finds on its own line, with the values separated by a single space and nothing else."
    ],
+   "hint": "sqlwhere",
    "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table for you. Leave them exactly as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Write your query inside the double quotes, then print each row it finds.\n# Use single quotes inside the query for any text you compare against.\n# for row in db.execute(\"SELECT ... FROM games\"):\n#     print(' '.join(str(value) for value in row))\n",
    "forbid": [
     [

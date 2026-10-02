@@ -20,7 +20,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Write a program that puts six numbers into a grid of two rows and three columns.",
+       "q": "Put six numbers into a grid of two rows and three columns.",
        "brief": [
         "Read six whole numbers, one on each line.",
         "The first three are row 0 and the last three are row 1.",
@@ -72,12 +72,13 @@
          "why": "Build a fresh inner list for each row - reusing the same one leaves both rows pointing at the same three numbers."
         }
        ],
-       "fb": "Make an empty row list, append three numbers to it, then append that row to the grid - and start a new row list for the next row."
+       "fb": "Make an empty row list, append three numbers to it, then append that row to the grid - and start a new row list for the next row.",
+       "hint": "array2d"
       },
       {
        "t": "code",
        "marks": 2,
-       "q": "Write a program that reports the size and contents of one tutor group taken from a list of lists.",
+       "q": "Print how many names one tutor group holds, then the whole group.",
        "brief": [
         "The list of groups is written for you - do not change it.",
         "Read one whole number. It is a row number, counting from 0.",
@@ -127,7 +128,8 @@
          "why": "There are four rows, so 3 is the last row number - adding 1 would run off the end of the grid."
         }
        ],
-       "fb": "groups is a list whose items are themselves lists, so len(groups) counts rows and len(groups[r]) counts the items in one row."
+       "fb": "groups is a list whose items are themselves lists, so len(groups) counts rows and len(groups[r]) counts the items in one row.",
+       "hint": "array2d"
       }
      ]
     },
@@ -142,7 +144,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Write a program that prints the points a team scored in one round, from a grid of rows and columns.",
+       "q": "Print the points stored at one row and column of the grid.",
        "brief": [
         "The grid is written for you - do not change it.",
         "Each row is a team and each column is a round.",
@@ -202,12 +204,13 @@
          "why": "Four rows of four means the last value is at [3][3] - [4][4] is past the end of the grid."
         }
        ],
-       "fb": "Two sets of brackets: the first picks the row out of the grid, the second picks an item out of that row."
+       "fb": "Two sets of brackets: the first picks the row out of the grid, the second picks an item out of that row.",
+       "hint": "array2d"
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "Write a program that prints one whole row and one whole column of a grid.",
+       "q": "Print one whole row and one whole column of the grid.",
        "brief": [
         "The grid is written for you - do not change it.",
         "Read two whole numbers: a row number, then a column number. Both count from 0.",
@@ -250,7 +253,8 @@
          "why": "A whole row is just table[r], but a column needs a loop that takes table[i][c] from every row in turn."
         }
        ],
-       "fb": "A row is one item of the grid; a column is not stored anywhere, so you have to gather it one row at a time."
+       "fb": "A row is one item of the grid; a column is not stored anywhere, so you have to gather it one row at a time.",
+       "hint": "array2d"
       }
      ]
     },
@@ -265,7 +269,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Write a program that reads six numbers and prints them back as a tidy grid of two rows.",
+       "q": "Print six numbers back as a tidy grid of two rows.",
        "brief": [
         "Read six whole numbers, one on each line.",
         "The first three are row 0 and the last three are row 1.",
@@ -321,12 +325,13 @@
          "why": "Build the whole line first and print it once, or use print(v, end=' ') and then an empty print at the end of each row."
         }
        ],
-       "fb": "The outer loop is the rows and the inner loop is the values in one row - the line break belongs to the outer loop."
+       "fb": "The outer loop is the rows and the inner loop is the values in one row - the line break belongs to the outer loop.",
+       "hint": "array2d"
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "Write a program that reads nine numbers into a three by three grid and prints where each one is stored.",
+       "q": "Print the row, column and value of every cell in a 3 by 3 grid.",
        "brief": [
         "Read nine whole numbers, one on each line, filling the grid row by row.",
         "Go through every cell with two loops, using range(len(...)) for both.",
@@ -411,7 +416,8 @@
          "why": "Nine lines in total. Six or three means one of the loops is not running the full three times, or the print is in the wrong loop."
         }
        ],
-       "fb": "The outer loop counts rows and the inner loop counts columns, so the inner one finishes once for every single step of the outer one."
+       "fb": "The outer loop counts rows and the inner loop counts columns, so the inner one finishes once for every single step of the outer one.",
+       "hint": "array2d"
       }
      ]
     },
@@ -426,7 +432,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Write a program that totals the merit points one class earned, from a grid of classes and weeks.",
+       "q": "Print the total of one row of the merit points grid.",
        "brief": [
         "The grid is written for you - do not change it.",
         "Each row is a class and each column is a week.",
@@ -472,12 +478,13 @@
          "why": "Total the four values in one row, not the first value of every row - that would give 20 whichever row you asked for."
         }
        ],
-       "fb": "merits[r] is a single row, which is just an ordinary list - so a running total over it works exactly as it would for any list."
+       "fb": "merits[r] is a single row, which is just an ordinary list - so a running total over it works exactly as it would for any list.",
+       "hint": "array2d"
       },
       {
        "t": "code",
        "marks": 4,
-       "q": "Write a program that reads a grid of three rows by four columns and totals every row, then everything.",
+       "q": "Total every row of a 3 by 4 grid, then the whole grid.",
        "brief": [
         "Read twelve whole numbers, one on each line, filling the grid row by row.",
         "Print the total of each row, one on each line, starting with row 0.",
@@ -555,7 +562,8 @@
          "why": "If every row total is the same as the grand total you forgot to reset the row total back to 0 at the start of each row."
         }
        ],
-       "fb": "Set the row total to 0 inside the outer loop, and keep a separate grand total outside it that never gets reset."
+       "fb": "Set the row total to 0 inside the outer loop, and keep a separate grand total outside it that never gets reset.",
+       "hint": "array2d"
       }
      ]
     },
@@ -570,7 +578,7 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Write a program that totals one column of a sales grid.",
+       "q": "Total one column of the sales grid.",
        "brief": [
         "The grid is written for you - do not change it.",
         "Each row is a day and each column is a shop.",
@@ -607,12 +615,13 @@
          "why": "There are three columns, so 2 is the last one - counting from 1 would ask for column 3 and crash."
         }
        ],
-       "fb": "Loop over the rows with range(len(sales)) and keep the column number fixed - that is the one difference from totalling a row."
+       "fb": "Loop over the rows with range(len(sales)) and keep the column number fixed - that is the one difference from totalling a row.",
+       "hint": "array2d"
       },
       {
        "t": "code",
        "marks": 5,
-       "q": "Write a program that reads a grid of four rows by three columns and totals every column, then everything.",
+       "q": "Total every column of a 4 by 3 grid, then the whole grid.",
        "brief": [
         "Read twelve whole numbers, one on each line, filling the grid row by row.",
         "Print the total of each column, one on each line, starting with column 0.",
@@ -690,7 +699,8 @@
          "why": "Here it is the last column that holds everything, so a loop that stops one column short would print 0, 0 and then the wrong grand total."
         }
        ],
-       "fb": "For column totals the outer loop counts columns and the inner loop counts rows - the opposite way round to row totals."
+       "fb": "For column totals the outer loop counts columns and the inner loop counts rows - the opposite way round to row totals.",
+       "hint": "array2d"
       }
      ]
     },
@@ -705,7 +715,7 @@
       {
        "t": "code",
        "marks": 6,
-       "q": "Write a program that finds where a pupil sits in a seating plan and says how many pupils share that row.",
+       "q": "Find where a pupil sits, and how many pupils share that row.",
        "brief": [
         "The seating plan is written for you - do not change it.",
         "A seat holding the word empty has nobody in it.",
@@ -766,7 +776,8 @@
          "why": "A name that is nowhere in the plan prints that one line and nothing else - so the row and column must only be printed once you know the name was found."
         }
        ],
-       "fb": "Two loops to search every cell, a remembered row and column that start at something impossible like -1, and then a separate loop over the found row to count the pupils."
+       "fb": "Two loops to search every cell, a remembered row and column that start at something impossible like -1, and then a separate loop over the found row to count the pupils.",
+       "hint": "array2d"
       }
      ]
     },

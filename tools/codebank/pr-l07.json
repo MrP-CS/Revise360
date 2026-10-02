@@ -14,12 +14,13 @@
    "id": "pr-l07-q1",
    "station": 0,
    "marks": 2,
-   "q": "Write a program that collects five numbers into a list and prints the list.",
+   "q": "Collect five numbers into a list and print the list.",
    "brief": [
     "Read five whole numbers, one on each line.",
     "Put them in a list, in the order they are typed.",
     "Print the list itself, the way Python prints a list - for example: [1, 2, 3, 4, 5]"
    ],
+   "hint": "arrayindex",
    "starter": "nums = []\n\n# Read five whole numbers into nums, then print nums\n",
    "tests": [
     {
@@ -68,13 +69,14 @@
    "id": "pr-l07-q2",
    "station": 0,
    "marks": 2,
-   "q": "Write a program that is told how many colours are coming, reads them, then reports how many it got and what the last one was.",
+   "q": "Read some colours into a list, then print how many and the last one.",
    "brief": [
     "Read one whole number saying how many colours follow.",
     "Read that many colours, one on each line, into a list.",
     "Print how many colours are in the list.",
     "Print the last colour in the list on the next line."
    ],
+   "hint": "arrayindex",
    "starter": "# Read the count, then read that many colours into a list\n",
    "tests": [
     {
@@ -122,12 +124,13 @@
    "id": "pr-l07-q3",
    "station": 1,
    "marks": 2,
-   "q": "Write a program that prints the lunch at a position the user types in.",
+   "q": "Print the lunch at the position typed in.",
    "brief": [
     "The list is written for you - do not change it.",
     "Read one whole number. It is a position in the list, counting from 0.",
     "Print the item at that position, and nothing else."
    ],
+   "hint": "arrayindex",
    "starter": "lunches = ['tomato soup', 'veg curry', 'fish pie', 'jacket potato', 'pasta bake', 'bean chilli']\n\n# Read a position and print the lunch at that position\n",
    "tests": [
     {
@@ -173,7 +176,7 @@
    "id": "pr-l07-q4",
    "station": 1,
    "marks": 3,
-   "q": "Write a program that reads two positions in a list of scores and reports both scores and their total.",
+   "q": "Print the scores at two positions in the list, then their total.",
    "brief": [
     "The list is written for you - do not change it.",
     "Read two whole numbers, each a position counting from 0: the first position, then the second.",
@@ -181,6 +184,7 @@
     "Print the score at the second position on the next line.",
     "Print the two scores added together on the line after that."
    ],
+   "hint": "arrayindex",
    "starter": "scores = [14, 9, 22, 5, 17, 30, 8]\n\n# Read two positions, print both scores and their total\n",
    "tests": [
     {
@@ -238,13 +242,14 @@
    "id": "pr-l07-q5",
    "station": 2,
    "marks": 3,
-   "q": "Write a program that reads four plant names and reports how many letters each one has.",
+   "q": "Print each of four plant names with how many letters it has.",
    "brief": [
     "Read four plant names, one on each line, into a list.",
     "Go through the list with a for loop.",
     "For each plant print its name, a single space, then how many letters it has.",
     "One line for each plant, in the order they were typed."
    ],
+   "hint": "arrayindex",
    "starter": "plants = []\n\n# Read four names, then loop through the list printing each name and its length\n",
    "tests": [
     {
@@ -299,13 +304,14 @@
    "id": "pr-l07-q6",
    "station": 2,
    "marks": 3,
-   "q": "Write a program that reads five numbers and prints each one next to the position it is stored at.",
+   "q": "Print each of five numbers next to the position it is stored at.",
    "brief": [
     "Read five whole numbers, one on each line, into a list.",
     "Go through the positions of the list using range(len(...)).",
     "For each position print the position number, a single space, then the number stored there.",
     "Positions count from 0."
    ],
+   "hint": "arrayindex",
    "starter": "nums = []\n\n# Read five numbers, then loop over the positions with range(len(nums))\n",
    "tests": [
     {
@@ -366,13 +372,14 @@
    "id": "pr-l07-q7",
    "station": 3,
    "marks": 3,
-   "q": "Write a program that adds two more items to a shopping basket and then lists the whole basket.",
+   "q": "Add two items to the basket, then list the whole basket.",
    "brief": [
     "The four items already in the list are written for you - do not change them.",
     "Read two more items, one on each line, and add each one to the end of the list with .append().",
     "Print how many items are in the list.",
     "Then print every item on its own line, in order."
    ],
+   "hint": "arrayindex",
    "starter": "basket = ['apple', 'pear', 'plum', 'grape']\n\n# Read two more items, append them, then print the count and the whole basket\n",
    "tests": [
     {
@@ -430,7 +437,7 @@
    "id": "pr-l07-q8",
    "station": 3,
    "marks": 4,
-   "q": "Write a program that takes one named person out of a queue and then drops whoever is at a given position.",
+   "q": "Remove a named person from the queue, then the one at a given position.",
    "brief": [
     "The queue is written for you - do not change it.",
     "Read one name, then read one whole number.",
@@ -438,6 +445,7 @@
     "Then, working on the list as it now is, delete the person at the position given by the number, using del. Positions count from 0.",
     "Print the names that are left, one on each line, in order."
    ],
+   "hint": "arrayindex",
    "starter": "queue = ['Ama', 'Bo', 'Cai', 'Dara', 'Esme', 'Finn']\n\n# Remove the named person, then del the person at the given position, then print the rest\n",
    "tests": [
     {
@@ -499,13 +507,14 @@
    "id": "pr-l07-q9",
    "station": 4,
    "marks": 4,
-   "q": "Write a program that totals five numbers and works out their average.",
+   "q": "Total five numbers and work out their average.",
    "brief": [
     "Read five whole numbers, one on each line, into a list.",
     "Print the total of the five numbers.",
     "Print the average on the next line, rounded to one decimal place.",
     "A whole average still shows one decimal place - 5 is printed as 5.0"
    ],
+   "hint": "arrayindex",
    "starter": "nums = []\n\n# Read five numbers, add them up with a loop, then print the total and the average\n",
    "tests": [
     {
@@ -571,7 +580,7 @@
    "id": "pr-l07-q10",
    "station": 4,
    "marks": 4,
-   "q": "Write a program that finds the largest and the smallest of seven numbers, without using max() or min().",
+   "q": "Find the largest and smallest of seven numbers without max() or min().",
    "brief": [
     "Read seven whole numbers, one on each line, into a list.",
     "Find the largest and the smallest yourself, with a loop.",
@@ -579,6 +588,7 @@
     "Print the smallest on the next line.",
     "Do not use max() or min()."
    ],
+   "hint": "arrayindex",
    "starter": "nums = []\n\n# Read seven numbers, then find the largest and smallest with a loop\n",
    "tests": [
     {
@@ -662,7 +672,7 @@
    "id": "pr-l07-q11",
    "station": 5,
    "marks": 6,
-   "q": "Write a program that reports on eight quiz marks: the total, the average, how many passed, and where the best mark is.",
+   "q": "Report on eight quiz marks: total, average, passes and where the best is.",
    "brief": [
     "Read eight whole numbers, one on each line, into a list. Each one is a mark out of 20.",
     "Print the total of the eight marks.",
@@ -671,6 +681,7 @@
     "Print the position of the highest mark on the last line, counting from 0. If two marks are equally high, give the position of the first one.",
     "Do not use max() or .index() - find the highest mark with a loop."
    ],
+   "hint": "arrayindex",
    "starter": "marks = []\n\n# Read eight marks, then print the total, the average, the number of passes\n# and the position of the highest mark\n",
    "tests": [
     {

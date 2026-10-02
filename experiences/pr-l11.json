@@ -20,7 +20,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Write a linear search that finds a membership number and says which position it is at.",
+       "q": "Write a linear search for a membership number and print its position.",
        "brief": [
         "The list codes is already written for you - do not change it.",
         "Read one whole number.",
@@ -68,6 +68,7 @@
         }
        ],
        "fb": "Walk the list by position, remember the position when it matches, and decide what to print only after the loop ends.",
+       "hint": "searches",
        "forbid": [
         [
          ".index(",
@@ -82,9 +83,10 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Two lists hold the same members in the same order: one of names, one of minutes exercised. Look a name up.",
+       "q": "Search the names list and print the minutes stored at the same position.",
        "brief": [
         "Both lists are written for you - do not change them.",
+        "The two lists hold the same members in the same order.",
         "Read one name.",
         "Search members for that name, one position at a time.",
         "If it is there, print only the minutes at the same position in the other list.",
@@ -130,6 +132,7 @@
         }
        ],
        "fb": "The position is the link between the two lists: once you know where the name is, the same index gives you the minutes.",
+       "hint": "searches",
        "forbid": [
         [
          ".index(",
@@ -211,6 +214,7 @@
         }
        ],
        "fb": "Move low to mid + 1 or high to mid - 1, never to mid itself, or the loop will never end when the value is missing.",
+       "hint": "searches",
        "forbid": [
         [
          ".index(",
@@ -225,7 +229,7 @@
       {
        "t": "code",
        "marks": 5,
-       "q": "Extend your binary search so it also reports how many items it had to look at.",
+       "q": "Binary search the list and report how many items you checked.",
        "brief": [
         "The list ids is already in order - do not change it.",
         "Read one whole number.",
@@ -278,6 +282,7 @@
         }
        ],
        "fb": "Add one to the counter as soon as you have worked out mid, before you compare - that way the matching item is counted too.",
+       "hint": "searches",
        "forbid": [
         [
          ".index(",
@@ -349,6 +354,7 @@
         }
        ],
        "fb": "Two loops: the inner one compares neighbours across the list, the outer one repeats that enough times for the smallest value to travel all the way back.",
+       "hint": "bubblesort",
        "forbid": [
         [
          "sorted(",
@@ -416,6 +422,7 @@
         }
        ],
        "fb": "A flag set to False at the top of each pass and True inside the swap is what lets the sort notice it has finished.",
+       "hint": "bubblesort",
        "forbid": [
         [
          "sorted(",
@@ -487,6 +494,7 @@
         }
        ],
        "fb": "Start the outer loop at the second item - the first item on its own is already a sorted list of one.",
+       "hint": "bubblesort",
        "forbid": [
         [
          "sorted(",
@@ -501,7 +509,7 @@
       {
        "t": "code",
        "marks": 6,
-       "q": "Show an insertion sort at work by printing the list each time an item has been placed.",
+       "q": "Print the whole list each time an insertion sort places an item.",
        "brief": [
         "Read one line of five words separated by single spaces.",
         "Sort them into alphabetical order using an insertion sort.",
@@ -561,6 +569,7 @@
         }
        ],
        "fb": "The left-hand part of the list is the sorted part and it grows by one on every line - that is the whole idea of an insertion sort.",
+       "hint": "bubblesort",
        "forbid": [
         [
          "sorted(",
@@ -585,7 +594,7 @@
       {
        "t": "code",
        "marks": 6,
-       "q": "Write the merging step of a merge sort: join two lists that are already in order into one list in order.",
+       "q": "Merge two lists that are already in order into one list in order.",
        "brief": [
         "Read two lines. Each is a list of whole numbers, already in order, separated by single spaces.",
         "Merge them into one list in order by comparing the front of each list and taking the smaller one.",
@@ -636,6 +645,7 @@
         }
        ],
        "fb": "Two position markers, one per list, and a tidying-up loop at the end for whichever list still has numbers in it.",
+       "hint": "mergesort",
        "forbid": [
         [
          "sorted(",
@@ -706,6 +716,7 @@
         }
        ],
        "fb": "The base case is the important part: a list of one item is already in order, and that is what stops the splitting.",
+       "hint": "mergesort",
        "forbid": [
         [
          "sorted(",
@@ -730,7 +741,7 @@
       {
        "t": "code",
        "marks": 8,
-       "q": "Count how many items a linear search and a binary search each have to look at, so the two can be compared.",
+       "q": "Count how many items a linear search and a binary search each check.",
        "brief": [
         "The list seats is already in order - do not change it.",
         "Read one whole number.",
@@ -782,16 +793,18 @@
          "why": "Not in the list at all. The linear search still has to compare all fifteen before it can be sure."
         }
        ],
-       "fb": "This is why the specification says a binary search is more efficient - but it only works because the list is already in order."
+       "fb": "This is why the specification says a binary search is more efficient - but it only works because the list is already in order.",
+       "hint": "searches"
       },
       {
        "t": "code",
        "marks": 8,
-       "q": "Sort a list yourself and then binary search it, since a binary search only works on a sorted list.",
+       "q": "Sort the numbers yourself, then binary search them for a value.",
        "brief": [
         "Read one line of whole numbers separated by single spaces.",
         "Read one more whole number on the next line - the value to find.",
         "Sort the numbers smallest first using a sort you write yourself.",
+        "A binary search only works on a list that is in order, which is why you sort it first.",
         "Print the sorted numbers on one line, separated by single spaces.",
         "Then search the sorted list with a binary search and, on the next line, print only the position the value is at, counting from 0.",
         "If it is not in the list, print: not found",
@@ -856,6 +869,7 @@
         }
        ],
        "fb": "Sorting first is what makes the binary search legal: on an unsorted list it throws away the half the value is actually in.",
+       "hint": "searches",
        "forbid": [
         [
          "sorted(",

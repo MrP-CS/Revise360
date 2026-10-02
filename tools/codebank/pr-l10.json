@@ -14,7 +14,7 @@
    "id": "pr-l10-q1",
    "station": 0,
    "marks": 2,
-   "q": "Open a text file, read all of it in one go, and print it.",
+   "q": "Read a whole text file in one go and print it.",
    "brief": [
     "A file called notice.txt is already there.",
     "Open it in read mode with the mode letter r.",
@@ -22,6 +22,7 @@
     "Close the file.",
     "Print what you read, exactly as it came out of the file. Add nothing of your own."
    ],
+   "hint": "filelines",
    "starter": "# Open notice.txt in read mode, read it all, close it, print it\n",
    "tests": [
     {
@@ -61,7 +62,7 @@
    "id": "pr-l10-q2",
    "station": 0,
    "marks": 3,
-   "q": "Count how many characters are in a file, including the ones you cannot see.",
+   "q": "Count how many characters a file holds, newlines included.",
    "brief": [
     "A file called log.txt is already there. It may be empty.",
     "Open it in read mode and read the whole file in one go.",
@@ -70,6 +71,7 @@
     "Count every character, including each newline at the end of a line.",
     "An empty file holds 0 characters."
    ],
+   "hint": "filelines",
    "starter": "# Open log.txt, read it all, close it, then print: characters <how many>\n",
    "tests": [
     {
@@ -115,7 +117,7 @@
    "id": "pr-l10-q3",
    "station": 1,
    "marks": 3,
-   "q": "Read only the first line of a file, tidy the newline off the end of it, and measure what is left.",
+   "q": "Read just the first line of a file, strip the newline and measure it.",
    "brief": [
     "A file called rota.txt is already there. It may be empty.",
     "Open it in read mode.",
@@ -126,6 +128,7 @@
     "Then print one more line: the word length, a space, then how many characters the stripped line has.",
     "Two lines of output."
    ],
+   "hint": "filelines",
    "starter": "# Open rota.txt, read just the first line with .readline(), close the file\n# Strip the newline, then print: first <that line>\n# Then print: length <how many characters the stripped line has>\n",
    "tests": [
     {
@@ -175,7 +178,7 @@
    "id": "pr-l10-q4",
    "station": 1,
    "marks": 4,
-   "q": "Read every line of a file into a list, say how many there are, and number them.",
+   "q": "Read a file into a list of lines, then count and number them.",
    "brief": [
     "A file called names.txt is already there. It may be empty.",
     "Open it in read mode and use .readlines() to get a list of all the lines. Close the file.",
@@ -184,6 +187,7 @@
     "Number the positions from 1, not 0.",
     "If the file is empty, print only the line: lines 0"
    ],
+   "hint": "filelines",
    "starter": "# Open names.txt, use .readlines() to get a list, close the file\n# Print: lines <how many>\n# Then loop through and print each one as: <position> <name>\n",
    "tests": [
     {
@@ -235,7 +239,7 @@
    "id": "pr-l10-q5",
    "station": 2,
    "marks": 4,
-   "q": "Write a two-line report file, then read it back and print it to prove it is there.",
+   "q": "Write a two-line report file, then read it back and print it.",
    "brief": [
     "Read one line of input - the title of the report.",
     "Open a file called report.txt in write mode with the mode letter w.",
@@ -244,6 +248,7 @@
     "Now open report.txt again in read mode, read the whole file, and print it.",
     "Two lines of output: the title, then the word ready."
    ],
+   "hint": "filelines",
    "starter": "# Read the title\n# Open report.txt in write mode, write the title and then 'ready', close it\n# Open it again in read mode, read it all, and print it\n",
    "tests": [
     {
@@ -283,7 +288,7 @@
    "id": "pr-l10-q6",
    "station": 2,
    "marks": 4,
-   "q": "Show what write mode does to a file that already has something in it.",
+   "q": "Show what write mode does to a file that already has lines in it.",
    "brief": [
     "A file called stock.txt is already there, and it may already have lines in it.",
     "Read one line of input - a new stock entry.",
@@ -293,6 +298,7 @@
     "Then print one last line: the word lines, a space, then how many lines the file now holds.",
     "Write mode throws away whatever was in the file before, so there should only ever be one."
    ],
+   "hint": "filelines",
    "starter": "# Read the new entry\n# Open stock.txt in WRITE mode, write the entry and a newline, close it\n# Read the file back with .readlines() and print each line, then: lines <how many>\n",
    "tests": [
     {
@@ -354,7 +360,7 @@
    "id": "pr-l10-q7",
    "station": 3,
    "marks": 4,
-   "q": "Add a visitor to the end of a log without losing the visitors already in it.",
+   "q": "Add a visitor to the end of a log without losing the others.",
    "brief": [
     "A file called visits.txt is already there. It may be empty.",
     "Read one line of input - the name of a new visitor.",
@@ -364,6 +370,7 @@
     "Then print one more line: the word total, a space, then how many lines the file now holds.",
     "Two lines of output."
    ],
+   "hint": "filelines",
    "starter": "# Read the new visitor's name\n# Open visits.txt in APPEND mode, write the name and a newline, close it\n# Read it back with .readlines(), then print: latest <last line>, then: total <how many>\n",
    "tests": [
     {
@@ -425,7 +432,7 @@
    "id": "pr-l10-q8",
    "station": 4,
    "marks": 4,
-   "q": "Each line of a file is a record with two fields. Find the record for one name and report it.",
+   "q": "Find the record for one name in a file of name,age records.",
    "brief": [
     "A file called members.txt holds one record per line, in the form name,age with a comma between the two fields. It may be empty.",
     "Read one line of input - the name to look for.",
@@ -436,6 +443,7 @@
     "Then, as a final line either way, print: the word checked, a space, then how many records you looked at.",
     "Two lines of output."
    ],
+   "hint": "filelines",
    "starter": "# Read the name to look for\n# Open members.txt, loop through the lines, strip and split each one at the comma\n# Print '<name> is <age>' on a match, or 'not a member' if there is none\n# Then print: checked <how many records you looked at>\n",
    "tests": [
     {
@@ -519,6 +527,7 @@
     "Second: the word best, a space, then the name with the highest score.",
     "If two names share the highest score, print whichever comes first in the file."
    ],
+   "hint": "filelines",
    "starter": "# Open scores.txt, read the lines, close it\n# Add up the score field of every record, and keep track of the highest\n# Print 'no scores' if there are none, otherwise 'total <sum>' then 'best <name>'\n",
    "tests": [
     {
@@ -577,7 +586,7 @@
    "id": "pr-l10-q10",
    "station": 5,
    "marks": 5,
-   "q": "Read a file of sales records, work out each line's value, write a report file, then read the report back and print it.",
+   "q": "Turn a file of sales records into a report file, then print it.",
    "brief": [
     "A file called sales.txt holds one record per line, in the form item,quantity,price - three fields, with the price in whole pence. It may be empty.",
     "Work out the value of each record: the quantity multiplied by the price.",
@@ -587,6 +596,7 @@
     "Now open report.txt in read mode and print the whole file.",
     "If sales.txt is empty, report.txt holds just the one line: total 0"
    ],
+   "hint": "filelines",
    "starter": "# Open sales.txt, read the records, close it\n# Open report.txt in write mode, write '<item> <value>' per record, then 'total <sum>'\n# Close it, then open it in read mode and print it\n",
    "tests": [
     {
@@ -648,7 +658,7 @@
    "id": "pr-l10-q11",
    "station": 5,
    "marks": 6,
-   "q": "Filter a file of sensor readings into a new alerts file, then read that file back and count what is in it.",
+   "q": "Filter sensor readings above a limit into an alerts file, then print it.",
    "brief": [
     "A file called readings.txt holds one record per line, in the form sensor,reading, where the reading is a whole number. It may be empty.",
     "Read one line of input - a limit, a whole number.",
@@ -658,6 +668,7 @@
     "Print every line of alerts.txt with the newline stripped, one per line of output.",
     "Then print one last line: the word alerts, a space, then how many lines alerts.txt holds."
    ],
+   "hint": "filelines",
    "starter": "# Read the limit\n# Open readings.txt and read its records; open alerts.txt in write mode\n# Write '<sensor> <reading>' for every reading above the limit, then close alerts.txt\n# Read alerts.txt back, print each line, then: alerts <how many>\n",
    "tests": [
     {

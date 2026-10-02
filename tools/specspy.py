@@ -42,6 +42,9 @@ def code_tasks(lesson, station):
             continue
         t = dict(t="code", marks=q["marks"], q=q["q"], brief=q["brief"],
                  starter=q["starter"], tests=q["tests"], fb=q["fb"])
+        # The diagram the Hint button opens: the technique this question needs
+        if q.get("hint"):
+            t["hint"] = q["hint"]
         if q.get("forbid"):
             t["forbid"] = q["forbid"]
         out.append(t)

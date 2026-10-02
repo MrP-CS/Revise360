@@ -20,7 +20,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Open a text file, read all of it in one go, and print it.",
+       "q": "Read a whole text file in one go and print it.",
        "brief": [
         "A file called notice.txt is already there.",
         "Open it in read mode with the mode letter r.",
@@ -61,12 +61,13 @@
          "why": "Three lines, one .read(). If you printed a heading of your own as well, the output will not match - print only the file."
         }
        ],
-       "fb": "open() needs the file name and the mode. 'r' means read. .read() brings back the whole file as one string, newlines and all, and .close() lets go of it."
+       "fb": "open() needs the file name and the mode. 'r' means read. .read() brings back the whole file as one string, newlines and all, and .close() lets go of it.",
+       "hint": "filelines"
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "Count how many characters are in a file, including the ones you cannot see.",
+       "q": "Count how many characters a file holds, newlines included.",
        "brief": [
         "A file called log.txt is already there. It may be empty.",
         "Open it in read mode and read the whole file in one go.",
@@ -114,7 +115,8 @@
          "why": "The last line of a file does not have to end with a newline. If this gave 2 you are adding one on yourself."
         }
        ],
-       "fb": "len() on what .read() gave back counts the characters in the whole file. Newlines are real characters, which is why a file usually looks longer than you expect."
+       "fb": "len() on what .read() gave back counts the characters in the whole file. Newlines are real characters, which is why a file usually looks longer than you expect.",
+       "hint": "filelines"
       }
      ]
     },
@@ -129,7 +131,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Read only the first line of a file, tidy the newline off the end of it, and measure what is left.",
+       "q": "Read just the first line of a file, strip the newline and measure it.",
        "brief": [
         "A file called rota.txt is already there. It may be empty.",
         "Open it in read mode.",
@@ -183,12 +185,13 @@
          "why": "The first line of a long file is still just the first line. If a blank line appeared between the two outputs, the newline is still stuck on the end of what you printed."
         }
        ],
-       "fb": ".readline() reads up to and including the next newline, so what comes back has \\n on the end. .strip() takes that off, along with any stray spaces, and the length shows whether it really went."
+       "fb": ".readline() reads up to and including the next newline, so what comes back has \\n on the end. .strip() takes that off, along with any stray spaces, and the length shows whether it really went.",
+       "hint": "filelines"
       },
       {
        "t": "code",
        "marks": 4,
-       "q": "Read every line of a file into a list, say how many there are, and number them.",
+       "q": "Read a file into a list of lines, then count and number them.",
        "brief": [
         "A file called names.txt is already there. It may be empty.",
         "Open it in read mode and use .readlines() to get a list of all the lines. Close the file.",
@@ -242,7 +245,8 @@
          "why": "If each name printed with a blank line after it, the newline from the file is still attached - strip it before printing."
         }
        ],
-       "fb": ".readlines() gives you a list with one string per line, so len() tells you how many lines there are. Each string still ends with \\n until you strip it."
+       "fb": ".readlines() gives you a list with one string per line, so len() tells you how many lines there are. Each string still ends with \\n until you strip it.",
+       "hint": "filelines"
       }
      ]
     },
@@ -257,7 +261,7 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Write a two-line report file, then read it back and print it to prove it is there.",
+       "q": "Write a two-line report file, then read it back and print it.",
        "brief": [
         "Read one line of input - the title of the report.",
         "Open a file called report.txt in write mode with the mode letter w.",
@@ -299,12 +303,13 @@
          "why": "If the output was empty, you read the file before closing it after writing - what you wrote may still be waiting to be saved."
         }
        ],
-       "fb": "print() puts a newline on the end for you. .write() does not, so you have to write \\n yourself when you want a new line in the file."
+       "fb": "print() puts a newline on the end for you. .write() does not, so you have to write \\n yourself when you want a new line in the file.",
+       "hint": "filelines"
       },
       {
        "t": "code",
        "marks": 4,
-       "q": "Show what write mode does to a file that already has something in it.",
+       "q": "Show what write mode does to a file that already has lines in it.",
        "brief": [
         "A file called stock.txt is already there, and it may already have lines in it.",
         "Read one line of input - a new stock entry.",
@@ -369,7 +374,8 @@
          "why": "Writing the same text that was already there still leaves one line, not two."
         }
        ],
-       "fb": "Opening a file with 'w' empties it the moment it opens, even if you then write nothing. That is the difference between 'w' and 'a', and it is easy to lose work to."
+       "fb": "Opening a file with 'w' empties it the moment it opens, even if you then write nothing. That is the difference between 'w' and 'a', and it is easy to lose work to.",
+       "hint": "filelines"
       }
      ]
     },
@@ -384,7 +390,7 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Add a visitor to the end of a log without losing the visitors already in it.",
+       "q": "Add a visitor to the end of a log without losing the others.",
        "brief": [
         "A file called visits.txt is already there. It may be empty.",
         "Read one line of input - the name of a new visitor.",
@@ -449,7 +455,8 @@
          "why": "If a blank line appeared between the two lines of output, the newline is still on the end of the line you read - strip it before printing."
         }
        ],
-       "fb": "'a' for append opens the file with the writing point already at the end, so what you write is added. 'w' would throw the whole log away first."
+       "fb": "'a' for append opens the file with the writing point already at the end, so what you write is added. 'w' would throw the whole log away first.",
+       "hint": "filelines"
       }
      ]
     },
@@ -464,7 +471,7 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Each line of a file is a record with two fields. Find the record for one name and report it.",
+       "q": "Find the record for one name in a file of name,age records.",
        "brief": [
         "A file called members.txt holds one record per line, in the form name,age with a comma between the two fields. It may be empty.",
         "Read one line of input - the name to look for.",
@@ -543,7 +550,8 @@
          "why": "The last record must be checked too. Printing not a member here means the loop gave up as soon as the first line failed to match."
         }
        ],
-       "fb": "A record is one line made of fields. .split(',') breaks the line into a list of those fields, so fields[0] is the name and fields[1] is the age."
+       "fb": "A record is one line made of fields. .split(',') breaks the line into a list of those fields, so fields[0] is the name and fields[1] is the age.",
+       "hint": "filelines"
       },
       {
        "t": "code",
@@ -609,7 +617,8 @@
          "why": "Scores of zero are still records. If best came out blank, you started the highest at 0 and nothing ever beat it - start from the first record instead."
         }
        ],
-       "fb": "Totalling a column means reading each record, pulling out one field, turning it into a number and adding it on. The running total starts at 0 before the loop, never inside it."
+       "fb": "Totalling a column means reading each record, pulling out one field, turning it into a number and adding it on. The running total starts at 0 before the loop, never inside it.",
+       "hint": "filelines"
       }
      ]
     },
@@ -624,7 +633,7 @@
       {
        "t": "code",
        "marks": 5,
-       "q": "Read a file of sales records, work out each line's value, write a report file, then read the report back and print it.",
+       "q": "Turn a file of sales records into a report file, then print it.",
        "brief": [
         "A file called sales.txt holds one record per line, in the form item,quantity,price - three fields, with the price in whole pence. It may be empty.",
         "Work out the value of each record: the quantity multiplied by the price.",
@@ -689,12 +698,13 @@
          "why": "A quantity of zero is worth zero, and the record still gets a line of its own in the report."
         }
        ],
-       "fb": "Reading one file and writing another is the usual shape of a report. Only what you print is seen, so reading the report back is how you prove you really wrote it."
+       "fb": "Reading one file and writing another is the usual shape of a report. Only what you print is seen, so reading the report back is how you prove you really wrote it.",
+       "hint": "filelines"
       },
       {
        "t": "code",
        "marks": 6,
-       "q": "Filter a file of sensor readings into a new alerts file, then read that file back and count what is in it.",
+       "q": "Filter sensor readings above a limit into an alerts file, then print it.",
        "brief": [
         "A file called readings.txt holds one record per line, in the form sensor,reading, where the reading is a whole number. It may be empty.",
         "Read one line of input - a limit, a whole number.",
@@ -784,7 +794,8 @@
          "why": "Two separate records can hold the same reading and both count. If only one line printed, you stopped the loop at the first match."
         }
        ],
-       "fb": "This is the whole pattern in one program: read records in, decide about each one, write the chosen ones out, then read the new file back. Opening alerts.txt before the loop is what makes the empty case work."
+       "fb": "This is the whole pattern in one program: read records in, decide about each one, write the chosen ones out, then read the new file back. Opening alerts.txt before the loop is what makes the empty case work.",
+       "hint": "filelines"
       }
      ]
     },

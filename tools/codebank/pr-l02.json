@@ -14,13 +14,14 @@
    "id": "pr-l02-q1",
    "station": 0,
    "marks": 2,
-   "q": "Two crates of library books are counted at the returns desk, and the clerk wants the total and the gap between them.",
+   "q": "Print the total of two crate counts, then the first take away the second.",
    "brief": [
     "Read two lines of input. Each one is a whole number of books.",
     "Print the total of the two numbers.",
     "Print the first number take away the second number, on the next line.",
     "The second answer may come out negative, and that is correct."
    ],
+   "hint": "pyarith",
    "starter": "# Two whole numbers in. Total first, then first minus second.\n",
    "tests": [
     {
@@ -63,13 +64,14 @@
    "id": "pr-l02-q2",
    "station": 0,
    "marks": 3,
-   "q": "The tuck shop sells pencils at a fixed price in pence, and also offers half price to staff.",
+   "q": "Print the total cost of some pencils, then half the price of one.",
    "brief": [
     "Read two lines of input: the price of one pencil in pence, then how many pencils are bought. Both are whole numbers.",
     "Print the total cost in pence.",
     "Print half the price of one pencil, on the next line.",
     "Work the half out with / . Dividing always gives a real number, so a price of 30 halves to 15.0."
    ],
+   "hint": "pyarith",
    "starter": "# Price in pence, then how many.\n# Output: the total cost, then half of one price.\n",
    "tests": [
     {
@@ -112,13 +114,14 @@
    "id": "pr-l02-q3",
    "station": 1,
    "marks": 3,
-   "q": "Returned library books are packed into crates that each hold the same number, and whatever will not fill a crate stays on the trolley.",
+   "q": "Print how many full crates the books fill, then how many are left over.",
    "brief": [
     "Read two lines of input: the number of books, then how many books one crate holds. Both are whole numbers.",
     "Print how many full crates can be packed. Use whole number division, // , which OCR calls DIV.",
     "Print how many books are left on the trolley, on the next line. Use the remainder operator, % , which OCR calls MOD.",
     "Both answers are whole numbers."
    ],
+   "hint": "pyarith",
    "starter": "# Books, then crate size.\n# Output: full crates, then books left over.\n",
    "tests": [
     {
@@ -161,13 +164,14 @@
    "id": "pr-l02-q4",
    "station": 1,
    "marks": 3,
-   "q": "A sports day stopwatch records a race in seconds, and the results board shows it as whole minutes and the seconds left over.",
+   "q": "Turn a race time in seconds into whole minutes and the seconds left over.",
    "brief": [
     "Read one line of input: a whole number of seconds.",
     "Print the number of whole minutes.",
     "Print the seconds left over, on the next line.",
     "There are 60 seconds in a minute. Both answers are whole numbers."
    ],
+   "hint": "pyarith",
    "starter": "# Seconds in. Whole minutes out, then the seconds left over.\n",
    "tests": [
     {
@@ -207,7 +211,7 @@
    "id": "pr-l02-q5",
    "station": 2,
    "marks": 3,
-   "q": "A square patch is marked out on the sports field, and a cube shaped equipment crate is built with the same side length.",
+   "q": "Print the area of a square and the volume of a cube of that side.",
    "brief": [
     "Read one line of input: the length of one side in metres, a whole number.",
     "Print the area of the square: the side to the power 2.",
@@ -215,6 +219,7 @@
     "The power operator is ** , so a side of 4 squared is written 4 ** 2.",
     "Both answers are whole numbers."
    ],
+   "hint": "pyarith",
    "starter": "# One side length in. Area (power 2), then volume (power 3).\n",
    "tests": [
     {
@@ -254,13 +259,14 @@
    "id": "pr-l02-q6",
    "station": 2,
    "marks": 3,
-   "q": "A square rug is ordered for the library corner. Its area is known and the fitter needs the length of one side.",
+   "q": "Print the length of one side of a square from its area.",
    "brief": [
     "Read one line of input: the area in square metres. It may have a decimal point.",
     "Print the length of one side.",
     "A square root is the power 0.5, so an area of 81 gives a side of 9.0.",
     "The answer is a real number, so it always has a decimal part."
    ],
+   "hint": "pyarith",
    "starter": "# Area in, side length out. A square root is the power 0.5.\n",
    "tests": [
     {
@@ -297,13 +303,14 @@
    "id": "pr-l02-q7",
    "station": 3,
    "marks": 3,
-   "q": "At the end of the day the tuck shop float is counted, and the sheet records it twice: to the nearest pound and to the penny.",
+   "q": "Print an amount rounded to the nearest whole number, then to 2 decimal places.",
    "brief": [
     "Read one line of input: an amount in pounds, which may have a decimal point.",
     "Print the amount rounded to the nearest whole number.",
     "Print the amount rounded to 2 decimal places, on the next line.",
     "Use round(). With one value inside the brackets it rounds to a whole number; a second value says how many decimal places to keep."
    ],
+   "hint": "pyarith",
    "starter": "# One amount in. Rounded to a whole number, then to 2 decimal places.\n",
    "tests": [
     {
@@ -343,12 +350,13 @@
    "id": "pr-l02-q8",
    "station": 3,
    "marks": 3,
-   "q": "The bus app predicts an arrival time in minutes and the bus then actually arrives. The report records how far out the prediction was, never whether it was early or late.",
+   "q": "Print how far out a bus prediction was, never as a negative number.",
    "brief": [
     "Read two lines of input: the predicted arrival in minutes, then the actual arrival. Both may have decimal points.",
     "Print how far out the prediction was, as a positive number, rounded to 1 decimal place.",
     "One line of output. Use abs() to remove the sign."
    ],
+   "hint": "pyarith",
    "starter": "# Predicted, then actual. Print the gap between them, never negative.\n",
    "tests": [
     {
@@ -388,14 +396,16 @@
    "id": "pr-l02-q9",
    "station": 4,
    "marks": 3,
-   "q": "A dice is rolled twice for the sports day raffle. The computer's random numbers come from a seed, so the same seed always gives the same rolls and your answer can be marked.",
+   "q": "Print two random dice rolls from 1 to 6.",
    "brief": [
     "Keep the lines already in the editor. They import random and set the seed from the input.",
+    "The same seed always gives the same two rolls, which is how your answer can be marked.",
     "Print one random whole number from 1 to 6.",
     "Print a second random whole number from 1 to 6, on the next line.",
     "Use random.randint(1, 6). Both 1 and 6 can come up.",
     "Do not call the random module anywhere else, or your numbers will not match."
    ],
+   "hint": "pyoutput",
    "starter": "import random\n\n# The seed is read for you. The same seed always gives the same rolls.\nrandom.seed(int(input()))\n\n# Two rolls below, one per line.\n",
    "tests": [
     {
@@ -435,7 +445,7 @@
    "id": "pr-l02-q10",
    "station": 4,
    "marks": 4,
-   "q": "A sports day lucky dip draws three numbers from 10 to 20 and then adds them up for the winning total.",
+   "q": "Print three random numbers from 10 to 20, then their total.",
    "brief": [
     "Keep the lines already in the editor. They import random and set the seed from the input.",
     "Generate three random whole numbers from 10 to 20, including both 10 and 20.",
@@ -443,6 +453,7 @@
     "Print their total on a fourth line.",
     "Store each number in a variable as you go, so the total adds up the same three numbers you printed."
    ],
+   "hint": "pyoutput",
    "starter": "import random\n\n# The seed is read for you. The same seed always gives the same numbers.\nrandom.seed(int(input()))\n\n# Three numbers from 10 to 20, then their total.\n",
    "tests": [
     {
@@ -488,7 +499,7 @@
    "id": "pr-l02-q11",
    "station": 5,
    "marks": 4,
-   "q": "The tuck shop counts the day's takings on cheese rolls, then splits them equally between the three house charity boxes.",
+   "q": "Print the takings in pence, then as pounds and pence, then a third share.",
    "brief": [
     "Read two lines of input: the number of rolls sold, then the price of one roll in pence. Both are whole numbers.",
     "Print the total takings in pence.",
@@ -497,6 +508,7 @@
     "Print one charity box's share: the total in pounds divided by 3, rounded to 2 decimal places.",
     "Four lines of output in that order."
    ],
+   "hint": "pyarith",
    "starter": "# Rolls sold, then the price of one in pence.\n# Output: total pence / whole pounds / pence left over / a third of the total in pounds.\n",
    "tests": [
     {

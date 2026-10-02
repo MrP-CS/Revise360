@@ -14,12 +14,13 @@
    "id": "pr-l05-q1",
    "station": 0,
    "marks": 2,
-   "q": "Write a program that counts down to the start of a race, using a while loop.",
+   "q": "Count down to the start of a race with a while loop.",
    "brief": [
     "Read one whole number.",
     "Using a while loop, print each number from that number down to 1, one number per line.",
     "After the loop has finished, print: go"
    ],
+   "hint": "pywhile",
    "starter": "# Read the number, count down to 1, then print go\n",
    "tests": [
     {
@@ -74,13 +75,14 @@
    "id": "pr-l05-q2",
    "station": 0,
    "marks": 3,
-   "q": "A pond is covered by 1 square metre of weed, and the weed doubles every week. Write a program that works out how many weeks it takes to cover a given area.",
+   "q": "Work out how many weeks doubling weed takes to cover a given area.",
    "brief": [
     "Read one whole number - the area to reach, in square metres.",
     "Start the weed at 1 square metre and count the weeks from 0.",
     "Keep doubling the weed until it is greater than or equal to the area read.",
     "Print only the number of weeks."
    ],
+   "hint": "pywhile",
    "starter": "# Start at 1 square metre, double until the target is reached, print the weeks\n",
    "tests": [
     {
@@ -126,13 +128,14 @@
    "id": "pr-l05-q3",
    "station": 1,
    "marks": 3,
-   "q": "Lockers are numbered 1 to 20. Write a program that keeps asking until a locker number in that range is given.",
+   "q": "Keep asking until a locker number from 1 to 20 is given.",
    "brief": [
     "Read one whole number.",
     "If it is not from 1 to 20 inclusive, print: out of range - and then read another number.",
     "Keep asking until a number from 1 to 20 inclusive is given.",
     "Then print the word locker, a space, and the accepted number."
    ],
+   "hint": "pyvalidate",
    "starter": "# Keep asking until the locker number is from 1 to 20\n",
    "tests": [
     {
@@ -184,13 +187,14 @@
    "id": "pr-l05-q4",
    "station": 1,
    "marks": 3,
-   "q": "Write a program that keeps asking a yes or no question until the answer is one of those two words.",
+   "q": "Keep asking until the answer is yes or no.",
    "brief": [
     "Read one word.",
     "If it is not yes and not no, print: please answer yes or no - and then read another word.",
     "Keep asking until the word is yes or no.",
     "Then print the word accepted, a space, and the word that was given."
    ],
+   "hint": "pyvalidate",
    "starter": "# Keep asking until the answer is yes or no\n",
    "tests": [
     {
@@ -242,12 +246,13 @@
    "id": "pr-l05-q5",
    "station": 2,
    "marks": 3,
-   "q": "A till reads prices in pence until -1 is typed to mean the end of the shopping. Write a program that prints the total.",
+   "q": "Total the prices typed in until -1 ends the shopping.",
    "brief": [
     "Keep reading whole numbers.",
     "Stop as soon as -1 is read. The -1 is a signal to stop and must not be added to the total.",
     "Print only the total."
    ],
+   "hint": "pywhile",
    "starter": "# Read prices until -1, then print the total\n",
    "tests": [
     {
@@ -301,13 +306,14 @@
    "id": "pr-l05-q6",
    "station": 2,
    "marks": 4,
-   "q": "A weather station reads temperatures until the word end is typed. Write a program that prints the highest temperature read.",
+   "q": "Print the highest temperature typed in before the word end.",
    "brief": [
     "Keep reading lines. Each line is either a whole number or the word end.",
     "Stop as soon as end is read.",
     "Print the highest number that was read.",
     "If end is the very first line, print: no readings"
    ],
+   "hint": "pywhile",
    "starter": "# Read temperatures until the word end, then print the highest\n",
    "tests": [
     {
@@ -360,12 +366,13 @@
    "id": "pr-l05-q7",
    "station": 3,
    "marks": 4,
-   "q": "Write a program that reads test scores until -1 and reports how many there were and how many of them reached 40.",
+   "q": "Count the scores typed in before -1, and how many reached 40.",
    "brief": [
     "Keep reading whole numbers. Stop as soon as -1 is read - that is the signal to stop, not a score.",
     "Print how many scores were read on the first line.",
     "Print how many of those scores were 40 or more on the second line."
    ],
+   "hint": "pywhile",
    "starter": "# Count the scores and count how many reached 40\n",
    "tests": [
     {
@@ -423,12 +430,13 @@
    "id": "pr-l05-q8",
    "station": 3,
    "marks": 4,
-   "q": "Write a program that adds up the digits of a whole number, using a while loop.",
+   "q": "Add up the digits of a whole number using a while loop.",
    "brief": [
     "Read one whole number that is 0 or more.",
     "Using a while loop, add up its digits. Do not turn the number into text.",
     "Print only the total of the digits."
    ],
+   "hint": "pywhile",
    "starter": "# Take the last digit off the number each time round, adding it to a total\n",
    "tests": [
     {
@@ -483,7 +491,7 @@
    "id": "pr-l05-q9",
    "station": 4,
    "marks": 5,
-   "q": "A van is loaded with parcels. The number of parcels is known, but the number of tries at setting a weight limit is not. Write a program that uses the right loop for each job.",
+   "q": "Read the parcel weights with a for loop, then the van limit with a while loop.",
    "brief": [
     "Read one whole number - how many parcels there are.",
     "Read that many parcel weights, one per line. Use a count-controlled loop for this part.",
@@ -492,6 +500,7 @@
     "When a limit is accepted, print: ok",
     "If there are 0 parcels, read no weights at all, and treat the first limit given as ok."
    ],
+   "hint": "constructs",
    "starter": "# A for loop for the parcels, a while loop for the limit\ncount = int(input())\n",
    "tests": [
     {
@@ -566,7 +575,7 @@
    "id": "pr-l05-q10",
    "station": 5,
    "marks": 5,
-   "q": "Write a guessing helper. The secret number is 37 and the program keeps giving hints until the guess is right.",
+   "q": "Give a higher or lower hint until the secret number 37 is guessed.",
    "brief": [
     "The secret number is 37.",
     "Read one whole number.",
@@ -575,6 +584,7 @@
     "The hint is: lower - if the guess is above 37.",
     "Once 37 is guessed, print: correct"
    ],
+   "hint": "pyvalidate",
    "starter": "# The secret is 37. Give a hint for every wrong guess.\n",
    "tests": [
     {
@@ -630,7 +640,7 @@
    "id": "pr-l05-q11",
    "station": 5,
    "marks": 6,
-   "q": "A swimming club logs how long each member swam, in minutes, until the word close is typed. Write a program that reports the session.",
+   "q": "Print how many swims there were, the total minutes and the longest swim.",
    "brief": [
     "Keep reading lines until the word close is read. Every other line is a whole number of minutes.",
     "If close is the very first line, print only: no swimmers",
@@ -638,6 +648,7 @@
     "the total number of minutes on the second line,",
     "and the longest single swim on the third line."
    ],
+   "hint": "pywhile",
    "starter": "# Read swim times until close, then report the count, the total and the longest\n",
    "tests": [
     {

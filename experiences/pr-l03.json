@@ -20,7 +20,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Two weather stations each report a wind speed. Write a program that says whether the first one is the higher of the two.",
+       "q": "Print whether the first of two wind speeds is higher than the second.",
        "brief": [
         "Read two whole numbers, one on each line - the first station's wind speed, then the second station's.",
         "Print True if the first number is greater than the second.",
@@ -60,12 +60,13 @@
          "why": "Equal is not greater. This is the case that tells > apart from >=."
         }
        ],
-       "fb": "A comparison is already True or False, so you can print it straight out without an if."
+       "fb": "A comparison is already True or False, so you can print it straight out without an if.",
+       "hint": "pyif"
       },
       {
        "t": "code",
        "marks": 2,
-       "q": "Write a program that reports three different comparisons of two numbers.",
+       "q": "Print three different comparisons of two numbers.",
        "brief": [
         "Read two whole numbers, one on each line.",
         "Print three lines, in this order:",
@@ -112,7 +113,8 @@
          "why": "Check you have the three lines in the order the brief asks for."
         }
        ],
-       "fb": "== asks a question, = stores a value. The two are easy to mix up and Python will not let you use = in a comparison."
+       "fb": "== asks a question, = stores a value. The two are easy to mix up and Python will not let you use = in a comparison.",
+       "hint": "pyif"
       }
      ]
     },
@@ -127,7 +129,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "A greenhouse logs its overnight temperature. Write a program that adds a warning only when it is below freezing.",
+       "q": "Print recorded, then a frost warning only if the temperature is below freezing.",
        "brief": [
         "Read one whole number - the temperature in degrees Celsius.",
         "Always print: recorded",
@@ -164,12 +166,13 @@
          "why": "Exactly 0 is not below 0. If you warned here you used <= where the brief says below."
         }
        ],
-       "fb": "An if on its own is allowed - you only need an else when something has to happen in the other case."
+       "fb": "An if on its own is allowed - you only need an else when something has to happen in the other case.",
+       "hint": "pyif"
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "A service lift carries up to 450 kg. Write a program that decides whether a load may go.",
+       "q": "Decide whether a load may go in a lift that carries 450 kg.",
        "brief": [
         "Read one whole number - the total load in kilograms.",
         "If the load is 450 or less, print: safe to go",
@@ -215,7 +218,8 @@
          "why": "An empty lift is still a valid load, so it must not fall through to the else."
         }
        ],
-       "fb": "'450 or less' means <= 450. Always test the exact boundary number, because that is where < and <= behave differently."
+       "fb": "'450 or less' means <= 450. Always test the exact boundary number, because that is where < and <= behave differently.",
+       "hint": "pyif"
       }
      ]
     },
@@ -230,7 +234,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "A reservoir is measured each week. Write a program that says whether the level is rising, falling or steady.",
+       "q": "Say whether a reservoir level is rising, falling or steady.",
        "brief": [
         "Read one whole number - the change in the level in centimetres since last week.",
         "If the change is above 0, print: rising",
@@ -277,12 +281,13 @@
          "why": "A large fall still only prints one word, so make sure your branches do not run one after another."
         }
        ],
-       "fb": "elif means 'only ask this if the question above was False', so the three branches cannot both run."
+       "fb": "elif means 'only ask this if the question above was False', so the three branches cannot both run.",
+       "hint": "pyif"
       },
       {
        "t": "code",
        "marks": 4,
-       "q": "A courier charges by the weight band of a package. Write a program that names the band.",
+       "q": "Print which weight band a package falls in.",
        "brief": [
         "Read one whole number - the weight in grams.",
         "100 or less: print letter",
@@ -357,7 +362,8 @@
          "why": "Anything over 2000 falls through to the else."
         }
        ],
-       "fb": "Write the bands in order from lightest upwards and each elif only needs the top of its own band, because everything lighter has already been dealt with."
+       "fb": "Write the bands in order from lightest upwards and each elif only needs the top of its own band, because everything lighter has already been dealt with.",
+       "hint": "pyif"
       }
      ]
     },
@@ -372,7 +378,7 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "A survey drone may only fly when the wind is light and the visibility is good. Write a program that decides.",
+       "q": "Decide whether a drone may fly, from the wind speed and visibility.",
        "brief": [
         "Read two whole numbers, one on each line - the wind speed in mph, then the visibility in kilometres.",
         "If the wind speed is under 20 and the visibility is 5 or more, print: clear to fly",
@@ -432,12 +438,13 @@
          "why": "The visibility is fine but the wind is too strong, so the other half of the and is doing the work here."
         }
        ],
-       "fb": "and needs both sides True. Each side still needs its own comparison - wind < 20 and vis >= 5, not wind < 20 and >= 5."
+       "fb": "and needs both sides True. Each side still needs its own comparison - wind < 20 and vis >= 5, not wind < 20 and >= 5.",
+       "hint": "pyif"
       },
       {
        "t": "code",
        "marks": 4,
-       "q": "A stock room door opens for two particular staff numbers, but never while the alarm is set. Write a program that decides.",
+       "q": "Decide whether the stock room door opens, from a staff number and the alarm.",
        "brief": [
         "Read a whole number - the staff number.",
         "Read a word on the next line - either yes or no, in lower case, saying whether the alarm is set.",
@@ -498,7 +505,8 @@
          "why": "The alarm beats everything, so the alarm check has to be joined on with and, not or."
         }
        ],
-       "fb": "Each or needs a full comparison on both sides: num == 7 or num == 9. Brackets round the or keep it from being swallowed by the and."
+       "fb": "Each or needs a full comparison on both sides: num == 7 or num == 9. Brackets round the or keep it from being swallowed by the and.",
+       "hint": "pyif"
       }
      ]
     },
@@ -513,7 +521,7 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "A hockey club decides each Saturday fixture from the weather and how many players turn up. Write a program that announces the decision.",
+       "q": "Announce the hockey fixture from the weather and how many players are available.",
        "brief": [
         "Read a word on the first line - either dry or wet, in lower case.",
         "Read a whole number on the second line - how many players are available.",
@@ -574,12 +582,13 @@
          "why": "Both conditions fail, which is the inner else of the outer else."
         }
        ],
-       "fb": "The weather chooses which pair of answers you are picking from, and the number of players chooses which of that pair you print. That is why one decision sits inside the other."
+       "fb": "The weather chooses which pair of answers you are picking from, and the number of players chooses which of that pair you print. That is why one decision sits inside the other.",
+       "hint": "pyif"
       },
       {
        "t": "code",
        "marks": 5,
-       "q": "A parcel locker sorts deliveries by box size and weight. Write a program that says where each delivery goes.",
+       "q": "Say where a delivery goes, from its box size and weight.",
        "brief": [
         "Read a word on the first line - either small or large, in lower case.",
         "Read a whole number on the second line - the weight in kilograms.",
@@ -660,7 +669,8 @@
          "why": "Only large boxes can be too heavy, so this answer must sit inside the large branch."
         }
        ],
-       "fb": "Only the large branch needs three answers, so the elif belongs inside it rather than in the outer chain."
+       "fb": "Only the large branch needs three answers, so the elif belongs inside it rather than in the outer chain.",
+       "hint": "pyif"
       }
      ]
     },
@@ -675,7 +685,7 @@
       {
        "t": "code",
        "marks": 6,
-       "q": "Three judges score a gymnastics routine out of 10. Write a program that works out the medal.",
+       "q": "Work out the medal from three judges' scores out of 10.",
        "brief": [
         "Read three whole numbers, one on each line - the three judges' scores.",
         "If all three scores are 9 or more, print: gold",
@@ -775,7 +785,8 @@
          "why": "Low scores all round, which is the plain else at the bottom of the chain."
         }
        ],
-       "fb": "'At least two are 8 or more' needs each pair joined with and, and the three pairs joined with or. Keep the rules in the brief's order, because an earlier branch wins even when a later one would also be True."
+       "fb": "'At least two are 8 or more' needs each pair joined with and, and the three pairs joined with or. Keep the rules in the brief's order, because an earlier branch wins even when a later one would also be True.",
+       "hint": "pyif"
       }
      ]
     },

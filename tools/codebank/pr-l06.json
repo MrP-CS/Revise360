@@ -14,13 +14,14 @@
    "id": "pr-l06-q1",
    "station": 0,
    "marks": 2,
-   "q": "Write a program that reports the length of a word and the characters at each end of it.",
+   "q": "Print a word's length, then its first and last characters.",
    "brief": [
     "Read one word.",
     "Print how many characters it has on the first line.",
     "Print its first character on the second line.",
     "Print its last character on the third line."
    ],
+   "hint": "strslice",
    "starter": "# Read a word, then print its length, its first character and its last character\n",
    "tests": [
     {
@@ -74,12 +75,13 @@
    "id": "pr-l06-q2",
    "station": 0,
    "marks": 3,
-   "q": "Write a program that prints the character at a position the user chooses, and says so politely when there is no character there.",
+   "q": "Print the character at a chosen position in a word, if there is one.",
    "brief": [
     "Read one word, then read one whole number - a position counting from 0.",
     "If that position exists in the word, print the character at it.",
     "Otherwise print: no such position"
    ],
+   "hint": "strslice",
    "starter": "# Read a word and a position, then print the character there if it exists\n",
    "tests": [
     {
@@ -139,12 +141,13 @@
    "id": "pr-l06-q3",
    "station": 1,
    "marks": 3,
-   "q": "Write a program that makes a three-letter code from the start of a word.",
+   "q": "Make a three-letter code from the start of a word.",
    "brief": [
     "Read one word.",
     "If it has 3 or more characters, print its first 3 characters and nothing else.",
     "If it has fewer than 3 characters, print: too short"
    ],
+   "hint": "strslice",
    "starter": "# Read a word and print its first three characters, or say it is too short\n",
    "tests": [
     {
@@ -199,12 +202,13 @@
    "id": "pr-l06-q4",
    "station": 1,
    "marks": 3,
-   "q": "A label is wrapped in one marker character at each end. Write a program that prints what is inside the markers.",
+   "q": "Print a line of text without its first and last characters.",
    "brief": [
     "Read one line of text.",
     "If it has 3 or more characters, print it with the first and the last character removed.",
     "If it has fewer than 3 characters, print: nothing inside"
    ],
+   "hint": "strslice",
    "starter": "# Print the line without its first and last characters\n",
    "tests": [
     {
@@ -259,13 +263,14 @@
    "id": "pr-l06-q5",
    "station": 2,
    "marks": 4,
-   "q": "Write a program that compares two words, treating capitals as the same as small letters, and puts them in order when they differ.",
+   "q": "Compare two words ignoring capitals, and order them if they differ.",
    "brief": [
     "Read two words, one per line.",
     "If they are the same word once capitals are ignored, print: match - and nothing else.",
     "Otherwise print: different - and then on a second line print whichever of the two words comes first in alphabetical order, again ignoring capitals.",
     "Print that word exactly as it was typed."
    ],
+   "hint": "strslice",
    "starter": "# Compare the two words ignoring capitals, and say which comes first if they differ\n",
    "tests": [
     {
@@ -327,12 +332,13 @@
    "id": "pr-l06-q6",
    "station": 2,
    "marks": 4,
-   "q": "Write a program that counts how many of the characters in a line are capital letters.",
+   "q": "Count the capital letters in a line of text.",
    "brief": [
     "Read one line of text.",
     "Count how many of its characters are capital letters.",
     "Print only that count."
    ],
+   "hint": "strslice",
    "starter": "# Go through the line one character at a time and count the capitals\n",
    "tests": [
     {
@@ -387,12 +393,13 @@
    "id": "pr-l06-q7",
    "station": 3,
    "marks": 4,
-   "q": "Write a program that checks whether one piece of text appears somewhere inside another, and says whether it is right at the start.",
+   "q": "Say whether a word is inside a line of text, and whether it starts it.",
    "brief": [
     "Read one line of text, then read the word to look for.",
     "If the word does not appear anywhere in the text, print: missing - and nothing else.",
     "If it does appear, print: found - and then on a second line print: at the start - if the text begins with that word, or: inside - if it does not."
    ],
+   "hint": "strslice",
    "starter": "# Say whether the word is in the text, and whether the text begins with it\n",
    "tests": [
     {
@@ -466,12 +473,13 @@
    "id": "pr-l06-q8",
    "station": 3,
    "marks": 4,
-   "q": "Write a program that reports the position at which a word starts inside a line of text.",
+   "q": "Print the position where a word starts inside a line of text.",
    "brief": [
     "Read one line of text, then read the word to look for.",
     "If the word is in the text, print the position where it starts, counting from 0.",
     "If it is not in the text, print: not found"
    ],
+   "hint": "strslice",
    "starter": "# Find where the word starts in the text, or say it is not there\n",
    "tests": [
     {
@@ -531,13 +539,14 @@
    "id": "pr-l06-q9",
    "station": 4,
    "marks": 4,
-   "q": "Write a program that prints the letter that comes after the one given, going back to the start of the alphabet after z.",
+   "q": "Print the letter after the one given, with z wrapping round to a.",
    "brief": [
     "Read one lower-case letter.",
     "If it is z, print: a",
     "Otherwise print the letter that comes next in the alphabet.",
     "Use ord() and chr() to work it out."
    ],
+   "hint": "strslice",
    "starter": "# Turn the letter into its code, add one, turn it back into a letter\n",
    "tests": [
     {
@@ -583,7 +592,7 @@
    "id": "pr-l06-q10",
    "station": 4,
    "marks": 5,
-   "q": "Write a program that separates the letters and the digits in a line of text.",
+   "q": "Separate the letters and the digits in a line of text.",
    "brief": [
     "Read one line of text.",
     "Build up two new strings: one of its letters in the order they appear, one of its digits in the order they appear.",
@@ -591,6 +600,7 @@
     "Print the letters on the first line, or print: none - if there are no letters.",
     "Print the digits on the second line, or print: none - if there are no digits."
    ],
+   "hint": "strslice",
    "starter": "# Build two new strings, one character at a time\n",
    "tests": [
     {
@@ -650,7 +660,7 @@
    "id": "pr-l06-q11",
    "station": 5,
    "marks": 6,
-   "q": "Write a program that reverses a word and says whether it reads the same both ways.",
+   "q": "Reverse a word and say whether it reads the same both ways.",
    "brief": [
     "Read one word.",
     "Build the word backwards one character at a time - do not use a slice with a negative step and do not use reversed().",
@@ -658,6 +668,7 @@
     "If the word reads the same forwards and backwards once capitals are ignored, print: palindrome - on the second line.",
     "Otherwise print: not a palindrome - on the second line."
    ],
+   "hint": "strslice",
    "starter": "# Build the reversed word one character at a time, then compare\n",
    "tests": [
     {

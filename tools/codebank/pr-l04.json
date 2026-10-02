@@ -14,12 +14,13 @@
    "id": "pr-l04-q1",
    "station": 0,
    "marks": 2,
-   "q": "A tannoy repeats every announcement four times. Write a program that prints a message four times.",
+   "q": "Print the same message four times.",
    "brief": [
     "Read one word - the message.",
     "Print it four times, one on each line.",
     "Print nothing else."
    ],
+   "hint": "pyrange",
    "starter": "# Read the message, then print it four times\n",
    "tests": [
     {
@@ -65,13 +66,14 @@
    "id": "pr-l04-q2",
    "station": 0,
    "marks": 2,
-   "q": "Write a program that repeats a word as many times as the user asks for.",
+   "q": "Print start, then a word as many times as the user asks.",
    "brief": [
     "Read one word on the first line.",
     "Read one whole number on the second line - how many times to repeat it.",
     "Print: start",
     "Then print the word that many times, one on each line."
    ],
+   "hint": "pyrange",
    "starter": "# Read a word and a count, print start, then repeat the word\n",
    "tests": [
     {
@@ -130,12 +132,13 @@
    "id": "pr-l04-q3",
    "station": 1,
    "marks": 2,
-   "q": "Write a program that numbers the lanes of a swimming pool.",
+   "q": "Number the lanes of a swimming pool.",
    "brief": [
     "Read one whole number - how many lanes there are.",
     "Print the lane numbers from 1 up to and including that number, one on each line.",
     "Print nothing else."
    ],
+   "hint": "pyrange",
    "starter": "# Read how many lanes there are, then number them from 1\n",
    "tests": [
     {
@@ -178,13 +181,14 @@
    "id": "pr-l04-q4",
    "station": 1,
    "marks": 3,
-   "q": "A tiler needs the area of each square slab from 1 metre upwards. Write a program that lists them.",
+   "q": "List each side length from 1 upwards with the area of that square.",
    "brief": [
     "Read one whole number - the largest side length in metres.",
     "For every side length from 1 up to and including that number, print one line:",
     "the side length, a single space, then that side length multiplied by itself.",
     "Print nothing else."
    ],
+   "hint": "pyrange",
    "starter": "# Read the largest side, then print each side and its area\n",
    "tests": [
     {
@@ -237,13 +241,14 @@
    "id": "pr-l04-q5",
    "station": 2,
    "marks": 3,
-   "q": "A school hall has numbered rows. Write a program that lists the rows in a block from a first row to a last row.",
+   "q": "List every row number from a first row to a last row.",
    "brief": [
     "Read two whole numbers, one on each line - the first row number, then the last row number.",
     "Print every row number from the first up to and including the last, one on each line.",
     "The last row number will never be smaller than the first.",
     "Print nothing else."
    ],
+   "hint": "pyrange",
    "starter": "# Read the first and last row numbers, then list every row in between\n",
    "tests": [
     {
@@ -302,7 +307,7 @@
    "id": "pr-l04-q6",
    "station": 2,
    "marks": 4,
-   "q": "A gauge is read five times, going up or down by a fixed amount each time. Write a program that prints the five readings.",
+   "q": "Print five gauge readings that change by a fixed step each time.",
    "brief": [
     "Read two whole numbers, one on each line - the first reading, then the step.",
     "Print five readings, one on each line, starting at the first reading and changing by the step each time.",
@@ -310,6 +315,7 @@
     "The step will never be 0.",
     "Print nothing else."
    ],
+   "hint": "pyrange",
    "starter": "# Read the first reading and the step, then print five readings\n",
    "tests": [
     {
@@ -389,12 +395,13 @@
    "id": "pr-l04-q7",
    "station": 3,
    "marks": 3,
-   "q": "A tuck shop counts up the day's takings. Write a program that totals a set of amounts.",
+   "q": "Print the total of a set of amounts.",
    "brief": [
     "Read one whole number - how many amounts follow.",
     "Then read that many whole numbers, one on each line.",
     "Print only the total of those amounts."
    ],
+   "hint": "constructs",
    "starter": "# Read how many amounts there are, add them up, print the total\n",
    "tests": [
     {
@@ -464,7 +471,7 @@
    "id": "pr-l04-q8",
    "station": 3,
    "marks": 4,
-   "q": "A weather club logs the overnight temperature for a week. Write a program that reports on the readings.",
+   "q": "Print the total, how many are below 0, the highest and the lowest reading.",
    "brief": [
     "Read one whole number - how many readings follow.",
     "Then read that many whole numbers, one on each line - temperatures in degrees Celsius.",
@@ -474,6 +481,7 @@
     "Line 3: the highest reading.",
     "Line 4: the lowest reading."
    ],
+   "hint": "constructs",
    "starter": "# Read the readings, then print the total, the frosty count, the highest and the lowest\n",
    "tests": [
     {
@@ -558,12 +566,13 @@
    "id": "pr-l04-q9",
    "station": 4,
    "marks": 4,
-   "q": "Write a program that draws a rectangle of stars of any size.",
+   "q": "Draw a rectangle of stars of any size.",
    "brief": [
     "Read two whole numbers, one on each line - the number of rows, then the number of stars in each row.",
     "Print the rectangle: one line per row, each line made of that many * characters with nothing between them.",
     "Print nothing else."
    ],
+   "hint": "pyrange",
    "starter": "# Read the rows and the width, then draw the rectangle of stars\n",
    "tests": [
     {
@@ -619,13 +628,14 @@
    "id": "pr-l04-q10",
    "station": 4,
    "marks": 5,
-   "q": "Write a program that prints a multiplication square.",
+   "q": "Print a multiplication square.",
    "brief": [
     "Read one whole number - the size of the square.",
     "Print that many lines. The line for row r holds r times 1, r times 2, and so on up to r times the size.",
     "Put a single space between the numbers on a line.",
     "For a size of 3 the output is exactly these three lines: 1 2 3 then 2 4 6 then 3 6 9."
    ],
+   "hint": "pyrange",
    "starter": "# Read the size, then print the multiplication square\n",
    "tests": [
     {
@@ -677,7 +687,7 @@
    "id": "pr-l04-q11",
    "station": 5,
    "marks": 6,
-   "q": "A spelling game scores words by how many vowels they hold. Write a program that reports on a set of words.",
+   "q": "Count the vowels in each of a set of words.",
    "brief": [
     "Read one whole number - how many words follow.",
     "Then read that many words, one on each line, all in lower case.",
@@ -685,6 +695,7 @@
     "After all the words, print one more line: the total number of vowels in all of them.",
     "The vowels are a, e, i, o and u."
    ],
+   "hint": "pyrange",
    "starter": "# Read the words, print each one with its vowel count, then the grand total\n",
    "tests": [
     {

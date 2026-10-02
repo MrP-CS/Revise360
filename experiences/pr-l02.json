@@ -20,7 +20,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Two crates of library books are counted at the returns desk, and the clerk wants the total and the gap between them.",
+       "q": "Print the total of two crate counts, then the first take away the second.",
        "brief": [
         "Read two lines of input. Each one is a whole number of books.",
         "Print the total of the two numbers.",
@@ -63,12 +63,13 @@
          "why": "5 instead of -5 means you subtracted the other way round. Keep the order the question gives: the first number take away the second, even when the answer is below zero."
         }
        ],
-       "fb": "The four operators are + - * and /, and they work on numbers only. Anything coming from input() has to be cast first."
+       "fb": "The four operators are + - * and /, and they work on numbers only. Anything coming from input() has to be cast first.",
+       "hint": "pyarith"
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "The tuck shop sells pencils at a fixed price in pence, and also offers half price to staff.",
+       "q": "Print the total cost of some pencils, then half the price of one.",
        "brief": [
         "Read two lines of input: the price of one pencil in pence, then how many pencils are bought. Both are whole numbers.",
         "Print the total cost in pence.",
@@ -111,7 +112,8 @@
          "why": "If the total came out as a long row of repeated digits, you multiplied a string by a number: '99' * 2 repeats the text. Cast both lines with int() first."
         }
        ],
-       "fb": "In Python, / always gives a real number. That matters when you print it, because 15.0 and 15 are not the same output."
+       "fb": "In Python, / always gives a real number. That matters when you print it, because 15.0 and 15 are not the same output.",
+       "hint": "pyarith"
       }
      ]
     },
@@ -126,7 +128,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Returned library books are packed into crates that each hold the same number, and whatever will not fill a crate stays on the trolley.",
+       "q": "Print how many full crates the books fill, then how many are left over.",
        "brief": [
         "Read two lines of input: the number of books, then how many books one crate holds. Both are whole numbers.",
         "Print how many full crates can be packed. Use whole number division, // , which OCR calls DIV.",
@@ -169,12 +171,13 @@
          "why": "1 instead of 0 means you rounded up. Fewer books than a crate holds fills no crates at all, and all 5 stay on the trolley."
         }
        ],
-       "fb": "// and % are a pair: // answers how many whole lots fit, % answers what is left behind. Together they never lose anything."
+       "fb": "// and % are a pair: // answers how many whole lots fit, % answers what is left behind. Together they never lose anything.",
+       "hint": "pyarith"
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "A sports day stopwatch records a race in seconds, and the results board shows it as whole minutes and the seconds left over.",
+       "q": "Turn a race time in seconds into whole minutes and the seconds left over.",
        "brief": [
         "Read one line of input: a whole number of seconds.",
         "Print the number of whole minutes.",
@@ -214,7 +217,8 @@
          "why": "Less than a minute gives 0 minutes and all 45 seconds. A 1 on the first line means the division rounded up instead of down."
         }
        ],
-       "fb": "Splitting a quantity into bigger units is always // for the units and % for the remainder, whether it is seconds, pence or pupils in a minibus."
+       "fb": "Splitting a quantity into bigger units is always // for the units and % for the remainder, whether it is seconds, pence or pupils in a minibus.",
+       "hint": "pyarith"
       }
      ]
     },
@@ -229,7 +233,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "A square patch is marked out on the sports field, and a cube shaped equipment crate is built with the same side length.",
+       "q": "Print the area of a square and the volume of a cube of that side.",
        "brief": [
         "Read one line of input: the length of one side in metres, a whole number.",
         "Print the area of the square: the side to the power 2.",
@@ -270,12 +274,13 @@
          "why": "A side of 1 gives 1 for both answers, which looks suspicious but is right. If only one line printed, the second calculation is missing."
         }
        ],
-       "fb": "** is the power operator. Watch out for ^ , which looks like a power in maths but means something completely different in Python."
+       "fb": "** is the power operator. Watch out for ^ , which looks like a power in maths but means something completely different in Python.",
+       "hint": "pyarith"
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "A square rug is ordered for the library corner. Its area is known and the fitter needs the length of one side.",
+       "q": "Print the length of one side of a square from its area.",
        "brief": [
         "Read one line of input: the area in square metres. It may have a decimal point.",
         "Print the length of one side.",
@@ -312,7 +317,8 @@
          "why": "10 instead of 10.0 means the answer was cast back to an integer. Raising to a fractional power always gives a real number, so leave it as it comes."
         }
        ],
-       "fb": "Raising to the power 0.5 is the square root, and the answer is always a real number, even for a perfect square such as 81."
+       "fb": "Raising to the power 0.5 is the square root, and the answer is always a real number, even for a perfect square such as 81.",
+       "hint": "pyarith"
       }
      ]
     },
@@ -327,7 +333,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "At the end of the day the tuck shop float is counted, and the sheet records it twice: to the nearest pound and to the penny.",
+       "q": "Print an amount rounded to the nearest whole number, then to 2 decimal places.",
        "brief": [
         "Read one line of input: an amount in pounds, which may have a decimal point.",
         "Print the amount rounded to the nearest whole number.",
@@ -367,12 +373,13 @@
          "why": "3.5 rounds up to 4 because 4 is the even one of the two neighbours. Compare it with the 2.5 test to see the rule in action."
         }
        ],
-       "fb": "round(x) gives a whole number and round(x, 2) keeps two decimal places. Exact halves go to the nearest even value, which is worth remembering before you assume your code is broken."
+       "fb": "round(x) gives a whole number and round(x, 2) keeps two decimal places. Exact halves go to the nearest even value, which is worth remembering before you assume your code is broken.",
+       "hint": "pyarith"
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "The bus app predicts an arrival time in minutes and the bus then actually arrives. The report records how far out the prediction was, never whether it was early or late.",
+       "q": "Print how far out a bus prediction was, never as a negative number.",
        "brief": [
         "Read two lines of input: the predicted arrival in minutes, then the actual arrival. Both may have decimal points.",
         "Print how far out the prediction was, as a positive number, rounded to 1 decimal place.",
@@ -411,7 +418,8 @@
          "why": "A perfect prediction leaves a gap of 0.0, not 0. The numbers are real numbers, so the answer keeps its decimal part."
         }
        ],
-       "fb": "abs() gives the size of a number without its sign. Pair it with round() whenever real numbers are subtracted, because the result often carries a tiny error."
+       "fb": "abs() gives the size of a number without its sign. Pair it with round() whenever real numbers are subtracted, because the result often carries a tiny error.",
+       "hint": "pyarith"
       }
      ]
     },
@@ -426,9 +434,10 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "A dice is rolled twice for the sports day raffle. The computer's random numbers come from a seed, so the same seed always gives the same rolls and your answer can be marked.",
+       "q": "Print two random dice rolls from 1 to 6.",
        "brief": [
         "Keep the lines already in the editor. They import random and set the seed from the input.",
+        "The same seed always gives the same two rolls, which is how your answer can be marked.",
         "Print one random whole number from 1 to 6.",
         "Print a second random whole number from 1 to 6, on the next line.",
         "Use random.randint(1, 6). Both 1 and 6 can come up.",
@@ -467,12 +476,13 @@
          "why": "If the first line matches but the second does not, you called the random module an extra time, perhaps while testing. Every call moves the sequence on, so one spare call shifts everything after it."
         }
        ],
-       "fb": "A seeded random sequence is fixed, which is how random code can be tested at all. Change the seed and you get a different but equally fixed sequence."
+       "fb": "A seeded random sequence is fixed, which is how random code can be tested at all. Change the seed and you get a different but equally fixed sequence.",
+       "hint": "pyoutput"
       },
       {
        "t": "code",
        "marks": 4,
-       "q": "A sports day lucky dip draws three numbers from 10 to 20 and then adds them up for the winning total.",
+       "q": "Print three random numbers from 10 to 20, then their total.",
        "brief": [
         "Keep the lines already in the editor. They import random and set the seed from the input.",
         "Generate three random whole numbers from 10 to 20, including both 10 and 20.",
@@ -519,7 +529,8 @@
          "why": "If your numbers are in a different order from these, something called the random module before your three draws. Each call moves the fixed sequence on by one."
         }
        ],
-       "fb": "Use a variable for every random number you need more than once. Calling randint again never gives you the same number back."
+       "fb": "Use a variable for every random number you need more than once. Calling randint again never gives you the same number back.",
+       "hint": "pyoutput"
       }
      ]
     },
@@ -534,7 +545,7 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "The tuck shop counts the day's takings on cheese rolls, then splits them equally between the three house charity boxes.",
+       "q": "Print the takings in pence, then as pounds and pence, then a third share.",
        "brief": [
         "Read two lines of input: the number of rolls sold, then the price of one roll in pence. Both are whole numbers.",
         "Print the total takings in pence.",
@@ -585,7 +596,8 @@
          "why": "Exactly one pound leaves 0 pence over. A share of 0 on the last line means // was used instead of / , which throws away everything after the decimal point before the rounding gets a chance."
         }
        ],
-       "fb": "Real programs chain these together: cast the inputs, work out one total, then use // , % , / and round() to show that total in each form the user asked for."
+       "fb": "Real programs chain these together: cast the inputs, work out one total, then use // , % , / and round() to show that total in each form the user asked for.",
+       "hint": "pyarith"
       }
      ]
     },

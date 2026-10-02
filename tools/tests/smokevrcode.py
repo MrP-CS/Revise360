@@ -113,6 +113,25 @@ def main():
         print("marked:", repr((res.get("result") or "")[:90]))
         if not res.get("result"): print("Check produced no result"); bad += 1
 
+        # Programming is trial and error, so Check must not lock in the headset
+        # either, and the mark must follow the best attempt.
+        press("kbPanel", "ccheck", wait=600)
+        pg.wait_for_function("() => NVRVR.vrCode && !NVRVR.vrCode.busy", timeout=120000)
+        again = pg.evaluate("({ attempts: NVRVR.vrCode.attempts, best: NVRVR.vrCode.best, result: NVRVR.vrCode.result })")
+        print("checked twice:", again.get("attempts"), "attempts, best", again.get("best"))
+        if (again.get("attempts") or 0) < 2:
+            print("Check was locked after the first attempt"); bad += 1
+        if "Press Hint" not in (again.get("result") or ""):
+            print("the second failure did not point at the hint"); bad += 1
+
+        # the Hint key opens the diagram that teaches the technique
+        press("kbPanel", "chint", wait=900)
+        hint = pg.evaluate("NVRVR.vrDiag ? ({ kind: NVRVR.vrDiag.dg && NVRVR.vrDiag.u.dg.diagram, steps: NVRVR.vrDiag.dg.steps.length }) : null")
+        print("hint in the headset:", hint)
+        if not hint: print("the Hint key opened nothing"); bad += 1
+        if not pg.evaluate("!!NVRVR.vrCode"):
+            print("opening the hint threw the pupil's program away"); bad += 1
+
         pg.screenshot(path=os.environ.get("VR_CODE_SHOT", "vr_code.png"))
         real = [e for e in errs if "WebGL" not in e and "deprecat" not in e.lower()]
         if real: print("page errors:", real[:3]); bad += len(real)

@@ -85,6 +85,7 @@
         }
        ],
        "fb": "SELECT says which columns and FROM says which table - with no WHERE, every row comes back.",
+       "hint": "sqlwhere",
        "forbid": [
         [
          " in rows",
@@ -159,6 +160,7 @@
         }
        ],
        "fb": "Name the columns in SELECT in the order you want them, separated by commas.",
+       "hint": "sqlwhere",
        "forbid": [
         [
          " in rows",
@@ -234,6 +236,7 @@
         }
        ],
        "fb": "WHERE filters the rows; SELECT decides which columns of those rows you see.",
+       "hint": "sqlwhere",
        "forbid": [
         [
          " in rows",
@@ -298,6 +301,7 @@
         }
        ],
        "fb": "One equals sign is the comparison in SQL, and a number needs no quotes round it.",
+       "hint": "sqlwhere",
        "forbid": [
         [
          " in rows",
@@ -374,6 +378,7 @@
         }
        ],
        "fb": "Greater than and greater than or equal to differ by exactly one row - the one sitting on the boundary.",
+       "hint": "sqlwhere",
        "forbid": [
         [
          " in rows",
@@ -441,6 +446,7 @@
         }
        ],
        "fb": ">= means or equal to, and it is the operator for a rule that says at least or no fewer than.",
+       "hint": "sqlwhere",
        "forbid": [
         [
          " in rows",
@@ -515,6 +521,7 @@
         }
        ],
        "fb": "AND joins two complete conditions: kind = 'card' AND players >= 3, not kind = 'card' AND >= 3.",
+       "hint": "sqlwhere",
        "forbid": [
         [
          " in rows",
@@ -581,6 +588,7 @@
         }
        ],
        "fb": "OR needs only one side to be true, and each side has to be a full comparison of its own.",
+       "hint": "sqlwhere",
        "forbid": [
         [
          " in rows",
@@ -666,6 +674,7 @@
         }
        ],
        "fb": "ORDER BY comes last and sorts ascending unless you ask for DESC.",
+       "hint": "sqlwhere",
        "forbid": [
         [
          " in rows",
@@ -745,6 +754,7 @@
         }
        ],
        "fb": "The clauses always come in this order: SELECT, FROM, WHERE, then ORDER BY - with <> meaning is not equal to.",
+       "hint": "sqlwhere",
        "forbid": [
         [
          " in rows",

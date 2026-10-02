@@ -14,13 +14,14 @@
    "id": "pr-l03-q1",
    "station": 0,
    "marks": 2,
-   "q": "Two weather stations each report a wind speed. Write a program that says whether the first one is the higher of the two.",
+   "q": "Print whether the first of two wind speeds is higher than the second.",
    "brief": [
     "Read two whole numbers, one on each line - the first station's wind speed, then the second station's.",
     "Print True if the first number is greater than the second.",
     "Otherwise print False.",
     "Print nothing else."
    ],
+   "hint": "pyif",
    "starter": "# Read two wind speeds and print True or False\n",
    "tests": [
     {
@@ -60,7 +61,7 @@
    "id": "pr-l03-q2",
    "station": 0,
    "marks": 2,
-   "q": "Write a program that reports three different comparisons of two numbers.",
+   "q": "Print three different comparisons of two numbers.",
    "brief": [
     "Read two whole numbers, one on each line.",
     "Print three lines, in this order:",
@@ -68,6 +69,7 @@
     "Line 2: True if the first number is less than the second, otherwise False.",
     "Line 3: True if the first number is greater than or equal to the second, otherwise False."
    ],
+   "hint": "pyif",
    "starter": "# Read two numbers, then print the three comparisons on three lines\n",
    "tests": [
     {
@@ -113,12 +115,13 @@
    "id": "pr-l03-q3",
    "station": 1,
    "marks": 2,
-   "q": "A greenhouse logs its overnight temperature. Write a program that adds a warning only when it is below freezing.",
+   "q": "Print recorded, then a frost warning only if the temperature is below freezing.",
    "brief": [
     "Read one whole number - the temperature in degrees Celsius.",
     "Always print: recorded",
     "Then, only if the temperature is below 0, print a second line: frost warning"
    ],
+   "hint": "pyif",
    "starter": "# Read the temperature, print recorded, and add a warning if needed\n",
    "tests": [
     {
@@ -156,13 +159,14 @@
    "id": "pr-l03-q4",
    "station": 1,
    "marks": 3,
-   "q": "A service lift carries up to 450 kg. Write a program that decides whether a load may go.",
+   "q": "Decide whether a load may go in a lift that carries 450 kg.",
    "brief": [
     "Read one whole number - the total load in kilograms.",
     "If the load is 450 or less, print: safe to go",
     "Otherwise print: too heavy",
     "Print one line only."
    ],
+   "hint": "pyif",
    "starter": "# Read the load and decide whether the lift may go\n",
    "tests": [
     {
@@ -208,7 +212,7 @@
    "id": "pr-l03-q5",
    "station": 2,
    "marks": 3,
-   "q": "A reservoir is measured each week. Write a program that says whether the level is rising, falling or steady.",
+   "q": "Say whether a reservoir level is rising, falling or steady.",
    "brief": [
     "Read one whole number - the change in the level in centimetres since last week.",
     "If the change is above 0, print: rising",
@@ -216,6 +220,7 @@
     "If the change is exactly 0, print: steady",
     "Print one line only."
    ],
+   "hint": "pyif",
    "starter": "# Read the change in level and describe it\n",
    "tests": [
     {
@@ -261,7 +266,7 @@
    "id": "pr-l03-q6",
    "station": 2,
    "marks": 4,
-   "q": "A courier charges by the weight band of a package. Write a program that names the band.",
+   "q": "Print which weight band a package falls in.",
    "brief": [
     "Read one whole number - the weight in grams.",
     "100 or less: print letter",
@@ -270,6 +275,7 @@
     "More than 2000: print parcel",
     "Print one line only."
    ],
+   "hint": "pyif",
    "starter": "# Read the weight in grams and print the band it falls in\n",
    "tests": [
     {
@@ -342,13 +348,14 @@
    "id": "pr-l03-q7",
    "station": 3,
    "marks": 4,
-   "q": "A survey drone may only fly when the wind is light and the visibility is good. Write a program that decides.",
+   "q": "Decide whether a drone may fly, from the wind speed and visibility.",
    "brief": [
     "Read two whole numbers, one on each line - the wind speed in mph, then the visibility in kilometres.",
     "If the wind speed is under 20 and the visibility is 5 or more, print: clear to fly",
     "Otherwise print: grounded",
     "Print one line only."
    ],
+   "hint": "pyif",
    "starter": "# Read the wind speed and visibility, then decide\n",
    "tests": [
     {
@@ -408,7 +415,7 @@
    "id": "pr-l03-q8",
    "station": 3,
    "marks": 4,
-   "q": "A stock room door opens for two particular staff numbers, but never while the alarm is set. Write a program that decides.",
+   "q": "Decide whether the stock room door opens, from a staff number and the alarm.",
    "brief": [
     "Read a whole number - the staff number.",
     "Read a word on the next line - either yes or no, in lower case, saying whether the alarm is set.",
@@ -416,6 +423,7 @@
     "Otherwise print: locked",
     "Print one line only."
    ],
+   "hint": "pyif",
    "starter": "# Read the staff number and the alarm state, then decide\n",
    "tests": [
     {
@@ -475,7 +483,7 @@
    "id": "pr-l03-q9",
    "station": 4,
    "marks": 4,
-   "q": "A hockey club decides each Saturday fixture from the weather and how many players turn up. Write a program that announces the decision.",
+   "q": "Announce the hockey fixture from the weather and how many players are available.",
    "brief": [
     "Read a word on the first line - either dry or wet, in lower case.",
     "Read a whole number on the second line - how many players are available.",
@@ -483,6 +491,7 @@
     "If it is wet: print indoor training when 11 or more players are available, otherwise print cancelled.",
     "Print one line only."
    ],
+   "hint": "pyif",
    "starter": "# Read the weather and the number of players, then announce the decision\n",
    "tests": [
     {
@@ -542,7 +551,7 @@
    "id": "pr-l03-q10",
    "station": 4,
    "marks": 5,
-   "q": "A parcel locker sorts deliveries by box size and weight. Write a program that says where each delivery goes.",
+   "q": "Say where a delivery goes, from its box size and weight.",
    "brief": [
     "Read a word on the first line - either small or large, in lower case.",
     "Read a whole number on the second line - the weight in kilograms.",
@@ -550,6 +559,7 @@
     "For a large box: print locker B if the weight is 5 or less, print counter if the weight is 25 or less, and print too heavy for anything heavier.",
     "Print one line only."
    ],
+   "hint": "pyif",
    "starter": "# Read the box size and the weight, then print where the delivery goes\n",
    "tests": [
     {
@@ -629,7 +639,7 @@
    "id": "pr-l03-q11",
    "station": 5,
    "marks": 6,
-   "q": "Three judges score a gymnastics routine out of 10. Write a program that works out the medal.",
+   "q": "Work out the medal from three judges' scores out of 10.",
    "brief": [
     "Read three whole numbers, one on each line - the three judges' scores.",
     "If all three scores are 9 or more, print: gold",
@@ -638,6 +648,7 @@
     "Otherwise print: no medal",
     "Print one line only, and check the rules in that order."
    ],
+   "hint": "pyif",
    "starter": "# Read three scores and work out the medal\n",
    "tests": [
     {

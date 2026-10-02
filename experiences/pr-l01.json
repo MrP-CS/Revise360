@@ -20,7 +20,7 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "The tuck shop screen shows the shop's name above whatever item has been scanned.",
+       "q": "At the tuck shop till, print the shop name above the item scanned.",
        "brief": [
         "The line item = input() is already written. Leave it where it is.",
         "The line print(item) is already written at the end. Leave it there too.",
@@ -60,12 +60,13 @@
          "why": "If the word item came out instead of Cheese roll, you wrote print('item') with quotation marks. Quotation marks mean 'print these letters'; without them Python prints what the variable holds."
         }
        ],
-       "fb": "print() sends one line of text to the screen, and the text has to be inside quotation marks."
+       "fb": "print() sends one line of text to the screen, and the text has to be inside quotation marks.",
+       "hint": "pyoutput"
       },
       {
        "t": "code",
        "marks": 2,
-       "q": "The tuck shop till prints a three line receipt around the item that was scanned.",
+       "q": "Print a three line tuck shop receipt around the item scanned.",
        "brief": [
         "Keep the first line, item = input(). It puts the scanned item into item.",
         "Print this line exactly: ===== Tuck shop =====",
@@ -108,7 +109,8 @@
          "why": "Three separate print() lines are needed, one for each line of the receipt, and they run in the order you write them."
         }
        ],
-       "fb": "Each print() starts a new line, so three lines of output means three print() statements in the right order."
+       "fb": "Each print() starts a new line, so three lines of output means three print() statements in the right order.",
+       "hint": "pyoutput"
       }
      ]
     },
@@ -123,7 +125,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Every drink at the sports day stall costs the same, so the price never changes while the program runs.",
+       "q": "Print a customer's name, then a drink price kept in a constant.",
        "brief": [
         "Keep the first line, name = input(). It puts the customer's name into name.",
         "Make a constant called PRICE holding the whole number 90. A constant is a value the program never changes, and is written in capital letters.",
@@ -163,12 +165,13 @@
          "why": "90 has to come from the constant you made. Putting 90 straight inside print() works here, but the question asks for a named constant so the price is written down once."
         }
        ],
-       "fb": "A variable is a named box for a value; a constant is the same thing for a value that must not change, and capitals are how programmers signal that."
+       "fb": "A variable is a named box for a value; a constant is the same thing for a value that must not change, and capitals are how programmers signal that.",
+       "hint": "pyoutput"
       },
       {
        "t": "code",
        "marks": 2,
-       "q": "The noticeboard outside the library has one slot. It starts the day saying Closed and is then replaced with a new message.",
+       "q": "Print the noticeboard message, then replace it with a new one and print again.",
        "brief": [
         "Keep the first line, later = input(). It holds the message that replaces the first one.",
         "Put the text Closed into a variable of your own.",
@@ -209,7 +212,8 @@
          "why": "Both lines say the same thing here only because the replacement message happens to be Closed. Your program should still print twice, with the assignment in between."
         }
        ],
-       "fb": "A variable holds one value at a time, and = overwrites it. Print the old value before you replace it."
+       "fb": "A variable holds one value at a time, and = overwrites it. Print the old value before you replace it.",
+       "hint": "pyoutput"
       }
      ]
     },
@@ -224,7 +228,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "The library self-service screen asks a borrower for their name, then logs them in.",
+       "q": "Read a borrower's name, then print Welcome above it.",
        "brief": [
         "Read one line of input: the borrower's name. Leave the brackets of input() empty, with no prompt text inside.",
         "Print this line exactly: Welcome",
@@ -263,12 +267,13 @@
          "why": "Nothing printed at all usually means input() was called but the result was never stored, so there was nothing left to print. Write name = input()."
         }
        ],
-       "fb": "input() waits for one line and gives it back as a string. Anything you put in its brackets is printed first, which is why this platform asks you to leave them empty."
+       "fb": "input() waits for one line and gives it back as a string. Anything you put in its brackets is printed first, which is why this platform asks you to leave them empty.",
+       "hint": "pyinput"
       },
       {
        "t": "code",
        "marks": 2,
-       "q": "A bus stop screen is told which stop it is at and the time of the next bus, and shows the time above the stop name.",
+       "q": "Read a bus stop name and a bus time, then print the time first.",
        "brief": [
         "Read two lines of input: first the stop name, then the time.",
         "Print the time.",
@@ -311,7 +316,8 @@
          "why": "The time is text here, not a number. 06:05 is printed exactly as it was typed, so there is nothing to convert."
         }
        ],
-       "fb": "Reading and printing are separate steps. Once each value is in a variable you can print them in any order you like."
+       "fb": "Reading and printing are separate steps. Once each value is in a variable you can print them in any order you like.",
+       "hint": "pyinput"
       }
      ]
     },
@@ -326,7 +332,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "A library ticket joins a borrower's two names into one line of text.",
+       "q": "Join a borrower's two names into one line and print it.",
        "brief": [
         "Read two lines of input: the first name, then the last name.",
         "Print one single line in this form: Anna Lee is a member",
@@ -365,12 +371,13 @@
          "why": "If the words first or last appeared in the sentence, they were inside the quotation marks. Only the fixed words belong inside quotes; the variables go outside them, joined with +."
         }
        ],
-       "fb": "The + operator on strings is called concatenation. It joins exactly what you give it, so every space has to be joined in on purpose."
+       "fb": "The + operator on strings is called concatenation. It joins exactly what you give it, so every space has to be joined in on purpose.",
+       "hint": "strslice"
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "A library account record holds four different kinds of value: a name, a count of books, a daily fine and a flag saying the account is open.",
+       "q": "Print four values of four different data types, one per line.",
        "brief": [
         "Read one line of input: the borrower's name. This is a string.",
         "Print the name.",
@@ -418,7 +425,8 @@
          "why": "A Boolean in Python is written True or False with a capital letter and no quotation marks. Putting quotes round it makes it a string that only looks like a Boolean."
         }
        ],
-       "fb": "Integer, real, Boolean, character and string are the five data types OCR names. Which one a value is decides what you can do with it later."
+       "fb": "Integer, real, Boolean, character and string are the five data types OCR names. Which one a value is decides what you can do with it later.",
+       "hint": "pyoutput"
       }
      ]
     },
@@ -433,7 +441,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "The tuck shop gets two deliveries of juice cartons in one week and needs the total.",
+       "q": "Read two whole numbers and print their total.",
        "brief": [
         "Read two lines of input. Each one is a whole number of cartons.",
         "Print the total number of cartons as a whole number.",
@@ -472,12 +480,13 @@
          "why": "A delivery of 0 is still a number to be read, so the second line is not the only input. Both lines must be read, in order."
         }
        ],
-       "fb": "Casting with int() turns a string of digits into an integer you can do arithmetic with. Everything input() gives you needs casting before you can add it."
+       "fb": "Casting with int() turns a string of digits into an integer you can do arithmetic with. Everything input() gives you needs casting before you can add it.",
+       "hint": "pyinput"
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "The library fine screen shows the amount owed inside a sentence, always as a real number.",
+       "q": "Print a fine amount inside a sentence, as a real number.",
        "brief": [
         "Read one line of input: the fine in pounds. It may or may not have a decimal point.",
         "Print one line in this form: Fine due: 2.5 pounds",
@@ -514,7 +523,8 @@
          "why": "A crash here is usually joining a number to text with +. Python will not join a real number to a string, so cast it back with str(fine) or pass the parts to print() separated by commas."
         }
        ],
-       "fb": "float() casts text to a real number and str() casts a number back to text. You often need both in the same line: one to calculate with, one to print."
+       "fb": "float() casts text to a real number and str() casts a number back to text. You often need both in the same line: one to calculate with, one to print.",
+       "hint": "pyinput"
       }
      ]
     },
@@ -529,7 +539,7 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "A sports day card is printed for each competitor in Elm house, showing their name, how many races they still have to run and their best time so far.",
+       "q": "Print a sports day card showing a competitor's name, house, races and time.",
        "brief": [
         "Read three lines of input: the competitor's name, then a whole number of races already run, then a time in seconds which may have a decimal point.",
         "Make a constant called HOUSE holding the text Elm.",
@@ -580,7 +590,8 @@
          "why": "60 instead of 60.0 means int() was used for the time. The question asks for a real number, so use float(), which always shows a decimal part."
         }
        ],
-       "fb": "Most programs are this shape: read the inputs, cast each one to the type it needs to be, work something out, then print it in the form that was asked for."
+       "fb": "Most programs are this shape: read the inputs, cast each one to the type it needs to be, work something out, then print it in the form that was asked for.",
+       "hint": "pyinput"
       }
      ]
     },

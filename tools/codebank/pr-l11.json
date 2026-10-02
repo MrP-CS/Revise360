@@ -14,7 +14,7 @@
    "id": "pr-l11-q1",
    "station": 0,
    "marks": 3,
-   "q": "Write a linear search that finds a membership number and says which position it is at.",
+   "q": "Write a linear search for a membership number and print its position.",
    "brief": [
     "The list codes is already written for you - do not change it.",
     "Read one whole number.",
@@ -22,6 +22,7 @@
     "If the number is in the list, print only its position, counting from 0.",
     "If it is not in the list, print: not found"
    ],
+   "hint": "searches",
    "starter": "codes = [4821, 1193, 7640, 2057, 9318, 3372]\n\n# Read one membership number, then search codes position by position\n",
    "forbid": [
     [
@@ -77,14 +78,16 @@
    "id": "pr-l11-q2",
    "station": 0,
    "marks": 4,
-   "q": "Two lists hold the same members in the same order: one of names, one of minutes exercised. Look a name up.",
+   "q": "Search the names list and print the minutes stored at the same position.",
    "brief": [
     "Both lists are written for you - do not change them.",
+    "The two lists hold the same members in the same order.",
     "Read one name.",
     "Search members for that name, one position at a time.",
     "If it is there, print only the minutes at the same position in the other list.",
     "If it is not there, print: no record"
    ],
+   "hint": "searches",
    "starter": "members = ['Nadia', 'Omar', 'Priya', 'Quinn', 'Rosa']\nminutes = [37, 12, 58, 41, 25]\n\n# Read one name, search members, print the minutes at the same position\n",
    "forbid": [
     [
@@ -148,6 +151,7 @@
     "Print only its position, counting from 0.",
     "If it is not in the list, print: not found"
    ],
+   "hint": "searches",
    "starter": "ids = [102, 118, 139, 204, 251, 288, 310, 377, 401, 460]\n\n# ids is in order. Read one id and find it with a binary search\n",
    "forbid": [
     [
@@ -212,7 +216,7 @@
    "id": "pr-l11-q4",
    "station": 1,
    "marks": 5,
-   "q": "Extend your binary search so it also reports how many items it had to look at.",
+   "q": "Binary search the list and report how many items you checked.",
    "brief": [
     "The list ids is already in order - do not change it.",
     "Read one whole number.",
@@ -221,6 +225,7 @@
     "First print the position it was found at counting from 0, or not found",
     "Then on the next line print: checks: followed by a space and the number of checks."
    ],
+   "hint": "searches",
    "starter": "ids = [15, 23, 31, 38, 46, 52, 61, 70, 78, 84, 97]\n\n# Count the middle items you compare as you search\n",
    "forbid": [
     [
@@ -287,6 +292,7 @@
     "Print the sorted numbers on one line, separated by single spaces.",
     "Do not use Python's own sort."
    ],
+   "hint": "bubblesort",
    "starter": "nums = [int(x) for x in input().split()]\n\n# Sort nums with a bubble sort, then print them separated by single spaces\n",
    "forbid": [
     [
@@ -351,6 +357,7 @@
     "On the next line print: passes: followed by a space and how many passes you did, counting the final pass that found nothing to swap.",
     "Do not use Python's own sort."
    ],
+   "hint": "bubblesort",
    "starter": "nums = [int(x) for x in input().split()]\n\n# Keep going until a pass makes no swaps, and count the passes\n",
    "forbid": [
     [
@@ -417,6 +424,7 @@
     "Print the sorted numbers on one line, separated by single spaces.",
     "Do not use Python's own sort."
    ],
+   "hint": "bubblesort",
    "starter": "nums = [int(x) for x in input().split()]\n\n# Sort nums with an insertion sort, then print them separated by single spaces\n",
    "forbid": [
     [
@@ -472,7 +480,7 @@
    "id": "pr-l11-q8",
    "station": 3,
    "marks": 6,
-   "q": "Show an insertion sort at work by printing the list each time an item has been placed.",
+   "q": "Print the whole list each time an insertion sort places an item.",
    "brief": [
     "Read one line of five words separated by single spaces.",
     "Sort them into alphabetical order using an insertion sort.",
@@ -480,6 +488,7 @@
     "That gives four lines of output, one per insertion.",
     "Do not print the list before the first insertion, and do not use Python's own sort."
    ],
+   "hint": "bubblesort",
    "starter": "words = input().split()\n\n# After placing each word from the second onwards, print the whole list\n",
    "forbid": [
     [
@@ -547,13 +556,14 @@
    "id": "pr-l11-q9",
    "station": 4,
    "marks": 6,
-   "q": "Write the merging step of a merge sort: join two lists that are already in order into one list in order.",
+   "q": "Merge two lists that are already in order into one list in order.",
    "brief": [
     "Read two lines. Each is a list of whole numbers, already in order, separated by single spaces.",
     "Merge them into one list in order by comparing the front of each list and taking the smaller one.",
     "Print the merged list on one line, separated by single spaces.",
     "Do not use Python's own sort."
    ],
+   "hint": "mergesort",
    "starter": "left = [int(x) for x in input().split()]\nright = [int(x) for x in input().split()]\n\n# Merge left and right into one list in order, then print it\n",
    "forbid": [
     [
@@ -620,6 +630,7 @@
     "Print the sorted numbers on one line, separated by single spaces.",
     "Do not use Python's own sort."
    ],
+   "hint": "mergesort",
    "starter": "nums = [int(x) for x in input().split()]\n\n# Sort nums with a merge sort, then print them separated by single spaces\n",
    "forbid": [
     [
@@ -684,7 +695,7 @@
    "id": "pr-l11-q11",
    "station": 5,
    "marks": 8,
-   "q": "Count how many items a linear search and a binary search each have to look at, so the two can be compared.",
+   "q": "Count how many items a linear search and a binary search each check.",
    "brief": [
     "The list seats is already in order - do not change it.",
     "Read one whole number.",
@@ -693,6 +704,7 @@
     "Print: linear: followed by a space and the linear count.",
     "Then on the next line print: binary: followed by a space and the binary count."
    ],
+   "hint": "searches",
    "starter": "seats = [3, 8, 12, 17, 21, 26, 30, 35, 39, 44, 48, 53, 57, 62, 66]\n\n# Count the comparisons each search needs, then print both counts\n",
    "tests": [
     {
@@ -742,16 +754,18 @@
    "id": "pr-l11-q12",
    "station": 5,
    "marks": 8,
-   "q": "Sort a list yourself and then binary search it, since a binary search only works on a sorted list.",
+   "q": "Sort the numbers yourself, then binary search them for a value.",
    "brief": [
     "Read one line of whole numbers separated by single spaces.",
     "Read one more whole number on the next line - the value to find.",
     "Sort the numbers smallest first using a sort you write yourself.",
+    "A binary search only works on a list that is in order, which is why you sort it first.",
     "Print the sorted numbers on one line, separated by single spaces.",
     "Then search the sorted list with a binary search and, on the next line, print only the position the value is at, counting from 0.",
     "If it is not in the list, print: not found",
     "Do not use Python's own sort."
    ],
+   "hint": "searches",
    "starter": "nums = [int(x) for x in input().split()]\ntarget = int(input())\n\n# Sort nums yourself, print it, then binary search the sorted list\n",
    "forbid": [
     [
