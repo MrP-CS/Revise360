@@ -103,12 +103,15 @@ def make(L):
     else:
         rows = task["steps"][::-1]; right = "Position (1, 2, 3...)"; instr = "number the steps in the right order."
     total = sum(marks(t) for s in L["stations"] for t in s["tasks"]) + sum(marks(t) for t in fin["tasks"])
+    # A lesson whose work is done at a keyboard is used differently, and the
+    # sheet says so instead of "your first answer is the one that counts".
+    is_code = any(t.get("t") == "code" for s2 in L["stations"] for t in s2["tasks"])
     S = dict(topicLabel=label, lesson=L["lesson"], title=W["title"], sub=f"Worksheet for the 360° experience: {L['title']}", expName=L["title"],
              objectives=W["objectives"], starter=W.get("starter"), starterLines=W.get("starter_lines", 2), keyterms=W.get("keyterms", []),
              stations=[dict(name=s["name"], fact=s.get("fact"), challenge=s.get("challenge"), logic=logic_blocks(s["tasks"])) for s in L["stations"]],
              final=dict(title=fin["name"], instr=instr, left="Item", right=right, rows=rows, logic=logic_blocks(fin["tasks"])), total=total, revision=bool(L.get("revision")),
              results=[[s["name"], sum(marks(t) for t in s["tasks"])] for s in L["stations"]] + [[fin["name"], sum(marks(t) for t in fin["tasks"])]],
-             extra=W.get("extra"), checklist=W.get("checklist"), keyq=W.get("keyq"), exam=W.get("exam", []), rag=W.get("rag"), confidence=W["confidence"],
+             code=is_code, extra=W.get("extra"), checklist=W.get("checklist"), keyq=W.get("keyq"), exam=W.get("exam", []), rag=W.get("rag"), confidence=W["confidence"],
              footer=f"{topic} Lesson {L['lesson']}: {W['title']}", out=OUT_S + f"{wsfile(L)}")
     path = f"wsspecs/{L['id']}.json"; json.dump(S, open(path, "w"), ensure_ascii=False)
     r = subprocess.run(["node", "wsgen.js", path], capture_output=True, text=True); print(r.stdout.strip() or r.stderr[-500:])

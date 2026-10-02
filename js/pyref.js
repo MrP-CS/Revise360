@@ -16,8 +16,9 @@
  *     pr-l13.json, station by station, so a pupil on lesson 4 cannot look up a
  *     list method and a pupil on lesson 11 can look up the swap that a sort
  *     needs. Lesson 11 brings in nothing of its own but the swap, list slicing,
- *     and the two ways of printing a list on one line - which every sorting
- *     question asks for and nothing before it shows.
+ *     and joining a list that is already text onto one line. Building a line up
+ *     with str() a value at a time sits in lesson 8 instead, which is where
+ *     printing a row or a column of a grid on one line first asks for it.
  *   - Where a question's model answer needs a construct, the construct is here.
  *     while True and break are not in any taught example in the bank, but four
  *     of lesson 12's solutions use them, so they are in the lesson 12 group: a
@@ -444,6 +445,12 @@
           what: "To go down a column, keep the column number still and let the row number change.",
           eg: ['grid = [[4, 9], [8, 1]]', 'for r in range(len(grid)):', '    print(grid[r][1])'],
           egOut: ["9", "1"]
+        },
+        {
+          syntax: 'line = line + str(item) + " "',
+          what: "Numbers have to be made into text before they can be joined, so build the line up a number at a time and print it once at the end; the space left on the end of it is ignored when your answer is marked.",
+          eg: ['line = ""', 'for n in [2, 5, 8]:', '    line = line + str(n) + " "', 'print(line)'],
+          egOut: ["2 5 8 "]
         }
       ]
     },
@@ -578,12 +585,6 @@
           what: "Puts a list whose items are already text onto one line, with one space between each of them.",
           eg: ['words = ["red", "blue", "green"]', 'print(" ".join(words))'],
           egOut: ["red blue green"]
-        },
-        {
-          syntax: 'line = line + str(item) + " "',
-          what: "Numbers have to be made into text before they can be joined, so build the line up a number at a time and print it once at the end.",
-          eg: ['line = ""', 'for n in [2, 5, 8]:', '    line = line + str(n) + " "', 'print(line.strip())'],
-          egOut: ["2 5 8"]
         }
       ]
     },

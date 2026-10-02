@@ -871,16 +871,16 @@
         "code": [
          "seen = 0",
          "big = 0",
-         "for n in [4, 9]:",
+         "while seen < 3:",
          "    seen = seen + 1",
-         "    if n > 5:",
+         "    if seen > 1:",
          "        big = big + 1",
          "print(seen)",
          "print(big)"
         ],
         "out": [
-         "2",
-         "1"
+         "3",
+         "2"
         ]
        }
       }
@@ -1373,15 +1373,15 @@
         "code": [
          "count = 0",
          "total = 0",
-         "for n in [4, 9]:",
+         "while count < 3:",
          "    count = count + 1",
-         "    total = total + n",
+         "    total = total + count",
          "print(count)",
          "print(total)"
         ],
         "out": [
-         "2",
-         "13"
+         "3",
+         "6"
         ]
        }
       }
@@ -1464,7 +1464,7 @@
      "x": 540,
      "y": 240,
      "title": "Choosing a sentinel",
-     "text": "-1 works for a price, because a price can never be negative. For a temperature it would be a terrible choice."
+     "text": "-1 works when the real values can never be negative. For a temperature it would be a terrible choice."
     },
     {
      "id": "f4",

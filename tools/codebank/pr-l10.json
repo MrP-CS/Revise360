@@ -122,13 +122,14 @@
    "marks": 3,
    "q": "A file called words.txt is already there, and it may be empty. Read the first line of words.txt only. Close the file. Strip the newline off that line. Display first [that line]. Then display length [how many characters are left] on the next line.",
    "teach": {
-    "say": ".readline() reads up to the next newline only, so what comes back still has \\n on the end. .strip() takes it off.",
+    "say": ".readline() reads as far as the next newline and stops there, so the \\n is still on the end of what it hands back. .strip() takes it off.",
     "code": [
-     "line = 'moss\\n'",
-     "print(len(line), len(line.strip()))"
+     "f = open('colours.txt', 'r')   # it holds amber then bronze",
+     "first = f.readline()",
+     "print(len(first), len(first.strip()))"
     ],
     "out": [
-     "5 4"
+     "6 5"
     ]
    },
    "brief": [
@@ -187,6 +188,17 @@
    "station": 1,
    "marks": 3,
    "q": "A file called words.txt is already there, with one word per line, and it may be empty. Read words.txt. Count how many lines it holds. Display lines [that count] and nothing else.",
+   "teach": {
+    "say": ".readlines() reads the whole file in one go into a list, with one line of the file in each item, and every item still carries its own newline.",
+    "code": [
+     "f = open('colours.txt', 'r')   # it holds amber then bronze",
+     "lines = f.readlines()",
+     "print(lines)"
+    ],
+    "out": [
+     "['amber\\n', 'bronze\\n']"
+    ]
+   },
    "brief": [
     "Nothing is typed in.",
     "The program only reads words.txt.",

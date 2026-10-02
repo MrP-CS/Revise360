@@ -50,12 +50,279 @@
       {
        "t": "code",
        "marks": 1,
+       "q": "Display Open. Then display Closed on the next line.",
+       "brief": [
+        "Nothing is typed in by the user.",
+        "Print exactly: Open",
+        "Print exactly: Closed"
+       ],
+       "starter": "# Print two lines, one after the other\n",
+       "tests": [
+        {
+         "in": [],
+         "out": [
+          "Open",
+          "Closed"
+         ],
+         "why": "Two lines of output needs two print() statements, and they run in the order you write them."
+        }
+       ],
+       "fb": "Each print() ends by moving down to the next line, which is why printing twice gives two lines.",
+       "hint": "pyoutput",
+       "teach": {
+        "say": "One print() gives one line, and then Python moves down. Two lines of output need two print() statements, in the order you want them.",
+        "code": [
+         "print(\"Start\")",
+         "print(\"Finish\")"
+        ],
+        "out": [
+         "Start",
+         "Finish"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Display Top. Then display an empty line. Then display Bottom on the third line.",
+       "brief": [
+        "Nothing is typed in by the user.",
+        "The second line of output has nothing on it.",
+        "Three lines of output in all."
+       ],
+       "starter": "# Three lines, with the middle one empty\n",
+       "tests": [
+        {
+         "in": [],
+         "out": [
+          "Top",
+          "",
+          "Bottom"
+         ],
+         "why": "The empty line is printed on purpose, with print() and nothing in the brackets. Two lines of output means it is missing."
+        }
+       ],
+       "fb": "An empty print() still counts as a line of output, which is how you leave a gap.",
+       "hint": "pyoutput",
+       "teach": {
+        "say": "print() with nothing inside the brackets prints a line with nothing on it.",
+        "code": [
+         "print(\"One\")",
+         "print()",
+         "print(\"Two\")"
+        ],
+        "out": [
+         "One",
+         "",
+         "Two"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Display Line 1 of 2. Then display Done! on the next line.",
+       "brief": [
+        "Nothing is typed in by the user.",
+        "Print exactly: Line 1 of 2",
+        "Print exactly: Done!"
+       ],
+       "starter": "# Two lines of text, digits and punctuation included\n",
+       "tests": [
+        {
+         "in": [],
+         "out": [
+          "Line 1 of 2",
+          "Done!"
+         ],
+         "why": "Copy both lines exactly, the digits and the exclamation mark included. Inside quotation marks a digit is text, not a number to work out."
+        }
+       ],
+       "fb": "Inside quotation marks everything is text, so a digit or a full stop is just another character to show.",
+       "hint": "pyoutput",
+       "teach": {
+        "say": "Digits and punctuation inside the quotation marks are part of the text, and print() shows them exactly as written.",
+        "code": [
+         "print(\"Box 3 of 4\")",
+         "print(\"Ready!\")"
+        ],
+        "out": [
+         "Box 3 of 4",
+         "Ready!"
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Variables",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Keep the word harbour in a variable. Display that variable. Then display it again on the next line.",
+       "brief": [
+        "Nothing is typed in by the user.",
+        "The word harbour is written into your program.",
+        "Print the same variable twice."
+       ],
+       "starter": "# One word in a variable, printed on two lines\n",
+       "tests": [
+        {
+         "in": [],
+         "out": [
+          "harbour",
+          "harbour"
+         ],
+         "why": "Two lines, both the same. One line means the variable was printed once: printing it does not use the value up."
+        }
+       ],
+       "fb": "A variable is a named box for one value, and the value stays in the box until you change it.",
+       "hint": "pyoutput",
+       "teach": {
+        "say": "A variable is a named box. = puts a value into it, and printing the name shows the value inside.",
+        "code": [
+         "sound = \"beep\"",
+         "print(sound)",
+         "print(sound)"
+        ],
+        "out": [
+         "beep",
+         "beep"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Keep the word north in a variable. Display that variable. Then change the variable to the word south. Display it again on the next line.",
+       "brief": [
+        "Nothing is typed in by the user.",
+        "Use one variable for both words.",
+        "Print the first word before the second one replaces it."
+       ],
+       "starter": "# One variable, printed twice, with a new value in between\n",
+       "tests": [
+        {
+         "in": [],
+         "out": [
+          "north",
+          "south"
+         ],
+         "why": "If south came out on both lines, the first print() runs after the change. A second = throws the old value away, so print it first."
+        }
+       ],
+       "fb": "A variable holds one value at a time, and = overwrites whatever was there before.",
+       "hint": "pyoutput",
+       "teach": {
+        "say": "= replaces whatever the variable held before, so only the newest value is left. Print the old value before you overwrite it.",
+        "code": [
+         "light = \"red\"",
+         "print(light)",
+         "light = \"green\"",
+         "print(light)"
+        ],
+        "out": [
+         "red",
+         "green"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Keep the word amber in a variable called a. Copy the value of a into a second variable called b. Then change a to the word silver. Display a. Then display b on the next line.",
+       "brief": [
+        "Nothing is typed in by the user.",
+        "b = a copies the value, so b keeps the word amber.",
+        "Print a first, then b."
+       ],
+       "starter": "# Copy one variable into another before changing it\n",
+       "tests": [
+        {
+         "in": [],
+         "out": [
+          "silver",
+          "amber"
+         ],
+         "why": "If both lines are silver, b was copied after a changed. Copy it while a still holds amber."
+        }
+       ],
+       "fb": "Copying a variable copies the value, not the box, so the copy keeps that value even after the original changes.",
+       "hint": "pyoutput",
+       "teach": {
+        "say": "b = a copies across the value a is holding at that moment. Changing a afterwards leaves b exactly as it was.",
+        "code": [
+         "x = \"north\"",
+         "y = x",
+         "x = \"south\"",
+         "print(x)",
+         "print(y)"
+        ],
+        "out": [
+         "south",
+         "north"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Keep the word closed in a variable. Keep the whole number 100 in a constant called LIMIT. Display the variable. Then display LIMIT on the next line.",
+       "brief": [
+        "Nothing is typed in by the user.",
+        "Name the constant LIMIT, in capitals.",
+        "The 100 is written into your program in one place only."
+       ],
+       "starter": "# Make the variable and the constant, then print both\n",
+       "tests": [
+        {
+         "in": [],
+         "out": [
+          "closed",
+          "100"
+         ],
+         "why": "Two lines: the word, then the number. If the word LIMIT appeared, it was inside quotation marks, and quotation marks mean print these letters."
+        }
+       ],
+       "fb": "A constant is an ordinary variable for a value that must not change, and capital letters are how programmers say so.",
+       "hint": "pyoutput",
+       "teach": {
+        "say": "A constant is a variable whose value never changes. Its name is written in capitals so everyone can see it must stay as it is.",
+        "code": [
+         "MAX = 30",
+         "print(MAX)"
+        ],
+        "out": [
+         "30"
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Reading input",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "code",
+       "marks": 1,
        "q": "Ask the user for a word. Display [word].",
        "brief": [
         "The user types in one word.",
+        "Keep what comes back in a variable.",
         "Nothing else is printed."
        ],
-       "starter": "# Read one word, then print it\n",
+       "starter": "# Read one word into a variable, then print it\n",
        "tests": [
         {
          "in": [
@@ -86,387 +353,18 @@
         }
        ],
        "fb": "input() reads one line and hands it back, and printing a variable shows the value it is holding.",
-       "hint": "pyoutput",
+       "hint": "pyinput",
        "teach": {
-        "say": "input() hands back whatever the user typed. A variable holds it, and printing the variable shows the value inside it.",
+        "say": "input() stops the program and waits for the user to type a line, then hands that line back. Keep it in a variable, and printing the variable shows what was typed.",
         "code": [
-         "colour = input(\"Colour? \")   # the user types amber",
+         "colour = input(\"Colour? \")   # the user types teal",
          "print(colour)"
         ],
         "out": [
-         "amber"
+         "teal"
         ]
        }
       },
-      {
-       "t": "code",
-       "marks": 1,
-       "q": "Ask the user for a word. Display Ready. Then display [word] on the next line.",
-       "brief": [
-        "Print exactly: Ready"
-       ],
-       "starter": "# Print the fixed line, then the word\n",
-       "tests": [
-        {
-         "in": [
-          "tulip"
-         ],
-         "out": [
-          "Ready",
-          "tulip"
-         ],
-         "why": "Only the word appeared, so the fixed line is missing. Text to print goes inside print() and inside quotation marks."
-        },
-        {
-         "in": [
-          "silver"
-         ],
-         "out": [
-          "Ready",
-          "silver"
-         ],
-         "why": "Two lines of output needs two print() statements, and they run in the order you write them."
-        },
-        {
-         "in": [
-          "two words"
-         ],
-         "out": [
-          "Ready",
-          "two words"
-         ],
-         "why": "If the word word came out on the second line, the variable was inside quotation marks."
-        }
-       ],
-       "fb": "Fixed text needs quotation marks and a variable must not have them, which is the whole difference between the two print() statements.",
-       "hint": "pyoutput",
-       "teach": {
-        "say": "print() shows fixed text when you put it in quotation marks, and the value of a variable when you leave them off.",
-        "code": [
-         "drink = input(\"Drink? \")   # the user types tea",
-         "print(\"Waiting\")",
-         "print(drink)"
-        ],
-        "out": [
-         "Waiting",
-         "tea"
-        ]
-       }
-      },
-      {
-       "t": "code",
-       "marks": 2,
-       "q": "Ask the user for a word. Display -----. Then display [word] on the next line. Then display ----- again on the next line.",
-       "brief": [
-        "Print exactly five hyphens on the first line.",
-        "Print five hyphens again on the third line."
-       ],
-       "starter": "# Three lines of output, the word in the middle\n",
-       "tests": [
-        {
-         "in": [
-          "tulip"
-         ],
-         "out": [
-          "-----",
-          "tulip",
-          "-----"
-         ],
-         "why": "Count the hyphens: five on the first line and five on the last."
-        },
-        {
-         "in": [
-          "silver"
-         ],
-         "out": [
-          "-----",
-          "silver",
-          "-----"
-         ],
-         "why": "Three lines of output needs three print() statements, in the order the question gives."
-        },
-        {
-         "in": [
-          "two words"
-         ],
-         "out": [
-          "-----",
-          "two words",
-          "-----"
-         ],
-         "why": "The line of hyphens is printed twice. Printing it once leaves only two lines of output."
-        }
-       ],
-       "fb": "Each print() starts a new line, so three lines of output means three print() statements in the right order.",
-       "hint": "pyoutput",
-       "teach": {
-        "say": "Each print() makes a new line, and they run in the order you write them.",
-        "code": [
-         "print(\"***\")",
-         "print(\"middle\")",
-         "print(\"***\")"
-        ],
-        "out": [
-         "***",
-         "middle",
-         "***"
-        ]
-       }
-      }
-     ]
-    },
-    {
-     "label": "2",
-     "name": "Variables",
-     "col": "#aa6eeb",
-     "face": "right",
-     "x": 1508,
-     "y": 1840,
-     "tasks": [
-      {
-       "t": "code",
-       "marks": 2,
-       "q": "Ask the user for a word and keep it in a variable. Display [word]. Then display [word] again on the next line.",
-       "brief": [
-        "Read the word once only.",
-        "Print the same variable twice."
-       ],
-       "starter": "# One word in, the same word on two lines\n",
-       "tests": [
-        {
-         "in": [
-          "amber"
-         ],
-         "out": [
-          "amber",
-          "amber"
-         ],
-         "why": "Nothing on the second line means the variable was printed once. Two lines needs two print() statements."
-        },
-        {
-         "in": [
-          "silver"
-         ],
-         "out": [
-          "silver",
-          "silver"
-         ],
-         "why": "Reading a second time will not work: there is only one line of input to read."
-        },
-        {
-         "in": [
-          "two words"
-         ],
-         "out": [
-          "two words",
-          "two words"
-         ],
-         "why": "The whole typed line is the value, spaces included, and it prints the same way both times."
-        }
-       ],
-       "fb": "A variable is a named box for a value, and the value stays in the box until you change it.",
-       "hint": "pyoutput",
-       "teach": {
-        "say": "A variable keeps the value you put in it, so you can print it as often as you like.",
-        "code": [
-         "sound = \"beep\"",
-         "print(sound)",
-         "print(sound)"
-        ],
-        "out": [
-         "beep",
-         "beep"
-        ]
-       }
-      },
-      {
-       "t": "code",
-       "marks": 2,
-       "q": "Keep the fixed whole number 100 in a constant called LIMIT. Ask the user for a word. Display [word]. Then display [limit] on the next line.",
-       "brief": [
-        "The 100 is fixed in your program, not typed in.",
-        "Name the constant LIMIT, in capitals."
-       ],
-       "starter": "# Make the constant, then print the word and the limit\n",
-       "tests": [
-        {
-         "in": [
-          "amber"
-         ],
-         "out": [
-          "amber",
-          "100"
-         ],
-         "why": "Two lines: the word, then the number. If the words word or LIMIT appeared, they were inside quotation marks."
-        },
-        {
-         "in": [
-          "silver"
-         ],
-         "out": [
-          "silver",
-          "100"
-         ],
-         "why": "Print the variable rather than retyping a word of your own, or only one of these tests can pass."
-        },
-        {
-         "in": [
-          "two words"
-         ],
-         "out": [
-          "two words",
-          "100"
-         ],
-         "why": "The 100 has to come from the constant, so the number is written down in one place only."
-        }
-       ],
-       "fb": "A constant is an ordinary variable for a value that must not change, and capital letters are how programmers say so.",
-       "hint": "pyoutput",
-       "teach": {
-        "say": "A constant is a variable whose value never changes. Its name is written in capitals so everyone can see it must stay as it is.",
-        "code": [
-         "MAX = 30",
-         "print(MAX)"
-        ],
-        "out": [
-         "30"
-        ]
-       }
-      },
-      {
-       "t": "code",
-       "marks": 2,
-       "q": "Ask the user for a word and keep it in a variable. Display [first word]. Then ask for a second word and keep it in that same variable. Display [second word] on the next line.",
-       "brief": [
-        "Use one variable for both words.",
-        "Print the first word before the second one replaces it."
-       ],
-       "starter": "# One variable, printed twice, with a new value in between\n",
-       "tests": [
-        {
-         "in": [
-          "amber",
-          "silver"
-         ],
-         "out": [
-          "amber",
-          "silver"
-         ],
-         "why": "If only the second word appeared, the first print() is missing or came after the new value was stored."
-        },
-        {
-         "in": [
-          "north",
-          "south"
-         ],
-         "out": [
-          "north",
-          "south"
-         ],
-         "why": "Assigning with = throws the old value away, which is why it has to be printed first."
-        },
-        {
-         "in": [
-          "same",
-          "same"
-         ],
-         "out": [
-          "same",
-          "same"
-         ],
-         "why": "Both lines match here only because the second word happens to be the same. The program still prints twice."
-        }
-       ],
-       "fb": "A variable holds one value at a time, and = overwrites whatever was there before.",
-       "hint": "pyoutput",
-       "teach": {
-        "say": "= replaces whatever the variable held before, so only the newest value is left. Print the old value before you overwrite it.",
-        "code": [
-         "light = \"red\"",
-         "print(light)",
-         "light = \"green\"",
-         "print(light)"
-        ],
-        "out": [
-         "red",
-         "green"
-        ]
-       }
-      },
-      {
-       "t": "code",
-       "marks": 3,
-       "q": "Ask the user for a word and keep it in a variable called a. Copy the value of a into a second variable called b. Then ask for another word and keep it in a. Display [a]. Then display [b] on the next line. Then display [a] again on the next line.",
-       "brief": [
-        "b = a copies the value, so b keeps the first word.",
-        "Print a first, then b, then a again."
-       ],
-       "starter": "# Copy one variable into another before changing it\n",
-       "tests": [
-        {
-         "in": [
-          "amber",
-          "silver"
-         ],
-         "out": [
-          "silver",
-          "amber",
-          "silver"
-         ],
-         "why": "If the middle line is silver, b was copied after a changed. Copy it while a still holds the first word."
-        },
-        {
-         "in": [
-          "north",
-          "south"
-         ],
-         "out": [
-          "south",
-          "north",
-          "south"
-         ],
-         "why": "Two lines only means the third print() is missing. The second word is printed twice, above and below the first."
-        },
-        {
-         "in": [
-          "same",
-          "same"
-         ],
-         "out": [
-          "same",
-          "same",
-          "same"
-         ],
-         "why": "All three lines match here only because the two words happen to be the same. The program still needs both variables."
-        }
-       ],
-       "fb": "Copying a variable copies the value, not the box, so the copy keeps that value even after the original changes.",
-       "hint": "pyoutput",
-       "teach": {
-        "say": "b = a copies across the value a is holding at that moment. Changing a afterwards leaves b exactly as it was.",
-        "code": [
-         "x = \"north\"",
-         "y = x",
-         "x = \"south\"",
-         "print(x)",
-         "print(y)"
-        ],
-        "out": [
-         "south",
-         "north"
-        ]
-       }
-      }
-     ]
-    },
-    {
-     "label": "3",
-     "name": "Reading input",
-     "col": "#ff785a",
-     "face": "back",
-     "x": 540,
-     "y": 1840,
-     "tasks": [
       {
        "t": "code",
        "marks": 2,
@@ -513,9 +411,9 @@
        "fb": "input() waits for one line and hands it back, and once it is stored you can use it as often as you like.",
        "hint": "pyinput",
        "teach": {
-        "say": "A variable keeps its value, so you can use it as many times as you like.",
+        "say": "A value read with input() stays in its variable after it has been printed, so you can use it as many times as you like.",
         "code": [
-         "sound = \"beep\"",
+         "sound = input(\"Sound? \")   # the user types beep",
          "print(sound)",
          "print(sound)"
         ],
@@ -1005,10 +903,10 @@
         "say": "input() always hands back text, and arithmetic needs a number. int() turns the text into a whole number first.",
         "code": [
          "count = int(input(\"How many? \"))   # the user types 6",
-         "print(count * 2)"
+         "print(count + 2)"
         ],
         "out": [
-         "12"
+         "8"
         ]
        }
       },
@@ -1231,11 +1129,11 @@
          "team = input(\"Team? \")   # the user types Owls",
          "games = int(input(\"Games? \"))  # then 5",
          "print(team)",
-         "print(games * 2)"
+         "print(games + 2)"
         ],
         "out": [
          "Owls",
-         "10"
+         "7"
         ]
        }
       },
@@ -1342,10 +1240,10 @@
         "code": [
          "a = int(input(\"First? \"))   # the user types 5",
          "b = int(input(\"Second? \"))  # then 6",
-         "print(\"Sum \" + str(a * b))"
+         "print(\"Sum \" + str(a + b))"
         ],
         "out": [
-         "Sum 30"
+         "Sum 11"
         ]
        }
       },
@@ -1406,11 +1304,11 @@
          "a = int(input(\"First? \"))  # then 8",
          "b = int(input(\"Second? \")) # then 2",
          "print(label)",
-         "print(\"Gap \" + str(a - b))"
+         "print(\"Sum \" + str(a + b))"
         ],
         "out": [
          "North",
-         "Gap 6"
+         "Sum 10"
         ]
        }
       }
@@ -1487,7 +1385,7 @@
      "x": 1508,
      "y": 240,
      "title": "Naming rules",
-     "text": "A Python variable name can hold letters, digits and underscores, but it cannot start with a digit or contain a space."
+     "text": "A Python variable name can hold letters, digits and underscores, but it cannot start with a digit or contain a space. Capitals are used for the name of a constant, so a reader can see at a glance that the value is not meant to change."
     },
     {
      "id": "f3",
@@ -1495,7 +1393,7 @@
      "x": 540,
      "y": 240,
      "title": "Why it waits",
-     "text": "input() reads one whole line, so the program only carries on once the Enter key has been pressed."
+     "text": "input() reads one whole line, so the program only carries on once the Enter key has been pressed. Nothing else happens while it waits."
     },
     {
      "id": "f4",

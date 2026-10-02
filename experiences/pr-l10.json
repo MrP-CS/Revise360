@@ -186,13 +186,14 @@
        "fb": ".readline() reads up to and including the next newline, so what comes back has \\n on the end. .strip() takes that off, along with any stray spaces, and the length shows whether it really went.",
        "hint": "pyfile",
        "teach": {
-        "say": ".readline() reads up to the next newline only, so what comes back still has \\n on the end. .strip() takes it off.",
+        "say": ".readline() reads as far as the next newline and stops there, so the \\n is still on the end of what it hands back. .strip() takes it off.",
         "code": [
-         "line = 'moss\\n'",
-         "print(len(line), len(line.strip()))"
+         "f = open('colours.txt', 'r')   # it holds amber then bronze",
+         "first = f.readline()",
+         "print(len(first), len(first.strip()))"
         ],
         "out": [
-         "5 4"
+         "6 5"
         ]
        }
       },
@@ -245,7 +246,18 @@
         }
        ],
        "fb": ".readlines() gives you a list with one string per line, so len() on that list tells you how many lines the file holds.",
-       "hint": "pyfile"
+       "hint": "pyfile",
+       "teach": {
+        "say": ".readlines() reads the whole file in one go into a list, with one line of the file in each item, and every item still carries its own newline.",
+        "code": [
+         "f = open('colours.txt', 'r')   # it holds amber then bronze",
+         "lines = f.readlines()",
+         "print(lines)"
+        ],
+        "out": [
+         "['amber\\n', 'bronze\\n']"
+        ]
+       }
       },
       {
        "t": "code",
@@ -1071,8 +1083,8 @@
      "face": "back",
      "x": 1508,
      "y": 240,
-     "title": "Why logs append",
-     "text": "A log is evidence of what happened. Appending adds an entry without touching anything already written."
+     "title": "Why append exists",
+     "text": "Append mode adds to the end without touching a single line already in the file. That is what makes it the safe mode for a file that is added to over and over."
     },
     {
      "id": "f5",

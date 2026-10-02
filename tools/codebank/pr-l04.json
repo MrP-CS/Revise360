@@ -345,10 +345,10 @@
    "marks": 2,
    "q": "Ask the user for a whole number. Display every number from 1 up to and including it, one on each line.",
    "teach": {
-    "say": "range takes a start as well as a stop, so range(1, 4) counts 1, 2, 3. To finish on n you write range(1, n + 1).",
+    "say": "range(n) hands out 0, 1, 2 and so on, so the counter is always one behind the number you want. Adding 1 to it inside the loop fixes that.",
     "code": [
-     "for i in range(1, 4):",
-     "    print(i)"
+     "for i in range(3):",
+     "    print(i + 1)"
     ],
     "out": [
      "1",
@@ -373,7 +373,7 @@
       "4",
       "5"
      ],
-     "why": "Starts at 1 and includes 5. A list starting at 0 means range(n) was used instead of range(1, n + 1)."
+     "why": "Starts at 1 and includes 5. A list starting at 0 means the counter was printed as it is, without the 1 added to it."
     },
     {
      "in": [
@@ -382,7 +382,7 @@
      "out": [
       "1"
      ],
-     "why": "One number gives one line. Nothing at all means range(1, n) stopped before it started."
+     "why": "One number gives one line. Nothing at all means the loop never took a turn."
     },
     {
      "in": [
@@ -393,10 +393,10 @@
       "2",
       "3"
      ],
-     "why": "The last number must appear. A missing 3 is the off by one that range(1, n) always causes."
+     "why": "The last number must appear. A missing 3 means the loop took one turn too few."
     }
    ],
-   "fb": "range stops before its second number, so to finish on n you write range(1, n + 1)."
+   "fb": "range(n) gives n turns counting from 0, so adding 1 to the counter turns them into 1 up to n."
   },
   {
    "id": "pr-l04-q7",
@@ -404,10 +404,11 @@
    "marks": 2,
    "q": "Ask the user for a whole number. For every number from 1 up to and including it, display a line in the form [number] [number times itself].",
    "teach": {
-    "say": "The counter is an ordinary number, so you can calculate with it inside the loop. Two values in one print() come out with a space between them.",
+    "say": "Give the counter plus 1 a name of its own, and the rest of the line is worked out from that name. Two values in one print() come out with a space between them.",
     "code": [
-     "for i in range(1, 4):",
-     "    print(i, i * 10)"
+     "for i in range(3):",
+     "    c = i + 1",
+     "    print(c, c * 10)"
     ],
     "out": [
      "1 10",
@@ -476,9 +477,10 @@
    "teach": {
     "say": "The number typed in is still there inside the loop, so a line can be worked out from it and the counter together.",
     "code": [
-     "n = 10",
-     "for i in range(1, 4):",
-     "    print(i, n - i)"
+     "total = 10",
+     "for i in range(3):",
+     "    c = i + 1",
+     "    print(c, total - c)"
     ],
     "out": [
      "1 9",

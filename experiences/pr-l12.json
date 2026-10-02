@@ -372,7 +372,22 @@
         }
        ],
        "fb": "try and except around int() catch the wrong type; the range test then runs only on a value you know is a number.",
-       "hint": "pyvalidate"
+       "hint": "pyvalidate",
+       "teach": {
+        "say": "isdigit() says no to a minus sign, so a negative number needs a stronger check. int() inside try either works or raises a ValueError, and except catches that instead of letting the program stop; else runs only when nothing was raised.",
+        "code": [
+         "entry = input()        # the user typed -4",
+         "try:",
+         "    value = int(entry)",
+         "except ValueError:",
+         "    print(\"could not be read\")",
+         "else:",
+         "    print(value)"
+        ],
+        "out": [
+         "-4"
+        ]
+       }
       }
      ]
     },
@@ -1224,8 +1239,8 @@
      "face": "right",
      "x": 540,
      "y": 240,
-     "title": "Strip it first",
-     "text": "A stray space is still a character, so a presence check should strip the input before testing it for empty."
+     "title": "A list of allowed values",
+     "text": "Some values are only valid if they appear on a list the program already holds, which is a lookup check. Comparing exactly means one capital letter makes a value unknown, so decide whether to lower() both sides first."
     },
     {
      "id": "f2",
@@ -1233,7 +1248,7 @@
      "x": 1508,
      "y": 240,
      "title": "Inclusive means both",
-     "text": "'From 1 to 10 inclusive' means 1 and 10 both pass. Test them: that is exactly what boundary data is for."
+     "text": "'From 1 to 10 inclusive' means 1 and 10 both pass. Test them: that is exactly what boundary data is for. Watch out that isdigit() calls a minus sign a non-digit, so a range allowing negatives needs that sign checked on its own."
     },
     {
      "id": "f3",
@@ -1248,8 +1263,8 @@
      "face": "back",
      "x": 1508,
      "y": 240,
-     "title": "Three tries",
-     "text": "Locking an account after three wrong passwords stops a program being guessed at one attempt at a time."
+     "title": "Say what was wrong",
+     "text": "A loop that only answers 'invalid' leaves the user guessing. Testing the rules one at a time lets the program name the rule that was broken, which is why these checks are usually written as if ... elif ..."
     },
     {
      "id": "f5",

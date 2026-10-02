@@ -46,23 +46,284 @@
    "id": "pr-l01-q2",
    "station": 0,
    "marks": 1,
+   "q": "Display Open. Then display Closed on the next line.",
+   "teach": {
+    "say": "One print() gives one line, and then Python moves down. Two lines of output need two print() statements, in the order you want them.",
+    "code": [
+     "print(\"Start\")",
+     "print(\"Finish\")"
+    ],
+    "out": [
+     "Start",
+     "Finish"
+    ]
+   },
+   "brief": [
+    "Nothing is typed in by the user.",
+    "Print exactly: Open",
+    "Print exactly: Closed"
+   ],
+   "hint": "pyoutput",
+   "starter": "# Print two lines, one after the other\n",
+   "fixed": true,
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "Open",
+      "Closed"
+     ],
+     "why": "Two lines of output needs two print() statements, and they run in the order you write them."
+    }
+   ],
+   "fb": "Each print() ends by moving down to the next line, which is why printing twice gives two lines."
+  },
+  {
+   "id": "pr-l01-q3",
+   "station": 0,
+   "marks": 2,
+   "q": "Display Top. Then display an empty line. Then display Bottom on the third line.",
+   "teach": {
+    "say": "print() with nothing inside the brackets prints a line with nothing on it.",
+    "code": [
+     "print(\"One\")",
+     "print()",
+     "print(\"Two\")"
+    ],
+    "out": [
+     "One",
+     "",
+     "Two"
+    ]
+   },
+   "brief": [
+    "Nothing is typed in by the user.",
+    "The second line of output has nothing on it.",
+    "Three lines of output in all."
+   ],
+   "hint": "pyoutput",
+   "starter": "# Three lines, with the middle one empty\n",
+   "fixed": true,
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "Top",
+      "",
+      "Bottom"
+     ],
+     "why": "The empty line is printed on purpose, with print() and nothing in the brackets. Two lines of output means it is missing."
+    }
+   ],
+   "fb": "An empty print() still counts as a line of output, which is how you leave a gap."
+  },
+  {
+   "id": "pr-l01-q4",
+   "station": 0,
+   "marks": 2,
+   "q": "Display Line 1 of 2. Then display Done! on the next line.",
+   "teach": {
+    "say": "Digits and punctuation inside the quotation marks are part of the text, and print() shows them exactly as written.",
+    "code": [
+     "print(\"Box 3 of 4\")",
+     "print(\"Ready!\")"
+    ],
+    "out": [
+     "Box 3 of 4",
+     "Ready!"
+    ]
+   },
+   "brief": [
+    "Nothing is typed in by the user.",
+    "Print exactly: Line 1 of 2",
+    "Print exactly: Done!"
+   ],
+   "hint": "pyoutput",
+   "starter": "# Two lines of text, digits and punctuation included\n",
+   "fixed": true,
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "Line 1 of 2",
+      "Done!"
+     ],
+     "why": "Copy both lines exactly, the digits and the exclamation mark included. Inside quotation marks a digit is text, not a number to work out."
+    }
+   ],
+   "fb": "Inside quotation marks everything is text, so a digit or a full stop is just another character to show."
+  },
+  {
+   "id": "pr-l01-q5",
+   "station": 1,
+   "marks": 2,
+   "q": "Keep the word harbour in a variable. Display that variable. Then display it again on the next line.",
+   "teach": {
+    "say": "A variable is a named box. = puts a value into it, and printing the name shows the value inside.",
+    "code": [
+     "sound = \"beep\"",
+     "print(sound)",
+     "print(sound)"
+    ],
+    "out": [
+     "beep",
+     "beep"
+    ]
+   },
+   "brief": [
+    "Nothing is typed in by the user.",
+    "The word harbour is written into your program.",
+    "Print the same variable twice."
+   ],
+   "hint": "pyoutput",
+   "starter": "# One word in a variable, printed on two lines\n",
+   "fixed": true,
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "harbour",
+      "harbour"
+     ],
+     "why": "Two lines, both the same. One line means the variable was printed once: printing it does not use the value up."
+    }
+   ],
+   "fb": "A variable is a named box for one value, and the value stays in the box until you change it."
+  },
+  {
+   "id": "pr-l01-q6",
+   "station": 1,
+   "marks": 2,
+   "q": "Keep the word north in a variable. Display that variable. Then change the variable to the word south. Display it again on the next line.",
+   "teach": {
+    "say": "= replaces whatever the variable held before, so only the newest value is left. Print the old value before you overwrite it.",
+    "code": [
+     "light = \"red\"",
+     "print(light)",
+     "light = \"green\"",
+     "print(light)"
+    ],
+    "out": [
+     "red",
+     "green"
+    ]
+   },
+   "brief": [
+    "Nothing is typed in by the user.",
+    "Use one variable for both words.",
+    "Print the first word before the second one replaces it."
+   ],
+   "hint": "pyoutput",
+   "starter": "# One variable, printed twice, with a new value in between\n",
+   "fixed": true,
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "north",
+      "south"
+     ],
+     "why": "If south came out on both lines, the first print() runs after the change. A second = throws the old value away, so print it first."
+    }
+   ],
+   "fb": "A variable holds one value at a time, and = overwrites whatever was there before."
+  },
+  {
+   "id": "pr-l01-q7",
+   "station": 1,
+   "marks": 3,
+   "q": "Keep the word amber in a variable called a. Copy the value of a into a second variable called b. Then change a to the word silver. Display a. Then display b on the next line.",
+   "teach": {
+    "say": "b = a copies across the value a is holding at that moment. Changing a afterwards leaves b exactly as it was.",
+    "code": [
+     "x = \"north\"",
+     "y = x",
+     "x = \"south\"",
+     "print(x)",
+     "print(y)"
+    ],
+    "out": [
+     "south",
+     "north"
+    ]
+   },
+   "brief": [
+    "Nothing is typed in by the user.",
+    "b = a copies the value, so b keeps the word amber.",
+    "Print a first, then b."
+   ],
+   "hint": "pyoutput",
+   "starter": "# Copy one variable into another before changing it\n",
+   "fixed": true,
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "silver",
+      "amber"
+     ],
+     "why": "If both lines are silver, b was copied after a changed. Copy it while a still holds amber."
+    }
+   ],
+   "fb": "Copying a variable copies the value, not the box, so the copy keeps that value even after the original changes."
+  },
+  {
+   "id": "pr-l01-q8",
+   "station": 1,
+   "marks": 2,
+   "q": "Keep the word closed in a variable. Keep the whole number 100 in a constant called LIMIT. Display the variable. Then display LIMIT on the next line.",
+   "teach": {
+    "say": "A constant is a variable whose value never changes. Its name is written in capitals so everyone can see it must stay as it is.",
+    "code": [
+     "MAX = 30",
+     "print(MAX)"
+    ],
+    "out": [
+     "30"
+    ]
+   },
+   "brief": [
+    "Nothing is typed in by the user.",
+    "Name the constant LIMIT, in capitals.",
+    "The 100 is written into your program in one place only."
+   ],
+   "hint": "pyoutput",
+   "starter": "# Make the variable and the constant, then print both\n",
+   "fixed": true,
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "closed",
+      "100"
+     ],
+     "why": "Two lines: the word, then the number. If the word LIMIT appeared, it was inside quotation marks, and quotation marks mean print these letters."
+    }
+   ],
+   "fb": "A constant is an ordinary variable for a value that must not change, and capital letters are how programmers say so."
+  },
+  {
+   "id": "pr-l01-q9",
+   "station": 2,
+   "marks": 1,
    "q": "Ask the user for a word. Display [word].",
    "teach": {
-    "say": "input() hands back whatever the user typed. A variable holds it, and printing the variable shows the value inside it.",
+    "say": "input() stops the program and waits for the user to type a line, then hands that line back. Keep it in a variable, and printing the variable shows what was typed.",
     "code": [
-     "colour = input(\"Colour? \")   # the user types amber",
+     "colour = input(\"Colour? \")   # the user types teal",
      "print(colour)"
     ],
     "out": [
-     "amber"
+     "teal"
     ]
    },
    "brief": [
     "The user types in one word.",
+    "Keep what comes back in a variable.",
     "Nothing else is printed."
    ],
-   "hint": "pyoutput",
-   "starter": "# Read one word, then print it\n",
+   "hint": "pyinput",
+   "starter": "# Read one word into a variable, then print it\n",
    "tests": [
     {
      "in": [
@@ -95,369 +356,14 @@
    "fb": "input() reads one line and hands it back, and printing a variable shows the value it is holding."
   },
   {
-   "id": "pr-l01-q3",
-   "station": 0,
-   "marks": 1,
-   "q": "Ask the user for a word. Display Ready. Then display [word] on the next line.",
-   "teach": {
-    "say": "print() shows fixed text when you put it in quotation marks, and the value of a variable when you leave them off.",
-    "code": [
-     "drink = input(\"Drink? \")   # the user types tea",
-     "print(\"Waiting\")",
-     "print(drink)"
-    ],
-    "out": [
-     "Waiting",
-     "tea"
-    ]
-   },
-   "brief": [
-    "Print exactly: Ready"
-   ],
-   "hint": "pyoutput",
-   "starter": "# Print the fixed line, then the word\n",
-   "tests": [
-    {
-     "in": [
-      "tulip"
-     ],
-     "out": [
-      "Ready",
-      "tulip"
-     ],
-     "why": "Only the word appeared, so the fixed line is missing. Text to print goes inside print() and inside quotation marks."
-    },
-    {
-     "in": [
-      "silver"
-     ],
-     "out": [
-      "Ready",
-      "silver"
-     ],
-     "why": "Two lines of output needs two print() statements, and they run in the order you write them."
-    },
-    {
-     "in": [
-      "two words"
-     ],
-     "out": [
-      "Ready",
-      "two words"
-     ],
-     "why": "If the word word came out on the second line, the variable was inside quotation marks."
-    }
-   ],
-   "fb": "Fixed text needs quotation marks and a variable must not have them, which is the whole difference between the two print() statements."
-  },
-  {
-   "id": "pr-l01-q4",
-   "station": 0,
-   "marks": 2,
-   "q": "Ask the user for a word. Display -----. Then display [word] on the next line. Then display ----- again on the next line.",
-   "teach": {
-    "say": "Each print() makes a new line, and they run in the order you write them.",
-    "code": [
-     "print(\"***\")",
-     "print(\"middle\")",
-     "print(\"***\")"
-    ],
-    "out": [
-     "***",
-     "middle",
-     "***"
-    ]
-   },
-   "brief": [
-    "Print exactly five hyphens on the first line.",
-    "Print five hyphens again on the third line."
-   ],
-   "hint": "pyoutput",
-   "starter": "# Three lines of output, the word in the middle\n",
-   "tests": [
-    {
-     "in": [
-      "tulip"
-     ],
-     "out": [
-      "-----",
-      "tulip",
-      "-----"
-     ],
-     "why": "Count the hyphens: five on the first line and five on the last."
-    },
-    {
-     "in": [
-      "silver"
-     ],
-     "out": [
-      "-----",
-      "silver",
-      "-----"
-     ],
-     "why": "Three lines of output needs three print() statements, in the order the question gives."
-    },
-    {
-     "in": [
-      "two words"
-     ],
-     "out": [
-      "-----",
-      "two words",
-      "-----"
-     ],
-     "why": "The line of hyphens is printed twice. Printing it once leaves only two lines of output."
-    }
-   ],
-   "fb": "Each print() starts a new line, so three lines of output means three print() statements in the right order."
-  },
-  {
-   "id": "pr-l01-q5",
-   "station": 1,
-   "marks": 2,
-   "q": "Ask the user for a word and keep it in a variable. Display [word]. Then display [word] again on the next line.",
-   "teach": {
-    "say": "A variable keeps the value you put in it, so you can print it as often as you like.",
-    "code": [
-     "sound = \"beep\"",
-     "print(sound)",
-     "print(sound)"
-    ],
-    "out": [
-     "beep",
-     "beep"
-    ]
-   },
-   "brief": [
-    "Read the word once only.",
-    "Print the same variable twice."
-   ],
-   "hint": "pyoutput",
-   "starter": "# One word in, the same word on two lines\n",
-   "tests": [
-    {
-     "in": [
-      "amber"
-     ],
-     "out": [
-      "amber",
-      "amber"
-     ],
-     "why": "Nothing on the second line means the variable was printed once. Two lines needs two print() statements."
-    },
-    {
-     "in": [
-      "silver"
-     ],
-     "out": [
-      "silver",
-      "silver"
-     ],
-     "why": "Reading a second time will not work: there is only one line of input to read."
-    },
-    {
-     "in": [
-      "two words"
-     ],
-     "out": [
-      "two words",
-      "two words"
-     ],
-     "why": "The whole typed line is the value, spaces included, and it prints the same way both times."
-    }
-   ],
-   "fb": "A variable is a named box for a value, and the value stays in the box until you change it."
-  },
-  {
-   "id": "pr-l01-q6",
-   "station": 1,
-   "marks": 2,
-   "q": "Keep the fixed whole number 100 in a constant called LIMIT. Ask the user for a word. Display [word]. Then display [limit] on the next line.",
-   "teach": {
-    "say": "A constant is a variable whose value never changes. Its name is written in capitals so everyone can see it must stay as it is.",
-    "code": [
-     "MAX = 30",
-     "print(MAX)"
-    ],
-    "out": [
-     "30"
-    ]
-   },
-   "brief": [
-    "The 100 is fixed in your program, not typed in.",
-    "Name the constant LIMIT, in capitals."
-   ],
-   "hint": "pyoutput",
-   "starter": "# Make the constant, then print the word and the limit\n",
-   "tests": [
-    {
-     "in": [
-      "amber"
-     ],
-     "out": [
-      "amber",
-      "100"
-     ],
-     "why": "Two lines: the word, then the number. If the words word or LIMIT appeared, they were inside quotation marks."
-    },
-    {
-     "in": [
-      "silver"
-     ],
-     "out": [
-      "silver",
-      "100"
-     ],
-     "why": "Print the variable rather than retyping a word of your own, or only one of these tests can pass."
-    },
-    {
-     "in": [
-      "two words"
-     ],
-     "out": [
-      "two words",
-      "100"
-     ],
-     "why": "The 100 has to come from the constant, so the number is written down in one place only."
-    }
-   ],
-   "fb": "A constant is an ordinary variable for a value that must not change, and capital letters are how programmers say so."
-  },
-  {
-   "id": "pr-l01-q7",
-   "station": 1,
-   "marks": 2,
-   "q": "Ask the user for a word and keep it in a variable. Display [first word]. Then ask for a second word and keep it in that same variable. Display [second word] on the next line.",
-   "teach": {
-    "say": "= replaces whatever the variable held before, so only the newest value is left. Print the old value before you overwrite it.",
-    "code": [
-     "light = \"red\"",
-     "print(light)",
-     "light = \"green\"",
-     "print(light)"
-    ],
-    "out": [
-     "red",
-     "green"
-    ]
-   },
-   "brief": [
-    "Use one variable for both words.",
-    "Print the first word before the second one replaces it."
-   ],
-   "hint": "pyoutput",
-   "starter": "# One variable, printed twice, with a new value in between\n",
-   "tests": [
-    {
-     "in": [
-      "amber",
-      "silver"
-     ],
-     "out": [
-      "amber",
-      "silver"
-     ],
-     "why": "If only the second word appeared, the first print() is missing or came after the new value was stored."
-    },
-    {
-     "in": [
-      "north",
-      "south"
-     ],
-     "out": [
-      "north",
-      "south"
-     ],
-     "why": "Assigning with = throws the old value away, which is why it has to be printed first."
-    },
-    {
-     "in": [
-      "same",
-      "same"
-     ],
-     "out": [
-      "same",
-      "same"
-     ],
-     "why": "Both lines match here only because the second word happens to be the same. The program still prints twice."
-    }
-   ],
-   "fb": "A variable holds one value at a time, and = overwrites whatever was there before."
-  },
-  {
-   "id": "pr-l01-q8",
-   "station": 1,
-   "marks": 3,
-   "q": "Ask the user for a word and keep it in a variable called a. Copy the value of a into a second variable called b. Then ask for another word and keep it in a. Display [a]. Then display [b] on the next line. Then display [a] again on the next line.",
-   "teach": {
-    "say": "b = a copies across the value a is holding at that moment. Changing a afterwards leaves b exactly as it was.",
-    "code": [
-     "x = \"north\"",
-     "y = x",
-     "x = \"south\"",
-     "print(x)",
-     "print(y)"
-    ],
-    "out": [
-     "south",
-     "north"
-    ]
-   },
-   "brief": [
-    "b = a copies the value, so b keeps the first word.",
-    "Print a first, then b, then a again."
-   ],
-   "hint": "pyoutput",
-   "starter": "# Copy one variable into another before changing it\n",
-   "tests": [
-    {
-     "in": [
-      "amber",
-      "silver"
-     ],
-     "out": [
-      "silver",
-      "amber",
-      "silver"
-     ],
-     "why": "If the middle line is silver, b was copied after a changed. Copy it while a still holds the first word."
-    },
-    {
-     "in": [
-      "north",
-      "south"
-     ],
-     "out": [
-      "south",
-      "north",
-      "south"
-     ],
-     "why": "Two lines only means the third print() is missing. The second word is printed twice, above and below the first."
-    },
-    {
-     "in": [
-      "same",
-      "same"
-     ],
-     "out": [
-      "same",
-      "same",
-      "same"
-     ],
-     "why": "All three lines match here only because the two words happen to be the same. The program still needs both variables."
-    }
-   ],
-   "fb": "Copying a variable copies the value, not the box, so the copy keeps that value even after the original changes."
-  },
-  {
-   "id": "pr-l01-q9",
+   "id": "pr-l01-q10",
    "station": 2,
    "marks": 2,
    "q": "Ask the user for one word. Display [word]. Then display [word] again on the next line. Then display [word] a third time on the next line.",
    "teach": {
-    "say": "A variable keeps its value, so you can use it as many times as you like.",
+    "say": "A value read with input() stays in its variable after it has been printed, so you can use it as many times as you like.",
     "code": [
-     "sound = \"beep\"",
+     "sound = input(\"Sound? \")   # the user types beep",
      "print(sound)",
      "print(sound)"
     ],
@@ -509,7 +415,7 @@
    "fb": "input() waits for one line and hands it back, and once it is stored you can use it as often as you like."
   },
   {
-   "id": "pr-l01-q10",
+   "id": "pr-l01-q11",
    "station": 2,
    "marks": 2,
    "q": "Ask the user for a word. Then ask for a second word. Display [second word]. Then display [first word] on the next line.",
@@ -568,7 +474,7 @@
    "fb": "Reading and printing are separate steps, so once each value is in its own variable you can print them in any order."
   },
   {
-   "id": "pr-l01-q11",
+   "id": "pr-l01-q12",
    "station": 2,
    "marks": 2,
    "q": "Ask the user for a word. Then ask for a second word. Display [first word]. Then display [second word] on the next line. Then display [first word] again on the next line. Then display [second word] again on the next line.",
@@ -637,7 +543,7 @@
    "fb": "Printing a variable does not use the value up, so the same two variables can fill as many lines as you like."
   },
   {
-   "id": "pr-l01-q12",
+   "id": "pr-l01-q13",
    "station": 2,
    "marks": 3,
    "q": "Ask the user for a word and keep it in its own variable. Then ask for a second word and keep it in its own variable. Then ask for a third word and keep it in its own variable. Display [third word]. Then display [first word] on the next line. Then display [second word] on the next line.",
@@ -705,7 +611,7 @@
    "fb": "Each variable holds its own value, so reading in one order and printing in another is just a matter of choosing which to print first."
   },
   {
-   "id": "pr-l01-q13",
+   "id": "pr-l01-q14",
    "station": 3,
    "marks": 2,
    "q": "Ask the user for a word. Display one line in the form Word is [word].",
@@ -757,7 +663,7 @@
    "fb": "Joining text with + is called concatenation, and it joins exactly what you give it, so every space is joined in on purpose."
   },
   {
-   "id": "pr-l01-q14",
+   "id": "pr-l01-q15",
    "station": 3,
    "marks": 2,
    "q": "Ask the user for a word. Then ask for a second word. Join them with one space between them. Display one line in the form [first word] [second word].",
@@ -814,7 +720,7 @@
    "fb": "Concatenation joins values end to end, so a space between two words is something you have to supply yourself."
   },
   {
-   "id": "pr-l01-q15",
+   "id": "pr-l01-q16",
    "station": 3,
    "marks": 2,
    "q": "Ask the user for a word. Display [word]. Then display the whole number 7 on the next line. Then display the real number 1.5 on the next line.",
@@ -873,7 +779,7 @@
    "fb": "Integer, real, Boolean, character and string are the five data types OCR names, and the type decides what you can do with a value."
   },
   {
-   "id": "pr-l01-q16",
+   "id": "pr-l01-q17",
    "station": 3,
    "marks": 2,
    "q": "Ask the user for a word. Display [word]. Then display the Boolean True on the next line. Then display the Boolean False on the next line.",
@@ -932,7 +838,7 @@
    "fb": "A Boolean is either True or False, written with a capital letter and never in quotation marks."
   },
   {
-   "id": "pr-l01-q17",
+   "id": "pr-l01-q18",
    "station": 4,
    "marks": 2,
    "q": "Ask the user for a whole number. Add 1 to it. Display [answer] and nothing else.",
@@ -940,10 +846,10 @@
     "say": "input() always hands back text, and arithmetic needs a number. int() turns the text into a whole number first.",
     "code": [
      "count = int(input(\"How many? \"))   # the user types 6",
-     "print(count * 2)"
+     "print(count + 2)"
     ],
     "out": [
-     "12"
+     "8"
     ]
    },
    "brief": [
@@ -984,7 +890,7 @@
    "fb": "Casting with int() turns a string of digits into a whole number you can do arithmetic with."
   },
   {
-   "id": "pr-l01-q18",
+   "id": "pr-l01-q19",
    "station": 4,
    "marks": 2,
    "q": "Ask the user for a whole number. Then ask for a second whole number. Add them together. Display [total] and nothing else.",
@@ -1038,7 +944,7 @@
    "fb": "The same + means two different things, and which one you get depends entirely on the type of the values either side of it."
   },
   {
-   "id": "pr-l01-q19",
+   "id": "pr-l01-q20",
    "station": 4,
    "marks": 2,
    "q": "Ask the user for a number, which may have a decimal point. Display [number] as a real number and nothing else, so 4 shows as 4.0.",
@@ -1090,7 +996,7 @@
    "fb": "float() casts text to a real number, which always has a decimal part even when the value is whole."
   },
   {
-   "id": "pr-l01-q20",
+   "id": "pr-l01-q21",
    "station": 4,
    "marks": 3,
    "q": "Ask the user for a number, which may have a decimal point. Display one line in the form Value is [number], with the number as a real number, so 4 shows as 4.0.",
@@ -1143,7 +1049,7 @@
    "fb": "float() casts text to a real number and str() casts a number back to text, and one line of output often needs both."
   },
   {
-   "id": "pr-l01-q21",
+   "id": "pr-l01-q22",
    "station": 5,
    "marks": 3,
    "q": "Ask the user for a word. Then ask for a whole number. Add 1 to the number. Display [word]. Then display [answer] on the next line.",
@@ -1153,11 +1059,11 @@
      "team = input(\"Team? \")   # the user types Owls",
      "games = int(input(\"Games? \"))  # then 5",
      "print(team)",
-     "print(games * 2)"
+     "print(games + 2)"
     ],
     "out": [
      "Owls",
-     "10"
+     "7"
     ]
    },
    "brief": [
@@ -1205,7 +1111,7 @@
    "fb": "A program can hold text and numbers at the same time, and you cast only the values you are going to calculate with."
   },
   {
-   "id": "pr-l01-q22",
+   "id": "pr-l01-q23",
    "station": 5,
    "marks": 3,
    "q": "Ask the user for a word. Then ask for a whole number. Add 1 to the number. Display one line in the form [word] [answer], with one space between them.",
@@ -1261,7 +1167,7 @@
    "fb": "Casting runs both ways in the same program: int() on the way in so you can calculate, str() on the way out so you can join."
   },
   {
-   "id": "pr-l01-q23",
+   "id": "pr-l01-q24",
    "station": 5,
    "marks": 3,
    "q": "Ask the user for a whole number. Then ask for a second whole number. Add them together. Display one line in the form Total: [total].",
@@ -1270,10 +1176,10 @@
     "code": [
      "a = int(input(\"First? \"))   # the user types 5",
      "b = int(input(\"Second? \"))  # then 6",
-     "print(\"Sum \" + str(a * b))"
+     "print(\"Sum \" + str(a + b))"
     ],
     "out": [
-     "Sum 30"
+     "Sum 11"
     ]
    },
    "brief": [
@@ -1317,7 +1223,7 @@
    "fb": "Nearly every program casts twice: int() to calculate with the input, str() to put the answer into a sentence."
   },
   {
-   "id": "pr-l01-q24",
+   "id": "pr-l01-q25",
    "station": 5,
    "marks": 3,
    "q": "Ask the user for a word. Then ask for a whole number. Then ask for a second whole number. Add the two numbers together. Display [word]. Then display Total: [total] on the next line.",
@@ -1328,11 +1234,11 @@
      "a = int(input(\"First? \"))  # then 8",
      "b = int(input(\"Second? \")) # then 2",
      "print(label)",
-     "print(\"Gap \" + str(a - b))"
+     "print(\"Sum \" + str(a + b))"
     ],
     "out": [
      "North",
-     "Gap 6"
+     "Sum 10"
     ]
    },
    "brief": [

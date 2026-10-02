@@ -6,10 +6,11 @@
   "topic": "PY",
   "kicker": "Python programming  |  Lesson 1",
   "subtitle": "Revise 360 Python course  |  Beyond the OCR J277 specification",
-  "intro": "Every program you will ever write starts here: showing something on the screen, storing a value and asking the user for one. Work through this room and you will have written your first real programs.",
+  "intro": "Every program you will ever write starts here: putting something on the screen, keeping a value under a name and asking the user for one. Work through the six stations and you will have written your first real programs.",
   "keywords": [
    "print",
    "Variable",
+   "Constant",
    "input",
    "String",
    "Integer",
@@ -17,84 +18,84 @@
    "Concatenation"
   ],
   "objectives": [
-   "know how to print a line of output and store a value in a variable",
-   "know how to read a value with input() and choose the data type it needs",
+   "know how to print lines of output in the order a task asks for",
+   "know how to hold a value in a variable or a constant, and how to read one with input()",
    "understand why a value that has been typed in must be cast before it can be calculated with"
   ],
-  "starter": "Three lines run in this order: price = 40, then price = 65, then print(price). Write down exactly what is printed, and explain in one sentence what became of the first value.",
+  "starter": "Three lines run in this order: a = 40, then a = 65, then print(a). Write down exactly what is printed, and explain in one sentence what became of the first value.",
   "keyq": "Why must a program decide the data type of a value before it can do anything useful with it?",
   "keyterms": [
    "Variable",
+   "Constant",
    "Casting",
-   "Concatenation",
-   "Data type"
+   "Concatenation"
   ],
   "code": true,
   "stations": [
    {
     "name": "Printing output",
     "bullets": [
-     "print() shows a value on the screen and then moves down to the next line.",
-     "Text to be printed exactly goes inside quotes, and one print() gives one line of output.",
-     "Common mistake: leaving the quotes off, so Python hunts for a variable with that name instead."
+     "print() puts one value on the screen and then moves down to the next line.",
+     "Text to be shown exactly as written goes inside quotation marks, and one print() gives one line of output.",
+     "Common mistake: leaving the quotation marks off, so Python hunts for a variable with that name instead."
     ],
-    "challenge": "Why does Python treat Juice and \"Juice\" as two completely different things?",
-    "fact": "Printing one line of text is still the first program most programmers ever write."
+    "challenge": "Why does Python treat ready and \"ready\" as two completely different things?",
+    "fact": "Each print() shows one value and then moves on to..."
    },
    {
     "name": "Variables",
     "bullets": [
-     "A variable is a named box in memory holding one value you can use again later.",
-     "name = value stores it, and the name always goes on the left of the equals sign.",
+     "A variable is a named box in memory holding one value, and the name always goes on the left of the equals sign.",
+     "A constant is a value the program never changes once it is set, and its name is written in capitals.",
      "Common mistake: a second assignment replaces the value, it does not add to it."
     ],
-    "challenge": "Name two values the till has to remember while it is running.",
-    "fact": "In programming = means 'put this in here', not 'is the same as'."
+    "challenge": "What becomes of the first value when the same variable is given a second one?",
+    "fact": "In programming = means 'put this in here', so a second assignment does not add to the value, it..."
    },
    {
     "name": "Reading input",
     "bullets": [
      "input() stops the program, waits for a line to be typed and hands that line back.",
      "Store what comes back in a variable, or the value the user typed is thrown away.",
-     "Common mistake: forgetting that input() always gives text, even when digits were typed."
+     "Common mistake: reading two answers into the same variable, so the first one is lost."
     ],
-    "challenge": "What is the difference between printing a prompt and reading the reply?",
-    "fact": "input() is patient: a program will sit on that line for as long as it takes."
+    "challenge": "Why can a program print its answers in a different order from the one it asked the questions in?",
+    "fact": "input() is patient: a program will sit on that line until..."
    },
    {
     "name": "Numbers and text",
     "bullets": [
      "Integers count whole things, floats hold decimals, strings hold text and booleans hold True or False.",
-     "+ adds two numbers but joins two strings, so the data type decides what happens.",
+     "+ adds two numbers but joins two strings end to end, so the data type decides what + means.",
      "Common mistake: joining a number to a string with +, which Python refuses to do."
     ],
-    "challenge": "Which data type would you choose for a library fine of 1.50, and why?",
-    "fact": "Joining strings end to end has its own name: concatenation."
+    "challenge": "Which data type would you choose for a value of 1.50, and why?",
+    "fact": "Joining two strings end to end has its own name:..."
    },
    {
     "name": "Casting",
     "bullets": [
      "Casting changes a value from one data type into another.",
      "int() and float() turn text into a number, and str() turns a number into text.",
-     "Common mistake: casting with int() before checking the text really is a whole number."
+     "Common mistake: adding to what input() handed back without casting it first, which joins the digits on the end instead."
     ],
     "challenge": "Why does int(input()) appear in so many programs?",
-    "fact": "Cast is borrowed from metalwork: the value is poured into a new shape."
+    "fact": "Cast is borrowed from metalwork: the value is poured into..."
    },
    {
     "name": "Putting it together",
     "bullets": [
-     "Real programs read several values, work something out and print a tidy report.",
+     "A whole program reads its values, works something out and then prints the lines it was asked for.",
      "Decide the data type each value needs before you write a single line.",
      "Common mistake: printing the lines in a different order from the one the task asked for."
     ],
-    "challenge": "Plan the inputs, the variables and the output lines of a competitor card.",
-    "fact": "Input, process, output is such a common pattern that it has its own initials: IPO."
+    "challenge": "Which parts of a program have to happen before anything can be printed?",
+    "fact": "Input, process, output is such a common pattern that it is shortened to..."
    }
   ],
   "final": {
    "name": "Final challenge: name the data type",
-   "intro": "Eight values have come through the till. Tap the star and sort each one into the data type Python would store it as."
+   "intro": "Eight values are waiting on the floor below you. Tap the star and sort each one into the data type Python would store it as."
   },
   "info": [
    {
@@ -103,11 +104,11 @@
    },
    {
     "title": "Naming rules",
-    "text": "A Python variable name can hold letters, digits and underscores, but it cannot start with a digit or contain a space."
+    "text": "A Python variable name can hold letters, digits and underscores, but it cannot start with a digit or contain a space. Capitals are used for the name of a constant, so a reader can see at a glance that the value is not meant to change."
    },
    {
     "title": "Why it waits",
-    "text": "input() reads one whole line, so the program only carries on once the Enter key has been pressed."
+    "text": "input() reads one whole line, so the program only carries on once the Enter key has been pressed. Nothing else happens while it waits."
    },
    {
     "title": "One bit each",
@@ -124,21 +125,21 @@
   ],
   "exam": [
    {
-    "q": "A pupil writes two lines to add a 50p bag charge to a price that has been typed in: price = input('Price: ') and then print(price + 50). State what Python does when this runs, and rewrite the two lines so they work.",
+    "q": "A pupil writes two lines to add 1 to a number that has been typed in: n = input() and then print(n + 1). State what Python does when these two lines run, and rewrite them so that they work.",
     "marks": 3
    },
    {
-    "q": "Write a program that reads a pupil's name and the number of library books they are holding, then prints one line giving the name and how many of their 6 allowed books are still free.",
+    "q": "Write a program that reads a word and then a whole number, adds 1 to the number, and prints the word on one line and the new number on the next line.",
     "marks": 4
    },
    {
-    "q": "Write a program that reads the price of one pencil in pence and how many pencils are bought, then prints the total cost in pence.",
+    "q": "Write a program that reads a number which may have a decimal point, and prints one line in the form Value is 4.0, with the number shown as a real number.",
     "marks": 3
    }
   ],
   "confidence": [
-   "Printing output and storing a value in a variable",
-   "Reading input and choosing its data type",
+   "Printing lines of output in the right order",
+   "Holding values in variables and constants",
    "Casting between text and numbers"
   ],
   "wsfile": "PR_L01_PrintingAndVariables_Worksheet.docx"
@@ -150,7 +151,7 @@
   "topic": "PY",
   "kicker": "Python programming  |  Lesson 2",
   "subtitle": "Revise 360 Python course  |  Beyond the OCR J277 specification",
-  "intro": "Computers were built to calculate, and Python has an operator for every kind of sum in the specification. Work through the number workshop and learn which one to reach for.",
+  "intro": "Computers were built to calculate, and Python has an operator for every kind of sum in the specification. Work through the six stations and learn which one to reach for, and what each one hands back.",
   "keywords": [
    "Arithmetic",
    "Integer division",
@@ -161,11 +162,11 @@
    "random"
   ],
   "objectives": [
-   "know which arithmetic operator to use for each kind of calculation",
+   "know which arithmetic operator each kind of calculation needs",
    "understand the difference between /, // and % and what each one hands back",
-   "know how to round a result and how to draw a random number"
+   "know how to round a result, and how to draw a random number from a seed"
   ],
-  "starter": "Work these out by hand, with no computer: 17 / 5, 17 // 5, 17 % 5 and 2 ** 5. Beside each answer write whether Python gives a whole number or a decimal.",
+  "starter": "Work these out by hand, with no computer: 17 / 5, 17 // 5, 17 % 5 and 2 ** 5. Beside each answer write whether Python shows a whole number or a decimal.",
   "keyq": "How do you choose between /, // and % when the answer to a calculation has to come out as a whole number?",
   "keyterms": [
    "Integer division",
@@ -179,11 +180,11 @@
     "name": "The four operations",
     "bullets": [
      "+ adds, - subtracts, * multiplies and / divides.",
-     "/ always gives a float, so 10 / 2 prints 5.0 rather than 5.",
+     "/ always gives a float, so 10 / 2 shows as 5.0 rather than 5.",
      "Common mistake: writing 2n for two lots of n, when Python needs 2 * n."
     ],
-    "challenge": "Which operator would you use to halve the price of a pencil?",
-    "fact": "The * was chosen for multiply because early keyboards had no times sign on them."
+    "challenge": "Why does dividing one whole number by another leave a decimal point on the answer?",
+    "fact": "The * was chosen for multiply because early keyboards had no..."
    },
    {
     "name": "Whole number division",
@@ -192,8 +193,8 @@
      "% gives only the remainder, and is called the modulus.",
      "Common mistake: using / when the answer must be whole, which leaves a .0 on the end."
     ],
-    "challenge": "How many full crates of 12 do 50 returned books fill, and how many are left over?",
-    "fact": "% is the quickest test for an even number: n % 2 is 0 whenever n is even."
+    "challenge": "Which two operators turn 250 pence into a number of whole pounds and the pence left over?",
+    "fact": "// and % are a pair: one gives the whole part and the other gives..."
    },
    {
     "name": "Powers and roots",
@@ -203,7 +204,7 @@
      "Common mistake: writing 5 ^ 2, which does something else entirely in Python."
     ],
     "challenge": "Give two different ways of working out the square root of 49.",
-    "fact": "** is the exponent operator, and exponent is simply another word for power."
+    "fact": "Raising a number to the power 0.5 gives its..."
    },
    {
     "name": "Rounding",
@@ -212,8 +213,8 @@
      "abs() removes the sign, so a difference can be reported without saying which way.",
      "Common mistake: rounding early, then carrying the rounded value into the next calculation."
     ],
-    "challenge": "Why does a till round to 2 decimal places rather than to a whole number?",
-    "fact": "Python rounds a value ending in exactly .5 towards the even number, so round(2.5) is 2."
+    "challenge": "Why does an average almost always need rounding before it is printed?",
+    "fact": "Python rounds a value ending in exactly .5 towards the..."
    },
    {
     "name": "Random numbers",
@@ -223,22 +224,22 @@
      "Common mistake: calling randint again instead of storing the number you have already drawn."
     ],
     "challenge": "Why would a program ever want its random numbers to be predictable?",
-    "fact": "A computer works its random numbers out with a formula, so they are really pseudo-random."
+    "fact": "A computer works its random numbers out with a formula, so they are really..."
    },
    {
     "name": "Putting it together",
     "bullets": [
      "Work out the order of a calculation before you type it: brackets, powers, then * / // %, then + -.",
      "Store a part-finished answer in a named variable to keep a long calculation readable.",
-     "Common mistake: rounding part way through, which makes every figure after it slightly wrong."
+     "Common mistake: leaving brackets out, so Python works the sum out in a different order from the one you meant."
     ],
     "challenge": "In what order does Python work through 2 + 3 * 4 ** 2?",
-    "fact": "BIDMAS is the same rule in a maths lesson as it is in a Python program."
+    "fact": "BIDMAS in a maths lesson is the same rule Python uses for..."
    }
   ],
   "final": {
    "name": "Final challenge: pick the operator",
-   "intro": "Eight jobs have come into the workshop. Tap the star and choose the operator or function each one needs."
+   "intro": "Eight jobs are waiting on the floor below you. Tap the star and choose the operator or function each one needs."
   },
   "info": [
    {
@@ -258,8 +259,8 @@
     "text": "0.1 + 0.2 does not give exactly 0.3, because a float is stored in binary and some decimals will not fit."
    },
    {
-    "title": "Shuffling",
-    "text": "random.shuffle() mixes a list up, which is how a program deals out a hand of cards."
+    "title": "The same every time",
+    "text": "random.seed() fixes where the sequence starts, so the same seed always produces the same numbers. That is how a program that draws random numbers can still be marked."
    },
    {
     "title": "Why order matters",
@@ -268,22 +269,22 @@
   ],
   "exam": [
    {
-    "q": "A program works out how many full boxes of 6 eggs a crate will fill, and the line reads boxes = eggs / 6. State what is wrong with the result this gives, and write the line corrected.",
+    "q": "A program works out how many whole 6s go into a number, and the line reads lots = n / 6. State what is wrong with the result this gives, and write the line corrected.",
     "marks": 2
    },
    {
-    "q": "Write a program that reads a number of minutes and prints it as a number of whole hours and the minutes left over.",
+    "q": "Write a program that reads a whole number of pence and prints how many whole pounds are in it, then how many pence are left over on the next line.",
     "marks": 4
    },
    {
-    "q": "Write a program that reads two amounts of money in pounds and prints their mean, rounded to two decimal places.",
+    "q": "Write a program that reads three whole numbers and prints their average, rounded to one decimal place.",
     "marks": 4
    }
   ],
   "confidence": [
    "Choosing the right arithmetic operator",
    "Using // and % for whole-number answers",
-   "Rounding a result and drawing a random number"
+   "Rounding a result and seeding a random number"
   ],
   "wsfile": "PR_L02_Arithmetic_Worksheet.docx"
  },
@@ -294,7 +295,7 @@
   "topic": "PY",
   "kicker": "Python programming  |  Lesson 3",
   "subtitle": "Revise 360 Python course  |  Beyond the OCR J277 specification",
-  "intro": "A program that always does the same thing is not much use. At the decision gate you will write the conditions that let a program choose, from a single comparison to a whole nest of them.",
+  "intro": "A program that always does the same thing is not much use. Work through the six stations and you will write the conditions that let a program choose, from a single comparison to a whole nest of them.",
   "keywords": [
    "Selection",
    "Condition",
@@ -311,7 +312,7 @@
    "understand how if, elif and else choose between several outcomes",
    "know how to join two conditions together with and, or and not"
   ],
-  "starter": "A program holds three branches: if score > 20 prints Gold, elif score > 10 prints Silver, and else prints Bronze. Write down what is printed when score is 30, when it is 11, and when it is 10.",
+  "starter": "A program has three branches: if n > 20 it prints big, elif n > 10 it prints middle, and else it prints small. Write down what is printed when n is 30, when it is 11, and when it is 10.",
   "keyq": "Why does the order the branches are written in change what an if ... elif ... else actually does?",
   "keyterms": [
    "Selection",
@@ -329,7 +330,7 @@
      "Common mistake: comparing with one =, when one = stores a value and two compare them."
     ],
     "challenge": "What does a > b print when a is 5 and b is 5?",
-    "fact": "A value that can only be True or False is named after George Boole, who returns in topic 2.4."
+    "fact": "A value that can only be True or False is named after George Boole, so it is called a..."
    },
    {
     "name": "if and else",
@@ -338,8 +339,8 @@
      "else catches every other case, and needs no condition of its own.",
      "Common mistake: missing the colon, or not indenting the block underneath it."
     ],
-    "challenge": "Why does a lift loaded to exactly its 450 kg limit need careful wording?",
-    "fact": "Python uses indentation where most languages use brackets, so layout is part of the code."
+    "challenge": "Why does a rule worded as '20 or more' need >= rather than >?",
+    "fact": "Python uses indentation where most languages use brackets, so the layout is part of the..."
    },
    {
     "name": "elif",
@@ -348,18 +349,18 @@
      "Python stops at the first branch that is True and skips everything below.",
      "Common mistake: putting a wide band first, so it catches everything and the later branches never run."
     ],
-    "challenge": "Why must the weight bands of a courier's price list be tested in order?",
-    "fact": "elif is short for 'else if', and some languages make you write both words out."
+    "challenge": "Why must the bands of a grade boundary list be tested in order?",
+    "fact": "elif is short for two words that some languages make you write out in full:..."
    },
    {
     "name": "AND, OR and NOT",
     "bullets": [
      "and is True only when both sides are, and or is True when at least one side is.",
-     "not flips a condition over, so not raining is True whenever raining is False.",
-     "Common mistake: writing wind < 20 or 30, which Python reads as something quite different."
+     "not flips a condition over, so not found is True whenever found is False.",
+     "Common mistake: writing n == 3 or 7, which Python reads as something quite different."
     ],
-    "challenge": "Write the condition for a drone allowed up in light wind and good visibility.",
-    "fact": "Python stops reading an and as soon as one side is False, which is called short-circuiting."
+    "challenge": "How would you test in one condition whether a number is either 3 or 7?",
+    "fact": "Python stops reading an and as soon as one side is False, which is called..."
    },
    {
     "name": "Decisions inside decisions",
@@ -368,8 +369,8 @@
      "Each level of nesting is indented one more step in than the one above.",
      "Common mistake: nesting where a single and would have said the same thing far more clearly."
     ],
-    "challenge": "Rewrite a nested if as one condition joined with and.",
-    "fact": "Deeply nested ifs are so hard to follow that programmers call the shape the arrow of doom."
+    "challenge": "When is a nested if clearer than one condition joined with and?",
+    "fact": "Deeply nested ifs are so hard to follow that programmers call the shape the..."
    },
    {
     "name": "Putting it together",
@@ -378,13 +379,13 @@
      "Test on the edge of every band, because that is exactly where conditions go wrong.",
      "Common mistake: using > where the rule says 'or more', which loses the boundary value."
     ],
-    "challenge": "Which three totals would you test on a medal program with cut-offs at 27 and 24?",
-    "fact": "An off-by-one error at a boundary is one of the most common bugs there is."
+    "challenge": "Which three values would you test on a program whose bands change at 30 and 50?",
+    "fact": "A mistake at the edge of a band is so common that it has its own name: an..."
    }
   ],
   "final": {
    "name": "Final challenge: true or false",
-   "intro": "The wind is 15, the visibility is 8 and the alarm is off. Tap the star and decide whether each condition is True or False."
+   "intro": "Three variables hold these values: wind is 15, vis is 8 and alarm is False. Tap the star and decide whether each condition is True or False."
   },
   "info": [
    {
@@ -414,15 +415,15 @@
   ],
   "exam": [
    {
-    "q": "A car park charges 2 pounds for up to 2 hours and 5 pounds for longer. A pupil writes if hours > 2 then prints 2, and else prints 5. Identify the logic error and write the two lines corrected.",
+    "q": "A program should print cheap when a number is 2 or less and dear when it is more. A pupil writes if n > 2 then prints cheap, and else prints dear. Identify the logic error and write the two lines corrected.",
     "marks": 3
    },
    {
-    "q": "Write a program that reads a wind speed in mph and prints Calm below 8, Breezy from 8 up to but not including 25, and Gale at 25 or more.",
+    "q": "Write a program that reads a whole number and prints small when it is 10 or less, medium when it is more than 10 but 100 or less, and large when it is more than 100.",
     "marks": 4
    },
    {
-    "q": "Write a program that reads a greenhouse temperature and whether the roof vent is open, and prints Open the vent only when the temperature is above 28 degrees and the vent is shut.",
+    "q": "Write a program that reads a whole number and then a word, and prints open only when the number is 3 or 7 and the word is not locked. Otherwise it prints refused.",
     "marks": 4
    }
   ],
@@ -440,7 +441,7 @@
   "topic": "PY",
   "kicker": "Python programming  |  Lesson 4",
   "subtitle": "Revise 360 Python course  |  Beyond the OCR J277 specification",
-  "intro": "When you know how many times something has to happen, a counting loop does it for you. At the lap counter you will learn to control a for loop and to use the number it counts with.",
+  "intro": "When you know how many times something has to happen, a counting loop does it for you. Work through the six stations and you will learn to control a for loop and to use the number it counts with.",
   "keywords": [
    "Iteration",
    "Count-controlled",
@@ -472,8 +473,8 @@
      "Count-controlled iteration is used when the number of repeats is known in advance.",
      "Common mistake: leaving the line to repeat outside the loop, so it only runs once."
     ],
-    "challenge": "How would you repeat an announcement as many times as the user asks for?",
-    "fact": "Iteration is the proper name for repetition, and it is one of the three basic program structures."
+    "challenge": "How would you repeat a line as many times as the user asks for?",
+    "fact": "Iteration is the proper name for repetition, and it is one of the three basic..."
    },
    {
     "name": "Using the counter",
@@ -482,8 +483,8 @@
      "range(n) counts from 0, so the values are 0 up to n - 1.",
      "Common mistake: expecting range(5) to include 5, or to start at 1."
     ],
-    "challenge": "What numbers does range(5) actually count through?",
-    "fact": "Counting from 0 is normal in programming, and it is why the first item of a list is item 0."
+    "challenge": "What has to change so that a loop counts from 1 up to and including n?",
+    "fact": "Counting from 0 is normal in programming, and it is why the first item of a list is item..."
    },
    {
     "name": "Choosing the range",
@@ -492,8 +493,8 @@
      "A third value is the step, so range(10, 0, -2) counts back down in twos.",
      "Common mistake: forgetting stop is never reached, which quietly loses the last value."
     ],
-    "challenge": "Which range lists the hall rows from 4 to 9 inclusive?",
-    "fact": "A range does not build a list of its numbers: it works each one out as the loop asks for it."
+    "challenge": "Which range counts through 4 to 9, with both of them included?",
+    "fact": "The stop value of a range is the one value the loop never..."
    },
    {
     "name": "Running totals",
@@ -503,7 +504,7 @@
      "Common mistake: setting the total back to 0 inside the loop, which loses everything counted so far."
     ],
     "challenge": "Where must a running total be set to zero, and why there?",
-    "fact": "A counter and a running total work the same way: one adds 1, the other adds a value."
+    "fact": "A counter and a running total work the same way: one adds 1 and the other adds..."
    },
    {
     "name": "Loops inside loops",
@@ -513,22 +514,22 @@
      "Common mistake: indenting the inner loop's body wrongly, so all the rows run together."
     ],
     "challenge": "How many lines does a loop of 4 columns inside a loop of 3 rows print?",
-    "fact": "Two nested loops of 10 run 100 times, so nesting multiplies the work rather than adding to it."
+    "fact": "Nesting one loop inside another multiplies the work rather than..."
    },
    {
     "name": "Putting it together",
     "bullets": [
-     "Decide what each loop counts before you write it, and name the variable after that.",
-     "Build the total, the count and the best value in the same single pass through the data.",
+     "Decide what each loop counts before you write it, and name the loop variable after that.",
+     "Build the total, the count and the average from the same single pass through the data.",
      "Common mistake: printing inside the loop when the task asks for one line at the end."
     ],
-    "challenge": "Plan the loop, the counter and the total for a report on a set of words.",
-    "fact": "One pass that gathers several answers at once beats looping over the same data again and again."
+    "challenge": "Which figures can one pass through the data work out at the same time?",
+    "fact": "One pass that gathers several answers at once beats looping over the same data..."
    }
   ],
   "final": {
    "name": "Final challenge: how many times?",
-   "intro": "Eight loops are running on the lap counter. Tap the star and sort each one by how many times its block runs."
+   "intro": "Eight loops are waiting on the floor below you. Tap the star and sort each one by how many times its block runs."
   },
   "info": [
    {
@@ -562,11 +563,11 @@
     "marks": 2
    },
    {
-    "q": "Write a program that reads 7 daily rainfall figures in millimetres and prints their total and their mean.",
+    "q": "Write a program that reads how many numbers there are, then reads that many whole numbers and prints their total and their average.",
     "marks": 5
    },
    {
-    "q": "Write a program that reads a size from the user and prints a solid square of hash characters of that size.",
+    "q": "Write a program that reads a whole number and prints that many lines, the first holding one * character, the second two, and so on.",
     "marks": 4
    }
   ],
@@ -584,7 +585,7 @@
   "topic": "PY",
   "kicker": "Python programming  |  Lesson 5",
   "subtitle": "Revise 360 Python course  |  Beyond the OCR J277 specification",
-  "intro": "Sometimes a program cannot know how many repeats it needs until it is already running. In the waiting room you will write condition-controlled loops that keep going until something changes.",
+  "intro": "Sometimes a program cannot know how many repeats it needs until it is already running. Work through the six stations and you will write condition-controlled loops that keep going until something changes.",
   "keywords": [
    "Condition-controlled",
    "while",
@@ -616,7 +617,7 @@
      "Common mistake: never changing the condition inside the loop, which leaves it running forever."
     ],
     "challenge": "What has to change inside a while loop for it ever to stop?",
-    "fact": "A loop whose condition never becomes False is an infinite loop, and it will freeze the program."
+    "fact": "A loop whose condition never becomes False will freeze the program, and is called an..."
    },
    {
     "name": "Asking until it is right",
@@ -626,27 +627,27 @@
      "Common mistake: leaving the second read out, so the same bad value is tested forever."
     ],
     "challenge": "Why does a validation loop need an input() in two different places?",
-    "fact": "This shape has a name of its own: input validation, which is the heart of topic 2.3."
+    "fact": "A loop that keeps asking until the value is acceptable has a name of its own, and it is the heart of topic 2.3:..."
    },
    {
     "name": "Sentinel values",
     "bullets": [
      "A sentinel is an agreed value meaning 'no more data', such as -1 or the word end.",
-     "The loop keeps going until the sentinel arrives, however many items came before it.",
+     "The loop keeps going until the sentinel arrives, however many values came before it.",
      "Common mistake: counting the sentinel itself as one of the real values."
     ],
     "challenge": "Why must a sentinel be a value the real data can never take?",
-    "fact": "Sentinel means guard: the value stands at the end of the data keeping watch."
+    "fact": "Sentinel means guard, because the value stands at the end of the data..."
    },
    {
     "name": "Counting inside a while",
     "bullets": [
      "A counter and a running total are set up before the loop and updated inside it.",
-     "The same pass can count the items and test each one against a rule.",
+     "The same pass can count the values and test each one against a rule.",
      "Common mistake: updating the counter after the loop has already finished."
     ],
-    "challenge": "How would you count how many of the scores read reached 40?",
-    "fact": "A while loop with a counter can do anything a for loop can, but a for loop says it more clearly."
+    "challenge": "How would you count how many of the numbers read reached 40?",
+    "fact": "A while loop with a counter can do anything a for loop can, but a for loop says it more..."
    },
    {
     "name": "Choosing for or while",
@@ -655,23 +656,23 @@
      "Use while when it depends on the data, or on what the user chooses to type.",
      "Common mistake: a while loop with its own counter where a for loop would be shorter and safer."
     ],
-    "challenge": "Which loop would you use to read a known number of parcel weights?",
-    "fact": "Both kinds are called iteration, and the exam expects you to name which one you have used."
+    "challenge": "Which kind of loop does a program need when it cannot know how many repeats there will be?",
+    "fact": "Both for and while are kinds of iteration, so in the exam you must name the kind you have..."
    },
    {
     "name": "Putting it together",
     "bullets": [
      "Set every total and counter up before the loop, and report them after it.",
-     "One while loop can both validate what comes in and gather the figures you need.",
-     "Common mistake: reporting inside the loop, which prints a line for every item read."
+     "One while loop can both check what comes in and gather the figures you need.",
+     "Common mistake: reporting inside the loop, which prints a line for every value read."
     ],
-    "challenge": "Plan the variables a swimming session report needs before its loop starts.",
-    "fact": "A loop that reads until a sentinel copes with no data at all, as long as the totals start at zero."
+    "challenge": "What should a program print when the sentinel is the very first thing typed?",
+    "fact": "A loop that reads until a sentinel copes with no data at all, as long as the totals start at..."
    }
   ],
   "final": {
    "name": "Final challenge: for or while?",
-   "intro": "Eight jobs are waiting. Tap the star and decide whether each one needs a count-controlled for loop or a condition-controlled while loop."
+   "intro": "Eight jobs are waiting on the floor below you. Tap the star and decide whether each one needs a count-controlled for loop or a condition-controlled while loop."
   },
   "info": [
    {
@@ -684,7 +685,7 @@
    },
    {
     "title": "Choosing a sentinel",
-    "text": "-1 works for a price, because a price can never be negative. For a temperature it would be a terrible choice."
+    "text": "-1 works when the real values can never be negative. For a temperature it would be a terrible choice."
    },
    {
     "title": "Count or total",
@@ -701,15 +702,15 @@
   ],
   "exam": [
    {
-    "q": "A validation loop reads a number, then repeats for as long as it is outside 1 to 50. When 99 is typed the program reports the same wrong number over and over. State what has been left out of the loop, and where in the loop it belongs.",
+    "q": "A validation loop reads a whole number, then repeats for as long as it is outside 1 to 20. When 99 is typed the program prints out of range over and over. State what has been left out of the loop, and where in the loop it belongs.",
     "marks": 2
    },
    {
-    "q": "Write a program that reads lengths of rope in centimetres until 0 is typed, then prints how many lengths were read and their total length.",
+    "q": "Write a program that reads whole numbers until -1 is typed, then prints how many numbers were read and their total.",
     "marks": 5
    },
    {
-    "q": "Write a program that keeps asking for a password until one of at least 8 characters is typed, and then prints Accepted.",
+    "q": "Write a program that keeps asking for a word until yes or no is typed, printing please answer yes or no for every other word, and then prints the word that was accepted.",
     "marks": 4
    }
   ],
@@ -727,7 +728,7 @@
   "topic": "PY",
   "kicker": "Python programming  |  Lesson 6",
   "subtitle": "Revise 360 Python course  |  Beyond the OCR J277 specification",
-  "intro": "Text is the data programs handle most, and Python has a tool for every part of it. At the letter press you will measure, cut, compare and search strings.",
+  "intro": "Text is the data programs handle most, and Python has a tool for every part of it. Work through the six stations and you will measure, cut, compare and search strings.",
   "keywords": [
    "String",
    "len()",
@@ -761,7 +762,7 @@
      "Common mistake: asking for position len(), which is one past the end and stops the program."
     ],
     "challenge": "Which position holds the last character of a six-letter word?",
-    "fact": "A negative index counts from the end, so word[-1] is always the last character."
+    "fact": "A negative index counts from the end, so word[-1] is always the..."
    },
    {
     "name": "Taking part of a string",
@@ -771,7 +772,7 @@
      "Common mistake: expecting word[0:3] to give four characters rather than three."
     ],
     "challenge": "Which slice gives everything except the first and last characters?",
-    "fact": "Python's way of slicing is so useful that several other languages have copied it."
+    "fact": "In a slice the first number is included and the second one is..."
    },
    {
     "name": "Upper and lower case",
@@ -780,8 +781,8 @@
      "Comparing two strings in the same case ignores how they happened to be typed.",
      "Common mistake: calling lower() but never storing or using what it gives back."
     ],
-    "challenge": "Why does a program compare two names in lower case before deciding they match?",
-    "fact": "Strings are compared by character code, so in Python every capital sorts before every small letter."
+    "challenge": "Why does a program put two words into the same case before deciding they match?",
+    "fact": "Strings are compared by character code, so in Python every capital sorts before every..."
    },
    {
     "name": "Searching inside text",
@@ -791,32 +792,32 @@
      "Common mistake: treating find()'s 0 as 'not found', when 0 means the very start."
     ],
     "challenge": "How can a program tell 'not found' apart from 'found at the start'?",
-    "fact": "startswith() and endswith() answer the two most common search questions on their own."
+    "fact": "Two methods answer the commonest search questions on their own: startswith() and..."
    },
    {
     "name": "Character codes",
     "bullets": [
      "Every character is stored as a number, and ord() gives that number.",
      "chr() goes the other way, turning a code back into its character.",
-     "Common mistake: forgetting to wrap round after z, which gives a punctuation mark instead."
+     "Common mistake: adding 1 to the letter itself, when it is the code that has to be added to."
     ],
-    "challenge": "How would you work out the letter that comes after y?",
-    "fact": "A is 65 and a is 97, so the gap between a capital and its small letter is always 32."
+    "challenge": "How would you work out the letter that comes after a given one?",
+    "fact": "A is 65 and a is 97, so the gap between a capital and its small letter is always..."
    },
    {
     "name": "Putting it together",
     "bullets": [
-     "Build a new string one character at a time inside a loop.",
+     "Build a new string one character at a time inside a loop over the original.",
      "isalpha() and isdigit() sort the letters from the digits as you go.",
      "Common mistake: trying to change one character in place, when a string cannot be edited."
     ],
-    "challenge": "Plan how you would build a reversed copy of a word.",
-    "fact": "A word that reads the same backwards is a palindrome, and reversing a string is how you test for one."
+    "challenge": "How would you build a reversed copy of a word one character at a time?",
+    "fact": "A word that reads the same backwards as forwards is called a..."
    }
   ],
   "final": {
    "name": "Final challenge: what does it give?",
-   "intro": "The word on the press is LANTERN, stored in a variable called word. Tap the star and match each piece of Python to what it gives back."
+   "intro": "A variable called word holds LANTERN. Tap the star and match each piece of Python to what it gives back."
   },
   "info": [
    {
@@ -850,11 +851,11 @@
     "marks": 3
    },
    {
-    "q": "Write a program that reads a surname and prints a username made from its first three letters in lower case followed by the number of letters in the surname.",
+    "q": "Write a program that reads a line of text and prints how many of its characters are capital letters.",
     "marks": 4
    },
    {
-    "q": "Write a program that reads a line of text and a single letter, and prints how many times that letter appears in the text, counting capitals and small letters as the same.",
+    "q": "Write a program that reads a word and prints palindrome when it reads the same both ways once capitals are ignored, and not a palindrome when it does not.",
     "marks": 5
    }
   ],
@@ -872,7 +873,7 @@
   "topic": "PY",
   "kicker": "Python programming  |  Lesson 7",
   "subtitle": "Revise 360 Python course  |  Beyond the OCR J277 specification",
-  "intro": "One variable holds one value, which is no use at all for a whole class of marks. A list holds many values under one name, and the stock shelves are where you learn to use one.",
+  "intro": "One variable holds one value, which is no use at all for a whole class of marks. A list holds many values under one name, and the six stations here are where you learn to use one.",
   "keywords": [
    "Array",
    "List",
@@ -887,7 +888,7 @@
    "understand how to traverse a list in order to total, count or compare its items",
    "know how to add an item onto a list and how to take one out again"
   ],
-  "starter": "The list shelf holds Nails, Screws, Bolts and Nuts, in that order. Write down what shelf[0], shelf[3] and len(shelf) each give, and the index of the last item.",
+  "starter": "The list words holds red, blue, green and teal, in that order. Write down what words[0], words[3] and len(words) each give, and the index of the last item.",
   "keyq": "Why is the last item of a list always at index len(list) - 1?",
   "keyterms": [
    "Array",
@@ -901,11 +902,11 @@
     "name": "Making a list",
     "bullets": [
      "Square brackets make a list, with the items separated by commas.",
-     "A list can start out empty and be filled by a loop as the data arrives.",
+     "A list can start out empty and be filled by a loop as the values arrive.",
      "Common mistake: creating the empty list inside the loop, which throws each item away again."
     ],
     "challenge": "Which line must go above the loop that fills a list, and why?",
-    "fact": "The exam calls these arrays. Python calls them lists, and unlike an array they can grow and shrink."
+    "fact": "The exam calls these arrays, but a Python list is different in one way: it can..."
    },
    {
     "name": "Reading an item",
@@ -914,8 +915,8 @@
      "len() gives how many items there are, which makes the last index len() - 1.",
      "Common mistake: an index past the end, which stops the program with an error."
     ],
-    "challenge": "Which index holds the last of seven scores?",
-    "fact": "Counting from 0 means an index is the number of items you step over to reach it."
+    "challenge": "Which index holds the last of seven values?",
+    "fact": "Counting from 0 means an index is the number of items you have to step over to..."
    },
    {
     "name": "Going through a list",
@@ -925,7 +926,7 @@
      "Common mistake: printing the index when the task asked for the value, or the other way round."
     ],
     "challenge": "When do you need the position rather than the value itself?",
-    "fact": "Going through every item of a list in turn is called traversing it."
+    "fact": "Going through every item of a list in turn is called..."
    },
    {
     "name": "Adding and removing",
@@ -934,33 +935,33 @@
      "remove() takes out the first item with that value, and pop(i) takes out the one at position i.",
      "Common mistake: removing items while looping over the same list, which makes the loop skip some."
     ],
-    "challenge": "What is the difference between remove(\"Ada\") and pop(0)?",
-    "fact": "pop() hands the removed item back, so it can be used as well as deleted."
+    "challenge": "What is the difference between remove(\"red\") and pop(0)?",
+    "fact": "pop() does two jobs at once: it takes the item out and it also..."
    },
    {
     "name": "Totals and averages",
     "bullets": [
-     "Total the list in a loop, then divide by len() to get the mean.",
-     "Track the highest and lowest by comparing each item against the best found so far.",
-     "Common mistake: starting the highest at 0, which fails on a list of negative numbers."
+     "Total the list in a loop, then divide by len() to get the average.",
+     "Track the largest and smallest by comparing each item against the best found so far.",
+     "Common mistake: starting the largest at 0, which fails on a list of negative numbers."
     ],
-    "challenge": "What should the highest-so-far start as, if the data could be negative?",
-    "fact": "Dividing by len() on an empty list crashes, so check the list is not empty first."
+    "challenge": "What should the largest-so-far start as, if the values could be negative?",
+    "fact": "Dividing by len() on an empty list crashes, so a robust program first checks the list is not..."
    },
    {
     "name": "Putting it together",
     "bullets": [
-     "One pass can build the total, count the items and remember where the best mark was.",
+     "One pass can build the total, count the items and remember where the largest one was.",
      "Report the figures after the loop has finished, not while it is still running.",
-     "Common mistake: finding the best value but forgetting to record the position it was found at."
+     "Common mistake: finding the largest value but forgetting to record the position it was found at."
     ],
-    "challenge": "Plan the variables needed to report on eight marks in a single pass.",
-    "fact": "Keeping the position of the best value as well as the value answers 'which one' as well as 'how much'."
+    "challenge": "How would you report both the largest value and where in the list it sits?",
+    "fact": "Keeping the position of the largest value as well as the value itself answers which one as well as..."
    }
   ],
   "final": {
    "name": "Final challenge: what does it do?",
-   "intro": "The basket holds [\"tea\", \"jam\", \"rice\"]. Tap the star and match each list operation to what it does."
+   "intro": "A list called basket holds [\"tea\", \"jam\", \"rice\"]. Tap the star and match each list operation to what it does."
   },
   "info": [
    {
@@ -990,15 +991,15 @@
   ],
   "exam": [
    {
-    "q": "A loop over a list of six prices begins for i in range(1, 6). State which price is never looked at, and rewrite the line so that every price is included.",
+    "q": "A loop over a list of six numbers begins for i in range(1, 6). State which item is never looked at, and rewrite the line so that every item is included.",
     "marks": 2
    },
    {
-    "q": "Write a program that reads 6 javelin throws in metres into a list, then prints the longest throw and the position it is stored at.",
+    "q": "Write a program that reads seven whole numbers into a list, then prints the largest and the position it is stored at, without using max().",
     "marks": 5
    },
    {
-    "q": "Write a program that holds a list of five club members, removes a name the user types in, then prints the list and how many members are left.",
+    "q": "Write a program that reads five words into a list, removes a word the user types in, then prints the words that are left and how many there are.",
     "marks": 4
    }
   ],
@@ -1016,7 +1017,7 @@
   "topic": "PY",
   "kicker": "Python programming  |  Lesson 8",
   "subtitle": "Revise 360 Python course  |  Beyond the OCR J277 specification",
-  "intro": "A register, a seating plan and a scoreboard are all grids. A two-dimensional array stores one by putting a list inside a list, and the hall is where you learn to read and total it.",
+  "intro": "One list holds a line of values, but a lot of data arrives in rows and columns. A two-dimensional array stores that by putting a list inside a list. Work through the six stations and you will read one cell, print a whole grid, total any row or column of it and search it.",
   "keywords": [
    "Two-dimensional",
    "Array",
@@ -1026,14 +1027,14 @@
    "Index"
   ],
   "objectives": [
-   "know how to create a two-dimensional array as a list of lists",
+   "know how to build a two-dimensional list as a list of lists and fill it from input",
    "understand how a row index and a column index together pick out one cell",
-   "know how to use two nested loops to total a row, a column or a whole grid"
+   "know how to write nested loops that print a grid and total any row or column of it"
   ],
   "starter": "The grid g holds two rows: 4, 9, 2 in the first and 7, 1, 6 in the second. Write down what g[0][2], g[1][0] and len(g) each give, and which row and column hold the 6.",
   "keyq": "Which index comes first when a program reads a cell, and why does swapping the two over give a different answer?",
   "keyterms": [
-   "Two-dimensional array",
+   "Two-dimensional list",
    "Row and column",
    "Cell",
    "Nested loop"
@@ -1048,7 +1049,7 @@
      "Common mistake: expecting len() on a grid to count the cells, when it counts the rows."
     ],
     "challenge": "How many rows and how many columns does [[1, 2, 3], [4, 5, 6]] have?",
-    "fact": "A table in a database and a grid in a program are stored much the same way: rows made of fields."
+    "fact": "A grid is stored much the way a database table is, with every row holding one list of..."
    },
    {
     "name": "Rows and columns",
@@ -1058,7 +1059,7 @@
      "Common mistake: swapping the two indexes over, which reads a completely different cell."
     ],
     "challenge": "Which index comes first when you read a cell, the row or the column?",
-    "fact": "The exam writes this cell as array[1,2]; Python writes exactly the same cell as grid[1][2]."
+    "fact": "The exam writes a cell as array[1,2], where Python writes that very same cell as..."
    },
    {
     "name": "Going through a grid",
@@ -1068,7 +1069,7 @@
      "Common mistake: putting that new line inside the inner loop, which prints one value per line."
     ],
     "challenge": "Which loop should be the outer one if you want to print row by row?",
-    "fact": "A grid of 10 rows by 10 columns holds 100 cells, so a nested loop over it runs 100 times."
+    "fact": "A grid of 10 rows by 10 columns holds 100 cells, so a nested loop over it runs..."
    },
    {
     "name": "Totalling a row",
@@ -1078,7 +1079,7 @@
      "Common mistake: letting the row index change inside the loop, which totals the wrong cells."
     ],
     "challenge": "Which index stays the same all the way through a row total?",
-    "fact": "Totalling every row and then totalling those totals gives the grand total of the whole grid."
+    "fact": "Add up every row total and the number you are left with is the total of..."
    },
    {
     "name": "Totalling a column",
@@ -1088,7 +1089,7 @@
      "Common mistake: using the number of columns as the range when travelling down a column."
     ],
     "challenge": "Why does a column total loop over the rows rather than the columns?",
-    "fact": "Swapping the two loops over turns a row total into a column total, and nothing else changes."
+    "fact": "A row total and a column total are the same few lines with the two indexes..."
    },
    {
     "name": "Putting it together",
@@ -1097,13 +1098,13 @@
      "A found flag, set before the loops start, says whether anything matched at all.",
      "Common mistake: reporting only the row when the task asks where in the row it was too."
     ],
-    "challenge": "Plan how you would find a name in a seating plan and report its row.",
-    "fact": "Searching every cell of a grid in turn is a linear search, just in two dimensions."
+    "challenge": "How would you find a word in a grid and report both the row and the column it sits at?",
+    "fact": "Checking every cell of a grid in turn is really a linear search, only in..."
    }
   ],
   "final": {
    "name": "Final challenge: read the grid",
-   "intro": "The scoreboard holds [[4, 7, 2], [5, 1, 9]] in a variable called grid. Tap the star and match each piece of Python to what it gives back."
+   "intro": "A variable called grid holds [[4, 7, 2], [5, 1, 9]]. Tap the star and match each piece of Python to what it gives back."
   },
   "info": [
    {
@@ -1128,7 +1129,7 @@
    },
    {
     "title": "Three dimensions",
-    "text": "A list of grids is a three-dimensional array, which is how a program might hold a seating plan for every week of term."
+    "text": "A list of grids is a three-dimensional array, so grid[2][0][1] picks the grid, then the row, then the column. The indexes are read from the outside in, left to right."
    }
   ],
   "exam": [
@@ -1137,16 +1138,16 @@
     "marks": 3
    },
    {
-    "q": "Write a program that reads a grid of 3 rows by 4 columns of merit points and prints the total for each row.",
+    "q": "Write a program that reads twelve whole numbers into a grid of three rows of four, then prints the total of each row on a line of its own.",
     "marks": 5
    },
    {
-    "q": "Write a program that prints a grid of 2 rows by 3 columns of prices that is already stored in the program, one row to a line.",
+    "q": "A grid of 2 rows by 3 columns is already stored in a program. Write the code that prints it one row to a line, with single spaces between the values and no brackets.",
     "marks": 4
    }
   ],
   "confidence": [
-   "Creating a list of lists",
+   "Building a list of lists and filling it",
    "Reading a cell with a row index and a column index",
    "Totalling rows and columns with nested loops"
   ],
@@ -1159,7 +1160,7 @@
   "topic": "PY",
   "kicker": "Python programming  |  Lesson 9",
   "subtitle": "Revise 360 Python course  |  Beyond the OCR J277 specification",
-  "intro": "Long programs are built out of small named parts. On the assembly line you will write procedures and functions, pass values into them and get answers back out.",
+  "intro": "Long programs are built out of small named parts, each one written once and called whenever it is wanted. Work through the six stations and you will write procedures and functions, pass values into them with parameters and get answers back out with return.",
   "keywords": [
    "Subprogram",
    "Procedure",
@@ -1172,8 +1173,8 @@
   ],
   "objectives": [
    "know how to define a subprogram with def and how to call it",
-   "understand how a parameter passes a value into a subprogram and how return passes one back out",
-   "know the difference between a local variable and a global one"
+   "understand how a parameter carries a value into a subprogram and how return carries one back out",
+   "know how to write a subprogram that uses a variable of its own, and one that changes a shared variable"
   ],
   "starter": "A program defines a subprogram called banner with one print line inside it, and then stops. Nothing is printed when it runs. Explain why, and write down the line that has been left out.",
   "keyq": "When should a subprogram return a value rather than print one?",
@@ -1193,7 +1194,7 @@
      "Common mistake: defining a procedure and never calling it, so none of it ever runs."
     ],
     "challenge": "What is the difference between defining a procedure and calling it?",
-    "fact": "Writing a job once and calling it many times has a name of its own: code reuse."
+    "fact": "Writing a job once and then calling it as often as you like is known as..."
    },
    {
     "name": "Parameters",
@@ -1203,7 +1204,7 @@
      "Common mistake: giving the arguments in a different order from the parameters."
     ],
     "challenge": "Why is a procedure with a parameter more useful than one without?",
-    "fact": "The names in the definition are the parameters; the values handed over when it is called are the arguments."
+    "fact": "The names in the brackets of the definition are the parameters, and the values handed over at the call are the..."
    },
    {
     "name": "Returning a value",
@@ -1213,7 +1214,7 @@
      "Common mistake: printing inside when the task says return, so nothing is handed back."
     ],
     "challenge": "Why would a task insist a subprogram returns a value rather than prints it?",
-    "fact": "return ends the subprogram there and then, so any line written after it never runs."
+    "fact": "return hands the value back and ends the subprogram on the spot, so a line written after it..."
    },
    {
     "name": "Functions and procedures",
@@ -1223,7 +1224,7 @@
      "Common mistake: calling something a function when all it does is print."
     ],
     "challenge": "Decide whether each subprogram in your program is a function or a procedure.",
-    "fact": "The exam marks this difference, so say 'function' only when a value actually comes back."
+    "fact": "The one thing that makes a subprogram a function rather than a procedure is that it..."
    },
    {
     "name": "Local and global",
@@ -1233,7 +1234,7 @@
      "Common mistake: expecting a local variable's value to survive after the subprogram ends."
     ],
     "challenge": "Why can two subprograms both use a variable called total without clashing?",
-    "fact": "Keeping variables local is good practice: it stops one part of a program quietly breaking another."
+    "fact": "Keeping a variable local stops one part of a program quietly breaking..."
    },
    {
     "name": "Putting it together",
@@ -1242,13 +1243,13 @@
      "Calling a function inside a loop lets one piece of code answer the same question many times.",
      "Common mistake: repeating the same lines instead of writing one subprogram and calling it."
     ],
-    "challenge": "Plan which parts of a booking receipt program should become subprograms.",
-    "fact": "Breaking a problem into named parts is decomposition, which you met in topic 2.1."
+    "challenge": "Which parts of a long program are worth turning into subprograms, and which must return a value?",
+    "fact": "Breaking a problem down into small named parts has a name you met in topic 2.1:..."
    }
   ],
   "final": {
    "name": "Final challenge: function or procedure?",
-   "intro": "Eight subprograms have come off the line. Tap the star and decide whether each one is a function or a procedure."
+   "intro": "Eight subprograms are described on the floor below you. Tap the star and decide whether each one is a function or a procedure."
   },
   "info": [
    {
@@ -1257,7 +1258,7 @@
    },
    {
     "title": "Default values",
-    "text": "A parameter can be given a default, so label(\"Juice\") still works when the price is usually the same."
+    "text": "A parameter can be given a default value in the definition, so the subprogram still runs when the caller leaves that argument out. The default is used only when no value is handed over."
    },
    {
     "title": "Returning more",
@@ -1278,15 +1279,15 @@
   ],
   "exam": [
    {
-    "q": "A subprogram called vat takes an amount and its last line is print(amount * 0.2). The main program writes tax = vat(50) and then prints tax, which shows None. Explain why, and write the change needed inside the subprogram.",
+    "q": "A function called double holds one line, print(n * 2). The main program writes answer = double(7) and then prints answer, which shows None. Explain why None is printed, and write the line inside double corrected.",
     "marks": 3
    },
    {
-    "q": "Write a function that takes a length and a width in metres and returns the area, and a main program that uses it to print the area of two different rooms.",
+    "q": "Write a function that takes two whole numbers and returns the larger of them, and a main program that reads two numbers and prints the value the function hands back.",
     "marks": 5
    },
    {
-    "q": "Write a procedure that takes a pupil's name and a score and prints one tidy line of a results table, then call it for three different pupils.",
+    "q": "Write a procedure that takes a word and a whole number and prints them on one line with a single space between them, then call it for three different pairs of values.",
     "marks": 4
    }
   ],
@@ -1304,7 +1305,7 @@
   "topic": "PY",
   "kicker": "Python programming  |  Lesson 10",
   "subtitle": "Revise 360 Python course  |  Beyond the OCR J277 specification",
-  "intro": "Data in variables disappears the moment a program ends. A file keeps it, and the records office is where you learn to open one, read it, write it and search it.",
+  "intro": "Everything a program holds in its variables disappears the moment it ends. A file keeps it. Work through the six stations and you will open a file, read it whole or a line at a time, write one from scratch, add to one and split its records into fields.",
   "keywords": [
    "File handling",
    "open()",
@@ -1317,10 +1318,10 @@
   ],
   "objectives": [
    "know how to open a text file, read what is in it and close it again",
-   "understand the difference between write mode and append mode",
-   "know how to split one line of a file into its separate fields"
+   "understand what write mode does to a file, and how append mode differs from it",
+   "know how to split one line of a file into its separate fields and use them"
   ],
-  "starter": "A program opens scores.txt in write mode, and the file already holds 40 lines of results. Write down what the file holds the moment that line has run, and which mode should have been used to add to it instead.",
+  "starter": "A program opens scores.txt in write mode, and the file already holds 40 lines. Write down what the file holds the moment that line has run, and which mode should have been used to add to it instead.",
   "keyq": "Why does the mode a file is opened in matter more than anything else on that line?",
   "keyterms": [
    "Append mode",
@@ -1338,7 +1339,7 @@
      "Common mistake: opening a file that is not there, which stops the program with an error."
     ],
     "challenge": "Why should a program close a file as soon as it has finished with it?",
-    "fact": "A file left open can keep other programs out, and may lose data that was not written yet."
+    "fact": "Leaving a file open can keep other programs out of it, and can lose anything not yet..."
    },
    {
     "name": "Reading line by line",
@@ -1348,7 +1349,7 @@
      "Common mistake: measuring a line before stripping it, which counts the newline as a character."
     ],
     "challenge": "Why is a stripped line one character shorter than the line that was read?",
-    "fact": "A newline is one single invisible character, which is why a stripped line comes out shorter."
+    "fact": "A newline is one single invisible character, which is why a stripped line is one character..."
    },
    {
     "name": "Writing to a file",
@@ -1358,17 +1359,17 @@
      "Common mistake: using write mode on a file you meant to add to, which wipes it completely."
     ],
     "challenge": "What happens to the contents of a file the moment it is opened in w mode?",
-    "fact": "Write mode creates the file if it is not there, which is handy and dangerous in equal measure."
+    "fact": "Write mode makes the file when it is not there and empties it when it is, so the one thing it never does is..."
    },
    {
     "name": "Adding to a file",
     "bullets": [
-     "open(name, \"a\") is append mode: new text goes on the end and nothing is lost.",
-     "Logs are always appended, so yesterday's entries are still there tomorrow.",
-     "Common mistake: leaving the newline out, so the new entry runs straight into the last one."
+     "open(name, \"a\") is append mode: new text goes on the end and nothing already there is lost.",
+     "Use it whenever the lines the file already holds have to survive the run.",
+     "Common mistake: leaving the newline out, so the new text runs straight into the last line."
     ],
-    "challenge": "Which mode would a visitor log use, and why that one?",
-    "fact": "Three modes cover everything you need: r to read, w to write from scratch and a to add on the end."
+    "challenge": "Which mode keeps what a file already holds, and why would you not use the other one?",
+    "fact": "Three modes cover everything you need: r reads, w starts the file again from empty and a..."
    },
    {
     "name": "Records in a file",
@@ -1377,8 +1378,8 @@
      ".split(\",\") breaks a line into a list of its fields.",
      "Common mistake: splitting before stripping, which leaves a newline stuck on the last field."
     ],
-    "challenge": "How does a program find the record for one particular name?",
-    "fact": "A file of comma-separated records is a CSV file, and a spreadsheet will open one straight away."
+    "challenge": "How does a program find the one record whose first field matches what was typed in?",
+    "fact": "A file of comma-separated records has a name of its own, and a spreadsheet opens one straight away: it is a..."
    },
    {
     "name": "Putting it together",
@@ -1387,13 +1388,13 @@
      "A program can read one file and write a second one in the same run.",
      "Common mistake: looping over a file you have already closed, or reading and writing one file at once."
     ],
-    "challenge": "Plan the two files a sales report program would need.",
-    "fact": "Skipping blank lines is worth doing every time: a stray newline at the end of a file is very common."
+    "challenge": "Which of two files does a program open in which mode, when it reads one and writes the other?",
+    "fact": "A stray blank line at the end of a file is very common, so a careful program checks each line before it..."
    }
   ],
   "final": {
    "name": "Final challenge: which mode?",
-   "intro": "Eight jobs have reached the records office. Tap the star and choose the file mode each one needs."
+   "intro": "Eight jobs are listed on the floor below you. Tap the star and choose the file mode each one needs."
   },
   "info": [
    {
@@ -1409,8 +1410,8 @@
     "text": "Write mode empties the file the instant it opens, before you have written anything at all."
    },
    {
-    "title": "Why logs append",
-    "text": "A log is evidence of what happened. Appending adds an entry without touching anything already written."
+    "title": "Why append exists",
+    "text": "Append mode adds to the end without touching a single line already in the file. That is what makes it the safe mode for a file that is added to over and over."
    },
    {
     "title": "A table in disguise",
@@ -1427,11 +1428,11 @@
     "marks": 2
    },
    {
-    "q": "Write a program that adds a new visitor's name onto the end of log.txt without losing the names already in it, and then prints the whole file.",
+    "q": "Write a program that reads a word and adds it onto the end of log.txt on a line of its own, without losing the lines already in the file, then prints every line of the file.",
     "marks": 4
    },
    {
-    "q": "Each line of members.txt holds a name and an age, separated by a comma. Write a program that prints the name of every member aged 16 or over.",
+    "q": "Each line of data.txt holds a word and a whole number, separated by a comma. Write a program that prints the word from every line whose number is 16 or more.",
     "marks": 5
    }
   ],
@@ -1449,7 +1450,7 @@
   "topic": "PY",
   "kicker": "Python programming  |  Lesson 11",
   "subtitle": "Revise 360 Python course  |  Beyond the OCR J277 specification",
-  "intro": "You met these algorithms in topic 2.1 and traced them on paper. Now you will write them. At the sorting depot every search and every sort is yours to code, not just to describe.",
+  "intro": "You met these algorithms in topic 2.1 and traced them on paper. Now you will write them. Work through the six stations and every search and every sort is yours to code, not just to describe.",
   "keywords": [
    "Linear search",
    "Binary search",
@@ -1460,11 +1461,11 @@
    "Comparison"
   ],
   "objectives": [
-   "know how to code a linear search and a binary search",
+   "know how to code a linear search and a binary search, and report the position each one finds",
    "understand how a bubble sort, an insertion sort and a merge sort each put a list in order",
-   "know why a binary search needs its list to be in order before it starts"
+   "know how to count the comparisons an algorithm makes, in order to compare two of them"
   ],
-  "starter": "The sorted list holds 3, 8, 12, 19, 24, 31, 40. Write down the item a binary search looks at first, second and third while hunting for 31, and how many comparisons that took.",
+  "starter": "The sorted list holds 3, 8, 12, 19, 24, 31, 40. Write down the value a binary search looks at first, second and third while it hunts for 40, and how many comparisons that took.",
   "keyq": "Why is a binary search so much faster than a linear search on a long list, and what does using one cost you?",
   "keyterms": [
    "Linear search",
@@ -1482,7 +1483,7 @@
      "Common mistake: printing 'not found' inside the loop, once for every item that did not match."
     ],
     "challenge": "Why must 'not found' be decided after the loop has finished?",
-    "fact": "A linear search over a million items may need a million comparisons, which is why sorted data is worth having."
+    "fact": "A linear search over a million items may need a million comparisons, which is why sorted data is..."
    },
    {
     "name": "Binary search",
@@ -1492,7 +1493,7 @@
      "Common mistake: not moving low or high, which leaves the loop checking the same middle forever."
     ],
     "challenge": "How much of the list can a binary search rule out with its first comparison?",
-    "fact": "Doubling the list adds only one more comparison, so a million items need about twenty."
+    "fact": "Doubling the length of the list adds only one more comparison, so a million items need about..."
    },
    {
     "name": "Bubble sort",
@@ -1502,7 +1503,7 @@
      "Common mistake: a swap that loses a value, because one side was overwritten before it was copied."
     ],
     "challenge": "How does a bubble sort know that it can stop early?",
-    "fact": "A whole pass with no swaps at all means the list is already in order, so the sort can stop there."
+    "fact": "A whole pass that makes no swaps at all means the list is already in order, so the sort can..."
    },
    {
     "name": "Insertion sort",
@@ -1512,7 +1513,7 @@
      "Common mistake: overwriting an item instead of shifting it along to make room."
     ],
     "challenge": "Which part of the list is already sorted part way through an insertion sort?",
-    "fact": "An insertion sort is how most people sort a hand of cards without ever being taught to."
+    "fact": "An insertion sort is how most people put a hand of cards in order without ever being..."
    },
    {
     "name": "Merge sort",
@@ -1522,27 +1523,27 @@
      "Common mistake: stopping when one list runs out, instead of copying the rest of the other."
     ],
     "challenge": "Why is merging two sorted lists easier than sorting one unsorted one?",
-    "fact": "A merge sort usually beats a bubble sort, but it needs extra memory to hold the pieces."
+    "fact": "A merge sort usually beats a bubble sort on a long list, but what it costs you is extra..."
    },
    {
     "name": "Putting it together",
     "bullets": [
      "Count the comparisons to compare two algorithms fairly on exactly the same data.",
-     "A binary search needs sorted data, so sort the list first and search it afterwards.",
-     "Common mistake: binary searching an unsorted list, which quietly gives the wrong answer."
+     "Write the search or the sort out yourself, since sorted() and .index() hide the very steps being counted.",
+     "Common mistake: binary searching a list that was never sorted, which quietly gives the wrong answer."
     ],
     "challenge": "Plan an experiment that shows a binary search beating a linear one.",
-    "fact": "Sorting costs time too, so for one single search a linear search of unsorted data can still win."
+    "fact": "Sorting costs time too, so for one single search on unsorted data the winner can still be a..."
    }
   ],
   "final": {
    "name": "Final challenge: which algorithm?",
-   "intro": "Eight descriptions have arrived at the depot. Tap the star and sort each one into the algorithm it describes."
+   "intro": "Eight descriptions are laid out on the floor below you. Tap the star and sort each one into the algorithm it describes."
   },
   "info": [
    {
     "title": "The found flag",
-    "text": "A flag set to False before the loop is the tidiest way to report 'not found' exactly once."
+    "text": "A flag set to False before the loop is the tidiest way to report 'not found' exactly once. The position a search finds is useful in itself: it reads the matching item out of a second list filled in the same order."
    },
    {
     "title": "Whole middles only",
@@ -1554,7 +1555,7 @@
    },
    {
     "title": "Nearly sorted",
-    "text": "On a list that is almost in order an insertion sort is very quick, because hardly anything has to move."
+    "text": "On a list that is almost in order an insertion sort is very quick, because hardly anything has to move. The same code sorts words as well as numbers, because > compares two strings by character code."
    },
    {
     "title": "Divide and conquer",
@@ -1567,15 +1568,15 @@
   ],
   "exam": [
    {
-    "q": "A linear search prints Not found from inside its loop, so searching one list prints that message several times. State where the message should go instead, and explain why putting it there fixes the problem.",
+    "q": "A linear search prints Not found from inside its loop, so one search prints that message several times. State where the message should go instead, and explain why putting it there fixes the problem.",
     "marks": 3
    },
    {
-    "q": "Write a program that reads 8 whole numbers into a list, puts them in order using a bubble sort, and prints the sorted list.",
+    "q": "Write a program that reads eight whole numbers into a list, puts them in order smallest first with a bubble sort of your own, and prints the sorted list on one line.",
     "marks": 6
    },
    {
-    "q": "Write a program that uses a binary search to look for a membership number the user types in, within a list of 10 numbers already in order, and prints its position or Not found.",
+    "q": "Write a program that reads a whole number and finds it in a list of ten numbers that is already in order, using a binary search, and prints its position or Not found.",
     "marks": 6
    }
   ],
@@ -1593,7 +1594,7 @@
   "topic": "PY",
   "kicker": "Python programming  |  Lesson 12",
   "subtitle": "Revise 360 Python course  |  Beyond the OCR J277 specification",
-  "intro": "Users mistype, and some of them try it on. At the gatehouse you will write the checks that keep bad data out and the loops that keep asking until the data is right.",
+  "intro": "Users mistype, and some of them try it on. Work through the six stations and you will write the checks that keep bad data out, the loops that keep asking until it is right, and the authentication that decides who gets in.",
   "keywords": [
    "Validation",
    "Presence check",
@@ -1604,9 +1605,9 @@
    "Authentication"
   ],
   "objectives": [
-   "know how to code a presence, type, range, length and format check",
-   "understand how a validation loop keeps asking until the value typed in passes every check",
-   "know how to code an authentication check that allows only a set number of attempts"
+   "know how to code a presence check, a type check and a range check",
+   "understand how a length check and a format check differ, and why the length is tested first",
+   "know how to write a validation loop, and an authentication check that allows a set number of attempts"
   ],
   "starter": "A program reads an age with age = int(input()) and the user types the word twelve. Write down what happens to the program, and the check that should have come before the cast.",
   "keyq": "Why is refusing bad data better than letting a program stop with an error?",
@@ -1626,7 +1627,7 @@
      "Common mistake: casting with int() before checking, which stops the program instead of rejecting the value."
     ],
     "challenge": "Why must a type check happen before the value is cast?",
-    "fact": "Validation checks data is sensible, not that it is true: a wrong but sensible date passes every check."
+    "fact": "Validation can only check that data is sensible, never that it is..."
    },
    {
     "name": "Range checks",
@@ -1636,7 +1637,7 @@
      "Common mistake: using > where the rule says 'or more', which rejects a perfectly valid boundary."
     ],
     "challenge": "Which two values would you test on a score that must be 1 to 10?",
-    "fact": "Negative values are fine for a temperature but never for an age, so a range check must suit its data."
+    "fact": "A negative value is sensible for a temperature but never for an age, so the limits of a range check come from..."
    },
    {
     "name": "Length and format checks",
@@ -1645,8 +1646,8 @@
      "A format check tests the pattern: which positions must be letters and which must be digits.",
      "Common mistake: checking the pattern before the length, which can read past the end of the string."
     ],
-    "challenge": "Describe the checks a reference of two letters then four digits needs.",
-    "fact": "isalpha(), isdigit() and isnumeric() each answer one format question about a whole string at once."
+    "challenge": "Describe the checks a code of two letters then four digits needs.",
+    "fact": "isalpha() and isdigit() ask their question of every character at once, so either one is False as soon as one character..."
    },
    {
     "name": "Keeping asking",
@@ -1656,7 +1657,7 @@
      "Common mistake: leaving the second input() out, so the loop tests the same bad value forever."
     ],
     "challenge": "Why should a program say what was wrong rather than just 'invalid'?",
-    "fact": "A loop that keeps asking until the data is right is the simplest defensive design there is."
+    "fact": "A loop that reads, checks and asks again until the value passes is the simplest defensive design there is, and it is called a..."
    },
    {
     "name": "Authentication",
@@ -1666,7 +1667,7 @@
      "Common mistake: counting the attempts but never stopping, so guessing can carry on forever."
     ],
     "challenge": "What is the difference between validation and authentication?",
-    "fact": "Validation checks data and authentication checks people, and the exam asks for that difference often."
+    "fact": "Validation checks the data that was typed, while authentication checks the..."
    },
    {
     "name": "Putting it together",
@@ -1675,30 +1676,30 @@
      "A program that keeps going when one line of data is wrong is more useful than one that stops.",
      "Common mistake: validating at the end, when the first bad value has already been used."
     ],
-    "challenge": "Plan the checks a club sign-up needs for a username and an age.",
-    "fact": "Skipping a bad line and counting it is often better than stopping: the report still comes out."
+    "challenge": "Which checks does a username need, and in which order should they run?",
+    "fact": "Naming a bad line and carrying on is usually better than stopping, because the run still..."
    }
   ],
   "final": {
    "name": "Final challenge: which check?",
-   "intro": "Eight rules are pinned up in the gatehouse. Tap the star and sort each one into the kind of check it is."
+   "intro": "Eight rules are listed on the floor below you. Tap the star and sort each one into the kind of check it is."
   },
   "info": [
    {
-    "title": "Strip it first",
-    "text": "A stray space is still a character, so a presence check should strip the input before testing it for empty."
+    "title": "A list of allowed values",
+    "text": "Some values are only valid if they appear on a list the program already holds, which is a lookup check. Comparing exactly means one capital letter makes a value unknown, so decide whether to lower() both sides first."
    },
    {
     "title": "Inclusive means both",
-    "text": "'From 1 to 10 inclusive' means 1 and 10 both pass. Test them: that is exactly what boundary data is for."
+    "text": "'From 1 to 10 inclusive' means 1 and 10 both pass. Test them: that is exactly what boundary data is for. Watch out that isdigit() calls a minus sign a non-digit, so a range allowing negatives needs that sign checked on its own."
    },
    {
     "title": "Length, then format",
     "text": "Checking the length first means a format check can safely look at a particular position in the string."
    },
    {
-    "title": "Three tries",
-    "text": "Locking an account after three wrong passwords stops a program being guessed at one attempt at a time."
+    "title": "Say what was wrong",
+    "text": "A loop that only answers 'invalid' leaves the user guessing. Testing the rules one at a time lets the program name the rule that was broken, which is why these checks are usually written as if ... elif ..."
    },
    {
     "title": "Never stored plainly",
@@ -1711,15 +1712,15 @@
   ],
   "exam": [
    {
-    "q": "A range check for a satisfaction score that must be from 1 to 10 inclusive is written if score > 1 and score < 10. State the two scores this wrongly refuses, and write the condition corrected.",
+    "q": "A range check for a score that must be from 1 to 10 inclusive is written if score > 1 and score < 10. State the two scores this wrongly refuses, and write the condition corrected.",
     "marks": 3
    },
    {
-    "q": "Write a program that keeps asking for a tutor group code of exactly one letter followed by two digits until a valid one is typed.",
+    "q": "Write a program that keeps asking for a code of exactly one letter followed by two digits, saying what is wrong each time, until a valid code is typed.",
     "marks": 6
    },
    {
-    "q": "Write a program that allows three attempts at the four-digit passcode 2471, and prints Locked if all three attempts are wrong.",
+    "q": "Write a program that allows three attempts at a four-digit passcode already held in the program, and prints Locked when all three attempts are wrong.",
     "marks": 5
    }
   ],
@@ -1737,7 +1738,7 @@
   "topic": "PY",
   "kicker": "Python programming  |  Lesson 13",
   "subtitle": "Revise 360 Python course  |  Beyond the OCR J277 specification",
-  "intro": "A database holds far more than a program could ever keep in memory, and SQL is how you ask it a question. At the query desk you will write queries against a table of games.",
+  "intro": "A database holds far more than a program could ever keep in memory, and SQL is how you ask it a question. Work through the six stations and you will write queries against a table called games, choosing the columns you want, keeping only the rows you want and putting them in order.",
   "keywords": [
    "SQL",
    "Database",
@@ -1752,7 +1753,7 @@
   "objectives": [
    "know how SELECT and FROM choose the fields and the table a query reads",
    "understand how WHERE decides which records a query hands back",
-   "know how to join conditions with AND and OR, and how to sort results with ORDER BY"
+   "know how to join conditions with AND and OR, and how to put results in order with ORDER BY"
   ],
   "starter": "A table called Tree holds the fields Name, Height and Native, and 30 records. Write down how many fields and how many records come back from SELECT Name, Height FROM Tree, and which clause you would add to cut the records down.",
   "keyq": "Which clause of a query decides which fields come back, and which clause decides which records?",
@@ -1772,7 +1773,7 @@
      "Common mistake: listing the fields in the wrong order, since results come out in the order you asked for."
     ],
     "challenge": "Which part of a query decides how many records come back?",
-    "fact": "SQL stands for Structured Query Language, and it is a language for asking rather than for programming."
+    "fact": "SQL stands for Structured Query Language, and what it is for is asking rather than..."
    },
    {
     "name": "WHERE",
@@ -1782,7 +1783,7 @@
      "Common mistake: leaving the quotes off text, so SQL looks for a field with that name instead."
     ],
     "challenge": "Which records come back from a query that has no WHERE at all?",
-    "fact": "WHERE looks at each record on its own and decides whether to keep it or drop it."
+    "fact": "WHERE looks at each record on its own and decides, for that one record, whether to..."
    },
    {
     "name": "Comparing values",
@@ -1792,7 +1793,7 @@
      "Common mistake: using > where the question says 'or more', which loses the boundary record."
     ],
     "challenge": "Write the WHERE clause for games lasting 45 minutes or longer.",
-    "fact": "SQL writes 'not equal to' as <>, where Python writes it as !=."
+    "fact": "SQL writes 'not equal to' as <>, where the same test in Python is written..."
    },
    {
     "name": "AND and OR",
@@ -1802,7 +1803,7 @@
      "Common mistake: using AND where the question means OR, which often gives no records at all."
     ],
     "challenge": "Why would AND give nothing for 'under 20 minutes or over 60'?",
-    "fact": "AND narrows the results down and OR widens them out, which is worth saying out loud as you write."
+    "fact": "AND narrows the records down while OR widens them out, so the one that can only ever give you fewer records is..."
    },
    {
     "name": "Sorting results",
@@ -1812,7 +1813,7 @@
      "Common mistake: putting ORDER BY before WHERE, when it always comes last."
     ],
     "challenge": "Which clause lists the longest games first?",
-    "fact": "Ascending is the default order, which SQL calls ASC, so it is almost never typed out."
+    "fact": "Ascending is the order ORDER BY uses unless you say otherwise, and the word that asks for the other direction is..."
    },
    {
     "name": "Putting it together",
@@ -1822,7 +1823,7 @@
      "Common mistake: mixing up the quotes, so a word is read as a field name and the query finds nothing."
     ],
     "challenge": "Write a query for games that are not card games and last an hour or less, longest first.",
-    "fact": "One line of SQL can do the work of a loop, an if statement and a sort put together."
+    "fact": "One query can filter and sort at once, which is why that work belongs in the query and not in..."
    }
   ],
   "final": {

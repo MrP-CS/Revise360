@@ -110,13 +110,20 @@ const nameRow = () => new Table({ width: { size: W, type: WidthType.DXA }, colum
   rows: [new TableRow({ children: ["Name", "Class", "Date"].map((l, i) => new TableCell({ width: { size: [5000, 2733, 2733][i], type: WidthType.DXA }, borders: noBorders,
     children: [new Paragraph({ children: [t(l + ":", { bold: true })], spacing: { before: 240, after: 0 }, border: { bottom: { style: BorderStyle.SINGLE, size: 6, color: "9AA8BC", space: 1 } } })] })) })] });
 const IW = W - 440;
-function howTo(expName, objectives) { return box(null, "How to use this sheet", NAVY, [
+function howTo(expName, objectives, code) { return box(null, "How to use this sheet", NAVY, code ? [
+    p([t("1.  ", { bold: true }), t("Answer the starter below before you open the experience.")]),
+    p([t("2.  ", { bold: true }), t("Open " + expName + ". At each numbered station, read the wall panel and fill in its box on this sheet "), t("before", { bold: true }), t(" you start the programs.")]),
+    p([t("3.  ", { bold: true }), t("Plan the task on this sheet, then write the program in the editor and press Run to try it.")]),
+    p([t("4.  ", { bold: true }), t("Press Check to mark it. You can change your program and check again as often as you like - your best mark is the one that is kept.")]),
+    p([t("5.  ", { bold: true }), t("Read the tests that failed: each one says what was expected and what your program printed.")]),
+] : [
     p([t("1.  ", { bold: true }), t("Answer the starter below before you open the experience.")]),
     p([t("2.  ", { bold: true }), t("Open " + expName + ". At each numbered station, read the wall panel and fill in its box on this sheet "), t("before", { bold: true }), t(" you tap the badge.")]),
     p([t("3.  ", { bold: true }), t("Tap the badge and answer the questions on screen. Your first answer is the one that counts.")]),
     p([t("4.  ", { bold: true }), t("When the score screen appears, copy your score into the yellow box straight away.")]),
+  ].concat([
     p([t("By the end of the lesson I will:", { bold: true, color: NAVY })], { before: 160 }),
-    ...objectives.map(o => p([t(o)], { numbering: { reference: "b", level: 0 }, before: 20, after: 20 }))]); }
+    ...objectives.map(o => p([t(o)], { numbering: { reference: "b", level: 0 }, before: 20, after: 20 }))])); }
 function station(n, title, col, where, fact, chal, extra = [], factLines = 1, chalLines = 2) {
   return [box(n, title, col, [
     p([t(where, { color: SOFT, italics: true, size: 19 })], { before: 0, keepNext: true }),
@@ -171,7 +178,7 @@ if (S.kind === "reflection") {
     p([t("For your weakest topic, correct your answer below using your notes or the Revise 360 experience for that lesson.", { color: SOFT, italics: true })], { keepNext: true }), ...lines(6)]), gap());
   kids.push(box(null, "Revise 360 experiences to revisit", COL.Y, [p([t(S.revisit)])]));
 } else {
-  kids.push(howTo(S.expName, S.objectives), gap());
+  kids.push(howTo(S.expName, S.objectives, S.code), gap());
   if (S.starter) kids.push(box(null, "Starter: before you put the headset on", COL.Y, [p([t(S.starter, { bold: true })], { keepNext: true }), ...lines(S.starterLines || 2)]), gap());
   if (S.keyterms && S.keyterms.length) kids.push(keyTerms(S.keyterms));
   kids.push(new Paragraph({ children: [new PageBreak()] }));

@@ -16,11 +16,11 @@
    "marks": 2,
    "q": "Ask the user for five whole numbers, one on each line. Store them in a list. Display the list itself, in the form [8, 3, 5, 1, 9].",
    "teach": {
-    "say": "A list holds many values in one variable. Start with an empty list and .append() each value onto the end of it.",
+    "say": "A list holds many values in one variable. Write the values inside square brackets with commas between them, and printing the list shows the whole of it.",
     "code": [
-     "box = []",
-     "box.append(4)",
-     "box.append(9)",
+     "first = int(input())    # the user types 4",
+     "second = int(input())   # then 9",
+     "box = [first, second]",
      "print(box)"
     ],
     "out": [
@@ -75,7 +75,7 @@
      "why": "Quote marks round the values mean the text from input() was stored instead of being cast with int()."
     }
    ],
-   "fb": "Start with an empty list and .append() each value as you read it - printing the list shows the brackets and the commas for you."
+   "fb": "Write the list in square brackets with the values inside it - printing the list shows the brackets and the commas for you."
   },
   {
    "id": "pr-l07-q2",
@@ -135,64 +135,77 @@
    "id": "pr-l07-q3",
    "station": 0,
    "marks": 3,
-   "q": "Ask the user for how many whole numbers there are. Then ask for that many whole numbers, one on each line. Store them in a list. Display the list itself, in the form [8, 3, 5].",
+   "q": "Ask the user for three words, one on each line. Then ask for three whole numbers, one on each line. Make a list of the three words. Make a second list of the three numbers. Display the list of words, in the form ['red', 'blue', 'grey']. Then display the list of numbers on the next line, in the form [8, 3, 5].",
    "brief": [
-    "The user types in a whole number saying how many follow, which is never less than 1.",
-    "Then come that many whole numbers, one on each line.",
-    "The first number read is not one of them."
+    "The user types in six lines: three words, then three whole numbers.",
+    "Store the numbers as whole numbers, not as the text they arrive as.",
+    "Print each list itself, square brackets and commas and all."
    ],
    "hint": "pylist",
-   "starter": "# Read as many numbers as the first line says\n",
+   "starter": "# Three words and three numbers, a list of each\n",
    "tests": [
     {
      "in": [
-      "3",
-      "40",
-      "55",
-      "60"
+      "fern",
+      "ivy",
+      "rose",
+      "4",
+      "8",
+      "1"
      ],
      "out": [
-      "[40, 55, 60]"
+      "['fern', 'ivy', 'rose']",
+      "[4, 8, 1]"
      ],
-     "why": "Three numbers follow the count, so the list holds three items."
+     "why": "Each list keeps the order its values were typed in, and the words print with quote marks while the numbers do not."
     },
     {
      "in": [
-      "1",
+      "oak",
+      "oak",
+      "oak",
+      "7",
+      "7",
       "7"
      ],
      "out": [
-      "[7]"
+      "['oak', 'oak', 'oak']",
+      "[7, 7, 7]"
      ],
-     "why": "A list of one item still prints its brackets. A list of two means the count was appended as well."
+     "why": "Repeats are kept in both lists, because a list holds every value it is given."
     },
     {
      "in": [
+      "nut",
+      "bolt",
+      "pin",
+      "30",
       "5",
-      "2",
-      "0",
-      "9",
-      "0",
-      "4"
+      "100"
      ],
      "out": [
-      "[2, 0, 9, 0, 4]"
+      "['nut', 'bolt', 'pin']",
+      "[30, 5, 100]"
      ],
-     "why": "A 0 is an item like any other, and the loop runs as many times as the first line says."
+     "why": "Quote marks round 30, 5 and 100 mean those three were stored as the text input() handed back, without int()."
     },
     {
      "in": [
-      "2",
+      "red",
+      "blue",
+      "grey",
+      "0",
       "-3",
-      "8"
+      "12"
      ],
      "out": [
-      "[-3, 8]"
+      "['red', 'blue', 'grey']",
+      "[0, -3, 12]"
      ],
-     "why": "Negative numbers are stored the same way. A crash here means the loop read more lines than were typed."
+     "why": "A 0 and a negative number are values like any other. One list only means the six lines were not all read."
     }
    ],
-   "fb": "range() can count up to a number read from the user, so the length of the list is decided while the program runs."
+   "fb": "A list is written in square brackets with commas between the values, and those values can be variables you have already read."
   },
   {
    "id": "pr-l07-q4",
@@ -694,7 +707,18 @@
      "why": "A repeated word is appended like any other, because .append() never checks whether the item is there already."
     }
    ],
-   "fb": "words.append(x) changes the list you already have, so there is nothing to assign it back to."
+   "fb": "words.append(x) changes the list you already have, so there is nothing to assign it back to.",
+   "teach": {
+    "say": "A list can be added to after it has been made. box.append(v) puts v on the end, and the list is one item longer from that moment on.",
+    "code": [
+     "box = [\"tin\", \"jar\"]",
+     "box.append(\"tub\")",
+     "print(box)"
+    ],
+    "out": [
+     "['tin', 'jar', 'tub']"
+    ]
+   }
   },
   {
    "id": "pr-l07-q11",

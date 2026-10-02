@@ -360,7 +360,22 @@
      "why": "int() refuses a decimal point too, so this is reported as not a number rather than rounded."
     }
    ],
-   "fb": "try and except around int() catch the wrong type; the range test then runs only on a value you know is a number."
+   "fb": "try and except around int() catch the wrong type; the range test then runs only on a value you know is a number.",
+   "teach": {
+    "say": "isdigit() says no to a minus sign, so a negative number needs a stronger check. int() inside try either works or raises a ValueError, and except catches that instead of letting the program stop; else runs only when nothing was raised.",
+    "code": [
+     "entry = input()        # the user typed -4",
+     "try:",
+     "    value = int(entry)",
+     "except ValueError:",
+     "    print(\"could not be read\")",
+     "else:",
+     "    print(value)"
+    ],
+    "out": [
+     "-4"
+    ]
+   }
   },
   {
    "id": "pr-l12-q6",

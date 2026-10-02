@@ -89,7 +89,7 @@
         "say": "SELECT names the columns and FROM names the table. db.execute() hands back one row at a time, and a row is a group of values.",
         "code": [
          "for row in db.execute(\"SELECT name FROM pet\"):",
-         "    print(' '.join(str(v) for v in row))"
+         "    print(row[0])"
         ],
         "out": [
          "rex",
