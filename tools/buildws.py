@@ -33,11 +33,18 @@ def code_blocks(tasks):
     No model solution is on this path: solutions are not in the bank at all,
     they live in answers/, and nothing here reads them.
     """
-    rows = [[t["q"], str(marks(t)), ""] for t in tasks]
-    return [dict(kind="table", title="Tick each one off as its tests pass in the editor",
-                 head=["Program", "Marks", "Done"], rows=rows),
+    # The stage column is what makes this sheet usable in a lesson. A teacher
+    # setting work can say "the core today, challenges if you get there", and a
+    # pupil can see at a glance that an activity is one to run rather than one
+    # to write. The words match the ones on the screen exactly.
+    stage = {"try": "Run it", "predict": "Predict", "change": "Change it",
+             "complete": "Complete it", "debug": "Fix it", "build": "Write it"}
+    rows = [[t["q"], "Challenge (optional)" if t.get("opt") else stage.get(t.get("kind"), "Write it"),
+             str(marks(t)), ""] for t in tasks]
+    return [dict(kind="table", title="Tick each one off as you finish it in the editor",
+                 head=["Activity", "What to do", "Marks", "Done"], rows=rows),
             dict(kind="lines", n=3,
-                 title="Plan the one you found hardest: inputs, what happens to them, what is printed.")]
+                 title="Plan the one you found hardest: what is typed in, what happens to it, what is displayed.")]
 def logic_blocks(tasks):
     out = []
     code = [t for t in tasks if t["t"] == "code"]

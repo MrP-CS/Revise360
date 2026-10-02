@@ -20,45 +20,17 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Ask the user for one word. Display [how many characters it has] and nothing else.",
+       "q": "Press Run. The program counts the characters in a word.",
        "brief": [
-        "The user types in one word.",
-        "One line of output."
+        "Nothing is marked on this one.",
+        "Count the letters of otter yourself and check Python agrees."
        ],
-       "starter": "# Count the characters in the word\n",
-       "tests": [
-        {
-         "in": [
-          "bridge"
-         ],
-         "out": [
-          "6"
-         ],
-         "why": "bridge has six characters, so the answer comes from len() rather than from counting them yourself."
-        },
-        {
-         "in": [
-          "x"
-         ],
-         "out": [
-          "1"
-         ],
-         "why": "One character gives 1. A 0 here means an empty string was measured instead of the word."
-        },
-        {
-         "in": [
-          "kayak"
-         ],
-         "out": [
-          "5"
-         ],
-         "why": "A different word, so a number typed in by hand fails here."
-        }
-       ],
-       "fb": "len() gives the number of characters in a string.",
-       "hint": "pystring",
+       "fb": "len() does the counting for you, however long the text is.",
+       "kind": "try",
+       "starter": "w = \"otter\"\nprint(len(w))\n",
+       "tests": [],
        "teach": {
-        "say": "len() counts the characters in a string, spaces included.",
+        "say": "A string is a piece of text. len() counts how many characters it holds and hands back a whole number. Spaces count as characters too.",
         "code": [
          "w = \"otter\"",
          "print(len(w))"
@@ -66,84 +38,288 @@
         "out": [
          "5"
         ]
+       },
+       "lines": [
+        "Keep the word otter under the name w.",
+        "Count the characters in w and display the number."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "What will this program display?",
+       "brief": [
+        "Read every line before you choose."
+       ],
+       "fb": "Counting starts at 0, so word[0] is the first character and word[1] is the second one.",
+       "kind": "predict",
+       "code": [
+        "word = \"cat\"",
+        "print(word[0])",
+        "print(word[1])"
+       ],
+       "a": [
+        "c\na",
+        "a\nt",
+        "c\nc"
+       ],
+       "teach": {
+        "say": "Every character in a string has a position. The first one is at position 0, the second at position 1, and so on. Square brackets ask for one position.",
+        "code": [
+         "t = \"milk\"",
+         "print(t[0])",
+         "print(t[2])"
+        ],
+        "out": [
+         "m",
+         "l"
+        ]
+       },
+       "lines": [
+        "Keep the word milk under the name t.",
+        "Display the character at position 0, which is m.",
+        "Display the character at position 2, which is l."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "Change the program so it displays the last character instead of the first.",
+       "brief": [
+        "Change only the number inside the square brackets.",
+        "The word stays stone.",
+        "Display exactly: e"
+       ],
+       "fb": "Five characters give positions 0, 1, 2, 3 and 4, so the last one is always one less than the length.",
+       "kind": "change",
+       "starter": "w = \"stone\"\nprint(w[0])\n",
+       "tests": [
+        {
+         "in": [],
+         "out": [
+          "e"
+         ],
+         "why": "The letter s is still coming out. stone has five characters, so its positions are 0 to 4 and the last one is 4."
+        }
+       ],
+       "hint": {
+        "think": "Count the characters of stone, then remember that the first one is at position 0.",
+        "syntax": "w[position]",
+        "diagram": "pystring"
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "What will this program display?",
+       "brief": [
+        "Count the characters in cat first.",
+        "Then work out which position the second print() is asking for."
+       ],
+       "fb": "The length counts from 1 but the positions count from 0, so the last character sits at len() - 1.",
+       "kind": "predict",
+       "code": [
+        "w = \"cat\"",
+        "print(len(w))",
+        "print(w[len(w) - 1])"
+       ],
+       "a": [
+        "3\nt",
+        "3\na",
+        "4\nt"
+       ],
+       "teach": {
+        "say": "A word of three characters has positions 0, 1 and 2. So the last position is always one less than the length, which is written len() - 1. There is no character at position len() at all."
        }
       },
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for one word. Display [its first character]. Then display [its last character] on the next line.",
+       "q": "Finish the program so it displays the last character of the word the user types.",
        "brief": [
         "The user types in one word.",
-        "Two lines of output: the first character, then the last."
+        "Replace ____ with the position of the last character.",
+        "It has to work for a word of any length.",
+        "One line of output."
        ],
-       "starter": "# The first character, then the last one\n",
+       "fb": "w[len(w) - 1] is the last character of any word, short or long.",
+       "kind": "complete",
+       "starter": "w = input()\nprint(w[____])\n",
        "tests": [
         {
          "in": [
           "bridge"
          ],
          "out": [
-          "b",
           "e"
          ],
-         "why": "The first character is at position 0, so w[1] would give r instead of b."
+         "why": "bridge has six characters, so its last position is 5. Replace the ____ with something worked out from len(w)."
         },
         {
          "in": [
           "x"
          ],
          "out": [
-          "x",
           "x"
          ],
-         "why": "With one character the first and the last are the same one. A crash here means a fixed position such as w[5] was used instead of working from the length."
+         "why": "A word of one character has only position 0, so the first and last character are the same one."
         },
         {
          "in": [
           "kayak"
          ],
          "out": [
-          "k",
           "k"
          ],
-         "why": "The last character is w[-1], or w[len(w) - 1]. Using w[len(w)] goes one past the end and crashes."
-        },
-        {
-         "in": [
-          "pond"
-         ],
-         "out": [
-          "p",
-          "d"
-         ],
-         "why": "A different word, so characters typed in by hand fail here."
+         "why": "A different length again, so a number written in by hand fails here."
         }
        ],
-       "fb": "Positions run from 0 to len() - 1, so the last character is at len() - 1 and never at len().",
-       "hint": "pystring",
+       "hint": {
+        "think": "Work the position out from the length instead of typing a number in.",
+        "syntax": "len(w)",
+        "diagram": "pystring"
+       },
        "teach": {
-        "say": "The first character is at position 0, so the last one is at len() - 1, which can also be written as -1.",
+        "say": "len(w) - 1 is the last position whatever the word is. A number written in by hand only ever works for words of one length.",
         "code": [
-         "w = \"otter\"",
-         "print(w[0])",
+         "w = \"milk\"",
          "print(w[len(w) - 1])"
         ],
         "out": [
-         "o",
-         "r"
+         "k"
         ]
        }
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a word. Then ask for a position counting from 0. Display [the character at that position]. Display no such position instead when the word has no character there.",
+       "q": "Ask the user for one word. Display how many characters it has. Then display its first character on the next line. Then display its last character on the next line.",
        "brief": [
-        "The user types in two lines: one word, then a position.",
-        "Positions count from 0, and are never below 0.",
-        "Print exactly: no such position"
+        "The user types in one word.",
+        "Three lines of output, in that order.",
+        "It has to work for a word of only one character."
        ],
-       "starter": "# Print the character at that position, if there is one\n",
+       "fb": "len() for the length, w[0] for the first character, w[len(w) - 1] for the last one.",
+       "starter": "# The length, the first character, then the last one\n",
+       "tests": [
+        {
+         "in": [
+          "bridge"
+         ],
+         "out": [
+          "6",
+          "b",
+          "e"
+         ],
+         "why": "Six characters, then b, then e. The last position is 5 and not 6."
+        },
+        {
+         "in": [
+          "x"
+         ],
+         "out": [
+          "1",
+          "x",
+          "x"
+         ],
+         "why": "One character, so the first and the last are the same one. A crash here means a position such as w[5] was written in by hand."
+        },
+        {
+         "in": [
+          "pond"
+         ],
+         "out": [
+          "4",
+          "p",
+          "d"
+         ],
+         "why": "A shorter word, so every line has to be worked out from the word itself."
+        }
+       ],
+       "hint": {
+        "think": "The length comes from len(), and so does the last position.",
+        "syntax": [
+         "print(len(w))",
+         "print(w[0])"
+        ],
+        "diagram": "pystring"
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "This program should display the last character of the word. Find the mistake and put it right.",
+       "brief": [
+        "Press Run first and read the error message.",
+        "The user types in one word.",
+        "Display exactly one character."
+       ],
+       "fb": "IndexError means a position past the end of the string. The last one is always len() - 1, and Python offers w[-1] as a short cut for exactly that.",
+       "kind": "debug",
+       "starter": "w = input()\nprint(w[len(w)])\n",
+       "tests": [
+        {
+         "in": [
+          "bridge"
+         ],
+         "out": [
+          "e"
+         ],
+         "why": "IndexError means a position past the end of the string. bridge stops at position 5."
+        },
+        {
+         "in": [
+          "x"
+         ],
+         "out": [
+          "x"
+         ],
+         "why": "Even a word of one character has no position 1, so the length is always one too far."
+        },
+        {
+         "in": [
+          "kayak"
+         ],
+         "out": [
+          "k"
+         ],
+         "why": "Take one off the length and the same line works for every word."
+        }
+       ],
+       "hint": {
+        "think": "The positions stop one short of the length. Which position does len(w) point at?",
+        "walk": [
+         "A word of four characters has positions 0, 1, 2 and 3.",
+         "len(w) is 4, and there is no character sitting there.",
+         "Take one off before using the length as a position."
+        ],
+        "diagram": "pystring"
+       },
+       "teach": {
+        "say": "The length and the last position are not the same number. A word of four characters has its last character at position 3.",
+        "code": [
+         "w = \"milk\"",
+         "print(len(w))",
+         "print(w[len(w) - 1])"
+        ],
+        "out": [
+         "4",
+         "k"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for a word. Then ask for a position as a whole number. Display the character at that position. Display no such position instead when the word has no character there.",
+       "brief": [
+        "The user types in two lines: one word, then a whole number.",
+        "Positions count from 0 and are never below 0.",
+        "Display exactly: no such position",
+        "One line of output."
+       ],
+       "fb": "Comparing the position with len() is what makes one program work for every word.",
+       "starter": "# The character at that position, if there is one\n",
        "tests": [
         {
          "in": [
@@ -163,7 +339,7 @@
          "out": [
           "p"
          ],
-         "why": "Position 0 is the first character. A letter l means 1 was added to the position somewhere."
+         "why": "Position 0 is the first character. An l here means 1 was added to the position somewhere."
         },
         {
          "in": [
@@ -173,7 +349,7 @@
          "out": [
           "t"
          ],
-         "why": "planet has six characters, so 5 is the highest position. Refusing it means the test was p < len(w) - 1 instead of p < len(w)."
+         "why": "planet has six characters, so 5 is the highest position there is. Refusing it means the test was p < len(w) - 1."
         },
         {
          "in": [
@@ -183,7 +359,7 @@
          "out": [
           "no such position"
          ],
-         "why": "Position 6 is one past the end: the number of characters is 6 but the last position is 5."
+         "why": "Position 6 is one past the end: six characters, last position 5."
         },
         {
          "in": [
@@ -193,24 +369,17 @@
          "out": [
           "no such position"
          ],
-         "why": "A word of one character has only position 0, so comparing against the length rather than a number of your own is what makes this work for any word."
+         "why": "A word of one character has only position 0, so compare against the length and never against a number of your own."
         }
        ],
-       "fb": "A string of length n has positions 0 to n - 1, so check the position against the length and never against a number you typed in yourself.",
-       "hint": "pystring",
-       "teach": {
-        "say": "A word of length n has positions 0 to n - 1, so test the position against len() before using it.",
-        "code": [
-         "w = \"otter\"",
-         "p = 4",
-         "if p < len(w):",
-         "    print(w[p])",
-         "else:",
-         "    print(\"no such position\")"
+       "opt": true,
+       "hint": {
+        "think": "A word of n characters has positions 0 to n - 1, so compare the position with the length before using it.",
+        "syntax": [
+         "p = int(input())",
+         "if p < len(w):"
         ],
-        "out": [
-         "r"
-        ]
+        "diagram": "pystring"
        }
       }
      ]
@@ -225,13 +394,95 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 2,
-       "q": "Ask the user for one word. Display [its first three characters] and nothing else.",
+       "marks": 1,
+       "q": "Press Run. The program takes two runs of characters out of one word.",
        "brief": [
-        "The user types in one word, which always has at least three characters.",
+        "Nothing is marked on this one.",
+        "Count the characters in each answer and compare it with the two numbers."
+       ],
+       "fb": "A slice hands back b - a characters, because the end position is left out.",
+       "kind": "try",
+       "starter": "w = \"anchor\"\nprint(w[0:3])\nprint(w[2:5])\n",
+       "tests": [],
+       "teach": {
+        "say": "A slice takes a run of characters. In w[a:b] the counting starts at position a and stops just before position b, so b itself is left out.",
+        "code": [
+         "w = \"anchor\"",
+         "print(w[0:3])",
+         "print(w[2:5])"
+        ],
+        "out": [
+         "anc",
+         "cho"
+        ]
+       },
+       "lines": [
+        "Keep the word anchor under the name w.",
+        "Take positions 0, 1 and 2, which gives anc.",
+        "Take positions 2, 3 and 4, which gives cho."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "What will this program display?",
+       "brief": [
+        "Read every line before you choose."
+       ],
+       "fb": "w[0:2] gives two characters and w[1:4] gives three, because each slice stops before its second number.",
+       "kind": "predict",
+       "code": [
+        "w = \"stone\"",
+        "print(w[0:2])",
+        "print(w[1:4])"
+       ],
+       "a": [
+        "st\nton",
+        "sto\nston",
+        "st\nto"
+       ],
+       "teach": {
+        "say": "The second number in a slice is a stopping point, not the last position taken. Take the first number from the second to know how many characters come back."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "Change the program so it displays the first four characters instead of the first two.",
+       "brief": [
+        "Change only the second number.",
+        "The word stays harbour.",
+        "Display exactly: harb"
+       ],
+       "fb": "Starting at 0 and stopping before 4 gives four characters: positions 0, 1, 2 and 3.",
+       "kind": "change",
+       "starter": "w = \"harbour\"\nprint(w[0:2])\n",
+       "tests": [
+        {
+         "in": [],
+         "out": [
+          "harb"
+         ],
+         "why": "ha is still coming out, so the second number was not changed. Four characters are wanted, so the slice stops before position 4."
+        }
+       ],
+       "hint": {
+        "think": "The second number says where to stop, not which position to finish on.",
+        "syntax": "w[0:...]"
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Finish the program so it displays the first three characters of the word the user types.",
+       "brief": [
+        "The user types in one word of at least three characters.",
+        "Replace ____ with the two numbers of the slice.",
         "One line of output."
        ],
-       "starter": "# The first three characters\n",
+       "fb": "w[0:3] takes positions 0, 1 and 2, which is three characters.",
+       "kind": "complete",
+       "starter": "w = input()\nprint(w[____])\n",
        "tests": [
         {
          "in": [
@@ -240,7 +491,7 @@
          "out": [
           "har"
          ],
-         "why": "The slice w[0:3] takes positions 0, 1 and 2, which is three characters. harb means w[0:4] was used, which takes four."
+         "why": "Three characters are wanted, so the slice stops before position 3. harb means it stopped before position 4."
         },
         {
          "in": [
@@ -249,7 +500,7 @@
          "out": [
           "cat"
          ],
-         "why": "A word of exactly three characters gives all three. Getting ca means w[0:2] was used, counting the end of a slice as included."
+         "why": "A word of exactly three characters gives all three. ca means the slice stopped one too early."
         },
         {
          "in": [
@@ -261,10 +512,13 @@
          "why": "A different word, so three characters typed in by hand fail here."
         }
        ],
-       "fb": "In a slice w[a:b] the a is included and the b is not, so w[0:3] is three characters.",
-       "hint": "pystring",
+       "hint": {
+        "think": "Start at the very beginning and stop before the fourth character.",
+        "syntax": "w[start:end]",
+        "diagram": "pystring"
+       },
        "teach": {
-        "say": "In a slice w[a:b] the start is included and the end is not, so w[0:2] gives two characters.",
+        "say": "A slice needs two numbers: where to start and where to stop. w[0:2] starts at the beginning and stops before position 2, so it gives two characters.",
         "code": [
          "w = \"anchor\"",
          "print(w[0:2])"
@@ -276,74 +530,121 @@
       },
       {
        "t": "code",
-       "marks": 3,
-       "q": "Ask the user for one word. Display [its first three characters]. Display too short instead when the word has fewer than three characters.",
+       "marks": 2,
+       "q": "Ask the user for one word. Display the word without its first character.",
        "brief": [
-        "The user types in one word.",
-        "Print exactly: too short"
+        "The user types in one word of at least two characters.",
+        "One line of output.",
+        "Only the first character is left out."
        ],
-       "starter": "# The first three characters, or too short\n",
+       "fb": "w[1:len(w)] starts one character in and runs to the end.",
+       "starter": "# Everything except the first character\n",
        "tests": [
         {
          "in": [
-          "harbour"
+          "stone"
+         ],
+         "out": [
+          "tone"
+         ],
+         "why": "Start at position 1 so the s is left behind, and stop at the length so nothing else is."
+        },
+        {
+         "in": [
+          "go"
+         ],
+         "out": [
+          "o"
+         ],
+         "why": "A word of two characters leaves one behind. An empty line means the slice stopped too early."
+        },
+        {
+         "in": [
+          "amber"
+         ],
+         "out": [
+          "mber"
+         ],
+         "why": "A different word, so the second number has to come from len(w)."
+        }
+       ],
+       "hint": {
+        "think": "Start the slice one position further in and let it run to the end of the word.",
+        "syntax": "w[start:len(w)]",
+        "diagram": "pystring"
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "This program should display as many characters from the start of the text as the user asks for. Find the mistake and put it right.",
+       "brief": [
+        "Press Run first and read the error message.",
+        "The user types in two lines: a line of text, then a whole number.",
+        "Display that many characters, counting from the start."
+       ],
+       "fb": "input() gives text, and a slice needs numbers. int() on the way in is the fix, exactly as in lesson 1.",
+       "kind": "debug",
+       "starter": "t = input()\nn = input()\nprint(t[0:n])\n",
+       "tests": [
+        {
+         "in": [
+          "harbour",
+          "3"
          ],
          "out": [
           "har"
          ],
-         "why": "Seven characters is plenty, so the slice is printed and the length check lets it through."
+         "why": "A TypeError here means a slice was given text instead of a number. Cast the typed line with int( )."
         },
         {
          "in": [
-          "cat"
+          "harbour",
+          "1"
          ],
          "out": [
-          "cat"
+          "h"
          ],
-         "why": "Exactly three characters is not fewer than three, so all three are printed. Getting too short here means the test used < 4 instead of < 3."
+         "why": "One character this time, so the number really does come from what was typed."
         },
         {
          "in": [
-          "no"
+          "pond",
+          "4"
          ],
          "out": [
-          "too short"
+          "pond"
          ],
-         "why": "Two characters. Python would hand back no for w[0:3] without complaining, which is why the length has to be tested."
-        },
-        {
-         "in": [
-          "q"
-         ],
-         "out": [
-          "too short"
-         ],
-         "why": "One character. Printing q here means the length check used < 2 instead of < 3."
+         "why": "The number can be the whole length of the text, which gives all of it back."
         }
        ],
-       "fb": "A slice that runs off the end hands back what it can rather than crashing, so a length check is the only way to catch a short word.",
-       "hint": "pystring",
+       "hint": {
+        "think": "Look at the data type of the value being used inside the square brackets.",
+        "syntax": "int(input())",
+        "diagram": "pyinput"
+       },
        "teach": {
-        "say": "A slice off the end of a string never crashes, it just hands back less than you asked for, so the length has to be checked yourself.",
+        "say": "input() hands back text every time, even when the user typed digits. A slice needs whole numbers, so the typed line has to be cast with int() first.",
         "code": [
-         "w = \"no\"",
-         "print(w[0:3])",
-         "print(len(w[0:3]))"
+         "s = \"anchor\"",
+         "n = int(\"3\")",
+         "print(s[0:n])"
         ],
         "out": [
-         "no",
-         "2"
+         "anc"
         ]
        }
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a line of text. Display [the text without its first and last characters]. Display nothing inside instead when it has fewer than three characters.",
+       "q": "Ask the user for a line of text. Display the text without its first and last characters. Display nothing inside instead when the text has fewer than three characters.",
        "brief": [
         "The user types in one line of text, which may be empty.",
-        "Print exactly: nothing inside"
+        "Display exactly: nothing inside",
+        "One line of output."
        ],
+       "fb": "A short slice gives an empty string rather than an error, so only a length test can catch a short line.",
        "starter": "# Drop one character from each end\n",
        "tests": [
         {
@@ -353,7 +654,7 @@
          "out": [
           "tulip"
          ],
-         "why": "Start at position 1 and stop before the last position. tulip# means the first character came off but the last one did not."
+         "why": "Start at position 1 and stop before the last position. tulip# means the last character was never dropped."
         },
         {
          "in": [
@@ -362,7 +663,7 @@
          "out": [
           "ab"
          ],
-         "why": "Two characters are left. Getting a means the slice stopped one too early, s[1:len(s) - 2] instead of s[1:len(s) - 1]."
+         "why": "Two characters are left in the middle. Getting a means the slice stopped one too early."
         },
         {
          "in": [
@@ -371,7 +672,7 @@
          "out": [
           "x"
          ],
-         "why": "Exactly three characters leaves one in the middle. An empty line means the slice ended before the character wanted."
+         "why": "Exactly three characters leaves one in the middle, which is the smallest text that has a middle at all."
         },
         {
          "in": [
@@ -380,7 +681,7 @@
          "out": [
           "nothing inside"
          ],
-         "why": "Two characters leaves nothing in the middle. The slice would quietly hand back an empty string, which is why the length is tested."
+         "why": "Two characters leave nothing in the middle, and the slice would quietly give an empty string."
         },
         {
          "in": [
@@ -389,22 +690,17 @@
          "out": [
           "nothing inside"
          ],
-         "why": "An empty line has no characters at all. A crash here means s[0] was looked at before the length was checked."
+         "why": "An empty line has no characters at all, so the length has to be checked before anything is taken."
         }
        ],
-       "fb": "s[1:len(s) - 1] drops one character from each end, and the length check is needed because a short string gives an empty slice rather than an error.",
-       "hint": "pystring",
-       "teach": {
-        "say": "A slice can measure the string with len(), so s[1:len(s) - 1] leaves out one character at each end.",
-        "code": [
-         "s = \"stone\"",
-         "print(s[1:len(s)])",
-         "print(s[1:len(s) - 1])"
+       "opt": true,
+       "hint": {
+        "think": "A slice that asks for too much hands back an empty string instead of crashing, so the length has to be tested yourself.",
+        "start": [
+         "s = input()",
+         "if len(s) < 3:"
         ],
-        "out": [
-         "tone",
-         "ton"
-        ]
+        "diagram": "pystring"
        }
       }
      ]
@@ -419,24 +715,101 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 2,
-       "q": "Ask the user for a word. Then ask for a second word. Ignoring capitals, display match when they are the same word. Display different when they are not.",
+       "marks": 1,
+       "q": "Press Run. Look at the third line of output and compare it with the first.",
        "brief": [
-        "The user types in two words, one on each line.",
-        "Print exactly: match or different"
+        "Nothing is marked on this one.",
+        "The variable w is displayed last, after both methods have been used on it."
        ],
-       "starter": "# Are the two words the same word, ignoring capitals?\n",
+       "fb": "Both methods hand back a new string. The variable keeps the word it already had.",
+       "kind": "try",
+       "starter": "w = \"Ferry\"\nprint(w.upper())\nprint(w.lower())\nprint(w)\n",
+       "tests": [],
+       "teach": {
+        "say": "upper() hands back a copy of a string with every letter made capital. lower() hands back a copy with every letter made small. Neither one changes the original.",
+        "code": [
+         "w = \"Ferry\"",
+         "print(w.upper())",
+         "print(w.lower())",
+         "print(w)"
+        ],
+        "out": [
+         "FERRY",
+         "ferry",
+         "Ferry"
+        ]
+       },
+       "lines": [
+        "Keep the word Ferry under the name w.",
+        "Display a capital-letter copy of w.",
+        "Display a small-letter copy of w.",
+        "Display w itself, which still holds the word it started with."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "What will this program display?",
+       "brief": [
+        "Read every line before you choose."
+       ],
+       "fb": "F and f are two different characters, so a == b is False. Lower both and the same words match.",
+       "kind": "predict",
+       "code": [
+        "a = \"Ferry\"",
+        "b = \"ferry\"",
+        "print(a == b)",
+        "print(a.lower() == b.lower())"
+       ],
+       "a": [
+        "False\nTrue",
+        "True\nTrue",
+        "False\nFalse"
+       ],
+       "teach": {
+        "say": "A capital letter is not the same character as its small letter, so two words typed differently are not equal. Putting both into the same case first is what makes the comparison fair."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "Change the program so capitals are ignored and it displays True.",
+       "brief": [
+        "Change only the last line.",
+        "Both words stay exactly as they are.",
+        "Display exactly: True"
+       ],
+       "fb": "The two words are only lowered for the comparison. Neither variable is changed by it.",
+       "kind": "change",
+       "starter": "a = \"Ferry\"\nb = \"ferry\"\nprint(a == b)\n",
        "tests": [
         {
-         "in": [
-          "harbour",
-          "harbours"
-         ],
+         "in": [],
          "out": [
-          "different"
+          "True"
          ],
-         "why": "An extra s makes them different words: ignoring capitals does not mean ignoring letters."
-        },
+         "why": "False is still coming out, because F and f are two different characters. Put both words into the same case inside the comparison."
+        }
+       ],
+       "hint": {
+        "think": "Both words have to reach the == in the same case.",
+        "syntax": "a.lower()",
+        "diagram": "pystring"
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Finish the program so it displays match when the two words are the same word, ignoring capitals.",
+       "brief": [
+        "The user types in two words, one on each line.",
+        "Replace ____ so both words are compared in the same case.",
+        "Display exactly: match or different"
+       ],
+       "fb": "Lower both sides, or upper both sides. What matters is that they match each other.",
+       "kind": "complete",
+       "starter": "a = input()\nb = input()\nif a.lower() == ____:\n    print(\"match\")\nelse:\n    print(\"different\")\n",
+       "tests": [
         {
          "in": [
           "Harbour",
@@ -445,7 +818,7 @@
          "out": [
           "match"
          ],
-         "why": "Only the capital H differs. Comparing a == b directly calls these different, because H and h are not the same character."
+         "why": "Only the capital H differs, so both words have to reach the == in the same case."
         },
         {
          "in": [
@@ -455,17 +828,7 @@
          "out": [
           "match"
          ],
-         "why": "Both words have to be put into the same case; changing only one of them leaves them unequal."
-        },
-        {
-         "in": [
-          "a",
-          "A"
-         ],
-         "out": [
-          "match"
-         ],
-         "why": "A single letter in either case is the smallest version of the same test."
+         "why": "Changing one word only is not enough: both sides need the same treatment."
         },
         {
          "in": [
@@ -475,105 +838,176 @@
          "out": [
           "different"
          ],
-         "why": "Two different words already in the same case, so the answer here does not depend on capitals at all."
+         "why": "Two different words already in the same case, so capitals play no part here."
+        },
+        {
+         "in": [
+          "a",
+          "A"
+         ],
+         "out": [
+          "match"
+         ],
+         "why": "One letter in either case is the smallest version of this test."
+        },
+        {
+         "in": [
+          "harbour",
+          "harbours"
+         ],
+         "out": [
+          "different"
+         ],
+         "why": "An extra s makes them different words. Ignoring capitals does not mean ignoring letters."
         }
        ],
-       "fb": "Put both strings into the same case before comparing them - .lower() on both, or .upper() on both.",
-       "hint": "pystring",
+       "hint": {
+        "think": "One side of the == has already been made small. The other side has not.",
+        "diagram": "pystring"
+       },
        "teach": {
-        "say": "A capital is not the same character as a small letter, so put both strings into the same case before comparing them.",
+        "say": "Both sides of the comparison have to be in the same case. Changing only one of them leaves the two words unequal.",
         "code": [
-         "a = \"Ferry\"",
-         "b = \"ferry\"",
-         "print(a == b)",
+         "a = \"Tram\"",
+         "b = \"TRAM\"",
          "print(a.lower() == b.lower())"
         ],
         "out": [
-         "False",
          "True"
         ]
        }
       },
       {
        "t": "code",
-       "marks": 3,
-       "q": "Ask the user for a line of text. Count how many of its characters are capital letters. Display [the count] and nothing else.",
+       "marks": 2,
+       "q": "Ask the user for a word. Display all capitals when every letter of the word is a capital. Display not all capitals when it is not.",
        "brief": [
-        "The user types in one line of text, which may be empty.",
-        "Digits and spaces are not capital letters."
+        "The user types in one word.",
+        "Display exactly: all capitals or not all capitals",
+        "One line of output."
        ],
-       "starter": "# Count the capital letters\n",
+       "fb": "upper() hands back a copy, and comparing the word with that copy says whether anything changed.",
+       "starter": "# Is the word all in capitals?\n",
        "tests": [
         {
          "in": [
-          "Anna Likes Figs"
+          "ABC"
          ],
          "out": [
-          "3"
+          "all capitals"
          ],
-         "why": "A, L and F are capitals and the rest are not. A 15 here means every character was counted instead of each one being tested."
+         "why": "Every letter is already a capital, so the word and its capital copy are the same string."
         },
         {
          "in": [
-          "all small"
+          "Abc"
          ],
          "out": [
-          "0"
+          "not all capitals"
          ],
-         "why": "No capitals at all, so the counter has to be set to 0 before the loop and still printed afterwards."
+         "why": "One capital is not enough: the b and the c change when the copy is made."
+        },
+        {
+         "in": [
+          "mix"
+         ],
+         "out": [
+          "not all capitals"
+         ],
+         "why": "No capitals at all, so the capital copy is a different string."
         },
         {
          "in": [
           "X"
          ],
          "out": [
-          "1"
+          "all capitals"
          ],
-         "why": "One capital letter on its own."
-        },
-        {
-         "in": [
-          "Mix3D Case"
-         ],
-         "out": [
-          "3"
-         ],
-         "why": "M, D and C are capitals. The digit 3 and the space are not letters, so a test like ch < 'a' would wrongly count both."
-        },
-        {
-         "in": [
-          ""
-         ],
-         "out": [
-          "0"
-         ],
-         "why": "An empty line has nothing to count: the loop runs zero times and the counter is still 0."
+         "why": "One capital letter on its own is still all capitals."
         }
        ],
-       "fb": "A character is a capital when it is different from its own lower-case version, a test that leaves digits and spaces out on its own.",
-       "hint": "pystring",
+       "hint": {
+        "think": "Compare the word with a capital copy of itself.",
+        "syntax": "if w == w.upper():",
+        "diagram": "pystring"
+       },
        "teach": {
-        "say": "A for loop over a string hands you one character at a time, and a character is a capital when it is different from its own lower-case version.",
+        "say": "A word is already in capitals when it is the same string as its own capital copy. Comparing a word with w.upper() is how a program finds that out.",
         "code": [
-         "for ch in \"Ok!\":",
-         "    print(ch, ch != ch.lower())"
+         "print(\"TRAM\" == \"TRAM\".upper())",
+         "print(\"Tram\" == \"Tram\".upper())"
         ],
         "out": [
-         "O True",
-         "k False",
-         "! False"
+         "True",
+         "False"
         ]
        }
       },
       {
        "t": "code",
+       "marks": 2,
+       "q": "This program should display match when the two words are the same word, ignoring capitals. Find the mistake and put it right.",
+       "brief": [
+        "Press Run first and try the same word twice, once with a capital.",
+        "The user types in two words, one on each line.",
+        "Display exactly: match or different"
+       ],
+       "fb": "A method's answer has to be stored or used. On its own that line changes nothing at all.",
+       "kind": "debug",
+       "starter": "a = input()\nb = input()\na.lower()\nb.lower()\nif a == b:\n    print(\"match\")\nelse:\n    print(\"different\")\n",
+       "tests": [
+        {
+         "in": [
+          "Harbour",
+          "harbour"
+         ],
+         "out": [
+          "match"
+         ],
+         "why": "The same word with one capital came out as different, so the lowered copies were never used."
+        },
+        {
+         "in": [
+          "A",
+          "a"
+         ],
+         "out": [
+          "match"
+         ],
+         "why": "Store each copy with an = sign, or lower both words inside the comparison itself."
+        },
+        {
+         "in": [
+          "north",
+          "south"
+         ],
+         "out": [
+          "different"
+         ],
+         "why": "Two different words stay different, which is why the mistake is easy to miss."
+        }
+       ],
+       "hint": {
+        "think": "lower() hands a new string back. Is anything being done with those two answers?",
+        "walk": [
+         "Lines 3 and 4 each make a small-letter copy.",
+         "Nothing stores either copy, so both are thrown away.",
+         "The == on line 5 still sees the words exactly as they were typed."
+        ],
+        "diagram": "pystring"
+       }
+      },
+      {
+       "t": "code",
        "marks": 3,
-       "q": "Ask the user for a word. Then ask for a second word. Ignoring capitals, work out which of them comes first alphabetically. Display [that word] and nothing else.",
+       "q": "Ask the user for a word. Then ask for a second word. Ignoring capitals, work out which of them comes first alphabetically. Display that word.",
        "brief": [
         "The user types in two words, one on each line.",
         "They are never the same word.",
-        "A shorter word that starts the other one comes first."
+        "A shorter word that starts the other one comes first.",
+        "Display the word as the user typed it."
        ],
+       "fb": "Compare in one case, display in the other: the words are only lowered for the test, not for the output.",
        "starter": "# Which of the two words comes first alphabetically?\n",
        "tests": [
         {
@@ -584,7 +1018,7 @@
          "out": [
           "lemon"
          ],
-         "why": "l comes before m, so the second word wins. Printing mint means the words were compared the wrong way round."
+         "why": "l comes before m, so the second word wins. mint here means the comparison was the wrong way round."
         },
         {
          "in": [
@@ -594,7 +1028,7 @@
          "out": [
           "apple"
          ],
-         "why": "Comparing the words as typed puts Zebra first, because every capital has a lower code than every small letter. Lower the case of both before comparing."
+         "why": "Compared as typed, Zebra would win, because every capital has a lower code than every small letter."
         },
         {
          "in": [
@@ -614,13 +1048,20 @@
          "out": [
           "apple"
          ],
-         "why": "The same pair the other way round, so the answer cannot be simply the first or the second word read."
+         "why": "The same pair the other way round, so the answer cannot simply be the first or the second word read."
         }
        ],
-       "fb": "< compares strings letter by letter, and both words have to be in the same case first because A has code 65 and a has code 97.",
-       "hint": "pystring",
+       "opt": true,
+       "hint": {
+        "think": "Compare the small-letter versions, but display the word the user typed.",
+        "start": [
+         "a = input()",
+         "b = input()"
+        ],
+        "diagram": "pystring"
+       },
        "teach": {
-        "say": "< compares strings letter by letter, but every capital has a lower code than every small letter, so both words go into the same case first.",
+        "say": "< compares two strings character by character. Every capital has a lower code than every small letter, so both words go into the same case before they are compared or the answer depends on how they were typed.",
         "code": [
          "print(\"Zebra\" < \"apple\")",
          "print(\"Zebra\".lower() < \"apple\".lower())"
@@ -643,33 +1084,115 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 2,
-       "q": "Ask the user for a line of text. Then ask for a word to look for. Display found when the word appears anywhere in the text. Display missing when it does not.",
+       "marks": 1,
+       "q": "Press Run. The program asks two questions about one line of text.",
        "brief": [
-        "The user types in two lines: a line of text, then the word to look for.",
-        "Print exactly: found or missing"
+        "Nothing is marked on this one.",
+        "True and False are the only two answers a test like this can give."
        ],
-       "starter": "# Is the word anywhere in the text?\n",
+       "fb": "in answers yes or no. It never says where in the text the word was found.",
+       "kind": "try",
+       "starter": "t = \"hot soup\"\nprint(\"soup\" in t)\nprint(\"cold\" in t)\n",
+       "tests": [],
+       "teach": {
+        "say": "word in text is True when the word appears somewhere inside the text. The thing being looked for is written first and the text it is looked for in comes after.",
+        "code": [
+         "t = \"hot soup\"",
+         "print(\"soup\" in t)",
+         "print(\"cold\" in t)"
+        ],
+        "out": [
+         "True",
+         "False"
+        ]
+       },
+       "lines": [
+        "Keep the words hot soup under the name t.",
+        "Ask whether soup appears anywhere in t, which it does.",
+        "Ask whether cold appears anywhere in t, which it does not."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "What will this program display?",
+       "brief": [
+        "Read every line before you choose."
+       ],
+       "fb": "wet and the space fill positions 0 to 3, so paint starts at 4. A word that is not there gives -1.",
+       "kind": "predict",
+       "code": [
+        "t = \"wet paint\"",
+        "print(t.find(\"paint\"))",
+        "print(t.find(\"dry\"))"
+       ],
+       "a": [
+        "4\n-1",
+        "5\n-1",
+        "4\n0"
+       ],
+       "teach": {
+        "say": "find() gives the position where the word first appears, counting from 0. When the word is not there at all it gives -1, which is not a position."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "Change the program so it displays the position where the word kettle starts.",
+       "brief": [
+        "Change only the word being looked for.",
+        "The line of text stays the same.",
+        "Display one number."
+       ],
+       "fb": "find() reports where its own word starts, so changing the word changes the number.",
+       "kind": "change",
+       "starter": "t = \"copper kettle\"\nprint(t.find(\"copper\"))\n",
+       "tests": [
+        {
+         "in": [],
+         "out": [
+          "7"
+         ],
+         "why": "0 is still coming out, which is where copper starts. copper and the space fill positions 0 to 6, so kettle starts at 7."
+        }
+       ],
+       "hint": {
+        "think": "find() looks for whatever word it is handed.",
+        "diagram": "pystring"
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Finish the program so it displays found when the word appears in the text.",
+       "brief": [
+        "The user types in two lines: a line of text, then a word to look for.",
+        "Replace ____ with the test.",
+        "Display exactly: found or missing"
+       ],
+       "fb": "word in text asks whether word appears anywhere inside text, and nothing more than that.",
+       "kind": "complete",
+       "starter": "text = input()\nword = input()\nif ____:\n    print(\"found\")\nelse:\n    print(\"missing\")\n",
        "tests": [
         {
          "in": [
-          "the tide is out",
+          "tide is out",
           "tide"
          ],
          "out": [
           "found"
          ],
-         "why": "tide appears in the middle of the text, and in looks anywhere rather than only at the start."
+         "why": "tide is right at the start, and in looks anywhere rather than only at the start."
         },
         {
          "in": [
-          "the tide is out",
+          "tide is out",
           "sand"
          ],
          "out": [
           "missing"
          ],
-         "why": "sand is not there at all, so a program that always prints found fails here."
+         "why": "sand is not there at all, so a program that always displays found fails here."
         },
         {
          "in": [
@@ -679,43 +1202,48 @@
          "out": [
           "missing"
          ],
-         "why": "The word is longer than the text, so it cannot be inside it. Check for word in text and not text in word, because the order matters."
+         "why": "The word is longer than the text, so it cannot be inside it. The order of the two names matters."
         },
         {
          "in": [
-          "the tide is out",
-          "e t"
+          "tide is out",
+          "e i"
          ],
          "out": [
           "found"
          ],
-         "why": "A space is a character like any other, so e t does appear, at the end of the and the start of tide."
+         "why": "A space is a character like any other, so e i really does appear in the middle."
         }
        ],
-       "fb": "word in text asks whether word appears anywhere inside text, and the thing being looked for is written first.",
-       "hint": "pystring",
+       "hint": {
+        "think": "Which of the two is being looked for, and which is being looked in?",
+        "syntax": "thing in place",
+        "diagram": "pystring"
+       },
        "teach": {
-        "say": "word in text is True when the word appears anywhere inside the text, and the thing being looked for is written first.",
+        "say": "The thing being looked for goes before the word in, and the text being searched goes after it. The other way round asks a different question.",
         "code": [
-         "t = \"wet paint\"",
-         "print(\"paint\" in t)",
-         "print(\"dry\" in t)"
+         "t = \"red van\"",
+         "w = \"van\"",
+         "if w in t:",
+         "    print(\"yes\")"
         ],
         "out": [
-         "True",
-         "False"
+         "yes"
         ]
        }
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a line of text. Then ask for a word to look for. Display [the position where the word starts], counting from 0. Display not found instead when the word is not there.",
+       "q": "Ask the user for a line of text. Then ask for a word to look for. Display the position where the word starts, counting from 0. Display not found instead when the word is not there.",
        "brief": [
-        "The user types in two lines: a line of text, then the word to look for.",
+        "The user types in two lines: a line of text, then a word to look for.",
         "Positions count from 0.",
-        "Print exactly: not found"
+        "Display exactly: not found",
+        "One line of output."
        ],
+       "fb": "Keep find()'s answer in a variable, test it for -1, and display it only when it really is a position.",
        "starter": "# Where in the text does the word start?\n",
        "tests": [
         {
@@ -736,7 +1264,7 @@
          "out": [
           "0"
          ],
-         "why": "A word at the very start is at position 0. A 1 here means 1 was added to make it look more natural."
+         "why": "A word at the very start is at position 0, and 0 is a real answer."
         },
         {
          "in": [
@@ -746,7 +1274,7 @@
          "out": [
           "not found"
          ],
-         "why": "find() hands back -1 when nothing matches, and -1 is not a position, so it has to be tested for."
+         "why": "find() gives -1 when nothing matches, and -1 is not a position, so it has to be tested for."
         },
         {
          "in": [
@@ -756,7 +1284,7 @@
          "out": [
           "4"
          ],
-         "why": "There are three letter e characters and find() reports only the first, at position 4."
+         "why": "There are three letter e characters and find() reports only the first one."
         },
         {
          "in": [
@@ -769,60 +1297,123 @@
          "why": "The first place aa fits is right at the start, so the answer is 0 and not 1."
         }
        ],
-       "fb": "find() gives the position of the first match or -1 when there is none, so -1 must be tested for before it is printed.",
-       "hint": "pystring",
+       "hint": {
+        "think": "find() answers both halves of this on its own: a position, or -1 when there is nothing.",
+        "start": [
+         "text = input()",
+         "word = input()",
+         "place = text.find(word)"
+        ],
+        "diagram": "pystring"
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "This program should display the position of the word, or not found when the word is not there. Find the mistake and put it right.",
+       "brief": [
+        "Press Run first and try looking for a word at the very start.",
+        "The user types in two lines: a line of text, then a word to look for.",
+        "Display exactly: not found"
+       ],
+       "fb": "0 is the first position, not a failure. Only -1 means the word is not in the text.",
+       "kind": "debug",
+       "starter": "text = input()\nword = input()\nplace = text.find(word)\nif place > 0:\n    print(place)\nelse:\n    print(\"not found\")\n",
+       "tests": [
+        {
+         "in": [
+          "copper kettle",
+          "kettle"
+         ],
+         "out": [
+          "7"
+         ],
+         "why": "A word further in already works, which is why the mistake is easy to miss."
+        },
+        {
+         "in": [
+          "copper kettle",
+          "copper"
+         ],
+         "out": [
+          "0"
+         ],
+         "why": "copper starts at position 0, so not found here means 0 was treated as a failure."
+        },
+        {
+         "in": [
+          "copper kettle",
+          "silver"
+         ],
+         "out": [
+          "not found"
+         ],
+         "why": "This is the only case where find() really gives -1."
+        }
+       ],
+       "hint": {
+        "think": "Which answers from find() really mean the word was not there?",
+        "walk": [
+         "Only -1 means no match at all.",
+         "0 means a match right at the start of the text.",
+         "The test on line 4 is sending 0 to the wrong branch."
+        ],
+        "diagram": "pystring"
+       },
        "teach": {
-        "say": "find() gives the position of the first match, or -1 when there is no match at all. -1 is not a position, so test for it.",
+        "say": "find() gives -1 when there is no match. 0 is a real position: it means the very start of the text.",
         "code": [
          "t = \"wet paint\"",
-         "print(t.find(\"paint\"))",
+         "print(t.find(\"wet\"))",
          "print(t.find(\"dry\"))"
         ],
         "out": [
-         "4",
+         "0",
          "-1"
         ]
        }
       },
       {
        "t": "code",
-       "marks": 4,
-       "q": "Ask the user for a line of text. Then ask for a word to look for. Display at the start when the text begins with the word. Display inside when the word appears but not at the start. Display missing when it is not there at all.",
+       "marks": 3,
+       "q": "Ask the user for a line of text. Then ask for a word to look for. Display at the start when the text begins with the word. Display inside when the word appears later. Display missing when it is not there at all.",
        "brief": [
-        "The user types in two lines: a line of text, then the word to look for.",
-        "Print exactly one of: at the start, inside, missing"
+        "The user types in two lines: a line of text, then a word to look for.",
+        "Display exactly one of: at the start, inside, missing",
+        "A word that begins the text counts as at the start and not as inside."
        ],
-       "starter": "# Is the word at the start, further in, or not there at all?\n",
+       "fb": "One call to find() and two comparisons sort all three cases out.",
+       "starter": "# At the start, further in, or not there at all?\n",
        "tests": [
         {
          "in": [
-          "the tide is out",
-          "tide"
+          "tide is out",
+          "is"
          ],
          "out": [
           "inside"
          ],
-         "why": "tide is there but not at position 0, so the slice from 0 does not match it."
+         "why": "is appears in the middle, so the position is neither -1 nor 0."
         },
         {
          "in": [
-          "the tide is out",
-          "the"
+          "tide is out",
+          "tide"
          ],
          "out": [
           "at the start"
          ],
-         "why": "The text begins with the. Comparing text[0:len(word)] with the word is what checks this; text[0:3] only works for words of exactly three characters."
+         "why": "The text begins with tide, so the position is exactly 0."
         },
         {
          "in": [
-          "the tide is out",
+          "tide is out",
           "sand"
          ],
          "out": [
           "missing"
          ],
-         "why": "The word is not there at all, so neither of the other two lines applies."
+         "why": "The word is not there at all, so find() gives -1."
         },
         {
          "in": [
@@ -832,7 +1423,7 @@
          "out": [
           "at the start"
          ],
-         "why": "A single character counts as appearing inside the text, and here it is also the first one."
+         "why": "A single character can be at the start too."
         },
         {
          "in": [
@@ -842,23 +1433,19 @@
          "out": [
           "inside"
          ],
-         "why": "ana appears twice but never at position 0, so the test is about where the match is and not how many there are."
+         "why": "ana appears twice but never at position 0, so where the first match is decides the answer."
         }
        ],
-       "fb": "in says whether the word is there and a slice from position 0 says whether it is right at the start - two separate tests.",
-       "hint": "pystring",
-       "teach": {
-        "say": "in cannot say where a word is, but a slice from position 0 as long as the word can be compared with the word itself.",
-        "code": [
-         "t = \"wet paint\"",
-         "w = \"wet\"",
-         "print(t[0:len(w)])",
-         "print(t[0:len(w)] == w)"
+       "opt": true,
+       "hint": {
+        "think": "One number from find() answers all three cases.",
+        "walk": [
+         "Get the position once and keep it in a variable.",
+         "-1 means missing.",
+         "0 means at the start.",
+         "Any other number means inside."
         ],
-        "out": [
-         "wet",
-         "True"
-        ]
+        "diagram": "pystring"
        }
       }
      ]
@@ -873,13 +1460,95 @@
      "tasks": [
       {
        "t": "code",
+       "marks": 1,
+       "q": "Press Run. Every character is stored as a number, and this program shows three of them.",
+       "brief": [
+        "Nothing is marked on this one.",
+        "Look at how far apart the codes for a and A are."
+       ],
+       "fb": "Small a is 97 and capital A is 65, so the gap between the two cases is always 32.",
+       "kind": "try",
+       "starter": "print(ord(\"a\"))\nprint(ord(\"A\"))\nprint(chr(98))\n",
+       "tests": [],
+       "teach": {
+        "say": "Every character is stored as a whole number called its code. ord() gives the code of a character, and chr() turns a code back into its character.",
+        "code": [
+         "print(ord(\"a\"))",
+         "print(ord(\"A\"))",
+         "print(chr(98))"
+        ],
+        "out": [
+         "97",
+         "65",
+         "b"
+        ]
+       },
+       "lines": [
+        "Display the code of the small letter a.",
+        "Display the code of the capital letter A.",
+        "Display the character whose code is 98."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "What will this program display?",
+       "brief": [
+        "Read every line before you choose."
+       ],
+       "fb": "b is one more than a, and adding 2 to the code of a steps along to c.",
+       "kind": "predict",
+       "code": [
+        "print(ord(\"b\") - ord(\"a\"))",
+        "print(chr(ord(\"a\") + 2))"
+       ],
+       "a": [
+        "1\nc",
+        "1\nb",
+        "2\nc"
+       ],
+       "teach": {
+        "say": "A code is a whole number, so it can be added to and taken away from. Letters next to each other in the alphabet have codes one apart."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "Change the program so it displays the letter before m instead of the letter after it.",
+       "brief": [
+        "Change only the arithmetic.",
+        "The letter m stays as it is.",
+        "Display exactly: l"
+       ],
+       "fb": "Stepping forwards adds to the code and stepping backwards takes away from it.",
+       "kind": "change",
+       "starter": "print(chr(ord(\"m\") + 1))\n",
+       "tests": [
+        {
+         "in": [],
+         "out": [
+          "l"
+         ],
+         "why": "n is still coming out, so 1 is still being added. Stepping backwards means taking 1 away instead."
+        }
+       ],
+       "hint": {
+        "think": "The letter before has a code one lower.",
+        "diagram": "pystring"
+       }
+      },
+      {
+       "t": "code",
        "marks": 2,
-       "q": "Ask the user for one character. Display [its code] and nothing else.",
+       "q": "Finish the program so it displays the code of the character the user types.",
        "brief": [
         "The user types in one character.",
-        "One line of output."
+        "Replace ____ with the name of the function you need.",
+        "Display one number."
        ],
-       "starter": "# Print the code of the character\n",
+       "fb": "ord() is the one that turns a character into its code.",
+       "kind": "complete",
+       "starter": "c = input()\nprint(____(c))\n",
        "tests": [
         {
          "in": [
@@ -888,7 +1557,7 @@
          "out": [
           "100"
          ],
-         "why": "Small d has code 100, which comes from ord() rather than from a table copied out by hand."
+         "why": "Small d has code 100, and the code comes from the function rather than from a table copied out."
         },
         {
          "in": [
@@ -897,7 +1566,7 @@
          "out": [
           "97"
          ],
-         "why": "Small a has code 97. A 65 here means the capital A was used instead of what was typed."
+         "why": "Small a has code 97. A 65 here means a capital A was used instead of what was typed."
         },
         {
          "in": [
@@ -918,29 +1587,135 @@
          "why": "The digit characters start at 48, so the character 0 is not the number 0."
         }
        ],
-       "fb": "ord() turns one character into its code: 48 to 57 are the digits, 65 to 90 the capitals and 97 to 122 the small letters.",
-       "hint": "pystring",
+       "hint": {
+        "think": "One of the two functions goes from a character to a number.",
+        "diagram": "pystring"
+       },
        "teach": {
-        "say": "ord() gives the code of a character. ord('a') is 97 and ord('A') is 65, so the two cases are 32 apart.",
+        "say": "ord() takes one character and hands back its code as a whole number. chr() goes the other way, from a code to a character.",
         "code": [
          "print(ord(\"m\"))",
-         "print(ord(\"M\"))"
+         "print(chr(109))"
         ],
         "out": [
          "109",
-         "77"
+         "m"
         ]
        }
       },
       {
        "t": "code",
-       "marks": 3,
-       "q": "Ask the user for one lower-case letter. Work out the next letter of the alphabet. Display [that letter] and nothing else.",
+       "marks": 2,
+       "q": "Ask the user for one small letter. Display the code of that letter. Then display the code of its capital letter on the next line.",
        "brief": [
-        "The user types in one lower-case letter.",
-        "After z the answer is a."
+        "The user types in one small letter.",
+        "Work the second code out from the first one, not with upper().",
+        "Two lines of output, both numbers."
        ],
-       "starter": "# The next letter, wrapping z round to a\n",
+       "fb": "Every capital's code is exactly 32 below its small letter's code.",
+       "starter": "# The code of the letter, then the code of its capital\n",
+       "tests": [
+        {
+         "in": [
+          "a"
+         ],
+         "out": [
+          "97",
+          "65"
+         ],
+         "why": "a is 97 and A is 65, so the second line is 32 less than the first."
+        },
+        {
+         "in": [
+          "m"
+         ],
+         "out": [
+          "109",
+          "77"
+         ],
+         "why": "The gap of 32 is the same for every letter of the alphabet."
+        },
+        {
+         "in": [
+          "z"
+         ],
+         "out": [
+          "122",
+          "90"
+         ],
+         "why": "A letter at the far end of the alphabet works the same way."
+        }
+       ],
+       "hint": {
+        "think": "A capital's code is 32 lower than its small letter's code.",
+        "syntax": "print(ord(c))",
+        "diagram": "pystring"
+       },
+       "forbid": [
+        [
+         ".upper(",
+         "This one is about the codes, so upper() is not allowed here - the two codes are always 32 apart."
+        ]
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "This program should display the character that comes after the one typed. Find the mistake and put it right.",
+       "brief": [
+        "Press Run first and look at what comes out.",
+        "The user types in one character.",
+        "Display one character, not a number."
+       ],
+       "fb": "ord() goes from a character to a code, and chr() has to bring it back again.",
+       "kind": "debug",
+       "starter": "c = input()\nprint(ord(c) + 1)\n",
+       "tests": [
+        {
+         "in": [
+          "a"
+         ],
+         "out": [
+          "b"
+         ],
+         "why": "98 came out instead of b, so the new code was never turned back into a character."
+        },
+        {
+         "in": [
+          "m"
+         ],
+         "out": [
+          "n"
+         ],
+         "why": "Add 1 to the code first, then hand the answer to chr()."
+        },
+        {
+         "in": [
+          "A"
+         ],
+         "out": [
+          "B"
+         ],
+         "why": "Capitals work the same way: their codes sit next to each other too."
+        }
+       ],
+       "hint": {
+        "think": "A number is coming out. Something has to turn a code back into a character.",
+        "syntax": "chr(code)",
+        "diagram": "pystring"
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for one small letter. Work out the next letter of the alphabet. Display that letter. After z the next letter is a.",
+       "brief": [
+        "The user types in one small letter.",
+        "After z the answer is a.",
+        "One line of output."
+       ],
+       "fb": "chr() and ord() step along the alphabet, but the end of it has to be handled on purpose.",
+       "starter": "# The next letter, with z wrapping round to a\n",
        "tests": [
         {
          "in": [
@@ -949,7 +1724,7 @@
          "out": [
           "e"
          ],
-         "why": "ord('d') is 100, so the next code is 101, which chr() turns back into e. Leaving chr() out prints the number 101 instead of a letter."
+         "why": "d is 100 and 101 is e, which chr() hands back. Leaving chr() out displays 101 instead."
         },
         {
          "in": [
@@ -958,7 +1733,7 @@
          "out": [
           "b"
          ],
-         "why": "a has code 97 and b has code 98. Taking 1 away instead of adding it would give the letter before."
+         "why": "a is 97 and b is 98, so the step forwards is one."
         },
         {
          "in": [
@@ -967,7 +1742,7 @@
          "out": [
           "a"
          ],
-         "why": "ord('z') is 122 and 123 is the { character, not a letter, so the wrap round to a has to be written by hand."
+         "why": "z is 122 and 123 is not a letter at all, so the wrap round to a has to be written yourself."
         },
         {
          "in": [
@@ -976,93 +1751,17 @@
          "out": [
           "z"
          ],
-         "why": "y is the last letter that needs no wrapping, so treating it as the special case as well would wrongly skip z."
+         "why": "y is the last letter that needs no wrapping, so treating it as special too would skip z."
         }
        ],
-       "fb": "ord() gives a code and chr() turns a code back into a character, but the end of the alphabet has to be handled on purpose.",
-       "hint": "pystring",
-       "teach": {
-        "say": "chr() turns a code back into a character, so chr(ord(c) + 1) is the next character along - but the alphabet does not wrap round on its own.",
-        "code": [
-         "print(chr(ord(\"m\") + 1))",
-         "print(chr(ord(\"z\") + 1))"
+       "opt": true,
+       "hint": {
+        "think": "The codes run out at z, so that one letter has to be dealt with on purpose.",
+        "start": [
+         "c = input()",
+         "if c == \"z\":"
         ],
-        "out": [
-         "n",
-         "{"
-        ]
-       }
-      },
-      {
-       "t": "code",
-       "marks": 4,
-       "q": "Ask the user for a line of text. Build a string of only its digits, in the order they appear. Display [that string]. Display none instead when the text has no digits.",
-       "brief": [
-        "The user types in one line of text, which may be empty.",
-        "The digit characters have codes 48 to 57.",
-        "Print exactly: none"
-       ],
-       "starter": "# Build a string of just the digits\n",
-       "tests": [
-        {
-         "in": [
-          "Lab7Room12"
-         ],
-         "out": [
-          "712"
-         ],
-         "why": "The digits keep the order they appear in. Printing each one as it is met gives three lines instead of one, so build the string up first."
-        },
-        {
-         "in": [
-          "hello"
-         ],
-         "out": [
-          "none"
-         ],
-         "why": "No digits at all, so the word none is printed. An empty line means the empty string was printed instead of being tested for."
-        },
-        {
-         "in": [
-          "2026"
-         ],
-         "out": [
-          "2026"
-         ],
-         "why": "Every character is a digit, so the whole line comes back in the same order."
-        },
-        {
-         "in": [
-          "a1"
-         ],
-         "out": [
-          "1"
-         ],
-         "why": "One digit among the letters. Codes 48 to 57 are the digits and 97 to 122 the small letters."
-        },
-        {
-         "in": [
-          ""
-         ],
-         "out": [
-          "none"
-         ],
-         "why": "An empty line has nothing in it, so the loop runs zero times and the string is still empty."
-        }
-       ],
-       "fb": "Build the string up inside the loop and print it once afterwards, testing for the empty string before you do.",
-       "hint": "pystring",
-       "teach": {
-        "say": "Adding to a string makes a longer one: keep = keep + ch. Build it up inside the loop and print it once at the end.",
-        "code": [
-         "keep = \"\"",
-         "for ch in \"a1b2\":",
-         "    keep = keep + ch + \"-\"",
-         "print(keep)"
-        ],
-        "out": [
-         "a-1-b-2-"
-        ]
+        "diagram": "pystring"
        }
       }
      ]
@@ -1077,13 +1776,140 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 3,
-       "q": "Ask the user for one word. Build it backwards one character at a time, not with a slice or with reversed(). Display [the reversed word] and nothing else.",
+       "marks": 1,
+       "q": "Press Run. The loop takes the word apart one character at a time.",
        "brief": [
+        "Nothing is marked on this one.",
+        "The loop runs once for each character in the string."
+       ],
+       "fb": "for ch in text: is the easiest way to look at every character of a string in turn.",
+       "kind": "try",
+       "starter": "for ch in \"cat\":\n    print(ch)\n",
+       "tests": [],
+       "teach": {
+        "say": "A for loop can run through a string. It hands you one character at a time, starting at the front, and no positions have to be worked out at all.",
+        "code": [
+         "for ch in \"cat\":",
+         "    print(ch)"
+        ],
+        "out": [
+         "c",
+         "a",
+         "t"
+        ]
+       },
+       "lines": [
+        "Take each character of cat in turn and call it ch.",
+        "Display the character the loop is holding this time round."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "What will this program display?",
+       "brief": [
+        "Read every line before you choose."
+       ],
+       "fb": "Each time round the loop the old string is used to make the new one, so it grows by one character and one dot.",
+       "kind": "predict",
+       "code": [
+        "out = \"\"",
+        "for ch in \"abc\":",
+        "    out = out + ch + \".\"",
+        "print(out)"
+       ],
+       "a": [
+        "a.b.c.",
+        "c.",
+        "abc"
+       ],
+       "teach": {
+        "say": "A string can be built up a piece at a time. The variable starts as an empty string, and each time round the loop a longer string is put back into it."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Finish the program so it displays the word with a dash after every character.",
+       "brief": [
+        "The user types in one word.",
+        "Replace ____ with the new value for out.",
+        "One line of output, with a dash after the last character too."
+       ],
+       "fb": "out = out + ch + \"-\" uses the old string to make the new one, which is how a string grows.",
+       "kind": "complete",
+       "starter": "w = input()\nout = \"\"\nfor ch in w:\n    out = ____\nprint(out)\n",
+       "tests": [
+        {
+         "in": [
+          "cat"
+         ],
+         "out": [
+          "c-a-t-"
+         ],
+         "why": "Three characters give three dashes, one after each. Replace the ____ so out grows every time round the loop."
+        },
+        {
+         "in": [
+          "x"
+         ],
+         "out": [
+          "x-"
+         ],
+         "why": "One character still gets its dash, because the loop runs once."
+        },
+        {
+         "in": [
+          "ab"
+         ],
+         "out": [
+          "a-b-"
+         ],
+         "why": "The dash goes after the character, so the line never starts with one."
+        }
+       ],
+       "hint": {
+        "think": "Join the new character and a dash onto the end of what has been built so far.",
+        "syntax": "out = out + ... + \"-\"",
+        "diagram": "pystring"
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "What will this program display?",
+       "brief": [
+        "Read every line before you choose."
+       ],
+       "fb": "ch + out puts each new character in front of everything built so far, so the string comes out backwards.",
+       "kind": "predict",
+       "code": [
+        "out = \"\"",
+        "for ch in \"abc\":",
+        "    out = ch + out",
+        "print(out)"
+       ],
+       "a": [
+        "cba",
+        "abc",
+        "c"
+       ],
+       "teach": {
+        "say": "Where the new character is joined on matters. Joining it to the end keeps the order. Joining it in front turns the string round."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "This program should display the word backwards. Find the mistake and put it right.",
+       "brief": [
+        "Press Run first and look at what comes out.",
         "The user types in one word.",
         "Build the reversed word yourself, one character at a time."
        ],
-       "starter": "# Build the word backwards, one character at a time\n",
+       "fb": "rev + ch copies the word. ch + rev builds it backwards.",
+       "kind": "debug",
+       "starter": "w = input()\nrev = \"\"\nfor ch in w:\n    rev = rev + ch\nprint(rev)\n",
        "tests": [
         {
          "in": [
@@ -1092,25 +1918,16 @@
          "out": [
           "maerts"
          ],
-         "why": "Each new character goes in front of what is there so far: rev = ch + rev. Writing rev = rev + ch copies the word unchanged."
+         "why": "The word came out unchanged, so each character was added to the end instead of the front."
         },
         {
          "in": [
-          "q"
+          "pond"
          ],
          "out": [
-          "q"
+          "dnop"
          ],
-         "why": "A single character is its own reverse. A crash here means positions were used that assumed more than one character."
-        },
-        {
-         "in": [
-          "noon"
-         ],
-         "out": [
-          "noon"
-         ],
-         "why": "A word that reads the same both ways comes back unchanged, so this test alone cannot tell a working program from a copy."
+         "why": "Every character moves, so the first one typed ends up last."
         },
         {
          "in": [
@@ -1119,43 +1936,125 @@
          "out": [
           "skayak"
          ],
-         "why": "The s moves from the end to the front, which is what shows the characters were really turned round."
+         "why": "The s moves from the end to the front, which is what shows the word was really turned round."
         }
        ],
-       "fb": "Putting each character in front of what has been built so far is what reverses a string.",
-       "hint": "pystring",
-       "teach": {
-        "say": "Adding a character in front of a string is not the same as adding it on the end, and only one of those builds a string backwards.",
-        "code": [
-         "s = \"ab\"",
-         "print(\"x\" + s)",
-         "print(s + \"x\")"
+       "hint": {
+        "think": "Which end does each new character need to go on?",
+        "walk": [
+         "The loop is right and the output line is right.",
+         "Only the line inside the loop builds the string the wrong way round.",
+         "Swap the two things being joined there."
         ],
-        "out": [
-         "xab",
-         "abx"
-        ]
+        "diagram": "pystring"
        },
        "forbid": [
         [
          "[::-1]",
-         "The question asks you to build the reversed word yourself, one character at a time, not with a reversing slice."
+         "This one asks you to build the reversed word yourself, one character at a time, not with a reversing slice."
         ],
         [
          "reversed(",
-         "The question asks you to build the reversed word yourself, one character at a time, not with reversed()."
+         "This one asks you to build the reversed word yourself, one character at a time, not with reversed()."
         ]
        ]
       },
       {
        "t": "code",
-       "marks": 4,
+       "marks": 3,
+       "q": "Ask the user for a line of text. Count how many of its characters are capital letters. Display that count.",
+       "brief": [
+        "The user types in one line of text, which may be empty.",
+        "Digits and spaces are not capital letters.",
+        "Display one number."
+       ],
+       "fb": "One counter, one loop, one test inside it. The count is displayed once at the end, not inside the loop.",
+       "starter": "# Count the capital letters\n",
+       "tests": [
+        {
+         "in": [
+          "Anna Likes Figs"
+         ],
+         "out": [
+          "3"
+         ],
+         "why": "A, L and F are capitals and the rest are not. A 15 here means every character was counted."
+        },
+        {
+         "in": [
+          "all small"
+         ],
+         "out": [
+          "0"
+         ],
+         "why": "No capitals at all, so the counter is set to 0 before the loop and still displayed afterwards."
+        },
+        {
+         "in": [
+          "X"
+         ],
+         "out": [
+          "1"
+         ],
+         "why": "One capital letter on its own."
+        },
+        {
+         "in": [
+          "Mix3D Case"
+         ],
+         "out": [
+          "3"
+         ],
+         "why": "M, D and C are capitals. The digit and the space are not letters, so they must not be counted."
+        },
+        {
+         "in": [
+          ""
+         ],
+         "out": [
+          "0"
+         ],
+         "why": "An empty line has nothing to count: the loop runs no times at all and the counter is still 0."
+        }
+       ],
+       "hint": {
+        "think": "Start a counter at 0 before the loop and add 1 each time a capital is met.",
+        "syntax": "count = count + 1",
+        "start": [
+         "s = input()",
+         "count = 0",
+         "for ch in s:"
+        ],
+        "diagram": "pystring"
+       },
+       "teach": {
+        "say": "A character is a capital letter when it is different from its own small-letter version. A digit or a space is the same in either case, so this test leaves them out on its own.",
+        "code": [
+         "for ch in \"Ok!\":",
+         "    print(ch, ch != ch.lower())"
+        ],
+        "out": [
+         "O True",
+         "k False",
+         "! False"
+        ]
+       },
+       "lines": [
+        "Take each character of Ok! in turn.",
+        "Display the character, then whether it differs from its own small-letter version."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 3,
        "q": "Ask the user for one word. Display palindrome when it reads the same both ways once capitals are ignored. Display not a palindrome when it does not.",
        "brief": [
         "The user types in one word.",
         "Ignore capitals when comparing.",
-        "Print exactly: palindrome or not a palindrome"
+        "Display exactly: palindrome or not a palindrome",
+        "Build the reversed word yourself, one character at a time."
        ],
+       "fb": "Build the reverse, put both into the same case, then compare them once.",
        "starter": "# Does the word read the same both ways?\n",
        "tests": [
         {
@@ -1165,7 +2064,7 @@
          "out": [
           "not a palindrome"
          ],
-         "why": "stream backwards is maerts, which is a different word, so the comparison has to be made rather than guessed."
+         "why": "stream backwards is maerts, a different word, so the comparison has to be made rather than guessed."
         },
         {
          "in": [
@@ -1174,7 +2073,7 @@
          "out": [
           "palindrome"
          ],
-         "why": "An even number of characters means there is no middle letter, so a loop that stopped at the middle gets this wrong."
+         "why": "An even number of characters means there is no middle letter to stop at."
         },
         {
          "in": [
@@ -1183,7 +2082,7 @@
          "out": [
           "palindrome"
          ],
-         "why": "Level reads the same both ways once capitals are ignored, so both sides of the comparison must be put into the same case."
+         "why": "Level reads the same both ways once capitals are ignored, so both sides go into the same case."
         },
         {
          "in": [
@@ -1192,7 +2091,7 @@
          "out": [
           "not a palindrome"
          ],
-         "why": "kayak reads the same both ways but kayaks does not, because of the extra s at one end only. This catches a comparison that stopped before the last character."
+         "why": "kayak reads the same both ways but kayaks does not, because of the extra s at one end only."
         },
         {
          "in": [
@@ -1204,107 +2103,26 @@
          "why": "A single character is its own reverse, so it always reads the same both ways."
         }
        ],
-       "fb": "A word is a palindrome when it matches its own reverse, with both sides compared in the same case.",
-       "hint": "pystring",
-       "teach": {
-        "say": "A word reads the same both ways when it matches its own reverse, so build the reverse and then compare the two in the same case.",
-        "code": [
-         "w = \"Tot\"",
+       "opt": true,
+       "hint": {
+        "think": "A palindrome matches its own reverse, so build the reverse first and then compare the two in the same case.",
+        "start": [
+         "w = input()",
          "rev = \"\"",
-         "for ch in w:",
-         "    rev = ch + rev",
-         "print(rev)",
-         "print(w.lower() == rev.lower())"
+         "for ch in w:"
         ],
-        "out": [
-         "toT",
-         "True"
-        ]
-       }
-      },
-      {
-       "t": "code",
-       "marks": 4,
-       "q": "Ask the user for a line of text. Build a string of only its letters, in the order they appear. Build a string of only its digits, in the order they appear. Display [the letters], or none when there are no letters. Then display [the digits] on the next line, or none when there are no digits.",
-       "brief": [
-        "The user types in one line of text, which may be empty.",
-        "Letters have codes 65 to 90 and 97 to 122.",
-        "Digits have codes 48 to 57.",
-        "Print exactly: none"
-       ],
-       "starter": "# Build one string of letters and one of digits\n",
-       "tests": [
-        {
-         "in": [
-          "Lab7Room12"
-         ],
-         "out": [
-          "LabRoom",
-          "712"
-         ],
-         "why": "The letters keep their order and so do the digits. Printing each character as it is met gives ten lines instead of two."
-        },
-        {
-         "in": [
-          "2026"
-         ],
-         "out": [
-          "none",
-          "2026"
-         ],
-         "why": "No letters at all, so the first line is the word none. An empty first line means the empty string was printed instead of being tested for."
-        },
-        {
-         "in": [
-          "hello"
-         ],
-         "out": [
-          "hello",
-          "none"
-         ],
-         "why": "No digits this time, so both strings have to be set to empty before the loop and both tested afterwards."
-        },
-        {
-         "in": [
-          "a1"
-         ],
-         "out": [
-          "a",
-          "1"
-         ],
-         "why": "One of each. Codes 97 to 122 are the small letters and 48 to 57 the digits."
-        },
-        {
-         "in": [
-          ""
-         ],
-         "out": [
-          "none",
-          "none"
-         ],
-         "why": "Nothing to sort at all, so both lines are none and the loop runs zero times."
-        }
-       ],
-       "fb": "One pass can build two strings at once, as long as each has its own variable and each is tested for being empty at the end.",
-       "hint": "pystring",
-       "teach": {
-        "say": "Two strings can be built in the same loop, each with its own variable set to an empty string before it starts.",
-        "code": [
-         "a = \"\"",
-         "b = \"\"",
-         "for ch in \"x9\":",
-         "    if ch == \"9\":",
-         "        b = b + ch",
-         "    else:",
-         "        a = a + ch",
-         "print(a)",
-         "print(b)"
+        "diagram": "pystring"
+       },
+       "forbid": [
+        [
+         "[::-1]",
+         "This one asks you to build the reversed word yourself, one character at a time, not with a reversing slice."
         ],
-        "out": [
-         "x",
-         "9"
+        [
+         "reversed(",
+         "This one asks you to build the reversed word yourself, one character at a time, not with reversed()."
         ]
-       }
+       ]
       }
      ]
     },

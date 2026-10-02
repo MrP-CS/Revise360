@@ -19,13 +19,183 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 3,
-       "q": "Ask the user for a line of whole numbers separated by single spaces. Then ask for the number to find. Step through the list position by position, without .index(). Display [the position it is at], counting from 0. Display not found instead when the number is not in the list.",
+       "marks": 1,
+       "q": "Press Run. Type the line 40 15 9 when the program waits.",
        "brief": [
-        "Print nothing but that one line.",
-        "Print exactly: not found"
+        "Nothing is marked on this one.",
+        "split() cuts the typed line wherever there is a space.",
+        "Positions count from 0, so the first number is at position 0."
        ],
-       "starter": "# where the value sits, not just whether it is there\n",
+       "fb": "Every activity in this lesson starts from a list read in like this. A position is a number you can store, compare and display.",
+       "kind": "try",
+       "starter": "nums = []\nfor part in input(\"Numbers? \").split():\n    nums.append(int(part))\nfor i in range(len(nums)):\n    print(i, nums[i])\n",
+       "tests": [],
+       "in": [
+        "40 15 9"
+       ],
+       "teach": {
+        "say": "A line of numbers typed in arrives as one piece of text. split() cuts it into a list of parts, and int() turns each part into a whole number. Counting the positions with range(len(nums)) lets a program say where a value sits, not only that it is there.",
+        "code": [
+         "nums = []",
+         "for part in input(\"Numbers? \").split():",
+         "    nums.append(int(part))",
+         "for i in range(len(nums)):",
+         "    print(i, nums[i])"
+        ],
+        "out": [
+         "0 40",
+         "1 15",
+         "2 9"
+        ]
+       },
+       "lines": [
+        "Make an empty list for the numbers to go into.",
+        "Cut the typed line at the spaces and take each part in turn.",
+        "Turn that part into a whole number and add it onto the list.",
+        "Count through the positions of the list, 0 upwards.",
+        "Show the position and the number that is sitting at it."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "What will this program display?",
+       "brief": [
+        "Read every line before you choose."
+       ],
+       "fb": "The loop does not stop when it matches, so both positions are displayed. A search that wants only the first match has to be told to stop.",
+       "kind": "predict",
+       "code": [
+        "nums = [7, 4, 9, 4]",
+        "for i in range(len(nums)):",
+        "    if nums[i] == 4:",
+        "        print(i)"
+       ],
+       "a": [
+        "1\n3",
+        "1",
+        "3"
+       ],
+       "teach": {
+        "say": "A linear search walks the list from the front, one position at a time, and compares the item at that position with the value it is looking for."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "What will this program display?",
+       "brief": [
+        "Read every line before you choose."
+       ],
+       "fb": "83 was found at position 2, but the loop still compared all four items. That is why a linear search is counted by how long the list is, not by where the value sits.",
+       "kind": "predict",
+       "code": [
+        "nums = [45, 12, 83, 27]",
+        "checks = 0",
+        "for i in range(len(nums)):",
+        "    checks = checks + 1",
+        "    if nums[i] == 83:",
+        "        print(\"found at \" + str(i))",
+        "print(\"checks: \" + str(checks))"
+       ],
+       "a": [
+        "found at 2\nchecks: 4",
+        "found at 2\nchecks: 3",
+        "found at 2\nchecks: 2"
+       ],
+       "teach": {
+        "say": "Counting the comparisons shows how much work a search does. A for loop carries on to the end of the list even after it has found what it wanted."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Finish the program so it displays the position the number is at.",
+       "brief": [
+        "The five numbers are written into the program, and the user types in the one to find.",
+        "Replace ____ with the comparison that asks whether this item is the one wanted.",
+        "Positions count from 0, so the first item is at position 0.",
+        "Display exactly: not found"
+       ],
+       "fb": "Remember the position inside the loop, and decide what to display only after the loop has finished.",
+       "kind": "complete",
+       "starter": "nums = [52, 18, 73, 41, 9]\ntarget = int(input())\nfound = -1\nfor i in range(len(nums)):\n    if ____:\n        found = i\nif found == -1:\n    print(\"not found\")\nelse:\n    print(found)\n",
+       "tests": [
+        {
+         "in": [
+          "73"
+         ],
+         "out": [
+          "2"
+         ],
+         "why": "73 is the third number, and counting from 0 that is position 2 - not 3."
+        },
+        {
+         "in": [
+          "52"
+         ],
+         "out": [
+          "0"
+         ],
+         "why": "The very first item is at position 0, so a 1 here means the counting started in the wrong place."
+        },
+        {
+         "in": [
+          "9"
+         ],
+         "out": [
+          "4"
+         ],
+         "why": "The last item has to be compared as well, so the loop must reach the end of the list."
+        },
+        {
+         "in": [
+          "60"
+         ],
+         "out": [
+          "not found"
+         ],
+         "why": "Nothing matches, so found is still -1 when the loop ends and the program displays: not found"
+        }
+       ],
+       "hint": {
+        "think": "The item at the position the loop has reached is nums[i], and it has to be compared with the number wanted.",
+        "syntax": "nums[i] == target",
+        "diagram": "pylist"
+       },
+       "teach": {
+        "say": "A search needs somewhere to remember the answer. found starts at -1, which means nothing has matched yet, and the program only decides what to display once the loop has finished. Python has a .index() that finds a position for you in one go. It is switched off in this lesson, because the searching is what you are learning.",
+        "code": [
+         "nums = [8, 3, 5]",
+         "found = -1",
+         "for i in range(len(nums)):",
+         "    if nums[i] == 3:",
+         "        found = i",
+         "print(found)"
+        ],
+        "out": [
+         "1"
+        ]
+       },
+       "forbid": [
+        [
+         ".index(",
+         "The activity asks you to write the search yourself, so .index() is not allowed - it does the searching for you."
+        ]
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for the number to find. Search the list from the front, one position at a time. Display the position that number is at, counting from 0. Display not found instead when it is not in the list.",
+       "brief": [
+        "The line of numbers the user types is already read into a list called nums for you.",
+        "The user types in one whole number.",
+        "One line of output and nothing else.",
+        "Display exactly: not found"
+       ],
+       "fb": "A linear search needs no order at all: it simply looks at every position in turn until it finds what it wants.",
+       "starter": "nums = []\nfor part in input(\"Numbers? \").split():\n    nums.append(int(part))\n# then the number to find, and where it sits\n",
        "tests": [
         {
          "in": [
@@ -35,7 +205,7 @@
          "out": [
           "2"
          ],
-         "why": "7640 is the third number, and counting from 0 that is position 2 - not 3."
+         "why": "7640 is the third number, which is position 2 counting from 0."
         },
         {
          "in": [
@@ -45,7 +215,7 @@
          "out": [
           "0"
          ],
-         "why": "The very first item is at position 0. If you printed 1 you started counting from the wrong place."
+         "why": "The first item is at position 0. A 1 here means the counting started from the wrong place."
         },
         {
          "in": [
@@ -55,7 +225,7 @@
          "out": [
           "5"
          ],
-         "why": "The last item has to be checked as well. A loop that stops one short will miss it."
+         "why": "The last item has to be checked too, so a loop that stops one short will miss it."
         },
         {
          "in": [
@@ -65,7 +235,7 @@
          "out": [
           "not found"
          ],
-         "why": "Nothing matches, so the loop must finish and then print: not found"
+         "why": "Nothing matches, so the loop has to finish before the program can display: not found"
         },
         {
          "in": [
@@ -75,40 +245,100 @@
          "out": [
           "2"
          ],
-         "why": "A different line of numbers, so a position typed in by hand will fail here - and 7640 has moved."
+         "why": "A different line of numbers, so a position written into the program by hand fails here."
         }
        ],
-       "fb": "Walk the list by position, remember the position when it matches, and decide what to print only after the loop ends.",
-       "hint": "searches",
-       "teach": {
-        "say": "A linear search walks the list by position, so it can report where a value is, not just whether it is there.",
-        "code": [
-         "items = [40, 15, 9]",
-         "for i in range(len(items)):",
-         "    print(i, items[i])"
+       "hint": {
+        "think": "Walk the positions of the list, remember the position that matches, and decide what to display afterwards.",
+        "syntax": "for i in range(len(nums)):",
+        "start": [
+         "target = int(input())",
+         "found = -1",
+         "# then the loop over the positions"
         ],
-        "out": [
-         "0 40",
-         "1 15",
-         "2 9"
-        ]
+        "diagram": "pylist"
        },
        "forbid": [
         [
          ".index(",
-         "The point of this one is the search loop, so .index() is not allowed - it does the searching for you."
+         "The activity asks you to write the search yourself, so .index() is not allowed - it does the searching for you."
         ]
        ]
       },
       {
        "t": "code",
-       "marks": 3,
-       "q": "Ask the user for a line of whole numbers separated by single spaces. Then ask for the number to find. Step through the whole list yourself, without .count(). Count how many times that number appears. Display [that count] and nothing else.",
+       "marks": 2,
+       "q": "This program should display the position of the number typed in, or not found when it is not there. Find the mistake and put it right.",
        "brief": [
-        "A number that is not in the list at all appears 0 times.",
-        "One line of output, holding the count and nothing else."
+        "Press Run first and look at how many lines come out.",
+        "The five numbers are written into the program, and the user types in the one to find.",
+        "One line of output and nothing else.",
+        "Display exactly: not found"
        ],
-       "starter": "# count the matches, do not stop at the first\n",
+       "fb": "A decision that depends on the whole list cannot be taken inside the loop that is still working through it.",
+       "kind": "debug",
+       "starter": "nums = [52, 18, 73, 41, 9]\ntarget = int(input())\nfor i in range(len(nums)):\n    if nums[i] == target:\n        print(i)\n    else:\n        print(\"not found\")\n",
+       "tests": [
+        {
+         "in": [
+          "73"
+         ],
+         "out": [
+          "2"
+         ],
+         "why": "Five lines came out instead of one. The else runs on every item that does not match."
+        },
+        {
+         "in": [
+          "52"
+         ],
+         "out": [
+          "0"
+         ],
+         "why": "Only the matching position belongs on the screen, and only once."
+        },
+        {
+         "in": [
+          "9"
+         ],
+         "out": [
+          "4"
+         ],
+         "why": "The last item matches, so the answer is 4 and nothing else."
+        },
+        {
+         "in": [
+          "60"
+         ],
+         "out": [
+          "not found"
+         ],
+         "why": "not found belongs after the loop, once, when nothing has matched at all."
+        }
+       ],
+       "hint": {
+        "think": "The program cannot know a number is missing until the whole loop has finished.",
+        "syntax": "found = -1",
+        "walk": [
+         "Remember the matching position inside the loop instead of displaying it.",
+         "Take the decision about not found out of the loop.",
+         "Display one line after the loop has ended."
+        ],
+        "diagram": "pylist"
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for the number to find. Count how many times that number appears in the list. Display the count and nothing else.",
+       "brief": [
+        "The line of numbers the user types is already read into a list called nums for you.",
+        "The user types in one whole number.",
+        "A number that is not in the list at all appears 0 times.",
+        "Count with a loop of your own, not with .count()."
+       ],
+       "fb": "Counting changes a search in one way only: it must run all the way to the end instead of stopping at the first match.",
+       "starter": "nums = []\nfor part in input(\"Numbers? \").split():\n    nums.append(int(part))\n# then the number to find, and how many times it appears\n",
        "tests": [
         {
          "in": [
@@ -118,7 +348,7 @@
          "out": [
           "3"
          ],
-         "why": "12 appears three times. A count of 1 means the loop stopped at the first match instead of looking at the rest."
+         "why": "12 appears three times. A 1 means the loop left as soon as it found the first one."
         },
         {
          "in": [
@@ -128,7 +358,7 @@
          "out": [
           "1"
          ],
-         "why": "One match only. The counter has to go up inside the if, not on every turn of the loop."
+         "why": "One match only, so the counter goes up inside the if and not on every turn of the loop."
         },
         {
          "in": [
@@ -138,7 +368,7 @@
          "out": [
           "0"
          ],
-         "why": "Nothing matches, so the count stays at 0 - and that 0 still has to be printed."
+         "why": "Nothing matches, so the count stays at 0 - and that 0 still has to be displayed."
         },
         {
          "in": [
@@ -148,7 +378,7 @@
          "out": [
           "4"
          ],
-         "why": "Every item matches, so the count is the length of the list. A 1 here means the loop left after the first match."
+         "why": "Every item matches, so the count is the length of the list."
         },
         {
          "in": [
@@ -158,91 +388,26 @@
          "out": [
           "1"
          ],
-         "why": "The last item matches, so a loop that stops one position short of the end finds nothing."
+         "why": "The last item matches, so a loop stopping one position short would find nothing."
         }
        ],
-       "fb": "A search that counts cannot stop early: the loop has to run all the way to the end, with the counter going up each time the if is true.",
-       "hint": "searches",
+       "opt": true,
+       "hint": {
+        "think": "A search that counts cannot stop at the first match.",
+        "syntax": "count = count + 1",
+        "start": [
+         "count = 0",
+         "# then a loop over the list with an if inside it"
+        ],
+        "diagram": "pylist"
+       },
+       "teach": {
+        "say": "Python has a shortcut for this. nums.count(4) hands back how many times 4 appears. It does the whole loop for you, in one go. This activity is about writing that loop yourself, so the shortcut is switched off."
+       },
        "forbid": [
         [
          ".count(",
          "The point of this one is the loop, so .count() is not allowed - it does the counting for you."
-        ]
-       ]
-      },
-      {
-       "t": "code",
-       "marks": 4,
-       "q": "Ask the user for a line of words. Then ask for a line of whole numbers in the same order. Then ask for one word to find. Search the words yourself, without .index(). Display [the number at the same position]. Display no match instead when the word is not there.",
-       "brief": [
-        "Both lines are separated by single spaces.",
-        "One line only is printed.",
-        "Print exactly: no match"
-       ],
-       "starter": "# one word in, one number out\n",
-       "tests": [
-        {
-         "in": [
-          "copper slate moss ridge flint",
-          "37 12 58 41 25",
-          "moss"
-         ],
-         "out": [
-          "58"
-         ],
-         "why": "moss is at position 2, so the answer comes from position 2 of the numbers - 58."
-        },
-        {
-         "in": [
-          "copper slate moss ridge flint",
-          "37 12 58 41 25",
-          "copper"
-         ],
-         "out": [
-          "37"
-         ],
-         "why": "The first word lines up with the first number. Printing the word back instead of the number is the usual slip here."
-        },
-        {
-         "in": [
-          "copper slate moss ridge flint",
-          "37 12 58 41 25",
-          "flint"
-         ],
-         "out": [
-          "25"
-         ],
-         "why": "The last pair has to work too, so the loop must reach the end of the list."
-        },
-        {
-         "in": [
-          "copper slate moss ridge flint",
-          "37 12 58 41 25",
-          "willow"
-         ],
-         "out": [
-          "no match"
-         ],
-         "why": "No match anywhere, so print: no match - do not print a number left over from the loop."
-        },
-        {
-         "in": [
-          "ember glass lantern",
-          "9 4 7",
-          "glass"
-         ],
-         "out": [
-          "4"
-         ],
-         "why": "Different lists entirely, so both have to be read in rather than written into the program."
-        }
-       ],
-       "fb": "The position is the link between the two lists: once you know where the word is, the same index gives you the number.",
-       "hint": "searches",
-       "forbid": [
-        [
-         ".index(",
-         "The point of this one is the search loop, so .index() is not allowed - it does the searching for you."
         ]
        ]
       }
@@ -258,13 +423,156 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 4,
-       "q": "Ask the user for a line of whole numbers already in order and separated by single spaces. Then ask for the number to find. Find it with a binary search, without .index(). Display [its position], counting from 0. Display not found instead when the number is not in the list.",
+       "marks": 1,
+       "q": "Press Run. The program works out the middle of a list that is already in order.",
        "brief": [
-        "Print nothing but that one line.",
-        "Print exactly: not found"
+        "Nothing is marked on this one.",
+        "The numbers are written into the program, in order, smallest first.",
+        "// divides and throws the fraction away, so the middle is always a whole position."
        ],
-       "starter": "# a binary search over the numbers read in\n",
+       "fb": "Two markers and a middle. Everything a binary search does is move one of those two markers.",
+       "kind": "try",
+       "starter": "nums = [4, 9, 15, 22, 31, 40, 52]\nlow = 0\nhigh = len(nums) - 1\nmid = (low + high) // 2\nprint(low, high, mid)\nprint(nums[mid])\n",
+       "tests": [],
+       "teach": {
+        "say": "A binary search only works on a list already in order. It keeps two markers: low at the front and high at the back. The middle position between them is (low + high) // 2, and the item sitting there is the first one compared.",
+        "code": [
+         "nums = [4, 9, 15, 22, 31, 40, 52]",
+         "low = 0",
+         "high = len(nums) - 1",
+         "mid = (low + high) // 2",
+         "print(low, high, mid)",
+         "print(nums[mid])"
+        ],
+        "out": [
+         "0 6 3",
+         "22"
+        ]
+       },
+       "lines": [
+        "Seven numbers, already in order.",
+        "low starts at the first position.",
+        "high starts at the last position, which is one less than the length.",
+        "The middle position is the two markers added together and halved.",
+        "Show the three markers.",
+        "Show the item sitting at the middle."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "The program is looking for 9. What will it display?",
+       "brief": [
+        "Read every line before you choose."
+       ],
+       "fb": "The middle was 22, which is bigger than 9, so the search keeps only positions 0 to 2. Half the list has gone in one comparison.",
+       "kind": "predict",
+       "code": [
+        "nums = [4, 9, 15, 22, 31, 40, 52]",
+        "low = 0",
+        "high = 6",
+        "mid = (low + high) // 2",
+        "if 9 < nums[mid]:",
+        "    high = mid - 1",
+        "else:",
+        "    low = mid + 1",
+        "print(low, high)"
+       ],
+       "a": [
+        "0 2",
+        "0 3",
+        "4 6"
+       ],
+       "teach": {
+        "say": "When the value wanted is smaller than the middle item, every item from the middle onwards can be thrown away. high moves to mid - 1 so that the middle itself is never looked at again."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "The program displays every middle it looks at. What will it display?",
+       "brief": [
+        "Read every line before you choose.",
+        "The program is looking for 9, which is at position 1.",
+        "found stays at -1 while nothing has matched."
+       ],
+       "fb": "Two middles only: position 3, then position 1. A binary search jumps rather than stepping, which is why it reaches the answer so quickly.",
+       "kind": "predict",
+       "code": [
+        "nums = [4, 9, 15, 22, 31, 40, 52]",
+        "low = 0",
+        "high = 6",
+        "found = -1",
+        "while low <= high and found == -1:",
+        "    mid = (low + high) // 2",
+        "    print(mid)",
+        "    if nums[mid] == 9:",
+        "        found = mid",
+        "    elif nums[mid] > 9:",
+        "        high = mid - 1",
+        "    else:",
+        "        low = mid + 1"
+       ],
+       "a": [
+        "3\n1",
+        "3\n2\n1",
+        "0\n1\n2"
+       ],
+       "teach": {
+        "say": "Each turn of the loop works out a new middle between the two markers. Displaying that middle shows the path the search took through the list."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "The program is looking for 20, which is not in the list. What will it display?",
+       "brief": [
+        "Read every line before you choose.",
+        "found stays at -1 while nothing has matched."
+       ],
+       "fb": "Three middles were compared before low passed high. Seven items need three comparisons at most, however the search ends.",
+       "kind": "predict",
+       "code": [
+        "nums = [4, 9, 15, 22, 31, 40, 52]",
+        "target = 20",
+        "low = 0",
+        "high = 6",
+        "checks = 0",
+        "found = -1",
+        "while low <= high and found == -1:",
+        "    mid = (low + high) // 2",
+        "    checks = checks + 1",
+        "    if nums[mid] == target:",
+        "        found = mid",
+        "    elif nums[mid] > target:",
+        "        high = mid - 1",
+        "    else:",
+        "        low = mid + 1",
+        "print(found)",
+        "print(checks)"
+       ],
+       "a": [
+        "-1\n3",
+        "-1\n4",
+        "-1\n7"
+       ],
+       "teach": {
+        "say": "The loop runs while low is still less than or equal to high. When the two markers cross there is no list left to look in, so the search has to give up."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Finish the binary search so it displays the position the number is at.",
+       "brief": [
+        "The line the user types is already read into nums for you, and it is already in order.",
+        "The user types in one whole number, which is the number to find.",
+        "Replace ____ with one instruction that moves one of the two markers.",
+        "Display exactly: not found"
+       ],
+       "fb": "mid + 1 and mid - 1 matter: moving a marker to mid itself leaves the same middle to be compared again for ever.",
+       "kind": "complete",
+       "starter": "nums = []\nfor part in input(\"Numbers? \").split():\n    nums.append(int(part))\ntarget = int(input())\nlow = 0\nhigh = len(nums) - 1\nfound = -1\nwhile low <= high and found == -1:\n    mid = (low + high) // 2\n    if nums[mid] == target:\n        found = mid\n    elif nums[mid] > target:\n        high = mid - 1\n    else:\n        ____\nif found == -1:\n    print(\"not found\")\nelse:\n    print(found)\n",
        "tests": [
         {
          "in": [
@@ -274,7 +582,7 @@
          "out": [
           "4"
          ],
-         "why": "251 sits at position 4. With ten items the first middle is position 4, so this one is found straight away."
+         "why": "With ten items the first middle is position 4, which is 251, so this one is found straight away."
         },
         {
          "in": [
@@ -284,7 +592,7 @@
          "out": [
           "0"
          ],
-         "why": "The smallest value is at position 0. Getting here needs high to keep moving down to mid - 1."
+         "why": "The smallest value is at position 0, and getting there needs high to keep moving down."
         },
         {
          "in": [
@@ -294,7 +602,7 @@
          "out": [
           "9"
          ],
-         "why": "The largest value is at the very end. If low never reaches it, you are setting low = mid instead of mid + 1."
+         "why": "The largest value is at the far end. Moving low to mid rather than mid + 1 never reaches it."
         },
         {
          "in": [
@@ -304,17 +612,7 @@
          "out": [
           "not found"
          ],
-         "why": "300 falls between two values that are there. The loop must end when low passes high and then print: not found"
-        },
-        {
-         "in": [
-          "102 118 139 204 251 288 310 377 401 460",
-          "99"
-         ],
-         "out": [
-          "not found"
-         ],
-         "why": "Smaller than everything in the list, so the search runs out of list below position 0."
+         "why": "300 falls between two numbers that are there, so the markers cross and the program displays: not found"
         },
         {
          "in": [
@@ -324,40 +622,194 @@
          "out": [
           "3"
          ],
-         "why": "A shorter list, read from the input. The search still has to reach the far end of it."
+         "why": "A shorter list read in from the line typed, and the search still has to reach the end of it."
         }
        ],
-       "fb": "Move low to mid + 1 or high to mid - 1, never to mid itself, or the loop will never end when the value is missing.",
-       "hint": "searches",
-       "teach": {
-        "say": "A binary search keeps two markers, low and high, and looks at the middle between them. Each turn throws away the half the value cannot be in.",
-        "code": [
-         "items = [4, 9, 15, 22]",
-         "low = 0",
-         "high = len(items) - 1",
-         "print((low + high) // 2)"
-        ],
-        "out": [
-         "1"
-        ]
+       "hint": {
+        "think": "The else runs when the middle item is smaller than the number wanted, so the answer must be somewhere above the middle.",
+        "syntax": "low = mid + 1",
+        "diagram": "pywhile"
        },
        "forbid": [
         [
          ".index(",
-         "The point of this one is the search loop, so .index() is not allowed - it does the searching for you."
+         "The activity asks you to write the search yourself, so .index() is not allowed - it does the searching for you."
         ]
        ]
       },
       {
        "t": "code",
-       "marks": 5,
-       "q": "Ask the user for a line of whole numbers already in order. Then ask for the number to find. Find it with a binary search. Count every middle you compare. Display [its position], counting from 0. Display not found instead when the number is not in the list. Then display checks: [that count] on the next line.",
+       "marks": 3,
+       "q": "Ask the user for the number to find. Find it with a binary search of your own. Display the position it is at, counting from 0. Display not found instead when it is not in the list.",
        "brief": [
-        "The numbers are separated by single spaces.",
-        "The middle is mid = (low + high) // 2.",
-        "The matching middle counts as a check."
+        "The line the user types is already read into nums for you, and it is already in order.",
+        "The user types in one whole number.",
+        "One line of output and nothing else.",
+        "Display exactly: not found"
        ],
-       "starter": "# the position, and how many checks it took\n",
+       "fb": "A binary search halves the list every turn, so eight items take at most three comparisons and a thousand take at most ten.",
+       "starter": "nums = []\nfor part in input(\"Numbers? \").split():\n    nums.append(int(part))\n# then the number to find, and where it sits\n",
+       "tests": [
+        {
+         "in": [
+          "13 21 34 55 89 144 233 377",
+          "55"
+         ],
+         "out": [
+          "3"
+         ],
+         "why": "Eight items, so the first middle is position 3 - and 55 is sitting there."
+        },
+        {
+         "in": [
+          "13 21 34 55 89 144 233 377",
+          "13"
+         ],
+         "out": [
+          "0"
+         ],
+         "why": "The smallest value is at position 0, which needs high to keep moving down to mid - 1."
+        },
+        {
+         "in": [
+          "13 21 34 55 89 144 233 377",
+          "377"
+         ],
+         "out": [
+          "7"
+         ],
+         "why": "The largest value is at the very end, which needs low to keep moving up to mid + 1."
+        },
+        {
+         "in": [
+          "13 21 34 55 89 144 233 377",
+          "100"
+         ],
+         "out": [
+          "not found"
+         ],
+         "why": "100 is between two numbers that are there, so the loop must end when low passes high."
+        },
+        {
+         "in": [
+          "7 14 21",
+          "21"
+         ],
+         "out": [
+          "2"
+         ],
+         "why": "A shorter list, read in from the typed line, and the search still reaches the far end of it."
+        }
+       ],
+       "hint": {
+        "think": "Two markers and a middle, and a loop that keeps going while the markers have not crossed.",
+        "syntax": [
+         "low = 0",
+         "high = len(nums) - 1",
+         "mid = (low + high) // 2"
+        ],
+        "start": [
+         "target = int(input())",
+         "low = 0",
+         "high = len(nums) - 1",
+         "# then a while loop that moves low or high each turn"
+        ],
+        "diagram": "pywhile"
+       },
+       "forbid": [
+        [
+         ".index(",
+         "The activity asks you to write the search yourself, so .index() is not allowed - it does the searching for you."
+        ],
+        [
+         "in nums",
+         "A binary search never walks the list item by item, so looking the value up with in is not an answer here. Use low, high and mid."
+        ]
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "This binary search should display the position of the number typed in. Find the mistake and put it right.",
+       "brief": [
+        "Press Run first and read the last line of the error message.",
+        "The list is already in order and is read in for you.",
+        "Change one character only.",
+        "Display exactly: not found"
+       ],
+       "fb": "/ and // look alike and do different jobs. A list position can only ever be a whole number.",
+       "kind": "debug",
+       "starter": "nums = []\nfor part in input(\"Numbers? \").split():\n    nums.append(int(part))\ntarget = int(input())\nlow = 0\nhigh = len(nums) - 1\nfound = -1\nwhile low <= high and found == -1:\n    mid = (low + high) / 2\n    if nums[mid] == target:\n        found = mid\n    elif nums[mid] > target:\n        high = mid - 1\n    else:\n        low = mid + 1\nif found == -1:\n    print(\"not found\")\nelse:\n    print(found)\n",
+       "tests": [
+        {
+         "in": [
+          "102 118 139 204 251 288 310 377 401 460",
+          "251"
+         ],
+         "out": [
+          "4"
+         ],
+         "why": "A TypeError about list indices means the middle came out as a decimal. / always gives a decimal; // does not."
+        },
+        {
+         "in": [
+          "102 118 139 204 251 288 310 377 401 460",
+          "460"
+         ],
+         "out": [
+          "9"
+         ],
+         "why": "Once the middle is a whole number again the search reaches the far end of the list."
+        },
+        {
+         "in": [
+          "102 118 139 204 251 288 310 377 401 460",
+          "300"
+         ],
+         "out": [
+          "not found"
+         ],
+         "why": "300 is not there, so the markers have to cross before the program displays: not found"
+        },
+        {
+         "in": [
+          "5 10 15 20",
+          "20"
+         ],
+         "out": [
+          "3"
+         ],
+         "why": "A shorter list, and the same one character decides whether it works at all."
+        }
+       ],
+       "hint": {
+        "think": "A position has to be a whole number, and only one of Python's two divide operators gives a whole number.",
+        "syntax": "(low + high) // 2",
+        "diagram": "pyarith"
+       },
+       "forbid": [
+        [
+         ".index(",
+         "The activity asks you to write the search yourself, so .index() is not allowed - it does the searching for you."
+        ],
+        [
+         "in nums",
+         "A binary search never walks the list item by item, so looking the value up with in is not an answer here. Use low, high and mid."
+        ]
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for the number to find. Find it with a binary search of your own. Count every middle item you compare. Display the position it is at, counting from 0, or not found when it is not there. Then display checks: [the count] on the next line.",
+       "brief": [
+        "The line the user types is already read into nums for you, and it is already in order.",
+        "Add one to the count as soon as you have worked out the middle, before you compare it.",
+        "The middle that matches counts as a check too.",
+        "Display exactly: not found"
+       ],
+       "fb": "Counting the comparisons is how the two searches are compared, and it is the same counter you used on the linear search.",
+       "starter": "nums = []\nfor part in input(\"Numbers? \").split():\n    nums.append(int(part))\n# then the position, and how many checks it took\n",
        "tests": [
         {
          "in": [
@@ -368,7 +820,7 @@
           "5",
           "checks: 1"
          ],
-         "why": "With eleven items the first middle is position 5, which is 52 - so one check is enough."
+         "why": "Eleven items, so the first middle is position 5 - and 52 is already there, in one check."
         },
         {
          "in": [
@@ -379,7 +831,7 @@
           "0",
           "checks: 3"
          ],
-         "why": "The smallest value takes several halvings to reach. Count the middle item every time round the loop, including the one that matches."
+         "why": "The smallest value takes three halvings to reach, and the matching one counts."
         },
         {
          "in": [
@@ -390,7 +842,7 @@
           "10",
           "checks: 4"
          ],
-         "why": "The largest value is at the far end. If your count is one too low you are adding to checks after the comparison instead of before."
+         "why": "A count one too low means the counter goes up after the comparison instead of before it."
         },
         {
          "in": [
@@ -401,7 +853,7 @@
           "not found",
           "checks: 4"
          ],
-         "why": "50 is not there. The search still has to narrow all the way down before it can give up, and every one of those middles counts."
+         "why": "50 is not there, but the search still narrowed all the way down, and every middle counted."
         },
         {
          "in": [
@@ -412,15 +864,27 @@
           "2",
           "checks: 2"
          ],
-         "why": "Three items, so the middle is 8, then 12 - two checks. A count of 3 means you are counting items you never compared."
+         "why": "Three items: the middle is 8, then 12. A 3 here means items were counted that were never compared."
         }
        ],
-       "fb": "Add one to the counter as soon as you have worked out mid, before you compare - that way the matching item is counted too.",
-       "hint": "searches",
+       "opt": true,
+       "hint": {
+        "think": "The counter goes up once per turn of the loop, in the same place the middle is worked out.",
+        "syntax": "checks = checks + 1",
+        "start": [
+         "checks = 0",
+         "# then the search, with the counter inside the loop"
+        ],
+        "diagram": "pywhile"
+       },
        "forbid": [
         [
          ".index(",
-         "The point of this one is the search loop, so .index() is not allowed - it does the searching for you."
+         "The activity asks you to write the search yourself, so .index() is not allowed - it does the searching for you."
+        ],
+        [
+         "in nums",
+         "A binary search never walks the list item by item, so looking the value up with in is not an answer here. Use low, high and mid."
         ]
        ]
       }
@@ -436,13 +900,109 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 5,
-       "q": "Ask the user for a line of whole numbers separated by single spaces. Sort them smallest first by swapping neighbouring pairs. Write the sort yourself rather than using sorted() or .sort(). Display [the sorted numbers] on one line.",
+       "marks": 1,
+       "q": "Press Run. The program swaps two numbers over and then shows the list on one line.",
        "brief": [
-        "One line only, and nothing else.",
-        "Separate the values with single spaces."
+        "Nothing is marked on this one.",
+        "The numbers are written into the program.",
+        "The space left on the end of the line is ignored when an answer is marked."
        ],
-       "starter": "# a bubble sort of the numbers read in\n",
+       "fb": "Those two moves are used in every sort in this lesson: swap a pair over, and show the list on one line.",
+       "kind": "try",
+       "starter": "nums = [9, 4, 7]\nnums[0], nums[1] = nums[1], nums[0]\nline = \"\"\nfor n in nums:\n    line = line + str(n) + \" \"\nprint(line)\n",
+       "tests": [],
+       "teach": {
+        "say": "A sort swaps two items over, and Python does that in one line: the two positions on the left are given the two values on the right. To show a list of numbers on one line, build the line up a number at a time with str() and display it once at the end. Python has sorted() and .sort() built in, which put a list in order for you. They are switched off in this lesson, because the sorting is what you are learning.",
+        "code": [
+         "nums = [9, 4, 7]",
+         "nums[0], nums[1] = nums[1], nums[0]",
+         "line = \"\"",
+         "for n in nums:",
+         "    line = line + str(n) + \" \"",
+         "print(line)"
+        ],
+        "out": [
+         "4 9 7 "
+        ]
+       },
+       "lines": [
+        "Three numbers, with the first two the wrong way round.",
+        "Swap those two positions over in one instruction.",
+        "Start with an empty line of text.",
+        "Take each number of the list in turn.",
+        "Add that number and a space onto the end of the line.",
+        "Show the finished line once, after the loop."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "What will this program display?",
+       "brief": [
+        "Read every line before you choose.",
+        "Displaying a list shows its square brackets and its commas."
+       ],
+       "fb": "One pass carries the largest value to the end and nothing else. That is why a bubble sort needs pass after pass.",
+       "kind": "predict",
+       "code": [
+        "nums = [5, 3, 8, 1]",
+        "for i in range(3):",
+        "    if nums[i] > nums[i + 1]:",
+        "        nums[i], nums[i + 1] = nums[i + 1], nums[i]",
+        "print(nums)"
+       ],
+       "a": [
+        "[3, 5, 1, 8]",
+        "[1, 3, 5, 8]",
+        "[3, 5, 8, 1]"
+       ],
+       "teach": {
+        "say": "One pass of a bubble sort compares every neighbouring pair once, from the front to the back. The largest value ends up at the end, but the rest of the list is not sorted yet."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "What will this program display?",
+       "brief": [
+        "Read every line before you choose.",
+        "Displaying a list shows its square brackets and its commas."
+       ],
+       "fb": "Four comparisons for three numbers. A bubble sort does far more comparisons than a search, which is why sorting costs so much more.",
+       "kind": "predict",
+       "code": [
+        "nums = [4, 2, 7]",
+        "checks = 0",
+        "for p in range(2):",
+        "    for i in range(2):",
+        "        checks = checks + 1",
+        "        if nums[i] > nums[i + 1]:",
+        "            nums[i], nums[i + 1] = nums[i + 1], nums[i]",
+        "print(nums)",
+        "print(checks)"
+       ],
+       "a": [
+        "[2, 4, 7]\n4",
+        "[2, 4, 7]\n2",
+        "[2, 4, 7]\n6"
+       ],
+       "teach": {
+        "say": "Two loops, one inside the other: the inner loop makes one pass over the pairs and the outer loop repeats that pass. The comparisons multiply, so two passes over two pairs make four comparisons."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Finish the program so it sorts the numbers smallest first.",
+       "brief": [
+        "The line of numbers the user types is already read into a list called nums for you.",
+        "Replace ____ with the condition that decides whether this pair is the wrong way round.",
+        "A line of numbers already in order must come out unchanged.",
+        "Put single spaces between the numbers."
+       ],
+       "fb": "A bubble sort is two loops and one comparison, and the comparison is the whole of what makes it a sort.",
+       "kind": "complete",
+       "starter": "nums = []\nfor part in input(\"Numbers? \").split():\n    nums.append(int(part))\nfor p in range(len(nums) - 1):\n    for i in range(len(nums) - 1):\n        if ____:\n            nums[i], nums[i + 1] = nums[i + 1], nums[i]\nline = \"\"\nfor n in nums:\n    line = line + str(n) + \" \"\nprint(line)\n",
        "tests": [
         {
          "in": [
@@ -451,7 +1011,7 @@
          "out": [
           "2 7 11 19 25 34"
          ],
-         "why": "An ordinary jumble. If one small number is left stranded near the end, your outer loop is not repeating enough times."
+         "why": "An ordinary jumble. The two loops are written for you, so only the comparison decides whether it sorts."
         },
         {
          "in": [
@@ -460,7 +1020,7 @@
          "out": [
           "3 8 12 20 31 44"
          ],
-         "why": "A list already in order must come back unchanged. If it does not, your swap is overwriting one value with the other."
+         "why": "A list already in order must come back unchanged, so the comparison must not swap a pair that is already right."
         },
         {
          "in": [
@@ -469,7 +1029,7 @@
          "out": [
           "10 20 30 40 50 60"
          ],
-         "why": "Reversed is the hardest case - every pair has to swap on every pass, so a single pass is nowhere near enough."
+         "why": "Reversed is the hardest case: every pair swaps on every pass."
         },
         {
          "in": [
@@ -478,108 +1038,191 @@
          "out": [
           "1 4 4 9 9"
          ],
-         "why": "Repeats must survive. Swapping on >= instead of > keeps shuffling equal values and can drop one."
+         "why": "Repeats must all survive, so two 9s go in and two 9s come out."
         }
        ],
-       "fb": "Two loops: the inner one compares neighbours across the list, the outer one repeats that enough times for the smallest value to travel all the way back.",
-       "hint": "bubblesort",
-       "teach": {
-        "say": "A bubble sort compares each neighbouring pair and swaps them when they are the wrong way round, over and over until nothing is left out of order.",
-        "code": [
-         "pair = [9, 4]",
-         "pair[0], pair[1] = pair[1], pair[0]",
-         "print(pair)"
-        ],
-        "out": [
-         "[4, 9]"
-        ]
+       "hint": {
+        "think": "A pair is the wrong way round when the earlier one is the bigger one.",
+        "syntax": "nums[i] > nums[i + 1]",
+        "diagram": "pylist"
        },
        "forbid": [
         [
          "sorted(",
-         "The brief asks you to write the sort yourself, not use Python's sorted()."
+         "The activity asks you to write the sort yourself, so sorted() is not allowed - it does the sorting for you."
         ],
         [
          ".sort(",
-         "The brief asks you to write the sort yourself, not use Python's .sort()."
+         "The activity asks you to write the sort yourself, so .sort() is not allowed - it does the sorting for you."
         ]
        ]
       },
       {
        "t": "code",
-       "marks": 6,
-       "q": "Ask the user for a line of whole numbers separated by single spaces. Sort them smallest first by swapping neighbouring pairs. Write the sort yourself rather than using sorted() or .sort(). Stop after a pass that makes no swaps. Count how many passes you make. Display [the sorted numbers] on one line. Then display passes: [how many] on the next line.",
+       "marks": 3,
+       "q": "Sort the numbers smallest first by swapping neighbouring pairs that are the wrong way round. Display the sorted numbers on one line, separated by single spaces.",
        "brief": [
-        "Count the quiet last pass too.",
-        "Separate the sorted values with single spaces."
+        "The line of numbers the user types is already read into a list called nums for you.",
+        "One pass is not enough, so the passes have to be repeated.",
+        "A list of one number is already sorted and must come back as it is.",
+        "The space left on the end of the line is ignored when your answer is marked."
        ],
-       "starter": "# the sorted numbers, then the pass count\n",
+       "fb": "The inner loop compares neighbours across the list; the outer loop repeats that until the smallest value has travelled all the way back.",
+       "starter": "nums = []\nfor part in input(\"Numbers? \").split():\n    nums.append(int(part))\n# then sort nums and show it on one line\n",
        "tests": [
         {
          "in": [
-          "12 4 18 7 30 1"
+          "34 7 19 2 25 11"
          ],
          "out": [
-          "1 4 7 12 18 30",
-          "passes: 6"
+          "2 7 11 19 25 34"
          ],
-         "why": "Set swapped back to False at the start of each pass. Leaving it True from an earlier pass means the loop never ends."
+         "why": "An ordinary jumble. A small number left stranded near the end means the outer loop does not repeat enough."
         },
         {
          "in": [
-          "5 9 14 20 26"
+          "3 8 12 20 31 44"
          ],
          "out": [
-          "5 9 14 20 26",
-          "passes: 1"
+          "3 8 12 20 31 44"
          ],
-         "why": "Already in order, but the sort cannot know that until it has looked once - so the answer is 1 pass, not 0."
+         "why": "Already in order, so it comes back unchanged - if it does not, the swap is overwriting one value with the other."
         },
         {
          "in": [
-          "26 20 14 9 5"
+          "60 50 40 30 20 10"
          ],
          "out": [
-          "5 9 14 20 26",
-          "passes: 5"
+          "10 20 30 40 50 60"
          ],
-         "why": "Reversed needs a pass for every value plus one quiet pass at the end to notice it has finished."
+         "why": "Reversed needs every pair to swap on every pass, so one pass is nowhere near enough."
         },
         {
          "in": [
-          "2 1 5 9 14"
+          "9 4 9 1 4"
          ],
          "out": [
-          "1 2 5 9 14",
-          "passes: 2"
+          "1 4 4 9 9"
          ],
-         "why": "Only the first pair is wrong, so one pass fixes it and a second confirms there is nothing left - two passes in total."
+         "why": "Repeats must all survive, so compare with > and leave equal pairs alone."
+        },
+        {
+         "in": [
+          "7"
+         ],
+         "out": [
+          "7"
+         ],
+         "why": "One number on its own is already sorted, and it still has to be displayed."
         }
        ],
-       "fb": "A flag set to False at the top of each pass and True inside the swap is what lets the sort notice it has finished.",
-       "hint": "bubblesort",
+       "hint": {
+        "think": "One loop walks the pairs; a second loop round the outside repeats that walk enough times.",
+        "syntax": [
+         "for p in range(len(nums) - 1):",
+         "    for i in range(len(nums) - 1):"
+        ],
+        "start": [
+         "# the outer loop repeats the pass",
+         "# the inner loop compares nums[i] with nums[i + 1]"
+        ],
+        "diagram": "pylist"
+       },
        "forbid": [
         [
          "sorted(",
-         "The brief asks you to write the sort yourself, not use Python's sorted()."
+         "The activity asks you to write the sort yourself, so sorted() is not allowed - it does the sorting for you."
         ],
         [
          ".sort(",
-         "The brief asks you to write the sort yourself, not use Python's .sort()."
+         "The activity asks you to write the sort yourself, so .sort() is not allowed - it does the sorting for you."
         ]
        ]
       },
       {
        "t": "code",
-       "marks": 6,
-       "q": "Ask the user for a line of whole numbers separated by single spaces. Sort them smallest first by swapping neighbouring pairs. Write the sort yourself rather than using sorted() or .sort(). Display [the whole list] after each pass, one list per line.",
+       "marks": 2,
+       "q": "This program should sort the numbers smallest first. Find the mistake and put it right.",
        "brief": [
-        "Make exactly one pass fewer than there are values, however soon the list comes into order.",
-        "One line per pass, printed after that pass has finished.",
-        "Nothing else is printed.",
-        "Put single spaces between the values."
+        "Press Run first and type the line 60 50 40 30 20 10.",
+        "Do not change the comparison or the swap.",
+        "Put single spaces between the numbers.",
+        "The space left on the end of the line is ignored when your answer is marked."
        ],
-       "starter": "# one line printed after every pass\n",
+       "fb": "A pass that is not repeated is not a sort. The bug is a missing loop, not a wrong comparison.",
+       "kind": "debug",
+       "starter": "nums = []\nfor part in input(\"Numbers? \").split():\n    nums.append(int(part))\nfor i in range(len(nums) - 1):\n    if nums[i] > nums[i + 1]:\n        nums[i], nums[i + 1] = nums[i + 1], nums[i]\nline = \"\"\nfor n in nums:\n    line = line + str(n) + \" \"\nprint(line)\n",
+       "tests": [
+        {
+         "in": [
+          "34 7 19 2 25 11"
+         ],
+         "out": [
+          "2 7 11 19 25 34"
+         ],
+         "why": "One pass left the list half sorted. The largest value is at the end but nothing else is in place."
+        },
+        {
+         "in": [
+          "60 50 40 30 20 10"
+         ],
+         "out": [
+          "10 20 30 40 50 60"
+         ],
+         "why": "Reversed is the clearest case: after one pass only the 60 has moved."
+        },
+        {
+         "in": [
+          "9 4 9 1 4"
+         ],
+         "out": [
+          "1 4 4 9 9"
+         ],
+         "why": "Repeats are not the problem here - the number of passes is."
+        },
+        {
+         "in": [
+          "3 8 12 20 31 44"
+         ],
+         "out": [
+          "3 8 12 20 31 44"
+         ],
+         "why": "An ordered list comes out right even after one pass, which is why it cannot be the only test."
+        }
+       ],
+       "hint": {
+        "think": "One pass only carries the largest value to the end. Something has to repeat the whole pass.",
+        "syntax": "for p in range(len(nums) - 1):",
+        "walk": [
+         "Count how many passes this program makes.",
+         "Put a second loop round the outside of the one that is there.",
+         "Indent the pass so it sits inside the new loop."
+        ],
+        "diagram": "pylist"
+       },
+       "forbid": [
+        [
+         "sorted(",
+         "The activity asks you to write the sort yourself, so sorted() is not allowed - it does the sorting for you."
+        ],
+        [
+         ".sort(",
+         "The activity asks you to write the sort yourself, so .sort() is not allowed - it does the sorting for you."
+        ]
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Sort the numbers smallest first by swapping neighbouring pairs. Display the whole list on one line after each pass has finished, one line for each pass. Make exactly one pass fewer than there are numbers, however soon the list comes into order.",
+       "brief": [
+        "The line of numbers the user types is already read into a list called nums for you.",
+        "Six numbers give five lines and five numbers give four lines.",
+        "Each line is displayed after that pass has ended, not during it.",
+        "Nothing else is displayed."
+       ],
+       "fb": "A trace of a sort is made by displaying the list once per pass, which means once per turn of the outer loop.",
+       "starter": "nums = []\nfor part in input(\"Numbers? \").split():\n    nums.append(int(part))\n# then one line displayed after every pass\n",
        "tests": [
         {
          "in": [
@@ -592,7 +1235,7 @@
           "2 7 11 19 25 34",
           "2 7 11 19 25 34"
          ],
-         "why": "Six values means five lines. The largest value reaches the end on the first pass, which is why a bubble sort is named after bubbles rising."
+         "why": "Six numbers give five lines. The largest value reaches the end on the first pass, which is where the name comes from."
         },
         {
          "in": [
@@ -605,7 +1248,7 @@
           "3 8 12 20 31 44",
           "3 8 12 20 31 44"
          ],
-         "why": "Already in order, so all five lines are identical - the passes still have to happen and still have to be printed."
+         "why": "Already in order, so all five lines match - the passes still happen and still have to be displayed."
         },
         {
          "in": [
@@ -618,7 +1261,7 @@
           "20 10 30 40 50 60",
           "10 20 30 40 50 60"
          ],
-         "why": "Reversed, so every line moves one more value into place. If the first line is already sorted, you printed inside the inner loop rather than after the pass."
+         "why": "Reversed, so each line puts one more value in place. A first line already sorted means you displayed inside the inner loop."
         },
         {
          "in": [
@@ -630,19 +1273,28 @@
           "1 4 4 9 9",
           "1 4 4 9 9"
          ],
-         "why": "Five values means four lines. Repeats must all survive every pass."
+         "why": "Five numbers give four lines, and every repeat survives every pass."
         }
        ],
-       "fb": "Printing after each pass of the outer loop is how a trace of a sort is made - the snapshot belongs to the outer loop, not the inner one.",
-       "hint": "bubblesort",
+       "opt": true,
+       "hint": {
+        "think": "The snapshot belongs to the outer loop, so it goes after the inner loop has finished its pass.",
+        "syntax": "for p in range(len(nums) - 1):",
+        "walk": [
+         "Write the sort with its two loops.",
+         "Build the line of output from the list.",
+         "Display that line inside the outer loop, after the inner loop ends."
+        ],
+        "diagram": "pylist"
+       },
        "forbid": [
         [
          "sorted(",
-         "The brief asks you to write the sort yourself, not use Python's sorted()."
+         "The activity asks you to write the sort yourself, so sorted() is not allowed - it does the sorting for you."
         ],
         [
          ".sort(",
-         "The brief asks you to write the sort yourself, not use Python's .sort()."
+         "The activity asks you to write the sort yourself, so .sort() is not allowed - it does the sorting for you."
         ]
        ]
       }
@@ -658,14 +1310,110 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 6,
-       "q": "Ask the user for a line of whole numbers separated by single spaces. Sort them smallest first with an insertion sort of your own, moving each item back among the items before it. Display [the sorted numbers] on one line.",
+       "marks": 1,
+       "q": "Press Run. The program moves one number back into its place.",
        "brief": [
-        "Write the sort yourself rather than using sorted() or .sort().",
-        "One line only, and nothing else.",
-        "Separate the values with single spaces."
+        "Nothing is marked on this one.",
+        "The numbers are written into the program.",
+        "Displaying a list shows its square brackets and its commas."
        ],
-       "starter": "# an insertion sort of the numbers read in\n",
+       "fb": "Hold it, shift the bigger ones right, drop it in. Nothing is lost because the held value was saved first.",
+       "kind": "try",
+       "starter": "nums = [3, 8, 5]\nheld = nums[2]\nnums[2] = nums[1]\nnums[1] = held\nprint(nums)\n",
+       "tests": [],
+       "teach": {
+        "say": "An insertion sort picks one item up and holds it aside. Everything bigger than it is copied one place to the right. The held value is then dropped into the gap that was left behind.",
+        "code": [
+         "nums = [3, 8, 5]",
+         "held = nums[2]",
+         "nums[2] = nums[1]",
+         "nums[1] = held",
+         "print(nums)"
+        ],
+        "out": [
+         "[3, 5, 8]"
+        ]
+       },
+       "lines": [
+        "Three numbers, with the 5 in the wrong place.",
+        "Hold the 5 aside so that it is safe.",
+        "Copy the 8 one place to the right, over the top of where the 5 was.",
+        "Drop the held 5 into the gap the 8 has left.",
+        "Show the list, now in order."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "What will this program display?",
+       "brief": [
+        "Read every line before you choose.",
+        "Displaying a list shows its square brackets and its commas."
+       ],
+       "fb": "The 2 travelled all the way to the front, and the 7 has not been touched yet. Only one item is inserted per turn.",
+       "kind": "predict",
+       "code": [
+        "nums = [4, 9, 2, 7]",
+        "held = nums[2]",
+        "j = 1",
+        "while j >= 0 and nums[j] > held:",
+        "    nums[j + 1] = nums[j]",
+        "    j = j - 1",
+        "nums[j + 1] = held",
+        "print(nums)"
+       ],
+       "a": [
+        "[2, 4, 9, 7]",
+        "[4, 2, 9, 7]",
+        "[2, 4, 7, 9]"
+       ],
+       "teach": {
+        "say": "The while loop walks backwards through the items before the held one, copying each bigger item one place to the right. It stops as soon as it meets a smaller item or runs off the front of the list."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "What will this program display?",
+       "brief": [
+        "Read every line before you choose.",
+        "Displaying a list shows its square brackets and its commas."
+       ],
+       "fb": "Two insertions, two lines. The sorted part on the left grows by one item each time, which is the whole idea of an insertion sort.",
+       "kind": "predict",
+       "code": [
+        "nums = [6, 1, 5]",
+        "for k in range(1, 3):",
+        "    held = nums[k]",
+        "    j = k - 1",
+        "    while j >= 0 and nums[j] > held:",
+        "        nums[j + 1] = nums[j]",
+        "        j = j - 1",
+        "    nums[j + 1] = held",
+        "    print(nums)"
+       ],
+       "a": [
+        "[1, 6, 5]\n[1, 5, 6]",
+        "[1, 6, 5]\n[1, 6, 5]",
+        "[6, 1, 5]\n[1, 5, 6]"
+       ],
+       "teach": {
+        "say": "The outer loop starts at position 1, because the first item on its own is already a sorted list of one. After each insertion the left-hand part of the list is in order and has grown by one item."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Finish the program so it sorts the numbers smallest first.",
+       "brief": [
+        "The line of numbers the user types is already read into a list called nums for you.",
+        "Replace ____ with the condition that keeps the while loop going.",
+        "j must never go below 0, or the loop looks at the wrong end of the list.",
+        "Put single spaces between the numbers."
+       ],
+       "fb": "The j >= 0 half stops the loop running off the front; the comparison half stops it once the held value has reached its place.",
+       "kind": "complete",
+       "starter": "nums = []\nfor part in input(\"Numbers? \").split():\n    nums.append(int(part))\nfor k in range(1, len(nums)):\n    held = nums[k]\n    j = k - 1\n    while ____:\n        nums[j + 1] = nums[j]\n        j = j - 1\n    nums[j + 1] = held\nline = \"\"\nfor n in nums:\n    line = line + str(n) + \" \"\nprint(line)\n",
        "tests": [
         {
          "in": [
@@ -674,7 +1422,7 @@
          "out": [
           "8 16 22 29 33 41"
          ],
-         "why": "An ordinary jumble. If values go missing you are shifting without saving the one you picked up first."
+         "why": "An ordinary jumble. Numbers going missing means the loop ran past the front of the list."
         },
         {
          "in": [
@@ -683,7 +1431,7 @@
          "out": [
           "4 11 17 23 40"
          ],
-         "why": "Already in order, so nothing should move at all. Starting the inner loop before checking the condition would still shuffle things."
+         "why": "Already in order, so nothing should move at all - the while loop must stop before it shifts anything."
         },
         {
          "in": [
@@ -692,7 +1440,7 @@
          "out": [
           "4 11 17 23 40"
          ],
-         "why": "Reversed means every item travels all the way to the front - the inner loop has to keep going while j is still 0 or more."
+         "why": "Reversed means every item travels to the front, so the loop has to keep going while j is still 0 or more."
         },
         {
          "in": [
@@ -701,44 +1449,192 @@
          "out": [
           "2 2 6 6"
          ],
-         "why": "Stop shifting when you reach an equal value, not after it, or repeats get pushed past each other and one is lost."
+         "why": "Stop shifting when you reach an equal value, not after it, or repeats get pushed past each other."
         }
        ],
-       "fb": "Start the outer loop at the second item - the first item on its own is already a sorted list of one.",
-       "hint": "bubblesort",
-       "teach": {
-        "say": "An insertion sort holds one value aside, copies the larger items before it one place to the right, then drops the held value into the gap it has made.",
-        "code": [
-         "row = [3, 8, 0]",
-         "row[2] = row[1]",
-         "print(row)"
-        ],
-        "out": [
-         "[3, 8, 8]"
-        ]
+       "hint": {
+        "think": "Two things have to be true at once: there is still a list to the left, and the item there is bigger than the held value.",
+        "syntax": "j >= 0 and nums[j] > held",
+        "diagram": "pywhile"
        },
        "forbid": [
         [
          "sorted(",
-         "The brief asks you to write the sort yourself, not use Python's sorted()."
+         "The activity asks you to write the sort yourself, so sorted() is not allowed - it does the sorting for you."
         ],
         [
          ".sort(",
-         "The brief asks you to write the sort yourself, not use Python's .sort()."
+         "The activity asks you to write the sort yourself, so .sort() is not allowed - it does the sorting for you."
         ]
        ]
       },
       {
        "t": "code",
-       "marks": 6,
-       "q": "Ask the user for a line of five words separated by single spaces. Insertion sort them into alphabetical order. Write the sort yourself rather than using sorted() or .sort(). Display [the whole list] after each word from the second onwards, one list per line.",
+       "marks": 3,
+       "q": "Sort the numbers smallest first by moving each number back to its place among the numbers before it. Display the sorted numbers on one line, separated by single spaces.",
        "brief": [
-        "Four lines in all.",
-        "Each line is printed once that word has been put down.",
-        "Put single spaces between the words.",
-        "All five words are in small letters, so comparing them with > is enough."
+        "The line of numbers the user types is already read into a list called nums for you.",
+        "Start at the second number: the first on its own is already a sorted list of one.",
+        "Hold the number aside before you shift anything, or it is overwritten.",
+        "The space left on the end of the line is ignored when your answer is marked."
        ],
-       "starter": "# five words, one line printed per insertion\n",
+       "fb": "An insertion sort is how most people sort a hand of cards: pick the next one up and slide it back to where it belongs.",
+       "starter": "nums = []\nfor part in input(\"Numbers? \").split():\n    nums.append(int(part))\n# then sort nums and show it on one line\n",
+       "tests": [
+        {
+         "in": [
+          "41 16 29 8 33 22"
+         ],
+         "out": [
+          "8 16 22 29 33 41"
+         ],
+         "why": "An ordinary jumble. Numbers going missing means you shifted without holding the picked-up value first."
+        },
+        {
+         "in": [
+          "4 11 17 23 40"
+         ],
+         "out": [
+          "4 11 17 23 40"
+         ],
+         "why": "Already in order, so nothing should move, and the list comes back exactly as it went in."
+        },
+        {
+         "in": [
+          "40 23 17 11 4"
+         ],
+         "out": [
+          "4 11 17 23 40"
+         ],
+         "why": "Reversed means every item travels all the way to the front of the list."
+        },
+        {
+         "in": [
+          "6 2 6 2"
+         ],
+         "out": [
+          "2 2 6 6"
+         ],
+         "why": "Repeats must all survive, so stop shifting as soon as you reach an equal value."
+        },
+        {
+         "in": [
+          "5"
+         ],
+         "out": [
+          "5"
+         ],
+         "why": "One number on its own is already sorted, so the outer loop does nothing and the number is still displayed."
+        }
+       ],
+       "hint": {
+        "think": "One loop takes each item in turn; a second loop inside it shifts the bigger items one place to the right.",
+        "syntax": [
+         "for k in range(1, len(nums)):",
+         "    held = nums[k]",
+         "    j = k - 1"
+        ],
+        "start": [
+         "# take each item from position 1 onwards",
+         "# hold it, shift the bigger ones right, then drop it in"
+        ],
+        "diagram": "pylist"
+       },
+       "forbid": [
+        [
+         "sorted(",
+         "The activity asks you to write the sort yourself, so sorted() is not allowed - it does the sorting for you."
+        ],
+        [
+         ".sort(",
+         "The activity asks you to write the sort yourself, so .sort() is not allowed - it does the sorting for you."
+        ]
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "This program should sort the numbers smallest first. Find the mistake and put it right.",
+       "brief": [
+        "Press Run first and type the line 41 16 29 8 33 22.",
+        "Numbers are being lost, and the same number appears more than once.",
+        "One line of the program is the wrong way round.",
+        "Put single spaces between the numbers."
+       ],
+       "fb": "A shift copies a value into the space to its right. Swapping the two sides of that = quietly destroys the list.",
+       "kind": "debug",
+       "starter": "nums = []\nfor part in input(\"Numbers? \").split():\n    nums.append(int(part))\nfor k in range(1, len(nums)):\n    held = nums[k]\n    j = k - 1\n    while j >= 0 and nums[j] > held:\n        nums[j] = nums[j + 1]\n        j = j - 1\n    nums[j + 1] = held\nline = \"\"\nfor n in nums:\n    line = line + str(n) + \" \"\nprint(line)\n",
+       "tests": [
+        {
+         "in": [
+          "41 16 29 8 33 22"
+         ],
+         "out": [
+          "8 16 22 29 33 41"
+         ],
+         "why": "The copy is going the wrong way, so the bigger item is overwritten instead of moved."
+        },
+        {
+         "in": [
+          "40 23 17 11 4"
+         ],
+         "out": [
+          "4 11 17 23 40"
+         ],
+         "why": "Reversed shows it clearly: every value except one is lost."
+        },
+        {
+         "in": [
+          "4 11 17 23 40"
+         ],
+         "out": [
+          "4 11 17 23 40"
+         ],
+         "why": "An ordered list never enters the while loop at all, which is why it cannot be the only test."
+        },
+        {
+         "in": [
+          "6 2 6 2"
+         ],
+         "out": [
+          "2 2 6 6"
+         ],
+         "why": "Repeats make a lost value easy to miss, so count the numbers that come out."
+        }
+       ],
+       "hint": {
+        "think": "Which way does a bigger item have to move, and which side of the = is the place it is moving to?",
+        "syntax": "nums[j + 1] = nums[j]",
+        "walk": [
+         "The value on the right of the = is copied to the position on the left.",
+         "The bigger item has to end up one place further to the right.",
+         "So work out which of the two positions should be on the left."
+        ],
+        "diagram": "pylist"
+       },
+       "forbid": [
+        [
+         "sorted(",
+         "The activity asks you to write the sort yourself, so sorted() is not allowed - it does the sorting for you."
+        ],
+        [
+         ".sort(",
+         "The activity asks you to write the sort yourself, so .sort() is not allowed - it does the sorting for you."
+        ]
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for a line of five words separated by single spaces. Sort them into alphabetical order by moving each word back to its place among the words before it. Display the words on one line after each word has been put in place.",
+       "brief": [
+        "The user types in one line of exactly five words, all in small letters.",
+        "Small letters compare alphabetically, so > is enough to order two words.",
+        "Four lines of output: one after each of the words from the second onwards.",
+        "Put single spaces between the words."
+       ],
+       "fb": "The sort does not care what is in the list. Words compare with > just as numbers do, so the same algorithm orders both.",
+       "starter": "# five words in, one line displayed per insertion\n",
        "tests": [
         {
          "in": [
@@ -750,7 +1646,7 @@
           "copper moss ridge slate flint",
           "copper flint moss ridge slate"
          ],
-         "why": "Print inside the outer loop, after the word has been put down - printing before the insertion shows the wrong list."
+         "why": "Display inside the outer loop, after the word has been put down - displaying before the insertion shows the wrong list."
         },
         {
          "in": [
@@ -762,7 +1658,7 @@
           "copper ember flint glass moss",
           "copper ember flint glass moss"
          ],
-         "why": "Already alphabetical, so all four lines are identical - the sort still has to do the four insertions."
+         "why": "Already alphabetical, so all four lines match, and the four insertions still happen."
         },
         {
          "in": [
@@ -774,7 +1670,7 @@
           "moss ridge slate willow flint",
           "flint moss ridge slate willow"
          ],
-         "why": "Reverse alphabetical means each word moves to the front, so each line shifts everything along by one."
+         "why": "Reverse alphabetical means every word moves to the front, so each line shifts everything along."
         },
         {
          "in": [
@@ -786,19 +1682,30 @@
           "copper flint moss willow ridge",
           "copper flint moss ridge willow"
          ],
-         "why": "Four lines exactly. A fifth line means you printed before the first insertion as well as after each one."
+         "why": "Four lines exactly. A fifth line means you displayed the list before the first insertion as well."
         }
        ],
-       "fb": "The left-hand part of the list is the sorted part and it grows by one on every line - that is the whole idea of an insertion sort.",
-       "hint": "bubblesort",
+       "opt": true,
+       "hint": {
+        "think": "The same sort as the one for numbers, with words in the list instead and a line displayed each time round the outer loop.",
+        "syntax": [
+         "words = input().split()",
+         "\" \".join(words)"
+        ],
+        "start": [
+         "words = input().split()",
+         "# then the insertion sort, with a line displayed per insertion"
+        ],
+        "diagram": "pylist"
+       },
        "forbid": [
         [
          "sorted(",
-         "The brief asks you to write the sort yourself, not use Python's sorted()."
+         "The activity asks you to write the sort yourself, so sorted() is not allowed - it does the sorting for you."
         ],
         [
          ".sort(",
-         "The brief asks you to write the sort yourself, not use Python's .sort()."
+         "The activity asks you to write the sort yourself, so .sort() is not allowed - it does the sorting for you."
         ]
        ]
       }
@@ -814,13 +1721,157 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 6,
-       "q": "Ask the user for a line of whole numbers already in order and separated by single spaces. Then ask for a second line of whole numbers, also already in order. Merge the two into one list by taking the smaller front value each time. Write the merge yourself. Display [the merged list] on one line.",
+       "marks": 1,
+       "q": "Press Run. The program cuts one list into two halves.",
        "brief": [
-        "One line only, and nothing else.",
-        "Separate the values with single spaces."
+        "Nothing is marked on this one.",
+        "The numbers are written into the program.",
+        "nums[mid:] with nothing after the colon means from mid to the end."
        ],
-       "starter": "# two ordered lines in, one ordered list out\n",
+       "fb": "A slice makes a new list and leaves the original alone, so the two halves can be worked on separately.",
+       "kind": "try",
+       "starter": "nums = [8, 3, 5, 1, 9]\nmid = len(nums) // 2\nleft = nums[0:mid]\nright = nums[mid:]\nprint(mid)\nprint(left)\nprint(right)\n",
+       "tests": [],
+       "teach": {
+        "say": "A merge sort begins by cutting the list in two. len(nums) // 2 gives the position to cut at, and a slice makes a new list of the items from one position up to another. With an odd number of items one half ends up one item longer than the other.",
+        "code": [
+         "nums = [8, 3, 5, 1, 9]",
+         "mid = len(nums) // 2",
+         "left = nums[0:mid]",
+         "right = nums[mid:]",
+         "print(mid)",
+         "print(left)",
+         "print(right)"
+        ],
+        "out": [
+         "2",
+         "[8, 3]",
+         "[5, 1, 9]"
+        ]
+       },
+       "lines": [
+        "Five numbers in one list.",
+        "Half the length, with the fraction thrown away, gives the cutting position.",
+        "The left half is everything up to but not including that position.",
+        "The right half is everything from that position to the end.",
+        "Show where the cut was made.",
+        "Show the left half.",
+        "Show the right half."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "Press Run. The subprogram calls itself.",
+       "brief": [
+        "Nothing is marked on this one.",
+        "Nothing is typed in by the user.",
+        "Read the if carefully: it is what stops the calling."
+       ],
+       "fb": "A subprogram calling itself is how a job is broken into smaller copies of the same job. Without the if it would never stop.",
+       "kind": "try",
+       "starter": "def countdown(n):\n    print(n)\n    if n > 1:\n        countdown(n - 1)\ncountdown(3)\n",
+       "tests": [],
+       "teach": {
+        "say": "A subprogram is allowed to call itself. Each call is given a smaller job than the one before it. The if is what stops it: when the job is small enough, the subprogram does not call itself again.",
+        "code": [
+         "def countdown(n):",
+         "    print(n)",
+         "    if n > 1:",
+         "        countdown(n - 1)",
+         "countdown(3)"
+        ],
+        "out": [
+         "3",
+         "2",
+         "1"
+        ]
+       },
+       "lines": [
+        "Name the subprogram and give it one number to work on.",
+        "Show that number.",
+        "Only carry on while there is still something left to do.",
+        "Call the same subprogram again, with a smaller number.",
+        "Start it off with 3."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "What will this program display?",
+       "brief": [
+        "Read every line before you choose.",
+        "Displaying a list shows its square brackets and its commas.",
+        "i and j are the positions each marker has reached."
+       ],
+       "fb": "The 9 was never taken, because the left list ran out first. A merge always needs a tidying-up step for whatever is left behind.",
+       "kind": "predict",
+       "code": [
+        "left = [2, 7]",
+        "right = [4, 9]",
+        "merged = []",
+        "i = 0",
+        "j = 0",
+        "while i < len(left) and j < len(right):",
+        "    if left[i] <= right[j]:",
+        "        merged.append(left[i])",
+        "        i = i + 1",
+        "    else:",
+        "        merged.append(right[j])",
+        "        j = j + 1",
+        "print(merged)",
+        "print(i, j)"
+       ],
+       "a": [
+        "[2, 4, 7]\n2 1",
+        "[2, 4, 7, 9]\n2 2",
+        "[2, 7, 4, 9]\n2 1"
+       ],
+       "teach": {
+        "say": "A merge keeps one marker in each list. It compares the two front items, takes the smaller one, and moves that marker on. The loop stops as soon as either list runs out, which leaves items behind in the other one."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "What will this program display?",
+       "brief": [
+        "Read every line before you choose.",
+        "Displaying a list shows its square brackets and its commas.",
+        "The subprogram calls itself twice, the left half first."
+       ],
+       "fb": "The whole of the left half is finished before the right half is even started, and the splitting stops at a list of one.",
+       "kind": "predict",
+       "code": [
+        "def halve(nums):",
+        "    print(nums)",
+        "    if len(nums) > 1:",
+        "        mid = len(nums) // 2",
+        "        halve(nums[0:mid])",
+        "        halve(nums[mid:])",
+        "halve([4, 1, 7])"
+       ],
+       "a": [
+        "[4, 1, 7]\n[4]\n[1, 7]\n[1]\n[7]",
+        "[4, 1, 7]\n[4]\n[1, 7]",
+        "[4, 1, 7]\n[4]\n[1]\n[7]\n[1, 7]"
+       ],
+       "teach": {
+        "say": "Each call splits what it was given and then calls itself twice: once on the left half and once on the right. A list of one item is not split again, and that is what stops the splitting."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Merge the two lists into one list in order by taking the smaller front item each time. Display the merged numbers on one line, separated by single spaces.",
+       "brief": [
+        "Both lines are already read in for you, into lists called left and right, and both are already in order.",
+        "When the two front items are equal, take the one from left.",
+        "When one list runs out, everything left in the other one still has to be copied across.",
+        "The space left on the end of the line is ignored when your answer is marked."
+       ],
+       "fb": "Two markers and a tidy-up. A merge never compares the same item twice, which is what makes it so quick.",
+       "starter": "left = []\nfor part in input(\"First line? \").split():\n    left.append(int(part))\nright = []\nfor part in input(\"Second line? \").split():\n    right.append(int(part))\n# then merge them into one ordered line\n",
        "tests": [
         {
          "in": [
@@ -830,7 +1881,7 @@
          "out": [
           "2 4 7 9 11 15"
          ],
-         "why": "The two lists interleave. Taking from one list until it is empty before looking at the other gives the wrong order."
+         "why": "The two lists interleave. Taking the whole of one list first gives the wrong order."
         },
         {
          "in": [
@@ -840,7 +1891,7 @@
          "out": [
           "1 2 3 40 50 60"
          ],
-         "why": "Every number in the first list is smaller, so the whole of it comes out before the second list starts."
+         "why": "Every number in left is smaller, so the whole of left comes out before right starts."
         },
         {
          "in": [
@@ -850,7 +1901,7 @@
          "out": [
           "5 10 20 25 30 60 90"
          ],
-         "why": "The lists are different lengths. When one runs out the rest of the other has to be copied across - this is the step people forget."
+         "why": "The lists are different lengths, so the leftovers in the longer one have to be copied across."
         },
         {
          "in": [
@@ -860,44 +1911,123 @@
          "out": [
           "3 8 8 12"
          ],
-         "why": "Equal values and a one-item list together. Take from the left when they are equal, and do not let the single item be dropped."
+         "why": "An equal pair and a one-item list together: take from left when they are equal, and do not drop the single item."
         }
        ],
-       "fb": "Two position markers, one per list, and a tidying-up loop at the end for whichever list still has numbers in it.",
-       "hint": "mergesort",
-       "teach": {
-        "say": "A merge keeps a position marker in each list, compares the two fronts, takes the smaller and moves that marker on.",
-        "code": [
-         "left = [2, 6]",
-         "right = [4, 9]",
-         "if left[0] <= right[0]:",
-         "    print('take from the left')"
+       "hint": {
+        "think": "One marker per list, and a comparison of the two items those markers are pointing at.",
+        "syntax": [
+         "while i < len(left) and j < len(right):",
+         "merged.append(left[i])"
         ],
-        "out": [
-         "take from the left"
-        ]
+        "start": [
+         "merged = []",
+         "i = 0",
+         "j = 0",
+         "# then the loop, and a tidy-up for whatever is left over"
+        ],
+        "diagram": "pywhile"
        },
        "forbid": [
         [
          "sorted(",
-         "The brief asks you to write the sort yourself, not use Python's sorted()."
+         "The activity asks you to write the sort yourself, so sorted() is not allowed - it does the sorting for you."
         ],
         [
          ".sort(",
-         "The brief asks you to write the sort yourself, not use Python's .sort()."
+         "The activity asks you to write the sort yourself, so .sort() is not allowed - it does the sorting for you."
         ]
        ]
       },
       {
        "t": "code",
-       "marks": 7,
-       "q": "Ask the user for a line of whole numbers separated by single spaces. Sort them smallest first by splitting the list in half, sorting each half the same way and merging the two. Write the sort yourself rather than using sorted() or .sort(). Display [the sorted numbers] on one line.",
+       "marks": 2,
+       "q": "This program should merge the two ordered lists into one. Find the mistake and put it right.",
        "brief": [
-        "A list of one value is already sorted, which is what stops the splitting.",
-        "One line only, and nothing else.",
-        "Separate the values with single spaces."
+        "Press Run first and type the line 2 7 11, then the line 4 9 15.",
+        "Count how many numbers come out and how many went in.",
+        "Do not change the comparison or the loop that is already there.",
+        "Put single spaces between the numbers."
        ],
-       "starter": "# split, sort each half the same way, merge\n",
+       "fb": "The tidying-up loops are the part everyone forgets, and the only way to notice is to count what went in and what came out.",
+       "kind": "debug",
+       "starter": "left = []\nfor part in input(\"First line? \").split():\n    left.append(int(part))\nright = []\nfor part in input(\"Second line? \").split():\n    right.append(int(part))\nmerged = []\ni = 0\nj = 0\nwhile i < len(left) and j < len(right):\n    if left[i] <= right[j]:\n        merged.append(left[i])\n        i = i + 1\n    else:\n        merged.append(right[j])\n        j = j + 1\nline = \"\"\nfor n in merged:\n    line = line + str(n) + \" \"\nprint(line)\n",
+       "tests": [
+        {
+         "in": [
+          "2 7 11",
+          "4 9 15"
+         ],
+         "out": [
+          "2 4 7 9 11 15"
+         ],
+         "why": "Six numbers went in and five came out. The 15 was still waiting in right when the loop stopped."
+        },
+        {
+         "in": [
+          "1 2 3",
+          "40 50 60"
+         ],
+         "out": [
+          "1 2 3 40 50 60"
+         ],
+         "why": "The whole of right is left over here, so three numbers go missing at once."
+        },
+        {
+         "in": [
+          "30 60",
+          "5 10 20 25 90"
+         ],
+         "out": [
+          "5 10 20 25 30 60 90"
+         ],
+         "why": "Different lengths make the leftovers obvious: the longer list always has some."
+        },
+        {
+         "in": [
+          "8",
+          "3 8 12"
+         ],
+         "out": [
+          "3 8 8 12"
+         ],
+         "why": "Even a one-item list can be the one left over, so both lists need tidying up."
+        }
+       ],
+       "hint": {
+        "think": "The loop stops as soon as either list runs out. What happens to the items still sitting in the other one?",
+        "syntax": "while i < len(left):",
+        "walk": [
+         "The main loop needs both lists to have items left in them.",
+         "One list always runs out before the other.",
+         "Add a loop after it for whatever is still waiting in each list."
+        ],
+        "diagram": "pywhile"
+       },
+       "forbid": [
+        [
+         "sorted(",
+         "The activity asks you to write the sort yourself, so sorted() is not allowed - it does the sorting for you."
+        ],
+        [
+         ".sort(",
+         "The activity asks you to write the sort yourself, so .sort() is not allowed - it does the sorting for you."
+        ]
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Finish the program so it sorts the numbers smallest first.",
+       "brief": [
+        "The line of numbers the user types is already read into a list called nums for you.",
+        "Replace ____ with one instruction.",
+        "The subprogram hands back a sorted list, so what it hands back has to be kept.",
+        "Put single spaces between the numbers."
+       ],
+       "fb": "Both halves have to be sorted before they are merged, and the subprogram sorts them by calling itself.",
+       "kind": "complete",
+       "starter": "def msort(items):\n    if len(items) <= 1:\n        return items\n    mid = len(items) // 2\n    left = msort(items[0:mid])\n    right = ____\n    merged = []\n    i = 0\n    j = 0\n    while i < len(left) and j < len(right):\n        if left[i] <= right[j]:\n            merged.append(left[i])\n            i = i + 1\n        else:\n            merged.append(right[j])\n            j = j + 1\n    while i < len(left):\n        merged.append(left[i])\n        i = i + 1\n    while j < len(right):\n        merged.append(right[j])\n        j = j + 1\n    return merged\nnums = []\nfor part in input(\"Numbers? \").split():\n    nums.append(int(part))\nnums = msort(nums)\nline = \"\"\nfor n in nums:\n    line = line + str(n) + \" \"\nprint(line)\n",
        "tests": [
         {
          "in": [
@@ -906,7 +2036,7 @@
          "out": [
           "5 15 26 27 36 38 47"
          ],
-         "why": "An odd number of items, so one half is bigger than the other - the split has to cope with that."
+         "why": "Seven numbers, so one half is bigger than the other and both halves still have to be sorted."
         },
         {
          "in": [
@@ -915,7 +2045,7 @@
          "out": [
           "1 2 3 4 5 6 7 8"
          ],
-         "why": "Already in order. If the output changes, your merge is taking from the right-hand half when the two fronts are equal or close."
+         "why": "Already in order, and it must come back unchanged."
         },
         {
          "in": [
@@ -924,16 +2054,7 @@
          "out": [
           "20 30 40 50 60 70 80 90"
          ],
-         "why": "Reversed, so every merge has to take the whole of the right-hand half first."
-        },
-        {
-         "in": [
-          "7"
-         ],
-         "out": [
-          "7"
-         ],
-         "why": "One item is already sorted - a list of one has to be returned as it is, or the splitting never stops."
+         "why": "Reversed, so every merge takes the whole of the right half first."
         },
         {
          "in": [
@@ -942,19 +2063,113 @@
          "out": [
           "1 3 3 5 5 9"
          ],
-         "why": "Repeats must all survive. Using < instead of <= when comparing the fronts can lose one of a pair."
+         "why": "Repeats must all survive, which is why the comparison is <= and not <."
         }
        ],
-       "fb": "The base case is the important part: a list of one item is already in order, and that is what stops the splitting.",
-       "hint": "mergesort",
+       "hint": {
+        "think": "Look at the line above the gap and ask what the right half needs to have done to it.",
+        "syntax": "msort(nums[mid:])",
+        "diagram": "pyfunc"
+       },
        "forbid": [
         [
          "sorted(",
-         "The brief asks you to write the sort yourself, not use Python's sorted()."
+         "The activity asks you to write the sort yourself, so sorted() is not allowed - it does the sorting for you."
         ],
         [
          ".sort(",
-         "The brief asks you to write the sort yourself, not use Python's .sort()."
+         "The activity asks you to write the sort yourself, so .sort() is not allowed - it does the sorting for you."
+        ]
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Sort the numbers smallest first with a merge sort of your own. Display the sorted numbers on one line, separated by single spaces.",
+       "brief": [
+        "The line of numbers the user types is already read into a list called nums for you.",
+        "A list of one number is already in order, and that is what stops the work.",
+        "Write the sort yourself, not with sorted() or .sort().",
+        "The space left on the end of the line is ignored when your answer is marked."
+       ],
+       "fb": "A merge sort does fewer comparisons than a bubble sort on a long list, because it never compares the same pair twice.",
+       "starter": "nums = []\nfor part in input(\"Numbers? \").split():\n    nums.append(int(part))\n# then a merge sort of nums, shown on one line\n",
+       "tests": [
+        {
+         "in": [
+          "38 5 47 15 36 26 27"
+         ],
+         "out": [
+          "5 15 26 27 36 38 47"
+         ],
+         "why": "Seven numbers, so one piece is bigger than the other and the sort has to cope with that."
+        },
+        {
+         "in": [
+          "1 2 3 4 5 6 7 8"
+         ],
+         "out": [
+          "1 2 3 4 5 6 7 8"
+         ],
+         "why": "Already in order. If the output changes, the two front items are being compared the wrong way round."
+        },
+        {
+         "in": [
+          "90 80 70 60 50 40 30 20"
+         ],
+         "out": [
+          "20 30 40 50 60 70 80 90"
+         ],
+         "why": "Reversed is the case that puts every item through every stage."
+        },
+        {
+         "in": [
+          "7"
+         ],
+         "out": [
+          "7"
+         ],
+         "why": "One number is already in order, and that is what stops the work going on for ever."
+        },
+        {
+         "in": [
+          "5 3 5 3 9 1"
+         ],
+         "out": [
+          "1 3 3 5 5 9"
+         ],
+         "why": "Repeats must all survive, so compare with <= and take from the left when they are equal."
+        }
+       ],
+       "opt": true,
+       "hint": {
+        "think": "A subprogram that hands back a sorted list can use itself on something smaller.",
+        "syntax": [
+         "def msort(items):",
+         "    if len(items) <= 1:",
+         "        return items"
+        ],
+        "start": [
+         "def msort(items):",
+         "    # the smallest list there can be is already in order",
+         "    # otherwise cut it, deal with each piece, and put them together"
+        ],
+        "diagram": "pyfunc"
+       },
+       "forbid": [
+        [
+         "sorted(",
+         "The activity asks you to write the sort yourself, so sorted() is not allowed - it does the sorting for you."
+        ],
+        [
+         ".sort(",
+         "The activity asks you to write the sort yourself, so .sort() is not allowed - it does the sorting for you."
+        ]
+       ],
+       "require": [
+        [
+         "def ",
+         "A merge sort has to use itself on a smaller piece, so it needs a subprogram - a def line."
         ]
        ]
       }
@@ -970,15 +2185,288 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 8,
-       "q": "Ask the user for a line of whole numbers already in order. Then ask for the number to find. Count what a linear search compares. Count what a binary search compares. Display linear: [the first count]. Then display binary: [the second count] on the next line.",
+       "marks": 1,
+       "q": "The program is looking for 12, which is at position 1. What will it display?",
        "brief": [
-        "The numbers are separated by single spaces.",
-        "The linear search starts at the front and stops as soon as it matches.",
-        "The binary search works the middle out as mid = (low + high) // 2.",
-        "The matching one counts in both."
+        "Read every line before you choose.",
+        "The list is not in order.",
+        "found stays at -1 while nothing has matched."
        ],
-       "starter": "# two searches over the same list, counted separately\n",
+       "fb": "The search says the number is not there, and it is. This is why a list has to be sorted before a binary search is any use at all.",
+       "kind": "predict",
+       "code": [
+        "nums = [45, 12, 83, 27, 61]",
+        "target = 12",
+        "low = 0",
+        "high = 4",
+        "found = -1",
+        "while low <= high and found == -1:",
+        "    mid = (low + high) // 2",
+        "    if nums[mid] == target:",
+        "        found = mid",
+        "    elif nums[mid] > target:",
+        "        high = mid - 1",
+        "    else:",
+        "        low = mid + 1",
+        "print(found)"
+       ],
+       "a": [
+        "-1",
+        "1",
+        "0"
+       ],
+       "teach": {
+        "say": "A binary search throws away half the list every turn, and it can only do that safely when the list is in order. On a jumbled list it throws away the half the value is actually in."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "Both searches are looking for 30, the last number in the list. What will this program display?",
+       "brief": [
+        "Read every line before you choose.",
+        "The list is in order, so both searches are allowed.",
+        "found stays at -1 while nothing has matched."
+       ],
+       "fb": "Seven comparisons against three. Double the length of the list and the linear count doubles, while the binary count goes up by one.",
+       "kind": "predict",
+       "code": [
+        "nums = [3, 8, 12, 17, 21, 26, 30]",
+        "lcount = 0",
+        "for i in range(len(nums)):",
+        "    lcount = lcount + 1",
+        "    if nums[i] == 30:",
+        "        print(\"linear: \" + str(lcount))",
+        "bcount = 0",
+        "low = 0",
+        "high = 6",
+        "found = -1",
+        "while low <= high and found == -1:",
+        "    mid = (low + high) // 2",
+        "    bcount = bcount + 1",
+        "    if nums[mid] == 30:",
+        "        found = mid",
+        "    elif nums[mid] > 30:",
+        "        high = mid - 1",
+        "    else:",
+        "        low = mid + 1",
+        "print(\"binary: \" + str(bcount))"
+       ],
+       "a": [
+        "linear: 7\nbinary: 3",
+        "linear: 7\nbinary: 7",
+        "linear: 4\nbinary: 3"
+       ],
+       "teach": {
+        "say": "Counting the comparisons is how two algorithms are compared. The same list and the same value can cost one search many times what it costs the other."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "Change the program so it sorts the numbers largest first instead of smallest first.",
+       "brief": [
+        "The user types in one line of whole numbers separated by single spaces.",
+        "Change one character only, and the biggest number then comes first.",
+        "The space left on the end of the line is ignored when your answer is marked."
+       ],
+       "fb": "The direction of a sort lives in one comparison. Everything else about the algorithm stays exactly the same.",
+       "kind": "change",
+       "starter": "nums = []\nfor part in input(\"Numbers? \").split():\n    nums.append(int(part))\nfor p in range(len(nums) - 1):\n    for i in range(len(nums) - 1):\n        if nums[i] > nums[i + 1]:\n            nums[i], nums[i + 1] = nums[i + 1], nums[i]\nline = \"\"\nfor n in nums:\n    line = line + str(n) + \" \"\nprint(line)\n",
+       "tests": [
+        {
+         "in": [
+          "34 7 19 2 25 11"
+         ],
+         "out": [
+          "34 25 19 11 7 2"
+         ],
+         "why": "Still smallest first, so the comparison was not turned round."
+        },
+        {
+         "in": [
+          "3 8 12"
+         ],
+         "out": [
+          "12 8 3"
+         ],
+         "why": "One character decides which way a sort runs."
+        },
+        {
+         "in": [
+          "60 50 40 30 20 10"
+         ],
+         "out": [
+          "60 50 40 30 20 10"
+         ],
+         "why": "This line arrives largest first already, so now it should come back unchanged."
+        }
+       ],
+       "hint": {
+        "think": "A pair is now the wrong way round when the earlier one is the smaller one.",
+        "syntax": "a < b"
+       },
+       "forbid": [
+        [
+         "sorted(",
+         "The activity asks you to write the sort yourself, so sorted() is not allowed - it does the sorting for you."
+        ],
+        [
+         ".sort(",
+         "The activity asks you to write the sort yourself, so .sort() is not allowed - it does the sorting for you."
+        ]
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "This program should sort the numbers typed in smallest first. Find the mistake and put it right.",
+       "brief": [
+        "Press Run first and type the line 9 10 2.",
+        "The sort itself is written correctly.",
+        "Look at what is going into the list.",
+        "Put single spaces between the numbers."
+       ],
+       "fb": "A perfectly good sort gives a wrong answer when the list holds text. Cast on the way in, every time.",
+       "kind": "debug",
+       "starter": "nums = []\nfor part in input(\"Numbers? \").split():\n    nums.append(part)\nfor p in range(len(nums) - 1):\n    for i in range(len(nums) - 1):\n        if nums[i] > nums[i + 1]:\n            nums[i], nums[i + 1] = nums[i + 1], nums[i]\nline = \"\"\nfor n in nums:\n    line = line + str(n) + \" \"\nprint(line)\n",
+       "tests": [
+        {
+         "in": [
+          "9 10 2"
+         ],
+         "out": [
+          "2 9 10"
+         ],
+         "why": "As text, 10 comes before 9 because 1 comes before 9. Cast each part with int() as it goes in."
+        },
+        {
+         "in": [
+          "100 25 7"
+         ],
+         "out": [
+          "7 25 100"
+         ],
+         "why": "Text is compared character by character, so 100 looks smaller than 25."
+        },
+        {
+         "in": [
+          "45 7 120 9"
+         ],
+         "out": [
+          "7 9 45 120"
+         ],
+         "why": "The sort was never wrong. It was sorting the wrong kind of value."
+        },
+        {
+         "in": [
+          "3 1 2"
+         ],
+         "out": [
+          "1 2 3"
+         ],
+         "why": "Single digits sort the same either way, which is how a bug like this hides."
+        }
+       ],
+       "hint": {
+        "think": "split() hands back pieces of text, and text is compared letter by letter rather than by size.",
+        "syntax": "int(part)",
+        "diagram": "pyinput"
+       },
+       "forbid": [
+        [
+         "sorted(",
+         "The activity asks you to write the sort yourself, so sorted() is not allowed - it does the sorting for you."
+        ],
+        [
+         ".sort(",
+         "The activity asks you to write the sort yourself, so .sort() is not allowed - it does the sorting for you."
+        ]
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Finish the program so it displays the smallest number and then the largest.",
+       "brief": [
+        "The line of numbers is already read in and sorted for you.",
+        "Replace ____ so it displays the last number of the sorted list.",
+        "Line 1 is the smallest number and line 2 is the largest.",
+        "A list of one number has the same smallest and largest."
+       ],
+       "fb": "Sorting a list answers more than one thing at once: the ends of a sorted list are the smallest and the largest.",
+       "kind": "complete",
+       "starter": "nums = []\nfor part in input(\"Numbers? \").split():\n    nums.append(int(part))\nfor p in range(len(nums) - 1):\n    for i in range(len(nums) - 1):\n        if nums[i] > nums[i + 1]:\n            nums[i], nums[i + 1] = nums[i + 1], nums[i]\nprint(nums[0])\nprint(____)\n",
+       "tests": [
+        {
+         "in": [
+          "34 7 19 2 25 11"
+         ],
+         "out": [
+          "2",
+          "34"
+         ],
+         "why": "The largest sits at the last position, which is one less than the length of the list."
+        },
+        {
+         "in": [
+          "60 50 40 30 20 10"
+         ],
+         "out": [
+          "10",
+          "60"
+         ],
+         "why": "Sorting first is what puts the two answers at the two ends."
+        },
+        {
+         "in": [
+          "5"
+         ],
+         "out": [
+          "5",
+          "5"
+         ],
+         "why": "One number is both the smallest and the largest, and position 0 is also the last position."
+        },
+        {
+         "in": [
+          "4 11 17 23 40"
+         ],
+         "out": [
+          "4",
+          "40"
+         ],
+         "why": "An ordered line gives the same two answers, because sorting it changed nothing."
+        }
+       ],
+       "hint": {
+        "think": "Once a list is sorted, the largest item is the last one. Which position is the last one?",
+        "syntax": "nums[len(nums) - 1]",
+        "diagram": "pylist"
+       },
+       "forbid": [
+        [
+         "max(",
+         "The list is already sorted, so the largest is simply the item at the end - work out which position that is."
+        ],
+        [
+         "min(",
+         "The list is already sorted, so the smallest is simply the item at the front."
+        ]
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for the number to find. Count what a linear search compares to find it. Count what a binary search compares to find it. Display linear: [the first count]. Then display binary: [the second count] on the next line.",
+       "brief": [
+        "The line the user types is already read into nums for you, and it is already in order.",
+        "The linear search starts at the front and stops as soon as it matches.",
+        "The matching item counts as a comparison in both searches.",
+        "When the number is not in the list, each search still counts every item it looked at."
+       ],
+       "fb": "This is why a binary search is called the more efficient of the two - but it only works at all because the list is in order.",
+       "starter": "nums = []\nfor part in input(\"Numbers? \").split():\n    nums.append(int(part))\n# then two searches over nums, counted separately\n",
        "tests": [
         {
          "in": [
@@ -989,7 +2477,7 @@
           "linear: 1",
           "binary: 4"
          ],
-         "why": "The first item is the best case for a linear search and nearly the worst for a binary search - that is the point of the comparison."
+         "why": "The first item is the best case for a linear search and nearly the worst for a binary search."
         },
         {
          "in": [
@@ -1000,7 +2488,7 @@
           "linear: 8",
           "binary: 1"
          ],
-         "why": "The middle of fifteen items is position 7, so the binary search finds it immediately while the linear search is still counting."
+         "why": "The middle of fifteen items is position 7, so the binary search is finished in one comparison."
         },
         {
          "in": [
@@ -1022,7 +2510,7 @@
           "linear: 15",
           "binary: 4"
          ],
-         "why": "Not in the list at all. The linear search still has to compare all fifteen before it can be sure."
+         "why": "Not in the list at all, so the linear search still has to look at all fifteen before it can be sure."
         },
         {
          "in": [
@@ -1033,28 +2521,41 @@
           "linear: 7",
           "binary: 3"
          ],
-         "why": "A shorter list from the input. Seven items need three halvings at most, however long the linear count gets."
+         "why": "A shorter list: seven items need three halvings at most, however long the linear count gets."
         }
        ],
-       "fb": "This is why the specification says a binary search is more efficient - but it only works because the list is already in order.",
-       "hint": "searches",
+       "hint": {
+        "think": "Two searches over the same list, each with a counter of its own.",
+        "syntax": [
+         "lcount = lcount + 1",
+         "bcount = bcount + 1"
+        ],
+        "start": [
+         "target = int(input())",
+         "lcount = 0",
+         "# the linear search and its counter, then the binary search and its counter"
+        ],
+        "diagram": "pylist"
+       },
        "forbid": [
         [
          ".index(",
-         "The point of this one is the search loop, so .index() is not allowed - it does the searching for you."
+         "The activity asks you to write the search yourself, so .index() is not allowed - it does the searching for you."
         ]
        ]
       },
       {
        "t": "code",
-       "marks": 8,
-       "q": "Ask the user for a line of whole numbers separated by single spaces. Then ask for the number to find. Sort them smallest first with a sort of your own. Display [the sorted numbers] on one line. Then find where that number is in the sorted list. Display [its position], counting from 0, on the next line. Display not found instead when the number is not there.",
+       "marks": 3,
+       "q": "Ask the user for the number to find. Sort the numbers smallest first with a sort of your own. Display the sorted numbers on one line, separated by single spaces. Then display the position that number is at in the sorted list, counting from 0, on the next line. Display not found instead when it is not there.",
        "brief": [
-        "Print the sorted values on one line, separated by single spaces.",
-        "Find the position with a binary search over the sorted list.",
-        "Print exactly: not found"
+        "The line the user types is already read into nums for you, and it is not in order.",
+        "Find the position with a binary search over the sorted list, not with a loop from the front.",
+        "Two lines of output, in that order.",
+        "Display exactly: not found"
        ],
-       "starter": "# sort it first, then search it\n",
+       "fb": "Sorting costs a lot and searching a sorted list costs almost nothing, which is why a list that is searched often is kept in order.",
+       "starter": "nums = []\nfor part in input(\"Numbers? \").split():\n    nums.append(int(part))\n# then the number to find, the sorted line, and where it sits\n",
        "tests": [
         {
          "in": [
@@ -1065,7 +2566,7 @@
           "9 12 27 38 45 61 83",
           "5"
          ],
-         "why": "Search the sorted list, not the list as it was typed in - the position is the position after sorting."
+         "why": "The position asked for is the position after sorting, not the position it was typed in at."
         },
         {
          "in": [
@@ -1076,7 +2577,7 @@
           "4 11 19 26 33",
           "0"
          ],
-         "why": "Already in order, and the value wanted is the smallest - so position 0."
+         "why": "Already in order, and the number wanted is the smallest, so the position is 0."
         },
         {
          "in": [
@@ -1087,7 +2588,7 @@
           "10 20 30 40 50 60 70",
           "0"
          ],
-         "why": "Reversed input, so the smallest ends up at position 0 - if you get 6 you searched before sorting."
+         "why": "Reversed input, so the smallest ends at position 0 - a 6 means the search ran before the sort."
         },
         {
          "in": [
@@ -1098,7 +2599,7 @@
           "5 8 14 29",
           "not found"
          ],
-         "why": "20 is not in the list, so the sorted line still prints but the second line must be: not found"
+         "why": "20 is not there, so the sorted line is still displayed and the second line is: not found"
         },
         {
          "in": [
@@ -1109,19 +2610,34 @@
           "31 52 77",
           "2"
          ],
-         "why": "The largest value ends up last, at position 2 - the binary search must be able to reach the end of the list."
+         "why": "The largest ends up last, so the search has to be able to reach the end of the list."
         }
        ],
-       "fb": "Sorting first is what makes the binary search legal: on an unsorted list it throws away the half the value is actually in.",
-       "hint": "searches",
+       "opt": true,
+       "hint": {
+        "think": "Sorting first is what makes a binary search legal on this list.",
+        "syntax": [
+         "# a sort you have already written",
+         "mid = (low + high) // 2"
+        ],
+        "start": [
+         "target = int(input())",
+         "# sort nums, show it, then binary search the sorted list"
+        ],
+        "diagram": "pylist"
+       },
        "forbid": [
         [
          "sorted(",
-         "The brief asks you to write the sort yourself, not use Python's sorted()."
+         "The activity asks you to write the sort yourself, so sorted() is not allowed - it does the sorting for you."
         ],
         [
          ".sort(",
-         "The brief asks you to write the sort yourself, not use Python's .sort()."
+         "The activity asks you to write the sort yourself, so .sort() is not allowed - it does the sorting for you."
+        ],
+        [
+         ".index(",
+         "The activity asks you to write the search yourself, so .index() is not allowed - it does the searching for you."
         ]
        ]
       }

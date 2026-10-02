@@ -145,8 +145,14 @@ function findQuestions() {
     await pg.waitForFunction(() => !document.querySelector("#pycheck").disabled, null, { timeout: 90000 });
     await type(wrong);
     const poor = await check();
-    console.log(`${"".padEnd(8)} ${"".padEnd(46)} wrong: ${poor.pass}/${poor.pass + poor.fail} pass`);
-    if (poor.fail === 0) { console.log("   a wrong solution was marked correct"); bad++; }
+    /* Nothing ran at all means the program was turned away before marking - a
+     * question that forbids a shortcut or requires a technique checks that
+     * first, and the constant-printing program has neither. That is a refusal,
+     * and a stricter one than failing a test. */
+    const stopped = poor.pass === 0 && poor.fail === 0;
+    console.log(`${"".padEnd(8)} ${"".padEnd(46)} wrong: ` +
+      (stopped ? "stopped before marking" : `${poor.pass}/${poor.pass + poor.fail} pass`));
+    if (!stopped && poor.fail === 0) { console.log("   a wrong solution was marked correct"); bad++; }
     if (poor.ok) { console.log("   a wrong solution was reported as correct"); bad++; }
 
     const real = errs.filter(e => !/WebGL|deprecat/i.test(e));

@@ -19,14 +19,75 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 2,
-       "q": "Ask the user for a word. Take off any spaces at each end of it. Display nothing typed when nothing is left. Otherwise display value [the word without those spaces].",
+       "marks": 1,
+       "q": "Press Run. The program is given nothing at all, and says so.",
        "brief": [
-        "One line only is printed.",
-        "A line of nothing but spaces is not a word.",
-        "Print exactly: nothing typed"
+        "Nothing is marked on this one.",
+        "The user pressed Enter without typing anything first."
        ],
-       "starter": "# spaces are not a word\n",
+       "fb": "A presence check compares the input with \"\", which is the empty piece of text input() gives when nothing was typed.",
+       "kind": "try",
+       "starter": "entry = input(\"Name? \")   # the user pressed Enter straight away\nif entry == \"\":\n    print(\"nothing typed\")\nelse:\n    print(\"thank you\")\n",
+       "tests": [],
+       "in": [
+        ""
+       ],
+       "teach": {
+        "say": "Validation means checking what was typed before the program uses it. A presence check is the simplest one: it asks whether anything was typed at all. input() hands back an empty piece of text when Enter is pressed alone. Two quotation marks with nothing between them, \"\", are how that empty text is written.",
+        "code": [
+         "entry = input(\"Name? \")   # the user pressed Enter straight away",
+         "if entry == \"\":",
+         "    print(\"nothing typed\")",
+         "else:",
+         "    print(\"thank you\")"
+        ],
+        "out": [
+         "nothing typed"
+        ]
+       },
+       "lines": [
+        "Read a line and keep it under the name entry.",
+        "Ask whether what came back is empty.",
+        "Say so when it is.",
+        "",
+        "Otherwise carry on as normal."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "What will this program display?",
+       "brief": [
+        "Read every line before you choose."
+       ],
+       "fb": "Three spaces are three characters, so the first test is False. Strip them off and there is nothing left, so the second is True.",
+       "kind": "predict",
+       "code": [
+        "entry = \"   \"",
+        "print(entry == \"\")",
+        "print(entry.strip() == \"\")"
+       ],
+       "a": [
+        "False\nTrue",
+        "True\nTrue",
+        "False\nFalse"
+       ],
+       "teach": {
+        "say": "A line of spaces looks empty on the screen. To Python it is not empty at all. .strip() hands back a copy with the spaces taken off each end. A line of nothing but spaces strips down to nothing at all."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "Change the program so that a line of nothing but spaces also counts as nothing typed.",
+       "brief": [
+        "Add one thing to line 1 and change nothing else.",
+        "A word typed with spaces either side is displayed without them.",
+        "Display exactly: nothing typed"
+       ],
+       "fb": "Strip the line as it comes in and a line of spaces becomes the empty text, which the presence check already handles.",
+       "kind": "change",
+       "starter": "entry = input()\nif entry == \"\":\n    print(\"nothing typed\")\nelse:\n    print(\"value \" + entry)\n",
        "tests": [
         {
          "in": [
@@ -35,7 +96,7 @@
          "out": [
           "value copper"
          ],
-         "why": "An ordinary word should be accepted and printed back after the word value."
+         "why": "An ordinary word still has to be accepted, so do not change what the else does."
         },
         {
          "in": [
@@ -44,7 +105,7 @@
          "out": [
           "nothing typed"
          ],
-         "why": "Pressing enter with nothing typed is the empty string, and that is the case a presence check exists for."
+         "why": "Pressing Enter on its own gives the empty text, which this program already caught."
         },
         {
          "in": [
@@ -53,7 +114,7 @@
          "out": [
           "nothing typed"
          ],
-         "why": "Five spaces look like nothing on screen but are not the empty string - strip them before you test for empty."
+         "why": "Five spaces are five characters, so entry == \"\" is False. Strip them off as the line comes in."
         },
         {
          "in": [
@@ -62,33 +123,161 @@
          "out": [
           "value slate"
          ],
-         "why": "The word is real but padded. Strip it once and use the stripped version, or the stray spaces end up in your output."
+         "why": "Strip the line once, at the top, and the padding is gone everywhere you use it."
         }
        ],
-       "fb": "A presence check means checking the input is not empty once the spaces around it have been removed.",
-       "hint": "pyvalidate",
+       "hint": {
+        "think": "The spaces have to come off before the line is compared with the empty text.",
+        "syntax": "thing = input().strip()",
+        "diagram": "pyvalidate"
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Ask the user for a colour. Take the spaces off each end of what was typed. Display no colour given when nothing is left. Otherwise display the line colour is [colour].",
+       "brief": [
+        "The user types in one line.",
+        "A line of nothing but spaces counts as nothing given.",
+        "Display exactly: no colour given",
+        "One line only is displayed."
+       ],
+       "fb": "A presence check is a comparison with the empty text, done after the spaces at each end have been taken off.",
+       "starter": "# nothing typed, and spaces, both count as nothing\n",
+       "tests": [
+        {
+         "in": [
+          "red"
+         ],
+         "out": [
+          "colour is red"
+         ],
+         "why": "An ordinary word is accepted and displayed after the words colour is."
+        },
+        {
+         "in": [
+          ""
+         ],
+         "out": [
+          "no colour given"
+         ],
+         "why": "Nothing typed at all is the empty text, and that is the case a presence check exists for."
+        },
+        {
+         "in": [
+          "   "
+         ],
+         "out": [
+          "no colour given"
+         ],
+         "why": "This is the boundary: three spaces strip down to nothing. If this said colour is, you compared the line with \"\" before stripping it."
+        },
+        {
+         "in": [
+          "  navy  "
+         ],
+         "out": [
+          "colour is navy"
+         ],
+         "why": "The word is real but padded, so strip it once and use the stripped value."
+        }
+       ],
+       "hint": {
+        "think": "Take the spaces off, then ask whether anything is left.",
+        "syntax": [
+         "thing = input().strip()",
+         "if thing == \"\":"
+        ],
+        "diagram": "pyvalidate"
+       },
        "teach": {
-        "say": ".strip() takes the spaces off each end of what was typed, so a line of nothing but spaces becomes the empty string and can be caught.",
+        "say": "Strip first, then check, then use the stripped value. Checking before stripping lets a line of spaces through.",
         "code": [
-         "entry = input().strip()   # the user typed three spaces",
-         "print(len(entry))"
+         "town = input(\"Town? \").strip()",
+         "if town == \"\":",
+         "    print(\"no town given\")",
+         "else:",
+         "    print(\"town is \" + town)"
         ],
         "out": [
-         "0"
+         "town is Bury"
         ]
        }
       },
       {
        "t": "code",
+       "marks": 1,
+       "q": "Press Run. Type 14 when the program waits. The program checks before it casts.",
+       "brief": [
+        "Nothing is marked on this one.",
+        "Run it again and type apple. The program says digits only instead of stopping."
+       ],
+       "fb": "isdigit() checks safely, before int() gets the chance to stop the program.",
+       "kind": "try",
+       "starter": "entry = input(\"Age? \")   # the user typed 14\nif entry.isdigit():\n    age = int(entry)\n    print(age + 1)\nelse:\n    print(\"digits only\")\n",
+       "tests": [],
+       "in": [
+        "14"
+       ],
+       "teach": {
+        "say": "A type check asks whether the text is the kind of data you need. int() stops the whole program when the text is not a whole number. So .isdigit() is asked about the text first. It is True only when every character is a digit. The cast then happens where it is safe.",
+        "code": [
+         "entry = input(\"Age? \")   # the user typed 14",
+         "if entry.isdigit():",
+         "    age = int(entry)",
+         "    print(age + 1)",
+         "else:",
+         "    print(\"digits only\")"
+        ],
+        "out": [
+         "15"
+        ]
+       },
+       "lines": [
+        "Read the line as text, because input() always hands back text.",
+        "Ask whether every character of it is a digit.",
+        "Only now is it safe to cast it to a whole number.",
+        "Use the number.",
+        "",
+        "Say what was wrong when it was not digits."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "What will this program display?",
+       "brief": [
+        "Read every line before you choose."
+       ],
+       "fb": "Only the first one is all digits. The last one is the easiest to get wrong: isdigit() is False for an empty line, which is exactly what you want.",
+       "kind": "predict",
+       "code": [
+        "print(\"42\".isdigit())",
+        "print(\"7.5\".isdigit())",
+        "print(\"-3\".isdigit())",
+        "print(\"\".isdigit())"
+       ],
+       "a": [
+        "True\nFalse\nFalse\nFalse",
+        "True\nTrue\nTrue\nFalse",
+        "True\nFalse\nTrue\nFalse"
+       ],
+       "teach": {
+        "say": "isdigit() wants every single character to be a digit. A decimal point is not a digit. A minus sign is not a digit either. An empty piece of text has no digits in it at all."
+       }
+      },
+      {
+       "t": "code",
        "marks": 3,
-       "q": "Ask the user for a whole number. Check whether every character typed is a digit. Display number: [the number] when they are all digits. Display not a number instead when any one of them is not.",
+       "q": "Ask the user for a whole number. Check whether every character typed is a digit. Display the line number: [the number] when they all are. Otherwise display not a number.",
        "brief": [
         "A minus sign is not a digit.",
         "A decimal point is not a digit.",
         "An empty line is not a number.",
-        "One line only is printed."
+        "One line only is displayed."
        ],
-       "starter": "# digits only\n",
+       "fb": "A type check comes before the cast, every time, because the cast is the thing that would stop the program.",
+       "starter": "# digits only, checked before casting\n",
        "tests": [
         {
          "in": [
@@ -97,7 +286,7 @@
          "out": [
           "number: 42"
          ],
-         "why": "Digits only, so this is a whole number and the number itself is printed after the label."
+         "why": "Digits only, so this is a whole number and it is displayed after the label."
         },
         {
          "in": [
@@ -106,7 +295,7 @@
          "out": [
           "not a number"
          ],
-         "why": "Letters are not digits. Calling int() on this straight away would crash the program, which is what a type check prevents."
+         "why": "Letters are not digits. Casting this straight away would stop the program, which is what a type check prevents."
         },
         {
          "in": [
@@ -115,7 +304,7 @@
          "out": [
           "not a number"
          ],
-         "why": "Nothing typed at all is not a whole number either - isdigit() is False for the empty string."
+         "why": "This is the boundary: nothing typed is not a whole number, and isdigit() is already False for it."
         },
         {
          "in": [
@@ -124,7 +313,7 @@
          "out": [
           "not a number"
          ],
-         "why": "A decimal point is not a digit, so this fails the check even though it is a number."
+         "why": "A decimal point is not a digit, so this is refused even though it is a number."
         },
         {
          "in": [
@@ -133,7 +322,7 @@
          "out": [
           "not a number"
          ],
-         "why": "The brief says digits only, and a minus sign is not a digit - so this one is refused here on purpose."
+         "why": "A minus sign is not a digit either, and the brief says digits only."
         },
         {
          "in": [
@@ -142,21 +331,85 @@
          "out": [
           "number: 0"
          ],
-         "why": "Zero is a perfectly good whole number. A check that tests whether the number is true rather than whether it is digits would reject it."
+         "why": "Zero is a perfectly good whole number. If this said not a number, you tested whether the number was above nothing instead of whether it was digits."
         }
        ],
-       "fb": "isdigit() asks the question safely, before int() gets the chance to crash.",
-       "hint": "pyvalidate"
+       "hint": {
+        "think": "One check on the whole line, made before anything is cast.",
+        "syntax": "if thing.isdigit():",
+        "diagram": "pyvalidate"
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "This program should display the line number: [the number] when the line is all digits. It should display not a number for anything else. Find the mistake and put it right.",
+       "brief": [
+        "Press Run first and type apple, then read the error message.",
+        "Move one line rather than rewriting the program.",
+        "One line only is displayed."
+       ],
+       "fb": "Check, then cast. A type check put after the cast protects nothing at all.",
+       "kind": "debug",
+       "starter": "entry = input()\nnumber = int(entry)\nif entry.isdigit():\n    print(\"number: \" + str(number))\nelse:\n    print(\"not a number\")\n",
+       "tests": [
+        {
+         "in": [
+          "42"
+         ],
+         "out": [
+          "number: 42"
+         ],
+         "why": "Digits work either way, which is why this mistake is easy to miss."
+        },
+        {
+         "in": [
+          "apple"
+         ],
+         "out": [
+          "not a number"
+         ],
+         "why": "A ValueError here means int() was given letters. The cast ran before the check had a chance to stop it."
+        },
+        {
+         "in": [
+          ""
+         ],
+         "out": [
+          "not a number"
+         ],
+         "why": "Nothing typed stops the cast too, so the check has to come first."
+        },
+        {
+         "in": [
+          "-3"
+         ],
+         "out": [
+          "not a number"
+         ],
+         "why": "A minus sign is not a digit, so this line never reaches the cast once the order is right."
+        }
+       ],
+       "hint": {
+        "think": "The check happens on line 3, but something has already been cast on line 2.",
+        "walk": [
+         "int() stops the program when the text is not a whole number.",
+         "So the cast has to happen after the check has passed, not before it.",
+         "There is one place inside the if where it belongs."
+        ],
+        "diagram": "pyvalidate"
+       }
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a word. Check it against red, green and blue, which are fixed in the program. Display known when it is one of those three. Display unknown instead when it is not.",
+       "q": "Ask the user for a colour. Check it against red, green and blue, which are written into the program. Display known when it is one of those three. Otherwise display unknown.",
        "brief": [
-        "The three allowed words are written into the program, not typed in.",
+        "The three allowed words are written into your program, not typed in.",
         "Matching is exact, so a capital letter makes a word unknown.",
-        "One line only is printed."
+        "One line only is displayed."
        ],
+       "fb": "A look-up check compares what was typed against values the program already holds, and each one needs a complete comparison: thing == \"red\" or thing == \"green\", never thing == \"red\" or \"green\".",
        "starter": "# only three words are allowed\n",
        "tests": [
         {
@@ -166,7 +419,7 @@
          "out": [
           "known"
          ],
-         "why": "The first of the three allowed words. A check that only looks at one of them passes here and fails the next test."
+         "why": "The first of the three. A check that only looks at one of them passes here and fails the next test."
         },
         {
          "in": [
@@ -193,7 +446,7 @@
          "out": [
           "unknown"
          ],
-         "why": "A word that is not on the list at all must be refused, whatever else it looks like."
+         "why": "A word that is not on the list must be refused, whatever else it looks like."
         },
         {
          "in": [
@@ -202,7 +455,7 @@
          "out": [
           "unknown"
          ],
-         "why": "A capital R makes a different word, because == compares exactly. This is the case a look-up check is usually asked about."
+         "why": "This is the boundary: == compares exactly, so a capital R is a different word."
         },
         {
          "in": [
@@ -211,11 +464,15 @@
          "out": [
           "unknown"
          ],
-         "why": "Nothing typed is not one of the three either, so it is unknown rather than a crash."
+         "why": "Nothing typed is not one of the three either, so it is unknown rather than an error."
         }
        ],
-       "fb": "A look-up check compares what was typed against the values the program already holds, so each allowed value needs its own complete comparison: entry == 'red' or entry == 'green', not entry == 'red' or 'green'.",
-       "hint": "pyvalidate"
+       "opt": true,
+       "hint": {
+        "think": "Each allowed word needs a comparison of its own, joined with or.",
+        "syntax": "if thing == \"one\" or thing == \"two\":",
+        "diagram": "pyif"
+       }
       }
      ]
     },
@@ -229,82 +486,260 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 3,
-       "q": "Ask the user for a whole number. Display valid when it is from 1 to 10 inclusive. Display too low instead when it is below 1. Display too high instead when it is above 10.",
+       "marks": 1,
+       "q": "Press Run. Type 10 when the program waits. 10 is the highest score allowed.",
        "brief": [
-        "Both 1 and 10 are allowed.",
-        "One line only is printed."
+        "Nothing is marked on this one.",
+        "Run it again and type 11. Watch which message comes out."
        ],
-       "starter": "# both boundaries are allowed\n",
+       "fb": "1 and 10 are allowed because the condition only refuses what is below 1 or above 10.",
+       "kind": "try",
+       "starter": "score = int(input(\"Score? \"))   # the user typed 10\nif score < 1 or score > 10:\n    print(\"out of range\")\nelse:\n    print(\"valid\")\n",
+       "tests": [],
+       "in": [
+        "10"
+       ],
+       "teach": {
+        "say": "A range check asks whether a number is between two limits. Inclusive means both limits are allowed, so only a value past them is refused. The condition refuses what is below the bottom limit or above the top one.",
+        "code": [
+         "score = int(input(\"Score? \"))   # the user typed 10",
+         "if score < 1 or score > 10:",
+         "    print(\"out of range\")",
+         "else:",
+         "    print(\"valid\")"
+        ],
+        "out": [
+         "valid"
+        ]
+       },
+       "lines": [
+        "Read the score and cast it to a whole number.",
+        "Refuse it when it is below 1 or above 10.",
+        "Say so.",
+        "",
+        "Anything else is inside the range, 1 and 10 included."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "What will this program display?",
+       "brief": [
+        "Read every line before you choose."
+       ],
+       "fb": "n < 10 is False when n is exactly 10, so the boundary value is turned away. A range of 1 to 10 inclusive needs >= and <=.",
+       "kind": "predict",
+       "code": [
+        "n = 10",
+        "if n > 1 and n < 10:",
+        "    print(\"valid\")",
+        "else:",
+        "    print(\"refused\")"
+       ],
+       "a": [
+        "refused",
+        "valid",
+        "10"
+       ],
+       "teach": {
+        "say": "> and < leave the two limits out. >= and <= let them in. This is the one mistake worth learning to spot. The program looks right and refuses a value it should accept."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "Change the program so that 0 and 100 are both accepted.",
+       "brief": [
+        "Change only the two comparisons.",
+        "Every mark typed is a whole number.",
+        "Display exactly: valid or exactly: refused"
+       ],
+       "fb": "Adding the = to each comparison turns a range that excludes its limits into one that includes them.",
+       "kind": "change",
+       "starter": "mark = int(input())\nif mark > 0 and mark < 100:\n    print(\"valid\")\nelse:\n    print(\"refused\")\n",
        "tests": [
         {
          "in": [
-          "6"
+          "50"
          ],
          "out": [
           "valid"
          ],
-         "why": "An ordinary number comfortably inside the range."
-        },
-        {
-         "in": [
-          "1"
-         ],
-         "out": [
-          "valid"
-         ],
-         "why": "1 is the bottom boundary and inclusive means it is allowed - if you got too low you used < 2 or <= 1 the wrong way round."
-        },
-        {
-         "in": [
-          "10"
-         ],
-         "out": [
-          "valid"
-         ],
-         "why": "10 is the top boundary and is allowed. This is where < and <= get confused."
+         "why": "A mark comfortably inside the range has to keep working."
         },
         {
          "in": [
           "0"
          ],
          "out": [
-          "too low"
+          "valid"
          ],
-         "why": "One below the boundary, so it must be refused. 0 is the value a range check most often lets through by mistake."
+         "why": "This is the bottom boundary. > 0 refuses 0, because 0 is not above 0."
         },
         {
          "in": [
-          "11"
+          "100"
          ],
          "out": [
-          "too high"
+          "valid"
          ],
-         "why": "One above the boundary. Testing > 10 rather than >= 10 is what makes this one work."
+         "why": "This is the top boundary. < 100 refuses 100 for the same reason."
         },
         {
          "in": [
-          "-4"
+          "-1"
          ],
          "out": [
-          "too low"
+          "refused"
          ],
-         "why": "Well below the range, and still too low rather than too high."
+         "why": "One below the bottom limit, so it is still refused."
+        },
+        {
+         "in": [
+          "101"
+         ],
+         "out": [
+          "refused"
+         ],
+         "why": "One above the top limit, so it is still refused."
         }
        ],
-       "fb": "Inclusive means both boundaries pass, so the four values worth testing are 0, 1, 10 and 11.",
-       "hint": "pyvalidate"
+       "hint": {
+        "think": "Which two comparisons let a value equal the limit as well as pass it?",
+        "syntax": "value >= low and value <= high"
+       }
       },
       {
        "t": "code",
-       "marks": 4,
-       "q": "Ask the user for a whole number. Display not a number when what was typed is not a whole number. Display ok when it is from -5 to 35 inclusive. Display out of range when it is outside that range.",
+       "marks": 3,
+       "q": "Ask the user for a whole number of tickets. Display too few when it is below 1. Display sold out when it is above 6. Otherwise display the line tickets: [the number].",
+       "brief": [
+        "Every line typed is a whole number.",
+        "Both 1 and 6 are allowed.",
+        "One line only is displayed."
+       ],
+       "fb": "A range check is worth testing on four values: one below each limit, and each limit itself.",
+       "starter": "# below 1, above 6, or inside\n",
+       "tests": [
+        {
+         "in": [
+          "3"
+         ],
+         "out": [
+          "tickets: 3"
+         ],
+         "why": "An ordinary number inside the range is displayed after the label."
+        },
+        {
+         "in": [
+          "1"
+         ],
+         "out": [
+          "tickets: 1"
+         ],
+         "why": "This is the bottom boundary and it is allowed. If this said too few, you wrote value < 2 or value <= 1 instead of value < 1."
+        },
+        {
+         "in": [
+          "6"
+         ],
+         "out": [
+          "tickets: 6"
+         ],
+         "why": "This is the top boundary and it is allowed. If this said sold out, you wrote value >= 6 instead of value > 6."
+        },
+        {
+         "in": [
+          "0"
+         ],
+         "out": [
+          "too few"
+         ],
+         "why": "One below the bottom limit, and 0 is the value a range check lets through most often."
+        },
+        {
+         "in": [
+          "7"
+         ],
+         "out": [
+          "sold out"
+         ],
+         "why": "One above the top limit, so it is refused."
+        }
+       ],
+       "hint": {
+        "think": "Two limits and three possible answers, so an if, an elif and an else.",
+        "syntax": [
+         "if value < low:",
+         "elif value > high:"
+        ],
+        "diagram": "pyvalidate"
+       },
+       "teach": {
+        "say": "Three answers need an if, an elif and an else. Ask about the bottom limit first, then the top one. Whatever is left over is inside the range.",
+        "code": [
+         "boxes = int(input(\"Boxes? \"))   # the user typed 2",
+         "if boxes < 1:",
+         "    print(\"too few\")",
+         "elif boxes > 4:",
+         "    print(\"too many\")",
+         "else:",
+         "    print(\"boxes: \" + str(boxes))"
+        ],
+        "out": [
+         "boxes: 2"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "Press Run. Type -4 when the program waits. A minus sign is not a digit, yet this program copes.",
+       "brief": [
+        "Nothing is marked on this one.",
+        "Run it again and type seven. The program says not a number instead of stopping."
+       ],
+       "fb": "try and except let a program keep going when a cast fails, which is how a negative number gets past a type check.",
+       "kind": "try",
+       "starter": "entry = input(\"Temperature? \")   # the user typed -4\ntry:\n    value = int(entry)\n    print(value)\nexcept ValueError:\n    print(\"not a number\")\n",
+       "tests": [],
+       "in": [
+        "-4"
+       ],
+       "teach": {
+        "say": "isdigit() is False for a minus sign, so it cannot accept a negative number. try is a second way to ask the same question. Python runs the lines under try and watches for trouble. If int() cannot read the text, Python stops with a ValueError. except catches that error, runs its own lines, and the program carries on. Put the work inside the try, after the cast.",
+        "code": [
+         "entry = input(\"Temperature? \")   # the user typed -4",
+         "try:",
+         "    value = int(entry)",
+         "    print(value)",
+         "except ValueError:",
+         "    print(\"not a number\")"
+        ],
+        "out": [
+         "-4"
+        ]
+       },
+       "lines": [
+        "Read the line as text.",
+        "Try the lines underneath.",
+        "Cast the text to a whole number, which works here.",
+        "Use the number, still inside the try.",
+        "Catch the ValueError int() raises when the text cannot be read.",
+        "Say what was wrong, instead of the program stopping."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for a temperature as a whole number. Display not a number when it cannot be read as one. Display ok when it is from -10 to 40 inclusive. Otherwise display out of range.",
        "brief": [
         "A minus sign at the front is allowed.",
         "A decimal point is not allowed.",
-        "Both -5 and 35 are allowed.",
-        "One line only is printed."
+        "Both -10 and 40 are allowed.",
+        "One line only is displayed."
        ],
+       "fb": "The cast goes inside the try, and so does the range check, because the range check needs a value the cast has already made.",
        "starter": "# a negative number is still a number\n",
        "tests": [
         {
@@ -318,39 +753,39 @@
         },
         {
          "in": [
-          "-5"
+          "-10"
          ],
          "out": [
           "ok"
          ],
-         "why": "The bottom boundary is negative, so isdigit() on its own cannot accept it - this is where try and except earn their place."
+         "why": "This is the bottom boundary and it is negative, so isdigit() alone would refuse it. If this said out of range, your comparison is the wrong way round for negatives."
         },
         {
          "in": [
-          "-6"
+          "-11"
          ],
          "out": [
           "out of range"
          ],
-         "why": "One step below the boundary. With negatives it is easy to write the comparison the wrong way round."
+         "why": "One step below the bottom limit, and -11 is smaller than -10 even though it looks bigger."
         },
         {
          "in": [
-          "35"
+          "40"
          ],
          "out": [
           "ok"
          ],
-         "why": "The top boundary is inclusive and must be accepted."
+         "why": "This is the top boundary. If this said out of range, you wrote value >= 40 instead of value > 40."
         },
         {
          "in": [
-          "36"
+          "41"
          ],
          "out": [
           "out of range"
          ],
-         "why": "One above the top boundary, so out of range."
+         "why": "One above the top limit."
         },
         {
          "in": [
@@ -359,7 +794,7 @@
          "out": [
           "not a number"
          ],
-         "why": "A word cannot be turned into a number, so int() raises an error that must be caught instead of crashing."
+         "why": "A word cannot be cast, so int() raises a ValueError and except has to catch it."
         },
         {
          "in": [
@@ -368,25 +803,98 @@
          "out": [
           "not a number"
          ],
-         "why": "int() refuses a decimal point too, so this is reported as not a number rather than rounded."
+         "why": "int() refuses a decimal point too, so this is reported rather than rounded."
         }
        ],
-       "fb": "try and except around int() catch the wrong type; the range test then runs only on a value you know is a number.",
-       "hint": "pyvalidate",
-       "teach": {
-        "say": "isdigit() says no to a minus sign, so a negative number needs a stronger check. int() inside try either works or raises a ValueError, and except catches that instead of letting the program stop; else runs only when nothing was raised.",
-        "code": [
-         "entry = input()        # the user typed -4",
+       "hint": {
+        "think": "isdigit() cannot accept a minus sign, so let the cast decide and catch the error.",
+        "syntax": [
          "try:",
          "    value = int(entry)",
-         "except ValueError:",
-         "    print(\"could not be read\")",
-         "else:",
-         "    print(value)"
+         "except ValueError:"
         ],
-        "out": [
-         "-4"
-        ]
+        "start": [
+         "entry = input()",
+         "try:",
+         "    # cast it, then check the range in here"
+        ],
+        "diagram": "pyvalidate"
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for the lowest allowed whole number. Then ask for the highest allowed whole number. Then ask for a whole number to check. Display inside when it is from the lowest to the highest inclusive. Otherwise display outside.",
+       "brief": [
+        "The user types in three lines, one whole number on each.",
+        "The limits are typed in, not written into your program.",
+        "The lowest and the highest are both allowed.",
+        "One line only is displayed."
+       ],
+       "fb": "A range check works the same whether the limits are written into the program or typed in: the comparison is what decides.",
+       "starter": "# the limits are typed in too\n",
+       "tests": [
+        {
+         "in": [
+          "1",
+          "10",
+          "10"
+         ],
+         "out": [
+          "inside"
+         ],
+         "why": "The value is exactly the highest allowed, so it is inside. Use <= for the top limit."
+        },
+        {
+         "in": [
+          "1",
+          "10",
+          "0"
+         ],
+         "out": [
+          "outside"
+         ],
+         "why": "One below the lowest allowed, so it is outside."
+        },
+        {
+         "in": [
+          "5",
+          "5",
+          "5"
+         ],
+         "out": [
+          "inside"
+         ],
+         "why": "This is the boundary worth thinking about: the two limits are the same number, and that one value is still allowed."
+        },
+        {
+         "in": [
+          "-3",
+          "3",
+          "-3"
+         ],
+         "out": [
+          "inside"
+         ],
+         "why": "The lowest allowed is negative and the value equals it, so it is inside."
+        },
+        {
+         "in": [
+          "2",
+          "8",
+          "9"
+         ],
+         "out": [
+          "outside"
+         ],
+         "why": "One above the highest allowed."
+        }
+       ],
+       "opt": true,
+       "hint": {
+        "think": "The limits are in variables now, but the comparison is the same one.",
+        "syntax": "if value >= low and value <= high:",
+        "diagram": "pyvalidate"
        }
       }
      ]
@@ -401,13 +909,120 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 4,
-       "q": "Ask the user for a word. Display too short when it is under 8 characters. Display too long when it is over 16 characters. Display ok for anything in between.",
+       "marks": 1,
+       "q": "Press Run. Type otter when the program waits. Five characters is not enough.",
+       "brief": [
+        "Nothing is marked on this one.",
+        "Run it again and type otterhound. Watch which message comes out."
+       ],
+       "fb": "A length check is a range check on a count, so the same < and <= care is needed.",
+       "kind": "try",
+       "starter": "word = input(\"Password? \")   # the user typed otter\nif len(word) < 6:\n    print(\"too short\")\nelse:\n    print(\"long enough\")\n",
+       "tests": [],
+       "in": [
+        "otter"
+       ],
+       "teach": {
+        "say": "A length check counts the characters that were typed. len() gives that count, and spaces count as characters like any other. A password rule is the usual place you meet one.",
+        "code": [
+         "word = input(\"Password? \")   # the user typed otter",
+         "if len(word) < 6:",
+         "    print(\"too short\")",
+         "else:",
+         "    print(\"long enough\")"
+        ],
+        "out": [
+         "too short"
+        ]
+       },
+       "lines": [
+        "Read the line as text.",
+        "Count its characters and compare that count with 6.",
+        "Say so when there are too few.",
+        "",
+        "Otherwise it is long enough."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "What will this program display?",
+       "brief": [
+        "Read every line before you choose."
+       ],
+       "fb": "copper is 6 characters, and 6 is not less than 6, so < is False. <= is True because it allows them to be equal.",
+       "kind": "predict",
+       "code": [
+        "print(len(\"copper\"))",
+        "print(len(\"copper\") < 6)",
+        "print(len(\"copper\") <= 6)"
+       ],
+       "a": [
+        "6\nFalse\nTrue",
+        "6\nTrue\nTrue",
+        "6\nTrue\nFalse"
+       ],
+       "teach": {
+        "say": "A length check on exactly the boundary length is where < and <= part company. One of them allows the boundary and the other refuses it."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "Change the program so that a word of exactly 8 characters is accepted.",
+       "brief": [
+        "Change only the comparison.",
+        "A word of 7 characters is still too short.",
+        "Display exactly: too short or exactly: ok"
+       ],
+       "fb": "<= includes the boundary length in the lengths it refuses. < leaves it out, which is what a minimum of 8 means.",
+       "kind": "change",
+       "starter": "word = input()\nif len(word) <= 8:\n    print(\"too short\")\nelse:\n    print(\"ok\")\n",
+       "tests": [
+        {
+         "in": [
+          "copper78"
+         ],
+         "out": [
+          "ok"
+         ],
+         "why": "This word is exactly 8 characters. <= 8 calls it too short, and that is the mistake to put right."
+        },
+        {
+         "in": [
+          "copper7"
+         ],
+         "out": [
+          "too short"
+         ],
+         "why": "Seven characters is one under the minimum, so it must still be refused."
+        },
+        {
+         "in": [
+          "riverstone"
+         ],
+         "out": [
+          "ok"
+         ],
+         "why": "Ten characters was already accepted and has to stay accepted."
+        }
+       ],
+       "hint": {
+        "think": "At the moment a length of exactly 8 is being refused. Which comparison refuses it?",
+        "syntax": "if len(thing) < limit:"
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for a password. Display too short when it is under 8 characters. Display too long when it is over 16 characters. Otherwise display ok.",
        "brief": [
         "Count the line exactly as it is typed, with no stripping.",
+        "Both 8 and 16 characters are allowed.",
         "An empty line is too short.",
-        "One line only is printed."
+        "One line only is displayed."
        ],
+       "fb": "The four lengths worth testing are 7 and 8 at one end, 16 and 17 at the other.",
        "starter": "# 8 to 16 characters\n",
        "tests": [
         {
@@ -417,7 +1032,16 @@
          "out": [
           "ok"
          ],
-         "why": "Ten characters is inside the range, so this one passes."
+         "why": "Ten characters is comfortably inside the range."
+        },
+        {
+         "in": [
+          "  copper  "
+         ],
+         "out": [
+          "ok"
+         ],
+         "why": "Ten characters, because the two spaces at each end are characters too. A too short here means they were stripped off before counting."
         },
         {
          "in": [
@@ -426,7 +1050,7 @@
          "out": [
           "too short"
          ],
-         "why": "Seven characters is one short of the minimum, so it must be refused."
+         "why": "Seven characters is one under the minimum, so it is refused."
         },
         {
          "in": [
@@ -435,7 +1059,7 @@
          "out": [
           "ok"
          ],
-         "why": "Exactly 8 characters is allowed - if this prints too short you used <= 8 instead of < 8."
+         "why": "This is the bottom boundary at exactly 8. If this said too short, you wrote <= 8 instead of < 8."
         },
         {
          "in": [
@@ -444,7 +1068,7 @@
          "out": [
           "ok"
          ],
-         "why": "Exactly 16 characters is the top boundary and is still allowed."
+         "why": "This is the top boundary at exactly 16. If this said too long, you wrote >= 16 instead of > 16."
         },
         {
          "in": [
@@ -453,7 +1077,7 @@
          "out": [
           "too long"
          ],
-         "why": "Seventeen characters is one over the maximum, which is the boundary a length check usually misses."
+         "why": "Seventeen characters is one over the maximum, which is the boundary a length check misses most often."
         },
         {
          "in": [
@@ -462,22 +1086,167 @@
          "out": [
           "too short"
          ],
-         "why": "Nothing typed has length 0, which is fewer than 8 - so too short, not a crash."
+         "why": "Nothing typed has a length of 0, which is under 8, so it is too short rather than an error."
         }
        ],
-       "fb": "len() gives the length; the two boundaries worth testing are 7 and 8 at one end, 16 and 17 at the other.",
-       "hint": "pyvalidate"
+       "hint": {
+        "think": "Count the characters once, then compare that count with each limit in turn.",
+        "syntax": [
+         "if len(thing) < low:",
+         "elif len(thing) > high:"
+        ],
+        "diagram": "pyvalidate"
+       },
+       "teach": {
+        "say": "Two limits on a length need an if, an elif and an else. That is exactly what two limits on a number need.",
+        "code": [
+         "name = input(\"Name? \")   # the user typed Ada",
+         "if len(name) < 2:",
+         "    print(\"too short\")",
+         "elif len(name) > 20:",
+         "    print(\"too long\")",
+         "else:",
+         "    print(\"ok\")"
+        ],
+        "out": [
+         "ok"
+        ]
+       }
       },
       {
        "t": "code",
-       "marks": 5,
-       "q": "Ask the user for a code. Take off any spaces at each end of it. Display valid code when it is two letters and then four digits. Display invalid code instead when it is not.",
+       "marks": 1,
+       "q": "Press Run. Type AB12 when the program waits. The program checks the shape, not just the length.",
        "brief": [
-        "It must be exactly 6 characters.",
-        "Capitals and small letters both count as letters.",
-        "One line only is printed."
+        "Nothing is marked on this one.",
+        "Run it again and type A112. The second character is a digit, so the shape is wrong."
        ],
-       "starter": "# two letters then four digits\n",
+       "fb": "A format check is a length check and a check on each part, joined with and, with the length first.",
+       "kind": "try",
+       "starter": "code = input(\"Code? \")   # the user typed AB12\nif len(code) == 4 and code[0:2].isalpha() and code[2:4].isdigit():\n    print(\"valid code\")\nelse:\n    print(\"invalid code\")\n",
+       "tests": [],
+       "in": [
+        "AB12"
+       ],
+       "teach": {
+        "say": "A format check asks what kind of character sits in each part. .isalpha() is True when every character is a letter. A slice takes out the part you want to ask about. The length is checked first, before any slicing. A slice of a short line quietly gives back a shorter piece. The rest of the check is then asking about the wrong characters.",
+        "code": [
+         "code = input(\"Code? \")   # the user typed AB12",
+         "if len(code) == 4 and code[0:2].isalpha() and code[2:4].isdigit():",
+         "    print(\"valid code\")",
+         "else:",
+         "    print(\"invalid code\")"
+        ],
+        "out": [
+         "valid code"
+        ]
+       },
+       "lines": [
+        "Read the line as text.",
+        "Check the length first, then that the first two are letters and the last two digits.",
+        "Say so when all three parts of the condition are true.",
+        "",
+        "Anything else is the wrong shape."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Finish the program so that a reference of one letter and then two digits is valid.",
+       "brief": [
+        "Replace ____ with one condition.",
+        "The length and the first character are already checked for you.",
+        "Display exactly: valid or exactly: invalid"
+       ],
+       "fb": "One condition for the length, one for each part, all joined with and.",
+       "kind": "complete",
+       "starter": "ref = input()\nif len(ref) == 3 and ref[0].isalpha() and ____:\n    print(\"valid\")\nelse:\n    print(\"invalid\")\n",
+       "tests": [
+        {
+         "in": [
+          "A47"
+         ],
+         "out": [
+          "valid"
+         ],
+         "why": "A letter and then two digits, which is the shape the check is looking for."
+        },
+        {
+         "in": [
+          "AB7"
+         ],
+         "out": [
+          "invalid"
+         ],
+         "why": "The second character is a letter, so the two digits are not both digits."
+        },
+        {
+         "in": [
+          "A4"
+         ],
+         "out": [
+          "invalid"
+         ],
+         "why": "Two characters only, and the length test catches it before the slice matters."
+        },
+        {
+         "in": [
+          "A472"
+         ],
+         "out": [
+          "invalid"
+         ],
+         "why": "Four characters, so the length test refuses it."
+        },
+        {
+         "in": [
+          "447"
+         ],
+         "out": [
+          "invalid"
+         ],
+         "why": "The first character is a digit, not a letter, so the check before yours fails."
+        },
+        {
+         "in": [
+          ""
+         ],
+         "out": [
+          "invalid"
+         ],
+         "why": "Nothing typed has length 0, so the length test refuses it straight away."
+        }
+       ],
+       "hint": {
+        "think": "The last two characters have to be digits. Which slice are they, and which check asks about digits?",
+        "syntax": "thing[start:stop].isdigit()",
+        "diagram": "pystring"
+       },
+       "teach": {
+        "say": "A slice of two characters is written [1:3]. It starts at position 1 and stops before position 3.",
+        "code": [
+         "ref = \"B47\"",
+         "print(ref[0].isalpha())",
+         "print(ref[1:3].isdigit())"
+        ],
+        "out": [
+         "True",
+         "True"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "This program should accept a code of exactly two letters and then four digits. It accepts some codes of the wrong length. Find the mistake and put it right.",
+       "brief": [
+        "Press Run first and type BX204, which has only five characters.",
+        "Add one condition rather than rewriting the program.",
+        "One line only is displayed."
+       ],
+       "fb": "Check the length first. Without it a format check is only asking about as many characters as happen to be there.",
+       "kind": "debug",
+       "starter": "code = input()\nif code[0:2].isalpha() and code[2:6].isdigit():\n    print(\"valid code\")\nelse:\n    print(\"invalid code\")\n",
        "tests": [
         {
          "in": [
@@ -486,16 +1255,7 @@
          "out": [
           "valid code"
          ],
-         "why": "Two letters then four digits, so this is the shape the check is looking for."
-        },
-        {
-         "in": [
-          "bx2047"
-         ],
-         "out": [
-          "valid code"
-         ],
-         "why": "Small letters are allowed, so isalpha() is the right test rather than comparing against the capitals."
+         "why": "Two letters then four digits, so this one was always accepted and must stay accepted."
         },
         {
          "in": [
@@ -504,7 +1264,7 @@
          "out": [
           "invalid code"
          ],
-         "why": "Only five characters. Check the length first, or slicing a short string quietly gives you a shorter piece and the check passes."
+         "why": "Only five characters. The slice [2:6] gives back three digits here, and three digits are all digits, so the check wrongly passes."
         },
         {
          "in": [
@@ -513,7 +1273,7 @@
          "out": [
           "invalid code"
          ],
-         "why": "Seven characters. A check that only looks at the first six characters would let this through."
+         "why": "Seven characters. A check that only looks at the first six lets this through."
         },
         {
          "in": [
@@ -522,16 +1282,7 @@
          "out": [
           "invalid code"
          ],
-         "why": "The second character is a digit, not a letter, so the letters part fails."
-        },
-        {
-         "in": [
-          "BXX047"
-         ],
-         "out": [
-          "invalid code"
-         ],
-         "why": "The third character is a letter, so the four digits are not all digits."
+         "why": "The second character is a digit, not a letter, so the letters part fails on its own."
         },
         {
          "in": [
@@ -540,11 +1291,129 @@
          "out": [
           "invalid code"
          ],
-         "why": "Nothing typed must be refused rather than crash - the length test catches it before any slicing matters."
+         "why": "Nothing typed must be refused rather than stop the program."
         }
        ],
-       "fb": "A format check is a length check and a check on what each part contains, and both have to pass.",
-       "hint": "pystring"
+       "hint": {
+        "think": "Nothing in this condition says how long the code has to be.",
+        "syntax": "len(thing) == 6",
+        "walk": [
+         "A slice of a short line gives back a shorter piece without complaining.",
+         "So the four digits can be only three digits and still look fine.",
+         "The length has to be asked about first, before either slice."
+        ],
+        "diagram": "pystring"
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for a date typed as two digits, a slash, then two digits. Display invalid date when it is not that shape. Display day too big when the shape is right but the first two digits are above 31. Otherwise display date ok.",
+       "brief": [
+        "The date is exactly 5 characters, so 14/03 is the shape wanted.",
+        "The middle character must be a slash.",
+        "31 is allowed and 32 is not.",
+        "One line only is displayed."
+       ],
+       "fb": "A format check and a range check often sit together: the shape has to be right before the value inside it means anything.",
+       "starter": "# two digits, a slash, two digits\n",
+       "tests": [
+        {
+         "in": [
+          "14/03"
+         ],
+         "out": [
+          "date ok"
+         ],
+         "why": "The right shape and a sensible day, so nothing is wrong with it."
+        },
+        {
+         "in": [
+          "01/01"
+         ],
+         "out": [
+          "date ok"
+         ],
+         "why": "Leading zeroes are still digits, so this shape is fine."
+        },
+        {
+         "in": [
+          "31/12"
+         ],
+         "out": [
+          "date ok"
+         ],
+         "why": "This is the boundary: 31 is allowed. If this said day too big, you wrote day >= 31 instead of day > 31."
+        },
+        {
+         "in": [
+          "32/01"
+         ],
+         "out": [
+          "day too big"
+         ],
+         "why": "One past the boundary, so the shape is right but the day is not."
+        },
+        {
+         "in": [
+          "1/3"
+         ],
+         "out": [
+          "invalid date"
+         ],
+         "why": "Three characters, so the length test refuses it before anything is cast."
+        },
+        {
+         "in": [
+          "14-03"
+         ],
+         "out": [
+          "invalid date"
+         ],
+         "why": "The middle character is a hyphen, not a slash."
+        },
+        {
+         "in": [
+          "aa/03"
+         ],
+         "out": [
+          "invalid date"
+         ],
+         "why": "The first two characters are letters, so they are not digits."
+        },
+        {
+         "in": [
+          "14/0a"
+         ],
+         "out": [
+          "invalid date"
+         ],
+         "why": "The last two characters are not both digits."
+        },
+        {
+         "in": [
+          ""
+         ],
+         "out": [
+          "invalid date"
+         ],
+         "why": "Nothing typed has length 0 and is refused by the length test."
+        }
+       ],
+       "opt": true,
+       "hint": {
+        "think": "Check the shape first. Only once the shape is right can the first two characters be cast and compared.",
+        "syntax": [
+         "thing[2] == \"/\"",
+         "int(thing[0:2])"
+        ],
+        "walk": [
+         "Ask about the length, the two digits, the slash and the two digits, all joined with and.",
+         "Inside that, cast the first two characters to a whole number.",
+         "Then compare that number with 31."
+        ],
+        "diagram": "pystring"
+       }
       }
      ]
     },
@@ -558,14 +1427,189 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 4,
-       "q": "Keep asking the user for a word until one still has something in it once the spaces at each end have been taken off. Display that is empty for every wrong one. Then display accepted [the word without those spaces] for the one you take.",
+       "marks": 1,
+       "q": "Press Run. Press Enter without typing anything, then type red. The program asks twice.",
        "brief": [
-        "Print nothing else.",
-        "Read no more lines once one is accepted.",
-        "Print exactly: that is empty"
+        "Nothing is marked on this one.",
+        "The message appears once for each line that was refused."
        ],
-       "starter": "# keep going until something is really typed\n",
+       "fb": "Read once before the loop and again at the bottom of it, or the loop has nothing new to check.",
+       "kind": "try",
+       "starter": "entry = input(\"Colour? \")   # the user pressed Enter, then typed red\nwhile entry == \"\":\n    print(\"nothing typed\")\n    entry = input()\nprint(\"colour \" + entry)\n",
+       "tests": [],
+       "in": [
+        "",
+        "red"
+       ],
+       "teach": {
+        "say": "A validation loop keeps asking until the value passes the check. Read one value before the loop. The loop runs while the value is still wrong. Inside it, say what was wrong and read another value. When the loop ends you know the value is good.",
+        "code": [
+         "entry = input(\"Colour? \")   # the user pressed Enter, then typed red",
+         "while entry == \"\":",
+         "    print(\"nothing typed\")",
+         "    entry = input()",
+         "print(\"colour \" + entry)"
+        ],
+        "out": [
+         "nothing typed",
+         "colour red"
+        ]
+       },
+       "lines": [
+        "Read one value before the loop starts.",
+        "Keep going for as long as the value is still wrong.",
+        "Say what was wrong with it.",
+        "Read another one, which is what gives the user a second go.",
+        "Once the loop has ended the value has passed, so it is safe to use."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "The user types 99 and then 5. What will this program display?",
+       "brief": [
+        "Read every line before you choose."
+       ],
+       "fb": "One wrong line gives one message. The loop checks the new value before it decides whether to go round again.",
+       "kind": "predict",
+       "code": [
+        "n = input()",
+        "while n != \"5\":",
+        "    print(\"try again\")",
+        "    n = input()",
+        "print(\"done\")"
+       ],
+       "a": [
+        "try again\ndone",
+        "done",
+        "try again\ntry again\ndone"
+       ],
+       "in": [
+        "99",
+        "5"
+       ],
+       "teach": {
+        "say": "A program can do three things with bad input. It can refuse the value and stop, or ignore it and carry on. The third way is to ask again, which is a validation loop. That is the friendliest of the three."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "The user types abc. What will this program display?",
+       "brief": [
+        "Read every line before you choose."
+       ],
+       "fb": "Refusing a value and carrying on is the right choice when the program has other work to get on with.",
+       "kind": "predict",
+       "code": [
+        "entry = input()",
+        "if entry.isdigit():",
+        "    print(int(entry) * 2)",
+        "else:",
+        "    print(\"skipped\")",
+        "print(\"finished\")"
+       ],
+       "a": [
+        "skipped\nfinished",
+        "finished",
+        "abc\nfinished"
+       ],
+       "in": [
+        "abc"
+       ],
+       "teach": {
+        "say": "This program takes the other choice of the three. It refuses the bad value and says nothing more about it. The rest of the program then carries on. Nothing is asked again and nothing stops."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Finish the program so that it keeps asking until the number is from 1 to 5 inclusive.",
+       "brief": [
+        "Replace ____ with one condition.",
+        "Every line typed is a whole number.",
+        "Both 1 and 5 are allowed.",
+        "Nothing more is read once a number is accepted."
+       ],
+       "fb": "A validation loop needs the refusing condition, not the accepting one, so swap > for < and and for or when you turn one into the other.",
+       "kind": "complete",
+       "starter": "n = int(input())\nwhile ____:\n    print(\"1 to 5 only\")\n    n = int(input())\nprint(\"chosen \" + str(n))\n",
+       "tests": [
+        {
+         "in": [
+          "3"
+         ],
+         "out": [
+          "chosen 3"
+         ],
+         "why": "A good number first time needs no message at all, so the loop must not run even once."
+        },
+        {
+         "in": [
+          "9",
+          "2"
+         ],
+         "out": [
+          "1 to 5 only",
+          "chosen 2"
+         ],
+         "why": "One bad go, one message, then the good one is taken."
+        },
+        {
+         "in": [
+          "0",
+          "6",
+          "5"
+         ],
+         "out": [
+          "1 to 5 only",
+          "1 to 5 only",
+          "chosen 5"
+         ],
+         "why": "0 is one below and 6 is one above, and 5 is the top boundary so it is accepted."
+        },
+        {
+         "in": [
+          "1"
+         ],
+         "out": [
+          "chosen 1"
+         ],
+         "why": "1 is the bottom boundary. If this printed a message, your condition is refusing a value it should accept."
+        }
+       ],
+       "hint": {
+        "think": "Keep looping while the number is still outside the range you want.",
+        "syntax": "while value < low or value > high:",
+        "diagram": "pywhile"
+       },
+       "teach": {
+        "say": "The condition on a while is the opposite of the one that accepts. The loop runs while the value is still wrong.",
+        "code": [
+         "n = int(input())   # the user typed 20, then 4",
+         "while n < 1 or n > 9:",
+         "    print(\"1 to 9 only\")",
+         "    n = int(input())",
+         "print(\"picked \" + str(n))"
+        ],
+        "out": [
+         "1 to 9 only",
+         "picked 4"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "This program should keep asking until something is really typed. It gives up after one go. Find the mistake and put it right.",
+       "brief": [
+        "Press Run first and press Enter twice, then type moss.",
+        "Change one word rather than rewriting the program.",
+        "Display exactly: that is empty"
+       ],
+       "fb": "if gives the user exactly one more go. while gives them as many as they need.",
+       "kind": "debug",
+       "starter": "entry = input().strip()\nif entry == \"\":\n    print(\"that is empty\")\n    entry = input().strip()\nprint(\"accepted \" + entry)\n",
        "tests": [
         {
          "in": [
@@ -574,7 +1618,7 @@
          "out": [
           "accepted copper"
          ],
-         "why": "A word first time needs no message at all - do not print the warning before you have checked."
+         "why": "A word first time works either way, which is why this mistake hides."
         },
         {
          "in": [
@@ -585,20 +1629,20 @@
           "that is empty",
           "accepted slate"
          ],
-         "why": "One empty line, one message, then the word is accepted. A loop that only checks once would accept the empty line."
+         "why": "One empty line also works either way, because one extra go is all an if gives you."
         },
         {
          "in": [
           "   ",
           "",
-          "  moss  "
+          "moss"
          ],
          "out": [
           "that is empty",
           "that is empty",
           "accepted moss"
          ],
-         "why": "Spaces and then nothing are both empty, and the accepted word is printed without its padding."
+         "why": "Two empty lines in a row is where an if fails: it checks once, then accepts whatever came next."
         },
         {
          "in": [
@@ -616,88 +1660,92 @@
          "why": "It has to keep asking however many times it takes, so the message appears once for each empty line."
         }
        ],
-       "fb": "The usual shape is to read once, then a while loop that prints the message and reads again while the value is still wrong.",
-       "hint": "pyvalidate"
+       "hint": {
+        "think": "An if asks once. What asks again and again until the answer changes?",
+        "syntax": "while condition:",
+        "diagram": "pywhile"
+       }
       },
       {
        "t": "code",
-       "marks": 5,
-       "q": "Keep asking the user for a whole number until one is from 1 to 5 inclusive. Display please enter 1 to 5 for every wrong one. Then display chosen [the number] for the one you accept.",
+       "marks": 3,
+       "q": "Keep asking the user for a colour until it is red, green or blue. Display choose red, green or blue for every wrong one. Then display the line colour [the colour] for the one you take.",
        "brief": [
-        "Print nothing else.",
-        "Read no more lines once one is accepted.",
-        "Both 1 and 5 are allowed."
+        "The three allowed words are written into your program.",
+        "Matching is exact, so Red is not red.",
+        "Nothing more is read once a colour is accepted.",
+        "Display exactly: choose red, green or blue"
        ],
-       "starter": "# keep going until it is 1 to 5\n",
+       "fb": "To keep asking while a value is none of several allowed ones, every comparison becomes != and the ors become ands.",
+       "starter": "# keep going until it is one of the three\n",
        "tests": [
         {
          "in": [
-          "3"
+          "red"
          ],
          "out": [
-          "chosen 3"
+          "colour red"
          ],
-         "why": "A valid number first time needs no message at all - do not print the warning before you have checked."
+         "why": "A good colour first time needs no message, so the loop must not run even once."
         },
         {
          "in": [
-          "9",
-          "2"
+          "pink",
+          "blue"
          ],
          "out": [
-          "please enter 1 to 5",
-          "chosen 2"
+          "choose red, green or blue",
+          "colour blue"
          ],
-         "why": "One bad go, one message, then the good one is accepted. A loop that only checks once would accept the 9."
+         "why": "One wrong word, one message, then blue is taken."
         },
         {
          "in": [
-          "0",
-          "6",
-          "-1",
-          "5"
+          "Red",
+          "RED",
+          "green"
          ],
          "out": [
-          "please enter 1 to 5",
-          "please enter 1 to 5",
-          "please enter 1 to 5",
-          "chosen 5"
+          "choose red, green or blue",
+          "choose red, green or blue",
+          "colour green"
          ],
-         "why": "It has to keep asking however many times it takes, and 5 is the top boundary so it is allowed."
+         "why": "This is the boundary: capitals make a different word, so both of those are refused."
         },
         {
          "in": [
-          "1"
+          "",
+          "red"
          ],
          "out": [
-          "chosen 1"
+          "choose red, green or blue",
+          "colour red"
          ],
-         "why": "1 is the bottom boundary. If this prints a warning, your condition is refusing the value it should accept."
-        },
-        {
-         "in": [
-          "6",
-          "5"
-         ],
-         "out": [
-          "please enter 1 to 5",
-          "chosen 5"
-         ],
-         "why": "6 is one over the top. Reading the next number inside the loop is what gives the user another go."
+         "why": "Nothing typed is not one of the three either, so it gets a message like any other wrong answer."
         }
        ],
-       "fb": "The condition on the while is the opposite of the one that accepts, so read once before the loop and again at the bottom of it.",
-       "hint": "pyvalidate"
+       "hint": {
+        "think": "The loop runs while the colour is none of the three, so every comparison is an is not and they are joined with and.",
+        "syntax": "while thing != \"one\" and thing != \"two\":",
+        "walk": [
+         "Read one colour before the loop.",
+         "Loop while it does not match the first and does not match the second and does not match the third.",
+         "Inside the loop say what the choices are and read another one."
+        ],
+        "diagram": "pywhile"
+       }
       },
       {
        "t": "code",
-       "marks": 6,
-       "q": "Keep asking the user for a whole number until one is from 10 to 99 inclusive. Display that is not a whole number when what was typed is not all digits. Display that is outside 10 to 99 when it is a number outside that range. Then display accepted: [the number] for the one you accept.",
+       "marks": 3,
+       "q": "Keep asking the user for a whole number until it is from 10 to 99 inclusive. Display that is not a whole number when what was typed is not all digits. Display that is outside 10 to 99 when it is digits but outside the range. Then display the line accepted: [the number].",
        "brief": [
-        "Check whether it is all digits before checking the range.",
+        "Check whether it is all digits before you check the range.",
         "Both 10 and 99 are allowed.",
-        "Nothing more is read once one is accepted."
+        "Nothing more is read once a number is accepted.",
+        "One message only is displayed for each wrong line."
        ],
+       "fb": "Type first, range second. A range test on text that is not a number is the thing that stops a program.",
        "starter": "# two rules, two messages\n",
        "tests": [
         {
@@ -707,7 +1755,7 @@
          "out": [
           "accepted: 47"
          ],
-         "why": "Valid straight away, so the only line printed is the acceptance."
+         "why": "Valid straight away, so the only line displayed is the acceptance."
         },
         {
          "in": [
@@ -718,7 +1766,7 @@
           "that is not a whole number",
           "accepted: 47"
          ],
-         "why": "A word is the wrong type, so the type message comes first - checking the range before the type would crash here."
+         "why": "A word is the wrong type, so the type message comes first. Checking the range before the type would stop the program."
         },
         {
          "in": [
@@ -731,7 +1779,7 @@
           "that is outside 10 to 99",
           "accepted: 10"
          ],
-         "why": "Both 9 and 100 are the right type but outside the range, and 10 is the bottom boundary so it is accepted."
+         "why": "9 and 100 are each one outside a limit, and 10 is the bottom boundary so it is accepted."
         },
         {
          "in": [
@@ -755,11 +1803,23 @@
           "that is outside 10 to 99",
           "accepted: 99"
          ],
-         "why": "0 is digits, so it gets the range message and not the type message."
+         "why": "0 is digits, so it gets the range message rather than the type message."
         }
        ],
-       "fb": "Check the type first and the range second, because a range test on text that is not a number is what crashes the program.",
-       "hint": "pyvalidate"
+       "opt": true,
+       "hint": {
+        "think": "The loop condition has three parts: not digits, too small, or too big. Inside the loop an if decides which message to give.",
+        "syntax": [
+         "while not thing.isdigit() or int(thing) < low or int(thing) > high:",
+         "if not thing.isdigit():"
+        ],
+        "walk": [
+         "Read one line before the loop.",
+         "Loop while it is not digits, or it is digits and out of range.",
+         "Inside the loop choose the message that fits, then read another line."
+        ],
+        "diagram": "pyvalidate"
+       }
       }
      ]
     },
@@ -773,14 +1833,346 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 6,
-       "q": "Ask the user for a line of usernames. Then ask for a line of passwords in the same order. Then ask for one username to check. Then ask for one password to check. Display unknown user when the username is not listed. Display wrong password when the password does not match. Display access granted when both match.",
+       "marks": 1,
+       "q": "Press Run. Type Owl4472 when the program waits. The program already knows that passcode.",
+       "brief": [
+        "Nothing is marked on this one.",
+        "Run it again and type owl4472 with a small o. Watch what happens."
+       ],
+       "fb": "Validation checks the data; authentication checks the person. This is authentication at its smallest.",
+       "kind": "try",
+       "starter": "PASSWORD = \"Owl4472\"\nentry = input(\"Passcode? \")   # the user typed Owl4472\nif entry == PASSWORD:\n    print(\"access granted\")\nelse:\n    print(\"access denied\")\n",
+       "tests": [],
+       "in": [
+        "Owl4472"
+       ],
+       "teach": {
+        "say": "Validation asks whether the data makes sense. Authentication asks who the user is. The simplest form compares what was typed with a password the program already holds. The password is kept in a constant, because the program never changes it.",
+        "code": [
+         "PASSWORD = \"Owl4472\"",
+         "entry = input(\"Passcode? \")   # the user typed Owl4472",
+         "if entry == PASSWORD:",
+         "    print(\"access granted\")",
+         "else:",
+         "    print(\"access denied\")"
+        ],
+        "out": [
+         "access granted"
+        ]
+       },
+       "lines": [
+        "Keep the password the program expects in a constant.",
+        "Read what the user typed.",
+        "Compare the two exactly.",
+        "Let them in when they match.",
+        "",
+        "Turn them away when they do not."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "What will this program display?",
+       "brief": [
+        "Read every line before you choose."
+       ],
+       "fb": "Only the third matches. A different capital and a trailing space both make a different piece of text.",
+       "kind": "predict",
+       "code": [
+        "PASSWORD = \"Owl4472\"",
+        "print(\"owl4472\" == PASSWORD)",
+        "print(\"Owl4472 \" == PASSWORD)",
+        "print(\"Owl4472\" == PASSWORD)"
+       ],
+       "a": [
+        "False\nFalse\nTrue",
+        "True\nTrue\nTrue",
+        "False\nTrue\nTrue"
+       ],
+       "teach": {
+        "say": "== compares exactly, character for character. A capital letter is a different character from a small one. A space on the end is a character too. That is why passwords are case sensitive."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "Change the program so that the username and the passcode both have to match.",
+       "brief": [
+        "Change only the condition.",
+        "The user types in two lines: a username, then a passcode.",
+        "Display exactly: access granted or exactly: access denied"
+       ],
+       "fb": "Authentication needs every part to match, so the comparisons are joined with and, never or.",
+       "kind": "change",
+       "starter": "USER = \"hpatel\"\nCODE = \"Fern2041\"\nname = input()\ncode = input()\nif name == USER or code == CODE:\n    print(\"access granted\")\nelse:\n    print(\"access denied\")\n",
+       "tests": [
+        {
+         "in": [
+          "hpatel",
+          "Fern2041"
+         ],
+         "out": [
+          "access granted"
+         ],
+         "why": "Both halves are right, so this one was always granted and has to stay granted."
+        },
+        {
+         "in": [
+          "hpatel",
+          "wrong"
+         ],
+         "out": [
+          "access denied"
+         ],
+         "why": "The right username with the wrong passcode must be refused, and or lets it in."
+        },
+        {
+         "in": [
+          "other",
+          "Fern2041"
+         ],
+         "out": [
+          "access denied"
+         ],
+         "why": "The wrong username with somebody's real passcode must be refused too."
+        },
+        {
+         "in": [
+          "other",
+          "wrong"
+         ],
+         "out": [
+          "access denied"
+         ],
+         "why": "Neither half matches, so this was already refused."
+        }
+       ],
+       "hint": {
+        "think": "At the moment one match out of two is enough. Which joining word needs both sides to be true?",
+        "syntax": "if a == b and c == d:"
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "Press Run. Type no, then type Fox9013. The program allows three attempts and stops as soon as one works.",
+       "brief": [
+        "Nothing is marked on this one.",
+        "Run it again and get it wrong three times. The loop ends on its own."
+       ],
+       "fb": "break is how a loop stops early. Without it the loop keeps asking even after the right passcode has been given.",
+       "kind": "try",
+       "starter": "PASSCODE = \"Fox9013\"\nattempts = 0\nwhile attempts < 3:\n    entry = input()        # the user typed no, then Fox9013\n    if entry == PASSCODE:\n        print(\"access granted\")\n        break\n    print(\"wrong passcode\")\n    attempts = attempts + 1\n",
+       "tests": [],
+       "in": [
+        "no",
+        "Fox9013"
+       ],
+       "teach": {
+        "say": "Real systems allow a few attempts and then stop. Count the attempts in a variable and loop while that count is under the limit. break leaves the loop the moment it runs. The rest of that turn is skipped and no further turns happen. So a correct passcode reads no more lines.",
+        "code": [
+         "PASSCODE = \"Fox9013\"",
+         "attempts = 0",
+         "while attempts < 3:",
+         "    entry = input()        # the user typed no, then Fox9013",
+         "    if entry == PASSCODE:",
+         "        print(\"access granted\")",
+         "        break",
+         "    print(\"wrong passcode\")",
+         "    attempts = attempts + 1"
+        ],
+        "out": [
+         "wrong passcode",
+         "access granted"
+        ]
+       },
+       "lines": [
+        "Keep the passcode the program expects in a constant.",
+        "Start the count of attempts at 0.",
+        "Keep going while fewer than three attempts have been used.",
+        "Read one attempt.",
+        "Compare it with the passcode.",
+        "Let them in.",
+        "Leave the loop at once, so nothing more is read.",
+        "This line is only reached when the attempt was wrong.",
+        "Count that attempt and go round again."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "This program should stop reading as soon as the passcode is right. It carries on asking. Find the mistake and put it right.",
+       "brief": [
+        "Press Run first and type Owl4472 twice, then read the error message.",
+        "Add one line rather than rewriting the program.",
+        "Line 1 typed is the correct passcode, and the lines after it are the attempts."
+       ],
+       "fb": "A loop that has found what it was looking for should stop looking. break is the one word that does it.",
+       "kind": "debug",
+       "starter": "PASSCODE = input()\nattempts = 0\nwhile attempts < 3:\n    entry = input()\n    if entry == PASSCODE:\n        print(\"access granted\")\n    else:\n        print(\"wrong passcode\")\n    attempts = attempts + 1\n",
+       "tests": [
+        {
+         "in": [
+          "Owl4472",
+          "Owl4472"
+         ],
+         "out": [
+          "access granted"
+         ],
+         "why": "Right first time, so nothing else may be read. At the moment the loop asks again and runs out of lines."
+        },
+        {
+         "in": [
+          "Owl4472",
+          "no",
+          "Owl4472"
+         ],
+         "out": [
+          "wrong passcode",
+          "access granted"
+         ],
+         "why": "One miss then a match, and the loop must stop on the match rather than use up the third attempt."
+        },
+        {
+         "in": [
+          "Owl4472",
+          "a",
+          "b",
+          "c"
+         ],
+         "out": [
+          "wrong passcode",
+          "wrong passcode",
+          "wrong passcode"
+         ],
+         "why": "Three misses use all three attempts, which this program already does correctly."
+        }
+       ],
+       "hint": {
+        "think": "Nothing in the loop tells it to stop once the passcode has matched.",
+        "syntax": "break",
+        "walk": [
+         "The loop runs three times whatever happens.",
+         "So it asks for a second attempt even after the first was right.",
+         "One word, inside the if, leaves the loop at once."
+        ],
+        "diagram": "pywhile"
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for the correct passcode. Then read one attempt at a time, up to three of them. Display wrong passcode for each miss. Display access granted as soon as one matches. Display account locked instead when the third attempt has missed too.",
+       "brief": [
+        "Matching is exact, so capitals count.",
+        "No more than three attempts are read.",
+        "Nothing is read after a match.",
+        "Display exactly: account locked"
+       ],
+       "fb": "Two things can end an attempt loop: the right passcode, or the attempts running out. The program has to say which happened.",
+       "starter": "# three attempts, no more\n",
+       "tests": [
+        {
+         "in": [
+          "Owl4472",
+          "Owl4472"
+         ],
+         "out": [
+          "access granted"
+         ],
+         "why": "Right first time, so no warning and certainly no lock."
+        },
+        {
+         "in": [
+          "Owl4472",
+          "Owl4471",
+          "Owl4472"
+         ],
+         "out": [
+          "wrong passcode",
+          "access granted"
+         ],
+         "why": "One miss then a match. The loop has to stop on the match, not use up all three attempts."
+        },
+        {
+         "in": [
+          "Owl4472",
+          "one",
+          "two",
+          "Owl4472"
+         ],
+         "out": [
+          "wrong passcode",
+          "wrong passcode",
+          "access granted"
+         ],
+         "why": "This is the boundary: the third attempt is still allowed, so this is granted rather than locked."
+        },
+        {
+         "in": [
+          "Owl4472",
+          "one",
+          "two",
+          "three"
+         ],
+         "out": [
+          "wrong passcode",
+          "wrong passcode",
+          "wrong passcode",
+          "account locked"
+         ],
+         "why": "Three misses lock the account. If your program asks for a fourth passcode it will run out of lines and stop."
+        },
+        {
+         "in": [
+          "Owl4472",
+          "owl4472",
+          "Owl4472"
+         ],
+         "out": [
+          "wrong passcode",
+          "access granted"
+         ],
+         "why": "A passcode in the wrong case is wrong, so the first attempt misses."
+        },
+        {
+         "in": [
+          "Fox9013",
+          "Fox9013"
+         ],
+         "out": [
+          "access granted"
+         ],
+         "why": "A different passcode entirely, so one written into your program instead of read in will fail here."
+        }
+       ],
+       "hint": {
+        "think": "Count the attempts, stop on a match, and afterwards ask how many attempts were used up.",
+        "syntax": [
+         "while attempts < 3:",
+         "if attempts == 3:"
+        ],
+        "walk": [
+         "Read the correct passcode first.",
+         "Start the count at 0 and loop while it is under 3.",
+         "Leave the loop on a match.",
+         "After the loop, the count tells you whether all three were used."
+        ],
+        "diagram": "pywhile"
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for a line of usernames separated by spaces. Then ask for a line of passwords in the same order. Then ask for one username to check. Then ask for one password to check. Display unknown user when the username is not on the list. Display wrong password when the username is on the list but the password does not match it. Otherwise display access granted.",
        "brief": [
         "Both lines are separated by single spaces.",
-        "Matching is exact, with capitals counting.",
-        "One line only is printed."
+        "Matching is exact, so capitals count.",
+        "The lists are typed in, not written into your program.",
+        "One line only is displayed."
        ],
-       "starter": "# a username and a password to check\n",
+       "fb": "Find the username first. Only once you know its position can you look up the password that belongs with it.",
+       "starter": "# two lists in the same order\n",
        "tests": [
         {
          "in": [
@@ -792,7 +2184,7 @@
          "out": [
           "access granted"
          ],
-         "why": "Both halves match, so access is granted. Make sure you compare against the password in the same position as the username."
+         "why": "Both halves match. Compare against the password in the same position as the username, not the first one."
         },
         {
          "in": [
@@ -804,7 +2196,7 @@
          "out": [
           "access granted"
          ],
-         "why": "A different account must work the same way - a program that only ever checks the first user fails here."
+         "why": "A different account must work the same way, so a program that only ever checks position 0 fails here."
         },
         {
          "in": [
@@ -816,7 +2208,7 @@
          "out": [
           "wrong password"
          ],
-         "why": "Only the first letter differs in case, and that is still a different password - do not lower() the password before comparing."
+         "why": "Only the first letter differs in case, and that is still a different password."
         },
         {
          "in": [
@@ -828,7 +2220,7 @@
          "out": [
           "wrong password"
          ],
-         "why": "A real username with another user's password must be refused, so the two checks have to be tied together."
+         "why": "This is the boundary: a real username with somebody else's real password. The two checks have to be tied together by the position."
         },
         {
          "in": [
@@ -852,7 +2244,7 @@
          "out": [
           "unknown user"
          ],
-         "why": "The username is in capitals and the match is exact, so this counts as an unknown user."
+         "why": "The username is in capitals and the match is exact, so it counts as an unknown user."
         },
         {
          "in": [
@@ -864,111 +2256,35 @@
          "out": [
           "access granted"
          ],
-         "why": "A different pair of lists, so accounts written into the program instead of read in will fail here."
+         "why": "A different pair of lists, so accounts written into your program instead of read in will fail here."
         }
        ],
-       "fb": "Find the username first; only once you know where it is can you look up the password that belongs with it.",
-       "hint": "searches"
-      },
-      {
-       "t": "code",
-       "marks": 6,
-       "q": "Ask the user for the correct passcode. Then ask for one attempt at a time. Display wrong passcode for each miss. Display access granted as soon as one matches. Then display account locked if a third attempt has missed too.",
-       "brief": [
-        "Matching is exact, with capitals counting.",
-        "No more than three attempts are read.",
-        "Nothing is read after a match."
-       ],
-       "starter": "# three attempts, no more\n",
-       "tests": [
-        {
-         "in": [
-          "Owl4472",
-          "Owl4472"
-         ],
-         "out": [
-          "access granted"
-         ],
-         "why": "Right first time, so nothing else is printed - no warning and certainly no lock."
-        },
-        {
-         "in": [
-          "Owl4472",
-          "Owl4471",
-          "Owl4472"
-         ],
-         "out": [
-          "wrong passcode",
-          "access granted"
-         ],
-         "why": "One wrong go then the right one. The loop must stop as soon as it is right, not use up all three attempts."
-        },
-        {
-         "in": [
-          "Owl4472",
-          "abc",
-          "Owl4472"
-         ],
-         "out": [
-          "wrong passcode",
-          "access granted"
-         ],
-         "why": "Any wrong passcode gets the same message, and the second attempt still works."
-        },
-        {
-         "in": [
-          "Owl4472",
-          "one",
-          "two",
-          "Owl4472"
-         ],
-         "out": [
-          "wrong passcode",
-          "wrong passcode",
-          "access granted"
-         ],
-         "why": "The third attempt is still allowed, so this must be granted rather than locked."
-        },
-        {
-         "in": [
-          "Owl4472",
-          "one",
-          "two",
-          "three"
-         ],
-         "out": [
-          "wrong passcode",
-          "wrong passcode",
-          "wrong passcode",
-          "account locked"
-         ],
-         "why": "Three failures lock the account. If your program asks for a fourth passcode it will run out of input and crash."
-        },
-        {
-         "in": [
-          "Owl4472",
-          "owl4472",
-          "Owl4472"
-         ],
-         "out": [
-          "wrong passcode",
-          "access granted"
-         ],
-         "why": "A passcode in the wrong case is wrong, so the first attempt fails - passwords are case sensitive."
-        },
-        {
-         "in": [
-          "Fox9013",
-          "Fox9013"
-         ],
-         "out": [
-          "access granted"
-         ],
-         "why": "A different passcode entirely, so one written into the program rather than read in will fail here."
-        }
-       ],
-       "fb": "Count the attempts and stop on either condition: three used up, or the right passcode given.",
-       "hint": "pyvalidate"
+       "opt": true,
+       "hint": {
+        "think": "Search the usernames for the position of the one typed, then use that same position in the passwords.",
+        "syntax": [
+         "names = input().split()",
+         "for i in range(len(names)):"
+        ],
+        "walk": [
+         "Split both lines into lists.",
+         "Set a position variable to -1 to mean not found yet.",
+         "Walk the usernames and record the position when one matches.",
+         "Still -1 means unknown user; otherwise compare the password at that position."
+        ],
+        "diagram": "pylist"
+       },
+       "teach": {
+        "say": "Two lists kept in the same order make a pair. The password at position 2 belongs to the username at position 2. Find the position of the username first. That tells you which password to compare against.",
+        "code": [
+         "names = \"ash beech\".split()",
+         "ages = \"4 9\".split()",
+         "print(names[1], ages[1])"
+        ],
+        "out": [
+         "beech 9"
+        ]
+       }
       }
      ]
     },
@@ -982,16 +2298,445 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 7,
-       "q": "Keep asking the user for a username until one is 5 to 12 characters of letters and digits only. Then keep asking for a whole number until one is from 11 to 19 inclusive. Display registered [the username] [the number] at the end.",
+       "marks": 1,
+       "q": "Press Run. Type Ada, then type 7. Both values are checked before either is used.",
        "brief": [
-        "Reject a username of the wrong length with exactly username must be 5 to 12 characters.",
-        "When the length is fine but a character is not a letter or digit, reject it with exactly username must be letters and digits only.",
-        "Reject something that is not a whole number with exactly number must be a whole number.",
-        "Reject a number outside the range with exactly number must be 11 to 19.",
-        "Separate the three parts of the last line with single spaces."
+        "Nothing is marked on this one.",
+        "Run it again and press Enter for the name. The program asks for the name again."
        ],
-       "starter": "# each rule its own message, checked in order\n",
+       "fb": "One loop per value, each with its own message, and the line displayed comes last.",
+       "kind": "try",
+       "starter": "name = input(\"Name? \").strip()     # the user typed Ada\nwhile name == \"\":\n    print(\"name cannot be empty\")\n    name = input().strip()\nscore = input(\"Score? \")           # then 7\nwhile not score.isdigit():\n    print(\"score must be digits\")\n    score = input()\nprint(name + \" scored \" + score)\n",
+       "tests": [],
+       "in": [
+        "Ada",
+        "7"
+       ],
+       "teach": {
+        "say": "A real program validates each value in turn. Each value gets its own loop and its own message. The line is displayed only once every value has passed. Each loop is finished with before the next one starts.",
+        "code": [
+         "name = input(\"Name? \").strip()     # the user typed Ada",
+         "while name == \"\":",
+         "    print(\"name cannot be empty\")",
+         "    name = input().strip()",
+         "score = input(\"Score? \")           # then 7",
+         "while not score.isdigit():",
+         "    print(\"score must be digits\")",
+         "    score = input()",
+         "print(name + \" scored \" + score)"
+        ],
+        "out": [
+         "Ada scored 7"
+        ]
+       },
+       "lines": [
+        "Read the name and take the spaces off each end.",
+        "Keep asking while nothing has been typed.",
+        "Say what was wrong with it.",
+        "Read another name.",
+        "Only now read the score.",
+        "Keep asking while it is not all digits.",
+        "Say what was wrong with it.",
+        "Read another score.",
+        "Both values have passed, so build the line and display it."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "The user types 7a. What will this program display?",
+       "brief": [
+        "Read every line before you choose."
+       ],
+       "fb": "7a is not all digits, so the type check refuses it and the range check is never reached.",
+       "kind": "predict",
+       "code": [
+        "entry = input()",
+        "if entry.isdigit():",
+        "    n = int(entry)",
+        "    if n < 1 or n > 10:",
+        "        print(\"out of range\")",
+        "    else:",
+        "        print(\"valid\")",
+        "else:",
+        "    print(\"not a number\")"
+       ],
+       "a": [
+        "not a number",
+        "valid",
+        "out of range"
+       ],
+       "in": [
+        "7a"
+       ],
+       "teach": {
+        "say": "A full check runs in order: first the type, then the range. The range test never runs on text the type test has refused. That is exactly why the order matters."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "This program will not run at all. Find the mistake and put it right.",
+       "brief": [
+        "Press Run first and read the error message.",
+        "Add one character rather than rewriting the program.",
+        "Display exactly: nothing typed"
+       ],
+       "fb": "A SyntaxError means Python could not read the line at all. A missing colon on an if, for or while line is the commonest cause.",
+       "kind": "debug",
+       "starter": "entry = input().strip()\nwhile entry == \"\"\n    print(\"nothing typed\")\n    entry = input().strip()\nprint(\"accepted \" + entry)\n",
+       "tests": [
+        {
+         "in": [
+          "copper"
+         ],
+         "out": [
+          "accepted copper"
+         ],
+         "why": "A SyntaxError stops the program before it reads anything, so every test fails until it is fixed."
+        },
+        {
+         "in": [
+          "",
+          "slate"
+         ],
+         "out": [
+          "nothing typed",
+          "accepted slate"
+         ],
+         "why": "Once Python can read the line, the loop works as it was written."
+        },
+        {
+         "in": [
+          "  moss  "
+         ],
+         "out": [
+          "accepted moss"
+         ],
+         "why": "The stripping was already right, so only the punctuation needed putting back."
+        }
+       ],
+       "hint": {
+        "think": "Every line that opens a block of indented lines ends with the same punctuation mark.",
+        "syntax": "while condition:",
+        "walk": [
+         "Read the error message: it names the line Python could not read.",
+         "if, else, for and while lines all end the same way.",
+         "One of them on this program does not."
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Finish the program so that a number outside 1 to 20 inclusive is refused.",
+       "brief": [
+        "Replace ____ with one condition.",
+        "The type check is written for you on line 2.",
+        "Both 1 and 20 are allowed.",
+        "One line only is displayed."
+       ],
+       "fb": "Because the type check has already passed, casting inside the elif is safe. The other way round it would stop the program.",
+       "kind": "complete",
+       "starter": "entry = input()\nif not entry.isdigit():\n    print(\"not a number\")\nelif ____:\n    print(\"out of range\")\nelse:\n    print(\"ok \" + entry)\n",
+       "tests": [
+        {
+         "in": [
+          "7"
+         ],
+         "out": [
+          "ok 7"
+         ],
+         "why": "An ordinary number inside the range reaches the else."
+        },
+        {
+         "in": [
+          "1"
+         ],
+         "out": [
+          "ok 1"
+         ],
+         "why": "This is the bottom boundary. If this said out of range, you wrote <= 1 instead of < 1."
+        },
+        {
+         "in": [
+          "20"
+         ],
+         "out": [
+          "ok 20"
+         ],
+         "why": "This is the top boundary. If this said out of range, you wrote >= 20 instead of > 20."
+        },
+        {
+         "in": [
+          "0"
+         ],
+         "out": [
+          "out of range"
+         ],
+         "why": "One below the bottom limit, and 0 is digits so it does reach your condition."
+        },
+        {
+         "in": [
+          "21"
+         ],
+         "out": [
+          "out of range"
+         ],
+         "why": "One above the top limit."
+        },
+        {
+         "in": [
+          "abc"
+         ],
+         "out": [
+          "not a number"
+         ],
+         "why": "Letters are caught by the type check on line 2, so your condition is never reached."
+        },
+        {
+         "in": [
+          ""
+         ],
+         "out": [
+          "not a number"
+         ],
+         "why": "Nothing typed is caught by the type check too, because isdigit() is False for it."
+        }
+       ],
+       "hint": {
+        "think": "You know the line is all digits by this point, so it is safe to cast it here.",
+        "syntax": "int(thing) < low or int(thing) > high",
+        "diagram": "pyvalidate"
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Keep asking the user for a name until something is typed. Then keep asking for an age until it is a whole number from 5 to 18 inclusive. Display the line [name] is [age].",
+       "brief": [
+        "Take the spaces off each end of the name, so a line of spaces is nothing typed.",
+        "Display exactly: name cannot be empty",
+        "Display exactly: age must be a whole number from 5 to 18",
+        "Both 5 and 18 are allowed."
+       ],
+       "fb": "Validate each value completely before you move on to the next, then display the result once.",
+       "starter": "# one loop per value, display last\n",
+       "tests": [
+        {
+         "in": [
+          "Sam",
+          "13"
+         ],
+         "out": [
+          "Sam is 13"
+         ],
+         "why": "Both values are good first time, so the only line displayed is the last one."
+        },
+        {
+         "in": [
+          "",
+          "Jo",
+          "13"
+         ],
+         "out": [
+          "name cannot be empty",
+          "Jo is 13"
+         ],
+         "why": "One empty name, one message, then the name is taken and the age is asked for."
+        },
+        {
+         "in": [
+          "Sam",
+          "4",
+          "5"
+         ],
+         "out": [
+          "age must be a whole number from 5 to 18",
+          "Sam is 5"
+         ],
+         "why": "4 is one below the bottom limit, and 5 is the boundary so it is accepted."
+        },
+        {
+         "in": [
+          "Sam",
+          "19",
+          "18"
+         ],
+         "out": [
+          "age must be a whole number from 5 to 18",
+          "Sam is 18"
+         ],
+         "why": "19 is one above the top limit, and 18 is the boundary so it is accepted. If 18 was refused you wrote >= 18 instead of > 18."
+        },
+        {
+         "in": [
+          "Sam",
+          "ten",
+          "9"
+         ],
+         "out": [
+          "age must be a whole number from 5 to 18",
+          "Sam is 9"
+         ],
+         "why": "A word fails the type check, so the same message is given and the program asks again."
+        },
+        {
+         "in": [
+          "   ",
+          "Ada",
+          "5"
+         ],
+         "out": [
+          "name cannot be empty",
+          "Ada is 5"
+         ],
+         "why": "A line of nothing but spaces strips down to nothing, so it is empty too."
+        }
+       ],
+       "hint": {
+        "think": "Two values, so two loops one after the other, each with its own message.",
+        "syntax": [
+         "while name == \"\":",
+         "while not age.isdigit() or int(age) < low or int(age) > high:"
+        ],
+        "walk": [
+         "Read the name and strip it, then loop while it is empty.",
+         "Read the age, then loop while it is not digits or outside the range.",
+         "After both loops, build the one line and display it."
+        ],
+        "diagram": "pyvalidate"
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Keep asking the user for a username until it is 5 to 12 characters of letters and digits only. Display username must be 5 to 12 characters when the length is wrong. Display username must be letters and digits only when the length is right but a character is not a letter or a digit. Then display the line registered [the username].",
+       "brief": [
+        "Count the line exactly as it is typed, with no stripping.",
+        "Both 5 and 12 characters are allowed.",
+        "Check the length first, so a short username gets the length message.",
+        "One message only is displayed for each wrong line."
+       ],
+       "fb": "When two rules can each refuse a value, test them in the order you would want to be told about: the length first, then the characters.",
+       "starter": "# two rules, one message each\n",
+       "tests": [
+        {
+         "in": [
+          "jrowan"
+         ],
+         "out": [
+          "registered jrowan"
+         ],
+         "why": "Six letters is inside the length range and is all letters, so it passes first time."
+        },
+        {
+         "in": [
+          " rowan ",
+          "rowan"
+         ],
+         "out": [
+          "username must be letters and digits only",
+          "registered rowan"
+         ],
+         "why": "Seven characters with a space at each end: the length is right, but a space is not a letter or a digit. Stripping the spaces off would accept it straight away."
+        },
+        {
+         "in": [
+          "abcd",
+          "abcde"
+         ],
+         "out": [
+          "username must be 5 to 12 characters",
+          "registered abcde"
+         ],
+         "why": "Four characters is one under the minimum, and five is the boundary so it is accepted. If five was refused you wrote <= 5 instead of < 5."
+        },
+        {
+         "in": [
+          "twelvecharac"
+         ],
+         "out": [
+          "registered twelvecharac"
+         ],
+         "why": "Exactly twelve characters is the top boundary and is still allowed."
+        },
+        {
+         "in": [
+          "thirteenchars",
+          "rowan"
+         ],
+         "out": [
+          "username must be 5 to 12 characters",
+          "registered rowan"
+         ],
+         "why": "Thirteen characters is one over the maximum, so it gets the length message."
+        },
+        {
+         "in": [
+          "ro wan",
+          "ro-wan",
+          "rowan"
+         ],
+         "out": [
+          "username must be letters and digits only",
+          "username must be letters and digits only",
+          "registered rowan"
+         ],
+         "why": "A space and a hyphen are both the right length but neither is a letter or a digit."
+        },
+        {
+         "in": [
+          "",
+          "fin99"
+         ],
+         "out": [
+          "username must be 5 to 12 characters",
+          "registered fin99"
+         ],
+         "why": "Nothing typed has length 0, so the length message is the right one for it."
+        }
+       ],
+       "hint": {
+        "think": "The loop runs while either rule is broken. Inside it an if picks which message fits.",
+        "syntax": [
+         "while len(name) < low or len(name) > high or not name.isalnum():",
+         "if len(name) < low or len(name) > high:"
+        ],
+        "walk": [
+         "Read one username before the loop.",
+         "Loop while the length is wrong or the characters are wrong.",
+         "Inside the loop, test the length first and give the message that fits.",
+         "Read another username at the bottom of the loop."
+        ],
+        "diagram": "pyvalidate"
+       },
+       "teach": {
+        "say": ".isalnum() is True when every character is a letter or a digit. A space, a hyphen and a full stop all make it False.",
+        "code": [
+         "print(\"ash12\".isalnum())",
+         "print(\"ash 12\".isalnum())",
+         "print(\"ash-12\".isalnum())"
+        ],
+        "out": [
+         "True",
+         "False",
+         "False"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Keep asking the user for a username until it is 5 to 12 characters of letters and digits only. Then keep asking for a whole number until it is from 11 to 19 inclusive. Display the line registered [the username] [the number].",
+       "brief": [
+        "Refuse a username of the wrong length with exactly: username must be 5 to 12 characters",
+        "Refuse one of the right length holding anything but letters and digits with exactly: username must be letters and digits only",
+        "Refuse something that is not a whole number with exactly: number must be a whole number",
+        "Refuse a number outside the range with exactly: number must be 11 to 19"
+       ],
+       "fb": "Four rules, four messages, and each one checked in an order that tells the user the one thing that is actually wrong.",
+       "starter": "# four rules, four messages, checked in order\n",
        "tests": [
         {
          "in": [
@@ -1001,7 +2746,7 @@
          "out": [
           "registered jrowan 14"
          ],
-         "why": "Both valid first time, so the only line printed is the registration."
+         "why": "Both values are good first time, so the only line displayed is the registration."
         },
         {
          "in": [
@@ -1037,7 +2782,7 @@
           "username must be 5 to 12 characters",
           "registered fin99 19"
          ],
-         "why": "Thirteen characters is one over the top and fin9 is one under the bottom, so both get the length message - the loop has to keep asking after each one."
+         "why": "Thirteen characters is one over and fin9 is one under, so both get the length message and the loop keeps asking."
         },
         {
          "in": [
@@ -1051,7 +2796,7 @@
           "username must be letters and digits only",
           "registered rowan 16"
          ],
-         "why": "A space and a hyphen are both long enough but neither is a letter or a digit, so the second rule catches them."
+         "why": "A space and a hyphen are long enough but neither is a letter or a digit, so the second rule catches them."
         },
         {
          "in": [
@@ -1069,110 +2814,23 @@
           "number must be 11 to 19",
           "registered mcrae7 17"
          ],
-         "why": "Nothing typed and a word both fail the type check; 10 and 20 are one outside each end of the range."
+         "why": "Nothing typed and a word both fail the type check, and 10 and 20 are one outside each end of the range."
         }
        ],
-       "fb": "Each rule gets its own message and the checks go in order, so the user is told the one thing that is actually wrong.",
-       "hint": "pyvalidate"
-      },
-      {
-       "t": "code",
-       "marks": 8,
-       "q": "Keep asking the user for word,number lines until one is exactly done. Display added [the word] for each good line. Then display accepted: [how many were added] on the next line. Then display total: [their numbers added up] on the last line.",
-       "brief": [
-        "Spaces around either field are ignored.",
-        "A wrong line must never stop the run.",
-        "Check the commas first, and print exactly bad line when there is not exactly one.",
-        "Then print exactly bad number when the number is not all digits.",
-        "Then print exactly out of range when the number is outside 1 to 99."
-       ],
-       "starter": "# report a bad line and carry on to the next one\n",
-       "tests": [
-        {
-         "in": [
-          "rope,4",
-          "chalk,12",
-          "done"
-         ],
-         "out": [
-          "added rope",
-          "added chalk",
-          "accepted: 2",
-          "total: 16"
-         ],
-         "why": "Two good lines, so both are added and the total is the two numbers added together."
-        },
-        {
-         "in": [
-          "done"
-         ],
-         "out": [
-          "accepted: 0",
-          "total: 0"
-         ],
-         "why": "No data at all is not an error - the counters start at 0 and both are printed."
-        },
-        {
-         "in": [
-          "mat",
-          "mat,4,spare",
-          "done"
-         ],
-         "out": [
-          "bad line",
-          "bad line",
-          "accepted: 0",
-          "total: 0"
-         ],
-         "why": "No comma and two commas are both bad lines, and neither may stop the program."
-        },
-        {
-         "in": [
-          "bolt,seven",
-          "bolt,7",
-          "done"
-         ],
-         "out": [
-          "bad number",
-          "added bolt",
-          "accepted: 1",
-          "total: 7"
-         ],
-         "why": "A number in words must be reported rather than passed to int(), which would crash the whole run."
-        },
-        {
-         "in": [
-          "cone,0",
-          "cone,100",
-          "cone,1",
-          "cone,99",
-          "done"
-         ],
-         "out": [
-          "out of range",
-          "out of range",
-          "added cone",
-          "added cone",
-          "accepted: 2",
-          "total: 100"
-         ],
-         "why": "0 and 100 are one outside each boundary; 1 and 99 are the boundaries themselves and are allowed."
-        },
-        {
-         "in": [
-          "  tape  ,  6  ",
-          "done"
-         ],
-         "out": [
-          "added tape",
-          "accepted: 1",
-          "total: 6"
-         ],
-         "why": "The spaces round the word and the number must be stripped, or the word prints padded and the digit check fails."
-        }
-       ],
-       "fb": "Defensive design means a wrong line is reported and skipped, not allowed to stop the whole run.",
-       "hint": "pyvalidate"
+       "opt": true,
+       "hint": {
+        "think": "Four rules, four messages, two loops. Each loop decides which of its two messages fits.",
+        "syntax": [
+         "while not number.isdigit() or int(number) < low or int(number) > high:"
+        ],
+        "walk": [
+         "Write the username loop first and get it working on its own.",
+         "Then write the number loop underneath it.",
+         "In each loop test the type or the length first, then the other rule.",
+         "Display the one line after both loops have ended."
+        ],
+        "diagram": "pyvalidate"
+       }
       }
      ]
     },

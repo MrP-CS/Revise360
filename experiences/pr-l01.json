@@ -20,102 +20,222 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Display the message Hello world.",
+       "q": "Press Run and watch what happens.",
        "brief": [
-        "Nothing is typed in by the user.",
-        "Nothing else is printed."
+        "Nothing is marked on this one.",
+        "The words appear on the right, under Program output."
        ],
-       "starter": "# Print one line\n",
+       "fb": "That is a whole Python program. Run follows your instructions and shows what they display.",
+       "kind": "try",
+       "starter": "print(\"Hello\")\n",
+       "tests": [],
+       "teach": {
+        "say": "Python is a language for writing instructions. A computer follows them in order, from the top. print() is the instruction for putting one line on the screen.",
+        "code": [
+         "print(\"Hello\")"
+        ],
+        "out": [
+         "Hello"
+        ]
+       },
+       "lines": [
+        "Put the word Hello on the screen."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "Change the word Hello to Goodbye.",
+       "brief": [
+        "Change only the word inside the quotation marks.",
+        "Display exactly: Goodbye"
+       ],
+       "fb": "Run and Check are different on purpose. Run is for trying things; Check is for marking.",
+       "kind": "change",
+       "starter": "print(\"Hello\")\n",
        "tests": [
         {
          "in": [],
          "out": [
-          "Hello world"
+          "Goodbye"
          ],
-         "why": "Nothing was printed. Text goes inside print( ) and inside quotation marks."
+         "why": "The word Hello is still there. Only the letters inside the quotation marks change."
         }
        ],
-       "fb": "That is a whole program: print() shows one line, and the quotation marks say where the text starts and ends.",
-       "hint": "pyoutput",
        "teach": {
-        "say": "print() puts one line on the screen. The text goes inside the brackets, in quotation marks.",
+        "say": "The words inside the quotation marks are yours to choose. Run shows you what your program does. Check my answer compares it with what the task asked for, so Run as often as you like and only Check when you think it is right.",
         "code": [
-         "print(\"Good morning\")"
+         "print(\"Morning\")"
         ],
         "out": [
-         "Good morning"
+         "Morning"
         ]
        }
       },
       {
        "t": "code",
        "marks": 1,
-       "q": "Display Open. Then display Closed on the next line.",
+       "q": "What will this program display?",
        "brief": [
-        "Nothing is typed in by the user.",
-        "Print exactly: Open",
-        "Print exactly: Closed"
+        "Read every line before you choose."
        ],
-       "starter": "# Print two lines, one after the other\n",
-       "tests": [
-        {
-         "in": [],
-         "out": [
-          "Open",
-          "Closed"
-         ],
-         "why": "Two lines of output needs two print() statements, and they run in the order you write them."
-        }
+       "fb": "Three print() instructions give three lines, top to bottom in the order they are written.",
+       "kind": "predict",
+       "code": [
+        "print(\"Ready\")",
+        "print(\"Steady\")",
+        "print(\"Go\")"
        ],
-       "fb": "Each print() ends by moving down to the next line, which is why printing twice gives two lines.",
-       "hint": "pyoutput",
+       "a": [
+        "Ready\nSteady\nGo",
+        "Ready Steady Go",
+        "Go\nSteady\nReady"
+       ],
        "teach": {
-        "say": "One print() gives one line, and then Python moves down. Two lines of output need two print() statements, in the order you want them.",
-        "code": [
-         "print(\"Start\")",
-         "print(\"Finish\")"
-        ],
-        "out": [
-         "Start",
-         "Finish"
-        ]
+        "say": "Python runs the lines in the order they are written, and each print() finishes its line before the next one starts."
        }
       },
       {
        "t": "code",
        "marks": 2,
-       "q": "Display Top. Then display an empty line. Then display Bottom on the third line.",
+       "q": "Finish the program. Display Line one. Then display Line two on the next line.",
        "brief": [
-        "Nothing is typed in by the user.",
-        "The second line of output has nothing on it.",
-        "Three lines of output in all."
+        "Line 1 is written for you.",
+        "Replace ____ with one instruction of your own.",
+        "Display exactly: Line one",
+        "Then display exactly: Line two"
        ],
-       "starter": "# Three lines, with the middle one empty\n",
+       "fb": "Every line of output comes from its own print().",
+       "kind": "complete",
+       "starter": "print(\"Line one\")\n____\n",
        "tests": [
         {
          "in": [],
          "out": [
-          "Top",
-          "",
-          "Bottom"
+          "Line one",
+          "Line two"
          ],
-         "why": "The empty line is printed on purpose, with print() and nothing in the brackets. Two lines of output means it is missing."
+         "why": "Replace the ____ with a print() of your own. It cannot stay there: Python does not know what ____ means."
         }
        ],
-       "fb": "An empty print() still counts as a line of output, which is how you leave a gap.",
-       "hint": "pyoutput",
+       "hint": {
+        "think": "You need the same instruction as line 1, with different words in it.",
+        "syntax": "print(\"...\")",
+        "diagram": "pyoutput"
+       },
        "teach": {
-        "say": "print() with nothing inside the brackets prints a line with nothing on it.",
+        "say": "One print() makes one line. A second print() under it makes a second line.",
         "code": [
-         "print(\"One\")",
-         "print()",
-         "print(\"Two\")"
+         "print(\"First\")",
+         "print(\"Second\")"
         ],
         "out": [
-         "One",
-         "",
-         "Two"
+         "First",
+         "Second"
         ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "Display the message Hello world.",
+       "brief": [
+        "Nothing is typed in by the user.",
+        "Write your program under the line starting with # .",
+        "Display exactly: Hello world",
+        "Nothing else is displayed."
+       ],
+       "fb": "You wrote your first program from nothing: print() shows one line, and the quotation marks hold the text.",
+       "starter": "# Display one line\n",
+       "tests": [
+        {
+         "in": [],
+         "out": [
+          "Hello world"
+         ],
+         "why": "Nothing was displayed. The text goes inside print( ) and inside quotation marks."
+        }
+       ],
+       "hint": {
+        "think": "One instruction, one line of output.",
+        "syntax": "print(\"...\")",
+        "diagram": "pyoutput"
+       },
+       "teach": {
+        "say": "This is the first activity with an empty editor. The line already in it starts with a # , which makes it a note to you rather than an instruction: Python ignores it completely. Leave it there and write your program underneath.",
+        "code": [
+         "# This line is a note. Python ignores it.",
+         "print(\"Good morning\")"
+        ],
+        "out": [
+         "Good morning"
+        ]
+       },
+       "lines": [
+        "A note to the person reading the program. Nothing happens when it runs.",
+        "Show the words Good morning on the screen."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "This program should display Ready. Find the mistake and put it right.",
+       "brief": [
+        "Press Run first and read the error message.",
+        "Do not change the word Ready.",
+        "Display exactly: Ready"
+       ],
+       "fb": "Errors are normal and they are useful. NameError means Python was sent looking for a name that does not exist.",
+       "kind": "debug",
+       "starter": "print(Ready)\n",
+       "tests": [
+        {
+         "in": [],
+         "out": [
+          "Ready"
+         ],
+         "why": "Text needs a quotation mark at each end. Without them Python hunts for something named Ready and gives up."
+        }
+       ],
+       "hint": {
+        "think": "Python is looking for something named Ready, because nothing tells it that Ready is text.",
+        "syntax": "print(\"some text\")",
+        "walk": [
+         "Text always has quotation marks round it.",
+         "There are two to add, one at each end of the word."
+        ]
+       },
+       "teach": {
+        "say": "An error message is Python saying it could not follow an instruction. Every programmer sees them all day long. Read the last line of the message: it names what went wrong, and the two notes underneath say what to look at.",
+        "code": [
+         "print(morning)",
+         "# NameError: name 'morning' is not defined"
+        ],
+        "out": [
+         "nothing - the program stops"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "What will this program display?",
+       "brief": [
+        "Read every line before you choose."
+       ],
+       "fb": "Inside quotation marks a digit is just a character to display. Outside them it is a number to work with.",
+       "kind": "predict",
+       "code": [
+        "print(\"5 + 3\")",
+        "print(5 + 3)"
+       ],
+       "a": [
+        "5 + 3\n8",
+        "8\n8",
+        "5 + 3\n5 + 3"
+       ],
+       "teach": {
+        "say": "Quotation marks change the meaning of what is inside them. With them it is text to show. Without them Python works it out first."
        }
       },
       {
@@ -124,10 +244,11 @@
        "q": "Display Line 1 of 2. Then display Done! on the next line.",
        "brief": [
         "Nothing is typed in by the user.",
-        "Print exactly: Line 1 of 2",
-        "Print exactly: Done!"
+        "Display exactly: Line 1 of 2",
+        "Then display exactly: Done!"
        ],
-       "starter": "# Two lines of text, digits and punctuation included\n",
+       "fb": "Inside quotation marks everything is text, so a digit or an exclamation mark is just another character to show.",
+       "starter": "# Two lines, digits and punctuation included\n",
        "tests": [
         {
          "in": [],
@@ -135,11 +256,14 @@
           "Line 1 of 2",
           "Done!"
          ],
-         "why": "Copy both lines exactly, the digits and the exclamation mark included. Inside quotation marks a digit is text, not a number to work out."
+         "why": "Copy both lines exactly, the digits and the exclamation mark included."
         }
        ],
-       "fb": "Inside quotation marks everything is text, so a digit or a full stop is just another character to show.",
-       "hint": "pyoutput",
+       "hint": {
+        "think": "Two lines of output need two instructions.",
+        "syntax": "print(\"...\")",
+        "diagram": "pyoutput"
+       },
        "teach": {
         "say": "Digits and punctuation inside the quotation marks are part of the text, and print() shows them exactly as written.",
         "code": [
@@ -149,6 +273,67 @@
         "out": [
          "Box 3 of 4",
          "Ready!"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Display Name: Alex. Then display Age: 13 on the next line. Then display Town: Bury on the next line.",
+       "brief": [
+        "Nothing is typed in by the user.",
+        "Display exactly: Name: Alex",
+        "Then display exactly: Age: 13",
+        "Then display exactly: Town: Bury"
+       ],
+       "fb": "Three instructions, three lines, in the order you wrote them.",
+       "starter": "# Three lines\n",
+       "tests": [
+        {
+         "in": [],
+         "out": [
+          "Name: Alex",
+          "Age: 13",
+          "Town: Bury"
+         ],
+         "why": "Each line needs its own print(), and the colons are part of the text."
+        }
+       ],
+       "hint": {
+        "think": "Three lines of output, one instruction each.",
+        "syntax": "print(\"...\")"
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Display Top. Then display an empty line. Then display Bottom on the next line.",
+       "brief": [
+        "Nothing is typed in by the user.",
+        "Line 1 is Top and line 3 is Bottom.",
+        "Line 2 has nothing on it at all - not even a space."
+       ],
+       "fb": "print() with empty brackets gives a blank line, which is how programs are spaced out.",
+       "starter": "# Top, a gap, then Bottom\n",
+       "tests": [
+        {
+         "in": [],
+         "out": [
+          "Top",
+          "",
+          "Bottom"
+         ],
+         "why": "A blank line is its own print() with nothing between the brackets. Quotation marks with nothing between them work too."
+        }
+       ],
+       "opt": true,
+       "hint": {
+        "think": "print() can be asked to show nothing at all. What would you put between the brackets?",
+        "syntax": "print()",
+        "walk": [
+         "Line 1 displays Top.",
+         "Line 2 displays nothing.",
+         "Line 3 displays Bottom."
         ]
        }
       }
@@ -164,14 +349,148 @@
      "tasks": [
       {
        "t": "code",
+       "marks": 1,
+       "q": "Press Run. The program remembers a number, then shows it.",
+       "brief": [
+        "Nothing is marked on this one.",
+        "score is a name the program made up to remember a value by."
+       ],
+       "fb": "A variable is a name with a value kept under it. print(score) shows the value, not the word score.",
+       "kind": "try",
+       "starter": "score = 10\nprint(score)\n",
+       "tests": [],
+       "teach": {
+        "say": "A variable lets your program remember something. The name goes on the left of the = sign and the value goes on the right.",
+        "code": [
+         "score = 10",
+         "print(score)"
+        ],
+        "out": [
+         "10"
+        ]
+       },
+       "lines": [
+        "Remember the number 10 under the name score.",
+        "Show whatever score is holding."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "What will this program display?",
+       "brief": [
+        "Read every line before you choose."
+       ],
+       "fb": "Without quotation marks Python shows what the variable holds. With them it shows the letters you typed.",
+       "kind": "predict",
+       "code": [
+        "colour = \"red\"",
+        "print(colour)",
+        "print(\"colour\")"
+       ],
+       "a": [
+        "red\ncolour",
+        "red\nred",
+        "colour\ncolour"
+       ],
+       "teach": {
+        "say": "Quotation marks round a name turn it into plain text, which is almost never what you want when you are printing a variable."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "Change the program so it remembers 25 instead of 10.",
+       "brief": [
+        "Change only the number.",
+        "Display exactly: 25"
+       ],
+       "fb": "Change the value on the right of the = and everything that uses the variable follows.",
+       "kind": "change",
+       "starter": "score = 10\nprint(score)\n",
+       "tests": [
+        {
+         "in": [],
+         "out": [
+          "25"
+         ],
+         "why": "10 is still being displayed, so the value on the right of the = was not changed."
+        }
+       ],
+       "hint": {
+        "think": "The value a variable holds is the part on the right of the = sign."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Finish the program so it displays what name is holding.",
+       "brief": [
+        "Line 1 is written for you.",
+        "Replace ____ with the name of the variable.",
+        "Do not put quotation marks round it.",
+        "Display exactly: Sam"
+       ],
+       "fb": "print(name) shows the value. print(\"name\") shows the four letters n, a, m, e.",
+       "kind": "complete",
+       "starter": "name = \"Sam\"\nprint(____)\n",
+       "tests": [
+        {
+         "in": [],
+         "out": [
+          "Sam"
+         ],
+         "why": "If the word name came out, the variable had quotation marks round it. Quotation marks mean show these letters."
+        }
+       ],
+       "hint": {
+        "think": "You want the value, not the letters of the name."
+       },
+       "teach": {
+        "say": "To show what a variable holds, put its name inside print() with no quotation marks round it.",
+        "code": [
+         "town = \"Bury\"",
+         "print(town)"
+        ],
+        "out": [
+         "Bury"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "What will this program display?",
+       "brief": [
+        "Read every line before you choose."
+       ],
+       "fb": "= means put this value in here. The second one replaces the first, and the first is gone.",
+       "kind": "predict",
+       "code": [
+        "pet = \"cat\"",
+        "pet = \"dog\"",
+        "print(pet)"
+       ],
+       "a": [
+        "dog",
+        "cat",
+        "catdog"
+       ],
+       "teach": {
+        "say": "A second = puts a new value in the same variable. The old value is not kept anywhere."
+       }
+      },
+      {
+       "t": "code",
        "marks": 2,
        "q": "Keep the word harbour in a variable. Display that variable. Then display it again on the next line.",
        "brief": [
         "Nothing is typed in by the user.",
-        "The word harbour is written into your program.",
-        "Print the same variable twice."
+        "The word harbour is written into your program, in one place only.",
+        "Display the same variable twice."
        ],
-       "starter": "# One word in a variable, printed on two lines\n",
+       "fb": "A variable can be used as many times as you like. Writing the word once means there is only one place to change it.",
+       "starter": "# Keep a word, then show it twice\n",
        "tests": [
         {
          "in": [],
@@ -179,21 +498,47 @@
           "harbour",
           "harbour"
          ],
-         "why": "Two lines, both the same. One line means the variable was printed once: printing it does not use the value up."
+         "why": "Both lines come from the same variable, so the word itself is typed once."
         }
        ],
-       "fb": "A variable is a named box for one value, and the value stays in the box until you change it.",
-       "hint": "pyoutput",
+       "hint": {
+        "think": "One variable, two print() instructions.",
+        "syntax": "thing = \"some text\""
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "This program should display 12. Find the mistake and put it right.",
+       "brief": [
+        "Press Run first and read the error message.",
+        "Do not change the number.",
+        "Display exactly: 12"
+       ],
+       "fb": "SyntaxError means Python could not read the line at all. Here the two sides of the = had been swapped.",
+       "kind": "debug",
+       "starter": "12 = age\nprint(age)\n",
+       "tests": [
+        {
+         "in": [],
+         "out": [
+          "12"
+         ],
+         "why": "The two sides of the = are the wrong way round. The name goes on the left."
+        }
+       ],
+       "hint": {
+        "think": "Which side of the = does a name go on?",
+        "syntax": "name = value"
+       },
        "teach": {
-        "say": "A variable is a named box. = puts a value into it, and printing the name shows the value inside.",
+        "say": "The name always goes on the left of the = and the value on the right. The other way round is not a sentence Python can read.",
         "code": [
-         "sound = \"beep\"",
-         "print(sound)",
-         "print(sound)"
+         "age = 12",
+         "# and not:  12 = age"
         ],
         "out": [
-         "beep",
-         "beep"
+         "nothing - the program stops"
         ]
        }
       },
@@ -204,9 +549,10 @@
        "brief": [
         "Nothing is typed in by the user.",
         "Use one variable for both words.",
-        "Print the first word before the second one replaces it."
+        "Display the first word before the second one replaces it."
        ],
-       "starter": "# One variable, printed twice, with a new value in between\n",
+       "fb": "The order of the lines decides what is displayed. A variable only ever holds one value at a time.",
+       "starter": "# One variable, two values, two lines\n",
        "tests": [
         {
          "in": [],
@@ -214,22 +560,16 @@
           "north",
           "south"
          ],
-         "why": "If south came out on both lines, the first print() runs after the change. A second = throws the old value away, so print it first."
+         "why": "Display the variable before you change it. Once south is in there, north has gone."
         }
        ],
-       "fb": "A variable holds one value at a time, and = overwrites whatever was there before.",
-       "hint": "pyoutput",
-       "teach": {
-        "say": "= replaces whatever the variable held before, so only the newest value is left. Print the old value before you overwrite it.",
-        "code": [
-         "light = \"red\"",
-         "print(light)",
-         "light = \"green\"",
-         "print(light)"
-        ],
-        "out": [
-         "red",
-         "green"
+       "hint": {
+        "think": "print() shows the value the variable is holding at that moment.",
+        "walk": [
+         "Put north in the variable.",
+         "Display it.",
+         "Put south in the same variable.",
+         "Display it again."
         ]
        }
       },
@@ -240,9 +580,10 @@
        "brief": [
         "Nothing is typed in by the user.",
         "b = a copies the value, so b keeps the word amber.",
-        "Print a first, then b."
+        "Display a first, then b."
        ],
-       "starter": "# Copy one variable into another before changing it\n",
+       "fb": "A copy is a copy. b took the value amber and kept it, whatever happened to a next.",
+       "starter": "# Copy a value, then change the original\n",
        "tests": [
         {
          "in": [],
@@ -250,24 +591,12 @@
           "silver",
           "amber"
          ],
-         "why": "If both lines are silver, b was copied after a changed. Copy it while a still holds amber."
+         "why": "b = a copies the value at that moment. Changing a afterwards does not change b."
         }
        ],
-       "fb": "Copying a variable copies the value, not the box, so the copy keeps that value even after the original changes.",
-       "hint": "pyoutput",
-       "teach": {
-        "say": "b = a copies across the value a is holding at that moment. Changing a afterwards leaves b exactly as it was.",
-        "code": [
-         "x = \"north\"",
-         "y = x",
-         "x = \"south\"",
-         "print(x)",
-         "print(y)"
-        ],
-        "out": [
-         "south",
-         "north"
-        ]
+       "hint": {
+        "think": "Copying takes the value out of one variable and puts it in another. The two are not joined afterwards.",
+        "syntax": "b = a"
        }
       },
       {
@@ -277,9 +606,10 @@
        "brief": [
         "Nothing is typed in by the user.",
         "Name the constant LIMIT, in capitals.",
-        "The 100 is written into your program in one place only."
+        "The number 100 is written into your program in one place only."
        ],
-       "starter": "# Make the variable and the constant, then print both\n",
+       "fb": "Capitals for a constant tell the next person reading your program that the value is not meant to change.",
+       "starter": "# A variable and a constant\n",
        "tests": [
         {
          "in": [],
@@ -287,19 +617,22 @@
           "closed",
           "100"
          ],
-         "why": "Two lines: the word, then the number. If the word LIMIT appeared, it was inside quotation marks, and quotation marks mean print these letters."
+         "why": "Two values, two names, two lines of output."
         }
        ],
-       "fb": "A constant is an ordinary variable for a value that must not change, and capital letters are how programmers say so.",
-       "hint": "pyoutput",
+       "opt": true,
+       "hint": {
+        "think": "A constant is made exactly like a variable. Only the name is different.",
+        "syntax": "LIMIT = 100"
+       },
        "teach": {
-        "say": "A constant is a variable whose value never changes. Its name is written in capitals so everyone can see it must stay as it is.",
+        "say": "A constant is a value a program never changes once it is set. Python does not stop you changing one, so programmers write the name in capitals as a promise not to.",
         "code": [
-         "MAX = 30",
+         "MAX = 50",
          "print(MAX)"
         ],
         "out": [
-         "30"
+         "50"
         ]
        }
       }
@@ -316,13 +649,72 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Ask the user for a word. Display [word].",
+       "q": "Press Run. Type a word when the program waits, then press Enter.",
        "brief": [
-        "The user types in one word.",
-        "Keep what comes back in a variable.",
-        "Nothing else is printed."
+        "Nothing is marked on this one.",
+        "The program stops at input() until something is typed."
        ],
-       "starter": "# Read one word into a variable, then print it\n",
+       "fb": "input() is patient: the program sits on that line until the Enter key is pressed.",
+       "kind": "try",
+       "starter": "word = input(\"Word? \")\nprint(word)\n",
+       "tests": [],
+       "in": [
+        "banana"
+       ],
+       "teach": {
+        "say": "input() stops the program, waits for a line to be typed, and hands that line back. Store what comes back in a variable, or it is thrown away.",
+        "code": [
+         "word = input(\"Word? \")",
+         "print(word)"
+        ],
+        "out": [
+         "whatever was typed"
+        ]
+       },
+       "lines": [
+        "Wait for a line to be typed, and keep it under the name word.",
+        "Show what word is holding."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "The user types Sam. What will this program display?",
+       "brief": [
+        "Read every line before you choose."
+       ],
+       "fb": "One input() reads one line. The variable then holds it for as long as you need it.",
+       "kind": "predict",
+       "code": [
+        "name = input()",
+        "print(name)",
+        "print(name)"
+       ],
+       "a": [
+        "Sam\nSam",
+        "Sam",
+        "name\nname"
+       ],
+       "in": [
+        "Sam"
+       ],
+       "teach": {
+        "say": "Whatever the user types comes back as text, and the variable keeps it until the program changes it."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Finish the program so it keeps what the user types and then displays it.",
+       "brief": [
+        "Replace ____ with a name for the value.",
+        "Use the same name that print() already uses.",
+        "When you press Check, the words are typed in for you.",
+        "Display exactly what was typed, and nothing else."
+       ],
+       "fb": "input() hands the line back, and the = keeps it under a name you can use later.",
+       "kind": "complete",
+       "starter": "____ = input()\nprint(word)\n",
        "tests": [
         {
          "in": [
@@ -331,7 +723,7 @@
          "out": [
           "tulip"
          ],
-         "why": "Nothing came out, so the typed word was never printed. input() hands the word back and print() shows it."
+         "why": "The name on the left of the = has to match the name inside print()."
         },
         {
          "in": [
@@ -340,7 +732,7 @@
          "out": [
           "silver"
          ],
-         "why": "If the word word came out instead, the variable was inside quotation marks. Quotation marks mean print these letters."
+         "why": "Whatever the user types comes back, so this works for any word."
         },
         {
          "in": [
@@ -349,20 +741,134 @@
          "out": [
           "two words"
          ],
-         "why": "input() hands back the whole line, spaces included, so both words come back as one value."
+         "why": "input() reads the whole line, spaces included."
         }
        ],
-       "fb": "input() reads one line and hands it back, and printing a variable shows the value it is holding.",
-       "hint": "pyinput",
+       "hint": {
+        "think": "A value is kept by putting a name and an = in front of it.",
+        "syntax": "thing = input()",
+        "diagram": "pyinput"
+       },
        "teach": {
-        "say": "input() stops the program and waits for the user to type a line, then hands that line back. Keep it in a variable, and printing the variable shows what was typed.",
+        "say": "input() on its own throws the answer away. It has to be put into a variable with an = sign.",
         "code": [
-         "colour = input(\"Colour? \")   # the user types teal",
+         "town = input(\"Town? \")",
+         "print(town)"
+        ],
+        "out": [
+         "whatever was typed"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "Ask the user for a word. Display [word].",
+       "brief": [
+        "The user types in one word.",
+        "Keep what comes back in a variable.",
+        "[word] means the word that was typed, not the five letters w o r d.",
+        "Nothing else is displayed."
+       ],
+       "fb": "This is the shape of nearly every program you will write: read something, keep it, use it.",
+       "starter": "# Read one word, then display it\n",
+       "tests": [
+        {
+         "in": [
+          "tulip"
+         ],
+         "out": [
+          "tulip"
+         ],
+         "why": "Nothing came out, so the typed word was never displayed."
+        },
+        {
+         "in": [
+          "silver"
+         ],
+         "out": [
+          "silver"
+         ],
+         "why": "If the word word came out instead, the variable had quotation marks round it."
+        },
+        {
+         "in": [
+          "two words"
+         ],
+         "out": [
+          "two words"
+         ],
+         "why": "input() hands back the whole line, so both words come back as one value."
+        }
+       ],
+       "hint": {
+        "think": "Read the line, keep it, show it. Three jobs, two lines of Python.",
+        "syntax": [
+         "thing = input()",
+         "print(thing)"
+        ],
+        "diagram": "pyinput"
+       },
+       "teach": {
+        "say": "Square brackets in a task mean a value that changes, not letters to display: [word] means whatever word was typed, so for amber the program displays amber. A message inside input() is shown while the program waits, so the user knows what to type. It is not part of what is marked.",
+        "code": [
+         "colour = input(\"Colour? \")",
          "print(colour)"
         ],
         "out": [
-         "teal"
+         "whatever was typed"
         ]
+       },
+       "lines": [
+        "Show Colour? on the screen, wait for a line, and keep it under the name colour.",
+        "Show the value colour is holding."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "This program should display whatever the user types. Find the mistake and put it right.",
+       "brief": [
+        "Press Run first and read the error message.",
+        "The user types one word.",
+        "Display exactly what was typed."
+       ],
+       "fb": "NameError here means nothing was ever stored. input() needs a variable in front of it to keep the answer.",
+       "kind": "debug",
+       "starter": "input()\nprint(word)\n",
+       "tests": [
+        {
+         "in": [
+          "amber"
+         ],
+         "out": [
+          "amber"
+         ],
+         "why": "input() on its own reads the line and throws it away. Nothing called word was ever made."
+        },
+        {
+         "in": [
+          "bronze"
+         ],
+         "out": [
+          "bronze"
+         ],
+         "why": "Give the value a name with an = sign, and use the same name in print()."
+        },
+        {
+         "in": [
+          "silver"
+         ],
+         "out": [
+          "silver"
+         ],
+         "why": "The name on the left of the = and the name inside print() have to match."
+        }
+       ],
+       "hint": {
+        "think": "Is the answer being kept anywhere? Look at what is missing before the input().",
+        "syntax": "thing = input()",
+        "diagram": "pyinput"
        }
       },
       {
@@ -370,9 +876,11 @@
        "marks": 2,
        "q": "Ask the user for one word. Display [word]. Then display [word] again on the next line. Then display [word] a third time on the next line.",
        "brief": [
-        "The user types in one word only."
+        "The user types in one word only.",
+        "Three lines of output from one word."
        ],
-       "starter": "# Read the word, then print it three times\n",
+       "fb": "One input() and three print() instructions. Reading a value again would ask the user again.",
+       "starter": "# One word in, three lines out\n",
        "tests": [
         {
          "in": [
@@ -383,7 +891,7 @@
           "amber",
           "amber"
          ],
-         "why": "Three lines exactly. One line means the value was printed once; nothing at all means input() was never stored in a variable."
+         "why": "Ask once and display the same variable three times."
         },
         {
          "in": [
@@ -394,7 +902,7 @@
           "two words",
           "two words"
          ],
-         "why": "input() reads the whole line, spaces included, so both words come back as one value."
+         "why": "The whole line comes back, spaces included."
         },
         {
          "in": [
@@ -405,22 +913,39 @@
           "Jo",
           "Jo"
          ],
-         "why": "Reading again instead of printing the variable three times will not work: there is only one line of input."
+         "why": "Three print() instructions, one variable."
         }
        ],
-       "fb": "input() waits for one line and hands it back, and once it is stored you can use it as often as you like.",
-       "hint": "pyinput",
+       "hint": {
+        "think": "Read it once. A variable can be displayed as many times as you like."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "The user types red and then blue. What will this program display?",
+       "brief": [
+        "Read every line before you choose."
+       ],
+       "fb": "The reading order and the displaying order are separate. The first line typed goes into first, whatever happens next.",
+       "kind": "predict",
+       "code": [
+        "first = input()",
+        "second = input()",
+        "print(second)",
+        "print(first)"
+       ],
+       "a": [
+        "blue\nred",
+        "red\nblue",
+        "red\nred"
+       ],
+       "in": [
+        "red",
+        "blue"
+       ],
        "teach": {
-        "say": "A value read with input() stays in its variable after it has been printed, so you can use it as many times as you like.",
-        "code": [
-         "sound = input(\"Sound? \")   # the user types beep",
-         "print(sound)",
-         "print(sound)"
-        ],
-        "out": [
-         "beep",
-         "beep"
-        ]
+        "say": "Each input() reads one line, in the order the lines are typed. The order they are displayed in is up to you."
        }
       },
       {
@@ -429,9 +954,10 @@
        "q": "Ask the user for a word. Then ask for a second word. Display [second word]. Then display [first word] on the next line.",
        "brief": [
         "The user types in two lines, one word on each.",
-        "Print the second word first."
+        "Display the second word first."
        ],
-       "starter": "# Two words in, two lines out, the second word first\n",
+       "fb": "Two values need two names. Reading both into the same variable loses the first one.",
+       "starter": "# Two words in, swapped on the way out\n",
        "tests": [
         {
          "in": [
@@ -442,7 +968,7 @@
           "silver",
           "amber"
          ],
-         "why": "The first word arrives first but is printed second, so store each input in its own variable and then choose the order."
+         "why": "Use a different variable for each word, or the first one is overwritten."
         },
         {
          "in": [
@@ -453,7 +979,7 @@
           "south",
           "north"
          ],
-         "why": "One input() reads one line only. Two lines of input need two separate calls."
+         "why": "Read both before displaying either."
         },
         {
          "in": [
@@ -464,21 +990,16 @@
           "water",
           "deep"
          ],
-         "why": "Using one variable for both words loses the first one, because the second input overwrites it."
+         "why": "The second variable is displayed first."
         }
        ],
-       "fb": "Reading and printing are separate steps, so once each value is in its own variable you can print them in any order.",
-       "hint": "pyinput",
-       "teach": {
-        "say": "One input() reads one line, so two lines need two calls. Each value goes in its own variable, and then you print them in any order.",
-        "code": [
-         "a = input(\"First? \")   # the user types red",
-         "b = input(\"Second? \")  # then blue",
-         "print(b)"
+       "hint": {
+        "think": "Two words need two variables, or the first is lost when the second arrives.",
+        "syntax": [
+         "a = input()",
+         "b = input()"
         ],
-        "out": [
-         "blue"
-        ]
+        "diagram": "pyinput"
        }
       },
       {
@@ -489,7 +1010,8 @@
         "The user types in two lines, one word on each.",
         "Four lines of output from two words."
        ],
-       "starter": "# Two words in, four lines out, taking turns\n",
+       "fb": "Once a value is in a variable it can be used as often as you like, in any order.",
+       "starter": "# Two words in, four lines out\n",
        "tests": [
         {
          "in": [
@@ -502,7 +1024,7 @@
           "amber",
           "silver"
          ],
-         "why": "Four lines exactly. Two lines means the pair was printed once instead of twice."
+         "why": "Two variables, four print() instructions."
         },
         {
          "in": [
@@ -515,7 +1037,7 @@
           "north",
           "south"
          ],
-         "why": "Reading again for the third and fourth lines will not work: there are only two lines of input."
+         "why": "Read both words before displaying anything."
         },
         {
          "in": [
@@ -528,25 +1050,11 @@
           "deep",
           "water"
          ],
-         "why": "The order matters: first word, second word, first word, second word."
+         "why": "The order of the print() lines is the order of the output."
         }
        ],
-       "fb": "Printing a variable does not use the value up, so the same two variables can fill as many lines as you like.",
-       "hint": "pyinput",
-       "teach": {
-        "say": "Both variables are still there after they have been printed, so you can print either of them again.",
-        "code": [
-         "a = input(\"First? \")   # the user types red",
-         "b = input(\"Second? \")  # then blue",
-         "print(a)",
-         "print(b)",
-         "print(a)"
-        ],
-        "out": [
-         "red",
-         "blue",
-         "red"
-        ]
+       "hint": {
+        "think": "Read both words, then display them in the order the task asks for."
        }
       },
       {
@@ -555,9 +1063,10 @@
        "q": "Ask the user for a word and keep it in its own variable. Then ask for a second word and keep it in its own variable. Then ask for a third word and keep it in its own variable. Display [third word]. Then display [first word] on the next line. Then display [second word] on the next line.",
        "brief": [
         "The user types in three lines, one word on each.",
-        "Print them in the order given, not the order they were typed."
+        "Display them in the order the task gives, not the order they were typed."
        ],
-       "starter": "# Three words in. Third, first, second.\n",
+       "fb": "The order a program reads values in and the order it displays them in have nothing to do with each other.",
+       "starter": "# Three words in, re-ordered on the way out\n",
        "tests": [
         {
          "in": [
@@ -570,7 +1079,7 @@
           "amber",
           "silver"
          ],
-         "why": "The third word comes out first, then the first, then the second. Printing them as typed gets all three lines wrong."
+         "why": "Keep each word in its own variable, then choose the order to display them in."
         },
         {
          "in": [
@@ -583,7 +1092,7 @@
           "north",
           "south"
          ],
-         "why": "Three inputs need three separate input() calls, each stored in its own variable."
+         "why": "The third word typed is displayed first."
         },
         {
          "in": [
@@ -596,24 +1105,12 @@
           "deep",
           "water"
          ],
-         "why": "Reusing one variable for all three words leaves only the last one, so the first two lines cannot be printed."
+         "why": "Read all three before displaying any of them."
         }
        ],
-       "fb": "Each variable holds its own value, so reading in one order and printing in another is just a matter of choosing which to print first.",
-       "hint": "pyinput",
-       "teach": {
-        "say": "Three values need three variables, and each one keeps whatever was put in it whatever order you print them in.",
-        "code": [
-         "a = input(\"First? \")   # the user types red",
-         "b = input(\"Second? \")  # then blue",
-         "c = input(\"Third? \")   # then green",
-         "print(c)",
-         "print(b)"
-        ],
-        "out": [
-         "green",
-         "blue"
-        ]
+       "opt": true,
+       "hint": {
+        "think": "Three values, three names. Work out which name holds which word before you display anything."
        }
       }
      ]
@@ -628,225 +1125,305 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 2,
-       "q": "Ask the user for a word. Display one line in the form Word is [word].",
+       "marks": 1,
+       "q": "Press Run. The same + sign is used twice and does two different jobs.",
        "brief": [
-        "One line only.",
-        "There is one space between is and the word."
+        "Nothing is marked on this one.",
+        "Look at what each line displays, then read the two lines of code again."
        ],
-       "starter": "# Join the fixed text to the word, then print one line\n",
-       "tests": [
-        {
-         "in": [
-          "tulip"
-         ],
-         "out": [
-          "Word is tulip"
-         ],
-         "why": "Word istulip means the space is missing. Joining never adds spaces for you, so put one inside the quotation marks."
-        },
-        {
-         "in": [
-          "silver"
-         ],
-         "out": [
-          "Word is silver"
-         ],
-         "why": "Two lines instead of one means two print() statements. Build the whole line, then print it once."
-        },
-        {
-         "in": [
-          "two words"
-         ],
-         "out": [
-          "Word is two words"
-         ],
-         "why": "If the word word appeared on the end, the variable was inside the quotation marks. Only the fixed text belongs in quotes."
-        }
-       ],
-       "fb": "Joining text with + is called concatenation, and it joins exactly what you give it, so every space is joined in on purpose.",
-       "hint": "pystring",
+       "fb": "Joining two strings end to end has a name of its own: concatenation.",
+       "kind": "try",
+       "starter": "print(2 + 3)\nprint(\"2\" + \"3\")\n",
+       "tests": [],
        "teach": {
-        "say": "The + sign joins text together. It adds nothing of its own, so any space you want has to be joined in too.",
+        "say": "A value's data type decides what can be done with it. 5 is a whole number, or integer. \"5\" is text, or a string. + adds two numbers, but joins two strings end to end.",
         "code": [
-         "town = \"Ashford\"",
-         "print(\"From \" + town)"
+         "print(2 + 3)",
+         "print(\"2\" + \"3\")"
         ],
         "out": [
-         "From Ashford"
+         "5",
+         "23"
+        ]
+       },
+       "lines": [
+        "2 and 3 are numbers, so + adds them.",
+        "The quotation marks make these strings, so + sticks them together."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "What will this program display?",
+       "brief": [
+        "Read every line before you choose."
+       ],
+       "fb": "+ joins strings exactly as they are, with nothing between them. A space has to be added on purpose.",
+       "kind": "predict",
+       "code": [
+        "first = \"Sam\"",
+        "last = \"Ali\"",
+        "print(first + last)"
+       ],
+       "a": [
+        "SamAli",
+        "Sam Ali",
+        "Sam + Ali"
+       ],
+       "teach": {
+        "say": "Joining strings does not put a space in for you. If you want one, it has to be in the text."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "Change the program so a space appears between the two words.",
+       "brief": [
+        "Keep both variables as they are.",
+        "Display exactly: Sam Ali"
+       ],
+       "fb": "\" \" is a string holding one space. Joining it in the middle puts the gap where you want it.",
+       "kind": "change",
+       "starter": "first = \"Sam\"\nlast = \"Ali\"\nprint(first + last)\n",
+       "tests": [
+        {
+         "in": [],
+         "out": [
+          "Sam Ali"
+         ],
+         "why": "SamAli came out, so nothing was joined between the two words. A space in quotation marks is a string you can join on."
+        }
+       ],
+       "hint": {
+        "think": "A space is a character like any other, so it can go inside quotation marks.",
+        "syntax": "a + \" \" + b"
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "The user types 7. What will this program display?",
+       "brief": [
+        "Read every line before you choose."
+       ],
+       "fb": "Digits typed in are still text. 7 + 7 would be 14, but \"7\" + \"7\" is \"77\".",
+       "kind": "predict",
+       "code": [
+        "n = input()",
+        "print(n + n)"
+       ],
+       "a": [
+        "77",
+        "14",
+        "7 7"
+       ],
+       "in": [
+        "7"
+       ],
+       "teach": {
+        "say": "input() always hands back a string, even when the user typed digits. So + joins rather than adds."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Finish the program so it displays Score: 10.",
+       "brief": [
+        "Replace ____ so the number can be joined to the text.",
+        "Display exactly: Score: 10",
+        "There is one space after the colon."
+       ],
+       "fb": "str() makes text out of a number so it can be joined with +.",
+       "kind": "complete",
+       "starter": "score = 10\nprint(\"Score: \" + ____)\n",
+       "tests": [
+        {
+         "in": [],
+         "out": [
+          "Score: 10"
+         ],
+         "why": "Joining text to a number raises a TypeError. Put the number inside str( ) first."
+        }
+       ],
+       "hint": {
+        "think": "Python will not join text to a number. One of them has to change type.",
+        "syntax": "str(number)"
+       },
+       "teach": {
+        "say": "A number cannot be joined to a string with +. str() turns the number into text first, and then it can be joined. There is a second way, which you will see in the syntax reference: print() can be given several values separated by commas, and it puts one space between them. Both are right. This course writes str() and + because then you can see exactly where every space goes.",
+        "code": [
+         "n = 4",
+         "print(\"Count: \" + str(n))"
+        ],
+        "out": [
+         "Count: 4"
         ]
        }
       },
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for a word. Then ask for a second word. Join them with one space between them. Display one line in the form [first word] [second word].",
+       "q": "This program should display Age: 13. Find the mistake and put it right.",
        "brief": [
-        "One line only.",
-        "Exactly one space between the two words.",
-        "No other text is printed."
+        "Press Run first and read the error message.",
+        "Do not change the number.",
+        "Display exactly: Age: 13"
        ],
-       "starter": "# Two words in, one joined line out\n",
+       "fb": "TypeError means the types do not go together. + needs two strings or two numbers, never one of each.",
+       "kind": "debug",
+       "starter": "age = 13\nprint(\"Age: \" + age)\n",
        "tests": [
         {
-         "in": [
-          "deep",
-          "water"
-         ],
+         "in": [],
          "out": [
-          "deep water"
+          "Age: 13"
          ],
-         "why": "deepwater means the space is missing. Join it in on purpose: first + \" \" + second."
-        },
-        {
-         "in": [
-          "north",
-          "south"
-         ],
-         "out": [
-          "north south"
-         ],
-         "why": "Two lines instead of one means both words were printed separately. Join them first, then print once."
-        },
-        {
-         "in": [
-          "amber",
-          "silver"
-         ],
-         "out": [
-          "amber silver"
-         ],
-         "why": "Printing the variable names instead of their values means they were inside quotation marks."
+         "why": "A TypeError here means text and a number were joined with +. Put the number inside str( )."
         }
        ],
-       "fb": "Concatenation joins values end to end, so a space between two words is something you have to supply yourself.",
-       "hint": "pystring",
-       "teach": {
-        "say": "Two variables can be joined the same way as text and a variable, as long as the space between them is joined in as well.",
-        "code": [
-         "a = \"low\"",
-         "b = \"tide\"",
-         "print(a + \" \" + b)"
-        ],
-        "out": [
-         "low tide"
-        ]
+       "hint": {
+        "think": "Read the error. What two kinds of value is Python being asked to join?",
+        "syntax": "\"text \" + str(number)"
        }
       },
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for a word. Display [word]. Then display the whole number 7 on the next line. Then display the real number 1.5 on the next line.",
+       "q": "Ask the user for a town. Then ask for its county. Display the two joined with one space between them.",
        "brief": [
-        "The 7 and the 1.5 are fixed in your program, not typed in.",
-        "A number printed on its own needs no quotation marks."
+        "The user types in two lines, a town on the first and a county on the second.",
+        "One line of output.",
+        "There is exactly one space between the two."
        ],
-       "starter": "# A string, then an integer, then a real number\n",
+       "fb": "Joining strings end to end is called concatenation, and + is the operator that does it.",
+       "starter": "# Two words in, one line out\n",
        "tests": [
         {
          "in": [
-          "tulip"
+          "Bury",
+          "Suffolk"
          ],
          "out": [
-          "tulip",
-          "7",
-          "1.5"
+          "Bury Suffolk"
          ],
-         "why": "Three lines, each with one value. 1.50 or 1 point 5 are strings that look like numbers and will not match."
+         "why": "Join a space between the two, or they run together."
         },
         {
          "in": [
-          "silver"
+          "Leeds",
+          "Yorkshire"
          ],
          "out": [
-          "silver",
-          "7",
-          "1.5"
+          "Leeds Yorkshire"
          ],
-         "why": "7.0 instead of 7 means the integer was written as a real number. An integer has no decimal part at all."
+         "why": "Both come back as strings, so + joins them."
         },
         {
          "in": [
-          "two words"
+          "Milton Keynes",
+          "Buckinghamshire"
          ],
          "out": [
-          "two words",
-          "7",
-          "1.5"
+          "Milton Keynes Buckinghamshire"
          ],
-         "why": "The word comes from input() and the two numbers are written straight into the program."
+         "why": "A town of two words comes back as one whole value."
         }
        ],
-       "fb": "Integer, real, Boolean, character and string are the five data types OCR names, and the type decides what you can do with a value.",
-       "hint": "pyoutput",
-       "teach": {
-        "say": "Python values come in types: text in quotation marks is a string, 4 is an integer and 0.5 is a real number.",
-        "code": [
-         "print(4)",
-         "print(0.5)"
-        ],
-        "out": [
-         "4",
-         "0.5"
-        ]
+       "hint": {
+        "think": "Three strings joined together: the town, a space, and the county.",
+        "syntax": "a + \" \" + b",
+        "diagram": "pystring"
        }
       },
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for a word. Display [word]. Then display the Boolean True on the next line. Then display the Boolean False on the next line.",
+       "q": "Ask the user for a colour. Display the line The colour is [colour].",
        "brief": [
-        "True and False are fixed in your program, not typed in.",
-        "Write them with a capital letter and no quotation marks."
+        "The user types in one word.",
+        "One line of output.",
+        "There is one space after is."
        ],
-       "starter": "# A string, then the two Boolean values\n",
+       "fb": "Fixed text plus a value is how nearly every message a program displays is built.",
+       "starter": "# Fixed words joined to a typed value\n",
        "tests": [
         {
          "in": [
-          "tulip"
+          "red"
          ],
          "out": [
-          "tulip",
-          "True",
-          "False"
+          "The colour is red"
          ],
-         "why": "Three lines, in that order. true or TRUE is not how Python writes it: the capital letter is on the first letter only."
+         "why": "Join the fixed text to the variable with +."
         },
         {
          "in": [
-          "silver"
+          "amber"
          ],
          "out": [
-          "silver",
-          "True",
-          "False"
+          "The colour is amber"
          ],
-         "why": "In quotation marks it is only a string that looks like a Boolean. Leave the quotes off so Python prints the Boolean itself."
+         "why": "Everything before the colour is written into your program."
         },
         {
          "in": [
-          "two words"
+          "navy blue"
          ],
          "out": [
-          "two words",
-          "True",
-          "False"
+          "The colour is navy blue"
          ],
-         "why": "The word comes from input(). The two Boolean values are written straight into the program."
+         "why": "Whatever is typed comes back whole, spaces included."
         }
        ],
-       "fb": "A Boolean is either True or False, written with a capital letter and never in quotation marks.",
-       "hint": "pyoutput",
-       "teach": {
-        "say": "A Boolean holds one of only two values. They are written True and False, with a capital letter and no quotation marks.",
-        "code": [
-         "print(True)",
-         "print(False)"
-        ],
-        "out": [
-         "True",
-         "False"
-        ]
+       "hint": {
+        "think": "A fixed piece of text joined to the value the user typed.",
+        "syntax": "\"The colour is \" + thing"
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for a word. Display the word three times on one line, with one space between each one.",
+       "brief": [
+        "The user types in one word.",
+        "One line of output, not three.",
+        "There is one space between each copy, and none at the start or end."
+       ],
+       "fb": "A variable can appear as many times as you like in one joined-up string.",
+       "starter": "# One word, three times, one line\n",
+       "tests": [
+        {
+         "in": [
+          "ha"
+         ],
+         "out": [
+          "ha ha ha"
+         ],
+         "why": "One print() with everything joined inside it, spaces included."
+        },
+        {
+         "in": [
+          "go"
+         ],
+         "out": [
+          "go go go"
+         ],
+         "why": "Join the variable to itself with a space string between each copy."
+        },
+        {
+         "in": [
+          "yes"
+         ],
+         "out": [
+          "yes yes yes"
+         ],
+         "why": "Three copies and two spaces, with nothing on either end."
+        }
+       ],
+       "opt": true,
+       "hint": {
+        "think": "One line of output means one print(). Everything in it has to be joined first.",
+        "syntax": "a + \" \" + a + \" \" + a"
        }
       }
      ]
@@ -861,31 +1438,83 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 2,
-       "q": "Ask the user for a whole number. Add 1 to it. Display [answer] and nothing else.",
+       "marks": 1,
+       "q": "Press Run. Type 5 when the program waits. Watch what the two lines display.",
        "brief": [
-        "The user types in one whole number.",
-        "Cast it with int() before adding."
+        "Nothing is marked on this one.",
+        "Both lines use the number you typed, but they do different things with it."
        ],
-       "starter": "# One whole number in, one more out\n",
+       "fb": "int() is what turns the digits the user typed into a number you can do sums with.",
+       "kind": "try",
+       "starter": "typed = input(\"Number? \")\nprint(typed + typed)\nprint(int(typed) + int(typed))\n",
+       "tests": [],
+       "in": [
+        "5"
+       ],
+       "teach": {
+        "say": "Casting changes a value from one data type into another. int() makes a whole number out of text, float() makes a decimal, and str() makes text out of a number.",
+        "code": [
+         "typed = input(\"Number? \")",
+         "print(typed + typed)",
+         "print(int(typed) + int(typed))"
+        ],
+        "out": [
+         "55",
+         "10"
+        ]
+       },
+       "lines": [
+        "Read a line. It comes back as text, even though it looks like a number.",
+        "Join the text to itself, which gives 55.",
+        "Turn the text into whole numbers first, so + adds them and gives 10."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "The user types 4. What will this program display?",
+       "brief": [
+        "Read every line before you choose."
+       ],
+       "fb": "int(input()) reads a line and turns it into a number in one go. That is why it appears in so many programs.",
+       "kind": "predict",
+       "code": [
+        "n = int(input())",
+        "print(n + 1)"
+       ],
+       "a": [
+        "5",
+        "41",
+        "4 + 1"
+       ],
+       "in": [
+        "4"
+       ],
+       "teach": {
+        "say": "int() has to be used before the sum, not after it. Once the strings have been joined there is nothing to add."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Finish the program so it adds 1 to the number the user types.",
+       "brief": [
+        "Replace ____ so the typed line becomes a whole number.",
+        "The user types one whole number.",
+        "Display the number that is one bigger."
+       ],
+       "fb": "int() round the input() is the standard way to read a number in Python.",
+       "kind": "complete",
+       "starter": "n = ____(input())\nprint(n + 1)\n",
        "tests": [
         {
          "in": [
-          "14"
+          "4"
          ],
          "out": [
-          "15"
+          "5"
          ],
-         "why": "141 instead of 15 means the 1 was joined on as text. Wrap the input in int() before adding."
-        },
-        {
-         "in": [
-          "0"
-         ],
-         "out": [
-          "1"
-         ],
-         "why": "0 plus 1 is 1. An empty line means nothing was printed, so the arithmetic is missing."
+         "why": "Without int( ) the + joins the digits instead of adding."
         },
         {
          "in": [
@@ -894,175 +1523,319 @@
          "out": [
           "100"
          ],
-         "why": "Print the answer, not the number that was typed in. The 1 has to be added before printing."
-        }
-       ],
-       "fb": "Casting with int() turns a string of digits into a whole number you can do arithmetic with.",
-       "hint": "pyinput",
-       "teach": {
-        "say": "input() always hands back text, and arithmetic needs a number. int() turns the text into a whole number first.",
-        "code": [
-         "count = int(input(\"How many? \"))   # the user types 6",
-         "print(count + 2)"
-        ],
-        "out": [
-         "8"
-        ]
-       }
-      },
-      {
-       "t": "code",
-       "marks": 2,
-       "q": "Ask the user for a whole number. Then ask for a second whole number. Add them together. Display [total] and nothing else.",
-       "brief": [
-        "The user types in two whole numbers, one on each line."
-       ],
-       "starter": "# Two whole numbers in, one total out\n",
-       "tests": [
-        {
-         "in": [
-          "14",
-          "7"
-         ],
-         "out": [
-          "21"
-         ],
-         "why": "147 is the giveaway: + joined two strings instead of adding them. Wrap each one in int(input())."
+         "why": "int( ) turns the whole line into one number."
         },
         {
          "in": [
-          "30",
-          "5"
+          "0"
          ],
          "out": [
-          "35"
+          "1"
          ],
-         "why": "Cast before adding, not after. int(input()) + int(input()) works; adding first joins the text."
-        },
-        {
-         "in": [
-          "0",
-          "12"
-         ],
-         "out": [
-          "12"
-         ],
-         "why": "A 0 is still a number to be read, so both lines must be read, in order."
+         "why": "This works for any whole number that is typed."
         }
        ],
-       "fb": "The same + means two different things, and which one you get depends entirely on the type of the values either side of it.",
-       "hint": "pyinput",
+       "hint": {
+        "think": "input() hands back text. Something has to turn it into a number.",
+        "syntax": "int(input())"
+       },
        "teach": {
-        "say": "+ adds two numbers but joins two strings, so each input has to be cast with int() before you add them.",
+        "say": "int(input()) is read from the inside out: input() reads the line, and int() turns what came back into a whole number.",
         "code": [
-         "age = int(input(\"Age? \"))   # the user types 14",
+         "age = int(input(\"Age? \"))",
          "print(age + 1)"
         ],
         "out": [
-         "15"
+         "one more than was typed"
         ]
        }
       },
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for a number, which may have a decimal point. Display [number] as a real number and nothing else, so 4 shows as 4.0.",
+       "q": "This program should display the number that is 10 bigger than the one typed. Find the mistake and put it right.",
        "brief": [
-        "The user types in one number, which may have a decimal point.",
-        "Cast it with float(), not int()."
+        "Press Run first and read the error message.",
+        "The user types one whole number.",
+        "Display one number."
        ],
-       "starter": "# Read the number, make it a real number, print it\n",
+       "fb": "input() gives text every time. If a value is going to be used in a sum, cast it as it comes in.",
+       "kind": "debug",
+       "starter": "n = input()\nprint(n + 10)\n",
        "tests": [
         {
          "in": [
-          "2.5"
+          "5"
          ],
          "out": [
-          "2.5"
+          "15"
          ],
-         "why": "A crash here means int() was used, and int() cannot handle a decimal point."
+         "why": "A TypeError here means a sum was tried on text. Put the input() inside int( )."
         },
         {
          "in": [
-          "4"
+          "90"
          ],
          "out": [
-          "4.0"
+          "100"
          ],
-         "why": "4 instead of 4.0 means the text was printed as it was typed, or int() was used. float() always keeps a decimal part."
+         "why": "Casting has to happen before the sum, not after it."
         },
         {
          "in": [
-          "0.75"
+          "0"
          ],
          "out": [
-          "0.75"
+          "10"
          ],
-         "why": "Print the variable you cast, not the line that came back from input()."
+         "why": "This works for any whole number once it has been cast."
         }
        ],
-       "fb": "float() casts text to a real number, which always has a decimal part even when the value is whole.",
-       "hint": "pyinput",
+       "hint": {
+        "think": "Read the error. input() always hands back text, whatever the user typed.",
+        "syntax": "int(input())",
+        "diagram": "pyinput"
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Ask the user for a whole number. Work out that number doubled. Display the answer.",
+       "brief": [
+        "The user types one whole number.",
+        "One line of output, which is the number multiplied by 2."
+       ],
+       "fb": "Read it, work it out, display it. That order is the backbone of almost every program.",
+       "starter": "# Read a number, double it, show it\n",
+       "tests": [
+        {
+         "in": [
+          "6"
+         ],
+         "out": [
+          "12"
+         ],
+         "why": "Cast the input with int( ) before multiplying."
+        },
+        {
+         "in": [
+          "0"
+         ],
+         "out": [
+          "0"
+         ],
+         "why": "Zero doubled is zero, which is a useful case to check."
+        },
+        {
+         "in": [
+          "50"
+         ],
+         "out": [
+          "100"
+         ],
+         "why": "Any whole number works once it has been cast."
+        }
+       ],
+       "hint": {
+        "think": "Read it as a number, work out the answer, display the answer.",
+        "syntax": "int(input())",
+        "start": [
+         "n = int(input())",
+         "# now display the answer"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "What will this program display?",
+       "brief": [
+        "Read every line before you choose."
+       ],
+       "fb": "int() cuts the decimal part off. If you want rounding, round() is the one to use.",
+       "kind": "predict",
+       "code": [
+        "print(int(3.9))",
+        "print(int(3.1))"
+       ],
+       "a": [
+        "3\n3",
+        "4\n3",
+        "3.9\n3.1"
+       ],
        "teach": {
-        "say": "float() turns text into a real number, and a real number always keeps a decimal part, so 2 becomes 2.0.",
-        "code": [
-         "mass = float(input(\"Mass? \"))   # the user types 2",
-         "print(mass)"
+        "say": "int() on a decimal throws the decimal part away. It does not round to the nearest whole number."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Ask the user for a price with a decimal point in it. Display the line The price is [price].",
+       "brief": [
+        "The user types one number, which may have a decimal point in it.",
+        "Keep it as a decimal number, not a whole number.",
+        "One line of output, with one space after is."
+       ],
+       "fb": "float() for decimals, int() for whole numbers, str() to put a number back into a message.",
+       "starter": "# A decimal in, a message out\n",
+       "tests": [
+        {
+         "in": [
+          "1.5"
+         ],
+         "out": [
+          "The price is 1.5"
+         ],
+         "why": "float( ) keeps the decimal part, and str( ) turns it back into text to be joined."
+        },
+        {
+         "in": [
+          "0.75"
+         ],
+         "out": [
+          "The price is 0.75"
+         ],
+         "why": "The decimal is kept exactly as it was typed."
+        },
+        {
+         "in": [
+          "12.0"
+         ],
+         "out": [
+          "The price is 12.0"
+         ],
+         "why": "A float always displays its decimal part, even when it is zero."
+        }
+       ],
+       "hint": {
+        "think": "A number with a decimal point is a float. Turning it back into text lets it be joined.",
+        "syntax": [
+         "float(input())",
+         "str(value)"
         ],
-        "out": [
-         "2.0"
+        "start": [
+         "p = float(input())",
+         "# now join the message together and display it"
         ]
        }
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a number, which may have a decimal point. Display one line in the form Value is [number], with the number as a real number, so 4 shows as 4.0.",
+       "q": "Ask the user for their name. Then ask for their age as a whole number. Display the line [name] will be [age plus one] next year.",
        "brief": [
-        "The user types in one number, which may have a decimal point.",
-        "Cast it in with float().",
-        "Cast it back with str() to join it to the text."
+        "The user types in two lines: a name, then a whole number.",
+        "One line of output.",
+        "The age displayed is one more than the age typed."
        ],
-       "starter": "# Read the number, make it real, print the line\n",
+       "fb": "Two casts in one program: int() to do the sum, str() to put the answer back into a sentence.",
+       "starter": "# A name, an age, and one sentence out\n",
        "tests": [
         {
          "in": [
-          "2.5"
+          "Sam",
+          "13"
          ],
          "out": [
-          "Value is 2.5"
+          "Sam will be 14 next year."
          ],
-         "why": "A crash here is joining a number to text with +. Cast it back with str() first."
+         "why": "Cast the age with int( ) to add to it, and str( ) to join it back into the message."
         },
         {
          "in": [
-          "4"
+          "Jo",
+          "9"
          ],
          "out": [
-          "Value is 4.0"
+          "Jo will be 10 next year."
          ],
-         "why": "4 instead of 4.0 means int() was used, or the text went straight in. float() always shows a decimal part."
+         "why": "The full stop at the end is part of the text."
         },
         {
          "in": [
-          "0.75"
+          "Alex",
+          "0"
          ],
          "out": [
-          "Value is 0.75"
+          "Alex will be 1 next year."
          ],
-         "why": "Value is on its own line means two print() statements. Build one line, then print it once."
+         "why": "Zero works the same as any other number."
         }
        ],
-       "fb": "float() casts text to a real number and str() casts a number back to text, and one line of output often needs both.",
-       "hint": "pyinput",
-       "teach": {
-        "say": "str() turns a number back into text so that + will join it to a message.",
-        "code": [
-         "mass = float(input(\"Mass? \"))   # the user types 2",
-         "print(\"Weighs \" + str(mass))"
+       "hint": {
+        "think": "The name is text already. The age has to become a number to be added to, then text again to be joined.",
+        "syntax": [
+         "a = int(input())",
+         "print(text + \" ... \" + str(number) + \" ...\")"
         ],
-        "out": [
-         "Weighs 2.0"
+        "walk": [
+         "Read the name.",
+         "Read the age and cast it with int( ).",
+         "Add 1 to the age.",
+         "Join the whole message together and display it."
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for a whole number. Display that number on the first line. Then display the same number with a decimal point on the next line. Then display the same number as text joined to itself on the next line.",
+       "brief": [
+        "The user types one whole number.",
+        "Line 1 is the number as typed.",
+        "Line 2 is the same number as a decimal, so 7 becomes 7.0.",
+        "Line 3 is the digits written twice with nothing between them, so 7 becomes 77."
+       ],
+       "fb": "One value, three types. Casting does not change what the user typed, only how Python treats it.",
+       "starter": "# One value, three data types\n",
+       "tests": [
+        {
+         "in": [
+          "7"
+         ],
+         "out": [
+          "7",
+          "7.0",
+          "77"
+         ],
+         "why": "Keep the typed text, then cast it differently for each line."
+        },
+        {
+         "in": [
+          "20"
+         ],
+         "out": [
+          "20",
+          "20.0",
+          "2020"
+         ],
+         "why": "float( ) adds the .0, and joining the text repeats the digits."
+        },
+        {
+         "in": [
+          "0"
+         ],
+         "out": [
+          "0",
+          "0.0",
+          "00"
+         ],
+         "why": "Zero shows the pattern clearly: the text 0 joined to itself is 00."
+        }
+       ],
+       "opt": true,
+       "hint": {
+        "think": "Three data types, one typed value. Which cast gives each one?",
+        "syntax": [
+         "int(x)",
+         "float(x)",
+         "str(x)"
+        ],
+        "walk": [
+         "Read the line as text and keep it.",
+         "Display it as a whole number.",
+         "Display it as a float.",
+         "Join the text to itself and display that."
         ]
        }
       }
@@ -1078,237 +1851,357 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 3,
-       "q": "Ask the user for a word. Then ask for a whole number. Add 1 to the number. Display [word]. Then display [answer] on the next line.",
+       "marks": 1,
+       "q": "The user types 3 and then 4. What will this program display?",
        "brief": [
-        "The user types in two lines: a word, then a whole number.",
-        "Only the number is cast with int().",
-        "The word stays as text."
+        "Read every line before you choose."
        ],
-       "starter": "# A word and a number in. The word, then one more.\n",
+       "fb": "Read, work out, display. Keeping the answer in its own variable makes the program easier to read.",
+       "kind": "predict",
+       "code": [
+        "a = int(input())",
+        "b = int(input())",
+        "total = a + b",
+        "print(total)"
+       ],
+       "a": [
+        "7",
+        "34",
+        "total"
+       ],
+       "in": [
+        "3",
+        "4"
+       ],
+       "teach": {
+        "say": "A whole program reads its values, works something out, then displays the answer. That order is called input, process, output."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Finish the program so it displays the two numbers added together.",
+       "brief": [
+        "The user types in two lines, one whole number on each.",
+        "Replace ____ with one instruction.",
+        "Display one number."
+       ],
+       "fb": "The reading and casting were done for you. All that was left was the output.",
+       "kind": "complete",
+       "starter": "a = int(input())\nb = int(input())\n____\n",
        "tests": [
         {
          "in": [
-          "amber",
-          "3"
-         ],
-         "out": [
-          "amber",
+          "3",
           "4"
          ],
-         "why": "31 on the second line means the number was still text, so the 1 was joined on the end. Cast with int() before adding."
+         "out": [
+          "7"
+         ],
+         "why": "Replace the ____ with a print() that adds the two variables."
         },
         {
          "in": [
-          "two words",
+          "10",
+          "90"
+         ],
+         "out": [
+          "100"
+         ],
+         "why": "Both values are already whole numbers, so + adds them."
+        },
+        {
+         "in": [
+          "0",
           "0"
          ],
          "out": [
-          "two words",
-          "1"
+          "0"
          ],
-         "why": "0 plus 1 is 1. An empty second line means the arithmetic is missing."
+         "why": "Zero plus zero is zero."
+        }
+       ],
+       "hint": {
+        "think": "Both numbers are already read and cast. Only the answer is missing.",
+        "syntax": "print(a + b)"
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "This program should display the two numbers added together. Find the mistake and put it right.",
+       "brief": [
+        "Press Run first and read the error message.",
+        "The user types in two lines, one whole number on each.",
+        "Display one number."
+       ],
+       "fb": "A NameError at the end often means the variable was never created, not that it was spelled wrong.",
+       "kind": "debug",
+       "starter": "a = int(input())\na = int(input())\nprint(a + b)\n",
+       "tests": [
+        {
+         "in": [
+          "3",
+          "4"
+         ],
+         "out": [
+          "7"
+         ],
+         "why": "Both lines were read into a, so nothing called b was ever made."
         },
         {
          "in": [
-          "silver",
-          "11"
+          "10",
+          "90"
          ],
          "out": [
-          "silver",
-          "12"
+          "100"
          ],
-         "why": "Casting the word with int() crashes. Only the value you are doing arithmetic on needs casting."
+         "why": "Give the second value its own name."
+        },
+        {
+         "in": [
+          "1",
+          "2"
+         ],
+         "out": [
+          "3"
+         ],
+         "why": "Two values, two variables."
         }
        ],
-       "fb": "A program can hold text and numbers at the same time, and you cast only the values you are going to calculate with.",
-       "hint": "pyinput",
-       "teach": {
-        "say": "Read each value, cast the ones you need as numbers, then print the answers in the order the question asks for.",
-        "code": [
-         "team = input(\"Team? \")   # the user types Owls",
-         "games = int(input(\"Games? \"))  # then 5",
-         "print(team)",
-         "print(games + 2)"
-        ],
-        "out": [
-         "Owls",
-         "7"
+       "hint": {
+        "think": "Look at how many times each variable is read, and which one the second input() goes into.",
+        "walk": [
+         "Two values need two different names.",
+         "Reading both into one name loses the first.",
+         "Then nothing called b exists for the sum."
         ]
        }
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a word. Then ask for a whole number. Add 1 to the number. Display one line in the form [word] [answer], with one space between them.",
+       "q": "Ask the user for a word. Then ask for a whole number. Display the word on the first line. Then display the number doubled on the next line.",
        "brief": [
         "The user types in two lines: a word, then a whole number.",
-        "One line of output.",
-        "Exactly one space between the word and the answer."
+        "Two lines of output.",
+        "The second line is the number multiplied by 2."
        ],
-       "starter": "# A word and a number in, one joined line out\n",
+       "fb": "Different values need different data types. Decide the type each one needs before you write the line.",
+       "starter": "# A word and a number, each used in its own way\n",
        "tests": [
         {
          "in": [
+          "red",
+          "6"
+         ],
+         "out": [
+          "red",
+          "12"
+         ],
+         "why": "Only the number needs int( ). The word is already text."
+        },
+        {
+         "in": [
           "amber",
+          "0"
+         ],
+         "out": [
+          "amber",
+          "0"
+         ],
+         "why": "Zero doubled is zero."
+        },
+        {
+         "in": [
+          "navy blue",
+          "50"
+         ],
+         "out": [
+          "navy blue",
+          "100"
+         ],
+         "why": "The whole typed line comes back as the word, spaces included."
+        }
+       ],
+       "hint": {
+        "think": "The word stays text. The number has to be cast before it can be doubled.",
+        "syntax": [
+         "w = input()",
+         "n = int(input())"
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for a name. Then ask for a score as a whole number. Display the line [name] scored [score] points.",
+       "brief": [
+        "The user types in two lines: a name, then a whole number.",
+        "One line of output.",
+        "There is one space either side of scored, and the word points comes last."
+       ],
+       "fb": "A message built from fixed text and values is the most common thing a program displays.",
+       "starter": "# A name, a score, and one sentence out\n",
+       "tests": [
+        {
+         "in": [
+          "Sam",
+          "7"
+         ],
+         "out": [
+          "Sam scored 7 points."
+         ],
+         "why": "Put the score inside str( ) so it can be joined to the text."
+        },
+        {
+         "in": [
+          "Jo",
+          "0"
+         ],
+         "out": [
+          "Jo scored 0 points."
+         ],
+         "why": "The full stop at the end is part of the text."
+        },
+        {
+         "in": [
+          "Alex Khan",
+          "120"
+         ],
+         "out": [
+          "Alex Khan scored 120 points."
+         ],
+         "why": "The whole name comes back as one value."
+        }
+       ],
+       "hint": {
+        "think": "Four pieces joined into one string: the name, some fixed text, the score as text, and some more fixed text.",
+        "syntax": "print(text + \" ... \" + str(number) + \" ...\")",
+        "walk": [
+         "Read the name.",
+         "Read the score and cast it with int( ).",
+         "Join the four pieces of the message together.",
+         "Display the one line."
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for a whole number. Then ask for a second whole number. Work out the two numbers added together. Display the line [first] plus [second] is [total].",
+       "brief": [
+        "The user types in two lines, one whole number on each.",
+        "One line of output.",
+        "There is one space either side of plus and either side of is."
+       ],
+       "fb": "int() on the way in, str() on the way out. That pattern will come up in every lesson from here.",
+       "starter": "# Two numbers in, one sentence out\n",
+       "tests": [
+        {
+         "in": [
+          "3",
+          "4"
+         ],
+         "out": [
+          "3 plus 4 is 7"
+         ],
+         "why": "Every number in the message has to go through str( ) to be joined."
+        },
+        {
+         "in": [
+          "10",
+          "90"
+         ],
+         "out": [
+          "10 plus 90 is 100"
+         ],
+         "why": "The sum uses the numbers; the message uses them as text."
+        },
+        {
+         "in": [
+          "0",
+          "0"
+         ],
+         "out": [
+          "0 plus 0 is 0"
+         ],
+         "why": "Zeroes show whether the spacing is right."
+        }
+       ],
+       "hint": {
+        "think": "Both numbers are needed as numbers for the sum and as text for the message.",
+        "syntax": "print(str(x) + \" ... \" + str(y) + \" ...\")",
+        "walk": [
+         "Read both numbers and cast them with int( ).",
+         "Work out the total.",
+         "Join the five pieces of the message together.",
+         "Display the one line."
+        ]
+       }
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for a name. Then ask for a price with a decimal point. Then ask for a whole number of items. Work out the total cost. Display the line [name] pays [total] for [items] items.",
+       "brief": [
+        "The user types in three lines: a name, a decimal number, then a whole number.",
+        "One line of output.",
+        "The total is the price multiplied by the number of items.",
+        "Display the total exactly as Python gives it, without rounding."
+       ],
+       "fb": "You have now used every data type in this lesson in one program: a string, a float, an integer and a cast in each direction.",
+       "starter": "# Three values, three data types, one sentence\n",
+       "tests": [
+        {
+         "in": [
+          "Sam",
+          "2.5",
+          "4"
+         ],
+         "out": [
+          "Sam pays 10.0 for 4 items"
+         ],
+         "why": "float times int gives a float, so the total keeps its decimal part."
+        },
+        {
+         "in": [
+          "Jo",
+          "1.5",
+          "2"
+         ],
+         "out": [
+          "Jo pays 3.0 for 2 items"
+         ],
+         "why": "Do not round the total: display what Python works out."
+        },
+        {
+         "in": [
+          "Alex",
+          "0.5",
           "3"
          ],
          "out": [
-          "amber 4"
+          "Alex pays 1.5 for 3 items"
          ],
-         "why": "A crash here is joining a number to text with +. Cast the answer back with str()."
-        },
-        {
-         "in": [
-          "two words",
-          "0"
-         ],
-         "out": [
-          "two words 1"
-         ],
-         "why": "0 plus 1 is 1, and it still has to be joined on the end of the word."
-        },
-        {
-         "in": [
-          "silver",
-          "11"
-         ],
-         "out": [
-          "silver 12"
-         ],
-         "why": "silver11 means the space is missing, and silver 111 means the 1 was joined on as text instead of added."
+         "why": "Each value needs its own cast on the way in and str( ) on the way out."
         }
        ],
-       "fb": "Casting runs both ways in the same program: int() on the way in so you can calculate, str() on the way out so you can join.",
-       "hint": "pystring",
-       "teach": {
-        "say": "A number cannot be joined to text with + until str() has turned it back into text.",
-        "code": [
-         "n = int(input(\"How many? \"))   # the user types 4",
-         "print(\"Count \" + str(n))"
+       "opt": true,
+       "hint": {
+        "think": "Three values and three different data types. Work out which cast each one needs.",
+        "syntax": [
+         "float(input())",
+         "int(input())",
+         "str(value)"
         ],
-        "out": [
-         "Count 4"
-        ]
-       }
-      },
-      {
-       "t": "code",
-       "marks": 3,
-       "q": "Ask the user for a whole number. Then ask for a second whole number. Add them together. Display one line in the form Total: [total].",
-       "brief": [
-        "The user types in two whole numbers, one on each line.",
-        "Print exactly: Total:"
-       ],
-       "starter": "# Two whole numbers in, one line of answer out\n",
-       "tests": [
-        {
-         "in": [
-          "14",
-          "7"
-         ],
-         "out": [
-          "Total: 21"
-         ],
-         "why": "Total: 147 means the two inputs were joined as text. Cast each one with int() before adding."
-        },
-        {
-         "in": [
-          "0",
-          "12"
-         ],
-         "out": [
-          "Total: 12"
-         ],
-         "why": "A 0 is still a number to be read, so both lines must be read, in order."
-        },
-        {
-         "in": [
-          "30",
-          "5"
-         ],
-         "out": [
-          "Total: 35"
-         ],
-         "why": "A crash here is joining the total to the text with + before str() has turned it back into text."
-        }
-       ],
-       "fb": "Nearly every program casts twice: int() to calculate with the input, str() to put the answer into a sentence.",
-       "hint": "pyinput",
-       "teach": {
-        "say": "Cast on the way in with int() so the arithmetic works, and on the way out with str() so the joining works.",
-        "code": [
-         "a = int(input(\"First? \"))   # the user types 5",
-         "b = int(input(\"Second? \"))  # then 6",
-         "print(\"Sum \" + str(a + b))"
-        ],
-        "out": [
-         "Sum 11"
-        ]
-       }
-      },
-      {
-       "t": "code",
-       "marks": 3,
-       "q": "Ask the user for a word. Then ask for a whole number. Then ask for a second whole number. Add the two numbers together. Display [word]. Then display Total: [total] on the next line.",
-       "brief": [
-        "The user types in three lines: a word, then two whole numbers.",
-        "Print exactly: Total:",
-        "The word is printed on its own line, above the total."
-       ],
-       "starter": "# A word and two numbers in. The word, then the total.\n",
-       "tests": [
-        {
-         "in": [
-          "amber",
-          "14",
-          "7"
-         ],
-         "out": [
-          "amber",
-          "Total: 21"
-         ],
-         "why": "Total: 147 means the two numbers were joined as text. Cast each one with int() before adding."
-        },
-        {
-         "in": [
-          "two words",
-          "0",
-          "12"
-         ],
-         "out": [
-          "two words",
-          "Total: 12"
-         ],
-         "why": "Three lines of input are read in the order the question gives, so the word is read first."
-        },
-        {
-         "in": [
-          "silver",
-          "30",
-          "5"
-         ],
-         "out": [
-          "silver",
-          "Total: 35"
-         ],
-         "why": "One line of output means the word and the total were joined together. They go on separate lines."
-        }
-       ],
-       "fb": "Read, cast, calculate, print: every program in this course is some version of those four steps.",
-       "hint": "pyinput",
-       "teach": {
-        "say": "Most programs are this shape: read the inputs, cast each one to the type you need, work something out, then print it in the form asked for.",
-        "code": [
-         "label = input(\"Label? \")   # the user types North",
-         "a = int(input(\"First? \"))  # then 8",
-         "b = int(input(\"Second? \")) # then 2",
-         "print(label)",
-         "print(\"Sum \" + str(a + b))"
-        ],
-        "out": [
-         "North",
-         "Sum 10"
+        "walk": [
+         "Read the name as text.",
+         "Read the price as a float.",
+         "Read the number of items as an int.",
+         "Multiply the price by the items.",
+         "Join the message together and display it."
         ]
        }
       }
@@ -1376,8 +2269,8 @@
      "face": "right",
      "x": 540,
      "y": 240,
-     "title": "The first line",
-     "text": "Printing a greeting has been the traditional first program in a new language since the 1970s."
+     "title": "Start here: how this course works",
+     "text": "Python is a language for writing instructions a computer follows, one line at a time. You write them in the editor on the right of a task window. Run follows your instructions and shows whatever they display in the panel underneath, labelled Program output. Check my answer is different: it marks your program against the task. So run as often as you like while you are trying things out, and check when you think it is right. You can check as many times as you like too, and your best mark is the one that is kept. If you are stuck, the Hint button gives you one step at a time, starting with the idea and never with the answer, and Syntax reminder lists every Python command the course has taught so far. Errors are a normal part of programming. Everyone writing Python sees them all day, and reading the message is how you find out what to change. Work round this room through the six numbered badges in order, then tap the star for the final challenge. Your progress saves after every answer."
     },
     {
      "id": "f2",

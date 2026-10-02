@@ -318,7 +318,7 @@ textarea{width:100%;background:#0f1930;color:var(--fg);border:1px solid var(--li
 .pyout{margin:0;background:#0a1120;border:2px solid var(--line);border-radius:14px;padding:12px 14px;
   font-family:Consolas,"DejaVu Sans Mono",monospace;font-size:15px;line-height:1.5;white-space:pre-wrap;
   color:var(--soft);min-height:76px;max-height:26vh;overflow:auto}
-.pystage .pyout{flex:0 1 auto;min-height:60px;max-height:22vh}
+.pystage .pyout{flex:1 1 42%;min-height:96px;max-height:40vh;overflow:auto}
 .pystage #pyed{flex:1 1 0;min-height:120px}
 .pyout .err{color:#ff9a9a}
 .pyout .muted{color:#4a5a78}
@@ -339,7 +339,7 @@ textarea{width:100%;background:#0f1930;color:var(--fg);border:1px solid var(--li
 .pyteach{background:#122a3d;border-left:5px solid var(--info);border-radius:10px;
   padding:10px 14px;margin:0 0 12px}
 .pyteach p{margin:0 0 6px;font-size:16px;line-height:1.45}
-.pyeg{margin:6px 0;padding:8px 10px;background:#0b1424;border-radius:8px;
+.pyeg{margin:6px 0;padding:8px 10px;background:#0b1424;border-radius:8px;text-align:left;
   font:15px/1.5 Consolas,monospace;color:#cfe3ff;white-space:pre-wrap}
 .pyegout{display:flex;gap:8px;align-items:baseline;margin:0;font-size:15px;color:var(--soft)}
 .pyegout span{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--info)}
@@ -350,6 +350,10 @@ textarea{width:100%;background:#0f1930;color:var(--fg);border:1px solid var(--li
 .pyidebar .pystate{margin-left:4px}
 .pykeys{margin-left:auto;font-size:13px;color:var(--soft)}
 @media (max-width:1400px){.pykeys{display:none}}
+/* A narrow laptop keeps two columns, with the reading side giving up the room:
+   a cramped editor is worse than a cramped task. */
+@media (max-width:1200px){.codewrap>.pyside{flex:1 1 44%}.codewrap>.pystage{flex:1 1 56%}
+  .pysteps li,.pybrief li{font-size:16px}.pyeg{font-size:14px}}
 /* A code question is half reading and half writing, so the window is half and
    half: a long task never squeezes the editor, a long program never hides the
    task. The left half scrolls what there is to read; the marking sits under it
@@ -360,7 +364,11 @@ textarea{width:100%;background:#0f1930;color:var(--fg);border:1px solid var(--li
 .codewrap{display:contents}
 .codewrap>.pyside,.codewrap>.pystage{flex:1 1 50%;min-width:0;min-height:0;max-height:100%}
 .pyside{display:flex;flex-direction:column;min-height:0;overflow:hidden;gap:10px}
+/* The editor and the output share the right half. The output gets a real share
+   of it rather than a strip at the bottom: on a short program the thing a pupil
+   is looking for is what it displayed, not the empty space under their code. */
 .pystage{display:flex;flex-direction:column;background:none;border:0;gap:10px;min-height:0}
+.pystage>#pyed{flex:1 1 58%;min-height:140px}
 .pyscroll{flex:1 1 0;min-height:0;overflow:auto;padding-right:8px}
 .pyresult{flex:0 0 auto;max-height:56%;display:flex;flex-direction:column;gap:8px;
   padding-top:10px;border-top:2px solid var(--line)}
@@ -384,21 +392,76 @@ textarea{width:100%;background:#0f1930;color:var(--fg);border:1px solid var(--li
   font:700 14px/26px system-ui,sans-serif;text-align:center;background:#101c31}
 .pydots li.done{border-color:var(--ok);color:var(--ok)}
 .pydots li.now{border-color:var(--edge);background:var(--edge);color:#10203a}
-@media (max-width:1100px){
-  .box.huge.codewin .mbody{flex-direction:column}
-  .codewrap>.pyside,.codewrap>.pystage{flex:0 0 auto}
-  .pyside{overflow:visible}.pyscroll{overflow:visible}
+/* Which stage of the release this activity is, said in words. The labels name
+   the action - Try it, Predict, Change it - and never how able the pupil is. */
+.pystage-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 12px}
+.pychip{flex:0 0 auto;padding:5px 13px;border-radius:999px;font:700 14px/1.2 system-ui,sans-serif;
+  letter-spacing:.03em;background:#1b2b4a;border:2px solid var(--edge);color:var(--edge)}
+.pychip.try,.pychip.predict{border-color:var(--info);color:#8fd4ff}
+.pychip.change,.pychip.complete{border-color:#b89aff;color:#cdb8ff}
+.pychip.debug{border-color:#ffb36b;color:#ffc48c}
+.pychip.opt{border-color:var(--ok);color:var(--ok)}
+.pywhere{flex:0 0 auto;font-size:15px;font-weight:600;color:var(--soft)}
+.pysays{flex:1 1 220px;min-width:0;font-size:15px;line-height:1.4;color:var(--soft)}
+/* The worked example, line by line, folded away until it is wanted */
+.pylines{margin:8px 0 0;font-size:15px}
+.pylines summary{cursor:pointer;color:var(--info);padding:4px 0;font-weight:600}
+.pylines summary:focus-visible{outline:3px solid var(--edge);outline-offset:2px}
+.pylines ol{margin:8px 0 0;padding-left:26px}
+.pylines li{margin:6px 0;line-height:1.45}
+.pylines li code{display:block;font:15px/1.5 Consolas,monospace;color:#9fe6a0}
+.pylines li span{color:var(--soft)}
+/* The output, named so a pupil never has to guess what a console is */
+.pyouth{flex:0 0 auto;margin:0;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--edge)}
+/* Below a laptop there is not enough width for two columns, so the window stops
+   being a fixed-height pane and becomes one scrolling page: the task, then the
+   editor, then the output, then the buttons - the same order as across, only
+   down. Both halves have to give up max-height here, or in a column each one is
+   allowed the full height of the window and they overlap. */
+@media (max-width:980px){
+  .box.huge.codewin{height:auto;max-height:96vh}
+  .box.huge.codewin .mbody{flex-direction:column;overflow:auto}
+  .codewrap>.pyside,.codewrap>.pystage{flex:0 0 auto;max-height:none}
+  .pyside{overflow:visible}.pyscroll{overflow:visible;flex:0 0 auto}
   .pyresult{max-height:none}.pyresult .pytests{overflow:visible}
-  .pystage{min-height:60vh}
+  .pystage{min-height:0}
+  .pystage>#pyed{flex:0 0 auto;min-height:34vh}
+  .pystage .pyout{flex:0 0 auto;max-height:none;min-height:110px}
   .pyact{justify-content:flex-start}
+}
+/* Tablet and phone. The window gives up the fixed height and simply scrolls as
+   one page: the task, then the editor, then the output, then the buttons - the
+   same order as on a desktop, stacked. The editor keeps a usable height rather
+   than collapsing to a few lines, and every control stays a 44px target. */
+@media (max-width:820px){
+  .box.huge.codewin .mbody{gap:14px}
+  .pysteps li{font-size:17px}
+  .pyidebar{flex-wrap:wrap}
+  .pyact .btn,.pyidebar .btn{min-height:44px}
+}
+@media (max-width:520px){
+  .box.huge.codewin{max-height:100vh}
+  .pystage>#pyed{min-height:30vh}
+  .pyact{flex-direction:column;align-items:stretch}
+  .pyact .btn,.pyact .mrow .btn{width:100%}
+  .pyact .mrow{flex-direction:column}
+  .pystage-head{gap:8px}
+  .pysays{flex-basis:100%}
+  .pytask{padding:12px}
+  .pydots li{width:34px;height:34px;line-height:30px}
 }
 /* One real run of the program: what is typed in, and what must be printed */
 .pyrun{border:2px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 12px;background:#101c31}
 .pyrunh{margin:0 0 8px;font-size:13px;letter-spacing:.07em;text-transform:uppercase;color:var(--edge)}
 .pyrunrow{display:flex;gap:12px;align-items:flex-start;margin:4px 0}
-.pyrunrow span{flex:0 0 76px;font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--soft);padding-top:3px}
+.pyrunrow span{flex:0 0 104px;font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--soft);padding-top:3px}
 .pyrunrow code{flex:1;white-space:pre-wrap;font:16px/1.5 Consolas,monospace;color:#cfe3ff}
+/* What the user types and what the program displays are the two things pupils
+   confuse most, so they do not merely sit in different rows - they are a
+   different colour, a different weight and labelled in full words. */
+.pyrunrow.in code{color:#ffd98a}
 .pyrunrow.out code{color:var(--ok);font-weight:600}
+.pyrunrow span{font-weight:600}
 /* The syntax reference, looked up while working */
 .refpane .reflist{flex:1;min-height:0;overflow:auto;padding-right:6px}
 .reflist section{margin:0 0 18px}
@@ -420,3 +483,32 @@ textarea{width:100%;background:#0f1930;color:var(--fg);border:1px solid var(--li
 .hinthead b{font-size:20px;color:var(--edge)}
 .hinthead span{flex:1;min-width:200px;font-size:15px;color:var(--soft)}
 .hintpane .vwrap{flex:1;min-height:0}
+/* The hint ladder: one rung at a time, each asked for */
+.hintladder{flex:1 1 auto;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:14px;padding-right:6px}
+.hrung{border-left:4px solid var(--info);padding:0 0 0 14px}
+.hrung h4{margin:0 0 6px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--edge)}
+.hrung .hsay{margin:0;font-size:18px;line-height:1.5}
+.hwalk{margin:0;padding-left:24px}
+.hwalk li{margin:6px 0;font-size:17px;line-height:1.5}
+/* The animated rung needs a real height of its own. It sits inside a rung of a
+   scrolling ladder rather than filling the pane as the old single-panel hint
+   did, so height:100% would resolve against an auto-height parent and the
+   canvas would come out at nothing. */
+.hintpane .hintdiag{flex:0 0 auto;height:clamp(260px,44vh,440px)}
+.hintfoot{flex:0 0 auto;display:flex;gap:14px;align-items:center;flex-wrap:wrap;
+  padding-top:12px;border-top:2px solid var(--line)}
+@media (max-width:520px){.hintfoot .btn{width:100%}.hintdiag{min-height:240px}}
+/* Reading a program before writing one */
+.pyeg.big{font-size:17px;padding:14px 16px;margin:0 0 14px}
+.opt.mono{font-family:Consolas,monospace;white-space:pre-wrap;text-align:left}
+.fb .predans{display:block;margin:6px 0;font:17px/1.5 Consolas,monospace;color:var(--ok);white-space:pre-wrap}
+.fb.done strong{color:var(--ok)}
+/* On a phone the example run stacks: a label row of its own, then the values.
+   This has to sit after the rules it overrides - the label's width is a flex
+   basis, which becomes a height the moment the row turns into a column, and
+   a stray 104px of nothing opened up between every label and its values. */
+@media (max-width:520px){
+  .pyrunrow{flex-direction:column;gap:2px}
+  .pyrunrow span,.pyrunrow code{flex:0 0 auto}
+  .pyegout{flex-direction:column;gap:2px}
+}

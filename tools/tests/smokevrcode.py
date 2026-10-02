@@ -67,7 +67,12 @@ def main():
           const sc = NVRCore.exp.scenes[NVRCore.cur];
           for (let k = 0; k < sc.stations.length; k++)
             for (let i = 0; i < sc.stations[k].tasks.length; i++)
-              if (sc.stations[k].tasks[i].t === 'code') return [k, i];
+              // A Try it has nothing to check and a Predict has no editor, so
+              // the one to drive here is an activity that is written, marked and
+              // carries a hint ladder - that is all three things in one pass.
+              { const t = sc.stations[k].tasks[i];
+                if (t.t === 'code' && !['try', 'predict'].includes(t.kind || 'build')
+                    && t.hint && typeof t.hint === 'object') return [k, i]; }
           return null;
         })()""")
         if not found:
@@ -124,15 +129,70 @@ def main():
         if "Press Hint" not in (again.get("result") or ""):
             print("the second failure did not point at the hint"); bad += 1
 
-        # the Hint key opens the diagram that teaches the technique
+        # The Hint key gives one rung at a time, the same ladder the screen
+        # shows, and the animated diagram is the last rung.
+        rungs = pg.evaluate("""(() => { const h = NVRVR.vrCode.task.hint;
+          if (!h) return 0; if (typeof h === 'string') return 0;
+          return ['think','syntax','start','walk'].filter(k => h[k]).length; })()""")
+        said = []
+        for _ in range(rungs):
+            press("kbPanel", "chint", wait=400)
+            said.append(pg.evaluate("NVRVR.vrCode.result") or "")
+        print("hint rungs in the headset:", rungs, "->", [t[:34] for t in said])
+        if rungs and not all(t.startswith("Hint ") for t in said):
+            print("a hint rung did not reach the console line"); bad += 1
         press("kbPanel", "chint", wait=900)
-        hint = pg.evaluate("NVRVR.vrDiag ? ({ kind: NVRVR.vrDiag.dg && NVRVR.vrDiag.u.dg.diagram, steps: NVRVR.vrDiag.dg.steps.length }) : null")
-        print("hint in the headset:", hint)
-        if not hint: print("the Hint key opened nothing"); bad += 1
+        hint = pg.evaluate("NVRVR.vrDiag ? ({ kind: NVRVR.vrDiag.u.dg.diagram, steps: NVRVR.vrDiag.dg.steps.length }) : None" .replace("None", "null"))
+        print("hint diagram in the headset:", hint)
+        if not hint: print("the last rung opened no diagram"); bad += 1
         if not pg.evaluate("!!NVRVR.vrCode"):
             print("opening the hint threw the pupil's program away"); bad += 1
 
         pg.screenshot(path=os.environ.get("VR_CODE_SHOT", "vr_code.png"))
+
+        # ---- the two kinds that are not written at the keyboard
+        #
+        # A Try it is finished by running it, and a Predict has no editor at all:
+        # it is the question panel with the program above the options. Both are
+        # new, and both have to work in here as well as on the screen.
+        find = """(kind => { const sc = NVRCore.exp.scenes[NVRCore.cur];
+          for (let k = 0; k < sc.stations.length; k++)
+            for (let i = 0; i < sc.stations[k].tasks.length; i++)
+              if ((sc.stations[k].tasks[i].kind || '') === kind) return [k, i];
+          return null; })"""
+        where = pg.evaluate(find, "try")
+        if not where:
+            print("no Try it activity to drive"); bad += 1
+        else:
+            pg.evaluate("([k,i]) => window.__openVRCode(k, i)", where); pg.wait_for_timeout(1200)
+            pg.wait_for_function("() => NVRVR.vrCode && !NVRVR.vrCode.busy", timeout=90000)
+            keys = pg.evaluate("NVRVR.kbPanel.hits.map(h => h.id)")
+            if "ccheck" in keys: print("a Try it offered a Check key in the headset"); bad += 1
+            press("kbPanel", "crun", wait=600)
+            pg.wait_for_function("() => NVRVR.vrCode && !NVRVR.vrCode.busy", timeout=90000)
+            t = pg.evaluate("({ ok: NVRVR.vrCode.resultOk, result: NVRVR.vrCode.result, best: NVRVR.vrCode.best })")
+            print("try it in the headset:", repr((t.get("result") or "")[:60]), "best", t.get("best"))
+            if not t.get("ok") or not t.get("best"): print("running a Try it did not finish it"); bad += 1
+            pg.evaluate("NVRVR.closeCodeVR()")
+            pg.wait_for_timeout(400)
+
+        where = pg.evaluate(find, "predict")
+        if not where:
+            print("no Predict activity to drive"); bad += 1
+        else:
+            pg.evaluate("([k,i]) => window.__openVRTask(k, i)", where); pg.wait_for_timeout(900)
+            pr = pg.evaluate("""(() => {
+              const p = NVRVR.qPanel; if (!p || !p.open) return null;
+              return { editor: !!NVRVR.vrCode, options: p.hits.filter(h => /^p\\d/.test(h.id)).length }; })()""")
+            print("predict in the headset:", pr)
+            if not pr: print("the Predict panel did not open"); bad += 1
+            else:
+                if pr.get("editor"): print("a Predict opened the typing editor"); bad += 1
+                if (pr.get("options") or 0) < 3: print("the Predict showed fewer than three options"); bad += 1
+                press("qPanel", "p0", wait=500)
+                after = pg.evaluate("NVRVR.qPanel.spec.blocks.some(b => b && b.id === 'next')")
+                if not after: print("answering the Predict offered no way on"); bad += 1
+
         real = [e for e in errs if "WebGL" not in e and "deprecat" not in e.lower()]
         if real: print("page errors:", real[:3]); bad += len(real)
         b.close()

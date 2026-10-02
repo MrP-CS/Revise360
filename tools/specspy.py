@@ -40,16 +40,42 @@ def code_tasks(lesson, station):
     for q in _bank(lesson)["questions"]:
         if q["station"] != station:
             continue
-        t = dict(t="code", marks=q["marks"], q=q["q"], brief=q["brief"],
-                 starter=q["starter"], tests=q["tests"], fb=q["fb"])
-        # The diagram the Hint button opens: the technique this question needs
+        t = dict(t="code", marks=q["marks"], q=q["q"], brief=q["brief"], fb=q["fb"])
+        # Which stage of the release this is: try, predict, change, complete,
+        # debug or build. The player shows it to the pupil in words, because a
+        # task to be run is read differently from one to be written.
+        if q.get("kind") and q["kind"] != "build":
+            t["kind"] = q["kind"]
+        # A predict activity has no editor: the program is fixed and the answer
+        # is chosen from a list, correct one first.
+        if q.get("kind") == "predict":
+            t["code"] = q["code"]
+            t["a"] = q["a"]
+            if q.get("in"):
+                t["in"] = q["in"]
+        else:
+            t["starter"] = q["starter"]
+            t["tests"] = q.get("tests") or []
+            if q.get("in"):
+                t["in"] = q["in"]
+        # An optional stretch activity. It is offered, never required, and it
+        # does not count against a pupil who leaves it.
+        if q.get("opt"):
+            t["opt"] = True
+        # The hint: either a diagram name on its own, or a ladder of rungs
+        # (think, syntax, start, walk, diagram) revealed one press at a time.
         if q.get("hint"):
             t["hint"] = q["hint"]
         # The worked example shown above the task, where the question carries one
         if q.get("teach"):
             t["teach"] = q["teach"]
+        # A plain-English sentence for each line of that example, folded away
+        if q.get("lines"):
+            t["lines"] = q["lines"]
         if q.get("forbid"):
             t["forbid"] = q["forbid"]
+        if q.get("require"):
+            t["require"] = q["require"]
         out.append(t)
     if not out:
         raise ValueError(f"{lesson} station {station} has no questions in the bank")
@@ -113,7 +139,23 @@ L1 = dict(id="pr-l01", topic="PY", lesson=1, title="Printing and variables", img
       ["7", "Integer"], ["0", "Integer"], ["2.5", "Float"], ["0.75", "Float"],
       ["Juice", "String"], ["60p", "String"], ["True", "Boolean"], ["False", "Boolean"]],
       "Choosing the right type first saves a casting bug later on.")]),
-  info=[(0, "The first line", "Printing a greeting has been the traditional first program in a new language since the 1970s."),
+  # The first information panel of the course is its orientation. Everything a
+  # pupil needs before they write a line is here, and the first three activities
+  # of station 1 are the same ideas done rather than read.
+  info=[(0, "Start here: how this course works",
+         "Python is a language for writing instructions a computer follows, one line at a time. "
+         "You write them in the editor on the right of a task window. "
+         "Run follows your instructions and shows whatever they display in the panel underneath, "
+         "labelled Program output. "
+         "Check my answer is different: it marks your program against the task. "
+         "So run as often as you like while you are trying things out, and check when you think it is right. "
+         "You can check as many times as you like too, and your best mark is the one that is kept. "
+         "If you are stuck, the Hint button gives you one step at a time, starting with the idea and "
+         "never with the answer, and Syntax reminder lists every Python command the course has taught so far. "
+         "Errors are a normal part of programming. Everyone writing Python sees them all day, and reading the "
+         "message is how you find out what to change. "
+         "Work round this room through the six numbered badges in order, then tap the star for the final "
+         "challenge. Your progress saves after every answer."),
         (1, "Naming rules", "A Python variable name can hold letters, digits and underscores, but it cannot start with a digit or contain a space. Capitals are used for the name of a constant, so a reader can see at a glance that the value is not meant to change."),
         (2, "Why it waits", "input() reads one whole line, so the program only carries on once the Enter key has been pressed. Nothing else happens while it waits."),
         (3, "One bit each", "A boolean has only two possible values, so it needs just one bit of storage - the smallest piece of data there is."),

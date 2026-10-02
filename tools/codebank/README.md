@@ -25,6 +25,64 @@ One file per lesson. Each is:
 }
 ```
 
+## Kinds of activity
+
+A technique is not taught by one question. It is released in stages, and `kind`
+says which stage an activity is. The pupil is shown the stage in words, so a
+task to be run is not read as a task to be judged. `kind` defaults to `build`,
+which is what every question in the bank was before this field existed.
+
+| `kind` | Shown as | What the pupil does | Marked by |
+|---|---|---|---|
+| `try` | Try it | runs a working program and watches it | pressing Run without an error |
+| `predict` | Predict | says what a program will display | choosing from `a`, correct first |
+| `change` | Change it | alters one thing in a working program | the tests |
+| `complete` | Complete it | fills a gap in a part-written program | the tests |
+| `debug` | Fix it | finds and fixes a mistake | the tests |
+| `build` | Build it | writes the program | the tests |
+
+`try` carries no `tests`: the code to run is the `starter`, and `in` holds any
+lines typed in. `predict` carries no `starter` or `tests` either - it has `code`
+(the program, as lines), optional `in`, and `a` (the options, the right one
+first; the player shuffles them). Everything else is an ordinary code question
+whose `starter` differs: working code for `change`, a gap for `complete`, a
+mistake for `debug`, a comment or nothing for `build`.
+
+The stage names never say how able a pupil is. There is no easy, medium or hard
+in this course, in the data or on the screen.
+
+## Core and stretch
+
+`"opt": true` marks an optional challenge. It is offered at the end of a
+station, it can be skipped without finishing the station, and until a pupil
+attempts it, it counts towards neither their mark nor their total. A challenge
+should need deeper thinking, not merely more typing.
+
+## Hints are a ladder
+
+`hint` is either the name of a diagram, as it has always been, or a ladder of
+rungs revealed one press at a time:
+
+```json
+"hint": {
+  "think":  "You need the same two lines to happen five times.",
+  "syntax": "for i in range(...):",
+  "start":  ["for i in range(5):", "    # the line to repeat goes here"],
+  "walk":   ["Count how many times it must happen.", "Put that number in range()."],
+  "diagram": "pyloop"
+}
+```
+
+Every rung is optional. No rung is ever the answer to the question it sits on:
+`start` shows the shape with the question's own values left out, and `diagram`
+animates the technique on different data.
+
+## Line-by-line explanations
+
+`lines` is one plain-English sentence per line of `teach.code`, in order, with
+`""` for a line not worth explaining. The player folds it away behind "What each
+line does", so the example is not buried under prose about it.
+
 ## Model solutions live outside the repository
 
 A worked program is answer-sheet material and this repository is public, so the
@@ -35,8 +93,10 @@ which git ignores — the same place the teacher answer sheets are built into:
 { "lesson": "pr-l03", "solutions": { "pr-l03-q1": "n = int(input())\n..." } }
 ```
 
-A solution is required for every question — it is what proves the question can
-be answered — and the checks below name any that is missing. Keep that folder
+A solution is required for every question that is marked by tests — it is what
+proves the question can be answered — and the checks below name any that is
+missing. A `try` or `predict` activity needs none: its code is in the bank
+already, and what proves it is that real Python agrees with it. Keep that folder
 with the teacher keys, not in a clone.
 
 ## How a question is worded
@@ -74,6 +134,12 @@ during a sort.
   boundary, the empty case, the off-by-one.
 - `forbid` only where running the code cannot tell: "write the sort yourself"
   looks identical to `sorted()` from outside. Never for style.
+- `require` is its opposite, and has the same one use: a technique the output
+  cannot show. A program told to pick a random number between 4 and 4 is
+  indistinguishable from one that prints 4, so that question requires
+  `random.randint`. Same shape as `forbid` — `[["random.randint", "This one has
+  to use random.randint."]]` — and the message is what the pupil is shown.
+  verifycode refuses a question whose own model solution lacks what it requires.
 
 ## Checking
 
@@ -85,6 +151,18 @@ python3 verifycode.py pr-l03     # one lesson
 It runs the model solution against every test, then checks a constant-output
 program and an empty program both fail. A question that passes all four checks
 is answerable and cannot be guessed.
+
+The newer kinds get checks of their own, for the faults only they can have:
+
+- a `predict` option list is run through real Python, and the answer the bank
+  claims is right has to be what Python actually displays — a wrong answer here
+  would teach the wrong thing with total confidence;
+- no two options may normalise to the same text, or a pupil can be right and be
+  marked wrong;
+- a `try` program must run without an error;
+- a `change`, `complete` or `debug` starter must **fail** at least one test. A
+  starter that already passes means there is nothing to change, nothing to fill
+  in or nothing to fix, and the pupil gets the mark for pressing Check.
 
 ## Originality
 

@@ -19,25 +19,233 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 2,
-       "q": "Ask the user for a word. Write a procedure called finish that prints done. Display [word]. Then call finish, so the word is printed first.",
+       "marks": 1,
+       "q": "Press Run. The same two lines are displayed twice, from one piece of code.",
        "brief": [
-        "finish takes nothing.",
-        "It prints that one line.",
-        "Call it once.",
-        "Print exactly: done"
+        "Nothing is marked on this one.",
+        "Count how many lines of output two calls give you."
        ],
-       "starter": "# the word first, then finish\n",
+       "fb": "The two indented lines are written once and run twice. That is the whole point of a subprogram.",
+       "kind": "try",
+       "starter": "def welcome():\n    print(\"Doors open\")\n    print(\"Mind the step\")\nwelcome()\nwelcome()\n",
+       "tests": [],
+       "teach": {
+        "say": "A subprogram is a named piece of a program you can use again. def gives the piece a name, and the indented lines under it belong to that name. Writing the name with brackets after it runs those lines, and that is called calling it. A subprogram that only displays things, like this one, is called a procedure.",
+        "code": [
+         "def welcome():",
+         "    print(\"Doors open\")",
+         "    print(\"Mind the step\")",
+         "welcome()",
+         "welcome()"
+        ],
+        "out": [
+         "Doors open",
+         "Mind the step",
+         "Doors open",
+         "Mind the step"
+        ]
+       },
+       "lines": [
+        "Name a piece of the program welcome.",
+        "This line belongs to welcome, because it is indented.",
+        "So does this one.",
+        "Call welcome, which runs both of its lines.",
+        "Call welcome again, which runs both of them again."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "What will this program display?",
+       "brief": [
+        "Read every line before you choose."
+       ],
+       "fb": "Defining a subprogram does not run it. Python read the def, remembered the name, and moved on to the next line that was not indented.",
+       "kind": "predict",
+       "code": [
+        "def ready():",
+        "    print(\"ready\")",
+        "print(\"start\")"
+       ],
+       "a": [
+        "start",
+        "ready\nstart",
+        "start\nready"
+       ],
+       "teach": {
+        "say": "A def line only names the code underneath it. Those lines do nothing at all until something calls the name."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "Change the program so the line of dashes is displayed three times.",
+       "brief": [
+        "Do not change the procedure itself.",
+        "Add to the calls at the bottom instead.",
+        "Display exactly: ---",
+        "Three lines of output."
+       ],
+       "fb": "The code inside a procedure is written once. How often it runs is decided by how often it is called.",
+       "kind": "change",
+       "starter": "def dash():\n    print(\"---\")\ndash()\ndash()\n",
+       "tests": [
+        {
+         "in": [],
+         "out": [
+          "---",
+          "---",
+          "---"
+         ],
+         "why": "Two lines came out, so the procedure was called twice. Each call gives one line."
+        }
+       ],
+       "hint": {
+        "think": "One call runs the procedure once, so how many calls run it three times?",
+        "diagram": "pyfunc"
+       },
+       "require": [
+        [
+         "def dash(",
+         "Keep the procedure. Add a call, not another print()."
+        ]
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Finish the program so the procedure actually runs.",
+       "brief": [
+        "Lines 1 and 2 are written for you.",
+        "Replace ____ with the line that calls cheer.",
+        "Display exactly: Well done",
+        "One line of output."
+       ],
+       "fb": "def cheer(): makes the procedure. cheer() is what runs it. A program needs both lines.",
+       "kind": "complete",
+       "starter": "def cheer():\n    print(\"Well done\")\n____\n",
+       "tests": [
+        {
+         "in": [],
+         "out": [
+          "Well done"
+         ],
+         "why": "Nothing was displayed, or Python stopped at the ____. The procedure needs its name and a pair of brackets."
+        }
+       ],
+       "hint": {
+        "think": "A name on its own is not enough. Python needs to be told to run it.",
+        "syntax": "name()",
+        "diagram": "pyfunc"
+       },
+       "teach": {
+        "say": "To call a procedure, write its name followed by a pair of empty brackets, with no indentation in front of it.",
+        "code": [
+         "def beep():",
+         "    print(\"beep\")",
+         "beep()"
+        ],
+        "out": [
+         "beep"
+        ]
+       },
+       "require": [
+        [
+         "def cheer(",
+         "Keep the procedure and call it. Displaying the line yourself is not calling cheer."
+        ]
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Ask the user for a word. Write a procedure called rule that displays five dashes. Use rule to put a line of dashes above the word and another below it.",
+       "brief": [
+        "The user types in one word.",
+        "Three lines of output.",
+        "Line 1 and line 3 are exactly: -----",
+        "The word that was typed in goes on line 2."
+       ],
+       "fb": "Writing print(\"-----\") twice would work, but it would be the same line twice. A procedure keeps it in one place.",
+       "starter": "# A procedure for the dashes, called above and below the word\n",
        "tests": [
         {
          "in": [
-          "carriage"
+          "alpha"
          ],
          "out": [
-          "carriage",
-          "done"
+          "-----",
+          "alpha",
+          "-----"
          ],
-         "why": "The word is printed first, then the procedure prints done. If you only see one line you have defined finish but never called it - defining a procedure does not run it."
+         "why": "Three lines, with the word in the middle. If you only got two, rule was called once."
+        },
+        {
+         "in": [
+          "x"
+         ],
+         "out": [
+          "-----",
+          "x",
+          "-----"
+         ],
+         "why": "A one letter word sits between the same two rules."
+        },
+        {
+         "in": [
+          "two words"
+         ],
+         "out": [
+          "-----",
+          "two words",
+          "-----"
+         ],
+         "why": "input() hands back the whole line, so both words go on the middle line."
+        }
+       ],
+       "hint": {
+        "think": "The dashes never change, so they belong inside the procedure. The word does change, so it does not.",
+        "syntax": [
+         "def rule():",
+         "    print(\"...\")"
+        ],
+        "start": [
+         "word = input()",
+         "def rule():",
+         "    # the dashes go here"
+        ],
+        "diagram": "pyfunc"
+       },
+       "require": [
+        [
+         "def rule(",
+         "This one needs a procedure called rule, written with def. Put the dashes inside it."
+        ]
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "This program should display the word that was typed, then the word Hooray on the next line. Find the mistake and put it right.",
+       "brief": [
+        "Press Run first and look at how many lines come out.",
+        "There is no error message on this one.",
+        "Do not change the word Hooray.",
+        "Two lines of output."
+       ],
+       "fb": "A subprogram that is never called is a subprogram that never runs. This is the commonest mistake of the whole lesson, and it gives no error message at all.",
+       "kind": "debug",
+       "starter": "word = input()\ndef shout():\n    print(\"Hooray\")\nprint(word)\n",
+       "tests": [
+        {
+         "in": [
+          "alpha"
+         ],
+         "out": [
+          "alpha",
+          "Hooray"
+         ],
+         "why": "Only one line came out. Defining shout does not run it: the program needs the line shout() as well."
         },
         {
          "in": [
@@ -45,9 +253,9 @@
          ],
          "out": [
           "x",
-          "done"
+          "Hooray"
          ],
-         "why": "A one letter word is printed just the same. If this failed you may have typed the word into the procedure instead of reading it with input()."
+         "why": "The Hooray is missing, not wrong. Add the call after the word has been displayed."
         },
         {
          "in": [
@@ -55,35 +263,40 @@
          ],
          "out": [
           "two words",
-          "done"
+          "Hooray"
          ],
-         "why": "input() hands back the whole line, so both words are printed together. The word done never changes, so it belongs inside the procedure."
+         "why": "The call goes at the bottom, with no indentation, so it is not part of the procedure."
         }
        ],
-       "fb": "A procedure is a named block of code you can run whenever you like. Writing def finish(): only creates it - the line finish() is what runs it.",
-       "hint": "pyfunc",
-       "teach": {
-        "say": "def gives a block of code a name. The indented lines do nothing until a line calls that name.",
-        "code": [
-         "def warn():",
-         "    print('ready')",
-         "warn()"
+       "hint": {
+        "think": "Everything is spelled correctly. Ask instead what has been made but never used.",
+        "syntax": "name()",
+        "walk": [
+         "The procedure is defined, so Python knows the name.",
+         "Nothing in the program ever runs it.",
+         "One line needs adding at the bottom."
         ],
-        "out": [
-         "ready"
+        "diagram": "pyfunc"
+       },
+       "require": [
+        [
+         "def shout(",
+         "Keep the procedure and call it, rather than displaying the word yourself."
         ]
-       }
+       ]
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for two words, one on each line. Write a procedure called rule that prints =====. Call rule, so the first line is the rule. Then display the first word on the next line. Then call rule again. Then display the second word on the next line. Then call rule a third time.",
+       "q": "Ask the user for two words, one on each line. Write a procedure called bar that displays four equals signs. Use bar to put a line of equals signs above each word and one more below the second word.",
        "brief": [
-        "Five lines in all.",
-        "The same procedure prints all three rules.",
-        "Print exactly: ====="
+        "The user types in two lines, one word on each.",
+        "Five lines of output in all.",
+        "Lines 1, 3 and 5 are exactly: ====",
+        "bar is called three times and holds the equals signs once."
        ],
-       "starter": "# one procedure, called three times\n",
+       "fb": "Three calls, one procedure. If you typed print(\"====\") out three times you have written the program without using a subprogram at all.",
+       "starter": "# One procedure, three calls, two words\n",
        "tests": [
         {
          "in": [
@@ -91,13 +304,13 @@
           "bravo"
          ],
          "out": [
-          "=====",
+          "====",
           "alpha",
-          "=====",
+          "====",
           "bravo",
-          "====="
+          "===="
          ],
-         "why": "There is a rule above, between and below the two words, so rule() is called three times."
+         "why": "A bar above, between and below the two words, so bar is called three times."
         },
         {
          "in": [
@@ -105,13 +318,13 @@
           "two"
          ],
          "out": [
-          "=====",
+          "====",
           "one",
-          "=====",
+          "====",
           "two",
-          "====="
+          "===="
          ],
-         "why": "Different words, same layout. If the words came out in the wrong order, check you stored the first input() before reading the second."
+         "why": "Different words, same layout. If the words came out swapped, the second input() was read into the first variable."
         },
         {
          "in": [
@@ -119,17 +332,32 @@
           "y"
          ],
          "out": [
-          "=====",
+          "====",
           "x",
-          "=====",
+          "====",
           "y",
-          "====="
+          "===="
          ],
-         "why": "Exactly five equals signs each time. Four or six will not match, and a rule printed on the same line as a word will not either."
+         "why": "Exactly four equals signs each time, on their own line."
         }
        ],
-       "fb": "The point of a procedure is that the code for the rule is written once. If you copied print('=====') out three times you have not used a subprogram at all.",
-       "hint": "pyfunc"
+       "opt": true,
+       "hint": {
+        "think": "Work out the five lines of output on paper first, then decide which of them bar makes.",
+        "walk": [
+         "Read both words before you display anything.",
+         "A call to bar, then the first word.",
+         "A call to bar, then the second word.",
+         "One more call to bar at the end."
+        ],
+        "diagram": "pyfunc"
+       },
+       "require": [
+        [
+         "def bar(",
+         "This one needs a procedure called bar, written with def."
+        ]
+       ]
       }
      ]
     },
@@ -143,14 +371,184 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 3,
-       "q": "Ask the user for two words, one on each line. Write a procedure called show that takes one word and prints value [that word]. Call show once for each word, in the order they were typed.",
+       "marks": 1,
+       "q": "Press Run. One procedure displays two different colours.",
        "brief": [
-        "Two lines only.",
-        "Nothing but those two lines is printed.",
-        "One space after the word value."
+        "Nothing is marked on this one.",
+        "Look at where the words red and blue are written, and where they are used."
        ],
-       "starter": "# one procedure, two different words\n",
+       "fb": "The procedure is written once and knows nothing about red or blue. Those are chosen at the moment it is called.",
+       "kind": "try",
+       "starter": "def label(colour):\n    print(\"Colour: \" + colour)\nlabel(\"red\")\nlabel(\"blue\")\n",
+       "tests": [],
+       "teach": {
+        "say": "A subprogram can be handed a value to work with. The name in the brackets of the def line is called a parameter. Whatever you hand in when you call it arrives under that name, so the same procedure can do its job on any value.",
+        "code": [
+         "def label(colour):",
+         "    print(\"Colour: \" + colour)",
+         "label(\"red\")",
+         "label(\"blue\")"
+        ],
+        "out": [
+         "Colour: red",
+         "Colour: blue"
+        ]
+       },
+       "lines": [
+        "Name a procedure label, with one parameter called colour.",
+        "Inside the procedure, the value that was handed in is called colour.",
+        "Call label and hand it the word red.",
+        "Call label again and hand it the word blue."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "What will this program display?",
+       "brief": [
+        "Read every line before you choose."
+       ],
+       "fb": "There are two variables here that happen to share the name n. The one inside show is the parameter, and it disappears when show finishes.",
+       "kind": "predict",
+       "code": [
+        "def show(n):",
+        "    n = n + 1",
+        "    print(n)",
+        "n = 5",
+        "show(n)",
+        "print(n)"
+       ],
+       "a": [
+        "6\n5",
+        "6\n6",
+        "5\n6"
+       ],
+       "teach": {
+        "say": "A parameter is a name that exists only inside the subprogram. It holds a copy of the value handed in, so changing it leaves the caller's variable alone."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "Change the program so the procedure is handed 7 instead of 4.",
+       "brief": [
+        "Do not change the procedure itself.",
+        "Change only the value in the brackets of the call.",
+        "Display exactly: 21"
+       ],
+       "fb": "One procedure, any value. The number in the brackets of the call is called the argument.",
+       "kind": "change",
+       "starter": "def times(n):\n    print(n * 3)\ntimes(4)\n",
+       "tests": [
+        {
+         "in": [],
+         "out": [
+          "21"
+         ],
+         "why": "12 came out, so the 4 is still being handed in. The brackets of the call hold the value."
+        }
+       ],
+       "hint": {
+        "think": "The value a subprogram works on is chosen where it is called, not where it is written.",
+        "diagram": "pyfunc"
+       },
+       "require": [
+        [
+         "def times(",
+         "Keep the procedure and change the value handed to it."
+        ]
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Finish the program so the two numbers the user typed are handed to the procedure.",
+       "brief": [
+        "The user types in two lines, one whole number on each.",
+        "Replace ____ with the two variables to hand in, first number first.",
+        "Separate them with a comma.",
+        "One line of output, with one space after the word gap."
+       ],
+       "fb": "The names x and y belong to the procedure. The variables a and b belong to the main program. The call is where one is handed to the other, in order.",
+       "kind": "complete",
+       "starter": "a = int(input())\nb = int(input())\ndef gap(x, y):\n    print(\"gap \" + str(x - y))\ngap(____)\n",
+       "tests": [
+        {
+         "in": [
+          "75",
+          "4"
+         ],
+         "out": [
+          "gap 71"
+         ],
+         "why": "Python stopped at the ____, so hand the two variables over in its place."
+        },
+        {
+         "in": [
+          "4",
+          "75"
+         ],
+         "out": [
+          "gap -71"
+         ],
+         "why": "The same two numbers the other way round give a negative answer, so the order of the arguments matters."
+        },
+        {
+         "in": [
+          "9",
+          "9"
+         ],
+         "out": [
+          "gap 0"
+         ],
+         "why": "Two equal numbers leave nothing, and the procedure still displays its line."
+        },
+        {
+         "in": [
+          "0",
+          "50"
+         ],
+         "out": [
+          "gap -50"
+         ],
+         "why": "Taking 50 from nothing goes below zero. The procedure does the subtracting, not your call."
+        }
+       ],
+       "hint": {
+        "think": "The def line names two parameters, so the call has to hand over two values.",
+        "syntax": "name(value, value)",
+        "diagram": "pyfunc"
+       },
+       "teach": {
+        "say": "Two parameters are separated by a comma in the def line, and the two arguments go in the same order in the call.",
+        "code": [
+         "def pair(x, y):",
+         "    print(x * y)",
+         "pair(9, 4)"
+        ],
+        "out": [
+         "36"
+        ]
+       },
+       "require": [
+        [
+         "def gap(",
+         "Keep the procedure and hand it the two numbers."
+        ]
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Ask the user for two words, one on each line. Write a procedure called show that takes one word and displays value [that word]. Call show once for each word, in the order they were typed.",
+       "brief": [
+        "The user types in two lines, one word on each.",
+        "Two lines of output and nothing else.",
+        "There is one space after the word value.",
+        "Neither typed word is written inside the procedure."
+       ],
+       "fb": "A parameter is the name the subprogram gives to whatever it is handed. The value handed over at the call is the argument.",
+       "starter": "# One procedure with a parameter, two calls\n",
        "tests": [
         {
          "in": [
@@ -161,7 +559,7 @@
           "value copper",
           "value slate"
          ],
-         "why": "The parameter is what makes one procedure work for both words. If both lines say the same word, you printed the same variable twice instead of passing each one in."
+         "why": "The parameter is what makes one procedure work for both words. Two identical lines means the same value was handed in twice."
         },
         {
          "in": [
@@ -172,7 +570,7 @@
           "value ridge",
           "value hollow"
          ],
-         "why": "Nothing about the word is written inside the procedure - it arrives as the parameter."
+         "why": "Nothing about the word is written inside the procedure. It arrives as the parameter."
         },
         {
          "in": [
@@ -183,77 +581,153 @@
           "value ink",
           "value ink"
          ],
-         "why": "The same word twice should print twice. If only one line appeared you may have skipped the second call, or only read one line of input."
+         "why": "The same word twice still gives two lines. One line means a call was missed."
         }
        ],
-       "fb": "A parameter is the name the procedure gives to whatever is handed to it. The value you pass in when you call it is the argument.",
-       "hint": "pyfunc",
-       "teach": {
-        "say": "A parameter is a name in the brackets of the def line. Whatever you pass in when you call it arrives under that name.",
-        "code": [
-         "def shout(word):",
-         "    print(word + '!')",
-         "shout('oi')"
+       "hint": {
+        "think": "One procedure with one parameter, called twice with different values.",
+        "syntax": [
+         "def show(w):",
+         "    print(\"...\" + w)"
         ],
-        "out": [
-         "oi!"
+        "start": [
+         "a = input()",
+         "b = input()",
+         "def show(w):",
+         "    # build the line here"
+        ],
+        "diagram": "pyfunc"
+       },
+       "require": [
+        [
+         "def show(",
+         "This one needs a procedure called show, written with def."
         ]
-       }
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "This program should display Colour: and then the word that was typed. Find the mistake and put it right.",
+       "brief": [
+        "Press Run first and read the last line of the error message.",
+        "Do not change the def line.",
+        "There is one space after the colon.",
+        "One line of output."
+       ],
+       "fb": "A parameter is a name that only exists inside the subprogram. Nothing else in the program can see it, and it cannot see any other name instead.",
+       "kind": "debug",
+       "starter": "c = input()\ndef label(colour):\n    print(\"Colour: \" + shade)\nlabel(c)\n",
+       "tests": [
+        {
+         "in": [
+          "red"
+         ],
+         "out": [
+          "Colour: red"
+         ],
+         "why": "A NameError means nothing called shade exists. The value arrives under the parameter's name, which is colour."
+        },
+        {
+         "in": [
+          "navy blue"
+         ],
+         "out": [
+          "Colour: navy blue"
+         ],
+         "why": "The whole typed line arrives as the parameter, spaces included."
+        },
+        {
+         "in": [
+          "x"
+         ],
+         "out": [
+          "Colour: x"
+         ],
+         "why": "Use the parameter's own name inside the procedure, and the procedure works for any value handed in."
+        }
+       ],
+       "hint": {
+        "think": "The value arrives under one name and one name only. Which name does the def line give it?",
+        "walk": [
+         "Read the name in the brackets of the def line.",
+         "Read the name used on the line underneath.",
+         "They are not the same name, and only one of them exists."
+        ],
+        "diagram": "pyfunc"
+       },
+       "require": [
+        [
+         "def label(",
+         "Keep the procedure, and use the name its def line gives the value."
+        ]
+       ]
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for two whole numbers, one on each line. Write a procedure called product that takes both numbers and prints total [the first times the second]. Call product once.",
+       "q": "Ask the user for two words, one on each line. Write a procedure called pair that takes two words and displays [first word] and [second word]. Call pair with the words in the order typed, then call it again with them the other way round.",
        "brief": [
-        "The procedure does the printing, not the main program.",
-        "One space after the word total.",
-        "One line of output."
+        "The user types in two lines, one word on each.",
+        "Two lines of output.",
+        "There is one space either side of the word and.",
+        "The second line has the same two words in the opposite order."
        ],
-       "starter": "# product takes two parameters\n",
+       "fb": "Arguments are matched to parameters by their order, not by their names. Swapping them in the call is all it takes to swap the output.",
+       "starter": "# Two parameters, two calls, opposite orders\n",
        "tests": [
         {
          "in": [
-          "4",
-          "75"
+          "north",
+          "south"
          ],
          "out": [
-          "total 300"
+          "north and south",
+          "south and north"
          ],
-         "why": "4 times 75 is 300. If you got total 475 you joined the two inputs as text instead of turning them into numbers with int()."
+         "why": "The same procedure gives both lines. Two identical lines means both calls handed the values over the same way round."
         },
         {
          "in": [
-          "1",
-          "99"
+          "ink",
+          "ink"
          ],
          "out": [
-          "total 99"
+          "ink and ink",
+          "ink and ink"
          ],
-         "why": "One times anything is that number. A multiplication that works only here usually means the arguments were passed the wrong way round."
+         "why": "With the same word twice the two lines match, which is correct here."
         },
         {
          "in": [
-          "0",
-          "50"
+          "copper",
+          "slate"
          ],
          "out": [
-          "total 0"
+          "copper and slate",
+          "slate and copper"
          ],
-         "why": "Nothing times 50 is 0, and the procedure still has to print a line. Printing nothing at all for this case is a common slip."
-        },
-        {
-         "in": [
-          "12",
-          "125"
-         ],
-         "out": [
-          "total 1500"
-         ],
-         "why": "Bigger numbers must work too. If this failed but the others passed, you may have typed a fixed answer into the procedure."
+         "why": "The words are never written inside the procedure, so swapping them is done in the call."
         }
        ],
-       "fb": "Two parameters are separated by a comma in the def line, and the arguments go in the same order when you call it. Order matters, not the names.",
-       "hint": "pyfunc"
+       "opt": true,
+       "hint": {
+        "think": "The procedure is written once. The order is decided by the order of the arguments in each call.",
+        "syntax": "def pair(x, y):",
+        "walk": [
+         "Read both words into their own variables.",
+         "Write a procedure with two parameters.",
+         "Call it once with the first word first.",
+         "Call it again with the second word first."
+        ],
+        "diagram": "pyfunc"
+       },
+       "require": [
+        [
+         "def pair(",
+         "This one needs a procedure called pair, written with def."
+        ]
+       ]
       }
      ]
     },
@@ -267,14 +741,111 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 3,
-       "q": "Ask the user for a whole number. Write a function called double that returns twice its parameter. Display [what double hands back] and nothing else.",
+       "marks": 1,
+       "q": "Press Run. This subprogram works something out and hands the answer back.",
        "brief": [
-        "double prints nothing at all.",
-        "The number may be negative or zero.",
-        "One line of output, holding the number and nothing else."
+        "Nothing is marked on this one.",
+        "Notice that triple displays nothing of its own."
        ],
-       "starter": "# double returns, it does not print\n",
+       "fb": "return gives the value to the line that called the function. That line then decides whether to store it or display it.",
+       "kind": "try",
+       "starter": "def triple(n):\n    return n * 3\nanswer = triple(4)\nprint(answer)\nprint(triple(10))\n",
+       "tests": [],
+       "teach": {
+        "say": "Some subprograms work a value out and hand it back instead of displaying it. return is the word that hands it back. A subprogram that hands a value back is called a function, and the value it hands back is its return value.",
+        "code": [
+         "def triple(n):",
+         "    return n * 3",
+         "answer = triple(4)",
+         "print(answer)",
+         "print(triple(10))"
+        ],
+        "out": [
+         "12",
+         "30"
+        ]
+       },
+       "lines": [
+        "Name a function triple, with one parameter called n.",
+        "Work out three times n and hand that value back.",
+        "Call triple with 4, and keep what comes back in answer.",
+        "Show what answer is holding.",
+        "Call triple with 10 and show what comes back straight away."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "What will this program display?",
+       "brief": [
+        "Read every line before you choose."
+       ],
+       "fb": "a is 7, so add_on(a) is add_on(7), which hands back 9. A return value can be used anywhere an ordinary value can.",
+       "kind": "predict",
+       "code": [
+        "def add_on(n):",
+        "    return n + 2",
+        "a = add_on(5)",
+        "b = add_on(a)",
+        "print(a)",
+        "print(b)"
+       ],
+       "a": [
+        "7\n9",
+        "7\n7",
+        "9\n9"
+       ],
+       "teach": {
+        "say": "What a function hands back is an ordinary value, so it can be stored in a variable and that variable can be handed back in again."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "Change the last line so the value double hands back is displayed.",
+       "brief": [
+        "Do not change the function itself.",
+        "Change only the last line.",
+        "Display exactly: 14",
+        "One line of output."
+       ],
+       "fb": "A function's return value is lost unless the caller uses it. print() round the call is the shortest way of using it.",
+       "kind": "change",
+       "starter": "def double(n):\n    return n * 2\ndouble(7)\n",
+       "tests": [
+        {
+         "in": [],
+         "out": [
+          "14"
+         ],
+         "why": "Nothing came out at all. The function worked the answer out and handed it back, and then the program threw it away."
+        }
+       ],
+       "hint": {
+        "think": "Running the function is not the same as doing something with its answer.",
+        "syntax": "print(name(value))",
+        "diagram": "pyfunc"
+       },
+       "require": [
+        [
+         "def double(",
+         "Keep the function and display what it hands back."
+        ]
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Finish the function so it hands its answer back to the line that called it.",
+       "brief": [
+        "The user types one whole number.",
+        "Replace ____ with the one word that hands a value back.",
+        "Display the number doubled, and nothing else.",
+        "One line of output."
+       ],
+       "fb": "Without return a function hands nothing back, however much work it does inside.",
+       "kind": "complete",
+       "starter": "n = int(input())\ndef double(x):\n    ____ x * 2\nprint(double(n))\n",
        "tests": [
         {
          "in": [
@@ -283,7 +854,7 @@
          "out": [
           "14"
          ],
-         "why": "Double 7 is 14. If nothing was printed, your function returns the answer but the main program never printed it."
+         "why": "Python stopped at the ____. The word that hands a value back goes in its place."
         },
         {
          "in": [
@@ -292,16 +863,7 @@
          "out": [
           "0"
          ],
-         "why": "Double zero is zero, and it still has to be printed."
-        },
-        {
-         "in": [
-          "-3"
-         ],
-         "out": [
-          "-6"
-         ],
-         "why": "Negative numbers double too. If you used a loop that adds, it may not run for a negative value."
+         "why": "Zero doubled is zero, and it still has to be handed back."
         },
         {
          "in": [
@@ -310,138 +872,246 @@
          "out": [
           "500"
          ],
-         "why": "If this one failed, check you used int(input()) - doubling the text 250 as text gives 250250."
+         "why": "The function does the multiplying for any value it is handed."
         }
        ],
-       "fb": "return hands a value back to whatever called the function, so print(double(7)) prints 14. Without return the function hands back None.",
-       "hint": "pyfunc",
+       "hint": {
+        "think": "One word is missing, and it is the word this station is named for.",
+        "diagram": "pyfunc"
+       },
        "teach": {
-        "say": "return hands a value back to the line that called the function, so the caller is the one that prints or stores it.",
+        "say": "return goes in front of the value being handed back, and the line is indented like every other line of the subprogram.",
         "code": [
-         "def triple(n):",
-         "    return n * 3",
-         "print(triple(4))"
+         "def half(n):",
+         "    return n / 2",
+         "print(half(10))"
         ],
         "out": [
-         "12"
+         "5.0"
         ]
-       }
+       },
+       "require": [
+        [
+         "def double(",
+         "Keep the function."
+        ],
+        [
+         "return ",
+         "A function hands its answer back, so this one needs return."
+        ]
+       ]
       },
       {
        "t": "code",
-       "marks": 3,
-       "q": "Ask the user for a whole number. Write a function called sign that returns the word up for a number above 0. Make sign return down for a number below 0. Make sign return flat for 0. Display [what sign hands back] and nothing else.",
+       "marks": 2,
+       "q": "Ask the user for a whole number. Write a function called double that returns twice the number it is handed. Display what double hands back.",
        "brief": [
-        "sign holds no print of its own.",
-        "One line only is printed.",
-        "Print exactly one of: up, down, flat"
+        "The user types one whole number, which may be negative or zero.",
+        "double displays nothing of its own.",
+        "One line of output, holding the number and nothing else."
        ],
-       "starter": "# a function can hand back a word\n",
+       "fb": "A function hands its answer to whatever called it, so print(double(7)) displays 14 without double ever displaying anything.",
+       "starter": "# double returns the answer; the main program displays it\n",
        "tests": [
         {
          "in": [
           "7"
          ],
          "out": [
-          "up"
+          "14"
          ],
-         "why": "Above 0, so the word handed back is up. Nothing printed at all means the function returns it but the main program never printed it."
-        },
-        {
-         "in": [
-          "-4"
-         ],
-         "out": [
-          "down"
-         ],
-         "why": "Below 0 gives down. A function with only one return works for one case and hands back None for the rest."
+         "why": "Nothing displayed means the function returns the answer but the main program never used it."
         },
         {
          "in": [
           "0"
          ],
          "out": [
-          "flat"
+          "0"
          ],
-         "why": "Exactly 0 is neither above nor below, so it is flat. This is the case a > and < pair always forgets."
+         "why": "Zero doubled is zero, and it still has to be displayed."
+        },
+        {
+         "in": [
+          "-3"
+         ],
+         "out": [
+          "-6"
+         ],
+         "why": "Negative numbers double in the same way."
         },
         {
          "in": [
           "250"
          ],
          "out": [
-          "up"
+          "500"
          ],
-         "why": "A large number is still only up. If this crashed, check you used int(input()) - text comparisons would not sort it."
-        },
-        {
-         "in": [
-          "-1"
-         ],
-         "out": [
-          "down"
-         ],
-         "why": "One below 0 is still down, so the test has to be against 0 rather than against 1."
+         "why": "A line reading 250250 means int() was left out, so the text was joined to itself instead."
         }
        ],
-       "fb": "A function can hand back text just as easily as a number, and return stops the function the moment it runs - so the lines after it never happen.",
-       "hint": "pyfunc"
+       "hint": {
+        "think": "The function works the answer out. The main program displays it.",
+        "syntax": [
+         "def double(x):",
+         "    return ..."
+        ],
+        "start": [
+         "n = int(input())",
+         "def double(x):",
+         "    # hand the answer back here"
+        ],
+        "diagram": "pyfunc"
+       },
+       "require": [
+        [
+         "def double(",
+         "This one needs a function called double, written with def."
+        ],
+        [
+         "return ",
+         "A function hands its answer back, so this one needs return."
+        ]
+       ]
       },
       {
        "t": "code",
-       "marks": 4,
-       "q": "Ask the user for two whole numbers, one on each line. Write a function called area that returns the first times the second. Store what area returns in a variable. Display one line in the form area [that value].",
+       "marks": 2,
+       "q": "This program should display the number typed, doubled. Find the mistake and put it right.",
        "brief": [
-        "area holds no print at all.",
-        "A single space goes after the word area.",
-        "Nothing else is printed.",
-        "Store the returned value in a variable before you print it."
+        "Press Run first and read what comes out.",
+        "There is no error message on this one.",
+        "Do not change the last line.",
+        "One line of output."
        ],
-       "starter": "# store the returned value before printing it\n",
+       "fb": "None is Python's word for no value at all. A function with no return hands back None every time, however much it worked out.",
+       "kind": "debug",
+       "starter": "n = int(input())\ndef double(x):\n    x * 2\nprint(double(n))\n",
        "tests": [
         {
          "in": [
-          "5",
-          "4"
-         ],
-         "out": [
-          "area 20"
-         ],
-         "why": "One line only. If you got an extra line with 20 on its own, your function printed the answer as well as returning it - that is the mistake this question is about."
-        },
-        {
-         "in": [
-          "1",
-          "1"
-         ],
-         "out": [
-          "area 1"
-         ],
-         "why": "One times one is 1. If the line read area None, the function printed the answer instead of returning it, so there was nothing to hand back."
-        },
-        {
-         "in": [
-          "12",
-          "0"
-         ],
-         "out": [
-          "area 0"
-         ],
-         "why": "A second number of 0 gives 0, and the line must still be printed."
-        },
-        {
-         "in": [
-          "30",
           "7"
          ],
          "out": [
-          "area 210"
+          "14"
          ],
-         "why": "If only the first test passed, you may have written the answer into the function rather than calculating it from the parameters."
+         "why": "The word None came out. The function worked out x * 2 and then threw it away, because no return hands it back."
+        },
+        {
+         "in": [
+          "0"
+         ],
+         "out": [
+          "0"
+         ],
+         "why": "Even a value of zero has to be handed back before it can be displayed."
+        },
+        {
+         "in": [
+          "-3"
+         ],
+         "out": [
+          "-6"
+         ],
+         "why": "Add the missing word in front of the sum and the function works for any number."
         }
        ],
-       "fb": "Printing and returning are not the same thing. A function that prints shows the value once and throws it away; a function that returns gives it to the caller, which can store it, add to it or print it.",
-       "hint": "pyfunc"
+       "hint": {
+        "think": "The sum is right. Ask what the function does with the answer once it has worked it out.",
+        "walk": [
+         "The word None means the function handed nothing back.",
+         "Working a value out and handing it back are two different jobs.",
+         "One word is missing from the indented line."
+        ],
+        "diagram": "pyfunc"
+       },
+       "require": [
+        [
+         "def double(",
+         "Keep the function."
+        ],
+        [
+         "return ",
+         "A function hands its answer back, so this one needs return."
+        ]
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for a whole number. Write a function called double that returns twice the number it is handed. Keep what double hands back in a variable and display it. Then hand that variable to double and display what comes back on the next line.",
+       "brief": [
+        "The user types one whole number, which may be negative or zero.",
+        "Two lines of output.",
+        "Line 2 is four times the number typed, worked out by calling double again.",
+        "The number 4 is not written anywhere in your program."
+       ],
+       "fb": "One function, two calls, and the second call works on the first one's answer. This is how small subprograms are built up into bigger sums.",
+       "starter": "# One function, called twice, the second time on its own answer\n",
+       "tests": [
+        {
+         "in": [
+          "3"
+         ],
+         "out": [
+          "6",
+          "12"
+         ],
+         "why": "Six then twelve. Line 2 comes from calling double on the 6, not from multiplying by 4."
+        },
+        {
+         "in": [
+          "0"
+         ],
+         "out": [
+          "0",
+          "0"
+         ],
+         "why": "Zero stays zero both times, and both lines must still appear."
+        },
+        {
+         "in": [
+          "-2"
+         ],
+         "out": [
+          "-4",
+          "-8"
+         ],
+         "why": "Negative numbers double twice in the same way."
+        },
+        {
+         "in": [
+          "50"
+         ],
+         "out": [
+          "100",
+          "200"
+         ],
+         "why": "If line 2 was 100 as well, the second call was handed the original number again."
+        }
+       ],
+       "opt": true,
+       "hint": {
+        "think": "A return value is an ordinary value, so it can be handed straight back into the same function.",
+        "syntax": "second = name(first)",
+        "walk": [
+         "Read the number and cast it with int().",
+         "Call double once and keep what comes back.",
+         "Display that value.",
+         "Call double again on the value you kept, and display what comes back."
+        ],
+        "diagram": "pyfunc"
+       },
+       "require": [
+        [
+         "def double(",
+         "This one needs a function called double, written with def."
+        ],
+        [
+         "return ",
+         "A function hands its answer back, so this one needs return."
+        ]
+       ]
       }
      ]
     },
@@ -455,16 +1125,350 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 4,
-       "q": "Ask the user for a word. Then ask for a whole number. Write a function called tag that returns high for a number of 40 or more. Make tag return low for a number below 40. Write a procedure called show that displays [word]: [the word tag handed back]. Use both subprograms to print that one line.",
+       "marks": 1,
+       "q": "Press Run. Two subprograms work out the same answer in two different ways.",
        "brief": [
-        "A colon and one space separate the word from the answer.",
-        "Exactly 40 counts as high.",
-        "tag holds no print.",
-        "show holds no return.",
-        "One line only is printed."
+        "Nothing is marked on this one.",
+        "Both lines of output say 10, but only one of the subprograms displayed it."
        ],
-       "starter": "# tag returns a word, show prints the line\n",
+       "fb": "OCR asks for this difference by name: a function returns a value and a procedure does not. The work inside them can be exactly the same.",
+       "kind": "try",
+       "starter": "def show_it(n):\n    print(n * 2)\ndef give_it(n):\n    return n * 2\nshow_it(5)\nanswer = give_it(5)\nprint(answer)\n",
+       "tests": [],
+       "teach": {
+        "say": "A procedure displays something and hands nothing back. A function hands a value back and displays nothing. print shows a value on the screen; return gives it to the line that called the subprogram.",
+        "code": [
+         "def show_it(n):",
+         "    print(n * 2)",
+         "def give_it(n):",
+         "    return n * 2",
+         "show_it(5)",
+         "answer = give_it(5)",
+         "print(answer)"
+        ],
+        "out": [
+         "10",
+         "10"
+        ]
+       },
+       "lines": [
+        "Name the first subprogram show_it, with one parameter.",
+        "It displays twice that value itself, so it is a procedure.",
+        "Name the second subprogram give_it, also with one parameter.",
+        "It hands twice that value back instead, so it is a function.",
+        "Calling show_it displays 10 straight away.",
+        "Calling give_it hands 10 back, so it is kept in answer.",
+        "Show what answer is holding."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "What will this program display?",
+       "brief": [
+        "Read every line before you choose."
+       ],
+       "fb": "The 5 on screen came from the print inside total. Nothing was handed back, so answer holds None. This is the mistake to watch for all lesson.",
+       "kind": "predict",
+       "code": [
+        "def total(a, b):",
+        "    print(a + b)",
+        "answer = total(2, 3)",
+        "print(answer)"
+       ],
+       "a": [
+        "5\nNone",
+        "5\n5",
+        "None\n5"
+       ],
+       "teach": {
+        "say": "A subprogram that only displays a value hands nothing back. Python's word for nothing at all is None, so storing what such a subprogram gives you stores None."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "Change one word inside the subprogram so the program displays only the line area 20.",
+       "brief": [
+        "Do not change the last two lines.",
+        "Change one word on the indented line.",
+        "Display exactly: area 20",
+        "One line of output."
+       ],
+       "fb": "One word turns a procedure into a function. print displays the value and hands back nothing; return hands it back and displays nothing.",
+       "kind": "change",
+       "starter": "def area(w, h):\n    print(w * h)\na = area(5, 4)\nprint(\"area \" + str(a))\n",
+       "tests": [
+        {
+         "in": [],
+         "out": [
+          "area 20"
+         ],
+         "why": "Two lines came out: a bare 20 from the print inside area, and then area None, because nothing was handed back."
+        }
+       ],
+       "hint": {
+        "think": "The main program is already storing what the subprogram gives it. The subprogram is not giving it anything.",
+        "diagram": "pyfunc"
+       },
+       "require": [
+        [
+         "def area(",
+         "Keep the subprogram."
+        ],
+        [
+         "return ",
+         "A function hands its answer back, so this one needs return."
+        ]
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Finish the program so the value the function hands back is kept in cost.",
+       "brief": [
+        "The user types one whole number.",
+        "Replace ____ with a call to fee, handing it that number.",
+        "Display exactly one line, in the form cost [the answer].",
+        "There is one space after the word cost."
+       ],
+       "fb": "cost = fee(n) runs the function, takes what it hands back, and keeps it. The call and the = are doing two separate jobs on one line.",
+       "kind": "complete",
+       "starter": "n = int(input())\ndef fee(x):\n    return x * 3\ncost = ____\nprint(\"cost \" + str(cost))\n",
+       "tests": [
+        {
+         "in": [
+          "2"
+         ],
+         "out": [
+          "cost 6"
+         ],
+         "why": "Python stopped at the ____. Put a call to fee there, with n in its brackets."
+        },
+        {
+         "in": [
+          "0"
+         ],
+         "out": [
+          "cost 0"
+         ],
+         "why": "Zero times three is zero, and the line is still displayed."
+        },
+        {
+         "in": [
+          "10"
+         ],
+         "out": [
+          "cost 30"
+         ],
+         "why": "The function multiplies whatever it is handed, so the answer follows the number typed."
+        }
+       ],
+       "hint": {
+        "think": "The = keeps whatever is on its right. What goes there is the call.",
+        "syntax": "variable = name(value)",
+        "diagram": "pyfunc"
+       },
+       "teach": {
+        "say": "A call can go anywhere a value can go, including on the right of an = sign.",
+        "code": [
+         "def tax(x):",
+         "    return x + 1",
+         "paid = tax(6)",
+         "print(paid)"
+        ],
+        "out": [
+         "7"
+        ]
+       },
+       "require": [
+        [
+         "def fee(",
+         "Keep the function and call it, rather than working the answer out again."
+        ]
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for a whole number. Write a function called band that returns the word high for a number of 40 or more and the word low for anything less. Display the line band [the word band hands back].",
+       "brief": [
+        "The user types one whole number.",
+        "Exactly 40 counts as high.",
+        "band displays nothing of its own.",
+        "One line of output, with one space after the word band."
+       ],
+       "fb": "The function decides, the main program displays. Keeping those two jobs apart is what the words function and procedure are for.",
+       "starter": "# band returns a word; the main program displays the line\n",
+       "tests": [
+        {
+         "in": [
+          "55"
+         ],
+         "out": [
+          "band high"
+         ],
+         "why": "55 is 40 or more, so the word handed back is high. Two lines means band displayed the word as well as returning it."
+        },
+        {
+         "in": [
+          "40"
+         ],
+         "out": [
+          "band high"
+         ],
+         "why": "Exactly 40 counts as high, so the test has to be >= 40 and not > 40."
+        },
+        {
+         "in": [
+          "39"
+         ],
+         "out": [
+          "band low"
+         ],
+         "why": "39 is under 40. A line reading band None means one path of the if hands nothing back."
+        },
+        {
+         "in": [
+          "0"
+         ],
+         "out": [
+          "band low"
+         ],
+         "why": "Zero is still a number and still gets a word. Crashing here usually means int() was left out."
+        }
+       ],
+       "hint": {
+        "think": "The function chooses one of two words and hands it back. The main program builds the line.",
+        "syntax": [
+         "def band(x):",
+         "    if x >= ...:",
+         "        return \"...\""
+        ],
+        "start": [
+         "n = int(input())",
+         "def band(x):",
+         "    if x >= 40:",
+         "        # hand a word back here"
+        ],
+        "diagram": "pyfunc"
+       },
+       "teach": {
+        "say": "A function can hand back a word just as easily as a number, and an if inside it can decide which word to hand back.",
+        "code": [
+         "def grade(n):",
+         "    if n >= 50:",
+         "        return \"pass\"",
+         "    else:",
+         "        return \"fail\"",
+         "print(grade(80))"
+        ],
+        "out": [
+         "pass"
+        ]
+       },
+       "lines": [
+        "Name a function grade, with one parameter.",
+        "Ask whether the value is 50 or more.",
+        "If it is, hand back the word pass.",
+        "Otherwise take the other path.",
+        "On that path, hand back the word fail.",
+        "Call grade with 80 and display what comes back."
+       ],
+       "require": [
+        [
+         "def band(",
+         "This one needs a function called band, written with def."
+        ],
+        [
+         "return ",
+         "A function hands its answer back, so this one needs return."
+        ]
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "This program should display one word, either high or low. Find the mistake and put it right.",
+       "brief": [
+        "Press Run first and type 20, then run it again and type 60.",
+        "One of the two paths through the if is wrong.",
+        "One line of output, holding one word.",
+        "A number of 40 or more is high."
+       ],
+       "fb": "A function that returns on one path and prints on the other is the hardest bug in this lesson, because half of the tests pass. Every path needs its own return.",
+       "kind": "debug",
+       "starter": "n = int(input())\ndef rank(x):\n    if x >= 40:\n        return \"high\"\n    else:\n        print(\"low\")\nprint(rank(n))\n",
+       "tests": [
+        {
+         "in": [
+          "55"
+         ],
+         "out": [
+          "high"
+         ],
+         "why": "This one already worked, because that path uses return."
+        },
+        {
+         "in": [
+          "40"
+         ],
+         "out": [
+          "high"
+         ],
+         "why": "Exactly 40 takes the same path, so this one worked too."
+        },
+        {
+         "in": [
+          "39"
+         ],
+         "out": [
+          "low"
+         ],
+         "why": "Two lines came out: low from the print, then None, because that path hands nothing back."
+        },
+        {
+         "in": [
+          "0"
+         ],
+         "out": [
+          "low"
+         ],
+         "why": "Both paths of the if have to hand a word back, or the caller is given None."
+        }
+       ],
+       "hint": {
+        "think": "Try a small number and a large one. Only one of them comes out right, so look at the two paths separately.",
+        "walk": [
+         "One path hands a word back.",
+         "The other path displays a word instead.",
+         "A path that hands nothing back gives None to the caller."
+        ],
+        "diagram": "pyfunc"
+       },
+       "require": [
+        [
+         "def rank(",
+         "Keep the function."
+        ],
+        [
+         "return ",
+         "A function hands its answer back, so this one needs return."
+        ]
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for a word. Then ask for a whole number. Write a function called tag that returns the word high for a number of 40 or more and the word low for anything less. Write a procedure called show that takes a word and a tag and displays [word]: [tag].",
+       "brief": [
+        "Exactly 40 counts as high.",
+        "tag has no print() of its own and show has no return.",
+        "Call show once, handing it the word and what tag hands back.",
+        "One line of output, with a colon and one space between the two parts."
+       ],
+       "fb": "show(word, tag(n)) runs the function first and hands its answer straight into the procedure. A return value can be an argument like any other value.",
+       "starter": "# A function that decides, a procedure that displays\n",
        "tests": [
         {
          "in": [
@@ -474,7 +1478,7 @@
          "out": [
           "copper: high"
          ],
-         "why": "55 is 40 or more, so the answer is high, and the procedure does the printing. Two lines of output means tag printed as well as returned."
+         "why": "One line only. Two lines means tag displayed the word as well as returning it."
         },
         {
          "in": [
@@ -484,7 +1488,7 @@
          "out": [
           "slate: high"
          ],
-         "why": "Exactly 40 is high. Getting low here means you tested > 40 instead of >= 40."
+         "why": "Exactly 40 is high, so the comparison has to allow equals."
         },
         {
          "in": [
@@ -494,7 +1498,7 @@
          "out": [
           "ridge: low"
          ],
-         "why": "39 is under 40. If this printed high, your function may be returning a value only on one branch and None otherwise."
+         "why": "A line reading ridge: None means one path of the if hands nothing back."
         },
         {
          "in": [
@@ -504,89 +1508,38 @@
          "out": [
           "hollow: low"
          ],
-         "why": "A number of 0 is still a number and must be reported. Crashing here usually means int() was never used on the second input."
+         "why": "Zero is still reported. Crashing here usually means int() was left out on the second input."
         }
        ],
-       "fb": "OCR asks for the difference by name: a function returns a value, a procedure does not. In this program tag is the function and show is the procedure, and the program needs both.",
-       "hint": "pyfunc",
-       "teach": {
-        "say": "A function ends with return and hands a value back; a procedure only prints. So a function's answer can be passed straight into a procedure.",
-        "code": [
-         "def mark(n):",
-         "    return 'B' + str(n)",
-         "print(mark(4))"
+       "opt": true,
+       "hint": {
+        "think": "The function works out one of two words. The procedure makes the line. The main program joins them up with one call.",
+        "syntax": [
+         "def tag(x):",
+         "def show(w, t):"
         ],
-        "out": [
-         "B4"
+        "walk": [
+         "Read the word, then read the number and cast it.",
+         "Write the function that chooses high or low.",
+         "Write the procedure that displays the line from two parameters.",
+         "Call the procedure, handing it the word and what the function gives back."
+        ],
+        "diagram": "pyfunc"
+       },
+       "require": [
+        [
+         "def tag(",
+         "This one needs a function called tag, written with def."
+        ],
+        [
+         "def show(",
+         "This one needs a procedure called show, written with def."
+        ],
+        [
+         "return ",
+         "A function hands its answer back, so this one needs return."
         ]
-       }
-      },
-      {
-       "t": "code",
-       "marks": 4,
-       "q": "Ask the user for two whole numbers, one on each line. Write a function called larger that returns the bigger of its two parameters. Write a procedure called announce that displays largest [that value]. Use both subprograms to print that one line.",
-       "brief": [
-        "When the two numbers are equal, that value is the larger.",
-        "larger holds no print of its own.",
-        "announce holds no return.",
-        "One space after the word largest.",
-        "One line only is printed."
-       ],
-       "starter": "# larger works it out, announce prints it\n",
-       "tests": [
-        {
-         "in": [
-          "9",
-          "4"
-         ],
-         "out": [
-          "largest 9"
-         ],
-         "why": "The first number is the bigger one here. If nothing printed, larger returns the answer but announce was never called with it."
-        },
-        {
-         "in": [
-          "4",
-          "9"
-         ],
-         "out": [
-          "largest 9"
-         ],
-         "why": "The same two numbers the other way round, so a function that always returns its first parameter fails here."
-        },
-        {
-         "in": [
-          "5",
-          "5"
-         ],
-         "out": [
-          "largest 5"
-         ],
-         "why": "Equal numbers, so that value is the answer. A function that only returns on one branch hands back None here."
-        },
-        {
-         "in": [
-          "-8",
-          "-20"
-         ],
-         "out": [
-          "largest -8"
-         ],
-         "why": "With negatives the bigger number is the one closer to 0, so -8 is the answer rather than -20."
-        },
-        {
-         "in": [
-          "0",
-          "0"
-         ],
-         "out": [
-          "largest 0"
-         ],
-         "why": "Two zeros still have an answer, and the line still has to be printed."
-        }
-       ],
-       "fb": "larger works the answer out and hands it back; announce only prints. Keeping the two jobs apart is exactly what the words function and procedure mean.",
-       "hint": "pyfunc"
+       ]
       }
      ]
     },
@@ -600,14 +1553,183 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 4,
-       "q": "Ask the user for a whole number. Keep it in a variable called total. Write a procedure called boost with a local total of its own, set to 99. Make boost print its own total. Call boost. Then display [the main total] on the next line.",
+       "marks": 1,
+       "q": "Press Run. Two variables share a name and hold different values.",
        "brief": [
-        "Two lines of output.",
-        "The 99 comes first.",
-        "The main program's total must not change."
+        "Nothing is marked on this one.",
+        "The 1 and the 50 are both displayed, so neither one replaced the other."
        ],
-       "starter": "# two variables, one name\n",
+       "fb": "The local n lives and dies inside count_up. The main program's n never knew it existed.",
+       "kind": "try",
+       "starter": "def count_up():\n    n = 1\n    print(n)\nn = 50\ncount_up()\nprint(n)\n",
+       "tests": [],
+       "teach": {
+        "say": "A variable first given a value inside a subprogram is local: it exists only while that subprogram is running and disappears when it ends. A variable of the same name outside the subprogram is a different variable altogether.",
+        "code": [
+         "def count_up():",
+         "    n = 1",
+         "    print(n)",
+         "n = 50",
+         "count_up()",
+         "print(n)"
+        ],
+        "out": [
+         "1",
+         "50"
+        ]
+       },
+       "lines": [
+        "Name a procedure count_up, with nothing in its brackets.",
+        "Make a local variable n and put 1 in it.",
+        "Show what the local n is holding.",
+        "In the main program, make a variable n holding 50.",
+        "Call count_up, which uses its own local n.",
+        "Show what the main program's n is holding."
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "What will this program display?",
+       "brief": [
+        "Read every line before you choose."
+       ],
+       "fb": "Reading is free. The subprogram looked for limit, could not find a local one, and used the one outside instead.",
+       "kind": "predict",
+       "code": [
+        "limit = 20",
+        "def show():",
+        "    print(limit)",
+        "show()"
+       ],
+       "a": [
+        "20",
+        "limit",
+        "None"
+       ],
+       "teach": {
+        "say": "A subprogram is allowed to read a variable made outside it without doing anything special, as long as it does not try to change it."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 1,
+       "q": "What will this program display?",
+       "brief": [
+        "Read every line before you choose."
+       ],
+       "fb": "The = inside reset made a brand new local total. The main program's total was never touched, so it is still 5.",
+       "kind": "predict",
+       "code": [
+        "total = 5",
+        "def reset():",
+        "    total = 0",
+        "    print(total)",
+        "reset()",
+        "print(total)"
+       ],
+       "a": [
+        "0\n5",
+        "0\n0",
+        "5\n0"
+       ],
+       "teach": {
+        "say": "Giving a variable a value inside a subprogram always makes a new local one, even when a variable outside already has that name."
+       }
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "Finish the program so the procedure changes the main program's score.",
+       "brief": [
+        "The user types one whole number.",
+        "score starts at 100, which is written into the program.",
+        "Replace ____ with the one word that reaches the variable outside.",
+        "Display one number, which is 100 plus the number typed."
+       ],
+       "fb": "global score says this name belongs to the main program. Reading an outside variable needs nothing; changing one needs global.",
+       "kind": "complete",
+       "starter": "n = int(input())\nscore = 100\ndef add_on():\n    ____ score\n    score = score + n\nadd_on()\nprint(score)\n",
+       "tests": [
+        {
+         "in": [
+          "5"
+         ],
+         "out": [
+          "105"
+         ],
+         "why": "Python stopped at the ____. The word that lets a subprogram change an outside variable goes in its place."
+        },
+        {
+         "in": [
+          "0"
+         ],
+         "out": [
+          "100"
+         ],
+         "why": "Nothing added leaves the score at its starting value, and it is still displayed."
+        },
+        {
+         "in": [
+          "12"
+         ],
+         "out": [
+          "112"
+         ],
+         "why": "The procedure reads n without any fuss, because reading needs no global."
+        },
+        {
+         "in": [
+          "-30"
+         ],
+         "out": [
+          "70"
+         ],
+         "why": "A negative number brings the score down. The 100 it starts from is written into the program, not typed in."
+        }
+       ],
+       "hint": {
+        "think": "One word tells the subprogram not to make a local variable of that name.",
+        "syntax": "global name",
+        "diagram": "pyfunc"
+       },
+       "teach": {
+        "say": "To change a variable made outside it, a subprogram has to say global and the variable's name first. Without that line, the = makes a local variable instead.",
+        "code": [
+         "count = 7",
+         "def tick():",
+         "    global count",
+         "    count = count + 1",
+         "tick()",
+         "print(count)"
+        ],
+        "out": [
+         "8"
+        ]
+       },
+       "require": [
+        [
+         "def add_on(",
+         "Keep the procedure."
+        ],
+        [
+         "global ",
+         "Changing a variable that belongs to the main program needs global."
+        ]
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for a whole number and keep it in a variable called total. Write a procedure called boost that puts 99 in its own variable called total and displays it. Call boost, then display the main program's total on the next line.",
+       "brief": [
+        "The user types one whole number, which may be negative or zero.",
+        "Two lines of output, with the 99 first.",
+        "boost takes nothing in its brackets.",
+        "The main program's total must still hold what was typed."
+       ],
+       "fb": "Two variables can share a name without sharing anything else. The local one inside boost is thrown away the moment boost finishes.",
+       "starter": "# Two variables, one name, two different lives\n",
        "tests": [
         {
          "in": [
@@ -617,7 +1739,7 @@
           "99",
           "5"
          ],
-         "why": "The 5 survives. If the second line also says 99, you wrote global total inside the procedure, so it changed the main program's variable instead of making a local one."
+         "why": "The 5 survives. A second line of 99 means global total was used, so the main program's variable was changed instead."
         },
         {
          "in": [
@@ -637,7 +1759,7 @@
           "99",
           "-12"
          ],
-         "why": "If this crashed, check you used int(input()) - a minus sign is fine for int but not for a text comparison."
+         "why": "A crash here usually means int() was left out on the way in."
         },
         {
          "in": [
@@ -647,117 +1769,60 @@
           "99",
           "4100"
          ],
-         "why": "If the second line printed 99 only on some tests, the procedure is printing after the main program rather than before. Call boost first, then print."
+         "why": "If the lines came out the other way round, boost was called after the second line was displayed."
         }
        ],
-       "fb": "A variable created inside a subprogram is local: it exists only while the subprogram runs and disappears afterwards. The main program's total is a different variable that happens to share a name.",
-       "hint": "pyfunc",
-       "teach": {
-        "say": "A name given a value inside a subprogram is local and vanishes when the subprogram ends. To change a variable from outside instead, the subprogram must say global first.",
-        "code": [
-         "def tidy():",
-         "    box = 'new'",
-         "    print(box)",
-         "tidy()"
+       "hint": {
+        "think": "A variable given a value inside a subprogram is local, so it does not need to avoid the name total.",
+        "syntax": [
+         "def boost():",
+         "    total = 99"
         ],
-        "out": [
-         "new"
+        "start": [
+         "total = int(input())",
+         "def boost():",
+         "    # a local total goes here"
+        ],
+        "diagram": "pyfunc"
+       },
+       "require": [
+        [
+         "def boost(",
+         "This one needs a procedure called boost, written with def."
         ]
-       }
+       ]
       },
       {
        "t": "code",
-       "marks": 4,
-       "q": "Ask the user for a whole number. Keep it in a variable called count. Write a procedure called bump that takes one whole number. Make bump add 1 to its parameter. Make bump print the result. Call bump with count. Then display [count] on the next line.",
+       "marks": 2,
+       "q": "This program should add 2 to the total once for every turn, then display the total. Find the mistake and put it right.",
        "brief": [
-        "Two lines of output.",
-        "The raised number comes first.",
-        "count itself must not change, because a parameter is a copy."
+        "Press Run first and type 3, then read the last line of the error message.",
+        "Do not change the loop or the number 2.",
+        "The total starts at 0, which is written into the program.",
+        "A number of 0 turns means the total stays at 0."
        ],
-       "starter": "# the parameter is a copy, not the variable itself\n",
-       "tests": [
-        {
-         "in": [
-          "5"
-         ],
-         "out": [
-          "6",
-          "5"
-         ],
-         "why": "6 then 5. If the second line says 6 as well, you changed count itself rather than the parameter inside the procedure."
-        },
-        {
-         "in": [
-          "0"
-         ],
-         "out": [
-          "1",
-          "0"
-         ],
-         "why": "One more than 0 is 1, and count is still 0 afterwards."
-        },
-        {
-         "in": [
-          "-3"
-         ],
-         "out": [
-          "-2",
-          "-3"
-         ],
-         "why": "Adding 1 to a negative number moves it up towards 0, and count is unchanged. A crash here means int() was never used."
-        },
-        {
-         "in": [
-          "99"
-         ],
-         "out": [
-          "100",
-          "99"
-         ],
-         "why": "If the two lines came out the other way round, the printing inside bump happens after the main program's line - call bump first."
-        }
-       ],
-       "fb": "A parameter is a local name holding a copy of the value, so adding to it inside the subprogram leaves the caller's variable exactly as it was.",
-       "hint": "pyfunc"
-      },
-      {
-       "t": "code",
-       "marks": 4,
-       "q": "Write a procedure called up that adds 3 to a shared total. Write a procedure called down that adds 1 to the same total. Ask the user for a whole number of turns. Call up and then down once per turn. Display [the final total] and nothing else.",
-       "brief": [
-        "The total starts at 0.",
-        "That 0 is fixed in the program, not typed in.",
-        "The total is shared by the whole program.",
-        "A number of 0 turns means neither procedure is called."
-       ],
-       "starter": "# up and down change the main program's total\n",
+       "fb": "An UnboundLocalError means Python made a local variable of that name and then found nothing in it. global tells it to use the outside one instead.",
+       "kind": "debug",
+       "starter": "total = 0\nturns = int(input())\ndef add_on():\n    total = total + 2\nfor i in range(turns):\n    add_on()\nprint(total)\n",
        "tests": [
         {
          "in": [
           "1"
          ],
          "out": [
-          "4"
+          "2"
          ],
-         "why": "One turn is 3 plus 1. If you got 0, the procedures made their own local total instead of changing the main program's - they need global total."
-        },
-        {
-         "in": [
-          "5"
-         ],
-         "out": [
-          "20"
-         ],
-         "why": "Five turns at 4 each. Getting 4 means the total is being set back to 0 somewhere inside the loop or inside a procedure."
+         "why": "The error says total was used before it was given a value. Inside the subprogram it is a local name until global says otherwise."
         },
         {
          "in": [
           "3"
          ],
          "out": [
-          "12"
+          "6"
          ],
-         "why": "If this gave 9 or 3, only one of the two procedures is being called inside the loop."
+         "why": "Three turns at 2 each. If you got 2, the total is being set back to 0 somewhere each turn."
         },
         {
          "in": [
@@ -766,11 +1831,106 @@
          "out": [
           "0"
          ],
-         "why": "No turns, so nothing is added and the starting 0 is printed. A program that prints something else here never handled the loop running zero times."
+         "why": "No turns, so the subprogram never runs and the starting 0 is displayed. This one already worked."
         }
        ],
-       "fb": "A global variable is one the whole program can see. A subprogram may read it without saying anything, but to change it the subprogram must declare global first, or Python makes a local copy instead.",
-       "hint": "pyfunc"
+       "hint": {
+        "think": "The subprogram is trying to change a variable that belongs to the main program.",
+        "syntax": "global name",
+        "walk": [
+         "Python sees total = on a line inside the subprogram.",
+         "So it treats total as local and finds it empty.",
+         "One line at the top of the subprogram puts that right."
+        ],
+        "diagram": "pyfunc"
+       },
+       "require": [
+        [
+         "def add_on(",
+         "Keep the procedure."
+        ],
+        [
+         "global ",
+         "Changing a variable that belongs to the main program needs global."
+        ]
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for a whole number of turns. Write a procedure called up that adds 3 to a total the whole program shares. Write a procedure called down that takes 1 away from that same total. Call up and then down once for every turn, then display the total.",
+       "brief": [
+        "The user types one whole number, which is never below 0.",
+        "The total starts at 0, which is written into the program.",
+        "Neither procedure displays anything.",
+        "One line of output, holding the final total."
+       ],
+       "fb": "A variable the whole program can see is called global. Two subprograms can share one, which is powerful and is also why a shared variable is easy to lose track of.",
+       "starter": "# Two procedures, one shared total\n",
+       "tests": [
+        {
+         "in": [
+          "1"
+         ],
+         "out": [
+          "2"
+         ],
+         "why": "One turn is 3 added and 1 taken away. A result of 0 means the procedures made their own local totals."
+        },
+        {
+         "in": [
+          "5"
+         ],
+         "out": [
+          "10"
+         ],
+         "why": "Five turns at 2 each. Getting 2 means the total is being set back to 0 inside the loop."
+        },
+        {
+         "in": [
+          "3"
+         ],
+         "out": [
+          "6"
+         ],
+         "why": "If this gave 9 or -3, only one of the two procedures is being called each turn."
+        },
+        {
+         "in": [
+          "0"
+         ],
+         "out": [
+          "0"
+         ],
+         "why": "No turns, so neither procedure runs and the starting 0 is displayed."
+        }
+       ],
+       "opt": true,
+       "hint": {
+        "think": "Both procedures change one variable that lives in the main program, so both need the same declaration.",
+        "syntax": "global total",
+        "walk": [
+         "Make the total in the main program and set it to 0.",
+         "Write each procedure with global as its first line.",
+         "Loop once per turn, calling both procedures each time.",
+         "Display the total after the loop has finished."
+        ],
+        "diagram": "pyfunc"
+       },
+       "require": [
+        [
+         "def up(",
+         "This one needs a procedure called up, written with def."
+        ],
+        [
+         "def down(",
+         "This one needs a procedure called down, written with def."
+        ],
+        [
+         "global ",
+         "Changing a variable that belongs to the main program needs global."
+        ]
+       ]
       }
      ]
     },
@@ -784,99 +1944,439 @@
      "tasks": [
       {
        "t": "code",
-       "marks": 5,
-       "q": "Write a function called score that returns 3 for a number of 2 or more. Make score return 1 for a number of 1. Make score return 0 for 0. Ask the user for how many numbers there are. Then ask for that many whole numbers, one on each line. Add up everything score hands back. Display [that total] and nothing else.",
+       "marks": 1,
+       "q": "What will this program display?",
        "brief": [
-        "Call score once per number, inside the loop.",
-        "Print only that one total.",
-        "The numbers are never below 0.",
-        "There may be none at all."
+        "Read every line before you choose."
        ],
-       "starter": "# one call per number, added to a running total\n",
-       "tests": [
-        {
-         "in": [
-          "3",
-          "2",
-          "1",
-          "0"
-         ],
-         "out": [
-          "4"
-         ],
-         "why": "3 plus 1 plus 0 is 4. If you got 3, the total is being replaced each time round the loop instead of added to."
-        },
-        {
-         "in": [
-          "1",
-          "5"
-         ],
-         "out": [
-          "3"
-         ],
-         "why": "A 5 is still just 3, because the function returns 3 for anything from 2 upwards."
-        },
-        {
-         "in": [
-          "0"
-         ],
-         "out": [
-          "0"
-         ],
-         "why": "No numbers at all, so the loop never runs and the total is still 0. The program must still print a line. Crashing here means you read a number before checking how many there were."
-        },
-        {
-         "in": [
-          "4",
-          "0",
-          "0",
-          "1",
-          "1"
-         ],
-         "out": [
-          "2"
-         ],
-         "why": "Two zeros and two ones. If this crashed with an input error, your loop is reading more lines than it was told there were."
-        },
-        {
-         "in": [
-          "2",
-          "2",
-          "2"
-         ],
-         "out": [
-          "6"
-         ],
-         "why": "Two numbers of 2 are worth 3 each. If the total came out as 3, the function is being called once outside the loop rather than once per number."
-        }
+       "fb": "The loop gives i the values 0, 1 and 2, so step hands back 10, 11 and 12. Those three add up to 33.",
+       "kind": "predict",
+       "code": [
+        "def step(n):",
+        "    return n + 10",
+        "total = 0",
+        "for i in range(3):",
+        "    total = total + step(i)",
+        "print(total)"
        ],
-       "fb": "Calling a subprogram inside a loop is how one piece of code gets reused on every item. The loop deals with how many times; the function deals with one number at a time.",
-       "hint": "pyfunc",
+       "a": [
+        "33",
+        "30",
+        "3"
+       ],
        "teach": {
-        "say": "What a function returns is an ordinary value, so it can be added up. Called inside a loop, it runs once per turn.",
-        "code": [
-         "def step(n):",
-         "    return n + 10",
-         "print(step(1) + step(2))"
-        ],
-        "out": [
-         "23"
-        ]
+        "say": "A call inside a loop happens once every time round the loop, and what the function hands back can be added to a running total."
        }
       },
       {
        "t": "code",
-       "marks": 6,
-       "q": "Ask the user for two whole numbers, one on each line. Write a function called base that returns the first number times 25. Write a function called whole that calls base. Make whole return what base gave times the second number, plus 10. Write a procedure called report that calls whole. Make report display first [the first number]. Then make report display whole [that value] on the next line.",
+       "marks": 2,
+       "q": "Finish the program so each number typed is worth twice its value in the total.",
        "brief": [
-        "Two lines of output, in that order.",
-        "One space after each word.",
-        "base returns and never prints.",
-        "whole returns and never prints.",
-        "report prints and never returns.",
-        "The 10 is added after the multiplying, not before."
+        "The user types how many numbers there are, then that many whole numbers.",
+        "Replace ____ with a call to points, handing it the number just read.",
+        "Display one number, which is the total.",
+        "A count of 0 means no numbers are read at all."
        ],
-       "starter": "# report calls whole, whole calls base\n",
+       "fb": "The loop decides how many times. The function deals with one number at a time. Neither one needs to know about the other.",
+       "kind": "complete",
+       "starter": "def points(n):\n    return n * 2\ncount = int(input())\ntotal = 0\nfor i in range(count):\n    n = int(input())\n    total = total + ____\nprint(total)\n",
+       "tests": [
+        {
+         "in": [
+          "2",
+          "3",
+          "4"
+         ],
+         "out": [
+          "14"
+         ],
+         "why": "Six and eight make 14. Python stopped at the ____, so put the call there."
+        },
+        {
+         "in": [
+          "1",
+          "0"
+         ],
+         "out": [
+          "0"
+         ],
+         "why": "One number, worth nothing, so the total is 0."
+        },
+        {
+         "in": [
+          "0"
+         ],
+         "out": [
+          "0"
+         ],
+         "why": "No numbers at all, so the loop never runs and the starting total is displayed."
+        },
+        {
+         "in": [
+          "3",
+          "1",
+          "1",
+          "1"
+         ],
+         "out": [
+          "6"
+         ],
+         "why": "Three numbers worth 2 each. A total of 2 means the call is outside the loop."
+        }
+       ],
+       "hint": {
+        "think": "The running total adds something each turn. That something is what the function hands back.",
+        "syntax": "total = total + name(value)",
+        "diagram": "pyfunc"
+       },
+       "teach": {
+        "say": "A call can sit on the right of a + just as a variable can, because what it hands back is an ordinary value.",
+        "code": [
+         "def half(n):",
+         "    return n / 2",
+         "print(10 + half(4))"
+        ],
+        "out": [
+         "12.0"
+        ]
+       },
+       "require": [
+        [
+         "def points(",
+         "Keep the function and call it inside the loop."
+        ]
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 2,
+       "q": "This program should display the number typed, doubled. Find the mistake and put it right.",
+       "brief": [
+        "Press Run first and type 7.",
+        "There is no error message on this one.",
+        "Do not change the function.",
+        "One line of output, holding one number."
+       ],
+       "fb": "A function does whatever the data type allows. Casting on the way in, with int(), is still your job in a program full of subprograms.",
+       "kind": "debug",
+       "starter": "def double(x):\n    return x * 2\nn = input()\nprint(double(n))\n",
+       "tests": [
+        {
+         "in": [
+          "7"
+         ],
+         "out": [
+          "14"
+         ],
+         "why": "The line 77 came out. input() hands back text, and text times 2 is the text written twice."
+        },
+        {
+         "in": [
+          "0"
+         ],
+         "out": [
+          "0"
+         ],
+         "why": "A value of 00 means the text was doubled rather than the number."
+        },
+        {
+         "in": [
+          "12"
+         ],
+         "out": [
+          "24"
+         ],
+         "why": "Cast the typed line with int() before it is handed to the function."
+        }
+       ],
+       "hint": {
+        "think": "Look at what input() hands back, and at what the * sign does to that kind of value.",
+        "syntax": "int(input())",
+        "diagram": "pyinput"
+       },
+       "require": [
+        [
+         "def double(",
+         "Keep the function and fix what is handed to it."
+        ]
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for how many numbers there are. Write a function called points that returns 5 for a number of 10 or more and 1 for anything less. Then ask for that many whole numbers, one on each line. Display the total of everything points hands back.",
+       "brief": [
+        "The user types the count first, then that many whole numbers.",
+        "The numbers are never below 0, and there may be none at all.",
+        "points is called once for each number, inside the loop.",
+        "One line of output, holding the total and nothing else."
+       ],
+       "fb": "One subprogram, used once per item. The loop handles how many there are and the function handles one at a time.",
+       "starter": "# One function, one call per number, one running total\n",
+       "tests": [
+        {
+         "in": [
+          "3",
+          "10",
+          "4",
+          "20"
+         ],
+         "out": [
+          "11"
+         ],
+         "why": "Five, one and five make 11. A total of 5 means the total is being replaced each turn instead of added to."
+        },
+        {
+         "in": [
+          "1",
+          "9"
+         ],
+         "out": [
+          "1"
+         ],
+         "why": "Nine is under 10, so it is worth 1."
+        },
+        {
+         "in": [
+          "0"
+         ],
+         "out": [
+          "0"
+         ],
+         "why": "No numbers at all, so the loop never runs and 0 is displayed. Crashing here means a number was read before the count was checked."
+        },
+        {
+         "in": [
+          "2",
+          "0",
+          "0"
+         ],
+         "out": [
+          "2"
+         ],
+         "why": "Two numbers worth 1 each. Exactly 10 counting as 1 would give a different answer here."
+        },
+        {
+         "in": [
+          "4",
+          "10",
+          "10",
+          "10",
+          "10"
+         ],
+         "out": [
+          "20"
+         ],
+         "why": "Four numbers at 5 each. If this failed, the function may be called once outside the loop."
+        }
+       ],
+       "hint": {
+        "think": "A running total starts at 0 before the loop and grows by one return value each turn.",
+        "syntax": [
+         "def points(x):",
+         "for i in range(count):"
+        ],
+        "start": [
+         "def points(x):",
+         "    # the if and its two answers go here",
+         "count = int(input())",
+         "total = 0"
+        ],
+        "diagram": "pyfunc"
+       },
+       "require": [
+        [
+         "def points(",
+         "This one needs a function called points, written with def."
+        ],
+        [
+         "return ",
+         "A function hands its answer back, so this one needs return."
+        ]
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for two whole numbers, one on each line. Write a function called larger that returns the bigger of the two numbers it is handed. Write a procedure called announce that displays largest [that number]. Call announce with what larger hands back.",
+       "brief": [
+        "The user types in two lines, one whole number on each.",
+        "Either number may be negative, and the two may be equal.",
+        "larger has no print() of its own and announce has no return.",
+        "One line of output, with one space after the word largest."
+       ],
+       "fb": "Deciding and displaying are two jobs, so they get two subprograms. The main program only has to join them together.",
+       "starter": "# larger works it out, announce displays it\n",
+       "tests": [
+        {
+         "in": [
+          "9",
+          "4"
+         ],
+         "out": [
+          "largest 9"
+         ],
+         "why": "The first number is bigger here. Nothing displayed means announce was never called."
+        },
+        {
+         "in": [
+          "4",
+          "9"
+         ],
+         "out": [
+          "largest 9"
+         ],
+         "why": "The same pair the other way round, so a function that always hands back its first parameter fails here."
+        },
+        {
+         "in": [
+          "5",
+          "5"
+         ],
+         "out": [
+          "largest 5"
+         ],
+         "why": "Equal numbers, so that value is the answer. A line reading largest None means one path hands nothing back."
+        },
+        {
+         "in": [
+          "-8",
+          "-20"
+         ],
+         "out": [
+          "largest -8"
+         ],
+         "why": "With negatives the bigger number is the one nearer 0."
+        },
+        {
+         "in": [
+          "0",
+          "0"
+         ],
+         "out": [
+          "largest 0"
+         ],
+         "why": "Two zeros still have an answer and the line is still displayed."
+        }
+       ],
+       "hint": {
+        "think": "The function compares and hands one value back. The procedure turns that value into a line.",
+        "syntax": [
+         "def larger(x, y):",
+         "def announce(v):"
+        ],
+        "walk": [
+         "Read both numbers and cast them.",
+         "Write the function with an if that hands back one of its two parameters.",
+         "Write the procedure that displays the line.",
+         "Call the procedure, handing it what the function gives back."
+        ],
+        "diagram": "pyfunc"
+       },
+       "require": [
+        [
+         "def larger(",
+         "This one needs a function called larger, written with def."
+        ],
+        [
+         "def announce(",
+         "This one needs a procedure called announce, written with def."
+        ],
+        [
+         "return ",
+         "A function hands its answer back, so this one needs return."
+        ]
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for three words, one on each line. Write a function called shorten that returns the first three characters of the word it is handed. Display what shorten hands back for each word, one on each line.",
+       "brief": [
+        "The user types in three lines, one word on each.",
+        "A word shorter than three characters comes back whole.",
+        "shorten displays nothing of its own.",
+        "Three lines of output, in the order the words were typed."
+       ],
+       "fb": "The function knows nothing about how many words there are. Written once, it works on every word the main program hands it.",
+       "starter": "# One function, three words, three lines out\n",
+       "tests": [
+        {
+         "in": [
+          "harbour",
+          "meadow",
+          "copper"
+         ],
+         "out": [
+          "har",
+          "mea",
+          "cop"
+         ],
+         "why": "Three characters from the front of each word. A slice of 0 to 3 gives the first three."
+        },
+        {
+         "in": [
+          "at",
+          "on",
+          "under"
+         ],
+         "out": [
+          "at",
+          "on",
+          "und"
+         ],
+         "why": "A two letter word has no third character, so the slice hands back what there is rather than failing."
+        },
+        {
+         "in": [
+          "abc",
+          "abcd",
+          "a"
+         ],
+         "out": [
+          "abc",
+          "abc",
+          "a"
+         ],
+         "why": "Exactly three characters come back whole, and a single letter comes back on its own."
+        }
+       ],
+       "hint": {
+        "think": "A slice of a word from the front is a value, so it can be handed back like any other.",
+        "syntax": [
+         "def shorten(w):",
+         "    return w[0:...]"
+        ],
+        "start": [
+         "def shorten(w):",
+         "    # hand the slice back here"
+        ],
+        "diagram": "pystring"
+       },
+       "require": [
+        [
+         "def shorten(",
+         "This one needs a function called shorten, written with def."
+        ],
+        [
+         "return ",
+         "A function hands its answer back, so this one needs return."
+        ]
+       ]
+      },
+      {
+       "t": "code",
+       "marks": 3,
+       "q": "Ask the user for two whole numbers, one on each line. Write a function called base that returns the first number times 25. Write a function called whole that calls base and returns what base handed back times the second number. Display the line whole [that value].",
+       "brief": [
+        "The user types in two lines, one whole number on each.",
+        "whole calls base rather than multiplying by 25 itself.",
+        "Neither function displays anything.",
+        "One line of output, with one space after the word whole."
+       ],
+       "fb": "Subprograms call subprograms. Each one only has to do its own small job, which is how a long program is broken into short ones.",
+       "starter": "# whole calls base, and the main program calls whole\n",
        "tests": [
         {
          "in": [
@@ -884,10 +2384,9 @@
           "3"
          ],
          "out": [
-          "first 2",
-          "whole 160"
+          "whole 150"
          ],
-         "why": "2 times 25 is 50, times 3 is 150, plus 10 is 160. Getting 60 means the 10 was added before multiplying by the second number."
+         "why": "Two times 25 is 50, and 50 times 3 is 150. A line reading whole None means one of the functions prints instead of returning."
         },
         {
          "in": [
@@ -895,10 +2394,9 @@
           "1"
          ],
          "out": [
-          "first 1",
-          "whole 35"
+          "whole 25"
          ],
-         "why": "25 for the first number, times 1, plus 10. If the second line said whole None, whole prints instead of returning, so report had nothing to print."
+         "why": "25 for the first number, times one. If this is the only test that passes, an answer may be written into the function."
         },
         {
          "in": [
@@ -906,10 +2404,9 @@
           "4"
          ],
          "out": [
-          "first 0",
-          "whole 10"
+          "whole 0"
          ],
-         "why": "A first number of 0 still leaves the 10. A program that skips the whole calculation when it is 0 prints the wrong thing here."
+         "why": "A first number of 0 gives 0, and the line is still displayed."
         },
         {
          "in": [
@@ -917,14 +2414,41 @@
           "2"
          ],
          "out": [
-          "first 5",
-          "whole 260"
+          "whole 250"
          ],
-         "why": "125 for the first number, times 2, plus 10. If this failed, check whole is calling base rather than repeating the times 25 itself."
+         "why": "125, then doubled. If this failed, check whole is calling base rather than repeating the times 25 itself."
         }
        ],
-       "fb": "Subprograms can call subprograms. report calls whole, whole calls base, and each one only has to know its own job - that is how a big program is broken into small ones.",
-       "hint": "pyfunc"
+       "opt": true,
+       "hint": {
+        "think": "A subprogram may call another subprogram. whole only has to know base's name and what it hands back.",
+        "syntax": [
+         "def base(x):",
+         "def whole(x, y):",
+         "    return base(...) * ..."
+        ],
+        "walk": [
+         "Write base, which multiplies its parameter by 25 and hands it back.",
+         "Write whole with two parameters.",
+         "Inside whole, call base and use what it hands back.",
+         "Display the line from what whole hands back."
+        ],
+        "diagram": "pyfunc"
+       },
+       "require": [
+        [
+         "def base(",
+         "This one needs a function called base, written with def."
+        ],
+        [
+         "def whole(",
+         "This one needs a function called whole, written with def."
+        ],
+        [
+         "return ",
+         "A function hands its answer back, so this one needs return."
+        ]
+       ]
       }
      ]
     },

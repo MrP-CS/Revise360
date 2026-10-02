@@ -79,24 +79,45 @@
 
   /* Python's tracebacks name files the pupil has never seen. The last line is
    * the part that matters, and a few of the common ones get a plain-English
-   * sentence after them. */
+   * sentence after them.
+   *
+   * An error is said in three parts, and they are kept apart on purpose. The
+   * first is Python's own words, which a pupil has to learn to read. The second
+   * is what it probably means - probably, because the message names a symptom
+   * and not always the cause, and telling a pupil the cause confidently and
+   * wrongly sends them hunting in the wrong place. The third is a short list of
+   * things to look at, which is what a teacher leaning over the desk would
+   * actually say. Errors are a normal part of programming and the wording says
+   * so rather than treating one as a failure. */
   const HINTS = [
-    [/^IndentationError/, "Python uses indentation to show what is inside a loop or an if. Check the spaces at the start of your lines."],
-    [/^NameError: name '(.+)'/, "Nothing called $1 exists yet. Check the spelling, and that you gave it a value before using it."],
-    [/^TypeError: can only concatenate str/, "You cannot join text and a number with +. Put the number inside str( )."],
-    [/^TypeError: unsupported operand type\(s\) for [-+*\/]: 'str'/, "input() always gives text. Put it inside int( ) before doing sums with it."],
-    [/^ValueError: invalid literal for int/, "int( ) was given something that is not a whole number."],
-    [/^IndexError/, "You asked for a position that is not in the list. Remember the first item is at 0."],
-    [/^ZeroDivisionError/, "Something divided by zero."],
-    [/^SyntaxError/, "Python could not make sense of that line. Check for a missing colon, bracket or quotation mark."],
-    [/^EOFError/, "The program asked for more input than this test gives it."]
+    [/^IndentationError/, "Python uses the spaces at the start of a line to see what is inside a loop or an if.",
+      ["Is every line inside the block indented by the same amount?", "Did you mix tabs and spaces?", "Does the line after a : go in four spaces?"]],
+    [/^NameError: name '(.+)'/, "Nothing called $1 exists yet.",
+      ["Is $1 spelled the same everywhere?", "Did you give $1 a value before using it?", "If $1 is text, does it need quotation marks around it?"]],
+    [/^TypeError: can only concatenate str/, "You tried to join text and a number with +.",
+      ["Put the number inside str( ) to turn it into text.", "Or print the parts separately, one in each print()."]],
+    [/^TypeError: unsupported operand type\(s\) for [-+*\/]: 'str'/, "You tried to do a sum with text.",
+      ["input() always gives text, even when the user types digits.", "Put it inside int( ) before doing sums with it."]],
+    [/^ValueError: invalid literal for int/, "int( ) was given something that is not a whole number.",
+      ["Does the value have a decimal point in it? float( ) handles those.", "Is there a space or a letter in the value?"]],
+    [/^IndexError/, "You asked for a position that is not there.",
+      ["The first item is at 0, so the last one is at len( ) - 1.", "Is the list as long as you think? print() it and look."]],
+    [/^ZeroDivisionError/, "Something was divided by zero.",
+      ["Could the value you divided by be 0?", "Check the count before dividing by it."]],
+    [/^SyntaxError/, "Python could not make sense of that line.",
+      ["Is a : missing at the end of an if, for, while or def?", "Are the quotation marks in a pair?", "Is a bracket missing or spare?"]],
+    [/^EOFError/, "The program asked for more typed-in values than it was given.",
+      ["Count the input() lines: is one more than the task needs?", "Is an input() inside a loop that runs too many times?"]]
   ];
   function friendly(msg) {
     const lines = String(msg).trim().split("\n");
     const last = lines[lines.length - 1].trim();
-    for (const [re, hint] of HINTS) {
+    for (const [re, means, checks] of HINTS) {
       const m = last.match(re);
-      if (m) return last + "\n" + hint.replace("$1", m[1] || "");
+      if (!m) continue;
+      const fill = s => s.replace(/\$1/g, m[1] || "");
+      return last + "\n\nWhat this probably means\n" + fill(means) +
+        "\n\nCheck these things\n" + checks.map(c => "• " + fill(c)).join("\n");
     }
     return last;
   }
@@ -161,8 +182,13 @@
          * pressing it. The line under the editor says so. */
         e.preventDefault(); e.stopPropagation();
         const row = host.closest(".pystage") || document;
-        const next = row.querySelector("#pyrun") || row.querySelector("button");
-        if (next) next.focus();
+        /* The first button that can actually take focus. Run is disabled while
+         * the Python runtime is still downloading, and focusing a disabled
+         * button does nothing at all - which left a keyboard user shut in the
+         * editor for exactly as long as the wait lasted. */
+        const live = [...row.querySelectorAll("button"), ...document.querySelectorAll("#box .head button")]
+          .find(x => !x.disabled);
+        if (live) live.focus();
         return;
       }
       if (e.key === "Tab") {

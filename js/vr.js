@@ -69,7 +69,10 @@
         const scale = s.scale || 1;
         if (s.title) { ops.push({ k: "title", y: 0, h: 84 * scale }); y = 84 * scale + 24; } else y = P;
         const addText = (b) => {
-          const size = (b.size || 32) * scale, font = `${b.bold ? "700 " : ""}${size}px ${FONT}`;
+          // A program is read, not prose: it needs a fixed-width font or the
+          // indentation that gives Python its meaning lines up with nothing.
+          const size = (b.size || 32) * scale;
+          const font = `${b.bold ? "700 " : ""}${size}px ${b.mono ? "Consolas, monospace" : FONT}`;
           const lines = this.wrap(b.p, font, IW); const lh = size * 1.3;
           ops.push({ k: "text", y, lines, font, lh, color: b.color || COL.fg, align: b.align, size });
           y += lines.length * lh + 10;
@@ -508,7 +511,9 @@
         ] },
         { row: [
           { btn: v.busy ? "\u2026" : "\u25b6 Run", id: "crun", center: true, size: 26, onClick: runCodeVR },
-          { btn: v.busy ? "\u2026" : "Check my answer", id: "ccheck", center: true, size: 26, onClick: checkCodeVR },
+          // A Try it has nothing to mark: running it is the activity.
+          ...(v.task.kind === "try" ? [] :
+            [{ btn: v.busy ? "\u2026" : "Check my answer", id: "ccheck", center: true, size: 26, onClick: checkCodeVR }]),
           ...(v.task.hint ? [{ btn: "Hint", id: "chint", center: true, size: 26, onClick: hintCodeVR }] : []),
           { btn: "Close", id: "cclose", center: true, size: 26, onClick: closeCodeVR }
         ] }] });
@@ -517,12 +522,19 @@
     async function runCodeVR() {
       const v = vrCode; if (!v || v.busy) return;
       v.busy = true; v.state = "Running\u2026"; showKeyboard(); paintCode();
-      const first = (v.task.tests || [])[0] || {};
+      const first = (v.task.tests || [])[0] || { in: v.task.in || [] };
       const r = await R360Py.run(v.text, { stdin: (first.in || []).slice(), files: first.files || {}, echo: true, timeoutMs: 6000 });
       if (!vrCode) return;
       v.err = !!r.error;
       v.out = (r.stdout || "") + (r.error ? "\n" + r.error : "");
-      if (!v.out.trim()) v.out = "Your program ran but printed nothing.";
+      if (!v.out.trim()) v.out = "Your program ran but displayed nothing.";
+      // On a Try it the run is the activity, so a clean one finishes it.
+      if (v.task.kind === "try" && !r.error && !v.best) {
+        v.best = core.marks(v.task);
+        core.awardBest(v.k, v.list[v.n], v.best);
+        v.resultOk = true;
+        v.result = "✓ Nice work. " + (v.task.fb || "");
+      }
       v.busy = false; v.state = ""; showKeyboard(); paintCode(); paintCode();
     }
 
@@ -530,10 +542,32 @@
      * way any diagram opens in here. The code panel stays where it is behind
      * it, so closing the diagram puts the pupil back in front of their
      * program with every character still there. */
+    /* The hint is a ladder on screen, and it is one in here too: each press of
+     * the Hint key gives the next rung, said in the console line where there is
+     * room to read it, and the animated diagram - where the question has one -
+     * is the last rung, opened the way any diagram opens in here. The code panel
+     * stays behind it, so closing the diagram puts the pupil back in front of
+     * their program with every character still there. */
     function hintCodeVR() {
-      const v = vrCode; if (!v || !v.task.hint || !window.R360Diagrams) return;
-      if (!R360Diagrams.kinds.includes(v.task.hint)) return;
-      openDiagramVR({ id: "hint:" + v.task.hint, dg: { diagram: v.task.hint, title: "Hint: how this technique works" } });
+      const v = vrCode; if (!v || !v.task.hint) return;
+      const h = typeof v.task.hint === "string" ? { diagram: v.task.hint } : v.task.hint;
+      const flat = x => (Array.isArray(x) ? x.join("  ") : x);
+      const rungs = [];
+      if (h.think) rungs.push("Think: " + h.think);
+      if (h.syntax) rungs.push("The Python you need: " + flat(h.syntax));
+      if (h.start) rungs.push("How it starts: " + flat(h.start));
+      if (h.walk) rungs.push("Work it through: " + flat(h.walk));
+      const dia = h.diagram && window.R360Diagrams && R360Diagrams.kinds.includes(h.diagram) ? h.diagram : null;
+      v.hintStep = v.hintStep || 0;
+      if (v.hintStep < rungs.length) {
+        v.resultOk = false;
+        v.result = "Hint " + (v.hintStep + 1) + " of " + (rungs.length + (dia ? 1 : 0)) + ".  " + rungs[v.hintStep];
+        v.hintStep++;
+        showKeyboard(); paintCode();
+        return;
+      }
+      if (!dia) return;
+      openDiagramVR({ id: "hint:" + dia, dg: { diagram: dia, title: "Hint: how this technique works" } });
     }
 
     async function checkCodeVR() {
@@ -541,6 +575,9 @@
       const tests = v.task.tests || []; if (!tests.length) return;
       const broke = (v.task.forbid || []).find(f => v.text.indexOf(f[0]) >= 0);
       if (broke) { v.result = broke[1]; v.resultOk = false; showKeyboard(); paintCode(); return; }
+      // The other half of that rule - see the same check in js/player.js.
+      const absent = (v.task.require || []).find(f => v.text.indexOf(f[0]) < 0);
+      if (absent) { v.result = absent[1]; v.resultOk = false; showKeyboard(); paintCode(); return; }
       v.busy = true; v.state = "Marking\u2026"; showKeyboard(); paintCode();
       let passed = 0, firstFail = null;
       for (const t of tests) {
@@ -561,7 +598,7 @@
       v.resultOk = passed === tests.length;
       v.result = passed + " of " + tests.length + " tests passed - best so far " + v.best + " of " + max + " marks."
         + (firstFail ? "  " + firstFail : "")
-        + (!v.resultOk && v.attempts >= 2 && v.task.hint ? "  Press Hint: it explains the technique this one needs." : "");
+        + (!v.resultOk && v.attempts >= 2 && v.task.hint ? "  Press Hint: it gives you one step at a time." : "");
       showKeyboard(); paintCode();
     }
 
@@ -609,6 +646,24 @@
           { p: "Point at the board and pull the trigger to choose. Spend your budget, then face each threat.", size: 26 },
           { p: "Personal best: " + rec.best, size: 30, bold: true, color: COL.edge }] });
         atAnchor(qPanel.mesh, 1.55, -24);         // directly below the board
+        return;
+      }
+      /* A Predict activity has no editor and nothing to type, so in here it is
+       * the question panel with the program above the options - the same thing
+       * the screen shows, built out of the panel blocks the headset already
+       * has rather than the typing keyboard, which would be useless for it. */
+      if (task.t === "code" && task.kind === "predict") {
+        const opts = core.shuffle(task.a.slice()), right = task.a[0]; let chosen = null;
+        const prog = [{ p: "The program", size: 24, color: COL.edge },
+                      { p: task.code.join("\n"), size: 26, mono: true },
+                      ...((task.in || []).length ? [{ p: "You type: " + task.in.join(", "), size: 24, color: COL.edge }] : []),
+                      { p: "Choose what it displays", size: 24, color: COL.edge }];
+        const body = () => [...prog, ...opts.map((o, x) => ({ btn: o, id: "p" + x, disabled: done,
+          state: done ? (o === right ? "right" : x === chosen ? "wrong" : "") : "", onClick: () => {
+            chosen = x; done = true; const ok = o === right; core.award(k, i, ok ? core.marks(task) : 0);
+            setFb(ok, ok ? "That is what it displays." : "It displays this instead: " + right,
+                  task.fb || ""); show(body); } }))];
+        show(body);
         return;
       }
       if (task.t === "code") { closeAll(); openCodeVR(k, list, n, task); return; }
@@ -864,7 +919,9 @@
     });
     core.sceneHooks.push(() => { if (core.inVR) { closeAll(); closeModelVR(); } });
     window.__openVRCode = (k, i) => openCodeVR(k, [i], 0, core.exp.scenes[core.cur].stations[k].tasks[i]);
-    window.NVRVR = { get vrBoard() { return vrBoard; }, modelPanel, get vrModel() { return vrModel; }, openModelVR: n => { const sp = core.sprites.filter(x => x.userData.type === "model")[n]; if (sp) openModelVR(sp.userData); }, openDiagramVR: n => { const sp = core.sprites.filter(x => x.userData.type === "diagram")[n]; if (sp) openDiagramVR(sp.userData); }, diagPanel, get vrDiag() { return vrDiag; }, kbPanel, get vrCode() { return vrCode; }, typeKey, runCodeVR, checkCodeVR, openCodeVR, atAnchor, setAnchor, clearAnchor, get anchor() { return anchor; }, qPanel, infoPanel, menuPanel, menuBtn, toastPanel, enter, exitVR };  // for testing
+    // One activity of any kind, opened the way a station would open it.
+    window.__openVRTask = (k, i) => run(k, [i], 0);
+    window.NVRVR = { get vrBoard() { return vrBoard; }, modelPanel, get vrModel() { return vrModel; }, openModelVR: n => { const sp = core.sprites.filter(x => x.userData.type === "model")[n]; if (sp) openModelVR(sp.userData); }, openDiagramVR: n => { const sp = core.sprites.filter(x => x.userData.type === "diagram")[n]; if (sp) openDiagramVR(sp.userData); }, diagPanel, get vrDiag() { return vrDiag; }, kbPanel, get vrCode() { return vrCode; }, typeKey, runCodeVR, checkCodeVR, openCodeVR, atAnchor, setAnchor, clearAnchor, get anchor() { return anchor; }, qPanel, infoPanel, menuPanel, menuBtn, toastPanel, enter, exitVR, closeAll, closeCodeVR };  // for testing
   }
   if (window.NVRCore) start(window.NVRCore);
   else document.addEventListener("nvr-ready", () => start(window.NVRCore), { once: true });

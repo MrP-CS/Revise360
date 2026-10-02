@@ -171,8 +171,12 @@
       sc.stations.forEach((st, k) => {
         let got = 0, tot = 0, answered = 0, fixed = 0, wrongTasks = 0;
         st.tasks.forEach((t, i) => {
-          const m = marks(t); tot += m;
+          const m = marks(t);
           const a = (sp.ans || {})[k + "-" + i];
+          /* A challenge and the two warm-up kinds count only once attempted -
+           * the same rule as SKIPPABLE in js/player.js, which explains why. */
+          if ((t.opt || t.kind === "try" || t.kind === "predict") && a === undefined) return;
+          tot += m;
           if (a !== undefined) { got += a; answered++; if (a < m) { wrongTasks++; if (prog.review && prog.review[sc.id + ":" + k + "-" + i]) fixed++; } }
         });
         const done = !!sp.done[k];

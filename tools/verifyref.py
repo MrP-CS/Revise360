@@ -149,7 +149,16 @@ def marker_norm(s):
 
 
 def answers_question(eg, q):
-    """True when this example, run as a program, passes every test of q."""
+    """True when this example, run as a program, passes every test of q.
+
+    An activity with no tests cannot be answered by anything, because there is
+    nothing to pass: a Try it is finished by running the program it gives you
+    and a Predict by choosing from a list. Without this they would all count as
+    answered by every example, which is how this check first read the course
+    after the two new kinds arrived - 18,733 false alarms and nothing real.
+    """
+    if not (q.get("tests") or []):
+        return False
     code = ("import builtins as _b\n_real = _b.input\n"
             "_b.input = lambda prompt='': _real()\n") + "\n".join(eg)
     for t in q.get("tests") or []:
@@ -228,6 +237,7 @@ def main():
 
     qs = questions()
     solves = []
+    allowed = []
     pairs = 0
     for g in data:
         for it in g["items"]:
@@ -235,12 +245,33 @@ def main():
                 continue
             for q in qs:
                 pairs += 1
-                if answers_question(it["eg"], q):
-                    solves.append((g["name"], it["syntax"], q["id"]))
+                if not answers_question(it["eg"], q):
+                    continue
+                # Two coincidences are not the reference giving the game away.
+                #
+                # A question marked "fixed" with one test has a single constant
+                # as its correct output - "display True", "display 12" - and
+                # printing that constant IS the right answer, which is exactly
+                # why the question is marked fixed in the first place. Any
+                # example that happens to print the same word matches it.
+                #
+                # And a question with "require" cannot be answered by an example
+                # at all, because the browser refuses a program that does not
+                # contain the technique before it runs a single test. Running
+                # the code here cannot see that rule; the pupil always meets it.
+                one_fixed = q.get("fixed") and len(q.get("tests") or []) == 1
+                guarded = bool(q.get("require"))
+                (allowed if (one_fixed or guarded) else solves).append(
+                    (g["name"], it["syntax"], q["id"], "one fixed output" if one_fixed else "require"))
     print("\nExample against question: %d pairs run   examples that answer a question: %d"
           % (pairs, len(solves)))
-    for name, syntax, qid in solves:
+    for name, syntax, qid, _ in solves:
         print("  %s / %s passes every test of %s" % (name, syntax, qid))
+    if allowed:
+        print("  (%d coincidences allowed: %d where the question's whole answer is one fixed "
+              "output, %d where the question requires a technique the example lacks)"
+              % (len(allowed), sum(1 for a in allowed if a[3] == "one fixed output"),
+                 sum(1 for a in allowed if a[3] == "require")))
 
     return 1 if failed or clashes or solves else 0
 

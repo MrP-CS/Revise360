@@ -122,10 +122,27 @@
   const world = p => new THREE.Vector3(-p[2], p[1], -p[0]).normalize().multiplyScalar(38);
   function lookAtVec(v) { const n = v.clone().normalize(); lat = THREE.MathUtils.radToDeg(Math.asin(n.y)); lon = THREE.MathUtils.radToDeg(Math.atan2(-n.z, -n.x)); }
 
+  /* Which activities a pupil may leave out without it counting against them.
+   *
+   * An optional challenge, obviously. But also the warm-ups: a Try it is a
+   * program to run and watch and a Predict is a question about somebody else's
+   * code, and neither is an assessment of what this pupil can write. A beginner
+   * who works through all of them gains their marks; a confident one who goes
+   * straight to writing the program is not marked down for skipping a button
+   * press. Anything the pupil actually attempts counts either way. */
+  const SKIPPABLE = t => !!(t.opt || t.kind === "try" || t.kind === "predict");
   function stationState(sc, k) {
     const st = sc.stations[k], sp = prog.scenes[sc.id];
     let got = 0, tot = 0, open = 0;
-    st.tasks.forEach((tk, i) => { const m = marks(tk); tot += m; const a = (sp.ans || {})[k + "-" + i]; if (a !== undefined) { got += a; if (a < m && !prog.review[sc.id + ":" + k + "-" + i]) open++; } });
+    /* An optional challenge counts only once it has been attempted. A pupil who
+     * finished the core of a station and left the stretch task alone has not got
+     * something wrong, and their mark should not say they have. */
+    st.tasks.forEach((tk, i) => {
+      const m = marks(tk), a = (sp.ans || {})[k + "-" + i];
+      if (SKIPPABLE(tk) && a === undefined) return;
+      tot += m;
+      if (a !== undefined) { got += a; if (a < m && !prog.review[sc.id + ":" + k + "-" + i]) open++; }
+    });
     return { done: !!sp.done[k], got, tot, band: Store.band(got, tot), open };
   }
   function badgeTex(label, col, mode) {
@@ -404,9 +421,28 @@
     const sc = exp.scenes[cur];
     return (prog.scenes[sc.id].ans || {})[k + "-" + i] !== undefined;
   }
+  /* What kind of activity this is, and what the pupil is told it is.
+   *
+   * The course releases a technique in stages - watch it work, say what it will
+   * print, change one thing, fill a gap, fix a broken one, write it - and the
+   * pupil is shown which stage they are on, because a task that says "Try it"
+   * is read differently from one that says "Build it". The labels are
+   * deliberately about the action, never about how able the pupil is: there is
+   * no easy, medium or hard anywhere in this course. */
+  const KINDS = {
+    try:      { label: "Try it",      says: "Run this program and watch what it does. Nothing is marked." },
+    predict:  { label: "Predict",     says: "Read the program and say what it will display. Then you will see." },
+    change:   { label: "Change it",   says: "The program already works. Change the one thing asked for." },
+    complete: { label: "Complete it", says: "Part of the program is missing. Fill in the gap." },
+    debug:    { label: "Fix it",      says: "This program is broken. Find the mistake and put it right." },
+    build:    { label: "Build it",    says: "Write the program yourself." }
+  };
+  const kindOf = t => KINDS[t.kind] ? t.kind : "build";
+  const stageOf = t => t.opt ? "Challenge" : KINDS[kindOf(t)].label;
   // Things to stop when the code window closes - speech, so far.
   const onCloseCode = [];
   function runCode(k, list, n, task, head, qn) {
+    if (kindOf(task) === "predict") return runPredict(k, list, n, task, head);
     while (onCloseCode.length) { try { onCloseCode.pop()(); } catch (e) { /* already gone */ } }
     const brief = (task.brief || []).map(b => `<li>${esc(b)}</li>`).join("");
     /* A worked example of the technique, with different data from the task, so
@@ -415,9 +451,19 @@
      * a beginner needs the example, and someone on lesson 11 needs the thinking
      * more than they need another worked case. */
     const t = task.teach;
-    const teach = !t ? "" : `<div class="pyteach"><p>${esc(t.say)}</p>` +
+    /* Line by line, for anyone who needs it. A beginner reading a three-line
+     * example often cannot say which line does which job, and a paragraph about
+     * it beside every program would bury the program. So it is folded away:
+     * shut by default, one press to open, and the lines are numbered to match
+     * the example above it. */
+    const lines = !t || !t.code || !task.lines ? "" : `<details class="pylines">
+        <summary>What each line does</summary>
+        <ol>${t.code.map((c, i) => task.lines[i]
+          ? `<li value="${i + 1}"><code>${esc(c.trim())}</code><span>${esc(task.lines[i])}</span></li>` : "").join("")}</ol>
+      </details>`;
+    const teach = !t ? "" : `<div class="pyteach"><h4>Learn</h4><p>${esc(t.say)}</p>` +
       (t.code ? `<pre class="pyeg">${t.code.map(esc).join("\n")}</pre>` : "") +
-      (t.out ? `<p class="pyegout"><span>shows</span>${t.out.map(esc).join("<br>")}</p>` : "") + "</div>";
+      (t.out ? `<p class="pyegout"><span>shows</span>${t.out.map(esc).join("<br>")}</p>` : "") + lines + "</div>";
 
     /* What the program is given and what it must print, shown as one real run.
      * It is built from the first test rather than written by hand, so it is on
@@ -431,8 +477,8 @@
     const runEg = !shows.length ? "" : `<div class="pyrun">
       <p class="pyrunh">One run of your program</p>
       ${files.length ? `<div class="pyrunrow"><span>file</span><code>${files.map(esc).join(", ")}</code></div>` : ""}
-      <div class="pyrunrow"><span>typed in</span><code>${given.length ? given.map(esc).join("\n") : "nothing"}</code></div>
-      <div class="pyrunrow out"><span>prints</span><code>${shows.map(esc).join("\n")}</code></div>
+      <div class="pyrunrow in"><span>You type</span><code>${given.length ? given.map(esc).join("\n") : "nothing"}</code></div>
+      <div class="pyrunrow out"><span>It displays</span><code>${shows.map(esc).join("\n")}</code></div>
     </div>`;
     /* The task as steps rather than a paragraph. The house wording is already
      * one sentence per step - ask, work out, display - so the sentences are the
@@ -444,13 +490,35 @@
 
     /* Where the pupil is in this station, the way a lesson site shows it: one
      * bubble per question, the one they are on filled in. */
-    const dots = list.length < 2 ? "" : `<ol class="pydots" aria-label="Question ${n + 1} of ${list.length}">` +
+    const dots = list.length < 2 ? "" : `<ol class="pydots" aria-label="Activity ${n + 1} of ${list.length}">` +
       list.map((qi, j) => {
         const done = isDone(k, qi);
         return `<li class="${j === n ? "now" : ""}${done ? " done" : ""}" aria-current="${j === n ? "step" : "false"}">` +
                `<span>${j + 1}</span></li>`;
       }).join("") + "</ol>";
 
+    /* Which stage of the release this is, and where the pupil is up to. Said in
+     * words as well as in bubbles, because a row of circles does not tell a
+     * pupil that this one is only to be run and nothing is being judged. */
+    const kind = kindOf(task);
+    const stage = `<div class="pystage-head">
+        <span class="pychip ${task.opt ? "opt" : kind}">${esc(stageOf(task))}</span>
+        <span class="pywhere">Activity ${n + 1} of ${list.length}</span>
+        <span class="pysays">${esc(task.opt ? "Optional. Finish the station without it if you would rather." : KINDS[kind].says)}</span>
+      </div>`;
+    /* A "Try it" activity has nothing to mark: the point of it is to run a
+     * working program and watch what happens, which is the opposite of being
+     * judged. So there is no Check button on it at all, and pressing Run is
+     * what completes it. */
+    const noCheck = kind === "try";
+    /* A way past the warm-ups, for the pupil who does not need them. It is
+     * offered only while they are on one, and only when there is something
+     * later in the station to write: a Year 10 who already knows how a loop
+     * works should not have to press Run four times to reach one. What they
+     * skip is not counted against them - see SKIPPABLE. */
+    const sc0 = exp.scenes[cur], tasks0 = sc0.stations[k].tasks;
+    const ahead = (kind === "try" || kind === "predict")
+      ? list.findIndex((qi, j) => j > n && !SKIPPABLE(tasks0[qi])) : -1;
     /* Left half: everything to read, in one box each, with the marking below it
      * where there is room for it. Right half: the editor, its own Run bar, the
      * output, and the two buttons that end the attempt. Half and half, so a
@@ -459,6 +527,7 @@
     shell(head, "#50dc96", `<div class="vwrap codewrap">
         <div class="pyside">
          <div class="pyscroll">
+          ${stage}
           ${dots}
           <section class="pytask" aria-labelledby="pytaskh">
             <div class="pytaskhead">
@@ -482,15 +551,18 @@
           <!-- The bar an editor has: Run sits between the program and the output
                it produces, which is where every editor puts it. -->
           <div class="pyidebar">
-            <button class="btn ghost" id="pyrun" aria-keyshortcuts="Control+Enter">▶ Run</button>
-            ${window.R360Ref ? '<button class="btn ghost" id="pyref">Syntax reminder</button>' : ""}
+            <button class="btn" id="pyrun" aria-keyshortcuts="Control+Enter">▶ Run</button>
+            ${window.R360Ref ? '<button class="btn ghost small" id="pyref">Syntax reminder</button>' : ""}
             <span class="pystate" id="pystate" aria-live="polite"></span>
             <span class="pykeys">Tab indents · Esc leaves the editor · Ctrl+Enter runs</span>
           </div>
-          <pre class="pyout" id="pyout" aria-label="What your program printed"><span class="muted">Press Run and anything your program prints appears here.</span></pre>
+          <h4 class="pyouth" id="pyouth">Program output</h4>
+          <pre class="pyout" id="pyout" aria-labelledby="pyouth"><span class="muted">Press Run and anything your program displays appears here.</span></pre>
           <div class="pyact">
             ${task.hint ? '<button class="btn ghost" id="pyhint">Hint</button>' : ""}
-            <button class="btn" id="pycheck" aria-keyshortcuts="Control+Shift+Enter">Check my answer</button>
+            ${noCheck ? "" : '<button class="btn" id="pycheck" aria-keyshortcuts="Control+Shift+Enter">Check my answer</button>'}
+            ${task.opt ? '<button class="btn ghost" id="pyskip">Skip the challenge</button>' : ""}
+            ${ahead >= 0 ? '<button class="btn ghost" id="pyahead">Skip the warm-up</button>' : ""}
             <span class="mrow" id="mrow"></span>
           </div>
         </div>
@@ -531,15 +603,18 @@
     let attempts = 0, best = 0;
 
     const say = (html, bad) => { out.innerHTML = bad ? `<span class="err">${html}</span>` : html; };
+    /* The runtime takes seconds to arrive, and a pupil can close the window or
+     * move to the next activity inside that time - at which point these buttons
+     * no longer exist. Every one is checked, because an exception thrown from
+     * the ready() callback stops whatever was meant to run after it. */
     const busy = (on, msg) => {
-      $("#pyrun").disabled = on; $("#pycheck").disabled = on;
-      if ($("#pyhint")) $("#pyhint").disabled = on;
-      state.textContent = msg || "";
+      ["#pyrun", "#pycheck", "#pyhint", "#pyskip"].forEach(s => { const el = $(s); if (el) el.disabled = on; });
+      if (state && state.isConnected) state.textContent = msg || "";
     };
     // The runtime is a few megabytes, so it is fetched when a code question is
     // opened rather than on every page, and the wait is said out loud.
     busy(true, "Starting Python\u2026");
-    R360Py.ready().then(() => busy(false, ""));
+    R360Py.ready().then(() => { if (out.isConnected) busy(false, ""); });
 
     if ($("#pyhint")) $("#pyhint").onclick = () => openHint(task);
     if ($("#pyref")) $("#pyref").onclick = () => openRef();
@@ -555,20 +630,53 @@
 
     $("#pyrun").onclick = async () => {
       busy(true, "Running\u2026"); say('<span class="muted">Running\u2026</span>');
-      const first = tests[0] || {};
+      const first = tests[0] || { in: task.in || [] };
       const r = await R360Py.run(ed.get(), { stdin: (first.in || []).slice(), files: first.files || {}, echo: true, timeoutMs: 6000 });
       busy(false, "");
       if (r.error) say(esc(r.stdout) + (r.stdout ? "\n" : "") + esc(r.error), true);
-      else say(r.stdout ? esc(r.stdout) : '<span class="muted">Your program ran but printed nothing.</span>');
+      else say(r.stdout ? esc(r.stdout) : '<span class="muted">Your program ran but displayed nothing.</span>');
+      /* On a "Try it" the run is the activity. It counts the moment the program
+       * runs without an error, and it is said in words rather than scored, so a
+       * pupil pressing Run out of curiosity is never told they were wrong. */
+      if (noCheck && !r.error && !$("#mrow").children.length) {
+        awardBest(k, i2(k, list, n), marks(task));
+        succeed(task.fb || "You ran a Python program and saw what it displayed.");
+        nextBtn(k, list, n);
+      }
     };
+    if ($("#pyahead")) $("#pyahead").onclick = () => run(k, list, ahead);
+    if ($("#pyskip")) $("#pyskip").onclick = () => {
+      $("#pytry").textContent = "Challenge skipped. It stays here if you want to come back to it in review mode.";
+      $("#pyskip").remove(); if ($("#pycheck")) $("#pycheck").remove();
+      nextBtn(k, list, n);
+    };
+    /* What a finished activity looks like: a plain tick, one sentence naming the
+     * technique they just used, and the way on. No noise, no confetti - the
+     * pupils reading this include Year 11. */
+    function succeed(text) {
+      const fb = $("#fb");
+      fb.className = "fb show ok done";
+      fb.innerHTML = `<strong>\u2713 Nice work.</strong>${esc(text)}`;
+      $("#pytry").textContent = "";
+    }
 
-    $("#pycheck").onclick = async () => {
+    if ($("#pycheck")) $("#pycheck").onclick = async () => {
       if (!tests.length) return;
       /* Running the code cannot see "write the sort yourself" - sorted() looks
        * the same from the outside - so that one kind of rule is checked here. */
       const broke = (task.forbid || []).find(f => ed.get().indexOf(f[0]) >= 0);
       if (broke) {
         feedback(false, "Not allowed here.", broke[1]);
+        return;
+      }
+      /* The other half of that rule. Some activities cannot be judged by their
+       * output at all - a program told to pick a random number between 4 and 4
+       * looks exactly like one that prints 4 - so the technique itself has to be
+       * required. Used only where running the code genuinely cannot tell, never
+       * for style. */
+      const absent = (task.require || []).find(f => ed.get().indexOf(f[0]) < 0);
+      if (absent) {
+        feedback(false, "Not quite.", absent[1]);
         return;
       }
       busy(true, "Marking\u2026");
@@ -607,9 +715,9 @@
       if (!all && attempts >= 2 && $("#pyhint")) $("#pyhint").classList.add("nudge");
 
       const row = $("#mrow"); row.innerHTML = "";
-      feedback(all, all ? null : `${passed} of ${tests.length} tests passed - best so far ${best} of ${max} marks.`,
-        all ? `All ${tests.length} tests passed. ${task.fb || ""}`
-            : (task.fb || "Look at the first test that failed and work out what your program printed instead."));
+      if (all) succeed(`${task.fb || ""} All ${tests.length} tests passed.`);
+      else feedback(false, `${passed} of ${tests.length} tests passed - best so far ${best} of ${max} marks.`,
+        task.fb || "Look at the first test that failed and work out what your program displayed instead.");
       if (!all && attempts >= 3 && task.hint) {
         const h = document.createElement("button");
         h.className = "btn ghost"; h.textContent = "Show me the hint";
@@ -723,23 +831,63 @@
     $("#hintclose").onclick = closeHint;
     $("#hintclose").focus();
   }
+  /* A hint is a ladder, not a door. The first rung names the idea, the second
+   * shows the shape of the Python, the third shows how it starts, and the last
+   * one animates the technique. Each rung is asked for, so a pupil who only
+   * needed reminding which word it was never sees the rest - and nobody is
+   * handed the finished program, because the top of the ladder is still only
+   * the technique on different data. */
   function openHint(task) {
-    if (!task.hint || !window.R360Diagrams || hintOpen()) return;
-    if (!R360Diagrams.kinds.includes(task.hint)) return;
-    const pane = document.createElement("div");
-    pane.id = "pyhintpane"; pane.className = "hintpane";
-    pane.innerHTML = `<div class="hinthead"><b>Hint</b><span>How this technique works — not the answer to this question.</span>
-        <button class="btn ghost" id="hintclose">Close hint</button></div>
-      <div class="vwrap">
+    if (!task.hint || hintOpen()) return;
+    const h = typeof task.hint === "string" ? { diagram: task.hint } : task.hint;
+    const code = v => `<pre class="pyeg">${(Array.isArray(v) ? v : [v]).map(esc).join("\n")}</pre>`;
+    const dia = h.diagram && window.R360Diagrams && R360Diagrams.kinds.includes(h.diagram) ? h.diagram : null;
+    const rungs = [];
+    if (h.think) rungs.push({ name: "Think", body: `<p class="hsay">${esc(h.think)}</p>` });
+    if (h.syntax) rungs.push({ name: "The Python you need", body: code(h.syntax) });
+    if (h.start) rungs.push({ name: "How it starts", body: code(h.start) });
+    if (h.walk) rungs.push({ name: "Work it through", body: `<ol class="hwalk">${(Array.isArray(h.walk) ? h.walk : [h.walk]).map(s => `<li>${esc(s)}</li>`).join("")}</ol>` });
+    if (dia) rungs.push({ name: "Watch the technique", diagram: dia, body: `<div class="hintdiag vwrap">
         <div class="vstage" id="hint2d"></div>
         <div class="vside">
           <div class="vnow"><b id="hstep"></b><span id="hcap"></span></div>
           <div class="vrow"><button class="btn ghost" id="hprev">‹ Back</button><button class="btn" id="hplay">Pause</button><button class="btn ghost" id="hnext">Next ›</button></div>
         </div>
-      </div>`;
+      </div>` });
+    if (!rungs.length) return;
+    const pane = document.createElement("div");
+    pane.id = "pyhintpane"; pane.className = "hintpane";
+    pane.innerHTML = `<div class="hinthead"><b>Hint</b><span id="hwhere"></span>
+        <button class="btn ghost" id="hintclose">Close hint</button></div>
+      <div class="hintladder" id="hladder"></div>
+      <div class="hintfoot"><button class="btn" id="hmore">Show me more</button>
+        <span class="pysays">Your program is still behind this panel, exactly as you left it.</span></div>`;
     box.appendChild(pane);
+    const ladder = $("#hladder"), more = $("#hmore"), where = $("#hwhere");
+    let shown = 0;
+    const reveal = () => {
+      const r = rungs[shown];
+      const sec = document.createElement("section");
+      sec.className = "hrung";
+      sec.innerHTML = `<h4>Step ${shown + 1} of ${rungs.length} — ${esc(r.name)}</h4>${r.body}`;
+      ladder.appendChild(sec);
+      shown++;
+      where.textContent = rungs.length > 1
+        ? `Step ${shown} of ${rungs.length}. Each step tells you a little more. None of them is the answer.`
+        : "How this technique works — not the answer to this question.";
+      if (r.diagram) mountHintDiagram(r.diagram);
+      if (shown >= rungs.length) more.remove();
+      else more.textContent = `Show me more (${rungs.length - shown} left)`;
+      sec.scrollIntoView({ block: "nearest" });
+    };
+    more.onclick = reveal;
+    reveal();
+    $("#hintclose").onclick = closeHint;
+    $("#hintclose").focus();
+  }
+  function mountHintDiagram(kind) {
     let nSteps = 0;
-    hintView = R360Diagrams.viewer($("#hint2d"), task.hint, (i, st, playing) => {
+    hintView = R360Diagrams.viewer($("#hint2d"), kind, (i, st, playing) => {
       $("#hstep").textContent = st.name;
       $("#hcap").textContent = st.caption;
       $("#hplay").textContent = playing ? "Pause" : "Replay";
@@ -750,9 +898,50 @@
     $("#hplay").onclick = () => hintView.toggle();
     $("#hprev").onclick = () => hintView.prev();
     $("#hnext").onclick = () => hintView.next();
-    $("#hintclose").onclick = closeHint;
     hintView.announce();
-    $("#hintclose").focus();
+  }
+  /* "What will this program display?" A pupil who can read a program can write
+   * one, and the reverse is not true, so the course asks them to read before it
+   * asks them to write. There is no editor on this one: the program is fixed,
+   * the answer is chosen, and the moment it is answered the pupil is shown what
+   * Python really did with it. */
+  function runPredict(k, list, n, task, head) {
+    const right = task.a[0];
+    // The same way past the warm-ups the code window offers - see runCode.
+    const tasks0 = exp.scenes[cur].stations[k].tasks;
+    const ahead = list.findIndex((qi, j) => j > n && !SKIPPABLE(tasks0[qi]));
+    const where = `<div class="pystage-head"><span class="pychip predict">Predict</span>
+        <span class="pywhere">Activity ${n + 1} of ${list.length}</span>
+        <span class="pysays">${esc(KINDS.predict.says)}</span></div>`;
+    const typed = (task.in || []).length
+      ? `<div class="pyrunrow in"><span>You type</span><code>${task.in.map(esc).join("\n")}</code></div>` : "";
+    const t = task.teach;
+    const learn = !t ? "" : `<div class="pyteach"><h4>Learn</h4><p>${esc(t.say)}</p></div>`;
+    shell(head, "#50dc96", `${where}
+      ${learn}
+      <p class="q">${esc(task.q)}</p>
+      <p class="pyrunh">The program</p>
+      <pre class="pyeg big">${task.code.map(esc).join("\n")}</pre>
+      ${typed ? `<div class="pyrun">${typed}</div>` : ""}
+      <p class="pyrunh">Choose what it displays</p>
+      <div class="opts">${shuffle(task.a.slice()).map(a => `<button class="opt mono">${esc(a)}</button>`).join("")}</div>
+      <div class="fb" id="fb" aria-live="polite"></div>
+      <div class="mrow" id="mrow">${ahead >= 0 ? '<button class="btn ghost" id="pyahead">Skip the warm-up</button>' : ""}</div>`);
+    if ($("#pyahead")) $("#pyahead").onclick = () => run(k, list, ahead);
+    const opts = [...box.querySelectorAll(".opt")];
+    opts[0].focus();
+    opts.forEach(b => b.onclick = () => {
+      const ok = b.textContent === right;
+      opts.forEach(o => { o.disabled = true; if (o.textContent === right) o.classList.add("right"); });
+      if (!ok) b.classList.add("wrong");
+      award(k, i2(k, list, n), ok ? marks(task) : 0);
+      const fb = $("#fb");
+      fb.className = "fb show " + (ok ? "ok done" : "no");
+      fb.innerHTML = `<strong>${ok ? "✓ That is what it displays." : "It displays this instead:"}</strong>` +
+        (ok ? "" : `<span class="predans">${esc(right)}</span>`) + esc(task.fb || "");
+      const sk = $("#pyahead"); if (sk) sk.remove();
+      nextBtn(k, list, n);
+    });
   }
   function closeModal() {
     while (onCloseCode.length) { try { onCloseCode.pop()(); } catch (e) { /* already gone */ } }

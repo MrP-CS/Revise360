@@ -1,6 +1,6 @@
 {
  "lesson": "pr-l13",
- "title": "Searching with SQL",
+ "title": "SQL queries",
  "stations": [
   "SELECT and FROM",
   "WHERE",
@@ -13,26 +13,195 @@
   {
    "id": "pr-l13-q1",
    "station": 0,
-   "marks": 2,
-   "q": "Write one query giving the column title for every game in the table games. Leave the rows in the order the table stores them. Display each row the query finds on its own line.",
+   "kind": "try",
+   "marks": 1,
+   "q": "Press Run and watch the three titles the query finds.",
    "teach": {
-    "say": "SELECT names the columns and FROM names the table. db.execute() hands back one row at a time, and a row is a group of values.",
+    "say": "A database keeps its data in a table: one row for each thing and one column for each fact about it. SQL is a second language for asking a table a question. SELECT names the columns you want and FROM names the table they come from.",
     "code": [
-     "for row in db.execute(\"SELECT name FROM pet\"):",
+     "import sqlite3",
+     "db = sqlite3.connect(\":memory:\")",
+     "db.execute(\"CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)\")",
+     "db.execute(\"INSERT INTO games VALUES ('Snap Dragon', 'card', 4, 15)\")",
+     "db.execute(\"INSERT INTO games VALUES ('Clay Pigeon', 'dice', 2, 30)\")",
+     "db.execute(\"INSERT INTO games VALUES ('Willow Gate', 'card', 6, 50)\")",
+     "",
+     "for row in db.execute(\"SELECT title FROM games\"):",
      "    print(row[0])"
     ],
     "out": [
-     "rex",
-     "mitts"
+     "Snap Dragon",
+     "Clay Pigeon",
+     "Willow Gate"
     ]
    },
    "brief": [
-    "The table games holds one row per game.",
-    "Its columns are title, kind, players and minutes.",
-    "The starter code fills the table from the lines typed in."
+    "Nothing is marked on this one.",
+    "The table is written into the program on lines 4, 5 and 6.",
+    "The query is the piece of text inside db.execute()."
    ],
-   "hint": "sqlwhere",
-   "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\n",
+   "starter": "import sqlite3\ndb = sqlite3.connect(\":memory:\")\ndb.execute(\"CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)\")\ndb.execute(\"INSERT INTO games VALUES ('Snap Dragon', 'card', 4, 15)\")\ndb.execute(\"INSERT INTO games VALUES ('Clay Pigeon', 'dice', 2, 30)\")\ndb.execute(\"INSERT INTO games VALUES ('Willow Gate', 'card', 6, 50)\")\n\nfor row in db.execute(\"SELECT title FROM games\"):\n    print(row[0])\n",
+   "lines": [
+    "Bring in the part of Python that works with a database.",
+    "Make a database that lasts as long as the program runs.",
+    "Make a table called games with four columns.",
+    "Put one game into the table.",
+    "Put a second game in.",
+    "Put a third game in.",
+    "",
+    "Run the query and take the rows it found, one at a time.",
+    "Show the first value of the row, which is the title."
+   ],
+   "fb": "SELECT says which columns and FROM says which table. With nothing else in the query, every row comes back."
+  },
+  {
+   "id": "pr-l13-q2",
+   "station": 0,
+   "kind": "predict",
+   "marks": 1,
+   "q": "What will this program display?",
+   "code": [
+    "import sqlite3",
+    "db = sqlite3.connect(\":memory:\")",
+    "db.execute(\"CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)\")",
+    "db.execute(\"INSERT INTO games VALUES ('Snap Dragon', 'card', 4, 15)\")",
+    "db.execute(\"INSERT INTO games VALUES ('Clay Pigeon', 'dice', 2, 30)\")",
+    "db.execute(\"INSERT INTO games VALUES ('Willow Gate', 'card', 6, 50)\")",
+    "",
+    "for row in db.execute(\"SELECT minutes FROM games\"):",
+    "    print(row[0])"
+   ],
+   "a": [
+    "15\n30\n50",
+    "Snap Dragon\nClay Pigeon\nWillow Gate",
+    "minutes\nminutes\nminutes"
+   ],
+   "brief": [
+    "Look at which column the SELECT names.",
+    "Each row hands back one value here."
+   ],
+   "teach": {
+    "say": "Changing the column named in SELECT changes which values come back. The rows themselves are not touched."
+   },
+   "fb": "SELECT minutes asks for that one column, so every row hands back one number."
+  },
+  {
+   "id": "pr-l13-q3",
+   "station": 0,
+   "kind": "try",
+   "marks": 1,
+   "q": "Press Run, then type the five lines shown, pressing Enter after each one.",
+   "teach": {
+    "say": "From here on the table is filled from the lines typed in, so one query can be tried on any set of games. Those lines are written for you every time. Only the query and the printing of its rows are yours.",
+    "code": [
+     "import sqlite3",
+     "db = sqlite3.connect(':memory:')",
+     "db.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')",
+     "",
+     "# These lines fill the table from the input. Leave them as they are.",
+     "rows = []",
+     "line = input()",
+     "while line != 'END':",
+     "    title, kind, players, minutes = line.split(',')",
+     "    rows.append((title, kind, int(players), int(minutes)))",
+     "    line = input()",
+     "db.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)",
+     "",
+     "# Your query, and the printing of the rows it finds, go below.",
+     "for row in db.execute(\"SELECT title FROM games\"):",
+     "    print(row[0])"
+    ],
+    "out": [
+     "Hedge Maze",
+     "Tide Pools",
+     "Night Market",
+     "Paper Lanterns",
+     "Rook and Rye"
+    ]
+   },
+   "brief": [
+    "Nothing is marked on this one.",
+    "Each line you type becomes one row of the table.",
+    "The word END tells the program the table is full.",
+    "Your own query goes under the last comment, as it does here."
+   ],
+   "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\nfor row in db.execute(\"SELECT title FROM games\"):\n    print(row[0])\n",
+   "lines": [
+    "Bring in the part of Python that works with a database.",
+    "Make a database that lasts as long as the program runs.",
+    "Make a table called games with four columns.",
+    "",
+    "",
+    "Start with no rows.",
+    "Read the first line typed in.",
+    "Keep going until the line says END.",
+    "Split the line at its commas into four values.",
+    "Add that game to the list of rows, with the two numbers cast.",
+    "Read the next line.",
+    "Put every row into the table in one go.",
+    "",
+    "",
+    "Run the query and take the rows it found, one at a time.",
+    "Show the title of each row."
+   ],
+   "in": [
+    "Hedge Maze,strategy,4,75",
+    "Tide Pools,card,2,20",
+    "Night Market,party,8,45",
+    "Paper Lanterns,card,4,35",
+    "Rook and Rye,strategy,2,90",
+    "END"
+   ],
+   "fb": "The same query works on any table, because the query describes what is wanted rather than listing it."
+  },
+  {
+   "id": "pr-l13-q4",
+   "station": 0,
+   "kind": "predict",
+   "marks": 1,
+   "q": "What will this program display?",
+   "code": [
+    "import sqlite3",
+    "db = sqlite3.connect(\":memory:\")",
+    "db.execute(\"CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)\")",
+    "db.execute(\"INSERT INTO games VALUES ('Willow Gate', 'card', 6, 50)\")",
+    "db.execute(\"INSERT INTO games VALUES ('Clay Pigeon', 'dice', 2, 30)\")",
+    "db.execute(\"INSERT INTO games VALUES ('Snap Dragon', 'card', 4, 15)\")",
+    "",
+    "for row in db.execute(\"SELECT title FROM games\"):",
+    "    print(row[0])"
+   ],
+   "a": [
+    "Willow Gate\nClay Pigeon\nSnap Dragon",
+    "Clay Pigeon\nSnap Dragon\nWillow Gate",
+    "Snap Dragon\nClay Pigeon\nWillow Gate"
+   ],
+   "brief": [
+    "Look at the order the rows go into the table.",
+    "Nothing in the query asks for an order."
+   ],
+   "teach": {
+    "say": "Nothing in this query says anything at all about order."
+   },
+   "fb": "They came back in the order the rows went into the table. A query is not promised to give any order at all, so when the order matters you have to ask for it - that is what the Sorting results station is for."
+  },
+  {
+   "id": "pr-l13-q5",
+   "station": 0,
+   "marks": 1,
+   "q": "Change the query so it gives the column kind instead of the column title.",
+   "kind": "change",
+   "brief": [
+    "Change the query only.",
+    "Its columns are title, kind, players and minutes.",
+    "Display each row the query finds on its own line."
+   ],
+   "hint": {
+    "think": "The column you want is the part between SELECT and FROM.",
+    "syntax": "SELECT column FROM table",
+    "diagram": "sqlwhere"
+   },
+   "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\nfor row in db.execute(\"SELECT title FROM games\"):\n    print(row[0])\n",
    "forbid": [
     [
      " in rows",
@@ -50,13 +219,13 @@
       "END"
      ],
      "out": [
-      "Hedge Maze",
-      "Tide Pools",
-      "Night Market",
-      "Paper Lanterns",
-      "Rook and Rye"
+      "strategy",
+      "card",
+      "party",
+      "card",
+      "strategy"
      ],
-     "why": "SELECT names the column you want and FROM names the table. Every game appears because there is no WHERE to narrow it down."
+     "why": "The titles are still coming out, so the column named in SELECT was not changed."
     },
     {
      "in": [
@@ -69,14 +238,14 @@
       "END"
      ],
      "out": [
-      "Glass Harbour",
-      "Moth Hunt",
-      "Copper Lines",
-      "Salt Flats",
-      "Lantern Street",
-      "Brass Compass"
+      "strategy",
+      "card",
+      "dice",
+      "party",
+      "word",
+      "card"
      ],
-     "why": "The same query must work whatever is in the table - if this fails you have typed the titles out instead of querying them."
+     "why": "A different table, the same query. Every row comes back because there is nothing narrowing it down."
     },
     {
      "in": [
@@ -87,28 +256,45 @@
       "END"
      ],
      "out": [
-      "Reed Whistle",
-      "Amber Road",
-      "Fox and Hens",
-      "Pepper Mill"
+      "word",
+      "strategy",
+      "card",
+      "party"
      ],
-     "why": "A shorter table, same query. SELECT title gives one value per row, so print that value on its own."
+     "why": "Four rows, four kinds. The same kind can appear more than once, and the query does not mind."
     }
    ],
-   "fb": "SELECT says which columns and FROM says which table - with no WHERE, every row comes back."
+   "fb": "One SELECT, one column, one value per row. Changing the column name changes the whole answer."
   },
   {
-   "id": "pr-l13-q2",
+   "id": "pr-l13-q6",
    "station": 0,
    "marks": 2,
-   "q": "Write one query giving the columns title and then players for every game in the table games. Leave the rows in the order the table stores them. Display each row on its own line, the two values separated by a single space.",
+   "q": "Finish the query so it gives the column title and then the column players.",
+   "kind": "complete",
+   "teach": {
+    "say": "Two columns go in one SELECT, separated by a comma. They come back in the order you named them, and row[0] and row[1] are the two values.",
+    "code": [
+     "SELECT name, age FROM pet"
+    ],
+    "out": [
+     "rex 5",
+     "mitts 2",
+     "sooty 7"
+    ]
+   },
    "brief": [
-    "The table games holds one row per game.",
+    "Replace ____ with the name of one column.",
     "Its columns are title, kind, players and minutes.",
-    "The starter code fills the table from the lines typed in."
+    "The printing is written for you.",
+    "Display each row on its own line, the two values separated by one space."
    ],
-   "hint": "sqlwhere",
-   "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\n",
+   "hint": {
+    "think": "Only the second column is missing. Which one does the task ask for?",
+    "syntax": "SELECT column, column FROM table",
+    "diagram": "sqlwhere"
+   },
+   "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\nfor row in db.execute(\"SELECT title, ____ FROM games\"):\n    print(row[0], row[1])\n",
    "forbid": [
     [
      " in rows",
@@ -132,7 +318,7 @@
       "Paper Lanterns 4",
       "Rook and Rye 2"
      ],
-     "why": "Two columns go in SELECT separated by a comma, and the order you name them is the order they come back in."
+     "why": "____ is not the name of a column, so SQL stops. Put a real column name there."
     },
     {
      "in": [
@@ -152,7 +338,7 @@
       "Lantern Street 4",
       "Brass Compass 3"
      ],
-     "why": "The same two columns from a different table of rows. If the number comes before the title you have swapped them in your SELECT."
+     "why": "Six rows, two values each. If the numbers are minutes you have named the wrong column."
     },
     {
      "in": [
@@ -168,245 +354,31 @@
       "Fox and Hens 4",
       "Pepper Mill 5"
      ],
-     "why": "Print the two values with one space between them - a comma or brackets from printing the whole row will not match."
+     "why": "The title comes first because SELECT names it first."
     }
    ],
-   "fb": "Name the columns in SELECT in the order you want them, separated by commas."
+   "fb": "A SELECT can name as many columns as you like, and the order you name them is the order they come back in."
   },
   {
-   "id": "pr-l13-q3",
+   "id": "pr-l13-q7",
    "station": 0,
-   "marks": 3,
-   "q": "Write one query giving every column of every game in the table games. Leave the rows in the order the table stores them. Display each row on its own line, the four values separated by single spaces.",
+   "marks": 2,
+   "q": "Write one query giving the column title and then the column minutes for every game in the table games. Display each row on its own line, the two values separated by one space.",
    "brief": [
-    "The table games holds one row per game.",
+    "The table games holds one row for each game.",
     "Its columns are title, kind, players and minutes.",
-    "The starter code fills the table from the lines typed in.",
-    "The columns come out in the order the table holds them: title, then kind, then players, then minutes."
+    "The lines above the comment fill the table from what is typed in.",
+    "Every game comes back, so no row is left out."
    ],
-   "hint": "sqlwhere",
-   "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\n",
-   "forbid": [
-    [
-     " in rows",
-     "The answer has to come from an SQL query. Looping over the rows list in Python does the work the query is meant to do."
-    ]
-   ],
-   "tests": [
-    {
-     "in": [
-      "Hedge Maze,strategy,4,75",
-      "Tide Pools,card,2,20",
-      "Night Market,party,8,45",
-      "Paper Lanterns,card,4,35",
-      "Rook and Rye,strategy,2,90",
-      "END"
-     ],
-     "out": [
-      "Hedge Maze strategy 4 75",
-      "Tide Pools card 2 20",
-      "Night Market party 8 45",
-      "Paper Lanterns card 4 35",
-      "Rook and Rye strategy 2 90"
-     ],
-     "why": "Four values on every line, in the table's own order. SELECT * is the short way of saying every column."
-    },
-    {
-     "in": [
-      "Glass Harbour,strategy,3,60",
-      "Moth Hunt,card,5,25",
-      "Copper Lines,dice,2,15",
-      "Salt Flats,party,6,50",
-      "Lantern Street,word,4,30",
-      "Brass Compass,card,3,40",
-      "END"
-     ],
-     "out": [
-      "Glass Harbour strategy 3 60",
-      "Moth Hunt card 5 25",
-      "Copper Lines dice 2 15",
-      "Salt Flats party 6 50",
-      "Lantern Street word 4 30",
-      "Brass Compass card 3 40"
-     ],
-     "why": "Six rows of four values. If the values came out in another order you named the columns yourself and changed their order."
-    },
-    {
-     "in": [
-      "Reed Whistle,word,2,10",
-      "Amber Road,strategy,4,120",
-      "Fox and Hens,card,4,18",
-      "Pepper Mill,party,5,55",
-      "END"
-     ],
-     "out": [
-      "Reed Whistle word 2 10",
-      "Amber Road strategy 4 120",
-      "Fox and Hens card 4 18",
-      "Pepper Mill party 5 55"
-     ],
-     "why": "A shorter table, same query. A comma or brackets in the output mean the row was printed as a group rather than joined with spaces."
-    }
-   ],
-   "fb": "SELECT * means every column, in the order the table holds them, so you do not have to name them all."
-  },
-  {
-   "id": "pr-l13-q4",
-   "station": 1,
-   "marks": 3,
-   "q": "Write one query giving the column title for every game in the table games. Keep only the games whose kind is card. Leave the rows in the order the table stores them. Display each row the query finds on its own line.",
-   "teach": {
-    "say": "WHERE comes after FROM and keeps only the rows that match. Text being compared against goes inside single quotes.",
-    "code": [
-     "SELECT name FROM pet WHERE kind = 'cat'"
-    ]
+   "hint": {
+    "think": "Two columns in the SELECT, and the loop that prints them is the one you have already seen.",
+    "syntax": "for row in db.execute(\"SELECT column, column FROM table\"):",
+    "start": [
+     "for row in db.execute(\"SELECT ... FROM ...\"):",
+     "    # show the two values of the row here"
+    ],
+    "diagram": "sqlwhere"
    },
-   "brief": [
-    "The table games holds one row per game.",
-    "Its columns are title, kind, players and minutes.",
-    "kind holds words such as strategy, card, party, dice and word."
-   ],
-   "hint": "sqlwhere",
-   "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\n",
-   "forbid": [
-    [
-     " in rows",
-     "The answer has to come from an SQL query. Looping over the rows list in Python does the work the query is meant to do."
-    ]
-   ],
-   "tests": [
-    {
-     "in": [
-      "Hedge Maze,strategy,4,75",
-      "Tide Pools,card,2,20",
-      "Night Market,party,8,45",
-      "Paper Lanterns,card,4,35",
-      "Rook and Rye,strategy,2,90",
-      "END"
-     ],
-     "out": [
-      "Tide Pools",
-      "Paper Lanterns"
-     ],
-     "why": "WHERE goes after FROM and picks the rows. Text being compared has to be inside quotes."
-    },
-    {
-     "in": [
-      "Glass Harbour,strategy,3,60",
-      "Moth Hunt,card,5,25",
-      "Copper Lines,dice,2,15",
-      "Salt Flats,party,6,50",
-      "Lantern Street,word,4,30",
-      "Brass Compass,card,3,40",
-      "END"
-     ],
-     "out": [
-      "Moth Hunt",
-      "Brass Compass"
-     ],
-     "why": "A different table with two card games in different places - the query must find them wherever they are."
-    },
-    {
-     "in": [
-      "Reed Whistle,word,2,10",
-      "Amber Road,strategy,4,120",
-      "Fox and Hens,card,4,18",
-      "Pepper Mill,party,5,55",
-      "END"
-     ],
-     "out": [
-      "Fox and Hens"
-     ],
-     "why": "Only one card game here, so one line of output. SELECT title still gives just the title, not the kind as well."
-    }
-   ],
-   "fb": "WHERE filters the rows; SELECT decides which columns of those rows you see."
-  },
-  {
-   "id": "pr-l13-q5",
-   "station": 1,
-   "marks": 4,
-   "q": "Write one query giving the columns title and then kind for every game in the table games. Keep only the games where players is exactly 2. Leave the rows in the order the table stores them. Display each row on its own line, the two values separated by a single space.",
-   "brief": [
-    "The table games holds one row per game.",
-    "Its columns are title, kind, players and minutes.",
-    "The starter code fills the table from the lines typed in.",
-    "A number needs no quotes in SQL."
-   ],
-   "hint": "sqlwhere",
-   "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\n",
-   "forbid": [
-    [
-     " in rows",
-     "The answer has to come from an SQL query. Looping over the rows list in Python does the work the query is meant to do."
-    ]
-   ],
-   "tests": [
-    {
-     "in": [
-      "Hedge Maze,strategy,4,75",
-      "Tide Pools,card,2,20",
-      "Night Market,party,8,45",
-      "Paper Lanterns,card,4,35",
-      "Rook and Rye,strategy,2,90",
-      "END"
-     ],
-     "out": [
-      "Tide Pools card",
-      "Rook and Rye strategy"
-     ],
-     "why": "Two games take two players and they are not next to each other, so the query has to test every row."
-    },
-    {
-     "in": [
-      "Glass Harbour,strategy,3,60",
-      "Moth Hunt,card,5,25",
-      "Copper Lines,dice,2,15",
-      "Salt Flats,party,6,50",
-      "Lantern Street,word,4,30",
-      "Brass Compass,card,3,40",
-      "END"
-     ],
-     "out": [
-      "Copper Lines dice"
-     ],
-     "why": "Only one game here is for two players. A query that used players < 3 would give the same answer by luck - say exactly what you mean."
-    },
-    {
-     "in": [
-      "Reed Whistle,word,2,10",
-      "Amber Road,strategy,4,120",
-      "Fox and Hens,card,4,18",
-      "Pepper Mill,party,5,55",
-      "END"
-     ],
-     "out": [
-      "Reed Whistle word"
-     ],
-     "why": "One match again, and the kind has to come after the title - swapping the columns in SELECT swaps the output."
-    }
-   ],
-   "fb": "One equals sign is the comparison in SQL, and a number needs no quotes round it."
-  },
-  {
-   "id": "pr-l13-q6",
-   "station": 2,
-   "marks": 4,
-   "q": "Write one query giving the columns title and then minutes for every game in the table games. Keep only the games lasting more than 45 minutes. Display each row on its own line, the two values separated by a single space.",
-   "teach": {
-    "say": "WHERE can compare with >, <, >= and <=, so a rule about a number does not have to be an exact match.",
-    "code": [
-     "SELECT name FROM pet WHERE age > 5"
-    ]
-   },
-   "brief": [
-    "The table games holds one row per game.",
-    "Its columns are title, kind, players and minutes.",
-    "The starter code fills the table from the lines typed in.",
-    "Exactly 45 does not count.",
-    "The rows come out in the order they are stored."
-   ],
-   "hint": "sqlwhere",
    "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\n",
    "forbid": [
     [
@@ -426,9 +398,12 @@
      ],
      "out": [
       "Hedge Maze 75",
+      "Tide Pools 20",
+      "Night Market 45",
+      "Paper Lanterns 35",
       "Rook and Rye 90"
      ],
-     "why": "This table has a 45 minute game in it. Longer than 45 means > 45, so that one must be left out."
+     "why": "Nothing came out, so the query was never run or its rows were never printed."
     },
     {
      "in": [
@@ -442,9 +417,13 @@
      ],
      "out": [
       "Glass Harbour 60",
-      "Salt Flats 50"
+      "Moth Hunt 25",
+      "Copper Lines 15",
+      "Salt Flats 50",
+      "Lantern Street 30",
+      "Brass Compass 40"
      ],
-     "why": "Two games are over 45 minutes. If you get three you have used >= and let the boundary in."
+     "why": "The same query must work on any table. If this fails you have typed the answers out instead of querying."
     },
     {
      "in": [
@@ -455,28 +434,612 @@
       "END"
      ],
      "out": [
+      "Reed Whistle 10",
       "Amber Road 120",
+      "Fox and Hens 18",
       "Pepper Mill 55"
      ],
-     "why": "A very long game and a middling one both qualify; the 18 and 10 minute games do not."
+     "why": "A comma or brackets in the output mean the whole row was printed instead of its two values."
     }
    ],
-   "fb": "Greater than and greater than or equal to differ by exactly one row - the one sitting on the boundary."
+   "fb": "A query and three lines of Python: name the columns, take the rows one at a time, show the values."
   },
   {
-   "id": "pr-l13-q7",
-   "station": 2,
-   "marks": 5,
-   "q": "Write one query giving the columns title and then minutes for every game in the table games. Keep only the games lasting 45 minutes or more. Display each row on its own line, the two values separated by a single space.",
+   "id": "pr-l13-q8",
+   "station": 0,
+   "marks": 3,
+   "q": "Write one query giving the column title for every game in the table games. Display each row the query finds on its own line. Then display one more line giving how many rows the query found.",
    "brief": [
-    "The table games holds one row per game.",
-    "Its columns are title, kind, players and minutes.",
-    "The starter code fills the table from the lines typed in.",
-    "Exactly 45 counts this time.",
-    "The rows come out in the order they are stored."
+    "The lines above the comment fill the table from what is typed in.",
+    "The last line is one number on its own, with no words.",
+    "Count the rows as the query hands them back, rather than typing a number in."
    ],
-   "hint": "sqlwhere",
+   "hint": {
+    "think": "A running total, but counting rows rather than adding values up.",
+    "syntax": "count = count + 1",
+    "walk": [
+     "Set a counter to 0 before the loop.",
+     "Add 1 to it each time a row comes back.",
+     "Display the counter after the loop has finished."
+    ]
+   },
    "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\n",
+   "opt": true,
+   "forbid": [
+    [
+     " in rows",
+     "The answer has to come from an SQL query. Looping over the rows list in Python does the work the query is meant to do."
+    ]
+   ],
+   "tests": [
+    {
+     "in": [
+      "Hedge Maze,strategy,4,75",
+      "Tide Pools,card,2,20",
+      "Night Market,party,8,45",
+      "Paper Lanterns,card,4,35",
+      "Rook and Rye,strategy,2,90",
+      "END"
+     ],
+     "out": [
+      "Hedge Maze",
+      "Tide Pools",
+      "Night Market",
+      "Paper Lanterns",
+      "Rook and Rye",
+      "5"
+     ],
+     "why": "Five titles and then the number 5. The counter goes up inside the loop, not outside it."
+    },
+    {
+     "in": [
+      "Glass Harbour,strategy,3,60",
+      "Moth Hunt,card,5,25",
+      "Copper Lines,dice,2,15",
+      "Salt Flats,party,6,50",
+      "Lantern Street,word,4,30",
+      "Brass Compass,card,3,40",
+      "END"
+     ],
+     "out": [
+      "Glass Harbour",
+      "Moth Hunt",
+      "Copper Lines",
+      "Salt Flats",
+      "Lantern Street",
+      "Brass Compass",
+      "6"
+     ],
+     "why": "A longer table, so a bigger count. A number typed into the program cannot be right for both."
+    },
+    {
+     "in": [
+      "Reed Whistle,word,2,10",
+      "Amber Road,strategy,4,120",
+      "Fox and Hens,card,4,18",
+      "Pepper Mill,party,5,55",
+      "END"
+     ],
+     "out": [
+      "Reed Whistle",
+      "Amber Road",
+      "Fox and Hens",
+      "Pepper Mill",
+      "4"
+     ],
+     "why": "Display the count after the last title, not before the first one."
+    }
+   ],
+   "fb": "The query finds the rows and Python counts them. Each language does the job it is good at."
+  },
+  {
+   "id": "pr-l13-q9",
+   "station": 1,
+   "kind": "try",
+   "marks": 1,
+   "q": "Press Run. The table holds three games and the query finds two of them.",
+   "teach": {
+    "say": "WHERE comes after FROM and keeps only the rows that match. A piece of text being compared against goes inside single quotation marks.",
+    "code": [
+     "import sqlite3",
+     "db = sqlite3.connect(\":memory:\")",
+     "db.execute(\"CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)\")",
+     "db.execute(\"INSERT INTO games VALUES ('Snap Dragon', 'card', 4, 15)\")",
+     "db.execute(\"INSERT INTO games VALUES ('Clay Pigeon', 'dice', 2, 30)\")",
+     "db.execute(\"INSERT INTO games VALUES ('Willow Gate', 'card', 6, 50)\")",
+     "",
+     "for row in db.execute(\"SELECT title FROM games WHERE kind = 'card'\"):",
+     "    print(row[0])"
+    ],
+    "out": [
+     "Snap Dragon",
+     "Willow Gate"
+    ]
+   },
+   "brief": [
+    "Nothing is marked on this one.",
+    "Two of the three games are card games.",
+    "Change card to dice and press Run again."
+   ],
+   "starter": "import sqlite3\ndb = sqlite3.connect(\":memory:\")\ndb.execute(\"CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)\")\ndb.execute(\"INSERT INTO games VALUES ('Snap Dragon', 'card', 4, 15)\")\ndb.execute(\"INSERT INTO games VALUES ('Clay Pigeon', 'dice', 2, 30)\")\ndb.execute(\"INSERT INTO games VALUES ('Willow Gate', 'card', 6, 50)\")\n\nfor row in db.execute(\"SELECT title FROM games WHERE kind = 'card'\"):\n    print(row[0])\n",
+   "lines": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Run the query, which keeps only the rows whose kind is card.",
+    "Show the title of each row that was kept."
+   ],
+   "fb": "WHERE decides which rows you get. SELECT still decides which columns of those rows you see."
+  },
+  {
+   "id": "pr-l13-q10",
+   "station": 1,
+   "kind": "predict",
+   "marks": 1,
+   "q": "What will this program display?",
+   "code": [
+    "import sqlite3",
+    "db = sqlite3.connect(\":memory:\")",
+    "db.execute(\"CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)\")",
+    "db.execute(\"INSERT INTO games VALUES ('Snap Dragon', 'card', 4, 15)\")",
+    "db.execute(\"INSERT INTO games VALUES ('Clay Pigeon', 'dice', 2, 30)\")",
+    "db.execute(\"INSERT INTO games VALUES ('Willow Gate', 'card', 6, 50)\")",
+    "",
+    "for row in db.execute(\"SELECT kind FROM games WHERE minutes > 20\"):",
+    "    print(row[0])"
+   ],
+   "a": [
+    "dice\ncard",
+    "Clay Pigeon\nWillow Gate",
+    "card\ndice\ncard"
+   ],
+   "brief": [
+    "Work out which rows are kept first.",
+    "Then work out which column is displayed."
+   ],
+   "teach": {
+    "say": "WHERE and SELECT do two different jobs in the same query, and they are easy to mix up.",
+    "code": [
+     "SELECT kind FROM pet WHERE age > 4"
+    ],
+    "out": [
+     "dog",
+     "cat"
+    ]
+   },
+   "fb": "WHERE threw the 15 minute game away. SELECT then chose the kind column, so kinds come out and not titles."
+  },
+  {
+   "id": "pr-l13-q11",
+   "station": 1,
+   "kind": "predict",
+   "marks": 1,
+   "q": "What will this program display?",
+   "code": [
+    "import sqlite3",
+    "db = sqlite3.connect(\":memory:\")",
+    "db.execute(\"CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)\")",
+    "db.execute(\"INSERT INTO games VALUES ('Snap Dragon', 'card', 4, 15)\")",
+    "db.execute(\"INSERT INTO games VALUES ('Clay Pigeon', 'dice', 2, 30)\")",
+    "db.execute(\"INSERT INTO games VALUES ('Willow Gate', 'card', 6, 50)\")",
+    "",
+    "for row in db.execute(\"SELECT title FROM games WHERE kind = 'dice'\"):",
+    "    print(row[0])",
+    "for row in db.execute(\"SELECT title FROM games WHERE minutes = 50\"):",
+    "    print(row[0])"
+   ],
+   "a": [
+    "Clay Pigeon\nWillow Gate",
+    "Clay Pigeon",
+    "Willow Gate"
+   ],
+   "brief": [
+    "There are two queries, so read both.",
+    "One of them has quotation marks and the other has none."
+   ],
+   "teach": {
+    "say": "One of these queries compares a piece of text and the other compares a number."
+   },
+   "fb": "Text being compared needs single quotation marks round it. A number needs none, and putting them there is the mistake to watch for."
+  },
+  {
+   "id": "pr-l13-q12",
+   "station": 1,
+   "marks": 1,
+   "q": "Change the query so it keeps the party games instead of the card games.",
+   "kind": "change",
+   "brief": [
+    "Change the query only.",
+    "kind holds words such as strategy, card, party, dice and word.",
+    "Display each row the query finds on its own line."
+   ],
+   "hint": {
+    "think": "Only the value being compared against is wrong.",
+    "syntax": "WHERE column = 'text'",
+    "diagram": "sqlwhere"
+   },
+   "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\nfor row in db.execute(\"SELECT title FROM games WHERE kind = 'card'\"):\n    print(row[0])\n",
+   "forbid": [
+    [
+     " in rows",
+     "The answer has to come from an SQL query. Looping over the rows list in Python does the work the query is meant to do."
+    ]
+   ],
+   "tests": [
+    {
+     "in": [
+      "Hedge Maze,strategy,4,75",
+      "Tide Pools,card,2,20",
+      "Night Market,party,8,45",
+      "Paper Lanterns,card,4,35",
+      "Rook and Rye,strategy,2,90",
+      "END"
+     ],
+     "out": [
+      "Night Market"
+     ],
+     "why": "Card games are still coming out, so the value inside the quotation marks was not changed."
+    },
+    {
+     "in": [
+      "Glass Harbour,strategy,3,60",
+      "Moth Hunt,card,5,25",
+      "Copper Lines,dice,2,15",
+      "Salt Flats,party,6,50",
+      "Lantern Street,word,4,30",
+      "Brass Compass,card,3,40",
+      "END"
+     ],
+     "out": [
+      "Salt Flats"
+     ],
+     "why": "One party game in this table, so one line of output."
+    },
+    {
+     "in": [
+      "Reed Whistle,word,2,10",
+      "Amber Road,strategy,4,120",
+      "Fox and Hens,card,4,18",
+      "Pepper Mill,party,5,55",
+      "END"
+     ],
+     "out": [
+      "Pepper Mill"
+     ],
+     "why": "The query has to find the party game wherever it sits in the table."
+    }
+   ],
+   "fb": "WHERE compares a column with a value, and the quotation marks stay round the value because it is text."
+  },
+  {
+   "id": "pr-l13-q13",
+   "station": 1,
+   "marks": 2,
+   "q": "This program should display the title and minutes of every word game. Find the mistake and put it right.",
+   "kind": "debug",
+   "brief": [
+    "Press Run first and read the error message.",
+    "Do not change anything above the last comment.",
+    "Display each row on its own line, the two values separated by one space."
+   ],
+   "hint": {
+    "think": "SQL is hunting for a column called word, because nothing tells it that word is text.",
+    "syntax": "WHERE column = 'text'",
+    "walk": [
+     "Text being compared needs a quotation mark at each end.",
+     "They are single quotation marks, inside the double ones round the query."
+    ],
+    "diagram": "sqlwhere"
+   },
+   "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\nfor row in db.execute(\"SELECT title, minutes FROM games WHERE kind = word\"):\n    print(row[0], row[1])\n",
+   "forbid": [
+    [
+     " in rows",
+     "The answer has to come from an SQL query. Looping over the rows list in Python does the work the query is meant to do."
+    ]
+   ],
+   "tests": [
+    {
+     "in": [
+      "Glass Harbour,strategy,3,60",
+      "Moth Hunt,card,5,25",
+      "Copper Lines,dice,2,15",
+      "Salt Flats,party,6,50",
+      "Lantern Street,word,4,30",
+      "Brass Compass,card,3,40",
+      "END"
+     ],
+     "out": [
+      "Lantern Street 30"
+     ],
+     "why": "No such column: word. SQL read word as the name of a column, which is what quotation marks prevent."
+    },
+    {
+     "in": [
+      "Reed Whistle,word,2,10",
+      "Amber Road,strategy,4,120",
+      "Fox and Hens,card,4,18",
+      "Pepper Mill,party,5,55",
+      "END"
+     ],
+     "out": [
+      "Reed Whistle 10"
+     ],
+     "why": "One word game here as well. The two values go on one line with a space between them."
+    },
+    {
+     "in": [
+      "Stone Bridge,dice,3,25",
+      "Ferry Lane,card,6,40",
+      "Ink and Quill,word,2,12",
+      "Harbour Bell,party,4,65",
+      "Thistle Down,strategy,5,95",
+      "END"
+     ],
+     "out": [
+      "Ink and Quill 12"
+     ],
+     "why": "A third table, the same mistake to fix. Only the value in the WHERE needs quotation marks."
+    }
+   ],
+   "fb": "Quotation marks are how SQL tells a value apart from a column name. Without them, word looks like a column."
+  },
+  {
+   "id": "pr-l13-q14",
+   "station": 1,
+   "marks": 2,
+   "q": "Write one query giving the column title and then the column kind for every game in the table games. Keep only the games for exactly 4 players. Display each row on its own line, the two values separated by one space.",
+   "teach": {
+    "say": "A number being compared against needs no quotation marks. One equals sign is the comparison in SQL, not two.",
+    "code": [
+     "SELECT name, kind FROM pet WHERE age = 2"
+    ],
+    "out": [
+     "mitts cat"
+    ]
+   },
+   "brief": [
+    "Its columns are title, kind, players and minutes.",
+    "A game for 3 or 5 players is left out.",
+    "The lines above the comment fill the table from what is typed in."
+   ],
+   "hint": {
+    "think": "One WHERE, comparing the players column with a number.",
+    "syntax": "WHERE column = number",
+    "diagram": "sqlwhere"
+   },
+   "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\n",
+   "forbid": [
+    [
+     " in rows",
+     "The answer has to come from an SQL query. Looping over the rows list in Python does the work the query is meant to do."
+    ]
+   ],
+   "tests": [
+    {
+     "in": [
+      "Hedge Maze,strategy,4,75",
+      "Tide Pools,card,2,20",
+      "Night Market,party,8,45",
+      "Paper Lanterns,card,4,35",
+      "Rook and Rye,strategy,2,90",
+      "END"
+     ],
+     "out": [
+      "Hedge Maze strategy",
+      "Paper Lanterns card"
+     ],
+     "why": "Two games here take exactly four players, and they are not next to each other in the table."
+    },
+    {
+     "in": [
+      "Glass Harbour,strategy,3,60",
+      "Moth Hunt,card,5,25",
+      "Copper Lines,dice,2,15",
+      "Salt Flats,party,6,50",
+      "Lantern Street,word,4,30",
+      "Brass Compass,card,3,40",
+      "END"
+     ],
+     "out": [
+      "Lantern Street word"
+     ],
+     "why": "Only one game here is for four players. A query using players > 3 would also let the 5 and 6 player games in."
+    },
+    {
+     "in": [
+      "Reed Whistle,word,2,10",
+      "Amber Road,strategy,4,120",
+      "Fox and Hens,card,4,18",
+      "Pepper Mill,party,5,55",
+      "END"
+     ],
+     "out": [
+      "Amber Road strategy",
+      "Fox and Hens card"
+     ],
+     "why": "The kind has to come after the title, because that is the order the SELECT names them in."
+    }
+   ],
+   "fb": "A number in a query is written plainly. Quotation marks are only for text."
+  },
+  {
+   "id": "pr-l13-q15",
+   "station": 1,
+   "marks": 3,
+   "q": "Write one query giving the column title and then the column minutes for every card game in the table games. Display each row on its own line, the two values separated by one space. Then display one more line giving the total number of minutes of those games.",
+   "brief": [
+    "Keep only the games whose kind is card.",
+    "The last line is one number on its own, with no words.",
+    "Add the minutes up as the query hands the rows back."
+   ],
+   "hint": {
+    "think": "A running total: start it at 0 before the loop and add each row's minutes inside it.",
+    "syntax": "total = total + value",
+    "walk": [
+     "Write the query so only card games come back.",
+     "Display each row as it arrives.",
+     "Add its minutes to the total.",
+     "Display the total after the loop."
+    ]
+   },
+   "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\n",
+   "opt": true,
+   "forbid": [
+    [
+     " in rows",
+     "The answer has to come from an SQL query. Looping over the rows list in Python does the work the query is meant to do."
+    ]
+   ],
+   "tests": [
+    {
+     "in": [
+      "Hedge Maze,strategy,4,75",
+      "Tide Pools,card,2,20",
+      "Night Market,party,8,45",
+      "Paper Lanterns,card,4,35",
+      "Rook and Rye,strategy,2,90",
+      "END"
+     ],
+     "out": [
+      "Tide Pools 20",
+      "Paper Lanterns 35",
+      "55"
+     ],
+     "why": "Two card games and then 20 + 35. The total is added up inside the loop, not typed in."
+    },
+    {
+     "in": [
+      "Glass Harbour,strategy,3,60",
+      "Moth Hunt,card,5,25",
+      "Copper Lines,dice,2,15",
+      "Salt Flats,party,6,50",
+      "Lantern Street,word,4,30",
+      "Brass Compass,card,3,40",
+      "END"
+     ],
+     "out": [
+      "Moth Hunt 25",
+      "Brass Compass 40",
+      "65"
+     ],
+     "why": "Two card games again but different lengths, so the total is different."
+    },
+    {
+     "in": [
+      "Reed Whistle,word,2,10",
+      "Amber Road,strategy,4,120",
+      "Fox and Hens,card,4,18",
+      "Pepper Mill,party,5,55",
+      "END"
+     ],
+     "out": [
+      "Fox and Hens 18",
+      "18"
+     ],
+     "why": "One card game, so the total is that game's own minutes. Check the total still appears."
+    }
+   ],
+   "fb": "The query picks the rows and Python adds them up. row[1] is already a number, so no casting is needed."
+  },
+  {
+   "id": "pr-l13-q16",
+   "station": 2,
+   "kind": "try",
+   "marks": 1,
+   "q": "Press Run. The query keeps the games that last longer than 20 minutes.",
+   "teach": {
+    "say": "A comparison in WHERE does not have to be an exact match. > means more than, < means fewer than, >= means that number or more, and <= means that number or fewer.",
+    "code": [
+     "import sqlite3",
+     "db = sqlite3.connect(\":memory:\")",
+     "db.execute(\"CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)\")",
+     "db.execute(\"INSERT INTO games VALUES ('Snap Dragon', 'card', 4, 15)\")",
+     "db.execute(\"INSERT INTO games VALUES ('Clay Pigeon', 'dice', 2, 30)\")",
+     "db.execute(\"INSERT INTO games VALUES ('Willow Gate', 'card', 6, 50)\")",
+     "",
+     "for row in db.execute(\"SELECT title, minutes FROM games WHERE minutes > 20\"):",
+     "    print(row[0], row[1])"
+    ],
+    "out": [
+     "Clay Pigeon 30",
+     "Willow Gate 50"
+    ]
+   },
+   "brief": [
+    "Nothing is marked on this one.",
+    "The 15 minute game is left out, because 15 is not more than 20.",
+    "Change the 20 to a 40 and press Run again."
+   ],
+   "starter": "import sqlite3\ndb = sqlite3.connect(\":memory:\")\ndb.execute(\"CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)\")\ndb.execute(\"INSERT INTO games VALUES ('Snap Dragon', 'card', 4, 15)\")\ndb.execute(\"INSERT INTO games VALUES ('Clay Pigeon', 'dice', 2, 30)\")\ndb.execute(\"INSERT INTO games VALUES ('Willow Gate', 'card', 6, 50)\")\n\nfor row in db.execute(\"SELECT title, minutes FROM games WHERE minutes > 20\"):\n    print(row[0], row[1])\n",
+   "lines": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Run the query, which keeps the rows whose minutes are over 20.",
+    "Show the title and the minutes of each row that was kept."
+   ],
+   "fb": "> keeps the rows whose value is bigger than the number you gave. The number itself is not kept."
+  },
+  {
+   "id": "pr-l13-q17",
+   "station": 2,
+   "kind": "predict",
+   "marks": 1,
+   "q": "What will this program display?",
+   "code": [
+    "import sqlite3",
+    "db = sqlite3.connect(\":memory:\")",
+    "db.execute(\"CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)\")",
+    "db.execute(\"INSERT INTO games VALUES ('Snap Dragon', 'card', 4, 15)\")",
+    "db.execute(\"INSERT INTO games VALUES ('Clay Pigeon', 'dice', 2, 30)\")",
+    "db.execute(\"INSERT INTO games VALUES ('Willow Gate', 'card', 6, 50)\")",
+    "",
+    "for row in db.execute(\"SELECT title FROM games WHERE minutes > 30\"):",
+    "    print(row[0])",
+    "print(\"---\")",
+    "for row in db.execute(\"SELECT title FROM games WHERE minutes >= 30\"):",
+    "    print(row[0])"
+   ],
+   "a": [
+    "Willow Gate\n---\nClay Pigeon\nWillow Gate",
+    "Willow Gate\n---\nWillow Gate",
+    "Clay Pigeon\nWillow Gate\n---\nClay Pigeon\nWillow Gate"
+   ],
+   "brief": [
+    "There are two queries, with a line of dashes between their answers.",
+    "Check what happens to the 30 minute game in each one."
+   ],
+   "teach": {
+    "say": "The two queries differ by one character, and one game lasts exactly 30 minutes."
+   },
+   "fb": "> leaves the boundary value out and >= lets it in. The row sitting exactly on the number is the only one that can tell the two apart."
+  },
+  {
+   "id": "pr-l13-q18",
+   "station": 2,
+   "marks": 1,
+   "q": "Change the query so a game lasting exactly 45 minutes is kept as well.",
+   "kind": "change",
+   "brief": [
+    "Change the comparison only.",
+    "Games lasting longer than 45 minutes are still kept.",
+    "Display each row on its own line, the two values separated by one space."
+   ],
+   "hint": {
+    "think": "You want more than 45, or equal to 45. One operator says both.",
+    "syntax": "WHERE column >= number",
+    "diagram": "sqlwhere"
+   },
+   "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\nfor row in db.execute(\"SELECT title, minutes FROM games WHERE minutes > 45\"):\n    print(row[0], row[1])\n",
    "forbid": [
     [
      " in rows",
@@ -498,7 +1061,7 @@
       "Night Market 45",
       "Rook and Rye 90"
      ],
-     "why": "The 45 minute game is included now, so this answer has one more row than the greater-than version."
+     "why": "The 45 minute game is missing, so the comparison still leaves the boundary out."
     },
     {
      "in": [
@@ -514,7 +1077,7 @@
       "Glass Harbour 60",
       "Salt Flats 50"
      ],
-     "why": "No game here is exactly 45 minutes, so > and >= give the same answer - which is why the other data set is the one that catches the mistake."
+     "why": "No game here lasts exactly 45 minutes, so this answer looks the same either way."
     },
     {
      "in": [
@@ -528,24 +1091,185 @@
       "Amber Road 120",
       "Pepper Mill 55"
      ],
-     "why": "The 55 and 120 minute games qualify. Check you have not also printed the kind column."
+     "why": "Two long games here and neither sits on the boundary."
     }
    ],
-   "fb": ">= means or equal to, and it is the operator for a rule that says at least or no fewer than."
+   "fb": ">= is one operator, written with no space in the middle, and it means that value or more."
   },
   {
-   "id": "pr-l13-q8",
+   "id": "pr-l13-q19",
    "station": 2,
-   "marks": 5,
-   "q": "Write one query giving the columns title and then minutes for every game in the table games. Keep only the games lasting 30 minutes or fewer. Display each row on its own line, the two values separated by a single space.",
+   "marks": 2,
+   "q": "Finish the query so it keeps only the games lasting 30 minutes or fewer.",
+   "kind": "complete",
    "brief": [
-    "The table games holds one row per game.",
-    "Its columns are title, kind, players and minutes.",
-    "The starter code fills the table from the lines typed in.",
-    "Exactly 30 counts.",
-    "The rows come out in the order they are stored."
+    "Replace ____ with one comparison operator.",
+    "A game lasting exactly 30 minutes counts.",
+    "Display each row on its own line, the two values separated by one space."
    ],
-   "hint": "sqlwhere",
+   "hint": {
+    "think": "Or fewer means the number itself is kept too.",
+    "syntax": "WHERE column <= number",
+    "diagram": "sqlwhere"
+   },
+   "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\nfor row in db.execute(\"SELECT title, minutes FROM games WHERE minutes ____ 30\"):\n    print(row[0], row[1])\n",
+   "forbid": [
+    [
+     " in rows",
+     "The answer has to come from an SQL query. Looping over the rows list in Python does the work the query is meant to do."
+    ]
+   ],
+   "tests": [
+    {
+     "in": [
+      "Hedge Maze,strategy,4,75",
+      "Tide Pools,card,2,20",
+      "Night Market,party,8,45",
+      "Paper Lanterns,card,4,35",
+      "Rook and Rye,strategy,2,90",
+      "END"
+     ],
+     "out": [
+      "Tide Pools 20"
+     ],
+     "why": "____ is not an operator, so SQL stops. Only the 20 minute game is short enough here."
+    },
+    {
+     "in": [
+      "Glass Harbour,strategy,3,60",
+      "Moth Hunt,card,5,25",
+      "Copper Lines,dice,2,15",
+      "Salt Flats,party,6,50",
+      "Lantern Street,word,4,30",
+      "Brass Compass,card,3,40",
+      "END"
+     ],
+     "out": [
+      "Moth Hunt 25",
+      "Copper Lines 15",
+      "Lantern Street 30"
+     ],
+     "why": "Three games qualify and one of them lasts exactly 30 minutes, so < 30 would lose it."
+    },
+    {
+     "in": [
+      "Reed Whistle,word,2,10",
+      "Amber Road,strategy,4,120",
+      "Fox and Hens,card,4,18",
+      "Pepper Mill,party,5,55",
+      "END"
+     ],
+     "out": [
+      "Reed Whistle 10",
+      "Fox and Hens 18"
+     ],
+     "why": "The two short games come out in the order the table holds them, not shortest first."
+    }
+   ],
+   "fb": "<= means or fewer, and it is the operator for a rule that says at most or no more than."
+  },
+  {
+   "id": "pr-l13-q20",
+   "station": 2,
+   "marks": 2,
+   "q": "This program should display the title and minutes of every game lasting more than 35 minutes. Find the mistake and put it right.",
+   "kind": "debug",
+   "teach": {
+    "say": "row[1] here is a number, because minutes is a number column. A number cannot be joined to text with +, so str() has to turn it into text first.",
+    "code": [
+     "age = 5",
+     "print(\"rex is \" + str(age))"
+    ],
+    "out": [
+     "rex is 5"
+    ]
+   },
+   "brief": [
+    "Press Run first and read the error message.",
+    "The query is already right. The mistake is in the line that displays the row.",
+    "Display each row on its own line, the two values separated by one space."
+   ],
+   "hint": {
+    "think": "What two kinds of value is + being asked to join?",
+    "syntax": "str(number)",
+    "walk": [
+     "Read the last line of the error message. It names the two types.",
+     "Turn the number into text before joining it."
+    ]
+   },
+   "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\nfor row in db.execute(\"SELECT title, minutes FROM games WHERE minutes > 35\"):\n    print(row[0] + \" \" + row[1])\n",
+   "forbid": [
+    [
+     " in rows",
+     "The answer has to come from an SQL query. Looping over the rows list in Python does the work the query is meant to do."
+    ]
+   ],
+   "tests": [
+    {
+     "in": [
+      "Hedge Maze,strategy,4,75",
+      "Tide Pools,card,2,20",
+      "Night Market,party,8,45",
+      "Paper Lanterns,card,4,35",
+      "Rook and Rye,strategy,2,90",
+      "END"
+     ],
+     "out": [
+      "Hedge Maze 75",
+      "Night Market 45",
+      "Rook and Rye 90"
+     ],
+     "why": "A TypeError means text and a number were joined with +. Put the number inside str( )."
+    },
+    {
+     "in": [
+      "Glass Harbour,strategy,3,60",
+      "Moth Hunt,card,5,25",
+      "Copper Lines,dice,2,15",
+      "Salt Flats,party,6,50",
+      "Lantern Street,word,4,30",
+      "Brass Compass,card,3,40",
+      "END"
+     ],
+     "out": [
+      "Glass Harbour 60",
+      "Salt Flats 50",
+      "Brass Compass 40"
+     ],
+     "why": "Three rows here. The 35 minute boundary is nothing to do with the mistake - leave the query alone."
+    },
+    {
+     "in": [
+      "Reed Whistle,word,2,10",
+      "Amber Road,strategy,4,120",
+      "Fox and Hens,card,4,18",
+      "Pepper Mill,party,5,55",
+      "END"
+     ],
+     "out": [
+      "Amber Road 120",
+      "Pepper Mill 55"
+     ],
+     "why": "Two rows, each one value of text and one number, with one space between them."
+    }
+   ],
+   "fb": "A query hands back real numbers in a number column, so the same str() you have used since lesson 1 is needed to join one onto text."
+  },
+  {
+   "id": "pr-l13-q21",
+   "station": 2,
+   "marks": 2,
+   "q": "Write one query giving the column title and then the column minutes for every game in the table games. Keep only the games lasting fewer than 30 minutes. Display each row on its own line, the two values separated by one space.",
+   "brief": [
+    "Its columns are title, kind, players and minutes.",
+    "A game lasting exactly 30 minutes is left out.",
+    "The lines above the comment fill the table from what is typed in."
+   ],
+   "hint": {
+    "think": "Fewer than means the number itself does not count.",
+    "syntax": "WHERE column < number",
+    "diagram": "sqlwhere"
+   },
    "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\n",
    "forbid": [
     [
@@ -566,7 +1290,7 @@
      "out": [
       "Tide Pools 20"
      ],
-     "why": "Only the 20 minute game is short enough here. The 35 minute one is over the limit, so <= 35 would wrongly let it in."
+     "why": "Only one short game here. If the 35 minute game appears you have used <= or the wrong number."
     },
     {
      "in": [
@@ -580,10 +1304,9 @@
      ],
      "out": [
       "Moth Hunt 25",
-      "Copper Lines 15",
-      "Lantern Street 30"
+      "Copper Lines 15"
      ],
-     "why": "Three games qualify, and one of them lasts exactly 30 minutes - using < 30 would lose it."
+     "why": "Two games under 30. The 30 minute game is not under 30, so it stays out."
     },
     {
      "in": [
@@ -597,31 +1320,42 @@
       "Reed Whistle 10",
       "Fox and Hens 18"
      ],
-     "why": "The two short games come out in the order they are stored, which is not the order of their lengths."
+     "why": "The rows come back in the order the table holds them, which is not shortest first."
     }
    ],
-   "fb": "<= means or fewer, and it is the operator for a rule that says at most or no more than."
+   "fb": "< and <= differ by exactly one row: the one sitting on the number you wrote."
   },
   {
-   "id": "pr-l13-q9",
-   "station": 3,
-   "marks": 5,
-   "q": "Write one query giving the column title for every game in the table games. Keep only the games whose kind is card. Of those, keep only the games whose players is 3 or more. Display each row the query finds on its own line.",
+   "id": "pr-l13-q22",
+   "station": 2,
+   "marks": 3,
+   "q": "Write one query giving the column title and then the column minutes for every game in the table games that is not a card game. Display each row on its own line, the two values separated by one space. Then display one more line giving the minutes of the longest game the query found.",
    "teach": {
-    "say": "AND needs both sides true and OR needs only one. Each side has to be a complete comparison of its own.",
+    "say": "<> means is not equal to, so every row except the matching ones is kept.",
     "code": [
-     "SELECT name FROM pet WHERE kind = 'cat' AND age < 3"
+     "SELECT name FROM pet WHERE kind <> 'cat'"
+    ],
+    "out": [
+     "rex"
     ]
    },
    "brief": [
-    "The table games holds one row per game.",
-    "Its columns are title, kind, players and minutes.",
-    "The starter code fills the table from the lines typed in.",
-    "Both must be true.",
-    "The rows come out in the order they are stored."
+    "Use <> in the query rather than listing the other kinds.",
+    "The last line is one number on its own, with no words.",
+    "Keep the biggest minutes you have seen as the rows come back."
    ],
-   "hint": "sqlwhere",
+   "hint": {
+    "think": "Keeping the biggest so far: start low, and replace it whenever a bigger one turns up.",
+    "syntax": "if value > best:",
+    "walk": [
+     "Write the query with <> so card games are left out.",
+     "Display each row as it arrives.",
+     "Replace the biggest so far when this row is bigger.",
+     "Display the biggest after the loop."
+    ]
+   },
    "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\n",
+   "opt": true,
    "forbid": [
     [
      " in rows",
@@ -639,9 +1373,12 @@
       "END"
      ],
      "out": [
-      "Paper Lanterns"
+      "Hedge Maze 75",
+      "Night Market 45",
+      "Rook and Rye 90",
+      "90"
      ],
-     "why": "There are two card games here but only one of them takes three or more players - AND means both conditions, not either."
+     "why": "Three rows and then 90. The longest game is not the last row, so the biggest has to be kept as you go."
     },
     {
      "in": [
@@ -654,10 +1391,13 @@
       "END"
      ],
      "out": [
-      "Moth Hunt",
-      "Brass Compass"
+      "Glass Harbour 60",
+      "Copper Lines 15",
+      "Salt Flats 50",
+      "Lantern Street 30",
+      "60"
      ],
-     "why": "Two card games qualify this time. If a party game appears you have used OR where AND was wanted."
+     "why": "Four rows here and the longest one came back first, so starting the biggest at 0 still works."
     },
     {
      "in": [
@@ -668,27 +1408,110 @@
       "END"
      ],
      "out": [
-      "Fox and Hens"
+      "Reed Whistle 10",
+      "Amber Road 120",
+      "Pepper Mill 55",
+      "120"
      ],
-     "why": "One card game and it takes four players, so it is listed. Each half of the AND needs its own complete comparison."
+     "why": "The last row is not the longest, so printing row[1] after the loop gives the wrong number."
     }
    ],
-   "fb": "AND joins two complete conditions: kind = 'card' AND players >= 3, not kind = 'card' AND >= 3."
+   "fb": "<> keeps everything that does not match, and keeping the biggest so far is the same technique you used on a list."
   },
   {
-   "id": "pr-l13-q10",
+   "id": "pr-l13-q23",
    "station": 3,
-   "marks": 6,
-   "q": "Write one query giving the columns title and then minutes for every game in the table games. Keep the games lasting fewer than 20 minutes. Keep the games lasting more than 60 minutes as well. Display each row on its own line, the two values separated by a single space.",
+   "kind": "try",
+   "marks": 1,
+   "q": "Press Run. Two of the three games are card games, and only one of those passes both tests.",
+   "teach": {
+    "say": "AND joins two comparisons and keeps a row only when both of them are true. Each side has to be a complete comparison of its own.",
+    "code": [
+     "import sqlite3",
+     "db = sqlite3.connect(\":memory:\")",
+     "db.execute(\"CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)\")",
+     "db.execute(\"INSERT INTO games VALUES ('Snap Dragon', 'card', 4, 15)\")",
+     "db.execute(\"INSERT INTO games VALUES ('Clay Pigeon', 'dice', 2, 30)\")",
+     "db.execute(\"INSERT INTO games VALUES ('Willow Gate', 'card', 6, 50)\")",
+     "",
+     "for row in db.execute(\"SELECT title FROM games WHERE kind = 'card' AND players > 4\"):",
+     "    print(row[0])"
+    ],
+    "out": [
+     "Willow Gate"
+    ]
+   },
    "brief": [
-    "The table games holds one row per game.",
-    "Its columns are title, kind, players and minutes.",
-    "The starter code fills the table from the lines typed in.",
-    "Either one on its own is enough.",
-    "The rows come out in the order they are stored."
+    "Nothing is marked on this one.",
+    "Snap Dragon is a card game for exactly 4 players.",
+    "Change AND to OR and press Run again."
    ],
-   "hint": "sqlwhere",
-   "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\n",
+   "starter": "import sqlite3\ndb = sqlite3.connect(\":memory:\")\ndb.execute(\"CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)\")\ndb.execute(\"INSERT INTO games VALUES ('Snap Dragon', 'card', 4, 15)\")\ndb.execute(\"INSERT INTO games VALUES ('Clay Pigeon', 'dice', 2, 30)\")\ndb.execute(\"INSERT INTO games VALUES ('Willow Gate', 'card', 6, 50)\")\n\nfor row in db.execute(\"SELECT title FROM games WHERE kind = 'card' AND players > 4\"):\n    print(row[0])\n",
+   "lines": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Run the query, which keeps a row only if it is a card game and has over 4 players.",
+    "Show the title of the one row that was kept."
+   ],
+   "fb": "AND narrows the answer. Every extra condition can only take rows away, never add them."
+  },
+  {
+   "id": "pr-l13-q24",
+   "station": 3,
+   "kind": "predict",
+   "marks": 1,
+   "q": "What will this program display?",
+   "code": [
+    "import sqlite3",
+    "db = sqlite3.connect(\":memory:\")",
+    "db.execute(\"CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)\")",
+    "db.execute(\"INSERT INTO games VALUES ('Snap Dragon', 'card', 4, 15)\")",
+    "db.execute(\"INSERT INTO games VALUES ('Clay Pigeon', 'dice', 2, 30)\")",
+    "db.execute(\"INSERT INTO games VALUES ('Willow Gate', 'card', 6, 50)\")",
+    "",
+    "for row in db.execute(\"SELECT title FROM games WHERE kind = 'card' AND minutes > 20\"):",
+    "    print(row[0])",
+    "print(\"---\")",
+    "for row in db.execute(\"SELECT title FROM games WHERE kind = 'card' OR minutes > 20\"):",
+    "    print(row[0])"
+   ],
+   "a": [
+    "Willow Gate\n---\nSnap Dragon\nClay Pigeon\nWillow Gate",
+    "Snap Dragon\nClay Pigeon\nWillow Gate\n---\nWillow Gate",
+    "Snap Dragon\nWillow Gate\n---\nSnap Dragon\nClay Pigeon\nWillow Gate"
+   ],
+   "brief": [
+    "The AND query is first and the OR query is second.",
+    "Test each of the three games against both queries."
+   ],
+   "teach": {
+    "say": "The two queries hold the same two comparisons. Only the word between them changes."
+   },
+   "fb": "AND needed both comparisons true, so it gave one row. OR needed only one of them, so it gave all three."
+  },
+  {
+   "id": "pr-l13-q25",
+   "station": 3,
+   "marks": 1,
+   "q": "Change the query so a game is kept when either comparison is true.",
+   "kind": "change",
+   "brief": [
+    "Change one word only.",
+    "A game lasting fewer than 20 minutes is kept.",
+    "A game lasting more than 60 minutes is kept as well.",
+    "Display each row on its own line, the two values separated by one space."
+   ],
+   "hint": {
+    "think": "No game can be both under 20 minutes and over 60, which is why nothing comes out.",
+    "syntax": "WHERE ... OR ...",
+    "diagram": "sqlwhere"
+   },
+   "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\nfor row in db.execute(\"SELECT title, minutes FROM games WHERE minutes < 20 AND minutes > 60\"):\n    print(row[0], row[1])\n",
    "forbid": [
     [
      " in rows",
@@ -709,7 +1532,7 @@
       "Hedge Maze 75",
       "Rook and Rye 90"
      ],
-     "why": "The 20 minute game is not under 20, so it stays out - but both long games come in."
+     "why": "Nothing came out at all, so the two comparisons are still both being demanded."
     },
     {
      "in": [
@@ -724,7 +1547,7 @@
      "out": [
       "Copper Lines 15"
      ],
-     "why": "Only the 15 minute game qualifies. The 60 minute game is not more than 60, so using >= would wrongly add it."
+     "why": "One short game here. The 60 minute game is not more than 60, so it stays out."
     },
     {
      "in": [
@@ -739,28 +1562,559 @@
       "Amber Road 120",
       "Fox and Hens 18"
      ],
-     "why": "Three of the four games are at one extreme or the other. With OR a row only has to satisfy one side."
+     "why": "Three of these four games are at one extreme or the other, and they come back in the table's order."
     }
    ],
-   "fb": "OR needs only one side to be true, and each side has to be a full comparison of its own."
+   "fb": "AND and OR are one word apart and give completely different answers. AND demands both, OR accepts either."
   },
   {
-   "id": "pr-l13-q11",
+   "id": "pr-l13-q26",
+   "station": 3,
+   "marks": 2,
+   "q": "Finish the query so it also keeps only the games lasting fewer than 40 minutes.",
+   "kind": "complete",
+   "brief": [
+    "Replace ____ with one complete comparison.",
+    "A comparison names a column, then an operator, then a value.",
+    "A game lasting exactly 40 minutes is left out.",
+    "Display each row on its own line, the two values separated by one space."
+   ],
+   "hint": {
+    "think": "players >= 4 AND < 40 is not a comparison, because nothing says what the 40 is being compared with.",
+    "syntax": "WHERE ... AND column < number",
+    "diagram": "sqlwhere"
+   },
+   "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\nfor row in db.execute(\"SELECT title, players FROM games WHERE players >= 4 AND ____\"):\n    print(row[0], row[1])\n",
+   "forbid": [
+    [
+     " in rows",
+     "The answer has to come from an SQL query. Looping over the rows list in Python does the work the query is meant to do."
+    ]
+   ],
+   "tests": [
+    {
+     "in": [
+      "Hedge Maze,strategy,4,75",
+      "Tide Pools,card,2,20",
+      "Night Market,party,8,45",
+      "Paper Lanterns,card,4,35",
+      "Rook and Rye,strategy,2,90",
+      "END"
+     ],
+     "out": [
+      "Paper Lanterns 4"
+     ],
+     "why": "____ is not a comparison, so SQL stops. Three games have 4 or more players and only one is short enough."
+    },
+    {
+     "in": [
+      "Glass Harbour,strategy,3,60",
+      "Moth Hunt,card,5,25",
+      "Copper Lines,dice,2,15",
+      "Salt Flats,party,6,50",
+      "Lantern Street,word,4,30",
+      "Brass Compass,card,3,40",
+      "END"
+     ],
+     "out": [
+      "Moth Hunt 5",
+      "Lantern Street 4"
+     ],
+     "why": "Two rows here. If a 50 minute game appears, the second comparison is missing or the wrong way round."
+    },
+    {
+     "in": [
+      "Reed Whistle,word,2,10",
+      "Amber Road,strategy,4,120",
+      "Fox and Hens,card,4,18",
+      "Pepper Mill,party,5,55",
+      "END"
+     ],
+     "out": [
+      "Fox and Hens 4"
+     ],
+     "why": "The 120 minute game has four players, so it passes the first test and fails the second."
+    }
+   ],
+   "fb": "Both sides of an AND are whole comparisons, each naming its own column."
+  },
+  {
+   "id": "pr-l13-q27",
+   "station": 3,
+   "marks": 2,
+   "q": "This program should display the title and kind of every card game and every party game. Find the mistake and put it right.",
+   "kind": "debug",
+   "brief": [
+    "Press Run first. The program runs, but the answer is wrong.",
+    "Each side of an OR has to be a complete comparison.",
+    "Display each row on its own line, the two values separated by one space."
+   ],
+   "hint": {
+    "think": "Read the right-hand side of the OR on its own. What is 'party' being compared with?",
+    "syntax": "WHERE column = 'text' OR column = 'text'",
+    "walk": [
+     "The left side names a column, an operator and a value.",
+     "The right side has only a value, so write the missing part of it."
+    ],
+    "diagram": "sqlwhere"
+   },
+   "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\nfor row in db.execute(\"SELECT title, kind FROM games WHERE kind = 'card' OR 'party'\"):\n    print(row[0], row[1])\n",
+   "forbid": [
+    [
+     " in rows",
+     "The answer has to come from an SQL query. Looping over the rows list in Python does the work the query is meant to do."
+    ]
+   ],
+   "tests": [
+    {
+     "in": [
+      "Hedge Maze,strategy,4,75",
+      "Tide Pools,card,2,20",
+      "Night Market,party,8,45",
+      "Paper Lanterns,card,4,35",
+      "Rook and Rye,strategy,2,90",
+      "END"
+     ],
+     "out": [
+      "Tide Pools card",
+      "Night Market party",
+      "Paper Lanterns card"
+     ],
+     "why": "The party game is missing. A value on its own is not a comparison, so SQL ignores that half."
+    },
+    {
+     "in": [
+      "Glass Harbour,strategy,3,60",
+      "Moth Hunt,card,5,25",
+      "Copper Lines,dice,2,15",
+      "Salt Flats,party,6,50",
+      "Lantern Street,word,4,30",
+      "Brass Compass,card,3,40",
+      "END"
+     ],
+     "out": [
+      "Moth Hunt card",
+      "Salt Flats party",
+      "Brass Compass card"
+     ],
+     "why": "Three rows here, and they come back in the order the table holds them."
+    },
+    {
+     "in": [
+      "Reed Whistle,word,2,10",
+      "Amber Road,strategy,4,120",
+      "Fox and Hens,card,4,18",
+      "Pepper Mill,party,5,55",
+      "END"
+     ],
+     "out": [
+      "Fox and Hens card",
+      "Pepper Mill party"
+     ],
+     "why": "The column name has to be written again on the right of the OR."
+    }
+   ],
+   "fb": "This mistake does not stop the program, which is what makes it dangerous. Name the column on both sides of an OR."
+  },
+  {
+   "id": "pr-l13-q28",
+   "station": 3,
+   "marks": 2,
+   "q": "Write one query giving the column title and then the column players for every game in the table games. Keep only the games for 4 or more players. Of those, keep only the games lasting 20 minutes or more. Display each row on its own line, the two values separated by one space.",
+   "brief": [
+    "Exactly 4 players counts.",
+    "Exactly 20 minutes counts.",
+    "Both rules must be true for a game to be kept."
+   ],
+   "hint": {
+    "think": "Two comparisons joined by AND, one about players and one about minutes.",
+    "syntax": "WHERE column >= number AND column >= number",
+    "diagram": "sqlwhere"
+   },
+   "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\n",
+   "forbid": [
+    [
+     " in rows",
+     "The answer has to come from an SQL query. Looping over the rows list in Python does the work the query is meant to do."
+    ]
+   ],
+   "tests": [
+    {
+     "in": [
+      "Hedge Maze,strategy,4,75",
+      "Tide Pools,card,2,20",
+      "Night Market,party,8,45",
+      "Paper Lanterns,card,4,35",
+      "Rook and Rye,strategy,2,90",
+      "END"
+     ],
+     "out": [
+      "Hedge Maze 4",
+      "Night Market 8",
+      "Paper Lanterns 4"
+     ],
+     "why": "Three games pass both rules. The two 2-player games are out whatever their length."
+    },
+    {
+     "in": [
+      "Glass Harbour,strategy,3,60",
+      "Moth Hunt,card,5,25",
+      "Copper Lines,dice,2,15",
+      "Salt Flats,party,6,50",
+      "Lantern Street,word,4,30",
+      "Brass Compass,card,3,40",
+      "END"
+     ],
+     "out": [
+      "Moth Hunt 5",
+      "Salt Flats 6",
+      "Lantern Street 4"
+     ],
+     "why": "Three rows again, in the table's order. The 3-player games fail the first rule."
+    },
+    {
+     "in": [
+      "Reed Whistle,word,2,10",
+      "Amber Road,strategy,4,120",
+      "Fox and Hens,card,4,18",
+      "Pepper Mill,party,5,55",
+      "END"
+     ],
+     "out": [
+      "Amber Road 4",
+      "Pepper Mill 5"
+     ],
+     "why": "Fox and Hens has four players but lasts 18 minutes, so AND leaves it out."
+    }
+   ],
+   "fb": "AND is how one query asks two questions of the same row, and a row has to answer both."
+  },
+  {
+   "id": "pr-l13-q29",
+   "station": 3,
+   "marks": 3,
+   "q": "Write one query giving the column title and then the column kind for every game in the table games. Keep only the games whose kind is card, dice or word. Display each row on its own line, the two values separated by one space.",
+   "brief": [
+    "Three kinds are wanted, so the query needs three comparisons.",
+    "Each comparison names the column, the operator and the value.",
+    "A game only has to match one of the three."
+   ],
+   "hint": {
+    "think": "OR can be used more than once in one WHERE.",
+    "syntax": "WHERE column = 'text' OR column = 'text' OR column = 'text'",
+    "diagram": "sqlwhere"
+   },
+   "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\n",
+   "opt": true,
+   "forbid": [
+    [
+     " in rows",
+     "The answer has to come from an SQL query. Looping over the rows list in Python does the work the query is meant to do."
+    ]
+   ],
+   "tests": [
+    {
+     "in": [
+      "Hedge Maze,strategy,4,75",
+      "Tide Pools,card,2,20",
+      "Night Market,party,8,45",
+      "Paper Lanterns,card,4,35",
+      "Rook and Rye,strategy,2,90",
+      "END"
+     ],
+     "out": [
+      "Tide Pools card",
+      "Paper Lanterns card"
+     ],
+     "why": "Only card games here, because this table has no dice game and no word game."
+    },
+    {
+     "in": [
+      "Glass Harbour,strategy,3,60",
+      "Moth Hunt,card,5,25",
+      "Copper Lines,dice,2,15",
+      "Salt Flats,party,6,50",
+      "Lantern Street,word,4,30",
+      "Brass Compass,card,3,40",
+      "END"
+     ],
+     "out": [
+      "Moth Hunt card",
+      "Copper Lines dice",
+      "Lantern Street word",
+      "Brass Compass card"
+     ],
+     "why": "Four rows, three different kinds. If only card games come out, two of the comparisons are missing."
+    },
+    {
+     "in": [
+      "Reed Whistle,word,2,10",
+      "Amber Road,strategy,4,120",
+      "Fox and Hens,card,4,18",
+      "Pepper Mill,party,5,55",
+      "END"
+     ],
+     "out": [
+      "Reed Whistle word",
+      "Fox and Hens card"
+     ],
+     "why": "A word game and a card game, in the order the table holds them."
+    }
+   ],
+   "fb": "Each OR adds another way for a row to get in, and every one of them needs its own column name."
+  },
+  {
+   "id": "pr-l13-q30",
    "station": 4,
-   "marks": 6,
-   "q": "Write one query giving the columns title and then minutes for every game in the table games. Put the rows in order of minutes, shortest first. Display each row on its own line, the two values separated by a single space.",
+   "kind": "try",
+   "marks": 1,
+   "q": "Press Run. The rows come out in a different order from the one they went in.",
    "teach": {
-    "say": "ORDER BY comes last and sorts by a column, smallest or earliest first - add DESC to turn it round.",
+    "say": "ORDER BY comes last of all and sorts the rows by one column, smallest first. Adding DESC after the column name turns the order round.",
     "code": [
-     "SELECT name, age FROM pet ORDER BY name"
+     "import sqlite3",
+     "db = sqlite3.connect(\":memory:\")",
+     "db.execute(\"CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)\")",
+     "db.execute(\"INSERT INTO games VALUES ('Willow Gate', 'card', 6, 50)\")",
+     "db.execute(\"INSERT INTO games VALUES ('Snap Dragon', 'card', 4, 15)\")",
+     "db.execute(\"INSERT INTO games VALUES ('Clay Pigeon', 'dice', 2, 30)\")",
+     "",
+     "for row in db.execute(\"SELECT title, minutes FROM games ORDER BY minutes\"):",
+     "    print(row[0], row[1])"
+    ],
+    "out": [
+     "Snap Dragon 15",
+     "Clay Pigeon 30",
+     "Willow Gate 50"
     ]
    },
    "brief": [
-    "The table games holds one row per game.",
-    "Its columns are title, kind, players and minutes.",
-    "The starter code fills the table from the lines typed in."
+    "Nothing is marked on this one.",
+    "The games go into the table as 50, 15 and then 30 minutes.",
+    "Add the word DESC after minutes and press Run again."
    ],
-   "hint": "sqlwhere",
+   "starter": "import sqlite3\ndb = sqlite3.connect(\":memory:\")\ndb.execute(\"CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)\")\ndb.execute(\"INSERT INTO games VALUES ('Willow Gate', 'card', 6, 50)\")\ndb.execute(\"INSERT INTO games VALUES ('Snap Dragon', 'card', 4, 15)\")\ndb.execute(\"INSERT INTO games VALUES ('Clay Pigeon', 'dice', 2, 30)\")\n\nfor row in db.execute(\"SELECT title, minutes FROM games ORDER BY minutes\"):\n    print(row[0], row[1])\n",
+   "lines": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Run the query, which sorts the rows by minutes before handing them back.",
+    "Show the title and minutes of each row."
+   ],
+   "fb": "ORDER BY is the only thing that promises an order. Without it the rows come back however the table happens to hold them."
+  },
+  {
+   "id": "pr-l13-q31",
+   "station": 4,
+   "kind": "predict",
+   "marks": 1,
+   "q": "What will this program display?",
+   "code": [
+    "import sqlite3",
+    "db = sqlite3.connect(\":memory:\")",
+    "db.execute(\"CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)\")",
+    "db.execute(\"INSERT INTO games VALUES ('Snap Dragon', 'card', 4, 15)\")",
+    "db.execute(\"INSERT INTO games VALUES ('Willow Gate', 'card', 6, 50)\")",
+    "db.execute(\"INSERT INTO games VALUES ('Clay Pigeon', 'dice', 2, 30)\")",
+    "",
+    "for row in db.execute(\"SELECT title FROM games ORDER BY title\"):",
+    "    print(row[0])"
+   ],
+   "a": [
+    "Clay Pigeon\nSnap Dragon\nWillow Gate",
+    "Snap Dragon\nWillow Gate\nClay Pigeon",
+    "Willow Gate\nSnap Dragon\nClay Pigeon"
+   ],
+   "brief": [
+    "The rows go into the table in one order and are sorted by another.",
+    "Look at which column the ORDER BY names."
+   ],
+   "teach": {
+    "say": "ORDER BY works on a column of text as well as a column of numbers."
+   },
+   "fb": "A text column sorts into alphabetical order. The order the table happened to hold the rows in no longer matters."
+  },
+  {
+   "id": "pr-l13-q32",
+   "station": 4,
+   "marks": 1,
+   "q": "Change the query so the longest game comes first.",
+   "kind": "change",
+   "brief": [
+    "Change the query only.",
+    "The rows are still put in order of minutes.",
+    "Display each row on its own line, the two values separated by one space."
+   ],
+   "hint": {
+    "think": "One word, added after the column name, turns the order round.",
+    "syntax": "ORDER BY column DESC",
+    "diagram": "sqlwhere"
+   },
+   "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\nfor row in db.execute(\"SELECT title, minutes FROM games ORDER BY minutes\"):\n    print(row[0], row[1])\n",
+   "forbid": [
+    [
+     " in rows",
+     "The answer has to come from an SQL query. Looping over the rows list in Python does the work the query is meant to do."
+    ]
+   ],
+   "tests": [
+    {
+     "in": [
+      "Hedge Maze,strategy,4,75",
+      "Tide Pools,card,2,20",
+      "Night Market,party,8,45",
+      "Paper Lanterns,card,4,35",
+      "Rook and Rye,strategy,2,90",
+      "END"
+     ],
+     "out": [
+      "Rook and Rye 90",
+      "Hedge Maze 75",
+      "Night Market 45",
+      "Paper Lanterns 35",
+      "Tide Pools 20"
+     ],
+     "why": "The shortest game is still first, so the order has not been turned round."
+    },
+    {
+     "in": [
+      "Glass Harbour,strategy,3,60",
+      "Moth Hunt,card,5,25",
+      "Copper Lines,dice,2,15",
+      "Salt Flats,party,6,50",
+      "Lantern Street,word,4,30",
+      "Brass Compass,card,3,40",
+      "END"
+     ],
+     "out": [
+      "Glass Harbour 60",
+      "Salt Flats 50",
+      "Brass Compass 40",
+      "Lantern Street 30",
+      "Moth Hunt 25",
+      "Copper Lines 15"
+     ],
+     "why": "Six rows, biggest to smallest. The word goes after the column name, not before it."
+    },
+    {
+     "in": [
+      "Reed Whistle,word,2,10",
+      "Amber Road,strategy,4,120",
+      "Fox and Hens,card,4,18",
+      "Pepper Mill,party,5,55",
+      "END"
+     ],
+     "out": [
+      "Amber Road 120",
+      "Pepper Mill 55",
+      "Fox and Hens 18",
+      "Reed Whistle 10"
+     ],
+     "why": "If the titles come out alphabetically you have changed the column as well as the direction."
+    }
+   ],
+   "fb": "DESC is short for descending, and it only ever turns round the column it is written after."
+  },
+  {
+   "id": "pr-l13-q33",
+   "station": 4,
+   "marks": 2,
+   "q": "Finish the query so the rows come out in alphabetical order of title.",
+   "kind": "complete",
+   "brief": [
+    "Replace ____ with the name of one column.",
+    "Alphabetical order is what ORDER BY gives on its own.",
+    "Display each row on its own line, the two values separated by one space."
+   ],
+   "hint": {
+    "think": "The column that decides the order is the one named after ORDER BY.",
+    "syntax": "ORDER BY column",
+    "diagram": "sqlwhere"
+   },
+   "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\nfor row in db.execute(\"SELECT title, minutes FROM games ORDER BY ____\"):\n    print(row[0], row[1])\n",
+   "forbid": [
+    [
+     " in rows",
+     "The answer has to come from an SQL query. Looping over the rows list in Python does the work the query is meant to do."
+    ]
+   ],
+   "tests": [
+    {
+     "in": [
+      "Hedge Maze,strategy,4,75",
+      "Tide Pools,card,2,20",
+      "Night Market,party,8,45",
+      "Paper Lanterns,card,4,35",
+      "Rook and Rye,strategy,2,90",
+      "END"
+     ],
+     "out": [
+      "Hedge Maze 75",
+      "Night Market 45",
+      "Paper Lanterns 35",
+      "Rook and Rye 90",
+      "Tide Pools 20"
+     ],
+     "why": "____ is not the name of a column, so SQL stops. H comes before N, P, R and T."
+    },
+    {
+     "in": [
+      "Glass Harbour,strategy,3,60",
+      "Moth Hunt,card,5,25",
+      "Copper Lines,dice,2,15",
+      "Salt Flats,party,6,50",
+      "Lantern Street,word,4,30",
+      "Brass Compass,card,3,40",
+      "END"
+     ],
+     "out": [
+      "Brass Compass 40",
+      "Copper Lines 15",
+      "Glass Harbour 60",
+      "Lantern Street 30",
+      "Moth Hunt 25",
+      "Salt Flats 50"
+     ],
+     "why": "Six rows in alphabetical order. If they come out shortest first you have named the minutes column."
+    },
+    {
+     "in": [
+      "Reed Whistle,word,2,10",
+      "Amber Road,strategy,4,120",
+      "Fox and Hens,card,4,18",
+      "Pepper Mill,party,5,55",
+      "END"
+     ],
+     "out": [
+      "Amber Road 120",
+      "Fox and Hens 18",
+      "Pepper Mill 55",
+      "Reed Whistle 10"
+     ],
+     "why": "The minutes are still displayed. They just have nothing to do with the order."
+    }
+   ],
+   "fb": "The column in the ORDER BY decides the order, whether or not the SELECT asks for it as well."
+  },
+  {
+   "id": "pr-l13-q34",
+   "station": 4,
+   "marks": 2,
+   "q": "Write one query giving the column title and then the column minutes for every game in the table games. Put the rows in order of minutes, shortest first. Display each row on its own line, the two values separated by one space.",
+   "brief": [
+    "Every game comes back, so no row is left out.",
+    "Shortest first is the order ORDER BY gives on its own.",
+    "The lines above the comment fill the table from what is typed in."
+   ],
+   "hint": {
+    "think": "No rows are being thrown away, so this query needs no WHERE at all.",
+    "syntax": "SELECT column, column FROM table ORDER BY column",
+    "diagram": "sqlwhere"
+   },
    "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\n",
    "forbid": [
     [
@@ -785,7 +2139,7 @@
       "Hedge Maze 75",
       "Rook and Rye 90"
      ],
-     "why": "ORDER BY goes at the end of the query. Shortest first is ascending, which is what ORDER BY does on its own."
+     "why": "Five rows, shortest first. If they match the order they were typed in, the ORDER BY is missing."
     },
     {
      "in": [
@@ -805,7 +2159,7 @@
       "Salt Flats 50",
       "Glass Harbour 60"
      ],
-     "why": "Six rows, all rearranged. If the order matches the table instead, your ORDER BY is missing or misspelt."
+     "why": "Six rows, all rearranged. Sorting is the query's job, not something to do in Python."
     },
     {
      "in": [
@@ -821,24 +2175,26 @@
       "Pepper Mill 55",
       "Amber Road 120"
      ],
-     "why": "Sort by minutes, not by title - sorting by the wrong column puts Amber Road first."
+     "why": "Sort by minutes, not by title. By title, Amber Road would come first."
     }
    ],
-   "fb": "ORDER BY comes last and sorts ascending unless you ask for DESC."
+   "fb": "ORDER BY goes at the very end of the query, after the table and after any WHERE."
   },
   {
-   "id": "pr-l13-q12",
+   "id": "pr-l13-q35",
    "station": 4,
-   "marks": 6,
-   "q": "Write one query giving the columns title and then minutes for every game in the table games. Put the rows in order of title, from Z to A. Display each row on its own line, the two values separated by a single space.",
+   "marks": 2,
+   "q": "Write one query giving the column title and then the column players for every game in the table games. Put the rows in order of title, from Z to A. Display each row on its own line, the two values separated by one space.",
    "brief": [
-    "The table games holds one row per game.",
-    "Its columns are title, kind, players and minutes.",
-    "The starter code fills the table from the lines typed in.",
     "Ordering by a text column puts it in alphabetical order.",
-    "The rows here are wanted the other way round."
+    "Z to A is the opposite of that.",
+    "The lines above the comment fill the table from what is typed in."
    ],
-   "hint": "sqlwhere",
+   "hint": {
+    "think": "A text column and a number column sort the same way, and the same word turns either round.",
+    "syntax": "ORDER BY column DESC",
+    "diagram": "sqlwhere"
+   },
    "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\n",
    "forbid": [
     [
@@ -857,13 +2213,13 @@
       "END"
      ],
      "out": [
-      "Tide Pools 20",
-      "Rook and Rye 90",
-      "Paper Lanterns 35",
-      "Night Market 45",
-      "Hedge Maze 75"
+      "Tide Pools 2",
+      "Rook and Rye 2",
+      "Paper Lanterns 4",
+      "Night Market 8",
+      "Hedge Maze 4"
      ],
-     "why": "ORDER BY works on text as well as numbers. Z to A is descending, so DESC is needed - without it the rows come out A to Z."
+     "why": "Tide Pools first and Hedge Maze last. Without DESC the rows come out A to Z."
     },
     {
      "in": [
@@ -876,14 +2232,14 @@
       "END"
      ],
      "out": [
-      "Salt Flats 50",
-      "Moth Hunt 25",
-      "Lantern Street 30",
-      "Glass Harbour 60",
-      "Copper Lines 15",
-      "Brass Compass 40"
+      "Salt Flats 6",
+      "Moth Hunt 5",
+      "Lantern Street 4",
+      "Glass Harbour 3",
+      "Copper Lines 2",
+      "Brass Compass 3"
      ],
-     "why": "Six rows in reverse alphabetical order. If they came out shortest first you ordered by minutes rather than by title."
+     "why": "Six rows in reverse alphabetical order. The players column is displayed but does not set the order."
     },
     {
      "in": [
@@ -894,36 +2250,33 @@
       "END"
      ],
      "out": [
-      "Reed Whistle 10",
-      "Pepper Mill 55",
-      "Fox and Hens 18",
-      "Amber Road 120"
+      "Reed Whistle 2",
+      "Pepper Mill 5",
+      "Fox and Hens 4",
+      "Amber Road 4"
      ],
-     "why": "Reed Whistle comes first and Amber Road last. The minutes column is still printed, it just has nothing to do with the order."
+     "why": "If the order looks like the order they were typed in, the ORDER BY is missing or names the wrong column."
     }
    ],
-   "fb": "ORDER BY sorts text alphabetically just as it sorts numbers by size, and DESC turns either of them round."
+   "fb": "Sorting text works exactly as sorting numbers does, and DESC turns either of them round."
   },
   {
-   "id": "pr-l13-q13",
-   "station": 5,
-   "marks": 8,
-   "q": "Write one query giving the columns title and then minutes for every game in the table games. Keep only the games whose kind is not card. Of those, keep only the games lasting 60 minutes or fewer. Put the rows in order of minutes, longest first. Display each row on its own line, the two values separated by a single space.",
-   "teach": {
-    "say": "<> means is not equal to. The clauses always come in one order: SELECT, FROM, WHERE, then ORDER BY.",
-    "code": [
-     "SELECT name FROM pet WHERE kind <> 'cat' ORDER BY name"
-    ]
-   },
+   "id": "pr-l13-q36",
+   "station": 4,
+   "marks": 3,
+   "q": "Write one query giving the column title for every game in the table games. Put the rows in order of minutes, longest first. Display each row the query finds on its own line.",
    "brief": [
-    "The table games holds one row per game.",
-    "Its columns are title, kind, players and minutes.",
-    "The starter code fills the table from the lines typed in.",
-    "Exactly 60 counts.",
-    "The rows are ordered by minutes."
+    "Only the title is displayed, and nothing else.",
+    "The rows are still ordered by minutes.",
+    "A column can decide the order without being one of the columns the SELECT asks for."
    ],
-   "hint": "sqlwhere",
+   "hint": {
+    "think": "The SELECT and the ORDER BY do not have to name the same column.",
+    "syntax": "SELECT column FROM table ORDER BY column DESC",
+    "diagram": "sqlwhere"
+   },
    "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\n",
+   "opt": true,
    "forbid": [
     [
      " in rows",
@@ -941,9 +2294,169 @@
       "END"
      ],
      "out": [
+      "Rook and Rye",
+      "Hedge Maze",
+      "Night Market",
+      "Paper Lanterns",
+      "Tide Pools"
+     ],
+     "why": "Five titles, longest game first. The minutes set the order but are not displayed."
+    },
+    {
+     "in": [
+      "Glass Harbour,strategy,3,60",
+      "Moth Hunt,card,5,25",
+      "Copper Lines,dice,2,15",
+      "Salt Flats,party,6,50",
+      "Lantern Street,word,4,30",
+      "Brass Compass,card,3,40",
+      "END"
+     ],
+     "out": [
+      "Glass Harbour",
+      "Salt Flats",
+      "Brass Compass",
+      "Lantern Street",
+      "Moth Hunt",
+      "Copper Lines"
+     ],
+     "why": "Six titles. If a number appears on each line, the SELECT is asking for minutes as well."
+    },
+    {
+     "in": [
+      "Reed Whistle,word,2,10",
+      "Amber Road,strategy,4,120",
+      "Fox and Hens,card,4,18",
+      "Pepper Mill,party,5,55",
+      "END"
+     ],
+     "out": [
+      "Amber Road",
+      "Pepper Mill",
+      "Fox and Hens",
+      "Reed Whistle"
+     ],
+     "why": "By title these would run Amber Road, Fox and Hens, Pepper Mill, Reed Whistle, so check which column you ordered by."
+    }
+   ],
+   "fb": "The ORDER BY column does not have to be displayed. The query can sort by something it never shows you."
+  },
+  {
+   "id": "pr-l13-q37",
+   "station": 5,
+   "kind": "try",
+   "marks": 1,
+   "q": "Press Run. One query chooses the columns, chooses the rows and sets the order.",
+   "teach": {
+    "say": "<> means is not equal to. The clauses always come in one order: SELECT, then FROM, then WHERE, then ORDER BY.",
+    "code": [
+     "import sqlite3",
+     "db = sqlite3.connect(\":memory:\")",
+     "db.execute(\"CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)\")",
+     "db.execute(\"INSERT INTO games VALUES ('Snap Dragon', 'card', 4, 15)\")",
+     "db.execute(\"INSERT INTO games VALUES ('Clay Pigeon', 'dice', 2, 30)\")",
+     "db.execute(\"INSERT INTO games VALUES ('Willow Gate', 'card', 6, 50)\")",
+     "db.execute(\"INSERT INTO games VALUES ('Ink and Quill', 'card', 3, 40)\")",
+     "",
+     "for row in db.execute(\"SELECT title, minutes FROM games WHERE kind <> 'card' ORDER BY minutes DESC\"):",
+     "    print(row[0], row[1])"
+    ],
+    "out": [
+     "Clay Pigeon 30"
+    ]
+   },
+   "brief": [
+    "Nothing is marked on this one.",
+    "Three of the four games are card games, and they are all left out.",
+    "Take the ORDER BY away and press Run again."
+   ],
+   "starter": "import sqlite3\ndb = sqlite3.connect(\":memory:\")\ndb.execute(\"CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)\")\ndb.execute(\"INSERT INTO games VALUES ('Snap Dragon', 'card', 4, 15)\")\ndb.execute(\"INSERT INTO games VALUES ('Clay Pigeon', 'dice', 2, 30)\")\ndb.execute(\"INSERT INTO games VALUES ('Willow Gate', 'card', 6, 50)\")\ndb.execute(\"INSERT INTO games VALUES ('Ink and Quill', 'card', 3, 40)\")\n\nfor row in db.execute(\"SELECT title, minutes FROM games WHERE kind <> 'card' ORDER BY minutes DESC\"):\n    print(row[0], row[1])\n",
+   "lines": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Run the query, which keeps the games that are not card games and sorts them longest first.",
+    "Show the title and minutes of each row."
+   ],
+   "fb": "A query can do three jobs at once, as long as its clauses are written in that one order."
+  },
+  {
+   "id": "pr-l13-q38",
+   "station": 5,
+   "kind": "predict",
+   "marks": 1,
+   "q": "What will this program display?",
+   "code": [
+    "import sqlite3",
+    "db = sqlite3.connect(\":memory:\")",
+    "db.execute(\"CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)\")",
+    "db.execute(\"INSERT INTO games VALUES ('Snap Dragon', 'card', 4, 15)\")",
+    "db.execute(\"INSERT INTO games VALUES ('Clay Pigeon', 'dice', 2, 30)\")",
+    "db.execute(\"INSERT INTO games VALUES ('Willow Gate', 'card', 6, 50)\")",
+    "db.execute(\"INSERT INTO games VALUES ('Ink and Quill', 'card', 3, 40)\")",
+    "",
+    "for row in db.execute(\"SELECT title, minutes FROM games WHERE kind = 'card' ORDER BY minutes DESC\"):",
+    "    print(row[0], row[1])"
+   ],
+   "a": [
+    "Willow Gate 50\nInk and Quill 40\nSnap Dragon 15",
+    "Snap Dragon 15\nInk and Quill 40\nWillow Gate 50",
+    "Willow Gate 50\nInk and Quill 40\nClay Pigeon 30\nSnap Dragon 15"
+   ],
+   "brief": [
+    "Work out which rows the WHERE keeps first.",
+    "Then put those rows in the order the ORDER BY asks for."
+   ],
+   "teach": {
+    "say": "The WHERE and the ORDER BY name different columns. One decides which rows, the other decides the order."
+   },
+   "fb": "WHERE threw the dice game away first. ORDER BY then sorted what was left, and DESC put the longest game first."
+  },
+  {
+   "id": "pr-l13-q39",
+   "station": 5,
+   "marks": 2,
+   "q": "Finish the query so the rows come out in order of minutes, longest first.",
+   "kind": "complete",
+   "brief": [
+    "Replace ____ with the clause that sets the order.",
+    "It is the last clause in a query.",
+    "Card games are already being left out by the WHERE.",
+    "Display each row on its own line, the two values separated by one space."
+   ],
+   "hint": {
+    "think": "Two words name the clause and one more turns the order round.",
+    "syntax": "ORDER BY column DESC",
+    "diagram": "sqlwhere"
+   },
+   "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\nfor row in db.execute(\"SELECT title, minutes FROM games WHERE kind <> 'card' ____\"):\n    print(row[0], row[1])\n",
+   "forbid": [
+    [
+     " in rows",
+     "The answer has to come from an SQL query. Looping over the rows list in Python does the work the query is meant to do."
+    ]
+   ],
+   "tests": [
+    {
+     "in": [
+      "Hedge Maze,strategy,4,75",
+      "Tide Pools,card,2,20",
+      "Night Market,party,8,45",
+      "Paper Lanterns,card,4,35",
+      "Rook and Rye,strategy,2,90",
+      "END"
+     ],
+     "out": [
+      "Rook and Rye 90",
+      "Hedge Maze 75",
       "Night Market 45"
      ],
-     "why": "Only one game is both non-card and an hour or less. The two long strategy games are over 60 and the card games are excluded whatever their length."
+     "why": "____ is not a clause, so SQL stops. Three games here are not card games."
     },
     {
      "in": [
@@ -961,7 +2474,87 @@
       "Lantern Street 30",
       "Copper Lines 15"
      ],
-     "why": "Four rows, longest first, and the 60 minute game is included because the rule says 60 or fewer. Leaving DESC off reverses the whole answer."
+     "why": "Four rows, longest first. Leaving DESC off turns the whole answer round."
+    },
+    {
+     "in": [
+      "Reed Whistle,word,2,10",
+      "Amber Road,strategy,4,120",
+      "Fox and Hens,card,4,18",
+      "Pepper Mill,party,5,55",
+      "END"
+     ],
+     "out": [
+      "Amber Road 120",
+      "Pepper Mill 55",
+      "Reed Whistle 10"
+     ],
+     "why": "The card game is still left out, because the WHERE was already written for you."
+    }
+   ],
+   "fb": "The ORDER BY goes after the WHERE, every time, however long the query gets."
+  },
+  {
+   "id": "pr-l13-q40",
+   "station": 5,
+   "marks": 2,
+   "q": "This program should display the title and minutes of every game lasting more than 30 minutes, shortest first. Find the mistake and put it right.",
+   "kind": "debug",
+   "brief": [
+    "Press Run first and read the error message.",
+    "Both clauses are the right ones, in the wrong order.",
+    "Display each row on its own line, the two values separated by one space."
+   ],
+   "hint": {
+    "think": "SQL will read the clauses in one order only.",
+    "syntax": "SELECT ... FROM ... WHERE ... ORDER BY ...",
+    "walk": [
+     "WHERE narrows the rows down first.",
+     "ORDER BY sorts whatever is left, so it comes last."
+    ],
+    "diagram": "sqlwhere"
+   },
+   "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\nfor row in db.execute(\"SELECT title, minutes FROM games ORDER BY minutes WHERE minutes > 30\"):\n    print(row[0], row[1])\n",
+   "forbid": [
+    [
+     " in rows",
+     "The answer has to come from an SQL query. Looping over the rows list in Python does the work the query is meant to do."
+    ]
+   ],
+   "tests": [
+    {
+     "in": [
+      "Hedge Maze,strategy,4,75",
+      "Tide Pools,card,2,20",
+      "Night Market,party,8,45",
+      "Paper Lanterns,card,4,35",
+      "Rook and Rye,strategy,2,90",
+      "END"
+     ],
+     "out": [
+      "Paper Lanterns 35",
+      "Night Market 45",
+      "Hedge Maze 75",
+      "Rook and Rye 90"
+     ],
+     "why": "A syntax error near WHERE. Swap the two clauses round rather than changing either one."
+    },
+    {
+     "in": [
+      "Glass Harbour,strategy,3,60",
+      "Moth Hunt,card,5,25",
+      "Copper Lines,dice,2,15",
+      "Salt Flats,party,6,50",
+      "Lantern Street,word,4,30",
+      "Brass Compass,card,3,40",
+      "END"
+     ],
+     "out": [
+      "Brass Compass 40",
+      "Salt Flats 50",
+      "Glass Harbour 60"
+     ],
+     "why": "Three rows, shortest first. The 30 minute game is not more than 30, so it stays out."
     },
     {
      "in": [
@@ -973,27 +2566,28 @@
      ],
      "out": [
       "Pepper Mill 55",
-      "Reed Whistle 10"
+      "Amber Road 120"
      ],
-     "why": "The 120 minute strategy game is too long and the card game is the wrong kind, so two rows remain - and 55 must come before 10."
+     "why": "Two rows. Do not add DESC: shortest first is what ORDER BY gives on its own."
     }
    ],
-   "fb": "The clauses always come in this order: SELECT, FROM, WHERE, then ORDER BY - with <> meaning is not equal to."
+   "fb": "A syntax error in a query usually means a clause is in the wrong place. The order never changes."
   },
   {
-   "id": "pr-l13-q14",
+   "id": "pr-l13-q41",
    "station": 5,
-   "marks": 8,
-   "q": "Write one query giving the columns title, then players and then minutes for every game in the table games. Keep only the games with 4 or more players. Of those, keep only the games lasting fewer than 60 minutes. Put the rows in order of minutes, shortest first. Display each row on its own line, the three values separated by single spaces.",
+   "marks": 3,
+   "q": "Write one query giving the column title and then the column minutes for every game in the table games. Keep only the games for 4 or more players. Put the rows in order of minutes, shortest first. Display each row on its own line, the two values separated by one space.",
    "brief": [
-    "The table games holds one row per game.",
-    "Its columns are title, kind, players and minutes.",
-    "The starter code fills the table from the lines typed in.",
     "Exactly 4 players counts.",
-    "Exactly 60 minutes does not count.",
-    "The rows are ordered by minutes."
+    "The order comes from minutes, not from players.",
+    "The lines above the comment fill the table from what is typed in."
    ],
-   "hint": "sqlwhere",
+   "hint": {
+    "think": "One WHERE and one ORDER BY, and they name different columns.",
+    "syntax": "SELECT ... FROM ... WHERE column >= number ORDER BY column",
+    "diagram": "sqlwhere"
+   },
    "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\n",
    "forbid": [
     [
@@ -1012,10 +2606,11 @@
       "END"
      ],
      "out": [
-      "Paper Lanterns 4 35",
-      "Night Market 8 45"
+      "Paper Lanterns 35",
+      "Night Market 45",
+      "Hedge Maze 75"
      ],
-     "why": "Two games pass both tests, and the shorter one comes first - so the ORDER BY is doing something the table's own order does not."
+     "why": "Three rows, shortest first. The two 2-player games are left out by the WHERE."
     },
     {
      "in": [
@@ -1028,11 +2623,11 @@
       "END"
      ],
      "out": [
-      "Moth Hunt 5 25",
-      "Lantern Street 4 30",
-      "Salt Flats 6 50"
+      "Moth Hunt 25",
+      "Lantern Street 30",
+      "Salt Flats 50"
      ],
-     "why": "Three rows, and the one with the fewest players is in the middle - the order comes from minutes, not from players."
+     "why": "The game with the most players is last, because the order comes from minutes."
     },
     {
      "in": [
@@ -1043,13 +2638,179 @@
       "END"
      ],
      "out": [
-      "Fox and Hens 4 18",
-      "Pepper Mill 5 55"
+      "Fox and Hens 18",
+      "Pepper Mill 55",
+      "Amber Road 120"
      ],
-     "why": "The 120 minute game has four players but is far too long, so it is left out even though half the condition is true."
+     "why": "All three of these games have four or more players, so only the order changes here."
     }
    ],
-   "fb": "Three columns, two conditions and an ordering in one query, and they still go in the one order SQL allows: SELECT, FROM, WHERE, ORDER BY."
+   "fb": "Narrow the rows down with WHERE, then put what is left in order with ORDER BY."
+  },
+  {
+   "id": "pr-l13-q42",
+   "station": 5,
+   "marks": 3,
+   "q": "Write one query giving the column title, then the column players and then the column minutes for every game in the table games. Keep only the games whose kind is not card. Of those, keep only the games lasting 60 minutes or fewer. Put the rows in order of minutes, longest first. Display each row on its own line, the three values separated by single spaces.",
+   "brief": [
+    "Exactly 60 minutes counts.",
+    "Both rules must be true for a game to be kept.",
+    "The three values come out in the order the SELECT names them."
+   ],
+   "hint": {
+    "think": "Three columns, two comparisons joined by AND, and one ORDER BY.",
+    "syntax": "SELECT a, b, c FROM table WHERE ... AND ... ORDER BY column DESC",
+    "walk": [
+     "Name the three columns in the SELECT, in the order the task gives them.",
+     "Write a comparison for the kind rule and one for the minutes rule.",
+     "Join those two comparisons with AND.",
+     "Put the ORDER BY last, and remember the row now has three values."
+    ],
+    "diagram": "sqlwhere"
+   },
+   "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\n",
+   "forbid": [
+    [
+     " in rows",
+     "The answer has to come from an SQL query. Looping over the rows list in Python does the work the query is meant to do."
+    ]
+   ],
+   "tests": [
+    {
+     "in": [
+      "Hedge Maze,strategy,4,75",
+      "Tide Pools,card,2,20",
+      "Night Market,party,8,45",
+      "Paper Lanterns,card,4,35",
+      "Rook and Rye,strategy,2,90",
+      "END"
+     ],
+     "out": [
+      "Night Market 8 45"
+     ],
+     "why": "One game here is both not a card game and an hour or less. The two strategy games are too long."
+    },
+    {
+     "in": [
+      "Glass Harbour,strategy,3,60",
+      "Moth Hunt,card,5,25",
+      "Copper Lines,dice,2,15",
+      "Salt Flats,party,6,50",
+      "Lantern Street,word,4,30",
+      "Brass Compass,card,3,40",
+      "END"
+     ],
+     "out": [
+      "Glass Harbour 3 60",
+      "Salt Flats 6 50",
+      "Lantern Street 4 30",
+      "Copper Lines 2 15"
+     ],
+     "why": "Four rows, longest first, and the 60 minute game is in because the rule says 60 or fewer."
+    },
+    {
+     "in": [
+      "Reed Whistle,word,2,10",
+      "Amber Road,strategy,4,120",
+      "Fox and Hens,card,4,18",
+      "Pepper Mill,party,5,55",
+      "END"
+     ],
+     "out": [
+      "Pepper Mill 5 55",
+      "Reed Whistle 2 10"
+     ],
+     "why": "The 120 minute game is too long and the card game is the wrong kind, so two rows remain."
+    }
+   ],
+   "fb": "Three columns, two comparisons and an ordering, still in the one order SQL allows: SELECT, FROM, WHERE, ORDER BY."
+  },
+  {
+   "id": "pr-l13-q43",
+   "station": 5,
+   "marks": 3,
+   "q": "Write one query giving the column title for every game in the table games, in order of minutes, shortest first. Display the title of the first row the query finds and nothing else.",
+   "brief": [
+    "One line of output only.",
+    "Let the query put the rows in order, then stop after the first one.",
+    "Do not work out the smallest number yourself."
+   ],
+   "hint": {
+    "think": "If the shortest game is first, the row you want is the one that arrives first.",
+    "syntax": "break",
+    "walk": [
+     "Write the query so the shortest game comes back first.",
+     "Display the title of the row.",
+     "Leave the loop before the next row arrives."
+    ]
+   },
+   "starter": "import sqlite3\ndb = sqlite3.connect(':memory:')\ndb.execute('CREATE TABLE games (title TEXT, kind TEXT, players INTEGER, minutes INTEGER)')\n\n# These lines fill the table from the input. Leave them as they are.\nrows = []\nline = input()\nwhile line != 'END':\n    title, kind, players, minutes = line.split(',')\n    rows.append((title, kind, int(players), int(minutes)))\n    line = input()\ndb.executemany('INSERT INTO games VALUES (?,?,?,?)', rows)\n\n# Your query, and the printing of the rows it finds, go below.\n",
+   "opt": true,
+   "forbid": [
+    [
+     " in rows",
+     "The answer has to come from an SQL query. Looping over the rows list in Python does the work the query is meant to do."
+    ]
+   ],
+   "tests": [
+    {
+     "in": [
+      "Hedge Maze,strategy,4,75",
+      "Tide Pools,card,2,20",
+      "Night Market,party,8,45",
+      "Paper Lanterns,card,4,35",
+      "Rook and Rye,strategy,2,90",
+      "END"
+     ],
+     "out": [
+      "Tide Pools"
+     ],
+     "why": "One line only. Tide Pools is the shortest game, and the other four must not appear."
+    },
+    {
+     "in": [
+      "Glass Harbour,strategy,3,60",
+      "Moth Hunt,card,5,25",
+      "Copper Lines,dice,2,15",
+      "Salt Flats,party,6,50",
+      "Lantern Street,word,4,30",
+      "Brass Compass,card,3,40",
+      "END"
+     ],
+     "out": [
+      "Copper Lines"
+     ],
+     "why": "The shortest game is not the first row the table holds, so the ORDER BY is doing the work."
+    },
+    {
+     "in": [
+      "Reed Whistle,word,2,10",
+      "Amber Road,strategy,4,120",
+      "Fox and Hens,card,4,18",
+      "Pepper Mill,party,5,55",
+      "END"
+     ],
+     "out": [
+      "Reed Whistle"
+     ],
+     "why": "If every title comes out, nothing is stopping the loop after the first row."
+    },
+    {
+     "in": [
+      "Stone Bridge,dice,3,25",
+      "Ferry Lane,card,6,40",
+      "Ink and Quill,word,2,12",
+      "Harbour Bell,party,4,65",
+      "Thistle Down,strategy,5,95",
+      "END"
+     ],
+     "out": [
+      "Ink and Quill"
+     ],
+     "why": "A fourth table, same query. The shortest game is the 12 minute one."
+    }
+   ],
+   "fb": "A sorted query plus one row is often all an answer needs, and break is what stops the loop after it."
   }
  ]
 }

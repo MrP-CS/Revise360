@@ -13,39 +13,144 @@
   {
    "id": "pr-l05-q1",
    "station": 0,
-   "marks": 2,
-   "q": "Ask the user for a whole number. Using a while loop, display every number from it down to 1, one on each line.",
+   "kind": "try",
+   "marks": 1,
+   "q": "Press Run and watch the numbers come down.",
    "teach": {
-    "say": "A while loop keeps going while its condition is true. The variable the condition uses has to change inside the loop, or the loop never ends.",
+    "say": "A while loop repeats for as long as its condition stays true. It has three parts. Set the variable before the loop. Test it in the condition. Change it inside the loop. Miss out that last part and the condition never becomes false, so the loop never stops.",
     "code": [
-     "n = 8",
-     "while n > 5:",
+     "n = 3",
+     "while n > 0:",
+     "    print(n)",
+     "    n = n - 1",
+     "print(\"Lift off\")"
+    ],
+    "out": [
+     "3",
+     "2",
+     "1",
+     "Lift off"
+    ]
+   },
+   "brief": [
+    "Nothing is marked on this one.",
+    "A while loop that never changes its variable runs for ever.",
+    "The site stops a runaway program after a few seconds. It is a normal mistake, not a disaster."
+   ],
+   "starter": "n = 3\nwhile n > 0:\n    print(n)\n    n = n - 1\nprint(\"Lift off\")\n",
+   "lines": [
+    "Set n to 3 before the loop starts.",
+    "Keep going while n is above 0.",
+    "Show what n is holding.",
+    "Take 1 off n, so the condition gets closer to false.",
+    "This line is not indented, so it runs once, after the loop."
+   ],
+   "fb": "Three parts: n is set before the loop, tested in the condition, and made smaller inside it."
+  },
+  {
+   "id": "pr-l05-q2",
+   "station": 0,
+   "kind": "predict",
+   "marks": 1,
+   "q": "What will this program display?",
+   "code": [
+    "n = 1",
+    "while n < 4:",
+    "    print(n)",
+    "    n = n + 1"
+   ],
+   "a": [
+    "1\n2\n3",
+    "1\n2\n3\n4",
+    "1"
+   ],
+   "brief": [
+    "Read every line before you choose."
+   ],
+   "teach": {
+    "say": "A while loop can count upwards as well. The condition is tested before every turn, so the loop stops as soon as the condition is false."
+   },
+   "fb": "n reaches 4, the condition 4 < 4 is false, and the loop stops before 4 is ever displayed."
+  },
+  {
+   "id": "pr-l05-q3",
+   "station": 0,
+   "marks": 1,
+   "q": "Change the program so it displays the numbers 1 to 6, one on each line.",
+   "kind": "change",
+   "brief": [
+    "Change only the number in the condition.",
+    "Display the numbers 1, 2, 3, 4, 5 and 6, one on each line."
+   ],
+   "hint": {
+    "think": "The condition decides how far the loop goes before it stops.",
+    "diagram": "pywhile"
+   },
+   "starter": "n = 1\nwhile n <= 3:\n    print(n)\n    n = n + 1\n",
+   "fixed": true,
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+     ],
+     "why": "The loop still stops at 3, so the number in the condition was not changed."
+    }
+   ],
+   "fb": "The condition is where a while loop's finishing point lives."
+  },
+  {
+   "id": "pr-l05-q4",
+   "station": 0,
+   "marks": 2,
+   "q": "Finish the program so it counts down from the number typed in to 1, one number on each line.",
+   "kind": "complete",
+   "teach": {
+    "say": "The line that changes the variable goes inside the loop, indented like the print. Without it the condition is tested on the same value every turn.",
+    "code": [
+     "n = 4",
+     "while n > 0:",
      "    print(n)",
      "    n = n - 1"
     ],
     "out": [
-     "8",
-     "7",
-     "6"
+     "4",
+     "3",
+     "2",
+     "1"
     ]
    },
    "brief": [
-    "The user types in one whole number, which is never less than 1."
+    "The first three lines are written for you.",
+    "The user types in one whole number, which is never less than 1.",
+    "Replace ____ with one instruction of your own.",
+    "Display the numbers from the one typed down to 1, one on each line."
    ],
-   "hint": "pywhile",
-   "starter": "# Count down to 1 with a while loop\n",
+   "hint": {
+    "think": "The number has to get smaller on every turn, or the condition stays true for ever.",
+    "walk": [
+     "The loop runs while n is above 0.",
+     "Something inside the loop has to bring n closer to 0."
+    ],
+    "diagram": "pywhile"
+   },
+   "starter": "n = int(input())\nwhile n > 0:\n    print(n)\n    ____\n",
    "tests": [
     {
      "in": [
-      "4"
+      "3"
      ],
      "out": [
-      "4",
       "3",
       "2",
       "1"
      ],
-     "why": "Counting down means the number gets smaller every turn. Numbers going up means 1 was added where it should have been taken away."
+     "why": "Replace the ____ with an instruction that makes n smaller."
     },
     {
      "in": [
@@ -54,51 +159,290 @@
      "out": [
       "1"
      ],
-     "why": "A 1 gives exactly one turn. Nothing at all means the condition was n > 1 where n >= 1 was needed."
+     "why": "A 1 gives exactly one turn, because 0 is not above 0."
     },
     {
      "in": [
-      "6"
+      "5"
      ],
      "out": [
-      "6",
       "5",
       "4",
       "3",
       "2",
       "1"
      ],
-     "why": "If this one never finished, the variable in the condition was never changed inside the loop, so the condition stays true for ever."
+     "why": "If this never finished, n was never changed inside the loop."
     }
    ],
-   "fb": "A while loop tests its condition before every turn, and the variable in that condition must change inside the loop or it runs for ever."
+   "fb": "Set it, test it, change it. The third part is the one beginners leave out."
   },
   {
-   "id": "pr-l05-q2",
+   "id": "pr-l05-q5",
    "station": 0,
    "marks": 2,
-   "q": "Ask the user for a whole number. Using a while loop, display every number from it down to 1, one on each line. Then display go on the last line.",
+   "q": "Ask the user for a whole number. Using a while loop, display every number from 1 up to that number, one on each line.",
    "teach": {
-    "say": "A line written after the loop is not indented, so it runs once, when the loop has finished.",
+    "say": "A counting while loop sets its counter before the loop, tests it against the finishing value, and adds 1 to it inside the loop.",
+    "code": [
+     "last = 3",
+     "i = 1",
+     "while i <= last:",
+     "    print(i)",
+     "    i = i + 1"
+    ],
+    "out": [
+     "1",
+     "2",
+     "3"
+    ]
+   },
+   "lines": [
+    "The finishing value, written into the program here.",
+    "Set the counter before the loop.",
+    "Keep going while the counter has not passed the finishing value.",
+    "Show the counter.",
+    "Add 1 to the counter, so the loop gets closer to stopping."
+   ],
+   "brief": [
+    "The user types in one whole number, which is never less than 1.",
+    "The number typed in is displayed as well, on the last line.",
+    "Use a while loop, not a for loop."
+   ],
+   "hint": {
+    "think": "You need a counter of your own, because a while loop does not make one for you.",
+    "syntax": [
+     "i = 1",
+     "while i <= ...:"
+    ],
+    "diagram": "pywhile"
+   },
+   "starter": "# Count up to the number typed in\n",
+   "require": [
+    [
+     "while",
+     "This one is for practising the while loop, so your program has to use one."
+    ]
+   ],
+   "tests": [
+    {
+     "in": [
+      "4"
+     ],
+     "out": [
+      "1",
+      "2",
+      "3",
+      "4"
+     ],
+     "why": "Nothing came out, so the counter was never displayed inside the loop."
+    },
+    {
+     "in": [
+      "1"
+     ],
+     "out": [
+      "1"
+     ],
+     "why": "A 1 gives one line. Nothing at all means the condition used < where <= was needed."
+    },
+    {
+     "in": [
+      "6"
+     ],
+     "out": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+     ],
+     "why": "If this never finished, the counter was not changed inside the loop."
+    }
+   ],
+   "fb": "A while loop will count for you, but you have to set the counter up and move it on yourself."
+  },
+  {
+   "id": "pr-l05-q6",
+   "station": 0,
+   "marks": 3,
+   "q": "Ask the user for a whole number. Using a while loop, display every even number from 2 up to that number, one on each line.",
+   "brief": [
+    "The user types in one whole number, which is never less than 2.",
+    "Start at 2 and go up in twos.",
+    "Display the number typed in as well, if it is even."
+   ],
+   "hint": {
+    "think": "The counter does not have to go up by 1. What would make it skip the odd numbers?",
+    "syntax": [
+     "i = 2",
+     "i = i + ..."
+    ],
+    "diagram": "pywhile"
+   },
+   "starter": "# Even numbers, 2 upwards\n",
+   "tests": [
+    {
+     "in": [
+      "7"
+     ],
+     "out": [
+      "2",
+      "4",
+      "6"
+     ],
+     "why": "7 is odd, so the last line is 6. The counter steps by 2, not by 1."
+    },
+    {
+     "in": [
+      "2"
+     ],
+     "out": [
+      "2"
+     ],
+     "why": "A 2 gives one line. Nothing at all means the condition stopped before the first turn."
+    },
+    {
+     "in": [
+      "10"
+     ],
+     "out": [
+      "2",
+      "4",
+      "6",
+      "8",
+      "10"
+     ],
+     "why": "10 is even, so it is displayed too. Use <= and not < in the condition."
+    }
+   ],
+   "fb": "The size of the step is yours to choose, and it is what decides which numbers the loop lands on."
+  },
+  {
+   "id": "pr-l05-q7",
+   "station": 0,
+   "marks": 2,
+   "q": "This program should display 5, 4, 3, 2, 1, one on each line. It never stops. Find the mistake and put it right.",
+   "kind": "debug",
+   "teach": {
+    "say": "A while loop tests the same variable over and over. If nothing inside the loop changes that variable, the condition stays true and the loop runs for ever. The site stops a runaway program after a few seconds. Every programmer writes one sooner or later.",
     "code": [
      "n = 2",
      "while n > 0:",
      "    print(n)",
-     "    n = n - 1",
-     "print(\"done\")"
+     "    n = n - 1"
     ],
     "out": [
      "2",
-     "1",
-     "done"
+     "1"
     ]
    },
    "brief": [
-    "The user types in one whole number, which may be 0.",
-    "Print exactly: go"
+    "Press Run first and watch what happens.",
+    "Do not change the number 5 or the condition.",
+    "Display 5, 4, 3, 2 and 1, one on each line."
    ],
-   "hint": "pywhile",
-   "starter": "# Count down to 1, then print the last line\n",
+   "hint": {
+    "think": "Which of the three parts of a while loop is missing here?",
+    "walk": [
+     "n is set to 5 before the loop.",
+     "n is tested in the condition.",
+     "Nothing inside the loop ever changes n."
+    ],
+    "diagram": "pywhile"
+   },
+   "starter": "n = 5\nwhile n > 0:\n    print(n)\n",
+   "fixed": true,
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "5",
+      "4",
+      "3",
+      "2",
+      "1"
+     ],
+     "why": "The loop never stopped, because n stayed at 5 for ever. Add a line inside the loop that makes n smaller."
+    }
+   ],
+   "fb": "A loop that runs for ever is the commonest while loop mistake there is, and the cure is always the same: change the variable inside the loop."
+  },
+  {
+   "id": "pr-l05-q8",
+   "station": 0,
+   "marks": 2,
+   "q": "Ask the user for a whole number. Using a while loop, display the line Step [number] for every number from 1 up to that number.",
+   "brief": [
+    "The user types in one whole number, which is never less than 1.",
+    "There is one space after the word Step.",
+    "One line of output for each number."
+   ],
+   "hint": {
+    "think": "A number has to be turned into text before it can be joined to a word.",
+    "syntax": "print(\"Step \" + str(i))",
+    "diagram": "pywhile"
+   },
+   "starter": "# Step 1, Step 2, and so on\n",
+   "tests": [
+    {
+     "in": [
+      "3"
+     ],
+     "out": [
+      "Step 1",
+      "Step 2",
+      "Step 3"
+     ],
+     "why": "Join the word Step to the counter with str( ) round the counter."
+    },
+    {
+     "in": [
+      "1"
+     ],
+     "out": [
+      "Step 1"
+     ],
+     "why": "One number gives one line."
+    },
+    {
+     "in": [
+      "4"
+     ],
+     "out": [
+      "Step 1",
+      "Step 2",
+      "Step 3",
+      "Step 4"
+     ],
+     "why": "The counter changes every turn, so each line is different."
+    }
+   ],
+   "fb": "str() round a number is how it joins onto words, and that has not changed now the number comes from a loop."
+  },
+  {
+   "id": "pr-l05-q9",
+   "station": 0,
+   "marks": 3,
+   "q": "Ask the user for a whole number. Using a while loop, display every number from it down to 1, one on each line. Then, using a second while loop, display every number from 1 back up to it, one on each line.",
+   "brief": [
+    "The user types in one whole number, which is never less than 1.",
+    "The numbers come down first, then go back up.",
+    "The number 1 appears twice, once at the end of the first loop and once at the start of the second."
+   ],
+   "hint": {
+    "think": "Two separate loops, one after the other, each with its own counter set up before it.",
+    "walk": [
+     "Read the number.",
+     "Count down to 1 in the first loop.",
+     "Set a counter back to 1.",
+     "Count up to the number in the second loop."
+    ],
+    "diagram": "pywhile"
+   },
+   "starter": "# Down to 1, then back up again\n",
+   "opt": true,
    "tests": [
     {
      "in": [
@@ -108,9 +452,11 @@
       "3",
       "2",
       "1",
-      "go"
+      "1",
+      "2",
+      "3"
      ],
-     "why": "Three numbers, then the fixed line. A fourth number means the loop went one turn too far."
+     "why": "Six lines from a 3: three coming down and three going up."
     },
     {
      "in": [
@@ -118,135 +464,137 @@
      ],
      "out": [
       "1",
-      "go"
+      "1"
      ],
-     "why": "One turn, then go. Printing go first means that line is above the loop instead of after it."
+     "why": "A 1 gives one turn in each loop, so the line appears twice."
     },
     {
      "in": [
-      "0"
-     ],
-     "out": [
-      "go"
-     ],
-     "why": "With 0 the condition is false straight away, so the body never runs. A 0 printed here means a loop that always runs at least once."
-    }
-   ],
-   "fb": "A while loop can run zero times, because its condition is tested before the first turn rather than after it."
-  },
-  {
-   "id": "pr-l05-q3",
-   "station": 0,
-   "marks": 3,
-   "q": "Ask the user for a whole number. Then ask for a second whole number, which is never smaller than the first. Using a while loop, display every number from the first to the second, both included, one on each line.",
-   "teach": {
-    "say": "A while loop can count upwards too: set the variable to the first value, test it against the last one, and add 1 at the bottom of the loop.",
-    "code": [
-     "n = 5",
-     "while n <= 7:",
-     "    print(n)",
-     "    n = n + 1"
-    ],
-    "out": [
-     "5",
-     "6",
-     "7"
-    ]
-   },
-   "brief": [
-    "The user types in two whole numbers, one on each line."
-   ],
-   "hint": "pywhile",
-   "starter": "# Count up from the first number to the second\n",
-   "tests": [
-    {
-     "in": [
-      "3",
-      "7"
-     ],
-     "out": [
-      "3",
-      "4",
-      "5",
-      "6",
-      "7"
-     ],
-     "why": "Both ends are included, so the condition stops after the second number rather than before it."
-    },
-    {
-     "in": [
-      "5",
-      "5"
-     ],
-     "out": [
-      "5"
-     ],
-     "why": "Two numbers the same give exactly one line. Nothing at all means the condition stopped before the first value was printed."
-    },
-    {
-     "in": [
-      "10",
-      "12"
-     ],
-     "out": [
-      "10",
-      "11",
-      "12"
-     ],
-     "why": "The count starts at the first number typed. A list beginning at 0 or 1 means that number was ignored."
-    },
-    {
-     "in": [
-      "1",
       "4"
      ],
      "out": [
+      "4",
+      "3",
+      "2",
+      "1",
       "1",
       "2",
       "3",
       "4"
      ],
-     "why": "Four lines. Three means the condition used < where <= was needed, so the last number was left out."
+     "why": "The second loop needs its counter set back to 1 before it starts."
     }
    ],
-   "fb": "A counting while loop needs all three parts: set the variable before the loop, test it in the condition, change it inside the loop."
+   "fb": "Two loops in one program each keep their own count, and the second one has to be set up just as carefully as the first."
   },
   {
-   "id": "pr-l05-q4",
+   "id": "pr-l05-q10",
    "station": 1,
-   "marks": 2,
-   "q": "Keep asking the user for a whole number until one of them is 10 or more. Display too small for each number refused. Then display [the accepted number] on a line of its own.",
+   "kind": "try",
+   "marks": 1,
+   "q": "Press Run. Type 0 and press Enter, then type 12 and press Enter.",
    "teach": {
-    "say": "Read once before the loop. Then, while the value is still wrong, warn and read again.",
+    "say": "A while loop can keep asking until the answer is allowed. Read one value before the loop. Then, while the value is still wrong, say so and read another.",
     "code": [
-     "n = int(input(\"Number? \"))   # the user types 70",
-     "while n > 50:",
-     "    print(\"too big\")",
-     "    n = int(input(\"Number? \"))   # then 20",
-     "print(n)"
+     "age = int(input(\"Age? \"))",
+     "while age < 1:",
+     "    print(\"Too small\")",
+     "    age = int(input(\"Age? \"))",
+     "print(\"Thank you\")"
     ],
     "out": [
-     "too big",
-     "20"
+     "Too small",
+     "Thank you"
     ]
    },
    "brief": [
-    "The user types in whole numbers, one on each line, until one of them is 10 or more.",
-    "Print exactly: too small"
+    "Nothing is marked on this one.",
+    "The 0 is refused, so the program asks again.",
+    "A loop like this one is called validation."
    ],
-   "hint": "pyvalidate",
-   "starter": "# Keep asking until the number is 10 or more\n",
+   "starter": "age = int(input(\"Age? \"))\nwhile age < 1:\n    print(\"Too small\")\n    age = int(input(\"Age? \"))\nprint(\"Thank you\")\n",
+   "lines": [
+    "Read the first value before the loop.",
+    "Keep going while the value is still not allowed.",
+    "Tell the user what is wrong.",
+    "Read another value, which the condition then tests.",
+    "This runs once, when the value is finally allowed."
+   ],
+   "in": [
+    "0",
+    "12"
+   ],
+   "fb": "Reading once before the loop is what lets a good first answer skip the loop altogether."
+  },
+  {
+   "id": "pr-l05-q11",
+   "station": 1,
+   "kind": "predict",
+   "marks": 1,
+   "q": "The user types 3, then 7, then 15. What will this program display?",
+   "code": [
+    "n = int(input())",
+    "while n < 10:",
+    "    print(\"again\")",
+    "    n = int(input())",
+    "print(n)"
+   ],
+   "a": [
+    "again\nagain\n15",
+    "again\n15",
+    "again\nagain\nagain\n15"
+   ],
+   "brief": [
+    "Read every line before you choose."
+   ],
+   "in": [
+    "3",
+    "7",
+    "15"
+   ],
+   "teach": {
+    "say": "Every refused value gets its own line, because the warning is inside the loop. The accepted value is displayed after the loop."
+   },
+   "fb": "Two numbers were refused, so there are two warnings, and only the accepted one is displayed."
+  },
+  {
+   "id": "pr-l05-q12",
+   "station": 1,
+   "marks": 1,
+   "q": "Change the program so it keeps asking until the number is 10 or more.",
+   "kind": "change",
+   "brief": [
+    "Change only the number in the condition.",
+    "A number of exactly 10 is accepted.",
+    "Display too small for each number refused."
+   ],
+   "hint": {
+    "think": "The condition says what counts as wrong, so that is the part to change.",
+    "diagram": "pyvalidate"
+   },
+   "starter": "n = int(input())\nwhile n < 5:\n    print(\"too small\")\n    n = int(input())\nprint(n)\n",
    "tests": [
     {
      "in": [
-      "4",
-      "25"
+      "7",
+      "12"
      ],
      "out": [
       "too small",
-      "25"
+      "12"
      ],
-     "why": "One number refused, so one warning, then the accepted number on its own line."
+     "why": "A 7 is still being accepted, so the condition still stops at 5."
+    },
+    {
+     "in": [
+      "3",
+      "10"
+     ],
+     "out": [
+      "too small",
+      "10"
+     ],
+     "why": "Exactly 10 is allowed, so the condition uses < and not <=."
     },
     {
      "in": [
@@ -255,71 +603,124 @@
      "out": [
       "12"
      ],
-     "why": "The first number is already 10 or more, so nothing is refused. A warning here means the loop body ran before the condition was tested."
-    },
-    {
-     "in": [
-      "9",
-      "1",
-      "10"
-     ],
-     "out": [
-      "too small",
-      "too small",
-      "10"
-     ],
-     "why": "Two numbers refused means two warnings. One only means an if was used where a while was needed, because an if checks once and then gives up."
-    },
-    {
-     "in": [
-      "10"
-     ],
-     "out": [
-      "10"
-     ],
-     "why": "Exactly 10 is accepted. Refusing it means the condition was n <= 10 where n < 10 was needed."
+     "why": "A good first number is accepted straight away and nothing is refused."
     }
    ],
-   "fb": "Read once before the loop, then while the value is still wrong, warn and read again - which is what lets the loop run zero times."
+   "fb": "One number in the condition decides what the program will accept."
   },
   {
-   "id": "pr-l05-q5",
+   "id": "pr-l05-q13",
    "station": 1,
-   "marks": 3,
-   "q": "Keep asking the user for a whole number until one of them is from 1 to 20. Display out of range for each number refused. Then display [the accepted number] on a line of its own.",
+   "marks": 2,
+   "q": "Finish the program so it keeps asking until the mark typed in is 100 or less.",
+   "kind": "complete",
    "teach": {
-    "say": "Two ways of being wrong are joined with or, because either one of them means asking again.",
+    "say": "The second reading goes at the bottom of the loop. Then the condition tests the new value before the loop decides whether to go round again.",
     "code": [
-     "n = int(input(\"Number? \"))   # the user types 0",
-     "while n < 1 or n > 9:",
-     "    print(\"no good\")",
-     "    n = int(input(\"Number? \"))   # then 5",
-     "print(n)"
+     "score = int(input())   # the user types -4",
+     "while score < 0:",
+     "    print(\"too low\")",
+     "    score = int(input())   # then 12",
+     "print(score)"
     ],
     "out": [
-     "no good",
-     "5"
+     "too low",
+     "12"
     ]
    },
    "brief": [
-    "The user types in whole numbers, one on each line, until one of them is from 1 to 20.",
-    "Print exactly: out of range"
+    "The user types in whole numbers, one on each line, until one of them is 100 or less.",
+    "Replace ____ with one instruction of your own.",
+    "Display too big for each mark refused.",
+    "Then display the accepted mark on a line of its own."
    ],
-   "hint": "pyvalidate",
-   "starter": "# Keep asking until the number is from 1 to 20\n",
+   "hint": {
+    "think": "Without a new value inside the loop, the condition tests the same wrong mark for ever.",
+    "syntax": "variable = int(input())",
+    "diagram": "pyvalidate"
+   },
+   "starter": "mark = int(input())\nwhile mark > 100:\n    print(\"too big\")\n    ____\nprint(mark)\n",
+   "tests": [
+    {
+     "in": [
+      "120",
+      "40"
+     ],
+     "out": [
+      "too big",
+      "40"
+     ],
+     "why": "Replace the ____ with an instruction that reads another mark."
+    },
+    {
+     "in": [
+      "100"
+     ],
+     "out": [
+      "100"
+     ],
+     "why": "Exactly 100 is allowed, so nothing is refused."
+    },
+    {
+     "in": [
+      "200",
+      "150",
+      "99"
+     ],
+     "out": [
+      "too big",
+      "too big",
+      "99"
+     ],
+     "why": "Two marks refused gives two warnings, so the reading must happen on every turn."
+    }
+   ],
+   "fb": "A validation loop reads twice: once before the loop, and once at the bottom of the body."
+  },
+  {
+   "id": "pr-l05-q14",
+   "station": 1,
+   "marks": 2,
+   "q": "Keep asking the user for a whole number until one of them is 1 or more. Display Too small for every number refused. Then display the accepted number on a line of its own.",
+   "teach": {
+    "say": "The condition describes what is wrong, not what is right. Here anything below 1 is wrong, so the loop keeps going while the value is below 1.",
+    "code": [
+     "n = int(input())   # the user types 50",
+     "while n > 20:",
+     "    print(\"Too big\")",
+     "    n = int(input())   # then 8",
+     "print(n)"
+    ],
+    "out": [
+     "Too big",
+     "8"
+    ]
+   },
+   "brief": [
+    "The user types in whole numbers, one on each line, until one of them is 1 or more.",
+    "A number of exactly 1 is accepted.",
+    "Display exactly: Too small"
+   ],
+   "hint": {
+    "think": "Read one number before the loop, then keep reading while the number is still wrong.",
+    "syntax": [
+     "n = int(input())",
+     "while n < ...:"
+    ],
+    "diagram": "pyvalidate"
+   },
+   "starter": "# Keep asking until the number reaches 1\n",
    "tests": [
     {
      "in": [
       "0",
-      "25",
-      "12"
+      "4"
      ],
      "out": [
-      "out of range",
-      "out of range",
-      "12"
+      "Too small",
+      "4"
      ],
-     "why": "Two numbers refused, one below the range and one above it, so both ends of the condition are being tested."
+     "why": "One number refused gives one warning, then the accepted number."
     },
     {
      "in": [
@@ -328,55 +729,182 @@
      "out": [
       "7"
      ],
-     "why": "The first number is inside the range, so nothing is printed about it. A warning here means the loop body ran before the condition was tested."
+     "why": "A good first number is accepted, so the loop runs zero times."
     },
     {
      "in": [
-      "20"
-     ],
-     "out": [
-      "20"
-     ],
-     "why": "20 is inside the range. Refusing it means the condition used n > 19 or n >= 20 where n > 20 was needed."
-    },
-    {
-     "in": [
-      "21",
+      "-3",
+      "0",
       "1"
      ],
      "out": [
-      "out of range",
+      "Too small",
+      "Too small",
       "1"
      ],
-     "why": "21 is just outside and 1 is the bottom of the range, so this is where < and <= get mixed up."
+     "why": "Two numbers refused gives two warnings. One only means an if was used where a while was needed."
     }
    ],
-   "fb": "Two ways of being wrong are joined with or, and the loop keeps going while either of them is still true."
+   "fb": "An if asks once and gives up. A while keeps asking, which is exactly what validation needs."
   },
   {
-   "id": "pr-l05-q6",
+   "id": "pr-l05-q15",
    "station": 1,
    "marks": 3,
-   "q": "Keep asking the user for a word until it is yes or no. Display please answer yes or no for each other word. Then display [the accepted word] on a line of its own.",
+   "q": "Keep asking the user for a whole number until one of them is from 1 to 5. Display Out of range for every number refused. Then display the accepted number on a line of its own.",
    "teach": {
-    "say": "Two answers are allowed, so the loop has to keep going while the word is neither of them - which means and, not or.",
+    "say": "There are two ways of being wrong here, too small and too big, so the two comparisons are joined with or. Either one of them means asking again.",
     "code": [
-     "c = input(\"Colour? \")   # the user types pink",
+     "n = int(input())   # the user types 30",
+     "while n < 10 or n > 20:",
+     "    print(\"No good\")",
+     "    n = int(input())   # then 15",
+     "print(n)"
+    ],
+    "out": [
+     "No good",
+     "15"
+    ]
+   },
+   "brief": [
+    "The user types in whole numbers, one on each line, until one of them is from 1 to 5.",
+    "Both 1 and 5 are accepted.",
+    "Display exactly: Out of range"
+   ],
+   "hint": {
+    "think": "Two ways of being wrong, joined so that either one keeps the loop going.",
+    "syntax": "while n < ... or n > ...:",
+    "diagram": "pyvalidate"
+   },
+   "starter": "# Keep asking until the number is from 1 to 5\n",
+   "tests": [
+    {
+     "in": [
+      "0",
+      "9",
+      "3"
+     ],
+     "out": [
+      "Out of range",
+      "Out of range",
+      "3"
+     ],
+     "why": "One number below the range and one above it, so both halves of the condition are needed."
+    },
+    {
+     "in": [
+      "1"
+     ],
+     "out": [
+      "1"
+     ],
+     "why": "1 is the bottom of the range and is allowed, so the condition uses < 1 and not <= 1."
+    },
+    {
+     "in": [
+      "5"
+     ],
+     "out": [
+      "5"
+     ],
+     "why": "5 is the top of the range and is allowed, so the condition uses > 5 and not >= 5."
+    },
+    {
+     "in": [
+      "6",
+      "5"
+     ],
+     "out": [
+      "Out of range",
+      "5"
+     ],
+     "why": "6 is just outside the range, which is where < and <= get mixed up."
+    }
+   ],
+   "fb": "Join the two ways of being wrong with or, and the loop keeps going while either of them is still true."
+  },
+  {
+   "id": "pr-l05-q16",
+   "station": 1,
+   "marks": 2,
+   "q": "This program should keep asking until the number is 10 or more. It gives up after one go. Find the mistake and put it right.",
+   "kind": "debug",
+   "brief": [
+    "Press Run first and type 3, then 5, then 12.",
+    "Display too small for each number refused.",
+    "Then display the accepted number on a line of its own."
+   ],
+   "hint": {
+    "think": "An if checks once and then moves on. What checks again and again?",
+    "diagram": "pyvalidate"
+   },
+   "starter": "n = int(input())\nif n < 10:\n    print(\"too small\")\n    n = int(input())\nprint(n)\n",
+   "tests": [
+    {
+     "in": [
+      "3",
+      "5",
+      "12"
+     ],
+     "out": [
+      "too small",
+      "too small",
+      "12"
+     ],
+     "why": "A 5 came out, so the program accepted the second wrong number instead of asking again."
+    },
+    {
+     "in": [
+      "20"
+     ],
+     "out": [
+      "20"
+     ],
+     "why": "A good first number is accepted either way, so this test passes already."
+    },
+    {
+     "in": [
+      "1",
+      "40"
+     ],
+     "out": [
+      "too small",
+      "40"
+     ],
+     "why": "One number refused looks the same with an if, which is why one test is never enough."
+    }
+   ],
+   "fb": "An if and a while look alike and behave very differently: only one of them goes back and checks again."
+  },
+  {
+   "id": "pr-l05-q17",
+   "station": 1,
+   "marks": 3,
+   "q": "Keep asking the user for a word until it is yes or no. Display Please type yes or no for every other word. Then display the accepted word on a line of its own.",
+   "teach": {
+    "say": "Two answers are allowed, so the loop keeps going while the word is neither of them. That needs and: not the first one and not the second one.",
+    "code": [
+     "c = input()   # the user types pink",
      "while c != \"red\" and c != \"blue\":",
-     "    print(\"try again\")",
-     "    c = input(\"Colour? \")   # then red",
+     "    print(\"Try again\")",
+     "    c = input()   # then blue",
      "print(c)"
     ],
     "out": [
-     "try again",
-     "red"
+     "Try again",
+     "blue"
     ]
    },
    "brief": [
     "The user types in words, one on each line, until one of them is yes or no.",
-    "Print exactly: please answer yes or no"
+    "The words are compared exactly, so y is not the word yes.",
+    "Display exactly: Please type yes or no"
    ],
-   "hint": "pyvalidate",
+   "hint": {
+    "think": "The word is wrong when it is not the first answer and also not the second.",
+    "syntax": "while word != \"...\" and word != \"...\":",
+    "diagram": "pyvalidate"
+   },
    "starter": "# Keep asking until the answer is yes or no\n",
    "tests": [
     {
@@ -385,10 +913,10 @@
       "yes"
      ],
      "out": [
-      "please answer yes or no",
+      "Please type yes or no",
       "yes"
      ],
-     "why": "One word refused, so one warning, then the accepted word on its own line."
+     "why": "One word refused gives one warning, then the accepted word."
     },
     {
      "in": [
@@ -397,20 +925,20 @@
      "out": [
       "no"
      ],
-     "why": "no is already one of the two answers, so the loop must not run at all. A warning here means the body ran before the condition was tested."
+     "why": "Both yes and no are accepted. A warning here means the condition only tests for one of them."
     },
     {
      "in": [
       "dunno",
-      "perhaps",
+      "nope",
       "no"
      ],
      "out": [
-      "please answer yes or no",
-      "please answer yes or no",
+      "Please type yes or no",
+      "Please type yes or no",
       "no"
      ],
-     "why": "Two words refused means two warnings, and both yes and no are accepted. If only one of them works, the condition tests for a single word."
+     "why": "Two words refused gives two warnings."
     },
     {
      "in": [
@@ -418,26 +946,349 @@
       "yes"
      ],
      "out": [
-      "please answer yes or no",
+      "Please type yes or no",
       "yes"
      ],
-     "why": "y is not the word yes, so it is refused. Comparing only the first letter accepts words the question rules out."
+     "why": "y is not the word yes, so it is refused. Comparing one letter would let it through."
     }
    ],
-   "fb": "Two words are allowed, so the condition rules out both with and: not yes or not no is always true and loops for ever."
+   "fb": "Use and to rule out both allowed answers. With or the condition is always true, and the loop would never stop."
   },
   {
-   "id": "pr-l05-q7",
+   "id": "pr-l05-q18",
+   "station": 1,
+   "marks": 3,
+   "q": "Keep asking the user for a whole number until one of them is 10 or more. Display Too small for every number refused. Then keep asking for a word until it is yes or no. Display Please type yes or no for every word refused. Then display the accepted number. Then display the accepted word on the next line.",
+   "brief": [
+    "The user types in whole numbers first, then words.",
+    "Two separate loops, one after the other.",
+    "The number is displayed before the word.",
+    "Display exactly: Too small, and exactly: Please type yes or no"
+   ],
+   "hint": {
+    "think": "Two validations in one program, each with its own reading before its own loop.",
+    "walk": [
+     "Read a number and keep asking while it is too small.",
+     "Read a word and keep asking while it is neither answer.",
+     "Display the number, then the word."
+    ],
+    "diagram": "pyvalidate"
+   },
+   "starter": "# A number to validate, then a word\n",
+   "opt": true,
+   "tests": [
+    {
+     "in": [
+      "4",
+      "11",
+      "maybe",
+      "yes"
+     ],
+     "out": [
+      "Too small",
+      "Please type yes or no",
+      "11",
+      "yes"
+     ],
+     "why": "One number refused and one word refused, then the two accepted values."
+    },
+    {
+     "in": [
+      "20",
+      "no"
+     ],
+     "out": [
+      "20",
+      "no"
+     ],
+     "why": "Both first answers are allowed, so neither loop runs at all."
+    },
+    {
+     "in": [
+      "1",
+      "2",
+      "10",
+      "nope",
+      "yes"
+     ],
+     "out": [
+      "Too small",
+      "Too small",
+      "Please type yes or no",
+      "10",
+      "yes"
+     ],
+     "why": "The number loop must finish before the word loop starts reading."
+    }
+   ],
+   "fb": "Each value gets its own validation loop, and the second loop does not begin until the first has an answer it accepts."
+  },
+  {
+   "id": "pr-l05-q19",
+   "station": 2,
+   "kind": "try",
+   "marks": 1,
+   "q": "Press Run. Type red, then blue, then stop.",
+   "teach": {
+    "say": "A sentinel is a value that means finish rather than real data. Read one value before the loop. Use it inside the loop. Read the next one at the bottom of the loop, so the condition tests it before it is ever used.",
+    "code": [
+     "word = input(\"Word? \")",
+     "while word != \"stop\":",
+     "    print(word)",
+     "    word = input(\"Word? \")",
+     "print(\"Finished\")"
+    ],
+    "out": [
+     "red",
+     "blue",
+     "Finished"
+    ]
+   },
+   "brief": [
+    "Nothing is marked on this one.",
+    "The word stop is the signal to finish, so it is not displayed.",
+    "A value that means stop is called a sentinel."
+   ],
+   "starter": "word = input(\"Word? \")\nwhile word != \"stop\":\n    print(word)\n    word = input(\"Word? \")\nprint(\"Finished\")\n",
+   "lines": [
+    "Read the first word before the loop.",
+    "Keep going while the word is not the sentinel.",
+    "Use the word, because the condition has already let it through.",
+    "Read the next word, which the condition then tests.",
+    "This runs once, after the sentinel has been typed."
+   ],
+   "in": [
+    "red",
+    "blue",
+    "stop"
+   ],
+   "fb": "The sentinel is never used, because the condition tests every value before the body gets to it."
+  },
+  {
+   "id": "pr-l05-q20",
+   "station": 2,
+   "kind": "predict",
+   "marks": 1,
+   "q": "The user types 5, then 8, then 0. What will this program display?",
+   "code": [
+    "n = int(input())",
+    "while n != 0:",
+    "    print(n)",
+    "    n = int(input())"
+   ],
+   "a": [
+    "5\n8",
+    "5\n8\n0",
+    "5"
+   ],
+   "brief": [
+    "Read every line before you choose."
+   ],
+   "in": [
+    "5",
+    "8",
+    "0"
+   ],
+   "teach": {
+    "say": "The sentinel is read like any other value, but the condition sends the loop home before the body can display it."
+   },
+   "fb": "The 0 is the signal to stop, so it never reaches the print inside the loop."
+  },
+  {
+   "id": "pr-l05-q21",
+   "station": 2,
+   "marks": 1,
+   "q": "Change the program so the word end stops the loop instead of the word stop.",
+   "kind": "change",
+   "brief": [
+    "Change only the sentinel in the condition.",
+    "Display each word as it is typed, one on each line.",
+    "Do not display the word end."
+   ],
+   "hint": {
+    "think": "The sentinel lives in the condition, inside quotation marks.",
+    "diagram": "pywhile"
+   },
+   "starter": "word = input()\nwhile word != \"stop\":\n    print(word)\n    word = input()\n",
+   "tests": [
+    {
+     "in": [
+      "red",
+      "blue",
+      "end"
+     ],
+     "out": [
+      "red",
+      "blue"
+     ],
+     "why": "The word end came out or the program crashed, so end is not yet the sentinel."
+    },
+    {
+     "in": [
+      "grey",
+      "end"
+     ],
+     "out": [
+      "grey"
+     ],
+     "why": "One word before the sentinel gives one line."
+    },
+    {
+     "in": [
+      "a",
+      "b",
+      "c",
+      "end"
+     ],
+     "out": [
+      "a",
+      "b",
+      "c"
+     ],
+     "why": "Every word before end is displayed, however many there are."
+    }
+   ],
+   "fb": "Changing the sentinel changes nothing else: the shape of the loop stays exactly the same."
+  },
+  {
+   "id": "pr-l05-q22",
    "station": 2,
    "marks": 2,
-   "q": "Ask the user for whole numbers until they type -1, which is the signal to stop. Display each number as it is typed, one on each line. Do not display the -1.",
+   "q": "Finish the program so it displays each number until -1 is typed.",
+   "kind": "complete",
    "teach": {
-    "say": "Read one value before the loop. Use it inside the loop, then read the next one at the bottom of the body, so the condition is tested again before that value is used.",
+    "say": "The reading at the bottom of the loop is what lets the next value be tested before it is used. Leave it out and the first value is tested for ever.",
     "code": [
-     "n = int(input(\"Next? \"))   # the user types 4",
+     "n = int(input())   # the user types 6",
      "while n != 0:",
      "    print(n)",
-     "    n = int(input(\"Next? \"))   # then 0"
+     "    n = int(input())   # then 0"
+    ],
+    "out": [
+     "6"
+    ]
+   },
+   "brief": [
+    "The user types in whole numbers, one on each line, until they type -1.",
+    "Replace ____ with one instruction of your own.",
+    "Display each number as it is typed, one on each line.",
+    "Do not display the -1."
+   ],
+   "hint": {
+    "think": "The loop needs the next number before it tests the condition again.",
+    "syntax": "variable = int(input())",
+    "diagram": "pywhile"
+   },
+   "starter": "n = int(input())\nwhile n != -1:\n    print(n)\n    ____\n",
+   "tests": [
+    {
+     "in": [
+      "4",
+      "9",
+      "-1"
+     ],
+     "out": [
+      "4",
+      "9"
+     ],
+     "why": "Replace the ____ with an instruction that reads the next number."
+    },
+    {
+     "in": [
+      "7",
+      "-1"
+     ],
+     "out": [
+      "7"
+     ],
+     "why": "One number before the sentinel gives one line."
+    },
+    {
+     "in": [
+      "0",
+      "3",
+      "-1"
+     ],
+     "out": [
+      "0",
+      "3"
+     ],
+     "why": "A 0 is ordinary data here and is displayed, because only -1 stops the loop."
+    }
+   ],
+   "fb": "Read one before the loop, read the next at the bottom. That pair is the whole pattern."
+  },
+  {
+   "id": "pr-l05-q23",
+   "station": 2,
+   "marks": 2,
+   "q": "Ask the user for whole numbers until they type 0, which means stop. Display each number doubled, one on each line. Do not display anything for the 0.",
+   "brief": [
+    "The user types in whole numbers, one on each line, until they type 0.",
+    "At least one number comes before the 0.",
+    "One line of output for each number, which is that number multiplied by 2."
+   ],
+   "hint": {
+    "think": "The doubling happens inside the loop, to the value the condition has let through.",
+    "syntax": [
+     "n = int(input())",
+     "while n != 0:"
+    ],
+    "diagram": "pywhile"
+   },
+   "starter": "# Double each number until 0 stops the loop\n",
+   "tests": [
+    {
+     "in": [
+      "3",
+      "5",
+      "0"
+     ],
+     "out": [
+      "6",
+      "10"
+     ],
+     "why": "Two numbers before the 0 gives two lines, each one doubled."
+    },
+    {
+     "in": [
+      "7",
+      "0"
+     ],
+     "out": [
+      "14"
+     ],
+     "why": "One number gives one line."
+    },
+    {
+     "in": [
+      "-2",
+      "4",
+      "0"
+     ],
+     "out": [
+      "-4",
+      "8"
+     ],
+     "why": "Negative numbers are ordinary data, because only 0 stops the loop."
+    }
+   ],
+   "fb": "The sentinel loop reads, tests, then uses. Nothing is done to a value until the condition has allowed it."
+  },
+  {
+   "id": "pr-l05-q24",
+   "station": 2,
+   "marks": 3,
+   "q": "Ask the user for whole numbers until they type -1, which means stop. Add the numbers up. Display the total and nothing else.",
+   "teach": {
+    "say": "A running total works the same here as it did in a for loop. Set it to 0 before the loop, add to it inside the loop, and display it after the loop.",
+    "code": [
+     "total = 0",
+     "n = int(input())   # the user types 4",
+     "while n != 0:",
+     "    total = total + n",
+     "    n = int(input())   # then 0",
+     "print(total)"
     ],
     "out": [
      "4"
@@ -445,24 +1296,36 @@
    },
    "brief": [
     "The user types in whole numbers, one on each line, until they type -1.",
-    "At least one number comes before the -1."
+    "The -1 is not added to the total.",
+    "With no numbers at all the total is 0, and that 0 is still displayed."
    ],
-   "hint": "pywhile",
-   "starter": "# Print each number until -1 stops the loop\n",
+   "hint": {
+    "think": "Three places for the total: set before, added inside, displayed after.",
+    "syntax": "total = total + n",
+    "diagram": "pywhile"
+   },
+   "starter": "# Add the numbers up until -1 stops the loop\n",
    "tests": [
     {
      "in": [
-      "7",
-      "2",
-      "9",
+      "10",
+      "20",
+      "30",
       "-1"
      ],
      "out": [
-      "7",
-      "2",
-      "9"
+      "60"
      ],
-     "why": "Three numbers, three lines. A -1 on the end means it was printed before the condition was tested again."
+     "why": "The three numbers come to 60. A 59 means the -1 was added as well."
+    },
+    {
+     "in": [
+      "-1"
+     ],
+     "out": [
+      "0"
+     ],
+     "why": "No numbers at all, so the total is still 0, and it still has to be displayed."
     },
     {
      "in": [
@@ -472,203 +1335,433 @@
      "out": [
       "5"
      ],
-     "why": "One number before the signal gives one line."
+     "why": "One number only. Check the total starts at 0 rather than at the first number."
     },
     {
      "in": [
-      "0",
       "4",
+      "6",
       "-1"
      ],
      "out": [
-      "0",
-      "4"
+      "10"
      ],
-     "why": "A 0 is ordinary data here and is printed like any other number, because only -1 stops the loop."
+     "why": "However many numbers there are, the same loop handles them."
     }
    ],
-   "fb": "A sentinel is a value that cannot be real data and means stop: read one before the loop, use it inside, then read the next at the bottom of the body."
+   "fb": "Set it, add to it, display it. A while loop handles a running total exactly as a for loop does."
   },
   {
-   "id": "pr-l05-q8",
+   "id": "pr-l05-q25",
    "station": 2,
-   "marks": 3,
-   "q": "Ask the user for whole numbers until they type -1, which is the signal to stop and is not added. Add the numbers up. Display [the total] and nothing else.",
+   "marks": 2,
+   "q": "This program should add up the numbers typed before the -1. It adds the -1 as well. Find the mistake and put it right.",
+   "kind": "debug",
    "teach": {
-    "say": "The total is set to 0 before the loop, added to inside it, and printed once the loop has finished.",
+    "say": "The order of the two lines inside the loop decides which values get used. Read at the bottom of the loop, so the condition tests every value before the body touches it.",
     "code": [
-     "total = 0",
-     "n = int(input(\"Next? \"))   # the user types 6",
+     "n = int(input())   # the user types 6",
      "while n != 0:",
-     "    total = total + n",
-     "    n = int(input(\"Next? \"))   # then 0",
-     "print(total)"
+     "    print(n)",
+     "    n = int(input())   # then 0"
     ],
     "out": [
      "6"
     ]
    },
    "brief": [
-    "The user types in whole numbers, one on each line, until they type -1.",
+    "Press Run first and type 10, then 20, then -1.",
+    "The -1 is the signal to stop and is not part of the total.",
+    "Display the total and nothing else.",
     "With no numbers at all the total is 0."
    ],
-   "hint": "pywhile",
-   "starter": "# Add the numbers up until -1 stops the loop\n",
+   "hint": {
+    "think": "Which values reach the line that adds to the total?",
+    "walk": [
+     "Read one number before the loop.",
+     "Add it inside the loop.",
+     "Read the next number at the bottom of the loop."
+    ],
+    "diagram": "pywhile"
+   },
+   "starter": "total = 0\nn = 0\nwhile n != -1:\n    n = int(input())\n    total = total + n\nprint(total)\n",
    "tests": [
-    {
-     "in": [
-      "120",
-      "85",
-      "45",
-      "-1"
-     ],
-     "out": [
-      "250"
-     ],
-     "why": "The three numbers come to 250. A 249 means the -1 was added as well, and the signal is not data."
-    },
-    {
-     "in": [
-      "-1"
-     ],
-     "out": [
-      "0"
-     ],
-     "why": "No numbers at all, so the total is still 0. A crash means a number was read after the -1."
-    },
-    {
-     "in": [
-      "99",
-      "-1"
-     ],
-     "out": [
-      "99"
-     ],
-     "why": "One number only. Check the total starts at 0 before the loop rather than at the first number."
-    },
     {
      "in": [
       "10",
       "20",
-      "30",
-      "40",
       "-1"
      ],
      "out": [
-      "100"
+      "30"
      ],
-     "why": "However many numbers there are, the same loop handles them, so a program written for a fixed count fails here."
+     "why": "A 29 means the -1 was added. Move the reading to the bottom of the loop."
+    },
+    {
+     "in": [
+      "-1"
+     ],
+     "out": [
+      "0"
+     ],
+     "why": "No numbers at all, so the total is 0. A -1 here means the sentinel was treated as data."
+    },
+    {
+     "in": [
+      "5",
+      "-1"
+     ],
+     "out": [
+      "5"
+     ],
+     "why": "One number only, and the -1 must not change the total."
     }
    ],
-   "fb": "A running total in a while loop is the same three steps as in a for loop: set it before, add inside, print after."
+   "fb": "Reading at the top of the loop lets the sentinel into the body. Reading at the bottom keeps it out."
   },
   {
-   "id": "pr-l05-q9",
+   "id": "pr-l05-q26",
    "station": 2,
    "marks": 3,
-   "q": "Ask the user for whole numbers until they type the word end, which is the signal to stop. Add the numbers up. Display [the total] and nothing else.",
+   "q": "Ask the user for whole numbers until they type the word end, which means stop. Add the numbers up. Display the line Total is [total].",
    "teach": {
-    "say": "A sentinel can be a word, so read the line as text and only turn it into a number once you know it is not the sentinel.",
+    "say": "When the sentinel is a word, the line has to be read as text. It is turned into a number inside the loop, once the condition has shown it is not the sentinel.",
     "code": [
-     "line = input(\"Next? \")   # the user types 5",
-     "while line != \"stop\":",
-     "    print(int(line) * 2)",
-     "    line = input(\"Next? \")   # then stop"
+     "line = input()   # the user types 3",
+     "while line != \"done\":",
+     "    print(int(line) * 10)",
+     "    line = input()   # then done"
     ],
     "out": [
-     "10"
+     "30"
     ]
    },
    "brief": [
     "The user types in whole numbers, one on each line, then the word end to finish.",
-    "With no numbers at all the total is 0."
+    "Read each line as text, and cast it to a number inside the loop.",
+    "With no numbers at all the total is 0.",
+    "There is one space after the word is."
    ],
-   "hint": "pywhile",
-   "starter": "# Add the numbers up until the word end stops the loop\n",
+   "hint": {
+    "think": "int() on the word end would crash, so the line must stay text until the condition has let it through.",
+    "syntax": [
+     "line = input()",
+     "while line != \"end\":",
+     "total = total + int(line)"
+    ],
+    "diagram": "pywhile"
+   },
+   "starter": "# Numbers as text, cast inside the loop\n",
    "tests": [
     {
      "in": [
-      "14",
-      "21",
-      "19",
-      "end"
-     ],
-     "out": [
-      "54"
-     ],
-     "why": "The three numbers come to 54. Each line has to be cast with int() before it can be added."
-    },
-    {
-     "in": [
-      "end"
-     ],
-     "out": [
-      "0"
-     ],
-     "why": "The loop runs zero times. A crash means int() was used on the word end - read the line as text first and convert it only once the condition has let it through."
-    },
-    {
-     "in": [
+      "12",
       "8",
       "end"
      ],
      "out": [
-      "8"
+      "Total is 20"
      ],
-     "why": "One number only, and the total still has to be printed."
+     "why": "The two numbers come to 20, and each line is cast with int( ) before it is added."
     },
     {
      "in": [
-      "-4",
-      "-9",
       "end"
      ],
      "out": [
-      "-13"
+      "Total is 0"
      ],
-     "why": "Negative numbers lower the total. int() copes with the minus sign, but the line still has to be read as text first."
+     "why": "The loop runs zero times. A crash means int( ) was used on the word end."
+    },
+    {
+     "in": [
+      "7",
+      "end"
+     ],
+     "out": [
+      "Total is 7"
+     ],
+     "why": "One number only, and the message still has to be displayed."
+    },
+    {
+     "in": [
+      "-5",
+      "15",
+      "end"
+     ],
+     "out": [
+      "Total is 10"
+     ],
+     "why": "int( ) copes with a minus sign, but the line is still read as text first."
     }
    ],
-   "fb": "When the sentinel is a word, the line is read as text and cast to a number only once the condition has let it through."
+   "fb": "Read as text, test the condition, then cast. Casting too early is what makes a word sentinel crash."
   },
   {
-   "id": "pr-l05-q10",
+   "id": "pr-l05-q27",
+   "station": 2,
+   "marks": 3,
+   "q": "Ask the user for whole numbers until they type -1, which means stop. Display each number as it is typed, one on each line. Then display the line Highest was [the largest number]. Display none instead when -1 is the very first number typed.",
+   "brief": [
+    "The user types in whole numbers, one on each line, until they type -1.",
+    "The numbers may be negative.",
+    "Display exactly: none",
+    "There is one space after the word was."
+   ],
+   "hint": {
+    "think": "A largest so far that starts at 0 can never be beaten by a negative number.",
+    "walk": [
+     "Read the first number.",
+     "If it is the sentinel, display none.",
+     "Otherwise make it the largest so far, then loop, displaying and comparing.",
+     "Then display the Highest was line."
+    ],
+    "diagram": "pywhile"
+   },
+   "starter": "# Show each number, then the largest of them\n",
+   "opt": true,
+   "tests": [
+    {
+     "in": [
+      "4",
+      "9",
+      "2",
+      "-1"
+     ],
+     "out": [
+      "4",
+      "9",
+      "2",
+      "Highest was 9"
+     ],
+     "why": "Three numbers, then the largest. A 2 at the end means the last number was displayed rather than the largest."
+    },
+    {
+     "in": [
+      "-1"
+     ],
+     "out": [
+      "none"
+     ],
+     "why": "Nothing was typed, so there is no largest to report."
+    },
+    {
+     "in": [
+      "7",
+      "-1"
+     ],
+     "out": [
+      "7",
+      "Highest was 7"
+     ],
+     "why": "With one number, that number is the largest."
+    },
+    {
+     "in": [
+      "-5",
+      "-9",
+      "-1"
+     ],
+     "out": [
+      "-5",
+      "-9",
+      "Highest was -5"
+     ],
+     "why": "Both numbers are below 0, so a largest starting at 0 would never be beaten."
+    }
+   ],
+   "fb": "A largest so far starts at the first value read, never at 0, because the data is allowed to be negative."
+  },
+  {
+   "id": "pr-l05-q28",
    "station": 3,
-   "marks": 2,
-   "q": "Ask the user for whole numbers until they type -1. Count how many numbers were typed. Display [the count] and nothing else.",
+   "kind": "try",
+   "marks": 1,
+   "q": "Press Run. Type red, then blue, then end.",
    "teach": {
-    "say": "A counter is a total that goes up by 1, so it is set to 0 before the loop and raised once on every turn.",
+    "say": "A counter is a total that always goes up by 1. Set it to 0 before the loop, add 1 to it inside the loop, and display it after the loop.",
     "code": [
      "count = 0",
-     "n = int(input(\"Next? \"))   # the user types 3",
-     "while n != 0:",
+     "word = input(\"Word? \")",
+     "while word != \"end\":",
      "    count = count + 1",
-     "    n = int(input(\"Next? \"))   # then 0",
+     "    word = input(\"Word? \")",
      "print(count)"
     ],
     "out": [
-     "1"
+     "2"
     ]
    },
    "brief": [
-    "The user types in whole numbers, one on each line, until they type -1.",
-    "The -1 is not counted."
+    "Nothing is marked on this one.",
+    "The word end is the sentinel, so it is not counted.",
+    "The count is displayed once, after the loop."
    ],
-   "hint": "pywhile",
+   "starter": "count = 0\nword = input(\"Word? \")\nwhile word != \"end\":\n    count = count + 1\n    word = input(\"Word? \")\nprint(count)\n",
+   "lines": [
+    "Set the counter to 0 before the loop.",
+    "Read the first word.",
+    "Keep going while the word is not the sentinel.",
+    "Add 1 to the counter for this word.",
+    "Read the next word.",
+    "Display the counter once the loop has finished."
+   ],
+   "in": [
+    "red",
+    "blue",
+    "end"
+   ],
+   "fb": "The counter counts turns of the loop, so it does not matter what the values themselves are."
+  },
+  {
+   "id": "pr-l05-q29",
+   "station": 3,
+   "kind": "predict",
+   "marks": 1,
+   "q": "What will this program display?",
+   "code": [
+    "count = 0",
+    "n = 1",
+    "while n < 5:",
+    "    count = count + 1",
+    "    n = n + 2",
+    "print(count)"
+   ],
+   "a": [
+    "2",
+    "3",
+    "0"
+   ],
+   "brief": [
+    "Read every line before you choose.",
+    "Work out what n is at the start of each turn."
+   ],
+   "teach": {
+    "say": "The counter and the variable in the condition are two different things. One counts the turns and the other decides when to stop."
+   },
+   "fb": "n goes 1, 3, 5. The loop runs twice, because 5 is not below 5, so the counter reaches 2."
+  },
+  {
+   "id": "pr-l05-q30",
+   "station": 3,
+   "marks": 1,
+   "q": "Change the program so it displays tick ten times instead of five times.",
+   "kind": "change",
+   "brief": [
+    "Change only the number in the condition.",
+    "Display exactly: tick",
+    "Ten lines of output."
+   ],
+   "hint": {
+    "think": "The counter here is also the variable the condition tests.",
+    "diagram": "pywhile"
+   },
+   "starter": "count = 0\nwhile count < 5:\n    print(\"tick\")\n    count = count + 1\n",
+   "fixed": true,
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "tick",
+      "tick",
+      "tick",
+      "tick",
+      "tick",
+      "tick",
+      "tick",
+      "tick",
+      "tick",
+      "tick"
+     ],
+     "why": "There are still five lines, so the number in the condition was not changed."
+    }
+   ],
+   "fb": "One counter can do two jobs at once: count the turns and decide when to stop."
+  },
+  {
+   "id": "pr-l05-q31",
+   "station": 3,
+   "marks": 2,
+   "q": "Finish the program so it displays how many words were typed before the word end.",
+   "kind": "complete",
+   "brief": [
+    "The user types in words, one on each line, then the word end to finish.",
+    "Replace ____ with one instruction of your own.",
+    "The word end is not counted.",
+    "Display one number and nothing else."
+   ],
+   "hint": {
+    "think": "The counter is already set to 0. It just never goes up.",
+    "syntax": "count = count + 1",
+    "diagram": "pywhile"
+   },
+   "starter": "count = 0\nword = input()\nwhile word != \"end\":\n    ____\n    word = input()\nprint(count)\n",
+   "tests": [
+    {
+     "in": [
+      "a",
+      "b",
+      "c",
+      "end"
+     ],
+     "out": [
+      "3"
+     ],
+     "why": "Replace the ____ with an instruction that adds 1 to the counter."
+    },
+    {
+     "in": [
+      "end"
+     ],
+     "out": [
+      "0"
+     ],
+     "why": "No words at all, so the count is 0, and that 0 is still displayed."
+    },
+    {
+     "in": [
+      "red",
+      "end"
+     ],
+     "out": [
+      "1"
+     ],
+     "why": "One word gives a count of 1."
+    }
+   ],
+   "fb": "A counter that is never added to stays at 0, however many times the loop goes round."
+  },
+  {
+   "id": "pr-l05-q32",
+   "station": 3,
+   "marks": 2,
+   "q": "Ask the user for whole numbers until they type -1, which means stop. Count how many numbers were typed. Display the count and nothing else.",
+   "brief": [
+    "The user types in whole numbers, one on each line, until they type -1.",
+    "The -1 is not counted.",
+    "With no numbers at all the count is 0, and that 0 is still displayed."
+   ],
+   "hint": {
+    "think": "The counter goes up once for every turn of the loop.",
+    "syntax": [
+     "count = 0",
+     "count = count + 1"
+    ],
+    "diagram": "pywhile"
+   },
    "starter": "# Count the numbers until -1 stops the loop\n",
    "tests": [
     {
      "in": [
-      "55",
-      "38",
-      "40",
-      "12",
+      "5",
+      "8",
+      "2",
       "-1"
      ],
      "out": [
-      "4"
+      "3"
      ],
-     "why": "Four numbers were typed. A 5 means the -1 was counted as one of them."
+     "why": "Three numbers were typed. A 4 means the -1 was counted as well."
     },
     {
      "in": [
@@ -677,11 +1770,11 @@
      "out": [
       "0"
      ],
-     "why": "Nothing was typed, so the count is 0, and that 0 still has to be printed."
+     "why": "Nothing was typed, so the count is 0."
     },
     {
      "in": [
-      "7",
+      "9",
       "-1"
      ],
      "out": [
@@ -693,31 +1786,30 @@
      "in": [
       "0",
       "0",
-      "0",
       "-1"
      ],
      "out": [
-      "3"
+      "2"
      ],
      "why": "A 0 is a number like any other and still counts, because only -1 stops the loop."
     }
    ],
-   "fb": "A counter goes up by 1 on every turn, which counts the turns however large or small the values are."
+   "fb": "The counter counts turns, so a 0 or a negative number counts just as much as a big one."
   },
   {
-   "id": "pr-l05-q11",
+   "id": "pr-l05-q33",
    "station": 3,
    "marks": 3,
-   "q": "Ask the user for whole numbers until they type -1. Count how many of them are 40 or more. Display [the count] and nothing else.",
+   "q": "Ask the user for whole numbers until they type -1, which means stop. Count how many of them are 50 or more. Display the count and nothing else.",
    "teach": {
-    "say": "An if inside the loop decides which turns count, so the counter goes up on some turns and not on others.",
+    "say": "An if inside the loop decides which turns count. The counter then goes up on some turns and not on others.",
     "code": [
      "count = 0",
-     "n = int(input(\"Next? \"))   # the user types 9",
+     "n = int(input())   # the user types 150",
      "while n != 0:",
-     "    if n > 5:",
+     "    if n > 100:",
      "        count = count + 1",
-     "    n = int(input(\"Next? \"))   # then 0",
+     "    n = int(input())   # then 0",
      "print(count)"
     ],
     "out": [
@@ -726,23 +1818,27 @@
    },
    "brief": [
     "The user types in whole numbers, one on each line, until they type -1.",
-    "Exactly 40 counts as 40 or more."
+    "A number of exactly 50 counts.",
+    "Display one number and nothing else."
    ],
-   "hint": "pywhile",
-   "starter": "# Count only the numbers that reach 40\n",
+   "hint": {
+    "think": "Every number goes round the loop, but only some of them should move the counter.",
+    "syntax": "if n >= ...:",
+    "diagram": "pywhile"
+   },
+   "starter": "# Count only the numbers that reach 50\n",
    "tests": [
     {
      "in": [
-      "55",
-      "38",
-      "40",
-      "12",
+      "60",
+      "20",
+      "50",
       "-1"
      ],
      "out": [
       "2"
      ],
-     "why": "Two of the four reach 40, and only the count is printed."
+     "why": "Two of the three numbers reach 50, and only the count is displayed."
     },
     {
      "in": [
@@ -751,76 +1847,123 @@
      "out": [
       "0"
      ],
-     "why": "No numbers at all, so the count is 0. The counter has to be set before the loop so it still has a value when the loop runs zero times."
+     "why": "No numbers at all, so the count is 0. The counter has to be set before the loop."
     },
     {
      "in": [
-      "39",
+      "49",
       "-1"
      ],
      "out": [
       "0"
      ],
-     "why": "39 does not reach 40. A 1 here means >= 39 was used where >= 40 was needed."
+     "why": "49 does not reach 50, so nothing is counted."
     },
     {
      "in": [
-      "40",
-      "100",
-      "40",
+      "50",
+      "99",
+      "50",
       "-1"
      ],
      "out": [
       "3"
      ],
-     "why": "Exactly 40 counts, so all three do. A 1 here means > 40 was used instead of >= 40."
+     "why": "Exactly 50 counts, so all three do. A 1 here means > 50 was used instead of >= 50."
     }
    ],
-   "fb": "The if inside the loop is what makes a counter count some turns and ignore the rest."
+   "fb": "The loop visits every value and the if decides which ones are worth counting."
   },
   {
-   "id": "pr-l05-q12",
+   "id": "pr-l05-q34",
    "station": 3,
-   "marks": 3,
-   "q": "Ask the user for whole numbers until they type -1. Count how many numbers were typed, not counting the -1. Count how many of them are 40 or more. Display [how many were typed]. Then display [how many reach 40] on the next line.",
-   "teach": {
-    "say": "Each thing you are tracking needs its own variable, set up before the loop and changed only where it should be.",
-    "code": [
-     "seen = 0",
-     "big = 0",
-     "while seen < 3:",
-     "    seen = seen + 1",
-     "    if seen > 1:",
-     "        big = big + 1",
-     "print(seen)",
-     "print(big)"
-    ],
-    "out": [
-     "3",
-     "2"
-    ]
-   },
+   "marks": 2,
+   "q": "This program should display how many numbers were typed before the -1. It always displays 1. Find the mistake and put it right.",
+   "kind": "debug",
    "brief": [
-    "The user types in whole numbers, one on each line, until they type -1.",
-    "Two lines of output: how many were typed, then how many reach 40.",
-    "Exactly 40 counts as 40 or more."
+    "Press Run first and type 4, then 7, then 9, then -1.",
+    "The -1 is not counted.",
+    "Display one number and nothing else."
    ],
-   "hint": "pywhile",
-   "starter": "# Count the numbers, and count how many reach 40\n",
+   "hint": {
+    "think": "A counter is set up once. What happens if it is set to 0 again on every turn?",
+    "walk": [
+     "Look at the two lines inside the loop that touch count.",
+     "One of them belongs above the loop, not inside it."
+    ],
+    "diagram": "pywhile"
+   },
+   "starter": "n = int(input())\nwhile n != -1:\n    count = 0\n    count = count + 1\n    n = int(input())\nprint(count)\n",
    "tests": [
     {
      "in": [
-      "55",
-      "38",
-      "40",
-      "12",
+      "4",
+      "7",
+      "9",
       "-1"
      ],
      "out": [
-      "4",
+      "3"
+     ],
+     "why": "The counter was wiped back to 0 at the start of every turn, so it never got past 1."
+    },
+    {
+     "in": [
+      "8",
+      "-1"
+     ],
+     "out": [
+      "1"
+     ],
+     "why": "One number gives 1 either way, which is why one test is never enough."
+    },
+    {
+     "in": [
+      "1",
+      "2",
+      "-1"
+     ],
+     "out": [
       "2"
      ],
-     "why": "Four numbers, two of which reach 40. A 5 on the first line means the -1 was counted."
+     "why": "Set the counter to 0 once, before the loop."
+    }
+   ],
+   "fb": "Setting a counter up belongs before the loop. Inside the loop it wipes out everything counted so far."
+  },
+  {
+   "id": "pr-l05-q35",
+   "station": 3,
+   "marks": 3,
+   "q": "Ask the user for whole numbers until they type -1, which means stop. Count how many numbers were typed. Add them up. Display the count. Then display the total on the next line.",
+   "brief": [
+    "The user types in whole numbers, one on each line, until they type -1.",
+    "The -1 is neither counted nor added.",
+    "Two lines of output: the count first, then the total.",
+    "With no numbers at all both lines display 0."
+   ],
+   "hint": {
+    "think": "Two things to keep track of, so two variables set up before the loop.",
+    "syntax": [
+     "count = count + 1",
+     "total = total + n"
+    ],
+    "diagram": "pywhile"
+   },
+   "starter": "# Count them and add them up at the same time\n",
+   "tests": [
+    {
+     "in": [
+      "10",
+      "20",
+      "30",
+      "-1"
+     ],
+     "out": [
+      "3",
+      "60"
+     ],
+     "why": "Three numbers coming to 60, so the two lines are different."
     },
     {
      "in": [
@@ -830,46 +1973,272 @@
       "0",
       "0"
      ],
-     "why": "No numbers at all, so both counts are 0 and both lines still print."
+     "why": "No numbers at all, so both counters are still 0 and both lines are displayed."
     },
     {
      "in": [
-      "39",
+      "7",
       "-1"
      ],
      "out": [
       "1",
-      "0"
+      "7"
      ],
-     "why": "One number, which does not reach 40, so the two lines differ."
+     "why": "With one number the count is 1 and the total is that number."
     },
     {
      "in": [
-      "40",
-      "100",
-      "40",
+      "-2",
+      "2",
       "-1"
      ],
      "out": [
-      "3",
-      "3"
+      "2",
+      "0"
      ],
-     "why": "Every number reaches 40, so the two lines match - but they are still two separate counters."
+     "why": "Two numbers that cancel out, so the count and the total differ."
     }
    ],
-   "fb": "Two counters, both set to 0 before the loop: one counts every turn, the other only the turns where the if is true."
+   "fb": "One pass through the data can keep as many running values as you like, as long as each has its own variable."
   },
   {
-   "id": "pr-l05-q13",
+   "id": "pr-l05-q36",
+   "station": 3,
+   "marks": 3,
+   "q": "Ask the user for whole numbers until they type -1, which means stop. Count how many of them are above 0. Count how many are below 0. Display the line [how many] above zero. Then display the line [how many] below zero on the next line.",
+   "brief": [
+    "The user types in whole numbers, one on each line, until they type -1.",
+    "A 0 is neither above nor below, so it is not counted at all.",
+    "Two lines of output, the above line first.",
+    "There is one space after each number."
+   ],
+   "hint": {
+    "think": "Two counters and an if with an elif, because a number cannot be in both groups.",
+    "syntax": [
+     "if n > 0:",
+     "elif n < 0:"
+    ],
+    "diagram": "pyif"
+   },
+   "starter": "# Count the numbers above zero and below zero\n",
+   "opt": true,
+   "tests": [
+    {
+     "in": [
+      "4",
+      "-2",
+      "0",
+      "7",
+      "-1"
+     ],
+     "out": [
+      "2 above zero",
+      "1 below zero"
+     ],
+     "why": "The 0 counts in neither group, so the two numbers do not add up to four."
+    },
+    {
+     "in": [
+      "-1"
+     ],
+     "out": [
+      "0 above zero",
+      "0 below zero"
+     ],
+     "why": "No numbers at all, so both counters are 0 and both lines are displayed."
+    },
+    {
+     "in": [
+      "5",
+      "-1"
+     ],
+     "out": [
+      "1 above zero",
+      "0 below zero"
+     ],
+     "why": "One number above zero and none below it."
+    },
+    {
+     "in": [
+      "-3",
+      "-4",
+      "-1"
+     ],
+     "out": [
+      "0 above zero",
+      "2 below zero"
+     ],
+     "why": "Both numbers are below zero, so the first counter never moves."
+    }
+   ],
+   "fb": "An elif keeps the two counters apart, and a 0 falls through both of them and is counted nowhere."
+  },
+  {
+   "id": "pr-l05-q37",
+   "station": 4,
+   "kind": "try",
+   "marks": 1,
+   "q": "Press Run. The same job is done twice, once with each kind of loop.",
+   "teach": {
+    "say": "Use a for loop when you know how many turns there are before you start. Use a while loop when you do not, because the answer depends on what happens next. A for loop counts for you. A while loop makes you count yourself.",
+    "code": [
+     "print(\"With a for loop\")",
+     "for i in range(1, 4):",
+     "    print(i)",
+     "print(\"With a while loop\")",
+     "n = 1",
+     "while n < 4:",
+     "    print(n)",
+     "    n = n + 1"
+    ],
+    "out": [
+     "With a for loop",
+     "1",
+     "2",
+     "3",
+     "With a while loop",
+     "1",
+     "2",
+     "3"
+    ]
+   },
+   "brief": [
+    "Nothing is marked on this one.",
+    "Both halves display the same three numbers.",
+    "Look at how much work each kind of loop makes you do."
+   ],
+   "starter": "print(\"With a for loop\")\nfor i in range(1, 4):\n    print(i)\nprint(\"With a while loop\")\nn = 1\nwhile n < 4:\n    print(n)\n    n = n + 1\n",
+   "lines": [
+    "Say which loop is coming.",
+    "Repeat three times, with i taking 1, then 2, then 3.",
+    "Show the counter the for loop made.",
+    "Say which loop is coming.",
+    "Set the counter yourself, before the loop.",
+    "Keep going while the counter is below 4.",
+    "Show the counter.",
+    "Move the counter on yourself, or the loop never ends."
+   ],
+   "fb": "For a known number of turns a for loop is shorter and safer, because it cannot forget to count."
+  },
+  {
+   "id": "pr-l05-q38",
+   "station": 4,
+   "kind": "predict",
+   "marks": 1,
+   "q": "What will this program display?",
+   "code": [
+    "for i in range(0):",
+    "    print(\"for ran\")",
+    "n = 0",
+    "while n > 0:",
+    "    print(\"while ran\")",
+    "    n = n - 1",
+    "print(\"neither ran\")"
+   ],
+   "a": [
+    "neither ran",
+    "for ran\nwhile ran\nneither ran",
+    "for ran\nneither ran"
+   ],
+   "brief": [
+    "Read every line before you choose."
+   ],
+   "teach": {
+    "say": "Both kinds of loop test before the first turn, so both of them can run zero times."
+   },
+   "fb": "range(0) gives no turns at all, and 0 > 0 is false, so neither body is ever reached."
+  },
+  {
+   "id": "pr-l05-q39",
+   "station": 4,
+   "kind": "predict",
+   "marks": 1,
+   "q": "What will this program display?",
+   "code": [
+    "n = 1",
+    "turns = 0",
+    "while n < 50:",
+    "    n = n * 3",
+    "    turns = turns + 1",
+    "print(turns)"
+   ],
+   "a": [
+    "4",
+    "3",
+    "5"
+   ],
+   "brief": [
+    "Read every line before you choose."
+   ],
+   "teach": {
+    "say": "You cannot work out how many turns this loop needs just by reading it. That is exactly when a while loop is the right choice and a for loop is not."
+   },
+   "fb": "n goes 1, 3, 9, 27, 81. Four turns are needed, and nothing in the program says so in advance."
+  },
+  {
+   "id": "pr-l05-q40",
+   "station": 4,
+   "marks": 1,
+   "q": "Change the program so it uses a for loop instead of a while loop, and displays hello five times.",
+   "kind": "change",
+   "teach": {
+    "say": "A for loop with range does the counting for you, so the three parts of a while loop become one line.",
+    "code": [
+     "for i in range(2):",
+     "    print(\"ready\")"
+    ],
+    "out": [
+     "ready",
+     "ready"
+    ]
+   },
+   "brief": [
+    "The number of turns is known before the loop starts, so a for loop fits.",
+    "Your program must not use the word while.",
+    "Display exactly: hello",
+    "Five lines of output."
+   ],
+   "hint": {
+    "think": "A known number of turns is what range is for.",
+    "syntax": "for i in range(...):",
+    "diagram": "pyrange"
+   },
+   "starter": "n = 0\nwhile n < 3:\n    print(\"hello\")\n    n = n + 1\n",
+   "fixed": true,
+   "forbid": [
+    [
+     "while",
+     "This one asks for a for loop, so the word while is not allowed here."
+    ]
+   ],
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "hello",
+      "hello",
+      "hello",
+      "hello",
+      "hello"
+     ],
+     "why": "There are still three lines, so the number of turns was not changed to five."
+    }
+   ],
+   "fb": "When the count is known, a for loop says the same thing in one line and cannot run for ever."
+  },
+  {
+   "id": "pr-l05-q41",
    "station": 4,
    "marks": 2,
-   "q": "Ask the user for a whole number. Start a value at 1 in your program. Keep doubling that value until it is equal to or greater than the number typed in. Count how many doublings that took. Display [how many doublings were needed] and nothing else.",
+   "q": "Finish the condition so the program keeps doubling the value until it reaches the number typed in.",
+   "kind": "complete",
    "teach": {
-    "say": "When you cannot know how many turns are needed before you start, a while loop is the right choice and a for loop is not. Count the turns in a variable of your own.",
+    "say": "The number of turns depends on the number typed in, so it cannot be known before the loop starts. That is a while loop's job.",
     "code": [
+     "limit = 20",
      "n = 1",
      "turns = 0",
-     "while n < 20:",
+     "while n < limit:",
      "    n = n * 3",
      "    turns = turns + 1",
      "print(turns)"
@@ -880,10 +2249,16 @@
    },
    "brief": [
     "The user types in one whole number, which is never less than 1.",
-    "The value starts at 1, fixed in your program, and is not typed in."
+    "The value starts at 1, written into the program, and is doubled on every turn.",
+    "Replace ____ with a condition.",
+    "Display how many doublings were needed, and nothing else."
    ],
-   "hint": "constructs",
-   "starter": "# Double until the number is reached, counting the doublings\n",
+   "hint": {
+    "think": "The loop should keep going while the value has not yet reached the limit.",
+    "syntax": "while n < ...:",
+    "diagram": "pywhile"
+   },
+   "starter": "limit = int(input())\nn = 1\nturns = 0\nwhile ____:\n    n = n * 2\n    turns = turns + 1\nprint(turns)\n",
    "tests": [
     {
      "in": [
@@ -892,7 +2267,7 @@
      "out": [
       "3"
      ],
-     "why": "1 doubles to 2, then 4, then 8, which is three doublings. A 4 means the loop went round once more after the value had been reached."
+     "why": "1 doubles to 2, then 4, then 8, which is three turns. A 4 means the loop went round once too often."
     },
     {
      "in": [
@@ -901,16 +2276,7 @@
      "out": [
       "0"
      ],
-     "why": "The value starts at 1, which already reaches the target, so no doubling is needed. A 1 here means a loop that always runs once."
-    },
-    {
-     "in": [
-      "5"
-     ],
-     "out": [
-      "3"
-     ],
-     "why": "After two doublings the value is 4, which is not yet 5, so a third is needed: the loop stops once the number is reached or passed, not only on an exact match."
+     "why": "The value already starts at 1, so no doubling is needed at all."
     },
     {
      "in": [
@@ -919,118 +2285,265 @@
      "out": [
       "7"
      ],
-     "why": "The values go 1, 2, 4, 8, 16, 32, 64, 128. A program written for small numbers is wrong here."
+     "why": "The values go 1, 2, 4, 8, 16, 32, 64, 128, so seven doublings pass 100."
+    },
+    {
+     "in": [
+      "5"
+     ],
+     "out": [
+      "3"
+     ],
+     "why": "After two doublings the value is 4, which has not reached 5, so a third is needed."
     }
    ],
-   "fb": "A condition-controlled loop is for when the number of turns depends on what happens, which is why while and not for is the right choice here."
+   "fb": "A condition-controlled loop keeps going while something is still not true, which is why nobody can count its turns in advance."
   },
   {
-   "id": "pr-l05-q14",
+   "id": "pr-l05-q42",
    "station": 4,
-   "marks": 3,
-   "q": "Ask the user for how many numbers there are. Then ask for that many whole numbers, using a for loop. Work out the largest of them. Display [the largest] and nothing else.",
+   "marks": 2,
+   "q": "Ask the user for how many numbers there are. Then ask for that many whole numbers, using a for loop. Display each number doubled, one on each line.",
    "teach": {
-    "say": "When the count is known before the loop starts, a for loop is the right choice. A best so far starts at the first value, because a guess of 0 could never be beaten by a negative one.",
+    "say": "The first thing typed says how many turns there are, so a for loop with range is the right choice and nothing needs counting by hand.",
     "code": [
-     "best = int(input(\"First? \"))   # the user types 4",
-     "for i in range(1):",
-     "    n = int(input(\"Next? \"))   # then 9",
-     "    if n > best:",
-     "        best = n",
-     "print(best)"
+     "how_many = 2",
+     "for i in range(how_many):",
+     "    n = int(input())   # the user types 3, then 7",
+     "    print(n * 10)"
     ],
     "out": [
-     "9"
+     "30",
+     "70"
     ]
    },
+   "lines": [
+    "How many numbers there will be, written into the program here.",
+    "Repeat exactly that many times.",
+    "Read one number on each turn.",
+    "Use that number straight away."
+   ],
    "brief": [
     "The user types in a whole number saying how many follow, which is never less than 1.",
     "Then come that many whole numbers, one on each line.",
-    "The numbers may be negative."
+    "One line of output for each number, which is that number multiplied by 2."
    ],
-   "hint": "constructs",
-   "starter": "# Read the numbers with a for loop, keeping the largest\n",
+   "hint": {
+    "think": "The count is known before the loop starts, so range can be given it.",
+    "syntax": [
+     "how_many = int(input())",
+     "for i in range(how_many):"
+    ],
+    "diagram": "pyrange"
+   },
+   "starter": "# A for loop, because the count is known\n",
+   "require": [
+    [
+     "range(",
+     "This one asks for a for loop with range, because the count is known before the loop starts."
+    ]
+   ],
    "tests": [
     {
      "in": [
+      "3",
       "4",
-      "12",
-      "30",
-      "8",
-      "19"
+      "5",
+      "6"
      ],
      "out": [
-      "30"
+      "8",
+      "10",
+      "12"
      ],
-     "why": "Four numbers, and the largest is not the last one, so the best so far has to be remembered rather than printed at the end of the loop."
+     "why": "The first number says how many follow, so it is not doubled itself."
     },
     {
      "in": [
       "1",
-      "7"
+      "0"
      ],
      "out": [
-      "7"
+      "0"
      ],
-     "why": "With one number, that number is the largest."
+     "why": "One number only, and 0 doubled is 0."
     },
     {
      "in": [
-      "3",
-      "-4",
-      "-9",
-      "-2"
+      "2",
+      "-3",
+      "7"
      ],
      "out": [
-      "-2"
+      "-6",
+      "14"
      ],
-     "why": "Every number is below 0, so a best so far that started at 0 could never be beaten. Start it at the first number instead."
-    },
+     "why": "Two numbers, which may be negative."
+    }
+   ],
+   "fb": "A for loop needs the count up front, and here the user hands it over before any data arrives."
+  },
+  {
+   "id": "pr-l05-q43",
+   "station": 4,
+   "marks": 3,
+   "q": "Ask the user for whole numbers until they type the word stop, which means finish. Display each number doubled, one on each line. Use a while loop.",
+   "brief": [
+    "The user types in whole numbers, one on each line, then the word stop to finish.",
+    "Nobody says how many numbers there will be, so a for loop cannot be used.",
+    "One line of output for each number, which is that number multiplied by 2.",
+    "At least one number comes before the word stop."
+   ],
+   "hint": {
+    "think": "This is the same job as the last activity, but the count is not known, so the loop has to wait for the word.",
+    "syntax": [
+     "line = input()",
+     "while line != \"stop\":"
+    ],
+    "diagram": "pywhile"
+   },
+   "starter": "# The same job, now with a while loop\n",
+   "tests": [
     {
      "in": [
       "4",
       "5",
-      "5",
-      "5",
-      "5"
+      "6",
+      "stop"
      ],
      "out": [
-      "5"
+      "8",
+      "10",
+      "12"
      ],
-     "why": "All four are the same, so the first one is already the largest and nothing replaces it."
+     "why": "Three numbers, then the word that stops the loop."
+    },
+    {
+     "in": [
+      "0",
+      "stop"
+     ],
+     "out": [
+      "0"
+     ],
+     "why": "One number only, and 0 doubled is 0."
+    },
+    {
+     "in": [
+      "-3",
+      "7",
+      "stop"
+     ],
+     "out": [
+      "-6",
+      "14"
+     ],
+     "why": "The word stop is the only thing that ends the loop, so negative numbers are ordinary data."
     }
    ],
-   "fb": "The count is known before the loop starts, so a for loop fits, and the best so far has to start at the first value rather than at 0."
+   "fb": "Same job, two loops. The for loop needed the count in advance; the while loop waits to be told when to stop."
   },
   {
-   "id": "pr-l05-q15",
+   "id": "pr-l05-q44",
    "station": 4,
-   "marks": 4,
-   "q": "Ask the user for how many numbers there are. Then ask for that many whole numbers, using a for loop. Work out the largest of them. Then, using a while loop, keep asking for one more number at a time until one of them is equal to or greater than that largest number. Display too small for each number refused. Then display ok on a line of its own.",
+   "marks": 2,
+   "q": "This program should keep halving the number typed in until it reaches 1, and display how many halvings that took. It always goes round five times. Find the mistake and put it right.",
+   "kind": "debug",
    "teach": {
-    "say": "One program can use both kinds of loop: for while the count is known, while for the part that depends on what the user types next.",
+    "say": "A for loop is told how many turns to take. If the number of turns depends on the data, it is the wrong kind of loop and no change to range will save it.",
     "code": [
-     "for i in range(2):",
-     "    print(\"ready\")",
-     "answer = input(\"Done? \")   # the user types n",
-     "while answer != \"y\":",
-     "    print(\"again\")",
-     "    answer = input(\"Done? \")   # then y"
+     "n = 12",
+     "count = 0",
+     "while n > 1:",
+     "    n = n // 2",
+     "    count = count + 1",
+     "print(count)"
     ],
     "out": [
-     "ready",
-     "ready",
-     "again"
+     "3"
     ]
    },
    "brief": [
-    "The user types in a whole number saying how many follow, which may be 0.",
-    "Then come that many whole numbers, one on each line, none of them below 0.",
-    "With no numbers at all the first number tested is accepted.",
-    "Print exactly: too small, and then ok"
+    "Press Run first and type 8.",
+    "Halve with // so the answer stays a whole number.",
+    "The user types in one whole number, which is never less than 1.",
+    "Display one number and nothing else."
    ],
-   "hint": "constructs",
-   "starter": "# A for loop for the numbers, a while loop for the one being tested\n",
+   "hint": {
+    "think": "Nobody can know how many halvings a number needs until they start halving it.",
+    "syntax": "while n > 1:",
+    "diagram": "pywhile"
+   },
+   "starter": "n = int(input())\ncount = 0\nfor i in range(5):\n    n = n // 2\n    count = count + 1\nprint(count)\n",
+   "tests": [
+    {
+     "in": [
+      "8"
+     ],
+     "out": [
+      "3"
+     ],
+     "why": "8 halves to 4, then 2, then 1, which is three turns, not five."
+    },
+    {
+     "in": [
+      "1"
+     ],
+     "out": [
+      "0"
+     ],
+     "why": "A 1 has already reached 1, so no halving is needed and the loop runs zero times."
+    },
+    {
+     "in": [
+      "2"
+     ],
+     "out": [
+      "1"
+     ],
+     "why": "One halving reaches 1."
+    },
+    {
+     "in": [
+      "100"
+     ],
+     "out": [
+      "6"
+     ],
+     "why": "100 goes 50, 25, 12, 6, 3, 1, which is six turns. A fixed count can never be right for every number."
+    }
+   ],
+   "fb": "When the number of turns depends on the data, swap the for loop for a while loop and let the condition decide."
+  },
+  {
+   "id": "pr-l05-q45",
+   "station": 4,
+   "marks": 3,
+   "q": "Ask the user for how many whole numbers there are. Then ask for that many whole numbers, using a for loop. Work out the largest of them. Then, using a while loop, keep asking for one more number until one of them is bigger than that largest number. Display Not bigger for every number refused. Then display the line Beaten by [that number].",
+   "brief": [
+    "The user types in a whole number saying how many follow, which is never less than 1.",
+    "Then come that many whole numbers, one on each line, which may be negative.",
+    "A number equal to the largest is refused, because it is not bigger.",
+    "Display exactly: Not bigger"
+   ],
+   "hint": {
+    "think": "Two loops with different jobs: a known count first, then a wait for something to happen.",
+    "walk": [
+     "Read how many numbers there are.",
+     "Read them with a for loop, keeping the largest so far.",
+     "The first number read is the largest so far to start with.",
+     "Then read numbers in a while loop until one beats it."
+    ],
+    "diagram": "pywhile"
+   },
+   "starter": "# A for loop for the data, a while loop for the contest\n",
+   "opt": true,
+   "require": [
+    [
+     "range(",
+     "The first half of this one asks for a for loop with range, because that count is known up front."
+    ]
+   ],
    "tests": [
     {
      "in": [
@@ -1039,74 +2552,537 @@
       "25",
       "18",
       "20",
-      "24",
-      "25"
+      "26"
      ],
      "out": [
-      "too small",
-      "too small",
-      "ok"
+      "Not bigger",
+      "Beaten by 26"
      ],
-     "why": "The largest number read is 25, so 20 and 24 are both refused before 25 is accepted. One warning only means an if was used where a while was needed."
-    },
-    {
-     "in": [
-      "3",
-      "12",
-      "25",
-      "18",
-      "30"
-     ],
-     "out": [
-      "ok"
-     ],
-     "why": "30 is above the largest number read, so the while loop runs zero times. A warning here means the comparison used the last number read rather than the largest."
-    },
-    {
-     "in": [
-      "0",
-      "5"
-     ],
-     "out": [
-      "ok"
-     ],
-     "why": "With 0 numbers the for loop runs zero times, so nothing is read and the first number tested is accepted. A crash means a number was read anyway."
+     "why": "The largest of the three is 25, so 20 is refused and 26 wins."
     },
     {
      "in": [
       "1",
-      "40",
-      "40"
+      "7",
+      "9"
      ],
      "out": [
-      "ok"
+      "Beaten by 9"
      ],
-     "why": "A number equal to the largest is accepted, so the condition is < and not <=."
+     "why": "One number only, and 9 beats it straight away, so the while loop runs zero times."
     },
     {
      "in": [
       "2",
-      "9",
-      "9",
-      "8",
-      "9"
+      "4",
+      "4",
+      "4",
+      "5"
      ],
      "out": [
-      "too small",
-      "ok"
+      "Not bigger",
+      "Beaten by 5"
      ],
-     "why": "Two equal numbers, then one refused. Reading more than one number per turn of the while loop puts the lines out of step."
+     "why": "A 4 equals the largest and is refused, so the condition uses > and not >="
+    },
+    {
+     "in": [
+      "2",
+      "-5",
+      "-9",
+      "-9",
+      "-1"
+     ],
+     "out": [
+      "Not bigger",
+      "Beaten by -1"
+     ],
+     "why": "Every number is below 0, so a largest starting at 0 would never be beaten."
     }
    ],
-   "fb": "Use for when the number of turns is known before you start and while when it depends on what the user does next - this question needs one of each."
+   "fb": "One program, two kinds of loop: a for loop for the part that is counted and a while loop for the part that waits."
   },
   {
-   "id": "pr-l05-q16",
+   "id": "pr-l05-q46",
+   "station": 5,
+   "kind": "try",
+   "marks": 1,
+   "q": "Press Run. Type 5, then -2, then 7, then done.",
+   "teach": {
+    "say": "A whole program can keep several things at once. Each one needs its own variable, set up before the loop, changed only where it should be, and displayed after the loop.",
+    "code": [
+     "count = 0",
+     "total = 0",
+     "line = input(\"Number? \")",
+     "while line != \"done\":",
+     "    n = int(line)",
+     "    if n > 0:",
+     "        count = count + 1",
+     "        total = total + n",
+     "    line = input(\"Number? \")",
+     "print(count)",
+     "print(total)"
+    ],
+    "out": [
+     "2",
+     "12"
+    ]
+   },
+   "brief": [
+    "Nothing is marked on this one.",
+    "Two things are tracked at once: a count and a total.",
+    "The -2 is read, but the if inside the loop leaves it out of both."
+   ],
+   "starter": "count = 0\ntotal = 0\nline = input(\"Number? \")\nwhile line != \"done\":\n    n = int(line)\n    if n > 0:\n        count = count + 1\n        total = total + n\n    line = input(\"Number? \")\nprint(count)\nprint(total)\n",
+   "lines": [
+    "Set the counter up before the loop.",
+    "Set the total up before the loop.",
+    "Read the first line as text.",
+    "Keep going while the line is not the sentinel.",
+    "Turn the line into a number, now the condition has let it through.",
+    "Only numbers above 0 are wanted.",
+    "Count this number.",
+    "Add this number to the total.",
+    "Read the next line.",
+    "Display the count after the loop.",
+    "Display the total after the loop."
+   ],
+   "in": [
+    "5",
+    "-2",
+    "7",
+    "done"
+   ],
+   "fb": "A sentinel loop, a counter, a running total and an if, all in eleven lines."
+  },
+  {
+   "id": "pr-l05-q47",
+   "station": 5,
+   "kind": "predict",
+   "marks": 1,
+   "q": "What will this program display?",
+   "code": [
+    "n = 10",
+    "steps = 0",
+    "while n > 1:",
+    "    n = n // 2",
+    "    steps = steps + 1",
+    "print(n)",
+    "print(steps)"
+   ],
+   "a": [
+    "1\n3",
+    "1\n4",
+    "0\n4"
+   ],
+   "brief": [
+    "Read every line before you choose."
+   ],
+   "teach": {
+    "say": "// divides and throws the fraction away, so the number comes down to 1 exactly and the loop can stop."
+   },
+   "fb": "n goes 10, 5, 2, 1. Three steps, and // is what lands it on 1 rather than on a decimal."
+  },
+  {
+   "id": "pr-l05-q48",
+   "station": 5,
+   "marks": 1,
+   "q": "Change the program so it displays the line Count is [count] instead of just the number.",
+   "kind": "change",
+   "brief": [
+    "Change only the last line.",
+    "There is one space either side of the word is.",
+    "One line of output."
+   ],
+   "hint": {
+    "think": "A number has to be turned into text before a word can be joined to it.",
+    "syntax": "print(\"Count is \" + str(count))"
+   },
+   "starter": "line = input()\ncount = 0\nwhile line != \"end\":\n    count = count + 1\n    line = input()\nprint(count)\n",
+   "tests": [
+    {
+     "in": [
+      "a",
+      "b",
+      "end"
+     ],
+     "out": [
+      "Count is 2"
+     ],
+     "why": "Only the number came out, so the words were not joined to it."
+    },
+    {
+     "in": [
+      "end"
+     ],
+     "out": [
+      "Count is 0"
+     ],
+     "why": "With no words at all the count is 0, and the message is still displayed."
+    },
+    {
+     "in": [
+      "x",
+      "end"
+     ],
+     "out": [
+      "Count is 1"
+     ],
+     "why": "The message is the same every time; only the number inside it changes."
+    }
+   ],
+   "fb": "str() round a number is still what lets it join onto words, four lessons later."
+  },
+  {
+   "id": "pr-l05-q49",
+   "station": 5,
+   "marks": 2,
+   "q": "Finish the program so it displays lower when the number typed in is above 24.",
+   "kind": "complete",
+   "teach": {
+    "say": "The condition decides whether to keep asking. An if inside the loop decides which message to display on this turn.",
+    "code": [
+     "SECRET = 12",
+     "n = int(input())   # the user types 5",
+     "while n != SECRET:",
+     "    if n < SECRET:",
+     "        print(\"up\")",
+     "    else:",
+     "        print(\"down\")",
+     "    n = int(input())   # then 12",
+     "print(\"got it\")"
+    ],
+    "out": [
+     "up",
+     "got it"
+    ]
+   },
+   "brief": [
+    "The user types in whole numbers, one on each line, until they type 24.",
+    "Replace ____ with one instruction of your own.",
+    "Display exactly: higher, lower and correct",
+    "One line of output for every number typed."
+   ],
+   "hint": {
+    "think": "The if has already dealt with numbers below 24. What is left?",
+    "syntax": "print(\"...\")"
+   },
+   "starter": "SECRET = 24\nn = int(input())\nwhile n != SECRET:\n    if n < SECRET:\n        print(\"higher\")\n    else:\n        ____\n    n = int(input())\nprint(\"correct\")\n",
+   "tests": [
+    {
+     "in": [
+      "10",
+      "30",
+      "24"
+     ],
+     "out": [
+      "higher",
+      "lower",
+      "correct"
+     ],
+     "why": "Replace the ____ with the message for a number that is too big."
+    },
+    {
+     "in": [
+      "24"
+     ],
+     "out": [
+      "correct"
+     ],
+     "why": "The first number is already 24, so the loop runs zero times."
+    },
+    {
+     "in": [
+      "99",
+      "24"
+     ],
+     "out": [
+      "lower",
+      "correct"
+     ],
+     "why": "99 is above 24, so the else branch is the one that runs."
+    }
+   ],
+   "fb": "The while decides whether to go round again; the if decides what to say while it is there."
+  },
+  {
+   "id": "pr-l05-q50",
    "station": 5,
    "marks": 3,
-   "q": "Ask the user for a whole number that is 0 or more. Add up its digits without turning the number into text. Display [the total of the digits] and nothing else.",
+   "q": "The whole number 37 is written into your program. Keep asking the user for a whole number until they type 37. Display Higher when the number typed is below 37. Display Lower when it is above 37. Then display Correct on a line of its own.",
+   "brief": [
+    "The 37 is written into your program and is not typed in.",
+    "One line of output for every number typed.",
+    "Display exactly: Higher, Lower and Correct",
+    "Correct is displayed once, after the loop has finished."
+   ],
+   "hint": {
+    "think": "The condition only asks whether the number is the right one. The if chooses between the two hints.",
+    "syntax": [
+     "while n != 37:",
+     "if n < 37:"
+    ],
+    "diagram": "pywhile"
+   },
+   "starter": "# The number to find is 37. Say which way to go.\n",
+   "tests": [
+    {
+     "in": [
+      "10",
+      "50",
+      "37"
+     ],
+     "out": [
+      "Higher",
+      "Lower",
+      "Correct"
+     ],
+     "why": "10 is below 37 so the hint is Higher, and 50 is above it so the hint is Lower."
+    },
+    {
+     "in": [
+      "37"
+     ],
+     "out": [
+      "Correct"
+     ],
+     "why": "The first number is already right, so no hint is displayed at all."
+    },
+    {
+     "in": [
+      "40",
+      "38",
+      "37"
+     ],
+     "out": [
+      "Lower",
+      "Lower",
+      "Correct"
+     ],
+     "why": "Two numbers above 37. If this never finished, no new number was read inside the loop."
+    },
+    {
+     "in": [
+      "36",
+      "37"
+     ],
+     "out": [
+      "Higher",
+      "Correct"
+     ],
+     "why": "36 is one below, so the hint is Higher."
+    }
+   ],
+   "fb": "Guessing games are while loops: nobody knows how many guesses it will take until it has taken them."
+  },
+  {
+   "id": "pr-l05-q51",
+   "station": 5,
+   "marks": 3,
+   "q": "Ask the user for whole numbers until they type -1, which means stop. Add up only the numbers that are 10 or more. Count how many were added. Display the total. Then display the count on the next line.",
+   "brief": [
+    "The user types in whole numbers, one on each line, until they type -1.",
+    "A number of exactly 10 is added and counted.",
+    "Numbers below 10 are read but ignored.",
+    "Two lines of output: the total first, then the count."
+   ],
+   "hint": {
+    "think": "The if decides whether a number joins the total, and the counter moves in the same place.",
+    "syntax": [
+     "if n >= 10:",
+     "total = total + n",
+     "count = count + 1"
+    ],
+    "diagram": "pywhile"
+   },
+   "starter": "# Add up and count only the numbers that reach 10\n",
+   "tests": [
+    {
+     "in": [
+      "12",
+      "4",
+      "20",
+      "-1"
+     ],
+     "out": [
+      "32",
+      "2"
+     ],
+     "why": "The 4 is ignored, so two numbers are added and they come to 32."
+    },
+    {
+     "in": [
+      "-1"
+     ],
+     "out": [
+      "0",
+      "0"
+     ],
+     "why": "No numbers at all, so both lines display 0."
+    },
+    {
+     "in": [
+      "10",
+      "-1"
+     ],
+     "out": [
+      "10",
+      "1"
+     ],
+     "why": "Exactly 10 counts, so a 0 here means > 10 was used instead of >= 10."
+    },
+    {
+     "in": [
+      "9",
+      "9",
+      "-1"
+     ],
+     "out": [
+      "0",
+      "0"
+     ],
+     "why": "Both numbers are below 10, so nothing is added and nothing is counted."
+    }
+   ],
+   "fb": "One if can guard two lines at once, so the total and the count always agree with each other."
+  },
+  {
+   "id": "pr-l05-q52",
+   "station": 5,
+   "marks": 2,
+   "q": "This program should display the largest number typed before the -1. It gets it wrong when every number is below 0. Find the mistake and put it right.",
+   "kind": "debug",
+   "brief": [
+    "Press Run first and type -5, then -9, then -2, then -1.",
+    "At least one number comes before the -1.",
+    "The numbers may all be below 0.",
+    "Display one number and nothing else."
+   ],
+   "hint": {
+    "think": "Nothing below 0 can ever beat a largest so far that starts at 0.",
+    "walk": [
+     "Read the first number before the loop.",
+     "Make that first number the largest so far.",
+     "Then compare every later number with it."
+    ],
+    "diagram": "pywhile"
+   },
+   "starter": "best = 0\nn = int(input())\nwhile n != -1:\n    if n > best:\n        best = n\n    n = int(input())\nprint(best)\n",
+   "tests": [
+    {
+     "in": [
+      "-5",
+      "-9",
+      "-2",
+      "-1"
+     ],
+     "out": [
+      "-2"
+     ],
+     "why": "A 0 came out, and no 0 was ever typed. The largest so far must start at a real value."
+    },
+    {
+     "in": [
+      "4",
+      "9",
+      "2",
+      "-1"
+     ],
+     "out": [
+      "9"
+     ],
+     "why": "With positive numbers a start of 0 happens to work, which is how this bug hides."
+    },
+    {
+     "in": [
+      "-8",
+      "-1"
+     ],
+     "out": [
+      "-8"
+     ],
+     "why": "One number, which is below 0, so it is the largest by default."
+    }
+   ],
+   "fb": "A largest so far must start at the first real value. Starting at 0 quietly invents a number nobody typed."
+  },
+  {
+   "id": "pr-l05-q53",
+   "station": 5,
+   "marks": 3,
+   "q": "Ask the user for whole numbers until they type the word end, which means stop. Count how many numbers were typed. Add them up. Display the line Count [count]. Then display the line Total [total] on the next line. Display the line No numbers instead when end is the very first line typed.",
+   "brief": [
+    "The user types in whole numbers, one on each line, then the word end to finish.",
+    "The numbers may be negative.",
+    "There is one space after the words Count and Total.",
+    "Display exactly: No numbers"
+   ],
+   "hint": {
+    "think": "Read the first line before you decide which of the two kinds of output to display.",
+    "walk": [
+     "Read the first line as text.",
+     "If it is the sentinel, display No numbers.",
+     "Otherwise loop, counting and totalling.",
+     "Then display the two lines."
+    ],
+    "diagram": "pywhile"
+   },
+   "starter": "# Count them, add them up, or say there were none\n",
+   "tests": [
+    {
+     "in": [
+      "5",
+      "15",
+      "end"
+     ],
+     "out": [
+      "Count 2",
+      "Total 20"
+     ],
+     "why": "Two numbers coming to 20, each line with its own word in front of it."
+    },
+    {
+     "in": [
+      "end"
+     ],
+     "out": [
+      "No numbers"
+     ],
+     "why": "The loop runs zero times, so the two usual lines are replaced by one."
+    },
+    {
+     "in": [
+      "7",
+      "end"
+     ],
+     "out": [
+      "Count 1",
+      "Total 7"
+     ],
+     "why": "With one number the count is 1 and the total is that number."
+    },
+    {
+     "in": [
+      "-4",
+      "4",
+      "end"
+     ],
+     "out": [
+      "Count 2",
+      "Total 0"
+     ],
+     "why": "Two numbers that cancel out, so a total of 0 does not mean no numbers."
+    }
+   ],
+   "fb": "A total of 0 and no numbers at all are different things, and only the program can tell the user which one happened."
+  },
+  {
+   "id": "pr-l05-q54",
+   "station": 5,
+   "marks": 3,
+   "q": "Ask the user for a whole number that is 0 or more. Add up its digits without turning the number into text. Display the total and nothing else.",
    "teach": {
-    "say": "n % 10 gives the last digit and n // 10 takes it off. // keeps the answer whole, so the number reaches 0 exactly.",
+    "say": "% 10 gives the last digit of a number and // 10 takes that digit off. Because // keeps the answer whole, the number comes down to 0 exactly, so the loop can stop.",
     "code": [
      "n = 538",
      "print(n % 10)",
@@ -1117,12 +3093,44 @@
      "53"
     ]
    },
+   "lines": [
+    "A number written into the program.",
+    "The remainder after dividing by 10, which is the last digit.",
+    "The number with its last digit taken off."
+   ],
    "brief": [
     "The user types in one whole number that is 0 or more.",
-    "Take the digits off with arithmetic rather than turning the number into text."
+    "Take the digits off with % and //, not by turning the number into text.",
+    "With a 0 the answer is 0.",
+    "Display one number and nothing else."
    ],
-   "hint": "pywhile",
+   "hint": {
+    "think": "Take the last digit off on every turn, until there is nothing left of the number.",
+    "syntax": [
+     "while n > 0:",
+     "n % 10",
+     "n // 10"
+    ],
+    "diagram": "pyarith"
+   },
    "starter": "# Take the last digit off the number on every turn\n",
+   "opt": true,
+   "forbid": [
+    [
+     "str(",
+     "This one asks for arithmetic, so turning the number into text is not allowed here."
+    ]
+   ],
+   "require": [
+    [
+     "%",
+     "Take the last digit off with % - this one has to be done with arithmetic."
+    ],
+    [
+     "//",
+     "Use // to take the last digit off, so the number stays whole."
+    ]
+   ],
    "tests": [
     {
      "in": [
@@ -1131,7 +3139,7 @@
      "out": [
       "13"
      ],
-     "why": "4 + 7 + 2 is 13. A 2 means the loop went round once only - the number has to be divided down inside the loop as well as having its last digit taken."
+     "why": "4 + 7 + 2 is 13. A 2 means the loop went round once only, so the number was never divided down."
     },
     {
      "in": [
@@ -1140,7 +3148,7 @@
      "out": [
       "0"
      ],
-     "why": "0 has no digits to take off, so the loop runs zero times and the total is still 0. No output at all means the total was never set before the loop."
+     "why": "A 0 has no digits to take off, so the loop runs zero times and the total is still 0."
     },
     {
      "in": [
@@ -1149,7 +3157,7 @@
      "out": [
       "9"
      ],
-     "why": "A single digit. A 0 here means the condition stopped the loop before the last digit was used."
+     "why": "A single digit. A 0 here means the condition stopped before that digit was used."
     },
     {
      "in": [
@@ -1158,7 +3166,7 @@
      "out": [
       "1"
      ],
-     "why": "Only the 1 counts, because the zeros add nothing. If this never finished, / was used instead of //, so the number never reaches 0 exactly."
+     "why": "Only the 1 adds anything. If this never finished, / was used instead of //, so the number never reached 0."
     },
     {
      "in": [
@@ -1167,184 +3175,10 @@
      "out": [
       "45"
      ],
-     "why": "Five nines make 45. A program that only looked at two or three digits comes up short here."
+     "why": "Five nines make 45, so a program that only looked at two or three digits comes up short."
     }
    ],
-   "fb": "n % 10 gives the last digit and n // 10 removes it, and // is what lets the number reach 0 so the loop can stop."
-  },
-  {
-   "id": "pr-l05-q17",
-   "station": 5,
-   "marks": 4,
-   "q": "The whole number 37 is fixed in your program. Keep asking the user for a whole number until they type 37. Display higher when the number typed is below 37. Display lower when it is above 37. Display correct when it is 37.",
-   "teach": {
-    "say": "The condition tests only whether the value is the one wanted. An if inside the loop chooses which of the two messages to print.",
-    "code": [
-     "n = int(input(\"Number? \"))   # the user types 5",
-     "while n != 12:",
-     "    if n < 12:",
-     "        print(\"up\")",
-     "    else:",
-     "        print(\"down\")",
-     "    n = int(input(\"Number? \"))   # then 12",
-     "print(\"got it\")"
-    ],
-    "out": [
-     "up",
-     "got it"
-    ]
-   },
-   "brief": [
-    "The 37 is fixed in your program and not typed in.",
-    "One line of output for every number typed.",
-    "Print exactly: higher, lower and correct"
-   ],
-   "hint": "pyvalidate",
-   "starter": "# The fixed number is 37. Say which way to go.\n",
-   "tests": [
-    {
-     "in": [
-      "10",
-      "50",
-      "37"
-     ],
-     "out": [
-      "higher",
-      "lower",
-      "correct"
-     ],
-     "why": "10 is below 37 so the answer is higher, and 50 is above it so the answer is lower. Swapping these two means the message says what the number was rather than which way to go."
-    },
-    {
-     "in": [
-      "37"
-     ],
-     "out": [
-      "correct"
-     ],
-     "why": "The first number is already 37, so no other line is printed. A hint here means the loop body ran before the condition was tested."
-    },
-    {
-     "in": [
-      "40",
-      "38",
-      "37"
-     ],
-     "out": [
-      "lower",
-      "lower",
-      "correct"
-     ],
-     "why": "Two numbers above 37. If this never finished, the message was printed but no new number was read inside the loop."
-    },
-    {
-     "in": [
-      "36",
-      "37"
-     ],
-     "out": [
-      "higher",
-      "correct"
-     ],
-     "why": "36 is one below, so the answer is higher. Comparing with <= 37 would print a message for 37 itself as well."
-    }
-   ],
-   "fb": "The condition decides whether to keep going and the if inside the loop decides what to say, and the new value must be read inside the loop or nothing ever changes."
-  },
-  {
-   "id": "pr-l05-q18",
-   "station": 5,
-   "marks": 4,
-   "q": "Ask the user for whole numbers until they type the word end. Count how many numbers were typed. Add them up. Work out the largest of them. Display [how many were typed]. Then display [the total] on the next line. Then display [the largest] on the next line. Display none on a line of its own instead when end is the very first line.",
-   "teach": {
-    "say": "One pass can keep a count, a running total and a best so far at the same time, as long as each has its own variable set up before the loop.",
-    "code": [
-     "count = 0",
-     "total = 0",
-     "while count < 3:",
-     "    count = count + 1",
-     "    total = total + count",
-     "print(count)",
-     "print(total)"
-    ],
-    "out": [
-     "3",
-     "6"
-    ]
-   },
-   "brief": [
-    "The user types in whole numbers, one on each line, then the word end to finish.",
-    "The numbers may be negative.",
-    "Print exactly: none"
-   ],
-   "hint": "pywhile",
-   "starter": "# Count them, total them, and remember the largest\n",
-   "tests": [
-    {
-     "in": [
-      "30",
-      "45",
-      "20",
-      "end"
-     ],
-     "out": [
-      "3",
-      "95",
-      "45"
-     ],
-     "why": "Three numbers coming to 95, the largest being 45. A 20 on the last line means the final number was printed rather than the largest."
-    },
-    {
-     "in": [
-      "end"
-     ],
-     "out": [
-      "none"
-     ],
-     "why": "The loop runs zero times, so there is nothing to report. Three zeros mean the empty case was never checked, and a crash means the word end was converted to a number."
-    },
-    {
-     "in": [
-      "15",
-      "end"
-     ],
-     "out": [
-      "1",
-      "15",
-      "15"
-     ],
-     "why": "With one number the total and the largest are both that number."
-    },
-    {
-     "in": [
-      "-4",
-      "-9",
-      "-2",
-      "end"
-     ],
-     "out": [
-      "3",
-      "-15",
-      "-2"
-     ],
-     "why": "All three are below 0, so a largest that started at 0 could never be beaten. Start it at the first number read."
-    },
-    {
-     "in": [
-      "5",
-      "60",
-      "5",
-      "end"
-     ],
-     "out": [
-      "3",
-      "70",
-      "60"
-     ],
-     "why": "The largest is in the middle, so a program that only looked at the first or the last number is wrong here."
-    }
-   ],
-   "fb": "A count, a total and a best so far can all be kept in one pass, and all three must be set up before the loop so the empty case still works."
+   "fb": "% 10 for the last digit, // 10 to take it off, and the loop stops when the number has run out."
   }
  ]
 }

@@ -1,6 +1,6 @@
 {
  "lesson": "pr-l08",
- "title": "Two-dimensional arrays",
+ "title": "Two-dimensional lists",
  "stations": [
   "A list of lists",
   "Rows and columns",
@@ -13,535 +13,890 @@
   {
    "id": "pr-l08-q1",
    "station": 0,
-   "marks": 2,
-   "q": "Ask the user for six whole numbers, one on each line. Store them in a grid of two rows of three. Display the grid itself, in the form [[9, 4, 1], [7, 0, 2]].",
+   "kind": "try",
+   "marks": 1,
+   "q": "Press Run. The program keeps two rows of three numbers in one variable.",
    "teach": {
-    "say": "A two-dimensional list is a list whose items are themselves lists. Build each row as its own list, then append that row to the grid.",
+    "say": "A grid is a list whose items are themselves lists. Each item is one row. Writing it over several lines, one row to a line, shows its shape.",
     "code": [
-     "grid = []",
-     "row = [7, 8]",
-     "grid.append(row)",
-     "print(grid)"
+     "grid = [[4, 9, 2],",
+     "        [7, 8, 1]]",
+     "print(grid)",
+     "print(len(grid))"
     ],
     "out": [
-     "[[7, 8]]"
+     "[[4, 9, 2], [7, 8, 1]]",
+     "2"
     ]
    },
    "brief": [
-    "The first three numbers typed fill row 0.",
-    "The last three fill row 1.",
-    "Print the grid itself, both sets of brackets and all."
+    "Nothing is marked on this one.",
+    "Each row is a list, and the grid is a list of those rows.",
+    "len() counts the rows, not the numbers."
    ],
-   "hint": "pygrid",
-   "starter": "# Two rows of three, then print the grid\n",
-   "tests": [
-    {
-     "in": [
-      "1",
-      "2",
-      "3",
-      "4",
-      "5",
-      "6"
-     ],
-     "out": [
-      "[[1, 2, 3], [4, 5, 6]]"
-     ],
-     "why": "Two sets of square brackets inside one. A single [1, 2, 3, 4, 5, 6] is one flat list instead of a list of lists."
-    },
-    {
-     "in": [
-      "9",
-      "8",
-      "7",
-      "6",
-      "5",
-      "4"
-     ],
-     "out": [
-      "[[9, 8, 7], [6, 5, 4]]"
-     ],
-     "why": "The numbers fill the first row before the second: reading them down the columns would give [[9, 7, 5], [8, 6, 4]]."
-    },
-    {
-     "in": [
-      "0",
-      "0",
-      "0",
-      "1",
-      "1",
-      "1"
-     ],
-     "out": [
-      "[[0, 0, 0], [1, 1, 1]]"
-     ],
-     "why": "Build a fresh inner list for each row - reusing the same one leaves both rows pointing at the same three numbers."
-    }
+   "starter": "grid = [[4, 9, 2],\n        [7, 8, 1]]\nprint(grid)\nprint(len(grid))\n",
+   "lines": [
+    "Start the grid. Row 0 holds 4, 9 and 2.",
+    "Row 1 holds 7, 8 and 1, and the last bracket closes the grid.",
+    "Show the whole grid, both sets of square brackets and all.",
+    "Show how many rows the grid has."
    ],
-   "fb": "Make an empty row list, append three numbers to it, then append that row to the grid - and start a new row list for the next row."
+   "fb": "One name, two rows, six numbers. The grid is a list, and each of its items is a list of its own."
   },
   {
    "id": "pr-l08-q2",
    "station": 0,
-   "marks": 2,
-   "q": "Ask the user for six words, one on each line. Store them in a grid of three rows of two. Display the grid itself, in the form [['red', 'blue'], ['green', 'teal'], ['grey', 'pink']].",
+   "kind": "predict",
+   "marks": 1,
+   "q": "What will this program display?",
+   "code": [
+    "grid = [[\"red\", \"blue\"],",
+    "        [\"grey\", \"pink\"]]",
+    "print(grid[0])",
+    "print(grid)"
+   ],
+   "a": [
+    "['red', 'blue']\n[['red', 'blue'], ['grey', 'pink']]",
+    "red blue\n[['red', 'blue'], ['grey', 'pink']]",
+    "['grey', 'pink']\n[['red', 'blue'], ['grey', 'pink']]"
+   ],
    "brief": [
-    "The first two words typed fill row 0.",
-    "The next two fill row 1.",
-    "The last two fill row 2.",
-    "Print the grid itself, both sets of brackets and the quote marks and all."
+    "Read every line before you choose."
    ],
-   "hint": "pygrid",
-   "starter": "# Three rows of two words, then print the grid\n",
-   "tests": [
-    {
-     "in": [
-      "Ada",
-      "Bram",
-      "Cleo",
-      "Dilan",
-      "Ella",
-      "Faye"
-     ],
-     "out": [
-      "[['Ada', 'Bram'], ['Cleo', 'Dilan'], ['Ella', 'Faye']]"
-     ],
-     "why": "Three inner lists of two words each, filled a row at a time."
-    },
-    {
-     "in": [
-      "a",
-      "a",
-      "b",
-      "b",
-      "c",
-      "c"
-     ],
-     "out": [
-      "[['a', 'a'], ['b', 'b'], ['c', 'c']]"
-     ],
-     "why": "Build a fresh inner list for each row - reusing the same one leaves every row holding the same two words."
-    },
-    {
-     "in": [
-      "Ida",
-      "Jo",
-      "Gus",
-      "Hari",
-      "Kit",
-      "Lex"
-     ],
-     "out": [
-      "[['Ida', 'Jo'], ['Gus', 'Hari'], ['Kit', 'Lex']]"
-     ],
-     "why": "Three rows of two, not two rows of three, so the shape comes from the two range() numbers."
-    }
+   "teach": {
+    "say": "The grid is a list, so grid[0] is its first item. That item is a whole row, which is a list in its own right.",
+    "code": [
+     "grid = [[\"a\", \"b\"],",
+     "        [\"c\", \"d\"]]",
+     "print(grid[1])"
+    ],
+    "out": [
+     "['c', 'd']"
+    ]
+   },
+   "lines": [
+    "Start a grid of two rows of two words.",
+    "Row 1 holds the letters c and d.",
+    "Show the whole of row 1, square brackets and all."
    ],
-   "fb": "The two range() numbers decide the shape: the outer one counts the rows and the inner one counts the items in each row."
+   "fb": "One position picks a whole row out of the grid, and printing that row shows its own square brackets."
   },
   {
    "id": "pr-l08-q3",
    "station": 0,
-   "marks": 3,
-   "q": "Ask the user for six whole numbers, one on each line. Then ask for a row number, counting from 0. Store the numbers in a grid of three rows of two. Display [that whole row as a list], square brackets and all.",
+   "marks": 1,
+   "q": "Change the grid so the last number of row 1 is 5 instead of 1.",
+   "kind": "change",
    "brief": [
-    "The first two numbers typed fill row 0.",
-    "The row number is always one the grid has."
+    "Change only that one number.",
+    "Leave the five other numbers alone.",
+    "Displaying the grid shows both sets of square brackets, so [[4, 9, 2], [7, 8, 5]] is right."
    ],
-   "hint": "pygrid",
-   "starter": "# Three rows of two, then print one whole row\n",
+   "hint": {
+    "think": "Row 1 is the second row, because the rows count from 0.",
+    "diagram": "pygrid"
+   },
+   "starter": "grid = [[4, 9, 2],\n        [7, 8, 1]]\nprint(grid)\n",
+   "fixed": true,
    "tests": [
     {
-     "in": [
-      "4",
-      "9",
-      "2",
-      "7",
-      "8",
-      "1",
-      "1"
-     ],
+     "in": [],
      "out": [
-      "[2, 7]"
+      "[[4, 9, 2], [7, 8, 5]]"
      ],
-     "why": "Row 1 is the second row, because the counting starts at 0."
-    },
-    {
-     "in": [
-      "4",
-      "9",
-      "2",
-      "7",
-      "8",
-      "1",
-      "0"
-     ],
-     "out": [
-      "[4, 9]"
-     ],
-     "why": "Row 0 is the first row. Printing [2, 7] means the rows were counted from 1."
-    },
-    {
-     "in": [
-      "4",
-      "9",
-      "2",
-      "7",
-      "8",
-      "1",
-      "2"
-     ],
-     "out": [
-      "[8, 1]"
-     ],
-     "why": "Three rows means 2 is the last row number, and adding 1 would run off the end of the grid."
-    },
-    {
-     "in": [
-      "1",
-      "2",
-      "3",
-      "4",
-      "5",
-      "6",
-      "1"
-     ],
-     "out": [
-      "[3, 4]"
-     ],
-     "why": "A different grid, so a row typed in by hand fails here. Printing grid[r] gives the brackets and commas for you."
+     "why": "The 1 is still there. Only the last number of the second row changes."
     }
    ],
-   "fb": "grid[r] is one whole row of the grid, and printing it shows the brackets and commas for you."
+   "fb": "A grid written into a program is just rows and commas, so any one value can be changed on its own."
   },
   {
    "id": "pr-l08-q4",
-   "station": 1,
+   "station": 0,
    "marks": 2,
-   "q": "Ask the user for nine whole numbers, one on each line. Then ask for a row number. Then ask for a column number. Store the numbers in a grid of three rows of three. Display [the value stored there] and nothing else.",
+   "q": "Finish the grid so row 1 holds the numbers 5, 2 and 9. Display the whole grid.",
+   "kind": "complete",
    "teach": {
-    "say": "Two sets of brackets: the first picks a row out of the grid, the second picks an item out of that row.",
+    "say": "Every row of a grid needs square brackets of its own, and a comma separates one row from the next.",
     "code": [
-     "grid = [[4, 9], [8, 1]]",
-     "print(grid[1])",
-     "print(grid[1][0])"
+     "grid = [[7, 8, 1],",
+     "        [6, 0, 3]]",
+     "print(grid)"
     ],
     "out": [
-     "[8, 1]",
-     "8"
+     "[[7, 8, 1], [6, 0, 3]]"
     ]
    },
-   "brief": [
-    "The first three numbers typed fill row 0.",
-    "Both the row and the column count from 0.",
-    "Both numbers are always ones the grid has."
+   "lines": [
+    "Start the grid. Row 0 holds 7, 8 and 1.",
+    "Row 1 holds 6, 0 and 3.",
+    "Show the whole grid."
    ],
-   "hint": "pygrid",
-   "starter": "# Three rows of three, then one value out of it\n",
+   "brief": [
+    "Replace ____ with the whole of row 1.",
+    "Put square brackets round the three numbers.",
+    "Displaying the grid shows both sets of square brackets, so [[3, 6, 1], [5, 2, 9]] is right."
+   ],
+   "hint": {
+    "think": "A row is a list, so it is written the way any list is written.",
+    "syntax": "[value, value, value]",
+    "diagram": "pygrid"
+   },
+   "starter": "grid = [[3, 6, 1],\n        ____]\nprint(grid)\n",
+   "fixed": true,
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "[[3, 6, 1], [5, 2, 9]]"
+     ],
+     "why": "The ____ cannot stay there: Python does not know what it means. A row with no square brackets of its own leaves the numbers loose in the grid."
+    }
+   ],
+   "fb": "Two sets of square brackets inside one: that is what makes a grid a list of lists."
+  },
+  {
+   "id": "pr-l08-q5",
+   "station": 0,
+   "marks": 2,
+   "q": "Ask the user for four whole numbers, one on each line. Keep them in a grid of two rows of two. Display the whole grid.",
+   "teach": {
+    "say": "Read each number into a name of its own, then write those names into the grid a row at a time. The grid holds whatever the names are holding.",
+    "code": [
+     "p = 4",
+     "q = 7",
+     "grid = [[p, 9],",
+     "        [q, 2]]",
+     "print(grid)"
+    ],
+    "out": [
+     "[[4, 9], [7, 2]]"
+    ]
+   },
+   "lines": [
+    "Keep 4 in a name of its own.",
+    "Keep 7 in another name.",
+    "Start the grid. Row 0 holds whatever p holds, then 9.",
+    "Row 1 holds whatever q holds, then 2.",
+    "Show the whole grid."
+   ],
+   "brief": [
+    "The user types in four lines, one whole number on each.",
+    "The first two numbers fill row 0 and the last two fill row 1.",
+    "Store them as whole numbers, not as the text that comes back.",
+    "Displaying the grid shows both sets of square brackets, so [[4, 8], [6, 2]] is right."
+   ],
+   "hint": {
+    "think": "Read each number into its own variable, then put those variables into the grid a row at a time.",
+    "syntax": "grid = [[a, b], [c, d]]",
+    "start": [
+     "a = int(input())",
+     "b = int(input())",
+     "# two more to read, then the grid"
+    ],
+    "diagram": "pygrid"
+   },
+   "starter": "# Four numbers in, one grid of two rows of two out\n",
    "tests": [
     {
      "in": [
-      "4",
-      "9",
+      "1",
       "2",
-      "7",
-      "8",
-      "1",
-      "6",
       "3",
-      "5",
-      "1",
-      "2"
+      "4"
      ],
      "out": [
-      "1"
+      "[[1, 2], [3, 4]]"
      ],
-     "why": "The row comes first and the column second, so grid[2][1] would give 3 instead."
+     "why": "A single [1, 2, 3, 4] is one flat list. A grid needs square brackets round each row as well."
     },
     {
      "in": [
-      "4",
       "9",
-      "2",
-      "7",
       "8",
+      "7",
+      "6"
+     ],
+     "out": [
+      "[[9, 8], [7, 6]]"
+     ],
+     "why": "The first two numbers typed fill the first row, so [[9, 7], [8, 6]] means they were put in going down instead of across."
+    },
+    {
+     "in": [
+      "0",
+      "0",
       "1",
-      "6",
+      "1"
+     ],
+     "out": [
+      "[[0, 0], [1, 1]]"
+     ],
+     "why": "Quotation marks round the values mean int() was left out and the text was stored instead."
+    }
+   ],
+   "fb": "A grid can be built out of values the user typed, exactly as a list can."
+  },
+  {
+   "id": "pr-l08-q6",
+   "station": 0,
+   "marks": 2,
+   "q": "This program should display a grid of two rows of three. Find the mistake and put it right.",
+   "kind": "debug",
+   "brief": [
+    "Press Run first and look at what it displays.",
+    "Do not change the six numbers.",
+    "Displaying the grid shows both sets of square brackets, so [[4, 9, 2], [7, 8, 1]] is right."
+   ],
+   "hint": {
+    "think": "Count the items the grid has at the moment. A grid of two rows should have two.",
+    "syntax": "[[value, value], [value, value]]",
+    "walk": [
+     "Row 0 has square brackets of its own.",
+     "The second row has none, so its numbers are loose in the grid.",
+     "Give that row a bracket at each end."
+    ],
+    "diagram": "pygrid"
+   },
+   "starter": "grid = [[4, 9, 2],\n        7, 8, 1]\nprint(grid)\n",
+   "fixed": true,
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "[[4, 9, 2], [7, 8, 1]]"
+     ],
+     "why": "At the moment the grid holds one row and three loose numbers, which is four items instead of two rows."
+    }
+   ],
+   "fb": "A row without square brackets of its own is not a row: its values sit in the grid beside the other rows."
+  },
+  {
+   "id": "pr-l08-q7",
+   "station": 0,
+   "marks": 3,
+   "q": "Ask the user for six words, one on each line. Keep them in a grid of three rows of two. Display the whole grid. Then display how many rows the grid has on the next line. Then display how many words one row holds on the next line.",
+   "teach": {
+    "say": "len(grid) counts the rows, because the items of the grid are the rows. len(grid[0]) counts the values in row 0, because row 0 is a list of its own.",
+    "code": [
+     "grid = [[7, 8],",
+     "        [6, 0],",
+     "        [3, 1]]",
+     "print(len(grid))",
+     "print(len(grid[0]))"
+    ],
+    "out": [
+     "3",
+     "2"
+    ]
+   },
+   "lines": [
+    "Start a grid of three rows of two.",
+    "Row 1 holds 6 and 0.",
+    "Row 2 holds 3 and 1.",
+    "Show how many rows the grid has.",
+    "Show how many values row 0 holds."
+   ],
+   "brief": [
+    "The user types in six lines, one word on each.",
+    "Displaying a grid of words shows quotation marks round each one, so [['red', 'blue'], ['grey', 'pink'], ['teal', 'navy']] is right.",
+    "Work the two counts out with len(), not by typing the numbers in.",
+    "Three lines of output: the grid, then the two counts."
+   ],
+   "hint": {
+    "think": "One len() counts the items of the grid and the other counts the items of one row.",
+    "syntax": [
+     "len(grid)",
+     "len(grid[0])"
+    ],
+    "diagram": "pygrid"
+   },
+   "starter": "# A grid of words, then its two measurements\n",
+   "opt": true,
+   "require": [
+    [
+     "len(",
+     "Work the two counts out with len(). Typing 3 and 2 in would be wrong for a grid of any other size."
+    ]
+   ],
+   "tests": [
+    {
+     "in": [
+      "red",
+      "blue",
+      "grey",
+      "pink",
+      "teal",
+      "navy"
+     ],
+     "out": [
+      "[['red', 'blue'], ['grey', 'pink'], ['teal', 'navy']]",
       "3",
-      "5",
+      "2"
+     ],
+     "why": "Line 1 is the grid itself, line 2 is how many rows and line 3 is how many words are in a row."
+    },
+    {
+     "in": [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+      "f"
+     ],
+     "out": [
+      "[['a', 'b'], ['c', 'd'], ['e', 'f']]",
+      "3",
+      "2"
+     ],
+     "why": "A 6 on line 2 means every word was counted instead of every row."
+    },
+    {
+     "in": [
+      "x",
+      "y",
+      "x",
+      "y",
+      "x",
+      "y"
+     ],
+     "out": [
+      "[['x', 'y'], ['x', 'y'], ['x', 'y']]",
+      "3",
+      "2"
+     ],
+     "why": "Repeated words change nothing: there are still three rows of two."
+    }
+   ],
+   "fb": "len() of the grid is the number of rows, and len() of one row is the number of columns."
+  },
+  {
+   "id": "pr-l08-q8",
+   "station": 1,
+   "kind": "try",
+   "marks": 1,
+   "q": "Press Run. The program takes two single values out of the grid.",
+   "teach": {
+    "say": "Two sets of square brackets pick out one value. The first says which row, and the second says how far along that row to go. Both count from 0.",
+    "code": [
+     "grid = [[4, 9, 2],",
+     "        [7, 8, 1]]",
+     "print(grid[0][0])",
+     "print(grid[1][2])"
+    ],
+    "out": [
+     "4",
+     "1"
+    ]
+   },
+   "brief": [
+    "Nothing is marked on this one.",
+    "The first number in the square brackets is the row.",
+    "The second one is the column. Both count from 0."
+   ],
+   "starter": "grid = [[4, 9, 2],\n        [7, 8, 1]]\nprint(grid[0][0])\nprint(grid[1][2])\n",
+   "lines": [
+    "Start a grid of two rows of three.",
+    "Row 1 holds 7, 8 and 1.",
+    "Show row 0, column 0, which is the value in the top left.",
+    "Show row 1, column 2, which is the value in the bottom right."
+   ],
+   "fb": "grid[0][0] is the top left value. The row is always written first and the column second."
+  },
+  {
+   "id": "pr-l08-q9",
+   "station": 1,
+   "kind": "predict",
+   "marks": 1,
+   "q": "What will this program display?",
+   "code": [
+    "grid = [[4, 9, 2],",
+    "        [7, 8, 1]]",
+    "print(grid[1][0])",
+    "print(grid[0][1])"
+   ],
+   "a": [
+    "7\n9",
+    "9\n7",
+    "7\n8"
+   ],
+   "brief": [
+    "Read every line before you choose."
+   ],
+   "teach": {
+    "say": "The row comes first and the column second. Swapping the two numbers over asks for a different value altogether.",
+    "code": [
+     "grid = [[\"a\", \"b\"],",
+     "        [\"c\", \"d\"]]",
+     "print(grid[1][0])"
+    ],
+    "out": [
+     "c"
+    ]
+   },
+   "lines": [
+    "Start a grid of two rows of two letters.",
+    "Row 1 holds c and d.",
+    "Show row 1, column 0, which is the c."
+   ],
+   "fb": "grid[1][0] goes to row 1 and then takes the first value along. grid[0][1] goes to row 0 and takes the second."
+  },
+  {
+   "id": "pr-l08-q10",
+   "station": 1,
+   "marks": 1,
+   "q": "Change the program so it displays the 5 instead of the 1.",
+   "kind": "change",
+   "brief": [
+    "Change only the two numbers in the square brackets.",
+    "Take the 5 out of the grid rather than typing it in.",
+    "Display exactly: 5"
+   ],
+   "hint": {
+    "think": "Find which row the 5 sits in, then count along that row from 0.",
+    "syntax": "grid[row][column]",
+    "diagram": "pygrid"
+   },
+   "starter": "grid = [[3, 6, 1],\n        [5, 2, 9]]\nprint(grid[0][2])\n",
+   "fixed": true,
+   "require": [
+    [
+     "grid[",
+     "Take the 5 out of the grid with two numbers in square brackets, rather than typing it in."
+    ]
+   ],
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "5"
+     ],
+     "why": "The row number comes first. Counting the rows from 1 instead of 0 lands on the wrong row every time."
+    }
+   ],
+   "fb": "Two numbers decide which value you get, and both of them count from 0."
+  },
+  {
+   "id": "pr-l08-q11",
+   "station": 1,
+   "marks": 2,
+   "q": "Finish the program so it displays the 9 in the grid.",
+   "kind": "complete",
+   "teach": {
+    "say": "The column is how far along the row to go. A row of three has columns 0, 1 and 2.",
+    "code": [
+     "grid = [[7, 8, 1],",
+     "        [6, 0, 3]]",
+     "print(grid[1][2])"
+    ],
+    "out": [
+     "3"
+    ]
+   },
+   "lines": [
+    "Start a grid of two rows of three.",
+    "Row 1 holds 6, 0 and 3.",
+    "Show row 1, column 2, which is the last value of the second row."
+   ],
+   "brief": [
+    "Replace ____ with one number.",
+    "The row is already written for you, so count along that row from 0.",
+    "Take the 9 out of the grid rather than typing it in.",
+    "Display exactly: 9"
+   ],
+   "hint": {
+    "think": "The 9 is the last value of row 1. A row of three ends at column 2.",
+    "diagram": "pygrid"
+   },
+   "starter": "grid = [[3, 6, 1],\n        [5, 2, 9]]\nprint(grid[1][____])\n",
+   "fixed": true,
+   "require": [
+    [
+     "grid[",
+     "Leave the grid and the square brackets in place, and put one number in the gap."
+    ]
+   ],
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "9"
+     ],
+     "why": "A row of three has columns 0, 1 and 2, so column 3 does not exist and column 1 gives the 2."
+    }
+   ],
+   "fb": "The column counts from 0 along the row, exactly as a position counts along any list."
+  },
+  {
+   "id": "pr-l08-q12",
+   "station": 1,
+   "marks": 3,
+   "q": "A grid of three rows of three is written into the program. Ask the user for a row number. Then ask for a column number. Display the value that sits at that row and column.",
+   "brief": [
+    "The grid is already in the editor. Do not change it.",
+    "The user types in two lines: a row number, then a column number.",
+    "Both count from 0, and both are always ones the grid has.",
+    "One line of output, which is one number."
+   ],
+   "hint": {
+    "think": "The row and the column come back as text, so both have to become whole numbers first.",
+    "syntax": "print(grid[r][c])",
+    "start": [
+     "r = int(input())",
+     "c = int(input())",
+     "# then one line that shows the value"
+    ],
+    "diagram": "pygrid"
+   },
+   "starter": "grid = [[4, 9, 2],\n        [7, 8, 1],\n        [3, 6, 5]]\n# A row and a column in, one value out\n",
+   "tests": [
+    {
+     "in": [
       "0",
       "0"
      ],
      "out": [
       "4"
      ],
-     "why": "Row 0, column 0 is the very first value. Printing 8 means grid[1][1] was used, so both numbers were counted from 1."
+     "why": "Row 0, column 0 is the top left value. An 8 here means both numbers were counted from 1."
     },
     {
      "in": [
-      "4",
-      "9",
-      "2",
-      "7",
-      "8",
       "1",
-      "6",
-      "3",
-      "5",
+      "2"
+     ],
+     "out": [
+      "1"
+     ],
+     "why": "Row 1, column 2 is the last value of the middle row."
+    },
+    {
+     "in": [
       "2",
       "1"
      ],
      "out": [
-      "3"
+      "6"
      ],
-     "why": "Here the two numbers are the other way round from the first test, so a program that reads the column first fails."
+     "why": "This is the test above with the two numbers the other way round, so swapping them over fails."
     },
     {
      "in": [
-      "4",
-      "9",
-      "2",
-      "7",
-      "8",
-      "1",
-      "6",
-      "3",
-      "5",
       "2",
       "2"
      ],
      "out": [
       "5"
      ],
-     "why": "Three rows of three means the last value is at [2][2], and [3][3] is past the end of the grid."
-    },
-    {
-     "in": [
-      "1",
-      "2",
-      "3",
-      "4",
-      "5",
-      "6",
-      "7",
-      "8",
-      "9",
-      "0",
-      "1"
-     ],
-     "out": [
-      "2"
-     ],
-     "why": "A different grid, so a value typed in by hand fails here."
+     "why": "Three rows of three means row 2 and column 2 is the bottom right value, and going one further crashes."
     }
    ],
-   "fb": "grid[r] is a whole row and grid[r][c] is one item of that row, so the row number always comes first."
+   "fb": "One value needs two numbers, and the grid will only take them row first."
   },
   {
-   "id": "pr-l08-q5",
+   "id": "pr-l08-q13",
+   "station": 1,
+   "marks": 2,
+   "q": "This program should display the 4 in the grid. Find the mistake and put it right.",
+   "kind": "debug",
+   "brief": [
+    "Press Run first and read the error message.",
+    "Do not change the grid, and take the 4 out of it rather than typing it in.",
+    "This grid is three rows of two, so a row holds two values.",
+    "Display exactly: 4"
+   ],
+   "hint": {
+    "think": "A row of this grid holds two values, so one of these two numbers is being used in the wrong place.",
+    "syntax": "grid[row][column]",
+    "walk": [
+     "Count down the rows from 0 to find the row the 4 is in.",
+     "Count along that row from 0 to find its column.",
+     "The row number is the one written first."
+    ],
+    "diagram": "pygrid"
+   },
+   "starter": "grid = [[3, 6],\n        [5, 2],\n        [9, 4]]\nprint(grid[1][2])\n",
+   "fixed": true,
+   "require": [
+    [
+     "grid[",
+     "Take the 4 out of the grid with two numbers in square brackets, rather than typing it in."
+    ]
+   ],
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "4"
+     ],
+     "why": "The two numbers are the wrong way round. A row holds columns 0 and 1 only, so asking for column 2 stops the program."
+    }
+   ],
+   "fb": "An IndexError on a grid usually means the row and the column were swapped over. The row is always first."
+  },
+  {
+   "id": "pr-l08-q14",
    "station": 1,
    "marks": 3,
-   "q": "Ask the user for nine whole numbers, one on each line. Then ask for a row number, counting from 0. Store the numbers in a grid of three rows of three. Display [that whole row] on one line.",
-   "brief": [
-    "The first three numbers typed fill row 0.",
-    "Put single spaces between the values.",
-    "Print no brackets and no commas."
+   "q": "A grid of two rows of three holding six test scores is written into the program. Ask the user for a row number. Then ask for a column number. Then ask for one new score. Put the new score in that place in the grid. Display the whole grid.",
+   "teach": {
+    "say": "A place in a grid can be written to as well as read from. Put it on the left of an = sign and whatever was there is replaced.",
+    "code": [
+     "grid = [[2, 5],",
+     "        [9, 4]]",
+     "grid[0][1] = 7",
+     "print(grid)"
+    ],
+    "out": [
+     "[[2, 7], [9, 4]]"
+    ]
+   },
+   "lines": [
+    "Start a grid of two rows of two.",
+    "Row 1 holds 9 and 4.",
+    "Put 7 into row 0, column 1, over the top of the 5.",
+    "Show the whole grid."
    ],
-   "hint": "pygrid",
-   "starter": "# Print one whole row across the screen\n",
+   "brief": [
+    "The grid is already in the editor and holds six scores.",
+    "Both the row and the column count from 0, and both are ones the grid has.",
+    "Replace the score that is already there, so the grid stays two rows of three.",
+    "Displaying the grid shows both sets of square brackets and the commas."
+   ],
+   "hint": {
+    "think": "Reading a value uses two numbers in square brackets. Writing one uses the same two with an = after them.",
+    "syntax": "grid[r][c] = value",
+    "diagram": "pygrid"
+   },
+   "starter": "grid = [[5, 7, 2],\n        [6, 4, 3]]\n# A row, a column and a new score: swap one value over\n",
+   "opt": true,
    "tests": [
     {
      "in": [
-      "3",
-      "6",
-      "1",
-      "5",
-      "2",
-      "9",
-      "7",
       "0",
-      "4",
-      "1"
+      "1",
+      "9"
      ],
      "out": [
-      "5 2 9"
+      "[[5, 9, 2], [6, 4, 3]]"
      ],
-     "why": "Row 1 is the second row, printed across one line rather than down three."
+     "why": "Row 0, column 1 is the middle of the top row, so the 7 is the one replaced."
     },
     {
      "in": [
-      "3",
-      "6",
       "1",
-      "5",
       "2",
-      "9",
-      "7",
-      "0",
-      "4",
       "0"
      ],
      "out": [
-      "3 6 1"
+      "[[5, 7, 2], [6, 4, 0]]"
      ],
-     "why": "Row 0 is the first row. Printing 5 2 9 means the rows were counted from 1."
+     "why": "Row 1, column 2 is the last value, and this is where counting one too far crashes."
     },
     {
      "in": [
-      "3",
-      "6",
-      "1",
-      "5",
-      "2",
-      "9",
-      "7",
       "0",
-      "4",
-      "2"
+      "0",
+      "8"
      ],
      "out": [
-      "7 0 4"
+      "[[8, 7, 2], [6, 4, 3]]"
      ],
-     "why": "Three rows means 2 is the last row number, and counting from 1 would crash here."
+     "why": "Row 0, column 0 is the top left. Replacing the 4 instead means both numbers were counted from 1."
     },
     {
      "in": [
       "1",
-      "2",
-      "3",
-      "4",
-      "5",
-      "6",
-      "7",
-      "8",
-      "9",
+      "0",
       "2"
      ],
      "out": [
-      "7 8 9"
+      "[[5, 7, 2], [2, 4, 3]]"
      ],
-     "why": "A different grid. Brackets or commas in the output mean the row was printed as a list instead of being built into a line."
+     "why": "Row 1, column 0 is the start of the second row, so the 6 goes and nothing else moves."
     }
    ],
-   "fb": "A row is one item of the grid, so build its values into a single line and print that line once."
+   "fb": "A grid can be changed after it is built: two numbers on the left of an = replace one value and leave the rest alone."
   },
   {
-   "id": "pr-l08-q6",
-   "station": 1,
-   "marks": 4,
-   "q": "Ask the user for nine whole numbers, one on each line. Then ask for a column number, counting from 0. Store the numbers in a grid of three rows of three. Display [that whole column] on one line.",
+   "id": "pr-l08-q15",
+   "station": 2,
+   "kind": "try",
+   "marks": 1,
+   "q": "Press Run. The loop takes one whole row of the grid at a time.",
+   "teach": {
+    "say": "A for loop over a grid hands you one whole row at a time. Each row is a list, so printing it shows its own square brackets.",
+    "code": [
+     "grid = [[4, 9, 2],",
+     "        [7, 8, 1]]",
+     "for row in grid:",
+     "    print(row)"
+    ],
+    "out": [
+     "[4, 9, 2]",
+     "[7, 8, 1]"
+    ]
+   },
    "brief": [
-    "The first three numbers typed fill row 0.",
-    "The values go in order from the top row down.",
-    "Put single spaces between the values.",
-    "Print no brackets and no commas."
+    "Nothing is marked on this one.",
+    "The loop runs once for every row, so twice here.",
+    "row holds a whole list each time, not one number."
    ],
-   "hint": "pygrid",
-   "starter": "# Print one whole column across the screen\n",
-   "tests": [
-    {
-     "in": [
-      "3",
-      "6",
-      "1",
-      "5",
-      "2",
-      "9",
-      "7",
-      "0",
-      "4",
-      "1"
-     ],
-     "out": [
-      "6 2 0"
-     ],
-     "why": "A column is not stored anywhere, so it has to be gathered by taking grid[i][c] from every row in turn."
-    },
-    {
-     "in": [
-      "3",
-      "6",
-      "1",
-      "5",
-      "2",
-      "9",
-      "7",
-      "0",
-      "4",
-      "0"
-     ],
-     "out": [
-      "3 5 7"
-     ],
-     "why": "Column 0 runs down the left-hand side. Printing 3 6 1 means row 0 was printed instead of column 0."
-    },
-    {
-     "in": [
-      "3",
-      "6",
-      "1",
-      "5",
-      "2",
-      "9",
-      "7",
-      "0",
-      "4",
-      "2"
-     ],
-     "out": [
-      "1 9 4"
-     ],
-     "why": "Three columns means 2 is the last column number, and counting from 1 would crash here."
-    },
-    {
-     "in": [
-      "1",
-      "2",
-      "3",
-      "4",
-      "5",
-      "6",
-      "7",
-      "8",
-      "9",
-      "1"
-     ],
-     "out": [
-      "2 5 8"
-     ],
-     "why": "A different grid, so a column typed in by hand fails here."
-    }
+   "starter": "grid = [[4, 9, 2],\n        [7, 8, 1]]\nfor row in grid:\n    print(row)\n",
+   "lines": [
+    "Start a grid of two rows of three.",
+    "Row 1 holds 7, 8 and 1.",
+    "Take each row of the grid in turn and call it row.",
+    "Show the whole row the loop has reached."
    ],
-   "fb": "A column is not stored anywhere, so you collect it one row at a time with the column number held still."
+   "fb": "The items of a grid are its rows, so a for loop over a grid gives you rows and not single numbers."
   },
   {
-   "id": "pr-l08-q7",
+   "id": "pr-l08-q16",
+   "station": 2,
+   "kind": "predict",
+   "marks": 1,
+   "q": "What will this program display?",
+   "code": [
+    "grid = [[4, 9],",
+    "        [7, 8]]",
+    "for row in grid:",
+    "    for v in row:",
+    "        print(v)"
+   ],
+   "a": [
+    "4\n9\n7\n8",
+    "4\n7\n9\n8",
+    "[4, 9]\n[7, 8]"
+   ],
+   "brief": [
+    "Read every line before you choose."
+   ],
+   "teach": {
+    "say": "The outer loop takes one row. The inner loop walks along that row. So the whole of row 0 is visited before row 1 begins.",
+    "code": [
+     "grid = [[\"a\", \"b\"],",
+     "        [\"c\", \"d\"]]",
+     "for row in grid:",
+     "    for v in row:",
+     "        print(v)"
+    ],
+    "out": [
+     "a",
+     "b",
+     "c",
+     "d"
+    ]
+   },
+   "lines": [
+    "Start a grid of two rows of two letters.",
+    "Row 1 holds c and d.",
+    "Take each row of the grid in turn.",
+    "Take each value of that row in turn.",
+    "Show the one value the inner loop has reached."
+   ],
+   "fb": "Two loops, one inside the other, visit every value in turn, going along each row before dropping to the next."
+  },
+  {
+   "id": "pr-l08-q17",
    "station": 2,
    "marks": 2,
-   "q": "Ask the user for six whole numbers, one on each line. Store them in a grid of two rows of three. Display each row on its own line.",
+   "q": "Finish the program so it displays every value of the grid, one on each line.",
+   "kind": "complete",
    "teach": {
-    "say": "A loop over a grid hands you one row at a time, and a loop inside it walks along that row.",
+    "say": "The inner loop walks along one row, so it is given the name the outer loop used for that row.",
     "code": [
-     "for row in [[7, 8], [9, 0]]:",
+     "grid = [[7, 8],",
+     "        [6, 0]]",
+     "for row in grid:",
      "    for v in row:",
      "        print(v)"
     ],
     "out": [
      "7",
      "8",
-     "9",
+     "6",
      "0"
     ]
    },
-   "brief": [
-    "The first three numbers typed fill row 0.",
-    "Row 0 is printed first.",
-    "Two lines of output.",
-    "Put single spaces between the values.",
-    "Print no brackets and no commas."
+   "lines": [
+    "Start a grid of two rows of two.",
+    "Row 1 holds 6 and 0.",
+    "Take each row of the grid in turn.",
+    "Take each value of that row in turn.",
+    "Show that one value."
    ],
-   "hint": "pygrid",
-   "starter": "# Two rows in, two tidy lines out\n",
+   "brief": [
+    "Replace ____ with the name the outer loop gives each row.",
+    "Six lines of output, one value on each.",
+    "All of row 0 comes before row 1."
+   ],
+   "hint": {
+    "think": "The inner loop needs the row the outer loop has reached, not the whole grid.",
+    "syntax": "for v in row:",
+    "diagram": "pygrid"
+   },
+   "starter": "grid = [[3, 6, 1],\n        [5, 2, 9]]\nfor row in grid:\n    for v in ____:\n        print(v)\n",
+   "fixed": true,
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "3",
+      "6",
+      "1",
+      "5",
+      "2",
+      "9"
+     ],
+     "why": "The inner loop goes along one row. Given the whole grid instead, it would run over the rows again and show them six times."
+    }
+   ],
+   "fb": "The outer loop picks the row and the inner loop picks the value, which is how every cell gets visited exactly once."
+  },
+  {
+   "id": "pr-l08-q18",
+   "station": 2,
+   "marks": 3,
+   "q": "Ask the user for six whole numbers, one on each line. Put them in a grid of two rows of three. Display each row on one line, with one space between the values.",
+   "teach": {
+    "say": "A number cannot be joined to text with +, so str() turns it into text first. Build the line up one value at a time, then display it once the row is finished. A space left on the end makes no difference when your answer is marked.",
+    "code": [
+     "row = [2, 5, 8]",
+     "line = \"\"",
+     "for v in row:",
+     "    line = line + str(v) + \" \"",
+     "print(line)"
+    ],
+    "out": [
+     "2 5 8 "
+    ]
+   },
+   "lines": [
+    "Make a list of three numbers.",
+    "Start the line as text with nothing in it.",
+    "Take each value of the list in turn.",
+    "Join that value onto the end of the line, with a space after it.",
+    "Show the finished line, once the loop has ended."
+   ],
+   "brief": [
+    "The user types in six lines, one whole number on each.",
+    "Two lines of output, row 0 first.",
+    "Put one space between the values, and no square brackets and no commas.",
+    "Start a fresh line for each row, or the second row joins onto the first."
+   ],
+   "hint": {
+    "think": "The line is built inside the inner loop and displayed once the inner loop has ended.",
+    "syntax": "line = line + str(v) + \" \"",
+    "start": [
+     "# the six numbers and the grid first",
+     "for row in grid:",
+     "    line = \"\"",
+     "    # then the loop along the row"
+    ],
+    "diagram": "pygrid"
+   },
+   "starter": "# Six numbers in, two tidy lines out\n",
    "tests": [
     {
      "in": [
@@ -556,7 +911,7 @@
       "1 2 3",
       "4 5 6"
      ],
-     "why": "Two lines of three. Printing the grid itself would give the brackets and commas the question rules out."
+     "why": "Two lines of three. Displaying the grid itself would show the square brackets and commas this task rules out."
     },
     {
      "in": [
@@ -571,7 +926,7 @@
       "9 9 9",
       "1 1 1"
      ],
-     "why": "The rows stay separate even when the values repeat - a single print inside both loops would give six lines instead of two."
+     "why": "Six lines instead of two means the print() was inside the inner loop rather than after it."
     },
     {
      "in": [
@@ -586,313 +941,412 @@
       "10 20 30",
       "40 50 60"
      ],
-     "why": "Build the whole line first and print it once."
+     "why": "One long line means the line was not set back to empty text at the top of each row."
     }
    ],
-   "fb": "The outer loop is the rows and the inner loop is the values in one row, so the line break belongs to the outer loop."
+   "fb": "Build the line, then display it: that is how a row of numbers is shown across the screen rather than down it."
   },
   {
-   "id": "pr-l08-q8",
+   "id": "pr-l08-q19",
    "station": 2,
    "marks": 3,
-   "q": "Ask the user for nine whole numbers, one on each line. Store them in a grid of three rows of three. Display one line for every value, in the form [row] [column] [value].",
-   "brief": [
-    "The first three numbers typed fill row 0.",
-    "Rows and columns count from 0.",
-    "All of row 0 is printed first.",
-    "Nine lines of output.",
-    "Put single spaces between the three numbers on a line."
+   "q": "Ask the user for four words, one on each line. Keep them in a grid of two rows of two. Display the row number, the column number and the word for every word in the grid.",
+   "teach": {
+    "say": "range(len(grid)) counts the rows and range(len(grid[r])) counts the columns of row r. Use them when the row and column numbers are wanted as well as the value.",
+    "code": [
+     "grid = [[7, 8],",
+     "        [6, 0]]",
+     "for r in range(len(grid)):",
+     "    for c in range(len(grid[r])):",
+     "        print(r, c, grid[r][c])"
+    ],
+    "out": [
+     "0 0 7",
+     "0 1 8",
+     "1 0 6",
+     "1 1 0"
+    ]
+   },
+   "lines": [
+    "Start a grid of two rows of two.",
+    "Row 1 holds 6 and 0.",
+    "Count r through the rows of the grid, so 0 and then 1.",
+    "Count c through the columns of that row, so 0 and then 1.",
+    "Show the row, the column, and the value that sits there."
    ],
-   "hint": "pygrid",
-   "starter": "# Visit every value and say where it is\n",
+   "brief": [
+    "The user types in four lines, one word on each.",
+    "Four lines of output, both of row 0 first.",
+    "Rows and columns count from 0, so the first line starts with 0 0.",
+    "Put one space between the three things on a line."
+   ],
+   "hint": {
+    "think": "The row and column numbers are needed, so count through the positions rather than taking the words.",
+    "syntax": [
+     "for r in range(len(grid)):",
+     "for c in range(len(grid[r])):"
+    ],
+    "diagram": "pygrid"
+   },
+   "starter": "# Every word, with the row and column it sits at\n",
    "tests": [
     {
      "in": [
-      "1",
-      "2",
-      "3",
-      "4",
-      "5",
-      "6",
-      "7",
-      "8",
-      "9"
+      "red",
+      "blue",
+      "grey",
+      "pink"
      ],
      "out": [
-      "0 0 1",
-      "0 1 2",
-      "0 2 3",
-      "1 0 4",
-      "1 1 5",
-      "1 2 6",
-      "2 0 7",
-      "2 1 8",
-      "2 2 9"
+      "0 0 red",
+      "0 1 blue",
+      "1 0 grey",
+      "1 1 pink"
      ],
-     "why": "The first line must be 0 0 1. If it says 1 1 1 both counts started at 1 instead of 0."
+     "why": "The first line must be 0 0 red. A first line of 1 1 red means both counts started at 1."
     },
     {
      "in": [
-      "5",
-      "5",
-      "5",
-      "5",
-      "5",
-      "5",
-      "5",
-      "5",
-      "5"
+      "a",
+      "a",
+      "a",
+      "a"
      ],
      "out": [
-      "0 0 5",
-      "0 1 5",
-      "0 2 5",
-      "1 0 5",
-      "1 1 5",
-      "1 2 5",
-      "2 0 5",
-      "2 1 5",
-      "2 2 5"
+      "0 0 a",
+      "0 1 a",
+      "1 0 a",
+      "1 1 a"
      ],
-     "why": "With every value the same only the positions change, which shows plainly that they run 0 to 2 in both directions."
+     "why": "With every word the same, only the positions change, which shows plainly that they run 0 to 1."
     },
     {
      "in": [
-      "0",
-      "1",
-      "0",
-      "1",
-      "0",
-      "1",
-      "0",
-      "1",
-      "0"
+      "one",
+      "two",
+      "three",
+      "four"
      ],
      "out": [
-      "0 0 0",
-      "0 1 1",
-      "0 2 0",
-      "1 0 1",
-      "1 1 0",
-      "1 2 1",
-      "2 0 0",
-      "2 1 1",
-      "2 2 0"
+      "0 0 one",
+      "0 1 two",
+      "1 0 three",
+      "1 1 four"
      ],
-     "why": "Nine lines in all. Six or three means one of the loops is not running the full three times, or the print is in the wrong loop."
+     "why": "The column number comes before the word, so a line reading 0 one 0 means the two were swapped."
     }
    ],
-   "fb": "The outer loop counts the rows and the inner loop counts the columns, so the inner one finishes once for every single step of the outer one."
+   "fb": "Counting the positions rather than taking the values gives you the row, the column and the value all three."
   },
   {
-   "id": "pr-l08-q9",
+   "id": "pr-l08-q20",
    "station": 2,
-   "marks": 4,
-   "q": "Ask the user for nine whole numbers, one on each line. Store them in a grid of three rows of three. Display every value that is 10 or more, one on each line. Display none instead, on a line of its own, when there are no such values.",
+   "marks": 2,
+   "q": "This program should display every value of the grid, one on each line. Find the mistake and put it right.",
+   "kind": "debug",
    "brief": [
-    "The first three numbers typed fill row 0.",
-    "Row 0 is searched first.",
-    "Exactly 10 counts as 10 or more.",
-    "Print exactly: none"
+    "Press Run first and look at what it displays.",
+    "Do not change the grid.",
+    "Six lines of output, one value on each."
    ],
-   "hint": "pygrid",
-   "starter": "# Pick out the large values, wherever they are in the grid\n",
+   "hint": {
+    "think": "Look at what the inner loop is being given to walk along.",
+    "walk": [
+     "The outer loop has already picked one row.",
+     "The inner loop should walk along that row.",
+     "At the moment it starts again at the top of the whole grid."
+    ],
+    "diagram": "pygrid"
+   },
+   "starter": "grid = [[3, 6, 1],\n        [5, 2, 9]]\nfor row in grid:\n    for v in grid:\n        print(v)\n",
+   "fixed": true,
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "3",
+      "6",
+      "1",
+      "5",
+      "2",
+      "9"
+     ],
+     "why": "Rows are being displayed instead of values, because the inner loop was given the grid rather than the row the outer loop reached."
+    }
+   ],
+   "fb": "The inner loop belongs to one row. Giving it the grid again makes it count rows twice over."
+  },
+  {
+   "id": "pr-l08-q21",
+   "station": 2,
+   "marks": 3,
+   "q": "A grid of two rows of four is written into the program. Ask the user for one whole number. Display every value in the grid that is that number or more, one on each line. Display the word none instead, on a line of its own, when there are no such values.",
+   "brief": [
+    "The grid is already in the editor. Do not change it.",
+    "The user types in one whole number.",
+    "A value exactly equal to that number counts.",
+    "Display exactly: none"
+   ],
+   "hint": {
+    "think": "Two loops to visit every value, and something outside them that remembers whether anything was found.",
+    "syntax": "if v >= n:",
+    "start": [
+     "n = int(input())",
+     "found = 0",
+     "# then the two loops, with an if inside them"
+    ],
+    "diagram": "pygrid"
+   },
+   "starter": "grid = [[4, 30, 2, 12],\n        [7, 80, 1, 9]]\n# Pick out the large values, wherever they sit in the grid\n",
+   "opt": true,
    "tests": [
     {
      "in": [
-      "4",
-      "30",
-      "2",
-      "7",
-      "80",
-      "1",
-      "6",
-      "3",
-      "50"
+      "10"
      ],
      "out": [
       "30",
-      "80",
-      "50"
+      "12",
+      "80"
      ],
-     "why": "Three values reach 10, and they come out in the order the grid is walked: row 0 first, then row 1, then row 2."
+     "why": "Three values reach 10, and they come out in the order the grid is walked: all of row 0 before row 1."
     },
     {
      "in": [
-      "4",
-      "9",
-      "2",
-      "7",
-      "8",
-      "1",
-      "6",
-      "3",
-      "5"
+      "100"
      ],
      "out": [
       "none"
      ],
-     "why": "Nothing reaches 10, so the one word is printed. An empty output means the none case was never checked."
+     "why": "Nothing reaches 100, so the one word is displayed. No output at all means that case was never checked."
     },
     {
      "in": [
-      "10",
-      "1",
-      "1",
-      "1",
-      "1",
-      "1",
-      "1",
-      "1",
+      "30"
+     ],
+     "out": [
+      "30",
+      "80"
+     ],
+     "why": "Exactly 30 counts. Leaving the 30 out means > was used where >= was wanted."
+    },
+    {
+     "in": [
       "1"
      ],
      "out": [
-      "10"
+      "4",
+      "30",
+      "2",
+      "12",
+      "7",
+      "80",
+      "1",
+      "9"
      ],
-     "why": "Exactly 10 counts, so it is printed. Nothing here means > 10 was used instead of >= 10."
-    },
-    {
-     "in": [
-      "1",
-      "1",
-      "1",
-      "1",
-      "1",
-      "1",
-      "1",
-      "1",
-      "99"
-     ],
-     "out": [
-      "99"
-     ],
-     "why": "The only large value is the very last one, so a search that stops before the end of the last row never finds it."
+     "why": "Every value reaches 1, so all eight come out and the word none must not appear as well."
     }
    ],
-   "fb": "Walking every cell with two loops and testing each value is the shape of every search through a grid."
+   "fb": "A search through a grid is two loops and an if, plus one variable outside them that remembers whether anything turned up."
   },
   {
-   "id": "pr-l08-q10",
+   "id": "pr-l08-q22",
    "station": 3,
-   "marks": 2,
-   "q": "Ask the user for twelve whole numbers, one on each line. Then ask for a row number, counting from 0. Store the numbers in a grid of three rows of four. Add up that row. Display [the total] and nothing else.",
+   "kind": "try",
+   "marks": 1,
+   "q": "Press Run. The program adds up one row of the grid.",
    "teach": {
-    "say": "grid[r] is one whole row, and a row is an ordinary list, so you can total it the way you would total any list.",
+    "say": "grid[1] is one whole row, and a row is an ordinary list. So a row is totalled the same way any list is totalled.",
     "code": [
-     "grid = [[7, 8], [9, 0]]",
-     "print(grid[1])",
-     "print(len(grid[1]))"
+     "grid = [[4, 9, 2],",
+     "        [7, 8, 1]]",
+     "row = grid[1]",
+     "total = 0",
+     "for v in row:",
+     "    total = total + v",
+     "print(total)"
     ],
     "out": [
-     "[9, 0]",
-     "2"
+     "16"
     ]
    },
    "brief": [
-    "The first four numbers typed fill row 0.",
-    "The row number is always one the grid has."
+    "Nothing is marked on this one.",
+    "grid[1] is the second row, because the rows count from 0.",
+    "The total starts at 0 before the loop begins."
    ],
-   "hint": "pygrid",
-   "starter": "# Three rows of four, then the total of one row\n",
+   "starter": "grid = [[4, 9, 2],\n        [7, 8, 1]]\nrow = grid[1]\ntotal = 0\nfor v in row:\n    total = total + v\nprint(total)\n",
+   "lines": [
+    "Start a grid of two rows of three.",
+    "Row 1 holds 7, 8 and 1.",
+    "Take row 1 out of the grid and call it row.",
+    "Start the total at 0, before anything has been added.",
+    "Take each value of that row in turn.",
+    "Add that value onto the total.",
+    "Show the finished total, once the loop has ended."
+   ],
+   "fb": "Nothing new is needed to total a row: it is a list, and a running total over a list is lesson 7's work."
+  },
+  {
+   "id": "pr-l08-q23",
+   "station": 3,
+   "kind": "predict",
+   "marks": 1,
+   "q": "What will this program display?",
+   "code": [
+    "grid = [[4, 9, 2],",
+    "        [7, 8, 1]]",
+    "total = 0",
+    "for v in grid[0]:",
+    "    total = total + v",
+    "print(total)",
+    "print(len(grid[0]))"
+   ],
+   "a": [
+    "15\n3",
+    "16\n3",
+    "15\n2"
+   ],
+   "brief": [
+    "Read every line before you choose."
+   ],
+   "teach": {
+    "say": "len(grid) is how many rows there are. len(grid[0]) is how many values are in row 0.",
+    "code": [
+     "grid = [[7, 8, 1],",
+     "        [6, 0, 3]]",
+     "print(len(grid))",
+     "print(len(grid[0]))"
+    ],
+    "out": [
+     "2",
+     "3"
+    ]
+   },
+   "lines": [
+    "Start a grid of two rows of three.",
+    "Row 1 holds 6, 0 and 3.",
+    "Show how many rows there are.",
+    "Show how many values row 0 holds."
+   ],
+   "fb": "Row 0 is 4, 9 and 2, which comes to 15, and that row holds three values. len(grid) would have said 2."
+  },
+  {
+   "id": "pr-l08-q24",
+   "station": 3,
+   "marks": 2,
+   "q": "Finish the program so it adds up row 1 of the grid and displays the total.",
+   "kind": "complete",
+   "teach": {
+    "say": "total = total + v means take what the total is now, add v to it, and keep the answer in total.",
+    "code": [
+     "grid = [[7, 8, 1],",
+     "        [6, 0, 3]]",
+     "total = 0",
+     "for v in grid[0]:",
+     "    total = total + v",
+     "print(total)"
+    ],
+    "out": [
+     "16"
+    ]
+   },
+   "brief": [
+    "Replace ____ with one instruction.",
+    "It has to add the value the loop has reached onto the total.",
+    "Display exactly: 11"
+   ],
+   "hint": {
+    "think": "The total must grow by the value the loop has reached.",
+    "syntax": "total = total + value",
+    "diagram": "pygrid"
+   },
+   "starter": "grid = [[3, 6, 1],\n        [5, 2, 4]]\ntotal = 0\nfor v in grid[1]:\n    ____\nprint(total)\n",
+   "fixed": true,
    "tests": [
     {
-     "in": [
-      "2",
-      "5",
-      "3",
-      "1",
-      "4",
-      "4",
-      "0",
-      "7",
-      "0",
-      "0",
-      "9",
-      "3",
-      "1"
-     ],
-     "out": [
-      "15"
-     ],
-     "why": "Row 1 is 4, 4, 0, 7 which comes to 15. Totalling the first value of every row would give 6 whichever row was asked for."
-    },
-    {
-     "in": [
-      "2",
-      "5",
-      "3",
-      "1",
-      "4",
-      "4",
-      "0",
-      "7",
-      "0",
-      "0",
-      "9",
-      "3",
-      "0"
-     ],
+     "in": [],
      "out": [
       "11"
      ],
-     "why": "Row 0 is 2, 5, 3, 1 which comes to 11. An answer of 15 is row 1, so the rows were counted from 1."
-    },
+     "why": "Without the adding line the total stays at 0, and 0 is all that gets displayed."
+    }
+   ],
+   "fb": "A row total is the running total of lesson 7 with grid[1] in place of the list."
+  },
+  {
+   "id": "pr-l08-q25",
+   "station": 3,
+   "marks": 3,
+   "q": "A grid of three rows of two is written into the program. Ask the user for a row number. Add up that row. Display the total.",
+   "brief": [
+    "The grid is already in the editor. Do not change it.",
+    "The user types in one line: the row number, which counts from 0.",
+    "The row number is always one the grid has.",
+    "A total of 0 still has to be displayed."
+   ],
+   "hint": {
+    "think": "Take the row out of the grid first, then total it the way any list is totalled.",
+    "syntax": [
+     "r = int(input())",
+     "for v in grid[r]:"
+    ],
+    "diagram": "pygrid"
+   },
+   "starter": "grid = [[3, 6],\n        [0, 0],\n        [9, 4]]\n# A row number in, one total out\n",
+   "tests": [
     {
      "in": [
-      "2",
-      "5",
-      "3",
-      "1",
-      "4",
-      "4",
-      "0",
-      "7",
-      "0",
-      "0",
-      "9",
-      "3",
-      "2"
+      "0"
      ],
      "out": [
-      "12"
+      "9"
      ],
-     "why": "Zeros add nothing but the loop still has to visit them, so 0, 0, 9, 3 comes to 12."
+     "why": "Row 0 is 3 and 6, which comes to 9."
     },
     {
      "in": [
-      "8",
-      "2",
-      "1",
-      "5",
-      "1",
-      "1",
-      "1",
-      "1",
-      "0",
-      "0",
-      "0",
-      "0",
-      "2"
+      "1"
      ],
      "out": [
       "0"
      ],
-     "why": "A row of zeros still has a total, and it still has to be printed."
+     "why": "Row 1 is two zeros, so the total is 0, and that 0 still has to be displayed."
+    },
+    {
+     "in": [
+      "2"
+     ],
+     "out": [
+      "13"
+     ],
+     "why": "Row 2 is 9 and 4, which comes to 13. Getting 9 again means the row number was ignored."
     }
    ],
-   "fb": "grid[r] is a single row and behaves like any other list, so a running total over it works exactly as it always did."
+   "fb": "grid[r] is a single row and behaves like any other list, so the running total works exactly as it did before."
   },
   {
-   "id": "pr-l08-q11",
+   "id": "pr-l08-q26",
    "station": 3,
    "marks": 3,
-   "q": "Ask the user for twelve whole numbers, one on each line. Store them in a grid of three rows of four. Add up each row in turn. Display [the total of each row], one on each line.",
+   "q": "Ask the user for six test scores, one on each line. Keep them in a grid of two rows of three. Add up each row in turn. Display the total of each row, one on each line.",
    "brief": [
-    "The first four numbers typed fill row 0.",
-    "The total of row 0 is printed first.",
-    "Three lines of output."
+    "The user types in six lines, one whole number on each.",
+    "Two lines of output, the total of row 0 first.",
+    "Set the total back to 0 at the start of each row.",
+    "A row of zeros still has its total displayed."
    ],
-   "hint": "pygrid",
+   "hint": {
+    "think": "Each row needs a total of its own, so the total is set to 0 inside the outer loop.",
+    "syntax": "total = 0",
+    "start": [
+     "# the six scores and the grid first",
+     "for row in grid:",
+     "    total = 0",
+     "    # then the loop along the row"
+    ],
+    "diagram": "pygrid"
+   },
    "starter": "# A total for each row in turn\n",
    "tests": [
     {
@@ -902,655 +1356,893 @@
       "3",
       "4",
       "5",
+      "6"
+     ],
+     "out": [
       "6",
-      "7",
-      "8",
-      "9",
-      "10",
-      "11",
-      "12"
+      "15"
      ],
-     "out": [
-      "10",
-      "26",
-      "42"
-     ],
-     "why": "Three row totals, one on each line, in the order the rows were filled."
+     "why": "Row 0 comes to 6 and row 1 to 15, one on each line, in the order the rows were filled."
     },
     {
      "in": [
       "5",
       "5",
       "5",
-      "5",
       "1",
-      "1",
-      "1",
-      "1",
-      "0",
-      "0",
-      "0",
-      "0"
-     ],
-     "out": [
-      "20",
-      "4",
-      "0"
-     ],
-     "why": "A row of zeros still prints its total of 0 and must not be skipped."
-    },
-    {
-     "in": [
-      "2",
-      "0",
-      "0",
-      "0",
-      "0",
-      "3",
-      "0",
-      "0",
-      "0",
-      "0",
-      "0",
-      "7"
-     ],
-     "out": [
-      "2",
-      "3",
-      "7"
-     ],
-     "why": "If every line is the same, the row total was never set back to 0 at the start of each row."
-    }
-   ],
-   "fb": "Set the row total back to 0 at the top of the outer loop, so each row's answer is its own."
-  },
-  {
-   "id": "pr-l08-q12",
-   "station": 3,
-   "marks": 4,
-   "q": "Ask the user for twelve whole numbers, one on each line. Store them in a grid of three rows of four. Add up each row in turn. Add up the whole grid as well. Display [the total of each row], one on each line. Then display [the total of the whole grid] on the last line.",
-   "brief": [
-    "The first four numbers typed fill row 0.",
-    "The total of row 0 is printed first.",
-    "Four lines of output in all."
-   ],
-   "hint": "pygrid",
-   "starter": "# A total for each row, then one for everything\n",
-   "tests": [
-    {
-     "in": [
-      "1",
-      "2",
-      "3",
-      "4",
-      "5",
-      "6",
-      "7",
-      "8",
-      "9",
-      "10",
-      "11",
-      "12"
-     ],
-     "out": [
-      "10",
-      "26",
-      "42",
-      "78"
-     ],
-     "why": "Three row totals and then the grand total, so four lines in all - leaving the last line out loses a mark even when the rows are right."
-    },
-    {
-     "in": [
-      "5",
-      "5",
-      "5",
-      "5",
-      "1",
-      "1",
-      "1",
-      "1",
-      "0",
-      "0",
-      "0",
-      "0"
-     ],
-     "out": [
-      "20",
-      "4",
-      "0",
-      "24"
-     ],
-     "why": "A row of zeros still prints its total of 0, and the grand total still includes it."
-    },
-    {
-     "in": [
-      "2",
-      "0",
-      "0",
-      "0",
-      "0",
-      "3",
-      "0",
-      "0",
-      "0",
-      "0",
-      "0",
-      "7"
-     ],
-     "out": [
-      "2",
-      "3",
-      "7",
-      "12"
-     ],
-     "why": "If every row total is the same as the grand total, the row total was never set back to 0 at the start of each row."
-    }
-   ],
-   "fb": "Set the row total to 0 inside the outer loop and keep a separate grand total outside it that never gets reset."
-  },
-  {
-   "id": "pr-l08-q13",
-   "station": 4,
-   "marks": 2,
-   "q": "Ask the user for twelve whole numbers, one on each line. Then ask for a column number, counting from 0. Store the numbers in a grid of four rows of three. Add up that column. Display [the total] and nothing else.",
-   "teach": {
-    "say": "A column is not stored anywhere, so you gather it one row at a time: the column number stays still while the row number changes.",
-    "code": [
-     "grid = [[7, 8], [9, 0]]",
-     "for r in range(len(grid)):",
-     "    print(grid[r][1])"
-    ],
-    "out": [
-     "8",
-     "0"
-    ]
-   },
-   "brief": [
-    "The first three numbers typed fill row 0.",
-    "The column number is always one the grid has."
-   ],
-   "hint": "pygrid",
-   "starter": "# Four rows of three, then the total of one column\n",
-   "tests": [
-    {
-     "in": [
-      "3",
-      "7",
-      "2",
-      "5",
-      "1",
-      "4",
-      "0",
-      "6",
-      "8",
-      "9",
-      "2",
       "1",
       "1"
      ],
      "out": [
-      "16"
+      "15",
+      "3"
      ],
-     "why": "Column 1 is 7, 1, 6, 2 which comes to 16, gathered with grid[r][c] from every row in turn."
+     "why": "A second line of 18 means the total was never set back to 0, so row 1 carried row 0 with it."
     },
     {
      "in": [
-      "3",
-      "7",
-      "2",
-      "5",
-      "1",
-      "4",
       "0",
-      "6",
-      "8",
-      "9",
+      "0",
+      "0",
       "2",
-      "1",
+      "0",
       "0"
      ],
      "out": [
-      "17"
+      "0",
+      "2"
      ],
-     "why": "Column 0 is 3, 5, 0, 9 which comes to 17. An answer of 12 means row 0 was totalled instead."
+     "why": "A row of zeros totals 0 and must not be skipped."
     },
     {
      "in": [
+      "10",
+      "0",
+      "0",
+      "0",
+      "0",
+      "7"
+     ],
+     "out": [
+      "10",
+      "7"
+     ],
+     "why": "One line of output means the print() sat inside the inner loop or after both of them."
+    }
+   ],
+   "fb": "A total per row is set to 0 at the top of the outer loop and displayed at the bottom of it."
+  },
+  {
+   "id": "pr-l08-q27",
+   "station": 3,
+   "marks": 2,
+   "q": "This program should display the total of each row, one on each line. Find the mistake and put it right.",
+   "kind": "debug",
+   "brief": [
+    "Press Run first and look at what it displays.",
+    "Do not change the grid.",
+    "Display exactly: 10",
+    "Then display exactly: 11"
+   ],
+   "hint": {
+    "think": "Row 1's total has row 0 still inside it. Where is the total set to 0?",
+    "walk": [
+     "A line before the outer loop runs once in the whole program.",
+     "A line at the top of the outer loop runs once for every row.",
+     "Each row needs a total that starts at 0."
+    ],
+    "diagram": "pygrid"
+   },
+   "starter": "grid = [[3, 6, 1],\n        [5, 2, 4]]\ntotal = 0\nfor row in grid:\n    for v in row:\n        total = total + v\n    print(total)\n",
+   "fixed": true,
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "10",
+      "11"
+     ],
+     "why": "The second line is 21, which is both rows added together. Each row needs its own total, starting at 0."
+    }
+   ],
+   "fb": "Where a total is set to 0 decides what it means: before the loop it totals everything, inside it the one row."
+  },
+  {
+   "id": "pr-l08-q28",
+   "station": 3,
+   "marks": 3,
+   "q": "Ask the user for six marks, one on each line. Put them in a grid of three rows of two. Add up each row in turn. Display the total of each row, one on each line. Then display the total of the whole grid on the next line.",
+   "brief": [
+    "The user types in six lines, one whole number on each.",
+    "Four lines of output in all, the total of row 0 first.",
+    "The row total starts again at 0 for each row.",
+    "The grand total is never set back to 0."
+   ],
+   "hint": {
+    "think": "Two totals: one that starts again at every row, and one that does not.",
+    "syntax": [
+     "grand = 0",
+     "total = 0"
+    ],
+    "walk": [
+     "Set the grand total to 0 before the outer loop.",
+     "Set the row total to 0 at the top of the outer loop.",
+     "Add each value onto both totals.",
+     "Display the row total inside the outer loop and the grand total after it."
+    ],
+    "diagram": "pygrid"
+   },
+   "starter": "# A total for each row, then one for everything\n",
+   "opt": true,
+   "tests": [
+    {
+     "in": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+     ],
+     "out": [
       "3",
       "7",
-      "2",
+      "11",
+      "21"
+     ],
+     "why": "Three row totals and then the grand total, so four lines in all."
+    },
+    {
+     "in": [
+      "5",
       "5",
       "1",
-      "4",
-      "0",
-      "6",
-      "8",
-      "9",
-      "2",
       "1",
+      "0",
+      "0"
+     ],
+     "out": [
+      "10",
+      "2",
+      "0",
+      "12"
+     ],
+     "why": "A last line of 0 means the grand total was set back to 0 inside the outer loop."
+    },
+    {
+     "in": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+     ],
+     "out": [
+      "0",
+      "0",
+      "0",
+      "0"
+     ],
+     "why": "All zeros still give four lines of output, and none of them may be skipped."
+    },
+    {
+     "in": [
+      "10",
+      "0",
+      "0",
+      "0",
+      "0",
       "2"
      ],
      "out": [
-      "15"
+      "10",
+      "0",
+      "2",
+      "12"
      ],
-     "why": "Three columns means 2 is the last one, and counting from 1 would ask for column 3 and crash."
+     "why": "A grand total of 2 means only the last row was counted into it."
+    }
+   ],
+   "fb": "Two totals in one program, and where each is set to 0 is the only difference between them."
+  },
+  {
+   "id": "pr-l08-q29",
+   "station": 4,
+   "kind": "try",
+   "marks": 1,
+   "q": "Press Run. The program takes a row out of the grid, then collects a column.",
+   "teach": {
+    "say": "grid[0] is a row the grid already holds. A column is held nowhere, so to get one you start an empty list and put one value from each row onto the end of it.",
+    "code": [
+     "grid = [[4, 9],",
+     "        [7, 8],",
+     "        [2, 1]]",
+     "print(grid[0])",
+     "col = []",
+     "for r in range(len(grid)):",
+     "    col.append(grid[r][1])",
+     "print(col)"
+    ],
+    "out": [
+     "[4, 9]",
+     "[9, 8, 1]"
+    ]
+   },
+   "brief": [
+    "Nothing is marked on this one.",
+    "A row is a list the grid already holds, so grid[0] hands you the whole of it.",
+    "No column is stored anywhere, so this one is collected with append.",
+    "The column number stays 1 while the row number changes."
+   ],
+   "starter": "grid = [[4, 9],\n        [7, 8],\n        [2, 1]]\nprint(grid[0])\ncol = []\nfor r in range(len(grid)):\n    col.append(grid[r][1])\nprint(col)\n",
+   "lines": [
+    "Start a grid of three rows of two.",
+    "Row 1 holds 7 and 8.",
+    "Row 2 holds 2 and 1.",
+    "Show the whole of row 0, which the grid is holding already.",
+    "Start an empty list for column 1 to be collected into.",
+    "Count r down the rows, so 0, then 1, then 2.",
+    "Put the value in that row at column 1 onto the end of col.",
+    "Show the finished column, once the loop has ended."
+   ],
+   "fb": "A row you can take out in one go. A column has to be fetched, a row at a time, which is what makes it the harder of the two."
+  },
+  {
+   "id": "pr-l08-q30",
+   "station": 4,
+   "kind": "predict",
+   "marks": 1,
+   "q": "What will this program display?",
+   "code": [
+    "grid = [[3, 6],",
+    "        [5, 2],",
+    "        [9, 4]]",
+    "print(grid[1])",
+    "col = []",
+    "for r in range(len(grid)):",
+    "    col.append(grid[r][0])",
+    "print(col)"
+   ],
+   "a": [
+    "[5, 2]\n[3, 5, 9]",
+    "[5, 2]\n[3, 6]",
+    "[3, 6]\n[3, 5, 9]"
+   ],
+   "brief": [
+    "Read every line before you choose."
+   ],
+   "teach": {
+    "say": "One row comes out of the grid whole. A column is built up in a list of its own, with the column number held still and the row number counting on.",
+    "code": [
+     "grid = [[\"a\", \"b\"],",
+     "        [\"c\", \"d\"]]",
+     "col = []",
+     "for r in range(len(grid)):",
+     "    col.append(grid[r][1])",
+     "print(col)"
+    ],
+    "out": [
+     "['b', 'd']"
+    ]
+   },
+   "lines": [
+    "Start a grid of two rows of two letters.",
+    "Row 1 holds c and d.",
+    "Start an empty list for the column.",
+    "Count r down the rows, so 0 and then 1.",
+    "Put the value in that row at column 1 onto the end of col.",
+    "Show the finished column."
+   ],
+   "fb": "Row 1 is [5, 2] and comes out in one go. Column 0 is [3, 5, 9], and it only exists because the loop built it."
+  },
+  {
+   "id": "pr-l08-q31",
+   "station": 4,
+   "marks": 1,
+   "q": "Change the program so it collects the last column of the grid instead of the first.",
+   "kind": "change",
+   "brief": [
+    "Change only the column number.",
+    "Keep the loop and the append line that collect the column.",
+    "A row of three ends at column 2.",
+    "Display exactly: [1, 8, 7]"
+   ],
+   "hint": {
+    "think": "Which of the two numbers in the square brackets says how far along the row to go?",
+    "syntax": "grid[r][column]",
+    "diagram": "pygrid"
+   },
+   "starter": "grid = [[3, 6, 1],\n        [5, 2, 8],\n        [9, 4, 7]]\ncol = []\nfor r in range(len(grid)):\n    col.append(grid[r][0])\nprint(col)\n",
+   "fixed": true,
+   "require": [
+    [
+     "append",
+     "Keep the loop that collects the column with append, and change the column number inside it."
+    ]
+   ],
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "[1, 8, 7]"
+     ],
+     "why": "[3, 5, 9] is still the first column. The number that chooses the column is the second one in the square brackets."
+    }
+   ],
+   "fb": "The row number is the one the loop changes. The column number is the one you choose, and it stays the same all the way down."
+  },
+  {
+   "id": "pr-l08-q32",
+   "station": 4,
+   "marks": 2,
+   "q": "Finish the program so it collects column 1 of the grid into col and displays it.",
+   "kind": "complete",
+   "teach": {
+    "say": "append puts one value onto the end of a list. Inside a loop that counts the rows, it collects a whole column, one value at a time.",
+    "code": [
+     "grid = [[7, 8],",
+     "        [6, 0],",
+     "        [3, 1]]",
+     "col = []",
+     "for r in range(len(grid)):",
+     "    col.append(grid[r][0])",
+     "print(col)"
+    ],
+    "out": [
+     "[7, 6, 3]"
+    ]
+   },
+   "lines": [
+    "Start a grid of three rows of two.",
+    "Row 1 holds 6 and 0.",
+    "Row 2 holds 3 and 1.",
+    "Start an empty list for the column.",
+    "Count r down the rows.",
+    "Put the value in that row at column 0 onto the end of col.",
+    "Show the finished column."
+   ],
+   "brief": [
+    "Replace ____ with one instruction.",
+    "It has to put the value in this row at column 1 onto the end of col.",
+    "The row number is already counted for you.",
+    "Display exactly: [6, 2, 4]"
+   ],
+   "hint": {
+    "think": "col has to grow by one value for every row the loop reaches.",
+    "syntax": "col.append(grid[r][column])",
+    "diagram": "pygrid"
+   },
+   "starter": "grid = [[3, 6],\n        [5, 2],\n        [9, 4]]\ncol = []\nfor r in range(len(grid)):\n    ____\nprint(col)\n",
+   "fixed": true,
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "[6, 2, 4]"
+     ],
+     "why": "An empty [] means nothing was ever appended, and [3, 5, 9] means column 0 was collected instead of column 1."
+    }
+   ],
+   "fb": "A column ends up in a list of its own only because you built it there. The grid never held it."
+  },
+  {
+   "id": "pr-l08-q33",
+   "station": 4,
+   "marks": 3,
+   "q": "A grid of four rows of three is written into the program. Ask the user for a column number. Display the values in that column, one on each line. Then display the total of that column on the next line.",
+   "teach": {
+    "say": "Walking down a column needs no list of its own: hold the column number still, let the row number count on, and use each value as you reach it.",
+    "code": [
+     "grid = [[7, 8],",
+     "        [6, 0]]",
+     "for r in range(len(grid)):",
+     "    print(grid[r][0])"
+    ],
+    "out": [
+     "7",
+     "6"
+    ]
+   },
+   "lines": [
+    "Start a grid of two rows of two.",
+    "Row 1 holds 6 and 0.",
+    "Count r down the rows.",
+    "Show the value in that row at column 0."
+   ],
+   "brief": [
+    "The grid is already in the editor. Do not change it.",
+    "The user types in one line: the column number, which counts from 0.",
+    "Five lines of output: the four values, then their total.",
+    "A 0 is one of the values and still has to be displayed."
+   ],
+   "hint": {
+    "think": "Count down the rows and keep the typed column number still inside the square brackets.",
+    "syntax": [
+     "c = int(input())",
+     "for r in range(len(grid)):"
+    ],
+    "start": [
+     "c = int(input())",
+     "total = 0",
+     "# then the loop down the rows, and the total after it"
+    ],
+    "diagram": "pygrid"
+   },
+   "starter": "grid = [[3, 1, 2],\n        [0, 2, 5],\n        [4, 4, 1],\n        [1, 0, 3]]\n# A column number in: that column, then its total\n",
+   "tests": [
+    {
+     "in": [
+      "0"
+     ],
+     "out": [
+      "3",
+      "0",
+      "4",
+      "1",
+      "8"
+     ],
+     "why": "Column 0 is 3, 0, 4 and 1 going down, and 8 is their total."
     },
     {
      "in": [
-      "1",
-      "0",
-      "0",
-      "1",
-      "0",
-      "0",
-      "1",
-      "0",
-      "0",
-      "1",
-      "0",
-      "0",
       "1"
      ],
      "out": [
-      "0"
-     ],
-     "why": "Every value in column 1 is 0, so the total is 0. A 4 here means column 0 was totalled whatever was asked for."
-    }
-   ],
-   "fb": "Loop over the rows with range(len(grid)) and hold the column number still - that is the one difference from totalling a row."
-  },
-  {
-   "id": "pr-l08-q14",
-   "station": 4,
-   "marks": 3,
-   "q": "Ask the user for twelve whole numbers, one on each line. Store them in a grid of four rows of three. Add up each column in turn. Display [the total of each column], one on each line.",
-   "brief": [
-    "The first three numbers typed fill row 0.",
-    "The total of column 0 is printed first.",
-    "Three lines of output."
-   ],
-   "hint": "pygrid",
-   "starter": "# A total for each column in turn\n",
-   "tests": [
-    {
-     "in": [
       "1",
       "2",
+      "4",
+      "0",
+      "7"
+     ],
+     "why": "Column 1 ends in a 0, so a program that skips zeros shows four lines instead of five."
+    },
+    {
+     "in": [
+      "2"
+     ],
+     "out": [
+      "2",
+      "5",
+      "1",
       "3",
-      "4",
-      "5",
-      "6",
-      "7",
-      "8",
-      "9",
-      "10",
-      "11",
-      "12"
+      "11"
      ],
-     "out": [
-      "22",
-      "26",
-      "30"
-     ],
-     "why": "Three column totals, one on each line. Getting 6, 15, 24 and 33 means the rows were totalled instead."
-    },
-    {
-     "in": [
-      "1",
-      "0",
-      "0",
-      "1",
-      "0",
-      "0",
-      "1",
-      "0",
-      "0",
-      "1",
-      "0",
-      "0"
-     ],
-     "out": [
-      "4",
-      "0",
-      "0"
-     ],
-     "why": "Only column 0 has anything in it, and the other two still print a total of 0 rather than being skipped."
-    },
-    {
-     "in": [
-      "0",
-      "0",
-      "5",
-      "0",
-      "0",
-      "5",
-      "0",
-      "0",
-      "5",
-      "0",
-      "0",
-      "5"
-     ],
-     "out": [
-      "0",
-      "0",
-      "20"
-     ],
-     "why": "Here it is the last column that holds everything, so a loop that stops one column short would print only two lines."
+     "why": "Lines of 3, 1 and 2 mean row 0 was displayed instead of column 0: the row number is the one that counts on."
     }
    ],
-   "fb": "For column totals the outer loop counts columns and the inner loop counts rows - the opposite way round to row totals."
+   "fb": "A column is walked down by holding one number still and letting the other count on. Nothing else about it is new."
   },
   {
-   "id": "pr-l08-q15",
+   "id": "pr-l08-q34",
    "station": 4,
-   "marks": 4,
-   "q": "Ask the user for twelve whole numbers, one on each line. Store them in a grid of four rows of three. Add up each column in turn. Add up the whole grid as well. Display [the total of each column], one on each line. Then display [the total of the whole grid] on the last line.",
+   "marks": 2,
+   "q": "This program should display the total of column 1. Find the mistake and put it right.",
+   "kind": "debug",
    "brief": [
-    "The first three numbers typed fill row 0.",
-    "The total of column 0 is printed first.",
-    "Four lines of output in all."
+    "Press Run first and look at the number it displays.",
+    "Do not change the grid, and add its own values up rather than typing the answer in.",
+    "Column 1 holds 6, 2 and 4.",
+    "Display exactly: 12"
    ],
-   "hint": "pygrid",
-   "starter": "# A total for each column, then one for everything\n",
+   "hint": {
+    "think": "A column has one value for every row. Count what the loop is counting.",
+    "syntax": [
+     "len(grid)",
+     "len(grid[0])"
+    ],
+    "walk": [
+     "len(grid) is how many rows the grid has, which is 3.",
+     "len(grid[0]) is how many values one row holds, which is 2.",
+     "Going down a column, the loop has to run once for every row."
+    ],
+    "diagram": "pygrid"
+   },
+   "starter": "grid = [[3, 6],\n        [5, 2],\n        [9, 4]]\ntotal = 0\nfor r in range(len(grid[0])):\n    total = total + grid[r][1]\nprint(total)\n",
+   "fixed": true,
+   "require": [
+    [
+     "grid[",
+     "Add the grid's own values up rather than typing the answer in."
+    ]
+   ],
    "tests": [
     {
-     "in": [
-      "1",
-      "2",
-      "3",
-      "4",
-      "5",
-      "6",
-      "7",
-      "8",
-      "9",
-      "10",
-      "11",
+     "in": [],
+     "out": [
       "12"
      ],
-     "out": [
-      "22",
-      "26",
-      "30",
-      "78"
-     ],
-     "why": "Three column totals then the grand total. Getting 6, 15, 24, 33 and 78 means the rows were totalled instead."
-    },
-    {
-     "in": [
-      "1",
-      "0",
-      "0",
-      "1",
-      "0",
-      "0",
-      "1",
-      "0",
-      "0",
-      "1",
-      "0",
-      "0"
-     ],
-     "out": [
-      "4",
-      "0",
-      "0",
-      "4"
-     ],
-     "why": "Only column 0 has anything in it, and the other two still print a total of 0 rather than being skipped."
-    },
-    {
-     "in": [
-      "0",
-      "0",
-      "5",
-      "0",
-      "0",
-      "5",
-      "0",
-      "0",
-      "5",
-      "0",
-      "0",
-      "5"
-     ],
-     "out": [
-      "0",
-      "0",
-      "20",
-      "20"
-     ],
-     "why": "Here the last column holds everything, so a loop that stops one column short would print the wrong grand total too."
+     "why": "It displays 8, which is 6 and 2 only: the loop ran twice because it counted the values in a row instead of the rows."
     }
    ],
-   "fb": "The column totals are worked out one at a time and the grand total grows outside that loop, so it is never reset."
+   "fb": "len(grid) and len(grid[0]) are different numbers. A column has as many values as the grid has rows, so a column loop counts with len(grid)."
   },
   {
-   "id": "pr-l08-q16",
-   "station": 5,
+   "id": "pr-l08-q35",
+   "station": 4,
    "marks": 3,
-   "q": "Ask the user for nine whole numbers, one on each line. Then ask for one more whole number. Store the nine in a grid of three rows of three. Count how many values in the grid are equal to or greater than that last number. Display [the count] and nothing else.",
+   "q": "Row 0 of the grid is written into the program and holds 5, 3, 8 and 2. Ask the user for four whole numbers, one on each line. Keep them as row 1 of the same grid. Compare the two values in each column in turn. Display one word for each column, one on each line.",
    "teach": {
-    "say": "Two loops over range(len(...)) visit every cell of a grid in turn, row by row, and a counter outside them both keeps the answer.",
+    "say": "Two rows are compared a column at a time. The column number is what the two values have in common, so one number in square brackets changes and the other does not.",
     "code": [
-     "grid = [[7, 8], [9, 0]]",
+     "grid = [[4, 9],",
+     "        [7, 8]]",
+     "for c in range(len(grid[0])):",
+     "    if grid[1][c] > grid[0][c]:",
+     "        print(\"bigger\")",
+     "    else:",
+     "        print(\"not bigger\")"
+    ],
+    "out": [
+     "bigger",
+     "not bigger"
+    ]
+   },
+   "lines": [
+    "Start a grid of two rows of two.",
+    "Row 1 holds 7 and 8.",
+    "Count c through the columns, using how many values row 0 holds.",
+    "Test the value in row 1 against the one above it in row 0.",
+    "Say so when row 1's value is the bigger.",
+    "Otherwise.",
+    "Say that instead."
+   ],
+   "brief": [
+    "The user types in four lines, one whole number on each.",
+    "Display up when row 1 holds the bigger value of the two.",
+    "Display down when row 1 holds the smaller, and same when they match.",
+    "Four lines of output, column 0 first."
+   ],
+   "hint": {
+    "think": "The two values to compare sit one above the other, so they share a column number.",
+    "syntax": [
+     "for c in range(len(grid[0])):",
+     "if grid[1][c] > grid[0][c]:"
+    ],
+    "start": [
+     "# the four numbers and the grid first",
+     "for c in range(len(grid[0])):",
+     "    # then three cases: bigger, smaller, the same"
+    ],
+    "diagram": "pygrid"
+   },
+   "starter": "# Row 0 of the grid is 5, 3, 8, 2\n# Four numbers in, four words out\n",
+   "opt": true,
+   "tests": [
+    {
+     "in": [
+      "9",
+      "1",
+      "8",
+      "0"
+     ],
+     "out": [
+      "up",
+      "down",
+      "same",
+      "down"
+     ],
+     "why": "Column by column: 9 beats 5, 1 loses to 3, 8 matches 8 and 0 loses to 2."
+    },
+    {
+     "in": [
+      "5",
+      "3",
+      "8",
+      "2"
+     ],
+     "out": [
+      "same",
+      "same",
+      "same",
+      "same"
+     ],
+     "why": "Every column matches, so a program using > and else only would wrongly say down four times."
+    },
+    {
+     "in": [
+      "0",
+      "9",
+      "9",
+      "9"
+     ],
+     "out": [
+      "down",
+      "up",
+      "up",
+      "up"
+     ],
+     "why": "The first column is the only one row 1 loses, so four of the same word means the columns were not compared one by one."
+    },
+    {
+     "in": [
+      "5",
+      "4",
+      "7",
+      "2"
+     ],
+     "out": [
+      "same",
+      "up",
+      "down",
+      "same"
+     ],
+     "why": "Two matches and one of each way round: this is where equal values have to give same and not up."
+    }
+   ],
+   "fb": "Two rows side by side are compared column by column, because the column number is the one thing the two values share."
+  },
+  {
+   "id": "pr-l08-q36",
+   "station": 5,
+   "kind": "predict",
+   "marks": 1,
+   "q": "What will this program display?",
+   "code": [
+    "grid = [[4, 9],",
+    "        [7, 8]]",
+    "count = 0",
+    "for row in grid:",
+    "    for v in row:",
+    "        if v > 6:",
+    "            count = count + 1",
+    "print(count)",
+    "print(len(grid))"
+   ],
+   "a": [
+    "3\n2",
+    "3\n4",
+    "2\n2"
+   ],
+   "brief": [
+    "Read every line before you choose."
+   ],
+   "teach": {
+    "say": "A grid, two loops and an if together: the loops visit every value and the if decides what happens to it.",
+    "code": [
+     "grid = [[7, 8],",
+     "        [6, 0]]",
      "count = 0",
-     "for r in range(len(grid)):",
-     "    for c in range(len(grid[r])):",
-     "        if grid[r][c] > 6:",
+     "for row in grid:",
+     "    for v in row:",
+     "        if v > 6:",
      "            count = count + 1",
      "print(count)"
     ],
     "out": [
-     "3"
+     "2"
     ]
    },
-   "brief": [
-    "The first three numbers typed fill row 0.",
-    "The tenth number is not part of the grid.",
-    "A value exactly equal to it does count.",
-    "One line of output."
+   "lines": [
+    "Start a grid of two rows of two.",
+    "Row 1 holds 6 and 0.",
+    "Start the counter at 0.",
+    "Take each row in turn.",
+    "Take each value of that row in turn.",
+    "Test whether that value is bigger than 6.",
+    "Add 1 to the counter when it is.",
+    "Show the counter, once both loops have ended."
    ],
-   "hint": "pygrid",
-   "starter": "# Count the values that reach the number given\n",
-   "tests": [
-    {
-     "in": [
-      "4",
-      "9",
-      "2",
-      "7",
-      "8",
-      "1",
-      "6",
-      "3",
-      "5",
-      "5"
-     ],
-     "out": [
-      "5"
-     ],
-     "why": "Five of the nine values reach 5, counted across the whole grid rather than along one row."
-    },
-    {
-     "in": [
-      "4",
-      "9",
-      "2",
-      "7",
-      "8",
-      "1",
-      "6",
-      "3",
-      "5",
-      "10"
-     ],
-     "out": [
-      "0"
-     ],
-     "why": "Nothing reaches 10, so the counter stays at 0 and that 0 still has to be printed."
-    },
-    {
-     "in": [
-      "4",
-      "9",
-      "2",
-      "7",
-      "8",
-      "1",
-      "6",
-      "3",
-      "5",
-      "1"
-     ],
-     "out": [
-      "9"
-     ],
-     "why": "Every value reaches 1, so all nine count. A 3 here means only one row was visited."
-    },
-    {
-     "in": [
-      "4",
-      "9",
-      "2",
-      "7",
-      "8",
-      "1",
-      "6",
-      "3",
-      "5",
-      "9"
-     ],
-     "out": [
-      "1"
-     ],
-     "why": "Only the 9 itself reaches 9, so a value exactly equal counts and > was not what was wanted."
-    }
-   ],
-   "fb": "Two loops visit every cell and one counter outside them both keeps the answer, which is the shape of any count over a grid."
+   "fb": "Three of the four values beat 6, and len(grid) still counts the rows, whatever the if decided."
   },
   {
-   "id": "pr-l08-q17",
+   "id": "pr-l08-q37",
    "station": 5,
-   "marks": 4,
-   "q": "Ask the user for nine words, one on each line. Then ask for a word to look for. Store the nine words in a grid of three rows of three. Find where that word is in the grid. Display [the row] and [the column] on one line, with a single space between them. Display not in the grid instead when the word is not there.",
+   "marks": 1,
+   "q": "Change the program so it counts the values that are 7 or more instead of the values that are more than 7.",
+   "kind": "change",
    "brief": [
-    "The first three words typed fill row 0.",
-    "Rows and columns count from 0.",
-    "The word appears at most once in the grid.",
-    "Print exactly: not in the grid"
+    "Change only the comparison.",
+    "Exactly 7 now counts.",
+    "Display exactly: 3"
    ],
-   "hint": "pygrid",
-   "starter": "# Search the grid for the word and say where it is\n",
+   "hint": {
+    "think": "Which comparison lets the two sides be equal?",
+    "syntax": "a >= b"
+   },
+   "starter": "grid = [[4, 9],\n        [7, 8]]\ncount = 0\nfor row in grid:\n    for v in row:\n        if v > 7:\n            count = count + 1\nprint(count)\n",
+   "fixed": true,
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "3"
+     ],
+     "why": "A 2 means the comparison still leaves the 7 out. >= allows the two sides to be equal."
+    }
+   ],
+   "fb": "One character decides whether the boundary value counts, and that is still the commonest place for a counting program to go wrong."
+  },
+  {
+   "id": "pr-l08-q38",
+   "station": 5,
+   "marks": 2,
+   "q": "Finish the program so it displays only the values below 5, one on each line.",
+   "kind": "complete",
+   "brief": [
+    "Replace ____ with the comparison.",
+    "A value of exactly 5 is not below 5.",
+    "Two lines of output: 4, then 1."
+   ],
+   "hint": {
+    "think": "The inner loop hands you one value at a time, and that value has to be compared with 5.",
+    "syntax": "value < number",
+    "diagram": "pygrid"
+   },
+   "starter": "grid = [[4, 9, 5],\n        [7, 8, 1]]\nfor row in grid:\n    for v in row:\n        if ____:\n            print(v)\n",
+   "fixed": true,
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "4",
+      "1"
+     ],
+     "why": "The 5 is not below 5, so <= 5 would wrongly let it through."
+    }
+   ],
+   "fb": "An if inside two loops lets some values through and not others, wherever in the grid they sit."
+  },
+  {
+   "id": "pr-l08-q39",
+   "station": 5,
+   "marks": 2,
+   "q": "This program should display each row of the grid, one on each line, with its own square brackets. It builds each row up a value at a time. Find the mistake and put it right.",
+   "kind": "debug",
+   "brief": [
+    "Press Run first and read the error message.",
+    "Do not change the grid.",
+    "Keep the line that builds the row up a value at a time.",
+    "Two lines of output: [3, 6, 1] and then [5, 2, 9]."
+   ],
+   "hint": {
+    "think": "r counts the rows and c counts the columns. Look at the order they are written in.",
+    "syntax": "grid[row][column]",
+    "walk": [
+     "The first number in the square brackets is always the row.",
+     "r is the counter that is going through the rows.",
+     "So r belongs in the first pair of brackets and c in the second."
+    ],
+    "diagram": "pygrid"
+   },
+   "starter": "grid = [[3, 6, 1],\n        [5, 2, 9]]\nfor r in range(len(grid)):\n    row = []\n    for c in range(len(grid[r])):\n        row.append(grid[c][r])\n    print(row)\n",
+   "fixed": true,
+   "require": [
+    [
+     "append",
+     "Keep the line that builds the row up a value at a time, and put right the two numbers in its square brackets."
+    ]
+   ],
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "[3, 6, 1]",
+      "[5, 2, 9]"
+     ],
+     "why": "It stops with an IndexError part way through row 0: with the two numbers swapped it asks for row 2, and a grid of two rows has not got one."
+    }
+   ],
+   "fb": "An IndexError while a row is being built nearly always means the row and column counters were written the wrong way round."
+  },
+  {
+   "id": "pr-l08-q40",
+   "station": 5,
+   "marks": 3,
+   "q": "A grid of two rows of three holding six colour names is written into the program. Ask the user for a colour to look for. Display the row and the column where that colour sits, with one space between them. Display the words not there instead when the colour is not in the grid.",
+   "brief": [
+    "The grid is already in the editor. Do not change it.",
+    "The user types in one line: the colour to look for.",
+    "Rows and columns count from 0, and the row comes first.",
+    "Display exactly: not there"
+   ],
+   "hint": {
+    "think": "Count through the rows and the columns, so the two numbers are known when a match is found.",
+    "syntax": [
+     "for row in range(len(grid)):",
+     "print(row, col)"
+    ],
+    "start": [
+     "wanted = input()",
+     "found = 0",
+     "# then the two loops, with an if inside them"
+    ],
+    "diagram": "pygrid"
+   },
+   "starter": "grid = [[\"red\", \"blue\", \"grey\"],\n        [\"pink\", \"teal\", \"navy\"]]\n# Search the grid for the colour and say where it sits\n",
    "tests": [
     {
      "in": [
-      "Nia",
-      "Omar",
-      "Pia",
-      "Quin",
-      "Rafi",
-      "Sam",
-      "Vik",
-      "Wren",
-      "Yves",
-      "Omar"
+      "grey"
      ],
      "out": [
-      "0 1"
+      "0 2"
      ],
-     "why": "Omar is in row 0, column 1. The row comes first and the column second, so printing 1 0 means the two came out the wrong way round."
+     "why": "grey is the last colour of row 0, so row 0 and column 2. A 1 3 means both counts started at 1."
     },
     {
      "in": [
-      "Nia",
-      "Omar",
-      "Pia",
-      "Quin",
-      "Rafi",
-      "Sam",
-      "Vik",
-      "Wren",
-      "Yves",
-      "Nia"
+      "red"
      ],
      "out": [
       "0 0"
      ],
-     "why": "Nia is in the top left, which is row 0 column 0. Printing 1 1 means rows and columns were counted from 1."
+     "why": "red is the first colour, in the top left, which is row 0 and column 0."
     },
     {
      "in": [
-      "Nia",
-      "Omar",
-      "Pia",
-      "Quin",
-      "Rafi",
-      "Sam",
-      "Vik",
-      "Wren",
-      "Yves",
-      "Rafi"
+      "navy"
      ],
      "out": [
-      "1 1"
+      "1 2"
      ],
-     "why": "The middle cell is the one place where the row and the column match, so this test cannot tell the two apart on its own."
+     "why": "navy is the very last colour, so a search that stops before the end of the last row never finds it."
     },
     {
      "in": [
-      "Nia",
-      "Omar",
-      "Pia",
-      "Quin",
-      "Rafi",
-      "Sam",
-      "Vik",
-      "Wren",
-      "Yves",
-      "Yves"
+      "gold"
      ],
      "out": [
-      "2 2"
+      "not there"
      ],
-     "why": "Yves is the very last cell, so a search that stops before the end of the last row never finds it."
-    },
-    {
-     "in": [
-      "Nia",
-      "Omar",
-      "Pia",
-      "Quin",
-      "Rafi",
-      "Sam",
-      "Vik",
-      "Wren",
-      "Yves",
-      "Zara"
-     ],
-     "out": [
-      "not in the grid"
-     ],
-     "why": "A word that is nowhere in the grid prints that one line and nothing else, so the row and column are printed only once the word has been found."
+     "why": "gold is in no row, so nothing is found and the message is displayed instead of two numbers."
     }
    ],
-   "fb": "Two loops to search every cell, and a remembered row and column that start at something impossible like -1 so you can tell afterwards whether anything was found."
+   "fb": "A search over a grid is a search over a list twice over, and the two counters give you the row and the column together."
   },
   {
-   "id": "pr-l08-q18",
+   "id": "pr-l08-q41",
    "station": 5,
-   "marks": 4,
-   "q": "Ask the user for nine whole numbers, one on each line. Then ask for a whole number to look for. Store the nine in a grid of three rows of three. Find where that number is in the grid. Display not in the grid when the number is not there. Otherwise display [the row] and [the column] on one line, with a single space between them. Then add up the row the number is in. Then display [that total] on the next line.",
-   "brief": [
-    "The first three numbers typed fill row 0.",
-    "Rows and columns count from 0.",
-    "The number appears at most once in the grid.",
-    "Print exactly: not in the grid"
+   "marks": 3,
+   "q": "Ask the user for six temperatures, one on each line. Keep them in a grid of two rows of three. Display the largest of them, found with a loop of your own. Then display the total of the whole grid on the next line.",
+   "teach": {
+    "say": "The largest so far is kept in a variable of its own and replaced whenever a bigger value turns up. Starting it at the first value means a set of numbers below zero still works.",
+    "code": [
+     "nums = [-5, -2, -9]",
+     "best = nums[0]",
+     "for v in nums:",
+     "    if v > best:",
+     "        best = v",
+     "print(best)"
+    ],
+    "out": [
+     "-2"
+    ]
+   },
+   "lines": [
+    "Make a list of three numbers below zero.",
+    "Start the largest so far at the first value of the list.",
+    "Take each value in turn.",
+    "Test whether it beats the largest so far.",
+    "Replace the largest so far when it does.",
+    "Show the largest, once the loop has ended."
    ],
-   "hint": "pygrid",
-   "starter": "# Find the number, then total the row it is in\n",
+   "brief": [
+    "The user types in six lines, one whole number on each.",
+    "Some of the temperatures may be below zero.",
+    "Start the largest at the top left value of the grid, not at 0.",
+    "Two lines of output: the largest, then the total."
+   ],
+   "hint": {
+    "think": "One pass over the grid can grow a total and remember the biggest value at the same time.",
+    "syntax": [
+     "best = grid[0][0]",
+     "if v > best:"
+    ],
+    "start": [
+     "# the six numbers and the grid first",
+     "best = grid[0][0]",
+     "total = 0"
+    ],
+    "diagram": "pygrid"
+   },
+   "starter": "# The largest value, then the total of the lot\n",
+   "forbid": [
+    [
+     "max(",
+     "This one is about the loop. Keep the largest so far in a variable of your own and replace it when a bigger value turns up."
+    ]
+   ],
    "tests": [
     {
      "in": [
@@ -1559,95 +2251,156 @@
       "2",
       "7",
       "8",
-      "1",
-      "6",
-      "3",
-      "5",
       "1"
      ],
      "out": [
-      "1 2",
-      "16"
+      "9",
+      "31"
      ],
-     "why": "The 1 sits in row 1, column 2, and row 1 is 7, 8, 1 which comes to 16."
+     "why": "The largest is in row 0 and the total is every value added, so the loop has to visit the whole grid."
     },
     {
      "in": [
-      "4",
-      "9",
-      "2",
-      "7",
-      "8",
-      "1",
-      "6",
-      "3",
-      "5",
-      "4"
+      "-4",
+      "-9",
+      "-1",
+      "-6",
+      "-2",
+      "-8"
      ],
      "out": [
-      "0 0",
-      "15"
+      "-1",
+      "-30"
      ],
-     "why": "The 4 is in the top left, row 0 column 0, and row 0 comes to 15. Printing 1 1 means the counting started at 1."
+     "why": "Every value is below zero, so a largest that started at 0 would wrongly say 0. Start it at the top left value."
     },
     {
      "in": [
-      "4",
-      "9",
-      "2",
-      "7",
-      "8",
-      "1",
-      "6",
-      "3",
+      "5",
+      "5",
+      "5",
+      "5",
       "5",
       "5"
      ],
      "out": [
-      "2 2",
-      "14"
+      "5",
+      "30"
      ],
-     "why": "The 5 is the very last cell, so a search that stops before the end of the last row never finds it."
+     "why": "When every value is the same it is already the largest, and nothing ever replaces it."
     },
     {
      "in": [
-      "4",
-      "9",
-      "2",
-      "7",
-      "8",
       "1",
-      "6",
+      "2",
       "3",
+      "4",
       "5",
-      "9"
+      "30"
      ],
      "out": [
-      "0 1",
-      "15"
+      "30",
+      "45"
      ],
-     "why": "The 9 is in row 0, column 1, and the row total is the same as for the 4, because they share a row."
-    },
-    {
-     "in": [
-      "4",
-      "9",
-      "2",
-      "7",
-      "8",
-      "1",
-      "6",
-      "3",
-      "5",
-      "11"
-     ],
-     "out": [
-      "not in the grid"
-     ],
-     "why": "A number that is nowhere in the grid prints that one line and nothing else, so neither the position nor the total is printed."
+     "why": "The largest is the very last value, so a loop that stops one short never sees it."
     }
    ],
-   "fb": "A search over the grid and a total over one row are two separate jobs, and the second only runs once the first has found something."
+   "fb": "The largest-so-far loop of lesson 7 works over a grid too, as long as the first guess comes out of the grid."
+  },
+  {
+   "id": "pr-l08-q42",
+   "station": 5,
+   "marks": 3,
+   "q": "Ask the user for six prices in whole pounds, one on each line. Keep them in a grid of two rows of three. Display the grid on its side, so each line holds one column of it. Put one space between the values.",
+   "brief": [
+    "The user types in six lines, one whole number on each.",
+    "Three lines of output, column 0 first.",
+    "A line holds the values of one column, from the top row down.",
+    "Put one space between the values, and no square brackets and no commas."
+   ],
+   "hint": {
+    "think": "One line of output per column, so the columns belong to the outer loop and the rows to the inner one.",
+    "syntax": [
+     "for c in range(len(grid[0])):",
+     "line = line + str(value) + \" \""
+    ],
+    "walk": [
+     "Count c through the columns of the grid.",
+     "Start a line with nothing in it for each column.",
+     "Count r down the rows and join each value onto the line.",
+     "Display the line once that column is finished."
+    ],
+    "diagram": "pygrid"
+   },
+   "starter": "# Two rows of three in, three lines of two out\n",
+   "opt": true,
+   "tests": [
+    {
+     "in": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+     ],
+     "out": [
+      "1 4",
+      "2 5",
+      "3 6"
+     ],
+     "why": "Column 0 is 1 and 4, so the first line is 1 4. Lines of 1 2 3 and 4 5 6 are the rows, not the columns."
+    },
+    {
+     "in": [
+      "5",
+      "5",
+      "5",
+      "1",
+      "1",
+      "1"
+     ],
+     "out": [
+      "5 1",
+      "5 1",
+      "5 1"
+     ],
+     "why": "Three lines of two, not two lines of three: the number of lines is the number of columns."
+    },
+    {
+     "in": [
+      "10",
+      "20",
+      "30",
+      "40",
+      "50",
+      "60"
+     ],
+     "out": [
+      "10 40",
+      "20 50",
+      "30 60"
+     ],
+     "why": "One long line means the line was not set back to empty text at the top of each column."
+    },
+    {
+     "in": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "7"
+     ],
+     "out": [
+      "0 0",
+      "0 0",
+      "0 7"
+     ],
+     "why": "The 7 is the last value of the grid, so it belongs at the end of the last line."
+    }
+   ],
+   "fb": "Turning a grid on its side is the column loop and the line building together, and nothing else is new."
   }
  ]
 }

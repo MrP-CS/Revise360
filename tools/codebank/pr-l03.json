@@ -13,10 +13,175 @@
   {
    "id": "pr-l03-q1",
    "station": 0,
+   "kind": "try",
    "marks": 1,
+   "q": "Press Run and read both lines it displays.",
+   "teach": {
+    "say": "A comparison asks a question about two values. The answer is always one of two words: True or False. Python works the comparison out and hands that word back, so print() can display it.",
+    "code": [
+     "print(7 > 3)",
+     "print(7 < 3)"
+    ],
+    "out": [
+     "True",
+     "False"
+    ]
+   },
+   "brief": [
+    "Nothing is marked on this one.",
+    "Look at the sign in the middle of each comparison."
+   ],
+   "starter": "print(7 > 3)\nprint(7 < 3)\n",
+   "lines": [
+    "Ask whether 7 is greater than 3, which it is.",
+    "Ask whether 7 is less than 3, which it is not."
+   ],
+   "fb": "A comparison does not need an if. On its own it already gives you True or False."
+  },
+  {
+   "id": "pr-l03-q2",
+   "station": 0,
+   "kind": "predict",
+   "marks": 1,
+   "q": "What will this program display?",
+   "code": [
+    "a = 5",
+    "b = 5",
+    "print(a == b)",
+    "print(a == 9)"
+   ],
+   "a": [
+    "True\nFalse",
+    "False\nTrue",
+    "True\nTrue"
+   ],
+   "brief": [
+    "Read every line before you choose."
+   ],
+   "teach": {
+    "say": "== asks whether two values are the same. One = would store a value instead, so the two signs do completely different jobs."
+   },
+   "fb": "== asks a question and gives True or False. A single = stores a value and gives nothing back."
+  },
+  {
+   "id": "pr-l03-q3",
+   "station": 0,
+   "marks": 1,
+   "q": "Change the sign in the middle so the program displays True.",
+   "kind": "change",
+   "teach": {
+    "say": "!= asks whether two values are different. It is True exactly when == would be False.",
+    "code": [
+     "print(6 != 6)",
+     "print(6 != 2)"
+    ],
+    "out": [
+     "False",
+     "True"
+    ]
+   },
+   "brief": [
+    "Change only the sign between a and b.",
+    "Do not change either number.",
+    "Display exactly: True"
+   ],
+   "hint": {
+    "think": "4 and 9 are not the same. Which sign asks about being different?",
+    "walk": [
+     "== asks whether two values are the same.",
+     "There is a second sign that asks the opposite.",
+     "It is the one you met in the worked example above."
+    ]
+   },
+   "starter": "a = 4\nb = 9\nprint(a == b)\n",
+   "fixed": true,
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "True"
+     ],
+     "why": "False came out, so the program is still asking whether the two are the same. 4 and 9 are not the same, so ask about being different instead."
+    }
+   ],
+   "fb": "== and != are opposites. Whenever one is True the other is False."
+  },
+  {
+   "id": "pr-l03-q4",
+   "station": 0,
+   "kind": "predict",
+   "marks": 1,
+   "q": "What will this program display?",
+   "code": [
+    "print(5 < 5)",
+    "print(5 <= 5)"
+   ],
+   "a": [
+    "False\nTrue",
+    "True\nFalse",
+    "False\nFalse"
+   ],
+   "brief": [
+    "Read every line before you choose."
+   ],
+   "teach": {
+    "say": "< is True only when the left value is the smaller one. <= is also True when the two are equal, and that one extra case is the whole difference between them."
+   },
+   "fb": "Two equal values are not less than each other, but they are less than or equal. A value that is only ever True or False is called a boolean."
+  },
+  {
+   "id": "pr-l03-q5",
+   "station": 0,
+   "marks": 2,
+   "q": "Finish the program so it displays True, because a mark of exactly 40 is a pass.",
+   "kind": "complete",
+   "teach": {
+    "say": ">= is True when the left value is the bigger one and also when the two are equal.",
+    "code": [
+     "print(8 >= 5)",
+     "print(5 >= 5)",
+     "print(3 >= 5)"
+    ],
+    "out": [
+     "True",
+     "True",
+     "False"
+    ]
+   },
+   "brief": [
+    "Line 1 is written for you.",
+    "Replace ____ with one comparison sign.",
+    "A mark of 40 counts as a pass, so 40 itself must give True.",
+    "Display exactly: True"
+   ],
+   "hint": {
+    "think": "You need a sign that is True for bigger and also True for equal.",
+    "walk": [
+     "> is True for bigger but not for equal.",
+     "== is True for equal but not for bigger.",
+     "One sign does both jobs at once."
+    ]
+   },
+   "starter": "mark = 40\nprint(mark ____ 40)\n",
+   "fixed": true,
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "True"
+     ],
+     "why": "Replace the ____ with one sign. If False came out, the sign you chose does not allow the two values to be equal."
+    }
+   ],
+   "fb": "The pass mark itself has to count as a pass, so 40 or more means >= 40, never > 40."
+  },
+  {
+   "id": "pr-l03-q6",
+   "station": 0,
+   "marks": 2,
    "q": "Ask the user for a whole number. Display True when it is greater than 10. Display False when it is not.",
    "teach": {
-    "say": "A comparison is already True or False, so it can be printed straight out, with no if at all.",
+    "say": "A comparison can use a variable on one side and a fixed number on the other.",
     "code": [
      "n = 4",
      "print(n > 2)"
@@ -27,10 +192,18 @@
    },
    "brief": [
     "The user types in one whole number.",
-    "The 10 is fixed in your program, not typed in."
+    "The 10 is written into your program, not typed in.",
+    "One line of output, which is True or False."
    ],
-   "hint": "pyif",
-   "starter": "# Read one number and print the comparison\n",
+   "hint": {
+    "think": "Read the number, then display the comparison itself.",
+    "syntax": [
+     "n = int(input())",
+     "print(n > ...)"
+    ],
+    "diagram": "pyif"
+   },
+   "starter": "# Read one number and display the comparison\n",
    "tests": [
     {
      "in": [
@@ -57,199 +230,31 @@
      "out": [
       "False"
      ],
-     "why": "Exactly 10 is not greater than 10. This is the test that tells > apart from >= ."
+     "why": "This test sits exactly on the boundary. Exactly 10 is not greater than 10, so > gives False and >= would wrongly give True."
     }
    ],
-   "fb": "A comparison hands back True or False on its own, so it can be printed without an if."
+   "fb": "No if is needed. The comparison is already True or False, so print() can display it straight out."
   },
   {
-   "id": "pr-l03-q2",
+   "id": "pr-l03-q7",
    "station": 0,
    "marks": 2,
-   "q": "Ask the user for a whole number. Then ask for a second whole number. Display True when they are equal. Display False when they are not.",
-   "teach": {
-    "say": "== asks whether two values are the same. A single = stores a value instead, and will not work here.",
-    "code": [
-     "a = 6",
-     "b = 6",
-     "print(a == b)"
-    ],
-    "out": [
-     "True"
+   "q": "Ask the user for a word. Then ask for a second word. Display True when the two words are the same. Display False when they are not.",
+   "brief": [
+    "The user types in two lines, one word on each.",
+    "Every letter has to match, so a different spelling is a different word.",
+    "One line of output, which is True or False."
+   ],
+   "hint": {
+    "think": "Words are compared with the same sign as numbers.",
+    "syntax": "a == b",
+    "start": [
+     "a = input()",
+     "b = input()",
+     "# now display whether they match"
     ]
    },
-   "brief": [
-    "The user types in two whole numbers, one on each line."
-   ],
-   "hint": "pyif",
-   "starter": "# Read two numbers and print whether they are equal\n",
-   "tests": [
-    {
-     "in": [
-      "6",
-      "6"
-     ],
-     "out": [
-      "True"
-     ],
-     "why": "The two numbers are the same, so == is True."
-    },
-    {
-     "in": [
-      "4",
-      "9"
-     ],
-     "out": [
-      "False"
-     ],
-     "why": "Two different numbers. True here means every pair is being called equal, which is what = instead of == does."
-    },
-    {
-     "in": [
-      "-3",
-      "-3"
-     ],
-     "out": [
-      "True"
-     ],
-     "why": "Two equal negative numbers are still equal."
-    }
-   ],
-   "fb": "== asks a question and = stores a value, which is the easiest pair in Python to mix up."
-  },
-  {
-   "id": "pr-l03-q3",
-   "station": 0,
-   "marks": 2,
-   "q": "Ask the user for a whole number. Then ask for a second whole number. Display True when the first is greater than the second. Display False when it is not.",
-   "teach": {
-    "say": "> is True only when the left value is the bigger one, so two equal values are not greater.",
-    "code": [
-     "print(8 > 3)",
-     "print(4 > 4)"
-    ],
-    "out": [
-     "True",
-     "False"
-    ]
-   },
-   "brief": [
-    "The user types in two whole numbers, one on each line."
-   ],
-   "hint": "pyif",
-   "starter": "# Read two numbers and print True or False\n",
-   "tests": [
-    {
-     "in": [
-      "34",
-      "19"
-     ],
-     "out": [
-      "True"
-     ],
-     "why": "34 is greater than 19, so the comparison is True."
-    },
-    {
-     "in": [
-      "19",
-      "34"
-     ],
-     "out": [
-      "False"
-     ],
-     "why": "The order matters. True here means the two were compared the wrong way round."
-    },
-    {
-     "in": [
-      "25",
-      "25"
-     ],
-     "out": [
-      "False"
-     ],
-     "why": "Equal is not greater. This is the test that tells > apart from >= ."
-    }
-   ],
-   "fb": "A comparison is already True or False, so you can print it straight out without an if."
-  },
-  {
-   "id": "pr-l03-q4",
-   "station": 0,
-   "marks": 2,
-   "q": "Ask the user for a whole number. Then ask for a second whole number. Display True when the first is greater than or equal to the second. Display False when it is not.",
-   "teach": {
-    "say": ">= is True when the left value is the bigger one and also when the two are the same.",
-    "code": [
-     "print(5 >= 4)",
-     "print(4 >= 4)",
-     "print(3 >= 4)"
-    ],
-    "out": [
-     "True",
-     "True",
-     "False"
-    ]
-   },
-   "brief": [
-    "The user types in two whole numbers, one on each line."
-   ],
-   "hint": "pyif",
-   "starter": "# Read two numbers and print the comparison\n",
-   "tests": [
-    {
-     "in": [
-      "34",
-      "19"
-     ],
-     "out": [
-      "True"
-     ],
-     "why": "The first is the bigger one, which >= reports as True."
-    },
-    {
-     "in": [
-      "25",
-      "25"
-     ],
-     "out": [
-      "True"
-     ],
-     "why": "Equal counts as well, and this is the test that tells >= apart from > ."
-    },
-    {
-     "in": [
-      "19",
-      "34"
-     ],
-     "out": [
-      "False"
-     ],
-     "why": "The first is the smaller one, so neither half of >= is satisfied."
-    }
-   ],
-   "fb": ">= is True for greater and for equal, which is exactly where it differs from > ."
-  },
-  {
-   "id": "pr-l03-q5",
-   "station": 0,
-   "marks": 2,
-   "q": "Ask the user for a word. Then ask for a second word. Display True when they are the same word. Display False when they are not.",
-   "teach": {
-    "say": "== compares words as well as numbers. Every letter has to match, so a different spelling is a different word.",
-    "code": [
-     "a = \"amber\"",
-     "b = \"bronze\"",
-     "print(a == b)"
-    ],
-    "out": [
-     "False"
-    ]
-   },
-   "brief": [
-    "The user types in two words, one on each line."
-   ],
-   "hint": "pyif",
-   "starter": "# Read two words and print whether they match\n",
+   "starter": "# Read two words and display whether they match\n",
    "tests": [
     {
      "in": [
@@ -269,7 +274,7 @@
      "out": [
       "False"
      ],
-     "why": "Two different words. True here means the words were never actually compared."
+     "why": "Two different words. True here means the two words were never actually compared."
     },
     {
      "in": [
@@ -282,72 +287,293 @@
      "why": "One extra letter makes a different word, so == is False."
     }
    ],
-   "fb": "Words are compared with == just like numbers, and the match has to be exact."
+   "fb": "== compares words as well as numbers, and the match has to be exact, letter for letter."
   },
   {
-   "id": "pr-l03-q6",
-   "station": 1,
+   "id": "pr-l03-q8",
+   "station": 0,
    "marks": 2,
-   "q": "Ask the user for a whole number. Display checked. Then display negative on the next line, but only when the number is below 0.",
-   "teach": {
-    "say": "An if runs the indented lines only when its question is True. When it is False nothing happens, and no else is needed.",
-    "code": [
-     "n = 3",
-     "print(\"seen\")",
-     "if n > 0:",
-     "    print(\"above zero\")"
-    ],
-    "out": [
-     "seen",
-     "above zero"
-    ]
+   "q": "This program should display True when the number typed is greater than 10. Find the mistake and put it right.",
+   "kind": "debug",
+   "brief": [
+    "Press Run first and read the error message.",
+    "The user types in one whole number.",
+    "One line of output, which is True or False."
+   ],
+   "hint": {
+    "think": "Read the error. input() always hands back text, and text cannot be compared with a number.",
+    "syntax": "int(input())",
+    "diagram": "pyinput"
    },
+   "starter": "n = input()\nprint(n > 10)\n",
+   "tests": [
+    {
+     "in": [
+      "25"
+     ],
+     "out": [
+      "True"
+     ],
+     "why": "A TypeError here means text was compared with a number. Put the input() inside int( )."
+    },
+    {
+     "in": [
+      "4"
+     ],
+     "out": [
+      "False"
+     ],
+     "why": "Cast on the way in, then the comparison works for any number."
+    },
+    {
+     "in": [
+      "10"
+     ],
+     "out": [
+      "False"
+     ],
+     "why": "This test sits exactly on the boundary. Once the cast is right, exactly 10 is not greater than 10."
+    }
+   ],
+   "fb": "Casting comes back in every lesson. A value typed in is text until int() turns it into a number."
+  },
+  {
+   "id": "pr-l03-q9",
+   "station": 0,
+   "marks": 3,
+   "q": "Ask the user for a whole number. Display whether it is below 0. Then display whether it is exactly 0 on the next line. Then display whether it is above 0 on the next line.",
    "brief": [
     "The user types in one whole number.",
-    "Print exactly: checked",
-    "Print exactly: negative"
+    "Three lines of output, each one True or False.",
+    "Exactly one of the three lines is True.",
+    "The 0 is written into your program, not typed in."
    ],
-   "hint": "pyif",
-   "starter": "# Read the number, print checked, add the warning if needed\n",
+   "hint": {
+    "think": "Three comparisons on the same variable, each one displayed on its own line.",
+    "syntax": [
+     "print(n < ...)",
+     "print(n == ...)"
+    ],
+    "walk": [
+     "Read the number and cast it.",
+     "Display the comparison for below.",
+     "Display the comparison for exactly.",
+     "Display the comparison for above."
+    ]
+   },
+   "starter": "# One number, three comparisons, three lines\n",
+   "opt": true,
    "tests": [
     {
      "in": [
       "-4"
      ],
      "out": [
-      "checked",
-      "negative"
+      "True",
+      "False",
+      "False"
      ],
-     "why": "Below zero, so both lines print, and checked comes first."
-    },
-    {
-     "in": [
-      "5"
-     ],
-     "out": [
-      "checked"
-     ],
-     "why": "Above zero. An extra negative here means the second print is not indented inside the if."
+     "why": "A negative number is below 0 and nothing else."
     },
     {
      "in": [
       "0"
      ],
      "out": [
-      "checked"
+      "False",
+      "True",
+      "False"
      ],
-     "why": "Exactly 0 is not below 0. A negative line here means <= was used where the question says below."
+     "why": "This test sits exactly on the boundary. 0 is neither below nor above 0, so only the middle line is True."
+    },
+    {
+     "in": [
+      "7"
+     ],
+     "out": [
+      "False",
+      "False",
+      "True"
+     ],
+     "why": "A positive number is above 0 and nothing else."
+    },
+    {
+     "in": [
+      "-1"
+     ],
+     "out": [
+      "True",
+      "False",
+      "False"
+     ],
+     "why": "Just one below the boundary, and still only the first line is True."
     }
    ],
-   "fb": "An if on its own is allowed; you only need an else when something has to happen in the other case."
+   "fb": "Three comparisons on one value divide every possible number into three groups with no overlap."
   },
   {
-   "id": "pr-l03-q7",
+   "id": "pr-l03-q10",
+   "station": 1,
+   "kind": "try",
+   "marks": 1,
+   "q": "Press Run. Then count the spaces at the start of each line.",
+   "teach": {
+    "say": "An if asks a question and only runs some lines when the answer is True. Two things say which lines those are. The if line ends with a colon, and the lines inside it are indented four spaces.",
+    "code": [
+     "n = 8",
+     "if n > 5:",
+     "    print(\"big\")",
+     "print(\"done\")"
+    ],
+    "out": [
+     "big",
+     "done"
+    ]
+   },
+   "brief": [
+    "Nothing is marked on this one.",
+    "Line 3 starts four spaces in. Line 4 does not.",
+    "Change the 8 to a 2 and Run again to see which line disappears."
+   ],
+   "starter": "n = 8\nif n > 5:\n    print(\"big\")\nprint(\"done\")\n",
+   "lines": [
+    "Remember the number 8 under the name n.",
+    "Ask whether n is greater than 5. The colon at the end says lines follow.",
+    "This line is indented four spaces, so it only runs when the answer is True.",
+    "This line is not indented, so it runs every time."
+   ],
+   "fb": "The colon opens the if and the four spaces say what is inside it. Python needs both."
+  },
+  {
+   "id": "pr-l03-q11",
+   "station": 1,
+   "kind": "predict",
+   "marks": 1,
+   "q": "What will this program display?",
+   "code": [
+    "n = 2",
+    "if n > 5:",
+    "    print(\"inside\")",
+    "print(\"outside\")"
+   ],
+   "a": [
+    "outside",
+    "inside\noutside",
+    "inside"
+   ],
+   "brief": [
+    "Read every line before you choose."
+   ],
+   "teach": {
+    "say": "The indent is not decoration. Python reads it to decide which lines belong to the if and which lines come after it and always run."
+   },
+   "fb": "2 is not greater than 5, so the indented line is skipped. The line that is not indented runs whatever the answer was."
+  },
+  {
+   "id": "pr-l03-q12",
+   "station": 1,
+   "marks": 1,
+   "q": "Change the program so a number of exactly 100 is counted as full.",
+   "kind": "change",
+   "brief": [
+    "Change only the comparison sign.",
+    "Do not change either number.",
+    "Display exactly: full"
+   ],
+   "hint": {
+    "think": "100 has to count, so the sign must allow the two values to be equal.",
+    "walk": [
+     "Nothing is displayed, so the question came out False.",
+     "100 is not greater than 100.",
+     "There is one sign that is True for greater and for equal."
+    ]
+   },
+   "starter": "n = 100\nif n > 100:\n    print(\"full\")\n",
+   "fixed": true,
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "full"
+     ],
+     "why": "Nothing was displayed, so the question was False. 100 is not greater than 100, so > has to become the sign that also allows equal."
+    }
+   ],
+   "fb": "This is the boundary mistake, and it is the commonest one in this lesson. Ask yourself every time whether the edge value itself should count."
+  },
+  {
+   "id": "pr-l03-q13",
    "station": 1,
    "marks": 2,
-   "q": "Ask the user for a whole number. Display yes when it is 20 or more. Display no when it is less.",
+   "q": "Finish the program so it displays child when the age is under 18.",
+   "kind": "complete",
    "teach": {
-    "say": "else catches every case the if did not. Mind the boundary: 7 or more means >= 7, so 7 itself counts.",
+    "say": "else catches every case the if did not. It has a colon of its own, it is not indented, and the lines inside it are.",
+    "code": [
+     "n = 3",
+     "if n > 10:",
+     "    print(\"many\")",
+     "else:",
+     "    print(\"few\")"
+    ],
+    "out": [
+     "few"
+    ]
+   },
+   "brief": [
+    "The user types in one whole number.",
+    "Replace ____ with one line.",
+    "An age of exactly 18 displays adult.",
+    "Display exactly one word: adult or child"
+   ],
+   "hint": {
+    "think": "One line is missing between the two branches, and it ends with a colon.",
+    "walk": [
+     "The if covers the ages of 18 and over.",
+     "One line opens the branch for everything else.",
+     "It is not indented, and it ends with a colon."
+    ],
+    "diagram": "pyif"
+   },
+   "starter": "n = int(input())\nif n >= 18:\n    print(\"adult\")\n____\n    print(\"child\")\n",
+   "tests": [
+    {
+     "in": [
+      "21"
+     ],
+     "out": [
+      "adult"
+     ],
+     "why": "Replace the ____ with the line that opens the other branch. It ends with a colon."
+    },
+    {
+     "in": [
+      "18"
+     ],
+     "out": [
+      "adult"
+     ],
+     "why": "This test sits exactly on the boundary. 18 or more includes 18 itself, so an adult it is."
+    },
+    {
+     "in": [
+      "9"
+     ],
+     "out": [
+      "child"
+     ],
+     "why": "Below the boundary, so the second branch is the one that runs."
+    }
+   ],
+   "fb": "An if and an else are two branches of one decision. Exactly one of them runs, never both."
+  },
+  {
+   "id": "pr-l03-q14",
+   "station": 1,
+   "marks": 2,
+   "q": "Ask the user for a whole number of marks. Display pass when it is 40 or more. Display fail when it is less.",
+   "teach": {
+    "say": "Mind the boundary. 7 or more means >= 7, so 7 itself counts.",
     "code": [
      "n = 7",
      "if n >= 7:",
@@ -361,57 +587,65 @@
    },
    "brief": [
     "The user types in one whole number.",
-    "Print exactly one word: yes or no"
+    "The 40 is written into your program, not typed in.",
+    "Display exactly one word: pass or fail"
    ],
-   "hint": "pyif",
-   "starter": "# Read the number and print yes or no\n",
+   "hint": {
+    "think": "One decision with two branches, and the pass mark itself counts as a pass.",
+    "syntax": [
+     "if n >= ...:",
+     "else:"
+    ],
+    "diagram": "pyif"
+   },
+   "starter": "# Read the marks and display pass or fail\n",
    "tests": [
     {
      "in": [
-      "45"
+      "65"
      ],
      "out": [
-      "yes"
+      "pass"
      ],
-     "why": "Well past the boundary, so the if runs."
+     "why": "Well past the pass mark, so the if branch runs."
     },
     {
      "in": [
-      "20"
+      "40"
      ],
      "out": [
-      "yes"
+      "pass"
      ],
-     "why": "20 or more includes 20 itself. no here means > was used instead of >= ."
+     "why": "This test sits exactly on the boundary. 40 or more includes 40, so fail here means > was used instead of >= ."
     },
     {
      "in": [
-      "19"
+      "39"
      ],
      "out": [
-      "no"
+      "fail"
      ],
-     "why": "One below the boundary, so the else runs."
+     "why": "One below the boundary, so the else branch runs."
     },
     {
      "in": [
       "0"
      ],
      "out": [
-      "no"
+      "fail"
      ],
      "why": "A 0 is a number like any other and belongs in the else."
     }
    ],
-   "fb": "20 or more means >= 20, and the exact boundary is always the test worth writing."
+   "fb": "40 or more means >= 40. The exact boundary is always the value worth testing yourself on."
   },
   {
-   "id": "pr-l03-q8",
+   "id": "pr-l03-q15",
    "station": 1,
    "marks": 2,
    "q": "Ask the user for a word. Display match when the word is amber. Display no match when it is not.",
    "teach": {
-    "say": "An if can compare words with == . The word you are looking for goes in quotation marks; the variable does not.",
+    "say": "An if can compare words with == . The word you are looking for goes in quotation marks, and the variable does not.",
     "code": [
      "w = \"north\"",
      "if w == \"south\":",
@@ -425,11 +659,14 @@
    },
    "brief": [
     "The user types in one word.",
-    "Print exactly: match",
-    "Print exactly: no match"
+    "The word amber is written into your program.",
+    "Display exactly one of: match or no match"
    ],
-   "hint": "pyif",
-   "starter": "# Read the word and print match or no match\n",
+   "hint": {
+    "think": "Compare the variable with the fixed word, then choose a branch.",
+    "syntax": "if w == \"...\":"
+   },
+   "starter": "# Read the word and display match or no match\n",
    "tests": [
     {
      "in": [
@@ -438,7 +675,7 @@
      "out": [
       "match"
      ],
-     "why": "The word is the one being looked for, so the if runs."
+     "why": "The word is the one being looked for, so the if branch runs."
     },
     {
      "in": [
@@ -459,15 +696,142 @@
      "why": "Part of the word is not the word. match here means only the first letters were compared."
     }
    ],
-   "fb": "Comparing a word with == needs the fixed word in quotation marks and the variable without them."
+   "fb": "Comparing a word needs the fixed word in quotation marks and the variable without them."
   },
   {
-   "id": "pr-l03-q9",
+   "id": "pr-l03-q16",
+   "station": 1,
+   "marks": 2,
+   "q": "This program should display big or small. One piece of punctuation is missing. Find it and put it right.",
+   "kind": "debug",
+   "teach": {
+    "say": "An if line always finishes with a colon. Without it Python stops before the program runs at all and says invalid syntax.",
+    "code": [
+     "if 4 > 2:",
+     "    print(\"yes\")",
+     "# and not:  if 4 > 2"
+    ],
+    "out": [
+     "yes"
+    ]
+   },
+   "brief": [
+    "Press Run first and read the error message.",
+    "The user types in one whole number.",
+    "Do not change either comparison or either word.",
+    "Display exactly one word: big or small"
+   ],
+   "hint": {
+    "think": "Look at the end of the if line and compare it with the end of the else line.",
+    "walk": [
+     "The else line finishes with a mark of punctuation.",
+     "Every line that opens a block finishes with the same one.",
+     "One line in this program does not."
+    ]
+   },
+   "starter": "n = int(input())\nif n > 10\n    print(\"big\")\nelse:\n    print(\"small\")\n",
+   "tests": [
+    {
+     "in": [
+      "25"
+     ],
+     "out": [
+      "big"
+     ],
+     "why": "A SyntaxError means Python could not read the line. The if line needs a colon at the end, like the else line has."
+    },
+    {
+     "in": [
+      "4"
+     ],
+     "out": [
+      "small"
+     ],
+     "why": "Once the colon is there the else branch runs for a small number."
+    },
+    {
+     "in": [
+      "10"
+     ],
+     "out": [
+      "small"
+     ],
+     "why": "This test sits exactly on the boundary. Exactly 10 is not greater than 10, so small is right."
+    }
+   ],
+   "fb": "A missing colon stops the program before it starts. The error points at the line after it, so look one line up."
+  },
+  {
+   "id": "pr-l03-q17",
+   "station": 1,
+   "marks": 2,
+   "q": "This program should display checked every time, and positive as well when the number is above 0. One line is indented when it should not be. Find it and put it right.",
+   "kind": "debug",
+   "teach": {
+    "say": "Taking four spaces off the front of a line moves it out of the if, so it runs whatever the answer was.",
+    "code": [
+     "if 1 > 5:",
+     "    print(\"inside\")",
+     "print(\"always\")"
+    ],
+    "out": [
+     "always"
+    ]
+   },
+   "brief": [
+    "The user types in one whole number.",
+    "The word checked is displayed every single time.",
+    "The word positive is displayed only when the number is above 0.",
+    "Do not change either word."
+   ],
+   "hint": {
+    "think": "Which of the two displayed lines should happen whatever the number is?",
+    "walk": [
+     "A line indented four spaces is inside the if.",
+     "A line with no spaces in front of it is outside the if.",
+     "One of these two lines is in the wrong place."
+    ]
+   },
+   "starter": "n = int(input())\nif n > 0:\n    print(\"positive\")\n    print(\"checked\")\n",
+   "tests": [
+    {
+     "in": [
+      "5"
+     ],
+     "out": [
+      "positive",
+      "checked"
+     ],
+     "why": "A positive number displays both lines, and positive comes first."
+    },
+    {
+     "in": [
+      "-5"
+     ],
+     "out": [
+      "checked"
+     ],
+     "why": "Nothing came out at all, because both lines are indented inside the if. Only one of them belongs there."
+    },
+    {
+     "in": [
+      "0"
+     ],
+     "out": [
+      "checked"
+     ],
+     "why": "This test sits exactly on the boundary. 0 is not above 0, so only checked is displayed."
+    }
+   ],
+   "fb": "Indentation is the whole story here. Python decides what is inside the if by counting the spaces, and nothing else."
+  },
+  {
+   "id": "pr-l03-q18",
    "station": 1,
    "marks": 3,
-   "q": "Ask the user for a whole number. Then ask for a second whole number. Work out which of them is the larger. Display [larger] and nothing else.",
+   "q": "Ask the user for a whole number. Then ask for a second whole number. Work out which of them is the larger. Display that number and nothing else.",
    "teach": {
-    "say": "Either branch of an if can print a variable instead of fixed text, which is how a program chooses between two values.",
+    "say": "Either branch of an if can display a variable instead of fixed text. That is how a program chooses between two values.",
     "code": [
      "a = 3",
      "b = 9",
@@ -481,11 +845,20 @@
     ]
    },
    "brief": [
-    "The user types in two whole numbers, one on each line.",
-    "When the two are equal, print that value."
+    "The user types in two lines, one whole number on each.",
+    "When the two are equal, display that value.",
+    "One line of output, which is one of the two numbers."
    ],
-   "hint": "pyif",
-   "starter": "# Read two numbers and print the larger one\n",
+   "hint": {
+    "think": "Compare the two, then display whichever one the comparison points at.",
+    "start": [
+     "a = int(input())",
+     "b = int(input())",
+     "# now compare them and display one of them"
+    ]
+   },
+   "starter": "# Read two numbers and display the larger one\n",
+   "opt": true,
    "tests": [
     {
      "in": [
@@ -495,7 +868,7 @@
      "out": [
       "18"
      ],
-     "why": "The larger one is the first here, so it is the if that prints."
+     "why": "The larger one is the first here, so the if branch displays it."
     },
     {
      "in": [
@@ -505,7 +878,7 @@
      "out": [
       "9"
      ],
-     "why": "The larger one is the second here. A program that always prints the first passes only half the tests."
+     "why": "The larger one is the second here. A program that always displays the first passes only half the tests."
     },
     {
      "in": [
@@ -515,36 +888,200 @@
      "out": [
       "7"
      ],
-     "why": "Two equal values give the same answer either way, so this one must not be left out."
+     "why": "This test sits exactly on the boundary. Two equal values give the same answer either way, so neither branch can be wrong."
+    },
+    {
+     "in": [
+      "-9",
+      "-2"
+     ],
+     "out": [
+      "-2"
+     ],
+     "why": "With negative numbers the larger one is the one nearer to 0."
     }
    ],
-   "fb": "An if does not have to print words: either branch can print a value, which is how a program picks one of two."
+   "fb": "An if does not have to display words. Either branch can display a value, which is how a program picks one of two."
   },
   {
-   "id": "pr-l03-q10",
+   "id": "pr-l03-q19",
    "station": 2,
-   "marks": 2,
-   "q": "Ask the user for a whole number. Display positive when it is above 0. Display negative when it is below 0. Display zero when it is exactly 0.",
+   "kind": "try",
+   "marks": 1,
+   "q": "Press Run. Then change the 0 to a 5, Run again, and change it to -5 and Run again.",
    "teach": {
-    "say": "elif is only asked when the if above it was False, so two branches can never both run, and the else at the end catches what is left.",
+    "say": "elif adds a further question to a decision. It is only asked when every if and elif above it was False. The else at the end catches everything left over.",
     "code": [
      "n = 0",
      "if n > 0:",
-     "    print(\"up\")",
+     "    print(\"above\")",
      "elif n < 0:",
-     "    print(\"down\")",
+     "    print(\"below\")",
      "else:",
-     "    print(\"level\")"
+     "    print(\"exactly zero\")"
     ],
     "out": [
-     "level"
+     "exactly zero"
     ]
    },
    "brief": [
-    "The user types in one whole number.",
-    "Print exactly one word: positive, negative or zero"
+    "Nothing is marked on this one.",
+    "Exactly one of the three words is displayed each time.",
+    "elif is short for else if."
    ],
-   "hint": "pyif",
+   "starter": "n = 0\nif n > 0:\n    print(\"above\")\nelif n < 0:\n    print(\"below\")\nelse:\n    print(\"exactly zero\")\n",
+   "lines": [
+    "Remember the number 0 under the name n.",
+    "Ask whether n is above 0. It is not, so the next question is asked.",
+    "This line is skipped.",
+    "Ask whether n is below 0. It is not either.",
+    "This line is skipped too.",
+    "Nothing was True, so the else runs.",
+    "This is the line that is displayed."
+   ],
+   "fb": "One decision, three possible answers, and only ever one of them displayed."
+  },
+  {
+   "id": "pr-l03-q20",
+   "station": 2,
+   "kind": "predict",
+   "marks": 1,
+   "q": "What will this program display?",
+   "code": [
+    "mark = 75",
+    "if mark >= 50:",
+    "    print(\"pass\")",
+    "elif mark >= 70:",
+    "    print(\"merit\")",
+    "else:",
+    "    print(\"fail\")"
+   ],
+   "a": [
+    "pass",
+    "merit",
+    "pass\nmerit"
+   ],
+   "brief": [
+    "Read every line before you choose."
+   ],
+   "teach": {
+    "say": "Python stops at the first question that is True and skips the rest of the chain, so the order the questions are written in changes the answer."
+   },
+   "fb": "75 is 70 or more, but it reached the 50 test first and stopped there. Bands have to be written in order, or the wide one swallows the narrow one."
+  },
+  {
+   "id": "pr-l03-q21",
+   "station": 2,
+   "marks": 1,
+   "q": "Change the program so a mark of exactly 50 displays pass.",
+   "kind": "change",
+   "brief": [
+    "Change only one comparison sign.",
+    "Do not change any number or any word.",
+    "Display exactly: pass"
+   ],
+   "hint": {
+    "think": "50 has to count as a pass, so the sign in the middle branch must allow equal.",
+    "walk": [
+     "fail came out, so the middle question was False.",
+     "50 is not greater than 50.",
+     "Only the middle branch needs changing."
+    ]
+   },
+   "starter": "mark = 50\nif mark >= 70:\n    print(\"merit\")\nelif mark > 50:\n    print(\"pass\")\nelse:\n    print(\"fail\")\n",
+   "fixed": true,
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "pass"
+     ],
+     "why": "fail came out, so the middle question was False. 50 is not greater than 50, so > has to become the sign that also allows equal."
+    }
+   ],
+   "fb": "Every band in a chain has a boundary, and every boundary has to be checked for whether the edge value belongs in or out."
+  },
+  {
+   "id": "pr-l03-q22",
+   "station": 2,
+   "marks": 2,
+   "q": "Finish the program so it displays high, middle or low.",
+   "kind": "complete",
+   "brief": [
+    "The user types in one whole number.",
+    "Replace ____ with one word.",
+    "A number of exactly 50 displays low.",
+    "Display exactly one word: high, middle or low"
+   ],
+   "hint": {
+    "think": "A second question is being asked, but only when the first one was False.",
+    "walk": [
+     "The word you need is short for else if.",
+     "You met it in the Try it at the start of this station.",
+     "The rest of the line is already written for you."
+    ],
+    "diagram": "pyif"
+   },
+   "starter": "n = int(input())\nif n > 100:\n    print(\"high\")\n____ n > 50:\n    print(\"middle\")\nelse:\n    print(\"low\")\n",
+   "tests": [
+    {
+     "in": [
+      "250"
+     ],
+     "out": [
+      "high"
+     ],
+     "why": "Replace the ____ with the word that asks a further question. It is short for else if."
+    },
+    {
+     "in": [
+      "60"
+     ],
+     "out": [
+      "middle"
+     ],
+     "why": "The first question was False, so the second one is asked."
+    },
+    {
+     "in": [
+      "50"
+     ],
+     "out": [
+      "low"
+     ],
+     "why": "This test sits exactly on the boundary. 50 is not more than 50, so nothing matches and the else runs."
+    },
+    {
+     "in": [
+      "101"
+     ],
+     "out": [
+      "high"
+     ],
+     "why": "Just one past 100, so the first question is True and the rest of the chain is skipped."
+    }
+   ],
+   "fb": "elif means ask this only if everything above was False. That is why exactly one branch ever runs."
+  },
+  {
+   "id": "pr-l03-q23",
+   "station": 2,
+   "marks": 2,
+   "q": "Ask the user for a whole number. Display positive when it is above 0. Display negative when it is below 0. Display zero when it is exactly 0.",
+   "brief": [
+    "The user types in one whole number.",
+    "One line of output only.",
+    "Display exactly one word: positive, negative or zero"
+   ],
+   "hint": {
+    "think": "Three answers need an if, an elif and an else.",
+    "syntax": [
+     "if ... :",
+     "elif ... :",
+     "else:"
+    ],
+    "diagram": "pyif"
+   },
    "starter": "# Read the number and describe it in one word\n",
    "tests": [
     {
@@ -563,7 +1100,7 @@
      "out": [
       "negative"
      ],
-     "why": "Below 0. positive here means the number was tested rather than compared with 0."
+     "why": "Below 0. positive here means the number was never compared with 0."
     },
     {
      "in": [
@@ -572,7 +1109,7 @@
      "out": [
       "zero"
      ],
-     "why": "Exactly 0 is the case most often forgotten: it belongs to neither > 0 nor < 0."
+     "why": "This test sits exactly on the boundary. 0 belongs to neither > 0 nor < 0, which is why the else is needed."
     },
     {
      "in": [
@@ -581,22 +1118,22 @@
      "out": [
       "negative"
      ],
-     "why": "A large negative value still prints one word only, so the branches must not run one after another."
+     "why": "A large negative value still displays one word only, so the branches must not run one after another."
     }
    ],
-   "fb": "elif means ask this only if the question above was False, which is why just one of the three words prints."
+   "fb": "Two questions and an else divide every number into three groups, and 0 is the one most often forgotten."
   },
   {
-   "id": "pr-l03-q11",
+   "id": "pr-l03-q24",
    "station": 2,
-   "marks": 2,
+   "marks": 3,
    "q": "Ask the user for a whole number. Display small when it is 10 or less. Display medium when it is more than 10 but 100 or less. Display large when it is more than 100.",
    "teach": {
-    "say": "Each elif only needs the top of its own band, because everything smaller was already dealt with above it.",
+    "say": "Each elif only needs the top of its own band, because every smaller value was already caught by a branch above it.",
     "code": [
      "n = 50",
-     "print(n <= 10)",
-     "print(n <= 100)"
+     "print(n <= 20)",
+     "print(n <= 80)"
     ],
     "out": [
      "False",
@@ -605,10 +1142,20 @@
    },
    "brief": [
     "The user types in one whole number.",
-    "Print exactly one word: small, medium or large"
+    "Write the bands in order, smallest first.",
+    "One line of output only.",
+    "Display exactly one word: small, medium or large"
    ],
-   "hint": "pyif",
-   "starter": "# Read the number and print its band\n",
+   "hint": {
+    "think": "Start with the lowest band. Anything that is not in it has already passed 10.",
+    "syntax": [
+     "if n <= ...:",
+     "elif n <= ...:",
+     "else:"
+    ],
+    "diagram": "pyif"
+   },
+   "starter": "# Read the number and display its band\n",
    "tests": [
     {
      "in": [
@@ -617,7 +1164,7 @@
      "out": [
       "small"
      ],
-     "why": "Inside the lowest band."
+     "why": "Comfortably inside the lowest band."
     },
     {
      "in": [
@@ -626,7 +1173,7 @@
      "out": [
       "small"
      ],
-     "why": "Exactly 10 belongs to the first band, because it says 10 or less."
+     "why": "This test sits exactly on the boundary. 10 or less includes 10 itself."
     },
     {
      "in": [
@@ -644,7 +1191,7 @@
      "out": [
       "medium"
      ],
-     "why": "The top of a band belongs to it. large here means < 100 was used instead of <= 100."
+     "why": "This test sits exactly on the boundary. large here means < 100 was used where <= 100 was wanted."
     },
     {
      "in": [
@@ -653,94 +1200,92 @@
      "out": [
       "large"
      ],
-     "why": "Anything past 100 falls through to the else."
+     "why": "Past every band, so nothing matches and the else runs."
     }
    ],
-   "fb": "Write the bands in order from the smallest upwards, and each elif only needs the top of its own band."
+   "fb": "Order the bands from the smallest upwards and each elif only needs one comparison, not two."
   },
   {
-   "id": "pr-l03-q12",
+   "id": "pr-l03-q25",
    "station": 2,
-   "marks": 3,
-   "q": "Ask the user for a whole number. Display A when it is 70 or more. Display B when it is 50 or more. Display C when it is 30 or more. Display D for anything less.",
+   "marks": 2,
+   "q": "This program should display one word only, but a large number makes it display two. Find the mistake and put it right.",
+   "kind": "debug",
    "teach": {
-    "say": "In a chain written from the largest downwards, each test only needs its own lower edge, because anything bigger was caught above it.",
+    "say": "Two separate if statements are two separate decisions, so both can run. One chain of if and elif is a single decision, so only one branch can run.",
     "code": [
-     "n = 55",
-     "if n >= 70:",
-     "    print(\"X\")",
-     "elif n >= 50:",
-     "    print(\"Y\")",
-     "else:",
-     "    print(\"Z\")"
+     "n = 9",
+     "if n > 5:",
+     "    print(\"a\")",
+     "elif n > 1:",
+     "    print(\"b\")"
     ],
     "out": [
-     "Y"
+     "a"
     ]
    },
    "brief": [
+    "Press Run first, then type 250 and look at the output.",
     "The user types in one whole number.",
-    "Check the rules in that order.",
-    "Print only the letter of the first rule that matches."
+    "One line of output only.",
+    "Change one word, and nothing else."
    ],
-   "hint": "pyif",
-   "starter": "# Read the number and print one letter\n",
+   "hint": {
+    "think": "The second question is being asked even when the first was already True.",
+    "walk": [
+     "Two separate if statements are two separate decisions.",
+     "One chain of questions is a single decision.",
+     "One word joins the second question onto the first."
+    ]
+   },
+   "starter": "n = int(input())\nif n > 100:\n    print(\"high\")\nif n > 50:\n    print(\"middle\")\nelse:\n    print(\"low\")\n",
    "tests": [
     {
      "in": [
-      "62"
+      "250"
      ],
      "out": [
-      "B"
+      "high"
      ],
-     "why": "Past 50 but not 70, so the second rule is the first one that matches."
+     "why": "Two words came out. The second if is a new decision, so it is asked even when the first one was True."
     },
     {
      "in": [
-      "84"
+      "101"
      ],
      "out": [
-      "A"
+      "high"
      ],
-     "why": "Past 70, so the chain stops at the very first test."
+     "why": "Just past 100, and still only one word belongs here."
     },
     {
      "in": [
-      "70"
+      "60"
      ],
      "out": [
-      "A"
+      "middle"
      ],
-     "why": "70 or more includes 70 itself. B here means > was used instead of >= ."
+     "why": "Only the second question is True, so one word is right either way."
     },
     {
      "in": [
-      "30"
+      "50"
      ],
      "out": [
-      "C"
+      "low"
      ],
-     "why": "Exactly 30 is 30 or more, so it is a C and not a D."
-    },
-    {
-     "in": [
-      "12"
-     ],
-     "out": [
-      "D"
-     ],
-     "why": "Below every band, so nothing matches and the else runs."
+     "why": "This test sits exactly on the boundary. 50 is not more than 50, so the else runs."
     }
    ],
-   "fb": "An earlier branch wins even when a later one would also be True, so the order of the chain is part of the answer."
+   "fb": "Changing the second if into an elif joins the two questions into one decision, and one decision gives one answer."
   },
   {
-   "id": "pr-l03-q13",
+   "id": "pr-l03-q26",
    "station": 2,
    "marks": 3,
    "q": "Ask the user for a word. Display 1 when the word is red. Display 2 when it is amber. Display 3 when it is green. Display 0 for any other word.",
    "teach": {
-    "say": "A chain can compare a word at every step, and the else at the end catches anything that matched none of them.",
+    "say": "A chain can compare a word at every step, and the else at the end is what makes an unexpected word safe.",
     "code": [
      "w = \"north\"",
      "if w == \"east\":",
@@ -756,10 +1301,18 @@
    },
    "brief": [
     "The user types in one word.",
-    "Print the number only, with no other text."
+    "The three words are written into your program.",
+    "Display the number only, with no other text."
    ],
-   "hint": "pyif",
-   "starter": "# Read the word and print its number\n",
+   "hint": {
+    "think": "Each branch compares the variable with a different fixed word.",
+    "syntax": [
+     "if w == \"...\":",
+     "elif w == \"...\":"
+    ],
+    "diagram": "pyif"
+   },
+   "starter": "# Read the word and display its number\n",
    "tests": [
     {
      "in": [
@@ -768,7 +1321,7 @@
      "out": [
       "2"
      ],
-     "why": "The second word in the chain, so the elif above it was asked first and was False."
+     "why": "The second word in the chain, so the question above it was asked first and was False."
     },
     {
      "in": [
@@ -786,7 +1339,7 @@
      "out": [
       "3"
      ],
-     "why": "The last of the three named words, so two tests are asked before it."
+     "why": "The last of the three named words, so two questions are asked before it."
     },
     {
      "in": [
@@ -798,15 +1351,92 @@
      "why": "A word that matches none of the three falls through to the else."
     }
    ],
-   "fb": "Each elif asks about a different word, and the else is what makes an unexpected word safe."
+   "fb": "A chain of word comparisons is how a program turns a menu choice into an action."
   },
   {
-   "id": "pr-l03-q14",
+   "id": "pr-l03-q27",
+   "station": 2,
+   "marks": 3,
+   "q": "Ask the user for a whole number of marks. Display A when it is 70 or more. Display B when it is 50 or more. Display C when it is 30 or more. Display D for anything less.",
+   "brief": [
+    "The user types in one whole number.",
+    "Check the rules in the order they are given.",
+    "Write the bands in order, largest first.",
+    "Display exactly one letter: A, B, C or D"
+   ],
+   "hint": {
+    "think": "Written from the largest downwards, each test only needs its own lower edge.",
+    "syntax": [
+     "if n >= ...:",
+     "elif n >= ...:",
+     "else:"
+    ],
+    "walk": [
+     "Read the marks and cast them.",
+     "Ask about the highest band first.",
+     "Add an elif for each band below it.",
+     "Finish with an else for everything left."
+    ]
+   },
+   "starter": "# Read the marks and display one letter\n",
+   "opt": true,
+   "tests": [
+    {
+     "in": [
+      "62"
+     ],
+     "out": [
+      "B"
+     ],
+     "why": "Past 50 but not 70, so the second rule is the first one that matches."
+    },
+    {
+     "in": [
+      "84"
+     ],
+     "out": [
+      "A"
+     ],
+     "why": "Past 70, so the chain stops at the very first question."
+    },
+    {
+     "in": [
+      "70"
+     ],
+     "out": [
+      "A"
+     ],
+     "why": "This test sits exactly on the boundary. 70 or more includes 70, so B here means > was used instead of >= ."
+    },
+    {
+     "in": [
+      "30"
+     ],
+     "out": [
+      "C"
+     ],
+     "why": "This test sits exactly on the boundary. Exactly 30 is 30 or more, so it is a C and not a D."
+    },
+    {
+     "in": [
+      "12"
+     ],
+     "out": [
+      "D"
+     ],
+     "why": "Below every band, so nothing matches and the else runs."
+    }
+   ],
+   "fb": "An earlier branch wins even when a later one would also be True, so the order of the chain is part of the answer."
+  },
+  {
+   "id": "pr-l03-q28",
    "station": 3,
-   "marks": 2,
-   "q": "Ask the user for a whole number. Then ask for a second whole number. Display True when both of them are above 0. Display False when they are not.",
+   "kind": "try",
+   "marks": 1,
+   "q": "Press Run. Each line joins two comparisons with the word and.",
    "teach": {
-    "say": "and is True only when both sides are True, and each side needs its own complete comparison.",
+    "say": "and joins two comparisons into one. The whole thing is True only when both sides are True. Each side still needs its own full comparison, with a value on each end.",
     "code": [
      "a = 5",
      "b = 2",
@@ -819,74 +1449,182 @@
     ]
    },
    "brief": [
-    "The user types in two whole numbers, one on each line."
+    "Nothing is marked on this one.",
+    "Each side of the word and is a complete comparison of its own.",
+    "In OCR exam papers these words are written in capitals as AND, OR and NOT."
    ],
-   "hint": "pyif",
-   "starter": "# Read two numbers and print the joined comparison\n",
+   "starter": "a = 5\nb = 2\nprint(a > 0 and b > 0)\nprint(a > 0 and b > 9)\n",
+   "lines": [
+    "Remember 5 under the name a.",
+    "Remember 2 under the name b.",
+    "Both sides are True, so and gives True.",
+    "The right-hand side is False, so and gives False."
+   ],
+   "fb": "and is strict. One False side is enough to make the whole thing False."
+  },
+  {
+   "id": "pr-l03-q29",
+   "station": 3,
+   "kind": "predict",
+   "marks": 1,
+   "q": "What will this program display?",
+   "code": [
+    "n = 4",
+    "print(n == 3 or n == 4)",
+    "print(n == 3 or n == 7)"
+   ],
+   "a": [
+    "True\nFalse",
+    "False\nTrue",
+    "True\nTrue"
+   ],
+   "brief": [
+    "Read every line before you choose."
+   ],
+   "teach": {
+    "say": "or is True when at least one of its two sides is True. Each side still needs a complete comparison, so n == 3 or n == 4 and never n == 3 or 4."
+   },
+   "fb": "or needs only one True side. On the second line neither side is True, so the whole thing is False."
+  },
+  {
+   "id": "pr-l03-q30",
+   "station": 3,
+   "kind": "predict",
+   "marks": 1,
+   "q": "What will this program display?",
+   "code": [
+    "w = \"go\"",
+    "print(w == \"stop\")",
+    "print(not w == \"stop\")"
+   ],
+   "a": [
+    "False\nTrue",
+    "True\nFalse",
+    "False\nFalse"
+   ],
+   "brief": [
+    "Read every line before you choose."
+   ],
+   "teach": {
+    "say": "not turns True into False and False into True. It goes in front of a comparison and gives you its opposite."
+   },
+   "fb": "not flips the answer over. The word was not stop, so the plain comparison is False and the not version is True."
+  },
+  {
+   "id": "pr-l03-q31",
+   "station": 3,
+   "marks": 1,
+   "q": "Change the program so both numbers have to be above 3.",
+   "kind": "change",
+   "brief": [
+    "Change only one word.",
+    "Do not change any number or any message.",
+    "b is exactly 3, and 3 is not above 3.",
+    "Display exactly: not both"
+   ],
+   "hint": {
+    "think": "At the moment one True side is enough. You want to insist on two.",
+    "walk": [
+     "or is happy with one True side.",
+     "There is a second joining word that is not.",
+     "Only that one word changes."
+    ]
+   },
+   "starter": "a = 5\nb = 3\nif a > 3 or b > 3:\n    print(\"both big\")\nelse:\n    print(\"not both\")\n",
+   "fixed": true,
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "not both"
+     ],
+     "why": "both big came out, because or is satisfied by one True side. b sits exactly on the boundary: 3 is not above 3, so its side is False. Swap the or for the word that insists on both sides."
+    }
+   ],
+   "fb": "and and or are a single word apart and give opposite answers most of the time, so read the task carefully before choosing."
+  },
+  {
+   "id": "pr-l03-q32",
+   "station": 3,
+   "marks": 2,
+   "q": "Finish the program so a rider is allowed only when they are 12 or older and 140 or taller.",
+   "kind": "complete",
+   "brief": [
+    "The user types in two lines: an age, then a height in centimetres.",
+    "Replace ____ with one word.",
+    "An age of exactly 12 and a height of exactly 140 are both allowed.",
+    "Display exactly one of: allowed or not allowed"
+   ],
+   "hint": {
+    "think": "Both conditions have to hold at the same time.",
+    "walk": [
+     "Two rules are given, and neither one may be broken.",
+     "One joining word insists on both sides being True.",
+     "The two comparisons are already written for you."
+    ],
+    "diagram": "pyif"
+   },
+   "starter": "age = int(input())\nheight = int(input())\nif age >= 12 ____ height >= 140:\n    print(\"allowed\")\nelse:\n    print(\"not allowed\")\n",
    "tests": [
     {
      "in": [
-      "7",
-      "3"
+      "14",
+      "150"
      ],
      "out": [
-      "True"
+      "allowed"
      ],
-     "why": "Both sides are True, which is what and requires."
+     "why": "Both conditions hold, so the word you need is the strict one."
     },
     {
      "in": [
-      "7",
-      "-3"
+      "12",
+      "140"
      ],
      "out": [
-      "False"
+      "allowed"
      ],
-     "why": "One side fails, and with and that is enough. True here means or was used."
+     "why": "This test sits exactly on the boundary. 12 or older includes 12 itself, and 140 or taller includes 140 itself, so a rider on both edges is still allowed."
     },
     {
      "in": [
-      "0",
-      "3"
+      "11",
+      "150"
      ],
      "out": [
-      "False"
+      "not allowed"
      ],
-     "why": "Exactly 0 is not above 0, which is where > and >= get mixed up."
+     "why": "Tall enough but a year too young, and both have to hold."
     },
     {
      "in": [
-      "-1",
-      "-1"
+      "14",
+      "139"
      ],
      "out": [
-      "False"
+      "not allowed"
      ],
-     "why": "Both sides fail, so there is nothing to make the and True."
+     "why": "Old enough but one centimetre short, so the answer is still no."
     }
    ],
-   "fb": "and needs both sides True, and each side is a comparison in its own right: a > 0 and b > 0."
+   "fb": "and is the word for two rules that both have to hold. Each side keeps its own full comparison."
   },
   {
-   "id": "pr-l03-q15",
+   "id": "pr-l03-q33",
    "station": 3,
    "marks": 2,
-   "q": "Ask the user for a whole number. Display special when it is 3 or 7. Display ordinary when it is not.",
-   "teach": {
-    "say": "or is True when either side is True. Each side still needs its own full comparison: n == 3 or n == 7.",
-    "code": [
-     "n = 7",
-     "print(n == 3 or n == 7)"
-    ],
-    "out": [
-     "True"
-    ]
-   },
+   "q": "Ask the user for a whole number. Display special when it is 3 or when it is 7. Display ordinary when it is neither.",
    "brief": [
     "The user types in one whole number.",
-    "Print exactly one word: special or ordinary"
+    "The 3 and the 7 are written into your program.",
+    "Write a full comparison on each side of the or.",
+    "Display exactly one word: special or ordinary"
    ],
-   "hint": "pyif",
+   "hint": {
+    "think": "Two values are acceptable, and either one of them is enough.",
+    "syntax": "if n == ... or n == ...:",
+    "diagram": "pyif"
+   },
    "starter": "# Read the number and decide whether it is one of the two\n",
    "tests": [
     {
@@ -896,7 +1634,7 @@
      "out": [
       "special"
      ],
-     "why": "The first allowed value, so the left half of the or is True."
+     "why": "The first allowed value, so the left side of the or is True."
     },
     {
      "in": [
@@ -914,7 +1652,7 @@
      "out": [
       "ordinary"
      ],
-     "why": "Neither value matches. special here usually means it was written n == 3 or 7, which Python always treats as True."
+     "why": "Neither value matches. special here usually means it was written n == 3 or 7, which Python treats as True for every number."
     },
     {
      "in": [
@@ -926,84 +1664,145 @@
      "why": "A 0 matches neither value, so the else runs."
     }
    ],
-   "fb": "Both sides of an or need a full comparison, because n == 3 or 7 is True whatever n holds."
+   "fb": "Both sides of an or need a full comparison. n == 3 or 7 is a trap, because it is True whatever n holds."
   },
   {
-   "id": "pr-l03-q16",
+   "id": "pr-l03-q34",
    "station": 3,
    "marks": 2,
-   "q": "Ask the user for a word. Display True when the word is not stop. Display False when it is.",
-   "teach": {
-    "say": "not flips True into False and False into True, so it turns a test into its opposite.",
-    "code": [
-     "w = \"go\"",
-     "print(w == \"go\")",
-     "print(not w == \"go\")"
-    ],
-    "out": [
-     "True",
-     "False"
-    ]
-   },
+   "q": "Ask the user for a word. Display allowed when the word is not locked. Display blocked when it is.",
    "brief": [
-    "The user types in one word."
+    "The user types in one word.",
+    "The word locked is written into your program.",
+    "Use the word not in your comparison.",
+    "Display exactly one word: allowed or blocked"
    ],
-   "hint": "pyif",
-   "starter": "# Read the word and print the opposite of the comparison\n",
+   "hint": {
+    "think": "Write the plain comparison first, then put not in front of it.",
+    "syntax": "if not w == \"...\":"
+   },
+   "starter": "# Read the word and display allowed or blocked\n",
    "tests": [
     {
      "in": [
       "go"
      ],
      "out": [
-      "True"
+      "allowed"
      ],
-     "why": "Not the word stop, so the test is True once not has flipped it."
+     "why": "Not the word locked, so not flips the False into True."
     },
     {
      "in": [
-      "stop"
+      "locked"
      ],
      "out": [
-      "False"
+      "blocked"
      ],
-     "why": "This is the one word that gives False. True here means the not is missing."
+     "why": "This is the one word that is blocked. allowed here means the not is missing."
     },
     {
      "in": [
-      "stopped"
+      "unlocked"
      ],
      "out": [
-      "True"
+      "allowed"
      ],
-     "why": "A longer word is not the word stop, so the answer is still True."
+     "why": "A longer word is not the word locked, so it is still allowed."
     }
    ],
-   "fb": "not turns a comparison into its opposite, which is often clearer than writing the test the other way round."
+   "fb": "not turns a comparison into its opposite, which is often easier to read than writing the test the other way round."
   },
   {
-   "id": "pr-l03-q17",
+   "id": "pr-l03-q35",
    "station": 3,
-   "marks": 3,
-   "q": "Ask the user for a whole number. Then ask for a word. Display open when the number is 3 or 7 and the word is not locked. Otherwise display refused.",
+   "marks": 2,
+   "q": "This program should display special for 3 and for 7 only, but it says special for every number. Find the mistake and put it right.",
+   "kind": "debug",
    "teach": {
-    "say": "and is worked out before or, so brackets round the or are what stop the and from swallowing half of it.",
+    "say": "Each side of an or has to be a comparison in its own right. A bare number on one side is not a question, and Python treats any number other than 0 as True.",
     "code": [
-     "n = 7",
-     "w = \"clear\"",
-     "print((n == 3 or n == 7) and not w == \"locked\")"
+     "n = 5",
+     "print(n == 2 or n == 9)",
+     "# and not:  n == 2 or 9"
     ],
     "out": [
-     "True"
+     "False"
     ]
    },
    "brief": [
-    "The user types in two lines: a whole number, then a word.",
-    "Put brackets round the or so that the and cannot swallow it.",
-    "Print exactly one word: open or refused"
+    "Press Run first, then type 5 and look at the output.",
+    "The user types in one whole number.",
+    "Do not change either number.",
+    "Display exactly one word: special or ordinary"
    ],
-   "hint": "pyif",
+   "hint": {
+    "think": "Read the right-hand side of the or on its own. Is it asking a question?",
+    "syntax": "n == ... or n == ..."
+   },
+   "starter": "n = int(input())\nif n == 3 or 7:\n    print(\"special\")\nelse:\n    print(\"ordinary\")\n",
+   "tests": [
+    {
+     "in": [
+      "3"
+     ],
+     "out": [
+      "special"
+     ],
+     "why": "This one was already right, because the left side of the or is True."
+    },
+    {
+     "in": [
+      "7"
+     ],
+     "out": [
+      "special"
+     ],
+     "why": "Still right, but for the wrong reason: it is the bare 7 making it True, not a comparison."
+    },
+    {
+     "in": [
+      "5"
+     ],
+     "out": [
+      "ordinary"
+     ],
+     "why": "special came out. The bare 7 on the right of the or is True on its own, so the whole thing is always True."
+    },
+    {
+     "in": [
+      "0"
+     ],
+     "out": [
+      "ordinary"
+     ],
+     "why": "The right-hand side needs its own full comparison with n."
+    }
+   ],
+   "fb": "This is the hardest mistake in the lesson to spot, because Python gives no error at all. It just always says yes."
+  },
+  {
+   "id": "pr-l03-q36",
+   "station": 3,
+   "marks": 3,
+   "q": "Ask the user for a whole number. Then ask for a word. Display open when the number is 3 or 7 and the word is not locked. Display refused for anything else.",
+   "brief": [
+    "The user types in two lines: a whole number, then a word.",
+    "Put brackets round the or so the and cannot split it.",
+    "Display exactly one word: open or refused"
+   ],
+   "hint": {
+    "think": "Two rules both have to hold. The first rule is itself a choice between two numbers.",
+    "syntax": "(... or ...) and not ...",
+    "walk": [
+     "Read the number and the word.",
+     "Write the or for the two allowed numbers.",
+     "Put brackets round it.",
+     "Join it to the not comparison with and."
+    ]
+   },
    "starter": "# Read the number and the word, then decide\n",
+   "opt": true,
    "tests": [
     {
      "in": [
@@ -1047,24 +1846,35 @@
     },
     {
      "in": [
+      "3",
+      "locked"
+     ],
+     "out": [
+      "refused"
+     ],
+     "why": "This is the test the brackets are for. open came out because the and grabbed only the 7. Without brackets Python reads the line as n == 3 or (n == 7 and the word test), so a 3 gets through whatever the word says."
+    },
+    {
+     "in": [
       "5",
       "locked"
      ],
      "out": [
       "refused"
      ],
-     "why": "Both halves fail, so nothing can let this one through."
+     "why": "Both rules fail, so nothing can let this one through."
     }
    ],
-   "fb": "and is worked out before or, so an or that has to be tested as one thing needs brackets round it."
+   "fb": "and is worked out before or. An or that has to be judged as one thing needs brackets round it."
   },
   {
-   "id": "pr-l03-q18",
+   "id": "pr-l03-q37",
    "station": 4,
-   "marks": 3,
-   "q": "Ask the user for a word. Then ask for a whole number. When the word is check and the number is above 50, display high. When the word is check and the number is 50 or less, display low. When the word is anything else, display skipped.",
+   "kind": "try",
+   "marks": 1,
+   "q": "Press Run. Then change the word check to anything else and Run again.",
    "teach": {
-    "say": "An if inside another if is only reached when the outer one was True, so the outer question decides whether the inner one is asked at all.",
+    "say": "An if can go inside another if. The inner one is only reached when the outer one was True. Everything inside the inner if is indented a second time, so eight spaces instead of four.",
     "code": [
      "w = \"check\"",
      "n = 80",
@@ -1081,12 +1891,170 @@
     ]
    },
    "brief": [
-    "The user types in two lines: a word, then a whole number.",
-    "One line of output only.",
-    "Print exactly one word: high, low or skipped"
+    "Nothing is marked on this one.",
+    "Count the spaces: the inner if is four in, and its lines are eight in.",
+    "With any other word the number is never looked at."
    ],
-   "hint": "pyif",
-   "starter": "# Read the word and the number, then print one word\n",
+   "starter": "w = \"check\"\nn = 80\nif w == \"check\":\n    if n > 50:\n        print(\"over\")\n    else:\n        print(\"under\")\nelse:\n    print(\"ignored\")\n",
+   "lines": [
+    "Remember the word check under the name w.",
+    "Remember the number 80 under the name n.",
+    "Ask about the word first. It matches, so go inside.",
+    "Inside, ask about the number. This line is four spaces in.",
+    "This line is eight spaces in, so it belongs to the inner if.",
+    "The inner else lines up with the inner if, four spaces in.",
+    "This line is eight spaces in too.",
+    "The outer else lines up with the outer if, no spaces at all.",
+    "This line is four spaces in, so it belongs to the outer else."
+   ],
+   "fb": "The outer question decides whether the inner question is asked at all."
+  },
+  {
+   "id": "pr-l03-q38",
+   "station": 4,
+   "kind": "predict",
+   "marks": 1,
+   "q": "What will this program display?",
+   "code": [
+    "w = \"skip\"",
+    "n = 80",
+    "if w == \"check\":",
+    "    if n > 50:",
+    "        print(\"over\")",
+    "else:",
+    "    print(\"ignored\")"
+   ],
+   "a": [
+    "ignored",
+    "over",
+    "over\nignored"
+   ],
+   "brief": [
+    "Read every line before you choose."
+   ],
+   "teach": {
+    "say": "When the outer if is False, every line inside it is skipped, however many questions are in there."
+   },
+   "fb": "The word is not check, so the whole inner block is skipped and the number is never compared with anything."
+  },
+  {
+   "id": "pr-l03-q39",
+   "station": 4,
+   "marks": 1,
+   "q": "Change the program so a number of exactly 50 counts as high.",
+   "kind": "change",
+   "brief": [
+    "Change only one comparison sign.",
+    "Do not change any number or any word.",
+    "Display exactly: high"
+   ],
+   "hint": {
+    "think": "The sign to change is in the inner if, and 50 has to count.",
+    "walk": [
+     "The outer if is already right.",
+     "50 is not greater than 50.",
+     "One sign is True for greater and for equal."
+    ]
+   },
+   "starter": "w = \"check\"\nn = 50\nif w == \"check\":\n    if n > 50:\n        print(\"high\")\n    else:\n        print(\"low\")\nelse:\n    print(\"skipped\")\n",
+   "fixed": true,
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "high"
+     ],
+     "why": "low came out, so the inner question was False. 50 is not greater than 50, so > has to become the sign that also allows equal."
+    }
+   ],
+   "fb": "A boundary inside a nested if is exactly as easy to get wrong as one on its own, and twice as easy to overlook."
+  },
+  {
+   "id": "pr-l03-q40",
+   "station": 4,
+   "marks": 2,
+   "q": "Finish the program so it displays not enough when the word is check and the number is under 10.",
+   "kind": "complete",
+   "brief": [
+    "The user types in two lines: a word, then a whole number.",
+    "Replace ____ with one line.",
+    "The inner else lines up with the inner if, four spaces in.",
+    "Display exactly one of: enough, not enough or skipped"
+   ],
+   "hint": {
+    "think": "A branch is missing from the inner decision, and it ends with a colon.",
+    "walk": [
+     "The inner if is four spaces in.",
+     "The missing line answers the inner question, so it lines up with it.",
+     "It ends with a colon, like every line that opens a block."
+    ],
+    "diagram": "pyif"
+   },
+   "starter": "word = input()\nn = int(input())\nif word == \"check\":\n    if n >= 10:\n        print(\"enough\")\n    ____\n        print(\"not enough\")\nelse:\n    print(\"skipped\")\n",
+   "tests": [
+    {
+     "in": [
+      "check",
+      "20"
+     ],
+     "out": [
+      "enough"
+     ],
+     "why": "Replace the ____ with the line that opens the other inner branch, indented four spaces."
+    },
+    {
+     "in": [
+      "check",
+      "10"
+     ],
+     "out": [
+      "enough"
+     ],
+     "why": "This test sits exactly on the boundary. 10 or more includes 10 itself."
+    },
+    {
+     "in": [
+      "check",
+      "4"
+     ],
+     "out": [
+      "not enough"
+     ],
+     "why": "The inner else runs while the outer if is still True."
+    },
+    {
+     "in": [
+      "other",
+      "20"
+     ],
+     "out": [
+      "skipped"
+     ],
+     "why": "The outer question is False, so the number is never looked at."
+    }
+   ],
+   "fb": "The indent says which if an else belongs to. Four spaces in, it answers the inner question."
+  },
+  {
+   "id": "pr-l03-q41",
+   "station": 4,
+   "marks": 3,
+   "q": "Ask the user for a word. Then ask for a whole number. When the word is check and the number is above 50, display high. When the word is check and the number is 50 or less, display low. When the word is anything else, display skipped.",
+   "brief": [
+    "The user types in two lines: a word, then a whole number.",
+    "Ask about the word first, then about the number.",
+    "One line of output only.",
+    "Display exactly one word: high, low or skipped"
+   ],
+   "hint": {
+    "think": "Two levels. The outer decision is about the word, the inner one about the number.",
+    "syntax": [
+     "if word == \"...\":",
+     "    if n > ...:"
+    ],
+    "diagram": "pyif"
+   },
+   "starter": "# Read the word and the number, then display one word\n",
    "tests": [
     {
      "in": [
@@ -1096,7 +2064,7 @@
      "out": [
       "high"
      ],
-     "why": "The outer if and the inner if are both True."
+     "why": "The outer question and the inner question are both True."
     },
     {
      "in": [
@@ -1106,7 +2074,7 @@
      "out": [
       "low"
      ],
-     "why": "Exactly 50 is not above 50. high here means >= was used."
+     "why": "This test sits exactly on the boundary. Exactly 50 is not above 50, so high here means >= was used."
     },
     {
      "in": [
@@ -1126,16 +2094,16 @@
      "out": [
       "skipped"
      ],
-     "why": "The outer test fails, so the number is never looked at. high here means the word is not being checked."
+     "why": "The outer question is False, so the number is never looked at. high here means the word is not being checked."
     }
    ],
-   "fb": "The outer if decides whether the inner question is asked at all, which is why skipped needs no number at all."
+   "fb": "Ask the question that decides whether the other question matters, and put that one on the outside."
   },
   {
-   "id": "pr-l03-q19",
+   "id": "pr-l03-q42",
    "station": 4,
    "marks": 3,
-   "q": "Ask the user for a whole number. Then ask for a second whole number. When both are above 0, display both. When the first is above 0 and the second is not, display first only. When the first is not above 0 and the second is above 0, display second only. When neither is above 0, display neither.",
+   "q": "Ask the user for a whole number. Then ask for a second whole number. Display both when both are above 0. Display first only when only the first is above 0. Display second only when only the second is above 0. Display neither when neither is above 0.",
    "teach": {
     "say": "Each branch of the outer if can hold an if of its own, which turns two questions into four possible answers.",
     "code": [
@@ -1154,11 +2122,25 @@
     ]
    },
    "brief": [
-    "The user types in two whole numbers, one on each line.",
+    "The user types in two lines, one whole number on each.",
     "One line of output only.",
-    "Print exactly one of: both, first only, second only, neither"
+    "Display exactly one of: both, first only, second only, neither"
    ],
-   "hint": "pyif",
+   "hint": {
+    "think": "The outer decision is about the first number. Inside each branch, ask about the second.",
+    "syntax": [
+     "if ... :",
+     "    if ... :",
+     "else:",
+     "    if ... :"
+    ],
+    "walk": [
+     "Read both numbers and cast them.",
+     "Ask about the first number.",
+     "Inside that branch, ask about the second number.",
+     "Do the same inside the else."
+    ]
+   },
    "starter": "# Read two numbers and say which of them are above 0\n",
    "tests": [
     {
@@ -1169,7 +2151,7 @@
      "out": [
       "both"
      ],
-     "why": "Both numbers are above 0, so the inner if of the outer if runs."
+     "why": "Both numbers are above 0, so the inner if inside the outer if runs."
     },
     {
      "in": [
@@ -1199,7 +2181,7 @@
      "out": [
       "neither"
      ],
-     "why": "Both tests fail, which is the else inside the else."
+     "why": "Both questions fail, which is the else inside the else."
     },
     {
      "in": [
@@ -1209,36 +2191,179 @@
      "out": [
       "second only"
      ],
-     "why": "Exactly 0 is not above 0, so the first number counts as failing its test."
+     "why": "This test sits exactly on the boundary. 0 is not above 0, so the first number counts as failing."
     }
    ],
-   "fb": "Two questions asked one inside the other give four answers, and each one belongs in its own branch."
+   "fb": "Two questions asked one inside the other give four answers, and each answer belongs in its own branch."
   },
   {
-   "id": "pr-l03-q20",
+   "id": "pr-l03-q43",
    "station": 4,
-   "marks": 3,
-   "q": "Ask the user for a whole number. Then ask for a second whole number. Then ask for a third whole number. Work out which of them is the largest. Display [largest] and nothing else.",
+   "marks": 2,
+   "q": "This program should display high, low or skipped. One line is not indented far enough. Find it and put it right.",
+   "kind": "debug",
    "teach": {
-    "say": "A decision inside a decision can compare values rather than print words: the first comparison narrows three down to two, and the second finishes the job.",
+    "say": "The lines inside an inner if are indented twice, so eight spaces. Four spaces is not enough, and Python stops and says it expected an indented block.",
     "code": [
-     "a = 4",
-     "b = 9",
-     "if a > b:",
-     "    print(a)",
-     "else:",
-     "    print(b)"
+     "if 4 > 2:",
+     "    if 9 > 5:",
+     "        print(\"inner\")"
     ],
     "out": [
-     "9"
+     "inner"
     ]
    },
    "brief": [
-    "The user types in three whole numbers, one on each line.",
-    "When two of them are equal and both the largest, print that value."
+    "Press Run first and read the error message.",
+    "The user types in two lines: a word, then a whole number.",
+    "Do not change any word or any comparison.",
+    "Display exactly one word: high, low or skipped"
    ],
-   "hint": "pyif",
-   "starter": "# Read three numbers and print the largest\n",
+   "hint": {
+    "think": "Which line belongs inside the inner if, and how far in should it be?",
+    "walk": [
+     "The inner if is four spaces in.",
+     "Anything inside it has to be further in than that.",
+     "Compare the broken line with the line inside the inner else."
+    ]
+   },
+   "starter": "word = input()\nn = int(input())\nif word == \"check\":\n    if n > 50:\n    print(\"high\")\n    else:\n        print(\"low\")\nelse:\n    print(\"skipped\")\n",
+   "tests": [
+    {
+     "in": [
+      "check",
+      "80"
+     ],
+     "out": [
+      "high"
+     ],
+     "why": "An IndentationError means Python wanted a line further in than the one it found. Push the high line out to eight spaces."
+    },
+    {
+     "in": [
+      "check",
+      "50"
+     ],
+     "out": [
+      "low"
+     ],
+     "why": "This test sits exactly on the boundary. Exactly 50 is not above 50, so low is right."
+    },
+    {
+     "in": [
+      "other",
+      "80"
+     ],
+     "out": [
+      "skipped"
+     ],
+     "why": "Once the indenting is right, a different word takes the outer else."
+    }
+   ],
+   "fb": "Each level of nesting adds four more spaces. Counting them is the quickest way to see what belongs where."
+  },
+  {
+   "id": "pr-l03-q44",
+   "station": 4,
+   "marks": 3,
+   "q": "Ask the user for the word member or the word guest. Then ask for an age as a whole number. A member pays 5 when under 16, and 10 otherwise. A guest pays 8 when under 16, and 15 otherwise. Display the price.",
+   "brief": [
+    "The user types in two lines: a word, then a whole number.",
+    "The word is always member or guest.",
+    "An age of exactly 16 is not under 16.",
+    "Display the price as a number on its own."
+   ],
+   "hint": {
+    "think": "The word picks which pair of prices to use, and the age picks one of that pair.",
+    "syntax": [
+     "if word == \"...\":",
+     "    if age < ...:"
+    ],
+    "diagram": "pyif"
+   },
+   "starter": "# Read the word and the age, then display the price\n",
+   "tests": [
+    {
+     "in": [
+      "member",
+      "10"
+     ],
+     "out": [
+      "5"
+     ],
+     "why": "A young member, so the inner if inside the member branch runs."
+    },
+    {
+     "in": [
+      "member",
+      "16"
+     ],
+     "out": [
+      "10"
+     ],
+     "why": "This test sits exactly on the boundary. 16 is not under 16, so the member pays the higher price."
+    },
+    {
+     "in": [
+      "guest",
+      "10"
+     ],
+     "out": [
+      "8"
+     ],
+     "why": "A young guest, so the inner if inside the guest branch runs."
+    },
+    {
+     "in": [
+      "guest",
+      "16"
+     ],
+     "out": [
+      "15"
+     ],
+     "why": "This test sits exactly on the boundary again, in the other branch."
+    },
+    {
+     "in": [
+      "guest",
+      "15"
+     ],
+     "out": [
+      "8"
+     ],
+     "why": "One year under the boundary, so the lower guest price is right."
+    }
+   ],
+   "fb": "Four prices from two questions. The outer question chooses the branch and the inner question chooses the price."
+  },
+  {
+   "id": "pr-l03-q45",
+   "station": 4,
+   "marks": 3,
+   "q": "Ask the user for a whole number. Then ask for a second whole number. Then ask for a third whole number. Work out which of them is the largest. Display that number and nothing else.",
+   "teach": {
+    "say": "One comparison can only ever settle two values. This station is about what to do with the third: compare the first two to find which of them could still win, and then, inside that branch, compare the winner with the third. Two comparisons are enough for three values, so this needs an if inside an if and no more than that."
+   },
+   "brief": [
+    "The user types in three lines, one whole number on each.",
+    "When two of them are equal and both the largest, display that value.",
+    "One line of output, which is one of the three numbers."
+   ],
+   "hint": {
+    "think": "Whichever of the first two numbers loses its comparison cannot be the largest, so one question rules it out for good.",
+    "syntax": [
+     "if ... :",
+     "    if ... :"
+    ],
+    "walk": [
+     "Read all three numbers and cast them.",
+     "Compare the first two to see which could win.",
+     "Inside each branch, compare the winner with the third.",
+     "Display whichever value is left."
+    ]
+   },
+   "starter": "# Read three numbers and display the largest\n",
+   "opt": true,
    "tests": [
     {
      "in": [
@@ -1260,7 +2385,7 @@
      "out": [
       "12"
      ],
-     "why": "The largest is the first one, so a program that always prints the last fails here."
+     "why": "The largest is the first one, so a program that always displays the last fails here."
     },
     {
      "in": [
@@ -1282,35 +2407,208 @@
      "out": [
       "6"
      ],
-     "why": "Two equal largest values still print that value once."
+     "why": "This test sits exactly on the boundary. Two equal largest values still display that value once."
+    },
+    {
+     "in": [
+      "-9",
+      "-2",
+      "-5"
+     ],
+     "out": [
+      "-2"
+     ],
+     "why": "With negative numbers the largest is the one nearest to 0."
     }
    ],
-   "fb": "One comparison narrows three values down to two, and a second comparison inside it finishes the job."
+   "fb": "Three values, two comparisons. Narrow the field first, then settle it inside the branch you landed in."
   },
   {
-   "id": "pr-l03-q21",
+   "id": "pr-l03-q46",
    "station": 5,
-   "marks": 3,
-   "q": "Ask the user for a whole number. Display [number]. Then display even on the next line when it divides exactly by 2. Display odd on the next line when it does not.",
+   "kind": "try",
+   "marks": 1,
+   "q": "Press Run. Then change the 14 to a 9 and Run again.",
    "teach": {
-    "say": "% gives the remainder, so a remainder of 0 is what dividing exactly means.",
+    "say": "A decision can be made about a value the program worked out, not just a value it was given. Here the remainder after dividing by 2 is worked out first, and the if asks whether that remainder is 0.",
     "code": [
-     "n = 9",
-     "print(n % 2)",
-     "print(n % 2 == 0)"
+     "n = 14",
+     "if n % 2 == 0:",
+     "    print(\"even\")",
+     "else:",
+     "    print(\"odd\")"
     ],
     "out": [
-     "1",
-     "False"
+     "even"
     ]
    },
    "brief": [
+    "Nothing is marked on this one.",
+    "% gives the remainder after dividing, which you met in lesson 2.",
+    "A remainder of 0 is what dividing exactly means."
+   ],
+   "starter": "n = 14\nif n % 2 == 0:\n    print(\"even\")\nelse:\n    print(\"odd\")\n",
+   "lines": [
+    "Remember the number 14 under the name n.",
+    "Work out the remainder after dividing by 2, then ask whether it is 0.",
+    "The remainder is 0, so this line runs.",
+    "The other branch.",
+    "This line is skipped."
+   ],
+   "fb": "n % 2 == 0 is the whole test for an even number, and it works for every whole number including 0."
+  },
+  {
+   "id": "pr-l03-q47",
+   "station": 5,
+   "kind": "predict",
+   "marks": 1,
+   "q": "What will this program display?",
+   "code": [
+    "age = 15",
+    "if age >= 16 and age <= 64:",
+    "    print(\"adult rate\")",
+    "elif age < 16:",
+    "    print(\"child rate\")",
+    "else:",
+    "    print(\"senior rate\")"
+   ],
+   "a": [
+    "child rate",
+    "adult rate",
+    "senior rate"
+   ],
+   "brief": [
+    "Read every line before you choose."
+   ],
+   "teach": {
+    "say": "A chain can mix and with elif. The first branch asks two questions at once, and the ones below it are only asked when that first branch was False."
+   },
+   "fb": "15 fails the first branch because it is under 16, so the elif is asked next and matches."
+  },
+  {
+   "id": "pr-l03-q48",
+   "station": 5,
+   "marks": 1,
+   "q": "Change the program so a temperature of exactly 30 counts as hot.",
+   "kind": "change",
+   "brief": [
+    "Change only one comparison sign.",
+    "Do not change any number or any message.",
+    "Display exactly: hot"
+   ],
+   "hint": {
+    "think": "30 itself has to count, so the sign must allow the two values to be equal.",
+    "syntax": "if temp >= ...:"
+   },
+   "starter": "temp = 30\nif temp > 30:\n    print(\"hot\")\nelse:\n    print(\"not hot\")\n",
+   "fixed": true,
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "hot"
+     ],
+     "why": "not hot came out. 30 is not greater than 30, so > has to become the sign that also allows equal."
+    }
+   ],
+   "fb": "Read every rule twice and ask whether the edge value is in or out. That one decision is worth more marks than anything else in this lesson."
+  },
+  {
+   "id": "pr-l03-q49",
+   "station": 5,
+   "marks": 2,
+   "q": "Finish the program so it divides the first number by the second.",
+   "kind": "complete",
+   "teach": {
+    "say": "A guard is an if that deals with the one case a calculation cannot survive. The calculation then sits safely in the else.",
+    "code": [
+     "n = 0",
+     "if n == 0:",
+     "    print(\"nothing to share\")",
+     "else:",
+     "    print(100 // n)"
+    ],
+    "out": [
+     "nothing to share"
+    ]
+   },
+   "brief": [
+    "The user types in two lines, one whole number on each.",
+    "Replace ____ with the division.",
+    "Divide with / and not // , so the answer keeps its decimal part.",
+    "Display the answer on its own: 9 divided by 2 displays 4.5, and 8 divided by 2 displays 4.0 rather than 4."
+   ],
+   "hint": {
+    "think": "The guard is already written. Only the sum in the else is missing.",
+    "syntax": "print(x / y)",
+    "walk": [
+     "The first number typed is the one being shared out.",
+     "The second number typed is what it is shared between.",
+     "Work out which of the two goes on top."
+    ]
+   },
+   "starter": "a = int(input())\nb = int(input())\nif b == 0:\n    print(\"cannot divide\")\nelse:\n    print(____)\n",
+   "tests": [
+    {
+     "in": [
+      "9",
+      "2"
+     ],
+     "out": [
+      "4.5"
+     ],
+     "why": "Replace the ____ with the first variable divided by the second."
+    },
+    {
+     "in": [
+      "8",
+      "2"
+     ],
+     "out": [
+      "4.0"
+     ],
+     "why": "/ keeps the decimal part even when it divides exactly, so 4.0 and not 4."
+    },
+    {
+     "in": [
+      "7",
+      "0"
+     ],
+     "out": [
+      "cannot divide"
+     ],
+     "why": "This test sits exactly on the boundary. Dividing by 0 crashes, which is what the guard prevents."
+    },
+    {
+     "in": [
+      "0",
+      "5"
+     ],
+     "out": [
+      "0.0"
+     ],
+     "why": "A first number of 0 is fine. It is only the second one that has to be guarded."
+    }
+   ],
+   "fb": "Check for the impossible case first and the calculation in the else can never crash."
+  },
+  {
+   "id": "pr-l03-q50",
+   "station": 5,
+   "marks": 3,
+   "q": "Ask the user for a whole number. Display that number. Then display even on the next line when it divides exactly by 2. Display odd on the next line when it does not.",
+   "brief": [
     "The user types in one whole number.",
     "Two lines of output: the number, then the word.",
-    "Print exactly one word: even or odd"
+    "Use % to find the remainder after dividing by 2.",
+    "Display exactly one word on the second line: even or odd"
    ],
-   "hint": "pyif",
-   "starter": "# Read the number, print it, then say even or odd\n",
+   "hint": {
+    "think": "Display the number first, then make the decision about its remainder.",
+    "syntax": "if n % ... == 0:",
+    "diagram": "pyif"
+   },
+   "starter": "# Read the number, display it, then say even or odd\n",
    "tests": [
     {
      "in": [
@@ -1340,107 +2638,322 @@
       "0",
       "even"
      ],
-     "why": "0 divides exactly by 2, so it is even, and the number still prints on the first line."
+     "why": "This test sits exactly on the boundary. 0 divides exactly by 2, so it is even, and the number still appears on the first line."
+    },
+    {
+     "in": [
+      "7"
+     ],
+     "out": [
+      "7",
+      "odd"
+     ],
+     "why": "Any odd number leaves a remainder of 1."
     }
    ],
-   "fb": "A remainder of 0 is what exactly divides means, so n % 2 == 0 is the whole test."
+   "fb": "A decision can be made about something the program worked out. The remainder is not typed in: it is calculated."
   },
   {
-   "id": "pr-l03-q22",
+   "id": "pr-l03-q51",
    "station": 5,
    "marks": 3,
-   "q": "Ask the user for a whole number. Then ask for a second whole number. When the second is 0, display cannot divide. Otherwise divide the first by the second. Then display [answer].",
+   "q": "Ask the user for a whole number of marks scored. Then ask for the total marks available. Work out the percentage scored, rounded to a whole number. Display the line Score: [percentage]%. Then display pass on the next line when the percentage is 50 or more, or fail on the next line when it is less.",
    "teach": {
-    "say": "A guard is an if that deals with the one case the calculation cannot survive, which leaves the calculation safe in the else.",
+    "say": "A value worked out earlier in the program can be displayed and then used again in a decision. Keeping it in a variable means it is only worked out once.",
     "code": [
-     "a = 9",
-     "b = 0",
-     "if b == 0:",
-     "    print(\"no answer\")",
-     "else:",
-     "    print(a / b)"
+     "got = 6",
+     "total = 8",
+     "p = round(got / total * 100)",
+     "print(\"Rate: \" + str(p) + \"%\")"
     ],
     "out": [
-     "no answer"
+     "Rate: 75%"
     ]
    },
    "brief": [
-    "The user types in two whole numbers, one on each line.",
-    "Divide with / , so the answer is a real number.",
-    "Print exactly: cannot divide"
+    "The user types in two lines, one whole number on each.",
+    "Work out the marks scored divided by the total, times 100.",
+    "Use round() so the percentage is a whole number.",
+    "There is no space before the % sign.",
+    "Two lines of output."
    ],
-   "hint": "pyif",
-   "starter": "# Read two numbers, check the second, then divide\n",
+   "hint": {
+    "think": "Work the percentage out once, keep it in a variable, then display it and test it.",
+    "syntax": [
+     "p = round(... / ... * 100)",
+     "print(\"...\" + str(p) + \"...\")"
+    ],
+    "walk": [
+     "Read both numbers and cast them.",
+     "Work out the percentage and round it.",
+     "Build the Score line with str() and display it.",
+     "Decide between pass and fail and display that word."
+    ]
+   },
+   "starter": "# Two numbers in, a percentage and a verdict out\n",
    "tests": [
     {
      "in": [
+      "10",
+      "20"
+     ],
+     "out": [
+      "Score: 50%",
+      "pass"
+     ],
+     "why": "This test sits exactly on the boundary. 50 or more includes 50, so fail here means > was used instead of >= ."
+    },
+    {
+     "in": [
       "9",
-      "2"
+      "20"
      ],
      "out": [
-      "4.5"
+      "Score: 45%",
+      "fail"
      ],
-     "why": "An ordinary division, so the else runs."
+     "why": "45 is below the pass mark, so the second line is fail."
     },
     {
      "in": [
-      "8",
-      "2"
+      "20",
+      "20"
      ],
      "out": [
-      "4.0"
+      "Score: 100%",
+      "pass"
      ],
-     "why": "/ keeps the decimal part even when it divides exactly, so 4.0 and not 4."
+     "why": "Every answer correct gives 100, and the % sign is part of the text."
     },
     {
      "in": [
-      "7",
-      "0"
+      "3",
+      "20"
      ],
      "out": [
-      "cannot divide"
+      "Score: 15%",
+      "fail"
      ],
-     "why": "Dividing by 0 crashes, which is what the guard is there to prevent."
-    },
-    {
-     "in": [
-      "0",
-      "5"
-     ],
-     "out": [
-      "0.0"
-     ],
-     "why": "A first number of 0 is fine: it is only the second one that has to be checked."
+     "why": "A low score still displays both lines."
     }
    ],
-   "fb": "Check for the impossible case first and the calculation can sit safely in the else."
+   "fb": "int() on the way in, round() in the middle and str() on the way out. All three came from earlier lessons and this one adds the decision."
   },
   {
-   "id": "pr-l03-q23",
+   "id": "pr-l03-q52",
+   "station": 5,
+   "marks": 2,
+   "q": "This program should display distinction for 70 or more, pass for 40 or more and fail for anything less. A high mark gives the wrong word. Find the mistake and put it right.",
+   "kind": "debug",
+   "teach": {
+    "say": "In a chain the first True branch wins and the rest are skipped, so a wide band written above a narrow one swallows it completely.",
+    "code": [
+     "n = 90",
+     "if n >= 20:",
+     "    print(\"low bar\")",
+     "elif n >= 80:",
+     "    print(\"high bar\")"
+    ],
+    "out": [
+     "low bar"
+    ]
+   },
+   "brief": [
+    "Press Run first, then type 85 and look at the output.",
+    "The user types in one whole number.",
+    "Do not change any number or any word.",
+    "Display exactly one word: distinction, pass or fail"
+   ],
+   "hint": {
+    "think": "Which of the two bands is wider, and which one is being asked about first?",
+    "walk": [
+     "85 is 40 or more, and it is also 70 or more.",
+     "The chain stops at the first question that is True.",
+     "So the narrower band has to be asked about first."
+    ]
+   },
+   "starter": "mark = int(input())\nif mark >= 40:\n    print(\"pass\")\nelif mark >= 70:\n    print(\"distinction\")\nelse:\n    print(\"fail\")\n",
+   "tests": [
+    {
+     "in": [
+      "85"
+     ],
+     "out": [
+      "distinction"
+     ],
+     "why": "pass came out. 85 reached the 40 question first, was True there, and the 70 question was never asked."
+    },
+    {
+     "in": [
+      "70"
+     ],
+     "out": [
+      "distinction"
+     ],
+     "why": "This test sits exactly on the boundary. 70 or more includes 70 itself."
+    },
+    {
+     "in": [
+      "55"
+     ],
+     "out": [
+      "pass"
+     ],
+     "why": "Between the two bands, so pass is right once the order is fixed."
+    },
+    {
+     "in": [
+      "40"
+     ],
+     "out": [
+      "pass"
+     ],
+     "why": "This test sits exactly on the boundary too. 40 or more includes 40."
+    },
+    {
+     "in": [
+      "12"
+     ],
+     "out": [
+      "fail"
+     ],
+     "why": "Below every band, so nothing matches and the else runs."
+    }
+   ],
+   "fb": "Order a chain so the narrowest band is asked about first. Written the other way round, the wider band answers for both."
+  },
+  {
+   "id": "pr-l03-q53",
+   "station": 5,
+   "marks": 3,
+   "q": "Ask the user for the word in or the word out. Then ask for a temperature as a whole number. For in, display warm when the temperature is 18 or more, and cold when it is less. For out, display fine when the temperature is from 10 to 25, and not fine when it is outside that.",
+   "brief": [
+    "The user types in two lines: a word, then a whole number.",
+    "The word is always in or out.",
+    "A temperature of exactly 10 or exactly 25 counts as fine.",
+    "One line of output only.",
+    "Display exactly one of: warm, cold, fine or not fine"
+   ],
+   "hint": {
+    "think": "The word picks the branch. Inside the out branch, two rules both have to hold.",
+    "syntax": [
+     "if word == \"...\":",
+     "    if t >= ... and t <= ...:"
+    ],
+    "walk": [
+     "Read the word and the temperature.",
+     "Ask about the word on the outside.",
+     "Inside the in branch, ask one question about the temperature.",
+     "Inside the out branch, join two comparisons with and."
+    ]
+   },
+   "starter": "# Read the word and the temperature, then display one verdict\n",
+   "tests": [
+    {
+     "in": [
+      "in",
+      "20"
+     ],
+     "out": [
+      "warm"
+     ],
+     "why": "Inside and comfortably above 18."
+    },
+    {
+     "in": [
+      "in",
+      "18"
+     ],
+     "out": [
+      "warm"
+     ],
+     "why": "This test sits exactly on the boundary. 18 or more includes 18 itself."
+    },
+    {
+     "in": [
+      "in",
+      "17"
+     ],
+     "out": [
+      "cold"
+     ],
+     "why": "One below the boundary, so the inner else runs."
+    },
+    {
+     "in": [
+      "out",
+      "15"
+     ],
+     "out": [
+      "fine"
+     ],
+     "why": "Outside and in the middle of the range, so both sides of the and are True."
+    },
+    {
+     "in": [
+      "out",
+      "10"
+     ],
+     "out": [
+      "fine"
+     ],
+     "why": "This test sits exactly on the boundary. From 10 to 25 includes 10, so <= and >= are the signs needed."
+    },
+    {
+     "in": [
+      "out",
+      "26"
+     ],
+     "out": [
+      "not fine"
+     ],
+     "why": "One past the top of the range, so the and fails and not fine is right."
+    }
+   ],
+   "fb": "Nesting and the word and do different jobs. Nesting chooses a branch; and asks two questions inside one branch."
+  },
+  {
+   "id": "pr-l03-q54",
    "station": 5,
    "marks": 3,
    "q": "Ask the user for a whole number. Then ask for a second whole number. Then ask for a third whole number. Display all the same when all three are equal. Display two the same when exactly two of them are equal. Display all different when no two are equal.",
    "teach": {
-    "say": "Three values give three pairs to compare, and joining the pairs with or asks whether any of them match.",
+    "say": "Three values give three pairs to compare. Joining the pairs with or asks whether any of them match.",
     "code": [
      "a = 2",
      "b = 2",
      "c = 5",
-     "print(a == b and b == c)",
-     "print(a == b or a == c or b == c)"
+     "print(a == b)",
+     "print(b == c)",
+     "print(a == c)"
     ],
     "out": [
+     "True",
      "False",
-     "True"
+     "False"
     ]
    },
    "brief": [
-    "The user types in three whole numbers, one on each line.",
+    "The user types in three lines, one whole number on each.",
+    "Test all three being equal before you test for a pair.",
     "One line of output only.",
-    "Print exactly one of: all the same, two the same, all different"
+    "Display exactly one of: all the same, two the same, all different"
    ],
-   "hint": "pyif",
+   "hint": {
+    "think": "Which test is True for both of the first two cases, and so has to come second?",
+    "syntax": [
+     "... == ... and ... == ...",
+     "... == ... or ... == ... or ... == ..."
+    ],
+    "walk": [
+     "Read all three numbers and cast them.",
+     "Ask whether all three are equal.",
+     "Then ask whether any one pair is equal.",
+     "Finish with an else for all different."
+    ]
+   },
    "starter": "# Read three numbers and compare every pair\n",
+   "opt": true,
    "tests": [
     {
      "in": [
@@ -1462,7 +2975,7 @@
      "out": [
       "all the same"
      ],
-     "why": "All three equal, which has to be tested first or it reports two the same."
+     "why": "All three equal. This has to be tested first, or the pair test answers for it."
     },
     {
      "in": [
@@ -1485,115 +2998,20 @@
       "two the same"
      ],
      "why": "The matching pair is the first and the last, so all three pairs have to be compared."
+    },
+    {
+     "in": [
+      "7",
+      "2",
+      "2"
+     ],
+     "out": [
+      "two the same"
+     ],
+     "why": "The matching pair is the last two, which the third comparison catches."
     }
    ],
-   "fb": "Test all three being equal first, because the first branch that is True wins and a pair matches then too."
-  },
-  {
-   "id": "pr-l03-q24",
-   "station": 5,
-   "marks": 3,
-   "q": "Ask the user for a whole number. Then ask for a second whole number. Then ask for a third whole number. Display top when all three are 9 or more. Display high when they add up to 24 or more. Display middle when they add up to 18 or more. Display low for anything else.",
-   "teach": {
-    "say": "Both of these are True, so the order of the branches decides the answer: the first True branch wins and the rest are skipped.",
-    "code": [
-     "total = 24",
-     "print(total >= 24)",
-     "print(total >= 18)"
-    ],
-    "out": [
-     "True",
-     "True"
-    ]
-   },
-   "brief": [
-    "The user types in three whole numbers, one on each line.",
-    "Check the rules in that order.",
-    "Print only the word of the first rule that matches.",
-    "Print exactly one word: top, high, middle or low"
-   ],
-   "hint": "pyif",
-   "starter": "# Read three numbers and work out which band they are in\n",
-   "tests": [
-    {
-     "in": [
-      "10",
-      "8",
-      "8"
-     ],
-     "out": [
-      "high"
-     ],
-     "why": "Not all three reach 9, so top is out, but the total of 26 clears 24."
-    },
-    {
-     "in": [
-      "10",
-      "9",
-      "9"
-     ],
-     "out": [
-      "top"
-     ],
-     "why": "Every one of the three is 9 or more, so the first rule wins."
-    },
-    {
-     "in": [
-      "9",
-      "9",
-      "9"
-     ],
-     "out": [
-      "top"
-     ],
-     "why": "Exactly 9 counts as 9 or more. high here means > 9 was used inside the and."
-    },
-    {
-     "in": [
-      "8",
-      "8",
-      "8"
-     ],
-     "out": [
-      "high"
-     ],
-     "why": "A total of exactly 24 is 24 or more. middle here means > 24 was used."
-    },
-    {
-     "in": [
-      "9",
-      "9",
-      "5"
-     ],
-     "out": [
-      "middle"
-     ],
-     "why": "A total of 23 misses high but clears 18 comfortably."
-    },
-    {
-     "in": [
-      "6",
-      "6",
-      "6"
-     ],
-     "out": [
-      "middle"
-     ],
-     "why": "The total is exactly 18, and 18 or more includes it. low here means > 18 was used."
-    },
-    {
-     "in": [
-      "6",
-      "6",
-      "5"
-     ],
-     "out": [
-      "low"
-     ],
-     "why": "A total of 17 is one short, so nothing matches and the else runs."
-    }
-   ],
-   "fb": "Keep the rules in the order given, because an earlier branch wins even when a later one would also be True."
+   "fb": "Test the narrowest case first. All three equal also makes a pair equal, so written the other way round it never gets a turn."
   }
  ]
 }

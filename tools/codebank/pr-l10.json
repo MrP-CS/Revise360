@@ -1,6 +1,6 @@
 {
  "lesson": "pr-l10",
- "title": "Files and records",
+ "title": "File handling",
  "stations": [
   "Reading a whole file",
   "Reading line by line",
@@ -13,314 +13,903 @@
   {
    "id": "pr-l10-q1",
    "station": 0,
-   "marks": 2,
-   "q": "A file called notes.txt is already there. Read the whole of notes.txt in one go. Close the file. Display exactly what was in it and nothing of your own.",
+   "kind": "try",
+   "marks": 1,
+   "q": "Press Run. The program makes a file, then reads that file straight back.",
    "teach": {
-    "say": "open() takes a file name and a mode, and 'r' means read. .read() brings the whole file back as one string, and .close() lets go of it.",
+    "say": "A file lets a program keep something after it has stopped. open() needs the file name and a mode. The mode \"w\" means write and \"r\" means read. .read() brings the whole file back as one string, and .close() finishes with the file.",
     "code": [
-     "f = open('data.txt', 'r')",
+     "f = open(\"notes.txt\", \"w\")",
+     "f.write(\"red\\n\")",
+     "f.write(\"blue\\n\")",
+     "f.close()",
+     "f = open(\"notes.txt\", \"r\")",
      "text = f.read()",
-     "f.close()"
+     "f.close()",
+     "print(text)"
+    ],
+    "out": [
+     "red",
+     "blue"
     ]
    },
    "brief": [
-    "Nothing is typed in.",
-    "The program only reads notes.txt."
+    "Nothing is marked on this one.",
+    "A file cannot be seen on the screen, so the program reads it back to show you it is there."
    ],
-   "hint": "pyfile",
-   "starter": "# read it all, close it, print it\n",
+   "starter": "f = open(\"notes.txt\", \"w\")\nf.write(\"red\\n\")\nf.write(\"blue\\n\")\nf.close()\nf = open(\"notes.txt\", \"r\")\ntext = f.read()\nf.close()\nprint(text)\n",
+   "lines": [
+    "Open notes.txt for writing, which makes the file.",
+    "Write the word red, and \\n ends that line.",
+    "Write the word blue, and \\n ends its line too.",
+    "Close the file, which is when the two words are really in it.",
+    "Open the same file again, this time for reading.",
+    "Read the whole file into text as one string.",
+    "Close the file again.",
+    "Show what was read."
+   ],
+   "fb": "You cannot see a file on the screen. From now on, a program that writes a file reads it back to prove the writing worked."
+  },
+  {
+   "id": "pr-l10-q2",
+   "station": 0,
+   "kind": "predict",
+   "marks": 1,
+   "q": "What will this program display?",
+   "code": [
+    "f = open(\"notes.txt\", \"w\")",
+    "f.write(\"ridge\\n\")",
+    "f.write(\"hollow\\n\")",
+    "f.close()",
+    "f = open(\"notes.txt\", \"r\")",
+    "print(f.read())",
+    "f.close()"
+   ],
+   "a": [
+    "ridge\nhollow",
+    "ridgehollow",
+    "ridge hollow"
+   ],
+   "brief": [
+    "Read every line before you choose."
+   ],
+   "teach": {
+    "say": ".read() hands back everything in the file as one string, with the newlines still in it. print() then shows it over as many lines as the file had.",
+    "code": [
+     "f = open(\"pets.txt\", \"w\")",
+     "f.write(\"cat\\n\")",
+     "f.close()",
+     "f = open(\"pets.txt\", \"r\")",
+     "print(f.read())",
+     "f.close()"
+    ],
+    "out": [
+     "cat"
+    ]
+   },
+   "fb": "One .read() brought back both lines. The \\n on the end of each write is what makes them two lines rather than one."
+  },
+  {
+   "id": "pr-l10-q3",
+   "station": 0,
+   "marks": 1,
+   "q": "Change the program so it displays what is in notes.txt instead of how long it is.",
+   "kind": "change",
+   "brief": [
+    "notes.txt is already there.",
+    "Change only the last line.",
+    "Display what was read and nothing of your own."
+   ],
+   "hint": {
+    "think": "text already holds the whole file, so only the last line needs changing.",
+    "syntax": "print(variable)"
+   },
+   "starter": "f = open(\"notes.txt\", \"r\")\ntext = f.read()\nf.close()\nprint(len(text))\n",
    "tests": [
     {
-     "files": {
-      "notes.txt": "copper\nslate\n"
-     },
+     "in": [],
      "out": [
       "copper",
       "slate"
      ],
-     "why": "Both lines come out of one .read(). If you only got the first line you used .readline(), which stops after one."
+     "why": "A number came out instead of the words. len() counts characters, so take it off and display the string itself.",
+     "files": {
+      "notes.txt": "copper\nslate\n"
+     }
     },
     {
-     "files": {
-      "notes.txt": "lantern\n"
-     },
+     "in": [],
      "out": [
       "lantern"
      ],
-     "why": "A one-line file reads just as easily. If nothing printed, you read the file into a variable but never printed it."
-    },
-    {
+     "why": "The whole file is already in text, whatever is in the file. Display that variable.",
      "files": {
-      "notes.txt": "ridge\nhollow\nmoss\n"
-     },
+      "notes.txt": "lantern\n"
+     }
+    }
+   ],
+   "fb": "open() and .read() did the work already. What a program displays is a separate decision from what it read."
+  },
+  {
+   "id": "pr-l10-q4",
+   "station": 0,
+   "marks": 2,
+   "q": "Finish the program so it reads the whole of notes.txt and displays it.",
+   "kind": "complete",
+   "teach": {
+    "say": ".read() belongs to the open file, so it is written after the file's variable and a dot. It takes nothing in its brackets.",
+    "code": [
+     "f = open(\"pets.txt\", \"r\")   # it holds cat then dog",
+     "text = f.read()",
+     "f.close()",
+     "print(text)"
+    ],
+    "out": [
+     "cat",
+     "dog"
+    ]
+   },
+   "brief": [
+    "notes.txt is already there.",
+    "Replace ____ with one method of the file.",
+    "Display the whole file and nothing of your own."
+   ],
+   "hint": {
+    "think": "One method brings back all of the file at once.",
+    "diagram": "pyfile"
+   },
+   "starter": "f = open(\"notes.txt\", \"r\")\ntext = f.____()\nf.close()\nprint(text)\n",
+   "tests": [
+    {
+     "in": [],
      "out": [
       "ridge",
       "hollow",
       "moss"
      ],
-     "why": "Three lines, one .read(). If you printed a heading of your own as well, the output will not match - print only the file."
+     "why": "Three lines come out of one .read(). If only ridge came out you asked for one line instead of all of them.",
+     "files": {
+      "notes.txt": "ridge\nhollow\nmoss\n"
+     }
+    },
+    {
+     "in": [],
+     "out": [
+      "ember"
+     ],
+     "why": "A one-line file reads the same way. The ____ cannot stay there: Python does not know what it means.",
+     "files": {
+      "notes.txt": "ember\n"
+     }
     }
    ],
-   "fb": "open() needs the file name and the mode. 'r' means read. .read() brings back the whole file as one string, newlines and all, and .close() lets go of it."
+   "fb": ".read() with empty brackets is the whole file in one go, newlines and all."
   },
   {
-   "id": "pr-l10-q2",
+   "id": "pr-l10-q5",
+   "station": 0,
+   "marks": 2,
+   "q": "A file called notes.txt is already there. Read the whole of notes.txt in one go. Close the file. Display exactly what was in it.",
+   "brief": [
+    "Nothing is typed in.",
+    "The program only reads notes.txt.",
+    "Display nothing of your own, not even a heading."
+   ],
+   "hint": {
+    "think": "Open it, read all of it, close it, then display what you read.",
+    "start": [
+     "f = open(\"notes.txt\", \"r\")",
+     "# read the whole file into a variable"
+    ],
+    "diagram": "pyfile"
+   },
+   "starter": "# open it, read it all, close it, display it\n",
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "copper",
+      "slate"
+     ],
+     "why": "Both lines come out of one .read(). If you only got the first line you read one line instead of the file.",
+     "files": {
+      "notes.txt": "copper\nslate\n"
+     }
+    },
+    {
+     "in": [],
+     "out": [
+      "lantern"
+     ],
+     "why": "A one-line file reads just as easily. If nothing came out, the file was read into a variable but never displayed.",
+     "files": {
+      "notes.txt": "lantern\n"
+     }
+    },
+    {
+     "in": [],
+     "out": [
+      "ridge",
+      "hollow",
+      "moss"
+     ],
+     "why": "Three lines, one .read(). A heading of your own would make the output wrong, so display only the file.",
+     "files": {
+      "notes.txt": "ridge\nhollow\nmoss\n"
+     }
+    }
+   ],
+   "fb": "open(), use, close. That is the shape of every file program you will write."
+  },
+  {
+   "id": "pr-l10-q6",
+   "station": 0,
+   "marks": 2,
+   "q": "This program should display what is in notes.txt. Find the mistake and put it right.",
+   "kind": "debug",
+   "brief": [
+    "Press Run first and look at what is displayed.",
+    "notes.txt is already there.",
+    "Display the contents of the file and nothing else."
+   ],
+   "hint": {
+    "think": "f is the link to the file, not the words inside it. Something has to fetch the words.",
+    "syntax": "f.read()",
+    "diagram": "pyfile"
+   },
+   "starter": "f = open(\"notes.txt\", \"r\")\nprint(f)\nf.close()\n",
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "copper",
+      "slate"
+     ],
+     "why": "A line about TextIOWrapper came out. That is Python describing the open file, not reading it.",
+     "files": {
+      "notes.txt": "copper\nslate\n"
+     }
+    },
+    {
+     "in": [],
+     "out": [
+      "moss"
+     ],
+     "why": "Displaying f shows the file name and the mode. Ask the file for its contents instead.",
+     "files": {
+      "notes.txt": "moss\n"
+     }
+    }
+   ],
+   "fb": "open() hands back a link to the file, not the file itself. .read() is what fetches what is inside."
+  },
+  {
+   "id": "pr-l10-q7",
    "station": 0,
    "marks": 3,
-   "q": "A file called data.txt is already there, and it may be empty. Read the whole of data.txt. Count every character in it, newlines included. Display characters [the count] and nothing else.",
+   "q": "A file called data.txt is already there, and it may be empty. Read the whole of data.txt. Count every character in it, newlines included. Display the line characters [the count].",
    "brief": [
     "Nothing is typed in.",
     "The program only reads data.txt.",
     "An empty file holds 0 characters.",
-    "One space after the word characters."
+    "There is one space after the word characters."
    ],
-   "hint": "pyfile",
+   "hint": {
+    "think": "len() counts the characters of a string, and .read() gave you one string.",
+    "syntax": "len(text)",
+    "diagram": "pyfile"
+   },
    "starter": "# count the characters, newlines too\n",
+   "opt": true,
    "tests": [
     {
-     "files": {
-      "data.txt": "abc\n"
-     },
+     "in": [],
      "out": [
       "characters 4"
      ],
-     "why": "Three letters and the newline on the end make 4. If you got 3 you stripped the newline off, and the question says to count it."
+     "why": "Three letters and the newline on the end make 4. A count of 3 means the newline was stripped off, and the activity says to count it.",
+     "files": {
+      "data.txt": "abc\n"
+     }
     },
     {
-     "files": {
-      "data.txt": ""
-     },
+     "in": [],
      "out": [
       "characters 0"
      ],
-     "why": "An empty file is still a file. .read() gives back an empty string, so the length is 0 - a program that crashes or prints nothing here assumed there would always be something to read."
+     "why": "An empty file is still a file. .read() hands back an empty string, so the count is 0 and that 0 still has to be displayed.",
+     "files": {
+      "data.txt": ""
+     }
     },
     {
-     "files": {
-      "data.txt": "ridge\nhollow\n"
-     },
+     "in": [],
      "out": [
       "characters 13"
      ],
-     "why": "Five characters, a newline, six characters, a newline is 13. If you got 11 you counted the lines separately and lost the newlines."
+     "why": "Five characters, a newline, six characters, a newline makes 13. A count of 11 means the newlines were lost.",
+     "files": {
+      "data.txt": "ridge\nhollow\n"
+     }
     },
     {
-     "files": {
-      "data.txt": "x"
-     },
+     "in": [],
      "out": [
       "characters 1"
      ],
-     "why": "The last line of a file does not have to end with a newline. If this gave 2 you are adding one on yourself."
+     "why": "The last line of a file does not have to end with a newline. A count of 2 means one was added on.",
+     "files": {
+      "data.txt": "x"
+     }
     }
    ],
-   "fb": "len() on what .read() gave back counts the characters in the whole file. Newlines are real characters, which is why a file usually looks longer than you expect."
+   "fb": "A newline is one real character. That is why a file is almost always longer than it looks."
   },
   {
-   "id": "pr-l10-q3",
+   "id": "pr-l10-q8",
    "station": 1,
-   "marks": 3,
-   "q": "A file called words.txt is already there, and it may be empty. Read the first line of words.txt only. Close the file. Strip the newline off that line. Display first [that line]. Then display length [how many characters are left] on the next line.",
+   "kind": "try",
+   "marks": 1,
+   "q": "Press Run. The program reads one line of a file and measures it twice.",
    "teach": {
-    "say": ".readline() reads as far as the next newline and stops there, so the \\n is still on the end of what it hands back. .strip() takes it off.",
+    "say": ".readline() reads as far as the next newline and stops there. That newline is still on the end of what it hands back, so .strip() is used to take it off.",
     "code": [
-     "f = open('colours.txt', 'r')   # it holds amber then bronze",
+     "f = open(\"notes.txt\", \"w\")",
+     "f.write(\"red\\nblue\\n\")",
+     "f.close()",
+     "f = open(\"notes.txt\", \"r\")",
      "first = f.readline()",
-     "print(len(first), len(first.strip()))"
+     "f.close()",
+     "print(first)",
+     "print(len(first))",
+     "print(len(first.strip()))"
     ],
     "out": [
-     "6 5"
+     "red",
+     "",
+     "4",
+     "3"
     ]
    },
    "brief": [
+    "Nothing is marked on this one.",
+    "Look at why a blank line appears underneath red."
+   ],
+   "starter": "f = open(\"notes.txt\", \"w\")\nf.write(\"red\\nblue\\n\")\nf.close()\nf = open(\"notes.txt\", \"r\")\nfirst = f.readline()\nf.close()\nprint(first)\nprint(len(first))\nprint(len(first.strip()))\n",
+   "lines": [
+    "Open notes.txt for writing.",
+    "Write both lines in one go, each one ended with \\n.",
+    "Close the file so the words are really in it.",
+    "Open the same file for reading.",
+    "Read as far as the first newline and no further.",
+    "Close the file.",
+    "Show the line, which leaves a blank line under it.",
+    "Count its characters, which comes to 4.",
+    "Count them again with the newline taken off, which comes to 3."
+   ],
+   "fb": "red is three characters, so a length of 4 means the \\n is still there. .strip() takes it off, and the blank line goes with it."
+  },
+  {
+   "id": "pr-l10-q9",
+   "station": 1,
+   "kind": "predict",
+   "marks": 1,
+   "q": "What will this program display?",
+   "code": [
+    "f = open(\"notes.txt\", \"w\")",
+    "f.write(\"ridge\\nhollow\\n\")",
+    "f.close()",
+    "f = open(\"notes.txt\", \"r\")",
+    "print(f.readline().strip())",
+    "print(f.readline().strip())",
+    "f.close()"
+   ],
+   "a": [
+    "ridge\nhollow",
+    "ridge\nridge",
+    "hollow\nridge"
+   ],
+   "brief": [
+    "Read every line before you choose."
+   ],
+   "teach": {
+    "say": "The file remembers how far it has been read. The next .readline() carries on from there instead of starting again."
+   },
+   "fb": "Each .readline() starts where the last one stopped, so the second one hands back the second line."
+  },
+  {
+   "id": "pr-l10-q10",
+   "station": 1,
+   "marks": 1,
+   "q": "Change the program so the blank line does not appear.",
+   "kind": "change",
+   "brief": [
+    "words.txt is already there.",
+    "Change only the line that displays the word.",
+    "Display the word, then done on the next line."
+   ],
+   "hint": {
+    "think": "The newline from the file is still on the end of the word.",
+    "syntax": "text.strip()"
+   },
+   "starter": "f = open(\"words.txt\", \"r\")\nline = f.readline()\nf.close()\nprint(line)\nprint(\"done\")\n",
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "copper",
+      "done"
+     ],
+     "why": "A blank line sits between the two. That is the file's newline being displayed as well as print()'s own.",
+     "files": {
+      "words.txt": "copper\nslate\n"
+     }
+    },
+    {
+     "in": [],
+     "out": [
+      "moss",
+      "done"
+     ],
+     "why": "Take the newline off the line before you display it, whatever the word is.",
+     "files": {
+      "words.txt": "moss\n"
+     }
+    }
+   ],
+   "fb": "print() ends the line itself. The \\n that came out of the file makes a second ending, which shows as a blank line."
+  },
+  {
+   "id": "pr-l10-q11",
+   "station": 1,
+   "marks": 2,
+   "q": "Finish the program so it displays how many lines words.txt holds.",
+   "kind": "complete",
+   "teach": {
+    "say": ".readlines() reads the whole file into a list, with one line of the file in each item. Every item still carries its own newline.",
+    "code": [
+     "f = open(\"pets.txt\", \"r\")   # it holds cat then dog",
+     "lines = f.readlines()",
+     "f.close()",
+     "print(lines)"
+    ],
+    "out": [
+     "['cat\\n', 'dog\\n']"
+    ]
+   },
+   "brief": [
+    "words.txt is already there, with one word per line, and it may be empty.",
+    "Replace ____ with one method of the file.",
+    "An empty file holds 0 lines.",
+    "Display the line lines [the count]."
+   ],
+   "hint": {
+    "think": "You want a list with one item for each line of the file.",
+    "diagram": "pyfile"
+   },
+   "starter": "f = open(\"words.txt\", \"r\")\nlines = f.____()\nf.close()\nprint(\"lines\", len(lines))\n",
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "lines 3"
+     ],
+     "why": "Three words, so three lines. A count of 20 means characters were counted rather than lines.",
+     "files": {
+      "words.txt": "copper\nslate\nmoss\n"
+     }
+    },
+    {
+     "in": [],
+     "out": [
+      "lines 1"
+     ],
+     "why": "One word is one line. The ____ cannot stay there: Python does not know what it means.",
+     "files": {
+      "words.txt": "ridge\n"
+     }
+    },
+    {
+     "in": [],
+     "out": [
+      "lines 0"
+     ],
+     "why": "An empty file gives an empty list, so the count is 0 - and that 0 still has to be displayed.",
+     "files": {
+      "words.txt": ""
+     }
+    },
+    {
+     "in": [],
+     "out": [
+      "lines 4"
+     ],
+     "why": "Four lines. A count of 1 means the file was read as one long string instead of a list.",
+     "files": {
+      "words.txt": "lantern\nglass\nember\nwillow\n"
+     }
+    }
+   ],
+   "fb": ".readlines() gives a list with one string per line, so len() of that list is how many lines the file holds."
+  },
+  {
+   "id": "pr-l10-q12",
+   "station": 1,
+   "marks": 3,
+   "q": "A file called words.txt is already there, and it may be empty. Read the first line of words.txt only. Close the file. Take the newline off that line. Display the line first [that line]. Then display the line length [how many characters are left] on the next line.",
+   "brief": [
     "Nothing is typed in.",
     "The program only reads words.txt.",
-    "An empty file has no first line, so the word first is printed on its own."
+    "An empty file has no first line, so the word first is displayed on its own.",
+    "An empty file gives a length of 0."
    ],
-   "hint": "pyfile",
+   "hint": {
+    "think": "One line only, so .readline() rather than .read(). Strip it before you measure it.",
+    "start": [
+     "f = open(\"words.txt\", \"r\")",
+     "first = f.readline()"
+    ],
+    "walk": [
+     "Read one line and close the file.",
+     "Take the newline off that line.",
+     "Display the word first and the line.",
+     "Display the word length and how long the line now is."
+    ],
+    "diagram": "pyfile"
+   },
    "starter": "# one line only, then strip it\n",
    "tests": [
     {
-     "files": {
-      "words.txt": "copper lane\nslate row\n"
-     },
+     "in": [],
      "out": [
       "first copper lane",
       "length 11"
      ],
-     "why": "Only the first line is wanted, and copper lane is 11 characters. If slate row appeared too you used .read() or .readlines() instead of .readline()."
+     "why": "Only the first line is wanted, and copper lane is 11 characters. If slate row came out too, the whole file was read.",
+     "files": {
+      "words.txt": "copper lane\nslate row\n"
+     }
     },
     {
-     "files": {
-      "words.txt": "moss\n"
-     },
+     "in": [],
      "out": [
       "first moss",
       "length 4"
      ],
-     "why": "A file with one line in it. A length of 5 means the newline is still counted, so the line was never stripped."
+     "why": "A length of 5 means the newline is still being counted, so the line was never stripped.",
+     "files": {
+      "words.txt": "moss\n"
+     }
     },
     {
-     "files": {
-      "words.txt": ""
-     },
+     "in": [],
      "out": [
       "first",
       "length 0"
      ],
-     "why": "An empty file gives .readline() an empty string back, not an error. A program that crashes here assumed there is always a first line to read."
+     "why": "An empty file gives .readline() an empty string back, not an error. A crash here means the program assumed there is always a first line.",
+     "files": {
+      "words.txt": ""
+     }
     },
     {
-     "files": {
-      "words.txt": "lantern glass\nridge\nhollow\n"
-     },
+     "in": [],
      "out": [
       "first lantern glass",
       "length 13"
      ],
-     "why": "The first line of a longer file is still just the first line. If a blank line appeared between the two outputs, the newline is still stuck on the end of what you printed."
+     "why": "The first line of a longer file is still just the first line. A blank line between the two outputs means the newline is still attached.",
+     "files": {
+      "words.txt": "lantern glass\nridge\nhollow\n"
+     }
     }
    ],
-   "fb": ".readline() reads up to and including the next newline, so what comes back has \\n on the end. .strip() takes that off, along with any stray spaces, and the length shows whether it really went."
+   "fb": ".readline() stops at the newline and brings it with it. .strip() takes it off, and the length is how you prove it has gone."
   },
   {
-   "id": "pr-l10-q4",
+   "id": "pr-l10-q13",
    "station": 1,
-   "marks": 3,
-   "q": "A file called words.txt is already there, with one word per line, and it may be empty. Read words.txt. Count how many lines it holds. Display lines [that count] and nothing else.",
-   "teach": {
-    "say": ".readlines() reads the whole file in one go into a list, with one line of the file in each item, and every item still carries its own newline.",
-    "code": [
-     "f = open('colours.txt', 'r')   # it holds amber then bronze",
-     "lines = f.readlines()",
-     "print(lines)"
-    ],
-    "out": [
-     "['amber\\n', 'bronze\\n']"
-    ]
-   },
+   "marks": 2,
+   "q": "This program should display every word in words.txt, one on each line. Find the mistake and put it right.",
+   "kind": "debug",
    "brief": [
-    "Nothing is typed in.",
-    "The program only reads words.txt.",
-    "An empty file holds 0 lines."
+    "Press Run first and read the error message.",
+    "words.txt is already there, with one word per line.",
+    "Change only the line with the mistake in it.",
+    "Take the newline off each word before displaying it."
    ],
-   "hint": "pyfile",
-   "starter": "# how many lines are in there\n",
+   "hint": {
+    "think": "Read the error. Every line that starts a block ends with the same punctuation mark.",
+    "syntax": "for item in list:"
+   },
+   "starter": "f = open(\"words.txt\", \"r\")\nlines = f.readlines()\nf.close()\nfor w in lines\n    print(w.strip())\n",
    "tests": [
     {
+     "in": [],
+     "out": [
+      "copper",
+      "slate",
+      "moss"
+     ],
+     "why": "SyntaxError means Python could not read the line at all. A for loop needs a colon on the end of its first line.",
      "files": {
       "words.txt": "copper\nslate\nmoss\n"
-     },
-     "out": [
-      "lines 3"
-     ],
-     "why": "Three words, so three lines. If the count was 20 you counted characters rather than lines."
+     }
     },
     {
+     "in": [],
+     "out": [
+      "ridge"
+     ],
+     "why": "The colon is the only thing missing. Nothing else about the loop needs changing.",
      "files": {
       "words.txt": "ridge\n"
-     },
-     "out": [
-      "lines 1"
-     ],
-     "why": "One word is one line. A count of 0 means .readlines() was called after the file had already been read to the end."
-    },
-    {
-     "files": {
-      "words.txt": ""
-     },
-     "out": [
-      "lines 0"
-     ],
-     "why": "An empty file gives .readlines() an empty list, so the count is 0 - and that 0 still has to be printed."
-    },
-    {
-     "files": {
-      "words.txt": "lantern\nglass\nember\nwillow\n"
-     },
-     "out": [
-      "lines 4"
-     ],
-     "why": "Four lines. If you got 1, you read the file with .read() and counted the one long string it gave back."
+     }
     }
    ],
-   "fb": ".readlines() gives you a list with one string per line, so len() on that list tells you how many lines the file holds."
+   "fb": "A for loop over a list is exactly what you wrote in the loops lessons, and it still needs its colon."
   },
   {
-   "id": "pr-l10-q5",
+   "id": "pr-l10-q14",
    "station": 1,
-   "marks": 4,
+   "marks": 3,
    "q": "A file called words.txt is already there, with one word per line, and it may be empty. Read words.txt. Display one line for each word, in the form [position] [word], counting the positions from 1. Display none instead, on a line of its own, when the file holds no words.",
    "brief": [
     "Nothing is typed in.",
     "The program only reads words.txt.",
-    "Strip each word's newline before printing it.",
-    "Print exactly: none"
+    "Take each word's newline off before displaying it.",
+    "Display exactly: none"
    ],
-   "hint": "pyfile",
+   "hint": {
+    "think": "A list position starts at 0, and the number you display starts at 1.",
+    "syntax": "for i in range(len(lines)):",
+    "walk": [
+     "Read the whole file into a list of lines.",
+     "Check whether that list is empty first.",
+     "Otherwise walk the positions of the list.",
+     "Display the position plus 1 and the stripped word."
+    ],
+    "diagram": "pyfile"
+   },
    "starter": "# each word numbered from 1\n",
+   "opt": true,
    "tests": [
     {
-     "files": {
-      "words.txt": "copper\nslate\nmoss\n"
-     },
+     "in": [],
      "out": [
       "1 copper",
       "2 slate",
       "3 moss"
      ],
-     "why": "Three words, numbered from 1. If your numbers ran 0 1 2 you used the list position straight, and the question asks you to start at 1."
+     "why": "Three words, numbered from 1. Numbers running 0 1 2 mean the list position was displayed as it stood.",
+     "files": {
+      "words.txt": "copper\nslate\nmoss\n"
+     }
     },
     {
-     "files": {
-      "words.txt": "ridge\n"
-     },
+     "in": [],
      "out": [
       "1 ridge"
      ],
-     "why": "One word is one line, numbered 1."
+     "why": "One word is one line, numbered 1.",
+     "files": {
+      "words.txt": "ridge\n"
+     }
     },
     {
-     "files": {
-      "words.txt": ""
-     },
+     "in": [],
      "out": [
       "none"
      ],
-     "why": "An empty file gives .readlines() an empty list, so the loop simply does not run and the one word none is printed instead. A crash here means you went straight for lines[0] without checking."
+     "why": "An empty file gives an empty list, so the loop never runs and the one word none is displayed instead. A crash here means a line was read without checking there was one.",
+     "files": {
+      "words.txt": ""
+     }
     },
     {
-     "files": {
-      "words.txt": "lantern\nglass\n"
-     },
+     "in": [],
      "out": [
       "1 lantern",
       "2 glass"
      ],
-     "why": "If each word printed with a blank line after it, the newline from the file is still attached - strip it before printing."
+     "why": "A blank line after each word means the file's newline is still attached. Strip it before displaying it.",
+     "files": {
+      "words.txt": "lantern\nglass\n"
+     }
     }
    ],
-   "fb": "Each string .readlines() gives you still ends with \\n until you strip it, and the position you print is the list position plus 1."
+   "fb": "Every string .readlines() hands back ends with \\n until it is stripped, and the position you display is the list position plus 1."
   },
   {
-   "id": "pr-l10-q6",
+   "id": "pr-l10-q15",
    "station": 2,
-   "marks": 4,
-   "q": "Ask the user for a word. Make a file called out.txt. Write that word into out.txt on one line. Write ready on the next line. Close the file. Then read out.txt back in one go. Display what you read.",
+   "kind": "try",
+   "marks": 1,
+   "q": "Press Run. The program writes the same file twice over, then reads it back.",
    "teach": {
-    "say": "Mode 'w' opens a file for writing, making it if it is not there. .write() adds no newline of its own, so you put the \\n in yourself.",
+    "say": "The mode \"w\" means write. It makes the file if it is not there, and it empties the file first if it is. .write() adds no newline of its own, so you put the \\n in yourself.",
     "code": [
-     "f = open('data.txt', 'w')",
-     "f.write('line one\\n')",
+     "f = open(\"notes.txt\", \"w\")",
+     "f.write(\"red\\n\")",
+     "f.write(\"blue\\n\")",
+     "f.close()",
+     "f = open(\"notes.txt\", \"w\")",
+     "f.write(\"green\\n\")",
+     "f.close()",
+     "f = open(\"notes.txt\", \"r\")",
+     "print(f.read())",
      "f.close()"
+    ],
+    "out": [
+     "green"
     ]
    },
    "brief": [
-    "There is no out.txt to start with, so the program creates it.",
-    ".write() adds no newline of its own.",
-    "Print exactly: ready"
+    "Nothing is marked on this one.",
+    "red and blue really were written, and then they were lost."
    ],
-   "hint": "pyfile",
+   "starter": "f = open(\"notes.txt\", \"w\")\nf.write(\"red\\n\")\nf.write(\"blue\\n\")\nf.close()\nf = open(\"notes.txt\", \"w\")\nf.write(\"green\\n\")\nf.close()\nf = open(\"notes.txt\", \"r\")\nprint(f.read())\nf.close()\n",
+   "lines": [
+    "Open notes.txt for writing, which makes the file.",
+    "Write red on a line of its own.",
+    "Write blue on the next line.",
+    "Close the file, so red and blue are really in it.",
+    "Open the same file for writing again, which empties it.",
+    "Write green.",
+    "Close the file.",
+    "Open it for reading.",
+    "Show the whole file, which is green and nothing else.",
+    "Close the file again."
+   ],
+   "fb": "Opening a file with \"w\" empties it the moment it opens, even if you then write nothing at all. Work is easy to lose this way."
+  },
+  {
+   "id": "pr-l10-q16",
+   "station": 2,
+   "kind": "predict",
+   "marks": 1,
+   "q": "What will this program display?",
+   "code": [
+    "f = open(\"notes.txt\", \"w\")",
+    "f.write(\"ridge\")",
+    "f.write(\"hollow\")",
+    "f.close()",
+    "f = open(\"notes.txt\", \"r\")",
+    "print(f.read())",
+    "f.close()"
+   ],
+   "a": [
+    "ridgehollow",
+    "ridge\nhollow",
+    "ridge hollow"
+   ],
+   "brief": [
+    "Read every line before you choose."
+   ],
+   "teach": {
+    "say": ".write() puts exactly what it is given into the file and nothing more. print() ends a line for you, but .write() never does."
+   },
+   "fb": "No \\n was written, so both words landed on the same line of the file."
+  },
+  {
+   "id": "pr-l10-q17",
+   "station": 2,
+   "marks": 1,
+   "q": "Change the program so the two words land on separate lines of the file.",
+   "kind": "change",
+   "brief": [
+    "The user types in one word.",
+    "Change only the two .write() lines.",
+    "Display the word, then ready on the next line."
+   ],
+   "hint": {
+    "think": "A line in a file ends with a \\n, and .write() will not put one there for you.",
+    "syntax": "f.write(text + \"\\n\")"
+   },
+   "starter": "word = input()\nf = open(\"out.txt\", \"w\")\nf.write(word)\nf.write(\"ready\")\nf.close()\nf = open(\"out.txt\", \"r\")\nprint(f.read())\nf.close()\n",
+   "tests": [
+    {
+     "in": [
+      "copper"
+     ],
+     "out": [
+      "copper",
+      "ready"
+     ],
+     "why": "Both words came out on one line, because nothing ended the first one."
+    },
+    {
+     "in": [
+      "moss"
+     ],
+     "out": [
+      "moss",
+      "ready"
+     ],
+     "why": "A \\n has to be written on the end of each line, whatever the word is."
+    }
+   ],
+   "fb": "A file is only a list of characters. The \\n characters are the only thing that makes it a file of lines."
+  },
+  {
+   "id": "pr-l10-q18",
+   "station": 2,
+   "marks": 2,
+   "q": "Finish the program so the word is really in the file before it is read back.",
+   "kind": "complete",
+   "teach": {
+    "say": "What .write() hands over waits in the computer's memory until the file is closed. A file read before it has been closed can come back with nothing in it.",
+    "code": [
+     "f = open(\"pets.txt\", \"w\")",
+     "f.write(\"cat\\n\")",
+     "f.close()",
+     "f = open(\"pets.txt\", \"r\")",
+     "print(f.read())",
+     "f.close()"
+    ],
+    "out": [
+     "cat"
+    ]
+   },
+   "brief": [
+    "The user types in one word.",
+    "Replace ____ with one instruction.",
+    "Display the word that was typed and nothing else."
+   ],
+   "hint": {
+    "think": "Finish with the file before the program opens it again.",
+    "syntax": "f.close()",
+    "diagram": "pyfile"
+   },
+   "starter": "word = input()\nf = open(\"out.txt\", \"w\")\nf.write(word + \"\\n\")\n____\ng = open(\"out.txt\", \"r\")\nprint(g.read())\ng.close()\n",
+   "tests": [
+    {
+     "in": [
+      "copper"
+     ],
+     "out": [
+      "copper"
+     ],
+     "why": "Nothing came out. The word was written but the file had not been closed, so it was still waiting in memory."
+    },
+    {
+     "in": [
+      "moss"
+     ],
+     "out": [
+      "moss"
+     ],
+     "why": "Closing the file is what puts the writing into it. The ____ cannot stay there: Python does not know what it means."
+    }
+   ],
+   "fb": "Nothing written is safely in a file until the file is closed. The form with open(\"out.txt\", \"w\") as f: does the closing for you when its indented lines end."
+  },
+  {
+   "id": "pr-l10-q19",
+   "station": 2,
+   "marks": 3,
+   "q": "Ask the user for a word. Make a file called out.txt. Write that word into out.txt on a line of its own. Write ready on the next line. Close the file. Then read the whole of out.txt back and display it.",
+   "brief": [
+    "There is no out.txt to start with, so the program makes it.",
+    ".write() adds no newline of its own.",
+    "Display exactly two lines, the typed word and then ready."
+   ],
+   "hint": {
+    "think": "Write both lines, close the file, then open it again for reading.",
+    "start": [
+     "word = input()",
+     "f = open(\"out.txt\", \"w\")"
+    ],
+    "walk": [
+     "Read the word.",
+     "Open out.txt for writing.",
+     "Write the word with a \\n on the end.",
+     "Write ready with a \\n on the end.",
+     "Close the file.",
+     "Open it for reading, read it all and display it."
+    ],
+    "diagram": "pyfile"
+   },
    "starter": "# write it, close it, read it back\n",
    "tests": [
     {
@@ -331,7 +920,7 @@
       "copper",
       "ready"
      ],
-     "why": "The file has to exist before you can read it back. A crash saying no such file means the write never happened, or you opened the wrong name."
+     "why": "The file has to exist before it can be read back. An error about no such file means the writing never happened, or the name was spelled differently."
     },
     {
      "in": [
@@ -341,7 +930,7 @@
       "slate row",
       "ready"
      ],
-     "why": "The word comes from input, the word ready is fixed. If both ended up on one line you forgot the \\n after the word - .write() adds nothing of its own."
+     "why": "The word comes from input and the word ready is fixed. Both on one line means the \\n after the word is missing."
     },
     {
      "in": [
@@ -351,607 +940,1427 @@
       "moss",
       "ready"
      ],
-     "why": "If the output was empty, you read the file before closing it after writing - what you wrote may still be waiting to be saved."
+     "why": "Nothing displayed at all means the file was read before it was closed."
     }
    ],
-   "fb": "print() puts a newline on the end for you. .write() does not, so you have to write \\n yourself when you want a new line in the file."
+   "fb": "print() ends a line for you and .write() does not. That one difference causes most of the trouble with writing files."
   },
   {
-   "id": "pr-l10-q7",
+   "id": "pr-l10-q20",
    "station": 2,
-   "marks": 4,
-   "q": "Ask the user for a word. Open the file data.txt in write mode, which empties whatever it held. Write that word into data.txt on a line of its own. Close the file. Then read data.txt back. Display [every line in it], one on each line. Then display lines [how many] on the last line.",
+   "marks": 2,
+   "q": "This program should write the word into data.txt and read it back. Find the mistake and put it right.",
+   "kind": "debug",
    "brief": [
-    "data.txt is already there and may already hold lines.",
-    "Strip each line's newline before printing it."
+    "Press Run first and read the error message.",
+    "data.txt is already there and may hold lines of its own.",
+    "The user types in one word.",
+    "Display the typed word and nothing else."
    ],
-   "hint": "pyfile",
-   "starter": "# write mode, then count what survived\n",
+   "hint": {
+    "think": "Read the error. A file opened for reading will not let anything be written to it.",
+    "syntax": "open(name, \"w\")",
+    "diagram": "pyfile"
+   },
+   "starter": "word = input()\nf = open(\"data.txt\", \"r\")\nf.write(word + \"\\n\")\nf.close()\nf = open(\"data.txt\", \"r\")\nprint(f.read())\nf.close()\n",
    "tests": [
     {
      "in": [
       "copper"
      ],
+     "out": [
+      "copper"
+     ],
+     "why": "The message not writable means the file was opened for reading. The first open() needs the writing mode.",
      "files": {
       "data.txt": "slate\nmoss\n"
-     },
-     "out": [
-      "copper",
-      "lines 1"
-     ],
-     "why": "The two old lines are gone, because write mode empties the file first. If you still see slate you opened it with 'a' instead of 'w'."
+     }
     },
     {
      "in": [
       "ridge"
      ],
+     "out": [
+      "ridge"
+     ],
+     "why": "Writing mode empties the file as it opens, so the typed word is all that is left in it.",
      "files": {
       "data.txt": ""
-     },
-     "out": [
-      "ridge",
-      "lines 1"
-     ],
-     "why": "Writing to an empty file works the same way. If the count said 0 you read the file before closing it."
+     }
     },
     {
      "in": [
       "lantern"
      ],
+     "out": [
+      "lantern"
+     ],
+     "why": "Only the mode on the first open() is wrong. The second one reads, so it stays as it is.",
      "files": {
-      "data.txt": "a\nb\nc\n"
-     },
+      "data.txt": "a\n"
+     }
+    }
+   ],
+   "fb": "The mode decides what you may do. \"r\" only reads, \"w\" only writes, and writing with \"r\" stops the program at once."
+  },
+  {
+   "id": "pr-l10-q21",
+   "station": 2,
+   "marks": 3,
+   "q": "Ask the user for a word. Open the file data.txt for writing, which empties whatever it held. Write that word into data.txt on a line of its own. Close the file. Then read data.txt back. Display every line in it, one on each line. Then display the line lines [how many] on the last line.",
+   "brief": [
+    "data.txt is already there and may already hold lines.",
+    "The user types in one word.",
+    "Take the newline off each line before displaying it.",
+    "Display the count last."
+   ],
+   "hint": {
+    "think": "\"w\" empties the file first, so whatever you write is all that is left in it.",
+    "walk": [
+     "Read the word.",
+     "Open data.txt with \"w\" and write the word with a \\n on the end.",
+     "Close the file.",
+     "Open it again and read it into a list of lines.",
+     "Display each line stripped, then how many lines there were."
+    ],
+    "diagram": "pyfile"
+   },
+   "starter": "# writing mode, then count what survived\n",
+   "opt": true,
+   "tests": [
+    {
+     "in": [
+      "copper"
+     ],
+     "out": [
+      "copper",
+      "lines 1"
+     ],
+     "why": "The two old lines have gone, because writing mode empties the file first. Seeing slate means the file was opened with \"a\".",
+     "files": {
+      "data.txt": "slate\nmoss\n"
+     }
+    },
+    {
+     "in": [
+      "ridge"
+     ],
+     "out": [
+      "ridge",
+      "lines 1"
+     ],
+     "why": "Writing to a file that was already empty works the same way. A count of 0 means the file was read before it was closed.",
+     "files": {
+      "data.txt": ""
+     }
+    },
+    {
+     "in": [
+      "lantern"
+     ],
      "out": [
       "lantern",
       "lines 1"
      ],
-     "why": "Three old lines, still only one left. A count of 4 means the new word was added to the end rather than replacing the file."
+     "why": "Three old lines, and still only one left. A count of 4 means the word was added to the end instead of replacing the file.",
+     "files": {
+      "data.txt": "a\nb\nc\n"
+     }
     },
     {
      "in": [
       "glass"
      ],
-     "files": {
-      "data.txt": "glass\n"
-     },
      "out": [
       "glass",
       "lines 1"
      ],
-     "why": "Writing the same text that was already there still leaves one line, not two."
+     "why": "Writing the same word that was already in there still leaves one line, not two.",
+     "files": {
+      "data.txt": "glass\n"
+     }
     }
    ],
-   "fb": "Opening a file with 'w' empties it the moment it opens, even if you then write nothing. That is the difference between 'w' and 'a', and it is easy to lose work to."
+   "fb": "\"w\" empties the file as it opens. That is the whole difference between it and \"a\", and it is worth being careful with."
   },
   {
-   "id": "pr-l10-q8",
+   "id": "pr-l10-q22",
    "station": 3,
-   "marks": 3,
-   "q": "Ask the user for a word. Add that word to the end of the file log.txt, on a line of its own. Keep the lines log.txt already holds. Then read the whole of log.txt back. Display [every line in it], one on each line, and nothing else.",
+   "kind": "try",
+   "marks": 1,
+   "q": "Press Run. The program adds a line to a file that already has one in it.",
    "teach": {
-    "say": "Mode 'a' appends: it opens the file with the writing point already at the end, so nothing already in there is thrown away.",
+    "say": "The mode \"a\" means append. It opens the file with the writing point already at the end, so nothing already in the file is thrown away.",
     "code": [
-     "f = open('data.txt', 'a')",
-     "f.write('one more\\n')",
+     "f = open(\"notes.txt\", \"w\")",
+     "f.write(\"red\\n\")",
+     "f.close()",
+     "f = open(\"notes.txt\", \"a\")",
+     "f.write(\"blue\\n\")",
+     "f.close()",
+     "f = open(\"notes.txt\", \"r\")",
+     "print(f.read())",
      "f.close()"
+    ],
+    "out": [
+     "red",
+     "blue"
     ]
    },
    "brief": [
-    "log.txt is already there and may be empty.",
-    "Strip each line's newline before printing it.",
-    "The word just added is the last line."
+    "Nothing is marked on this one.",
+    "The second open() uses \"a\", so red is still there at the end."
    ],
-   "hint": "pyfile",
-   "starter": "# add to the end, then print the whole file\n",
+   "starter": "f = open(\"notes.txt\", \"w\")\nf.write(\"red\\n\")\nf.close()\nf = open(\"notes.txt\", \"a\")\nf.write(\"blue\\n\")\nf.close()\nf = open(\"notes.txt\", \"r\")\nprint(f.read())\nf.close()\n",
+   "lines": [
+    "Open notes.txt for writing, which makes the file.",
+    "Write red into it.",
+    "Close the file.",
+    "Open the same file again with \"a\", which keeps red.",
+    "Write blue, which goes on the end.",
+    "Close the file.",
+    "Open it for reading.",
+    "Show the whole file, which is now two lines.",
+    "Close the file again."
+   ],
+   "fb": "\"a\" keeps the file and writes onto the end of it. \"w\" would have thrown red away before blue was written."
+  },
+  {
+   "id": "pr-l10-q23",
+   "station": 3,
+   "kind": "predict",
+   "marks": 1,
+   "q": "What will this program display?",
+   "code": [
+    "f = open(\"notes.txt\", \"w\")",
+    "f.write(\"ridge\\n\")",
+    "f.close()",
+    "f = open(\"notes.txt\", \"a\")",
+    "f.write(\"hollow\\n\")",
+    "f.close()",
+    "f = open(\"notes.txt\", \"w\")",
+    "f.write(\"moss\\n\")",
+    "f.close()",
+    "f = open(\"notes.txt\", \"r\")",
+    "print(f.read())",
+    "f.close()"
+   ],
+   "a": [
+    "moss",
+    "ridge\nhollow\nmoss",
+    "ridge\nhollow"
+   ],
+   "brief": [
+    "Read every line before you choose."
+   ],
+   "teach": {
+    "say": "\"a\" adds to the end of the file. \"w\" empties it first. The mode you choose is the whole difference between them."
+   },
+   "fb": "The last open() used \"w\", which emptied the file, so ridge and hollow were gone before moss was written."
+  },
+  {
+   "id": "pr-l10-q24",
+   "station": 3,
+   "marks": 1,
+   "q": "Change the program so the lines log.txt already holds are kept.",
+   "kind": "change",
+   "brief": [
+    "log.txt is already there and may hold lines.",
+    "Change only the mode in the first open().",
+    "The user types in one word.",
+    "Display every line of the file, with the new word last."
+   ],
+   "hint": {
+    "think": "One mode empties the file and one adds to the end of it.",
+    "syntax": "open(name, \"a\")"
+   },
+   "starter": "word = input()\nf = open(\"log.txt\", \"w\")\nf.write(word + \"\\n\")\nf.close()\nf = open(\"log.txt\", \"r\")\nprint(f.read())\nf.close()\n",
    "tests": [
     {
      "in": [
       "moss"
      ],
-     "files": {
-      "log.txt": "copper\nslate\n"
-     },
      "out": [
       "copper",
       "slate",
       "moss"
      ],
-     "why": "Two lines were there, so three come back. If only moss printed you opened the file with 'w', which wiped copper and slate."
+     "why": "copper and slate have gone, because \"w\" empties the file as it opens.",
+     "files": {
+      "log.txt": "copper\nslate\n"
+     }
     },
     {
      "in": [
       "ridge"
      ],
-     "files": {
-      "log.txt": ""
-     },
      "out": [
       "ridge"
      ],
-     "why": "Append mode works on an empty file too, so the one word you added is the whole file."
+     "why": "The file was empty to start with, so one word is the whole of it either way.",
+     "files": {
+      "log.txt": ""
+     }
     },
     {
      "in": [
       "lantern"
      ],
-     "files": {
-      "log.txt": "glass\n"
-     },
      "out": [
       "glass",
       "lantern"
      ],
-     "why": "The new word goes on the end, after glass. Printing lantern first means you wrote before the line that was already there."
+     "why": "glass was in the file and has to stay. The new word goes after it.",
+     "files": {
+      "log.txt": "glass\n"
+     }
+    }
+   ],
+   "fb": "One letter is the difference between adding to a file and wiping it. Programs lose real work to this."
+  },
+  {
+   "id": "pr-l10-q25",
+   "station": 3,
+   "marks": 2,
+   "q": "Finish the program so the word is added on a line of its own.",
+   "kind": "complete",
+   "teach": {
+    "say": ".write() puts exactly what it is given into the file, so the \\n that ends the line has to be part of what you hand it.",
+    "code": [
+     "f = open(\"pets.txt\", \"a\")   # it is empty to start with",
+     "f.write(\"cat\" + \"\\n\")",
+     "f.close()",
+     "f = open(\"pets.txt\", \"r\")",
+     "print(f.read())",
+     "f.close()"
+    ],
+    "out": [
+     "cat"
+    ]
+   },
+   "brief": [
+    "log.txt is already there and may be empty.",
+    "Replace ____ with what should be written.",
+    "The user types in one word.",
+    "Display every line of log.txt, with the new word last."
+   ],
+   "hint": {
+    "think": "The word, and then the newline that ends its line.",
+    "syntax": "text + \"\\n\""
+   },
+   "starter": "word = input()\nf = open(\"log.txt\", \"a\")\nf.write(____)\nf.close()\nf = open(\"log.txt\", \"r\")\nprint(f.read())\nf.close()\n",
+   "tests": [
+    {
+     "in": [
+      "moss"
+     ],
+     "out": [
+      "willow",
+      "moss"
+     ],
+     "why": "The word on its own would stick onto the end of willow. A \\n has to go with it.",
+     "files": {
+      "log.txt": "willow\n"
+     }
+    },
+    {
+     "in": [
+      "ridge"
+     ],
+     "out": [
+      "ridge"
+     ],
+     "why": "An empty file to start with, so the one word is the whole file. The ____ cannot stay there.",
+     "files": {
+      "log.txt": ""
+     }
     },
     {
      "in": [
       "ember"
      ],
+     "out": [
+      "flint",
+      "moss",
+      "ember"
+     ],
+     "why": "Two lines were in the file and the new word makes a third.",
      "files": {
-      "log.txt": "willow\nflint\nmoss\n"
-     },
+      "log.txt": "flint\nmoss\n"
+     }
+    }
+   ],
+   "fb": "Appending text with no \\n joins it onto the last line that is already there. The newline is what starts a new line."
+  },
+  {
+   "id": "pr-l10-q26",
+   "station": 3,
+   "marks": 3,
+   "q": "Ask the user for a word. Add that word to the end of the file log.txt, on a line of its own. Keep the lines log.txt already holds. Then read the whole of log.txt back. Display every line in it, one on each line.",
+   "brief": [
+    "log.txt is already there and may be empty.",
+    "Take the newline off each line before displaying it.",
+    "The word just added is the last line.",
+    "Display nothing of your own."
+   ],
+   "hint": {
+    "think": "Append mode writes onto the end. Read the whole file back afterwards to show it worked.",
+    "start": [
+     "word = input()",
+     "f = open(\"log.txt\", \"a\")"
+    ],
+    "walk": [
+     "Read the word.",
+     "Open log.txt with \"a\".",
+     "Write the word with a \\n on the end.",
+     "Close the file.",
+     "Open it for reading and display each line stripped."
+    ],
+    "diagram": "pyfile"
+   },
+   "starter": "# add to the end, then display the whole file\n",
+   "tests": [
+    {
+     "in": [
+      "moss"
+     ],
+     "out": [
+      "copper",
+      "slate",
+      "moss"
+     ],
+     "why": "Two lines were there, so three come back. Only moss means the file was opened with \"w\", which wiped copper and slate.",
+     "files": {
+      "log.txt": "copper\nslate\n"
+     }
+    },
+    {
+     "in": [
+      "ridge"
+     ],
+     "out": [
+      "ridge"
+     ],
+     "why": "Append mode works on an empty file too, so the one word added is the whole file.",
+     "files": {
+      "log.txt": ""
+     }
+    },
+    {
+     "in": [
+      "lantern"
+     ],
+     "out": [
+      "glass",
+      "lantern"
+     ],
+     "why": "The new word goes on the end, after glass. lantern first means it was written before the line already there.",
+     "files": {
+      "log.txt": "glass\n"
+     }
+    },
+    {
+     "in": [
+      "ember"
+     ],
      "out": [
       "willow",
       "flint",
       "moss",
       "ember"
      ],
-     "why": "If a blank line appeared after each line, the newline is still attached - strip it before printing."
+     "why": "A blank line after each line means the newline is still attached. Strip it before displaying it.",
+     "files": {
+      "log.txt": "willow\nflint\nmoss\n"
+     }
     }
    ],
-   "fb": "'a' for append opens the file with the writing point already at the end, so what you write is added. 'w' would throw the whole file away first."
+   "fb": "\"a\" opens the file with the writing point already at the end, so what you write is added. \"w\" would throw the whole file away first."
   },
   {
-   "id": "pr-l10-q9",
+   "id": "pr-l10-q27",
    "station": 3,
-   "marks": 4,
-   "q": "Ask the user for a word. Append that word to the file log.txt, on a line of its own. Keep the lines log.txt already holds. Then read the whole of log.txt back. Display latest [the last line]. Then display total [how many lines] on the next line.",
+   "marks": 2,
+   "q": "This program should display every line of log.txt, with the new word last. Find the mistake and put it right.",
+   "kind": "debug",
    "brief": [
-    "log.txt is already there and may be empty.",
-    "Strip the newline off the last line before printing it."
+    "Press Run first and look for the word you typed.",
+    "log.txt is already there and holds lines.",
+    "The user types in one word.",
+    "Display every line of the file."
    ],
-   "hint": "pyfile",
-   "starter": "# add to the end, then report on the whole file\n",
+   "hint": {
+    "think": "What is written is only really in the file once the file has been closed.",
+    "walk": [
+     "The word is written to the file.",
+     "The file is opened again for reading before it has been closed.",
+     "What was written is still waiting, so it does not come back."
+    ]
+   },
+   "starter": "word = input()\nf = open(\"log.txt\", \"a\")\nf.write(word + \"\\n\")\ng = open(\"log.txt\", \"r\")\nprint(g.read())\ng.close()\nf.close()\n",
    "tests": [
     {
      "in": [
       "moss"
      ],
+     "out": [
+      "copper",
+      "slate",
+      "moss"
+     ],
+     "why": "The typed word is missing. It was written, but the file had not been closed, so it was still waiting in memory.",
      "files": {
       "log.txt": "copper\nslate\n"
-     },
-     "out": [
-      "latest moss",
-      "total 3"
-     ],
-     "why": "Two lines were there, so adding one makes three. A total of 1 means you opened the file with 'w', which wiped copper and slate."
-    },
-    {
-     "in": [
-      "ridge"
-     ],
-     "files": {
-      "log.txt": ""
-     },
-     "out": [
-      "latest ridge",
-      "total 1"
-     ],
-     "why": "Append mode works on an empty file too, and the one word you added is also the last line. A crash here means you went for lines[1] rather than the end of the list."
-    },
-    {
-     "in": [
-      "lantern"
-     ],
-     "files": {
-      "log.txt": "glass\n"
-     },
-     "out": [
-      "latest lantern",
-      "total 2"
-     ],
-     "why": "The new word goes on the end, so the last line is the one just added, not glass. Printing glass means you took lines[0]."
+     }
     },
     {
      "in": [
       "ember"
      ],
-     "files": {
-      "log.txt": "willow\nflint\nmoss\nslate\n"
-     },
      "out": [
-      "latest ember",
-      "total 5"
+      "willow",
+      "ember"
      ],
-     "why": "If a blank line appeared between the two lines of output, the newline is still on the end of the line you read - strip it before printing."
-    }
-   ],
-   "fb": "The last line of a file is the last item of the list .readlines() gave you, and len() of that same list is how many lines there are."
-  },
-  {
-   "id": "pr-l10-q10",
-   "station": 4,
-   "marks": 3,
-   "q": "A file called data.txt is already there, holding one word,number record per line, and it may be empty. Read data.txt. Display one line for each record, in the form [word] [number]. Display none instead, on a line of its own, when the file holds no records.",
-   "teach": {
-    "say": "A record is one line made of fields. Strip the newline first, then .split(',') breaks the line into a list of those fields.",
-    "code": [
-     "fields = 'moss,7'.strip().split(',')",
-     "print(fields[0], fields[1])"
-    ],
-    "out": [
-     "moss 7"
-    ]
-   },
-   "brief": [
-    "Nothing is typed in.",
-    "The program only reads data.txt.",
-    "One space between the two fields, in place of the comma.",
-    "Print exactly: none"
-   ],
-   "hint": "pyfile",
-   "starter": "# one record per line, two fields on each\n",
-   "tests": [
-    {
+     "why": "Close the file you wrote to before you open it again to read it.",
      "files": {
-      "data.txt": "copper,14\nslate,15\nmoss,13\n"
-     },
-     "out": [
-      "copper 14",
-      "slate 15",
-      "moss 13"
-     ],
-     "why": "Three records, each split into two fields. A comma still in the output means the line was printed as it stood rather than split."
-    },
-    {
-     "files": {
-      "data.txt": "ridge,7\n"
-     },
-     "out": [
-      "ridge 7"
-     ],
-     "why": "A single record still has to be split. If the number came out with a blank line after it, you split the line before stripping it, so the newline is still part of the second field."
-    },
-    {
-     "files": {
-      "data.txt": ""
-     },
-     "out": [
-      "none"
-     ],
-     "why": "No records at all, so the loop never runs and the one word none is printed instead. A crash here means you read a record before checking there was one."
-    },
-    {
-     "files": {
-      "data.txt": "lantern,0\nglass,120\n"
-     },
-     "out": [
-      "lantern 0",
-      "glass 120"
-     ],
-     "why": "The fields are printed exactly as the file holds them, so a number of 0 prints as 0."
-    }
-   ],
-   "fb": "A record is one line made of fields. .split(',') breaks the line into a list of those fields, so fields[0] is the word and fields[1] is the number."
-  },
-  {
-   "id": "pr-l10-q11",
-   "station": 4,
-   "marks": 4,
-   "q": "Ask the user for a word to find. The file data.txt is already there, holding one word,number record per line. Look at every record in data.txt. Display [word] is [its number] when a record matches. Display no record instead when none matches. Then display checked [how many records you looked at] on the next line.",
-   "brief": [
-    "data.txt may be empty.",
-    "The program only reads data.txt.",
-    "Look at every record, even after one has matched.",
-    "Print exactly: no record"
-   ],
-   "hint": "pyfile",
-   "starter": "# one record per line, one word to find\n",
-   "tests": [
-    {
-     "in": [
-      "slate"
-     ],
-     "files": {
-      "data.txt": "copper,14\nslate,15\nmoss,13\n"
-     },
-     "out": [
-      "slate is 15",
-      "checked 3"
-     ],
-     "why": "slate is the second record, and all three were looked at. If a blank line appeared before the checked line, you split the record before stripping it, so the newline is still part of the number field."
-    },
-    {
-     "in": [
-      "willow"
-     ],
-     "files": {
-      "data.txt": "copper,14\nslate,15\nmoss,13\n"
-     },
-     "out": [
-      "no record",
-      "checked 3"
-     ],
-     "why": "Nothing matches, so the message is printed once after the loop. Printing it three times means the message sits inside the loop instead of after it."
-    },
-    {
-     "in": [
-      "copper"
-     ],
-     "files": {
-      "data.txt": ""
-     },
-     "out": [
-      "no record",
-      "checked 0"
-     ],
-     "why": "An empty file has no records, so nothing matches and nothing was looked at. A crash here means you read a record before checking there was one."
+      "log.txt": "willow\n"
+     }
     },
     {
      "in": [
       "ridge"
      ],
+     "out": [
+      "flint",
+      "moss",
+      "ridge"
+     ],
+     "why": "Only the order of the lines needs changing. The modes are already right.",
      "files": {
-      "data.txt": "ridge,16\n"
-     },
+      "log.txt": "flint\nmoss\n"
+     }
+    }
+   ],
+   "fb": "Closing a file is not tidying up, it is part of the writing. Until then the new line may be nowhere a reader can find it."
+  },
+  {
+   "id": "pr-l10-q28",
+   "station": 3,
+   "marks": 3,
+   "q": "Ask the user for a word. Add that word to the end of the file log.txt, on a line of its own. Keep the lines log.txt already holds. Then read log.txt back. Display the line latest [the last line of the file]. Then display the line total [how many lines there are] on the next line.",
+   "brief": [
+    "log.txt is already there and may be empty.",
+    "The user types in one word.",
+    "Take the newline off the last line before displaying it.",
+    "An empty log.txt leaves one line once the word has been added."
+   ],
+   "hint": {
+    "think": "The last line of the file is the last item of the list .readlines() gave you.",
+    "syntax": "list[len(list) - 1]",
+    "diagram": "pyfile"
+   },
+   "starter": "# add to the end, then report on the whole file\n",
+   "opt": true,
+   "tests": [
+    {
+     "in": [
+      "moss"
+     ],
+     "out": [
+      "latest moss",
+      "total 3"
+     ],
+     "why": "Two lines were there, so adding one makes three. A total of 1 means the file was opened with \"w\".",
+     "files": {
+      "log.txt": "copper\nslate\n"
+     }
+    },
+    {
+     "in": [
+      "ridge"
+     ],
+     "out": [
+      "latest ridge",
+      "total 1"
+     ],
+     "why": "Append mode works on an empty file too, and the one word added is also the last line. A crash here means a fixed position was used instead of the end of the list.",
+     "files": {
+      "log.txt": ""
+     }
+    },
+    {
+     "in": [
+      "lantern"
+     ],
+     "out": [
+      "latest lantern",
+      "total 2"
+     ],
+     "why": "The new word goes on the end, so the last line is the one just added. glass means position 0 was taken.",
+     "files": {
+      "log.txt": "glass\n"
+     }
+    },
+    {
+     "in": [
+      "ember"
+     ],
+     "out": [
+      "latest ember",
+      "total 5"
+     ],
+     "why": "A blank line between the two outputs means the newline is still on the end of the line you displayed.",
+     "files": {
+      "log.txt": "willow\nflint\nmoss\nslate\n"
+     }
+    }
+   ],
+   "fb": "The last line is the item at len(lines) - 1, and len(lines) itself is how many lines the file holds."
+  },
+  {
+   "id": "pr-l10-q29",
+   "station": 4,
+   "kind": "try",
+   "marks": 1,
+   "q": "Press Run. The program writes two records, then breaks each one into its parts.",
+   "teach": {
+    "say": "A record is one line of a file made of fields, with a comma between them. .strip() takes the newline off the line, and .split(\",\") breaks what is left into a list of the fields.",
+    "code": [
+     "f = open(\"pets.txt\", \"w\")",
+     "f.write(\"cat,4\\n\")",
+     "f.write(\"dog,7\\n\")",
+     "f.close()",
+     "f = open(\"pets.txt\", \"r\")",
+     "lines = f.readlines()",
+     "f.close()",
+     "for line in lines:",
+     "    fields = line.strip().split(\",\")",
+     "    print(fields[0], fields[1])"
+    ],
+    "out": [
+     "cat 4",
+     "dog 7"
+    ]
+   },
+   "brief": [
+    "Nothing is marked on this one.",
+    "Each line of the file is one record with two fields in it."
+   ],
+   "starter": "f = open(\"pets.txt\", \"w\")\nf.write(\"cat,4\\n\")\nf.write(\"dog,7\\n\")\nf.close()\nf = open(\"pets.txt\", \"r\")\nlines = f.readlines()\nf.close()\nfor line in lines:\n    fields = line.strip().split(\",\")\n    print(fields[0], fields[1])\n",
+   "lines": [
+    "Open pets.txt for writing.",
+    "Write the first record, a word and a number with a comma between them.",
+    "Write the second record the same way.",
+    "Close the file so both records are really in it.",
+    "Open the file for reading.",
+    "Read every line into a list.",
+    "Close the file.",
+    "Take each line of the list in turn.",
+    "Strip the newline off it, then cut it at the comma into a list of fields.",
+    "Show the two fields with a space between them."
+   ],
+   "fb": "fields[0] is the first field and fields[1] is the second. Stripping before splitting keeps the newline out of the last field."
+  },
+  {
+   "id": "pr-l10-q30",
+   "station": 4,
+   "kind": "predict",
+   "marks": 1,
+   "q": "What will this program display?",
+   "code": [
+    "f = open(\"notes.txt\", \"w\")",
+    "f.write(\"ridge,7\\n\")",
+    "f.close()",
+    "f = open(\"notes.txt\", \"r\")",
+    "line = f.readline()",
+    "f.close()",
+    "fields = line.split(\",\")",
+    "print(len(fields))",
+    "print(len(fields[1]))"
+   ],
+   "a": [
+    "2\n2",
+    "2\n1",
+    "3\n1"
+   ],
+   "brief": [
+    "Read every line before you choose."
+   ],
+   "teach": {
+    "say": "The newline is part of the line, so it ends up inside the last field unless the line is stripped before it is split."
+   },
+   "fb": "Two fields, but the second one is the digit 7 and a newline, so its length is 2. Strip the line before you split it."
+  },
+  {
+   "id": "pr-l10-q31",
+   "station": 4,
+   "marks": 1,
+   "q": "Change the program so the newline does not end up inside the second field.",
+   "kind": "change",
+   "brief": [
+    "data.txt is already there, with one word,number record on each line.",
+    "Change only the line that splits the record.",
+    "Display one line for each record, in the form [word] [number]."
+   ],
+   "hint": {
+    "think": "Take the newline off the line before you cut it up.",
+    "syntax": "text.strip()"
+   },
+   "starter": "f = open(\"data.txt\", \"r\")\nlines = f.readlines()\nf.close()\nfor line in lines:\n    fields = line.split(\",\")\n    print(fields[0], fields[1])\n",
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "copper 14",
+      "slate 15"
+     ],
+     "why": "A blank line sits under each record. The newline went into the second field, and it is displayed along with it.",
+     "files": {
+      "data.txt": "copper,14\nslate,15\n"
+     }
+    },
+    {
+     "in": [],
+     "out": [
+      "ridge 7",
+      "moss 13",
+      "glass 2"
+     ],
+     "why": "Strip the line first, then split it. The two methods can go on the same line, one after the other.",
+     "files": {
+      "data.txt": "ridge,7\nmoss,13\nglass,2\n"
+     }
+    }
+   ],
+   "fb": ".strip() first, .split(\",\") second. Doing it the other way round leaves the newline stuck to the last field."
+  },
+  {
+   "id": "pr-l10-q32",
+   "station": 4,
+   "marks": 2,
+   "q": "Finish the program so it displays the number from each record.",
+   "kind": "complete",
+   "brief": [
+    "data.txt is already there, with one word,number record on each line.",
+    "Replace ____ with the position of the number field.",
+    "Field positions count from 0.",
+    "Display the line number [the number] for each record."
+   ],
+   "hint": {
+    "think": "The word is the first field and the number is the second one.",
+    "syntax": "fields[position]"
+   },
+   "starter": "f = open(\"data.txt\", \"r\")\nlines = f.readlines()\nf.close()\nfor line in lines:\n    fields = line.strip().split(\",\")\n    print(\"number\", fields[____])\n",
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "number 14",
+      "number 15",
+      "number 13"
+     ],
+     "why": "The number is the second field, so its position is 1. Position 0 would display the words instead.",
+     "files": {
+      "data.txt": "copper,14\nslate,15\nmoss,13\n"
+     }
+    },
+    {
+     "in": [],
+     "out": [
+      "number 7"
+     ],
+     "why": "One record still has two fields. The ____ cannot stay there: Python does not know what it means.",
+     "files": {
+      "data.txt": "ridge,7\n"
+     }
+    }
+   ],
+   "fb": "A split line is an ordinary list, so the first field is at position 0 and the second at position 1."
+  },
+  {
+   "id": "pr-l10-q33",
+   "station": 4,
+   "marks": 3,
+   "q": "A file called data.txt is already there, holding one word,number record per line, and it may be empty. Read data.txt. Display one line for each record, in the form [word] [number]. Display none instead, on a line of its own, when the file holds no records.",
+   "brief": [
+    "Nothing is typed in.",
+    "The program only reads data.txt.",
+    "There is one space between the two fields, in place of the comma.",
+    "Display exactly: none"
+   ],
+   "hint": {
+    "think": "Read the file into a list of lines, then split each line into its fields.",
+    "start": [
+     "f = open(\"data.txt\", \"r\")",
+     "lines = f.readlines()"
+    ],
+    "walk": [
+     "Read the whole file into a list.",
+     "If that list is empty, display none.",
+     "Otherwise take each line in turn.",
+     "Strip it, split it at the comma, and display both fields."
+    ],
+    "diagram": "pyfile"
+   },
+   "starter": "# one record per line, two fields on each\n",
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "copper 14",
+      "slate 15",
+      "moss 13"
+     ],
+     "why": "Three records, each split into two fields. A comma still in the output means the line was displayed as it stood.",
+     "files": {
+      "data.txt": "copper,14\nslate,15\nmoss,13\n"
+     }
+    },
+    {
+     "in": [],
+     "out": [
+      "ridge 7"
+     ],
+     "why": "A single record still has to be split. A blank line after it means the line was split before it was stripped.",
+     "files": {
+      "data.txt": "ridge,7\n"
+     }
+    },
+    {
+     "in": [],
+     "out": [
+      "none"
+     ],
+     "why": "No records at all, so the loop never runs and the one word none is displayed. A crash here means a record was read without checking there was one.",
+     "files": {
+      "data.txt": ""
+     }
+    },
+    {
+     "in": [],
+     "out": [
+      "lantern 0",
+      "glass 120"
+     ],
+     "why": "The fields are displayed exactly as the file holds them, so a number of 0 comes out as 0.",
+     "files": {
+      "data.txt": "lantern,0\nglass,120\n"
+     }
+    }
+   ],
+   "fb": "A record is one line made of fields. .split(\",\") turns it into a list, so fields[0] is the word and fields[1] is the number."
+  },
+  {
+   "id": "pr-l10-q34",
+   "station": 4,
+   "marks": 2,
+   "q": "This program should display every record's number added together. Find the mistake and put it right.",
+   "kind": "debug",
+   "brief": [
+    "Press Run first and read the error message.",
+    "data.txt is already there, with one word,number record on each line.",
+    "Change only the line that adds to the total.",
+    "Display the line total [the numbers added together]."
+   ],
+   "hint": {
+    "think": "A field taken out of a file is text, even when it is nothing but digits.",
+    "syntax": "int(text)"
+   },
+   "starter": "f = open(\"data.txt\", \"r\")\nlines = f.readlines()\nf.close()\ntotal = 0\nfor line in lines:\n    fields = line.strip().split(\",\")\n    total = total + fields[1]\nprint(\"total\", total)\n",
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "total 20"
+     ],
+     "why": "TypeError means a number and some text were added. The field has to go through int() first.",
+     "files": {
+      "data.txt": "copper,7\nslate,9\nmoss,4\n"
+     }
+    },
+    {
+     "in": [],
+     "out": [
+      "total 5"
+     ],
+     "why": "One record still needs its field casting, and the error happens on the very first one.",
+     "files": {
+      "data.txt": "ridge,5\n"
+     }
+    },
+    {
+     "in": [],
+     "out": [
+      "total 0"
+     ],
+     "why": "No records at all, so nothing is added and the total stays at the 0 it started as.",
+     "files": {
+      "data.txt": ""
+     }
+    }
+   ],
+   "fb": "Everything that comes out of a file is text, exactly like everything that comes out of input(). int() is needed before it can be added up."
+  },
+  {
+   "id": "pr-l10-q35",
+   "station": 4,
+   "marks": 3,
+   "q": "Ask the user for a word to find. The file data.txt is already there, holding one word,number record per line. Look at every record in data.txt. Display the line [word] is [its number] when a record matches. Display no record instead when none matches. Then display the line checked [how many records you looked at] on the next line.",
+   "brief": [
+    "data.txt may be empty.",
+    "The program only reads data.txt.",
+    "Look at every record, even after one has matched.",
+    "Display exactly: no record"
+   ],
+   "hint": {
+    "think": "Look at every record, and only decide what to display once the loop has finished.",
+    "walk": [
+     "Read the file into a list of lines.",
+     "Keep a variable for what you found, set to an empty string before the loop.",
+     "Split each record and compare its first field with the word.",
+     "After the loop, display what you found, or no record.",
+     "Then display how many records there were."
+    ],
+    "diagram": "pyfile"
+   },
+   "starter": "# one record per line, one word to find\n",
+   "opt": true,
+   "tests": [
+    {
+     "in": [
+      "slate"
+     ],
+     "out": [
+      "slate is 15",
+      "checked 3"
+     ],
+     "why": "slate is the second record, and all three were looked at. A blank line before the checked line means the record was split before it was stripped.",
+     "files": {
+      "data.txt": "copper,14\nslate,15\nmoss,13\n"
+     }
+    },
+    {
+     "in": [
+      "willow"
+     ],
+     "out": [
+      "no record",
+      "checked 3"
+     ],
+     "why": "Nothing matches, so the message is displayed once after the loop. Three times means it sits inside the loop.",
+     "files": {
+      "data.txt": "copper,14\nslate,15\nmoss,13\n"
+     }
+    },
+    {
+     "in": [
+      "copper"
+     ],
+     "out": [
+      "no record",
+      "checked 0"
+     ],
+     "why": "An empty file has no records, so nothing matches and nothing was looked at.",
+     "files": {
+      "data.txt": ""
+     }
+    },
+    {
+     "in": [
+      "ridge"
+     ],
      "out": [
       "ridge is 16",
       "checked 1"
      ],
-     "why": "A file with a single record still has to be searched. If nothing was found, the loop may be stopping before it looks at the only line."
+     "why": "A file with a single record still has to be searched.",
+     "files": {
+      "data.txt": "ridge,16\n"
+     }
     },
     {
      "in": [
       "glass"
      ],
-     "files": {
-      "data.txt": "lantern,12\nglass,17\n"
-     },
      "out": [
       "glass is 17",
       "checked 2"
      ],
-     "why": "The last record must be checked too. Printing no record here means the loop gave up as soon as the first line failed to match."
+     "why": "The last record has to be looked at too. no record here means the loop gave up at the first line that did not match.",
+     "files": {
+      "data.txt": "lantern,12\nglass,17\n"
+     }
     }
    ],
-   "fb": "Searching a file of records is a linear search over the lines: split each one, compare the field you care about, and only decide what to print once the loop has finished."
+   "fb": "Searching a file of records is a linear search over its lines: split each one, compare the field you care about, and decide what to display only once the loop has finished."
   },
   {
-   "id": "pr-l10-q12",
-   "station": 4,
-   "marks": 5,
-   "q": "A file called data.txt is already there, holding one word,number record per line, and it may be empty. Read data.txt. Display no records when it holds none. Otherwise add up every number. Find the word on the record with the highest number. Display total [the numbers added up]. Then display best [that word] on the next line.",
-   "brief": [
-    "Nothing is typed in.",
-    "The program only reads data.txt.",
-    "The earlier record wins a tie for the highest number.",
-    "Print exactly: no records"
-   ],
-   "hint": "pyfile",
-   "starter": "# the total and the best of one field\n",
-   "tests": [
-    {
-     "files": {
-      "data.txt": "copper,7\nslate,9\nmoss,4\n"
-     },
-     "out": [
-      "total 20",
-      "best slate"
-     ],
-     "why": "7 plus 9 plus 4 is 20, and slate's 9 is the highest. A total of 794 means the number field was joined as text instead of turned into a number with int()."
-    },
-    {
-     "files": {
-      "data.txt": "ridge,5\n"
-     },
-     "out": [
-      "total 5",
-      "best ridge"
-     ],
-     "why": "One record is its own total and its own best. If the best came out blank, the highest is only being updated when a later number beats a starting value you never set."
-    },
-    {
-     "files": {
-      "data.txt": ""
-     },
-     "out": [
-      "no records"
-     ],
-     "why": "No records at all. A program that prints total 0 here, or crashes looking for the highest, assumed the file always has data in it."
-    },
-    {
-     "files": {
-      "data.txt": "lantern,3\nglass,3\n"
-     },
-     "out": [
-      "total 6",
-      "best lantern"
-     ],
-     "why": "A tie goes to the first one in the file, so the test for the highest has to be strictly greater than, not greater than or equal to."
-    },
-    {
-     "files": {
-      "data.txt": "willow,0\nember,0\n"
-     },
-     "out": [
-      "total 0",
-      "best willow"
-     ],
-     "why": "Numbers of zero are still records. If best came out blank, you started the highest at 0 and nothing ever beat it - start from the first record instead."
-    }
-   ],
-   "fb": "Totalling a field means reading each record, pulling out that field, turning it into a number and adding it on. The running total starts at 0 before the loop, never inside it."
-  },
-  {
-   "id": "pr-l10-q13",
+   "id": "pr-l10-q36",
    "station": 5,
-   "marks": 5,
-   "q": "A file called data.txt is already there, holding one word,first,second record per line, and it may be empty. Read data.txt. Make a file called out.txt. Write a line of [word] [the first number times the second] into out.txt for each record. Then write total [all those values added up] on the last line. Close out.txt. Then read out.txt back. Display the whole of it.",
+   "kind": "try",
+   "marks": 1,
+   "q": "Press Run. The program reads one file and writes a second one out of it.",
    "teach": {
-    "say": "One file can be open for reading while another is open for writing, which is how one file is built out of another.",
+    "say": "One file can be open for reading while another is open for writing. That is how a program makes a new file out of an old one, and each file needs its own variable.",
     "code": [
-     "src = open('data.txt', 'r')",
-     "dst = open('out.txt', 'w')",
-     "dst.write(src.readline())"
+     "f = open(\"pets.txt\", \"w\")",
+     "f.write(\"cat,4\\ndog,7\\n\")",
+     "f.close()",
+     "src = open(\"pets.txt\", \"r\")",
+     "lines = src.readlines()",
+     "src.close()",
+     "dst = open(\"out.txt\", \"w\")",
+     "for line in lines:",
+     "    fields = line.strip().split(\",\")",
+     "    dst.write(fields[0] + \"\\n\")",
+     "dst.close()",
+     "check = open(\"out.txt\", \"r\")",
+     "print(check.read())",
+     "check.close()"
+    ],
+    "out": [
+     "cat",
+     "dog"
     ]
    },
    "brief": [
-    "Nothing is typed in.",
-    "There is no out.txt to start with, so the program creates it.",
-    "The total line is written last, after every record's line."
+    "Nothing is marked on this one.",
+    "out.txt ends up holding only the first field of each record."
    ],
-   "hint": "pyfile",
+   "starter": "f = open(\"pets.txt\", \"w\")\nf.write(\"cat,4\\ndog,7\\n\")\nf.close()\nsrc = open(\"pets.txt\", \"r\")\nlines = src.readlines()\nsrc.close()\ndst = open(\"out.txt\", \"w\")\nfor line in lines:\n    fields = line.strip().split(\",\")\n    dst.write(fields[0] + \"\\n\")\ndst.close()\ncheck = open(\"out.txt\", \"r\")\nprint(check.read())\ncheck.close()\n",
+   "lines": [
+    "Open pets.txt for writing, so there is a file to read later.",
+    "Write both records in one go.",
+    "Close it.",
+    "Open pets.txt again for reading, under the name src.",
+    "Read every record into a list.",
+    "Close src.",
+    "Open out.txt for writing, under the name dst.",
+    "Take each record in turn.",
+    "Strip it and cut it at the comma.",
+    "Write the first field only into out.txt, with a \\n on the end.",
+    "Close dst, which is when the new file is really written.",
+    "Open out.txt for reading, under the name check.",
+    "Show the whole of the new file.",
+    "Close check."
+   ],
+   "fb": "Two files, two variables, two modes. Reading the new file back is the only way to see that it was really written."
+  },
+  {
+   "id": "pr-l10-q37",
+   "station": 5,
+   "kind": "predict",
+   "marks": 1,
+   "q": "What will this program display?",
+   "code": [
+    "f = open(\"notes.txt\", \"w\")",
+    "f.close()",
+    "for i in range(3):",
+    "    f = open(\"notes.txt\", \"a\")",
+    "    f.write(str(i) + \"\\n\")",
+    "    f.close()",
+    "f = open(\"notes.txt\", \"r\")",
+    "print(f.read())",
+    "f.close()"
+   ],
+   "a": [
+    "0\n1\n2",
+    "2",
+    "012"
+   ],
+   "brief": [
+    "Read every line before you choose."
+   ],
+   "teach": {
+    "say": "A file can be opened, written to and closed again inside a loop. \"a\" keeps what is already in the file, so each turn of the loop adds one more line."
+   },
+   "fb": "Three turns of the loop added three lines. \"w\" inside the loop would have left only the last one."
+  },
+  {
+   "id": "pr-l10-q38",
+   "station": 5,
+   "marks": 2,
+   "q": "Finish the program so only the records with a number above 50 are written into picked.txt.",
+   "kind": "complete",
+   "brief": [
+    "data.txt is already there, with one word,number record on each line.",
+    "Replace ____ with one condition.",
+    "A number of exactly 50 does not count as above 50.",
+    "Display every line of picked.txt, one on each line."
+   ],
+   "hint": {
+    "think": "The number field is text until int() turns it into a number.",
+    "syntax": "int(field) > limit"
+   },
+   "starter": "f = open(\"data.txt\", \"r\")\nlines = f.readlines()\nf.close()\nout = open(\"picked.txt\", \"w\")\nfor line in lines:\n    fields = line.strip().split(\",\")\n    if ____:\n        out.write(fields[0] + \"\\n\")\nout.close()\nf = open(\"picked.txt\", \"r\")\nprint(f.read())\nf.close()\n",
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "slate",
+      "moss"
+     ],
+     "why": "copper's 20 is not above 50. If copper came out too, the numbers were compared as text rather than cast with int().",
+     "files": {
+      "data.txt": "copper,20\nslate,90\nmoss,51\n"
+     }
+    },
+    {
+     "in": [],
+     "out": [
+      "ember"
+     ],
+     "why": "Exactly 50 is not above 50, so lantern is left out. This is the boundary the condition has to get right.",
+     "files": {
+      "data.txt": "lantern,50\nember,80\n"
+     }
+    },
+    {
+     "in": [],
+     "out": [
+      "ridge"
+     ],
+     "why": "51 is above 50 by one. The ____ cannot stay there: Python does not know what it means.",
+     "files": {
+      "data.txt": "ridge,51\n"
+     }
+    }
+   ],
+   "fb": "A number out of a file is text, so int() comes first and the comparison second."
+  },
+  {
+   "id": "pr-l10-q39",
+   "station": 5,
+   "marks": 3,
+   "q": "A file called data.txt is already there, holding one word,first,second record per line, and it may be empty. Read data.txt. Make a file called out.txt. Write a line of [word] [the first number times the second] into out.txt for each record. Then write the line total [all those values added up] into out.txt last. Close out.txt. Then read out.txt back and display the whole of it.",
+   "brief": [
+    "Nothing is typed in.",
+    "There is no out.txt to start with, so the program makes it.",
+    "The total line is written last, after every record's line.",
+    "An empty data.txt still gets a total line."
+   ],
+   "hint": {
+    "think": "Keep a running total as you go, and write the total line only once the loop has finished.",
+    "start": [
+     "f = open(\"data.txt\", \"r\")",
+     "lines = f.readlines()"
+    ],
+    "walk": [
+     "Read the records into a list and close data.txt.",
+     "Open out.txt for writing and set the total to 0.",
+     "For each record, work out the two numbers multiplied.",
+     "Write the word and that value, and add the value to the total.",
+     "After the loop, write the total line and close out.txt.",
+     "Open out.txt for reading and display it."
+    ],
+    "diagram": "pyfile"
+   },
    "starter": "# one file in, another out, then read it back\n",
    "tests": [
     {
-     "files": {
-      "data.txt": "copper,3,50\nslate,2,120\n"
-     },
+     "in": [],
      "out": [
       "copper 150",
       "slate 240",
       "total 390"
      ],
-     "why": "3 times 50 is 150, 2 times 120 is 240, and the two make 390. If the total line came first, it was written before the loop rather than after."
+     "why": "3 times 50 is 150, 2 times 120 is 240, and the two make 390. A total line that came first was written before the loop.",
+     "files": {
+      "data.txt": "copper,3,50\nslate,2,120\n"
+     }
     },
     {
-     "files": {
-      "data.txt": "moss,1,99\n"
-     },
+     "in": [],
      "out": [
       "moss 99",
       "total 99"
      ],
-     "why": "One record, so its value is also the total. Two identical numbers is right here - do not skip the total line just because it matches."
+     "why": "One record, so its value is also the total. Two matching numbers is right here.",
+     "files": {
+      "data.txt": "moss,1,99\n"
+     }
     },
     {
-     "files": {
-      "data.txt": ""
-     },
+     "in": [],
      "out": [
       "total 0"
      ],
-     "why": "No records, so nothing is written for them, but the total line still has to be written. A program that writes nothing and then reads an empty out.txt prints nothing at all."
+     "why": "No records, so nothing is written for them, but the total line still has to be written. Nothing at all means out.txt was never written to.",
+     "files": {
+      "data.txt": ""
+     }
     },
     {
-     "files": {
-      "data.txt": "lantern,10,15\nglass,2,250\nember,4,5\n"
-     },
+     "in": [],
      "out": [
       "lantern 150",
       "glass 500",
       "ember 20",
       "total 670"
      ],
-     "why": "The records must come out in the order they were in the file. If the values were right but the total was 0, the running total is being reset inside the loop."
+     "why": "The records come out in the order the file held them. Right values but a total of 0 means the total is being set to 0 inside the loop.",
+     "files": {
+      "data.txt": "lantern,10,15\nglass,2,250\nember,4,5\n"
+     }
     },
     {
-     "files": {
-      "data.txt": "willow,0,40\n"
-     },
+     "in": [],
      "out": [
       "willow 0",
       "total 0"
      ],
-     "why": "A first number of zero is worth zero, and the record still gets a line of its own in out.txt."
+     "why": "A first number of zero is worth zero, and the record still gets a line of its own.",
+     "files": {
+      "data.txt": "willow,0,40\n"
+     }
     }
    ],
-   "fb": "Reading one file and writing another is the usual shape of this job. Only what you print is seen, so reading out.txt back is how you prove you really wrote it."
+   "fb": "Reading one file and writing another is the usual shape of this job. Only what you display is seen, so reading out.txt back is how you prove you wrote it."
   },
   {
-   "id": "pr-l10-q14",
+   "id": "pr-l10-q40",
    "station": 5,
-   "marks": 6,
-   "q": "Ask the user for a limit. The file data.txt is already there, holding one word,number record per line. Read data.txt. Make a file called picked.txt. Write a line of [word] [number] into picked.txt for each record whose number is above the limit. Then read picked.txt back. Display [every line in it], one on each line. Then display picked [how many] on the last line.",
+   "marks": 3,
+   "q": "Ask the user for a limit as a whole number. The file data.txt is already there, holding one word,number record per line. Read data.txt. Make a file called picked.txt. Write a line of [word] [number] into picked.txt for each record whose number is above the limit. Close picked.txt. Then read picked.txt back. Display every line in it, one on each line. Then display the line picked [how many] on the last line.",
    "brief": [
     "data.txt may be empty.",
-    "The limit is a whole number.",
     "Make picked.txt even when nothing matches.",
     "A number equal to the limit does not count.",
-    "One space between the two fields of a line, in place of the comma."
+    "There is one space between the two fields of a line, in place of the comma."
    ],
-   "hint": "pyfile",
+   "hint": {
+    "think": "Open picked.txt before the loop, so the file exists even when nothing matches.",
+    "walk": [
+     "Read the limit and cast it with int().",
+     "Read data.txt into a list of records and close it.",
+     "Open picked.txt for writing, before the loop starts.",
+     "Write the word and the number of every record that is above the limit.",
+     "Close picked.txt, then open it again for reading.",
+     "Display each of its lines, then how many there were."
+    ],
+    "diagram": "pyfile"
+   },
    "starter": "# pick some out, then read the new file back\n",
    "tests": [
     {
      "in": [
       "25"
      ],
-     "files": {
-      "data.txt": "copper,20\nslate,35\nmoss,28\n"
-     },
      "out": [
       "slate 35",
       "moss 28",
       "picked 2"
      ],
-     "why": "35 and 28 are both over 25, and copper's 20 is not. If copper appeared too, the numbers are being compared as text - '20' is bigger than '2' as text, so int() is needed."
+     "why": "35 and 28 are above 25 and copper's 20 is not. copper appearing means the numbers were compared as text.",
+     "files": {
+      "data.txt": "copper,20\nslate,35\nmoss,28\n"
+     }
     },
     {
      "in": [
       "50"
      ],
-     "files": {
-      "data.txt": "copper,20\nslate,35\n"
-     },
      "out": [
       "picked 0"
      ],
-     "why": "Nothing is over 50, so picked.txt is written empty and the count is 0. A crash here means you tried to read a file you only opened when there was something to put in it - open it either way."
+     "why": "Nothing is above 50, so picked.txt is written empty and the count is 0. A crash here means the file was only opened when there was something to put in it.",
+     "files": {
+      "data.txt": "copper,20\nslate,35\n"
+     }
     },
     {
      "in": [
       "10"
      ],
-     "files": {
-      "data.txt": ""
-     },
      "out": [
       "picked 0"
      ],
-     "why": "No records at all, so nothing is picked. The count line still has to be printed."
+     "why": "No records at all, so nothing is picked. The count line still has to be displayed.",
+     "files": {
+      "data.txt": ""
+     }
     },
     {
      "in": [
       "40"
      ],
-     "files": {
-      "data.txt": "ridge,41\n"
-     },
      "out": [
       "ridge 41",
       "picked 1"
      ],
-     "why": "41 is above 40 by one. If this was missed you used >= on the wrong side, or compared the limit to the word instead of the number."
+     "why": "41 is above 40 by one.",
+     "files": {
+      "data.txt": "ridge,41\n"
+     }
     },
     {
      "in": [
       "30"
      ],
-     "files": {
-      "data.txt": "lantern,30\n"
-     },
      "out": [
       "picked 0"
      ],
-     "why": "Exactly the limit is not above the limit, so nothing is written. This is the boundary - >= instead of > fails only here."
+     "why": "Exactly the limit is not above the limit, so nothing is written. This is the boundary, and only a test like this one catches it.",
+     "files": {
+      "data.txt": "lantern,30\n"
+     }
     },
     {
      "in": [
       "50"
      ],
-     "files": {
-      "data.txt": "glass,5\nember,90\nwillow,5\nflint,90\n"
-     },
      "out": [
       "ember 90",
       "flint 90",
       "picked 2"
      ],
-     "why": "Two separate records can hold the same number and both count. If only one line printed, you stopped the loop at the first match."
+     "why": "Two records can hold the same number and both count. Only one line means the loop stopped at the first match.",
+     "files": {
+      "data.txt": "glass,5\nember,90\nwillow,5\nflint,90\n"
+     }
     }
    ],
    "fb": "This is the whole pattern in one program: read records in, decide about each one, write the chosen ones out, then read the new file back. Opening picked.txt before the loop is what makes the empty case work."
+  },
+  {
+   "id": "pr-l10-q41",
+   "station": 5,
+   "marks": 2,
+   "q": "This program should display every line of out.txt. Find the mistake and put it right.",
+   "kind": "debug",
+   "brief": [
+    "Press Run first and read the error message.",
+    "data.txt is already there, with one word on each line.",
+    "Change only the mode in the last open().",
+    "Display each word in capitals, one on each line."
+   ],
+   "hint": {
+    "think": "The mode on the last open() is not the mode for what the program does next.",
+    "syntax": "open(name, \"r\")",
+    "diagram": "pyfile"
+   },
+   "starter": "f = open(\"data.txt\", \"r\")\nlines = f.readlines()\nf.close()\nout = open(\"out.txt\", \"w\")\nfor line in lines:\n    out.write(line.strip().upper() + \"\\n\")\nout.close()\nf = open(\"out.txt\", \"w\")\nprint(f.read())\nf.close()\n",
+   "tests": [
+    {
+     "in": [],
+     "out": [
+      "COPPER",
+      "SLATE"
+     ],
+     "why": "The message not readable means the file was opened for writing. Worse, opening it that way emptied everything the program had just written.",
+     "files": {
+      "data.txt": "copper\nslate\n"
+     }
+    },
+    {
+     "in": [],
+     "out": [
+      "MOSS"
+     ],
+     "why": "Only the last open() is wrong. The one that writes out.txt is right as it stands.",
+     "files": {
+      "data.txt": "moss\n"
+     }
+    },
+    {
+     "in": [],
+     "out": [
+      "RIDGE",
+      "HOLLOW",
+      "EMBER"
+     ],
+     "why": "Reading a file back always needs \"r\", however many lines it holds.",
+     "files": {
+      "data.txt": "ridge\nhollow\nember\n"
+     }
+    }
+   ],
+   "fb": "\"w\" cannot read, and it empties the file as it opens. Opening a file you have just written with \"w\" again destroys the very thing you wanted to see."
+  },
+  {
+   "id": "pr-l10-q42",
+   "station": 5,
+   "marks": 3,
+   "q": "Ask the user for a word. Then ask for a whole number. Add the record [word],[number] to the end of the file log.txt, on a line of its own. Keep the records log.txt already holds. Then read log.txt back. Display the line records [how many records there are]. Then display the line total [every number added up] on the next line.",
+   "brief": [
+    "log.txt is already there and may be empty.",
+    "Each record is a word and a number with a comma between them.",
+    "The user types in two lines: a word, then a whole number.",
+    "The record just added counts in both answers."
+   ],
+   "hint": {
+    "think": "Append the new record first, then read the whole file and work on every record in it.",
+    "walk": [
+     "Read the word and the number.",
+     "Open log.txt with \"a\" and write the record with a \\n on the end.",
+     "Close the file.",
+     "Open it for reading and read every line into a list.",
+     "Add up the number field of each record, casting each one with int().",
+     "Display how many records there are, then the total."
+    ],
+    "diagram": "pyfile"
+   },
+   "starter": "# add one record, then report on them all\n",
+   "opt": true,
+   "tests": [
+    {
+     "in": [
+      "moss",
+      "4"
+     ],
+     "out": [
+      "records 3",
+      "total 20"
+     ],
+     "why": "Two records were there and the new one makes three. 7 plus 9 plus 4 is 20.",
+     "files": {
+      "log.txt": "copper,7\nslate,9\n"
+     }
+    },
+    {
+     "in": [
+      "ridge",
+      "5"
+     ],
+     "out": [
+      "records 1",
+      "total 5"
+     ],
+     "why": "An empty file to start with, so the record just added is the only one.",
+     "files": {
+      "log.txt": ""
+     }
+    },
+    {
+     "in": [
+      "ember",
+      "0"
+     ],
+     "out": [
+      "records 2",
+      "total 12"
+     ],
+     "why": "A number of zero is still a record, and it adds nothing to the total.",
+     "files": {
+      "log.txt": "willow,12\n"
+     }
+    },
+    {
+     "in": [
+      "glass",
+      "90"
+     ],
+     "out": [
+      "records 4",
+      "total 120"
+     ],
+     "why": "Three records were there and the new one makes four. A TypeError means a field was added without int() round it.",
+     "files": {
+      "log.txt": "a,10\nb,15\nc,5\n"
+     }
+    }
+   ],
+   "fb": "Appending a record and then totalling the file is what a real log does. The newly added record is read back with all the others, which is how you know it went in."
   }
  ]
 }

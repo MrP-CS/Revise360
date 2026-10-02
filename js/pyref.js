@@ -57,7 +57,7 @@
         },
         {
           syntax: 'print(one, two)',
-          what: "Shows two values on the same line, with one space put between them.",
+          what: "Shows two values on the same line, with one space put between them. The other way is to join them yourself with + and str(), which is what the lessons do, because then you decide where every space goes.",
           eg: ['print("socks", 3)'],
           egOut: ["socks 3"]
         },
@@ -263,7 +263,7 @@
         {
           syntax: 'while value != sentinel:',
           what: "Reads one value before the loop and the next at the bottom of it, stopping on the value that means finish.",
-          eg: ['line = input()   # the user types 4', 'while line != "end":', '    print(line)', '    line = input()   # then end'],
+          eg: ['line = input()   # the user types 4', 'while line != "quit":', '    print(line)', '    line = input()   # then quit'],
           egOut: ["4"]
         },
         {
@@ -509,8 +509,8 @@
         {
           syntax: 'file.readline()',
           what: "Reads only as far as the next newline, and that newline is still on the end of what comes back.",
-          eg: ['f = open("notes.txt", "r")', 'print(f.readline().strip())', 'print(f.readline().strip())'],
-          egOut: ["red", "blue"]
+          eg: ['f = open("notes.txt", "r")', 'first = f.readline().strip()', 'f.close()', 'print("First line is " + first)'],
+          egOut: ["First line is red"]
         },
         {
           syntax: 'file.readlines()',
