@@ -322,7 +322,10 @@
    * when there is an interactive board to fit in it. */
   function shell(title, col, inner) {
     box.style.setProperty("--c", col);
-    const ownLayout = /class="vwrap"/.test(inner);
+    // Matches the class anywhere in the attribute: the code window carries
+    // "vwrap pywrap", and an exact-string test silently wrapped it in an
+    // extra layout box that broke every height inside it.
+    const ownLayout = /class="[^"]*\bvwrap\b/.test(inner);
     const board = /class="lboard"/.test(inner);
     box.classList.remove("wide");
     box.classList.add("huge");
@@ -396,7 +399,15 @@
       .filter((l, i, a) => l !== "" || i < a.length - 1).join("\n").replace(/\n+$/, "").toLowerCase();
   }
   const sameOutput = (got, want) => norm(got) === norm(want);
+  // Has this question been answered already? Used for the progress bubbles.
+  function isDone(k, i) {
+    const sc = exp.scenes[cur];
+    return (prog.scenes[sc.id].ans || {})[k + "-" + i] !== undefined;
+  }
+  // Things to stop when the code window closes - speech, so far.
+  const onCloseCode = [];
   function runCode(k, list, n, task, head, qn) {
+    while (onCloseCode.length) { try { onCloseCode.pop()(); } catch (e) { /* already gone */ } }
     const brief = (task.brief || []).map(b => `<li>${esc(b)}</li>`).join("");
     /* A worked example of the technique, with different data from the task, so
      * a pupil meeting it for the first time has something to copy the shape of.
@@ -423,42 +434,93 @@
       <div class="pyrunrow"><span>typed in</span><code>${given.length ? given.map(esc).join("\n") : "nothing"}</code></div>
       <div class="pyrunrow out"><span>prints</span><code>${shows.map(esc).join("\n")}</code></div>
     </div>`;
-    /* The left column is split in two on purpose. The task, the example and the
-     * worked example scroll; the buttons, the test results and the feedback do
-     * not. Checking an answer should never mean scrolling to find the button,
-     * and reading why a test failed should never mean scrolling back up. */
-    shell(head, "#50dc96", `<div class="vwrap">
-        <div class="vside pyside">
+    /* The task as steps rather than a paragraph. The house wording is already
+     * one sentence per step - ask, work out, display - so the sentences are the
+     * steps, and splitting them here means all 238 questions get it without
+     * anybody rewriting them into bullets by hand. */
+    const steps = String(task.q).split(/(?<=[.?!])\s+(?=[A-Z])/).map(x => x.trim()).filter(Boolean);
+    const stepList = steps.map((s, i) =>
+      `<li><span class="stepn" aria-hidden="true">${i + 1}</span><span>${esc(s)}</span></li>`).join("");
+
+    /* Where the pupil is in this station, the way a lesson site shows it: one
+     * bubble per question, the one they are on filled in. */
+    const dots = list.length < 2 ? "" : `<ol class="pydots" aria-label="Question ${n + 1} of ${list.length}">` +
+      list.map((qi, j) => {
+        const done = isDone(k, qi);
+        return `<li class="${j === n ? "now" : ""}${done ? " done" : ""}" aria-current="${j === n ? "step" : "false"}">` +
+               `<span>${j + 1}</span></li>`;
+      }).join("") + "</ol>";
+
+    /* Left half: everything to read, in one box each, with the marking below it
+     * where there is room for it. Right half: the editor, its own Run bar, the
+     * output, and the two buttons that end the attempt. Half and half, so a
+     * long task never squeezes the program and a long program never hides the
+     * task. */
+    shell(head, "#50dc96", `<div class="vwrap codewrap">
+        <div class="pyside">
          <div class="pyscroll">
-          ${qn}<p class="q" style="font-size:19px">${esc(task.q)}</p>
+          ${dots}
+          <section class="pytask" aria-labelledby="pytaskh">
+            <div class="pytaskhead">
+              <h3 id="pytaskh">Your task</h3>
+              <button class="btn ghost small" id="pysay" aria-label="Read the task aloud">🔊 Read aloud</button>
+            </div>
+            <ol class="pysteps">${stepList}</ol>
+            ${brief ? `<ul class="pybrief">${brief}</ul>` : ""}
+          </section>
           ${runEg}
           ${teach}
-          ${brief ? `<ul class="pybrief">${brief}</ul>` : ""}
          </div>
-         <div class="pyfixed">
-          <div class="pybar">
-            <button class="btn" id="pycheck">Check my answer</button>
-            ${task.hint ? '<button class="btn ghost" id="pyhint">Hint</button>' : ""}
-          </div>
+         <div class="pyresult">
           <p class="pytry" id="pytry"></p>
-          <div class="pytests" id="pytests"></div>
+          <div class="pytests" id="pytests" role="group" aria-label="How each test went"></div>
           <div class="fb" id="fb" aria-live="polite"></div>
-          <div class="mrow" id="mrow"></div>
          </div>
         </div>
-        <div class="vstage" style="flex-direction:column;background:none;border:0;gap:10px">
-          <div id="pyed" style="flex:1;min-height:0"></div>
+        <div class="vstage pystage">
+          <div id="pyed"></div>
           <!-- The bar an editor has: Run sits between the program and the output
-               it produces, which is where every IDE puts it. Marking stays on
-               the left with the task, because that is a different kind of act. -->
+               it produces, which is where every editor puts it. -->
           <div class="pyidebar">
-            <button class="btn ghost" id="pyrun">▶ Run</button>
+            <button class="btn ghost" id="pyrun" aria-keyshortcuts="Control+Enter">▶ Run</button>
             ${window.R360Ref ? '<button class="btn ghost" id="pyref">Syntax reminder</button>' : ""}
-            <span class="pystate" id="pystate"></span>
+            <span class="pystate" id="pystate" aria-live="polite"></span>
+            <span class="pykeys">Tab indents · Esc leaves the editor · Ctrl+Enter runs</span>
           </div>
-          <pre class="pyout" id="pyout"><span class="muted">Press Run and anything your program prints appears here.</span></pre>
+          <pre class="pyout" id="pyout" aria-label="What your program printed"><span class="muted">Press Run and anything your program prints appears here.</span></pre>
+          <div class="pyact">
+            ${task.hint ? '<button class="btn ghost" id="pyhint">Hint</button>' : ""}
+            <button class="btn" id="pycheck" aria-keyshortcuts="Control+Shift+Enter">Check my answer</button>
+            <span class="mrow" id="mrow"></span>
+          </div>
         </div>
       </div>`);
+
+    /* Reading the task aloud. Some pupils read code far more easily than they
+     * read English about code, and a task read out while they look at the
+     * editor is worth more than the same words sat still on the left. */
+    const sayBtn = $("#pysay");
+    if (sayBtn) {
+      const speech = window.speechSynthesis;
+      if (!speech) sayBtn.remove();
+      else {
+        const words = steps.join(" ") + " " + (task.brief || []).join(" ");
+        const stop = () => { speech.cancel(); sayBtn.textContent = "🔊 Read aloud"; sayBtn.setAttribute("aria-pressed", "false"); };
+        sayBtn.setAttribute("aria-pressed", "false");
+        sayBtn.onclick = () => {
+          if (speech.speaking) return stop();
+          const u = new SpeechSynthesisUtterance(words);
+          u.rate = 0.95; u.lang = "en-GB";
+          u.onend = stop; u.onerror = stop;
+          speech.cancel(); speech.speak(u);
+          sayBtn.textContent = "■ Stop reading"; sayBtn.setAttribute("aria-pressed", "true");
+        };
+        onCloseCode.push(stop);
+      }
+    }
+
+    box.classList.add("codewin");
+    onCloseCode.push(() => box.classList.remove("codewin"));
 
     const ed = R360Py.editor($("#pyed"), task.starter || "");
     const out = $("#pyout"), state = $("#pystate");
@@ -481,6 +543,15 @@
 
     if ($("#pyhint")) $("#pyhint").onclick = () => openHint(task);
     if ($("#pyref")) $("#pyref").onclick = () => openRef();
+
+    /* Running and checking from the keyboard, so a pupil who is typing never
+     * has to go and find the mouse, and anyone who cannot use one still can. */
+    ed.el.addEventListener("keydown", e => {
+      if (!(e.ctrlKey || e.metaKey) || e.key !== "Enter") return;
+      e.preventDefault();
+      const b = e.shiftKey ? $("#pycheck") : $("#pyrun");
+      if (b && !b.disabled) b.click();
+    });
 
     $("#pyrun").onclick = async () => {
       busy(true, "Running\u2026"); say('<span class="muted">Running\u2026</span>');
@@ -684,6 +755,7 @@
     $("#hintclose").focus();
   }
   function closeModal() {
+    while (onCloseCode.length) { try { onCloseCode.pop()(); } catch (e) { /* already gone */ } }
     if (hintOpen()) closeHint();
     if (sprintTimer) { clearInterval(sprintTimer); sprintTimer = null; }
     if (modelView) { modelView.dispose(); modelView = null; }

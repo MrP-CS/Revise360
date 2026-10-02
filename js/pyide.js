@@ -153,9 +153,20 @@
     ta.addEventListener("input", sync);
     ta.addEventListener("scroll", () => { hl.scrollTop = ta.scrollTop; hl.scrollLeft = ta.scrollLeft; gut.scrollTop = ta.scrollTop; });
     ta.addEventListener("keydown", e => {
+      if (e.key === "Escape") {
+        /* Tab has to indent inside an editor, which would otherwise trap anyone
+         * working from the keyboard. Escape is the way out: it moves to the
+         * buttons rather than closing the window, and it does not reach the
+         * window's own Escape handler, so no one loses their program by
+         * pressing it. The line under the editor says so. */
+        e.preventDefault(); e.stopPropagation();
+        const row = host.closest(".pystage") || document;
+        const next = row.querySelector("#pyrun") || row.querySelector("button");
+        if (next) next.focus();
+        return;
+      }
       if (e.key === "Tab") {
-        // Tab indents rather than leaving the editor. Escape then Tab still gets
-        // out, so the window is still reachable from the keyboard alone.
+        // Tab indents rather than leaving the editor; Escape is how you leave.
         e.preventDefault();
         const s = ta.selectionStart, en = ta.selectionEnd, v = ta.value;
         if (s === en && !e.shiftKey) {
