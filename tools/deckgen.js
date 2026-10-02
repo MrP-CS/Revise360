@@ -119,7 +119,15 @@ function intoSlide(pres, L) {
   const s = pres.addSlide();
   chrome(s, L.kicker);
   heading(s, "Into the experience", `Open ${L.title} on revise360.co.uk`);
-  const steps = [
+  /* A coding lesson is a different lesson. Its stations are programs the pupil
+   * writes and runs in the editor rather than facts to read and write down, so
+   * telling a class to "read the wall and write the key fact" would be wrong. */
+  const steps = L.code ? [
+    ["Look around", "Six numbered stations are arranged around you. Turn right for 1 and 2, around for 3 and 4, left for 5 and 6."],
+    ["Plan before you type", "Read the task and its brief. Work out the inputs, what happens to them, and exactly what is printed."],
+    ["Write it and run it", "Type the program in the editor and press Run to see what it does. Then press Check to mark it against the tests."],
+    ["Read the failures", "A test that fails tells you what was expected and what came out. Fix and run it again - that is what programmers do."]
+  ] : [
     ["Look around", "Six numbered stations are arranged around you. Turn right for 1 and 2, around for 3 and 4, left for 5 and 6."],
     ["Read, then write", "Read the wall, write the key fact and your answer to the challenge on the worksheet."],
     ["Then tap the badge", "Only answer the questions once you have written. Your first answer is the one that counts."],

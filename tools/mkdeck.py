@@ -24,6 +24,8 @@ TOPICS = {
     "1.1": (["specs11"], None),
     "1.2": (["specs12a", "specs12b", "specs12c"], None),
     "1.3": (["specs13"], None),
+    "2.2": (["specs22"], None),
+    "PY": (["specspy"], None),
 }
 
 def wsfile(L):
@@ -54,6 +56,10 @@ def entry(L):
     if W.get("keyq") is not None:
         d["keyq"] = W["keyq"]
     d["keyterms"] = W.get("keyterms", [])
+    # A lesson whose stations are programs the pupil writes is taught
+    # differently, and the deck says so on its "Into the experience" slide.
+    if any(t.get("t") == "code" for st in L["stations"] for t in st.get("tasks", [])):
+        d["code"] = True
     d["stations"] = [{k: s[k] for k in ("name", "bullets", "challenge", "fact") if k in s}
                      for s in L["stations"]]
     d["final"] = {k: L["final"][k] for k in ("name", "intro") if k in L["final"]}

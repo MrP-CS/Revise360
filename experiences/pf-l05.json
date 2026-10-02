@@ -1,0 +1,321 @@
+{
+ "id": "pf-l05",
+ "lesson": 5,
+ "title": "Array yard",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Array yard",
+   "img": "img/PF_L05_ArrayYard_360.jpg",
+   "imgHi": "img/PF_L05_ArrayYard_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "One-dimensional arrays",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "In the OCR Exam Reference Language, what does  array crate[5]  declare?",
+       "a": [
+        "An array with five elements",
+        "An array with six elements",
+        "A variable holding the number 5",
+        "Five separate arrays"
+       ],
+       "fb": "The number in the brackets is how many elements there are, and they are numbered 0 to 4."
+      },
+      {
+       "t": "mcq",
+       "q": "What is the main advantage of using one array instead of ten separate variables?",
+       "a": [
+        "One name and a loop can handle all ten values",
+        "An array uses no memory at all",
+        "Each value in an array can be given its own name",
+        "An array does not have to be declared first"
+       ],
+       "fb": "Ten variables need ten lines of code for every job; an array needs one loop."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Index positions",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Using zero-indexing, what is the index of the last element of  array crate[5] ?",
+       "a": [
+        "4",
+        "5",
+        "1",
+        "0"
+       ],
+       "fb": "There are five elements and the first is numbered 0, so the last is numbered 4."
+      },
+      {
+       "t": "mcq",
+       "q": "crate[2] holds 31. What does  crate[2] = 7  do?",
+       "a": [
+        "It replaces the 31 with 7",
+        "It adds 7 to the end of the array",
+        "It adds 7 to 31, giving 38",
+        "It creates a new array with seven elements"
+       ],
+       "fb": "A single equals sign assigns, so the old value in that position is overwritten and lost."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Two-dimensional arrays",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "In the OCR Exam Reference Language, what does  array bay[3,4]  declare?",
+       "a": [
+        "A two-dimensional array of 3 rows and 4 columns",
+        "A one-dimensional array of 34 elements",
+        "Two arrays, one with 3 elements and one with 4",
+        "An array of 3 elements that each hold 4 arrays"
+       ],
+       "fb": "The first number is the number of rows and the second the number of columns, so there are 12 elements in all."
+      },
+      {
+       "t": "mcq",
+       "q": "Which element is the centre square of  array board[3,3] ?",
+       "a": [
+        "board[1,1]",
+        "board[2,2]",
+        "board[0,0]",
+        "board[1,2]"
+       ],
+       "fb": "With zero-indexing the middle row is row 1 and the middle column is column 1."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Procedures and functions",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is the difference between a procedure and a function?",
+       "a": [
+        "A function returns a value to the code that called it, and a procedure does not",
+        "A procedure may be called many times, and a function only once",
+        "A function must be written inside a loop, and a procedure must not",
+        "A procedure may be given parameters, and a function may not"
+       ],
+       "fb": "Both are sub-programs and both can take parameters. The return value is the only difference."
+      },
+      {
+       "t": "mcq",
+       "q": "A sub-program works out the area of a rectangle so the answer can be used in a later calculation. Which should it be?",
+       "a": [
+        "A function",
+        "A procedure",
+        "A constant",
+        "A global variable"
+       ],
+       "fb": "The answer has to come back to the line that called it, and only a function returns a value."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Parameters and returns",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "In  function average(a, b),  what are a and b?",
+       "a": [
+        "Parameters",
+        "Return values",
+        "Global variables",
+        "Constants"
+       ],
+       "fb": "They are named in the definition and given their values when the function is called."
+      },
+      {
+       "t": "mcq",
+       "q": "A function is defined as  function average(a, b) return (a + b) / 2 endfunction.  What does  print(average(12, 18))  output?",
+       "a": [
+        "15",
+        "30",
+        "21",
+        "12 18"
+       ],
+       "fb": "12 and 18 are passed in and added to make 30, and the brackets make sure that happens before the divide."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Local and global",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Where can a local variable be used?",
+       "a": [
+        "Only inside the sub-program where it was declared",
+        "Anywhere in the program",
+        "Only inside loops",
+        "Only in the main program, never in a sub-program"
+       ],
+       "fb": "The variable is created when the sub-program starts and destroyed when it ends."
+      },
+      {
+       "t": "mcq",
+       "q": "Why do programmers use local variables wherever they can?",
+       "a": [
+        "Another part of the program cannot change them by mistake",
+        "They can hold more data than a global variable",
+        "Every sub-program can use them without being passed anything",
+        "They do not need to be given a name"
+       ],
+       "fb": "Keeping a variable local limits the number of places a bug could have come from."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: total the crates",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "order",
+       "q": "Put these lines into a working program that outputs the total of all five elements.",
+       "steps": [
+        "array crate[5]",
+        "total = 0",
+        "for i = 0 to 4",
+        "  total = total + crate[i]",
+        "next i",
+        "print(total)"
+       ],
+       "fb": "Declare the array, set the running total to zero before the loop, add inside the loop, then output after it."
+      },
+      {
+       "t": "mcq",
+       "q": "Why does the loop count up to 4 rather than up to 5?",
+       "a": [
+        "crate[5] does not exist, because the indices run from 0 to 4",
+        "The array only holds four values",
+        "A loop counter can never reach 5",
+        "Counting to 5 would make the total twice as large"
+       ],
+       "fb": "Five elements numbered from 0 means the last index is 4, so counting to 5 would read past the end of the array."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 540,
+     "y": 240,
+     "title": "Same type throughout",
+     "text": "An array holds values of one data type, which is how the computer knows exactly how much space each element needs and where each one begins. A record is the opposite: it is built to hold fields of different types."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1508,
+     "y": 240,
+     "title": "Why zero",
+     "text": "The index is really how far an element sits from the start of the array, so the very first element is nothing at all from the start, which is zero. Reading one element is then a single calculation rather than a search."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 540,
+     "y": 240,
+     "title": "Rows then columns",
+     "text": "Almost every language writes a two-dimensional array as row first and column second. Getting those two the wrong way round in a nested loop is one of the most common bugs in Year 11 coursework."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1508,
+     "y": 240,
+     "title": "Why bother",
+     "text": "Sub-programs are how a large program stays understandable. Each one can be written, tested and fixed on its own, and a sub-program written once can be reused in a completely different program."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 540,
+     "y": 240,
+     "title": "One way in, one way out",
+     "text": "A well-written function takes everything it needs through its parameters and sends everything back through its return value. That makes it possible to test the function on its own, with no other part of the program running."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1508,
+     "y": 240,
+     "title": "Passing instead of sharing",
+     "text": "Rather than make a variable global so a sub-program can reach it, pass it in as a parameter and send the new value back. The sub-program then works anywhere, and nothing outside it can be changed by surprise."
+    }
+   ],
+   "models": [],
+   "diagrams": [
+    {
+     "id": "d1",
+     "face": "right",
+     "x": 1158,
+     "y": 240,
+     "diagram": "arrayindex",
+     "title": "Index positions",
+     "text": "The index is a position, not a value, and the last index is one less than the length. Watch an element read, an element changed, and a loop walk the lot."
+    },
+    {
+     "id": "d2",
+     "face": "back",
+     "x": 190,
+     "y": 240,
+     "diagram": "array2d",
+     "title": "Rows then columns",
+     "text": "The first number picks the row and the second picks the column. Swapping them lands you somewhere else entirely."
+    },
+    {
+     "id": "d3",
+     "face": "left",
+     "x": 190,
+     "y": 240,
+     "diagram": "callreturn",
+     "title": "Calling a sub-program",
+     "text": "An argument travels in to the parameter, the sub-program runs, and return carries one value back. The local variables vanish when it finishes."
+    }
+   ]
+  }
+ ]
+}

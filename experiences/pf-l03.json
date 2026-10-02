@@ -1,0 +1,302 @@
+{
+ "id": "pf-l03",
+ "lesson": 3,
+ "title": "Filing room",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Filing room",
+   "img": "img/PF_L03_FilingRoom_360.jpg",
+   "imgHi": "img/PF_L03_FilingRoom_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Why files",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Why does a program write data to a file?",
+       "a": [
+        "So the data is still there after the program has stopped running",
+        "So the data can be used inside a loop",
+        "So the data takes up less memory",
+        "So the data is automatically encrypted"
+       ],
+       "fb": "Variables live in RAM and are lost; a file persists on secondary storage."
+      },
+      {
+       "t": "mcq",
+       "q": "A quiz program keeps its high scores in variables only. What happens when the program closes?",
+       "a": [
+        "The high scores are lost",
+        "The high scores are moved to the hard disk automatically",
+        "The high scores become constants",
+        "The high scores are output to the screen"
+       ],
+       "fb": "Nothing in RAM survives the program ending unless it has been saved to a file."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Opening a file",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Why must a file be opened before it is used?",
+       "a": [
+        "The program needs a link to the file on secondary storage before it can read or write",
+        "Files are encrypted until they are opened",
+        "Opening a file empties it ready for new data",
+        "Opening a file casts its contents to a string"
+       ],
+       "fb": "Open sets up the connection; read and write then use that connection."
+      },
+      {
+       "t": "mcq",
+       "q": "In the OCR Exam Reference Language, what does  newFile(\"log.txt\")  do?",
+       "a": [
+        "Creates a new file called log.txt",
+        "Opens log.txt ready for reading",
+        "Deletes log.txt",
+        "Reads the first line of log.txt"
+       ],
+       "fb": "newFile makes the file; openRead or openWrite is then used to work with it."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Reading a file",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does endOfFile() give once every line has been read?",
+       "a": [
+        "True",
+        "False",
+        "The last line of the file",
+        "The number of lines in the file"
+       ],
+       "fb": "The loop carries on while endOfFile() is False, and stops the moment it becomes True."
+      },
+      {
+       "t": "mcq",
+       "q": "What does readLine() do each time it is called?",
+       "a": [
+        "Reads the next line of the file",
+        "Reads the whole file in one go",
+        "Reads the first line again",
+        "Writes a new line to the file"
+       ],
+       "fb": "Each call moves one line further on, which is why it works inside a loop."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Writing to a file",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "In Python 3, what happens to data already in a file when it is opened with mode \"w\"?",
+       "a": [
+        "It is deleted",
+        "It is kept, and the new data is added at the end",
+        "It is kept, and the new data is added at the start",
+        "It is copied into a backup file first"
+       ],
+       "fb": "Mode \"w\" starts the file again from empty, so use mode \"a\" when the old data must be kept."
+      },
+      {
+       "t": "mcq",
+       "q": "A program uses print() where it should have used write(). What happens to the data?",
+       "a": [
+        "It goes to the screen instead of into the file",
+        "It goes into the file as well as onto the screen",
+        "It is added to the end of the file",
+        "The program stops with a syntax error"
+       ],
+       "fb": "print() is output to the screen; write() is output to a file."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Appending",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "A program must add today's score to a file of past scores. Which Python 3 mode should it use?",
+       "a": [
+        "\"a\"",
+        "\"w\"",
+        "\"r\"",
+        "\"n\""
+       ],
+       "fb": "Append mode adds to the end, while write mode would wipe every past score."
+      },
+      {
+       "t": "mcq",
+       "q": "Where does appended data go in the file?",
+       "a": [
+        "At the end, after the data that is already there",
+        "At the start, before the data that is already there",
+        "In place of the data that is already there",
+        "Into a second, new file"
+       ],
+       "fb": "That is why a log file read from top to bottom comes out in date order."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Closing the file",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is the main reason a program closes a file after writing to it?",
+       "a": [
+        "To make sure everything still in the buffer is written to the file",
+        "To delete the file from the disk",
+        "To make the file read-only",
+        "To free up space on the hard disk"
+       ],
+       "fb": "Until the file is closed, the last data written may never have left memory."
+      },
+      {
+       "t": "mcq",
+       "q": "Which is the correct order of operations on a file?",
+       "a": [
+        "Open, read or write, close",
+        "Read or write, open, close",
+        "Open, close, read or write",
+        "Close, open, read or write"
+       ],
+       "fb": "Nothing can be read or written until the file is open, and nothing is safe until it is closed."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: read the file",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "order",
+       "q": "Put these lines into a working program that reads and outputs every line of scores.txt.",
+       "steps": [
+        "myFile = openRead(\"scores.txt\")",
+        "while NOT myFile.endOfFile()",
+        "  print(myFile.readLine())",
+        "endwhile",
+        "myFile.close()"
+       ],
+       "fb": "Open, loop while there is still something to read, then close. Forget the close and the file stays locked."
+      },
+      {
+       "t": "mcq",
+       "q": "Why does the loop check endOfFile() before it reads a line?",
+       "a": [
+        "Trying to read past the last line would cause an error",
+        "It makes the program run faster",
+        "It closes the file automatically",
+        "It casts each line to an integer"
+       ],
+       "fb": "The check stops the program trying to read a line that is not there."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 540,
+     "y": 240,
+     "title": "RAM is volatile",
+     "text": "RAM loses everything in it when the power goes, which is why it is called volatile. Secondary storage such as an SSD keeps data without power, and that is where files live."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1508,
+     "y": 240,
+     "title": "File paths",
+     "text": "A file name on its own means a file in the same folder as the program. A longer path tells the operating system exactly where to look, which is why a program that works on one computer may not find its file on another."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 540,
+     "y": 240,
+     "title": "CSV files",
+     "text": "A comma separated values file puts one record on each line, with commas between the fields. Reading it line by line and splitting each line at the commas is how most simple data files are loaded."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1508,
+     "y": 240,
+     "title": "Text or binary",
+     "text": "A text file stores characters you could read in a text editor. A binary file stores the raw bytes of an image or a sound, which look like nonsense if you open them as text."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 540,
+     "y": 240,
+     "title": "Logs",
+     "text": "Almost every system you use keeps an append-only log of what happened and when. Because nothing is ever overwritten, the log can be read afterwards to work out what went wrong."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1508,
+     "y": 240,
+     "title": "Lost data",
+     "text": "If a program crashes before closing a file, the last data written can vanish because it never left the buffer. That is one reason programs save as they go rather than only at the very end."
+    }
+   ],
+   "models": [],
+   "diagrams": [
+    {
+     "id": "d1",
+     "face": "back",
+     "x": 190,
+     "y": 240,
+     "diagram": "filelines",
+     "title": "Reading a file line by line",
+     "text": "The read pointer moves down the file as you read, and what you write is not in the file until it is closed."
+    }
+   ]
+  }
+ ]
+}

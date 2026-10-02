@@ -1,0 +1,321 @@
+{
+ "id": "pf-l02",
+ "lesson": 2,
+ "title": "Type foundry",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Type foundry",
+   "img": "img/PF_L02_TypeFoundry_360.jpg",
+   "imgHi": "img/PF_L02_TypeFoundry_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Data types",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which data type should store the price 4.99?",
+       "a": [
+        "Real",
+        "Integer",
+        "Boolean",
+        "Character"
+       ],
+       "fb": "A real number can hold a decimal part, and an integer cannot."
+      },
+      {
+       "t": "mcq",
+       "q": "Which data type can hold only two possible values?",
+       "a": [
+        "Boolean",
+        "Character",
+        "Integer",
+        "String"
+       ],
+       "fb": "A Boolean is either True or False, and nothing else."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Casting",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does casting mean?",
+       "a": [
+        "Converting a value from one data type to another",
+        "Rounding a number to the nearest whole number",
+        "Giving a variable a new name",
+        "Copying a value into a constant"
+       ],
+       "fb": "The data type changes. Casting is not the same thing as rounding."
+      },
+      {
+       "t": "mcq",
+       "q": "What is the value of  int(\"25\") + 5 ?",
+       "a": [
+        "30",
+        "\"255\"",
+        "\"25\" + 5",
+        "An error, because you cannot add to a string"
+       ],
+       "fb": "int() turns the string \"25\" into the number 25, so ordinary arithmetic then works."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Arithmetic operators",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "In the OCR Exam Reference Language, what is the value of  5 ^ 2 ?",
+       "a": [
+        "25",
+        "10",
+        "7",
+        "52"
+       ],
+       "fb": "The exponent operator raises 5 to the power 2, so the answer is 5 x 5."
+      },
+      {
+       "t": "mcq",
+       "q": "What is the value of  2 + 3 * 4 ?",
+       "a": [
+        "14",
+        "20",
+        "24",
+        "9"
+       ],
+       "fb": "Multiplication happens before addition, so 3 * 4 is worked out first."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "MOD and DIV",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is the value of  23 MOD 4 ?",
+       "a": [
+        "3",
+        "5",
+        "4",
+        "19"
+       ],
+       "fb": "4 goes into 23 five times with 3 left over, and MOD gives that remainder."
+      },
+      {
+       "t": "mcq",
+       "q": "What is the value of  23 DIV 4 ?",
+       "a": [
+        "5",
+        "3",
+        "5.75",
+        "6"
+       ],
+       "fb": "DIV gives only the whole number of times 4 goes into 23 and ignores the remainder."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Comparison and Boolean operators",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "age = 15. What is the result of  age >= 13 AND age <= 19 ?",
+       "a": [
+        "True",
+        "False",
+        "15",
+        "An error, because two conditions cannot be tested at once"
+       ],
+       "fb": "Both conditions are True, and AND needs both sides to be True."
+      },
+      {
+       "t": "mcq",
+       "q": "day = \"Sat\". What is the result of  day == \"Sat\" OR day == \"Sun\" ?",
+       "a": [
+        "True",
+        "False",
+        "Sat",
+        "An error, because OR only works with numbers"
+       ],
+       "fb": "OR needs only one side to be True, and the first comparison is True."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "String manipulation",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "name = \"Hazel\". In the OCR Exam Reference Language, what does  name.substring(0, 3)  give?",
+       "a": [
+        "Haz",
+        "Hazel",
+        "aze",
+        "zel"
+       ],
+       "fb": "It starts at position 0, the first character, and takes three characters from there."
+      },
+      {
+       "t": "mcq",
+       "q": "In the OCR Exam Reference Language, ASC(\"A\") returns 65. What does  CHR(66)  return?",
+       "a": [
+        "The character B",
+        "The character A",
+        "The number 66",
+        "The number 67"
+       ],
+       "fb": "CHR converts an ASCII code back into a character, and 66 is one more than the code for A."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: work it out",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "match",
+       "q": "Match each expression to its value.",
+       "pairs": [
+        [
+         "19 MOD 5",
+         "4"
+        ],
+        [
+         "19 DIV 5",
+         "3"
+        ],
+        [
+         "4 ^ 2",
+         "16"
+        ],
+        [
+         "int(\"8\") + 2",
+         "10"
+        ],
+        [
+         "\"Py\" + \"thon\"",
+         "Python"
+        ],
+        [
+         "\"Hazel\".length",
+         "5"
+        ]
+       ],
+       "fb": "MOD and DIV are the two most often muddled: DIV is how many times it goes in, MOD is what is left over."
+      },
+      {
+       "t": "mcq",
+       "q": "Which expression gives the remainder when 30 is divided by 7?",
+       "a": [
+        "30 MOD 7",
+        "30 DIV 7",
+        "30 / 7",
+        "30 ^ 7"
+       ],
+       "fb": "MOD gives the remainder, which here is 2, because 7 goes into 30 four times with 2 left over."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 540,
+     "y": 240,
+     "title": "Why types matter",
+     "text": "Choosing the right data type saves memory and prevents errors. A Boolean needs only one bit of information, while storing the same yes or no as a string needs a byte for every character."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1508,
+     "y": 240,
+     "title": "Casting can lose data",
+     "text": "Casting a real number to an integer throws the decimal part away rather than rounding it, so 4.9 becomes 4. If you need rounding, use a rounding function instead of a cast."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 540,
+     "y": 240,
+     "title": "Integer division",
+     "text": "Dividing with / can give an answer with a decimal part even when both numbers are whole. That is exactly why DIV exists: it keeps the answer a whole number."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1508,
+     "y": 240,
+     "title": "MOD in the real world",
+     "text": "MOD is how programs wrap around. hours MOD 24 keeps a clock in range, and index MOD listLength cycles through a list for ever without ever running off the end."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 540,
+     "y": 240,
+     "title": "Short circuits",
+     "text": "Many languages stop evaluating an AND as soon as one side is found to be False, because the final answer cannot change. This is called short-circuit evaluation and it saves time."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1508,
+     "y": 240,
+     "title": "ASCII",
+     "text": "ASCII gives every character a number: capital A is 65, lower case a is 97 and the digit 0 is 48. Because the codes run in order, the gap between a capital and its lower case letter is always 32."
+    }
+   ],
+   "models": [],
+   "diagrams": [
+    {
+     "id": "d1",
+     "face": "left",
+     "x": 1158,
+     "y": 240,
+     "diagram": "strslice",
+     "title": "Inside a string",
+     "text": "Every character has a position, counted from 0. See length, a substring taken from a position, upper and lower case, and two strings joined."
+    }
+   ]
+  }
+ ]
+}

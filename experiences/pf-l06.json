@@ -1,0 +1,309 @@
+{
+ "id": "pf-l06",
+ "lesson": 6,
+ "title": "Chance machine",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Chance machine",
+   "img": "img/PF_L06_ChanceMachine_360.jpg",
+   "imgHi": "img/PF_L06_ChanceMachine_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Why random numbers",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Why does a game use random numbers?",
+       "a": [
+        "So the game does not play out the same way every time",
+        "So the game runs faster",
+        "So the game uses less memory",
+        "So the player's score is always worked out correctly"
+       ],
+       "fb": "Unpredictability is the whole point: the same dice roll every time would make the game pointless."
+      },
+      {
+       "t": "mcq",
+       "q": "Which of these jobs needs a random number?",
+       "a": [
+        "Choosing which of twenty quiz questions is asked first",
+        "Working out the average of six marks",
+        "Counting how many questions a pupil answered",
+        "Storing a pupil's name in a variable"
+       ],
+       "fb": "Only the first job needs an unpredictable choice; the other three give the same answer every time for the same data."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Generating a random number",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "In the OCR Exam Reference Language, which values can  random(1, 6)  return?",
+       "a": [
+        "Any whole number from 1 to 6, including 1 and 6",
+        "Any whole number from 1 to 5",
+        "Any whole number from 2 to 5",
+        "Any decimal number between 1 and 6"
+       ],
+       "fb": "Both end points are included, so all six faces of the dice are possible."
+      },
+      {
+       "t": "mcq",
+       "q": "Why is the result of  random(1, 6)  usually stored in a variable?",
+       "a": [
+        "So that one rolled number can be used again later in the program",
+        "So that the user cannot change the number",
+        "Because random(1, 6) cannot be written on its own",
+        "Because the number would otherwise be a string"
+       ],
+       "fb": "Call the function again and you get a different number, so the first one must be kept if the program still needs it."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Choosing the range",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "In Python 3, which numbers can  random.randrange(1, 6)  return?",
+       "a": [
+        "1, 2, 3, 4 or 5",
+        "1, 2, 3, 4, 5 or 6",
+        "2, 3, 4, 5 or 6",
+        "Only 1 or 6"
+       ],
+       "fb": "randrange stops one short of its second number, while randint includes it."
+      },
+      {
+       "t": "mcq",
+       "q": "An array of ten prizes is indexed 0 to 9. Which Python 3 call could return any one of the ten indices and never an invalid one?",
+       "a": [
+        "random.randint(0, 9)",
+        "random.randint(1, 10)",
+        "random.randint(0, 10)",
+        "random.randrange(1, 9)"
+       ],
+       "fb": "randint includes both ends, so 0 to 9 covers all ten indices and never runs past the last element."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Pseudo-random",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Why are the numbers a computer produces described as pseudo-random?",
+       "a": [
+        "They are worked out by an algorithm, so they are not truly unpredictable",
+        "They are always the same number",
+        "They can only ever be between 0 and 1",
+        "They are chosen by the user rather than by the program"
+       ],
+       "fb": "An algorithm follows fixed steps, so it can only imitate randomness, however convincing the imitation looks."
+      },
+      {
+       "t": "mcq",
+       "q": "Where does a language usually take its seed from if the programmer does not set one?",
+       "a": [
+        "The computer's clock",
+        "The number of lines in the program",
+        "The name of the file the program is saved in",
+        "The size of the screen"
+       ],
+       "fb": "The time is different on every run, so each run starts from a different point in the sequence."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Random in a loop",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "A loop calls  random(1, 6)  ten times. How many of the ten numbers could be the same?",
+       "a": [
+        "Any number of them, because each call is independent of the others",
+        "None, because a random number can never repeat",
+        "Exactly two of them",
+        "All ten of them must be different"
+       ],
+       "fb": "Every call starts again from scratch, so nothing stops a six appearing twice, or even five times."
+      },
+      {
+       "t": "multi",
+       "q": "A program rolls a dice ten times and counts the sixes. Which lines belong inside the loop? Select all that apply.",
+       "opts": [
+        "Generating the next random number",
+        "Testing whether the number is a 6",
+        "Adding 1 to the count of sixes",
+        "Setting the count of sixes to 0",
+        "Outputting the final count"
+       ],
+       "correct": [
+        "Generating the next random number",
+        "Testing whether the number is a 6",
+        "Adding 1 to the count of sixes"
+       ],
+       "fb": "The count is set to zero once before the loop and output once after it; put either one inside and it is reset or printed on every single roll."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Using randomness well",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is a simulation?",
+       "a": [
+        "A program that models a real situation, using random numbers for the parts that are unpredictable",
+        "A program that gives exactly the same result every time it is run",
+        "A program that checks input data is sensible",
+        "A program that stores records in a table"
+       ],
+       "fb": "Running the model many times with different random values shows the range of results that could really happen."
+      },
+      {
+       "t": "mcq",
+       "q": "Why can a shuffle not simply pick a random position for each item on its own?",
+       "a": [
+        "The same position could be picked twice, so one item would appear twice and another not at all",
+        "Random numbers cannot be used with an array",
+        "A shuffle must use a condition-controlled loop",
+        "The items would come out in the order they started in"
+       ],
+       "fb": "A shuffle has to keep track of the positions it has already used, so that every item appears exactly once."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: how many rolls",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "order",
+       "q": "Put these lines into a working program that outputs how many rolls it took to get a six.",
+       "steps": [
+        "rolls = 0",
+        "do",
+        "  roll = random(1, 6)",
+        "  rolls = rolls + 1",
+        "until roll == 6",
+        "print(rolls)"
+       ],
+       "fb": "The count is set up once before the loop, changed on every roll inside it, and output only after the loop has finished."
+      },
+      {
+       "t": "mcq",
+       "q": "The finished program is run twice and outputs 4, then 11. Why?",
+       "a": [
+        "The generator is seeded differently each run, so it produces a different sequence of numbers",
+        "The program contains a logic error",
+        "random(1, 6) returns a different range each time it is called",
+        "The program counts in a different way the second time"
+       ],
+       "fb": "Two different answers are exactly what should happen: the numbers are meant to be unpredictable from one run to the next."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 540,
+     "y": 240,
+     "title": "Nothing is truly random",
+     "text": "A dice is not really unpredictable. Thrown exactly the same way through exactly the same air it would land the same, but the detail is far beyond us, so we call it random. A program's random numbers rest on the same idea."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1508,
+     "y": 240,
+     "title": "Read the brackets first",
+     "text": "In an exam question the two numbers in the brackets are most of the marks. Before you answer anything else, write down the lowest and the highest value that the call could possibly return."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 540,
+     "y": 240,
+     "title": "Off by one",
+     "text": "A range that is one too wide is one of the commonest bugs in programming. A random index that can equal the size of the array will crash the program eventually, but only on some runs, which makes it very hard to track down."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1508,
+     "y": 240,
+     "title": "Where the seed comes from",
+     "text": "Most languages take the seed from the system clock, measured in tiny fractions of a second, so two runs almost never start from the same place. Setting the seed yourself gives the same sequence every time, which is exactly what a tester wants."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 540,
+     "y": 240,
+     "title": "Streaks are normal",
+     "text": "Ten rolls of a dice will often contain the same number three times in a row. People expect random data to look evenly spread, so genuinely random results are regularly mistaken for a broken program."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1508,
+     "y": 240,
+     "title": "Not strong enough for keys",
+     "text": "A generator seeded from the clock is fine for a game but not for real security, because an attacker who knows roughly when the program ran can work out the sequence. Secure systems gather unpredictable data from hardware instead."
+    }
+   ],
+   "models": [],
+   "diagrams": [
+    {
+     "id": "d1",
+     "face": "back",
+     "x": 1158,
+     "y": 240,
+     "diagram": "randomdist",
+     "title": "Pseudo-random numbers",
+     "text": "A seed goes into an algorithm, which makes a number and the next seed. Draw enough of them and every value in the range comes up equally often."
+    }
+   ]
+  }
+ ]
+}

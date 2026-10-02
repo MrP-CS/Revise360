@@ -1,0 +1,340 @@
+{
+ "id": "pf-l07",
+ "lesson": 7,
+ "title": "Revision HQ 2.2",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Revision HQ 2.2",
+   "img": "img/PF_L07_RevisionHQ_360.jpg",
+   "imgHi": "img/PF_L07_RevisionHQ_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Constructs recap",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Which of these lines compares two values rather than storing one?",
+       "a": [
+        "if total == 20 then",
+        "total = 20",
+        "total = total + 20",
+        "print(total)"
+       ],
+       "fb": "A double equals sign asks a question; a single one hands an answer to a variable."
+      },
+      {
+       "t": "mcq",
+       "q": "A loop is written as  while lives > 0  but nothing inside it ever changes lives. What happens?",
+       "a": [
+        "The loop never ends",
+        "The loop runs exactly once",
+        "The loop is skipped altogether",
+        "The program stops with a syntax error"
+       ],
+       "fb": "The condition stays True for ever, so the program carries on until something forces it to stop."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Types and operators recap",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "In the OCR Exam Reference Language, what is the value of  \"7\" + \"2\" ?",
+       "a": [
+        "The string 72",
+        "The integer 9",
+        "The real number 7.2",
+        "An error, because two strings cannot be joined"
+       ],
+       "fb": "Both values are strings, so + joins them end to end instead of adding them together."
+      },
+      {
+       "t": "mcq",
+       "q": "What does  int(7.9)  give?",
+       "a": [
+        "7",
+        "8",
+        "7.9",
+        "0.9"
+       ],
+       "fb": "Casting to an integer throws the decimal part away completely, so it never rounds up."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "File handling recap",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "A program outputs the first line of a file over and over instead of working through it. Which mistake would cause this?",
+       "a": [
+        "The call to readLine() is outside the loop, so no new line is ever read",
+        "The file was opened in append mode",
+        "The file was never closed",
+        "endOfFile() was tested before the file was opened"
+       ],
+       "fb": "Each readLine() call moves one line further on, so it has to sit inside the loop for the loop to make progress."
+      },
+      {
+       "t": "mcq",
+       "q": "A program appends a line to a file, but the line is missing when the file is opened again. What is the most likely reason?",
+       "a": [
+        "The file was never closed, so the last data stayed in the buffer",
+        "The line was written to the wrong position in the file",
+        "The line was cast to an integer first",
+        "Append mode always deletes the newest line"
+       ],
+       "fb": "Closing the file pushes everything still waiting in memory out to secondary storage."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Records and SQL recap",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "A table called Pupils has the fields Name, Year and Choir. Which query returns the names of pupils who are in Year 10 and in the choir?",
+       "a": [
+        "SELECT Name FROM Pupils WHERE Year = 10 AND Choir = True;",
+        "SELECT Name FROM Pupils WHERE Year = 10 OR Choir = True;",
+        "SELECT Year, Choir FROM Pupils WHERE Name = 'Year 10';",
+        "SELECT Name FROM Pupils LIKE Year = 10 AND Choir = True;"
+       ],
+       "fb": "Both conditions must be True at the same time, and AND is the operator that demands that."
+      },
+      {
+       "t": "mcq",
+       "q": "A query that should find every surname beginning with M returns no records at all. Which line is the problem?",
+       "a": [
+        "WHERE Surname = 'M%'",
+        "WHERE Surname LIKE 'M%'",
+        "SELECT Surname",
+        "FROM Pupils"
+       ],
+       "fb": "A pattern containing a wildcard needs LIKE; with = the database hunts for a surname that is literally the two characters M and %."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Arrays and sub-programs recap",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "In the OCR Exam Reference Language, which line reads past the end of  array lane[8] ?",
+       "a": [
+        "print(lane[8])",
+        "print(lane[0])",
+        "print(lane[7])",
+        "print(lane[1])"
+       ],
+       "fb": "Eight elements are numbered 0 to 7, so index 8 is one place past the last one."
+      },
+      {
+       "t": "mcq",
+       "q": "A sub-program works out a total correctly, but the main program cannot use the answer. What is missing?",
+       "a": [
+        "A return statement to send the total back",
+        "A parameter in the sub-program's definition",
+        "A global constant",
+        "An extra loop inside the sub-program"
+       ],
+       "fb": "With no return it is a procedure, so the value it worked out is thrown away the moment the sub-program ends."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Randomness recap",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "In the OCR Exam Reference Language, how many different values can  random(0, 7)  return?",
+       "a": [
+        "8",
+        "7",
+        "6",
+        "9"
+       ],
+       "fb": "Both ends are included, so 0, 1, 2, 3, 4, 5, 6 and 7 are all possible: exactly one for each element of an array of eight."
+      },
+      {
+       "t": "mcq",
+       "q": "A program sets the seed to the same value every time it starts. What effect does that have?",
+       "a": [
+        "It produces exactly the same sequence of numbers on every run",
+        "It produces numbers that are truly random",
+        "It stops the generator ever repeating a number",
+        "It limits every number to the size of the seed"
+       ],
+       "fb": "A fixed seed makes a run repeatable, which is useful when testing and useless in a game."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: the lane draw",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "order",
+       "q": "Put the steps of the lane draw into the order the program must carry them out.",
+       "steps": [
+        "Read the eight runners' names from the file",
+        "Declare an array of eight lanes, all empty",
+        "Pick a random lane number from 0 to 7",
+        "If that lane is already taken, pick another number",
+        "Store the runner's name in the empty lane",
+        "Write the finished lane list to a new file"
+       ],
+       "fb": "Set the array up before any drawing happens, and never store a name until you have checked that the lane is free."
+      },
+      {
+       "t": "multi",
+       "q": "Which techniques does the lane draw program need? Select all that apply.",
+       "opts": [
+        "Reading the names in from a file",
+        "An array to hold the eight lanes",
+        "A loop that repeats until a free lane is found",
+        "A random number from 0 to 7",
+        "An SQL SELECT statement",
+        "A range check on the runners' names"
+       ],
+       "correct": [
+        "Reading the names in from a file",
+        "An array to hold the eight lanes",
+        "A loop that repeats until a free lane is found",
+        "A random number from 0 to 7"
+       ],
+       "fb": "The names come from a file rather than a database table, and a name has no numerical range to check."
+      },
+      {
+       "t": "mcq",
+       "q": "Why must the program check whether a lane is already taken before it stores a name?",
+       "a": [
+        "Each call is independent, so the same lane number could easily come up twice",
+        "The array would otherwise run out of memory",
+        "random() stops working after eight calls",
+        "The file could not be written to afterwards"
+       ],
+       "fb": "Two runners in lane 3 and an empty lane 7 is the classic bug in any draw or shuffle."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 540,
+     "y": 240,
+     "title": "Revision that works",
+     "text": "Cover the bullets at a station, say them out loud from memory, then uncover them and check. Reading them again is much easier, and much less useful, than trying to recall them."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1508,
+     "y": 240,
+     "title": "Two marks, two things",
+     "text": "A two-mark question that says state the difference wants both sides written down. Saying what casting does without saying why it is needed throws away half the marks."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 540,
+     "y": 240,
+     "title": "Say which language",
+     "text": "Answering a code question in Python instead of the OCR Exam Reference Language is fine, but stick to one of them for the whole answer. Mixing print() with endif loses marks because neither language is being followed."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1508,
+     "y": 240,
+     "title": "Three lines, three jobs",
+     "text": "Nearly every SQL mark comes from the same three lines: SELECT for the fields, FROM for the table and WHERE for the records. Write them on separate lines and check each one in turn."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 540,
+     "y": 240,
+     "title": "Trace it on paper",
+     "text": "For any program with a loop, draw a column for each variable and add a new row every time round the loop. Most tracing marks in Paper 2 are won or lost on whether you bothered to do this."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1508,
+     "y": 240,
+     "title": "The top number",
+     "text": "In a question about choosing an element at random, the marks are in the range. An array of eight elements needs a number from 0 to 7, and an 8 anywhere in that answer will cost you."
+    }
+   ],
+   "models": [],
+   "diagrams": [
+    {
+     "id": "d1",
+     "face": "right",
+     "x": 190,
+     "y": 240,
+     "diagram": "constructs",
+     "title": "Sequence, selection and iteration",
+     "text": "The three constructs again: straight through, jump over, jump back."
+    },
+    {
+     "id": "d2",
+     "face": "back",
+     "x": 1158,
+     "y": 240,
+     "diagram": "sqlwhere",
+     "title": "How a query runs",
+     "text": "Rows are filtered by WHERE first, then SELECT picks the columns."
+    },
+    {
+     "id": "d3",
+     "face": "left",
+     "x": 190,
+     "y": 240,
+     "diagram": "arrayindex",
+     "title": "Index positions",
+     "text": "The index is a position, and the last one is one less than the length."
+    }
+   ]
+  }
+ ]
+}

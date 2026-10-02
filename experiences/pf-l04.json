@@ -1,0 +1,321 @@
+{
+ "id": "pf-l04",
+ "lesson": 4,
+ "title": "Record vault",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Record vault",
+   "img": "img/PF_L04_RecordVault_360.jpg",
+   "imgHi": "img/PF_L04_RecordVault_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "What is a record",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is a record?",
+       "a": [
+        "One row of related data about a single thing",
+        "A single piece of data, such as a name",
+        "A whole table of data",
+        "The data type given to a field"
+       ],
+       "fb": "One packet of seed, one record. The pieces inside it are the fields."
+      },
+      {
+       "t": "mcq",
+       "q": "The library stores Name, Family and PacketsLeft about each packet. What is Family?",
+       "a": [
+        "A field",
+        "A record",
+        "A table",
+        "A query"
+       ],
+       "fb": "A field is one named piece of data; the record is the whole row it sits in."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Fields and data types",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "A field called Organic stores only True or False. What data type is it?",
+       "a": [
+        "Boolean",
+        "Integer",
+        "Text",
+        "Real"
+       ],
+       "fb": "A Boolean has only two possible values, so it is the smallest and safest choice here."
+      },
+      {
+       "t": "mcq",
+       "q": "Why is every field given a data type?",
+       "a": [
+        "So only sensible data of the right kind can be stored in it",
+        "So the records can be put into alphabetical order",
+        "So the table needs fewer fields",
+        "So the table can be printed"
+       ],
+       "fb": "The data type is a rule: text cannot be typed into an integer field."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "SELECT and FROM",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does  SELECT * FROM Seeds;  return?",
+       "a": [
+        "Every field of every record in the Seeds table",
+        "Only the first record in the Seeds table",
+        "Only the fields whose names begin with S",
+        "The number of records in the Seeds table"
+       ],
+       "fb": "The star is a shorthand for all the fields, and with no WHERE nothing is filtered out."
+      },
+      {
+       "t": "mcq",
+       "q": "What job does FROM do in a query?",
+       "a": [
+        "It names the table the data is taken from",
+        "It lists the fields to return",
+        "It sets a condition the records must meet",
+        "It puts the results into order"
+       ],
+       "fb": "SELECT chooses the columns, FROM chooses the table and WHERE chooses the rows."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "WHERE",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Using the Seeds table, which records does  WHERE PacketsLeft < 5  return?",
+       "a": [
+        "Runner Bean and Basil",
+        "Basil only",
+        "Radish and Sunflower",
+        "Every record in the table"
+       ],
+       "fb": "Runner Bean has 3 packets and Basil has 0, and both of those are below 5."
+      },
+      {
+       "t": "mcq",
+       "q": "How is a piece of text written inside a WHERE condition?",
+       "a": [
+        "Inside single quotes, such as 'Legume'",
+        "Inside round brackets, such as (Legume)",
+        "With no punctuation at all, such as Legume",
+        "Inside a pair of hashes, such as #Legume#"
+       ],
+       "fb": "The quotes tell the database it is a value to compare, not the name of a field."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Boolean operators",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "Using the Seeds table, which seeds does  WHERE Family = 'Legume' AND PacketsLeft > 5  return?",
+       "a": [
+        "Sweet Pea only",
+        "Runner Bean only",
+        "Runner Bean and Sweet Pea",
+        "No records at all"
+       ],
+       "fb": "Both legumes pass the first test, but Runner Bean has only 3 packets, so AND rules it out."
+      },
+      {
+       "t": "mcq",
+       "q": "Which operator returns a record when at least one of two conditions is True?",
+       "a": [
+        "OR",
+        "AND",
+        "NOT",
+        "LIKE"
+       ],
+       "fb": "AND needs both sides to be True; OR needs only one of them."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "LIKE and wildcards",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does the % wildcard stand for in a LIKE pattern?",
+       "a": [
+        "Any number of characters, including none",
+        "Exactly one character",
+        "Any digit from 0 to 9",
+        "A single space"
+       ],
+       "fb": "The underscore is the one that stands for exactly one character."
+      },
+      {
+       "t": "mcq",
+       "q": "Using the Seeds table, which names does  WHERE Name LIKE 'S%'  return?",
+       "a": [
+        "Sunflower and Sweet Pea",
+        "Sunflower only",
+        "Radish and Basil",
+        "Every name that contains the letter s"
+       ],
+       "fb": "The pattern anchors the S to the start, so Radish is not returned even though it contains an s."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: run the query",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "match",
+       "q": "Match each WHERE line to the records it returns.",
+       "pairs": [
+        [
+         "WHERE PacketsLeft = 0",
+         "Basil"
+        ],
+        [
+         "WHERE PacketsLeft > 20",
+         "Radish"
+        ],
+        [
+         "WHERE Family = 'Legume'",
+         "Runner Bean, Sweet Pea"
+        ],
+        [
+         "WHERE NOT Family = 'Legume'",
+         "Sunflower, Radish, Basil"
+        ],
+        [
+         "WHERE Name LIKE 'S%'",
+         "Sunflower, Sweet Pea"
+        ],
+        [
+         "WHERE Name LIKE '%Pea%'",
+         "Sweet Pea"
+        ]
+       ],
+       "fb": "Take one record at a time and ask whether the condition is True for it. If it is, the record is returned."
+      },
+      {
+       "t": "mcq",
+       "q": "Which query would find every seed whose name ends in the letter n?",
+       "a": [
+        "SELECT Name FROM Seeds WHERE Name LIKE '%n';",
+        "SELECT Name FROM Seeds WHERE Name LIKE 'n%';",
+        "SELECT Name FROM Seeds WHERE Name = 'n';",
+        "SELECT Name FROM Seeds WHERE Name LIKE '_n';"
+       ],
+       "fb": "Put the % before the letter and the pattern means anything, then n at the very end."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 540,
+     "y": 240,
+     "title": "Why not one big list",
+     "text": "A table of records keeps related data together, so one row can be added, changed or deleted without disturbing any other. Storing the same data as separate lists of names and separate lists of numbers makes it far too easy for the lists to drift out of step."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1508,
+     "y": 240,
+     "title": "Primary keys",
+     "text": "A field like SeedID that is different for every record is called a primary key. It matters because two packets could easily share a name, but a key is guaranteed to pick out exactly one record."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 540,
+     "y": 240,
+     "title": "SQL is everywhere",
+     "text": "The same SELECT, FROM and WHERE are used by almost every database in the world, from a school register to an airline booking system. Learning them once means you can query any of them."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1508,
+     "y": 240,
+     "title": "The order the lines go in",
+     "text": "SQL is read by the database in a fixed order: find the table named in FROM, keep only the records that satisfy WHERE, then return the fields listed in SELECT. Knowing that order explains why a query that returns nothing usually has a problem in its WHERE line."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 540,
+     "y": 240,
+     "title": "One letter apart",
+     "text": "Swapping AND for OR normally changes how many records come back, and OR almost always returns more. If a query gives too many results, an OR that should have been an AND is the first thing to check."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1508,
+     "y": 240,
+     "title": "Searching as you type",
+     "text": "When a website suggests results while you are still typing, it is usually running a LIKE query with a % on the end of whatever you have typed so far."
+    }
+   ],
+   "models": [],
+   "diagrams": [
+    {
+     "id": "d1",
+     "face": "back",
+     "x": 1158,
+     "y": 240,
+     "diagram": "sqlwhere",
+     "title": "How a query runs",
+     "text": "WHERE throws away the rows that fail the condition, and only then does SELECT pick the columns. Rows first, columns second."
+    }
+   ]
+  }
+ ]
+}

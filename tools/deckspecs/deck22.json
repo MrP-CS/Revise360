@@ -1,0 +1,994 @@
+[
+ {
+  "id": "pf-l01",
+  "lesson": 1,
+  "title": "Variable store",
+  "topic": "2.2",
+  "kicker": "2.2 Programming fundamentals  |  Lesson 1",
+  "subtitle": "OCR J277 Paper 2  |  Computational thinking, algorithms and programming",
+  "intro": "Every value a program holds is kept somewhere in this store, labelled with a name. Learn how values get in and out, and the three constructs that decide which line of code runs next.",
+  "keywords": [
+   "Variable",
+   "Constant",
+   "Assignment",
+   "Input",
+   "Output",
+   "Sequence",
+   "Selection",
+   "Iteration"
+  ],
+  "objectives": [
+   "know what variables and constants are, and how a value is assigned to each",
+   "understand how input and output move data in and out of a program",
+   "know what sequence, selection and iteration each do to the order a program runs in"
+  ],
+  "starter": "A program asks a pupil for their name and three test marks, then outputs their average. Write down every variable the program needs, and one value that would be better as a constant.",
+  "keyq": "How does a program store data, and how does it decide which line to run next?",
+  "keyterms": [
+   "Assignment",
+   "Count-controlled iteration"
+  ],
+  "stations": [
+   {
+    "name": "Variables and assignment",
+    "bullets": [
+     "A variable is a named location in memory holding a value that can change while the program runs.",
+     "Assignment uses a single equals sign: the value on the right is stored in the variable on the left.",
+     "In the OCR Exam Reference Language, score = score + 10 reads the old value, adds ten, then stores the result back."
+    ],
+    "challenge": "Explain why score = score + 10 is not a contradiction, even though both sides use the same name.",
+    "fact": "A variable is..."
+   },
+   {
+    "name": "Constants",
+    "bullets": [
+     "A constant is a named value that is set when the program is written and cannot change while it runs.",
+     "Constants make a program easier to read, and a value used many times can be changed in one place.",
+     "A VAT rate or the number of lives a player starts with are good constants."
+    ],
+    "challenge": "Name two values in a quiz game that should be constants, and say why each one should not change.",
+    "fact": "A constant is..."
+   },
+   {
+    "name": "Input and output",
+    "bullets": [
+     "Input brings data into a program, usually from the keyboard. Output sends data out, usually to the screen.",
+     "In the OCR Exam Reference Language input() and print() do this work.",
+     "input() always returns a string, so a number must be cast before it is used in arithmetic."
+    ],
+    "challenge": "Write three lines that ask a pupil for their name and age, then output a greeting using both.",
+    "fact": "input() always returns..."
+   },
+   {
+    "name": "Sequence",
+    "bullets": [
+     "Sequence means the statements are carried out one after another, in the order they are written.",
+     "Change the order and you usually change the result.",
+     "A variable must be given a value before any line that uses it."
+    ],
+    "challenge": "Explain why a program must input a price before the line that calculates the total.",
+    "fact": "Sequence means..."
+   },
+   {
+    "name": "Selection",
+    "bullets": [
+     "Selection chooses which statements to run by testing a condition that is either True or False.",
+     "if ... then runs a block only when the condition is True; else runs when it is False; elseif tests a further condition.",
+     "In the OCR Exam Reference Language the block ends with endif."
+    ],
+    "challenge": "Write selection that outputs Pass for a mark of 40 or more, and Fail for anything lower.",
+    "fact": "Selection is used when..."
+   },
+   {
+    "name": "Iteration",
+    "bullets": [
+     "Iteration repeats a set of statements. A count-controlled loop repeats a known number of times.",
+     "A condition-controlled loop repeats while a condition stays True, so the number of repeats is not known in advance.",
+     "In the OCR Exam Reference Language a count-controlled loop uses for and next, and a condition-controlled loop uses while and endwhile."
+    ],
+    "challenge": "Give one job that suits a count-controlled loop and one that suits a condition-controlled loop, and say why.",
+    "fact": "A count-controlled loop... A condition-controlled loop..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: three constructs",
+   "intro": "Seven lines from the same program, written in the OCR Exam Reference Language. Tap the star and sort each line into the construct it belongs to."
+  },
+  "info": [
+   {
+    "title": "Named in memory",
+    "text": "A variable name is really a label for a memory location, and the computer works with the address rather than the name. Meaningful names like totalScore are not for the computer's benefit; they are for the next person to read your code."
+   },
+   {
+    "title": "Shouting case",
+    "text": "Programmers often write constant names in capitals, such as MAX_LIVES, as a signal that nothing should change them. Python does not enforce this, so the capital letters are a promise between programmers."
+   },
+   {
+    "title": "Where output goes",
+    "text": "Output does not have to be the screen. A program can output to a file, a printer, a speaker or another program, and the same data can go to several of them at once."
+   },
+   {
+    "title": "Sequence bugs",
+    "text": "If two lines are swapped, the program usually still runs but gives the wrong answer. That is a logic error, not a syntax error, and no computer can spot it for you."
+   },
+   {
+    "title": "Nesting",
+    "text": "An if can be placed inside another if, which is called nesting. It lets a program test a second condition only when the first one was True, like asking for a password only after a username matched."
+   },
+   {
+    "title": "Infinite loops",
+    "text": "If nothing inside a condition-controlled loop ever makes the condition False, the loop never ends. Always change the variable the condition depends on, somewhere inside the loop."
+   }
+  ],
+  "exam": [
+   {
+    "q": "State the difference between a variable and a constant.",
+    "marks": 2
+   },
+   {
+    "q": "Describe the difference between count-controlled and condition-controlled iteration. Give an example of when each would be used.",
+    "marks": 4
+   },
+   {
+    "q": "A program asks for a password and keeps asking until the correct one is entered. Write an algorithm to do this, using the OCR Exam Reference Language or a language you know.",
+    "marks": 5
+   }
+  ],
+  "confidence": [
+   "The difference between a variable and a constant",
+   "How input and output work, and why input must be cast",
+   "Sequence, selection and count- and condition-controlled iteration"
+  ],
+  "wsfile": "PF_L01_VariableStore_Worksheet.docx"
+ },
+ {
+  "id": "pf-l02",
+  "lesson": 2,
+  "title": "Type foundry",
+  "topic": "2.2",
+  "kicker": "2.2 Programming fundamentals  |  Lesson 2",
+  "subtitle": "OCR J277 Paper 2  |  Computational thinking, algorithms and programming",
+  "intro": "Every value poured out of this foundry has a data type stamped on it, and that stamp decides what the program may do with it. Learn the five types, how to recast one into another, and the operators that combine them.",
+  "keywords": [
+   "Data type",
+   "Integer",
+   "Real",
+   "Boolean",
+   "Casting",
+   "MOD",
+   "DIV",
+   "Concatenation"
+  ],
+  "objectives": [
+   "know the data types integer, real, Boolean, character and string",
+   "understand why casting is needed and how a value is cast from one type to another",
+   "know how the arithmetic, comparison and Boolean operators are used"
+  ],
+  "starter": "A school report stores a pupil's name, their average mark to one decimal place, their form group, and whether they have full attendance. Write down the most suitable data type for each one.",
+  "keyq": "Why does a program need to know what type of data it is working with?",
+  "keyterms": [
+   "Casting",
+   "Concatenation"
+  ],
+  "stations": [
+   {
+    "name": "Data types",
+    "bullets": [
+     "An integer is a whole number, positive or negative, with no decimal part. A real holds a number with a decimal part.",
+     "A Boolean holds only True or False.",
+     "A character is one single symbol; a string is a sequence of characters, and may be empty."
+    ],
+    "challenge": "Choose a data type for a pupil's name, their age, their average mark and whether they are present.",
+    "fact": "A real number is different from an integer because..."
+   },
+   {
+    "name": "Casting",
+    "bullets": [
+     "Casting converts a value from one data type to another.",
+     "In the OCR Exam Reference Language int() casts to an integer, float() to a real, str() to a string and bool() to a Boolean.",
+     "Casting is needed because input() always returns a string, and strings cannot be used in arithmetic."
+    ],
+    "challenge": "Explain why a program that adds up marks must cast each input before it adds it to the total.",
+    "fact": "Casting is..."
+   },
+   {
+    "name": "Arithmetic operators",
+    "bullets": [
+     "The arithmetic operators are + to add, - to subtract, * to multiply and / to divide.",
+     "In the OCR Exam Reference Language the exponent operator is ^, so 3 ^ 2 means 3 to the power 2, which is 9.",
+     "The usual order of operations applies: brackets, then exponents, then multiply and divide, then add and subtract."
+    ],
+    "challenge": "Work out 3 + 4 * 2 and explain the order you used to get your answer.",
+    "fact": "The exponent operator..."
+   },
+   {
+    "name": "MOD and DIV",
+    "bullets": [
+     "DIV gives the whole number part of a division and throws the remainder away, so 17 DIV 5 is 3.",
+     "MOD gives the remainder left after a whole number division, so 17 MOD 5 is 2.",
+     "MOD 2 is a quick test for an even number, because an even number always leaves a remainder of 0."
+    ],
+    "challenge": "Use MOD and DIV to turn 95 seconds into a number of whole minutes and a number of seconds left over.",
+    "fact": "MOD gives... DIV gives..."
+   },
+   {
+    "name": "Comparison and Boolean operators",
+    "bullets": [
+     "The comparison operators are ==, !=, <, >, <= and >=, and each one gives True or False.",
+     "AND is True only when both conditions are True. OR is True when at least one condition is True.",
+     "NOT reverses a condition, so NOT True gives False."
+    ],
+    "challenge": "Write a condition that is True only when a mark is between 40 and 69, including both ends.",
+    "fact": "AND is True only when..."
+   },
+   {
+    "name": "String manipulation",
+    "bullets": [
+     "The length of a string is the number of characters in it, counting spaces.",
+     "A substring is a part of a string, taken from a given position. Concatenation joins strings together using +.",
+     "In the OCR Exam Reference Language name.length, name.substring(0, 3), name.upper and name.lower do this work, and ASC() and CHR() convert between a character and its ASCII code."
+    ],
+    "challenge": "Describe how you would build a username from the first three letters of a surname and a pupil's year group.",
+    "fact": "Concatenation means..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: work it out",
+   "intro": "Six expressions written in the OCR Exam Reference Language. Tap the star, work each one out on paper, then match it to its value."
+  },
+  "info": [
+   {
+    "title": "Why types matter",
+    "text": "Choosing the right data type saves memory and prevents errors. A Boolean needs only one bit of information, while storing the same yes or no as a string needs a byte for every character."
+   },
+   {
+    "title": "Casting can lose data",
+    "text": "Casting a real number to an integer throws the decimal part away rather than rounding it, so 4.9 becomes 4. If you need rounding, use a rounding function instead of a cast."
+   },
+   {
+    "title": "Integer division",
+    "text": "Dividing with / can give an answer with a decimal part even when both numbers are whole. That is exactly why DIV exists: it keeps the answer a whole number."
+   },
+   {
+    "title": "MOD in the real world",
+    "text": "MOD is how programs wrap around. hours MOD 24 keeps a clock in range, and index MOD listLength cycles through a list for ever without ever running off the end."
+   },
+   {
+    "title": "Short circuits",
+    "text": "Many languages stop evaluating an AND as soon as one side is found to be False, because the final answer cannot change. This is called short-circuit evaluation and it saves time."
+   },
+   {
+    "title": "ASCII",
+    "text": "ASCII gives every character a number: capital A is 65, lower case a is 97 and the digit 0 is 48. Because the codes run in order, the gap between a capital and its lower case letter is always 32."
+   }
+  ],
+  "exam": [
+   {
+    "q": "Identify the most suitable data type for each of these values: 17, 3.5, True, \"Year 10\".",
+    "marks": 4
+   },
+   {
+    "q": "Explain why casting is needed when a program inputs a number and adds it to a running total.",
+    "marks": 3
+   },
+   {
+    "q": "A program stores a length of time in seconds. Describe how MOD and DIV could be used to output that time in whole minutes and remaining seconds.",
+    "marks": 4
+   }
+  ],
+  "confidence": [
+   "The five data types and when to use each one",
+   "What casting is and why input() makes it necessary",
+   "MOD, DIV and the Boolean operators AND, OR and NOT"
+  ],
+  "wsfile": "PF_L02_TypeFoundry_Worksheet.docx"
+ },
+ {
+  "id": "pf-l03",
+  "lesson": 3,
+  "title": "Filing room",
+  "topic": "2.2",
+  "kicker": "2.2 Programming fundamentals  |  Lesson 3",
+  "subtitle": "OCR J277 Paper 2  |  Computational thinking, algorithms and programming",
+  "intro": "Everything in the variable store vanishes the moment a program stops. This room is where data is kept instead, so it is still there tomorrow. Learn the four operations every program performs on a file.",
+  "keywords": [
+   "File handling",
+   "Persistence",
+   "Open",
+   "Read",
+   "Write",
+   "Append",
+   "Close"
+  ],
+  "objectives": [
+   "know why a program needs to store data in a file",
+   "understand how a file is opened, read from, written to and closed",
+   "know the difference between writing to a file and appending to it"
+  ],
+  "starter": "A quiz game keeps a table of high scores. Explain what happens to those scores when the player closes the game, if the program stores them in variables only.",
+  "keyq": "How does a program keep hold of data after it has stopped running?",
+  "keyterms": [
+   "File handling",
+   "Append"
+  ],
+  "stations": [
+   {
+    "name": "Why files",
+    "bullets": [
+     "Data held in variables is lost as soon as the program stops, because variables are held in RAM.",
+     "Writing data to a file stores it on secondary storage, so it is still there the next time the program runs.",
+     "Files also let the output of one program become the input of another."
+    ],
+    "challenge": "Give two things a game should save to a file, and say what would happen if it did not.",
+    "fact": "A file is needed because..."
+   },
+   {
+    "name": "Opening a file",
+    "bullets": [
+     "A file must be opened before a program can read from it or write to it.",
+     "Opening a file gives the program a handle: a name it uses to refer to that file from then on.",
+     "In the OCR Exam Reference Language, newFile(\"scores.txt\") creates a new file and openRead(\"scores.txt\") opens one that already exists."
+    ],
+    "challenge": "Explain what could go wrong if a program tries to open a file that does not exist.",
+    "fact": "Opening a file means..."
+   },
+   {
+    "name": "Reading a file",
+    "bullets": [
+     "Reading copies data from the file into the program, usually one line at a time.",
+     "A condition-controlled loop reads line by line until the end of the file is reached.",
+     "In the OCR Exam Reference Language, readLine() gets the next line and endOfFile() becomes True when there are no lines left."
+    ],
+    "challenge": "Explain why a program reads a file one line at a time rather than all at once.",
+    "fact": "Reading a file line by line means..."
+   },
+   {
+    "name": "Writing to a file",
+    "bullets": [
+     "Writing copies data out of the program and into the file, so it is saved on secondary storage.",
+     "In Python 3, open(\"scores.txt\", \"w\") opens a file for writing and deletes anything that was already in it.",
+     "Data written to a file is not safe until the file has been closed."
+    ],
+    "challenge": "A program saves the high score using mode \"w\" every time it runs. Explain the problem this causes.",
+    "fact": "Writing to a file means..."
+   },
+   {
+    "name": "Appending",
+    "bullets": [
+     "Appending adds new data to the end of a file and keeps everything that was already there.",
+     "In Python 3, open(\"log.txt\", \"a\") opens a file in append mode.",
+     "Appending suits a log or a high score table, where the old records must not be lost."
+    ],
+    "challenge": "Explain which mode a program should use to add a new score to a file of past scores, and why.",
+    "fact": "Appending is different from writing because..."
+   },
+   {
+    "name": "Closing the file",
+    "bullets": [
+     "Closing a file tells the operating system that the program has finished with it.",
+     "Data written to a file may still be waiting in a buffer in memory, and closing the file makes sure it reaches the disk.",
+     "A file left open can stop other programs using it, and wastes memory."
+    ],
+    "challenge": "Describe two problems that could happen if a program never closed the files it opened.",
+    "fact": "Closing a file is important because..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: read the file",
+   "intro": "Five lines of the OCR Exam Reference Language, jumbled. Tap the star and put them into a working program that outputs every line of scores.txt."
+  },
+  "info": [
+   {
+    "title": "RAM is volatile",
+    "text": "RAM loses everything in it when the power goes, which is why it is called volatile. Secondary storage such as an SSD keeps data without power, and that is where files live."
+   },
+   {
+    "title": "File paths",
+    "text": "A file name on its own means a file in the same folder as the program. A longer path tells the operating system exactly where to look, which is why a program that works on one computer may not find its file on another."
+   },
+   {
+    "title": "CSV files",
+    "text": "A comma separated values file puts one record on each line, with commas between the fields. Reading it line by line and splitting each line at the commas is how most simple data files are loaded."
+   },
+   {
+    "title": "Text or binary",
+    "text": "A text file stores characters you could read in a text editor. A binary file stores the raw bytes of an image or a sound, which look like nonsense if you open them as text."
+   },
+   {
+    "title": "Logs",
+    "text": "Almost every system you use keeps an append-only log of what happened and when. Because nothing is ever overwritten, the log can be read afterwards to work out what went wrong."
+   },
+   {
+    "title": "Lost data",
+    "text": "If a program crashes before closing a file, the last data written can vanish because it never left the buffer. That is one reason programs save as they go rather than only at the very end."
+   }
+  ],
+  "exam": [
+   {
+    "q": "State one reason why a program writes data to a file rather than keeping it in a variable.",
+    "marks": 2
+   },
+   {
+    "q": "Describe the four operations a program carries out on a file, in the order they happen.",
+    "marks": 4
+   },
+   {
+    "q": "A program records every login in a file called log.txt. Explain why the file should be opened in append mode rather than write mode.",
+    "marks": 3
+   }
+  ],
+  "confidence": [
+   "Why a file is needed at all",
+   "How to open, read, write and close a file",
+   "The difference between writing to a file and appending to it"
+  ],
+  "wsfile": "PF_L03_FilingRoom_Worksheet.docx"
+ },
+ {
+  "id": "pf-l04",
+  "lesson": 4,
+  "title": "Record vault",
+  "topic": "2.2",
+  "kicker": "2.2 Programming fundamentals  |  Lesson 4",
+  "subtitle": "OCR J277 Paper 2  |  Computational thinking, algorithms and programming",
+  "intro": "Every packet in this community seed library has its own row in a table, and that row is called a record. Learn how a record is built from fields, then learn the language that pulls the records you want back out.",
+  "keywords": [
+   "Record",
+   "Field",
+   "Table",
+   "SQL",
+   "SELECT",
+   "FROM",
+   "WHERE",
+   "Wildcard"
+  ],
+  "objectives": [
+   "know what is meant by a record, a field and a table of records",
+   "understand how SELECT, FROM and WHERE are used to search for data",
+   "know how AND, OR, NOT and LIKE narrow a search down"
+  ],
+  "starter": "A community seed library stores the name, the plant family and the number of packets left for each type of seed. Write down the fields one record would need, and the most suitable data type for each field.",
+  "keyq": "How does a program store a set of related data, and how does it search it?",
+  "keyterms": [
+   "Record",
+   "Wildcard"
+  ],
+  "stations": [
+   {
+    "name": "What is a record",
+    "bullets": [
+     "A record is one row of related data about a single thing, such as one packet of seed in the library.",
+     "The separate pieces of data inside a record are called fields, and each field has its own name.",
+     "A table is a set of records that all have exactly the same fields."
+    ],
+    "challenge": "Describe the record this seed library would store about one packet of radish seed.",
+    "fact": "A record is..."
+   },
+   {
+    "name": "Fields and data types",
+    "bullets": [
+     "Every field is given a data type, and only data of that type may be stored in it.",
+     "SeedID and PacketsLeft hold whole numbers, so they are integers. Name and Family hold characters, so they hold text.",
+     "Fields in the same record can be different data types, which is why a record is more useful than an array."
+    ],
+    "challenge": "The library wants to record whether each packet is organic. Choose a data type for that field and say why.",
+    "fact": "Each field in a record..."
+   },
+   {
+    "name": "SELECT and FROM",
+    "bullets": [
+     "SQL, the structured query language, is used to search a table of records.",
+     "SELECT lists the fields you want back. FROM names the table they are taken from.",
+     "SELECT * means every field in the record, and a query with no condition returns every record in the table."
+    ],
+    "challenge": "Write an SQL query that returns just the name and family of every seed in the library.",
+    "fact": "SELECT names... FROM names..."
+   },
+   {
+    "name": "WHERE",
+    "bullets": [
+     "WHERE sets a condition, and only records where that condition is True are returned.",
+     "Conditions use =, <>, <, >, <= and >=. A piece of text is written inside single quotes.",
+     "In this table,  SELECT Name FROM Seeds WHERE Family = 'Legume';  returns Runner Bean and Sweet Pea."
+    ],
+    "challenge": "Write an SQL query that returns the name of every seed with fewer than five packets left.",
+    "fact": "WHERE is used to..."
+   },
+   {
+    "name": "Boolean operators",
+    "bullets": [
+     "AND returns a record only when both of its conditions are True.",
+     "OR returns a record when at least one of its conditions is True.",
+     "NOT reverses a condition, so  NOT Family = 'Legume'  returns every record that is not a legume."
+    ],
+    "challenge": "Write a query that returns every legume with more than five packets left, then say how many records it gives.",
+    "fact": "AND returns a record only when..."
+   },
+   {
+    "name": "LIKE and wildcards",
+    "bullets": [
+     "LIKE searches a text field for a pattern instead of an exact match.",
+     "The % wildcard stands for any number of characters, including none. The _ wildcard stands for exactly one character.",
+     "So  WHERE Name LIKE 'S%'  means the name must begin with S and may be followed by anything."
+    ],
+    "challenge": "Write a query that returns every seed whose name contains the word Pea, wherever it appears in the name.",
+    "fact": "The % wildcard stands for..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: run the query",
+   "intro": "Six queries on the Seeds table, all beginning SELECT Name FROM Seeds. Tap the star, work through the table row by row, then match each WHERE line to the records it returns."
+  },
+  "info": [
+   {
+    "title": "Why not one big list",
+    "text": "A table of records keeps related data together, so one row can be added, changed or deleted without disturbing any other. Storing the same data as separate lists of names and separate lists of numbers makes it far too easy for the lists to drift out of step."
+   },
+   {
+    "title": "Primary keys",
+    "text": "A field like SeedID that is different for every record is called a primary key. It matters because two packets could easily share a name, but a key is guaranteed to pick out exactly one record."
+   },
+   {
+    "title": "SQL is everywhere",
+    "text": "The same SELECT, FROM and WHERE are used by almost every database in the world, from a school register to an airline booking system. Learning them once means you can query any of them."
+   },
+   {
+    "title": "The order the lines go in",
+    "text": "SQL is read by the database in a fixed order: find the table named in FROM, keep only the records that satisfy WHERE, then return the fields listed in SELECT. Knowing that order explains why a query that returns nothing usually has a problem in its WHERE line."
+   },
+   {
+    "title": "One letter apart",
+    "text": "Swapping AND for OR normally changes how many records come back, and OR almost always returns more. If a query gives too many results, an OR that should have been an AND is the first thing to check."
+   },
+   {
+    "title": "Searching as you type",
+    "text": "When a website suggests results while you are still typing, it is usually running a LIKE query with a % on the end of whatever you have typed so far."
+   }
+  ],
+  "exam": [
+   {
+    "q": "State what is meant by a record and what is meant by a field.",
+    "marks": 2
+   },
+   {
+    "q": "A table called Seeds has the fields SeedID, Name, Family and PacketsLeft. Write an SQL query that returns the name of every seed with fewer than five packets left.",
+    "marks": 3
+   },
+   {
+    "q": "Explain the difference between using AND and using OR in the WHERE line of a query. Use an example of each in your answer.",
+    "marks": 4
+   }
+  ],
+  "confidence": [
+   "What a record, a field and a table are",
+   "How SELECT, FROM and WHERE build a query",
+   "How AND, OR, NOT and the wildcards % and _ are used"
+  ],
+  "wsfile": "PF_L04_RecordVault_Worksheet.docx"
+ },
+ {
+  "id": "pf-l05",
+  "lesson": 5,
+  "title": "Array yard",
+  "topic": "2.2",
+  "kicker": "2.2 Programming fundamentals  |  Lesson 5",
+  "subtitle": "OCR J277 Paper 2  |  Computational thinking, algorithms and programming",
+  "intro": "Five crates stand in a line here, and every one of them is numbered rather than named. Learn how an array holds many values under one name, then learn to write sub-programs that do the work on them.",
+  "keywords": [
+   "Array",
+   "Element",
+   "Index",
+   "Zero-indexing",
+   "Sub-program",
+   "Procedure",
+   "Function",
+   "Parameter"
+  ],
+  "objectives": [
+   "know how one- and two-dimensional arrays are declared, read and changed",
+   "understand why arrays are zero-indexed and how a loop iterates over one",
+   "know the difference between a procedure and a function, and between local and global variables"
+  ],
+  "starter": "A program records the number of items in each of five crates. Write down why an array is a better choice than five separate variables, and write the line that would declare it.",
+  "keyq": "How does one name hold many values, and how is code broken into reusable pieces?",
+  "keyterms": [
+   "Zero-indexing",
+   "Sub-program"
+  ],
+  "stations": [
+   {
+    "name": "One-dimensional arrays",
+    "bullets": [
+     "An array stores many values of the same data type under a single name, instead of a separate variable for each one.",
+     "In the OCR Exam Reference Language,  array crate[5]  declares an array with five elements.",
+     "An array is given its size when it is declared and keeps it; a list in Python can grow and shrink as the program runs."
+    ],
+    "challenge": "Explain why one array is better than five separate variables for storing five crate weights.",
+    "fact": "An array is..."
+   },
+   {
+    "name": "Index positions",
+    "bullets": [
+     "Each element has an index, which is its position in the array. OCR arrays begin at index 0, which is called zero-indexing.",
+     "So the first element of  array crate[5]  is crate[0] and the last is crate[4]. Asking for crate[5] goes past the end and causes an error.",
+     "An element is changed by naming its index:  crate[2] = 7  replaces whatever was already in position 2. A count-controlled loop iterates over the whole array."
+    ],
+    "challenge": "An array holds eight marks. Give the index of the first mark and the index of the last.",
+    "fact": "Zero-indexing means..."
+   },
+   {
+    "name": "Two-dimensional arrays",
+    "bullets": [
+     "A two-dimensional array is a table of values with rows and columns. In the OCR Exam Reference Language,  array bay[3,4]  declares 3 rows of 4.",
+     "An element needs two indices, the row first and then the column, so bay[0,0] is the top left corner.",
+     "Two nested loops iterate over it: the outer loop moves down the rows and the inner loop across the columns."
+    ],
+    "challenge": "A noughts and crosses board is stored as  array board[3,3].  Give the two indices of the centre square.",
+    "fact": "A two-dimensional array is..."
+   },
+   {
+    "name": "Procedures and functions",
+    "bullets": [
+     "A sub-program is a named block of code that the main program can call, as many times as it needs, without the code being written out again.",
+     "A procedure carries out a task but returns no value. In the OCR Exam Reference Language it runs from procedure to endprocedure.",
+     "A function always returns a value to the line that called it, using return, and runs from function to endfunction."
+    ],
+    "challenge": "Decide whether printing a welcome banner and working out an average should each be a procedure or a function, and say why.",
+    "fact": "A procedure... A function..."
+   },
+   {
+    "name": "Parameters and returns",
+    "bullets": [
+     "A parameter is a variable in the sub-program's definition that receives a value when the sub-program is called.",
+     "Parameters let the same sub-program work on different data every time, so it does not have to be rewritten.",
+     "return sends one value back to the calling line and ends the function straight away."
+    ],
+    "challenge": "Write a function in the OCR Exam Reference Language that takes two marks as parameters and returns their average.",
+    "fact": "A parameter is..."
+   },
+   {
+    "name": "Local and global",
+    "bullets": [
+     "A local variable is declared inside a sub-program and only exists while that sub-program is running. Nothing outside it can see the variable.",
+     "A global variable can be used anywhere in the program. In the OCR Exam Reference Language it is declared with the keyword global.",
+     "Local variables are safer, because two sub-programs can use the same name without clashing and the memory is freed when the sub-program ends."
+    ],
+    "challenge": "Give one advantage and one disadvantage of making a player's score a global variable.",
+    "fact": "A local variable... A global variable..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: total the crates",
+   "intro": "Six lines of the OCR Exam Reference Language, jumbled. Tap the star and put them into a working program that adds up all five crate weights and outputs the total."
+  },
+  "info": [
+   {
+    "title": "Same type throughout",
+    "text": "An array holds values of one data type, which is how the computer knows exactly how much space each element needs and where each one begins. A record is the opposite: it is built to hold fields of different types."
+   },
+   {
+    "title": "Why zero",
+    "text": "The index is really how far an element sits from the start of the array, so the very first element is nothing at all from the start, which is zero. Reading one element is then a single calculation rather than a search."
+   },
+   {
+    "title": "Rows then columns",
+    "text": "Almost every language writes a two-dimensional array as row first and column second. Getting those two the wrong way round in a nested loop is one of the most common bugs in Year 11 coursework."
+   },
+   {
+    "title": "Why bother",
+    "text": "Sub-programs are how a large program stays understandable. Each one can be written, tested and fixed on its own, and a sub-program written once can be reused in a completely different program."
+   },
+   {
+    "title": "One way in, one way out",
+    "text": "A well-written function takes everything it needs through its parameters and sends everything back through its return value. That makes it possible to test the function on its own, with no other part of the program running."
+   },
+   {
+    "title": "Passing instead of sharing",
+    "text": "Rather than make a variable global so a sub-program can reach it, pass it in as a parameter and send the new value back. The sub-program then works anywhere, and nothing outside it can be changed by surprise."
+   }
+  ],
+  "exam": [
+   {
+    "q": "An array is declared as  array scores[6].  State the index of the first element and the index of the last element.",
+    "marks": 2
+   },
+   {
+    "q": "Explain the difference between a procedure and a function.",
+    "marks": 3
+   },
+   {
+    "q": "A program stores five crate weights in  array crate[5].  Write an algorithm that outputs the total of all five weights, using the OCR Exam Reference Language or a language you know.",
+    "marks": 5
+   }
+  ],
+  "confidence": [
+   "How a one- and a two-dimensional array are declared and used",
+   "Why arrays start at index 0, and how to loop over one",
+   "Procedures, functions, parameters, return values and local versus global variables"
+  ],
+  "wsfile": "PF_L05_ArrayYard_Worksheet.docx"
+ },
+ {
+  "id": "pf-l06",
+  "lesson": 6,
+  "title": "Chance machine",
+  "topic": "2.2",
+  "kicker": "2.2 Programming fundamentals  |  Lesson 6",
+  "subtitle": "OCR J277 Paper 2  |  Computational thinking, algorithms and programming",
+  "intro": "Pull the lever on this machine and out comes a number nobody in the room can predict, not even the programmer who built it. Learn how a program generates one inside a range you choose, and why the computer is only pretending to be unpredictable.",
+  "keywords": [
+   "Random number",
+   "Range",
+   "Pseudo-random",
+   "Seed",
+   "Algorithm",
+   "Simulation",
+   "Shuffle",
+   "Sampling"
+  ],
+  "objectives": [
+   "know what random numbers are used for in a program",
+   "understand how a random whole number is generated within a given range",
+   "know that a computer produces pseudo-random numbers from an algorithm and a seed"
+  ],
+  "starter": "A quiz program picks one of twenty questions to ask first. Write down what the program must do to choose a different question each time it runs, and the lowest and highest number it needs.",
+  "keyq": "How does a program produce a number that nobody can predict?",
+  "keyterms": [
+   "Pseudo-random",
+   "Seed"
+  ],
+  "stations": [
+   {
+    "name": "Why random numbers",
+    "bullets": [
+     "A random number lets a program behave differently each time it runs, so the result cannot be predicted.",
+     "Games use them for dice rolls, card shuffles and where an enemy appears.",
+     "Simulations, random sampling, shuffling a list and generating a password all need them too."
+    ],
+    "challenge": "Give two reasons a dice game would be no fun if the program produced the same number every time.",
+    "fact": "Random numbers are used when..."
+   },
+   {
+    "name": "Generating a random number",
+    "bullets": [
+     "In the OCR Exam Reference Language, random(1, 6) returns a random whole number from 1 to 6, and both end points are included.",
+     "The value returned is normally stored in a variable, so the program can use that one number more than once.",
+     "Calling the function a second time gives a fresh number, which may or may not be the same as the first."
+    ],
+    "challenge": "Write two lines in the OCR Exam Reference Language that roll a dice and output the result.",
+    "fact": "In the OCR Exam Reference Language, random(1, 6) returns..."
+   },
+   {
+    "name": "Choosing the range",
+    "bullets": [
+     "The two values passed to the function set the lowest and the highest number that can be returned.",
+     "In Python 3, random.randint(1, 6) can return 6, but random.randrange(1, 6) stops at 5.",
+     "An array of five elements is indexed 0 to 4, so a random index must come from that range and no wider."
+    ],
+    "challenge": "An array holds eight prize names. State the range a random index must come from, and say what would happen if the range went up to 8.",
+    "fact": "The end points of the range matter because..."
+   },
+   {
+    "name": "Pseudo-random",
+    "bullets": [
+     "A computer cannot be truly random: it works each number out with an algorithm, so the numbers are called pseudo-random.",
+     "The algorithm starts from a value called the seed, and the same seed always produces the same sequence of numbers.",
+     "Most languages take the seed from the computer's clock, so the sequence is different each time the program runs."
+    ],
+    "challenge": "Explain why a programmer testing a game might choose to set the seed to the same value every time.",
+    "fact": "Pseudo-random means..."
+   },
+   {
+    "name": "Random in a loop",
+    "bullets": [
+     "A new number is generated every time the function is called, so a loop can produce a whole set of them.",
+     "In the OCR Exam Reference Language a count-controlled loop suits a known number of values, such as ten dice rolls.",
+     "Each call is independent of the last, so the same value can come up twice in a row."
+    ],
+    "challenge": "Describe what a program would need to do to count how many sixes it rolls in one hundred dice rolls.",
+    "fact": "Calling a random function inside a loop..."
+   },
+   {
+    "name": "Using randomness well",
+    "bullets": [
+     "A simulation uses random numbers to model something unpredictable, such as traffic or the weather, so it can be run many times.",
+     "Random sampling picks members of a group at random, so the sample is fair and not chosen on purpose.",
+     "A shuffle puts a list into a random order, and a password generator picks random characters."
+    ],
+    "challenge": "Suggest how a program could pick three pupils at random from a class list without picking the same pupil twice.",
+    "fact": "A simulation uses random numbers to..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: how many rolls",
+   "intro": "Six lines of the OCR Exam Reference Language, jumbled. Tap the star and put them into a working program that keeps rolling a dice until it rolls a six, then outputs how many rolls that took."
+  },
+  "info": [
+   {
+    "title": "Nothing is truly random",
+    "text": "A dice is not really unpredictable. Thrown exactly the same way through exactly the same air it would land the same, but the detail is far beyond us, so we call it random. A program's random numbers rest on the same idea."
+   },
+   {
+    "title": "Read the brackets first",
+    "text": "In an exam question the two numbers in the brackets are most of the marks. Before you answer anything else, write down the lowest and the highest value that the call could possibly return."
+   },
+   {
+    "title": "Off by one",
+    "text": "A range that is one too wide is one of the commonest bugs in programming. A random index that can equal the size of the array will crash the program eventually, but only on some runs, which makes it very hard to track down."
+   },
+   {
+    "title": "Where the seed comes from",
+    "text": "Most languages take the seed from the system clock, measured in tiny fractions of a second, so two runs almost never start from the same place. Setting the seed yourself gives the same sequence every time, which is exactly what a tester wants."
+   },
+   {
+    "title": "Streaks are normal",
+    "text": "Ten rolls of a dice will often contain the same number three times in a row. People expect random data to look evenly spread, so genuinely random results are regularly mistaken for a broken program."
+   },
+   {
+    "title": "Not strong enough for keys",
+    "text": "A generator seeded from the clock is fine for a game but not for real security, because an attacker who knows roughly when the program ran can work out the sequence. Secure systems gather unpredictable data from hardware instead."
+   }
+  ],
+  "exam": [
+   {
+    "q": "State two different reasons why a program might need a random number.",
+    "marks": 2
+   },
+   {
+    "q": "An array called prize holds eight prizes. Describe how a random number could be used to choose one of them, and state the range that number must come from.",
+    "marks": 3
+   },
+   {
+    "q": "Explain why the numbers produced by a computer are described as pseudo-random.",
+    "marks": 3
+   }
+  ],
+  "confidence": [
+   "What random numbers are used for in a program",
+   "How to generate a random number in a given range, and why the end points matter",
+   "What pseudo-random means, and what a seed does"
+  ],
+  "wsfile": "PF_L06_ChanceMachine_Worksheet.docx"
+ },
+ {
+  "id": "pf-l07",
+  "lesson": 7,
+  "title": "Revision HQ 2.2",
+  "topic": "2.2",
+  "kicker": "2.2 Programming fundamentals  |  Lesson 7",
+  "subtitle": "OCR J277 Paper 2  |  Computational thinking, algorithms and programming",
+  "intro": "Each station takes one lesson from this topic and goes straight for the part that most often goes wrong, so this is a check rather than a re-teach. Work through all six, then take on a lane draw that needs almost everything you have learned.",
+  "keywords": [
+   "Constructs",
+   "Casting",
+   "File handling",
+   "SQL",
+   "Array",
+   "Sub-program",
+   "Pseudo-random"
+  ],
+  "objectives": [
+   "know the whole of topic 2.2 well enough to answer without notes",
+   "understand the mistakes that most often lose marks in programming questions",
+   "know which lessons are secure and which still need revision before the test"
+  ],
+  "starter": "Without looking back at your notes, write down the three programming constructs, the five data types, and the four operations a program carries out on a file.",
+  "keyq": "Which parts of 2.2 am I secure on, and which do I need to revise before the test?",
+  "keyterms": [
+   "Iteration",
+   "Pseudo-random"
+  ],
+  "stations": [
+   {
+    "name": "Constructs recap",
+    "bullets": [
+     "A single equals sign assigns a value to a variable; a double equals sign compares two values and gives True or False.",
+     "Selection makes a choice once. Iteration goes back and repeats.",
+     "A condition-controlled loop must change the variable in its condition somewhere inside the loop, or it never ends."
+    ],
+    "challenge": "Write down the difference between = and == and give an example of each.",
+    "fact": "A single equals sign... A double equals sign..."
+   },
+   {
+    "name": "Types and operators recap",
+    "bullets": [
+     "In the OCR Exam Reference Language, + joins two strings but adds two numbers, so \"7\" + \"2\" gives the string 72 while 7 + 2 gives 9.",
+     "input() always returns a string, so a number must be cast before any arithmetic is done with it.",
+     "DIV gives how many whole times one number goes into another, and MOD gives the remainder left over."
+    ],
+    "challenge": "Explain what int(7.9) gives, and why that is not the same as rounding.",
+    "fact": "Casting is needed because..."
+   },
+   {
+    "name": "File handling recap",
+    "bullets": [
+     "In Python 3, mode \"w\" wipes whatever was in the file, and mode \"a\" adds to the end and keeps what was already there.",
+     "In the OCR Exam Reference Language a read loop calls readLine() inside the loop and stops when endOfFile() becomes True.",
+     "A file must be closed, or the last data written may never leave the buffer in memory."
+    ],
+    "challenge": "A program saves a new high score each week, but the file only ever holds one score. Explain what is wrong and how to fix it.",
+    "fact": "The mode a file is opened in decides..."
+   },
+   {
+    "name": "Records and SQL recap",
+    "bullets": [
+     "SELECT chooses the fields, FROM chooses the table and WHERE chooses the records.",
+     "Text in a WHERE condition goes inside single quotes, and a pattern with a wildcard needs LIKE rather than =.",
+     "AND needs both of its conditions to be True, so it returns the same number of records as OR or fewer."
+    ],
+    "challenge": "Write down the three parts of an SQL query and say what each one decides.",
+    "fact": "The part of a query that decides which records come back is..."
+   },
+   {
+    "name": "Arrays and sub-programs recap",
+    "bullets": [
+     "An array of n elements is indexed 0 to n - 1, so the last index is always one less than the size.",
+     "A function returns a value to the line that called it, and a procedure does not.",
+     "A local variable only exists inside its own sub-program, so no other part of the program can read it."
+    ],
+    "challenge": "An array holds twelve lane numbers. Give the index of the first and of the last, and write the loop that would visit them all.",
+    "fact": "An index goes out of range when..."
+   },
+   {
+    "name": "Randomness recap",
+    "bullets": [
+     "In the OCR Exam Reference Language, random(1, 6) includes both 1 and 6.",
+     "A computer produces pseudo-random numbers with an algorithm and a seed, so the same seed gives the same sequence.",
+     "A random index must stay inside the array, so an array of six elements needs a number from 0 to 5."
+    ],
+    "challenge": "Explain why random(0, 6) is the wrong call for choosing one of six prizes from an array.",
+    "fact": "Pseudo-random numbers come from..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: the lane draw",
+   "intro": "Sports day needs a fair draw. Eight runners' names are stored in a file, and the program must give each of them a different lane from 1 to 8, chosen at random, then save the finished list. Tap the star and build it."
+  },
+  "info": [
+   {
+    "title": "Revision that works",
+    "text": "Cover the bullets at a station, say them out loud from memory, then uncover them and check. Reading them again is much easier, and much less useful, than trying to recall them."
+   },
+   {
+    "title": "Two marks, two things",
+    "text": "A two-mark question that says state the difference wants both sides written down. Saying what casting does without saying why it is needed throws away half the marks."
+   },
+   {
+    "title": "Say which language",
+    "text": "Answering a code question in Python instead of the OCR Exam Reference Language is fine, but stick to one of them for the whole answer. Mixing print() with endif loses marks because neither language is being followed."
+   },
+   {
+    "title": "Three lines, three jobs",
+    "text": "Nearly every SQL mark comes from the same three lines: SELECT for the fields, FROM for the table and WHERE for the records. Write them on separate lines and check each one in turn."
+   },
+   {
+    "title": "Trace it on paper",
+    "text": "For any program with a loop, draw a column for each variable and add a new row every time round the loop. Most tracing marks in Paper 2 are won or lost on whether you bothered to do this."
+   },
+   {
+    "title": "The top number",
+    "text": "In a question about choosing an element at random, the marks are in the range. An array of eight elements needs a number from 0 to 7, and an 8 anywhere in that answer will cost you."
+   }
+  ],
+  "exam": [
+   {
+    "q": "State the difference between a count-controlled loop and a condition-controlled loop.",
+    "marks": 2
+   },
+   {
+    "q": "A club stores its members in a table called Members, with the fields MemberID, Name, Year and Paid. Write an SQL query that returns the name of every member in Year 10 who has not paid.",
+    "marks": 3
+   },
+   {
+    "q": "Eight runners' names are stored in a file. Write an algorithm that gives each runner a different lane from 1 to 8, chosen at random, and outputs the finished draw. Use the OCR Exam Reference Language or a language you know.",
+    "marks": 6
+   }
+  ],
+  "confidence": [
+   "Variables, constants and the three constructs",
+   "Data types, casting, operators and string handling",
+   "Files, records and SQL, arrays, sub-programs and random numbers"
+  ],
+  "wsfile": "PF_L07_RevisionHQ_Worksheet.docx"
+ }
+]

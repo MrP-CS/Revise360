@@ -112,7 +112,17 @@ L1 = dict(id="pr-l01", topic="PY", lesson=1, title="Tuck shop till", img="PR_L01
         (2, "Why it waits", "input() reads one whole line, so the program only carries on once the Enter key has been pressed."),
         (3, "One bit each", "A boolean has only two possible values, so it needs just one bit of storage - the smallest piece of data there is."),
         (4, "Silent rounding", "int() on a float throws the decimal part away instead of rounding, so int(3.9) is 3."),
-        (5, "Reading an error", "A traceback names the line that failed. Read its last line first: that says what Python could not do.")])
+        (5, "Reading an error", "A traceback names the line that failed. Read its last line first: that says what Python could not do.")],
+  ws=dict(title="Output, variables and input", objectives=["know how to print a line of output and store a value in a variable",
+      "know how to read a value with input() and choose the data type it needs",
+      "understand why a value that has been typed in must be cast before it can be calculated with"],
+    starter="Three lines run in this order: price = 40, then price = 65, then print(price). Write down exactly what is printed, and explain in one sentence what became of the first value.", starter_lines=3,
+    keyterms=["Variable", "Casting", "Concatenation", "Data type"],
+    keyq="Why must a program decide the data type of a value before it can do anything useful with it?",
+    exam=[("A pupil writes two lines to add a 50p bag charge to a price that has been typed in: price = input('Price: ') and then print(price + 50). State what Python does when this runs, and rewrite the two lines so they work.", 3, 5),
+          ("Write a program that reads a pupil's name and the number of library books they are holding, then prints one line giving the name and how many of their 6 allowed books are still free.", 4, 10),
+          ("Write a program that reads the price of one pencil in pence and how many pencils are bought, then prints the total cost in pence.", 3, 8)],
+    confidence=["Printing output and storing a value in a variable", "Reading input and choosing its data type", "Casting between text and numbers"]))
 
 # ---------------------------------------------------------------- Lesson 2
 L2 = dict(id="pr-l02", topic="PY", lesson=2, title="Number workshop", img="PR_L02_NumberWorkshop_360",
@@ -172,7 +182,17 @@ L2 = dict(id="pr-l02", topic="PY", lesson=2, title="Number workshop", img="PR_L0
         (2, "Any root at all", "Every root can be written as a power, so a cube root is the power of one third and 27 ** (1/3) is 3."),
         (3, "Floats are close, not exact", "0.1 + 0.2 does not give exactly 0.3, because a float is stored in binary and some decimals will not fit."),
         (4, "Shuffling", "random.shuffle() mixes a list up, which is how a program deals out a hand of cards."),
-        (5, "Why order matters", "Without an agreed order, 2 + 3 * 4 could mean 20 instead of 14, so every language fixes one.")])
+        (5, "Why order matters", "Without an agreed order, 2 + 3 * 4 could mean 20 instead of 14, so every language fixes one.")],
+  ws=dict(title="Arithmetic in Python", objectives=["know which arithmetic operator to use for each kind of calculation",
+      "understand the difference between /, // and % and what each one hands back",
+      "know how to round a result and how to draw a random number"],
+    starter="Work these out by hand, with no computer: 17 / 5, 17 // 5, 17 % 5 and 2 ** 5. Beside each answer write whether Python gives a whole number or a decimal.", starter_lines=4,
+    keyterms=["Integer division", "Modulus", "Exponent", "Pseudo-random"],
+    keyq="How do you choose between /, // and % when the answer to a calculation has to come out as a whole number?",
+    exam=[("A program works out how many full boxes of 6 eggs a crate will fill, and the line reads boxes = eggs / 6. State what is wrong with the result this gives, and write the line corrected.", 2, 4),
+          ("Write a program that reads a number of minutes and prints it as a number of whole hours and the minutes left over.", 4, 9),
+          ("Write a program that reads two amounts of money in pounds and prints their mean, rounded to two decimal places.", 4, 9)],
+    confidence=["Choosing the right arithmetic operator", "Using // and % for whole-number answers", "Rounding a result and drawing a random number"]))
 
 # ---------------------------------------------------------------- Lesson 3
 L3 = dict(id="pr-l03", topic="PY", lesson=3, title="Decision gate", img="PR_L03_DecisionGate_360",
@@ -231,7 +251,17 @@ L3 = dict(id="pr-l03", topic="PY", lesson=3, title="Decision gate", img="PR_L03_
         (2, "Unreachable code", "If a band that catches everything is tested first, no branch below it can ever run - those lines are unreachable."),
         (3, "Same as the gates", "and, or and not behave exactly like the AND, OR and NOT gates you draw truth tables for in topic 2.4."),
         (4, "Flatten it", "A nested if can often be replaced by one condition joined with and, which is easier to read and easier to test."),
-        (5, "Read the wording", "'At least', 'no more than' and 'over' all mean different things. Write the boundary value down before you code it.")])
+        (5, "Read the wording", "'At least', 'no more than' and 'over' all mean different things. Write the boundary value down before you code it.")],
+  ws=dict(title="Selection: if, elif and else", objectives=["know how to write a condition using the comparison operators",
+      "understand how if, elif and else choose between several outcomes",
+      "know how to join two conditions together with and, or and not"],
+    starter="A program holds three branches: if score > 20 prints Gold, elif score > 10 prints Silver, and else prints Bronze. Write down what is printed when score is 30, when it is 11, and when it is 10.", starter_lines=3,
+    keyterms=["Selection", "Condition", "elif", "Nested selection"],
+    keyq="Why does the order the branches are written in change what an if ... elif ... else actually does?",
+    exam=[("A car park charges 2 pounds for up to 2 hours and 5 pounds for longer. A pupil writes if hours > 2 then prints 2, and else prints 5. Identify the logic error and write the two lines corrected.", 3, 5),
+          ("Write a program that reads a wind speed in mph and prints Calm below 8, Breezy from 8 up to but not including 25, and Gale at 25 or more.", 4, 10),
+          ("Write a program that reads a greenhouse temperature and whether the roof vent is open, and prints Open the vent only when the temperature is above 28 degrees and the vent is shut.", 4, 10)],
+    confidence=["Writing a condition with a comparison operator", "Choosing between if, elif and else", "Joining conditions with and, or and not"]))
 
 # ---------------------------------------------------------------- Lesson 4
 L4 = dict(id="pr-l04", topic="PY", lesson=4, title="Lap counter", img="PR_L04_LapCounter_360",
@@ -290,7 +320,17 @@ L4 = dict(id="pr-l04", topic="PY", lesson=4, title="Lap counter", img="PR_L04_La
         (2, "Counting down", "A negative step counts backwards, which is how a program works through a list from the end to the start."),
         (3, "One pass, many answers", "A single loop can build a total, a count and a highest value all at once, which saves going through the data twice."),
         (4, "Multiplying work", "Nesting multiplies: three loops of 1000 inside each other would run a thousand million times."),
-        (5, "Which loop", "If you know the number of repeats, use for. If it depends on what happens, use while - which is the next lesson.")])
+        (5, "Which loop", "If you know the number of repeats, use for. If it depends on what happens, use while - which is the next lesson.")],
+  ws=dict(title="Count-controlled iteration: the for loop", objectives=["know how to write a for loop that repeats a block a set number of times",
+      "understand how range() decides which values the loop counter takes",
+      "know how to build a running total inside a loop, and how to put one loop inside another"],
+    starter="Write down every number printed by for i in range(2, 9, 3), then say how many lines of output there are altogether.", starter_lines=3,
+    keyterms=["Count-controlled iteration", "range()", "Running total", "Nested loop"],
+    keyq="How do you decide what to put inside range() so that a loop counts exactly the values you want?",
+    exam=[("A program should print the numbers 1 to 10 but prints 0 to 9 instead. Its loop begins for i in range(10). State which values the original range() counted through, and rewrite the line so the loop prints 1 to 10.", 2, 4),
+          ("Write a program that reads 7 daily rainfall figures in millimetres and prints their total and their mean.", 5, 11),
+          ("Write a program that reads a size from the user and prints a solid square of hash characters of that size.", 4, 10)],
+    confidence=["Writing a for loop with the right range", "Keeping a running total inside a loop", "Using one loop inside another"]))
 
 # ---------------------------------------------------------------- Lesson 5
 L5 = dict(id="pr-l05", topic="PY", lesson=5, title="Waiting room", img="PR_L05_WaitingRoom_360",
@@ -350,7 +390,17 @@ L5 = dict(id="pr-l05", topic="PY", lesson=5, title="Waiting room", img="PR_L05_W
         (2, "Choosing a sentinel", "-1 works for a price, because a price can never be negative. For a temperature it would be a terrible choice."),
         (3, "Count or total", "A counter always adds 1. A running total adds whatever came in. Plenty of programs need both at once."),
         (4, "Testing at the bottom", "Some languages have a loop that tests its condition at the end, so it always runs once. Python does not, so the first read goes above the loop."),
-        (5, "No data at all", "A program given no data should still print something sensible. Start every total at zero and it will.")])
+        (5, "No data at all", "A program given no data should still print something sensible. Start every total at zero and it will.")],
+  ws=dict(title="Condition-controlled iteration: the while loop", objectives=["know how to write a while loop and what makes it stop repeating",
+      "understand how a validation loop keeps asking until the value typed in is acceptable",
+      "know how a sentinel value ends a loop when the amount of data is not known in advance"],
+    starter="A program sets count = 5, then a while loop runs for as long as count > 0, and the only line inside the loop prints count. Describe what happens when this program runs, and write down the one line that is missing.", starter_lines=3,
+    keyterms=["Condition-controlled iteration", "Validation loop", "Sentinel value", "Infinite loop"],
+    keyq="How do you decide between a for loop and a while loop before you write a single line of code?",
+    exam=[("A validation loop reads a number, then repeats for as long as it is outside 1 to 50. When 99 is typed the program reports the same wrong number over and over. State what has been left out of the loop, and where in the loop it belongs.", 2, 4),
+          ("Write a program that reads lengths of rope in centimetres until 0 is typed, then prints how many lengths were read and their total length.", 5, 11),
+          ("Write a program that keeps asking for a password until one of at least 8 characters is typed, and then prints Accepted.", 4, 10)],
+    confidence=["Writing a while loop that stops", "Writing a validation loop that asks again", "Using a sentinel value to end a loop"]))
 
 # ---------------------------------------------------------------- Lesson 6
 L6 = dict(id="pr-l06", topic="PY", lesson=6, title="Letter press", img="PR_L06_LetterPress_360",
@@ -408,7 +458,17 @@ L6 = dict(id="pr-l06", topic="PY", lesson=6, title="Letter press", img="PR_L06_L
         (2, "Nothing is changed", "upper() does not change the original - it hands back a new string. Strings in Python cannot be edited in place."),
         (3, "Searching fairly", "To search without caring about capitals, lower() both the text and the thing you are looking for before you search."),
         (4, "Beyond A to Z", "ord() gives a Unicode code point, so it works for letters from any alphabet, not only A to Z."),
-        (5, "Building strings", "Adding to a string makes a brand new one each time. For a long job, collecting the pieces in a list and joining them once is quicker.")])
+        (5, "Building strings", "Adding to a string makes a brand new one each time. For a long job, collecting the pieces in a list and joining them once is quicker.")],
+  ws=dict(title="String handling", objectives=["know how to find the length of a string and the character at a given position",
+      "understand how a slice takes part of a string, and why its end position is left out",
+      "know how to change case, search inside text, and move between a character and its code"],
+    starter="The variable word holds Cavendish. Write down what each of these gives: len(word), word[0], word[0:4], word[-1] and word.upper().", starter_lines=4,
+    keyterms=["Index", "Slice", "Character set", "ord() and chr()"],
+    keyq="Why are the characters of a string numbered from 0 rather than from 1?",
+    exam=[("A program tries to print the last character of a word with print(word[len(word)]) and stops with an error. Explain why it fails, and write the line corrected.", 3, 5),
+          ("Write a program that reads a surname and prints a username made from its first three letters in lower case followed by the number of letters in the surname.", 4, 10),
+          ("Write a program that reads a line of text and a single letter, and prints how many times that letter appears in the text, counting capitals and small letters as the same.", 5, 11)],
+    confidence=["Using len() and an index on a string", "Taking a slice out of a string", "Searching text and using ord() and chr()"]))
 
 # ---------------------------------------------------------------- Lesson 7
 L7 = dict(id="pr-l07", topic="PY", lesson=7, title="Stock shelves", img="PR_L07_StockShelves_360",
@@ -467,7 +527,17 @@ L7 = dict(id="pr-l07", topic="PY", lesson=7, title="Stock shelves", img="PR_L07_
         (2, "Which loop", "for item in list is tidier when you only need the values. Use range(len(list)) when you need the position too."),
         (3, "Removing safely", "Deleting from a list while looping over it makes the loop skip items. Build a new list instead."),
         (4, "The average of nothing", "An empty list has no average at all, so a robust program checks the length before it divides."),
-        (5, "Lists inside lists", "A list can hold other lists, which is how a program stores a grid - and that is the next lesson.")])
+        (5, "Lists inside lists", "A list can hold other lists, which is how a program stores a grid - and that is the next lesson.")],
+  ws=dict(title="One-dimensional arrays", objectives=["know how to create a list and read one item out of it by its index",
+      "understand how to traverse a list in order to total, count or compare its items",
+      "know how to add an item onto a list and how to take one out again"],
+    starter="The list shelf holds Nails, Screws, Bolts and Nuts, in that order. Write down what shelf[0], shelf[3] and len(shelf) each give, and the index of the last item.", starter_lines=4,
+    keyterms=["Array", "Index", "Traverse", "append() and pop()"],
+    keyq="Why is the last item of a list always at index len(list) - 1?",
+    exam=[("A loop over a list of six prices begins for i in range(1, 6). State which price is never looked at, and rewrite the line so that every price is included.", 2, 4),
+          ("Write a program that reads 6 javelin throws in metres into a list, then prints the longest throw and the position it is stored at.", 5, 11),
+          ("Write a program that holds a list of five club members, removes a name the user types in, then prints the list and how many members are left.", 4, 10)],
+    confidence=["Creating a list and reading an item by its index", "Traversing a list to total or compare its items", "Adding items to a list and removing them"]))
 
 # ---------------------------------------------------------------- Lesson 8
 L8 = dict(id="pr-l08", topic="PY", lesson=8, title="Seating plan hall", img="PR_L08_SeatingPlanHall_360",
@@ -525,7 +595,17 @@ L8 = dict(id="pr-l08", topic="PY", lesson=8, title="Seating plan hall", img="PR_
         (2, "One long line", "Memory is one long line of addresses, so a grid is stored row after row. Reading along a row is the natural direction."),
         (3, "sum() a row", "sum() totals a list, so sum(grid[0]) totals a whole row in one step - but a column still needs a loop."),
         (4, "Ragged grids", "Nothing stops the rows being different lengths, though most tasks assume they match. Use len(grid[r]) if they might not."),
-        (5, "Three dimensions", "A list of grids is a three-dimensional array, which is how a program might hold a seating plan for every week of term.")])
+        (5, "Three dimensions", "A list of grids is a three-dimensional array, which is how a program might hold a seating plan for every week of term.")],
+  ws=dict(title="Two-dimensional arrays", objectives=["know how to create a two-dimensional array as a list of lists",
+      "understand how a row index and a column index together pick out one cell",
+      "know how to use two nested loops to total a row, a column or a whole grid"],
+    starter="The grid g holds two rows: 4, 9, 2 in the first and 7, 1, 6 in the second. Write down what g[0][2], g[1][0] and len(g) each give, and which row and column hold the 6.", starter_lines=4,
+    keyterms=["Two-dimensional array", "Row and column", "Cell", "Nested loop"],
+    keyq="Which index comes first when a program reads a cell, and why does swapping the two over give a different answer?",
+    exam=[("A program that should total column 2 of a grid of 4 rows by 3 columns begins its loop with for r in range(len(grid[0])). Explain why this looks at the wrong number of cells, and write the line corrected.", 3, 5),
+          ("Write a program that reads a grid of 3 rows by 4 columns of merit points and prints the total for each row.", 5, 11),
+          ("Write a program that prints a grid of 2 rows by 3 columns of prices that is already stored in the program, one row to a line.", 4, 10)],
+    confidence=["Creating a list of lists", "Reading a cell with a row index and a column index", "Totalling rows and columns with nested loops"]))
 
 # ---------------------------------------------------------------- Lesson 9
 L9 = dict(id="pr-l09", topic="PY", lesson=9, title="Assembly line", img="PR_L09_AssemblyLine_360",
@@ -585,7 +665,17 @@ L9 = dict(id="pr-l09", topic="PY", lesson=9, title="Assembly line", img="PR_L09_
         (2, "Returning more", "return can hand back several values at once, separated by commas, and the caller unpacks them."),
         (3, "Already written", "len(), int() and round() are functions somebody else wrote: you call them exactly the way you call your own."),
         (4, "Globals are risky", "Any subprogram can change a global, so one bug can break all of them. Parameters and return values are safer."),
-        (5, "Calling itself", "A subprogram is even allowed to call itself. That is called recursion, and it is how a merge sort splits a list.")])
+        (5, "Calling itself", "A subprogram is even allowed to call itself. That is called recursion, and it is how a merge sort splits a list.")],
+  ws=dict(title="Subprograms: procedures and functions", objectives=["know how to define a subprogram with def and how to call it",
+      "understand how a parameter passes a value into a subprogram and how return passes one back out",
+      "know the difference between a local variable and a global one"],
+    starter="A program defines a subprogram called banner with one print line inside it, and then stops. Nothing is printed when it runs. Explain why, and write down the line that has been left out.", starter_lines=3,
+    keyterms=["Subprogram", "Parameter and argument", "return", "Local and global variable"],
+    keyq="When should a subprogram return a value rather than print one?",
+    exam=[("A subprogram called vat takes an amount and its last line is print(amount * 0.2). The main program writes tax = vat(50) and then prints tax, which shows None. Explain why, and write the change needed inside the subprogram.", 3, 5),
+          ("Write a function that takes a length and a width in metres and returns the area, and a main program that uses it to print the area of two different rooms.", 5, 11),
+          ("Write a procedure that takes a pupil's name and a score and prints one tidy line of a results table, then call it for three different pupils.", 4, 10)],
+    confidence=["Defining a subprogram and calling it", "Passing values in with parameters and back with return", "Telling a local variable from a global one"]))
 
 # ---------------------------------------------------------------- Lesson 10
 L10 = dict(id="pr-l10", topic="PY", lesson=10, title="Records office", img="PR_L10_RecordsOffice_360",
@@ -645,7 +735,17 @@ L10 = dict(id="pr-l10", topic="PY", lesson=10, title="Records office", img="PR_L
         (2, "No undo", "Write mode empties the file the instant it opens, before you have written anything at all."),
         (3, "Why logs append", "A log is evidence of what happened. Appending adds an entry without touching anything already written."),
         (4, "A table in disguise", "A file of records is a table: each line is a row and each field is a column."),
-        (5, "Closing safely", "Python's with open(...) as f: closes the file for you, even if the program hits an error part way through.")])
+        (5, "Closing safely", "Python's with open(...) as f: closes the file for you, even if the program hits an error part way through.")],
+  ws=dict(title="File handling", objectives=["know how to open a text file, read what is in it and close it again",
+      "understand the difference between write mode and append mode",
+      "know how to split one line of a file into its separate fields"],
+    starter="A program opens scores.txt in write mode, and the file already holds 40 lines of results. Write down what the file holds the moment that line has run, and which mode should have been used to add to it instead.", starter_lines=3,
+    keyterms=["Append mode", "Record", "Field", "split()"],
+    keyq="Why does the mode a file is opened in matter more than anything else on that line?",
+    exam=[("Every line read from a file is measured with len(), and each answer comes out one character bigger than expected. Name the character being counted, and write the line that removes it.", 2, 4),
+          ("Write a program that adds a new visitor's name onto the end of log.txt without losing the names already in it, and then prints the whole file.", 4, 10),
+          ("Each line of members.txt holds a name and an age, separated by a comma. Write a program that prints the name of every member aged 16 or over.", 5, 11)],
+    confidence=["Opening, reading and closing a file", "Choosing between write mode and append mode", "Splitting a record into its fields"]))
 
 # ---------------------------------------------------------------- Lesson 11
 L11 = dict(id="pr-l11", topic="PY", lesson=11, title="Sorting depot", img="PR_L11_SortingDepot_360",
@@ -705,7 +805,17 @@ L11 = dict(id="pr-l11", topic="PY", lesson=11, title="Sorting depot", img="PR_L1
         (2, "Swapping in one line", "Python can swap two values in one line with a, b = b, a. Most languages need a third variable to hold one of them."),
         (3, "Nearly sorted", "On a list that is almost in order an insertion sort is very quick, because hardly anything has to move."),
         (4, "Divide and conquer", "Splitting a problem into smaller copies of itself is called divide and conquer, and merge sort is the classic example."),
-        (5, "When it matters", "On a short list any sort is fast enough. The difference only shows up on large data - which is where the exam questions live.")])
+        (5, "When it matters", "On a short list any sort is fast enough. The difference only shows up on large data - which is where the exam questions live.")],
+  ws=dict(title="Coding the search and sort algorithms", objectives=["know how to code a linear search and a binary search",
+      "understand how a bubble sort, an insertion sort and a merge sort each put a list in order",
+      "know why a binary search needs its list to be in order before it starts"],
+    starter="The sorted list holds 3, 8, 12, 19, 24, 31, 40. Write down the item a binary search looks at first, second and third while hunting for 31, and how many comparisons that took.", starter_lines=4,
+    keyterms=["Linear search", "Binary search", "Pass", "Comparison"],
+    keyq="Why is a binary search so much faster than a linear search on a long list, and what does using one cost you?",
+    exam=[("A linear search prints Not found from inside its loop, so searching one list prints that message several times. State where the message should go instead, and explain why putting it there fixes the problem.", 3, 5),
+          ("Write a program that reads 8 whole numbers into a list, puts them in order using a bubble sort, and prints the sorted list.", 6, 13),
+          ("Write a program that uses a binary search to look for a membership number the user types in, within a list of 10 numbers already in order, and prints its position or Not found.", 6, 13)],
+    confidence=["Coding a linear search and a binary search", "Coding a bubble, insertion or merge sort", "Explaining why a binary search needs sorted data"]))
 
 # ---------------------------------------------------------------- Lesson 12
 L12 = dict(id="pr-l12", topic="PY", lesson=12, title="Gatehouse", img="PR_L12_Gatehouse_360",
@@ -765,7 +875,17 @@ L12 = dict(id="pr-l12", topic="PY", lesson=12, title="Gatehouse", img="PR_L12_Ga
         (2, "Length, then format", "Checking the length first means a format check can safely look at a particular position in the string."),
         (3, "Three tries", "Locking an account after three wrong passwords stops a program being guessed at one attempt at a time."),
         (4, "Never stored plainly", "Real systems never keep a password as it was typed. They store a hash of it, which cannot be read back."),
-        (5, "Keep going", "A program that skips a bad line and says how many it skipped is more useful than one that stops at the first problem.")])
+        (5, "Keep going", "A program that skips a bad line and says how many it skipped is more useful than one that stops at the first problem.")],
+  ws=dict(title="Writing validation and authentication", objectives=["know how to code a presence, type, range, length and format check",
+      "understand how a validation loop keeps asking until the value typed in passes every check",
+      "know how to code an authentication check that allows only a set number of attempts"],
+    starter="A program reads an age with age = int(input()) and the user types the word twelve. Write down what happens to the program, and the check that should have come before the cast.", starter_lines=3,
+    keyterms=["Validation", "Format check", "Validation loop", "Authentication"],
+    keyq="Why is refusing bad data better than letting a program stop with an error?",
+    exam=[("A range check for a satisfaction score that must be from 1 to 10 inclusive is written if score > 1 and score < 10. State the two scores this wrongly refuses, and write the condition corrected.", 3, 5),
+          ("Write a program that keeps asking for a tutor group code of exactly one letter followed by two digits until a valid one is typed.", 6, 13),
+          ("Write a program that allows three attempts at the four-digit passcode 2471, and prints Locked if all three attempts are wrong.", 5, 11)],
+    confidence=["Coding a presence, type and range check", "Coding a length check and a format check", "Writing a validation loop and an authentication check"]))
 
 # ---------------------------------------------------------------- Lesson 13
 L13 = dict(id="pr-l13", topic="PY", lesson=13, title="Query desk", img="PR_L13_QueryDesk_360",
@@ -824,4 +944,14 @@ L13 = dict(id="pr-l13", topic="PY", lesson=13, title="Query desk", img="PR_L13_Q
         (2, "Boundaries again", "'Over 60' and '60 or more' are different queries. The off-by-one that bites in Python bites here too."),
         (3, "Use brackets", "WHERE a AND b OR c can mean two different things, and brackets say which one you meant."),
         (4, "Sorting text", "ORDER BY on a text field sorts alphabetically, which is how a list of names is put into order."),
-        (5, "Why a database", "A database holds far more than a program's memory, and many people can query the same table at the same time.")])
+        (5, "Why a database", "A database holds far more than a program's memory, and many people can query the same table at the same time.")],
+  ws=dict(title="Querying a database with SQL", objectives=["know how SELECT and FROM choose the fields and the table a query reads",
+      "understand how WHERE decides which records a query hands back",
+      "know how to join conditions with AND and OR, and how to sort results with ORDER BY"],
+    starter="A table called Tree holds the fields Name, Height and Native, and 30 records. Write down how many fields and how many records come back from SELECT Name, Height FROM Tree, and which clause you would add to cut the records down.", starter_lines=3,
+    keyterms=["SQL", "Record and field", "WHERE", "ORDER BY"],
+    keyq="Which clause of a query decides which fields come back, and which clause decides which records?",
+    exam=[("A query is written SELECT Title FROM Game ORDER BY Length WHERE Players = 2. State the error in it, and write the query out corrected.", 2, 4),
+          ("A table called Track holds the fields Title, Artist, Seconds and Genre. Write a query that lists the title and artist of every track longer than 240 seconds, longest first.", 4, 6),
+          ("Using the same Track table, write a query that lists the title of every track that is Jazz or Blues and lasts under 180 seconds.", 4, 6)],
+    confidence=["Writing a SELECT ... FROM query", "Filtering records with WHERE", "Using AND, OR and ORDER BY"]))

@@ -1,0 +1,334 @@
+{
+ "id": "pf-l01",
+ "lesson": 1,
+ "title": "Variable store",
+ "scenes": [
+  {
+   "id": "main",
+   "title": "Variable store",
+   "img": "img/PF_L01_VariableStore_360.jpg",
+   "imgHi": "img/PF_L01_VariableStore_360_hi.jpg",
+   "stations": [
+    {
+     "label": "1",
+     "name": "Variables and assignment",
+     "col": "#40c4ff",
+     "face": "right",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does a variable store?",
+       "a": [
+        "A value that can change while the program is running",
+        "A value that is fixed and can never change",
+        "The name of the program",
+        "A single line of code"
+       ],
+       "fb": "The name stays the same, but the value inside it can be replaced."
+      },
+      {
+       "t": "mcq",
+       "q": "What does total = total + 5 do?",
+       "a": [
+        "Adds 5 to the value already in total, then stores the new value back in total",
+        "Checks whether total is equal to total plus 5",
+        "Creates a second variable also called total",
+        "Always sets total to 5"
+       ],
+       "fb": "A single equals sign assigns a value; it never compares."
+      }
+     ]
+    },
+    {
+     "label": "2",
+     "name": "Constants",
+     "col": "#aa6eeb",
+     "face": "right",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What is a constant?",
+       "a": [
+        "A named value that is fixed when the program is written and cannot change as it runs",
+        "A variable with a very short name",
+        "A value stored on the hard disk",
+        "A value that changes every time the program runs"
+       ],
+       "fb": "Constants are set once; variables can be reassigned."
+      },
+      {
+       "t": "mcq",
+       "q": "Which of these is best stored as a constant in a game?",
+       "a": [
+        "The number of lives the player starts with",
+        "The player's current score",
+        "The player's name",
+        "The number of enemies still alive"
+       ],
+       "fb": "The starting number of lives is decided by the programmer; the other three change as the game is played."
+      }
+     ]
+    },
+    {
+     "label": "3",
+     "name": "Input and output",
+     "col": "#ff785a",
+     "face": "back",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What data type does input() give the program?",
+       "a": [
+        "A string",
+        "An integer",
+        "A Boolean",
+        "A real number"
+       ],
+       "fb": "Even if the user types 12, it arrives as the characters 1 and 2."
+      },
+      {
+       "t": "mcq",
+       "q": "A program must add 1 to a number the user has typed. What has to happen first?",
+       "a": [
+        "The input must be cast to an integer",
+        "The input must be printed",
+        "The input must be stored in a constant",
+        "The input must be placed inside a loop"
+       ],
+       "fb": "Arithmetic cannot be done on a string, so cast it to a number first."
+      }
+     ]
+    },
+    {
+     "label": "4",
+     "name": "Sequence",
+     "col": "#ffa028",
+     "face": "back",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does sequence mean?",
+       "a": [
+        "Statements are carried out one after another in the order they are written",
+        "Statements are repeated until a condition is met",
+        "A choice is made between two sets of statements",
+        "Statements run in whichever order the computer finds quickest"
+       ],
+       "fb": "Nothing is skipped and nothing is repeated: each line runs once, in order."
+      },
+      {
+       "t": "mcq",
+       "q": "What is wrong with this sequence:  print(total)  then  total = price * 2 ?",
+       "a": [
+        "total is output before it has been given a value",
+        "print cannot be used with a variable",
+        "There are too few lines in the program",
+        "total should have been a constant"
+       ],
+       "fb": "Swapping the two lines fixes it: assign first, then use."
+      }
+     ]
+    },
+    {
+     "label": "5",
+     "name": "Selection",
+     "col": "#50dc96",
+     "face": "left",
+     "x": 540,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "What does selection let a program do?",
+       "a": [
+        "Choose between different sets of statements by testing a condition",
+        "Repeat a set of statements a fixed number of times",
+        "Store a value in memory under a name",
+        "Run every statement in the order written"
+       ],
+       "fb": "Selection is a choice at a fork in the road; iteration is a loop."
+      },
+      {
+       "t": "mcq",
+       "q": "mark = 40. What does  if mark > 40 then print(\"Pass\") else print(\"Fail\") endif  output?",
+       "a": [
+        "Fail",
+        "Pass",
+        "Nothing at all",
+        "40"
+       ],
+       "fb": "40 is not greater than 40, so the else branch runs. The test should have been >= 40."
+      }
+     ]
+    },
+    {
+     "label": "6",
+     "name": "Iteration",
+     "col": "#f05aaa",
+     "face": "left",
+     "x": 1508,
+     "y": 1840,
+     "tasks": [
+      {
+       "t": "mcq",
+       "q": "How many times does  for i = 0 to 9  repeat its block?",
+       "a": [
+        "10",
+        "9",
+        "11",
+        "It depends on the starting value of i"
+       ],
+       "fb": "Both 0 and 9 are included, so that is ten repeats."
+      },
+      {
+       "t": "mcq",
+       "q": "Which loop keeps asking for a password until the correct one is typed?",
+       "a": [
+        "A condition-controlled loop",
+        "A count-controlled loop",
+        "A sequence",
+        "A constant"
+       ],
+       "fb": "You cannot know how many attempts the user will need, so a condition must control the loop."
+      }
+     ]
+    },
+    {
+     "label": "★",
+     "name": "Final challenge: three constructs",
+     "col": "#ffd046",
+     "face": "down",
+     "x": 1024,
+     "y": 745,
+     "tasks": [
+      {
+       "t": "sort",
+       "q": "Which construct does each line show?",
+       "cats": [
+        "Sequence",
+        "Selection",
+        "Iteration"
+       ],
+       "items": [
+        [
+         "total = price + postage",
+         "Sequence"
+        ],
+        [
+         "print(\"Welcome\")",
+         "Sequence"
+        ],
+        [
+         "age = input(\"Age: \")",
+         "Sequence"
+        ],
+        [
+         "if age >= 18 then",
+         "Selection"
+        ],
+        [
+         "elseif mark >= 70 then",
+         "Selection"
+        ],
+        [
+         "while lives > 0",
+         "Iteration"
+        ],
+        [
+         "for i = 1 to 5",
+         "Iteration"
+        ],
+        [
+         "next i",
+         "Iteration"
+        ]
+       ],
+       "fb": "A line that just gets on with it is sequence; a line that asks a question is selection; a line that goes back is iteration."
+      },
+      {
+       "t": "mcq",
+       "q": "Which construct does  while lives > 0  use?",
+       "a": [
+        "Condition-controlled iteration",
+        "Count-controlled iteration",
+        "Selection",
+        "Sequence"
+       ],
+       "fb": "The number of repeats depends on a condition, not on a count."
+      }
+     ]
+    }
+   ],
+   "info": [
+    {
+     "id": "f1",
+     "face": "right",
+     "x": 540,
+     "y": 240,
+     "title": "Named in memory",
+     "text": "A variable name is really a label for a memory location, and the computer works with the address rather than the name. Meaningful names like totalScore are not for the computer's benefit; they are for the next person to read your code."
+    },
+    {
+     "id": "f2",
+     "face": "right",
+     "x": 1508,
+     "y": 240,
+     "title": "Shouting case",
+     "text": "Programmers often write constant names in capitals, such as MAX_LIVES, as a signal that nothing should change them. Python does not enforce this, so the capital letters are a promise between programmers."
+    },
+    {
+     "id": "f3",
+     "face": "back",
+     "x": 540,
+     "y": 240,
+     "title": "Where output goes",
+     "text": "Output does not have to be the screen. A program can output to a file, a printer, a speaker or another program, and the same data can go to several of them at once."
+    },
+    {
+     "id": "f4",
+     "face": "back",
+     "x": 1508,
+     "y": 240,
+     "title": "Sequence bugs",
+     "text": "If two lines are swapped, the program usually still runs but gives the wrong answer. That is a logic error, not a syntax error, and no computer can spot it for you."
+    },
+    {
+     "id": "f5",
+     "face": "left",
+     "x": 540,
+     "y": 240,
+     "title": "Nesting",
+     "text": "An if can be placed inside another if, which is called nesting. It lets a program test a second condition only when the first one was True, like asking for a password only after a username matched."
+    },
+    {
+     "id": "f6",
+     "face": "left",
+     "x": 1508,
+     "y": 240,
+     "title": "Infinite loops",
+     "text": "If nothing inside a condition-controlled loop ever makes the condition False, the loop never ends. Always change the variable the condition depends on, somewhere inside the loop."
+    }
+   ],
+   "models": [],
+   "diagrams": [
+    {
+     "id": "d1",
+     "face": "back",
+     "x": 1158,
+     "y": 240,
+     "diagram": "constructs",
+     "title": "Sequence, selection and iteration",
+     "text": "The order the lines run in is not the order they are written in. Watch the program counter drop straight through, jump over a block, and jump back."
+    }
+   ]
+  }
+ ]
+}

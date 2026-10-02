@@ -5,14 +5,46 @@ from kit import export
 import re as _re, itertools as _it
 def _vars(t): return t["inputs"] if t.get("inputs") else sorted(set(c for c in _re.sub("AND|OR|NOT", "", t["expr"]) if c.isalpha()))
 def marks(t):
+    # The code rule is copied from Store.marks in js/store.js, which is where
+    # the canonical mark table lives. There used to be two copies of that table
+    # that disagreed; this is the printed worksheet's view of the same rule, so
+    # keep it reading exactly like the one over there.
+    if t["t"] == "code": return t.get("marks") or 3
     if t["t"] in ("mcq", "multi", "circuit", "expr", "convert", "addshift", "pixels", "sound", "memory", "permissions", "defrag", "impact", "searchstep", "sortstep"): return 1
     if t["t"] == "bugline": return 2
     if t["t"] == "trace": return sum(1 for row in t["rows"] for v in row if v == "")
     if t["t"] == "table": return 1 << len(_vars(t))
     if t["t"] in ("sprint", "defence", "blitz", "lawgame"): return 0
     return len(t.get("items") or t.get("pairs") or t.get("steps"))
+def code_blocks(tasks):
+    """The paper side of a station whose work is done at a keyboard.
+
+    Printing ruled space for every program on the station is the obvious thing
+    to do and the wrong one: the pupil writes those in the editor, where they
+    run and are marked, and it put a programming worksheet at fourteen pages
+    against six for every other topic. What paper is good for is the part the
+    editor cannot do - deciding what the program has to do before typing it,
+    and keeping a record of what was finished.
+
+    So each code station prints as a checklist of its tasks with their marks,
+    and one planning block for the task the pupil found hardest. Exam-style
+    writing space is at the end of the sheet, where it already was.
+
+    No model solution is on this path: solutions are not in the bank at all,
+    they live in answers/, and nothing here reads them.
+    """
+    rows = [[t["q"], str(marks(t)), ""] for t in tasks]
+    return [dict(kind="table", title="Tick each one off as its tests pass in the editor",
+                 head=["Program", "Marks", "Done"], rows=rows),
+            dict(kind="lines", n=3,
+                 title="Plan the one you found hardest: inputs, what happens to them, what is printed.")]
 def logic_blocks(tasks):
     out = []
+    code = [t for t in tasks if t["t"] == "code"]
+    if code:
+        # A station of code tasks prints as one block, not one per task
+        out += code_blocks(code)
+        tasks = [t for t in tasks if t["t"] != "code"]
     for t in tasks:
         if t["t"] in ("mcq", "multi"): out.append(dict(kind="lines", title=t["q"], n=2)); continue
         if t["t"] == "memory":
@@ -54,9 +86,11 @@ def wsfile(L):
     return L["img"].replace("_360", "") + "_Worksheet.docx"
 def make(L):
     W = L["ws"]; topic = L["topic"]
-    label = {"1.1": "OCR J277 1.1 Systems architecture", "1.3": "OCR J277 1.3 Computer networks", "1.4": "OCR J277 1.4 Network security", "2.3": "OCR J277 2.3 Producing robust programs", "1.2": "OCR J277 1.2 Memory and storage", "2.4": "OCR J277 2.4 Boolean logic", "1.5": "OCR J277 1.5 Systems software", "1.6": "OCR J277 1.6 Ethical, legal, cultural and environmental impacts", "2.1": "OCR J277 2.1 Algorithms"}[topic]
+    label = {"1.1": "OCR J277 1.1 Systems architecture", "1.3": "OCR J277 1.3 Computer networks", "1.4": "OCR J277 1.4 Network security", "2.3": "OCR J277 2.3 Producing robust programs", "1.2": "OCR J277 1.2 Memory and storage", "2.4": "OCR J277 2.4 Boolean logic", "1.5": "OCR J277 1.5 Systems software", "1.6": "OCR J277 1.6 Ethical, legal, cultural and environmental impacts", "2.1": "OCR J277 2.1 Algorithms", "2.2": "OCR J277 2.2 Programming fundamentals", "PY": "Python course  |  Beyond OCR J277"}[topic]
     fin = L["final"]; task = fin["tasks"][0]
-    if task["t"] in ("memory", "permissions", "defrag", "impact", "trace", "bugline", "searchstep", "sortstep"):
+    if task["t"] == "code":
+        rows = []; right = ""; instr = "plan your program on paper first."
+    elif task["t"] in ("memory", "permissions", "defrag", "impact", "trace", "bugline", "searchstep", "sortstep"):
         rows = []; right = ""; instr = "plan your answer here first."
     elif task["t"] in ("mcq", "multi"):
         rows = []; right = ""; instr = "note your answers below."
@@ -80,7 +114,9 @@ def make(L):
     r = subprocess.run(["node", "wsgen.js", path], capture_output=True, text=True); print(r.stdout.strip() or r.stderr[-500:])
     return wsfile(L)
 if __name__ == "__main__":
-    for mod, names in (("specs13", ["L3", "L5", "L9", "L10", "L11", "L12", "L13", "L14"]), ("specs23", ["L1", "L2", "L5", "L6"])):
+    for mod, names in (("specs13", ["L3", "L5", "L9", "L10", "L11", "L12", "L13", "L14"]), ("specs23", ["L1", "L2", "L5", "L6"]),
+                       ("specspy", ["L%d" % n for n in range(1, 14)]),
+                       ("specs22", ["L%d" % n for n in range(1, 8)])):
         m = importlib.import_module(mod)
         for n in names: make(getattr(m, n))
     # assessment reflections
@@ -93,7 +129,14 @@ if __name__ == "__main__":
                  rows=[["1", "Ways to make code easier to maintain", 3], ["2", "Iterative testing", 3], ["3", "Stating a logic error", 1], ["4", "Syntax errors", 2],
                        ["5", "Input validation", 1], ["6", "Locating and explaining an error", 2], ["7", "Suitable test data", 6], ["8", "Length checks", 2]],
                  total=20, revisit="Security desk (L1), Cyber defence HQ (L2), Code clinic (L3), Bug hunt lab (L4), Test lab (L5), Revision HQ 2.3 (L6).",
-                 footer="2.3 Lesson 7: Test reflection", out=OUT_S + "RP_L7_Test_Reflection_Worksheet.docx", kind="reflection")]
+                 footer="2.3 Lesson 7: Test reflection", out=OUT_S + "RP_L7_Test_Reflection_Worksheet.docx", kind="reflection"),
+            dict(topicLabel="OCR J277 2.2 Programming fundamentals", lesson=8, title="End-of-topic test reflection", sub="Use after your 2.2 test has been marked",
+                 rows=[["1", "Variables, constants, input, output and assignment", "-"], ["2", "Sequence, selection and iteration", "-"],
+                       ["3", "Data types, casting and the operators", "-"], ["4", "String manipulation", "-"], ["5", "File handling: open, read, write, close", "-"],
+                       ["6", "Records and SQL", "-"], ["7", "Arrays, one- and two-dimensional", "-"], ["8", "Procedures, functions, parameters and scope", "-"],
+                       ["9", "Random number generation", "-"]],
+                 total="__", revisit="Variable store (L1), Type foundry (L2), Filing room (L3), Record vault (L4), Array yard (L5), Chance machine (L6), Revision HQ 2.2 (L7). For the techniques as code you write and run, work through the Python course.",
+                 footer="2.2 Lesson 8: Test reflection", out=OUT_S + "PF_L08_EndOfTopicTest_Reflection_Worksheet.docx", kind="reflection")]
     for i, S in enumerate(refl):
         path = f"wsspecs/refl{i}.json"; json.dump(S, open(path, "w"), ensure_ascii=False)
         r = subprocess.run(["node", "wsgen.js", path], capture_output=True, text=True); print(r.stdout.strip() or r.stderr[-500:])
