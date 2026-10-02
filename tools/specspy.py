@@ -45,6 +45,9 @@ def code_tasks(lesson, station):
         # The diagram the Hint button opens: the technique this question needs
         if q.get("hint"):
             t["hint"] = q["hint"]
+        # The worked example shown above the task, where the question carries one
+        if q.get("teach"):
+            t["teach"] = q["teach"]
         if q.get("forbid"):
             t["forbid"] = q["forbid"]
         out.append(t)

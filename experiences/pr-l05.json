@@ -20,13 +20,13 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Count down to the start of a race with a while loop.",
+       "q": "Count down to 1 with a while loop, then print go.",
        "brief": [
         "Read one whole number.",
-        "Using a while loop, print each number from that number down to 1, one number per line.",
-        "After the loop has finished, print: go"
+        "Print every number from it down to 1, one on each line.",
+        "Then print: go"
        ],
-       "starter": "# Read the number, count down to 1, then print go\n",
+       "starter": "# Count down to 1, then print go\n",
        "tests": [
         {
          "in": [
@@ -75,19 +75,32 @@
         }
        ],
        "fb": "A while loop tests its condition before each go, so it can run zero times. Change the variable the condition uses inside the loop, or the loop never ends.",
-       "hint": "pywhile"
+       "hint": "pywhile",
+       "teach": {
+        "say": "A while loop keeps going while its condition is true. Change the variable the condition uses inside the loop, or it never stops.",
+        "code": [
+         "n = 8",
+         "while n > 5:",
+         "    print(n)",
+         "    n = n - 1"
+        ],
+        "out": [
+         "8",
+         "7",
+         "6"
+        ]
+       }
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "Work out how many weeks doubling weed takes to cover a given area.",
+       "q": "Count how many doublings it takes to reach a target.",
        "brief": [
-        "Read one whole number - the area to reach, in square metres.",
-        "Start the weed at 1 square metre and count the weeks from 0.",
-        "Keep doubling the weed until it is greater than or equal to the area read.",
-        "Print only the number of weeks."
+        "Read one whole number: the target.",
+        "Start at 1 and keep doubling until the target is reached.",
+        "Print only how many doublings that took."
        ],
-       "starter": "# Start at 1 square metre, double until the target is reached, print the weeks\n",
+       "starter": "# Double until the target is reached, then print the number of doublings\n",
        "tests": [
         {
          "in": [
@@ -127,7 +140,19 @@
         }
        ],
        "fb": "This is a condition-controlled loop: you cannot know the number of weeks in advance, so while is the right choice and for is not.",
-       "hint": "pywhile"
+       "hint": "pywhile",
+       "teach": {
+        "say": "You cannot know in advance how many turns this takes, so a while loop is the right choice. Keep a separate variable to count the turns.",
+        "code": [
+         "n = 1",
+         "while n < 20:",
+         "    n = n * 3",
+         "print(n)"
+        ],
+        "out": [
+         "27"
+        ]
+       }
       }
      ]
     },
@@ -142,14 +167,13 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Keep asking until a locker number from 1 to 20 is given.",
+       "q": "Keep asking until a number from 1 to 20 is typed.",
        "brief": [
-        "Read one whole number.",
-        "If it is not from 1 to 20 inclusive, print: out of range - and then read another number.",
-        "Keep asking until a number from 1 to 20 inclusive is given.",
+        "Read whole numbers until one is from 1 to 20.",
+        "Print: out of range - for each number that is refused.",
         "Then print the word locker, a space, and the accepted number."
        ],
-       "starter": "# Keep asking until the locker number is from 1 to 20\n",
+       "starter": "# Keep asking until the number is from 1 to 20\n",
        "tests": [
         {
          "in": [
@@ -195,17 +219,25 @@
         }
        ],
        "fb": "The shape is: read once, then while the value is still wrong, warn and read again. Putting the read inside the loop as well as before it is what lets the loop run zero times.",
-       "hint": "pyvalidate"
+       "hint": "pyvalidate",
+       "teach": {
+        "say": "Read once before the loop. Then, while the value is still wrong, warn and read again.",
+        "code": [
+         "n = int(input(\"Score? \"))",
+         "while n > 10:",
+         "    print(\"too big\")",
+         "    n = int(input(\"Score? \"))"
+        ]
+       }
       },
       {
        "t": "code",
        "marks": 3,
        "q": "Keep asking until the answer is yes or no.",
        "brief": [
-        "Read one word.",
-        "If it is not yes and not no, print: please answer yes or no - and then read another word.",
-        "Keep asking until the word is yes or no.",
-        "Then print the word accepted, a space, and the word that was given."
+        "Read words until one of them is yes or no.",
+        "Print: please answer yes or no - for each other word.",
+        "Then print the word accepted, a space, and the word given."
        ],
        "starter": "# Keep asking until the answer is yes or no\n",
        "tests": [
@@ -253,7 +285,15 @@
         }
        ],
        "fb": "Two words are allowed, so the condition has to rule out both: use and, not or. 'not yes or not no' is always true and gives an endless loop.",
-       "hint": "pyvalidate"
+       "hint": "pyvalidate",
+       "teach": {
+        "say": "Two answers are allowed, so the condition has to rule out both of them with and.",
+        "code": [
+         "c = input(\"Colour? \")",
+         "while c != \"red\" and c != \"blue\":",
+         "    c = input(\"Colour? \")"
+        ]
+       }
       }
      ]
     },
@@ -268,13 +308,13 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Total the prices typed in until -1 ends the shopping.",
+       "q": "Total the numbers typed in, stopping at -1.",
        "brief": [
-        "Keep reading whole numbers.",
-        "Stop as soon as -1 is read. The -1 is a signal to stop and must not be added to the total.",
+        "Read whole numbers until -1 is typed.",
+        "The -1 is the signal to stop, not a number to add.",
         "Print only the total."
        ],
-       "starter": "# Read prices until -1, then print the total\n",
+       "starter": "# Add up the numbers until -1 stops you\n",
        "tests": [
         {
          "in": [
@@ -322,19 +362,27 @@
         }
        ],
        "fb": "A sentinel is a value that cannot be real data and means stop. Read one value before the loop, add it inside, then read the next at the end of the body.",
-       "hint": "pywhile"
+       "hint": "pywhile",
+       "teach": {
+        "say": "Read one value before the loop. Use it inside the loop, then read the next one at the bottom of the loop.",
+        "code": [
+         "n = int(input(\"Next? \"))",
+         "while n != 0:",
+         "    print(n)",
+         "    n = int(input(\"Next? \"))"
+        ]
+       }
       },
       {
        "t": "code",
        "marks": 4,
-       "q": "Print the highest temperature typed in before the word end.",
+       "q": "Print the highest number typed in before the word end.",
        "brief": [
-        "Keep reading lines. Each line is either a whole number or the word end.",
-        "Stop as soon as end is read.",
+        "Read lines until the word end is read.",
         "Print the highest number that was read.",
         "If end is the very first line, print: no readings"
        ],
-       "starter": "# Read temperatures until the word end, then print the highest\n",
+       "starter": "# Read numbers until the word end, then print the highest\n",
        "tests": [
         {
          "in": [
@@ -381,7 +429,16 @@
         }
        ],
        "fb": "Never start a highest-so-far at 0 - a reading below zero can never beat it. Start it from the first value you read, or mark it as not set yet.",
-       "hint": "pywhile"
+       "hint": "pywhile",
+       "teach": {
+        "say": "A sentinel can be a word, so read the line as text and only turn it into a number once you know it is not the sentinel.",
+        "code": [
+         "line = input(\"Next? \")",
+         "while line != \"stop\":",
+         "    print(int(line) * 2)",
+         "    line = input(\"Next? \")"
+        ]
+       }
       }
      ]
     },
@@ -396,13 +453,13 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Count the scores typed in before -1, and how many reached 40.",
+       "q": "Count the numbers typed before -1, and how many reach 40.",
        "brief": [
-        "Keep reading whole numbers. Stop as soon as -1 is read - that is the signal to stop, not a score.",
-        "Print how many scores were read on the first line.",
-        "Print how many of those scores were 40 or more on the second line."
+        "Read whole numbers until -1 is typed.",
+        "Print how many numbers were read.",
+        "Then print how many of them were 40 or more."
        ],
-       "starter": "# Count the scores and count how many reached 40\n",
+       "starter": "# Count the numbers, and count how many reach 40\n",
        "tests": [
         {
          "in": [
@@ -454,18 +511,30 @@
         }
        ],
        "fb": "Two counters, both set to 0 before the loop. One counts every time round, the other only counts when the if is true.",
-       "hint": "pywhile"
+       "hint": "pywhile",
+       "teach": {
+        "say": "Each thing you count needs its own variable, set to 0 before the loop and changed only when it should be.",
+        "code": [
+         "wins = 0",
+         "draws = 0",
+         "wins = wins + 1",
+         "print(wins, draws)"
+        ],
+        "out": [
+         "1 0"
+        ]
+       }
       },
       {
        "t": "code",
        "marks": 4,
-       "q": "Add up the digits of a whole number using a while loop.",
+       "q": "Add up the digits of a whole number with a while loop.",
        "brief": [
         "Read one whole number that is 0 or more.",
-        "Using a while loop, add up its digits. Do not turn the number into text.",
+        "Add up its digits without turning it into text.",
         "Print only the total of the digits."
        ],
-       "starter": "# Take the last digit off the number each time round, adding it to a total\n",
+       "starter": "# Take the last digit off the number each time round\n",
        "tests": [
         {
          "in": [
@@ -514,7 +583,19 @@
         }
        ],
        "fb": "n % 10 gives the last digit and n // 10 removes it. Using / instead of // leaves a decimal, the condition never becomes false and the loop runs for ever.",
-       "hint": "pywhile"
+       "hint": "pywhile",
+       "teach": {
+        "say": "n % 10 gives the last digit and n // 10 takes it off. // keeps the answer whole, so the number can reach 0 exactly.",
+        "code": [
+         "n = 538",
+         "print(n % 10)",
+         "print(n // 10)"
+        ],
+        "out": [
+         "8",
+         "53"
+        ]
+       }
       }
      ]
     },
@@ -529,16 +610,13 @@
       {
        "t": "code",
        "marks": 5,
-       "q": "Read the parcel weights with a for loop, then the van limit with a while loop.",
+       "q": "Read the parcels with a for loop, then check limits with while.",
        "brief": [
-        "Read one whole number - how many parcels there are.",
-        "Read that many parcel weights, one per line. Use a count-controlled loop for this part.",
-        "Then read a weight limit for the van.",
-        "While the limit is less than the heaviest parcel, print: limit too low - and read another limit.",
-        "When a limit is accepted, print: ok",
-        "If there are 0 parcels, read no weights at all, and treat the first limit given as ok."
+        "Read how many parcels there are, then that many weights.",
+        "Read a limit; while it is below the heaviest parcel, print: limit too low - and read another.",
+        "When a limit is accepted, print: ok"
        ],
-       "starter": "# A for loop for the parcels, a while loop for the limit\ncount = int(input())\n",
+       "starter": "# A for loop for the parcels, a while loop for the limit\n",
        "tests": [
         {
          "in": [
@@ -607,7 +685,16 @@
         }
        ],
        "fb": "Use for when the number of repeats is known before you start, and while when it depends on what the user does next. This question needs one of each.",
-       "hint": "constructs"
+       "hint": "constructs",
+       "teach": {
+        "say": "Use for when you know how many turns there will be, and while when it depends on what the user types next. One program can use both.",
+        "code": [
+         "for i in range(3):",
+         "    print(i)",
+         "while input(\"Done? \") != \"y\":",
+         "    print(\"still going\")"
+        ]
+       }
       }
      ]
     },
@@ -622,16 +709,13 @@
       {
        "t": "code",
        "marks": 5,
-       "q": "Give a higher or lower hint until the secret number 37 is guessed.",
+       "q": "Give a higher or lower hint until 37 is guessed.",
        "brief": [
         "The secret number is 37.",
-        "Read one whole number.",
-        "While the guess is not 37, print a hint and then read another guess.",
-        "The hint is: higher - if the guess is below 37.",
-        "The hint is: lower - if the guess is above 37.",
+        "While the guess is wrong, print: higher - or: lower - then read another guess.",
         "Once 37 is guessed, print: correct"
        ],
-       "starter": "# The secret is 37. Give a hint for every wrong guess.\n",
+       "starter": "# The secret is 37. Hint at every wrong guess.\n",
        "tests": [
         {
          "in": [
@@ -681,20 +765,27 @@
         }
        ],
        "fb": "The condition tests only whether the guess is right; the if inside the loop chooses the hint. Reading the next guess must be inside the loop, or it never changes.",
-       "hint": "pyvalidate"
+       "hint": "pyvalidate",
+       "teach": {
+        "say": "The condition tests only whether the guess is right. An if inside the loop chooses which hint to give.",
+        "code": [
+         "g = int(input(\"Guess? \"))",
+         "while g != 12:",
+         "    print(\"wrong\")",
+         "    g = int(input(\"Guess? \"))"
+        ]
+       }
       },
       {
        "t": "code",
        "marks": 6,
-       "q": "Print how many swims there were, the total minutes and the longest swim.",
+       "q": "Print how many swims there were, the total and the longest.",
        "brief": [
-        "Keep reading lines until the word close is read. Every other line is a whole number of minutes.",
-        "If close is the very first line, print only: no swimmers",
-        "Otherwise print how many swimmers there were on the first line,",
-        "the total number of minutes on the second line,",
-        "and the longest single swim on the third line."
+        "Read whole numbers until the word close is read.",
+        "Print how many there were, then the total, then the longest.",
+        "If close is the very first line, print only: no swimmers"
        ],
-       "starter": "# Read swim times until close, then report the count, the total and the longest\n",
+       "starter": "# Count the swims, total the minutes, remember the longest\n",
        "tests": [
         {
          "in": [
@@ -762,7 +853,19 @@
         }
        ],
        "fb": "One pass through the data can keep a count, a running total and a best-so-far at the same time. Set all three before the loop, so the empty session still has sensible values to test.",
-       "hint": "pywhile"
+       "hint": "pywhile",
+       "teach": {
+        "say": "A best-so-far is set up before the loop and replaced only when a bigger value turns up.",
+        "code": [
+         "best = 0",
+         "if 6 > best:",
+         "    best = 6",
+         "print(best)"
+        ],
+        "out": [
+         "6"
+        ]
+       }
       }
      ]
     },

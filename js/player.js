@@ -398,9 +398,19 @@
   const sameOutput = (got, want) => norm(got) === norm(want);
   function runCode(k, list, n, task, head, qn) {
     const brief = (task.brief || []).map(b => `<li>${esc(b)}</li>`).join("");
+    /* A worked example of the technique, with different data from the task, so
+     * a pupil meeting it for the first time has something to copy the shape of.
+     * The early lessons carry one on every question and later ones carry none:
+     * a beginner needs the example, and someone on lesson 11 needs the thinking
+     * more than they need another worked case. */
+    const t = task.teach;
+    const teach = !t ? "" : `<div class="pyteach"><p>${esc(t.say)}</p>` +
+      (t.code ? `<pre class="pyeg">${t.code.map(esc).join("\n")}</pre>` : "") +
+      (t.out ? `<p class="pyegout"><span>shows</span>${t.out.map(esc).join("<br>")}</p>` : "") + "</div>";
     shell(head, "#50dc96", `<div class="vwrap">
         <div class="vside" style="flex:0 0 400px">
           ${qn}<p class="q" style="font-size:19px">${esc(task.q)}</p>
+          ${teach}
           ${brief ? `<ul class="pybrief">${brief}</ul>` : ""}
           <div class="pybar">
             <button class="btn ghost" id="pyrun">▶ Run</button>

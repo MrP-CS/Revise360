@@ -41,10 +41,22 @@ def norm(s):
     return "\n".join(" ".join(l.split()) for l in lines).lower()
 
 
+# The browser marks with input() prompts suppressed, so that a pupil may write
+# input("What is your name? ") - the way every textbook teaches it - without the
+# prompt landing in the output being checked. This has to match, or a solution
+# that passes here would fail on the site, or the other way round.
+PRELUDE = (
+    "import builtins as _b\n"
+    "_real = _b.input\n"
+    "_b.input = lambda prompt='': _real()\n"
+)
+
+
 def run(code, stdin, files=None, timeout=10):
     """Runs in a throwaway directory, so a file question starts from the same
     state every time and cannot be passed by a file an earlier test left."""
     import tempfile
+    code = PRELUDE + code
     with tempfile.TemporaryDirectory() as d:
         for name, body in (files or {}).items():
             with open(os.path.join(d, name), "w") as fh:
@@ -81,7 +93,7 @@ def check(q):
     """Returns a list of problems with this question."""
     bad = []
     tests = q.get("tests") or []
-    if len(tests) < 2:
+    if len(tests) < 2 and not q.get("fixed"):
         bad.append("fewer than two tests - one test cannot tell a right answer from a lucky one")
     if not q.get("solution"):
         bad.append("no model solution in answers/codebank/%s.json, so nothing proves "
@@ -100,7 +112,14 @@ def check(q):
             bad.append(f"the model solution fails its own test {t.get('in')}: wanted {want!r}, got {norm(out)!r}")
 
     # 2. a program that prints the first answer must not pass
-    if tests and not bad:
+    #
+    # The very first task of the course is an exception, and has to be: "print
+    # this line" has one right output, so a program that prints a constant is
+    # the correct answer rather than a way of cheating. A question says so with
+    # "fixed": true, which is deliberately awkward to write by accident. Check 3
+    # still applies to it - an empty program must still fail - so the question
+    # is still proved to require something.
+    if tests and not bad and not q.get("fixed"):
         guess = "print('''" + "\n".join(tests[0].get("out") or []) + "''')"
         passed = 0
         for t in tests:

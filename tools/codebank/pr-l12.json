@@ -14,15 +14,24 @@
    "id": "pr-l12-q1",
    "station": 0,
    "marks": 2,
-   "q": "Write a presence check: refuse a sign-in name that has not actually been typed.",
+   "q": "Refuse a sign-in name that has not really been typed.",
+   "teach": {
+    "say": ".strip() takes the spaces off each end of what was typed, so a line of nothing but spaces becomes the empty string and can be caught.",
+    "code": [
+     "entry = input().strip()   # the user typed three spaces",
+     "print(len(entry))"
+    ],
+    "out": [
+     "0"
+    ]
+   },
    "brief": [
-    "Read one line of text.",
-    "Spaces on their own do not count as a name, so ignore any spaces at the start and end.",
+    "Read one line and ignore any spaces at each end.",
     "If nothing is left, print: no name given",
-    "Otherwise print: welcome followed by a space and the name, with those outer spaces removed."
+    "Otherwise print: welcome <the name without those spaces>"
    ],
    "hint": "pyvalidate",
-   "starter": "# Read a name and check that something was really typed\n",
+   "starter": "# spaces are not a name\n",
    "tests": [
     {
      "in": [
@@ -67,16 +76,14 @@
    "id": "pr-l12-q2",
    "station": 0,
    "marks": 3,
-   "q": "Write a type check that refuses anything that is not a whole number.",
+   "q": "Refuse anything that is not a whole number, without crashing.",
    "brief": [
-    "Read one line of text.",
-    "It only counts as a whole number if every character is a digit - a minus sign or a decimal point means it is not.",
-    "If it is a whole number, print: number: followed by a space and the number.",
-    "Otherwise print: not a number",
-    "The program must not crash on any input."
+    "Read one line. It only counts if every character is a digit.",
+    "If it is, print: number: <the number>",
+    "Otherwise print: not a number - a minus sign and a point are not digits."
    ],
    "hint": "pyvalidate",
-   "starter": "# Read a line and decide whether it is a whole number\n",
+   "starter": "# digits only\n",
    "tests": [
     {
      "in": [
@@ -139,15 +146,14 @@
    "id": "pr-l12-q3",
    "station": 1,
    "marks": 3,
-   "q": "Write a range check for a satisfaction score from 1 to 10 inclusive.",
+   "q": "Range check a satisfaction score from 1 to 10 inclusive.",
    "brief": [
     "Read one whole number.",
     "If it is from 1 to 10 inclusive, print: valid",
-    "If it is below the range, print: too low",
-    "If it is above the range, print: too high"
+    "Below the range print: too low, and above it: too high"
    ],
    "hint": "pyvalidate",
-   "starter": "# Read a score and check it is from 1 to 10 inclusive\n",
+   "starter": "# both boundaries are allowed\n",
    "tests": [
     {
      "in": [
@@ -210,17 +216,14 @@
    "id": "pr-l12-q4",
    "station": 1,
    "marks": 4,
-   "q": "Check a temperature that may be negative, and refuse anything that is not a number.",
+   "q": "Check a temperature that may be negative, and refuse what is not numeric.",
    "brief": [
-    "Read one line of text.",
-    "A minus sign at the front is allowed here, but a decimal point is not.",
+    "Read one line. A minus sign at the front is allowed, a decimal point is not.",
     "If it is not a whole number, print: not a number",
-    "Otherwise, if it is from -5 to 35 inclusive, print: ok",
-    "Otherwise print: out of range",
-    "The program must not crash on any input."
+    "Otherwise print ok for -5 to 35 inclusive, or: out of range"
    ],
    "hint": "pyvalidate",
-   "starter": "# Read a temperature, which may be negative, and check it\n",
+   "starter": "# a negative number is still a number\n",
    "tests": [
     {
      "in": [
@@ -292,15 +295,14 @@
    "id": "pr-l12-q5",
    "station": 2,
    "marks": 4,
-   "q": "Write a length check for a password that must be from 8 to 16 characters.",
+   "q": "Length check a password of 8 to 16 characters.",
    "brief": [
-    "Read one line of text, exactly as it is typed.",
-    "If it is fewer than 8 characters, print: too short",
-    "If it is more than 16 characters, print: too long",
+    "Read one line, exactly as it is typed.",
+    "Under 8 characters print: too short, and over 16: too long",
     "Otherwise print: ok"
    ],
    "hint": "pyvalidate",
-   "starter": "# Read a password and check its length\n",
+   "starter": "# 8 to 16 characters\n",
    "tests": [
     {
      "in": [
@@ -363,17 +365,14 @@
    "id": "pr-l12-q6",
    "station": 2,
    "marks": 5,
-   "q": "Write a format check for a booking reference: two letters then four digits.",
+   "q": "Format check a booking reference: two letters then four digits.",
    "brief": [
-    "Read one line of text and ignore any spaces at the start and end.",
-    "A valid reference is exactly 6 characters: the first two must be letters, the last four must be digits.",
-    "Capital or small letters are both fine.",
-    "If it matches, print: valid reference",
-    "Otherwise print: invalid reference",
-    "The program must not crash on any input."
+    "Read one line and ignore any spaces at each end.",
+    "It is valid only if it is 6 characters: the first two letters, the last four digits.",
+    "Print valid reference or invalid reference; capitals and small letters both count."
    ],
-   "hint": "strslice",
-   "starter": "# Read a booking reference and check it is two letters then four digits\n",
+   "hint": "pystring",
+   "starter": "# two letters then four digits\n",
    "tests": [
     {
      "in": [
@@ -445,16 +444,14 @@
    "id": "pr-l12-q7",
    "station": 3,
    "marks": 5,
-   "q": "Keep asking for a lift number until a valid one is typed.",
+   "q": "Keep asking for a lift number until one from 1 to 5 arrives.",
    "brief": [
-    "The building has lifts 1 to 5.",
-    "Read a whole number.",
-    "If it is not from 1 to 5 inclusive, print: please enter 1 to 5 - and read another one.",
-    "Keep going until a valid number is typed.",
-    "Then print: lift followed by a space and the number."
+    "Read a whole number, and keep reading while it is outside 1 to 5 inclusive.",
+    "Print please enter 1 to 5 for every wrong one, and nothing for a right one.",
+    "Once it is valid, print: lift <the number>"
    ],
    "hint": "pyvalidate",
-   "starter": "# Keep asking until the lift number is from 1 to 5\n",
+   "starter": "# keep going until it is 1 to 5\n",
    "tests": [
     {
      "in": [
@@ -518,17 +515,14 @@
    "id": "pr-l12-q8",
    "station": 3,
    "marks": 6,
-   "q": "Keep asking for a two-digit house number, and say which rule was broken each time.",
+   "q": "Keep asking for a house number, naming the rule broken each time.",
    "brief": [
-    "Read one line of text at a time.",
-    "If it is not a whole number made only of digits, print: that is not a whole number",
-    "Otherwise, if it is not from 10 to 99 inclusive, print: that is outside 10 to 99",
-    "Either way, read another line and try again.",
-    "When a valid number is typed, print: accepted: followed by a space and the number.",
-    "The program must not crash on any input."
+    "Read lines until one is a whole number from 10 to 99 inclusive.",
+    "If it is not all digits print: that is not a whole number - check this first.",
+    "Otherwise print: that is outside 10 to 99, and at the end: accepted: <the number>"
    ],
    "hint": "pyvalidate",
-   "starter": "# Keep asking until a valid two-digit house number is typed\n",
+   "starter": "# two rules, two messages\n",
    "tests": [
     {
      "in": [
@@ -594,20 +588,19 @@
    "id": "pr-l12-q9",
    "station": 4,
    "marks": 6,
-   "q": "Write a sign-in check against a small list of accounts.",
+   "q": "Check a sign-in against a list of accounts.",
    "brief": [
-    "The two lists are written for you - do not change them. A username and the password in the same position belong together.",
-    "Read a username on the first line and a password on the second.",
-    "If the username is not in the list at all, print: unknown user",
-    "If the username is there but the password does not match exactly, print: wrong password",
-    "If both match, print: access granted",
-    "Capital and small letters are different, so the match must be exact."
+    "Read a line of usernames, then a line of passwords in the same order.",
+    "Then read a username and a password. If the username is not listed, print: unknown user",
+    "If it is listed but the password does not match exactly, print: wrong password, else: access granted"
    ],
    "hint": "searches",
-   "starter": "users = ['hpatel', 'lokoye', 'mdiaz']\npasswords = ['Fern2041', 'Kite9183', 'Vole5570']\n\n# Read a username and a password, then check them against the lists\n",
+   "starter": "# a username and a password to check\n",
    "tests": [
     {
      "in": [
+      "hpatel lokoye mdiaz",
+      "Fern2041 Kite9183 Vole5570",
       "lokoye",
       "Kite9183"
      ],
@@ -618,6 +611,8 @@
     },
     {
      "in": [
+      "hpatel lokoye mdiaz",
+      "Fern2041 Kite9183 Vole5570",
       "mdiaz",
       "Vole5570"
      ],
@@ -628,6 +623,8 @@
     },
     {
      "in": [
+      "hpatel lokoye mdiaz",
+      "Fern2041 Kite9183 Vole5570",
       "lokoye",
       "kite9183"
      ],
@@ -638,6 +635,8 @@
     },
     {
      "in": [
+      "hpatel lokoye mdiaz",
+      "Fern2041 Kite9183 Vole5570",
       "hpatel",
       "Kite9183"
      ],
@@ -648,6 +647,8 @@
     },
     {
      "in": [
+      "hpatel lokoye mdiaz",
+      "Fern2041 Kite9183 Vole5570",
       "jsmith",
       "Fern2041"
      ],
@@ -658,13 +659,27 @@
     },
     {
      "in": [
+      "hpatel lokoye mdiaz",
+      "Fern2041 Kite9183 Vole5570",
       "HPATEL",
       "Fern2041"
      ],
      "out": [
       "unknown user"
      ],
-     "why": "The username is in capitals and the brief says the match is exact, so this counts as an unknown user."
+     "why": "The username is in capitals and the match is exact, so this counts as an unknown user."
+    },
+    {
+     "in": [
+      "tahir zola",
+      "Nest8810 Gull2277",
+      "zola",
+      "Gull2277"
+     ],
+     "out": [
+      "access granted"
+     ],
+     "why": "A different pair of lists, so accounts written into the program instead of read in will fail here."
     }
    ],
    "fb": "Find the username first; only once you know where it is can you look up the password that belongs with it."
@@ -675,17 +690,16 @@
    "marks": 6,
    "q": "Allow three attempts at a passcode, then lock the account.",
    "brief": [
-    "The correct passcode is written for you - do not change it.",
-    "Read a passcode and compare it exactly.",
-    "If it is right, print: access granted - and stop asking.",
-    "If it is wrong, print: wrong passcode - and let the user try again.",
-    "Allow three attempts in total. If all three are wrong, print: account locked - and do not ask a fourth time."
+    "Read the correct passcode, then read attempts one line at a time.",
+    "As soon as one matches exactly, print access granted and stop asking.",
+    "Print wrong passcode for each miss, and after a third print: account locked"
    ],
    "hint": "pyvalidate",
-   "starter": "passcode = 'Owl4472'\n\n# Allow three attempts, then lock the account\n",
+   "starter": "# three attempts, no more\n",
    "tests": [
     {
      "in": [
+      "Owl4472",
       "Owl4472"
      ],
      "out": [
@@ -695,6 +709,7 @@
     },
     {
      "in": [
+      "Owl4472",
       "Owl4471",
       "Owl4472"
      ],
@@ -706,6 +721,7 @@
     },
     {
      "in": [
+      "Owl4472",
       "abc",
       "Owl4472"
      ],
@@ -717,6 +733,7 @@
     },
     {
      "in": [
+      "Owl4472",
       "one",
       "two",
       "Owl4472"
@@ -730,6 +747,7 @@
     },
     {
      "in": [
+      "Owl4472",
       "one",
       "two",
       "three"
@@ -744,6 +762,7 @@
     },
     {
      "in": [
+      "Owl4472",
       "owl4472",
       "Owl4472"
      ],
@@ -752,6 +771,16 @@
       "access granted"
      ],
      "why": "A passcode in the wrong case is wrong, so the first attempt fails - passwords are case sensitive."
+    },
+    {
+     "in": [
+      "Fox9013",
+      "Fox9013"
+     ],
+     "out": [
+      "access granted"
+     ],
+     "why": "A different passcode entirely, so one written into the program rather than read in will fail here."
     }
    ],
    "fb": "Count the attempts and stop on either condition: three used up, or the right passcode given."
@@ -760,20 +789,14 @@
    "id": "pr-l12-q11",
    "station": 5,
    "marks": 7,
-   "q": "Keep asking for a username, then an age, until each one is valid.",
+   "q": "Validate a username, then an age, then print: registered <username> <age>",
    "brief": [
-    "First read usernames until one is valid, checking in this order:",
-    "if it is fewer than 5 or more than 12 characters, print: username must be 5 to 12 characters",
-    "otherwise if it is not made only of letters and digits, print: username must be letters and digits only",
-    "Then read ages until one is valid, checking in this order:",
-    "if it is not made only of digits, print: age must be a whole number",
-    "otherwise if it is not from 11 to 19 inclusive, print: age must be 11 to 19",
-    "Ignore spaces at the start and end of what is typed.",
-    "Finally print: registered followed by a space, the username, a space and the age.",
-    "The program must not crash on any input."
+    "Read usernames until one is 5 to 12 characters and only letters and digits.",
+    "Reject each with: username must be 5 to 12 characters, or: username must be letters and digits only",
+    "Then read ages until one is 11 to 19, rejecting with: age must be a whole number, or: age must be 11 to 19"
    ],
    "hint": "pyvalidate",
-   "starter": "# Ask for a username until it is valid, then an age until it is valid\n",
+   "starter": "# each rule its own message, checked in order\n",
    "tests": [
     {
      "in": [
@@ -860,22 +883,15 @@
    "id": "pr-l12-q12",
    "station": 5,
    "marks": 8,
-   "q": "Write a defensive stock-taking program that keeps going when a line of data is wrong.",
+   "q": "Keep stock-taking even when a line of data is wrong.",
    "brief": [
-    "Read lines until the line done is typed.",
-    "Each line should be an item name, a comma, then a quantity. Ignore spaces at the start and end of the name and the quantity.",
-    "Check each line in this order:",
-    "if it does not have exactly one comma, print: bad line",
-    "otherwise if the quantity is not made only of digits, print: bad quantity",
-    "otherwise if the quantity is not from 1 to 99 inclusive, print: out of range",
-    "otherwise count it, add the quantity to a running total, and print: added followed by a space and the item name.",
-    "A wrong line must not stop the program - carry on with the next one.",
-    "When done is reached, print: accepted: followed by a space and how many lines were added.",
-    "Then on the next line print: total: followed by a space and the total quantity.",
-    "The program must not crash on any input."
+    "Read item,quantity lines until done, ignoring spaces around each field.",
+    "Check in order: bad line (not exactly one comma), bad quantity (not all digits), out of range (outside 1 to 99).",
+    "Otherwise print: added <the item name> - and a wrong line must never stop the run.",
+    "At done print: accepted: <how many were added>, then: total: <their quantities added up>"
    ],
    "hint": "pyvalidate",
-   "starter": "# Read lines until 'done', checking each one and carrying on after a bad line\n",
+   "starter": "# report a bad line and carry on to the next one\n",
    "tests": [
     {
      "in": [

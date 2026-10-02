@@ -20,14 +20,12 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Print whether the first of two wind speeds is higher than the second.",
+       "q": "Print whether the first number is greater than the second.",
        "brief": [
-        "Read two whole numbers, one on each line - the first station's wind speed, then the second station's.",
-        "Print True if the first number is greater than the second.",
-        "Otherwise print False.",
-        "Print nothing else."
+        "Read two whole numbers, one on each line.",
+        "Print True if the first is greater than the second, otherwise False."
        ],
-       "starter": "# Read two wind speeds and print True or False\n",
+       "starter": "# Read two numbers and print True or False\n",
        "tests": [
         {
          "in": [
@@ -47,7 +45,7 @@
          "out": [
           "False"
          ],
-         "why": "The order matters. If you printed True here you may have compared them the wrong way round."
+         "why": "The order matters. True here means the two were compared the wrong way round."
         },
         {
          "in": [
@@ -57,24 +55,33 @@
          "out": [
           "False"
          ],
-         "why": "Equal is not greater. This is the case that tells > apart from >=."
+         "why": "Equal is not greater. This is the test that tells > apart from >=."
         }
        ],
        "fb": "A comparison is already True or False, so you can print it straight out without an if.",
-       "hint": "pyif"
+       "hint": "pyif",
+       "teach": {
+        "say": "A comparison is already True or False, so it can be printed straight out. Equal values are not greater.",
+        "code": [
+         "print(8 > 3)",
+         "print(4 > 4)"
+        ],
+        "out": [
+         "True",
+         "False"
+        ]
+       }
       },
       {
        "t": "code",
        "marks": 2,
-       "q": "Print three different comparisons of two numbers.",
+       "q": "Print three comparisons of two numbers, one on each line.",
        "brief": [
         "Read two whole numbers, one on each line.",
-        "Print three lines, in this order:",
-        "Line 1: True if the two numbers are equal, otherwise False.",
-        "Line 2: True if the first number is less than the second, otherwise False.",
-        "Line 3: True if the first number is greater than or equal to the second, otherwise False."
+        "Print whether they are equal, then whether the first is less than the second.",
+        "Then print whether the first is greater than or equal to the second."
        ],
-       "starter": "# Read two numbers, then print the three comparisons on three lines\n",
+       "starter": "# Read two numbers, then print the three comparisons\n",
        "tests": [
         {
          "in": [
@@ -98,7 +105,7 @@
           "False",
           "True"
          ],
-         "why": "Two equal numbers. If line 1 came out False you used = instead of ==, and if line 3 came out False you used > instead of >=."
+         "why": "Two equal numbers. A False on line 1 means = was used instead of ==, and on line 3 that > was used instead of >=."
         },
         {
          "in": [
@@ -110,11 +117,24 @@
           "False",
           "True"
          ],
-         "why": "Check you have the three lines in the order the brief asks for."
+         "why": "Check the three lines come out in the order the brief asks for."
         }
        ],
-       "fb": "== asks a question, = stores a value. The two are easy to mix up and Python will not let you use = in a comparison.",
-       "hint": "pyif"
+       "fb": "== asks a question and = stores a value. The two are easy to mix up.",
+       "hint": "pyif",
+       "teach": {
+        "say": "== asks whether two values are the same; = stores a value. The rest are < > <= >= and != for not equal.",
+        "code": [
+         "print(5 == 5)",
+         "print(5 != 5)",
+         "print(5 <= 4)"
+        ],
+        "out": [
+         "True",
+         "False",
+         "False"
+        ]
+       }
       }
      ]
     },
@@ -129,13 +149,13 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Print recorded, then a frost warning only if the temperature is below freezing.",
+       "q": "Print recorded, and a frost warning if it is below zero.",
        "brief": [
-        "Read one whole number - the temperature in degrees Celsius.",
+        "Read one whole number: the temperature in Celsius.",
         "Always print: recorded",
-        "Then, only if the temperature is below 0, print a second line: frost warning"
+        "Then print frost warning only if the temperature is below 0."
        ],
-       "starter": "# Read the temperature, print recorded, and add a warning if needed\n",
+       "starter": "# Read the temperature, print recorded, add a warning if needed\n",
        "tests": [
         {
          "in": [
@@ -145,7 +165,7 @@
           "recorded",
           "frost warning"
          ],
-         "why": "Below freezing, so both lines are printed and 'recorded' comes first."
+         "why": "Below freezing, so both lines print and recorded comes first."
         },
         {
          "in": [
@@ -154,7 +174,7 @@
          "out": [
           "recorded"
          ],
-         "why": "Above freezing. An extra 'frost warning' here means your print is not indented inside the if."
+         "why": "Above freezing. An extra frost warning here means the print is not indented inside the if."
         },
         {
          "in": [
@@ -163,21 +183,31 @@
          "out": [
           "recorded"
          ],
-         "why": "Exactly 0 is not below 0. If you warned here you used <= where the brief says below."
+         "why": "Exactly 0 is not below 0. A warning here means <= was used where the brief says below."
         }
        ],
-       "fb": "An if on its own is allowed - you only need an else when something has to happen in the other case.",
-       "hint": "pyif"
+       "fb": "An if on its own is allowed. You only need an else when something has to happen in the other case.",
+       "hint": "pyif",
+       "teach": {
+        "say": "An if runs the indented lines only when its question is True. When it is False nothing happens, and no else is needed.",
+        "code": [
+         "n = 3",
+         "if n > 0:",
+         "    print(\"positive\")"
+        ],
+        "out": [
+         "positive"
+        ]
+       }
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "Decide whether a load may go in a lift that carries 450 kg.",
+       "q": "Say whether a lift load of up to 450 kg may go.",
        "brief": [
-        "Read one whole number - the total load in kilograms.",
-        "If the load is 450 or less, print: safe to go",
-        "Otherwise print: too heavy",
-        "Print one line only."
+        "Read one whole number: the load in kilograms.",
+        "Print safe to go if the load is 450 or less.",
+        "Otherwise print too heavy."
        ],
        "starter": "# Read the load and decide whether the lift may go\n",
        "tests": [
@@ -197,7 +227,7 @@
          "out": [
           "safe to go"
          ],
-         "why": "The limit is '450 or less', so 450 itself is allowed. 'too heavy' here means you wrote < instead of <=."
+         "why": "450 or less includes 450 itself. too heavy here means < was used instead of <=."
         },
         {
          "in": [
@@ -206,7 +236,7 @@
          "out": [
           "too heavy"
          ],
-         "why": "One kilogram over. If this printed 'safe to go' your comparison lets too much through."
+         "why": "One kilogram over. safe to go here means the comparison lets too much through."
         },
         {
          "in": [
@@ -218,8 +248,21 @@
          "why": "An empty lift is still a valid load, so it must not fall through to the else."
         }
        ],
-       "fb": "'450 or less' means <= 450. Always test the exact boundary number, because that is where < and <= behave differently.",
-       "hint": "pyif"
+       "fb": "450 or less means <= 450. Always test the exact boundary, because that is where < and <= differ.",
+       "hint": "pyif",
+       "teach": {
+        "say": "else catches every case the if did not. Mind the boundary: 7 or less means <= 7, so 7 itself still counts.",
+        "code": [
+         "n = 7",
+         "if n <= 7:",
+         "    print(\"in\")",
+         "else:",
+         "    print(\"out\")"
+        ],
+        "out": [
+         "in"
+        ]
+       }
       }
      ]
     },
@@ -236,11 +279,9 @@
        "marks": 3,
        "q": "Say whether a reservoir level is rising, falling or steady.",
        "brief": [
-        "Read one whole number - the change in the level in centimetres since last week.",
-        "If the change is above 0, print: rising",
-        "If the change is below 0, print: falling",
-        "If the change is exactly 0, print: steady",
-        "Print one line only."
+        "Read one whole number: the change in level since last week.",
+        "Print rising if it is above 0, or falling if it is below 0.",
+        "Print steady if it is exactly 0."
        ],
        "starter": "# Read the change in level and describe it\n",
        "tests": [
@@ -260,7 +301,7 @@
          "out": [
           "falling"
          ],
-         "why": "A negative change. If this printed 'rising' you may have tested the number rather than comparing it with 0."
+         "why": "A negative change. rising here means the number was tested rather than compared with 0."
         },
         {
          "in": [
@@ -269,7 +310,7 @@
          "out": [
           "steady"
          ],
-         "why": "Exactly 0 is the third case. It is the one students forget, because it belongs to neither > 0 nor < 0."
+         "why": "Exactly 0 is the third case, and the one most often forgotten: it belongs to neither > 0 nor < 0."
         },
         {
          "in": [
@@ -278,25 +319,32 @@
          "out": [
           "falling"
          ],
-         "why": "A large fall still only prints one word, so make sure your branches do not run one after another."
+         "why": "A large fall still prints one word only, so the branches must not run one after another."
         }
        ],
-       "fb": "elif means 'only ask this if the question above was False', so the three branches cannot both run.",
-       "hint": "pyif"
+       "fb": "elif means only ask this if the question above was False, which is why the three branches cannot both run.",
+       "hint": "pyif",
+       "teach": {
+        "say": "elif is only asked when the if above it was False, so two branches can never both run. Here neither was True and nothing printed at all, which is what else is for.",
+        "code": [
+         "n = 0",
+         "if n > 0:",
+         "    print(\"up\")",
+         "elif n < 0:",
+         "    print(\"down\")"
+        ]
+       }
       },
       {
        "t": "code",
        "marks": 4,
-       "q": "Print which weight band a package falls in.",
+       "q": "Print which postage band a package falls in.",
        "brief": [
-        "Read one whole number - the weight in grams.",
-        "100 or less: print letter",
-        "More than 100 and up to and including 750: print large letter",
-        "More than 750 and up to and including 2000: print small parcel",
-        "More than 2000: print parcel",
-        "Print one line only."
+        "Read one whole number: the weight in grams.",
+        "100 or less: print letter. 750 or less: print large letter.",
+        "Heavier than 750: print parcel."
        ],
-       "starter": "# Read the weight in grams and print the band it falls in\n",
+       "starter": "# Read the weight in grams and print its band\n",
        "tests": [
         {
          "in": [
@@ -314,7 +362,7 @@
          "out": [
           "letter"
          ],
-         "why": "Exactly 100 belongs to the first band because it says '100 or less'."
+         "why": "Exactly 100 belongs to the first band, because it says 100 or less."
         },
         {
          "in": [
@@ -323,7 +371,7 @@
          "out": [
           "large letter"
          ],
-         "why": "One gram over 100 moves it up a band. Getting 'letter' here means your first test is too generous."
+         "why": "One gram over 100 moves it up a band. letter here means the first test is too generous."
         },
         {
          "in": [
@@ -332,38 +380,32 @@
          "out": [
           "large letter"
          ],
-         "why": "The top of a band is included in it. 'small parcel' here means you used < 750 instead of <= 750."
+         "why": "The top of a band belongs to it. parcel here means < 750 was used instead of <= 750."
         },
         {
          "in": [
           "751"
          ],
          "out": [
-          "small parcel"
-         ],
-         "why": "Just over the second boundary."
-        },
-        {
-         "in": [
-          "2000"
-         ],
-         "out": [
-          "small parcel"
-         ],
-         "why": "The last included weight before the final band."
-        },
-        {
-         "in": [
-          "2001"
-         ],
-         "out": [
           "parcel"
          ],
-         "why": "Anything over 2000 falls through to the else."
+         "why": "Anything over 750 falls through to the else."
         }
        ],
-       "fb": "Write the bands in order from lightest upwards and each elif only needs the top of its own band, because everything lighter has already been dealt with.",
-       "hint": "pyif"
+       "fb": "Write the bands in order from lightest upwards, and each elif only needs the top of its own band.",
+       "hint": "pyif",
+       "teach": {
+        "say": "Each elif only needs the top of its own band, because everything smaller was already dealt with above it.",
+        "code": [
+         "n = 300",
+         "print(n <= 100)",
+         "print(n <= 750)"
+        ],
+        "out": [
+         "False",
+         "True"
+        ]
+       }
       }
      ]
     },
@@ -378,14 +420,13 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Decide whether a drone may fly, from the wind speed and visibility.",
+       "q": "Say whether a drone may fly, from wind speed and visibility.",
        "brief": [
-        "Read two whole numbers, one on each line - the wind speed in mph, then the visibility in kilometres.",
-        "If the wind speed is under 20 and the visibility is 5 or more, print: clear to fly",
-        "Otherwise print: grounded",
-        "Print one line only."
+        "Read the wind speed in mph, then the visibility in km.",
+        "Print clear to fly if the wind is under 20 and the visibility is 5 or more.",
+        "Otherwise print grounded."
        ],
-       "starter": "# Read the wind speed and visibility, then decide\n",
+       "starter": "# Read the wind speed and the visibility, then decide\n",
        "tests": [
         {
          "in": [
@@ -405,7 +446,7 @@
          "out": [
           "grounded"
          ],
-         "why": "Exactly 20 is not under 20. 'clear to fly' here means you used <= 20."
+         "why": "Exactly 20 is not under 20. clear to fly here means <= 20 was used."
         },
         {
          "in": [
@@ -415,7 +456,7 @@
          "out": [
           "clear to fly"
          ],
-         "why": "Exactly 5 km counts as '5 or more', so this one must pass."
+         "why": "Exactly 5 km counts as 5 or more, so this one must pass."
         },
         {
          "in": [
@@ -425,7 +466,7 @@
          "out": [
           "grounded"
          ],
-         "why": "The wind is fine but the visibility is not. With and, one failing condition is enough to ground it - if this passed you may have written or."
+         "why": "The wind is fine but the visibility is not. With and, one failing side is enough, so this passing means or was used."
         },
         {
          "in": [
@@ -435,24 +476,33 @@
          "out": [
           "grounded"
          ],
-         "why": "The visibility is fine but the wind is too strong, so the other half of the and is doing the work here."
+         "why": "Here the visibility is fine and the wind is not, so the other half of the and does the work."
         }
        ],
-       "fb": "and needs both sides True. Each side still needs its own comparison - wind < 20 and vis >= 5, not wind < 20 and >= 5.",
-       "hint": "pyif"
+       "fb": "and needs both sides True, and each side needs its own comparison: wind < 20 and vis >= 5.",
+       "hint": "pyif",
+       "teach": {
+        "say": "and is True only when both sides are True. Each side needs its own complete comparison.",
+        "code": [
+         "print(5 < 10 and 3 > 1)",
+         "print(5 < 10 and 3 > 9)"
+        ],
+        "out": [
+         "True",
+         "False"
+        ]
+       }
       },
       {
        "t": "code",
        "marks": 4,
-       "q": "Decide whether the stock room door opens, from a staff number and the alarm.",
+       "q": "Decide whether the door opens, from a staff number and the alarm.",
        "brief": [
-        "Read a whole number - the staff number.",
-        "Read a word on the next line - either yes or no, in lower case, saying whether the alarm is set.",
-        "If the staff number is 7 or 9, and the alarm is not set, print: open",
-        "Otherwise print: locked",
-        "Print one line only."
+        "Read a staff number, then the word yes or no for the alarm.",
+        "Print open if the number is 7 or 9 and the alarm is not yes.",
+        "Otherwise print locked."
        ],
-       "starter": "# Read the staff number and the alarm state, then decide\n",
+       "starter": "# Read the staff number and the alarm, then decide\n",
        "tests": [
         {
          "in": [
@@ -472,7 +522,7 @@
          "out": [
           "open"
          ],
-         "why": "The second allowed number must work too. 'locked' here means your or only checked one of them."
+         "why": "The second allowed number must work too. locked here means the or checked only one of them."
         },
         {
          "in": [
@@ -482,7 +532,7 @@
          "out": [
           "locked"
          ],
-         "why": "Not one of the two allowed numbers. If this opened, your or may be written as num == 7 or 9, which Python always treats as True."
+         "why": "Not an allowed number. If this opened, the or may be written n == 7 or 9, which Python always treats as True."
         },
         {
          "in": [
@@ -492,7 +542,7 @@
          "out": [
           "locked"
          ],
-         "why": "The staff number is allowed but the alarm is set, and not turns that into a refusal."
+         "why": "The number is allowed but the alarm is set, and not turns that into a refusal."
         },
         {
          "in": [
@@ -502,11 +552,23 @@
          "out": [
           "locked"
          ],
-         "why": "The alarm beats everything, so the alarm check has to be joined on with and, not or."
+         "why": "The alarm beats everything, so its check is joined on with and, not or."
         }
        ],
-       "fb": "Each or needs a full comparison on both sides: num == 7 or num == 9. Brackets round the or keep it from being swallowed by the and.",
-       "hint": "pyif"
+       "fb": "Each or needs a full comparison on both sides, and brackets round the or keep it from being swallowed by the and.",
+       "hint": "pyif",
+       "teach": {
+        "say": "or is True when either side is True, and each side needs its own comparison. not flips True and False over.",
+        "code": [
+         "n = 9",
+         "print(n == 7 or n == 9)",
+         "print(not n == 9)"
+        ],
+        "out": [
+         "True",
+         "False"
+        ]
+       }
       }
      ]
     },
@@ -521,15 +583,13 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Announce the hockey fixture from the weather and how many players are available.",
+       "q": "Announce the fixture from the weather and the number of players.",
        "brief": [
-        "Read a word on the first line - either dry or wet, in lower case.",
-        "Read a whole number on the second line - how many players are available.",
-        "If it is dry: print match on when 11 or more players are available, otherwise print friendly instead.",
-        "If it is wet: print indoor training when 11 or more players are available, otherwise print cancelled.",
-        "Print one line only."
+        "Read dry or wet, then a whole number of available players.",
+        "If dry: print match on for 11 or more players, otherwise friendly instead.",
+        "If wet: print indoor training for 11 or more players, otherwise cancelled."
        ],
-       "starter": "# Read the weather and the number of players, then announce the decision\n",
+       "starter": "# Read the weather and the players, then announce the decision\n",
        "tests": [
         {
          "in": [
@@ -549,7 +609,7 @@
          "out": [
           "match on"
          ],
-         "why": "Exactly 11 is enough, because the rule says 11 or more. 'friendly instead' here means you used > 11."
+         "why": "Exactly 11 is enough, because the rule says 11 or more. friendly instead here means > 11 was used."
         },
         {
          "in": [
@@ -569,7 +629,7 @@
          "out": [
           "indoor training"
          ],
-         "why": "Enough players, but the weather sends it down the other branch. This fails if you tested the players first and forgot the weather."
+         "why": "Enough players, but the weather sends it down the other branch."
         },
         {
          "in": [
@@ -582,21 +642,32 @@
          "why": "Both conditions fail, which is the inner else of the outer else."
         }
        ],
-       "fb": "The weather chooses which pair of answers you are picking from, and the number of players chooses which of that pair you print. That is why one decision sits inside the other.",
-       "hint": "pyif"
+       "fb": "The weather chooses which pair of answers you pick from, and the players choose which of that pair you print.",
+       "hint": "pyif",
+       "teach": {
+        "say": "An if inside another if is only reached when the outer one was True, so the outer question decides which pair of answers you choose between.",
+        "code": [
+         "w = \"wet\"",
+         "n = 9",
+         "if w == \"wet\":",
+         "    if n > 5:",
+         "        print(\"indoors\")"
+        ],
+        "out": [
+         "indoors"
+        ]
+       }
       },
       {
        "t": "code",
        "marks": 5,
        "q": "Say where a delivery goes, from its box size and weight.",
        "brief": [
-        "Read a word on the first line - either small or large, in lower case.",
-        "Read a whole number on the second line - the weight in kilograms.",
-        "For a small box: print locker A if the weight is 5 or less, otherwise print counter.",
-        "For a large box: print locker B if the weight is 5 or less, print counter if the weight is 25 or less, and print too heavy for anything heavier.",
-        "Print one line only."
+        "Read small or large, then a whole number of kilograms.",
+        "Small box: print locker A for 5 kg or less, otherwise counter.",
+        "Large box: print counter for 25 kg or less, otherwise too heavy."
        ],
-       "starter": "# Read the box size and the weight, then print where the delivery goes\n",
+       "starter": "# Read the box size and the weight, then print where it goes\n",
        "tests": [
         {
          "in": [
@@ -616,7 +687,7 @@
          "out": [
           "locker A"
          ],
-         "why": "Exactly 5 is '5 or less', so it still goes to the locker."
+         "why": "Exactly 5 is 5 or less, so it still goes to the locker."
         },
         {
          "in": [
@@ -634,19 +705,9 @@
           "5"
          ],
          "out": [
-          "locker B"
-         ],
-         "why": "The same weight goes to a different locker because the size is different. 'locker A' here means the size is not being checked."
-        },
-        {
-         "in": [
-          "large",
-          "20"
-         ],
-         "out": [
           "counter"
          ],
-         "why": "The middle band of the large box, which needs an elif inside the outer else."
+         "why": "The same weight goes somewhere else because the size is different. locker A here means the size is not being checked."
         },
         {
          "in": [
@@ -656,7 +717,7 @@
          "out": [
           "counter"
          ],
-         "why": "Exactly 25 is still allowed at the counter. 'too heavy' here means you used < 25."
+         "why": "Exactly 25 is still allowed at the counter. too heavy here means < 25 was used."
         },
         {
          "in": [
@@ -666,11 +727,23 @@
          "out": [
           "too heavy"
          ],
-         "why": "Only large boxes can be too heavy, so this answer must sit inside the large branch."
+         "why": "Only a large box can be too heavy, so this answer sits inside the large branch."
         }
        ],
-       "fb": "Only the large branch needs three answers, so the elif belongs inside it rather than in the outer chain.",
-       "hint": "pyif"
+       "fb": "Each size has its own pair of answers, so the weight check belongs inside the branch that tested the size.",
+       "hint": "pyif",
+       "teach": {
+        "say": "Comparing words uses == and the spelling has to match exactly. The size chooses which pair of answers you are picking from, and the weight chooses which of the pair.",
+        "code": [
+         "size = \"large\"",
+         "print(size == \"small\")",
+         "print(size == \"large\")"
+        ],
+        "out": [
+         "False",
+         "True"
+        ]
+       }
       }
      ]
     },
@@ -685,14 +758,11 @@
       {
        "t": "code",
        "marks": 6,
-       "q": "Work out the medal from three judges' scores out of 10.",
+       "q": "Work out the medal from three judges' scores.",
        "brief": [
-        "Read three whole numbers, one on each line - the three judges' scores.",
-        "If all three scores are 9 or more, print: gold",
-        "Otherwise, if at least two of the scores are 8 or more, print: silver",
-        "Otherwise, if the three scores add up to 18 or more, print: bronze",
-        "Otherwise print: no medal",
-        "Print one line only, and check the rules in that order."
+        "Read three whole numbers out of 10, one on each line.",
+        "All three 9 or more: print gold. Total 24 or more: print silver.",
+        "Total 18 or more: print bronze. Otherwise print no medal."
        ],
        "starter": "# Read three scores and work out the medal\n",
        "tests": [
@@ -716,40 +786,40 @@
          "out": [
           "gold"
          ],
-         "why": "Exactly 9 counts as '9 or more'. 'silver' here means you used > 9 somewhere in the and."
+         "why": "Exactly 9 counts as 9 or more. silver here means > 9 was used somewhere in the and."
         },
         {
          "in": [
-          "9",
-          "9",
+          "10",
+          "8",
           "8"
          ],
          "out": [
           "silver"
          ],
-         "why": "Not all three reach 9, so gold is out, but two of them reach 8. The order of the rules decides this one."
+         "why": "Not all three reach 9, so gold is out, but the total of 26 earns silver."
         },
         {
          "in": [
           "8",
           "8",
-          "2"
+          "8"
          ],
          "out": [
           "silver"
          ],
-         "why": "These add up to 18, but silver is checked before bronze, so silver is the answer. A program that tests the total first gets this wrong."
+         "why": "A total of exactly 24 is 24 or more. bronze here means > 24 was used."
         },
         {
          "in": [
-          "10",
-          "7",
-          "7"
+          "9",
+          "9",
+          "5"
          ],
          "out": [
           "bronze"
          ],
-         "why": "Only one score reaches 8, so silver fails and the total of 24 earns bronze."
+         "why": "A total of 23 is short of silver but comfortably past 18."
         },
         {
          "in": [
@@ -760,7 +830,7 @@
          "out": [
           "bronze"
          ],
-         "why": "The total is exactly 18, and '18 or more' includes it. 'no medal' here means you used > 18."
+         "why": "The total is exactly 18, and 18 or more includes it. no medal here means > 18 was used."
         },
         {
          "in": [
@@ -785,8 +855,20 @@
          "why": "Low scores all round, which is the plain else at the bottom of the chain."
         }
        ],
-       "fb": "'At least two are 8 or more' needs each pair joined with and, and the three pairs joined with or. Keep the rules in the brief's order, because an earlier branch wins even when a later one would also be True.",
-       "hint": "pyif"
+       "fb": "Keep the rules in the brief's order, because an earlier branch wins even when a later one would also be True.",
+       "hint": "pyif",
+       "teach": {
+        "say": "Both of these are True, so the order of your branches decides the answer: the first True branch wins and the rest are skipped.",
+        "code": [
+         "total = 24",
+         "print(total >= 24)",
+         "print(total >= 18)"
+        ],
+        "out": [
+         "True",
+         "True"
+        ]
+       }
       }
      ]
     },

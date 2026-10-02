@@ -20,18 +20,17 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Write a linear search for a membership number and print its position.",
+       "q": "Linear search a line of codes for one number and print its position.",
        "brief": [
-        "The list codes is already written for you - do not change it.",
-        "Read one whole number.",
-        "Step through the list one position at a time.",
-        "If the number is in the list, print only its position, counting from 0.",
+        "Read a line of whole numbers separated by single spaces, then one more to find.",
+        "Step through position by position and print only its position, counting from 0.",
         "If it is not in the list, print: not found"
        ],
-       "starter": "codes = [4821, 1193, 7640, 2057, 9318, 3372]\n\n# Read one membership number, then search codes position by position\n",
+       "starter": "# where the value sits, not just whether it is there\n",
        "tests": [
         {
          "in": [
+          "4821 1193 7640 2057 9318 3372",
           "7640"
          ],
          "out": [
@@ -41,6 +40,7 @@
         },
         {
          "in": [
+          "4821 1193 7640 2057 9318 3372",
           "4821"
          ],
          "out": [
@@ -50,6 +50,7 @@
         },
         {
          "in": [
+          "4821 1193 7640 2057 9318 3372",
           "3372"
          ],
          "out": [
@@ -59,52 +60,73 @@
         },
         {
          "in": [
+          "4821 1193 7640 2057 9318 3372",
           "5000"
          ],
          "out": [
           "not found"
          ],
          "why": "Nothing matches, so the loop must finish and then print: not found"
+        },
+        {
+         "in": [
+          "5012 980 7640",
+          "7640"
+         ],
+         "out": [
+          "2"
+         ],
+         "why": "A different line of codes, so a position typed in by hand will fail here - and 7640 has moved."
         }
        ],
        "fb": "Walk the list by position, remember the position when it matches, and decide what to print only after the loop ends.",
        "hint": "searches",
+       "teach": {
+        "say": "A linear search walks the list by position, so it can report where a value is, not just whether it is there.",
+        "code": [
+         "pets = ['cat', 'dog', 'ant']",
+         "for i in range(len(pets)):",
+         "    print(i, pets[i])"
+        ],
+        "out": [
+         "0 cat",
+         "1 dog",
+         "2 ant"
+        ]
+       },
        "forbid": [
         [
          ".index(",
          "The point of this one is the search loop, so .index() is not allowed - it does the searching for you."
-        ],
-        [
-         " in codes",
-         "Testing the whole list with 'in' skips the search. Step through codes by position instead."
         ]
        ]
       },
       {
        "t": "code",
        "marks": 4,
-       "q": "Search the names list and print the minutes stored at the same position.",
+       "q": "Search one list and print the value at the same position in another.",
        "brief": [
-        "Both lists are written for you - do not change them.",
-        "The two lists hold the same members in the same order.",
-        "Read one name.",
-        "Search members for that name, one position at a time.",
-        "If it is there, print only the minutes at the same position in the other list.",
-        "If it is not there, print: no record"
+        "Read a line of names, then a line of minutes, then one name to find.",
+        "Print only the minutes stored at the same position as that name.",
+        "If the name is not there, print: no record"
        ],
-       "starter": "members = ['Nadia', 'Omar', 'Priya', 'Quinn', 'Rosa']\nminutes = [37, 12, 58, 41, 25]\n\n# Read one name, search members, print the minutes at the same position\n",
+       "starter": "# one name in, one number out\n",
        "tests": [
         {
          "in": [
+          "Nadia Omar Priya Quinn Rosa",
+          "37 12 58 41 25",
           "Priya"
          ],
          "out": [
           "58"
          ],
-         "why": "Priya is at position 2, so the answer comes from position 2 of minutes - 58."
+         "why": "Priya is at position 2, so the answer comes from position 2 of the minutes - 58."
         },
         {
          "in": [
+          "Nadia Omar Priya Quinn Rosa",
+          "37 12 58 41 25",
           "Nadia"
          ],
          "out": [
@@ -114,6 +136,8 @@
         },
         {
          "in": [
+          "Nadia Omar Priya Quinn Rosa",
+          "37 12 58 41 25",
           "Rosa"
          ],
          "out": [
@@ -123,12 +147,25 @@
         },
         {
          "in": [
+          "Nadia Omar Priya Quinn Rosa",
+          "37 12 58 41 25",
           "Tariq"
          ],
          "out": [
           "no record"
          ],
          "why": "No match anywhere, so print: no record - do not print a number left over from the loop."
+        },
+        {
+         "in": [
+          "Ida Jun Kofi",
+          "9 4 7",
+          "Jun"
+         ],
+         "out": [
+          "4"
+         ],
+         "why": "Different lists entirely, so both have to be read in rather than written into the program."
         }
        ],
        "fb": "The position is the link between the two lists: once you know where the name is, the same index gives you the minutes.",
@@ -137,10 +174,6 @@
         [
          ".index(",
          "The point of this one is the search loop, so .index() is not allowed - it does the searching for you."
-        ],
-        [
-         " in members",
-         "Testing the whole list with 'in' skips the search. Step through members by position instead."
         ]
        ]
       }
@@ -157,18 +190,17 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Write a binary search over a list that is already in order.",
+       "q": "Binary search a line of numbers that is already in order.",
        "brief": [
-        "The list ids is already in order - do not change it.",
-        "Read one whole number.",
-        "Find it with a binary search: look at the middle, then throw away the half it cannot be in.",
-        "Print only its position, counting from 0.",
+        "Read a line of whole numbers already in order, then one more to find.",
+        "Find it with a binary search and print only its position, counting from 0.",
         "If it is not in the list, print: not found"
        ],
-       "starter": "ids = [102, 118, 139, 204, 251, 288, 310, 377, 401, 460]\n\n# ids is in order. Read one id and find it with a binary search\n",
+       "starter": "# a binary search over the numbers read in\n",
        "tests": [
         {
          "in": [
+          "102 118 139 204 251 288 310 377 401 460",
           "251"
          ],
          "out": [
@@ -178,6 +210,7 @@
         },
         {
          "in": [
+          "102 118 139 204 251 288 310 377 401 460",
           "102"
          ],
          "out": [
@@ -187,6 +220,7 @@
         },
         {
          "in": [
+          "102 118 139 204 251 288 310 377 401 460",
           "460"
          ],
          "out": [
@@ -196,6 +230,7 @@
         },
         {
          "in": [
+          "102 118 139 204 251 288 310 377 401 460",
           "300"
          ],
          "out": [
@@ -205,43 +240,60 @@
         },
         {
          "in": [
+          "102 118 139 204 251 288 310 377 401 460",
           "99"
          ],
          "out": [
           "not found"
          ],
          "why": "Smaller than everything in the list, so the search runs out of list below position 0."
+        },
+        {
+         "in": [
+          "5 10 15 20",
+          "20"
+         ],
+         "out": [
+          "3"
+         ],
+         "why": "A shorter list, read from the input. The search still has to reach the far end of it."
         }
        ],
        "fb": "Move low to mid + 1 or high to mid - 1, never to mid itself, or the loop will never end when the value is missing.",
        "hint": "searches",
+       "teach": {
+        "say": "A binary search keeps two markers, low and high, and looks at the middle between them. Each turn throws away the half the value cannot be in.",
+        "code": [
+         "items = [4, 9, 15, 22]",
+         "low = 0",
+         "high = len(items) - 1",
+         "print((low + high) // 2)"
+        ],
+        "out": [
+         "1"
+        ]
+       },
        "forbid": [
         [
          ".index(",
          "The point of this one is the search loop, so .index() is not allowed - it does the searching for you."
-        ],
-        [
-         " in ids",
-         "Testing the whole list with 'in' skips the search. Step through ids by position instead."
         ]
        ]
       },
       {
        "t": "code",
        "marks": 5,
-       "q": "Binary search the list and report how many items you checked.",
+       "q": "Binary search the line and say how many items you checked.",
        "brief": [
-        "The list ids is already in order - do not change it.",
-        "Read one whole number.",
-        "Search with a binary search, working out the middle each time as mid = (low + high) // 2.",
-        "Every time you compare the item at the middle, that counts as one check.",
-        "First print the position it was found at counting from 0, or not found",
-        "Then on the next line print: checks: followed by a space and the number of checks."
+        "Read a line of whole numbers already in order, then one more to find.",
+        "Print its position counting from 0, or not found, then: checks: <how many>",
+        "Work the middle out as mid = (low + high) // 2, and count every middle you compare."
        ],
-       "starter": "ids = [15, 23, 31, 38, 46, 52, 61, 70, 78, 84, 97]\n\n# Count the middle items you compare as you search\n",
+       "starter": "# the position, and how many checks it took\n",
        "tests": [
         {
          "in": [
+          "15 23 31 38 46 52 61 70 78 84 97",
           "52"
          ],
          "out": [
@@ -252,6 +304,7 @@
         },
         {
          "in": [
+          "15 23 31 38 46 52 61 70 78 84 97",
           "15"
          ],
          "out": [
@@ -262,6 +315,7 @@
         },
         {
          "in": [
+          "15 23 31 38 46 52 61 70 78 84 97",
           "97"
          ],
          "out": [
@@ -272,6 +326,7 @@
         },
         {
          "in": [
+          "15 23 31 38 46 52 61 70 78 84 97",
           "50"
          ],
          "out": [
@@ -279,6 +334,17 @@
           "checks: 4"
          ],
          "why": "50 is not there. The search still has to narrow all the way down before it can give up, and every one of those middles counts."
+        },
+        {
+         "in": [
+          "4 8 12",
+          "12"
+         ],
+         "out": [
+          "2",
+          "checks: 2"
+         ],
+         "why": "Three items, so the middle is 8, then 12 - two checks. A count of 3 means you are counting items you never compared."
         }
        ],
        "fb": "Add one to the counter as soon as you have worked out mid, before you compare - that way the matching item is counted too.",
@@ -287,10 +353,6 @@
         [
          ".index(",
          "The point of this one is the search loop, so .index() is not allowed - it does the searching for you."
-        ],
-        [
-         " in ids",
-         "Testing the whole list with 'in' skips the search. Step through ids by position instead."
         ]
        ]
       }
@@ -307,14 +369,13 @@
       {
        "t": "code",
        "marks": 5,
-       "q": "Write a bubble sort for a line of whole numbers.",
+       "q": "Sort a line of numbers smallest first with a bubble sort.",
        "brief": [
         "Read one line of whole numbers separated by single spaces.",
-        "Sort them smallest first using a bubble sort - compare each neighbouring pair and swap them if they are the wrong way round.",
-        "Print the sorted numbers on one line, separated by single spaces.",
-        "Do not use Python's own sort."
+        "Sort them smallest first by swapping neighbouring pairs.",
+        "Print them on one line, separated by single spaces."
        ],
-       "starter": "nums = [int(x) for x in input().split()]\n\n# Sort nums with a bubble sort, then print them separated by single spaces\n",
+       "starter": "# a bubble sort of the numbers read in\n",
        "tests": [
         {
          "in": [
@@ -355,6 +416,17 @@
        ],
        "fb": "Two loops: the inner one compares neighbours across the list, the outer one repeats that enough times for the smallest value to travel all the way back.",
        "hint": "bubblesort",
+       "teach": {
+        "say": "A bubble sort compares each neighbouring pair and swaps them when they are the wrong way round, over and over until nothing is left out of order.",
+        "code": [
+         "pair = [9, 4]",
+         "pair[0], pair[1] = pair[1], pair[0]",
+         "print(pair)"
+        ],
+        "out": [
+         "[4, 9]"
+        ]
+       },
        "forbid": [
         [
          "sorted(",
@@ -369,16 +441,13 @@
       {
        "t": "code",
        "marks": 6,
-       "q": "Write a bubble sort that stops early, and say how many passes it needed.",
+       "q": "Bubble sort that stops early, and say how many passes it needed.",
        "brief": [
         "Read one line of whole numbers separated by single spaces.",
-        "Sort them smallest first with a bubble sort.",
-        "Keep doing passes until a pass makes no swaps at all, then stop.",
-        "Print the sorted numbers on one line, separated by single spaces.",
-        "On the next line print: passes: followed by a space and how many passes you did, counting the final pass that found nothing to swap.",
-        "Do not use Python's own sort."
+        "Sort them smallest first, stopping after a pass that makes no swaps at all.",
+        "Print them spaced on one line, then: passes: <how many, the quiet one included>"
        ],
-       "starter": "nums = [int(x) for x in input().split()]\n\n# Keep going until a pass makes no swaps, and count the passes\n",
+       "starter": "# the sorted numbers, then the pass count\n",
        "tests": [
         {
          "in": [
@@ -447,14 +516,13 @@
       {
        "t": "code",
        "marks": 6,
-       "q": "Write an insertion sort for a line of whole numbers.",
+       "q": "Sort a line of numbers with an insertion sort.",
        "brief": [
         "Read one line of whole numbers separated by single spaces.",
-        "Sort them smallest first using an insertion sort - take each item in turn and move it back to its place among the items before it.",
-        "Print the sorted numbers on one line, separated by single spaces.",
-        "Do not use Python's own sort."
+        "Sort them smallest first by moving each item back among the items before it.",
+        "Print them on one line, separated by single spaces."
        ],
-       "starter": "nums = [int(x) for x in input().split()]\n\n# Sort nums with an insertion sort, then print them separated by single spaces\n",
+       "starter": "# an insertion sort of the numbers read in\n",
        "tests": [
         {
          "in": [
@@ -495,6 +563,17 @@
        ],
        "fb": "Start the outer loop at the second item - the first item on its own is already a sorted list of one.",
        "hint": "bubblesort",
+       "teach": {
+        "say": "An insertion sort holds one value aside, copies the larger items before it one place to the right, then drops the held value into the gap it has made.",
+        "code": [
+         "row = [3, 8, 0]",
+         "row[2] = row[1]",
+         "print(row)"
+        ],
+        "out": [
+         "[3, 8, 8]"
+        ]
+       },
        "forbid": [
         [
          "sorted(",
@@ -509,15 +588,13 @@
       {
        "t": "code",
        "marks": 6,
-       "q": "Print the whole list each time an insertion sort places an item.",
+       "q": "Print the whole list each time an insertion sort places a word.",
        "brief": [
         "Read one line of five words separated by single spaces.",
-        "Sort them into alphabetical order using an insertion sort.",
-        "Each time one of the words from the second onwards has been moved into its place, print the whole list on one line, separated by single spaces.",
-        "That gives four lines of output, one per insertion.",
-        "Do not print the list before the first insertion, and do not use Python's own sort."
+        "Insertion sort them into alphabetical order.",
+        "After placing each word from the second onwards, print the whole list, spaced."
        ],
-       "starter": "words = input().split()\n\n# After placing each word from the second onwards, print the whole list\n",
+       "starter": "# five words, one line printed per insertion\n",
        "tests": [
         {
          "in": [
@@ -594,14 +671,13 @@
       {
        "t": "code",
        "marks": 6,
-       "q": "Merge two lists that are already in order into one list in order.",
+       "q": "Merge two lines that are already in order into one list.",
        "brief": [
-        "Read two lines. Each is a list of whole numbers, already in order, separated by single spaces.",
-        "Merge them into one list in order by comparing the front of each list and taking the smaller one.",
-        "Print the merged list on one line, separated by single spaces.",
-        "Do not use Python's own sort."
+        "Read two lines of whole numbers, each already in order and space separated.",
+        "Merge them into one list in order by taking the smaller front value each time.",
+        "Print the merged list on one line, separated by single spaces."
        ],
-       "starter": "left = [int(x) for x in input().split()]\nright = [int(x) for x in input().split()]\n\n# Merge left and right into one list in order, then print it\n",
+       "starter": "# two ordered lines in, one ordered list out\n",
        "tests": [
         {
          "in": [
@@ -646,6 +722,18 @@
        ],
        "fb": "Two position markers, one per list, and a tidying-up loop at the end for whichever list still has numbers in it.",
        "hint": "mergesort",
+       "teach": {
+        "say": "A merge keeps a position marker in each list, compares the two fronts, takes the smaller and moves that marker on.",
+        "code": [
+         "left = [2, 6]",
+         "right = [4, 9]",
+         "if left[0] <= right[0]:",
+         "    print('take from the left')"
+        ],
+        "out": [
+         "take from the left"
+        ]
+       },
        "forbid": [
         [
          "sorted(",
@@ -660,14 +748,13 @@
       {
        "t": "code",
        "marks": 7,
-       "q": "Write a full merge sort: split the list down, then merge it back in order.",
+       "q": "Write a full merge sort: split the list down, then merge back up.",
        "brief": [
         "Read one line of whole numbers separated by single spaces.",
-        "Sort them smallest first using a merge sort - split the list in half, sort each half the same way, then merge the two halves.",
-        "Print the sorted numbers on one line, separated by single spaces.",
-        "Do not use Python's own sort."
+        "Sort them by splitting in half, sorting each half the same way, then merging the two.",
+        "Print them on one line, separated by single spaces."
        ],
-       "starter": "nums = [int(x) for x in input().split()]\n\n# Sort nums with a merge sort, then print them separated by single spaces\n",
+       "starter": "# split, sort each half the same way, merge\n",
        "tests": [
         {
          "in": [
@@ -741,19 +828,18 @@
       {
        "t": "code",
        "marks": 8,
-       "q": "Count how many items a linear search and a binary search each check.",
+       "q": "Count the comparisons a linear search and a binary search each need.",
        "brief": [
-        "The list seats is already in order - do not change it.",
-        "Read one whole number.",
-        "For the linear search, count every item you compare, starting at the front and stopping as soon as it matches. If it is not there, that is every item in the list.",
-        "For the binary search, work out the middle each time as mid = (low + high) // 2 and count every middle item you compare, stopping as soon as it matches.",
-        "Print: linear: followed by a space and the linear count.",
-        "Then on the next line print: binary: followed by a space and the binary count."
+        "Read a line of whole numbers already in order, then one more to find.",
+        "Count every item a linear search compares, starting at the front and stopping on a match.",
+        "Count every middle a binary search compares, working it out as mid = (low + high) // 2.",
+        "Print: linear: <that count>, then: binary: <that count>"
        ],
-       "starter": "seats = [3, 8, 12, 17, 21, 26, 30, 35, 39, 44, 48, 53, 57, 62, 66]\n\n# Count the comparisons each search needs, then print both counts\n",
+       "starter": "# two searches over the same list, counted separately\n",
        "tests": [
         {
          "in": [
+          "3 8 12 17 21 26 30 35 39 44 48 53 57 62 66",
           "3"
          ],
          "out": [
@@ -764,6 +850,7 @@
         },
         {
          "in": [
+          "3 8 12 17 21 26 30 35 39 44 48 53 57 62 66",
           "35"
          ],
          "out": [
@@ -774,6 +861,7 @@
         },
         {
          "in": [
+          "3 8 12 17 21 26 30 35 39 44 48 53 57 62 66",
           "66"
          ],
          "out": [
@@ -784,6 +872,7 @@
         },
         {
          "in": [
+          "3 8 12 17 21 26 30 35 39 44 48 53 57 62 66",
           "40"
          ],
          "out": [
@@ -791,6 +880,17 @@
           "binary: 4"
          ],
          "why": "Not in the list at all. The linear search still has to compare all fifteen before it can be sure."
+        },
+        {
+         "in": [
+          "2 4 6 8 10 12 14",
+          "14"
+         ],
+         "out": [
+          "linear: 7",
+          "binary: 3"
+         ],
+         "why": "A shorter list from the input. Seven items need three halvings at most, however long the linear count gets."
         }
        ],
        "fb": "This is why the specification says a binary search is more efficient - but it only works because the list is already in order.",
@@ -801,16 +901,11 @@
        "marks": 8,
        "q": "Sort the numbers yourself, then binary search them for a value.",
        "brief": [
-        "Read one line of whole numbers separated by single spaces.",
-        "Read one more whole number on the next line - the value to find.",
-        "Sort the numbers smallest first using a sort you write yourself.",
-        "A binary search only works on a list that is in order, which is why you sort it first.",
-        "Print the sorted numbers on one line, separated by single spaces.",
-        "Then search the sorted list with a binary search and, on the next line, print only the position the value is at, counting from 0.",
-        "If it is not in the list, print: not found",
-        "Do not use Python's own sort."
+        "Read one line of whole numbers separated by spaces, then one more to find.",
+        "Sort them smallest first with a sort you write yourself, and print them spaced.",
+        "Then binary search the sorted list and print its position from 0, or: not found"
        ],
-       "starter": "nums = [int(x) for x in input().split()]\ntarget = int(input())\n\n# Sort nums yourself, print it, then binary search the sorted list\n",
+       "starter": "# sort it first, then search it\n",
        "tests": [
         {
          "in": [

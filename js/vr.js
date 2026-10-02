@@ -421,6 +421,16 @@
         if (by > BRIEF - 26) return;
         x.fillStyle = COL.soft; x.fillText(l, 28, by); by += 27;
       }));
+      /* The worked example, where the question carries one. It is the same help
+       * the screen gives, and a pupil in a headset cannot go and look it up. */
+      if (v.task.teach && by < BRIEF - 30) {
+        const eg = (v.task.teach.code || []).join("    ");
+        if (eg) {
+          x.fillStyle = COL.info || "#7fb2ff";
+          x.font = "22px Consolas, monospace";
+          x.fillText("e.g.  " + eg.slice(0, 74), 28, by);
+        }
+      }
 
       // ---- the program
       const lines = v.text.split("\n");

@@ -46,7 +46,7 @@ function bank() {
     if (!fs.existsSync(sf)) continue;        // no solutions here, nothing to type
     const sols = JSON.parse(fs.readFileSync(sf, "utf8")).solutions || {};
     for (const q of d.questions)
-      if (sols[q.id]) out.set(q.q, { lesson: d.lesson, solution: sols[q.id] });
+      if (sols[q.id]) out.set(q.q, { lesson: d.lesson, solution: sols[q.id], fixed: !!q.fixed });
   }
   if (!out.size) console.log("No model solutions found in answers/codebank/ - this check needs them.");
   return out;
@@ -107,7 +107,16 @@ function findQuestions() {
     await pg.waitForFunction(() => !document.querySelector("#pycheck").disabled, null, { timeout: 90000 });
 
     const entry = BANK.get(q.q);
-    const wrong = "print('''" + (q.firstOut || []).join("\n") + "''')";
+
+    /* The usual wrong answer prints the first test's expected output. On a
+
+     * question marked "fixed" - the first task of the course, where printing
+
+     * one line IS the answer - that program is correct, so an empty one is
+
+     * used instead. verifycode proves an empty program fails every question. */
+
+    const wrong = entry.fixed ? "pass" : "print('''" + (q.firstOut || []).join("\n") + "''')";
 
     const type = async (code) => pg.evaluate(c => {
       const ta = document.querySelector("#pyed .pysrc");

@@ -20,13 +20,12 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Print the same message four times.",
+       "q": "Print the word the user types four times.",
        "brief": [
-        "Read one word - the message.",
-        "Print it four times, one on each line.",
-        "Print nothing else."
+        "Read one word.",
+        "Print it four times, one on each line."
        ],
-       "starter": "# Read the message, then print it four times\n",
+       "starter": "# Read the word, then print it four times\n",
        "tests": [
         {
          "in": [
@@ -38,7 +37,7 @@
           "boarding",
           "boarding"
          ],
-         "why": "Four lines exactly. Five lines means range(5) - range(4) already gives four turns, counting 0, 1, 2, 3."
+         "why": "Four lines exactly. Five means range(5): range(4) already gives four turns, counting 0, 1, 2, 3."
         },
         {
          "in": [
@@ -50,7 +49,7 @@
           "delayed",
           "delayed"
          ],
-         "why": "The message is read from the user, so a program with the word typed into it will fail here."
+         "why": "The word is read from the user, so a program with the word typed into it will fail here."
         },
         {
          "in": [
@@ -62,19 +61,30 @@
           "x",
           "x"
          ],
-         "why": "A one letter message is still repeated four times."
+         "why": "A one letter word is still printed four times."
         }
        ],
-       "fb": "range(4) counts 0, 1, 2, 3 - four numbers, so the loop body runs four times even though it never reaches 4.",
-       "hint": "pyrange"
+       "fb": "range(4) counts 0, 1, 2, 3, which is four numbers, so the loop body runs four times without ever reaching 4.",
+       "hint": "pyrange",
+       "teach": {
+        "say": "for i in range(3): repeats the indented lines three times, because range(3) counts 0, 1, 2.",
+        "code": [
+         "for i in range(3):",
+         "    print(\"tick\")"
+        ],
+        "out": [
+         "tick",
+         "tick",
+         "tick"
+        ]
+       }
       },
       {
        "t": "code",
        "marks": 2,
-       "q": "Print start, then a word as many times as the user asks.",
+       "q": "Print start, then a word as many times as asked.",
        "brief": [
-        "Read one word on the first line.",
-        "Read one whole number on the second line - how many times to repeat it.",
+        "Read a word, then a whole number.",
         "Print: start",
         "Then print the word that many times, one on each line."
        ],
@@ -91,7 +101,7 @@
           "drip",
           "drip"
          ],
-         "why": "'start' is printed once, before the loop, so it must not be inside it."
+         "why": "start is printed once, before the loop, so it must not be indented inside it."
         },
         {
          "in": [
@@ -102,7 +112,7 @@
           "start",
           "tap"
          ],
-         "why": "A count of 1 means one repeat. Two lines of 'tap' means you looped to n + 1."
+         "why": "A count of 1 means one line. Two means the loop ran to n + 1."
         },
         {
          "in": [
@@ -112,7 +122,7 @@
          "out": [
           "start"
          ],
-         "why": "range(0) runs no turns at all, so only 'start' is printed. A line of 'hum' here means your loop always runs at least once."
+         "why": "range(0) runs no turns at all, so only start is printed. A line of hum here means the loop always runs once."
         },
         {
          "in": [
@@ -127,11 +137,23 @@
           "beep",
           "beep"
          ],
-         "why": "The number has to come from input(), and remember int() - range() cannot use the text '5'."
+         "why": "The count comes from input(), so it needs int() before range() can use it."
         }
        ],
        "fb": "range(n) uses whatever number is in n, including 0, which simply means the body never runs.",
-       "hint": "pyrange"
+       "hint": "pyrange",
+       "teach": {
+        "say": "range() can use a number read from the user, once int() has made it a whole number. A line before the loop is not indented, so it runs once.",
+        "code": [
+         "n = int(input(\"How many? \"))   # the user types 2",
+         "for i in range(n):",
+         "    print(\"beep\")"
+        ],
+        "out": [
+         "beep",
+         "beep"
+        ]
+       }
       }
      ]
     },
@@ -146,11 +168,10 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Number the lanes of a swimming pool.",
+       "q": "Number the lanes of a pool from 1 upwards.",
        "brief": [
-        "Read one whole number - how many lanes there are.",
-        "Print the lane numbers from 1 up to and including that number, one on each line.",
-        "Print nothing else."
+        "Read one whole number: how many lanes there are.",
+        "Print the lane numbers from 1 up to that number, one on each line."
        ],
        "starter": "# Read how many lanes there are, then number them from 1\n",
        "tests": [
@@ -165,7 +186,7 @@
           "4",
           "5"
          ],
-         "why": "Starts at 1 and includes 5. A list starting at 0 means you used range(n) instead of range(1, n + 1)."
+         "why": "Starts at 1 and includes 5. A list starting at 0 means range(n) was used instead of range(1, n + 1)."
         },
         {
          "in": [
@@ -174,7 +195,7 @@
          "out": [
           "1"
          ],
-         "why": "One lane gives one line. Nothing printed at all means range(1, n) stopped before it started."
+         "why": "One lane gives one line. Nothing at all means range(1, n) stopped before it started."
         },
         {
          "in": [
@@ -185,21 +206,32 @@
           "2",
           "3"
          ],
-         "why": "The last number must appear. Missing 3 is the off by one that range(1, n) always causes."
+         "why": "The last number must appear. A missing 3 is the off by one that range(1, n) always causes."
         }
        ],
-       "fb": "range stops before its second number, so to finish on n you have to write range(1, n + 1).",
-       "hint": "pyrange"
+       "fb": "range stops before its second number, so to finish on n you write range(1, n + 1).",
+       "hint": "pyrange",
+       "teach": {
+        "say": "range stops before its second number, so range(1, 4) counts 1, 2, 3. To finish on n you write range(1, n + 1).",
+        "code": [
+         "for i in range(1, 4):",
+         "    print(i)"
+        ],
+        "out": [
+         "1",
+         "2",
+         "3"
+        ]
+       }
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "List each side length from 1 upwards with the area of that square.",
+       "q": "List each side length from 1 upwards with its area.",
        "brief": [
-        "Read one whole number - the largest side length in metres.",
-        "For every side length from 1 up to and including that number, print one line:",
-        "the side length, a single space, then that side length multiplied by itself.",
-        "Print nothing else."
+        "Read one whole number: the largest side length.",
+        "Print one line for each side from 1 up to that number.",
+        "Each line holds the side, a space, then the side times itself."
        ],
        "starter": "# Read the largest side, then print each side and its area\n",
        "tests": [
@@ -212,7 +244,7 @@
           "2 4",
           "3 9"
          ],
-         "why": "The counter is used twice on each line - once on its own and once multiplied by itself."
+         "why": "The counter is used twice on each line: once on its own and once multiplied by itself."
         },
         {
          "in": [
@@ -221,7 +253,7 @@
          "out": [
           "1 1"
          ],
-         "why": "A side of 1 has an area of 1, so the two numbers on the line are the same here."
+         "why": "A side of 1 has an area of 1, so the two numbers match here."
         },
         {
          "in": [
@@ -234,7 +266,7 @@
           "4 16",
           "5 25"
          ],
-         "why": "Every line must use its own counter value. Lines that all show the same number mean you are printing n rather than i."
+         "why": "Every line uses its own counter value. Lines that all show the same number mean n was printed rather than i."
         },
         {
          "in": [
@@ -244,11 +276,23 @@
           "1 1",
           "2 4"
          ],
-         "why": "Two lines only. A third line means your range went one too far."
+         "why": "Two lines only. A third means the range went one too far."
         }
        ],
-       "fb": "The loop variable is an ordinary number, so you can calculate with it inside the loop - i * i changes on every turn.",
-       "hint": "pyrange"
+       "fb": "The loop variable is an ordinary number, so you can calculate with it inside the loop.",
+       "hint": "pyrange",
+       "teach": {
+        "say": "The counter is an ordinary number, so you can calculate with it inside the loop. Two values in one print() come out with a space between them.",
+        "code": [
+         "for i in range(1, 4):",
+         "    print(i, i * 10)"
+        ],
+        "out": [
+         "1 10",
+         "2 20",
+         "3 30"
+        ]
+       }
       }
      ]
     },
@@ -265,12 +309,10 @@
        "marks": 3,
        "q": "List every row number from a first row to a last row.",
        "brief": [
-        "Read two whole numbers, one on each line - the first row number, then the last row number.",
-        "Print every row number from the first up to and including the last, one on each line.",
-        "The last row number will never be smaller than the first.",
-        "Print nothing else."
+        "Read the first row number, then the last row number.",
+        "Print every row number from the first to the last, one on each line."
        ],
-       "starter": "# Read the first and last row numbers, then list every row in between\n",
+       "starter": "# Read the first and last row numbers, then list every row\n",
        "tests": [
         {
          "in": [
@@ -284,7 +326,7 @@
           "6",
           "7"
          ],
-         "why": "Both ends are included. A missing 7 means you wrote range(first, last)."
+         "why": "Both ends are included. A missing 7 means range(first, last)."
         },
         {
          "in": [
@@ -294,7 +336,7 @@
          "out": [
           "5"
          ],
-         "why": "The first and last row are the same, so exactly one line is printed. Nothing at all means your range was empty."
+         "why": "The first and last row are the same, so exactly one line prints. Nothing means the range was empty."
         },
         {
          "in": [
@@ -306,7 +348,7 @@
           "11",
           "12"
          ],
-         "why": "The start has to come from the input. A list beginning at 0 or 1 means you ignored the first number."
+         "why": "The start comes from the input. A list beginning at 0 or 1 means the first number was ignored."
         },
         {
          "in": [
@@ -319,98 +361,92 @@
           "3",
           "4"
          ],
-         "why": "Four lines. Five means you added 1 to the start as well as the end."
+         "why": "Four lines. Five means 1 was added to the start as well as the end."
         }
        ],
-       "fb": "range takes a start and a stop, and the stop is never reached, so include the last value by writing last + 1.",
-       "hint": "pyrange"
+       "fb": "range takes a start and a stop, and the stop is never reached, so the last value you want is last + 1.",
+       "hint": "pyrange",
+       "teach": {
+        "say": "range takes a start and a stop, and the stop is never reached, so add 1 to the last value you want.",
+        "code": [
+         "for n in range(4, 7):",
+         "    print(n)"
+        ],
+        "out": [
+         "4",
+         "5",
+         "6"
+        ]
+       }
       },
       {
        "t": "code",
        "marks": 4,
-       "q": "Print five gauge readings that change by a fixed step each time.",
+       "q": "Count down from a number the user types to 1.",
        "brief": [
-        "Read two whole numbers, one on each line - the first reading, then the step.",
-        "Print five readings, one on each line, starting at the first reading and changing by the step each time.",
-        "The step may be negative, in which case the readings count down.",
-        "The step will never be 0.",
-        "Print nothing else."
+        "Read one whole number.",
+        "Print every number from it down to 1, one on each line."
        ],
-       "starter": "# Read the first reading and the step, then print five readings\n",
+       "starter": "# Read a number, then count down from it to 1\n",
        "tests": [
         {
          "in": [
-          "4",
-          "3"
+          "5"
          ],
          "out": [
+          "5",
           "4",
-          "7",
-          "10",
-          "13",
-          "16"
+          "3",
+          "2",
+          "1"
          ],
-         "why": "Five readings, starting at the first one. Starting at 7 means you added the step before printing instead of after."
+         "why": "Counts down and stops at 1. Nothing printed means the range still goes upwards: the third number has to be negative."
         },
         {
          "in": [
-          "10",
-          "-2"
-         ],
-         "out": [
-          "10",
-          "8",
-          "6",
-          "4",
-          "2"
-         ],
-         "why": "A negative step counts down. Nothing printed means your range still goes upwards - the third number in range has to be negative too."
-        },
-        {
-         "in": [
-          "1",
           "1"
          ],
          "out": [
-          "1",
-          "2",
+          "1"
+         ],
+         "why": "One line only. Nothing at all means the stop was 1 rather than 0, so the last value was cut off."
+        },
+        {
+         "in": [
+          "3"
+         ],
+         "out": [
           "3",
-          "4",
-          "5"
+          "2",
+          "1"
          ],
-         "why": "A step of 1 is the ordinary case, and there must still be exactly five lines."
+         "why": "A 0 on the end means the stop was -1. The stop is never reached, so 0 stops the count at 1."
         },
         {
          "in": [
-          "100",
-          "-25"
+          "2"
          ],
          "out": [
-          "100",
-          "75",
-          "50",
-          "25",
-          "0"
+          "2",
+          "1"
          ],
-         "why": "Counting down can pass through 0, so do not stop the loop early when the reading gets small."
-        },
-        {
-         "in": [
-          "-3",
-          "4"
-         ],
-         "out": [
-          "-3",
-          "1",
-          "5",
-          "9",
-          "13"
-         ],
-         "why": "A negative start with a positive step. The start is just a number - there is nothing special to do about the minus sign."
+         "why": "Two lines, counting down. Lines in the other order mean the start and stop are swapped."
         }
        ],
-       "fb": "range takes a third number, the step: range(start, stop, step). A negative step counts down, and the stop still has to be past the last value you want.",
-       "hint": "pyrange"
+       "fb": "range(start, stop, step) counts by the step, and a negative step counts down. The stop is still never reached.",
+       "hint": "pyrange",
+       "teach": {
+        "say": "range takes a third number, the step. A step of -1 counts down, and the stop is still never reached.",
+        "code": [
+         "for n in range(10, 7, -1):",
+         "    print(n)"
+        ],
+        "out": [
+         "10",
+         "9",
+         "8"
+        ]
+       }
       }
      ]
     },
@@ -425,11 +461,11 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Print the total of a set of amounts.",
+       "q": "Add up the amounts the user types and print the total.",
        "brief": [
-        "Read one whole number - how many amounts follow.",
-        "Then read that many whole numbers, one on each line.",
-        "Print only the total of those amounts."
+        "Read one whole number: how many amounts follow.",
+        "Read that many whole numbers, one on each line.",
+        "Print only the total."
        ],
        "starter": "# Read how many amounts there are, add them up, print the total\n",
        "tests": [
@@ -453,7 +489,7 @@
          "out": [
           "7"
          ],
-         "why": "One amount. If you got 0 you printed the total before the loop had added anything."
+         "why": "One amount. A 0 means the total was printed before the loop had added anything."
         },
         {
          "in": [
@@ -466,7 +502,7 @@
          "out": [
           "85"
          ],
-         "why": "A refund is negative, so use total = total + amount rather than only adding when the amount is large."
+         "why": "A refund is negative, so write total = total + amount rather than only adding the large ones."
         },
         {
          "in": [
@@ -491,26 +527,34 @@
          "out": [
           "55"
          ],
-         "why": "The loop must run exactly as many times as the first number says, and only the total is printed - not each amount."
+         "why": "The loop runs exactly as many times as the first number says, and only the total is printed."
         }
        ],
        "fb": "A running total needs three things: set it to 0 before the loop, add to it inside the loop, print it after the loop.",
-       "hint": "constructs"
+       "hint": "constructs",
+       "teach": {
+        "say": "A running total is set to 0 before the loop, added to inside the loop, and printed after it.",
+        "code": [
+         "total = 0",
+         "for i in range(3):",
+         "    total = total + 5",
+         "print(total)"
+        ],
+        "out": [
+         "15"
+        ]
+       }
       },
       {
        "t": "code",
        "marks": 4,
-       "q": "Print the total, how many are below 0, the highest and the lowest reading.",
+       "q": "Print the total of the readings and how many are below zero.",
        "brief": [
-        "Read one whole number - how many readings follow.",
-        "Then read that many whole numbers, one on each line - temperatures in degrees Celsius.",
-        "Print four lines, in this order:",
-        "Line 1: the total of all the readings.",
-        "Line 2: how many readings are below 0.",
-        "Line 3: the highest reading.",
-        "Line 4: the lowest reading."
+        "Read one whole number: how many readings follow.",
+        "Read that many whole numbers, one on each line.",
+        "Print the total, then how many readings are below 0."
        ],
-       "starter": "# Read the readings, then print the total, the frosty count, the highest and the lowest\n",
+       "starter": "# Read the readings, then print the total and the frosty count\n",
        "tests": [
         {
          "in": [
@@ -522,11 +566,9 @@
          ],
          "out": [
           "6",
-          "1",
-          "5",
-          "-2"
+          "1"
          ],
-         "why": "One reading is below 0, and the highest and lowest are both in the list - neither is a number you invented."
+         "why": "One reading is below 0, and the total keeps all four."
         },
         {
          "in": [
@@ -537,11 +579,9 @@
          ],
          "out": [
           "-14",
-          "3",
-          "-1",
-          "-8"
+          "3"
          ],
-         "why": "Every reading is negative, so a highest that starts at 0 will wrongly stay 0. Start it at the first reading instead."
+         "why": "Every reading is below 0, so the count is 3 and the total is negative."
         },
         {
          "in": [
@@ -550,11 +590,9 @@
          ],
          "out": [
           "7",
-          "0",
-          "7",
-          "7"
+          "0"
          ],
-         "why": "With one reading it is both the highest and the lowest, and nothing is below 0."
+         "why": "One reading, nothing below 0, and the count still has to be printed as 0."
         },
         {
          "in": [
@@ -564,11 +602,9 @@
          ],
          "out": [
           "0",
-          "0",
-          "0",
           "0"
          ],
-         "why": "Exactly 0 is not below 0, so the count stays at 0 - this is where < and <= get mixed up."
+         "why": "Exactly 0 is not below 0, so the count stays at 0. This is where < and <= get mixed up."
         },
         {
          "in": [
@@ -581,15 +617,26 @@
          ],
          "out": [
           "25",
-          "1",
-          "12",
-          "-3"
+          "1"
          ],
-         "why": "The highest value appears twice, which must not be counted twice in the total or change the answer."
+         "why": "A repeated value is counted every time it appears in the total, but only the -3 is below 0."
         }
        ],
-       "fb": "Keep a separate variable for each thing you are tracking, and update them all inside the same loop. For a highest or lowest, start from the first reading, not from 0.",
-       "hint": "constructs"
+       "fb": "Keep a separate variable for each thing you are tracking, and update them all inside the same loop.",
+       "hint": "constructs",
+       "teach": {
+        "say": "Each thing you are tracking needs its own variable, set up before the loop and updated inside it.",
+        "code": [
+         "total = 0",
+         "count = 0",
+         "total = total + 7",
+         "count = count + 1",
+         "print(total, count)"
+        ],
+        "out": [
+         "7 1"
+        ]
+       }
       }
      ]
     },
@@ -606,11 +653,10 @@
        "marks": 4,
        "q": "Draw a rectangle of stars of any size.",
        "brief": [
-        "Read two whole numbers, one on each line - the number of rows, then the number of stars in each row.",
-        "Print the rectangle: one line per row, each line made of that many * characters with nothing between them.",
-        "Print nothing else."
+        "Read the number of rows, then the number of stars in each row.",
+        "Print one line per row, each made of that many * characters."
        ],
-       "starter": "# Read the rows and the width, then draw the rectangle of stars\n",
+       "starter": "# Read the rows and the width, then draw the rectangle\n",
        "tests": [
         {
          "in": [
@@ -622,7 +668,7 @@
           "****",
           "****"
          ],
-         "why": "Three rows of four stars. A single line of twelve stars means your print is inside the inner loop."
+         "why": "Three rows of four stars. One line of twelve means the print is inside the inner loop."
         },
         {
          "in": [
@@ -643,7 +689,7 @@
           "*****",
           "*****"
          ],
-         "why": "The rows and the width are different numbers, so check you have not swapped them."
+         "why": "The rows and the width are different numbers, so check they are not swapped."
         },
         {
          "in": [
@@ -656,21 +702,32 @@
           "**",
           "**"
          ],
-         "why": "More rows than stars per row. If you got two rows of four stars, the two inputs are the wrong way round."
+         "why": "More rows than stars per row. Two rows of four means the inputs are the wrong way round."
         }
        ],
-       "fb": "The outer loop counts the rows and the inner loop builds one row. Build the row into a string first, then print it once the inner loop has finished.",
-       "hint": "pyrange"
+       "fb": "The outer loop counts the rows and the inner loop builds one row, which is printed once the inner loop has finished.",
+       "hint": "pyrange",
+       "teach": {
+        "say": "The outer loop counts the rows and the inner loop builds one row. Build the row up as a string, then print it once the inner loop has finished.",
+        "code": [
+         "row = \"\"",
+         "for i in range(3):",
+         "    row = row + \"#\"",
+         "print(row)"
+        ],
+        "out": [
+         "###"
+        ]
+       }
       },
       {
        "t": "code",
        "marks": 5,
-       "q": "Print a multiplication square.",
+       "q": "Print a multiplication square of a given size.",
        "brief": [
-        "Read one whole number - the size of the square.",
-        "Print that many lines. The line for row r holds r times 1, r times 2, and so on up to r times the size.",
-        "Put a single space between the numbers on a line.",
-        "For a size of 3 the output is exactly these three lines: 1 2 3 then 2 4 6 then 3 6 9."
+        "Read one whole number: the size of the square.",
+        "For a size of 3 print exactly: 1 2 3 then 2 4 6 then 3 6 9.",
+        "Put a single space between the numbers on a line."
        ],
        "starter": "# Read the size, then print the multiplication square\n",
        "tests": [
@@ -683,7 +740,7 @@
           "2 4 6",
           "3 6 9"
          ],
-         "why": "Both loops run from 1, not 0 - a square full of zeros on the first row means one of them started at 0."
+         "why": "Both loops run from 1, not 0. A row of zeros means one of them started at 0."
         },
         {
          "in": [
@@ -714,11 +771,25 @@
           "1 2",
           "2 4"
          ],
-         "why": "The row number is fixed while the inner loop runs, so the outer counter must be used in the multiplication too."
+         "why": "The row number stays still while the inner loop runs, so the outer counter is used in the multiplication too."
         }
        ],
-       "fb": "The outer counter stays still while the inner one runs all the way through, and the number you print is the two counters multiplied together.",
-       "hint": "pyrange"
+       "fb": "The outer counter stays still while the inner one runs all the way through.",
+       "hint": "pyrange",
+       "teach": {
+        "say": "The outer counter stays still while the inner one runs all the way through, so the value you print is the two counters multiplied.",
+        "code": [
+         "for r in range(1, 3):",
+         "    for c in range(1, 3):",
+         "        print(r * c)"
+        ],
+        "out": [
+         "1",
+         "2",
+         "2",
+         "4"
+        ]
+       }
       }
      ]
     },
@@ -733,82 +804,105 @@
       {
        "t": "code",
        "marks": 6,
-       "q": "Count the vowels in each of a set of words.",
+       "q": "Print each amount with the total so far, then the average.",
        "brief": [
-        "Read one whole number - how many words follow.",
-        "Then read that many words, one on each line, all in lower case.",
-        "For each word, print one line: the word, a single space, then how many vowels it holds.",
-        "After all the words, print one more line: the total number of vowels in all of them.",
-        "The vowels are a, e, i, o and u."
+        "Read one whole number: how many amounts follow, then that many whole numbers.",
+        "After each amount print the amount, a space, then the total so far.",
+        "After the loop print the average, rounded to 1 decimal place."
        ],
-       "starter": "# Read the words, print each one with its vowel count, then the grand total\n",
+       "starter": "# Read the amounts, print each with the running total, then the average\n",
        "tests": [
         {
          "in": [
-          "2",
-          "banana",
-          "kiwi"
+          "3",
+          "40",
+          "55",
+          "60"
          ],
          "out": [
-          "banana 3",
-          "kiwi 2",
-          "5"
+          "40 40",
+          "55 95",
+          "60 155",
+          "51.7"
          ],
-         "why": "Each word gets its own line and its own count, and the last line is the two counts added together."
+         "why": "The total so far is printed on every turn, and the average is worked out once at the end."
         },
         {
          "in": [
           "1",
-          "rhythm"
+          "7"
          ],
          "out": [
-          "rhythm 0",
+          "7 7",
+          "7.0"
+         ],
+         "why": "One amount is its own total and its own average, and / always gives a real number, so 7.0 and not 7."
+        },
+        {
+         "in": [
+          "4",
+          "100",
+          "-20",
+          "0",
+          "5"
+         ],
+         "out": [
+          "100 100",
+          "-20 80",
+          "0 80",
+          "5 85",
+          "21.2"
+         ],
+         "why": "A negative amount brings the total down. If the last line is a long row of decimals, the round() is missing."
+        },
+        {
+         "in": [
+          "2",
+          "0",
           "0"
          ],
-         "why": "A word with no vowels still prints a line, with 0. A missing line means you only print when a vowel is found."
+         "out": [
+          "0 0",
+          "0 0",
+          "0.0"
+         ],
+         "why": "Two zeros, so every line is 0 and the average is 0.0. Dividing by the count, not by 2, is what makes it work for any number of amounts."
         },
         {
          "in": [
-          "3",
-          "apple",
-          "egg",
-          "sky"
+          "5",
+          "12",
+          "12",
+          "-3",
+          "0",
+          "4"
          ],
          "out": [
-          "apple 2",
-          "egg 1",
-          "sky 0",
-          "3"
+          "12 12",
+          "12 24",
+          "-3 21",
+          "0 21",
+          "4 25",
+          "5.0"
          ],
-         "why": "The count has to be reset to 0 for each word, inside the outer loop. Counts that keep growing mean you set it to 0 only once, before the loop."
-        },
-        {
-         "in": [
-          "2",
-          "aeiou",
-          "xyz"
-         ],
-         "out": [
-          "aeiou 5",
-          "xyz 0",
-          "5"
-         ],
-         "why": "All five vowels counted, and the total ignores the word with none."
-        },
-        {
-         "in": [
-          "1",
-          "aa"
-         ],
-         "out": [
-          "aa 2",
-          "2"
-         ],
-         "why": "The same vowel twice counts twice, so go through the letters one at a time rather than checking whether a letter is present."
+         "why": "Five amounts, five lines, then the average. A sixth line of a single number means the total was printed as well."
         }
        ],
-       "fb": "Two counters do different jobs here: one resets for each word, inside the outer loop, and the total is set up once before it and printed once after it.",
-       "hint": "pyrange"
+       "fb": "The total so far belongs inside the loop and the average after it, worked out from the finished total and how many there were.",
+       "hint": "pyrange",
+       "teach": {
+        "say": "Printing inside the loop shows the total so far, while anything printed after the loop uses the finished total.",
+        "code": [
+         "total = 0",
+         "for i in range(2):",
+         "    total = total + 3",
+         "    print(total)"
+        ],
+        "out": [
+         "3",
+         "6"
+        ]
+       }
       }
      ]
     },

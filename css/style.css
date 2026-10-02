@@ -331,6 +331,14 @@ textarea{width:100%;background:#0f1930;color:var(--fg);border:1px solid var(--li
 .pytest .why{color:var(--soft)}
 .pybrief{margin:0 0 12px;padding-left:22px}
 .pybrief li{margin:4px 0;font-size:17px;line-height:1.45}
+/* The worked example above the task: how the technique looks, on other data */
+.pyteach{background:#122a3d;border-left:5px solid var(--info);border-radius:10px;
+  padding:10px 14px;margin:0 0 12px}
+.pyteach p{margin:0 0 6px;font-size:16px;line-height:1.45}
+.pyeg{margin:6px 0;padding:8px 10px;background:#0b1424;border-radius:8px;
+  font:15px/1.5 Consolas,monospace;color:#cfe3ff;white-space:pre-wrap}
+.pyegout{display:flex;gap:8px;align-items:baseline;margin:0;font-size:15px;color:var(--soft)}
+.pyegout span{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--info)}
 /* The line under the buttons that says where the pupil is up to across attempts */
 .pytry{margin:0 0 8px;font-size:15px;color:var(--soft);min-height:1.2em}
 /* After two failed checks the Hint button asks to be noticed, once */

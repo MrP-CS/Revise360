@@ -14,15 +14,25 @@
    "id": "pr-l02-q1",
    "station": 0,
    "marks": 2,
-   "q": "Print the total of two crate counts, then the first take away the second.",
+   "q": "Read two numbers and print their total, then their difference.",
+   "teach": {
+    "say": "+ adds, - subtracts and * multiplies. They work on numbers, so cast each input with int() first.",
+    "code": [
+     "a = int(input(\"First? \"))   # the user types 3",
+     "b = int(input(\"Second? \"))  # then 4",
+     "print(a * b)"
+    ],
+    "out": [
+     "12"
+    ]
+   },
    "brief": [
-    "Read two lines of input. Each one is a whole number of books.",
-    "Print the total of the two numbers.",
-    "Print the first number take away the second number, on the next line.",
-    "The second answer may come out negative, and that is correct."
+    "Read two whole numbers, one on each line.",
+    "Print the total, then the first take away the second.",
+    "The difference may be negative."
    ],
    "hint": "pyarith",
-   "starter": "# Two whole numbers in. Total first, then first minus second.\n",
+   "starter": "# Two whole numbers in. Total first, then the difference.\n",
    "tests": [
     {
      "in": [
@@ -33,7 +43,7 @@
       "23",
       "13"
      ],
-     "why": "185 instead of 23 means the two lines were joined as text. input() gives a string, so cast each one with int() before any arithmetic."
+     "why": "185 instead of 23 means the two lines were joined as text. Cast each one with int() before any arithmetic."
     },
     {
      "in": [
@@ -44,7 +54,7 @@
       "14",
       "0"
      ],
-     "why": "Two equal numbers give a difference of 0, which is a perfectly good answer. If nothing printed on the second line, the subtraction is missing."
+     "why": "Two equal numbers give a difference of 0, which is a real answer. An empty second line means the subtraction is missing."
     },
     {
      "in": [
@@ -55,24 +65,36 @@
       "13",
       "-5"
      ],
-     "why": "5 instead of -5 means you subtracted the other way round. Keep the order the question gives: the first number take away the second, even when the answer is below zero."
+     "why": "5 instead of -5 means you subtracted the other way round. Keep the order the brief gives, even below zero."
     }
    ],
-   "fb": "The four operators are + - * and /, and they work on numbers only. Anything coming from input() has to be cast first."
+   "fb": "The four operators are + - * and / and they work on numbers only, so anything from input() is cast first."
   },
   {
    "id": "pr-l02-q2",
    "station": 0,
    "marks": 3,
-   "q": "Print the total cost of some pencils, then half the price of one.",
+   "q": "Print the cost of some pencils, then half of one price.",
+   "teach": {
+    "say": "* multiplies and / divides. In Python / always gives a real number, so the answer keeps a decimal part even when it divides exactly.",
+    "code": [
+     "print(6 * 4)",
+     "print(6 / 4)",
+     "print(8 / 2)"
+    ],
+    "out": [
+     "24",
+     "1.5",
+     "4.0"
+    ]
+   },
    "brief": [
-    "Read two lines of input: the price of one pencil in pence, then how many pencils are bought. Both are whole numbers.",
-    "Print the total cost in pence.",
-    "Print half the price of one pencil, on the next line.",
-    "Work the half out with / . Dividing always gives a real number, so a price of 30 halves to 15.0."
+    "Read the price of one pencil in pence, then how many are bought.",
+    "Print the total cost.",
+    "Then print half of one price, worked out with / ."
    ],
    "hint": "pyarith",
-   "starter": "# Price in pence, then how many.\n# Output: the total cost, then half of one price.\n",
+   "starter": "# Price in pence, then how many. Total cost, then half a price.\n",
    "tests": [
     {
      "in": [
@@ -83,7 +105,7 @@
       "120",
       "15.0"
      ],
-     "why": "15 instead of 15.0 means the half was worked out some other way. The / operator always produces a real number in Python, even when the answer divides exactly."
+     "why": "15 instead of 15.0 means the half was worked out another way. / always gives a real number, even when it divides exactly."
     },
     {
      "in": [
@@ -94,7 +116,7 @@
       "135",
       "22.5"
      ],
-     "why": "A whole number answer here would mean you used // instead of /. Half of 45 is 22.5, and throwing the .5 away is a different calculation."
+     "why": "A whole number here means // was used. Half of 45 is 22.5, and throwing the .5 away is a different calculation."
     },
     {
      "in": [
@@ -105,24 +127,34 @@
       "198",
       "49.5"
      ],
-     "why": "If the total came out as a long row of repeated digits, you multiplied a string by a number: '99' * 2 repeats the text. Cast both lines with int() first."
+     "why": "A long row of repeated digits on the first line means a string was multiplied: '99' * 2 repeats the text. Cast both with int()."
     }
    ],
-   "fb": "In Python, / always gives a real number. That matters when you print it, because 15.0 and 15 are not the same output."
+   "fb": "In Python / always gives a real number, which matters when you print it: 15.0 and 15 are not the same output."
   },
   {
    "id": "pr-l02-q3",
    "station": 1,
    "marks": 3,
-   "q": "Print how many full crates the books fill, then how many are left over.",
+   "q": "Print how many full crates the books fill, and the leftovers.",
+   "teach": {
+    "say": "// divides and throws the fraction away, so it says how many whole lots fit. % gives what is left over. OCR calls them DIV and MOD.",
+    "code": [
+     "print(17 // 5)",
+     "print(17 % 5)"
+    ],
+    "out": [
+     "3",
+     "2"
+    ]
+   },
    "brief": [
-    "Read two lines of input: the number of books, then how many books one crate holds. Both are whole numbers.",
-    "Print how many full crates can be packed. Use whole number division, // , which OCR calls DIV.",
-    "Print how many books are left on the trolley, on the next line. Use the remainder operator, % , which OCR calls MOD.",
-    "Both answers are whole numbers."
+    "Read the number of books, then how many one crate holds.",
+    "Print how many full crates can be packed.",
+    "Then print how many books are left over."
    ],
    "hint": "pyarith",
-   "starter": "# Books, then crate size.\n# Output: full crates, then books left over.\n",
+   "starter": "# Books, then crate size. Full crates, then books left over.\n",
    "tests": [
     {
      "in": [
@@ -133,7 +165,7 @@
       "7",
       "5"
      ],
-     "why": "7.833... means you used / . A part-filled crate is not a full crate, so full crates needs // , which throws the fraction away and leaves a whole number."
+     "why": "7.833 means / was used. A part filled crate is not a full one, so use // , which leaves a whole number."
     },
     {
      "in": [
@@ -144,7 +176,7 @@
       "4",
       "0"
      ],
-     "why": "When the books divide exactly there is nothing left over, so the second answer is 0. A blank second line means the % calculation is missing."
+     "why": "When the books divide exactly there is nothing left over, so the second answer is 0."
     },
     {
      "in": [
@@ -155,72 +187,92 @@
       "0",
       "5"
      ],
-     "why": "1 instead of 0 means you rounded up. Fewer books than a crate holds fills no crates at all, and all 5 stay on the trolley."
+     "why": "1 instead of 0 means you rounded up. Fewer books than a crate holds fills no crates at all."
     }
    ],
-   "fb": "// and % are a pair: // answers how many whole lots fit, % answers what is left behind. Together they never lose anything."
+   "fb": "// and % are a pair: // says how many whole lots fit, % says what is left behind. Together they lose nothing."
   },
   {
    "id": "pr-l02-q4",
    "station": 1,
    "marks": 3,
-   "q": "Turn a race time in seconds into whole minutes and the seconds left over.",
+   "q": "Print how many stickers each of 8 pupils gets, and the leftovers.",
+   "teach": {
+    "say": "The number you divide by can be a fixed one. // gives the whole lots and % the remainder, so between them nothing is lost.",
+    "code": [
+     "sweets = 30",
+     "print(sweets // 7)",
+     "print(sweets % 7)"
+    ],
+    "out": [
+     "4",
+     "2"
+    ]
+   },
    "brief": [
-    "Read one line of input: a whole number of seconds.",
-    "Print the number of whole minutes.",
-    "Print the seconds left over, on the next line.",
-    "There are 60 seconds in a minute. Both answers are whole numbers."
+    "Read the total number of stickers.",
+    "Print how many each of the 8 pupils gets.",
+    "Then print how many stickers are left over."
    ],
    "hint": "pyarith",
-   "starter": "# Seconds in. Whole minutes out, then the seconds left over.\n",
+   "starter": "# Stickers in. Each pupil's share, then the leftovers.\n",
    "tests": [
     {
      "in": [
       "200"
      ],
      "out": [
-      "3",
-      "20"
-     ],
-     "why": "3.33... means / was used for the minutes. Whole minutes needs // . The seconds left over are not the digits after the decimal point: 200 % 60 is 20, not 33."
-    },
-    {
-     "in": [
-      "60"
-     ],
-     "out": [
-      "1",
+      "25",
       "0"
      ],
-     "why": "Exactly one minute leaves no seconds over, so 0 is the right second answer. If you printed 60, you printed the total rather than the remainder."
+     "why": "They divide exactly here, so nothing is left. An empty second line means the % is missing."
     },
     {
      "in": [
-      "45"
+      "50"
+     ],
+     "out": [
+      "6",
+      "2"
+     ],
+     "why": "6.25 means / was used for the share. A pupil cannot have a quarter of a sticker, so use // ."
+    },
+    {
+     "in": [
+      "5"
      ],
      "out": [
       "0",
-      "45"
+      "5"
      ],
-     "why": "Less than a minute gives 0 minutes and all 45 seconds. A 1 on the first line means the division rounded up instead of down."
+     "why": "Fewer stickers than pupils means everyone gets 0 and all 5 are left over. A 1 here means the division rounded up."
     }
    ],
-   "fb": "Splitting a quantity into bigger units is always // for the units and % for the remainder, whether it is seconds, pence or pupils in a minibus."
+   "fb": "Splitting a quantity up is always // for the whole lots and % for the remainder, whether it is stickers, pence or pupils in a minibus."
   },
   {
    "id": "pr-l02-q5",
    "station": 2,
    "marks": 3,
-   "q": "Print the area of a square and the volume of a cube of that side.",
+   "q": "Read a side length, then print the area and the volume.",
+   "teach": {
+    "say": "** raises a number to a power, so 2 ** 5 is 2 multiplied by itself five times. Do not use ^ , which means something else in Python.",
+    "code": [
+     "print(2 ** 5)",
+     "print(10 ** 3)"
+    ],
+    "out": [
+     "32",
+     "1000"
+    ]
+   },
    "brief": [
-    "Read one line of input: the length of one side in metres, a whole number.",
-    "Print the area of the square: the side to the power 2.",
-    "Print the volume of the cube, on the next line: the side to the power 3.",
-    "The power operator is ** , so a side of 4 squared is written 4 ** 2.",
-    "Both answers are whole numbers."
+    "Read one whole number: the length of a side.",
+    "Print the side to the power 2, the area of the square.",
+    "Then print the side to the power 3, the volume of the cube."
    ],
-   "hint": "pyarith",
-   "starter": "# One side length in. Area (power 2), then volume (power 3).\n",
+   "hint": "pypower",
+   "starter": "# One side length in. Power 2, then power 3.\n",
    "tests": [
     {
      "in": [
@@ -230,7 +282,7 @@
       "16",
       "64"
      ],
-     "why": "8 instead of 16 means you multiplied by 2 rather than raising to the power 2. Squaring 4 means 4 times 4, which is written 4 ** 2."
+     "why": "8 instead of 16 means you multiplied by 2. Squaring 4 means 4 times 4, written 4 ** 2."
     },
     {
      "in": [
@@ -240,7 +292,7 @@
       "49",
       "343"
      ],
-     "why": "21 on the second line means you multiplied by 3. A cube is the side times itself three times: 7 * 7 * 7, or 7 ** 3."
+     "why": "21 on the second line means you multiplied by 3. A cube is 7 * 7 * 7, written 7 ** 3."
     },
     {
      "in": [
@@ -250,24 +302,31 @@
       "1",
       "1"
      ],
-     "why": "A side of 1 gives 1 for both answers, which looks suspicious but is right. If only one line printed, the second calculation is missing."
+     "why": "A side of 1 gives 1 twice, which looks suspicious but is right. One line only means a calculation is missing."
     }
    ],
-   "fb": "** is the power operator. Watch out for ^ , which looks like a power in maths but means something completely different in Python."
+   "fb": "** is the power operator. Watch out for ^ , which looks like a power in maths but does something else in Python."
   },
   {
    "id": "pr-l02-q6",
    "station": 2,
    "marks": 3,
-   "q": "Print the length of one side of a square from its area.",
+   "q": "Read a square's area and print the length of one side.",
+   "teach": {
+    "say": "The power 0.5 is the square root, and it always gives a real number. Use float() for an input that may have a decimal point.",
+    "code": [
+     "print(36 ** 0.5)"
+    ],
+    "out": [
+     "6.0"
+    ]
+   },
    "brief": [
-    "Read one line of input: the area in square metres. It may have a decimal point.",
-    "Print the length of one side.",
-    "A square root is the power 0.5, so an area of 81 gives a side of 9.0.",
-    "The answer is a real number, so it always has a decimal part."
+    "Read the area, which may have a decimal point.",
+    "Print the length of one side."
    ],
    "hint": "pyarith",
-   "starter": "# Area in, side length out. A square root is the power 0.5.\n",
+   "starter": "# Area in, side length out\n",
    "tests": [
     {
      "in": [
@@ -276,7 +335,7 @@
      "out": [
       "9.0"
      ],
-     "why": "40.5 means you halved the area instead of rooting it. Halving and square rooting are different: the power 0.5 undoes the power 2."
+     "why": "40.5 means the area was halved rather than rooted. The power 0.5 undoes the power 2."
     },
     {
      "in": [
@@ -285,7 +344,7 @@
      "out": [
       "1.5"
      ],
-     "why": "A crash here means the input was cast with int() , which cannot handle a decimal point. Use float() for a number that may be a real number."
+     "why": "A crash here means int() was used, and it cannot handle a decimal point. Use float()."
     },
     {
      "in": [
@@ -294,24 +353,34 @@
      "out": [
       "10.0"
      ],
-     "why": "10 instead of 10.0 means the answer was cast back to an integer. Raising to a fractional power always gives a real number, so leave it as it comes."
+     "why": "10 instead of 10.0 means the answer was cast back to an integer. A fractional power always gives a real number."
     }
    ],
-   "fb": "Raising to the power 0.5 is the square root, and the answer is always a real number, even for a perfect square such as 81."
+   "fb": "Raising to the power 0.5 is the square root, and the answer is a real number even for a perfect square."
   },
   {
    "id": "pr-l02-q7",
    "station": 3,
    "marks": 3,
-   "q": "Print an amount rounded to the nearest whole number, then to 2 decimal places.",
+   "q": "Round an amount to a whole number, then to 2 decimal places.",
+   "teach": {
+    "say": "round(x) rounds to a whole number, and a second number says how many decimal places to keep. An exact half goes to the nearest even number.",
+    "code": [
+     "print(round(8.47))",
+     "print(round(8.476, 2))"
+    ],
+    "out": [
+     "8",
+     "8.48"
+    ]
+   },
    "brief": [
-    "Read one line of input: an amount in pounds, which may have a decimal point.",
-    "Print the amount rounded to the nearest whole number.",
-    "Print the amount rounded to 2 decimal places, on the next line.",
-    "Use round(). With one value inside the brackets it rounds to a whole number; a second value says how many decimal places to keep."
+    "Read an amount, which may have a decimal point.",
+    "Print it rounded to the nearest whole number.",
+    "Then print it rounded to 2 decimal places."
    ],
-   "hint": "pyarith",
-   "starter": "# One amount in. Rounded to a whole number, then to 2 decimal places.\n",
+   "hint": "pyround",
+   "starter": "# One amount in. Nearest whole number, then 2 decimal places.\n",
    "tests": [
     {
      "in": [
@@ -321,7 +390,7 @@
       "5",
       "4.57"
      ],
-     "why": "4.0 on the first line means you cut the decimals off instead of rounding. int() and // throw the fraction away; round() looks at it and decides."
+     "why": "4 on the first line is right; 4.0 means the decimals were cut off rather than rounded. int() throws them away, round() looks at them."
     },
     {
      "in": [
@@ -331,7 +400,7 @@
       "2",
       "2.5"
      ],
-     "why": "This one surprises everybody: Python rounds a value sitting exactly halfway to the nearest even whole number, so round(2.5) is 2. It is not a mistake in your code. Note too that rounding 2.5 to 2 decimal places changes nothing, so the second line is still 2.5."
+     "why": "This one surprises everybody: an exact half goes to the nearest even whole number, so round(2.5) is 2. Rounding 2.5 to 2 places changes nothing."
     },
     {
      "in": [
@@ -341,72 +410,92 @@
       "4",
       "3.5"
      ],
-     "why": "3.5 rounds up to 4 because 4 is the even one of the two neighbours. Compare it with the 2.5 test to see the rule in action."
+     "why": "3.5 goes up to 4 because 4 is the even neighbour. Compare this with the 2.5 test to see the rule."
     }
    ],
-   "fb": "round(x) gives a whole number and round(x, 2) keeps two decimal places. Exact halves go to the nearest even value, which is worth remembering before you assume your code is broken."
+   "fb": "round(x) gives a whole number and round(x, 2) keeps two decimal places. Exact halves go to the nearest even value."
   },
   {
    "id": "pr-l02-q8",
    "station": 3,
    "marks": 3,
-   "q": "Print how far out a bus prediction was, never as a negative number.",
+   "q": "Print the average of three scores, rounded to 1 decimal place.",
+   "teach": {
+    "say": "Dividing often leaves a long string of decimals. round(x, 1) keeps one decimal place and tidies the rest away.",
+    "code": [
+     "print(10 / 3)",
+     "print(round(10 / 3, 1))"
+    ],
+    "out": [
+     "3.3333333333333335",
+     "3.3"
+    ]
+   },
    "brief": [
-    "Read two lines of input: the predicted arrival in minutes, then the actual arrival. Both may have decimal points.",
-    "Print how far out the prediction was, as a positive number, rounded to 1 decimal place.",
-    "One line of output. Use abs() to remove the sign."
+    "Read three whole numbers, one on each line.",
+    "Print their average, rounded to 1 decimal place."
    ],
-   "hint": "pyarith",
-   "starter": "# Predicted, then actual. Print the gap between them, never negative.\n",
+   "hint": "pyround",
+   "starter": "# Three scores in, one rounded average out\n",
    "tests": [
     {
      "in": [
-      "12",
-      "15.4"
+      "7",
+      "8",
+      "9"
      ],
      "out": [
-      "3.4"
+      "8.0"
      ],
-     "why": "-3.4 means you printed the subtraction itself. abs() turns a negative number positive and leaves a positive one alone, which is exactly what how far out means. If you got 3.4000000000000004, the abs() is right but the round() is missing: real number arithmetic leaves tiny errors and rounding tidies them away."
+     "why": "This average is exact, and / still gives a real number, so the answer is 8.0 and not 8."
     },
     {
      "in": [
-      "20.1",
-      "16.8"
+      "5",
+      "6",
+      "6"
      ],
      "out": [
-      "3.3"
+      "5.7"
      ],
-     "why": "Here the prediction is late, so the subtraction is already positive and abs() changes nothing. 3.3000000000000007 means the round() is missing: subtracting real numbers often leaves a tiny error on the end, and round(x, 1) clears it."
+     "why": "5.666666666666667 means the division is right but the round() is missing. 5 means // was used instead of / ."
     },
     {
      "in": [
-      "7.5",
-      "7.5"
+      "1",
+      "1",
+      "2"
      ],
      "out": [
-      "0.0"
+      "1.3"
      ],
-     "why": "A perfect prediction leaves a gap of 0.0, not 0. The numbers are real numbers, so the answer keeps its decimal part."
+     "why": "Add all three before dividing: (a + b + c) / 3. Dividing only the last one gives a much smaller answer."
     }
    ],
-   "fb": "abs() gives the size of a number without its sign. Pair it with round() whenever real numbers are subtracted, because the result often carries a tiny error."
+   "fb": "round() takes a second number for the decimal places to keep, which is how a long division result is made readable."
   },
   {
    "id": "pr-l02-q9",
    "station": 4,
    "marks": 3,
    "q": "Print two random dice rolls from 1 to 6.",
+   "teach": {
+    "say": "random.randint(1, 6) picks a whole number from 1 to 6, and both ends can come up. Seeding first fixes the numbers, so the same seed always gives the same ones.",
+    "code": [
+     "import random",
+     "random.seed(1)",
+     "print(random.randint(1, 100))"
+    ],
+    "out": [
+     "18"
+    ]
+   },
    "brief": [
-    "Keep the lines already in the editor. They import random and set the seed from the input.",
-    "The same seed always gives the same two rolls, which is how your answer can be marked.",
-    "Print one random whole number from 1 to 6.",
-    "Print a second random whole number from 1 to 6, on the next line.",
-    "Use random.randint(1, 6). Both 1 and 6 can come up.",
-    "Do not call the random module anywhere else, or your numbers will not match."
+    "Start with import random, then random.seed(int(input())) to read the seed.",
+    "Print two random whole numbers from 1 to 6, one on each line."
    ],
    "hint": "pyoutput",
-   "starter": "import random\n\n# The seed is read for you. The same seed always gives the same rolls.\nrandom.seed(int(input()))\n\n# Two rolls below, one per line.\n",
+   "starter": "# Import random, seed it from the input, then roll twice\n",
    "tests": [
     {
      "in": [
@@ -416,7 +505,7 @@
       "6",
       "2"
      ],
-     "why": "Different numbers from these usually means the wrong ends. random.randint(1, 6) includes both 1 and 6, but random.randrange(1, 6) stops at 5 and takes a different path through the sequence, and randint(1, 7) can roll a 7."
+     "why": "Different numbers from these usually means the wrong ends: randrange(1, 6) stops at 5, and randint(1, 7) can roll a 7."
     },
     {
      "in": [
@@ -426,7 +515,7 @@
       "2",
       "6"
      ],
-     "why": "Two identical numbers mean one call was stored in a variable and that same variable was printed twice. Two rolls needs two separate calls to randint, and the second carries on the sequence from the first."
+     "why": "Two identical numbers mean one roll was stored and printed twice. Two rolls needs two separate calls."
     },
     {
      "in": [
@@ -436,25 +525,32 @@
       "5",
       "6"
      ],
-     "why": "If the first line matches but the second does not, you called the random module an extra time, perhaps while testing. Every call moves the sequence on, so one spare call shifts everything after it."
+     "why": "If the first line matches but the second does not, the random module was called an extra time. Every call moves the sequence on."
     }
    ],
-   "fb": "A seeded random sequence is fixed, which is how random code can be tested at all. Change the seed and you get a different but equally fixed sequence."
+   "fb": "A seeded random sequence is fixed, which is the only way random code can be marked at all."
   },
   {
    "id": "pr-l02-q10",
    "station": 4,
    "marks": 4,
    "q": "Print three random numbers from 10 to 20, then their total.",
+   "teach": {
+    "say": "Store each random number in a variable as you make it, then add the variables. Calling randint again gives a new number, never the same one back.",
+    "code": [
+     "import random",
+     "a = random.randint(1, 6)",
+     "b = random.randint(1, 6)",
+     "print(a + b)"
+    ]
+   },
    "brief": [
-    "Keep the lines already in the editor. They import random and set the seed from the input.",
-    "Generate three random whole numbers from 10 to 20, including both 10 and 20.",
-    "Print the three numbers, each on its own line, in the order they were generated.",
-    "Print their total on a fourth line.",
-    "Store each number in a variable as you go, so the total adds up the same three numbers you printed."
+    "Start with import random, then random.seed(int(input())) to read the seed.",
+    "Print three random whole numbers from 10 to 20, one on each line.",
+    "Then print their total."
    ],
    "hint": "pyoutput",
-   "starter": "import random\n\n# The seed is read for you. The same seed always gives the same numbers.\nrandom.seed(int(input()))\n\n# Three numbers from 10 to 20, then their total.\n",
+   "starter": "# Import random, seed it from the input, then three numbers and a total\n",
    "tests": [
     {
      "in": [
@@ -466,7 +562,7 @@
       "20",
       "51"
      ],
-     "why": "If the first three lines are right but the total is wrong, you called randint again inside the total. That draws a fourth number instead of adding the three you already have. Store each number in a variable first, then add the variables."
+     "why": "If the three numbers are right but the total is not, randint was called again inside the total. That draws a fourth number."
     },
     {
      "in": [
@@ -478,7 +574,7 @@
       "18",
       "48"
      ],
-     "why": "Both ends of the range turn up here. A missing 20 points at random.randrange(10, 20), which stops at 19, and a missing 10 points at randint(11, 20). randint includes both ends."
+     "why": "Both ends turn up here. A missing 20 points at randrange(10, 20), which stops at 19; a missing 10 points at randint(11, 20)."
     },
     {
      "in": [
@@ -490,26 +586,35 @@
       "20",
       "44"
      ],
-     "why": "If your numbers are in a different order from these, something called the random module before your three draws. Each call moves the fixed sequence on by one."
+     "why": "A different order from these means something called the random module before your three draws."
     }
    ],
-   "fb": "Use a variable for every random number you need more than once. Calling randint again never gives you the same number back."
+   "fb": "Use a variable for every random number you need more than once, because randint never hands the same one back."
   },
   {
    "id": "pr-l02-q11",
    "station": 5,
    "marks": 4,
-   "q": "Print the takings in pence, then as pounds and pence, then a third share.",
+   "q": "Print the takings in pence, then in whole pounds and pence.",
+   "teach": {
+    "say": "Work the total out once and store it, then use // and % on that variable instead of working it out again.",
+    "code": [
+     "total = 7 * 45",
+     "print(total)",
+     "print(total // 100)"
+    ],
+    "out": [
+     "315",
+     "3"
+    ]
+   },
    "brief": [
-    "Read two lines of input: the number of rolls sold, then the price of one roll in pence. Both are whole numbers.",
+    "Read how many rolls were sold, then the price of one in pence.",
     "Print the total takings in pence.",
-    "Print the whole pounds in that total, using // . There are 100 pence in a pound.",
-    "Print the pence left over, using % .",
-    "Print one charity box's share: the total in pounds divided by 3, rounded to 2 decimal places.",
-    "Four lines of output in that order."
+    "Then print the whole pounds in that total, then the pence left over."
    ],
    "hint": "pyarith",
-   "starter": "# Rolls sold, then the price of one in pence.\n# Output: total pence / whole pounds / pence left over / a third of the total in pounds.\n",
+   "starter": "# Rolls and price in. Total pence, whole pounds, pence left over.\n",
    "tests": [
     {
      "in": [
@@ -519,10 +624,9 @@
      "out": [
       "1015",
       "10",
-      "15",
-      "3.38"
+      "15"
      ],
-     "why": "If the first line is a long row of repeated digits, a string was multiplied rather than a number: cast both inputs with int() . 3.3833333333333333 on the last line means the division is right but the round() is missing."
+     "why": "A long row of repeated digits on the first line means a string was multiplied. Cast both inputs with int()."
     },
     {
      "in": [
@@ -532,10 +636,9 @@
      "out": [
       "396",
       "3",
-      "96",
-      "1.32"
+      "96"
      ],
-     "why": "This share divides exactly, so it looks the same with or without round() . Check instead that // and % are the right way round: // gives the 3 whole pounds, % gives the 96 pence left."
+     "why": "There are 100 pence in a pound, so // 100 gives the 3 pounds and % 100 gives the 96 pence."
     },
     {
      "in": [
@@ -545,13 +648,12 @@
      "out": [
       "100",
       "1",
-      "0",
-      "0.33"
+      "0"
      ],
-     "why": "Exactly one pound leaves 0 pence over. A share of 0 on the last line means // was used instead of / , which throws away everything after the decimal point before the rounding gets a chance."
+     "why": "Exactly one pound leaves 0 pence over, and that 0 still has to be printed."
     }
    ],
-   "fb": "Real programs chain these together: cast the inputs, work out one total, then use // , % , / and round() to show that total in each form the user asked for."
+   "fb": "Real programs chain these together: cast the inputs, work out one total, then use // and % to show it in the form asked for."
   }
  ]
 }

@@ -57,7 +57,13 @@ self.onmessage = async (e) => {
     py.runPython([
       "import builtins",
       "def __r360_input(prompt=''):",
-      "    if prompt: print(prompt, end='')",
+      /* A prompt belongs inside input() - it is how everyone writes Python, and
+       * how every textbook teaches it. It used to be printed even while marking,
+       * which put the prompt into the output being checked, so questions had to
+       * tell pupils to leave the brackets empty. Now the prompt shows when they
+       * press Run, where it is useful, and is left out of marking, where it is
+       * noise. Either style passes. */
+      "    if prompt and __r360_echo: print(prompt, end='')",
       "    if len(__r360_lines) == 0:",
       "        raise EOFError('The program asked for more input than this test provides.')",
       "    v = __r360_lines.pop(0)",

@@ -20,13 +20,13 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Collect five numbers into a list and print the list.",
+       "q": "Read five whole numbers into a list and print the list.",
        "brief": [
         "Read five whole numbers, one on each line.",
-        "Put them in a list, in the order they are typed.",
-        "Print the list itself, the way Python prints a list - for example: [1, 2, 3, 4, 5]"
+        "Store them in a list, in the order they are typed.",
+        "Print the list itself, for example: [8, 3, 5, 1, 9]"
        ],
-       "starter": "nums = []\n\n# Read five whole numbers into nums, then print nums\n",
+       "starter": "# Read five numbers into a list, then print the list\n",
        "tests": [
         {
          "in": [
@@ -69,19 +69,30 @@
         }
        ],
        "fb": "Start with an empty list and .append() each number as you read it - printing the list shows the square brackets and commas for you.",
-       "hint": "arrayindex"
+       "hint": "pylist",
+       "teach": {
+        "say": "A list holds many values in one variable. Start with an empty list and .append() each value onto the end of it.",
+        "code": [
+         "box = []",
+         "box.append(4)",
+         "box.append(9)",
+         "print(box)"
+        ],
+        "out": [
+         "[4, 9]"
+        ]
+       }
       },
       {
        "t": "code",
        "marks": 2,
-       "q": "Read some colours into a list, then print how many and the last one.",
+       "q": "Print how many colours were typed, then the last one.",
        "brief": [
-        "Read one whole number saying how many colours follow.",
-        "Read that many colours, one on each line, into a list.",
-        "Print how many colours are in the list.",
-        "Print the last colour in the list on the next line."
+        "Read one whole number: how many colours follow.",
+        "Read that many colours into a list.",
+        "Print how many are in the list, then the last one."
        ],
-       "starter": "# Read the count, then read that many colours into a list\n",
+       "starter": "# Read the colours into a list, then report on it\n",
        "tests": [
         {
          "in": [
@@ -123,7 +134,7 @@
         }
        ],
        "fb": "len(list) tells you how many items there are, so the highest position you can read is len(list) - 1.",
-       "hint": "arrayindex"
+       "hint": "pylist"
       }
      ]
     },
@@ -138,118 +149,162 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Print the lunch at the position typed in.",
+       "q": "Print the item at a typed position in the list.",
        "brief": [
-        "The list is written for you - do not change it.",
-        "Read one whole number. It is a position in the list, counting from 0.",
+        "Read four words into a list, one on each line.",
+        "Then read one whole number: a position counting from 0.",
         "Print the item at that position, and nothing else."
        ],
-       "starter": "lunches = ['tomato soup', 'veg curry', 'fish pie', 'jacket potato', 'pasta bake', 'bean chilli']\n\n# Read a position and print the lunch at that position\n",
+       "starter": "# Read four words, then print the one at the position given\n",
        "tests": [
         {
          "in": [
+          "pliers",
+          "hammer",
+          "chisel",
+          "wrench",
           "0"
          ],
          "out": [
-          "tomato soup"
+          "pliers"
          ],
-         "why": "Position 0 is the first item. If you printed 'bean chilli' you used lunches[p - 1], and with p = 0 that counts backwards from the end."
+         "why": "Position 0 is the first item. Printing hammer means you used position 1 for the first item."
         },
         {
          "in": [
+          "pliers",
+          "hammer",
+          "chisel",
+          "wrench",
           "3"
          ],
          "out": [
-          "jacket potato"
+          "wrench"
          ],
-         "why": "Position 3 is the fourth item, because the counting starts at 0."
+         "why": "Four items means the last position is 3, not 4 - adding 1 would run off the end of the list."
         },
         {
          "in": [
-          "5"
+          "pliers",
+          "hammer",
+          "chisel",
+          "wrench",
+          "2"
          ],
          "out": [
-          "bean chilli"
+          "chisel"
          ],
-         "why": "There are six items, so the last position is 5 - adding 1 here would run off the end of the list."
+         "why": "Position 2 is the third item, because the counting starts at 0."
         },
         {
          "in": [
+          "nut",
+          "bolt",
+          "screw",
+          "nail",
           "1"
          ],
          "out": [
-          "veg curry"
+          "bolt"
          ],
-         "why": "Position 1 is the second item, not the first."
+         "why": "Different words this time, so a program that prints a word you typed in yourself will fail here."
         }
        ],
-       "fb": "A list of six items has positions 0 to 5 - the last position is always one less than the length.",
-       "hint": "arrayindex"
+       "fb": "A list of four items has positions 0 to 3, so the last position is always one less than the length.",
+       "hint": "pylist",
+       "teach": {
+        "say": "A list is indexed like a string. box[0] is the first item and box[len(box) - 1] is the last.",
+        "code": [
+         "box = [\"tin\", \"jar\", \"tub\"]",
+         "print(box[1])"
+        ],
+        "out": [
+         "jar"
+        ]
+       }
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "Print the scores at two positions in the list, then their total.",
+       "q": "Print the numbers at two typed positions, then their total.",
        "brief": [
-        "The list is written for you - do not change it.",
-        "Read two whole numbers, each a position counting from 0: the first position, then the second.",
-        "Print the score at the first position.",
-        "Print the score at the second position on the next line.",
-        "Print the two scores added together on the line after that."
+        "Read five whole numbers into a list, one on each line.",
+        "Then read two positions, counting from 0.",
+        "Print the number at the first position, then at the second, then their total."
        ],
-       "starter": "scores = [14, 9, 22, 5, 17, 30, 8]\n\n# Read two positions, print both scores and their total\n",
+       "starter": "# Read five numbers, then look two of them up and add them\n",
        "tests": [
         {
          "in": [
+          "14",
+          "9",
+          "22",
+          "5",
+          "17",
           "0",
-          "6"
+          "4"
          ],
          "out": [
           "14",
-          "8",
-          "22"
+          "17",
+          "31"
          ],
-         "why": "0 is the first score and 6 is the last of seven - if either came out wrong you are counting from 1."
+         "why": "0 is the first number and 4 is the last of five. If either came out wrong you are counting the positions from 1."
         },
         {
          "in": [
+          "14",
+          "9",
+          "22",
+          "5",
+          "17",
           "2",
-          "5"
+          "3"
          ],
          "out": [
           "22",
-          "30",
-          "52"
+          "5",
+          "27"
          ],
          "why": "Read the positions in the order the brief gives them - swapping them swaps the first two lines."
         },
         {
          "in": [
-          "4",
-          "4"
-         ],
-         "out": [
+          "14",
+          "9",
+          "22",
+          "5",
           "17",
-          "17",
-          "34"
-         ],
-         "why": "The same position twice is allowed - the score is simply used twice, so the total is double it."
-        },
-        {
-         "in": [
           "1",
-          "3"
+          "1"
          ],
          "out": [
           "9",
-          "5",
-          "14"
+          "9",
+          "18"
          ],
-         "why": "Add the two scores you looked up, not the two position numbers."
+         "why": "The same position twice is allowed: the number is simply used twice, so the total is double it."
+        },
+        {
+         "in": [
+          "6",
+          "2",
+          "8",
+          "4",
+          "10",
+          "4",
+          "0"
+         ],
+         "out": [
+          "10",
+          "6",
+          "16"
+         ],
+         "why": "Add the two numbers you looked up, not the two position numbers - those would give 4."
         }
        ],
-       "fb": "Looking an item up with scores[a] gives you a number you can use in a sum like any other.",
-       "hint": "arrayindex"
+       "fb": "Looking an item up with nums[a] gives you an ordinary number, which you can use in a sum like any other.",
+       "hint": "pylist"
       }
      ]
     },
@@ -264,14 +319,13 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Print each of four plant names with how many letters it has.",
+       "q": "Print each of four words with how many letters it has.",
        "brief": [
-        "Read four plant names, one on each line, into a list.",
-        "Go through the list with a for loop.",
-        "For each plant print its name, a single space, then how many letters it has.",
-        "One line for each plant, in the order they were typed."
+        "Read four words into a list, one on each line.",
+        "Print each word, a single space, then how many letters it has.",
+        "One line per word, in the order they were typed."
        ],
-       "starter": "plants = []\n\n# Read four names, then loop through the list printing each name and its length\n",
+       "starter": "# Read four words, then print each one with its length\n",
        "tests": [
         {
          "in": [
@@ -320,19 +374,29 @@
         }
        ],
        "fb": "A for loop over a list hands you the items one at a time, so you never need a position number for this job.",
-       "hint": "arrayindex"
+       "hint": "pylist",
+       "teach": {
+        "say": "A for loop over a list hands you each item in turn, so you never need a position number for this job.",
+        "code": [
+         "for t in [\"tin\", \"jar\"]:",
+         "    print(t)"
+        ],
+        "out": [
+         "tin",
+         "jar"
+        ]
+       }
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "Print each of five numbers next to the position it is stored at.",
+       "q": "Print each of five numbers next to its position.",
        "brief": [
-        "Read five whole numbers, one on each line, into a list.",
-        "Go through the positions of the list using range(len(...)).",
-        "For each position print the position number, a single space, then the number stored there.",
+        "Read five whole numbers into a list, one on each line.",
+        "Print each position, a single space, then the number stored there.",
         "Positions count from 0."
        ],
-       "starter": "nums = []\n\n# Read five numbers, then loop over the positions with range(len(nums))\n",
+       "starter": "# Loop over the positions, not the items\n",
        "tests": [
         {
          "in": [
@@ -387,7 +451,19 @@
         }
        ],
        "fb": "range(len(nums)) counts the positions, so nums[i] is the item at the position the loop is on.",
-       "hint": "arrayindex"
+       "hint": "pylist",
+       "teach": {
+        "say": "range(len(box)) counts the positions of a list, so box[i] is the item the loop is on.",
+        "code": [
+         "box = [\"tin\", \"jar\"]",
+         "for i in range(len(box)):",
+         "    print(i)"
+        ],
+        "out": [
+         "0",
+         "1"
+        ]
+       }
       }
      ]
     },
@@ -402,42 +478,49 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Add two items to the basket, then list the whole basket.",
+       "q": "Append two items to a basket of four, then list it.",
        "brief": [
-        "The four items already in the list are written for you - do not change them.",
-        "Read two more items, one on each line, and add each one to the end of the list with .append().",
-        "Print how many items are in the list.",
-        "Then print every item on its own line, in order."
+        "Read four items into a list, one on each line.",
+        "Read two more and append them to the same list.",
+        "Print how many items there are, then every item on its own line."
        ],
-       "starter": "basket = ['apple', 'pear', 'plum', 'grape']\n\n# Read two more items, append them, then print the count and the whole basket\n",
+       "starter": "# Four items, then two more on the end\n",
        "tests": [
         {
          "in": [
+          "flour",
+          "sugar",
+          "yeast",
+          "salt",
           "mango",
           "kiwi"
          ],
          "out": [
           "6",
-          "apple",
-          "pear",
-          "plum",
-          "grape",
+          "flour",
+          "sugar",
+          "yeast",
+          "salt",
           "mango",
           "kiwi"
          ],
-         "why": ".append() puts an item on the end, so the two new ones come after grape in the order they were typed."
+         "why": ".append() puts an item on the end, so the last two come after salt in the order they were typed."
         },
         {
          "in": [
+          "flour",
+          "sugar",
+          "yeast",
+          "salt",
           "fig",
           "date"
          ],
          "out": [
           "6",
-          "apple",
-          "pear",
-          "plum",
-          "grape",
+          "flour",
+          "sugar",
+          "yeast",
+          "salt",
           "fig",
           "date"
          ],
@@ -445,92 +528,122 @@
         },
         {
          "in": [
+          "rice",
+          "beans",
+          "lentils",
+          "oats",
           "lemon",
           "lime"
          ],
          "out": [
           "6",
-          "apple",
-          "pear",
-          "plum",
-          "grape",
+          "rice",
+          "beans",
+          "lentils",
+          "oats",
           "lemon",
           "lime"
          ],
-         "why": "If an item is missing you may have replaced the list with the new value instead of appending to it."
+         "why": "If an item is missing you replaced the list with the new value instead of appending to it."
         }
        ],
-       "fb": "basket.append(x) changes the list you already have - it does not make a new one, so there is nothing to assign.",
-       "hint": "arrayindex"
+       "fb": "basket.append(x) changes the list you already have, so there is nothing to assign it back to.",
+       "hint": "pylist"
       },
       {
        "t": "code",
        "marks": 4,
-       "q": "Remove a named person from the queue, then the one at a given position.",
+       "q": "Remove a named person from the queue, then one by position.",
        "brief": [
-        "The queue is written for you - do not change it.",
-        "Read one name, then read one whole number.",
-        "First take the named person out of the list using .remove().",
-        "Then, working on the list as it now is, delete the person at the position given by the number, using del. Positions count from 0.",
-        "Print the names that are left, one on each line, in order."
+        "Read five names into a list, one on each line.",
+        "Read a name to take out, then a position to delete from what is left.",
+        "Print the names still in the list, one on each line."
        ],
-       "starter": "queue = ['Ama', 'Bo', 'Cai', 'Dara', 'Esme', 'Finn']\n\n# Remove the named person, then del the person at the given position, then print the rest\n",
+       "starter": "# One name out by value, one by position\n",
        "tests": [
         {
          "in": [
+          "Ama",
+          "Bo",
+          "Cai",
+          "Dara",
+          "Esme",
           "Cai",
           "0"
          ],
          "out": [
           "Bo",
           "Dara",
-          "Esme",
-          "Finn"
-         ],
-         "why": "Position 0 is the front of the list after Cai has gone, so Ama is the one deleted - if Bo disappeared you counted from 1."
-        },
-        {
-         "in": [
-          "Ama",
-          "3"
-         ],
-         "out": [
-          "Bo",
-          "Cai",
-          "Dara",
-          "Finn"
-         ],
-         "why": "The position is read against the shortened list. Deleting from the original six would have taken Dara instead of Esme."
-        },
-        {
-         "in": [
-          "Bo",
-          "4"
-         ],
-         "out": [
-          "Ama",
-          "Cai",
-          "Dara",
           "Esme"
          ],
-         "why": "Five names are left after the remove, so 4 is the last position - this is where going one too far crashes the program."
+         "why": "Once Cai has gone, position 0 is Ama. If Bo disappeared instead you counted the positions from 1."
         },
         {
          "in": [
-          "Finn",
+          "Ama",
+          "Bo",
+          "Cai",
+          "Dara",
+          "Esme",
+          "Ama",
           "2"
          ],
          "out": [
-          "Ama",
           "Bo",
-          "Dara",
+          "Cai",
           "Esme"
          ],
-         "why": ".remove() takes a name, del takes a position - mixing them up is the usual slip here."
+         "why": "The position counts along the shortened list. Deleting from the original five would have taken Cai instead of Dara."
+        },
+        {
+         "in": [
+          "Ama",
+          "Bo",
+          "Cai",
+          "Dara",
+          "Esme",
+          "Bo",
+          "3"
+         ],
+         "out": [
+          "Ama",
+          "Cai",
+          "Dara"
+         ],
+         "why": "Four names are left after the remove, so 3 is the last position - this is where going one too far crashes."
+        },
+        {
+         "in": [
+          "Ama",
+          "Bo",
+          "Cai",
+          "Dara",
+          "Esme",
+          "Esme",
+          "1"
+         ],
+         "out": [
+          "Ama",
+          "Cai",
+          "Dara"
+         ],
+         "why": ".remove() is given a name and del is given a position - mixing the two up is the usual slip here."
         }
        ],
-       "fb": ".remove() is given the value to take out; del is given the position - and each one makes the list shorter straight away.",
-       "hint": "arrayindex"
+       "fb": ".remove() is given the value to take out; del is given the position. Both shorten the list at once, so the second one works on what is left.",
+       "hint": "pylist",
+       "teach": {
+        "say": "queue.remove(v) takes out the value v and del queue[i] takes out the item at position i. Each one makes the list shorter straight away.",
+        "code": [
+         "box = [\"tin\", \"jar\", \"tub\"]",
+         "box.remove(\"jar\")",
+         "del box[0]",
+         "print(box)"
+        ],
+        "out": [
+         "['tub']"
+        ]
+       }
       }
      ]
     },
@@ -545,14 +658,13 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Total five numbers and work out their average.",
+       "q": "Print the total and the average of five numbers.",
        "brief": [
-        "Read five whole numbers, one on each line, into a list.",
-        "Print the total of the five numbers.",
-        "Print the average on the next line, rounded to one decimal place.",
-        "A whole average still shows one decimal place - 5 is printed as 5.0"
+        "Read five whole numbers into a list, one on each line.",
+        "Print their total.",
+        "Then print the average, rounded to 1 decimal place, so 5 shows as 5.0"
        ],
-       "starter": "nums = []\n\n# Read five numbers, add them up with a loop, then print the total and the average\n",
+       "starter": "# Total the list, then work out the average\n",
        "tests": [
         {
          "in": [
@@ -612,20 +724,30 @@
         }
        ],
        "fb": "Start the running total at 0 before the loop, add each item inside the loop, and divide only once the loop has finished.",
-       "hint": "arrayindex"
+       "hint": "pylist",
+       "teach": {
+        "say": "len(nums) is how many items a list holds, so dividing the total by it gives an average that works for any list. / always gives a real number.",
+        "code": [
+         "nums = [2, 5, 8]",
+         "print(len(nums))",
+         "print(15 / len(nums))"
+        ],
+        "out": [
+         "3",
+         "5.0"
+        ]
+       }
       },
       {
        "t": "code",
        "marks": 4,
-       "q": "Find the largest and smallest of seven numbers without max() or min().",
+       "q": "Find the largest and smallest of seven numbers with a loop.",
        "brief": [
-        "Read seven whole numbers, one on each line, into a list.",
-        "Find the largest and the smallest yourself, with a loop.",
-        "Print the largest.",
-        "Print the smallest on the next line.",
-        "Do not use max() or min()."
+        "Read seven whole numbers into a list, one on each line.",
+        "Find the largest and the smallest with a loop of your own.",
+        "Print the largest, then the smallest."
        ],
-       "starter": "nums = []\n\n# Read seven numbers, then find the largest and smallest with a loop\n",
+       "starter": "# Find the largest and the smallest yourself\n",
        "tests": [
         {
          "in": [
@@ -693,7 +815,7 @@
         }
        ],
        "fb": "Start both answers at the first item, then compare every item against them in turn - the first item is the only safe starting guess.",
-       "hint": "arrayindex",
+       "hint": "pylist",
        "forbid": [
         [
          "max(",
@@ -718,16 +840,13 @@
       {
        "t": "code",
        "marks": 6,
-       "q": "Report on eight quiz marks: total, average, passes and where the best is.",
+       "q": "Report the total, average, passes and best mark of a quiz.",
        "brief": [
-        "Read eight whole numbers, one on each line, into a list. Each one is a mark out of 20.",
-        "Print the total of the eight marks.",
-        "Print the average on the next line, rounded to one decimal place. A whole average still shows one decimal place - 13 is printed as 13.0",
-        "Print how many of the marks are 12 or more on the line after that.",
-        "Print the position of the highest mark on the last line, counting from 0. If two marks are equally high, give the position of the first one.",
-        "Do not use max() or .index() - find the highest mark with a loop."
+        "Read eight marks out of 20 into a list, one on each line.",
+        "Print the total, then the average rounded to 1 decimal place.",
+        "Then how many marks reach 12, then the position of the first highest mark."
        ],
-       "starter": "marks = []\n\n# Read eight marks, then print the total, the average, the number of passes\n# and the position of the highest mark\n",
+       "starter": "# Total, average, passes, and where the best mark sits\n",
        "tests": [
         {
          "in": [
@@ -826,7 +945,7 @@
         }
        ],
        "fb": "Four separate jobs over the same list: one running total, one counter with a condition, and one remembered position that you keep updating.",
-       "hint": "arrayindex",
+       "hint": "pylist",
        "forbid": [
         [
          "max(",

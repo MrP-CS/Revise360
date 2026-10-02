@@ -23,11 +23,10 @@
        "q": "Print a word's length, then its first and last characters.",
        "brief": [
         "Read one word.",
-        "Print how many characters it has on the first line.",
-        "Print its first character on the second line.",
-        "Print its last character on the third line."
+        "Print its length, then its first character, then its last.",
+        "One on each line."
        ],
-       "starter": "# Read a word, then print its length, its first character and its last character\n",
+       "starter": "# A length, a first character and a last character\n",
        "tests": [
         {
          "in": [
@@ -75,18 +74,30 @@
         }
        ],
        "fb": "len() counts the characters. Positions run from 0 to len() - 1, so the last one is len() - 1, which is also written as -1.",
-       "hint": "strslice"
+       "hint": "pystring",
+       "teach": {
+        "say": "len() counts the characters. The first one sits at position 0, so the last one is at len() - 1, which is also written as -1.",
+        "code": [
+         "w = \"otter\"",
+         "print(len(w))",
+         "print(w[1])"
+        ],
+        "out": [
+         "5",
+         "t"
+        ]
+       }
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "Print the character at a chosen position in a word, if there is one.",
+       "q": "Print the character at a typed position, if there is one.",
        "brief": [
-        "Read one word, then read one whole number - a position counting from 0.",
-        "If that position exists in the word, print the character at it.",
-        "Otherwise print: no such position"
+        "Read one word, then a position counting from 0.",
+        "Print the character at that position.",
+        "If there is no such position, print: no such position"
        ],
-       "starter": "# Read a word and a position, then print the character there if it exists\n",
+       "starter": "# Print the character at that position, if it exists\n",
        "tests": [
         {
          "in": [
@@ -140,7 +151,18 @@
         }
        ],
        "fb": "A string of length n has positions 0 to n - 1. Check against the length, never against a number you typed in yourself.",
-       "hint": "strslice"
+       "hint": "pystring",
+       "teach": {
+        "say": "A word of length n has positions 0 to n - 1, so test the position against len() before you use it.",
+        "code": [
+         "w = \"otter\"",
+         "if 4 < len(w):",
+         "    print(w[4])"
+        ],
+        "out": [
+         "r"
+        ]
+       }
       }
      ]
     },
@@ -155,13 +177,13 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Make a three-letter code from the start of a word.",
+       "q": "Print the first three characters of a word.",
        "brief": [
         "Read one word.",
-        "If it has 3 or more characters, print its first 3 characters and nothing else.",
-        "If it has fewer than 3 characters, print: too short"
+        "Print its first three characters and nothing else.",
+        "If it has fewer than three, print: too short"
        ],
-       "starter": "# Read a word and print its first three characters, or say it is too short\n",
+       "starter": "# The first three characters, or too short\n",
        "tests": [
         {
          "in": [
@@ -210,7 +232,17 @@
         }
        ],
        "fb": "In a slice w[a:b], a is included and b is not. So w[0:3] is three characters, and the 3 is the position after the last one you want.",
-       "hint": "strslice"
+       "hint": "pystring",
+       "teach": {
+        "say": "In a slice w[a:b] the start is included and the end is not, so w[0:2] gives two characters.",
+        "code": [
+         "w = \"anchor\"",
+         "print(w[0:2])"
+        ],
+        "out": [
+         "an"
+        ]
+       }
       },
       {
        "t": "code",
@@ -218,10 +250,10 @@
        "q": "Print a line of text without its first and last characters.",
        "brief": [
         "Read one line of text.",
-        "If it has 3 or more characters, print it with the first and the last character removed.",
-        "If it has fewer than 3 characters, print: nothing inside"
+        "Print it with its first and last characters removed.",
+        "If it has fewer than three characters, print: nothing inside"
        ],
-       "starter": "# Print the line without its first and last characters\n",
+       "starter": "# Drop one character from each end\n",
        "tests": [
         {
          "in": [
@@ -270,7 +302,17 @@
         }
        ],
        "fb": "s[1:len(s) - 1] drops one character from each end. Taking a slice off the end of a string never crashes, it just gives you less than you expected, so check the length first.",
-       "hint": "strslice"
+       "hint": "pystring",
+       "teach": {
+        "say": "A slice can measure the string with len(), so s[1:len(s)] drops the first character and keeps everything else.",
+        "code": [
+         "s = \"stone\"",
+         "print(s[1:len(s)])"
+        ],
+        "out": [
+         "tone"
+        ]
+       }
       }
      ]
     },
@@ -287,12 +329,11 @@
        "marks": 4,
        "q": "Compare two words ignoring capitals, and order them if they differ.",
        "brief": [
-        "Read two words, one per line.",
-        "If they are the same word once capitals are ignored, print: match - and nothing else.",
-        "Otherwise print: different - and then on a second line print whichever of the two words comes first in alphabetical order, again ignoring capitals.",
-        "Print that word exactly as it was typed."
+        "Read two words, one on each line.",
+        "If they are the same word once capitals are ignored, print: match",
+        "Otherwise print: different - then the word that comes first alphabetically, exactly as typed."
        ],
-       "starter": "# Compare the two words ignoring capitals, and say which comes first if they differ\n",
+       "starter": "# Same word? If not, which one comes first?\n",
        "tests": [
         {
          "in": [
@@ -348,7 +389,18 @@
         }
        ],
        "fb": "Put both strings into the same case before comparing - .lower() on both, or .upper() on both. This matters for < just as much as for ==, because A has code 65 and a has code 97.",
-       "hint": "strslice"
+       "hint": "pystring",
+       "teach": {
+        "say": "A capital is not the same character as a small letter, so put both strings in the same case before you compare them.",
+        "code": [
+         "a = \"Ferry\"",
+         "b = \"ferry\"",
+         "print(a == b, a.lower() == b.lower())"
+        ],
+        "out": [
+         "False True"
+        ]
+       }
       },
       {
        "t": "code",
@@ -356,10 +408,9 @@
        "q": "Count the capital letters in a line of text.",
        "brief": [
         "Read one line of text.",
-        "Count how many of its characters are capital letters.",
-        "Print only that count."
+        "Print how many of its characters are capital letters."
        ],
-       "starter": "# Go through the line one character at a time and count the capitals\n",
+       "starter": "# Count the capitals\n",
        "tests": [
         {
          "in": [
@@ -408,7 +459,19 @@
         }
        ],
        "fb": "A character is a capital when it is different from its own lower-case version. Digits and spaces are the same in either case, so this test leaves them out on its own.",
-       "hint": "strslice"
+       "hint": "pystring",
+       "teach": {
+        "say": "A for loop over a string hands you one character at a time. A character is a capital when it is different from its own lower-case version.",
+        "code": [
+         "for ch in \"Ok!\":",
+         "    print(ch, ch != ch.lower())"
+        ],
+        "out": [
+         "O True",
+         "k False",
+         "! False"
+        ]
+       }
       }
      ]
     },
@@ -423,13 +486,13 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Say whether a word is inside a line of text, and whether it starts it.",
+       "q": "Say whether a word is in the text, and at its start.",
        "brief": [
-        "Read one line of text, then read the word to look for.",
-        "If the word does not appear anywhere in the text, print: missing - and nothing else.",
-        "If it does appear, print: found - and then on a second line print: at the start - if the text begins with that word, or: inside - if it does not."
+        "Read one line of text, then the word to look for.",
+        "If the word is not in the text, print: missing",
+        "Otherwise print: found - then: at the start - or: inside"
        ],
-       "starter": "# Say whether the word is in the text, and whether the text begins with it\n",
+       "starter": "# Is the word there, and does the text begin with it?\n",
        "tests": [
         {
          "in": [
@@ -497,18 +560,30 @@
         }
        ],
        "fb": "word in text asks whether word appears anywhere inside text - the thing being looked for comes first. in cannot tell you where, so a slice from position 0 is needed for the second part.",
-       "hint": "strslice"
+       "hint": "pystring",
+       "teach": {
+        "say": "word in text is True when the word appears anywhere inside the text. It cannot say where, so a slice from position 0 answers that part.",
+        "code": [
+         "t = \"wet paint\"",
+         "print(\"paint\" in t)",
+         "print(t[0:3] == \"wet\")"
+        ],
+        "out": [
+         "True",
+         "True"
+        ]
+       }
       },
       {
        "t": "code",
        "marks": 4,
-       "q": "Print the position where a word starts inside a line of text.",
+       "q": "Print where a word starts inside a line of text.",
        "brief": [
-        "Read one line of text, then read the word to look for.",
-        "If the word is in the text, print the position where it starts, counting from 0.",
+        "Read one line of text, then the word to look for.",
+        "Print the position where the word starts, counting from 0.",
         "If it is not in the text, print: not found"
        ],
-       "starter": "# Find where the word starts in the text, or say it is not there\n",
+       "starter": "# Where does the word start?\n",
        "tests": [
         {
          "in": [
@@ -562,7 +637,19 @@
         }
        ],
        "fb": "find() gives the position of the first match, or -1 when there is none. -1 is not a position, so always test for it before you print.",
-       "hint": "strslice"
+       "hint": "pystring",
+       "teach": {
+        "say": "find() gives the position of the first match, or -1 when there is no match at all. -1 is not a position, so test for it.",
+        "code": [
+         "t = \"wet paint\"",
+         "print(t.find(\"paint\"))",
+         "print(t.find(\"dry\"))"
+        ],
+        "out": [
+         "4",
+         "-1"
+        ]
+       }
       }
      ]
     },
@@ -577,14 +664,13 @@
       {
        "t": "code",
        "marks": 4,
-       "q": "Print the letter after the one given, with z wrapping round to a.",
+       "q": "Print the letter after the one given, with z becoming a.",
        "brief": [
         "Read one lower-case letter.",
-        "If it is z, print: a",
-        "Otherwise print the letter that comes next in the alphabet.",
-        "Use ord() and chr() to work it out."
+        "Print the letter that comes next in the alphabet.",
+        "After z comes a."
        ],
-       "starter": "# Turn the letter into its code, add one, turn it back into a letter\n",
+       "starter": "# The next letter, wrapping z round to a\n",
        "tests": [
         {
          "in": [
@@ -624,20 +710,29 @@
         }
        ],
        "fb": "ord() turns a character into its code and chr() turns a code back into a character. ord('a') is 97 and ord('z') is 122, so code 123 is past the end of the alphabet.",
-       "hint": "strslice"
+       "hint": "pystring",
+       "teach": {
+        "say": "ord() gives a character's code and chr() turns a code back into a character. ord('a') is 97 and ord('z') is 122.",
+        "code": [
+         "print(ord(\"m\"))",
+         "print(chr(ord(\"m\") + 2))"
+        ],
+        "out": [
+         "109",
+         "o"
+        ]
+       }
       },
       {
        "t": "code",
        "marks": 5,
-       "q": "Separate the letters and the digits in a line of text.",
+       "q": "Separate the letters and the digits of a line of text.",
        "brief": [
         "Read one line of text.",
-        "Build up two new strings: one of its letters in the order they appear, one of its digits in the order they appear.",
-        "Anything that is neither a letter nor a digit is thrown away.",
-        "Print the letters on the first line, or print: none - if there are no letters.",
-        "Print the digits on the second line, or print: none - if there are no digits."
+        "Build a string of its letters and a string of its digits, each in the order they appear.",
+        "Print the letters, then the digits, using: none - for either one that is empty."
        ],
-       "starter": "# Build two new strings, one character at a time\n",
+       "starter": "# Build two strings, one character at a time\n",
        "tests": [
         {
          "in": [
@@ -691,7 +786,19 @@
         }
        ],
        "fb": "Adding to a string makes a new one: letters = letters + ch. The codes are 65 to 90 for capitals, 97 to 122 for small letters and 48 to 57 for the digits 0 to 9.",
-       "hint": "strslice"
+       "hint": "pystring",
+       "teach": {
+        "say": "Adding to a string makes a longer one: keep = keep + ch. The codes are 48 to 57 for digits, 65 to 90 for capitals and 97 to 122 for small letters.",
+        "code": [
+         "keep = \"\"",
+         "for ch in \"a1b2\":",
+         "    keep = keep + ch + \"-\"",
+         "print(keep)"
+        ],
+        "out": [
+         "a-1-b-2-"
+        ]
+       }
       }
      ]
     },
@@ -709,12 +816,10 @@
        "q": "Reverse a word and say whether it reads the same both ways.",
        "brief": [
         "Read one word.",
-        "Build the word backwards one character at a time - do not use a slice with a negative step and do not use reversed().",
-        "Print the reversed word on the first line.",
-        "If the word reads the same forwards and backwards once capitals are ignored, print: palindrome - on the second line.",
-        "Otherwise print: not a palindrome - on the second line."
+        "Build it backwards one character at a time, not with a slice or reversed().",
+        "Print the reversed word, then: palindrome - or: not a palindrome"
        ],
-       "starter": "# Build the reversed word one character at a time, then compare\n",
+       "starter": "# Build the word backwards, then compare\n",
        "tests": [
         {
          "in": [
@@ -768,7 +873,19 @@
         }
        ],
        "fb": "Putting each character in front of what you have already built reverses a string. Compare the reversed version with the original in the same case to test for a palindrome.",
-       "hint": "strslice",
+       "hint": "pystring",
+       "teach": {
+        "say": "Adding a character in front of a string is not the same as adding it on the end, and only one of those builds a string backwards.",
+        "code": [
+         "s = \"ab\"",
+         "print(\"x\" + s)",
+         "print(s + \"x\")"
+        ],
+        "out": [
+         "xab",
+         "abx"
+        ]
+       },
        "forbid": [
         [
          "[::-1]",
