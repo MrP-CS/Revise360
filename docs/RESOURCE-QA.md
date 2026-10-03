@@ -40,7 +40,7 @@ python3 mkguides.py               # the two printable Python guides
 
 ## Checking
 
-Twenty-one checks. Run them all; each prints a single sentence at the end and exits
+Twenty-three checks. Run them all; each prints a single sentence at the end and exits
 non-zero on a failure.
 
 | check | what it holds | last run |
@@ -62,7 +62,9 @@ non-zero on a failure.
 | `tools/tests/smokedraft.py` | a program typed on one is found on the other, and survives a reload | pass |
 | `tools/tests/smokepyfail.py` | a runtime that does not arrive is said, reported and recoverable | pass |
 | `tools/vrkeys.py` | every character the course needs can be typed in the headset | 87 needed, 98 typable |
-| `tools/tests/smokevrcomfort.py` | the workspace is where a seated pupil can read and reach it | pass |
+| `tools/tests/smokevrcomfort.py` | the screen and the keyboard are where a seated pupil can read and reach them | pass |
+| `tools/tests/sidebyside.py` | the page and the headset's screen, side by side for five lessons | read, not asserted |
+| `tools/tests/measurescreen.py` | the page's own layout, which the headset's screen is built from | 1397 x 864 |
 | `renderall.js` | all 614 activities render the parts their kind calls for | pass |
 | `fit.js` | no question window needs scrolling at six widths | pass |
 | `a11y.js` | everything named, reachable and readable | pass |
@@ -105,6 +107,10 @@ the injected fault showed it.
 - `smokevrcomfort.py`'s first attempt at "does the workspace follow the head"
   moved the head and re-ran the placement, which is not the fault it is watching
   for. It only caught one once the placement was injected into the frame loop.
+- `smokeparity.py` and `smokevrcode.py` both passed against the headset's screen
+  while a disabled Run button was being left out of the hit list entirely, which
+  read as "the screen has no Run control". A disabled control is now a hit area
+  marked disabled, which is what it is.
 
 ## Visual review
 

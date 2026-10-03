@@ -161,51 +161,81 @@ needs an instrument on the device, which is the next thing to build.
 
 # After
 
-Measured the same way, at `48d9ecf`, with `parityprobe.py`, `smokeparity.py`,
-`pytrace.py`, `pyperf.py`, `vrkeys.py`, `smokedraft.py` and `smokepyfail.py`.
+The headset's Python activity is now one large screen showing the normal
+Revise 360 interface, with the VR keyboard directly underneath it.
+`docs/VR-DESIGN-SYSTEM.md` has the design; this is what it fixed.
+
+Measured the same way, at `d10bffe`.
 
 ## The table, again
 
 | | headset, before | headset, now |
 |---|---|---|
-| question introduction | nothing | the station's number and name, in the station's colour |
-| activity stage | nothing | **Complete it**, in the stage's own colour, with what it means |
-| teaching explanation | nothing | the *Learn* sentence, on the reference panel |
-| worked example | one line, flattened, cut at 74 characters | the program as a block, coloured, with its **shows** output |
+| the whole interface | five floating panels at different depths | **one screen**, laid out from the page's own measurements |
+| question introduction | nothing | the station's number and name, in the title bar |
+| activity stage | nothing | the chip, in the stage's own colour, with what it means |
+| progress through the station | nothing | the chip row and one bubble per activity |
+| teaching explanation | nothing | the *Learn* box, where the page puts it |
+| worked example | one line, flattened, cut at 74 characters | the program as a block, coloured, with its **SHOWS** output |
 | line-by-line notes | nothing | each line with its note |
-| question instructions | one run-on paragraph | the numbered steps, one per line |
-| supplied data | ``` `"Line one"` ``` with the backticks printed | boxed, monospace, in the string colour — the same treatment as the page and the printout |
-| starter code | the same | the same, or the pupil's own draft |
-| editor | 11 lines | 11 lines, with line start, line end and clear line |
+| question instructions | one run-on paragraph | numbered steps, in the *Your task* box |
+| supplied data | ``` `"Line one"` ``` with the backticks printed | boxed, monospace, in the string colour |
+| starter code | the same | the same, or the pupil's own draft, with the caret in the gap |
+| editor | 11 lines on a separate panel | 12 lines in the window, point-to-place caret |
 | syntax highlighting | `R360Tok` | `R360Tok` |
-| Run | on the keyboard panel | on the keyboard panel |
-| program input | nothing | **ONE RUN OF YOUR PROGRAM**: what is typed in, what must come out |
-| output | 4 lines, cut at 92 characters | wrapped, and says how many lines are below |
+| Run | on the keyboard panel | between the program and its output, as on the page |
+| program input | nothing | **ONE RUN OF YOUR PROGRAM**, above the output |
+| output | 4 lines, cut at 92 characters | the *Program output* box, wrapped and scrolling |
 | Check | one line of result | every test, with what it expected and what ran |
 | automated tests | a second copy of the rule | `R360PyAct.rules`, the one rule |
-| hints | three rungs as one truncated sentence | the screen's ladder, a rung at a time, with the diagram last |
+| hints | three rungs as one truncated sentence | the screen's ladder, a rung at a time, as a pane over the window |
 | progressive help | one sentence from attempt 2 | the screen's three, in order |
-| teacher-help prompt | **not present** | the same panel, the same three paragraphs, after the same three attempts |
+| teacher-help prompt | **not present** | the same pane, the same three paragraphs, after the same three attempts |
+| syntax reminder | not present | the course's reference, a group at a time |
+| read aloud | not present | on the screen, speaking the steps without the backticks |
 | successful completion | one line | ✓ Nice work, the technique named, and the way on |
 | unsuccessful attempt | the first failure only | every test, and the way on in its place but not available |
-| progress indicator | nothing | the stage line and *Activity n of N*, on the task panel and the program header |
 | **question navigation** | **nothing — Close only** | **Next question / Finish**, released by the same rule as the screen |
 | save/resume | the same store | the same store |
 | the program itself | lost on close | kept as it is typed, and found on the computer |
-| read aloud | not present | on the keyboard panel, speaking the steps without the backticks |
-| syntax reminder | not present | the course's reference, a group at a time |
-| question image | ignored | still ignored on a code activity, and no code activity has one — see below |
+| the 360 room | still there | still there, dimmed only where the screen covers it |
 
 `tools/tests/smokeparity.py` opens all **620** Python activities on both
 interfaces and compares the stage, the wording, the steps, the brief, the worked
-example, the starter, the required run, the ladder and what is offered. 620 for
-620, and validated against three injected faults first.
+example, the starter, the required run, the ladder, what is offered — and that
+nothing is floating beside the screen.
+
+`tools/tests/sidebyside.py` captures the page and the headset's screen for
+lessons 1, 3, 6, 10 and 13 and stacks them, so the question the brief asks can
+be answered by looking rather than by argument.
+
+## What reading those captures found
+
+Three faults that only showed up side by side:
+
+- a question whose test types in six lines drew them **out of the run box and
+  over the heading below it**;
+- the editor opened **scrolled to the end** of the program rather than where the
+  work is;
+- the unavailable *Try this one again* was drawn **on top of** *I need help*, so
+  a press reached the wrong one. `smokevrcode.py` now fails if any two controls
+  overlap.
+
+## Deliberately still different
+
+- **✛ Recentre** is in the title bar. The page has no need for it.
+- The status line beside Run says what pointing and the keyboard do, where the
+  page says what Tab, Escape and Ctrl+Enter do.
+- On a *Complete it* the caret lands at the `____` gap, and the editor opens
+  showing it. The page opens at the top of the program.
+- A question image is not drawn. No code activity in the course carries one —
+  0 of 620 — but an author who added one would not see it in there.
 
 ## The keyboard
 
 `tools/vrkeys.py` reads every starter, model solution, worked example, hint and
 required technique in the course: **87 distinct characters** are needed and
-**98** can now be typed. Four could not be before — `?`, used in sixty-three
+**98** can be typed. Four could not be before — `?`, used in sixty-three
 `input()` prompts from lesson 1, `\` for the newline in lesson 10's file
 writing, `;` and `^`.
 
@@ -219,38 +249,33 @@ writing, `;` and `^`.
 | page load → ready, throttled to about 1 MB/s | — | 16,056 ms |
 | choosing a question → editor, throttled | — | **243 ms** |
 | JS heap after opening and closing a question seven times | 10 MB, unchanged | 10 MB, unchanged |
-| three.js textures | 1 | 8, unchanged |
 
-Pre-warming moves the whole wait off the moment a pupil sits down to write. On a
-slow network it is the difference between three seconds at the question and
-sixteen seconds while they are still reading the first wall.
+Loopback on a build machine. `performance.memory` sees only the page's
+JavaScript heap, not Pyodide's own, which lives in the worker. **Nothing here
+was measured on a headset.**
 
-Those figures are loopback on a build machine. `performance.memory` sees only
-the page's JavaScript heap, not Pyodide's own, which lives in the worker.
-**Nothing here was measured on a headset.**
+## Comfort, measured
+
+| | |
+|---|---|
+| the screen | 2.05 m away, 70.5° across, spanning −20° to +28° |
+| the keyboard | 1.80 m away, spanning −44° to −22° |
+| body text | 0.87°, about 22 of a Quest's pixels |
+| the smallest thing drawn | 0.70° |
+| the smallest thing to point at | 2.15° |
+| anything floating beside them | none |
+| the workspace while the head moves | does not move |
+| ✛ Recentre | moves the screen and the keyboard together, keeping the program |
 
 ## What is still not known, and who can answer it
 
 - **The actual Quest error has still not been recorded.** No headset is
   reachable from this machine. `pydiag.html` is the instrument: open it on the
-  headset, press *Run the checks*, then *Enter VR and run them again*. It keeps
-  the real message rather than a guess at it.
+  headset, press *Run the checks*, then *Enter VR and run them again*.
 - **The production origin was not fetched.** How `revise360.co.uk` serves
-  `vendor/pyodide/` — MIME types, compression, cache headers — is unverified.
-  Step 4 of `pydiag.html` answers it from the headset; so would permission to
-  fetch the site from here.
+  `vendor/pyodide/` — MIME types, compression, cache headers — is unverified
+  from here. Step 4 of `pydiag.html` answers it from the headset.
 - **Whether a paired Bluetooth keyboard reaches an immersive page** in Oculus
-  Browser. The code takes the events if they arrive. Nothing claims they do.
-- **Quest memory and texture limits** under a 360 panorama plus Pyodide.
-
-## Deliberately still different
-
-- **A question image is not shown on a code activity in the headset.** No code
-  activity in the course carries one — 0 of 620 — so nothing is lost today, but
-  an author who added one would not see it in there. The question panel, which
-  every other kind of activity uses, does show them.
-- **The hint diagram opens in front of the program** rather than beside it, as
-  it does over the editor on the page.
-- **The reference panel carries the marking and the example on one surface.**
-  The screen has them in one column for the same reason; a fourth panel in a
-  headset is a fourth thing to turn to.
+  Browser.
+- **Quest memory and texture limits** under a 360 panorama plus Pyodide, and
+  whether the lettering is comfortable through a lens.

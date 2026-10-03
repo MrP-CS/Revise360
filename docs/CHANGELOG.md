@@ -218,3 +218,42 @@ first time and only the injected fault showed it.
 - **Whether a paired Bluetooth keyboard reaches an immersive page** in Oculus
   Browser. The code takes the events if they arrive; nothing claims they do.
 - **Quest memory and texture limits** under a 360 panorama plus Pyodide.
+
+---
+
+# Correction — the headset, October 2026
+
+The first attempt at the headset's Python course broke the interface into five
+floating panels at different depths: the task above, the worked example and the
+marking to one side, the program ahead, the controls on the keyboard. It carried
+the same information as the page and it was the wrong design. It read as a VR
+utility rather than as Revise 360.
+
+It is now **one screen**: the normal Revise 360 Python window, as a large
+virtual monitor in the 360 room, with the VR keyboard directly underneath it.
+
+| | the five panels | one screen |
+|---|---|---|
+| surfaces a pupil looks at | 5 | 2 |
+| where the layout comes from | judgement | `measurescreen.py`, the page's own boxes |
+| where Run, Check, Hint, Help live | on the keyboard | on the screen, where the page puts them |
+| the hint and the help | panels of their own | panes over the window, as on the page |
+| the 360 room | visible | visible, dimmed only where the screen covers it |
+
+`js/pyscreen.js` draws the interface from the measured layout — 1397 × 864, the
+same two columns in the same proportions, the same boxes in the same order, the
+same buttons in the same places, the colours read from `:root` at draw time.
+
+`tools/tests/sidebyside.py` captures the page and the headset's screen for
+lessons 1, 3, 6, 10 and 13 and stacks them, which is how the brief's question —
+*does this obviously look like the same interface?* — gets answered by looking.
+Reading those captures found three faults nothing else had: a run example that
+drew six input lines out of its box and over the heading below, an editor that
+opened scrolled to the end of the program rather than where the work is, and an
+unavailable *Try this one again* drawn on top of *I need help* so that a press
+reached the wrong one.
+
+Everything from the previous checkpoint is kept: the shared activity model, the
+runtime that cannot fail silently, the diagnostic code, the shared drafts, the
+keyboard that carries every character the course needs, and the rule that a
+Python question cannot be skipped.

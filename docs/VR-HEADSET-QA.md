@@ -64,10 +64,13 @@ L1  L3  L6  L10 L13
 [ ] [ ] [ ] [ ] [ ]  The panorama loads and is sharp enough to read the walls
 [ ] [ ] [ ] [ ] [ ]  Python is already ready, or says what it is doing, by the first code question
 [ ] [ ] [ ] [ ] [ ]  A code question opens from its badge
+[ ] [ ] [ ] [ ] [ ]  It opens as ONE screen with the keyboard under it - nothing else floating
+[ ] [ ] [ ] [ ] [ ]  The 360 room is still visible around every edge of the screen
+[ ] [ ] [ ] [ ] [ ]  It looks like the same window you get on a computer
 [ ] [ ] [ ] [ ] [ ]  The starter code is there, and is what the computer shows
 [ ] [ ] [ ] [ ] [ ]  Keywords, strings, numbers and comments are the colours they are on the computer
 [ ] [ ] [ ] [ ] [ ]  The task reads as numbered steps, with the values boxed - no backticks anywhere
-[ ] [ ] [ ] [ ] [ ]  Look up: the stage, the steps and the brief. Look left: the example. Look down: the keys
+[ ] [ ] [ ] [ ] [ ]  Pointing at the program moves the caret to where you pointed
 [ ] [ ] [ ] [ ] [ ]  Every key types what it shows, including ? \ : " and _
 [ ] [ ] [ ] [ ] [ ]  Enter keeps the indentation, and adds one after a colon
 [ ] [ ] [ ] [ ] [ ]  Run works, and the output is readable without leaning in
@@ -78,7 +81,7 @@ L1  L3  L6  L10 L13
 [ ] [ ] [ ] [ ] [ ]  I need help says to ask the teacher and that the question still has to be done
 [ ] [ ] [ ] [ ] [ ]  Correct code finishes it, and the next question appears
 [ ] [ ] [ ] [ ] [ ]  Close, reopen: the program is still there
-[ ] [ ] [ ] [ ] [ ]  ✛ Recentre moves the whole workspace and keeps the program
+[ ] [ ] [ ] [ ] [ ]  ✛ Recentre moves the screen AND the keyboard together, keeping the program
 [ ] [ ] [ ] [ ] [ ]  Exit VR: the same program and the same marks are on the screen
 [ ] [ ] [ ] [ ] [ ]  Re-enter VR: it resumes where it was
 ```
@@ -102,6 +105,7 @@ missing character or a long traceback would show up.
 
 Not a tick box: write a sentence each.
 
+- Does it read as one window, or as a collection of floating things?
 - Is anything too close to your face?
 - Is anything at a neck angle you would not hold for a lesson?
 - Can you read the console output without leaning forward?
@@ -146,6 +150,9 @@ you did, what happened.
 
 | check | what it is |
 |---|---|
+| `tools/tests/sidebyside.py` | the page and the headset's screen, captured and stacked for lessons 1, 3, 6, 10, 13 |
+| `tools/tests/measurescreen.py` | the page's own layout, which the headset's screen is built from |
+| `tools/tests/smokevrcomfort.py` | where the screen and the keyboard ended up, and how big the type is |
 | `tools/tests/smokeparity.py` | every Python activity, opened on both interfaces, compared |
 | `tools/tests/smokevrcode.py` | writing, running, marking and the hint ladder in a session |
 | `tools/tests/smokepyfail.py` | the runtime blocked at the network, and the way back |
