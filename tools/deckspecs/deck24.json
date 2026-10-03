@@ -271,7 +271,25 @@
    "One-level truth tables",
    "Two-level truth tables with intermediate columns"
   ],
-  "wsfile": "BL_L02_TruthTableDetectives_Worksheet.docx"
+  "wsfile": "BL_L02_TruthTableDetectives_Worksheet.docx",
+  "model": {
+   "title": "Watch me build one",
+   "sub": "A different expression from yours, so you get the method and not the answer",
+   "labels": [
+    "THE EXPRESSION",
+    "WHAT I'M THINKING",
+    "HOW I BUILD IT",
+    "THE FINISHED TABLE"
+   ],
+   "steps": [
+    "Complete a truth table for\n\nQ = A OR (NOT B)",
+    "Two inputs, so 2 x 2 = 4 rows. Always count the rows first.\n\nThe brackets go first, so NOT B is a column of its own before Q.\n\nAn extra column is free marks, not extra work.",
+    "List A and B in binary counting order: 00, 01, 10, 11. Never invent an order.\n\nFill NOT B by flipping B.\n\nThen Q = A OR (NOT B): 1 if either side is 1.",
+    "A    B    NOT B    Q = A OR (NOT B)\n0    0      1              1\n0    1      0              0\n1    0      1              1\n1    1      0              1\n\nOnly one row gives 0, and it is the row where A is off and B is on."
+   ],
+   "note": "Count the rows before you draw anything, and give every bracket a column of its own.",
+   "notes": "Build this at the front. Draw the empty table first and make the class tell you how many rows before a single 1 goes in.\n\nThe expression is deliberately not one the pupils are about to complete. The stations use (A AND B) AND NOT C and NOT A AND (B OR C); the exam practice is NOT P OR (Q AND R). A OR (NOT B) is none of them, and it is small enough to build live without losing the room.\n\nThe intermediate NOT B column is the move to insist on. Pupils who try to do a bracket in their heads are the ones who lose rows on an eight-mark table, and this is the moment to say so."
+  }
  },
  {
   "id": "bl-l03",

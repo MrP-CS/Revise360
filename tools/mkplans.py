@@ -459,8 +459,12 @@ def check_section(rec):
         # teaching response.
         answer = (", ".join(c["right"]) if isinstance(c["right"], list)
                   else c["right"])
-        out.append('<div class="band"><p><b>%s</b></p><p><b>Correct:</b> %s</p></div>'
-                   % (E(c["asks"]), E(answer)))
+        # A Predict question asks what a program displays, and this printed the
+        # sentence without the program, which is not a question anybody can
+        # answer off a plan.
+        listing = ("<pre class=\"code\">%s</pre>" % E("\n".join(c["code"]))) if c.get("code") else ""
+        out.append('<div class="band"><p><b>%s</b></p>%s<p><b>Correct:</b> %s</p></div>'
+                   % (E(c["asks"]), listing, E(answer)))
         if c.get("only_multi"):
             out.append('<p class="shows">This lesson has no single-answer question to '
                        'stop on, so this one asks for several. A show of hands works '

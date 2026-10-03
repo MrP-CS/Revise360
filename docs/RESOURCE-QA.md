@@ -149,6 +149,16 @@ the small text, the code and the timings are legible.
 
 ## What is not checked
 
+- **25 of the 88 PowerPoints cannot be rebuilt from anything in this
+  repository.** Every MS deck, every NW deck and SA_L01 and SA_L02 are from an
+  earlier deck design — different chrome, answer slides, sample answers — and no
+  generator here produces it. `tools/deckgen.js` builds the other 63 and would
+  replace those 25 rather than update them, so it is not run against them and
+  they did not gain the CHECK slide the rest did. Rebuilding them means choosing
+  to move them onto the current design, which is a decision for the owner, not a
+  maintenance step. `tools/deckspecs/` has no deck12 or deck13 for the same
+  reason: generating one is easy and installing what it builds would be a
+  regression.
 - **Nothing checks that a lesson teaches well.** The coverage trace in
   `docs/COVERAGE.md` is derived by matching content words and is a prompt to look,
   not a verdict.

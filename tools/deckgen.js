@@ -310,37 +310,53 @@ function modelSlide(pres, L) {
    * room is guesswork. If the text will not fit at 11 it is too long for the
    * slide, and that is said rather than quietly drawn over the card below -
    * which is exactly what the first version of this slide did. */
+  /* A line takes more room than its point size times its spacing: the font has
+   * leading of its own and PowerPoint adds a little more, so the sum carries a
+   * margin measured off a render rather than assumed. */
+  const LEADING = 1.15;
+  const lines = (text, width, px) => {
+    const perLine = Math.floor(width * 118 / px);
+    return String(text).split("\n")
+      .reduce((a, ln) => a + Math.max(1, Math.ceil(ln.length / perLine)), 0);
+  };
+  const fits = (text, width, height, px, spacing) =>
+    lines(text, width, px) * px * spacing * LEADING / 72 <= height;
   const fit = (text, width, height, spacing, where) => {
-    for (const px of [15, 14, 13, 12, 11]) {
-      const perLine = Math.floor(width * 118 / px);
-      const used = String(text).split("\n")
-        .reduce((a, ln) => a + Math.max(1, Math.ceil(ln.length / perLine)), 0);
-      if (used * px * spacing / 72 <= height) return px;
-    }
+    for (const px of [15, 14, 13, 12, 11]) if (fits(text, width, height, px, spacing)) return px;
     console.error(`  OVERFLOW  ${L.id} model, ${where}: too long for the slide even at 11pt. `
       + "Shorten it in the deck spec; the slide cannot grow.");
     overflowed = true;
     return 11;
   };
-  // 1.90 to 4.50 for the working, 4.65 to 7.00 for the answer, and the footer
-  // chrome sits below 7.05. Nothing here may be enlarged without taking the
-  // room from the other, which is why the type is fitted rather than fixed.
-  const topH = 1.88;
+
+  /* 1.88 down to 6.93 is everything between the heading and the footer, and the
+   * two halves share it. How they share it depends on the lesson: a pseudocode
+   * answer is eight lines and its working is three, a discussion answer is six
+   * lines of prose and its working is nine. Splitting it down the middle made
+   * one of them overflow whichever lesson it was, so the room is divided in
+   * proportion to what each half needs at the smallest readable size. */
+  const TOP_Y = 1.88, BOT_Y = 6.93, GAP = 0.15, TOP_CHROME = 0.72, ANS_CHROME = 0.68;
+  const textRoom = (BOT_Y - TOP_Y) - GAP - TOP_CHROME - ANS_CHROME;
+  const need = t => lines(t, w - 0.6, 11) * 11 * 1.18 * LEADING / 72;
+  const topNeed = Math.max(...steps.slice(0, top).map(need));
+  const ansNeed = lines(steps[n - 1], 11.4, 11) * 11 * 1.2 * LEADING / 72;
+  let topH = Math.max(0.9, Math.min(textRoom - 0.9, textRoom * topNeed / (topNeed + ansNeed)));
+  const ansH = textRoom - topH;
   const size = Math.min(...steps.slice(0, top)
     .map((t, i) => fit(t, w - 0.6, topH, 1.18, cols[i])));
   for (let i = 0; i < top; i++) {
     const x = 0.55 + i * (w + 0.25);
-    card(s, x, 1.90, w, 2.60, BORDER);
-    s.addText(cols[i], { x: x + 0.3, y: 2.08, w: w - 0.6, h: 0.32, fontSize: 11, bold: true,
+    card(s, x, TOP_Y, w, topH + TOP_CHROME, BORDER);
+    s.addText(cols[i], { x: x + 0.3, y: TOP_Y + 0.18, w: w - 0.6, h: 0.32, fontSize: 11, bold: true,
       fontFace: MONO, color: SLATE, isTextBox: true, margin: 0, valign: "middle" });
-    s.addText(rich(steps[i]), { x: x + 0.3, y: 2.46, w: w - 0.6, h: topH, fontSize: size,
+    s.addText(rich(steps[i]), { x: x + 0.3, y: TOP_Y + 0.56, w: w - 0.6, h: topH, fontSize: size,
       fontFace: SANS, color: INK, isTextBox: true, margin: 0, lineSpacingMultiple: 1.18, valign: "top" });
   }
-  const ansH = 1.60;
-  card(s, 0.55, 4.65, 12.2, 2.25, TEAL);
-  s.addText(cols[n - 1], { x: 0.95, y: 4.83, w: 11.4, h: 0.32, fontSize: 11, bold: true,
+  const ansY = TOP_Y + topH + TOP_CHROME + GAP;
+  card(s, 0.55, ansY, 12.2, ansH + ANS_CHROME, TEAL);
+  s.addText(cols[n - 1], { x: 0.95, y: ansY + 0.18, w: 11.4, h: 0.32, fontSize: 11, bold: true,
     fontFace: MONO, color: TEAL, isTextBox: true, margin: 0, valign: "middle" });
-  s.addText(rich(steps[n - 1]), { x: 0.95, y: 5.21, w: 11.4, h: ansH,
+  s.addText(rich(steps[n - 1]), { x: 0.95, y: ansY + 0.56, w: 11.4, h: ansH,
     fontSize: fit(steps[n - 1], 11.4, ansH, 1.2, cols[n - 1]), fontFace: SANS, color: INK,
     isTextBox: true, margin: 0, lineSpacingMultiple: 1.2, valign: "top" });
   s.addNotes([
@@ -378,8 +394,20 @@ function checkSlide(pres, L) {
                  : "Hands down. Everyone commits.",
     { x: 1.9, y: 0.5, w: 10.8, h: 0.46, fontSize: 15,
       fontFace: SANS, color: SLATE, isTextBox: true, margin: 0, valign: "middle" });
-  s.addText(rich(c.asks), { x: 0.55, y: 1.2, w: 12.2, h: 1.1, fontSize: 26, bold: true,
+  s.addText(rich(c.asks), { x: 0.55, y: 1.2, w: 12.2, h: 1.0, fontSize: 26, bold: true,
     fontFace: SANS, color: INK, isTextBox: true, margin: 0, lineSpacingMultiple: 1.15, valign: "middle" });
+  /* "What will this program display?" is not a question without the program.
+   * A Predict check keeps its listing, and it goes beside the options rather
+   * than above them, so neither has to shrink to make room for the other. */
+  let optX = 0.55, optW = 12.2, TOP = 2.35;
+  if (c.code && c.code.length) {
+    const h = Math.min(4.2, 0.5 + c.code.length * 0.30);
+    card(s, 0.55, TOP, 5.5, h, BORDER);
+    s.addText(c.code.map((ln, i) => ({ text: ln, options: { breakLine: i < c.code.length - 1 } })),
+      { x: 0.9, y: TOP + 0.22, w: 4.9, h: h - 0.44, fontSize: 15, fontFace: MONO,
+        color: INK, isTextBox: true, margin: 0, lineSpacingMultiple: 1.25, valign: "top" });
+    optX = 6.35; optW = 6.4;
+  }
   /* The record lists the right answer first, so the options are rotated to put
    * it somewhere else on the board. The rotation is fixed per question - every
    * copy of the deck letters them the same way, and the plan and the slide agree
@@ -395,18 +423,19 @@ function checkSlide(pres, L) {
   /* Three, four, five and six options all occur in this course, and six rows at
    * the spacing four wants runs off the bottom of the slide, so the rows are cut
    * to the space between the question and the footer. */
-  const TOP = 2.55, BOT = 6.95;
+  const BOT = 6.95;
   const step = Math.min(0.95, (BOT - TOP) / shown.length);
   const rowH = step - 0.15, optPx = rowH >= 0.7 ? 17 : rowH >= 0.6 ? 15 : 14;
   shown.forEach((o, i) => {
     const y = TOP + i * step;
-    card(s, 0.55, y, 12.2, rowH, BORDER);
+    card(s, optX, y, optW, rowH, BORDER);
     const chip = Math.min(0.48, rowH - 0.2);
-    s.addShape("roundRect", { x: 0.85, y: y + (rowH - chip) / 2, w: chip, h: chip, rectRadius: 0.1,
+    s.addShape("roundRect", { x: optX + 0.3, y: y + (rowH - chip) / 2, w: chip, h: chip, rectRadius: 0.1,
       fill: { color: "EEF2FB" } });
-    s.addText(LETTER[i], { x: 0.85, y: y + (rowH - chip) / 2, w: chip, h: chip, fontSize: 13, bold: true,
-      fontFace: MONO, color: COBALT, align: "center", valign: "middle", isTextBox: true, margin: 0 });
-    s.addText(rich(o), { x: 1.55, y, w: 11.0, h: rowH, fontSize: optPx, fontFace: SANS,
+    s.addText(LETTER[i], { x: optX + 0.3, y: y + (rowH - chip) / 2, w: chip, h: chip, fontSize: 13,
+      bold: true, fontFace: MONO, color: COBALT, align: "center", valign: "middle",
+      isTextBox: true, margin: 0 });
+    s.addText(rich(o), { x: optX + 1.0, y, w: optW - 1.2, h: rowH, fontSize: optPx, fontFace: SANS,
       color: INK, isTextBox: true, margin: 0, lineSpacingMultiple: 1.15, valign: "middle" });
   });
   const letters = rights.map(r => LETTER[shown.indexOf(r)]).sort();

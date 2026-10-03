@@ -695,7 +695,25 @@
    "Selection and iteration",
    "Reading the OCR reference language"
   ],
-  "wsfile": "AL_L05_PseudocodePress_Worksheet.docx"
+  "wsfile": "AL_L05_PseudocodePress_Worksheet.docx",
+  "model": {
+   "title": "Watch me write one",
+   "sub": "A different problem from yours, so you get the method and not the answer",
+   "labels": [
+    "THE PROBLEM",
+    "WHAT I'M THINKING",
+    "HOW I BUILD IT",
+    "THE FINISHED PSEUDOCODE"
+   ],
+   "steps": [
+    "A club records the age of eight members.\n\nWrite an algorithm, using pseudocode, that outputs how many of them are 18 or over.  [6]",
+    "Eight of something means a count-controlled loop.\n\nThe counter has to survive the loop, so it is set before it and output after it.",
+    "Counter set to 0 BEFORE the loop.\nfor i = 0 to 7 is eight passes, not nine.\n18 or over is >=, not >.\nOutput AFTER the loop, not inside it.",
+    "total = 0\nfor i = 0 to 7\n    age = input(\"Age: \")\n    if age >= 18 then\n        total = total + 1\n    endif\nnext i\nprint(total)"
+   ],
+   "note": "Say the three lines that are not obvious out loud: why the counter is set before the loop, why 0 to 7 is eight, and why the output is outside.",
+   "notes": "Build this at the front, line by line, saying the decisions rather than reading the code. Stop before the finished panel and ask the class where the counter should go; the wrong answer - inside the loop - is the one that costs marks in the exam, and it is worth hearing it said out loud before you correct it.\n\nThe scenario is deliberately not one the pupils are about to write. The station challenges are a greeting, a pass or fail, the numbers one to five and the third item of an array; the exam practice is ten numbers and the largest. Counting ages over a threshold is none of them.\n\nIf the class is secure, ask what changes if the club has an unknown number of members. The answer is a while loop with a sentinel, which is where this goes next."
+  }
  },
  {
   "id": "al-l06",
@@ -1528,6 +1546,24 @@
    "Tracing loops and selection",
    "Using a trace to find a bug"
   ],
-  "wsfile": "AL_L11_TraceRoom_Worksheet.docx"
+  "wsfile": "AL_L11_TraceRoom_Worksheet.docx",
+  "model": {
+   "title": "Watch me trace one",
+   "sub": "A different program from yours, so you get the method and not the answer",
+   "labels": [
+    "THE PROGRAM",
+    "WHAT I'M THINKING",
+    "HOW I FILL IT IN",
+    "THE FINISHED TABLE"
+   ],
+   "steps": [
+    "x = 10\nwhile x > 3\n    x = x - 2\n    print(x)\nendwhile",
+    "A trace table has one column per variable and one for anything printed.\n\nOne row per pass of the loop.\n\nI check the condition BEFORE each pass, not after.",
+    "Start: x = 10, nothing printed yet.\n\nEach pass: subtract 2, THEN print, so the printed value is the new one.\n\nStop when the condition is false.",
+    "x      Output\n10       -\n 8       8\n 6       6\n 4       4\n 2       2"
+   ],
+   "note": "Four lines are printed: 8, 6, 4, 2. The loop ends because 2 > 3 is false - so check the condition once more after the final change, every time.",
+   "notes": "Fill this in at the front with the class calling out each value. Do not reveal the finished table: build it row by row.\n\nThe program is deliberately not one the pupils are about to trace. The stations halve a number, grade a mark and find a bug; the exam practice runs with an input of 9. A countdown in twos is none of them.\n\nThe error worth provoking is stopping at x = 4. Ask the class whether the loop is finished there and let somebody check 4 > 3 aloud. That is the whole skill: the condition is tested before every pass, including the one you did not expect."
+  }
  }
 ]

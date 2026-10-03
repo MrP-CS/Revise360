@@ -385,6 +385,13 @@ def checks(tasks, prefix):
             "distractors": wrong,
             "response": t.get("fb"),
         }
+        # "What will this program display?" is not a question without the
+        # program. A Predict activity keeps its listing in `code`, and both the
+        # lesson plan and the deck's check slide were printing the sentence and
+        # leaving the program behind, which made the question unanswerable on
+        # the board.
+        if t.get("code"):
+            entry["code"] = list(t["code"])
         if not t.get("fb"):
             entry["gap"] = "no teaching response is written for a wrong answer"
         elif len(opts) > 2:
