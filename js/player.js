@@ -451,6 +451,7 @@
      * a beginner needs the example, and someone on lesson 11 needs the thinking
      * more than they need another worked case. */
     const t = task.teach;
+    const kind = kindOf(task);
     /* Line by line, for anyone who needs it. A beginner reading a three-line
      * example often cannot say which line does which job, and a paragraph about
      * it beside every program would bury the program. So it is folded away:
@@ -461,9 +462,16 @@
         <ol>${t.code.map((c, i) => task.lines[i]
           ? `<li value="${i + 1}"><code>${esc(c.trim())}</code><span>${esc(task.lines[i])}</span></li>` : "").join("")}</ol>
       </details>`;
+    /* On a Try it the worked example and the program in the editor are the same
+     * thing, so printing it again on the left is the same lines twice and the
+     * length of the longest of them is why that column had to be scrolled. The
+     * sentence and the line-by-line notes stay; the code itself is on the right,
+     * where it can be run. */
+    const sameAsEditor = kind === "try";
     const teach = !t ? "" : `<div class="pyteach"><h4>Learn</h4><p>${esc(t.say)}</p>` +
-      (t.code ? `<pre class="pyeg">${t.code.map(esc).join("\n")}</pre>` : "") +
-      (t.out ? `<p class="pyegout"><span>shows</span>${t.out.map(esc).join("<br>")}</p>` : "") + lines + "</div>";
+      (t.code && !sameAsEditor ? `<pre class="pyeg">${t.code.map(esc).join("\n")}</pre>` : "") +
+      (t.out && !sameAsEditor ? `<p class="pyegout"><span>shows</span>${t.out.map(esc).join("<br>")}</p>` : "") +
+      lines + "</div>";
 
     /* What the program is given and what it must print, shown as one real run.
      * It is built from the first test rather than written by hand, so it is on
@@ -500,7 +508,6 @@
     /* Which stage of the release this is, and where the pupil is up to. Said in
      * words as well as in bubbles, because a row of circles does not tell a
      * pupil that this one is only to be run and nothing is being judged. */
-    const kind = kindOf(task);
     const stage = `<div class="pystage-head">
         <span class="pychip ${task.opt ? "opt" : kind}">${esc(stageOf(task))}</span>
         <span class="pywhere">Activity ${n + 1} of ${list.length}</span>
@@ -537,7 +544,6 @@
             <ol class="pysteps">${stepList}</ol>
             ${brief ? `<ul class="pybrief">${brief}</ul>` : ""}
           </section>
-          ${runEg}
           ${teach}
          </div>
          <div class="pyresult">
@@ -556,6 +562,9 @@
             <span class="pystate" id="pystate" aria-live="polite"></span>
             <span class="pykeys">Tab indents · Esc leaves the editor · Ctrl+Enter runs</span>
           </div>
+          <!-- What one run has to display sits directly above what this run did
+               display, so the two can be compared without looking away. -->
+          ${runEg}
           <h4 class="pyouth" id="pyouth">Program output</h4>
           <pre class="pyout" id="pyout" aria-labelledby="pyouth"><span class="muted">Press Run and anything your program displays appears here.</span></pre>
           <div class="pyact">
@@ -906,6 +915,7 @@
    * the answer is chosen, and the moment it is answered the pupil is shown what
    * Python really did with it. */
   function runPredict(k, list, n, task, head) {
+    while (onCloseCode.length) { try { onCloseCode.pop()(); } catch (e) { /* already gone */ } }
     const right = task.a[0];
     // The same way past the warm-ups the code window offers - see runCode.
     const tasks0 = exp.scenes[cur].stations[k].tasks;
@@ -917,16 +927,28 @@
       ? `<div class="pyrunrow in"><span>You type</span><code>${task.in.map(esc).join("\n")}</code></div>` : "";
     const t = task.teach;
     const learn = !t ? "" : `<div class="pyteach"><h4>Learn</h4><p>${esc(t.say)}</p></div>`;
-    shell(head, "#50dc96", `${where}
-      ${learn}
-      <p class="q">${esc(task.q)}</p>
-      <p class="pyrunh">The program</p>
-      <pre class="pyeg big">${task.code.map(esc).join("\n")}</pre>
-      ${typed ? `<div class="pyrun">${typed}</div>` : ""}
-      <p class="pyrunh">Choose what it displays</p>
-      <div class="opts">${shuffle(task.a.slice()).map(a => `<button class="opt mono">${esc(a)}</button>`).join("")}</div>
-      <div class="fb" id="fb" aria-live="polite"></div>
-      <div class="mrow" id="mrow">${ahead >= 0 ? '<button class="btn ghost" id="pyahead">Skip the warm-up</button>' : ""}</div>`);
+    /* Program on the left, answers on the right. Stacked, a program of eight
+     * lines above three answers that are each several lines long does not fit
+     * any school screen, and a pupil comparing an answer with the code would be
+     * scrolling between the two things they have to hold side by side. */
+    shell(head, "#50dc96", `<div class="vwrap predwrap">
+        <div class="predside">
+          ${where}
+          ${learn}
+          <p class="pyrunh">The program</p>
+          <pre class="pyeg big${task.code.length > 20 ? " tiny" : task.code.length > 13 ? " long" : ""}">${task.code.map(esc).join("\n")}</pre>
+          ${typed ? `<div class="pyrun">${typed}</div>` : ""}
+        </div>
+        <div class="predask">
+          <p class="q">${esc(task.q)}</p>
+          <p class="pyrunh">Choose what it displays</p>
+          <div class="opts">${shuffle(task.a.slice()).map(a => `<button class="opt mono">${esc(a)}</button>`).join("")}</div>
+          <div class="fb" id="fb" aria-live="polite"></div>
+          <div class="mrow" id="mrow">${ahead >= 0 ? '<button class="btn ghost" id="pyahead">Skip the warm-up</button>' : ""}</div>
+        </div>
+      </div>`);
+    box.classList.add("predwin");
+    onCloseCode.push(() => box.classList.remove("predwin"));
     if ($("#pyahead")) $("#pyahead").onclick = () => run(k, list, ahead);
     const opts = [...box.querySelectorAll(".opt")];
     opts[0].focus();
@@ -1039,7 +1061,11 @@
       runCode(k, list, n, task, head, qn);
     } else if (task.t === "sort") {
       const items = shuffle(task.items), pickd = {};
-      shell(head, st.col, `${qn}${img}<p class="q">${esc(task.q)}</p>${items.map((it, x) => `<div class="item${task.cats.length > 3 ? " stack" : ""}" data-n="${x}"><span>${esc(it[0])}</span><div class="seg">${task.cats.map(c => `<button aria-pressed="false" data-c="${esc(c)}">${esc(c)}</button>`).join("")}</div></div>`).join("")}${tail}`);
+      /* Eight things to sort, each with four buttons under it, is taller than a
+       * laptop screen in one column. Past five they go two abreast where there
+       * is width for it, which is what stops this window being scrolled. */
+      shell(head, st.col, `${qn}${img}<p class="q">${esc(task.q)}</p>` +
+        `<div class="items${items.length > 5 ? " many" : ""}">${items.map((it, x) => `<div class="item${task.cats.length > 3 ? " stack" : ""}" data-n="${x}"><span>${esc(it[0])}</span><div class="seg">${task.cats.map(c => `<button aria-pressed="false" data-c="${esc(c)}">${esc(c)}</button>`).join("")}</div></div>`).join("")}</div>${tail}`);
       const row = $("#mrow"), ck = document.createElement("button"); ck.className = "btn"; ck.textContent = "Check my answers"; ck.disabled = true; row.appendChild(ck);
       box.querySelectorAll(".item").forEach(it => { const x = it.dataset.n; it.querySelectorAll(".seg button").forEach(b => b.onclick = () => { pickd[x] = b.dataset.c; it.querySelectorAll(".seg button").forEach(y => y.setAttribute("aria-pressed", y === b)); ck.disabled = Object.keys(pickd).length < items.length; }); });
       box.querySelector(".seg button").focus();
@@ -1049,7 +1075,8 @@
       };
     } else if (task.t === "match") {
       const rights = shuffle(task.pairs.map(p => p[1]));
-      shell(head, st.col, `${qn}${img}<p class="q">${esc(task.q)}</p>${task.pairs.map((p, x) => `<div class="item stack"><strong>${esc(p[0])}</strong><select aria-label="${esc(p[0])}"><option value="">Choose…</option>${rights.map(y => `<option>${esc(y)}</option>`).join("")}</select></div>`).join("")}${tail}`);
+      shell(head, st.col, `${qn}${img}<p class="q">${esc(task.q)}</p>` +
+        `<div class="items${task.pairs.length > 5 ? " many" : ""}">${task.pairs.map((p, x) => `<div class="item stack"><strong>${esc(p[0])}</strong><select aria-label="${esc(p[0])}"><option value="">Choose…</option>${rights.map(y => `<option>${esc(y)}</option>`).join("")}</select></div>`).join("")}</div>${tail}`);
       const sels = [...box.querySelectorAll("select")], row = $("#mrow"), ck = document.createElement("button"); ck.className = "btn"; ck.textContent = "Check my answers"; ck.disabled = true; row.appendChild(ck); sels[0].focus();
       sels.forEach(s => s.onchange = () => ck.disabled = sels.some(x => !x.value));
       ck.onclick = () => {
@@ -1090,7 +1117,13 @@
       };
     } else if (task.t === "order") {
       const pool = shuffle(task.steps); let seq = [];
-      shell(head, st.col, `${qn}${img}<p class="q">${esc(task.q)}</p><ol class="olist" id="ol"></ol><p class="qn" id="tapl">Tap the steps in order:</p><div class="pool" id="pool">${pool.map(p => `<button class="opt">${esc(p)}</button>`).join("")}</div>${tail}`);
+      /* The slots and the steps to drop into them sit side by side where there
+       * is room: stacked, a pupil choosing the next step cannot see the order
+       * they are building it into. */
+      shell(head, st.col, `${qn}${img}<p class="q">${esc(task.q)}</p>` +
+        `<div class="orderwrap"><ol class="olist" id="ol"></ol>` +
+        `<div><p class="qn" id="tapl">Tap the steps in order:</p>` +
+        `<div class="pool" id="pool">${pool.map(p => `<button class="opt">${esc(p)}</button>`).join("")}</div></div></div>${tail}`);
       const ol = $("#ol"), btns = [...box.querySelectorAll("#pool .opt")], row = $("#mrow");
       const rs = document.createElement("button"); rs.className = "btn ghost"; rs.textContent = "Start again"; row.appendChild(rs);
       const ck = document.createElement("button"); ck.className = "btn"; ck.textContent = "Check my order"; row.appendChild(ck);
@@ -1157,7 +1190,14 @@
     try { if (window.parent !== window) window.parent.document.addEventListener("fullscreenchange", updateFullscreen); }
     catch (err) { /* An external embed cannot read its parent document. */ }
   }
-  $("#helpBtn").onclick = () => openDrawer(`<h2>How to use</h2><p>Drag (or use the arrow keys) to look around. Pinch or scroll to zoom.</p><p style="margin-top:8px">Tap a numbered badge to answer that station's questions. Tap a blue <b>i</b> to find out more; the panel stays open while you keep exploring.</p><p style="margin-top:8px">${publicDemo ? "Your demo progress lasts until you leave this page." : "Your progress saves automatically after every answer, so you can leave and come back later."}</p>`);
+  /* The guides are linked from here as well as from the topic page, because the
+   * moment a pupil wants them is the moment they are stuck inside a lesson, not
+   * the moment they were choosing one. */
+  const GUIDES = [["guides/Revise360_Python_Course_Guide.pdf", "How the Python course works"],
+                  ["guides/Revise360_Python_Syntax_Guide.pdf", "Python syntax guide"]];
+  $("#helpBtn").onclick = () => openDrawer(`<h2>How to use</h2><p>Drag (or use the arrow keys) to look around. Pinch or scroll to zoom.</p><p style="margin-top:8px">Tap a numbered badge to answer that station's questions. Tap a blue <b>i</b> to find out more; the panel stays open while you keep exploring.</p><p style="margin-top:8px">${publicDemo ? "Your demo progress lasts until you leave this page." : "Your progress saves automatically after every answer, so you can leave and come back later."}</p>` +
+    (String(expId).startsWith("pr-") ? `<h2 style="margin-top:14px">Guides to print</h2>` +
+      GUIDES.map(([f, t2]) => `<p style="margin-top:6px"><a href="${f}" download>${t2}</a> (PDF)</p>`).join("") : ""));
 
   Object.assign(core, {
     exp, prog, student, CFG, publicDemo, scene, cam, renderer: r, grp, mat, marks, shuffle, esc, save, hud, drawNav, refreshSprites,

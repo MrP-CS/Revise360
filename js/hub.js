@@ -114,8 +114,15 @@
         ${e.worksheet ? `<a class="quiet-link" href="${esc(e.worksheet)}" download aria-label="Download the ${esc(e.title)} worksheet (Word document)">Worksheet ↓</a>` : ""}</div></article>`);
     }
     weak.sort((a, b) => (a.st.got / a.st.tot) - (b.st.got / b.st.tot));
+    /* Guides for the whole topic, rather than for one lesson: printable PDFs a
+     * pupil keeps beside them. They go above the lessons because they are what
+     * somebody opening this topic for the first time should read first. */
+    const guides = (t.guides || []).map(g =>
+      `<a class="guide-card" href="${esc(g.file)}" download><span class="guide-kind">PDF guide ↓</span>
+        <strong>${esc(g.title)}</strong><span>${esc(g.description || "")}</span></a>`).join("");
     $("#main").innerHTML = `<a class="crumb" href="?">← All topics</a>
       <div class="topic-intro"><div><p class="eyebrow">${esc(t.eyebrow || `TOPIC ${t.id} / OCR J277`)}</p><h1>${esc(t.title)}</h1><p>${esc(t.description || "")}</p></div><span class="topic-count">${list.length} experiences</span></div>
+      ${guides ? `<section class="topic-guides"><div class="section-title"><span>START HERE</span><h2>Print these and keep them beside you</h2></div><div class="guide-row">${guides}</div></section>` : ""}
       ${list.length ? `<div class="topic-summary"><div><span>Experiences complete</span><strong>${doneE} / ${list.length}</strong></div><div><span>Marks so far</span><strong>${totS} / ${totT}</strong></div><div><span>Areas to review</span><strong>${weak.length}</strong></div></div>
       <section class="learning-section"><div class="section-title"><span>YOUR LEARNING PATH</span><h2>Experiences and assessments</h2></div><div class="learning-list">${rows.join("")}</div></section>
       <section class="review-section"><div class="section-title"><span>NEXT STEPS</span><h2>My areas to work on</h2></div>${weak.length ? `<div class="weak">${weak.map(w => `<a href="experience.html?id=${encodeURIComponent(w.e.id)}&review=1&go=${encodeURIComponent(w.st.scene + ":" + w.st.k)}"><span><span class="muted">${w.e.lesson ? `Lesson ${esc(w.e.lesson)} · ` : ""}${esc(w.st.sceneTitle)}</span><br>${esc(w.st.name)}</span><span>${w.st.got}/${w.st.tot} <span class="rag ${w.st.band}">${Store.BAND_LABEL[w.st.band]}</span></span></a>`).join("")}</div>`

@@ -120,6 +120,10 @@ body.player .tools{width:max-content}
 .fb.no{background:#40161c;border:1px solid var(--bad)}
 .fb strong{display:block;font-size:17px;margin-bottom:4px}
 .mrow{display:flex;gap:10px;justify-content:flex-end;margin-top:14px;flex-wrap:wrap}
+/* A list of things to sort or match. Past five of them one column is taller
+   than a laptop screen, so they go two abreast where there is width for it. */
+.items{display:grid;gap:0}
+@media (min-width:880px){.items.many{grid-template-columns:1fr 1fr;column-gap:12px}}
 .item{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;background:var(--bg2);border:2px solid var(--line);border-radius:14px;padding:10px 12px;margin-bottom:8px;font-size:15px}
 .item.stack{grid-template-columns:1fr}
 .seg{display:flex;gap:6px}
@@ -138,6 +142,10 @@ body.player .tools{width:max-content}
 .olist li::before{counter-increment:o;content:counter(o);position:absolute;left:12px;top:9px;width:26px;height:26px;border-radius:50%;background:var(--edge);color:#0f1626;font-weight:700;text-align:center;line-height:26px}
 .olist li.empty{border-style:dashed;color:var(--soft)}
 .pool{display:grid;gap:8px}
+/* Building an order: the slots on one side, the steps to drop in on the other */
+.orderwrap{display:grid;gap:14px}
+@media (min-width:880px){.orderwrap{grid-template-columns:1fr 1fr;column-gap:20px;align-items:start}
+  .orderwrap .olist{margin-bottom:0}.orderwrap .qn{margin-top:0}}
 table.bd{width:100%;border-collapse:collapse;font-size:15px;margin:8px 0}
 table.bd td{padding:7px 8px;border-bottom:1px solid var(--line)}
 table.bd td:last-child{text-align:right;white-space:nowrap}
@@ -334,14 +342,14 @@ textarea{width:100%;background:#0f1930;color:var(--fg);border:1px solid var(--li
 .pytest b{flex:0 0 auto;font-family:Consolas,monospace}
 .pytest .why{color:var(--soft)}
 .pybrief{margin:0 0 12px;padding-left:22px}
-.pybrief li{margin:4px 0;font-size:17px;line-height:1.45}
+.pybrief li{margin:3px 0;font-size:16px;line-height:1.4}
 /* The worked example above the task: how the technique looks, on other data */
 .pyteach{background:#122a3d;border-left:5px solid var(--info);border-radius:10px;
-  padding:10px 14px;margin:0 0 12px}
-.pyteach p{margin:0 0 6px;font-size:16px;line-height:1.45}
-.pyeg{margin:6px 0;padding:8px 10px;background:#0b1424;border-radius:8px;text-align:left;
-  font:15px/1.5 Consolas,monospace;color:#cfe3ff;white-space:pre-wrap}
-.pyegout{display:flex;gap:8px;align-items:baseline;margin:0;font-size:15px;color:var(--soft)}
+  padding:8px 12px;margin:0 0 10px}
+.pyteach p{margin:0 0 5px;font-size:16px;line-height:1.4}
+.pyeg{margin:5px 0;padding:7px 10px;background:#0b1424;border-radius:8px;text-align:left;
+  font:14px/1.45 Consolas,monospace;color:#cfe3ff;white-space:pre-wrap}
+.pyegout{display:flex;gap:8px;align-items:baseline;margin:0;font-size:16px;color:var(--soft)}
 .pyegout span{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--info)}
 /* The editor's own bar, between the program and its output */
 .pyidebar{display:flex;gap:10px;align-items:center;flex:0 0 auto;
@@ -362,39 +370,85 @@ textarea{width:100%;background:#0f1930;color:var(--fg);border:1px solid var(--li
 .box.huge.codewin{height:96vh}
 .box.huge.codewin .mbody{display:flex;flex-direction:row;gap:16px;overflow:hidden}
 .codewrap{display:contents}
-.codewrap>.pyside,.codewrap>.pystage{flex:1 1 50%;min-width:0;min-height:0;max-height:100%}
+.codewrap>.pyside{flex:1 1 54%;min-width:0;min-height:0;max-height:100%}
+.codewrap>.pystage{flex:1 1 46%;min-width:0;min-height:0;max-height:100%}
 .pyside{display:flex;flex-direction:column;min-height:0;overflow:hidden;gap:10px}
 /* The editor and the output share the right half. The output gets a real share
    of it rather than a strip at the bottom: on a short program the thing a pupil
    is looking for is what it displayed, not the empty space under their code. */
 .pystage{display:flex;flex-direction:column;background:none;border:0;gap:10px;min-height:0}
+/* The expected run sits in the editor column now, right above the output it
+   is to be compared with. It takes its own height and the editor gives it. */
+/* The expected run gives way first when the window is short: it is reference
+   data, so a few lines of it behind a scrollbar is a far better trade than the
+   Check button sliding off the bottom of a 720px screen. */
+.pystage>.pyrun{flex:0 0 auto;margin:0;max-height:26%;overflow:auto}
+/* A short screen - a 1366x768 classroom monitor, a 720p laptop - has barely
+   two thirds the height these windows were laid out on. It gets back what
+   spacing can give and nothing else: the type stays the size it is, because a
+   task a pupil scrolls is a smaller problem than a task they cannot read, and
+   this course is built for pupils with weak reading. */
+@media (max-height:820px){
+  .pysteps{gap:6px}
+  .pybrief li{margin:2px 0}
+  .pytask{padding:10px 12px;margin:0 0 8px}
+  .pytaskhead{margin-bottom:6px}
+  .pyteach{padding:7px 11px;margin:0 0 8px}
+  .pystage-head,.pydots{margin-bottom:7px}
+  .pyrun{padding:7px 11px;margin:0 0 8px}
+  /* A program to read steps down one more notch here, as it already does for
+     a long one. It is code in a fixed-width face, not prose. */
+  .pyeg.big{font-size:15px}
+  .pyeg.big.long{font-size:14px}
+  .pyeg.big.tiny{font-size:13px}
+}
+@media (max-height:780px){
+  .pystage>#pyed{min-height:104px}
+  .pystage .pyout{min-height:72px}
+  .pyidebar{padding:6px 10px}
+  .pyidebar .btn{padding:7px 12px;font-size:14px}
+  .pystage>.pyrun{max-height:22%}
+}
 .pystage>#pyed{flex:1 1 58%;min-height:140px}
-.pyscroll{flex:1 1 0;min-height:0;overflow:auto;padding-right:8px}
+/* On the handful of the longest tasks there is still a little more to read than
+   there is room for, so this column keeps a scrollbar that is always visible
+   rather than one that appears on hover: a pupil must never be able to think
+   they have read the whole task when they have not. */
+.pyscroll{flex:1 1 0;min-height:0;overflow-y:scroll;padding-right:8px;
+  scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+.pyscroll::-webkit-scrollbar{width:10px}
+.pyscroll::-webkit-scrollbar-thumb{background:var(--line);border-radius:6px}
+.pyscroll::-webkit-scrollbar-track{background:transparent}
 .pyresult{flex:0 0 auto;max-height:56%;display:flex;flex-direction:column;gap:8px;
   padding-top:10px;border-top:2px solid var(--line)}
 .pyresult .pytests{flex:1 1 auto;min-height:0;overflow:auto;margin-top:0}
 /* The buttons that end an attempt, bottom right under the output */
 .pyact{flex:0 0 auto;display:flex;gap:10px;align-items:center;justify-content:flex-end;flex-wrap:wrap}
-.pyact .mrow{display:flex;gap:10px}
+/* The row that ends an attempt holds Hint, Check and, once it is marked, the way
+   on. They are one row of buttons and have to read as one: the general .mrow
+   carries a top margin for the windows where it sits under the answer, and
+   inside this row that margin pushed Next question several pixels below the two
+   beside it. */
+.pyact .mrow{display:flex;gap:10px;margin-top:0;align-items:center}
 /* The task, boxed and stepped */
-.pytask{border:2px solid var(--line);border-radius:14px;background:#13203a;padding:14px 16px;margin:0 0 12px}
-.pytaskhead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+.pytask{border:2px solid var(--line);border-radius:14px;background:#13203a;padding:12px 14px;margin:0 0 10px}
+.pytaskhead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
 .pytaskhead h3{margin:0;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--edge)}
 .btn.small{padding:6px 12px;font-size:14px}
-.pysteps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
-.pysteps li{display:flex;gap:12px;align-items:flex-start;font-size:18px;line-height:1.5}
+.pysteps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.pysteps li{display:flex;gap:10px;align-items:flex-start;font-size:17px;line-height:1.45}
 .stepn{flex:0 0 28px;height:28px;border-radius:50%;background:var(--edge);color:#10203a;
   font:700 15px/28px system-ui,sans-serif;text-align:center}
-.pytask .pybrief{margin:12px 0 0;padding-left:22px;border-top:1px solid var(--line);padding-top:10px}
+.pytask .pybrief{margin:10px 0 0;padding-left:20px;border-top:1px solid var(--line);padding-top:8px}
 /* Where you are in this station */
-.pydots{list-style:none;display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px;padding:0}
-.pydots li{width:30px;height:30px;border-radius:50%;border:2px solid var(--line);color:var(--soft);
-  font:700 14px/26px system-ui,sans-serif;text-align:center;background:#101c31}
+.pydots{list-style:none;display:flex;gap:7px;flex-wrap:wrap;margin:0 0 9px;padding:0}
+.pydots li{width:27px;height:27px;border-radius:50%;border:2px solid var(--line);color:var(--soft);
+  font:700 13px/23px system-ui,sans-serif;text-align:center;background:#101c31}
 .pydots li.done{border-color:var(--ok);color:var(--ok)}
 .pydots li.now{border-color:var(--edge);background:var(--edge);color:#10203a}
 /* Which stage of the release this activity is, said in words. The labels name
    the action - Try it, Predict, Change it - and never how able the pupil is. */
-.pystage-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 12px}
+.pystage-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 9px}
 .pychip{flex:0 0 auto;padding:5px 13px;border-radius:999px;font:700 14px/1.2 system-ui,sans-serif;
   letter-spacing:.03em;background:#1b2b4a;border:2px solid var(--edge);color:var(--edge)}
 .pychip.try,.pychip.predict{border-color:var(--info);color:#8fd4ff}
@@ -451,11 +505,11 @@ textarea{width:100%;background:#0f1930;color:var(--fg);border:1px solid var(--li
   .pydots li{width:34px;height:34px;line-height:30px}
 }
 /* One real run of the program: what is typed in, and what must be printed */
-.pyrun{border:2px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 12px;background:#101c31}
-.pyrunh{margin:0 0 8px;font-size:13px;letter-spacing:.07em;text-transform:uppercase;color:var(--edge)}
-.pyrunrow{display:flex;gap:12px;align-items:flex-start;margin:4px 0}
+.pyrun{border:2px solid var(--line);border-radius:12px;padding:8px 12px;margin:0 0 10px;background:#101c31}
+.pyrunh{margin:0 0 6px;font-size:13px;letter-spacing:.07em;text-transform:uppercase;color:var(--edge)}
+.pyrunrow{display:flex;gap:12px;align-items:flex-start;margin:3px 0}
 .pyrunrow span{flex:0 0 104px;font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--soft);padding-top:3px}
-.pyrunrow code{flex:1;white-space:pre-wrap;font:16px/1.5 Consolas,monospace;color:#cfe3ff}
+.pyrunrow code{flex:1;white-space:pre-wrap;font:15px/1.45 Consolas,monospace;color:#cfe3ff}
 /* What the user types and what the program displays are the two things pupils
    confuse most, so they do not merely sit in different rows - they are a
    different colour, a different weight and labelled in full words. */
@@ -498,8 +552,26 @@ textarea{width:100%;background:#0f1930;color:var(--fg);border:1px solid var(--li
 .hintfoot{flex:0 0 auto;display:flex;gap:14px;align-items:center;flex-wrap:wrap;
   padding-top:12px;border-top:2px solid var(--line)}
 @media (max-width:520px){.hintfoot .btn{width:100%}.hintdiag{min-height:240px}}
-/* Reading a program before writing one */
+/* Reading a program before writing one. The program is on the left and the
+   answers on the right, because a pupil deciding between three multi-line
+   outputs has to be able to look from one to the other without scrolling. */
+.box.huge.predwin{max-width:1180px}
+.predwrap{display:flex;flex-direction:row;gap:20px;align-items:stretch}
+.predwrap>.predside,.predwrap>.predask{flex:1 1 50%;min-width:0;min-height:0;overflow:auto}
+.predask{display:flex;flex-direction:column}
+.predask .q{margin-top:0}
+.predask .opts{flex:0 0 auto}
+@media (max-width:860px){
+  .box.huge.predwin{max-height:94vh}
+  .predwrap{flex-direction:column;gap:14px}
+  .predwrap>.predside,.predwrap>.predask{flex:0 0 auto;overflow:visible}
+}
+/* A program to read is set at a comfortable size, and steps down rather than
+   scrolling when there is a lot of it: a pupil comparing three outputs against
+   twenty lines of code needs all twenty on the screen at once. */
 .pyeg.big{font-size:17px;padding:14px 16px;margin:0 0 14px}
+.pyeg.big.long{font-size:15px;line-height:1.45}
+.pyeg.big.tiny{font-size:14px;line-height:1.4;padding:12px 14px}
 .opt.mono{font-family:Consolas,monospace;white-space:pre-wrap;text-align:left}
 .fb .predans{display:block;margin:6px 0;font:17px/1.5 Consolas,monospace;color:var(--ok);white-space:pre-wrap}
 .fb.done strong{color:var(--ok)}

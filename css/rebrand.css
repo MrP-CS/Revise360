@@ -195,6 +195,19 @@ a.topic:hover { background:#F5F7FC;border-color:var(--line);color:var(--fg)!impo
 .topic-summary div:last-child { border:0; }
 .topic-summary span { font-size:13px;color:var(--soft); }
 .topic-summary strong { font:600 19px 'IBM Plex Mono',ui-monospace,monospace;white-space:nowrap; }
+/* Printable guides for a whole topic, above its lessons: the things to read
+   before the first one and to keep beside you through all of them. */
+.topic-guides { margin:26px 0 38px; }
+.guide-row { display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px; }
+.guide-card { display:flex;flex-direction:column;gap:6px;padding:18px 20px;background:#fff;
+  border:1px solid var(--line);border-left:4px solid var(--edge);border-radius:9px;
+  color:inherit;text-decoration:none; }
+.guide-card:hover { border-color:var(--edge);box-shadow:0 6px 24px rgba(16,24,40,.08); }
+.guide-card .guide-kind { color:var(--edge);font:600 10px 'IBM Plex Mono',ui-monospace,monospace;
+  letter-spacing:.07em;text-transform:uppercase; }
+.guide-card strong { font-size:18px;letter-spacing:-.02em; }
+.guide-card span:last-child { color:var(--soft);font-size:13px;line-height:1.45; }
+@media (max-width:620px){ .guide-row { grid-template-columns:1fr; } }
 .section-title { margin-bottom:15px; }
 .section-title span { color:var(--info);font:600 11px 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.08em; }
 .section-title h2 { font-size:26px;letter-spacing:-.04em;margin:6px 0 0; }
