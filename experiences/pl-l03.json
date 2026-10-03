@@ -47,7 +47,13 @@
        ],
        "fb": "Separate the program representation from the software that translates it."
       }
-     ]
+     ],
+     "bullets": [
+      "Source code expresses a program in a human-readable language.",
+      "A CPU executes compatible machine instructions.",
+      "A translator connects the source language to execution."
+     ],
+     "challenge": "Why is saving a source file not enough to make it executable by a CPU?"
     },
     {
      "label": "2",
@@ -95,7 +101,13 @@
        ],
        "fb": "A build creates translated code. Running executes it."
       }
-     ]
+     ],
+     "bullets": [
+      "A compiler processes the source program before execution.",
+      "It reports translation errors it finds.",
+      "A successful build can produce code that is run later."
+     ],
+     "challenge": "Why might compilation suit software used repeatedly by customers?"
     },
     {
      "label": "3",
@@ -127,7 +139,13 @@
        ],
        "fb": "Earlier instructions may already have run before the error is encountered."
       }
-     ]
+     ],
+     "bullets": [
+      "An interpreter processes source instructions as they execute.",
+      "It typically stops when it encounters an error it cannot handle.",
+      "The usual GCSE model has no separate standalone executable."
+     ],
+     "challenge": "Why can an interpreter help during short edit-and-test cycles?"
     },
     {
      "label": "4",
@@ -175,7 +193,13 @@
        ],
        "fb": "Compare when translation and execution happen."
       }
-     ]
+     ],
+     "bullets": [
+      "A compiler reports errors found during translation.",
+      "An interpreter stops at an error as it processes the source.",
+      "Immediate feedback can help the programmer locate a problem."
+     ],
+     "challenge": "Why can an interpreter help a programmer locate an error during development?"
     },
     {
      "label": "5",
@@ -211,7 +235,13 @@
        ],
        "fb": "Translation takes place during each run, adding work during execution."
       }
-     ]
+     ],
+     "bullets": [
+      "Compilation takes time before the first run.",
+      "Compiled code runs without repeating source translation.",
+      "Interpreted source needs translation each time it runs."
+     ],
+     "challenge": "Why can a compiled program run faster than interpreted source in the GCSE comparison?"
     },
     {
      "label": "6",
@@ -243,7 +273,13 @@
        ],
        "fb": "The build separates translation from use. Compatibility and testing still matter."
       }
-     ]
+     ],
+     "bullets": [
+      "Frequent edits can favour an interpreter during development.",
+      "Repeated distribution can favour a compiled build.",
+      "Give a reason linked to the stated requirement."
+     ],
+     "challenge": "Choose a route for a developer testing small changes frequently and explain your choice."
     },
     {
      "label": "★",

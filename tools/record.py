@@ -248,7 +248,12 @@ def test_topics(wsrel):
             break
         if not ln or ln in ("Q", "Topic", "Marks", "My mark", "R / A / G"):
             continue
-        if re.fullmatch(r"[\d\s./_]*", ln):
+        # The row is Q | Topic | Marks | My mark | R / A / G, and every cell but
+        # the topic is empty or a placeholder for the pupil to fill in. One sheet
+        # writes its empty Marks cell as a dash, which was read as nine more
+        # questions on pf-l08-test and then reported as nine questions assessing
+        # no outcome. A dash is not a topic.
+        if re.fullmatch(r"[\d\s./_\-–—]*", ln):
             continue
         out.append(ln)
     return out

@@ -26,33 +26,66 @@ import os, sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from paths import SITE
 import json, importlib
 
-# The faces of each part, in the order a pupil meets them. Only the three that
+# The faces of each part, in the order a pupil meets them. Only the ones that
 # carry station cards are walked: the briefing and the floor hold no stations.
+# `painter` is the name the script calls to draw a card; l1 and l6 define their
+# own station2, and l4 uses lib360's station, which takes the same arguments.
 LESSONS = {
-    "nw-l01": ("l1", [["s1_right", "s1_back"], ["s2_right", "s2_back"], ["s3_right", "s3_back"]]),
-    "nw-l06": ("l6", [["st_right", "st_back"], ["me_right", "me_back"]]),
+    "nw-l01": ("l1", "station2",
+               [["s1_right", "s1_back"], ["s2_right", "s2_back"], ["s3_right", "s3_back"]]),
+    "nw-l06": ("l6", "station2", [["st_right", "st_back"], ["me_right", "me_back"]]),
+    "nw-l04": ("l4", "station", [["right", "back", "left"]]),
 }
 
+# Topic 2.5 was never painted from literals at all: its wall text is already
+# written down, in tools/topic25/content.json and lesson1.json, as a `facts`
+# list per station. The coverage trace called all five lessons unreadable
+# because it looks in the experience and the spec modules and neither holds
+# them. Nothing needs recovering here - it needs copying across.
+TOPIC25 = {"pl-l01": "lesson1.json", "pl-l02": "content.json", "pl-l03": "content.json",
+           "pl-l04": "content.json", "pl-l05": "content.json"}
 
-def harvest(modname, faces):
+
+def from_topic25(lid):
+    """[(number, title, bullets, challenge)] for one 2.5 lesson, in station order."""
+    p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "topic25", TOPIC25[lid])
+    doc = json.load(open(p, encoding="utf-8"))
+    want = int(lid.split("-l")[1])
+    if isinstance(doc, list):
+        doc = next((x for x in doc if x.get("n") == want), None)
+    if not doc or doc.get("n") != want:
+        return None
+    return [[(i + 1, s["name"], list(s.get("facts") or []), s.get("challenge"))
+             for i, s in enumerate(doc["stations"])]]
+
+
+def harvest(modname, painter, faces):
     """What each face would have painted, as (number, title, bullets, challenge).
 
     The card is matched to its station by the number painted on it, not by its
     title: nw-l01's wall says "Advantages of networks" where the station badge
     says "Advantages", and the number is the thing a pupil follows anyway."""
     mod = importlib.import_module(modname)
-    got, keep = [], mod.station2
+    got = []
 
     def spy(d, x0, n, title, what, chal, draw_fn, *a, **k):
         got.append((n, title, list(what), chal))
 
-    mod.station2 = spy
-    # The face functions call one another's helpers through the module globals,
-    # so the patch has to be on the module the faces actually read, which for
-    # l6 is l1: `from l1 import *` binds the name once, at import.
-    base = importlib.import_module("l1")
-    basekeep = base.station2
-    base.station2 = spy
+    # The face functions reach their helpers through module globals, and
+    # `from x import *` binds the name once at import, so the patch has to go on
+    # every module that holds a copy of it: the script itself, and whichever
+    # module defined it.
+    owners = [mod]
+    for name in ("l1", "lib360"):
+        try:
+            m = importlib.import_module(name)
+        except Exception:
+            continue
+        if hasattr(m, painter) and m not in owners:
+            owners.append(m)
+    saved = [(m, getattr(m, painter)) for m in owners if hasattr(m, painter)]
+    for m, _ in saved:
+        setattr(m, painter, spy)
     try:
         out = []
         for part in faces:
@@ -61,14 +94,28 @@ def harvest(modname, faces):
                 getattr(mod, f)()
             out.append(list(got))
     finally:
-        mod.station2, base.station2 = keep, basekeep
+        for m, fn in saved:
+            setattr(m, painter, fn)
+    return out
+
+
+def sources():
+    """Every lesson this can recover, as lid -> [[(n, title, bullets, challenge)]]."""
+    out = {}
+    for lid, (modname, painter, faces) in LESSONS.items():
+        out[lid] = harvest(modname, painter, faces)
+    for lid in TOPIC25:
+        got = from_topic25(lid)
+        if got:
+            out[lid] = got
+        else:
+            print("  %s: not found in tools/topic25/%s" % (lid, TOPIC25[lid]))
     return out
 
 
 def main(write=False):
     changed = problems = 0
-    for lid, (modname, faces) in LESSONS.items():
-        parts = harvest(modname, faces)
+    for lid, parts in sorted(sources().items()):
         p = SITE / "experiences" / (lid + ".json")
         exp = json.load(open(p, encoding="utf-8"))
         if len(parts) != len(exp["scenes"]):

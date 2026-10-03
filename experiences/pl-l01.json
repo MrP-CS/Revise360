@@ -39,7 +39,13 @@
        ],
        "fb": "Readable words and familiar notation make the source easier for a person to understand."
       }
-     ]
+     ],
+     "bullets": [
+      "Use readable words and familiar operations to express a solution.",
+      "Hide many details of how the processor works.",
+      "Usually easier to write, understand and maintain."
+     ],
+     "challenge": "Why might a school choose Python to build a quiz?"
     },
     {
      "label": "2",
@@ -87,7 +93,13 @@
        ],
        "fb": "Choose a language for the task requirements. Low-level code gives control, not a guarantee of correctness."
       }
-     ]
+     ],
+     "bullets": [
+      "Close to the instructions and hardware of a processor.",
+      "Machine code and assembly are low-level languages.",
+      "Offer detailed control, but are harder to write and maintain."
+     ],
+     "challenge": "Why might precise hardware control matter in a device?"
     },
     {
      "label": "3",
@@ -123,7 +135,13 @@
        ],
        "fb": "Machine code is binary and specific to a compatible instruction set. A string of bits has no universal instruction meaning."
       }
-     ]
+     ],
+     "bullets": [
+      "Binary instructions that a compatible CPU can execute.",
+      "Each processor family has its own instruction set.",
+      "Difficult for people to read, write and check directly."
+     ],
+     "challenge": "Would the same machine code work on every CPU? Explain."
     },
     {
      "label": "4",
@@ -163,7 +181,13 @@
        ],
        "fb": "The source expresses the program. Translation makes its instructions executable."
       }
-     ]
+     ],
+     "bullets": [
+      "Programmers write source code to express instructions.",
+      "A CPU cannot execute high-level source directly.",
+      "A translator enables the source program to be executed."
+     ],
+     "challenge": "Why does high-level source need translation?"
     },
     {
      "label": "5",
@@ -211,7 +235,13 @@
        ],
        "fb": "High-level code is often more portable, but the translator and system must still be compatible."
       }
-     ]
+     ],
+     "bullets": [
+      "High-level source is often more portable between systems.",
+      "A suitable translator or runtime must be available.",
+      "Low-level code may need rewriting for another instruction set."
+     ],
+     "challenge": "What must be available before a Python program can run on a new computer?"
     },
     {
      "label": "6",
@@ -247,7 +277,13 @@
        ],
        "fb": "There is no best level for every project. Teams balance development effort, portability and hardware control."
       }
-     ]
+     ],
+     "bullets": [
+      "Match the language to the requirements of the project.",
+      "High-level code can reduce development and maintenance effort.",
+      "Low-level code can provide fine control of speed and memory use."
+     ],
+     "challenge": "Give a language choice AND a reason for a school revision app."
     },
     {
      "label": "★",

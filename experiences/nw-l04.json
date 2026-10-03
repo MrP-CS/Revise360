@@ -40,7 +40,13 @@
        ],
        "fb": "In a star network every wired device connects through the switch, so if it fails, all the PCs plugged into it are cut off."
       }
-     ]
+     ],
+     "bullets": [
+      "Connects devices together on a LAN.",
+      "Receives data and forwards it only to the device it is meant for, using MAC addresses.",
+      "Has many ports: one for each wired device."
+     ],
+     "challenge": "The switch in a computer room breaks. What happens to the PCs plugged into it, and why?"
     },
     {
      "label": "2",
@@ -74,7 +80,13 @@
        ],
        "fb": "The signal in copper UTP weakens over distance, so a run is limited to about 100 m. Fibre optic carries data for kilometres."
       }
-     ]
+     ],
+     "bullets": [
+      "Copper wires twisted in pairs. The twist reduces interference.",
+      "Cat5e and Cat6 are common types. Cheap, flexible and easy to fit with an RJ45 plug.",
+      "Each cable run works up to about 100 m."
+     ],
+     "challenge": "Why wouldn't you use UTP cable to link two buildings that are 2 km apart?"
     },
     {
      "label": "3",
@@ -108,7 +120,13 @@
        ],
        "fb": "The printer is on the same LAN, and the switch still links it to the PCs. Websites are on the internet, which can only be reached through the router."
       }
-     ]
+     ],
+     "bullets": [
+      "Connects different networks together, such as the school LAN and the internet.",
+      "Sends packets towards their destination using IP addresses.",
+      "Sits at the edge of the LAN."
+     ],
+     "challenge": "The router fails but the switches still work. Can students print to the class printer? Can they load a website? Explain."
     },
     {
      "label": "4",
@@ -142,7 +160,13 @@
        ],
        "fb": "Fibre carries huge amounts of data over thousands of kilometres and isn't affected by electrical interference. It is actually more expensive and harder to install than copper."
       }
-     ]
+     ],
+     "bullets": [
+      "Sends data as pulses of light through thin strands of glass.",
+      "Very high bandwidth over long distances (many kilometres).",
+      "Not affected by electrical interference, but costs more and is harder to install."
+     ],
+     "challenge": "Give two reasons why the undersea cables that carry the internet are fibre optic."
     },
     {
      "label": "5",
@@ -210,7 +234,13 @@
        ],
        "fb": "Without a wireless NIC the PC cannot use Wi-Fi, so it needs a cable into a switch."
       }
-     ]
+     ],
+     "bullets": [
+      "Hardware that lets a device connect to a network.",
+      "Can be wired (Ethernet port) or wireless (built-in antenna).",
+      "Every NIC has a unique MAC address, set when it is made."
+     ],
+     "challenge": "A desktop PC has a wired NIC but no wireless NIC. How must it connect to the school network?"
     },
     {
      "label": "★",
