@@ -266,6 +266,185 @@ function examSlide(pres, L) {
   return s;
 }
 
+/* ---- the model, and the check ---------------------------------------
+ *
+ * Two slides that only appear when there is something real to put on them.
+ *
+ * The MODEL is authored per lesson, in the deck spec, because modelling a
+ * process only helps where there is a process worth modelling; a lesson that
+ * does not need one does not get an empty slide. It goes
+ * problem -> thinking -> steps -> finished answer, or, for a concept rather
+ * than a procedure, example -> why it works -> non-example -> common mistake.
+ * Whichever it is, it must not use the data, names or scenario of the activity
+ * the pupils are about to do: the model teaches the process, it does not answer
+ * the question.
+ *
+ * The CHECK is not authored at all. It is read out of the lesson record, by the
+ * same rule the lesson plan uses - the middle check of the lesson - so the
+ * slide and the plan always name the same question and cannot drift. The slide
+ * shows the question and its options and does NOT mark the right one, because a
+ * hinge works only if the room commits before it sees the answer. The answer and
+ * what to do about the split are in the speaker notes.
+ */
+const LETTER = "ABCDEFGH";   // three to six options exist in this course
+let overflowed = false;
+
+function modelSlide(pres, L) {
+  const m = L.model;
+  if (!m) return null;
+  const s = pres.addSlide();
+  chrome(s, L.kicker);
+  heading(s, m.title || "Watch me do one", m.sub || "Your turn comes after this one");
+  const steps = m.steps || [];
+  const cols = m.labels || ["THE PROBLEM", "WHAT I'M THINKING", "HOW I BUILD IT", "THE FINISHED ANSWER"];
+  /* The working goes across the top in a column each; the finished answer gets
+   * the full width underneath it. That is not only layout. The answer is the
+   * thing the room reads from the back and copies the shape of, and a quarter
+   * of a slide forces it down to a size nobody at the back can read.
+   *
+   * The type size comes from the fullest column rather than a guess, since how
+   * much thinking a step needs varies by lesson. A blank line costs a line. */
+  const n = Math.min(steps.length, cols.length);
+  const top = n - 1, w = (12.2 - (top - 1) * 0.25) / top;
+  /* The smallest readable size is 11: below that a projector at the back of a
+   * room is guesswork. If the text will not fit at 11 it is too long for the
+   * slide, and that is said rather than quietly drawn over the card below -
+   * which is exactly what the first version of this slide did. */
+  const fit = (text, width, height, spacing, where) => {
+    for (const px of [15, 14, 13, 12, 11]) {
+      const perLine = Math.floor(width * 118 / px);
+      const used = String(text).split("\n")
+        .reduce((a, ln) => a + Math.max(1, Math.ceil(ln.length / perLine)), 0);
+      if (used * px * spacing / 72 <= height) return px;
+    }
+    console.error(`  OVERFLOW  ${L.id} model, ${where}: too long for the slide even at 11pt. `
+      + "Shorten it in the deck spec; the slide cannot grow.");
+    overflowed = true;
+    return 11;
+  };
+  // 1.90 to 4.50 for the working, 4.65 to 7.00 for the answer, and the footer
+  // chrome sits below 7.05. Nothing here may be enlarged without taking the
+  // room from the other, which is why the type is fitted rather than fixed.
+  const topH = 1.88;
+  const size = Math.min(...steps.slice(0, top)
+    .map((t, i) => fit(t, w - 0.6, topH, 1.18, cols[i])));
+  for (let i = 0; i < top; i++) {
+    const x = 0.55 + i * (w + 0.25);
+    card(s, x, 1.90, w, 2.60, BORDER);
+    s.addText(cols[i], { x: x + 0.3, y: 2.08, w: w - 0.6, h: 0.32, fontSize: 11, bold: true,
+      fontFace: MONO, color: SLATE, isTextBox: true, margin: 0, valign: "middle" });
+    s.addText(rich(steps[i]), { x: x + 0.3, y: 2.46, w: w - 0.6, h: topH, fontSize: size,
+      fontFace: SANS, color: INK, isTextBox: true, margin: 0, lineSpacingMultiple: 1.18, valign: "top" });
+  }
+  const ansH = 1.60;
+  card(s, 0.55, 4.65, 12.2, 2.25, TEAL);
+  s.addText(cols[n - 1], { x: 0.95, y: 4.83, w: 11.4, h: 0.32, fontSize: 11, bold: true,
+    fontFace: MONO, color: TEAL, isTextBox: true, margin: 0, valign: "middle" });
+  s.addText(rich(steps[n - 1]), { x: 0.95, y: 5.21, w: 11.4, h: ansH,
+    fontSize: fit(steps[n - 1], 11.4, ansH, 1.2, cols[n - 1]), fontFace: SANS, color: INK,
+    isTextBox: true, margin: 0, lineSpacingMultiple: 1.2, valign: "top" });
+  s.addNotes([
+    m.notes || "Work through this at the front, thinking aloud, before anyone starts their own. "
+      + "The scenario here is deliberately not the one on the worksheet.",
+    m.note ? "\nSay this out loud: " + m.note : "",
+  ].join("\n"));
+  return s;
+}
+
+/* The lesson record, if it has been built. Missing is not an error: the decks
+ * can be rebuilt on a machine that has not run record.py, and a deck without a
+ * check slide is what this course shipped before. */
+function recordOf(id) {
+  try {
+    return JSON.parse(fs.readFileSync(`${P.OUT}/records/${id}.json`, "utf8"));
+  } catch (e) { return null; }
+}
+
+function checkSlide(pres, L) {
+  const rec = recordOf(L.id);
+  // Which question to stop on is decided in record.py and read here, so this
+  // slide and the lesson plan can never name a different one.
+  const c = rec && rec.hinge;
+  if (!c) return null;
+  const n = c.station_n, stName = c.station_name;
+  const many = Array.isArray(c.right);          // a select-all, used only where
+  const s = pres.addSlide();                    // the lesson has nothing else
+  chrome(s, L.kicker);
+  s.addShape("roundRect", { x: 0.55, y: 0.5, w: 1.15, h: 0.46, rectRadius: 0.1,
+    fill: { color: AMBER } });
+  s.addText("CHECK", { x: 0.55, y: 0.5, w: 1.15, h: 0.46, fontSize: 12, bold: true,
+    fontFace: MONO, color: INK, align: "center", valign: "middle", isTextBox: true, margin: 0 });
+  s.addText(many ? "Take each one in turn. Everyone commits to every line."
+                 : "Hands down. Everyone commits.",
+    { x: 1.9, y: 0.5, w: 10.8, h: 0.46, fontSize: 15,
+      fontFace: SANS, color: SLATE, isTextBox: true, margin: 0, valign: "middle" });
+  s.addText(rich(c.asks), { x: 0.55, y: 1.2, w: 12.2, h: 1.1, fontSize: 26, bold: true,
+    fontFace: SANS, color: INK, isTextBox: true, margin: 0, lineSpacingMultiple: 1.15, valign: "middle" });
+  /* The record lists the right answer first, so the options are rotated to put
+   * it somewhere else on the board. The rotation is fixed per question - every
+   * copy of the deck letters them the same way, and the plan and the slide agree
+   * - but it is taken from a hash of the wording rather than its length, which
+   * put two of 1.6's seven checks on C for no better reason than both questions
+   * being a multiple of three characters long. */
+  const rights = many ? c.right : [c.right];
+  const opts = rights.concat(c.distractors || []);
+  let h = 0;
+  for (let i = 0; i < c.asks.length; i++) h = (h * 31 + c.asks.charCodeAt(i)) % 100003;
+  const shift = h % opts.length;   // every position, A included
+  const shown = opts.map((_, i) => opts[(i + opts.length - shift) % opts.length]);
+  /* Three, four, five and six options all occur in this course, and six rows at
+   * the spacing four wants runs off the bottom of the slide, so the rows are cut
+   * to the space between the question and the footer. */
+  const TOP = 2.55, BOT = 6.95;
+  const step = Math.min(0.95, (BOT - TOP) / shown.length);
+  const rowH = step - 0.15, optPx = rowH >= 0.7 ? 17 : rowH >= 0.6 ? 15 : 14;
+  shown.forEach((o, i) => {
+    const y = TOP + i * step;
+    card(s, 0.55, y, 12.2, rowH, BORDER);
+    const chip = Math.min(0.48, rowH - 0.2);
+    s.addShape("roundRect", { x: 0.85, y: y + (rowH - chip) / 2, w: chip, h: chip, rectRadius: 0.1,
+      fill: { color: "EEF2FB" } });
+    s.addText(LETTER[i], { x: 0.85, y: y + (rowH - chip) / 2, w: chip, h: chip, fontSize: 13, bold: true,
+      fontFace: MONO, color: COBALT, align: "center", valign: "middle", isTextBox: true, margin: 0 });
+    s.addText(rich(o), { x: 1.55, y, w: 11.0, h: rowH, fontSize: optPx, fontFace: SANS,
+      color: INK, isTextBox: true, margin: 0, lineSpacingMultiple: 1.15, valign: "middle" });
+  });
+  const letters = rights.map(r => LETTER[shown.indexOf(r)]).sort();
+  const lines = [
+    many ? `The answers are ${letters.join(" and ")}. Everything else is wrong.`
+         : `The answer is ${letters[0]}: ${c.right}.`,
+    "",
+    many
+      ? "Do not say them yet. This one asks for several, so a single show of hands will not "
+        + "read: go down the letters one at a time, hands up for each, and write the counts "
+        + "down before anyone can change their mind."
+      : "Do not say it yet. Every pupil commits first - fingers, whiteboards or a show of hands "
+        + "on each letter in turn - and you count the split before anyone can change their mind.",
+    "",
+    "IF MOST OF THE CLASS IS RIGHT: say why it is right in one sentence and go straight on "
+    + "to the independent work.",
+    "",
+    `IF A SIGNIFICANT GROUP IS ON ONE WRONG LETTER: that option is the misconception to teach `
+    + `against before anyone goes on. Go back to station ${n}, ${stName}, and work through its `
+    + `example again, aloud, with the class watching, then re-ask this question.`,
+  ];
+  if (c.only_multi) {
+    lines.push("", "This lesson has no single-answer question to stop on, so this one asks for "
+      + "several. That is a weaker hinge than a four-option question and it is used here only "
+      + "because the lesson offers nothing better.");
+  }
+  if (c.response) lines.push("", `The course's own response to a wrong answer here: ${c.response}`);
+  if (c.gap) {
+    lines.push("", `A limitation, stated rather than papered over: ${c.gap}. The course does not `
+      + "record what each separate wrong option means, and this slide does not invent it. Decide "
+      + "your own reteach for each option before the lesson; the options above are the start of it.");
+  }
+  lines.push("", `This is a real activity from the experience (${c.id}), so the wording here is the `
+    + "wording a pupil will see.");
+  s.addNotes(lines.join("\n"));
+  return s;
+}
+
 function plenarySlide(pres, L) {
   const s = pres.addSlide();
   chrome(s, L.kicker);
@@ -307,6 +486,10 @@ lessons.forEach(L => {
   starterSlide(pres, L);
   intoSlide(pres, L);
   L.stations.forEach((st, i) => stationSlide(pres, L, st, i + 1));
+  // The walls explain, the model shows the process on a scenario of its own, the
+  // check finds out who has it, and only then does the independent work start.
+  modelSlide(pres, L);
+  checkSlide(pres, L);
   finalSlide(pres, L);
   didYouKnowSlide(pres, L);
   examSlide(pres, L);
@@ -317,3 +500,8 @@ lessons.forEach(L => {
   const name = `${PREFIX}_L${String(L.lesson).padStart(2, "0")}_${camel}_Lesson.pptx`;
   pres.writeFile({ fileName: `${OUT}/${name}` }).then(() => console.log("ok", name));
 });
+
+// A model slide that did not fit was written anyway, because the decks around it
+// are fine and leaving them unbuilt helps nobody - but the run fails, so a build
+// script cannot treat a deck with text running off a card as a success.
+process.on("exit", () => { if (overflowed) process.exitCode = 1; });

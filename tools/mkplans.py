@@ -446,15 +446,25 @@ def check_section(rec):
     else:
         out.append(missing("a starter to retrieve prior knowledge"))
 
-    checks = [c for s in rec["stations"] for c in s["checks"]]
-    if checks:
-        c = checks[len(checks) // 2]
+    # The hinge is chosen in record.py, not here, so this plan and the lesson's
+    # PowerPoint always stop on the same question.
+    c = rec.get("hinge")
+    if c:
         out.append("<h3>Hinge question</h3><p>Use this one, hands down, before anyone "
                    "moves on to independent work. It is a real activity from the "
                    "experience (<code>%s</code>), so the wording a pupil sees matches "
                    "the wording you say.</p>" % E(c["id"]))
+        # A select-all has several right answers, and printing only the first of
+        # them under "Correct:" is how this plan used to contradict its own
+        # teaching response.
+        answer = (", ".join(c["right"]) if isinstance(c["right"], list)
+                  else c["right"])
         out.append('<div class="band"><p><b>%s</b></p><p><b>Correct:</b> %s</p></div>'
-                   % (E(c["asks"]), E(c["right"])))
+                   % (E(c["asks"]), E(answer)))
+        if c.get("only_multi"):
+            out.append('<p class="shows">This lesson has no single-answer question to '
+                       'stop on, so this one asks for several. A show of hands works '
+                       'less well: ask for each option in turn and count separately.</p>')
         if c.get("distractors"):
             # The wrong options, and nothing invented about each. A sentence per
             # option would be the same sentence four times over, which tells a

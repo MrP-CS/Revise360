@@ -343,13 +343,26 @@ def checks(tasks, prefix):
         if kind not in ("mcq", "multi", "predict"):
             continue
         opts = t.get("a") or t.get("opts") or []
-        right = opts[0] if opts else None
+        # An mcq lists the right answer first and the wrong ones after it. A
+        # select-all does not: its options are in the order they are shown and
+        # the right ones are named separately. Reading opts[0] as "the answer"
+        # for both called the first option correct and every other correct
+        # option a distractor, which put the wrong answer under "Correct:" on
+        # eight lesson plans - nw-l06's said Reception while its own teaching
+        # response said Accounts and Conference.
+        if kind == "multi":
+            correct = list(t.get("correct") or [])
+            right = [o for o in opts if o in correct]
+            wrong = [o for o in opts if o not in correct]
+        else:
+            right = opts[0] if opts else None
+            wrong = list(opts[1:])
         entry = {
             "id": "%s-c%d" % (prefix, i + 1),
             "asks": t.get("q"),
             "kind": kind,
             "right": right,
-            "distractors": [o for o in opts[1:]],
+            "distractors": wrong,
             "response": t.get("fb"),
         }
         if not t.get("fb"):
@@ -503,6 +516,26 @@ def build(lesson, unit):
                 % ((spec or {}).get("img") or lid))
         stations.append(entry)
     rec["stations"] = stations
+
+    # --- the one hinge question, chosen here so everything downstream agrees
+    #
+    # The lesson plan and the deck both want "the question to stop on", and for
+    # a while each chose its own. Two rules in two languages is a drift waiting
+    # to happen, so the choice is made once, here, and both read it.
+    #
+    # Middle of the lesson: late enough that the teaching has happened, early
+    # enough that there is time to act on what it shows. A single-answer
+    # question is preferred over a select-all, because the whole routine is a
+    # room committing to one answer at once and you cannot show four fingers
+    # and two fingers at the same time. A select-all is used only where the
+    # lesson has nothing else.
+    allchecks = [(st, c) for st in stations for c in st["checks"]]
+    if allchecks:
+        singles = [x for x in allchecks if x[1]["kind"] != "multi"]
+        pool = singles or allchecks
+        st, c = pool[len(pool) // 2]
+        rec["hinge"] = dict(c, station=st["id"], station_n=st["n"], station_name=st["name"],
+                            only_multi=not singles)
 
     # --- what the lesson reads as information rather than teaches
     info = [x for sc in (scene["scenes"] if scene else []) for x in sc.get("info") or []]

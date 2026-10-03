@@ -69,6 +69,25 @@ def entry(L):
     d["wsfile"] = wsfile(L)
     return d
 
+
+def keep_authored(deck, out):
+    """Carry over the fields that are written by hand, not derived.
+
+    Everything else here comes from the specs module, which is the point of this
+    script. A model slide cannot: whether a lesson benefits from one, and what
+    worked example to use, is a judgement, and it is made in the deck spec. A
+    regeneration that silently dropped it would lose that judgement without
+    saying so, so it is read back off the file being replaced."""
+    if not out.exists():
+        return deck
+    old = {e["id"]: e for e in json.loads(out.read_text())}
+    for e in deck:
+        prev = old.get(e["id"], {})
+        for field in ("model",):
+            if field in prev:
+                e[field] = prev[field]
+    return deck
+
 def lessons_for(topic):
     """Every lesson object in the topic's spec modules, in lesson order."""
     mods, order = TOPICS[topic]
@@ -87,7 +106,7 @@ if __name__ == "__main__":
     topic = sys.argv[1]
     check = "--check" in sys.argv
     out = TOOLS / "deckspecs" / f"deck{topic.replace('.', '')}.json"
-    deck = [entry(L) for L in lessons_for(topic)]
+    deck = keep_authored([entry(L) for L in lessons_for(topic)], out)
     text = json.dumps(deck, indent=1, ensure_ascii=False)
     if check:
         have = out.read_text() if out.exists() else ""
