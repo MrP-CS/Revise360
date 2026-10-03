@@ -327,8 +327,8 @@ BANK = [
     sub("The internet and DNS", "nw-l05-s2", ["nw-l05-o1", "nw-l05-o2"], [
         short("State what the Domain Name Service does.",
               [mp("it translates a domain name into an IP address",
-                  ["domain name|url|web address|name"],
-                  ["ip address|ip|address|number"],
+                  ["domain name|url|web address|site name|hostname"],
+                  ["ip address|ip|internet protocol address|numerical address"],
                   exemplar="It translates a domain name into an IP address.")],
               example="It translates a domain name such as revise360.co.uk into the IP "
                       "address of the server that holds the site.",

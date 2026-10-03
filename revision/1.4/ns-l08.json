@@ -1,0 +1,131 @@
+{
+ "topic": "1.4",
+ "lesson": "ns-l08",
+ "questions": [
+  {
+   "type": "mcq",
+   "q": "What is packet sniffing?",
+   "options": [
+    "Capturing and reading the packets travelling across a network",
+    "Flooding a network with packets until it fails",
+    "Changing the order in which packets arrive",
+    "Checking packets for errors before they are delivered"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Sniffing is listening. Flooding is denial of service.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "Data interception",
+   "revisit": "ns-l08-s1",
+   "revisitReason": "Data interception",
+   "outcomes": [
+    "ns-l08-o1",
+    "ns-l08-o2"
+   ],
+   "topic": "1.4",
+   "id": "rq-1.4-data-interception-0022",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ns-l08",
+   "revisitStationId": "ns-l08-s1",
+   "revisitLabel": "1.4 Lesson 8 — Packet sniffers, station 1: Data interception and theft",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "A café offers free Wi-Fi with no password. Explain the risk to a customer who signs into their bank on it.",
+   "markPoints": [
+    {
+     "concept": "anyone nearby can capture the traffic on an open network",
+     "accept": [
+      [
+       "anyone|anybody|someone|attacker|other users|nearby|in range|within range|same network",
+       "capture|captures|collect|collects|intercept|read|sees|sniff|pick up|listen|monitor"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Anyone else on the open network can capture the traffic."
+    },
+    {
+     "concept": "so login details could be read if the connection is not encrypted",
+     "accept": [
+      [
+       "password|login|details|credentials|username|bank details"
+      ],
+      [
+       "not encrypted|unencrypted|no encryption|plain text|readable"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "If the connection is not encrypted, the login details could be read."
+    },
+    {
+     "concept": "and the attacker could then use them to take money or steal the customer's identity",
+     "accept": [
+      [
+       "money|steal|theft|fraud|identity|account|transfer|spend|impersonate|log in as"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "The attacker could then use them to take money from the account."
+    }
+   ],
+   "example": "An open Wi-Fi network has no encryption of its own, so anybody in range can capture the packets travelling across it. If the bank's connection were not itself encrypted, the customer's login details would be readable in that captured traffic, and the attacker could use them to sign in and take money from the account.",
+   "paraphrase": "With no password on the network, anyone within range can collect the data passing over it, and without encryption the customer's credentials would be visible in that data, letting the attacker access the account and steal from it.",
+   "marks": 3,
+   "feedback": "Three ideas: who can listen, what they would get, and what they would do with it.",
+   "hint": "Think about what an open network does not provide, and what the attacker ends up holding.",
+   "commandWord": "explain",
+   "difficulty": "stretch",
+   "examStyle": true,
+   "subtopic": "Data interception",
+   "revisit": "ns-l08-s1",
+   "revisitReason": "Data interception",
+   "outcomes": [
+    "ns-l08-o1",
+    "ns-l08-o2"
+   ],
+   "topic": "1.4",
+   "id": "rq-1.4-data-interception-0023",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ns-l08",
+   "revisitStationId": "ns-l08-s1",
+   "revisitLabel": "1.4 Lesson 8 — Packet sniffers, station 1: Data interception and theft",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "tf",
+   "q": "Using HTTPS instead of HTTP protects data from being read if it is intercepted.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "True. The data can still be captured, but it is encrypted, so it is of no use to whoever captured it.",
+   "commandWord": "tick",
+   "difficulty": "retrieve",
+   "subtopic": "Data interception",
+   "revisit": "ns-l08-s1",
+   "revisitReason": "Data interception",
+   "outcomes": [
+    "ns-l08-o1",
+    "ns-l08-o2"
+   ],
+   "topic": "1.4",
+   "id": "rq-1.4-data-interception-0024",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ns-l08",
+   "revisitStationId": "ns-l08-s1",
+   "revisitLabel": "1.4 Lesson 8 — Packet sniffers, station 1: Data interception and theft",
+   "revisitScene": 0,
+   "revisitK": 0
+  }
+ ]
+}

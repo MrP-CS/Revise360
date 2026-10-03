@@ -48,24 +48,41 @@ CLI = HERE / "revmark_cli.js"
 
 # Answers about something else entirely. Rotated through so a question is not
 # always probed with the same one.
+# Answers about something else entirely, tagged with the topic they belong to.
+# The tag matters: an answer about bubble sort is not an irrelevant answer to a
+# question about bubble sort, and the first version of this pool failed the
+# marker for marking its own content correctly. Each question is probed with two
+# of these from OTHER topics.
 IRRELEVANT = [
-    "A bubble sort compares each pair of adjacent items and swaps them if they are in "
-    "the wrong order, repeating until no swaps are needed.",
-    "Phishing is when an attacker sends an email pretending to be a trusted company so "
-    "the victim gives away their password.",
-    "A compiler translates the whole program into machine code before it is run, and "
-    "produces an executable file.",
-    "I think this topic is quite interesting and I revised it last night for about half "
-    "an hour before the test.",
-    "An IDE provides an editor, a translator, a debugger and an error diagnostics "
-    "window, all in one program, so a developer does not need separate tools.",
-    "A firewall inspects the traffic entering and leaving a network and blocks anything "
-    "that does not meet the rules it has been given.",
-    "An array is a data structure holding several values of the same type under one "
-    "identifier, each reached by its index.",
-    "Validation checks that data entered is sensible before it is accepted, for example "
-    "that an age is a number between 0 and 120.",
+    ("2.1", "A bubble sort compares each pair of adjacent items and swaps them if they are "
+            "in the wrong order, repeating until no swaps are needed."),
+    ("1.4", "Phishing is when an attacker sends an email pretending to be a trusted company "
+            "so the victim gives away their password."),
+    ("2.5", "A compiler translates the whole program into machine code before it is run, "
+            "and produces an executable file."),
+    ("", "I think this topic is quite interesting and I revised it last night for about "
+         "half an hour before the test."),
+    ("2.5", "An IDE provides an editor, a translator, a debugger and an error diagnostics "
+            "window, all in one program, so a developer does not need separate tools."),
+    ("1.4", "A firewall inspects the traffic entering and leaving a network and blocks "
+            "anything that does not meet the rules it has been given."),
+    ("2.2", "An array is a data structure holding several values of the same type under one "
+            "identifier, each reached by its index."),
+    ("2.3", "Validation checks that data entered is sensible before it is accepted, for "
+            "example that an age is a number between 0 and 120."),
+    ("1.2", "Lossy compression permanently removes data that will not be noticed, while "
+            "lossless compression rearranges it so the original can be rebuilt exactly."),
+    ("1.1", "The control unit decodes each instruction and sends the signals that tell the "
+            "rest of the processor what to do with it."),
 ]
+
+
+def irrelevant_for(topic, n):
+    """Two answers from other topics. An answer from this topic might be a
+    perfectly good answer to this question."""
+    pool = [t for tp, t in IRRELEVANT if tp != topic]
+    return [pool[n % len(pool)], pool[(n + 3) % len(pool)]]
+
 
 # Deliberate reversals, used to build the contradiction probe where the author
 # has not written one. Applied to the model answer, each turning a true claim
@@ -310,8 +327,8 @@ def probes_for(q, n):
     # loosely usually survives one and not two. The first version of this suite
     # used one, and a mark point that could be earned by an answer about
     # phishing went through it.
-    out.append(("irrelevant", IRRELEVANT[n % len(IRRELEVANT)], ("==", 0)))
-    out.append(("irrelevant", IRRELEVANT[(n + 3) % len(IRRELEVANT)], ("==", 0)))
+    for other in irrelevant_for(q["topic"], n):
+        out.append(("irrelevant", other, ("==", 0)))
     if marks > 1:
         out.append(("keyword dump", keyword_dump(q), ("<=", 1)))
     for pi, p in enumerate(pts):

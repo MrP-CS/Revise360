@@ -1,0 +1,169 @@
+{
+ "topic": "1.4",
+ "lesson": "ns-l06",
+ "questions": [
+  {
+   "type": "short",
+   "q": "State what a brute-force attack is.",
+   "markPoints": [
+    {
+     "concept": "trying every possible password until the right one is found",
+     "accept": [
+      [
+       "try|tries|trying|tested|tests|guess|guesses|guessing|attempt|attempts|working through",
+       "every|all|all possible|one after|one by one|each one|repeatedly|again and again|thousands|millions|trial and error",
+       "password|combination|key|code|login"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Trying every possible password until the right one is found."
+    }
+   ],
+   "example": "Trying every possible combination of characters until the right password is found.",
+   "paraphrase": "Working through all the possible passwords one by one until one of them works.",
+   "marks": 1,
+   "feedback": "Every possibility, tried in turn. A dictionary attack is the same idea with a shortlist of likely passwords.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "Brute-force attacks",
+   "revisit": "ns-l06-s1",
+   "revisitReason": "Brute-force attacks",
+   "outcomes": [
+    "ns-l06-o1",
+    "ns-l06-o2"
+   ],
+   "topic": "1.4",
+   "id": "rq-1.4-brute-force-attacks-0015",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ns-l06",
+   "revisitStationId": "ns-l06-s1",
+   "revisitLabel": "1.4 Lesson 6 — Cracking lab, station 1: What is a brute-force attack?",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "multi",
+   "q": "Which of these make a brute-force attack harder? Tick all that apply.",
+   "options": [
+    "A longer password",
+    "Using upper and lower case, digits and symbols",
+    "Locking the account after a number of failed attempts",
+    "Using two-factor authentication",
+    "Changing the font of the login page"
+   ],
+   "correct": [
+    "A longer password",
+    "Using upper and lower case, digits and symbols",
+    "Locking the account after a number of failed attempts",
+    "Using two-factor authentication"
+   ],
+   "marks": 4,
+   "feedback": "Length and variety increase how many guesses are needed; locking the account limits how fast they can be made.",
+   "commandWord": "tick",
+   "difficulty": "understand",
+   "subtopic": "Brute-force attacks",
+   "revisit": "ns-l06-s1",
+   "revisitReason": "Brute-force attacks",
+   "outcomes": [
+    "ns-l06-o1",
+    "ns-l06-o2"
+   ],
+   "topic": "1.4",
+   "id": "rq-1.4-brute-force-attacks-0016",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ns-l06",
+   "revisitStationId": "ns-l06-s1",
+   "revisitLabel": "1.4 Lesson 6 — Cracking lab, station 1: What is a brute-force attack?",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "Explain why a longer password is so much harder to crack by brute force.",
+   "markPoints": [
+    {
+     "concept": "every extra character multiplies the number of possible passwords",
+     "accept": [
+      [
+       "multipl|times|power|exponential|doubles|many more|far more|each extra|every extra|each character|per character"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Every extra character multiplies the number of possible passwords."
+    },
+    {
+     "concept": "so the number of combinations grows extremely quickly",
+     "accept": [
+      [
+       "grow|grows|growing|increase|increases|rise|rises|expands|huge|enormous|dramatic|millions|billions|very quickly|rapidly|search space"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "So the number of combinations grows extremely quickly."
+    },
+    {
+     "concept": "and the attack takes far longer, perhaps longer than is worth it",
+     "accept": [
+      [
+       "longer|years|centuries|too long|not worth|impractical|give up|takes time|slow"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "This means the attack would take so long that it is not worth attempting."
+    }
+   ],
+   "example": "Each extra character multiplies the number of possible passwords by the size of the character set, so the total number of combinations grows enormously with every character added. That means a brute-force attack would take years rather than minutes, which is long enough that nobody bothers.",
+   "paraphrase": "Adding a character multiplies the possibilities rather than adding to them, so the search space expands dramatically and the time required becomes so great that the attack is impractical.",
+   "marks": 3,
+   "feedback": "Three ideas: multiplication, growth, time. The third is what makes the password safe in practice.",
+   "commandWord": "explain",
+   "difficulty": "stretch",
+   "examStyle": true,
+   "subtopic": "Brute-force attacks",
+   "revisit": "ns-l06-s1",
+   "revisitReason": "Brute-force attacks",
+   "outcomes": [
+    "ns-l06-o1",
+    "ns-l06-o2"
+   ],
+   "topic": "1.4",
+   "id": "rq-1.4-brute-force-attacks-0017",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ns-l06",
+   "revisitStationId": "ns-l06-s1",
+   "revisitLabel": "1.4 Lesson 6 — Cracking lab, station 1: What is a brute-force attack?",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "num",
+   "q": "A password uses only the 26 lower-case letters and is 3 characters long. How many different passwords are possible?",
+   "answer": 17576,
+   "working": "26 ** 3",
+   "marks": 1,
+   "feedback": "26 × 26 × 26 = 17,576. Adding one more character would make it 456,976.",
+   "commandWord": "calculate",
+   "difficulty": "apply",
+   "subtopic": "Brute-force attacks",
+   "revisit": "ns-l06-s1",
+   "revisitReason": "Brute-force attacks",
+   "outcomes": [
+    "ns-l06-o1",
+    "ns-l06-o2"
+   ],
+   "topic": "1.4",
+   "id": "rq-1.4-brute-force-attacks-0018",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ns-l06",
+   "revisitStationId": "ns-l06-s1",
+   "revisitLabel": "1.4 Lesson 6 — Cracking lab, station 1: What is a brute-force attack?",
+   "revisitScene": 0,
+   "revisitK": 0
+  }
+ ]
+}

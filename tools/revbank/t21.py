@@ -224,6 +224,7 @@ BANK = [
         short("State the one condition a list must meet for a binary search to work.",
               [mp("the list must be in order",
                   ["sorted|in order|ordered|ascending|descending|arranged"],
+                  reject=[["wrong order|not in order|unsorted"]],
                   exemplar="The list must be sorted into order.")],
               example="The list must be sorted into order.",
               paraphrase="It has to be in order first.",

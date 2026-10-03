@@ -264,7 +264,8 @@ BANK = [
                     ["decode|decoded|interpret|work out|works out|understood|understand"],
                     exemplar="The control unit decodes it to work out what it means."),
                  mp("execute: the instruction is carried out, for example by the ALU",
-                    ["execute|executed|carried out|carries out|performed|acted on|done"],
+                    ["instruction is executed|instruction is carried out|instruction is performed|"
+                     "carried out|carries out|acted on|does what the instruction"],
                     exemplar="The instruction is then executed.")],
                 example="The address in the program counter is used to fetch the next "
                         "instruction from RAM into the CPU. The control unit then decodes it "

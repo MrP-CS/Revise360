@@ -1,0 +1,127 @@
+{
+ "topic": "1.4",
+ "lesson": "ns-l03",
+ "questions": [
+  {
+   "type": "short",
+   "q": "State what an SQL injection attack is.",
+   "markPoints": [
+    {
+     "concept": "entering SQL into an input box so that it is run by the database",
+     "accept": [
+      [
+       "sql|code|command|query",
+       "input|text box|form|field|login|box|typed|entered"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Typing SQL into an input box so the database runs it."
+    }
+   ],
+   "example": "Typing SQL commands into an input box on a website, so that the database runs them as part of its own query.",
+   "paraphrase": "Entering database commands into a form field so they get executed.",
+   "marks": 1,
+   "feedback": "SQL where data was expected. The attack works because the program joins the two together without checking.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "SQL injection",
+   "revisit": "ns-l03-s3",
+   "revisitReason": "SQL injection",
+   "outcomes": [
+    "ns-l03-o1",
+    "ns-l03-o2"
+   ],
+   "topic": "1.4",
+   "id": "rq-1.4-sql-injection-0007",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ns-l03",
+   "revisitStationId": "ns-l03-s3",
+   "revisitLabel": "1.4 Lesson 3 — Database break-in, station 3: The attack",
+   "revisitScene": 0,
+   "revisitK": 2
+  },
+  {
+   "type": "written",
+   "q": "Explain how a website can protect itself against SQL injection.",
+   "markPoints": [
+    {
+     "concept": "the input is validated or sanitised before it is used",
+     "accept": [
+      [
+       "validat|sanitis|sanitiz|checked|filter|filtered|clean|escape|strip|parameteris|parameteriz|prepared statement",
+       "input|user input|form|box|field|query|database|before it is used"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The input is validated before it is used in a query."
+    },
+    {
+     "concept": "so anything that looks like SQL is rejected rather than run",
+     "accept": [
+      [
+       "reject|rejected|removed|not run|refused|blocked|not executed|treated as text|as data|not as code"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "So anything that looks like SQL is rejected rather than run."
+    }
+   ],
+   "example": "Every input is validated and sanitised before it goes anywhere near a query, so that characters which would turn the input into SQL are stripped out or escaped and whatever the user typed is treated as data rather than as code.",
+   "paraphrase": "The site checks and cleans anything entered before it reaches the database, which means text that would act as a command is removed and the entry is handled purely as data.",
+   "marks": 2,
+   "feedback": "Validation, then what validation achieves.",
+   "commandWord": "explain",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "SQL injection",
+   "revisit": "ns-l03-s3",
+   "revisitReason": "SQL injection",
+   "outcomes": [
+    "ns-l03-o1",
+    "ns-l03-o2"
+   ],
+   "topic": "1.4",
+   "id": "rq-1.4-sql-injection-0008",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ns-l03",
+   "revisitStationId": "ns-l03-s3",
+   "revisitLabel": "1.4 Lesson 3 — Database break-in, station 3: The attack",
+   "revisitScene": 0,
+   "revisitK": 2
+  },
+  {
+   "type": "mcq",
+   "q": "Why is SQL injection dangerous even when a website holds no passwords?",
+   "options": [
+    "An attacker can read, change or delete any data in the database",
+    "It overloads the server with traffic",
+    "It installs malware on every visitor's computer",
+    "It intercepts data being sent over the network"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Injection gives the attacker the database's own powers. Flooding is denial of service and interception is a different attack entirely.",
+   "commandWord": "identify",
+   "difficulty": "understand",
+   "subtopic": "SQL injection",
+   "revisit": "ns-l03-s3",
+   "revisitReason": "SQL injection",
+   "outcomes": [
+    "ns-l03-o1",
+    "ns-l03-o2"
+   ],
+   "topic": "1.4",
+   "id": "rq-1.4-sql-injection-0009",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ns-l03",
+   "revisitStationId": "ns-l03-s3",
+   "revisitLabel": "1.4 Lesson 3 — Database break-in, station 3: The attack",
+   "revisitScene": 0,
+   "revisitK": 2
+  }
+ ]
+}

@@ -334,8 +334,9 @@ BANK = [
         written("Explain one advantage of using sub-programs in a large program.", 2,
                 [mp("the same code can be called from several places instead of being "
                     "repeated",
-                    ["reuse|reused|re-used|called|call|invoked|again|several places|wherever|"
-                     "more than once|repeated|duplicate|written once"],
+                    ["reuse|reused|called|call|calls|invoked|several places|wherever|"
+                     "more than once|written once|without writing it again|"
+                     "rather than repeating"],
                     exemplar="The same code can be called from several places instead of "
                              "being written out again."),
                  mp("so the program is shorter and a change only has to be made in one "
@@ -391,7 +392,7 @@ BANK = [
             diff="apply"),
         short("State what is meant by a pseudo-random number.",
               [mp("it is produced by an algorithm, so it is not truly random",
-                  ["algorithm|formula|calculation|program|seed|rule"],
+                  ["algorithm|formula|calculation|seed|set of rules"],
                   ["not truly|not really|appears|seems|looks|predictable|"
                    "not genuinely|only appears"],
                   exemplar="It is produced by an algorithm, so it only appears random.")],

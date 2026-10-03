@@ -1,0 +1,259 @@
+{
+ "topic": "1.4",
+ "lesson": "ns-l09",
+ "questions": [
+  {
+   "type": "match",
+   "q": "Match each defence to what it does.",
+   "pairs": [
+    [
+     "Firewall",
+     "Inspects traffic entering and leaving, and blocks what breaks the rules"
+    ],
+    [
+     "Anti-malware software",
+     "Scans for known malicious programs and removes them"
+    ],
+    [
+     "User access levels",
+     "Limits what each person is allowed to see and change"
+    ],
+    [
+     "Penetration testing",
+     "Attacks a system deliberately to find its weaknesses"
+    ],
+    [
+     "Physical security",
+     "Keeps people away from the hardware itself"
+    ]
+   ],
+   "marks": 5,
+   "feedback": "Penetration testing is the odd one out: it finds weaknesses rather than preventing an attack.",
+   "commandWord": "draw",
+   "difficulty": "understand",
+   "examStyle": true,
+   "subtopic": "Defences",
+   "revisit": "ns-l09-s1",
+   "revisitReason": "Defences",
+   "outcomes": [
+    "ns-l09-o2"
+   ],
+   "topic": "1.4",
+   "id": "rq-1.4-defences-0025",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ns-l09",
+   "revisitStationId": "ns-l09-s1",
+   "revisitLabel": "1.4 Lesson 9 — Defence depot, station 1: Penetration testing",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "short",
+   "q": "State what penetration testing is.",
+   "markPoints": [
+    {
+     "concept": "deliberately attacking a system to find its weaknesses before an attacker does",
+     "accept": [
+      [
+       "attack|attacking|break in|breaking in|hack|hacking|test|testing|probe"
+      ],
+      [
+       "weakness|weaknesses|vulnerab|hole|holes|flaw|gap|problem|before an attacker|before someone"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Deliberately attacking a system to find its weaknesses before a real attacker does."
+    }
+   ],
+   "example": "Deliberately attacking a system, with permission, in order to find its weaknesses before a real attacker does.",
+   "paraphrase": "Testing a system by trying to break into it, so that any holes can be fixed first.",
+   "marks": 1,
+   "feedback": "Attacking on purpose, to find the holes. Both halves.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "Defences",
+   "revisit": "ns-l09-s1",
+   "revisitReason": "Defences",
+   "outcomes": [
+    "ns-l09-o2"
+   ],
+   "topic": "1.4",
+   "id": "rq-1.4-defences-0026",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ns-l09",
+   "revisitStationId": "ns-l09-s1",
+   "revisitLabel": "1.4 Lesson 9 — Defence depot, station 1: Penetration testing",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "Explain why user access levels improve the security of a school network.",
+   "markPoints": [
+    {
+     "concept": "each person can only reach the data their role needs",
+     "accept": [
+      [
+       "only|just|limited|restrict|restricted|permission|allowed|their own|role|need"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Each person can only reach the data their role needs."
+    },
+    {
+     "concept": "so an account that is broken into gives the attacker much less",
+     "accept": [
+      [
+       "less|limited|not everything|cannot reach|damage|contained|broken into|compromised|stolen|accident|cannot change"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "So if a pupil's account is broken into, the attacker still cannot reach staff data."
+    }
+   ],
+   "example": "Access levels mean a pupil can only reach their own work and a teacher only their own classes, so if an account is broken into, or somebody deletes something by accident, the damage is limited to what that account could reach in the first place.",
+   "paraphrase": "People are restricted to the files their role requires, which means a compromised or careless account can only affect a small part of the system.",
+   "marks": 2,
+   "feedback": "Restriction, then what the restriction limits when something goes wrong.",
+   "commandWord": "explain",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Defences",
+   "revisit": "ns-l09-s1",
+   "revisitReason": "Defences",
+   "outcomes": [
+    "ns-l09-o2"
+   ],
+   "topic": "1.4",
+   "id": "rq-1.4-defences-0027",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ns-l09",
+   "revisitStationId": "ns-l09-s1",
+   "revisitLabel": "1.4 Lesson 9 — Defence depot, station 1: Penetration testing",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "sort",
+   "q": "A school has had a security review. Sort each recommendation by the kind of defence it is.",
+   "cats": [
+    "Technical",
+    "Physical",
+    "People"
+   ],
+   "items": [
+    [
+     "Install a firewall on the network",
+     "Technical"
+    ],
+    [
+     "Keep the server room locked",
+     "Physical"
+    ],
+    [
+     "Train staff to recognise phishing emails",
+     "People"
+    ],
+    [
+     "Require passwords of at least twelve characters",
+     "Technical"
+    ],
+    [
+     "Fit CCTV in the computer rooms",
+     "Physical"
+    ],
+    [
+     "Write an acceptable use policy everyone signs",
+     "People"
+    ]
+   ],
+   "marks": 6,
+   "feedback": "Most real systems need all three. An attacker only has to find the weakest one.",
+   "commandWord": "tick",
+   "difficulty": "apply",
+   "subtopic": "Defences",
+   "revisit": "ns-l09-s1",
+   "revisitReason": "Defences",
+   "outcomes": [
+    "ns-l09-o2"
+   ],
+   "topic": "1.4",
+   "id": "rq-1.4-defences-0028",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ns-l09",
+   "revisitStationId": "ns-l09-s1",
+   "revisitLabel": "1.4 Lesson 9 — Defence depot, station 1: Penetration testing",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "extended",
+   "q": "A small business has been hit by ransomware and has lost a week's work. Discuss the measures it should put in place, and recommend which to do first.",
+   "markPoints": [
+    {
+     "concept": "explains what ransomware did and why the data was lost",
+     "accept": [],
+     "worth": 1
+    },
+    {
+     "concept": "argues for regular backups kept separately from the network",
+     "accept": [],
+     "worth": 1
+    },
+    {
+     "concept": "argues for anti-malware software and keeping systems updated",
+     "accept": [],
+     "worth": 1
+    },
+    {
+     "concept": "argues for staff training, since most ransomware arrives by email",
+     "accept": [],
+     "worth": 1
+    },
+    {
+     "concept": "argues for user access levels to limit how far an infection spreads",
+     "accept": [],
+     "worth": 1
+    },
+    {
+     "concept": "recommends one measure to do first, with a reason",
+     "accept": [],
+     "worth": 1
+    }
+   ],
+   "example": "Ransomware encrypts the files on a system and demands payment for the key, and because the business had no usable copy of its work it lost everything created that week. The single most important measure is a backup regime: regular backups kept off the network, so that an infection cannot reach them and the files can simply be restored rather than paid for. Alongside that, anti-malware software and prompt operating system updates close the holes most ransomware arrives through, and user access levels limit how much of the business one infected account can encrypt. But the measure that matters most is staff training, because the great majority of ransomware arrives in an email attachment that somebody opened, and no technical measure prevents that. I would do the backups first, because they are quick to set up and they are the only measure that works even when everything else has failed.",
+   "bands": [
+    "CONTENT",
+    "APPLICATION",
+    "DEVELOPMENT",
+    "BALANCE",
+    "CONCLUSION"
+   ],
+   "marks": 6,
+   "feedback": "You mark this one yourself against the points above. The mark most answers miss is the last: a recommendation with a reason, not a list.",
+   "commandWord": "discuss",
+   "difficulty": "stretch",
+   "examStyle": true,
+   "subtopic": "Defences",
+   "revisit": "ns-l09-s1",
+   "revisitReason": "Defences",
+   "outcomes": [
+    "ns-l09-o2"
+   ],
+   "topic": "1.4",
+   "id": "rq-1.4-defences-0029",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ns-l09",
+   "revisitStationId": "ns-l09-s1",
+   "revisitLabel": "1.4 Lesson 9 — Defence depot, station 1: Penetration testing",
+   "revisitScene": 0,
+   "revisitK": 0
+  }
+ ]
+}

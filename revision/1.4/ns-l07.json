@@ -1,0 +1,127 @@
+{
+ "topic": "1.4",
+ "lesson": "ns-l07",
+ "questions": [
+  {
+   "type": "short",
+   "q": "State what a denial-of-service attack does.",
+   "markPoints": [
+    {
+     "concept": "it floods a server with requests so that genuine users cannot get through",
+     "accept": [
+      [
+       "flood|floods|flooding|swamp|swamps|overload|overloads|overwhelm|overwhelms|bombard|too many requests|huge number of requests|too much traffic",
+       "cannot|unable|denied|refused|crash|unavailable|shut down|goes down|genuine users|real users|legitimate users"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "It floods a server with requests so that genuine users cannot get through."
+    }
+   ],
+   "example": "It overwhelms a server with so many requests that it cannot respond to genuine users, so the service becomes unavailable.",
+   "paraphrase": "It swamps a server with traffic until real users can no longer reach it.",
+   "marks": 1,
+   "feedback": "Flooding, and the effect of the flooding. An attack that did not stop anybody would not be denying service.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "Denial of service",
+   "revisit": "ns-l07-s1",
+   "revisitReason": "Denial of service",
+   "outcomes": [
+    "ns-l07-o1",
+    "ns-l07-o2"
+   ],
+   "topic": "1.4",
+   "id": "rq-1.4-denial-of-service-0019",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ns-l07",
+   "revisitStationId": "ns-l07-s1",
+   "revisitLabel": "1.4 Lesson 7 — Traffic flood, station 1: Denial of service",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "mcq",
+   "q": "What makes a denial-of-service attack 'distributed'?",
+   "options": [
+    "The requests come from many computers at once, usually a botnet",
+    "The attack targets several servers at the same time",
+    "The attacker is in a different country from the server",
+    "The attack is spread out over several weeks"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Distributed refers to where the traffic comes from. A botnet of infected machines is the usual source.",
+   "commandWord": "identify",
+   "difficulty": "understand",
+   "subtopic": "Denial of service",
+   "revisit": "ns-l07-s1",
+   "revisitReason": "Denial of service",
+   "outcomes": [
+    "ns-l07-o1",
+    "ns-l07-o2"
+   ],
+   "topic": "1.4",
+   "id": "rq-1.4-denial-of-service-0020",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ns-l07",
+   "revisitStationId": "ns-l07-s1",
+   "revisitLabel": "1.4 Lesson 7 — Traffic flood, station 1: Denial of service",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "Explain why a distributed denial-of-service attack is harder to stop than one from a single computer.",
+   "markPoints": [
+    {
+     "concept": "the traffic comes from thousands of different addresses",
+     "accept": [
+      [
+       "many|thousands|lots of|huge number|different|separate|several|multiple|all over|around the world|botnet",
+       "address|addresses|ip|computers|machines|sources|devices"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The traffic comes from thousands of different addresses."
+    },
+    {
+     "concept": "so blocking one address does not stop the attack, and the traffic looks like ordinary users",
+     "accept": [
+      [
+       "block|blocking|blocked|filter|ban|cannot just|one address|looks like|indistinguishable|genuine|real users|normal traffic"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "So blocking one address does not stop it, and the traffic looks like ordinary visitors."
+    }
+   ],
+   "example": "The requests come from thousands of infected computers all over the world, so blocking one address stops almost none of the traffic, and because each machine looks like an ordinary visitor it is very hard to tell the attack apart from real users.",
+   "paraphrase": "Because the flood originates from a huge number of separate machines, cutting off a single source barely helps, and each one resembles a normal visitor so the attack is difficult to filter out.",
+   "marks": 2,
+   "feedback": "Many sources, therefore blocking does not work.",
+   "commandWord": "explain",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Denial of service",
+   "revisit": "ns-l07-s1",
+   "revisitReason": "Denial of service",
+   "outcomes": [
+    "ns-l07-o1",
+    "ns-l07-o2"
+   ],
+   "topic": "1.4",
+   "id": "rq-1.4-denial-of-service-0021",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ns-l07",
+   "revisitStationId": "ns-l07-s1",
+   "revisitLabel": "1.4 Lesson 7 — Traffic flood, station 1: Denial of service",
+   "revisitScene": 0,
+   "revisitK": 0
+  }
+ ]
+}
