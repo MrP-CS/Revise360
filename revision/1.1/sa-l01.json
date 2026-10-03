@@ -1,0 +1,986 @@
+{
+ "topic": "1.1",
+ "lesson": "sa-l01",
+ "questions": [
+  {
+   "type": "mcq",
+   "q": "Which of these best describes what the CPU does?",
+   "options": [
+    "It processes the data and instructions that make up a program",
+    "It stores files so they are still there after a restart",
+    "It converts analogue signals into digital ones",
+    "It supplies electricity to the other components"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "The CPU processes data and instructions. Storing files that survive a restart is secondary storage, not the CPU.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "Purpose of the CPU",
+   "revisit": "sa-l01-s1",
+   "revisitReason": "Purpose of the CPU",
+   "outcomes": [
+    "sa-l01-o1"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-purpose-of-the-cpu-0001",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l01",
+   "revisitStationId": "sa-l01-s1",
+   "revisitLabel": "1.1 Lesson 1 — Fetch-execute factory, station 1: Purpose of the CPU",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "mcq",
+   "q": "A CPU repeats the same three-stage cycle over and over. What is it called?",
+   "options": [
+    "The fetch–decode–execute cycle",
+    "The input–process–output cycle",
+    "The read–write–erase cycle",
+    "The compile–link–run cycle"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Fetch, decode, execute. Input–process–output describes a whole system; this is what happens inside the processor.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "Purpose of the CPU",
+   "revisit": "sa-l01-s1",
+   "revisitReason": "Purpose of the CPU",
+   "outcomes": [
+    "sa-l01-o1"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-purpose-of-the-cpu-0002",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l01",
+   "revisitStationId": "sa-l01-s1",
+   "revisitLabel": "1.1 Lesson 1 — Fetch-execute factory, station 1: Purpose of the CPU",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "tf",
+   "q": "The CPU can only work on data that is in main memory, not data still on secondary storage.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "True. Anything the CPU needs has to be loaded into RAM first, which is why a program has to load before it runs.",
+   "commandWord": "tick",
+   "difficulty": "retrieve",
+   "subtopic": "Purpose of the CPU",
+   "revisit": "sa-l01-s1",
+   "revisitReason": "Purpose of the CPU",
+   "outcomes": [
+    "sa-l01-o1"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-purpose-of-the-cpu-0003",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l01",
+   "revisitStationId": "sa-l01-s1",
+   "revisitLabel": "1.1 Lesson 1 — Fetch-execute factory, station 1: Purpose of the CPU",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "short",
+   "q": "State what the letters CPU stand for.",
+   "markPoints": [
+    {
+     "concept": "central processing unit",
+     "accept": [
+      [
+       "central",
+       "processing|processor",
+       "unit"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Central processing unit."
+    }
+   ],
+   "example": "Central processing unit.",
+   "paraphrase": "It stands for central processing unit.",
+   "marks": 1,
+   "feedback": "Central processing unit. Writing 'computer processing unit' is a common slip and does not earn the mark.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "Purpose of the CPU",
+   "revisit": "sa-l01-s1",
+   "revisitReason": "Purpose of the CPU",
+   "outcomes": [
+    "sa-l01-o1"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-purpose-of-the-cpu-0004",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l01",
+   "revisitStationId": "sa-l01-s1",
+   "revisitLabel": "1.1 Lesson 1 — Fetch-execute factory, station 1: Purpose of the CPU",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "Explain why a computer with no CPU could not run a program, even if it had plenty of RAM and storage.",
+   "markPoints": [
+    {
+     "concept": "the CPU is what carries out, or processes, the instructions",
+     "accept": [
+      [
+       "cpu|processor",
+       "carry out|carries out|execute|process|run|perform"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The CPU is the part that carries out the instructions."
+    },
+    {
+     "concept": "so instructions would only be stored, never acted on",
+     "accept": [
+      [
+       "store|stored|held|sit|sitting|kept|remain",
+       "never|nothing|not run|not execute|not carried out|no one|not processed|would not"
+      ],
+      [
+       "memory|ram|storage",
+       "cannot|can not|nothing happens|no processing|not processed"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "The instructions would just be stored in RAM, so nothing would ever happen to them."
+    }
+   ],
+   "example": "The CPU is the component that fetches and carries out each instruction, so without one the instructions would simply sit in RAM and never be executed.",
+   "paraphrase": "Only the processor actually performs instructions, which means they would stay in memory and nothing would ever happen.",
+   "marks": 2,
+   "feedback": "RAM and storage hold instructions; only the CPU acts on them.",
+   "hint": "What does RAM do with an instruction, and what has to happen next?",
+   "commandWord": "explain",
+   "difficulty": "understand",
+   "misconception": "Learners often say RAM 'runs' the program. RAM holds it; the CPU runs it.",
+   "subtopic": "Purpose of the CPU",
+   "revisit": "sa-l01-s1",
+   "revisitReason": "Purpose of the CPU",
+   "outcomes": [
+    "sa-l01-o1"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-purpose-of-the-cpu-0005",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l01",
+   "revisitStationId": "sa-l01-s1",
+   "revisitLabel": "1.1 Lesson 1 — Fetch-execute factory, station 1: Purpose of the CPU",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "mcq",
+   "q": "Which register holds the address of the next instruction to be fetched?",
+   "options": [
+    "The program counter (PC)",
+    "The accumulator (ACC)",
+    "The memory data register (MDR)",
+    "The memory address register (MAR)"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "The program counter holds the address of the next instruction. The MAR holds the address currently being used for a fetch or a write.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "Stage 1: fetch",
+   "revisit": "sa-l01-s2",
+   "revisitReason": "Stage 1: fetch",
+   "outcomes": [
+    "sa-l01-o3"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-stage-1-fetch-0006",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l01",
+   "revisitStationId": "sa-l01-s2",
+   "revisitLabel": "1.1 Lesson 1 — Fetch-execute factory, station 2: Stage 1: Fetch",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "order",
+   "q": "Put the fetch stage into the right order.",
+   "steps": [
+    "The program counter supplies the address of the next instruction",
+    "That address is copied into the memory address register",
+    "The instruction at that address is copied from RAM into the memory data register",
+    "The program counter is incremented"
+   ],
+   "marks": 4,
+   "feedback": "The program counter is incremented during the fetch, so it is already pointing at the next instruction before this one has been executed.",
+   "commandWord": "complete",
+   "difficulty": "apply",
+   "subtopic": "Stage 1: fetch",
+   "revisit": "sa-l01-s2",
+   "revisitReason": "Stage 1: fetch",
+   "outcomes": [
+    "sa-l01-o3"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-stage-1-fetch-0007",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l01",
+   "revisitStationId": "sa-l01-s2",
+   "revisitLabel": "1.1 Lesson 1 — Fetch-execute factory, station 2: Stage 1: Fetch",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "short",
+   "q": "State what happens to the program counter during each fetch.",
+   "markPoints": [
+    {
+     "concept": "it is incremented, so it points at the next instruction",
+     "accept": [
+      [
+       "increment|increase|goes up|add one|adds 1|plus one|moves on|next instruction"
+      ]
+     ],
+     "worth": 1,
+     "reject": [
+      [
+       "less|fewer|smaller|lower|decrease|decreases|decreased|half|halves"
+      ]
+     ],
+     "exemplar": "It is incremented by one."
+    }
+   ],
+   "example": "It is incremented, so it holds the address of the next instruction.",
+   "paraphrase": "Its value goes up by one so it points at the following instruction.",
+   "marks": 1,
+   "feedback": "Incremented. A common wrong answer is that it is reset, which would make the CPU run the same instruction forever.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "Stage 1: fetch",
+   "revisit": "sa-l01-s2",
+   "revisitReason": "Stage 1: fetch",
+   "outcomes": [
+    "sa-l01-o3"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-stage-1-fetch-0008",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l01",
+   "revisitStationId": "sa-l01-s2",
+   "revisitLabel": "1.1 Lesson 1 — Fetch-execute factory, station 2: Stage 1: Fetch",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "written",
+   "q": "Describe the role of the MAR and the MDR during the fetch stage.",
+   "markPoints": [
+    {
+     "concept": "the MAR holds the address being fetched from",
+     "accept": [
+      [
+       "mar|memory address register",
+       "address"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The MAR holds the address of the instruction to be fetched."
+    },
+    {
+     "concept": "the MDR holds the instruction that comes back",
+     "accept": [
+      [
+       "mdr|memory data register",
+       "instruction|data|contents|value"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The MDR holds the instruction fetched from memory."
+    }
+   ],
+   "example": "The MAR holds the address of the instruction to be fetched, and the instruction that comes back from RAM is placed in the MDR.",
+   "paraphrase": "The memory address register stores which address to read, and the memory data register stores the instruction that arrives.",
+   "marks": 2,
+   "feedback": "One register carries the address out, the other carries the instruction back.",
+   "commandWord": "describe",
+   "difficulty": "understand",
+   "subtopic": "Stage 1: fetch",
+   "revisit": "sa-l01-s2",
+   "revisitReason": "Stage 1: fetch",
+   "outcomes": [
+    "sa-l01-o3"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-stage-1-fetch-0009",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l01",
+   "revisitStationId": "sa-l01-s2",
+   "revisitLabel": "1.1 Lesson 1 — Fetch-execute factory, station 2: Stage 1: Fetch",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "mcq",
+   "q": "Which part of the CPU decodes an instruction?",
+   "options": [
+    "The control unit",
+    "The arithmetic logic unit",
+    "The accumulator",
+    "The cache"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "The control unit decodes the instruction and sends the signals that make the rest of the CPU do what it says.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "Stage 2: decode",
+   "revisit": "sa-l01-s3",
+   "revisitReason": "Stage 2: decode",
+   "outcomes": [
+    "sa-l01-o3",
+    "sa-l01-o4"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-stage-2-decode-0010",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l01",
+   "revisitStationId": "sa-l01-s3",
+   "revisitLabel": "1.1 Lesson 1 — Fetch-execute factory, station 3: Stage 2: Decode",
+   "revisitScene": 0,
+   "revisitK": 2
+  },
+  {
+   "type": "short",
+   "q": "State what the CPU works out during the decode stage.",
+   "markPoints": [
+    {
+     "concept": "what the instruction means, and so what has to be done",
+     "accept": [
+      [
+       "what|which",
+       "instruction|it",
+       "mean|means|is|does|requires|needs"
+      ],
+      [
+       "work out|works out|determine|identify|interpret|understand|translate"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "What the instruction means and what needs to be done."
+    }
+   ],
+   "example": "It works out what the instruction means and what needs to be done next.",
+   "paraphrase": "The processor interprets the instruction to determine what action it requires.",
+   "marks": 1,
+   "feedback": "Decode is where the instruction is interpreted, before anything is done about it.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "Stage 2: decode",
+   "revisit": "sa-l01-s3",
+   "revisitReason": "Stage 2: decode",
+   "outcomes": [
+    "sa-l01-o3",
+    "sa-l01-o4"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-stage-2-decode-0011",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l01",
+   "revisitStationId": "sa-l01-s3",
+   "revisitLabel": "1.1 Lesson 1 — Fetch-execute factory, station 3: Stage 2: Decode",
+   "revisitScene": 0,
+   "revisitK": 2
+  },
+  {
+   "type": "tf",
+   "q": "Decoding an instruction means translating it from a high-level language into machine code.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correct": 1,
+   "marks": 1,
+   "feedback": "False, and this is a common confusion. Translating a high-level language is what a compiler or interpreter does, before the program runs. Decoding happens inside the CPU, on an instruction that is already machine code.",
+   "commandWord": "tick",
+   "difficulty": "retrieve",
+   "misconception": "Decode is confused with translation. By the time the CPU sees it, the instruction is already machine code.",
+   "subtopic": "Stage 2: decode",
+   "revisit": "sa-l01-s3",
+   "revisitReason": "Stage 2: decode",
+   "outcomes": [
+    "sa-l01-o3",
+    "sa-l01-o4"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-stage-2-decode-0012",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l01",
+   "revisitStationId": "sa-l01-s3",
+   "revisitLabel": "1.1 Lesson 1 — Fetch-execute factory, station 3: Stage 2: Decode",
+   "revisitScene": 0,
+   "revisitK": 2
+  },
+  {
+   "type": "mcq",
+   "q": "During the execute stage of an instruction that adds two numbers, which component does the addition?",
+   "options": [
+    "The arithmetic logic unit (ALU)",
+    "The control unit (CU)",
+    "The program counter (PC)",
+    "The memory address register (MAR)"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "The ALU performs calculations and logical comparisons. The control unit tells it to, but does not do the arithmetic itself.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "Stage 3: execute",
+   "revisit": "sa-l01-s4",
+   "revisitReason": "Stage 3: execute",
+   "outcomes": [
+    "sa-l01-o3"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-stage-3-execute-0013",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l01",
+   "revisitStationId": "sa-l01-s4",
+   "revisitLabel": "1.1 Lesson 1 — Fetch-execute factory, station 4: Stage 3: Execute",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "multi",
+   "q": "Which of these could happen during the execute stage? Tick all that apply.",
+   "options": [
+    "Data is fetched from memory to be used in a calculation",
+    "The result of a calculation is written back to RAM",
+    "The CPU jumps to a different instruction",
+    "The program is translated into machine code",
+    "The instruction is copied into the MDR"
+   ],
+   "correct": [
+    "Data is fetched from memory to be used in a calculation",
+    "The result of a calculation is written back to RAM",
+    "The CPU jumps to a different instruction"
+   ],
+   "marks": 3,
+   "feedback": "Execute does whatever the instruction says, which may include a calculation, a write back to memory, or a jump. Copying the instruction into the MDR happened back in the fetch stage.",
+   "commandWord": "tick",
+   "difficulty": "apply",
+   "subtopic": "Stage 3: execute",
+   "revisit": "sa-l01-s4",
+   "revisitReason": "Stage 3: execute",
+   "outcomes": [
+    "sa-l01-o3"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-stage-3-execute-0014",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l01",
+   "revisitStationId": "sa-l01-s4",
+   "revisitLabel": "1.1 Lesson 1 — Fetch-execute factory, station 4: Stage 3: Execute",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "short",
+   "q": "Name the register that holds the result of a calculation.",
+   "markPoints": [
+    {
+     "concept": "the accumulator",
+     "accept": [
+      [
+       "accumulator|acc"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The accumulator."
+    }
+   ],
+   "example": "The accumulator (ACC).",
+   "paraphrase": "The ACC.",
+   "marks": 1,
+   "feedback": "The accumulator. It is where the ALU puts its result before anything else happens to it.",
+   "commandWord": "name",
+   "difficulty": "retrieve",
+   "subtopic": "Stage 3: execute",
+   "revisit": "sa-l01-s4",
+   "revisitReason": "Stage 3: execute",
+   "outcomes": [
+    "sa-l01-o3"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-stage-3-execute-0015",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l01",
+   "revisitStationId": "sa-l01-s4",
+   "revisitLabel": "1.1 Lesson 1 — Fetch-execute factory, station 4: Stage 3: Execute",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "match",
+   "q": "Match each register to what it holds.",
+   "pairs": [
+    [
+     "Program counter",
+     "The address of the next instruction"
+    ],
+    [
+     "Memory address register",
+     "The address being read from or written to"
+    ],
+    [
+     "Memory data register",
+     "The data or instruction just fetched"
+    ],
+    [
+     "Accumulator",
+     "The result of the last calculation"
+    ]
+   ],
+   "marks": 4,
+   "feedback": "The PC looks ahead to the next instruction; the MAR holds the address in use right now.",
+   "commandWord": "draw",
+   "difficulty": "understand",
+   "subtopic": "The registers",
+   "revisit": "sa-l01-s5",
+   "revisitReason": "The registers",
+   "outcomes": [
+    "sa-l01-o2"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-the-registers-0016",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l01",
+   "revisitStationId": "sa-l01-s5",
+   "revisitLabel": "1.1 Lesson 1 — Fetch-execute factory, station 5: The registers",
+   "revisitScene": 0,
+   "revisitK": 4
+  },
+  {
+   "type": "mcq",
+   "q": "Why are registers made part of the CPU rather than part of RAM?",
+   "options": [
+    "So the CPU can read and write them extremely quickly",
+    "So their contents survive when the power is switched off",
+    "So several programs can share them at once",
+    "So they can hold much more data than RAM"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Registers are tiny and extremely fast because they are inside the CPU. They hold only a few values, and they are volatile.",
+   "commandWord": "identify",
+   "difficulty": "understand",
+   "subtopic": "The registers",
+   "revisit": "sa-l01-s5",
+   "revisitReason": "The registers",
+   "outcomes": [
+    "sa-l01-o2"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-the-registers-0017",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l01",
+   "revisitStationId": "sa-l01-s5",
+   "revisitLabel": "1.1 Lesson 1 — Fetch-execute factory, station 5: The registers",
+   "revisitScene": 0,
+   "revisitK": 4
+  },
+  {
+   "type": "tf",
+   "q": "A register holds more data than cache.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correct": 1,
+   "marks": 1,
+   "feedback": "False. The order of size is registers, then cache, then RAM, then secondary storage — and the order of speed is exactly the other way round.",
+   "commandWord": "tick",
+   "difficulty": "retrieve",
+   "subtopic": "The registers",
+   "revisit": "sa-l01-s5",
+   "revisitReason": "The registers",
+   "outcomes": [
+    "sa-l01-o2"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-the-registers-0018",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l01",
+   "revisitStationId": "sa-l01-s5",
+   "revisitLabel": "1.1 Lesson 1 — Fetch-execute factory, station 5: The registers",
+   "revisitScene": 0,
+   "revisitK": 4
+  },
+  {
+   "type": "written",
+   "q": "Explain why a CPU needs registers at all, when it already has access to RAM.",
+   "markPoints": [
+    {
+     "concept": "registers are much faster to access than RAM",
+     "accept": [
+      [
+       "register|they|them",
+       "fast|quick|speed|rapid|more instruction|more cycle|sooner"
+      ]
+     ],
+     "worth": 1,
+     "reject": [
+      [
+       "register|they|them",
+       "slow|slower|slowly|less quick|not as fast|takes longer|sluggish|longer"
+      ]
+     ],
+     "exemplar": "Registers are far faster to access than RAM."
+    },
+    {
+     "concept": "so the CPU is not left waiting during every cycle",
+     "accept": [
+      [
+       "not wait|not have to wait|no waiting|without waiting|not left waiting|not kept waiting|not delayed|not held up|avoids waiting|less waiting|not idle|no delay"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "This means the CPU does not have to wait for RAM during every cycle, so the cycle completes sooner."
+    }
+   ],
+   "example": "Registers are inside the CPU, so reading and writing them is far faster than going out to RAM, which means the processor is not left waiting during every cycle.",
+   "paraphrase": "Registers sit inside the processor so they can be read much more quickly than RAM, which means the CPU is not kept waiting on each cycle.",
+   "marks": 2,
+   "feedback": "Speed is the whole point, and the mark for explaining it comes from linking the speed to what the CPU would otherwise be doing: waiting.",
+   "hint": "Compare the time to reach a register with the time to reach RAM, then say what the CPU would be doing in the meantime.",
+   "commandWord": "explain",
+   "difficulty": "apply",
+   "subtopic": "The registers",
+   "revisit": "sa-l01-s5",
+   "revisitReason": "The registers",
+   "outcomes": [
+    "sa-l01-o2"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-the-registers-0019",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l01",
+   "revisitStationId": "sa-l01-s5",
+   "revisitLabel": "1.1 Lesson 1 — Fetch-execute factory, station 5: The registers",
+   "revisitScene": 0,
+   "revisitK": 4
+  },
+  {
+   "type": "match",
+   "q": "Match each CPU component to its job.",
+   "pairs": [
+    [
+     "Arithmetic logic unit",
+     "Carries out calculations and comparisons"
+    ],
+    [
+     "Control unit",
+     "Decodes instructions and sends control signals"
+    ],
+    [
+     "Cache",
+     "Holds frequently used data close to the CPU"
+    ]
+   ],
+   "marks": 3,
+   "feedback": "The CU directs; the ALU calculates; the cache keeps what is used often within easy reach.",
+   "commandWord": "draw",
+   "difficulty": "retrieve",
+   "subtopic": "Other CPU components",
+   "revisit": "sa-l01-s6",
+   "revisitReason": "Other CPU components",
+   "outcomes": [
+    "sa-l01-o4"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-other-cpu-components-0020",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l01",
+   "revisitStationId": "sa-l01-s6",
+   "revisitLabel": "1.1 Lesson 1 — Fetch-execute factory, station 6: Other CPU components",
+   "revisitScene": 0,
+   "revisitK": 5
+  },
+  {
+   "type": "mcq",
+   "q": "A CPU keeps needing the same small table of values. Which component makes that faster?",
+   "options": [
+    "Cache",
+    "The accumulator",
+    "Virtual memory",
+    "The program counter"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Cache holds frequently used data and instructions, so the CPU does not have to fetch them from RAM each time.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "subtopic": "Other CPU components",
+   "revisit": "sa-l01-s6",
+   "revisitReason": "Other CPU components",
+   "outcomes": [
+    "sa-l01-o4"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-other-cpu-components-0021",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l01",
+   "revisitStationId": "sa-l01-s6",
+   "revisitLabel": "1.1 Lesson 1 — Fetch-execute factory, station 6: Other CPU components",
+   "revisitScene": 0,
+   "revisitK": 5
+  },
+  {
+   "type": "short",
+   "q": "State one thing the arithmetic logic unit does, other than arithmetic.",
+   "markPoints": [
+    {
+     "concept": "logical comparisons or decisions",
+     "accept": [
+      [
+       "logic|logical|compare|comparison|comparing|decision|boolean"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "It makes logical comparisons."
+    }
+   ],
+   "example": "It carries out logical comparisons, such as deciding whether one value is greater than another.",
+   "paraphrase": "It performs logic operations and comparisons.",
+   "marks": 1,
+   "feedback": "The L in ALU is for logic: comparisons and Boolean operations as well as sums.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "Other CPU components",
+   "revisit": "sa-l01-s6",
+   "revisitReason": "Other CPU components",
+   "outcomes": [
+    "sa-l01-o4"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-other-cpu-components-0022",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l01",
+   "revisitStationId": "sa-l01-s6",
+   "revisitLabel": "1.1 Lesson 1 — Fetch-execute factory, station 6: Other CPU components",
+   "revisitScene": 0,
+   "revisitK": 5
+  },
+  {
+   "type": "order",
+   "q": "A CPU is about to run one instruction. Put the whole fetch–decode–execute cycle in order.",
+   "steps": [
+    "The address in the program counter is copied to the MAR",
+    "The instruction is copied from RAM into the MDR",
+    "The program counter is incremented",
+    "The control unit decodes the instruction",
+    "The instruction is carried out"
+   ],
+   "marks": 5,
+   "feedback": "The increment happens during the fetch, not at the end: the CPU is already pointing at the next instruction while it decodes this one.",
+   "commandWord": "complete",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "The cycle, end to end",
+   "revisit": "sa-l01-s7",
+   "revisitReason": "The cycle, end to end",
+   "outcomes": [
+    "sa-l01-o1",
+    "sa-l01-o3"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-the-cycle-end-to-end-0023",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l01",
+   "revisitStationId": "sa-l01-s7",
+   "revisitLabel": "1.1 Lesson 1 — Fetch-execute factory, station final: Final challenge: the cycle",
+   "revisitScene": 0,
+   "revisitK": 6
+  },
+  {
+   "type": "written",
+   "q": "A computer is running a program. Describe what happens during one complete fetch–decode–execute cycle.",
+   "markPoints": [
+    {
+     "concept": "fetch: the instruction is brought from memory into the CPU",
+     "accept": [
+      [
+       "fetch|fetched|brought|copied|retrieved|collected",
+       "instruction",
+       "memory|ram"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The instruction is fetched from RAM into the CPU."
+    },
+    {
+     "concept": "decode: the control unit works out what the instruction means",
+     "accept": [
+      [
+       "decode|decoded|interpret|work out|works out|understood|understand"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The control unit decodes it to work out what it means."
+    },
+    {
+     "concept": "execute: the instruction is carried out, for example by the ALU",
+     "accept": [
+      [
+       "execute|executed|carried out|carries out|performed|acted on|done"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The instruction is then executed."
+    }
+   ],
+   "example": "The address in the program counter is used to fetch the next instruction from RAM into the CPU. The control unit then decodes it to work out what it means. Finally the instruction is executed, for example by the ALU performing a calculation.",
+   "paraphrase": "First the processor collects the next instruction from memory, then the control unit interprets it, and then it is carried out.",
+   "marks": 3,
+   "feedback": "Three marks, one for each stage, and each needs to say what actually happens rather than just naming the stage.",
+   "commandWord": "describe",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "The cycle, end to end",
+   "revisit": "sa-l01-s7",
+   "revisitReason": "The cycle, end to end",
+   "outcomes": [
+    "sa-l01-o1",
+    "sa-l01-o3"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-the-cycle-end-to-end-0024",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l01",
+   "revisitStationId": "sa-l01-s7",
+   "revisitLabel": "1.1 Lesson 1 — Fetch-execute factory, station final: Final challenge: the cycle",
+   "revisitScene": 0,
+   "revisitK": 6
+  },
+  {
+   "type": "extended",
+   "q": "A manufacturer is designing a processor for a laptop. Discuss what the fetch–decode–execute cycle tells the designers about where to spend their effort to make the laptop feel faster.",
+   "markPoints": [
+    {
+     "concept": "explains the cycle repeats continuously, so any saving is repeated billions of times a second",
+     "accept": [
+      [
+       "cycle"
+      ]
+     ],
+     "worth": 1
+    },
+    {
+     "concept": "identifies fetching from RAM as the slow step in the cycle",
+     "accept": [
+      [
+       "ram"
+      ]
+     ],
+     "worth": 1
+    },
+    {
+     "concept": "argues for a larger or faster cache, reducing trips to RAM",
+     "accept": [
+      [
+       "cache"
+      ]
+     ],
+     "worth": 1
+    },
+    {
+     "concept": "argues for a higher clock speed, and recognises the heat cost",
+     "accept": [
+      [
+       "clock|heat"
+      ]
+     ],
+     "worth": 1
+    },
+    {
+     "concept": "argues for more cores, and recognises software must use them",
+     "accept": [
+      [
+       "core"
+      ]
+     ],
+     "worth": 1
+    },
+    {
+     "concept": "reaches a judgement about which change helps this use most, and why",
+     "accept": [
+      [
+       "because|so|therefore|overall|conclusion"
+      ]
+     ],
+     "worth": 1
+    }
+   ],
+   "example": "The cycle runs billions of times a second, so anything that shortens one cycle is multiplied enormously. The slowest part of the cycle is reaching out to RAM, so a larger cache helps most of all: more of what is needed is already inside the CPU and the fetch stage finishes sooner. Raising the clock speed shortens every cycle directly, but a laptop has limited cooling and more heat means the processor may have to slow itself down, so there is a limit to what that can achieve. Adding cores lets several cycles run at once, which helps when a user has many applications open, but a single-threaded program gains nothing from it. For a laptop used for ordinary work, I would spend the effort on cache and cores rather than clock speed, because cooling is the constraint that cannot be designed away.",
+   "bands": [
+    "CONTENT",
+    "APPLICATION",
+    "DEVELOPMENT",
+    "BALANCE",
+    "CONCLUSION"
+   ],
+   "marks": 6,
+   "feedback": "A six-mark discussion is marked by you, against the points above. Look for whether you reached a judgement and gave a reason for it — that is what separates a discussion from a list.",
+   "commandWord": "discuss",
+   "difficulty": "stretch",
+   "examStyle": true,
+   "subtopic": "The cycle, end to end",
+   "revisit": "sa-l01-s7",
+   "revisitReason": "The cycle, end to end",
+   "outcomes": [
+    "sa-l01-o1",
+    "sa-l01-o3"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-the-cycle-end-to-end-0025",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l01",
+   "revisitStationId": "sa-l01-s7",
+   "revisitLabel": "1.1 Lesson 1 — Fetch-execute factory, station final: Final challenge: the cycle",
+   "revisitScene": 0,
+   "revisitK": 6
+  }
+ ]
+}

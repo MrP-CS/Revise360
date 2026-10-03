@@ -1,0 +1,471 @@
+{
+ "topic": "1.1",
+ "lesson": "sa-l02",
+ "questions": [
+  {
+   "type": "mcq",
+   "q": "Which idea is von Neumann architecture built on?",
+   "options": [
+    "Instructions and data are held together in the same main memory",
+    "Instructions are held in the CPU and data in memory",
+    "Each program gets its own separate processor",
+    "Data is held on secondary storage while a program runs"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "The stored-program concept: one memory holding both the instructions and the data they work on.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "Von Neumann architecture",
+   "revisit": "sa-l02-s1",
+   "revisitReason": "Von Neumann architecture",
+   "outcomes": [
+    "sa-l02-o1"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-von-neumann-architecture-0026",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l02",
+   "revisitStationId": "sa-l02-s1",
+   "revisitLabel": "1.1 Lesson 2 — Von Neumann HQ, station 1: John von Neumann",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "short",
+   "q": "Give one reason the stored-program concept made computers much more useful.",
+   "markPoints": [
+    {
+     "concept": "the same machine can run a different program by loading different instructions",
+     "accept": [
+      [
+       "different|another|new|any|many|several",
+       "program|software|job|task|instruction"
+      ],
+      [
+       "reprogram|re-program|general purpose|general-purpose"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "A different program can be loaded, so the same computer can do a different job."
+    }
+   ],
+   "example": "Loading a different set of instructions makes the same computer do a different job, instead of being rebuilt for each task.",
+   "paraphrase": "You can run new software on the same hardware rather than rewiring it.",
+   "marks": 1,
+   "feedback": "Before stored programs, changing the task meant changing the machine.",
+   "commandWord": "give",
+   "difficulty": "understand",
+   "subtopic": "Von Neumann architecture",
+   "revisit": "sa-l02-s1",
+   "revisitReason": "Von Neumann architecture",
+   "outcomes": [
+    "sa-l02-o1"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-von-neumann-architecture-0027",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l02",
+   "revisitStationId": "sa-l02-s1",
+   "revisitLabel": "1.1 Lesson 2 — Von Neumann HQ, station 1: John von Neumann",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "tf",
+   "q": "In a von Neumann computer, instructions and data travel to the CPU along the same bus.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "True, and it is the architecture's main weakness: an instruction and the data it needs cannot be fetched at the same time.",
+   "commandWord": "tick",
+   "difficulty": "retrieve",
+   "subtopic": "The stored-program concept",
+   "revisit": "sa-l02-s2",
+   "revisitReason": "The stored-program concept",
+   "outcomes": [
+    "sa-l02-o1",
+    "sa-l02-o2"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-the-stored-program-concept-0028",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l02",
+   "revisitStationId": "sa-l02-s2",
+   "revisitLabel": "1.1 Lesson 2 — Von Neumann HQ, station 2: The stored-program concept",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "written",
+   "q": "Explain one disadvantage of storing instructions and data in the same memory, reached by the same bus.",
+   "markPoints": [
+    {
+     "concept": "only one of them can be fetched at a time",
+     "accept": [
+      [
+       "one at a time|one by one|take turns|queue|share the bus|one after"
+      ],
+      [
+       "not at the same time|cannot be fetched at the same time|cannot be read at the same time|not be fetched at the same time|cannot both|can not both|not simultaneous|not together|not at once|cannot be done at the same time|cannot happen at the same time"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "An instruction and its data cannot be fetched at the same time."
+    },
+    {
+     "concept": "so the CPU may be left waiting, which slows the computer down",
+     "accept": [
+      [
+       "wait|waiting|delay|bottleneck|held up|idle",
+       "slow|slower|less quick|takes longer|delay|lag"
+      ],
+      [
+       "slow|slower|less quick|takes longer|delay|lag",
+       "cpu|computer|processor|program|it"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "reject": [
+      [
+       "wait|waiting|delay|bottleneck|held up|idle",
+       "fast|faster|quick|quicker|quickly|more quickly|speeds up|sooner|shorter"
+      ],
+      [
+       "fast|faster|quick|quicker|quickly|more quickly|speeds up|sooner|shorter",
+       "cpu|computer|processor|program|it"
+      ]
+     ],
+     "exemplar": "This means the CPU has to wait, so the program runs more slowly."
+    }
+   ],
+   "example": "Because both share one bus, an instruction and the data it needs cannot be fetched at the same time, so the CPU has to wait and the program runs more slowly.",
+   "paraphrase": "They have to take turns on the single bus, which leaves the processor idle and makes things slower.",
+   "marks": 2,
+   "feedback": "This is the von Neumann bottleneck. The second mark is for the consequence, not for naming it.",
+   "hint": "If two things need the same single road, what happens to the second?",
+   "commandWord": "explain",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "The stored-program concept",
+   "revisit": "sa-l02-s2",
+   "revisitReason": "The stored-program concept",
+   "outcomes": [
+    "sa-l02-o1",
+    "sa-l02-o2"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-the-stored-program-concept-0029",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l02",
+   "revisitStationId": "sa-l02-s2",
+   "revisitLabel": "1.1 Lesson 2 — Von Neumann HQ, station 2: The stored-program concept",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "mcq",
+   "q": "A program has just executed the instruction at address 42, and the next instruction is at 43. What does the program counter hold now?",
+   "options": [
+    "43",
+    "42",
+    "The instruction itself",
+    "The result of the instruction"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "The PC holds an address, not an instruction, and it was incremented during the fetch, so it already holds 43.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "subtopic": "Program counter and accumulator",
+   "revisit": "sa-l02-s3",
+   "revisitReason": "Program counter and accumulator",
+   "outcomes": [
+    "sa-l02-o2"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-program-counter-and-accumulator-0030",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l02",
+   "revisitStationId": "sa-l02-s3",
+   "revisitLabel": "1.1 Lesson 2 — Von Neumann HQ, station 3: Program counter and accumulator",
+   "revisitScene": 0,
+   "revisitK": 2
+  },
+  {
+   "type": "short",
+   "q": "State what the accumulator holds.",
+   "markPoints": [
+    {
+     "concept": "the result of a calculation carried out by the ALU",
+     "accept": [
+      [
+       "result|answer|total|output|outcome|worked out|works out|calculated|computed"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The result of a calculation."
+    }
+   ],
+   "example": "The result of the most recent calculation done by the ALU.",
+   "paraphrase": "Whatever the ALU just worked out.",
+   "marks": 1,
+   "feedback": "Results, not addresses. Addresses live in the PC and the MAR.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "Program counter and accumulator",
+   "revisit": "sa-l02-s3",
+   "revisitReason": "Program counter and accumulator",
+   "outcomes": [
+    "sa-l02-o2"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-program-counter-and-accumulator-0031",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l02",
+   "revisitStationId": "sa-l02-s3",
+   "revisitLabel": "1.1 Lesson 2 — Von Neumann HQ, station 3: Program counter and accumulator",
+   "revisitScene": 0,
+   "revisitK": 2
+  },
+  {
+   "type": "mcq",
+   "q": "The CPU is about to write a value to address 100 in RAM. Which register holds the number 100?",
+   "options": [
+    "The memory address register",
+    "The memory data register",
+    "The accumulator",
+    "The program counter"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "The MAR holds the address, whether the CPU is reading or writing. The MDR holds the value itself.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "subtopic": "MAR and MDR",
+   "revisit": "sa-l02-s4",
+   "revisitReason": "MAR and MDR",
+   "outcomes": [
+    "sa-l02-o2"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-mar-and-mdr-0032",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l02",
+   "revisitStationId": "sa-l02-s4",
+   "revisitLabel": "1.1 Lesson 2 — Von Neumann HQ, station 4: MAR and MDR",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "multi",
+   "q": "Which statements about the MAR and MDR are true? Tick all that apply.",
+   "options": [
+    "The MAR holds an address",
+    "The MDR holds data or an instruction",
+    "They are both inside the CPU",
+    "The MDR holds the address of the next instruction",
+    "The MAR holds the result of a calculation"
+   ],
+   "correct": [
+    "The MAR holds an address",
+    "The MDR holds data or an instruction",
+    "They are both inside the CPU"
+   ],
+   "marks": 3,
+   "feedback": "Address in the MAR, contents in the MDR, both of them registers inside the CPU. The address of the next instruction is the program counter's job.",
+   "commandWord": "tick",
+   "difficulty": "understand",
+   "subtopic": "MAR and MDR",
+   "revisit": "sa-l02-s4",
+   "revisitReason": "MAR and MDR",
+   "outcomes": [
+    "sa-l02-o2"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-mar-and-mdr-0033",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l02",
+   "revisitStationId": "sa-l02-s4",
+   "revisitLabel": "1.1 Lesson 2 — Von Neumann HQ, station 4: MAR and MDR",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "mcq",
+   "q": "How does Harvard architecture differ from von Neumann architecture?",
+   "options": [
+    "It keeps instructions and data in separate memories with separate buses",
+    "It has no registers inside the CPU",
+    "It stores programs on secondary storage rather than in memory",
+    "It can only run one program at a time"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Separate memories and separate buses, which is why an instruction and data can be fetched at the same time.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "Other architectures",
+   "revisit": "sa-l02-s5",
+   "revisitReason": "Other architectures",
+   "outcomes": [
+    "sa-l02-o1"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-other-architectures-0034",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l02",
+   "revisitStationId": "sa-l02-s5",
+   "revisitLabel": "1.1 Lesson 2 — Von Neumann HQ, station 5: Other architectures",
+   "revisitScene": 0,
+   "revisitK": 4
+  },
+  {
+   "type": "written",
+   "q": "A company is designing the controller for a washing machine and is choosing between von Neumann and Harvard architecture. Explain one reason Harvard architecture might be chosen.",
+   "markPoints": [
+    {
+     "concept": "instructions and data are in separate memories with separate buses",
+     "accept": [
+      [
+       "separate|two|different|own",
+       "memor|bus"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Harvard architecture has separate memories and buses for instructions and data."
+    },
+    {
+     "concept": "so both can be fetched at the same time, which suits a device that must respond predictably",
+     "accept": [
+      [
+       "same time|simultaneous|at once|together|in parallel|both"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "This means an instruction and its data can be fetched at the same time, so the controller responds faster."
+    }
+   ],
+   "example": "Harvard architecture uses separate memories and buses for instructions and data, so an instruction and the data it needs can be fetched at the same time, which makes the controller respond more quickly and more predictably.",
+   "paraphrase": "Because the program and the data are in different memories with their own buses, both can be read simultaneously, giving faster and more predictable response.",
+   "marks": 2,
+   "feedback": "Separate buses, therefore simultaneous fetches. The second mark needs the 'therefore'.",
+   "commandWord": "explain",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Other architectures",
+   "revisit": "sa-l02-s5",
+   "revisitReason": "Other architectures",
+   "outcomes": [
+    "sa-l02-o1"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-other-architectures-0035",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l02",
+   "revisitStationId": "sa-l02-s5",
+   "revisitLabel": "1.1 Lesson 2 — Von Neumann HQ, station 5: Other architectures",
+   "revisitScene": 0,
+   "revisitK": 4
+  },
+  {
+   "type": "sort",
+   "q": "Sort each item into where it belongs.",
+   "cats": [
+    "Inside the CPU",
+    "Outside the CPU"
+   ],
+   "items": [
+    [
+     "Accumulator",
+     "Inside the CPU"
+    ],
+    [
+     "Control unit",
+     "Inside the CPU"
+    ],
+    [
+     "Arithmetic logic unit",
+     "Inside the CPU"
+    ],
+    [
+     "Program counter",
+     "Inside the CPU"
+    ],
+    [
+     "RAM",
+     "Outside the CPU"
+    ],
+    [
+     "Solid state drive",
+     "Outside the CPU"
+    ]
+   ],
+   "marks": 6,
+   "feedback": "Everything with 'register' or 'unit' in its name here is inside the processor. RAM and the drive are not.",
+   "commandWord": "tick",
+   "difficulty": "retrieve",
+   "subtopic": "Name that part",
+   "revisit": "sa-l02-s7",
+   "revisitReason": "Name that part",
+   "outcomes": [
+    "sa-l02-o2"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-name-that-part-0036",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l02",
+   "revisitStationId": "sa-l02-s7",
+   "revisitLabel": "1.1 Lesson 2 — Von Neumann HQ, station final: Final challenge: name that part",
+   "revisitScene": 0,
+   "revisitK": 6
+  },
+  {
+   "type": "mcq",
+   "q": "Which list puts these in order from fastest to slowest to access?",
+   "options": [
+    "Register, cache, RAM, solid state drive",
+    "Cache, register, RAM, solid state drive",
+    "RAM, register, cache, solid state drive",
+    "Register, RAM, cache, solid state drive"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Speed runs the opposite way to size: the smallest store is the fastest.",
+   "commandWord": "identify",
+   "difficulty": "understand",
+   "examStyle": true,
+   "subtopic": "Name that part",
+   "revisit": "sa-l02-s7",
+   "revisitReason": "Name that part",
+   "outcomes": [
+    "sa-l02-o2"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-name-that-part-0037",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l02",
+   "revisitStationId": "sa-l02-s7",
+   "revisitLabel": "1.1 Lesson 2 — Von Neumann HQ, station final: Final challenge: name that part",
+   "revisitScene": 0,
+   "revisitK": 6
+  }
+ ]
+}

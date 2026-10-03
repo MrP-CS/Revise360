@@ -1,0 +1,748 @@
+{
+ "topic": "1.1",
+ "lesson": "sa-l03",
+ "questions": [
+  {
+   "type": "mcq",
+   "q": "What does the clock speed of a CPU measure?",
+   "options": [
+    "How many fetch–decode–execute cycles it carries out each second",
+    "How many cores it has",
+    "How much data its cache can hold",
+    "How many programs it can run at once"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Cycles per second, measured in hertz.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "Clock speed",
+   "revisit": "sa-l03-s1",
+   "revisitReason": "Clock speed",
+   "outcomes": [
+    "sa-l03-o1",
+    "sa-l03-o2"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-clock-speed-0038",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l03",
+   "revisitStationId": "sa-l03-s1",
+   "revisitLabel": "1.1 Lesson 3 — Speed lab, station 1: Clock speed",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "num",
+   "q": "A CPU has a clock speed of 3.2 GHz. How many cycles does it carry out each second? Give your answer in cycles.",
+   "answer": 3200000000,
+   "unit": "cycles",
+   "working": "3.2 * 1000000000",
+   "marks": 1,
+   "feedback": "1 GHz is a billion cycles a second, so 3.2 GHz is 3,200,000,000.",
+   "hint": "How many cycles per second is one gigahertz?",
+   "commandWord": "calculate",
+   "difficulty": "apply",
+   "subtopic": "Clock speed",
+   "revisit": "sa-l03-s1",
+   "revisitReason": "Clock speed",
+   "outcomes": [
+    "sa-l03-o1",
+    "sa-l03-o2"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-clock-speed-0039",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l03",
+   "revisitStationId": "sa-l03-s1",
+   "revisitLabel": "1.1 Lesson 3 — Speed lab, station 1: Clock speed",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "num",
+   "q": "A CPU completes 2,400,000,000 cycles each second. State its clock speed in GHz.",
+   "answer": 2.4,
+   "unit": "GHz",
+   "working": "2400000000 / 1000000000",
+   "marks": 1,
+   "feedback": "Divide by a billion: 2.4 GHz.",
+   "commandWord": "calculate",
+   "difficulty": "apply",
+   "subtopic": "Clock speed",
+   "revisit": "sa-l03-s1",
+   "revisitReason": "Clock speed",
+   "outcomes": [
+    "sa-l03-o1",
+    "sa-l03-o2"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-clock-speed-0040",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l03",
+   "revisitStationId": "sa-l03-s1",
+   "revisitLabel": "1.1 Lesson 3 — Speed lab, station 1: Clock speed",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "Explain why a 4.0 GHz processor will usually run a single program faster than a 2.0 GHz processor of the same design.",
+   "markPoints": [
+    {
+     "concept": "a higher clock speed means more cycles each second",
+     "accept": [
+      [
+       "more|higher|greater|twice|double",
+       "cycle"
+      ]
+     ],
+     "worth": 1,
+     "reject": [
+      [
+       "less|fewer|smaller|lower|decrease|decreases|decreased|half|halves",
+       "cycle"
+      ]
+     ],
+     "exemplar": "4.0 GHz carries out twice as many cycles per second."
+    },
+    {
+     "concept": "so more instructions are fetched, decoded and executed in the same time",
+     "accept": [
+      [
+       "more|greater|twice|double",
+       "instruction"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "reject": [
+      [
+       "less|fewer|smaller|lower|decrease|decreases|decreased|half|halves",
+       "instruction"
+      ]
+     ],
+     "exemplar": "This means more instructions are executed each second, so the program finishes sooner."
+    }
+   ],
+   "example": "A clock speed of 4.0 GHz means twice as many fetch–decode–execute cycles every second, so twice as many instructions are carried out in the same time and the program finishes sooner.",
+   "paraphrase": "The faster clock gives more cycles per second, which means more instructions are processed in a given time.",
+   "marks": 2,
+   "feedback": "Cycles, then instructions. Saying only 'it is faster' restates the question.",
+   "commandWord": "explain",
+   "difficulty": "apply",
+   "examStyle": true,
+   "misconception": "'Faster clock speed means faster computer' earns nothing on its own; the mark is for the mechanism.",
+   "subtopic": "Clock speed",
+   "revisit": "sa-l03-s1",
+   "revisitReason": "Clock speed",
+   "outcomes": [
+    "sa-l03-o1",
+    "sa-l03-o2"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-clock-speed-0041",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l03",
+   "revisitStationId": "sa-l03-s1",
+   "revisitLabel": "1.1 Lesson 3 — Speed lab, station 1: Clock speed",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "mcq",
+   "q": "What does overclocking a CPU mean?",
+   "options": [
+    "Running it at a higher clock speed than the manufacturer intended",
+    "Adding extra cores to it",
+    "Increasing the size of its cache",
+    "Letting it run several programs at once"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "A higher clock speed than it was designed for — which is why cooling becomes the problem.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "Overclocking and heat",
+   "revisit": "sa-l03-s2",
+   "revisitReason": "Overclocking and heat",
+   "outcomes": [
+    "sa-l03-o1",
+    "sa-l03-o2"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-overclocking-and-heat-0042",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l03",
+   "revisitStationId": "sa-l03-s2",
+   "revisitLabel": "1.1 Lesson 3 — Speed lab, station 2: Overclocking and heat",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "written",
+   "q": "A gamer overclocks their CPU. Explain one risk they are taking.",
+   "markPoints": [
+    {
+     "concept": "the CPU produces more heat",
+     "accept": [
+      [
+       "more heat|hotter|heats up|extra heat|higher temperature|temperature rises|more thermal|gets hot|overheat"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The processor produces more heat."
+    },
+    {
+     "concept": "which can make the computer unstable or damage the CPU unless cooling is improved",
+     "accept": [
+      [
+       "unstable|crash|damage|destroy|burn|fail|failure|break|shorten|overheat|throttle|slow itself"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "Without better cooling it overheats, so the computer becomes unstable or the CPU is damaged."
+    }
+   ],
+   "example": "Running the CPU faster than it was designed for makes it produce more heat, so unless the cooling is improved the computer can become unstable or the processor can be damaged.",
+   "paraphrase": "It gets hotter, and without better cooling that can cause crashes or permanent damage.",
+   "marks": 2,
+   "feedback": "Heat, then what the heat does. One without the other is one mark.",
+   "commandWord": "explain",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Overclocking and heat",
+   "revisit": "sa-l03-s2",
+   "revisitReason": "Overclocking and heat",
+   "outcomes": [
+    "sa-l03-o1",
+    "sa-l03-o2"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-overclocking-and-heat-0043",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l03",
+   "revisitStationId": "sa-l03-s2",
+   "revisitLabel": "1.1 Lesson 3 — Speed lab, station 2: Overclocking and heat",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "tf",
+   "q": "Overclocking always makes a computer faster, with no other effect.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correct": 1,
+   "marks": 1,
+   "feedback": "False. More heat is produced, and a processor that gets too hot may slow itself down or become unstable — so it can end up slower.",
+   "commandWord": "tick",
+   "difficulty": "retrieve",
+   "subtopic": "Overclocking and heat",
+   "revisit": "sa-l03-s2",
+   "revisitReason": "Overclocking and heat",
+   "outcomes": [
+    "sa-l03-o1",
+    "sa-l03-o2"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-overclocking-and-heat-0044",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l03",
+   "revisitStationId": "sa-l03-s2",
+   "revisitLabel": "1.1 Lesson 3 — Speed lab, station 2: Overclocking and heat",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "mcq",
+   "q": "Why does a larger cache usually improve performance?",
+   "options": [
+    "More frequently used data and instructions are held close to the CPU, so fewer slow fetches from RAM are needed",
+    "It increases the number of cycles the CPU completes each second",
+    "It lets the CPU run more programs at the same time",
+    "It keeps data safe when the power is switched off"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "A bigger cache means more hits and fewer trips out to RAM.",
+   "commandWord": "identify",
+   "difficulty": "understand",
+   "subtopic": "Cache size",
+   "revisit": "sa-l03-s3",
+   "revisitReason": "Cache size",
+   "outcomes": [
+    "sa-l03-o1"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-cache-size-0045",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l03",
+   "revisitStationId": "sa-l03-s3",
+   "revisitLabel": "1.1 Lesson 3 — Speed lab, station 3: Cache size",
+   "revisitScene": 0,
+   "revisitK": 2
+  },
+  {
+   "type": "order",
+   "q": "Put these stores in order, smallest first.",
+   "steps": [
+    "Cache",
+    "RAM",
+    "Solid state drive"
+   ],
+   "marks": 3,
+   "feedback": "Cache is measured in megabytes, RAM in gigabytes, a drive in hundreds of gigabytes or terabytes.",
+   "commandWord": "complete",
+   "difficulty": "retrieve",
+   "subtopic": "Cache size",
+   "revisit": "sa-l03-s3",
+   "revisitReason": "Cache size",
+   "outcomes": [
+    "sa-l03-o1"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-cache-size-0046",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l03",
+   "revisitStationId": "sa-l03-s3",
+   "revisitLabel": "1.1 Lesson 3 — Speed lab, station 3: Cache size",
+   "revisitScene": 0,
+   "revisitK": 2
+  },
+  {
+   "type": "match",
+   "q": "Match each cache level to its description.",
+   "pairs": [
+    [
+     "L1",
+     "Smallest and fastest, closest to the core"
+    ],
+    [
+     "L2",
+     "Larger than L1 and a little slower"
+    ],
+    [
+     "L3",
+     "Largest and slowest of the three, often shared between cores"
+    ]
+   ],
+   "marks": 3,
+   "feedback": "Each level up is bigger and slower than the one before it.",
+   "commandWord": "draw",
+   "difficulty": "understand",
+   "subtopic": "Cache size",
+   "revisit": "sa-l03-s3",
+   "revisitReason": "Cache size",
+   "outcomes": [
+    "sa-l03-o1"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-cache-size-0047",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l03",
+   "revisitStationId": "sa-l03-s3",
+   "revisitLabel": "1.1 Lesson 3 — Speed lab, station 3: Cache size",
+   "revisitScene": 0,
+   "revisitK": 2
+  },
+  {
+   "type": "written",
+   "q": "Explain why making a cache larger does not keep improving performance for ever.",
+   "markPoints": [
+    {
+     "concept": "most of what the CPU needs is already in a cache of a reasonable size",
+     "accept": [
+      [
+       "already|most|already there|diminishing|little|less benefit|rarely|enough|hit rate|already held|already stored"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Once the cache is big enough, almost everything the CPU needs is already in it."
+    },
+    {
+     "concept": "and a larger cache is more expensive and takes longer to search",
+     "accept": [
+      [
+       "cost more|costs more|more expensive|expensive|costly|dearer"
+      ],
+      [
+       "search|searching|look|looking|find|slower to access|takes longer"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "reject": [
+      [
+       "cheap|cheaper|inexpensive|costs less"
+      ]
+     ],
+     "exemplar": "A larger cache also costs more and takes longer to search."
+    }
+   ],
+   "example": "Once the cache is large enough to hold what the CPU keeps reusing, making it bigger adds little, because almost every request is already a hit; and a larger cache costs more and takes longer to search, so there is a point where it stops being worth it.",
+   "paraphrase": "Beyond a certain size nearly everything needed is already cached, so there is little gain, and bigger caches are dearer and slower to look through.",
+   "marks": 2,
+   "feedback": "Diminishing returns, plus a cost. Either cost — money or search time — earns the second mark.",
+   "commandWord": "explain",
+   "difficulty": "stretch",
+   "examStyle": true,
+   "subtopic": "Cache size",
+   "revisit": "sa-l03-s3",
+   "revisitReason": "Cache size",
+   "outcomes": [
+    "sa-l03-o1"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-cache-size-0048",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l03",
+   "revisitStationId": "sa-l03-s3",
+   "revisitLabel": "1.1 Lesson 3 — Speed lab, station 3: Cache size",
+   "revisitScene": 0,
+   "revisitK": 2
+  },
+  {
+   "type": "mcq",
+   "q": "What is a core?",
+   "options": [
+    "A processing unit that can fetch, decode and execute instructions on its own",
+    "A block of cache shared between processors",
+    "A register that holds the next instruction",
+    "A bus that carries data between the CPU and RAM"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Each core is a processor in its own right, with its own cycle.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "Number of cores",
+   "revisit": "sa-l03-s4",
+   "revisitReason": "Number of cores",
+   "outcomes": [
+    "sa-l03-o1"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-number-of-cores-0049",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l03",
+   "revisitStationId": "sa-l03-s4",
+   "revisitLabel": "1.1 Lesson 3 — Speed lab, station 4: Number of cores",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "num",
+   "q": "A quad-core CPU runs at 2.5 GHz. In theory, how many cycles are carried out across all its cores each second?",
+   "answer": 10000000000,
+   "unit": "cycles",
+   "working": "2.5 * 1000000000 * 4",
+   "marks": 1,
+   "feedback": "2.5 billion cycles a core, four cores: 10,000,000,000. In practice the cores are rarely all busy.",
+   "commandWord": "calculate",
+   "difficulty": "apply",
+   "subtopic": "Number of cores",
+   "revisit": "sa-l03-s4",
+   "revisitReason": "Number of cores",
+   "outcomes": [
+    "sa-l03-o1"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-number-of-cores-0050",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l03",
+   "revisitStationId": "sa-l03-s4",
+   "revisitLabel": "1.1 Lesson 3 — Speed lab, station 4: Number of cores",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "written",
+   "q": "A program takes 20 seconds on a single-core CPU. Explain why moving it to a quad-core CPU of the same clock speed may not reduce the time to 5 seconds.",
+   "markPoints": [
+    {
+     "concept": "the program has to be written to split its work between cores",
+     "accept": [
+      [
+       "written|designed|coded|written for|supports|multi-thread|multithread|threaded|in parallel|use more than one core|use all the cores|use several cores|split its work"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The program has to be written to use more than one core."
+    },
+    {
+     "concept": "some tasks cannot be split because one step depends on the result of the previous one",
+     "accept": [
+      [
+       "cannot be split|cannot split|can not be split|not be split|not split|cannot be divided|not be divided|cannot be shared|not be shared|impossible to split|hard to split|difficult to split|cannot be done in parallel"
+      ],
+      [
+       "depend|depends|sequential|in order|one after|result of|needs the"
+      ]
+     ],
+     "worth": 1,
+     "reject": [
+      [
+       "can be split|can be divided|can be shared|can be done in parallel|easy to split"
+      ]
+     ],
+     "exemplar": "Some tasks cannot be divided, because each step needs the result of the one before."
+    },
+    {
+     "concept": "so the extra cores may sit idle and the time saved is less than expected",
+     "accept": [
+      [
+       "idle|unused|do nothing|does nothing|doing nothing|not used|wasted|no benefit|little benefit|less than|not four times"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "So the extra cores sit idle and the saving is smaller than four times."
+    }
+   ],
+   "example": "A single program only uses more than one core if it has been written to split its work up. Some work cannot be split at all, because each step needs the result of the step before it. So three of the four cores may sit idle and the program takes far longer than 5 seconds.",
+   "paraphrase": "Unless the software is designed for multiple cores it will only use one, and parts of a task that must happen in sequence cannot be shared out, so the other cores do nothing and the speed-up is much smaller.",
+   "marks": 3,
+   "feedback": "Three separate ideas: the software, the task, the consequence.",
+   "hint": "Think about who decides whether a second core is used, and about a calculation whose next step needs the last answer.",
+   "commandWord": "explain",
+   "difficulty": "stretch",
+   "examStyle": true,
+   "subtopic": "Number of cores",
+   "revisit": "sa-l03-s4",
+   "revisitReason": "Number of cores",
+   "outcomes": [
+    "sa-l03-o1"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-number-of-cores-0051",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l03",
+   "revisitStationId": "sa-l03-s4",
+   "revisitLabel": "1.1 Lesson 3 — Speed lab, station 4: Number of cores",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "written",
+   "q": "A laptop is advertised as having a 'single core 2.5 GHz processor'. Describe what each part of that description means.",
+   "markPoints": [
+    {
+     "concept": "single core: it has one processing unit",
+     "accept": [
+      [
+       "one|single|1",
+       "core|processing unit|processor"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Single core means it has one processing unit."
+    },
+    {
+     "concept": "2.5 GHz: it carries out 2.5 billion cycles each second",
+     "accept": [
+      [
+       "2.5 billion|2500000000|2,500,000,000|billion",
+       "cycle|second"
+      ],
+      [
+       "cycle",
+       "second"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "2.5 GHz means 2.5 billion cycles per second."
+    }
+   ],
+   "example": "Single core means the processor has one processing unit, and 2.5 GHz means it carries out 2.5 billion fetch–decode–execute cycles every second.",
+   "paraphrase": "There is just one processing unit, and it completes two and a half billion cycles a second.",
+   "marks": 2,
+   "feedback": "One mark for each half of the description, and each needs what it means rather than what it says.",
+   "commandWord": "describe",
+   "difficulty": "understand",
+   "examStyle": true,
+   "subtopic": "Reading a specification",
+   "revisit": "sa-l03-s5",
+   "revisitReason": "Reading a specification",
+   "outcomes": [
+    "sa-l03-o1"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-reading-a-specification-0052",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l03",
+   "revisitStationId": "sa-l03-s5",
+   "revisitLabel": "1.1 Lesson 3 — Speed lab, station 5: Single core, 2.5 GHz",
+   "revisitScene": 0,
+   "revisitK": 4
+  },
+  {
+   "type": "mcq",
+   "q": "Two laptops have the same clock speed and cache. One is dual-core and one is octa-core. Which will handle many applications open at once better?",
+   "options": [
+    "The octa-core laptop, because more cores can execute instructions at the same time",
+    "The dual-core laptop, because fewer cores means less heat",
+    "They will be identical, because the clock speed is the same",
+    "The dual-core laptop, because each core gets more cache"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Many separate applications is exactly the case extra cores help with, because each can run on a different core.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "subtopic": "Reading a specification",
+   "revisit": "sa-l03-s5",
+   "revisitReason": "Reading a specification",
+   "outcomes": [
+    "sa-l03-o1"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-reading-a-specification-0053",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l03",
+   "revisitStationId": "sa-l03-s5",
+   "revisitLabel": "1.1 Lesson 3 — Speed lab, station 5: Single core, 2.5 GHz",
+   "revisitScene": 0,
+   "revisitK": 4
+  },
+  {
+   "type": "match",
+   "q": "Match each unit to the number of cycles per second it means.",
+   "pairs": [
+    [
+     "1 kHz",
+     "1 thousand"
+    ],
+    [
+     "1 MHz",
+     "1 million"
+    ],
+    [
+     "1 GHz",
+     "1 billion"
+    ]
+   ],
+   "marks": 3,
+   "feedback": "Kilo, mega, giga — the same steps of a thousand used for file sizes.",
+   "commandWord": "draw",
+   "difficulty": "retrieve",
+   "subtopic": "Units of speed",
+   "revisit": "sa-l03-s6",
+   "revisitReason": "Units of speed",
+   "outcomes": [
+    "sa-l03-o2"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-units-of-speed-0054",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l03",
+   "revisitStationId": "sa-l03-s6",
+   "revisitLabel": "1.1 Lesson 3 — Speed lab, station 6: Units of speed",
+   "revisitScene": 0,
+   "revisitK": 5
+  },
+  {
+   "type": "num",
+   "q": "A very old computer runs at 500 MHz. How many cycles is that each second?",
+   "answer": 500000000,
+   "unit": "cycles",
+   "working": "500 * 1000000",
+   "marks": 1,
+   "feedback": "1 MHz is a million cycles, so 500 MHz is 500,000,000.",
+   "commandWord": "calculate",
+   "difficulty": "apply",
+   "subtopic": "Units of speed",
+   "revisit": "sa-l03-s6",
+   "revisitReason": "Units of speed",
+   "outcomes": [
+    "sa-l03-o2"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-units-of-speed-0055",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l03",
+   "revisitStationId": "sa-l03-s6",
+   "revisitLabel": "1.1 Lesson 3 — Speed lab, station 6: Units of speed",
+   "revisitScene": 0,
+   "revisitK": 5
+  },
+  {
+   "type": "num",
+   "q": "How many times faster is a 3 GHz CPU than a 600 MHz CPU, assuming the same design? Give your answer as a number.",
+   "answer": 5,
+   "unit": "times",
+   "working": "3000 / 600",
+   "marks": 1,
+   "feedback": "3 GHz is 3,000 MHz, and 3,000 ÷ 600 = 5.",
+   "hint": "Put both speeds into the same unit first.",
+   "commandWord": "calculate",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Units of speed",
+   "revisit": "sa-l03-s6",
+   "revisitReason": "Units of speed",
+   "outcomes": [
+    "sa-l03-o2"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-units-of-speed-0056",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l03",
+   "revisitStationId": "sa-l03-s6",
+   "revisitLabel": "1.1 Lesson 3 — Speed lab, station 6: Units of speed",
+   "revisitScene": 0,
+   "revisitK": 5
+  },
+  {
+   "type": "order",
+   "q": "Put these four processors in order, fastest first, assuming the same design and a program that uses every core.",
+   "steps": [
+    "Quad core, 3.0 GHz",
+    "Dual core, 3.0 GHz",
+    "Quad core, 1.2 GHz",
+    "Single core, 1.2 GHz"
+   ],
+   "marks": 4,
+   "feedback": "Cores multiply the cycles available; clock speed sets how many each core gets. Four cores at 1.2 GHz beat two at 3.0 GHz only when every core is used, which the question says.",
+   "commandWord": "complete",
+   "difficulty": "stretch",
+   "examStyle": true,
+   "subtopic": "Fastest to slowest",
+   "revisit": "sa-l03-s7",
+   "revisitReason": "Fastest to slowest",
+   "outcomes": [
+    "sa-l03-o1"
+   ],
+   "topic": "1.1",
+   "id": "rq-1.1-fastest-to-slowest-0057",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "sa-l03",
+   "revisitStationId": "sa-l03-s7",
+   "revisitLabel": "1.1 Lesson 3 — Speed lab, station final: Final challenge: fastest to slowest",
+   "revisitScene": 0,
+   "revisitK": 6
+  }
+ ]
+}
