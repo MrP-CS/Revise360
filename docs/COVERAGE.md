@@ -31,7 +31,7 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 | 1.2 | ms-l16 Revision HQ 1.2 part 2 | 2 | 1 | 1 | 1 |  | 2 |
 | 1.2 | ms-l17-test Assessment 2 | 0 | 0 | 0 | 0 | 1 |  |
 | 1.2 | ms-bonus Binary blitz | 0 | 0 | 0 | 0 |  |  |
-| 1.3 | nw-l01 Types of network: zoom out | 4 | 1 | 1 | 4 | 7 | 5 |
+| 1.3 | nw-l01 Types of network: zoom out | 4 | 1 | 1 | 4 | 5 | 5 |
 | 1.3 | nw-l02 Network control room | 2 | 2 | 2 | 2 |  | 4 |
 | 1.3 | nw-l03 Network showdown | 3 | 3 | 3 | 3 |  | 2 |
 | 1.3 | nw-l04 Mission: wire up the school | 2 | 1 | 1 | 2 | 2 | 4 |
@@ -228,17 +228,14 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 - **ms-l17-test-x3** is assessed but matches no outcome stated anywhere in this unit: Character sets
 
 ### nw-l01 — Types of network: zoom out
-- **nw-l01-o1** know what is meant by a standalone computer
-  - the lesson carries no exam practice of its own
 - **nw-l01-o2** know the different types of network: LAN and WAN
   - cannot be traced: this lesson's station text is only in the rendered image, so there is nothing to match
-  - the lesson carries no exam practice of its own
 - **nw-l01-o3** understand the advantages of networking
   - cannot be traced: this lesson's station text is only in the rendered image, so there is nothing to match
-  - the lesson carries no exam practice of its own
 - **nw-l01-o4** understand the implications (disadvantages) of networking
   - cannot be traced: this lesson's station text is only in the rendered image, so there is nothing to match
-  - the lesson carries no exam practice of its own
+- **nw-l01-x2** is assessed but matches no outcome stated anywhere in this unit: Name one advantage of a network.
+- **nw-l01-x3** is assessed but matches no outcome stated anywhere in this unit: Name one disadvantage of a network.
 - the lesson's shape: every activity is guided: nothing is practised independently
 - the lesson's shape: no optional challenge activity
 - the lesson's shape: no key vocabulary is listed

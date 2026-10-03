@@ -223,6 +223,42 @@ def test_topics(wsrel):
     return out
 
 
+def exit_questions(wsrel):
+    """Exam questions off a worksheet that does not use the standard heading.
+
+    reconstruct() looks for "Exam practice" and a "[3]" mark allocation. Some of
+    the earlier sheets head the same thing "Exit questions" and give no marks -
+    nw-l01's are "a) What is meant by a standalone computer?" - and reading them
+    only under the strict shape reported those lessons as having no assessment at
+    all, which is not true and would have told a teacher to write some.
+    """
+    if not wsrel:
+        return []
+    path = os.path.join(ROOT, wsrel)
+    if not os.path.exists(path):
+        return []
+    try:
+        import reconstruct
+        lines = reconstruct.doc_lines(path)
+    except Exception:
+        return []
+    out, on = [], False
+    for ln in lines:
+        ln = ln.strip()
+        if re.match(r"^(?:\d+\s+)?(?:Exam practice|Exit questions)", ln, re.I):
+            on = True
+            continue
+        if not on:
+            continue
+        if re.match(r"^(?:How confident|My scores|Revisit|Revise 360|Part \d)", ln, re.I):
+            break
+        m = re.match(r"^[a-z]\)\s*(.+?)\s*(?:\[(\d+)\])?$", ln)
+        if m and len(m.group(1)) > 8:
+            out.append({"q": m.group(1).strip(),
+                        "marks": int(m.group(2)) if m.group(2) else None})
+    return out
+
+
 def from_worksheet(lesson_id, wspath=None):
     """What the worksheet .docx still holds for a lesson whose module is gone."""
     try:
@@ -444,6 +480,15 @@ def build(lesson, unit):
             "appears_in": ["worksheet, Exam practice %s)" % "abcdefgh"[i],
                            "deck, Exam practice slide"],
         })
+    if not rec["assessment"] and salvage is not None:
+        for i, e in enumerate(exit_questions(wsrel)):
+            rec["assessment"].append({
+                "id": "%s-x%d" % (lid, i + 1),
+                "asks": e["q"], "marks": e["marks"], "answer_lines": None,
+                "appears_in": ["worksheet, Exit questions %s)" % "abcdefgh"[i]],
+                "note": "read back from the worksheet; it carries no mark allocation"
+                        if e["marks"] is None else None,
+            })
     if not rec["assessment"] and lesson.get("kind") == "worksheet":
         for i, topic in enumerate(test_topics(wsrel)):
             rec["assessment"].append({

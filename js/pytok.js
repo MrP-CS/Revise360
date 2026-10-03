@@ -166,6 +166,17 @@
       const want = process.argv.includes("--print") || process.argv[3] === "print" ? "print" : "screen";
       if (process.argv.includes("--palette")) {
         process.stdout.write(JSON.stringify(API.palette(want)) + "\n");
+      } else if (process.argv.includes("--rich")) {
+        /* A JSON array of sentences in, a JSON array of HTML out, in one go.
+         * The PDF builders are Python and would otherwise either launch node
+         * once per span - thousands of times for a set of lesson plans - or
+         * carry a second copy of the lexer. */
+        let src = "";
+        process.stdin.on("data", d => { src += d; });
+        process.stdin.on("end", () => {
+          const list = JSON.parse(src || "[]");
+          process.stdout.write(JSON.stringify(list.map(x => rich(x))) + "\n");
+        });
       } else if (process.argv.includes("--lex")) {
         let src = "";
         process.stdin.on("data", d => { src += d; });
