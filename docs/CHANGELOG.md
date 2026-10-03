@@ -128,3 +128,93 @@ escape into it. All five were caught.
 - Any backend work.
 - Listening to the read-aloud voice: it is checked for presence, wiring and the
   text it is given, but nobody has heard it in this environment.
+
+---
+
+# Checkpoint — the headset, October 2026
+
+Baseline `734f845`. Seven commits.
+
+The owner tested the Python course on a Quest and reported two things: the course
+looked substantially different in there, and the Python runtime never became
+usable. Both were real.
+
+## What was measured first
+
+`docs/VR-PARITY.md` has the before-table. The same activity was opened twice —
+on the page and inside an immersive session — and what each renderer actually
+put in front of a pupil was recorded. Thirteen of twenty-six rows were missing
+in the headset.
+
+**The one that stopped the course:** a Python question in there had no way on.
+`openCodeVR` was handed the question list and the position in it and used them
+only to record the mark. Close was the only button. A Python station could not
+be worked through in a headset at all.
+
+## What changed
+
+| | before | after |
+|---|---|---|
+| copies of the Python activity model | 2 (`player.js`, `vr.js`) | 1 (`js/pyactivity.js`) |
+| copies of the brand palette | 2 | 1 (`:root`, read at draw time) |
+| rows of the parity table missing in the headset | 13 | 0 |
+| characters the course needs that could not be typed in there | 4 | 0 |
+| ways on from a finished Python question in there | 0 | 1, under the screen's rule |
+| checks in the suite | 16 | 21 |
+
+**One activity model.** The stage and its wording, the steps, the worked
+example, the one real run, the hint ladder, the forbid and require rule, the
+best-mark rule, the escalating line between attempts, the words of the
+teacher-help panel: one definition, read by both. `f133441`
+
+**The headset's workspace rebuilt on it**, as panels placed where a pupil can
+turn to them rather than as the web page on a billboard. `f133441`
+
+**A runtime that cannot fail silently.** `ready()` had no timeout, said nothing
+while twelve megabytes downloaded, cached a failure as a success, and the
+headset never listened to the one event that says it fell over. All four fixed,
+and Python now starts loading while a pupil is reading the first wall — never
+awaited, so it cannot spend the gesture a WebXR session has to start on.
+`f133441`
+
+**A failure a teacher can act on**, with a code that carries no name, no
+program, no path and no traceback. `pydiag.html` walks the whole chain on the
+device in front of you. `3d2c500`
+
+**A program that is never lost.** Kept as it is typed, in the progress the
+experience already saves, against the version of the question it was written
+for. Type in a headset, take it off, open a computer: it is there. `4db3cc5`
+
+## What it found
+
+| found | fixed |
+|---|---|
+| a Python question in the headset had no way on | the screen's rule, same wording |
+| prescribed data was painted with the authors' backticks still in it | boxed, monospace, in its token colour |
+| four characters the course needs could not be typed — `?` in 63 `input()` prompts from lesson 1 | a seventh row of keys, and a check that reads the whole course |
+| `js/vr.js` held a second copy of the brand palette | it reads `:root` |
+| a traceback was cut to four lines of ninety characters | wrapped whole |
+| "I need help" did not exist in the headset | the same panel, the same words |
+| the menu button sat on top of the keys, covering Tab, the arrows and Check | it drops out of the way |
+| a WebXR emulator reports itself as a Quest 3 | detected and labelled, on the page and in the code |
+
+## Verified
+
+All 21 checks pass. Five are new and each was validated by breaking the thing it
+watches: the runtime blocked at the network, three ways of breaking the draft
+store, three ways of breaking parity, a key taken off the keyboard, and three
+ways of making the workspace uncomfortable. Two of the new checks were wrong the
+first time and only the injected fault showed it.
+
+620 Python activities were compared on both interfaces. 620 agreed.
+
+## Still open, and only a headset can close it
+
+- **The actual Quest error has not been recorded.** No headset is reachable from
+  this machine, and nothing in the suite is evidence about one.
+  `docs/VR-HEADSET-QA.md` is the sheet; `pydiag.html` is the instrument.
+- **How `revise360.co.uk` serves `vendor/pyodide/`** — MIME types, compression,
+  cache headers — is unverified from here.
+- **Whether a paired Bluetooth keyboard reaches an immersive page** in Oculus
+  Browser. The code takes the events if they arrive; nothing claims they do.
+- **Quest memory and texture limits** under a 360 panorama plus Pyodide.

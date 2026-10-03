@@ -42,7 +42,11 @@ headset as well:
 - **on the topic page** — `js/hub.js` marks later lessons locked and shows
   *Continue where you left off*
 - **in the headset** — `js/vr.js` uses the same `core.lockedStation` and
-  `core.isComplete`
+  `core.isComplete`. Until October 2026 a Python question in there had **no way
+  on at all** — Close was the only button — so a station could not be worked
+  through in a headset. The way on is now built under the same rule as the
+  screen's, and `tools/tests/smokevrcode.py` fails if it appears before the
+  activity is finished.
 
 Earlier finished work stays open for revision, and review mode is unaffected.
 
@@ -56,7 +60,9 @@ marks. It offers a hint, the worked example, or *Keep trying*, and says:
 > moving on.
 
 After three unsuccessful checks on the same question the same panel is offered
-once, unprompted, and not again.
+once, unprompted, and not again. The headset shows the same panel, with the same
+three paragraphs, after the same three attempts: every word of it is in
+`js/pyactivity.js` so the two cannot drift apart.
 
 There is no teacher messaging in this product, so the panel never claims anyone
 has been told. It says to put a hand up or use the school's usual channel.
@@ -70,6 +76,9 @@ station lock, the lesson lock — is computed from `localStorage` in the pupil's
 own browser. It stops a pupil wandering ahead, following an old link or being
 sent one. It does not stop a pupil who edits their own storage or calls the
 `window.NVR` test hook from the developer console.
+
+This is as true of the headset as of the screen, and for the same reason: both
+are clients of the same browser-side store.
 
 Making this real needs the backend to hold progress and refuse a completion or a
 prerequisite it has not seen earned. `backend/` has the pieces (progress is

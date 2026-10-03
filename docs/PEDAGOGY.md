@@ -108,7 +108,10 @@ reopens at their earliest unfinished question.
 - Read aloud is on every task, and reads prescribed values as values.
 - Prescribed data is boxed and monospace as well as coloured.
 - Pace is not fixed: a pupil may finish a station next lesson.
-- A headset is never required.
+- A headset is never required — and a pupil who uses one gets the same support,
+  not less: the same worked example, the same hint ladder, the same read-aloud,
+  the same syntax reference, the same "I need help". They can start a program on
+  a computer, finish it in a headset and come back, and find their own work.
 
 ## What the Python course does differently, and why
 
