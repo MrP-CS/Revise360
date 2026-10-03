@@ -1,3 +1,166 @@
+# Pedagogical gap-closing pass — October 2026
+
+A quality pass, not a redesign. The visual system, the lesson structure and the
+course's own words are unchanged; what changed is that pupils are now asked to
+produce something in every teaching lesson, that every curriculum relationship a
+person has checked says so, and that the classroom deck stops the class on one
+question before independent work starts.
+
+**Read the measurement corrections before the numbers.** Four faults in the
+audit, not in the course, moved the headline figure from 57 lessons to 10 before
+a single activity was added. `docs/COVERAGE.md` separates the two in its
+before-and-after table and so does this section.
+
+## Pedagogical change
+
+| | |
+|---|---|
+| lessons reviewed | 115, all of them, through the regenerated record |
+| lessons changed | 11 gained an activity; 8 more had their wall text recovered into the source, which changes nothing a pupil meets |
+| activities added | 15, across 11 lessons (1,819 to 1,834) |
+| activities altered | 0 — nothing existing was replaced, reworded or renumbered |
+| outcomes newly assessed | 1 (`sa-l02-o3`, by an activity) |
+| mappings explicitly authored | 73 of 270 outcomes, 34 of them with a reason written down; 56 alignment files |
+| decks with a new check moment | 63 |
+| decks with a new model | 4 |
+
+**The four pilots, and what each needed.**
+
+| pilot | what was wrong | what it got |
+|---|---|---|
+| `ms-l07` Capacity calculator | a lesson entirely about calculating, with fifteen multiple-choice activities and station walls posing sums with nowhere to answer them | four working-out tables, one per formula station |
+| `sa-l02` Von Neumann HQ | three outcomes, two assessed; nothing anywhere asked whether a pupil knew what a keyword is | two sorting activities, one of them the assessment for that outcome |
+| `nw-l06` Star and mesh | the teaching existed only as pixels in the 360 image, so two outcomes could not be traced | the wall text recovered into the source, and a choose-the-topology activity |
+| `el-l01` Impact desk | the deck gave the structure of an eight-mark answer and the arguments, but never carried one out | a MODEL slide and a CHECK slide |
+
+**The ten lessons that practised nothing independently**, and what each one
+got. `ms-l07` fills in four working-out tables; `sa-l02` sorts keywords from
+chosen names, and says which register is doing the work; `ns-l09` sorts a
+weakness into the technology or the people; `nw-l02` asks whether a proposed fix
+would help, do nothing or make it worse; `nw-l12` picks the protocol for a job;
+`nw-l14` decides which answers earn the mark; `pf-l02` fills in DIV and MOD on
+the same number; `pf-l04` builds a query from its clauses; `pl-l04` orders the
+IDE cycle; `rp-l06` finds the line in a validation check that lets 13 through.
+
+`nw-l06` is the eleventh lesson to gain one. It already had a single sorting
+activity, so it was never in the list above; what it lacked was the step from
+sorting descriptions of a topology to choosing one for a place it has not seen,
+which is what its four-mark exam question asks for.
+
+Every one was appended rather than inserted, because a pupil's stored progress
+is keyed by station and activity index. Every one uses numbers and scenarios
+checked against the walls, the worked examples, the worksheet and the exam
+practice of its own lesson. None is a box to type prose into: that work belongs
+on paper, where it can be marked, and the worksheets changed by exactly one
+number each — the mark total.
+
+**The decks.** A CHECK slide is derived from the lesson record, by the same rule
+the lesson plan uses, so a deck can never stop the class on a different question
+from its own plan. It shows the question and the options and does not mark the
+right one; the answer, the counting routine and which station to go back to are
+in the speaker notes. Where the course has one response covering every wrong
+option, the notes say so rather than inventing a diagnosis per distractor.
+
+Four MODEL slides, where there is a process worth modelling: writing pseudocode,
+filling a trace table, building a truth table, structuring an eight-mark
+discussion. Each uses data that appears nowhere else in its lesson.
+
+## Cosmetic change
+
+- A sorted item longer than a phrase now takes the row above its buttons instead
+  of sitting beside them, where a whole scenario wrapped to one word a line. Four
+  categories already did this and the headset always has.
+- A working-out table starts at the left margin when there is no program beside
+  it, and its columns grow to the widest heading they carry. Both were needed by
+  the new activities; both improve the five that existed.
+- The model slide divides its height between the working and the finished answer
+  in proportion to what each needs, because a pseudocode answer and a prose one
+  are different shapes.
+
+Nothing else moved. No colour, type, worksheet layout, slide layout, icon or
+page structure was changed.
+
+## Measurement corrections, which are not improvements
+
+Four faults in the audit, each found by injecting the fault the check was
+supposed to catch:
+
+- Bonus arcade games counted as recognition, and sorting, ordering and
+  table-filling counted as guided when nothing is offered and the pupil has to
+  classify, sequence or work something out.
+- `record.py` read only the first scene of a lesson. Two lessons are built in
+  parts, so 15 stations had never been audited and unit 1.3's teacher guide said
+  175 activities and zero independent ones where it has 203 and fourteen.
+- A find-the-bug activity carries both `t` and `kind`, and its `kind` is the kind
+  of error. Reading `kind` first classified every one in the course by whether it
+  held a syntax or a logic error, so none counted as anything.
+- An end-of-topic test's reflection sheet writes its empty Marks cell as a dash,
+  and the reader took each dash for another topic row: nine questions reported
+  where that test has none.
+
+## Faults found and fixed on the way
+
+- **Eight lesson plans named the wrong answer.** For a select-all question the
+  record kept only the first option as correct and filed the real answers as
+  distractors. `NW_L06`'s plan said the answer was Reception while its own
+  teaching response three lines below said Accounts and Conference.
+- **The two printed Python guides had not been rebuildable for several
+  commits.** `mkguides.py` read the activity names from `player.js` after the
+  parity pass moved them to `pyactivity.js`, found none and exited before
+  writing. `smokeguides.py` had been reporting it the whole time.
+- **The lesson plans committed in the first two pilots were built in the wrong
+  fonts**, because `R360_PLEX` was not set. All 115 were rebuilt in IBM Plex.
+- **A Python check slide asked what a program displays without showing the
+  program.** The record was dropping the listing; the slide and the plan both
+  carry it now.
+- **An authored model would have been silently dropped** by the next
+  regeneration of its deck spec. `mkdeck.py` carries it over.
+
+## Remaining gaps
+
+- **197 of 270 outcomes are still matched by words and unchecked.** Authoring one
+  is a judgement about a lesson, not a transformation that can be run.
+- **34 lessons have exactly one activity that asks for an answer** rather than a
+  choice. That is a floor, not a standard.
+- **One outcome is assessed by nothing on purpose.** `rp-l03-o1` is a supporting
+  objective, and it stays visible rather than being quietly mapped.
+- **25 of the 88 PowerPoints have no check slide.** Every MS deck, every NW deck
+  and SA_L01 and SA_L02 are from an earlier deck design, and no generator in this
+  repository produces it; building them with `deckgen.js` would replace them
+  rather than update them. Moving them onto the current design is a decision.
+- **Nothing here measures whether a lesson teaches well.**
+
+## Files regenerated
+
+115 lesson plans, 37 unit documents, 24 packs, 63 PowerPoints, 5 worksheets,
+both printed guides, 13 experience JSONs, every lesson record, and
+`docs/COVERAGE.md`.
+
+## Tests run
+
+`verifycode` (614 questions), `smokecode.js`, `smokeparity` (620 activities),
+`smokemarks` (1,834 activities), `smokegate`, `smokealgo`, `smokecalc`,
+`smoketok`, `smokeplans`, `smokepacks`, `smokeguides`, `smokevrcode`,
+`checkws`, `audit_claims`, `audit_exposure`, `recoverwalls`. All pass.
+
+Every new or changed detector was validated by breaking the thing it watches
+first: the scene reader against an injected station, the wall recovery against a
+corrupted bullet and a deleted station, the guide check against a renamed
+activity kind, the deck overflow check against text left too long, and
+`mkdeck.py` against an injected model.
+
+## Visual review
+
+Every new activity was opened in a browser at the window it will be used in and
+read at full size, and checked for overflow at 390, 768 and 1440 px. All four
+model slides and check slides from two topics were rendered at full page size
+and read. Pages 1 to 3 of the regenerated `NW_L06` plan were read at full page
+size; the rest of the plans were read as extracted text.
+
+Not looked at: the 25 decks that were not rebuilt, and the headset, which has
+still never run this course.
+
+
 # Checkpoint — October 2026
 
 Baseline `2cac7e4`. Seven commits, 345 files, +13,498 / −1,638 lines.

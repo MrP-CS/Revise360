@@ -828,10 +828,30 @@ def trace(rec, unit_pool, unit_outcomes=(), rare=frozenset()):
             gaps.append("nothing in this unit assesses it")
         if not rec["assessment"] and not housekeeping:
             gaps.append("the lesson carries no exam practice of its own")
+        # One word for how much a person has had to do with this row, because
+        # "authored" alone does not separate a mapping somebody typed from one
+        # somebody thought about. A note is the evidence of the second: it is
+        # where the reason lives, and it is the only part of an alignment file
+        # a matcher could never have produced.
+        #
+        #   gap           nothing found, and that is reported rather than filled
+        #   auto-mapped   the word matcher, unchecked - a prompt to look
+        #   authored      a person wrote the link
+        #   human reviewed a person wrote the link and wrote down why
+        vals = set(status.values())
+        if au.get("note"):
+            review = "human reviewed"
+        elif "authored" in vals:
+            review = "authored"
+        elif "gap" in vals:
+            review = "gap"
+        else:
+            review = "auto-mapped"
         rows.append({"outcome": o["id"], "text": o["text"], "taught_at": taught,
                      "matched_words": evidence, "practised_by": practised[:40],
                      "practice_count": len(practised), "assessed_by": assessed,
-                     "status": status, "note": au.get("note"), "gaps": gaps})
+                     "status": status, "review": review,
+                     "note": au.get("note"), "gaps": gaps})
     # An exam question is an orphan only when NOTHING in the unit claims to teach
     # it. A test lesson's topics assess outcomes taught in earlier lessons, so
     # looking only at this lesson's outcomes would call every one of them an
@@ -999,15 +1019,19 @@ def write_md(matrix, records, thin):
             a = sum(1 for r in m["outcomes"] if r["assessed_by"])
             g = (sum(len(r["gaps"]) for r in m["outcomes"])
                  + len(m["assessed_but_not_an_outcome"]))
+            rev = sum(1 for r in m["outcomes"] if r.get("review") == "human reviewed")
             auth = sum(1 for r in m["outcomes"]
-                       if "authored" in (r.get("status") or {}).values())
-            mapping = ("authored %d/%d" % (auth, n)) if auth else ("auto" if n else "")
+                       if r.get("review") in ("authored", "human reviewed"))
+            mapping = ("reviewed %d/%d" % (rev, n)) if rev == auth and rev else \
+                      ("authored %d/%d" % (auth, n)) if auth else ("auto" if n else "")
             out.append("| %s | %s %s | %d | %d | %d | %d | %s | %s | %s |"
                        % (uid, m["lesson"], m["title"], n, t, p, a, mapping, g or "",
                           len(m.get("shape") or []) or ""))
     tot = sum(len(m["outcomes"]) for m in matrix)
     auth = sum(1 for m in matrix for r in m["outcomes"]
-               if "authored" in (r.get("status") or {}).values())
+               if r.get("review") in ("authored", "human reviewed"))
+    rev = sum(1 for m in matrix for r in m["outcomes"]
+              if r.get("review") == "human reviewed")
     teach = [m for m in matrix
              if any("every activity is recognition" in x for x in (m.get("shape") or []))]
     thinp = [m for m in matrix
@@ -1015,8 +1039,9 @@ def write_md(matrix, records, thin):
     out += ["", "## Where the course stands", "",
             "| | count |", "|---|---|",
             "| outcomes in the course | %d |" % tot,
-            "| of those, with an **authored** mapping | %d |" % auth,
-            "| the rest, matched by words and unchecked | %d |" % (tot - auth),
+            "| of those, **human reviewed** - a person wrote the link and wrote down why | %d |" % rev,
+            "| of those, **authored** - a person wrote the link | %d |" % (auth - rev),
+            "| the rest, **auto-mapped** by words and unchecked | %d |" % (tot - auth),
             "| teaching lessons where every activity is recognition | %d |" % len(teach),
             "| teaching lessons with only one activity that asks for an answer | %d |" % len(thinp),
             "| outcomes nothing in their unit assesses | %d |"
@@ -1030,6 +1055,46 @@ def write_md(matrix, records, thin):
                   if any("cannot be traced" in g for g in r["gaps"])),
             "| exam questions matching no outcome stated in their unit | %d |"
             % sum(len(m["assessed_but_not_an_outcome"]) for m in matrix), ""]
+
+    # What the pass moved, and what it only measured better. The BEFORE column
+    # is the figure this report carried on 2 October 2026, kept here by hand
+    # because nothing else records what a superseded report said. Three of the
+    # five rows fell mostly because the count was wrong, and the table says so
+    # rather than letting the drop read as teaching that improved.
+    out += ["## Before and after the gap-closing pass", "",
+            "| | before | after | what moved it |",
+            "|---|---|---|---|",
+            "| teaching lessons with no independent practice | 57 | 0 | mostly the count. "
+            "57 to 12 was the role table: bonus arcade games had been scored as recognition, "
+            "and sorting, ordering and table-filling as guided. Two more lessons left the "
+            "list when the reader stopped skipping a lesson's later scenes, with nothing "
+            "changing in either. The last ten were closed by adding one activity to each |",
+            "| outcomes nothing in their unit assesses | 15 | 1 | review, not new questions. "
+            "Fourteen were assessed all along by a question whose wording shares no content "
+            "word with the outcome. The one left is a supporting objective that does not need "
+            "its own question, and it stays visible |",
+            "| outcomes no station's text matches | 8 | 0 | review. All eight were taught, in "
+            "different words from the outcome. Nothing was added |",
+            "| outcomes that cannot be traced at all | 4 | 0 | recovery. Two lessons' walls "
+            "were read back out of the scripts that paint them; topic 2.5's were already "
+            "written down in a file nothing read |",
+            "| exam questions matching no outcome in their unit | 57 | 0 | nine were not "
+            "questions - a dash in an empty Marks cell read as a topic row. The rest were "
+            "valid mappings a word match could not see, and are authored |",
+            "",
+            "**The numbers falling is not the result.** Three of these five rows moved mostly "
+            "because the measurement was wrong, and that is a correction to this report rather "
+            "than a change to what a pupil meets. The rows that record real work are the nine "
+            "lessons that gained an activity and the four decks that gained a model.",
+            "",
+            "**What remains, and why.** 197 of 270 outcomes are still matched by words and "
+            "unchecked: authoring one is a judgement about a lesson, not a transformation that "
+            "can be run. 34 lessons have exactly one activity that asks for an answer rather "
+            "than a choice, which is a floor and not a standard. 25 of the 88 PowerPoints are "
+            "from an earlier deck design that nothing in this repository can rebuild, so they "
+            "have no check slide; `docs/RESOURCE-QA.md` says why that is a decision rather "
+            "than a task. And nothing here measures whether a lesson teaches well.",
+            ""]
     out += ["", "## Outcomes with a gap, and outcomes someone has checked", ""]
     any_gap = False
     for m in matrix:

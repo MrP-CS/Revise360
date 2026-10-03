@@ -11,7 +11,7 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 | unit | lesson | outcomes | taught | practised | assessed | mapping | outcome gaps | notes on the lesson |
 |---|---|---|---|---|---|---|---|---|
 | 1.1 | sa-l01 Fetch-execute factory | 4 | 4 | 4 | 4 | auto |  | 2 |
-| 1.1 | sa-l02 Von Neumann HQ | 3 | 3 | 3 | 3 | authored 3/3 |  | 1 |
+| 1.1 | sa-l02 Von Neumann HQ | 3 | 3 | 3 | 3 | reviewed 3/3 |  | 1 |
 | 1.1 | sa-l03 Speed lab | 2 | 2 | 2 | 2 | auto |  | 2 |
 | 1.1 | sa-l04 Smart home | 3 | 3 | 3 | 3 | auto |  | 1 |
 | 1.1 | sa-l05-test End-of-topic test | 0 | 0 | 0 | 0 |  |  |  |
@@ -19,9 +19,9 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 | 1.2 | ms-l02 Swap space | 2 | 2 | 2 | 2 | auto |  | 1 |
 | 1.2 | ms-l03 Storage warehouse | 3 | 3 | 3 | 3 | authored 3/3 |  | 1 |
 | 1.2 | ms-l04 Top Trumps | 2 | 2 | 2 | 2 | auto |  | 1 |
-| 1.2 | ms-l05 Pick the storage | 2 | 2 | 2 | 2 | authored 2/2 |  | 2 |
+| 1.2 | ms-l05 Pick the storage | 2 | 2 | 2 | 2 | reviewed 2/2 |  | 2 |
 | 1.2 | ms-l06 Units lab | 3 | 3 | 3 | 3 | authored 3/3 |  | 1 |
-| 1.2 | ms-l07 Capacity calculator | 2 | 2 | 2 | 2 | authored 2/2 |  | 1 |
+| 1.2 | ms-l07 Capacity calculator | 2 | 2 | 2 | 2 | reviewed 2/2 |  | 1 |
 | 1.2 | ms-l08 Binary workshop | 4 | 4 | 4 | 4 | auto |  | 1 |
 | 1.2 | ms-l09-test Assessment 1 | 0 | 0 | 0 | 0 |  |  |  |
 | 1.2 | ms-l10 Shift and hex lab | 4 | 4 | 4 | 4 | authored 4/4 |  | 1 |
@@ -38,7 +38,7 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 | 1.3 | nw-l03 Network showdown | 3 | 3 | 3 | 3 | auto |  | 2 |
 | 1.3 | nw-l04 Mission: wire up the school | 2 | 2 | 2 | 2 | authored 2/2 |  | 4 |
 | 1.3 | nw-l05 Inside the internet | 4 | 4 | 4 | 4 | authored 4/4 |  | 1 |
-| 1.3 | nw-l06 Star and mesh networks | 4 | 4 | 4 | 4 | authored 4/4 |  | 4 |
+| 1.3 | nw-l06 Star and mesh networks | 4 | 4 | 4 | 4 | reviewed 4/4 |  | 4 |
 | 1.3 | nw-l07 Revision HQ | 3 | 3 | 3 | 2 | auto |  | 5 |
 | 1.3 | nw-l08-test Assessment 1 | 0 | 0 | 0 | 0 |  |  |  |
 | 1.3 | nw-l09 Connection café | 4 | 4 | 4 | 4 | auto |  | 1 |
@@ -131,14 +131,29 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 | | count |
 |---|---|
 | outcomes in the course | 270 |
-| of those, with an **authored** mapping | 73 |
-| the rest, matched by words and unchecked | 197 |
+| of those, **human reviewed** - a person wrote the link and wrote down why | 34 |
+| of those, **authored** - a person wrote the link | 39 |
+| the rest, **auto-mapped** by words and unchecked | 197 |
 | teaching lessons where every activity is recognition | 0 |
 | teaching lessons with only one activity that asks for an answer | 34 |
 | outcomes nothing in their unit assesses | 1 |
 | outcomes no station's text matches | 0 |
 | outcomes that cannot be traced, because the teaching is only in the image | 0 |
 | exam questions matching no outcome stated in their unit | 0 |
+
+## Before and after the gap-closing pass
+
+| | before | after | what moved it |
+|---|---|---|---|
+| teaching lessons with no independent practice | 57 | 0 | mostly the count. 57 to 12 was the role table: bonus arcade games had been scored as recognition, and sorting, ordering and table-filling as guided. Two more lessons left the list when the reader stopped skipping a lesson's later scenes, with nothing changing in either. The last ten were closed by adding one activity to each |
+| outcomes nothing in their unit assesses | 15 | 1 | review, not new questions. Fourteen were assessed all along by a question whose wording shares no content word with the outcome. The one left is a supporting objective that does not need its own question, and it stays visible |
+| outcomes no station's text matches | 8 | 0 | review. All eight were taught, in different words from the outcome. Nothing was added |
+| outcomes that cannot be traced at all | 4 | 0 | recovery. Two lessons' walls were read back out of the scripts that paint them; topic 2.5's were already written down in a file nothing read |
+| exam questions matching no outcome in their unit | 57 | 0 | nine were not questions - a dash in an empty Marks cell read as a topic row. The rest were valid mappings a word match could not see, and are authored |
+
+**The numbers falling is not the result.** Three of these five rows moved mostly because the measurement was wrong, and that is a correction to this report rather than a change to what a pupil meets. The rows that record real work are the nine lessons that gained an activity and the four decks that gained a model.
+
+**What remains, and why.** 197 of 270 outcomes are still matched by words and unchecked: authoring one is a judgement about a lesson, not a transformation that can be run. 34 lessons have exactly one activity that asks for an answer rather than a choice, which is a floor and not a standard. 25 of the 88 PowerPoints are from an earlier deck design that nothing in this repository can rebuild, so they have no check slide; `docs/RESOURCE-QA.md` says why that is a decision rather than a task. And nothing here measures whether a lesson teaches well.
 
 
 ## Outcomes with a gap, and outcomes someone has checked

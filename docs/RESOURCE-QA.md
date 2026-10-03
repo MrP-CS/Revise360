@@ -47,7 +47,7 @@ it exits non-zero if a wall card matches no station.
 
 ## Checking
 
-Twenty-three checks. Run them all; each prints a single sentence at the end and exits
+Twenty-four checks. Run them all; each prints a single sentence at the end and exits
 non-zero on a failure.
 
 | check | what it holds | last run |
@@ -59,7 +59,7 @@ non-zero on a failure.
 | `tools/audit_exposure.py` | nothing private is published | 2 findings, both recorded in EXPERIENCE-PROTECTION.md |
 | `tools/tests/smoketok.py` | one lexer, one palette, prescribed data the same colour everywhere | pass |
 | `tools/tests/smokegate.py` | no route past an unfinished Python question | 25 assertions, pass |
-| `tools/tests/smokemarks.py` | `kit.py` and `js/store.js` agree what every activity is worth | 1,819 activities, 0 disagreements |
+| `tools/tests/smokemarks.py` | `kit.py` and `js/store.js` agree what every activity is worth | 1,834 activities, 0 disagreements |
 | `tools/tests/smokeplans.py` | a real, current plan for every lesson, none leaking an answer | 115 plans, pass |
 | `tools/tests/smokepacks.py` | the packs hold what they say and nothing else | 24 packs, pass |
 | `tools/tests/smokeguides.py` | the printed guides are real and quote the course's own figures | pass |
@@ -69,6 +69,7 @@ non-zero on a failure.
 | `tools/tests/smokedraft.py` | a program typed on one is found on the other, and survives a reload | pass |
 | `tools/tests/smokepyfail.py` | a runtime that does not arrive is said, reported and recoverable | pass |
 | `tools/vrkeys.py` | every character the course needs can be typed in the headset | 87 needed, 98 typable |
+| `tools/recoverwalls.py` | the wall text stored for nw-l01, nw-l04, nw-l06 and topic 2.5 is still what their scripts paint | 35 stations, 0 adrift |
 | `tools/tests/smokevrcomfort.py` | the screen and the keyboard are where a seated pupil can read and reach them | pass |
 | `tools/tests/sidebyside.py` | the page and the headset's screen, side by side for five lessons | read, not asserted |
 | `tools/tests/measurescreen.py` | the page's own layout, which the headset's screen is built from | 1397 x 864 |
@@ -82,6 +83,7 @@ for t in smoketok smokegate smokemarks smokeplans smokepacks smokeguides \
          smokevrcode smokeparity smokedraft smokepyfail smokevrcomfort; do
   python3 tools/tests/$t.py; done
 python3 tools/vrkeys.py
+python3 tools/recoverwalls.py
 node tools/tests/smokecode.js
 ```
 
