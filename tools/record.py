@@ -54,14 +54,44 @@ OUT = os.path.join(ROOT, "build", "records")
 KEYS = os.path.join(ROOT, "answers", "records")
 INV = os.path.join(ROOT, "build", "inventory.json")
 
-# How an activity's kind places it in the release of support. A pupil moves from
-# something to run, through something to predict and something to finish, to
-# something they write from nothing - so the roles come from the kinds rather
-# than from a second field that could disagree with them.
-ROLE = {"try": "guided", "predict": "guided", "change": "guided", "complete": "guided",
-        "debug": "independent", "build": "independent",
-        "mcq": "guided", "multi": "guided", "match": "guided", "sort": "guided",
-        "order": "guided", "text": "independent", "code": "independent"}
+# How an activity's kind places it in the release of support.
+#
+# The line that matters is whether the answer is on the screen. A pupil
+# choosing between four options can get there by eliminating three; a pupil
+# deciding which of six statements is necessary and which is not, or putting
+# five stages in order, or filling a table, has to produce the answer. The
+# first is recognition. The second is the independent application the course
+# is judged on.
+#
+# This table used to call `sort` and `order` guided, which counted a
+# classification task - "For a satnav, is each of these details necessary or
+# unnecessary?" - as recognition. That is wrong: nothing is offered per item.
+# Correcting it moved 47 lessons out of "nothing is practised independently",
+# which is a measurement being fixed and not a lesson being improved, and
+# docs/COVERAGE.md says so where the number appears.
+#
+# `challenge` is set separately, from `opt`.
+#
+ROLE = {
+    # the answer is on the screen and the pupil picks it
+    "mcq": "recognise", "multi": "recognise", "match": "recognise",
+    # the pupil arranges, classifies, fills in or works out - nothing is offered
+    "sort": "construct", "order": "construct", "table": "construct",
+    "convert": "construct", "addshift": "construct", "pixels": "construct",
+    "sound": "construct", "memory": "construct", "permissions": "construct",
+    "defrag": "construct", "impact": "construct", "trace": "construct",
+    "bugline": "construct", "searchstep": "construct", "sortstep": "construct",
+    "circuit": "construct", "expr": "construct",
+    # a Python activity, by its stage in the release of support
+    "try": "recognise", "predict": "recognise", "change": "construct",
+    "complete": "construct", "debug": "produce", "build": "produce",
+    "code": "produce",
+    # timed games: practice, but not evidence of independent application
+    "sprint": "game", "defence": "game", "blitz": "game", "lawgame": "game",
+    "arena": "game",
+}
+# Which roles count as the pupil supplying the thinking.
+INDEPENDENT = ("construct", "produce", "challenge")
 
 STOP = set("""a an and are as at be been but by can cannot could do does for from
 has have how in into is it its of on one only or over so some that the their them
@@ -531,9 +561,15 @@ def build(lesson, unit):
         "stations": len([s for s in stations if s["n"] != "final"]),
         "activities": sum(len(s["activities"]) for s in stations),
         "marks": marks,
-        "guided": sum(1 for s in stations for a in s["activities"] if a["role"] == "guided"),
-        "independent": sum(1 for s in stations for a in s["activities"] if a["role"] == "independent"),
+        # one count per role, and "independent" as the roles that count as the
+        # pupil supplying the thinking - so a reader can see which it was
+        "recognise": sum(1 for s in stations for a in s["activities"] if a["role"] == "recognise"),
+        "construct": sum(1 for s in stations for a in s["activities"] if a["role"] == "construct"),
+        "produce": sum(1 for s in stations for a in s["activities"] if a["role"] == "produce"),
+        "game": sum(1 for s in stations for a in s["activities"] if a["role"] == "game"),
         "challenge": sum(1 for s in stations for a in s["activities"] if a["role"] == "challenge"),
+        "guided": sum(1 for s in stations for a in s["activities"] if a["role"] == "recognise"),
+        "independent": sum(1 for s in stations for a in s["activities"] if a["role"] in INDEPENDENT),
         "assessment_marks": sum(a.get("marks") or 0 for a in rec["assessment"]),
     }
     rec["version"] = version_of({k: rec[k] for k in
@@ -580,6 +616,52 @@ def build(lesson, unit):
 
 
 # ---------------------------------------------------------- coverage matrix
+# ---------------- authored alignment ----------------
+#
+# The trace below is derived: it matches an outcome to a station or an exam
+# question by the words they share. That is a prompt to look, not a statement
+# that the alignment is right, and for anything a school or a buyer would rely
+# on it is not good enough.
+#
+# So a lesson may carry an authored file in alignment/<lesson>.json which says
+# outright what teaches, practises and assesses each outcome. Where one exists
+# it wins, and the row says so. The matcher stays as the fallback and as a way
+# of finding things nobody has mapped yet.
+#
+# {
+#   "lesson": "sa-l02",
+#   "reviewed": "2026-10-03",
+#   "outcomes": {
+#     "sa-l02-o3": { "taught": ["sa-l02-s6"], "assessed": ["sa-l02-x4"],
+#                    "note": "why, if it is not obvious" }
+#   },
+#   "assessment": { "sa-l02-x2": { "assesses": ["sa-l02-o2"] } }
+# }
+#
+# Every status a row can carry:
+#   authored  a person wrote this link down
+#   auto      the matcher found it; nobody has checked it
+#   gap       nothing found, and nothing authored
+ALIGN_DIR = os.path.join(ROOT, "alignment")
+
+
+def alignment(lid):
+    """The authored mapping for one lesson, or an empty one."""
+    p = os.path.join(ALIGN_DIR, lid + ".json")
+    if not os.path.exists(p):
+        return {"outcomes": {}, "assessment": {}, "reviewed": None}
+    try:
+        with open(p, encoding="utf-8") as f:
+            a = json.load(f)
+    except Exception as e:
+        print("   %-14s alignment file could not be read: %s" % (lid, e))
+        return {"outcomes": {}, "assessment": {}, "reviewed": None}
+    a.setdefault("outcomes", {})
+    a.setdefault("assessment", {})
+    a.setdefault("reviewed", None)
+    return a
+
+
 def trace(rec, unit_pool, unit_outcomes=(), rare=frozenset()):
     """Follow each outcome through teaching, practice and assessment.
 
@@ -596,6 +678,8 @@ def trace(rec, unit_pool, unit_outcomes=(), rare=frozenset()):
     tagged with the lesson it sits in.
     """
     rows = []
+    A = alignment(rec["id"])
+    st_ids = {s["id"] for s in rec["stations"]}
     st_words = [(s["id"], s["name"], words(s["name"]) |
                  words(" ".join(s.get("explains") or [])) |
                  words(" ".join(str(a.get("instruction") or "") for a in s["activities"])))
@@ -628,8 +712,36 @@ def trace(rec, unit_pool, unit_outcomes=(), rare=frozenset()):
                     or min(len(a), len(b)) <= 4)
         assessed = [xid for lid, xid, xw in pool if hit(ow, xw)]
         here = [xid for xid, xw in ex_words if hit(ow, xw)]
+        # An authored mapping wins. It is the thing a person wrote down, and
+        # the matcher is only here to find what nobody has mapped yet.
+        au = A["outcomes"].get(o["id"]) or {}
+        status = {"taught": "auto" if taught else "gap",
+                  "assessed": "auto" if assessed else "gap"}
+        if au.get("taught") is not None:
+            bad = [x for x in au["taught"] if x not in st_ids]
+            if bad:
+                print("   %-14s alignment names a station that is not in the "
+                      "lesson: %s" % (rec["id"], ", ".join(bad)))
+            taught = [x for x in au["taught"] if x in st_ids]
+            evidence = {x: ["authored"] for x in taught}
+            status["taught"] = "authored"
+            practised = [a2["id"] for s2 in rec["stations"] if s2["id"] in taught
+                         for a2 in s2["activities"]]
+        if au.get("practised") is not None:
+            practised = list(au["practised"])
+            status["practised"] = "authored"
+        if au.get("assessed") is not None:
+            known = {xid for lid, xid, xw in pool}
+            bad = [x for x in au["assessed"] if x not in known]
+            if bad:
+                print("   %-14s alignment names an exam item that is not in the "
+                      "unit: %s" % (rec["id"], ", ".join(bad)))
+            assessed = [x for x in au["assessed"] if x in known]
+            status["assessed"] = "authored"
         gaps = []
         housekeeping = bool(HOUSEKEEPING.search(o["text"]))
+        if au.get("note"):
+            gaps.append("reviewed: " + au["note"])
         if not taught and not housekeeping:
             if all(s["explains"] is None for s in rec["stations"]):
                 gaps.append("cannot be traced: this lesson's station text is only "
@@ -645,7 +757,7 @@ def trace(rec, unit_pool, unit_outcomes=(), rare=frozenset()):
         rows.append({"outcome": o["id"], "text": o["text"], "taught_at": taught,
                      "matched_words": evidence, "practised_by": practised[:40],
                      "practice_count": len(practised), "assessed_by": assessed,
-                     "gaps": gaps})
+                     "status": status, "gaps": gaps})
     # An exam question is an orphan only when NOTHING in the unit claims to teach
     # it. A test lesson's topics assess outcomes taught in earlier lessons, so
     # looking only at this lesson's outcomes would call every one of them an
@@ -653,6 +765,9 @@ def trace(rec, unit_pool, unit_outcomes=(), rare=frozenset()):
     orphan = []
     asks = {x["id"]: x.get("asks") for x in rec["assessment"]}
     for xid, xw in ex_words:
+        au = A["assessment"].get(xid) or {}
+        if au.get("assesses"):
+            continue            # a person has said what this question assesses
         if not any(len(ow & xw) >= 2 or bool((ow & xw) & rare) for ow in unit_outcomes):
             orphan.append({"id": xid, "asks": asks.get(xid)})
     # Notes on the lesson's shape rather than on one outcome. A test and a bonus
@@ -661,8 +776,15 @@ def trace(rec, unit_pool, unit_outcomes=(), rare=frozenset()):
     shape = []
     t = rec["totals"]
     teaching = rec.get("kind") == "experience"
-    if t["activities"] and not t["independent"] and not t["challenge"]:
-        shape.append("every activity is guided: nothing is practised independently")
+    # A bonus challenge is one timed arcade game. It is neither recognition nor
+    # independent application and judging it as either says nothing useful, so
+    # the note is for teaching lessons.
+    if teaching and t["activities"] and not t["independent"]:
+        shape.append("every activity is recognition: the answer is always on the screen")
+    elif teaching and t["activities"] and t["independent"] == 1 and t["recognise"] >= 6:
+        # one constructed activity among a dozen recognition ones is thin rather
+        # than absent, and is worth looking at without being called a hole
+        shape.append("only one activity asks the pupil to produce an answer rather than choose one")
     if teaching and t["activities"] and not t["challenge"]:
         shape.append("no optional challenge activity")
     if teaching and not rec["vocabulary"]:
@@ -782,13 +904,19 @@ def write_md(matrix, records, thin):
            "`build/coverage.json`. Read them before relying on a row: this exists to "
            "show a teacher where to look, not to certify that the alignment is right. "
            "A row with no gap has not been checked by a human either.", "",
+           "**Where a person has written the mapping down, it says so.** A lesson may "
+           "carry `alignment/<lesson>.json`, which states outright which station "
+           "teaches an outcome and which question assesses it. Those links beat the "
+           "matcher and are marked **authored** in the *mapping* column; everything "
+           "else is **auto**, which means a word match nobody has checked. Do not "
+           "present an auto row as curriculum certification.", "",
            "Assessment is looked for across the whole unit, because a lesson has three "
            "or four outcomes and three exam questions: some of them are meant to be "
            "assessed by the end-of-unit test. An outcome about the pupil\u2019s own "
            "progress - \u201cknow which lessons I am secure on\u201d - is marked "
            "housekeeping and is not expected to have a station or an exam question.", "",
-           "| unit | lesson | outcomes | taught | practised | assessed | outcome gaps | notes on the lesson |",
-           "|---|---|---|---|---|---|---|---|"]
+           "| unit | lesson | outcomes | taught | practised | assessed | mapping | outcome gaps | notes on the lesson |",
+           "|---|---|---|---|---|---|---|---|---|"]
     for uid in sorted(by):
         for m in by[uid]:
             n = len(m["outcomes"])
@@ -797,9 +925,37 @@ def write_md(matrix, records, thin):
             a = sum(1 for r in m["outcomes"] if r["assessed_by"])
             g = (sum(len(r["gaps"]) for r in m["outcomes"])
                  + len(m["assessed_but_not_an_outcome"]))
-            out.append("| %s | %s %s | %d | %d | %d | %d | %s | %s |"
-                       % (uid, m["lesson"], m["title"], n, t, p, a, g or "",
+            auth = sum(1 for r in m["outcomes"]
+                       if "authored" in (r.get("status") or {}).values())
+            mapping = ("authored %d/%d" % (auth, n)) if auth else ("auto" if n else "")
+            out.append("| %s | %s %s | %d | %d | %d | %d | %s | %s | %s |"
+                       % (uid, m["lesson"], m["title"], n, t, p, a, mapping, g or "",
                           len(m.get("shape") or []) or ""))
+    tot = sum(len(m["outcomes"]) for m in matrix)
+    auth = sum(1 for m in matrix for r in m["outcomes"]
+               if "authored" in (r.get("status") or {}).values())
+    teach = [m for m in matrix
+             if any("every activity is recognition" in x for x in (m.get("shape") or []))]
+    thinp = [m for m in matrix
+             if any("only one activity asks" in x for x in (m.get("shape") or []))]
+    out += ["", "## Where the course stands", "",
+            "| | count |", "|---|---|",
+            "| outcomes in the course | %d |" % tot,
+            "| of those, with an **authored** mapping | %d |" % auth,
+            "| the rest, matched by words and unchecked | %d |" % (tot - auth),
+            "| teaching lessons where every activity is recognition | %d |" % len(teach),
+            "| teaching lessons with only one activity that asks for an answer | %d |" % len(thinp),
+            "| outcomes nothing in their unit assesses | %d |"
+            % sum(1 for m in matrix for r in m["outcomes"]
+                  if any("nothing in this unit assesses" in g for g in r["gaps"])),
+            "| outcomes no station's text matches | %d |"
+            % sum(1 for m in matrix for r in m["outcomes"]
+                  if any("no station's text matches" in g for g in r["gaps"])),
+            "| outcomes that cannot be traced, because the teaching is only in the image | %d |"
+            % sum(1 for m in matrix for r in m["outcomes"]
+                  if any("cannot be traced" in g for g in r["gaps"])),
+            "| exam questions matching no outcome stated in their unit | %d |"
+            % sum(len(m["assessed_but_not_an_outcome"]) for m in matrix), ""]
     out += ["", "## Outcomes with a gap", ""]
     any_gap = False
     for m in matrix:

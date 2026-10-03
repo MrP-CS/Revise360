@@ -4,156 +4,170 @@ Every learning outcome in the course, followed through the station that teaches 
 
 **The trace is derived, not authored.** An outcome is matched to a station or an exam question by the content words they share: two words in common, or one that is distinctive across the course, or one where either side is only a few words long. Every match carries the words it matched, in `build/coverage.json`. Read them before relying on a row: this exists to show a teacher where to look, not to certify that the alignment is right. A row with no gap has not been checked by a human either.
 
+**Where a person has written the mapping down, it says so.** A lesson may carry `alignment/<lesson>.json`, which states outright which station teaches an outcome and which question assesses it. Those links beat the matcher and are marked **authored** in the *mapping* column; everything else is **auto**, which means a word match nobody has checked. Do not present an auto row as curriculum certification.
+
 Assessment is looked for across the whole unit, because a lesson has three or four outcomes and three exam questions: some of them are meant to be assessed by the end-of-unit test. An outcome about the pupil’s own progress - “know which lessons I am secure on” - is marked housekeeping and is not expected to have a station or an exam question.
 
-| unit | lesson | outcomes | taught | practised | assessed | outcome gaps | notes on the lesson |
-|---|---|---|---|---|---|---|---|
-| 1.1 | sa-l01 Fetch-execute factory | 4 | 4 | 4 | 4 | 2 | 2 |
-| 1.1 | sa-l02 Von Neumann HQ | 3 | 3 | 3 | 2 | 2 | 2 |
-| 1.1 | sa-l03 Speed lab | 2 | 2 | 2 | 2 | 1 | 2 |
-| 1.1 | sa-l04 Smart home | 3 | 3 | 3 | 3 |  | 2 |
-| 1.1 | sa-l05-test End-of-topic test | 0 | 0 | 0 | 0 |  |  |
-| 1.2 | ms-l01 Memory bay | 3 | 3 | 3 | 3 |  | 2 |
-| 1.2 | ms-l02 Swap space | 2 | 2 | 2 | 2 |  | 2 |
-| 1.2 | ms-l03 Storage warehouse | 3 | 1 | 1 | 3 | 4 | 2 |
-| 1.2 | ms-l04 Top Trumps | 2 | 2 | 2 | 2 | 1 | 2 |
-| 1.2 | ms-l05 Pick the storage | 2 | 0 | 0 | 2 | 3 | 2 |
-| 1.2 | ms-l06 Units lab | 3 | 2 | 2 | 3 | 2 | 1 |
-| 1.2 | ms-l07 Capacity calculator | 2 | 2 | 2 | 2 |  | 2 |
-| 1.2 | ms-l08 Binary workshop | 4 | 4 | 4 | 4 |  | 1 |
-| 1.2 | ms-l09-test Assessment 1 | 0 | 0 | 0 | 0 | 4 |  |
-| 1.2 | ms-l10 Shift and hex lab | 4 | 3 | 3 | 4 | 1 | 1 |
-| 1.2 | ms-l11 Revision HQ 1.2 part 1 | 2 | 0 | 0 | 0 |  | 2 |
-| 1.2 | ms-l12 Character foundry | 4 | 4 | 4 | 4 |  | 1 |
-| 1.2 | ms-l13 Pixel studio | 3 | 3 | 3 | 3 |  | 1 |
-| 1.2 | ms-l14 Sound studio | 2 | 2 | 2 | 2 |  | 1 |
-| 1.2 | ms-l15 Compression works | 3 | 3 | 3 | 3 |  | 1 |
-| 1.2 | ms-l16 Revision HQ 1.2 part 2 | 2 | 1 | 1 | 1 |  | 2 |
-| 1.2 | ms-l17-test Assessment 2 | 0 | 0 | 0 | 0 | 1 |  |
-| 1.2 | ms-bonus Binary blitz | 0 | 0 | 0 | 0 |  |  |
-| 1.3 | nw-l01 Types of network: zoom out | 4 | 1 | 1 | 4 | 5 | 5 |
-| 1.3 | nw-l02 Network control room | 2 | 2 | 2 | 2 |  | 4 |
-| 1.3 | nw-l03 Network showdown | 3 | 3 | 3 | 3 |  | 2 |
-| 1.3 | nw-l04 Mission: wire up the school | 2 | 1 | 1 | 2 | 2 | 4 |
-| 1.3 | nw-l05 Inside the internet | 4 | 3 | 3 | 4 | 2 | 2 |
-| 1.3 | nw-l06 Star and mesh networks | 4 | 2 | 2 | 4 | 2 | 5 |
-| 1.3 | nw-l07 Revision HQ | 3 | 3 | 3 | 2 |  | 5 |
-| 1.3 | nw-l08-test Assessment 1 | 0 | 0 | 0 | 0 |  |  |
-| 1.3 | nw-l09 Connection café | 4 | 4 | 4 | 4 |  | 2 |
-| 1.3 | nw-l10 Cipher room | 4 | 4 | 4 | 3 | 1 | 2 |
-| 1.3 | nw-l11 Address sorting office | 3 | 3 | 3 | 3 |  | 2 |
-| 1.3 | nw-l12 Protocol city | 2 | 2 | 2 | 2 | 1 | 2 |
-| 1.3 | nw-l13 Parcel depot | 2 | 2 | 2 | 2 | 1 | 2 |
-| 1.3 | nw-l14 Revision HQ 2 | 2 | 1 | 1 | 0 |  | 3 |
-| 1.3 | nw-l14-test Assessment 2 reflection | 0 | 0 | 0 | 0 | 1 |  |
-| 1.4 | ns-l01 Threat map | 1 | 1 | 1 | 1 | 1 | 2 |
-| 1.4 | ns-l02 Malware lab | 2 | 2 | 2 | 2 | 3 | 2 |
-| 1.4 | ns-l03 Database break-in | 2 | 2 | 2 | 2 |  | 2 |
-| 1.4 | ns-l04 Phishing inbox | 2 | 2 | 2 | 2 |  | 2 |
-| 1.4 | ns-l05 Social engineering HQ | 3 | 3 | 3 | 3 | 1 | 2 |
-| 1.4 | ns-l06 Cracking lab | 2 | 2 | 2 | 2 | 1 | 2 |
-| 1.4 | ns-l07 Traffic flood | 2 | 2 | 2 | 2 | 1 | 2 |
-| 1.4 | ns-l08 Packet sniffers | 2 | 2 | 2 | 2 | 2 | 2 |
-| 1.4 | ns-l09 Defence depot | 2 | 2 | 2 | 2 |  | 2 |
-| 1.4 | ns-l10 Defence depot 2 | 2 | 2 | 2 | 2 | 1 | 2 |
-| 1.4 | ns-l11-test End-of-topic test | 0 | 0 | 0 | 0 | 2 |  |
-| 1.4 | ns-bonus Cyber defence | 0 | 0 | 0 | 0 |  |  |
-| 1.5 | ss-l01 Control room | 2 | 2 | 2 | 2 |  | 2 |
-| 1.5 | ss-l02 Multitasking floor | 3 | 3 | 3 | 3 |  | 1 |
-| 1.5 | ss-l03 Accounts office | 2 | 2 | 2 | 2 | 1 | 1 |
-| 1.5 | ss-l04 Utility workshop | 3 | 3 | 3 | 3 |  | 1 |
-| 1.5 | ss-l05-test End of topic test | 0 | 0 | 0 | 0 |  |  |
-| 1.6 | el-l01 Impact desk | 3 | 3 | 3 | 2 | 1 | 1 |
-| 1.6 | el-l02 Privacy lab | 2 | 2 | 2 | 2 |  | 1 |
-| 1.6 | el-l03 Law court | 3 | 3 | 3 | 3 | 1 | 2 |
-| 1.6 | el-l04 Culture street | 3 | 3 | 3 | 3 |  | 1 |
-| 1.6 | el-l05 Planet works | 3 | 3 | 3 | 3 | 1 | 2 |
-| 1.6 | el-l06 Stakeholder room | 3 | 3 | 3 | 3 |  | 1 |
-| 1.6 | el-l07 Licence lab | 2 | 2 | 2 | 2 |  | 2 |
-| 1.6 | el-l08-test End of topic test | 0 | 0 | 0 | 0 |  |  |
-| 1.6 | el-bonus Name that Act | 0 | 0 | 0 | 0 |  |  |
-| 2.1 | al-l01 Abstraction studio | 3 | 3 | 3 | 3 |  | 2 |
-| 2.1 | al-l02 Breakdown bay | 3 | 3 | 3 | 3 |  | 2 |
-| 2.1 | al-l03 Algorithm workshop | 2 | 2 | 2 | 2 |  | 2 |
-| 2.1 | al-l04 Flowchart factory | 3 | 3 | 3 | 3 | 1 | 2 |
-| 2.1 | al-l05 Pseudocode press | 3 | 3 | 3 | 3 | 1 | 1 |
-| 2.1 | al-l06 Search corridor | 2 | 2 | 2 | 2 |  | 1 |
-| 2.1 | al-l07 Halving hall | 3 | 3 | 3 | 3 |  | 1 |
-| 2.1 | al-l08 Bubble bay | 3 | 3 | 3 | 3 |  | 1 |
-| 2.1 | al-l09 Split and insert | 3 | 3 | 3 | 3 |  | 1 |
-| 2.1 | al-l10 Fault finder | 3 | 3 | 3 | 3 | 1 | 1 |
-| 2.1 | al-l11 Trace room | 3 | 3 | 3 | 3 |  | 1 |
-| 2.1 | al-l12-test End of topic test | 0 | 0 | 0 | 0 |  |  |
-| 2.1 | al-bonus Algorithm arena | 0 | 0 | 0 | 0 |  |  |
-| 2.2 | pf-l01 Variable store | 3 | 3 | 3 | 3 | 1 | 2 |
-| 2.2 | pf-l02 Type foundry | 3 | 3 | 3 | 3 | 1 | 2 |
-| 2.2 | pf-l03 Filing room | 3 | 3 | 3 | 3 |  | 2 |
-| 2.2 | pf-l04 Record vault | 3 | 3 | 3 | 3 |  | 2 |
-| 2.2 | pf-l05 Array yard | 3 | 3 | 3 | 3 |  | 2 |
-| 2.2 | pf-l06 Chance machine | 3 | 3 | 3 | 3 |  | 2 |
-| 2.2 | pf-l07 Revision HQ 2.2 | 3 | 0 | 0 | 0 |  | 2 |
-| 2.2 | pf-l08-test End-of-topic test | 0 | 0 | 0 | 0 | 12 |  |
-| 2.3 | rp-l01 Security desk | 3 | 3 | 3 | 3 | 2 | 2 |
-| 2.3 | rp-l02 Cyber defence HQ | 3 | 2 | 2 | 2 | 2 | 2 |
-| 2.3 | rp-l03 Code clinic | 3 | 3 | 3 | 2 | 2 | 1 |
-| 2.3 | rp-l04 Bug hunt lab | 5 | 5 | 5 | 5 |  | 3 |
-| 2.3 | rp-l05 Test lab | 2 | 2 | 2 | 2 |  | 1 |
-| 2.3 | rp-l06 Revision HQ 2.3 | 2 | 2 | 2 | 1 |  | 2 |
-| 2.3 | rp-l07-test End-of-topic test | 0 | 0 | 0 | 0 | 2 |  |
-| 2.4 | bl-l01 Logic gate lab | 3 | 3 | 3 | 3 | 1 | 1 |
-| 2.4 | bl-l02 Truth table detectives | 1 | 1 | 1 | 1 |  | 1 |
-| 2.4 | bl-l03 Circuit workshop | 1 | 1 | 1 | 1 |  | 1 |
-| 2.4 | bl-l04-test End-of-topic test | 0 | 0 | 0 | 0 |  |  |
-| 2.4 | bl-bonus Logic sprint | 0 | 0 | 0 | 0 |  |  |
-| 2.5 | pl-l01 Language level lab | 3 | 2 | 2 | 2 | 2 | 2 |
-| 2.5 | pl-l02 Language choice workshop | 3 | 2 | 2 | 2 | 2 | 2 |
-| 2.5 | pl-l03 Translation studio | 3 | 3 | 3 | 3 |  | 2 |
-| 2.5 | pl-l04 IDE control room | 3 | 2 | 2 | 3 | 1 | 2 |
-| 2.5 | pl-l05 Language review HQ | 3 | 3 | 3 | 2 | 1 | 2 |
-| PY | pr-l01 Printing and variables | 3 | 3 | 3 | 2 | 1 |  |
-| PY | pr-l02 Arithmetic | 3 | 3 | 3 | 2 | 1 |  |
-| PY | pr-l03 Selection | 3 | 3 | 3 | 2 | 1 |  |
-| PY | pr-l04 Count-controlled loops | 3 | 3 | 3 | 3 |  |  |
-| PY | pr-l05 Condition-controlled loops | 3 | 3 | 3 | 2 | 1 |  |
-| PY | pr-l06 String handling | 3 | 3 | 3 | 3 |  |  |
-| PY | pr-l07 Lists | 3 | 3 | 3 | 3 |  |  |
-| PY | pr-l08 Two-dimensional lists | 3 | 3 | 3 | 2 | 1 |  |
-| PY | pr-l09 Subprograms | 3 | 3 | 3 | 3 |  |  |
-| PY | pr-l10 File handling | 3 | 3 | 3 | 3 |  |  |
-| PY | pr-l11 Searching and sorting | 3 | 3 | 3 | 2 | 1 |  |
-| PY | pr-l12 Validation and authentication | 3 | 3 | 3 | 2 | 1 |  |
-| PY | pr-l13 SQL queries | 3 | 3 | 3 | 3 |  |  |
+| unit | lesson | outcomes | taught | practised | assessed | mapping | outcome gaps | notes on the lesson |
+|---|---|---|---|---|---|---|---|---|
+| 1.1 | sa-l01 Fetch-execute factory | 4 | 4 | 4 | 4 | auto | 2 | 2 |
+| 1.1 | sa-l02 Von Neumann HQ | 3 | 3 | 3 | 2 | auto | 2 | 2 |
+| 1.1 | sa-l03 Speed lab | 2 | 2 | 2 | 2 | auto | 1 | 2 |
+| 1.1 | sa-l04 Smart home | 3 | 3 | 3 | 3 | auto |  | 1 |
+| 1.1 | sa-l05-test End-of-topic test | 0 | 0 | 0 | 0 |  |  |  |
+| 1.2 | ms-l01 Memory bay | 3 | 3 | 3 | 3 | auto |  | 1 |
+| 1.2 | ms-l02 Swap space | 2 | 2 | 2 | 2 | auto |  | 1 |
+| 1.2 | ms-l03 Storage warehouse | 3 | 1 | 1 | 3 | auto | 4 | 1 |
+| 1.2 | ms-l04 Top Trumps | 2 | 2 | 2 | 2 | auto | 1 | 1 |
+| 1.2 | ms-l05 Pick the storage | 2 | 0 | 0 | 2 | auto | 3 | 2 |
+| 1.2 | ms-l06 Units lab | 3 | 2 | 2 | 3 | auto | 2 | 1 |
+| 1.2 | ms-l07 Capacity calculator | 2 | 2 | 2 | 2 | auto |  | 2 |
+| 1.2 | ms-l08 Binary workshop | 4 | 4 | 4 | 4 | auto |  | 1 |
+| 1.2 | ms-l09-test Assessment 1 | 0 | 0 | 0 | 0 |  | 4 |  |
+| 1.2 | ms-l10 Shift and hex lab | 4 | 3 | 3 | 4 | auto | 1 | 1 |
+| 1.2 | ms-l11 Revision HQ 1.2 part 1 | 2 | 0 | 0 | 0 | auto |  | 2 |
+| 1.2 | ms-l12 Character foundry | 4 | 4 | 4 | 4 | auto |  | 1 |
+| 1.2 | ms-l13 Pixel studio | 3 | 3 | 3 | 3 | auto |  | 1 |
+| 1.2 | ms-l14 Sound studio | 2 | 2 | 2 | 2 | auto |  | 1 |
+| 1.2 | ms-l15 Compression works | 3 | 3 | 3 | 3 | auto |  | 1 |
+| 1.2 | ms-l16 Revision HQ 1.2 part 2 | 2 | 1 | 1 | 1 | auto |  | 2 |
+| 1.2 | ms-l17-test Assessment 2 | 0 | 0 | 0 | 0 |  | 1 |  |
+| 1.2 | ms-bonus Binary blitz | 0 | 0 | 0 | 0 |  |  |  |
+| 1.3 | nw-l01 Types of network: zoom out | 4 | 1 | 1 | 4 | auto | 5 | 5 |
+| 1.3 | nw-l02 Network control room | 2 | 2 | 2 | 2 | auto |  | 4 |
+| 1.3 | nw-l03 Network showdown | 3 | 3 | 3 | 3 | auto |  | 2 |
+| 1.3 | nw-l04 Mission: wire up the school | 2 | 1 | 1 | 2 | auto | 2 | 4 |
+| 1.3 | nw-l05 Inside the internet | 4 | 3 | 3 | 4 | auto | 2 | 1 |
+| 1.3 | nw-l06 Star and mesh networks | 4 | 2 | 2 | 4 | auto | 2 | 5 |
+| 1.3 | nw-l07 Revision HQ | 3 | 3 | 3 | 2 | auto |  | 5 |
+| 1.3 | nw-l08-test Assessment 1 | 0 | 0 | 0 | 0 |  |  |  |
+| 1.3 | nw-l09 Connection café | 4 | 4 | 4 | 4 | auto |  | 1 |
+| 1.3 | nw-l10 Cipher room | 4 | 4 | 4 | 3 | auto | 1 | 2 |
+| 1.3 | nw-l11 Address sorting office | 3 | 3 | 3 | 3 | auto |  | 2 |
+| 1.3 | nw-l12 Protocol city | 2 | 2 | 2 | 2 | auto | 1 | 2 |
+| 1.3 | nw-l13 Parcel depot | 2 | 2 | 2 | 2 | auto | 1 | 1 |
+| 1.3 | nw-l14 Revision HQ 2 | 2 | 1 | 1 | 0 | auto |  | 3 |
+| 1.3 | nw-l14-test Assessment 2 reflection | 0 | 0 | 0 | 0 |  | 1 |  |
+| 1.4 | ns-l01 Threat map | 1 | 1 | 1 | 1 | auto | 1 | 2 |
+| 1.4 | ns-l02 Malware lab | 2 | 2 | 2 | 2 | auto | 3 | 2 |
+| 1.4 | ns-l03 Database break-in | 2 | 2 | 2 | 2 | auto |  | 2 |
+| 1.4 | ns-l04 Phishing inbox | 2 | 2 | 2 | 2 | auto |  | 2 |
+| 1.4 | ns-l05 Social engineering HQ | 3 | 3 | 3 | 3 | auto | 1 | 2 |
+| 1.4 | ns-l06 Cracking lab | 2 | 2 | 2 | 2 | auto | 1 | 2 |
+| 1.4 | ns-l07 Traffic flood | 2 | 2 | 2 | 2 | auto | 1 | 2 |
+| 1.4 | ns-l08 Packet sniffers | 2 | 2 | 2 | 2 | auto | 2 | 2 |
+| 1.4 | ns-l09 Defence depot | 2 | 2 | 2 | 2 | auto |  | 2 |
+| 1.4 | ns-l10 Defence depot 2 | 2 | 2 | 2 | 2 | auto | 1 | 2 |
+| 1.4 | ns-l11-test End-of-topic test | 0 | 0 | 0 | 0 |  | 2 |  |
+| 1.4 | ns-bonus Cyber defence | 0 | 0 | 0 | 0 |  |  |  |
+| 1.5 | ss-l01 Control room | 2 | 2 | 2 | 2 | auto |  | 1 |
+| 1.5 | ss-l02 Multitasking floor | 3 | 3 | 3 | 3 | auto |  | 1 |
+| 1.5 | ss-l03 Accounts office | 2 | 2 | 2 | 2 | auto | 1 | 1 |
+| 1.5 | ss-l04 Utility workshop | 3 | 3 | 3 | 3 | auto |  | 1 |
+| 1.5 | ss-l05-test End of topic test | 0 | 0 | 0 | 0 |  |  |  |
+| 1.6 | el-l01 Impact desk | 3 | 3 | 3 | 2 | auto | 1 | 1 |
+| 1.6 | el-l02 Privacy lab | 2 | 2 | 2 | 2 | auto |  | 1 |
+| 1.6 | el-l03 Law court | 3 | 3 | 3 | 3 | auto | 1 | 1 |
+| 1.6 | el-l04 Culture street | 3 | 3 | 3 | 3 | auto |  | 1 |
+| 1.6 | el-l05 Planet works | 3 | 3 | 3 | 3 | auto | 1 | 1 |
+| 1.6 | el-l06 Stakeholder room | 3 | 3 | 3 | 3 | auto |  | 1 |
+| 1.6 | el-l07 Licence lab | 2 | 2 | 2 | 2 | auto |  | 1 |
+| 1.6 | el-l08-test End of topic test | 0 | 0 | 0 | 0 |  |  |  |
+| 1.6 | el-bonus Name that Act | 0 | 0 | 0 | 0 |  |  |  |
+| 2.1 | al-l01 Abstraction studio | 3 | 3 | 3 | 3 | auto |  | 1 |
+| 2.1 | al-l02 Breakdown bay | 3 | 3 | 3 | 3 | auto |  | 1 |
+| 2.1 | al-l03 Algorithm workshop | 2 | 2 | 2 | 2 | auto |  | 1 |
+| 2.1 | al-l04 Flowchart factory | 3 | 3 | 3 | 3 | auto | 1 | 1 |
+| 2.1 | al-l05 Pseudocode press | 3 | 3 | 3 | 3 | auto | 1 | 1 |
+| 2.1 | al-l06 Search corridor | 2 | 2 | 2 | 2 | auto |  | 1 |
+| 2.1 | al-l07 Halving hall | 3 | 3 | 3 | 3 | auto |  | 1 |
+| 2.1 | al-l08 Bubble bay | 3 | 3 | 3 | 3 | auto |  | 1 |
+| 2.1 | al-l09 Split and insert | 3 | 3 | 3 | 3 | auto |  | 1 |
+| 2.1 | al-l10 Fault finder | 3 | 3 | 3 | 3 | auto | 1 | 1 |
+| 2.1 | al-l11 Trace room | 3 | 3 | 3 | 3 | auto |  | 1 |
+| 2.1 | al-l12-test End of topic test | 0 | 0 | 0 | 0 |  |  |  |
+| 2.1 | al-bonus Algorithm arena | 0 | 0 | 0 | 0 |  |  |  |
+| 2.2 | pf-l01 Variable store | 3 | 3 | 3 | 3 | auto | 1 | 2 |
+| 2.2 | pf-l02 Type foundry | 3 | 3 | 3 | 3 | auto | 1 | 2 |
+| 2.2 | pf-l03 Filing room | 3 | 3 | 3 | 3 | auto |  | 2 |
+| 2.2 | pf-l04 Record vault | 3 | 3 | 3 | 3 | auto |  | 2 |
+| 2.2 | pf-l05 Array yard | 3 | 3 | 3 | 3 | auto |  | 2 |
+| 2.2 | pf-l06 Chance machine | 3 | 3 | 3 | 3 | auto |  | 2 |
+| 2.2 | pf-l07 Revision HQ 2.2 | 3 | 0 | 0 | 0 | auto |  | 2 |
+| 2.2 | pf-l08-test End-of-topic test | 0 | 0 | 0 | 0 |  | 12 |  |
+| 2.3 | rp-l01 Security desk | 3 | 3 | 3 | 3 | auto | 2 | 2 |
+| 2.3 | rp-l02 Cyber defence HQ | 3 | 2 | 2 | 2 | auto | 2 | 2 |
+| 2.3 | rp-l03 Code clinic | 3 | 3 | 3 | 2 | auto | 2 | 1 |
+| 2.3 | rp-l04 Bug hunt lab | 5 | 5 | 5 | 5 | auto |  | 3 |
+| 2.3 | rp-l05 Test lab | 2 | 2 | 2 | 2 | auto |  | 1 |
+| 2.3 | rp-l06 Revision HQ 2.3 | 2 | 2 | 2 | 1 | auto |  | 2 |
+| 2.3 | rp-l07-test End-of-topic test | 0 | 0 | 0 | 0 |  | 2 |  |
+| 2.4 | bl-l01 Logic gate lab | 3 | 3 | 3 | 3 | auto | 1 | 1 |
+| 2.4 | bl-l02 Truth table detectives | 1 | 1 | 1 | 1 | auto |  | 1 |
+| 2.4 | bl-l03 Circuit workshop | 1 | 1 | 1 | 1 | auto |  | 1 |
+| 2.4 | bl-l04-test End-of-topic test | 0 | 0 | 0 | 0 |  |  |  |
+| 2.4 | bl-bonus Logic sprint | 0 | 0 | 0 | 0 |  |  |  |
+| 2.5 | pl-l01 Language level lab | 3 | 2 | 2 | 2 | auto | 2 | 1 |
+| 2.5 | pl-l02 Language choice workshop | 3 | 2 | 2 | 2 | auto | 2 | 1 |
+| 2.5 | pl-l03 Translation studio | 3 | 3 | 3 | 3 | auto |  | 1 |
+| 2.5 | pl-l04 IDE control room | 3 | 2 | 2 | 3 | auto | 1 | 2 |
+| 2.5 | pl-l05 Language review HQ | 3 | 3 | 3 | 2 | auto | 1 | 1 |
+| PY | pr-l01 Printing and variables | 3 | 3 | 3 | 2 | auto | 1 |  |
+| PY | pr-l02 Arithmetic | 3 | 3 | 3 | 2 | auto | 1 |  |
+| PY | pr-l03 Selection | 3 | 3 | 3 | 2 | auto | 1 |  |
+| PY | pr-l04 Count-controlled loops | 3 | 3 | 3 | 3 | auto |  |  |
+| PY | pr-l05 Condition-controlled loops | 3 | 3 | 3 | 2 | auto | 1 |  |
+| PY | pr-l06 String handling | 3 | 3 | 3 | 3 | auto |  |  |
+| PY | pr-l07 Lists | 3 | 3 | 3 | 3 | auto |  |  |
+| PY | pr-l08 Two-dimensional lists | 3 | 3 | 3 | 2 | auto | 1 |  |
+| PY | pr-l09 Subprograms | 3 | 3 | 3 | 3 | auto |  |  |
+| PY | pr-l10 File handling | 3 | 3 | 3 | 3 | auto |  |  |
+| PY | pr-l11 Searching and sorting | 3 | 3 | 3 | 2 | auto | 1 |  |
+| PY | pr-l12 Validation and authentication | 3 | 3 | 3 | 2 | auto | 1 |  |
+| PY | pr-l13 SQL queries | 3 | 3 | 3 | 3 | auto |  |  |
+
+## Where the course stands
+
+| | count |
+|---|---|
+| outcomes in the course | 270 |
+| of those, with an **authored** mapping | 0 |
+| the rest, matched by words and unchecked | 270 |
+| teaching lessons where every activity is recognition | 12 |
+| teaching lessons with only one activity that asks for an answer | 25 |
+| outcomes nothing in their unit assesses | 15 |
+| outcomes no station's text matches | 8 |
+| outcomes that cannot be traced, because the teaching is only in the image | 9 |
+| exam questions matching no outcome stated in their unit | 59 |
+
 
 ## Outcomes with a gap
 
 ### sa-l01 — Fetch-execute factory
 - **sa-l01-x1** is assessed but matches no outcome stated anywhere in this unit: Describe what the CPU does while a program is running.
 - **sa-l01-x3** is assessed but matches no outcome stated anywhere in this unit: A computer's cache is full. Explain the effect this has on the CPU.
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 
 ### sa-l02 — Von Neumann HQ
 - **sa-l02-o3** understand what a keyword is
   - nothing in this unit assesses it
 - **sa-l02-x2** is assessed but matches no outcome stated anywhere in this unit: Describe what the memory data register holds and when it is used.
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: every activity is recognition: the answer is always on the screen
 - the lesson's shape: no optional challenge activity
 
 ### sa-l03 — Speed lab
 - **sa-l03-x2** is assessed but matches no outcome stated anywhere in this unit: A laptop is advertised with a quad-core 3.2 GHz processor. Explain what this tells you about the CPU.
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 
 ### sa-l04 — Smart home
-- the lesson's shape: every activity is guided: nothing is practised independently
 - the lesson's shape: no optional challenge activity
 
 ### ms-l01 — Memory bay
-- the lesson's shape: every activity is guided: nothing is practised independently
 - the lesson's shape: no optional challenge activity
 
 ### ms-l02 — Swap space
-- the lesson's shape: every activity is guided: nothing is practised independently
 - the lesson's shape: no optional challenge activity
 
 ### ms-l03 — Storage warehouse
@@ -163,12 +177,10 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
   - no station's text matches it
 - **ms-l03-x2** is assessed but matches no outcome stated anywhere in this unit: Describe how a hard disk drive stores data.
 - **ms-l03-x3** is assessed but matches no outcome stated anywhere in this unit: Describe how data is read from an optical disc.
-- the lesson's shape: every activity is guided: nothing is practised independently
 - the lesson's shape: no optional challenge activity
 
 ### ms-l04 — Top Trumps
 - **ms-l04-x2** is assessed but matches no outcome stated anywhere in this unit: Explain why an SSD is more suitable than a hard disk for a laptop.
-- the lesson's shape: every activity is guided: nothing is practised independently
 - the lesson's shape: no optional challenge activity
 
 ### ms-l05 — Pick the storage
@@ -177,7 +189,7 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 - **ms-l05-o2** understand the advantages and disadvantages of devices based on their characteristics
   - no station's text matches it
 - **ms-l05-x2** is assessed but matches no outcome stated anywhere in this unit: Explain why a school uses magnetic hard disks rather than SSDs for its main file storage.
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 
 ### ms-l06 — Units lab
@@ -187,7 +199,7 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 - the lesson's shape: no optional challenge activity
 
 ### ms-l07 — Capacity calculator
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: every activity is recognition: the answer is always on the screen
 - the lesson's shape: no optional challenge activity
 
 ### ms-l08 — Binary workshop
@@ -236,27 +248,27 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
   - cannot be traced: this lesson's station text is only in the rendered image, so there is nothing to match
 - **nw-l01-x2** is assessed but matches no outcome stated anywhere in this unit: Name one advantage of a network.
 - **nw-l01-x3** is assessed but matches no outcome stated anywhere in this unit: Name one disadvantage of a network.
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: every activity is recognition: the answer is always on the screen
 - the lesson's shape: no optional challenge activity
 - the lesson's shape: no key vocabulary is listed
 - the lesson's shape: no starter, so nothing retrieves prior knowledge
 - the lesson's shape: no key question
 
 ### nw-l02 — Network control room
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: every activity is recognition: the answer is always on the screen
 - the lesson's shape: no optional challenge activity
 - the lesson's shape: no key vocabulary is listed
 - the lesson's shape: no key question
 
 ### nw-l03 — Network showdown
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 
 ### nw-l04 — Mission: wire up the school
 - **nw-l04-o2** understand the purpose of each piece of hardware and the jobs it does
   - cannot be traced: this lesson's station text is only in the rendered image, so there is nothing to match
 - **nw-l04-x1** is assessed but matches no outcome stated anywhere in this unit: State the purpose of a router.
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 - the lesson's shape: no key vocabulary is listed
 - the lesson's shape: no key question
@@ -265,7 +277,6 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 - **nw-l05-o1** understand what the internet actually is
   - no station's text matches it
 - **nw-l05-x1** is assessed but matches no outcome stated anywhere in this unit: Describe what the internet is.
-- the lesson's shape: every activity is guided: nothing is practised independently
 - the lesson's shape: no optional challenge activity
 
 ### nw-l06 — Star and mesh networks
@@ -273,45 +284,43 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
   - cannot be traced: this lesson's station text is only in the rendered image, so there is nothing to match
 - **nw-l06-o3** understand that the internet is an example of a partial mesh network
   - cannot be traced: this lesson's station text is only in the rendered image, so there is nothing to match
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: every activity is recognition: the answer is always on the screen
 - the lesson's shape: no optional challenge activity
 - the lesson's shape: no key vocabulary is listed
 - the lesson's shape: no starter, so nothing retrieves prior knowledge
 - the lesson's shape: no key question
 
 ### nw-l07 — Revision HQ
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 - the lesson's shape: no key vocabulary is listed
 - the lesson's shape: no starter, so nothing retrieves prior knowledge
 - the lesson's shape: no key question
 
 ### nw-l09 — Connection café
-- the lesson's shape: every activity is guided: nothing is practised independently
 - the lesson's shape: no optional challenge activity
 
 ### nw-l10 — Cipher room
 - **nw-l10-o1** know the basics of how cryptography can work with a simple key
   - nothing in this unit assesses it
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 
 ### nw-l11 — Address sorting office
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 
 ### nw-l12 — Protocol city
 - **nw-l12-x3** is assessed but matches no outcome stated anywhere in this unit: Describe what HTTPS adds to HTTP and why it matters.
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: every activity is recognition: the answer is always on the screen
 - the lesson's shape: no optional challenge activity
 
 ### nw-l13 — Parcel depot
 - **nw-l13-x1** is assessed but matches no outcome stated anywhere in this unit: Give three benefits of dividing networking into layers.
-- the lesson's shape: every activity is guided: nothing is practised independently
 - the lesson's shape: no optional challenge activity
 
 ### nw-l14 — Revision HQ 2
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: every activity is recognition: the answer is always on the screen
 - the lesson's shape: no optional challenge activity
 - the lesson's shape: no key question
 
@@ -320,52 +329,52 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 
 ### ns-l01 — Threat map
 - **ns-l01-x3** is assessed but matches no outcome stated anywhere in this unit: A small business is hit by ransomware. Describe three costs it will face beyond the ransom itself.
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 
 ### ns-l02 — Malware lab
 - **ns-l02-x1** is assessed but matches no outcome stated anywhere in this unit: Name two types of malware and state what each one does.
 - **ns-l02-x2** is assessed but matches no outcome stated anywhere in this unit: Explain why a worm can spread through a network faster than a virus.
 - **ns-l02-x3** is assessed but matches no outcome stated anywhere in this unit: Describe three measures a school could take to reduce malware infections.
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 
 ### ns-l03 — Database break-in
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 
 ### ns-l04 — Phishing inbox
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 
 ### ns-l05 — Social engineering HQ
 - **ns-l05-x2** is assessed but matches no outcome stated anywhere in this unit: Describe two measures that reduce the risk of social engineering.
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 
 ### ns-l06 — Cracking lab
 - **ns-l06-x3** is assessed but matches no outcome stated anywhere in this unit: Explain why a long passphrase is harder to crack than a short complex password.
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 
 ### ns-l07 — Traffic flood
 - **ns-l07-x3** is assessed but matches no outcome stated anywhere in this unit: Describe two measures that reduce the impact of a DDoS attack on a website.
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 
 ### ns-l08 — Packet sniffers
 - **ns-l08-x1** is assessed but matches no outcome stated anywhere in this unit: Describe how data can be intercepted as it travels across a network.
 - **ns-l08-x2** is assessed but matches no outcome stated anywhere in this unit: Explain why encryption makes intercepted data useless to an attacker.
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 
 ### ns-l09 — Defence depot
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: every activity is recognition: the answer is always on the screen
 - the lesson's shape: no optional challenge activity
 
 ### ns-l10 — Defence depot 2
 - **ns-l10-x3** is assessed but matches no outcome stated anywhere in this unit: A company has lost data to ransomware. Recommend three measures it should introduce, and justify each one.
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 
 ### ns-l11-test — End-of-topic test
@@ -373,7 +382,6 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 - **ns-l11-test-x7** is assessed but matches no outcome stated anywhere in this unit: Prevention methods and which threat each one stops
 
 ### ss-l01 — Control room
-- the lesson's shape: every activity is guided: nothing is practised independently
 - the lesson's shape: no optional challenge activity
 
 ### ss-l02 — Multitasking floor
@@ -396,7 +404,6 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 
 ### el-l03 — Law court
 - **el-l03-x3** is assessed but matches no outcome stated anywhere in this unit: A company finds that an employee has copied its customer database and taken it to a competitor. Explain which laws may have been broken.
-- the lesson's shape: every activity is guided: nothing is practised independently
 - the lesson's shape: no optional challenge activity
 
 ### el-l04 — Culture street
@@ -404,31 +411,25 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 
 ### el-l05 — Planet works
 - **el-l05-x2** is assessed but matches no outcome stated anywhere in this unit: Explain why electronic waste is a problem when sent to landfill.
-- the lesson's shape: every activity is guided: nothing is practised independently
 - the lesson's shape: no optional challenge activity
 
 ### el-l06 — Stakeholder room
 - the lesson's shape: no optional challenge activity
 
 ### el-l07 — Licence lab
-- the lesson's shape: every activity is guided: nothing is practised independently
 - the lesson's shape: no optional challenge activity
 
 ### al-l01 — Abstraction studio
-- the lesson's shape: every activity is guided: nothing is practised independently
 - the lesson's shape: no optional challenge activity
 
 ### al-l02 — Breakdown bay
-- the lesson's shape: every activity is guided: nothing is practised independently
 - the lesson's shape: no optional challenge activity
 
 ### al-l03 — Algorithm workshop
-- the lesson's shape: every activity is guided: nothing is practised independently
 - the lesson's shape: no optional challenge activity
 
 ### al-l04 — Flowchart factory
 - **al-l04-x2** is assessed but matches no outcome stated anywhere in this unit: Explain why a decision symbol must have two arrows leaving it.
-- the lesson's shape: every activity is guided: nothing is practised independently
 - the lesson's shape: no optional challenge activity
 
 ### al-l05 — Pseudocode press
@@ -456,32 +457,32 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 
 ### pf-l01 — Variable store
 - **pf-l01-x3** is assessed but matches no outcome stated anywhere in this unit: A program asks for a password and keeps asking until the correct one is entered. Write an algorithm to do this, using the OCR Exam Reference Language or a language you know.
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 
 ### pf-l02 — Type foundry
 - **pf-l02-x1** is assessed but matches no outcome stated anywhere in this unit: Identify the most suitable data type for each of these values: 17, 3.5, True, "Year 10".
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: every activity is recognition: the answer is always on the screen
 - the lesson's shape: no optional challenge activity
 
 ### pf-l03 — Filing room
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 
 ### pf-l04 — Record vault
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: every activity is recognition: the answer is always on the screen
 - the lesson's shape: no optional challenge activity
 
 ### pf-l05 — Array yard
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 
 ### pf-l06 — Chance machine
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 
 ### pf-l07 — Revision HQ 2.2
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 
 ### pf-l08-test — End-of-topic test
@@ -501,7 +502,7 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 ### rp-l01 — Security desk
 - **rp-l01-x2** is assessed but matches no outcome stated anywhere in this unit: A form asks for a UK mobile number. Describe two validation checks it should make, and say what each one catches.
 - **rp-l01-x3** is assessed but matches no outcome stated anywhere in this unit: Explain the difference between a range check and a type check, using an example of each.
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 
 ### rp-l02 — Cyber defence HQ
@@ -509,7 +510,7 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
   - no station's text matches it
 - **rp-l02-o2** know a range of problems that can occur when a program is running
   - nothing in this unit assesses it
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 
 ### rp-l03 — Code clinic
@@ -519,7 +520,7 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 - the lesson's shape: no optional challenge activity
 
 ### rp-l04 — Bug hunt lab
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 - the lesson's shape: no key vocabulary is listed
 
@@ -527,7 +528,7 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 - the lesson's shape: no optional challenge activity
 
 ### rp-l06 — Revision HQ 2.3
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: every activity is recognition: the answer is always on the screen
 - the lesson's shape: no optional challenge activity
 
 ### rp-l07-test — End-of-topic test
@@ -548,30 +549,26 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 - **pl-l01-o3** Justify language choices using project requirements.
   - cannot be traced: this lesson's station text is only in the rendered image, so there is nothing to match
   - nothing in this unit assesses it
-- the lesson's shape: every activity is guided: nothing is practised independently
 - the lesson's shape: no optional challenge activity
 
 ### pl-l02 — Language choice workshop
 - **pl-l02-o3** Justify language choices using project requirements.
   - cannot be traced: this lesson's station text is only in the rendered image, so there is nothing to match
   - nothing in this unit assesses it
-- the lesson's shape: every activity is guided: nothing is practised independently
 - the lesson's shape: no optional challenge activity
 
 ### pl-l03 — Translation studio
-- the lesson's shape: every activity is guided: nothing is practised independently
 - the lesson's shape: no optional challenge activity
 
 ### pl-l04 — IDE control room
 - **pl-l04-o2** Explain how each facility supports programming.
   - cannot be traced: this lesson's station text is only in the rendered image, so there is nothing to match
-- the lesson's shape: every activity is guided: nothing is practised independently
+- the lesson's shape: every activity is recognition: the answer is always on the screen
 - the lesson's shape: no optional challenge activity
 
 ### pl-l05 — Language review HQ
 - **pl-l05-o3** Write explanations linked to the needs of a scenario.
   - nothing in this unit assesses it
-- the lesson's shape: every activity is guided: nothing is practised independently
 - the lesson's shape: no optional challenge activity
 
 ### pr-l01 — Printing and variables
