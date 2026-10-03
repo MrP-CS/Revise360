@@ -116,6 +116,30 @@ supposed to catch:
 - **An authored model would have been silently dropped** by the next
   regeneration of its deck spec. `mkdeck.py` carries it over.
 
+## A later addition: the starters, key questions and vocabulary
+
+Eight lessons stated no key question, six no key vocabulary and three no
+starter, so their lesson plans printed "not in the lesson record" where a
+non-specialist most needs one. `nw-l14`, `ms-l11` and `ms-l16` have spec
+modules, so theirs are authored there and `nw-l14`'s pupil worksheet gained a
+Key terminology and a Key question section with it.
+
+The other six - `nw-l01`, `nw-l02`, `nw-l04`, `nw-l06`, `nw-l07` and `rp-l04` -
+have worksheets that predate `tools/wsspecs` and could not be rebuilt, so
+theirs live in `alignment/<lesson>.json` under `lesson_fields` and go on the
+board. An authored field is used only where the lesson has none of its own:
+`nw-l02` and `nw-l04` already print a starter on their sheets and keep it, which
+was checked by authoring a decoy starter for `nw-l02` and confirming the
+worksheet's own still won.
+
+Each starter retrieves the lesson before it, as section 16 asks. `nw-l01` is the
+first lesson of its unit, so its starter is a baseline check that says on the
+plan that it is one, rather than pretending the material has been taught.
+
+Also fixed: every one of the 115 lesson plans read "so the 360 image is is
+already cached". The placeholder carried the verb and the template carried it
+again.
+
 ## Remaining gaps
 
 - **197 of 270 outcomes are still matched by words and unchecked.** Authoring one
@@ -129,6 +153,9 @@ supposed to catch:
   repository produces it; building them with `deckgen.js` would replace them
   rather than update them. Moving them onto the current design is a decision.
 - **Nothing here measures whether a lesson teaches well.**
+- **Six lessons' starters are not on the pupils' worksheet**, because those
+  sheets predate the current build and cannot be regenerated. They are on the
+  plan and the plan says where to put them.
 
 ## Files regenerated
 

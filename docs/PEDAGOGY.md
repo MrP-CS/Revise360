@@ -160,9 +160,17 @@ paragraph above. The independent work in those lessons is still mostly on paper
 do not read a full online score as evidence that a pupil can do it unaided. Each
 unit's pedagogy PDF says this where it is true of that unit.
 
-85 lessons have no optional challenge activity. 15 outcomes are not assessed
-anywhere in their own unit, 8 match no station's text, and 4 cannot be traced at
-all. Those are listed lesson by lesson rather than summarised away.
+85 lessons have no optional challenge activity. One outcome is not assessed
+anywhere in its own unit, on purpose, and `docs/COVERAGE.md` names it and says
+why. Every outcome now traces to a station, and every exam question to an
+outcome.
+
+Every lesson states a key question, key vocabulary and a starter. Six of them
+state one only because it was written in October 2026: `nw-l01`, `nw-l02`,
+`nw-l04`, `nw-l06`, `nw-l07` and `rp-l04` have worksheets that predate the
+current build and never carried any, so theirs live in
+`alignment/<lesson>.json` and go on the board rather than on the pupils' sheet.
+The lesson plan says so where that is true.
 
 **This figure used to read 57, and most of the drop was the count being wrong,
 not the course getting better.** Three things were wrong with it. Bonus arcade

@@ -590,7 +590,9 @@ L14 = dict(id="nw-l14", topic="1.3", lesson=14, title="Revision HQ 2", img="NW_L
         (4, "Layers in one line", "Each layer does one job and serves the layer above: that's the core idea to explain in the exam."),
         (5, "Marks matter", "Look at the number of marks: a 2-mark 'explain' question usually needs a point and a reason.")],
   ws=dict(title="Revision HQ 2: lessons 9 to 13", objectives=["know which lessons I am secure on and which to revise", "be ready for the end-of-unit assessment"],
-    starter="Without notes, list as many key terms from lessons 9 to 13 as you can in two minutes.", starter_lines=3, keyterms=[], keyq=None,
+    starter="Without notes, list as many key terms from lessons 9 to 13 as you can in two minutes.", starter_lines=3,
+    keyterms=["Ethernet", "Encryption", "IP address", "Protocol", "Layer"],
+    keyq="Which parts of this topic could I explain to somebody else, and which can I only recognise?",
     exam=[("Explain one advantage of using IPv6 instead of IPv4.", 2, 2), ("Describe how public and private keys are used.", 3, 3)],
     rag=["Modes of connection", "Wi-Fi encryption", "IP and MAC addressing", "Standards and protocols", "Layers"],
     confidence=["Lessons 9 and 10", "Lessons 11 and 12", "Lesson 13"]))

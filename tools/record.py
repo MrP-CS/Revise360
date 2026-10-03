@@ -469,6 +469,22 @@ def build(lesson, unit):
               "exam": [(e["q"], e["marks"]) for e in salvage.get("exam") or []],
               "confidence": tidy(salvage.get("confidence"), 8)}
 
+    # A lesson whose worksheet predates tools/wsspecs has no source for its
+    # starter, key question or key vocabulary except the built .docx, and some
+    # of those sheets never carried one. The lesson plan said so on the printout
+    # rather than inventing one, which is right, and left a teacher to write
+    # their own retrieval on the day. Where somebody has since written one, it is
+    # in that lesson's alignment file and it is read here.
+    #
+    # Only these four fields, and only when the lesson has nothing of its own: a
+    # lesson with a spec module states them there and the spec stays the source.
+    authored_ws = (alignment(lid).get("lesson_fields") or {})
+    from_align = []
+    for field in ("starter", "starter_lines", "starter_revisits", "keyq", "keyterms"):
+        if authored_ws.get(field) is not None and not ws.get(field):
+            ws[field] = authored_ws[field]
+            from_align.append(field)
+
     rec = {
         "id": lid,
         "unit": unit["id"],
@@ -503,7 +519,12 @@ def build(lesson, unit):
     if ws.get("starter"):
         rec["retrieve"] = {"prompt": ws["starter"],
                            "lines": ws.get("starter_lines"),
-                           "revisits": "prior knowledge for this lesson"}
+                           "revisits": ws.get("starter_revisits")
+                                       or "prior knowledge for this lesson"}
+    if from_align:
+        # Which of these the lesson itself never had, so a reader can tell a
+        # starter the sheet has always carried from one written afterwards.
+        rec["authored_from_alignment"] = from_align
 
     # --- stations, their explanations and their activities
     spec_st = (spec or {}).get("stations") or []

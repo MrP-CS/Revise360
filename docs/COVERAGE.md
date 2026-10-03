@@ -25,28 +25,28 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 | 1.2 | ms-l08 Binary workshop | 4 | 4 | 4 | 4 | auto |  | 1 |
 | 1.2 | ms-l09-test Assessment 1 | 0 | 0 | 0 | 0 |  |  |  |
 | 1.2 | ms-l10 Shift and hex lab | 4 | 4 | 4 | 4 | authored 4/4 |  | 1 |
-| 1.2 | ms-l11 Revision HQ 1.2 part 1 | 2 | 0 | 0 | 0 | auto |  | 2 |
+| 1.2 | ms-l11 Revision HQ 1.2 part 1 | 2 | 0 | 0 | 0 | auto |  | 1 |
 | 1.2 | ms-l12 Character foundry | 4 | 4 | 4 | 4 | auto |  | 1 |
 | 1.2 | ms-l13 Pixel studio | 3 | 3 | 3 | 3 | auto |  | 1 |
 | 1.2 | ms-l14 Sound studio | 2 | 2 | 2 | 2 | auto |  | 1 |
 | 1.2 | ms-l15 Compression works | 3 | 3 | 3 | 3 | auto |  | 1 |
-| 1.2 | ms-l16 Revision HQ 1.2 part 2 | 2 | 1 | 1 | 1 | auto |  | 2 |
+| 1.2 | ms-l16 Revision HQ 1.2 part 2 | 2 | 1 | 1 | 1 | auto |  | 1 |
 | 1.2 | ms-l17-test Assessment 2 | 0 | 0 | 0 | 0 |  |  |  |
 | 1.2 | ms-bonus Binary blitz | 0 | 0 | 0 | 0 |  |  |  |
-| 1.3 | nw-l01 Types of network: zoom out | 4 | 4 | 4 | 4 | auto |  | 5 |
-| 1.3 | nw-l02 Network control room | 2 | 2 | 2 | 2 | auto |  | 4 |
+| 1.3 | nw-l01 Types of network: zoom out | 4 | 4 | 4 | 4 | auto |  | 2 |
+| 1.3 | nw-l02 Network control room | 2 | 2 | 2 | 2 | auto |  | 2 |
 | 1.3 | nw-l03 Network showdown | 3 | 3 | 3 | 3 | auto |  | 2 |
-| 1.3 | nw-l04 Mission: wire up the school | 2 | 2 | 2 | 2 | authored 2/2 |  | 4 |
+| 1.3 | nw-l04 Mission: wire up the school | 2 | 2 | 2 | 2 | authored 2/2 |  | 2 |
 | 1.3 | nw-l05 Inside the internet | 4 | 4 | 4 | 4 | authored 4/4 |  | 1 |
-| 1.3 | nw-l06 Star and mesh networks | 4 | 4 | 4 | 4 | reviewed 4/4 |  | 4 |
-| 1.3 | nw-l07 Revision HQ | 3 | 3 | 3 | 2 | auto |  | 5 |
+| 1.3 | nw-l06 Star and mesh networks | 4 | 4 | 4 | 4 | reviewed 4/4 |  | 1 |
+| 1.3 | nw-l07 Revision HQ | 3 | 3 | 3 | 2 | auto |  | 2 |
 | 1.3 | nw-l08-test Assessment 1 | 0 | 0 | 0 | 0 |  |  |  |
 | 1.3 | nw-l09 Connection café | 4 | 4 | 4 | 4 | auto |  | 1 |
 | 1.3 | nw-l10 Cipher room | 4 | 4 | 4 | 4 | authored 4/4 |  | 2 |
 | 1.3 | nw-l11 Address sorting office | 3 | 3 | 3 | 3 | auto |  | 2 |
 | 1.3 | nw-l12 Protocol city | 2 | 2 | 2 | 2 | auto |  | 2 |
 | 1.3 | nw-l13 Parcel depot | 2 | 2 | 2 | 2 | auto |  | 1 |
-| 1.3 | nw-l14 Revision HQ 2 | 2 | 1 | 1 | 0 | auto |  | 3 |
+| 1.3 | nw-l14 Revision HQ 2 | 2 | 1 | 1 | 0 | auto |  | 2 |
 | 1.3 | nw-l14-test Assessment 2 reflection | 0 | 0 | 0 | 0 |  |  |  |
 | 1.4 | ns-l01 Threat map | 1 | 1 | 1 | 1 | auto |  | 2 |
 | 1.4 | ns-l02 Malware lab | 2 | 2 | 2 | 2 | auto |  | 2 |
@@ -98,7 +98,7 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 | 2.3 | rp-l01 Security desk | 3 | 3 | 3 | 3 | auto |  | 2 |
 | 2.3 | rp-l02 Cyber defence HQ | 3 | 3 | 3 | 3 | authored 3/3 |  | 2 |
 | 2.3 | rp-l03 Code clinic | 3 | 3 | 3 | 2 | authored 3/3 | 1 | 1 |
-| 2.3 | rp-l04 Bug hunt lab | 5 | 5 | 5 | 5 | auto |  | 3 |
+| 2.3 | rp-l04 Bug hunt lab | 5 | 5 | 5 | 5 | auto |  | 2 |
 | 2.3 | rp-l05 Test lab | 2 | 2 | 2 | 2 | auto |  | 1 |
 | 2.3 | rp-l06 Revision HQ 2.3 | 2 | 2 | 2 | 1 | auto |  | 2 |
 | 2.3 | rp-l07-test End-of-topic test | 0 | 0 | 0 | 0 |  |  |  |
@@ -224,7 +224,6 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 
 ### ms-l11 — Revision HQ 1.2 part 1
 - the lesson's shape: no optional challenge activity
-- the lesson's shape: no key question
 
 ### ms-l12 — Character foundry
 - the lesson's shape: no optional challenge activity
@@ -240,20 +239,14 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 
 ### ms-l16 — Revision HQ 1.2 part 2
 - the lesson's shape: no optional challenge activity
-- the lesson's shape: no key question
 
 ### nw-l01 — Types of network: zoom out
 - the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
-- the lesson's shape: no key vocabulary is listed
-- the lesson's shape: no starter, so nothing retrieves prior knowledge
-- the lesson's shape: no key question
 
 ### nw-l02 — Network control room
 - the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
-- the lesson's shape: no key vocabulary is listed
-- the lesson's shape: no key question
 
 ### nw-l03 — Network showdown
 - the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
@@ -264,8 +257,6 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
   - *checked by hand:* Taught at every station in the lesson - each one is a piece of hardware and what it does - and assessed three times, including a six-mark question that asks for the hardware and what each part is for. The trace could not see it because neither the word purpose nor the word jobs appears on a wall; the walls just say what each thing does.
 - the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
-- the lesson's shape: no key vocabulary is listed
-- the lesson's shape: no key question
 
 ### nw-l05 — Inside the internet
 - **nw-l05-o1** understand what the internet actually is
@@ -282,16 +273,10 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 - **nw-l06-o4** know the advantages and disadvantages of star and mesh networks
   - *checked by hand:* The lesson's real outcome, and the one the four-mark question rests on. s10 now runs in two steps: sort statements to the topology they describe, then choose a topology for six places it has not seen. The second is the rehearsal for x4.
 - the lesson's shape: no optional challenge activity
-- the lesson's shape: no key vocabulary is listed
-- the lesson's shape: no starter, so nothing retrieves prior knowledge
-- the lesson's shape: no key question
 
 ### nw-l07 — Revision HQ
 - the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
-- the lesson's shape: no key vocabulary is listed
-- the lesson's shape: no starter, so nothing retrieves prior knowledge
-- the lesson's shape: no key question
 
 ### nw-l09 — Connection café
 - the lesson's shape: no optional challenge activity
@@ -318,7 +303,6 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 ### nw-l14 — Revision HQ 2
 - the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
-- the lesson's shape: no key question
 
 ### ns-l01 — Threat map
 - the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
@@ -477,7 +461,6 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 ### rp-l04 — Bug hunt lab
 - the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
-- the lesson's shape: no key vocabulary is listed
 
 ### rp-l05 — Test lab
 - the lesson's shape: no optional challenge activity

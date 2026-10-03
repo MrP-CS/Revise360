@@ -265,7 +265,7 @@ experience to launch.</p>""")
   lesson rather than in it.</li>
 <li>Print the worksheet, one per pupil.</li>
 <li>Open the slides and the experience once yourself, on the machine you will be
-  teaching from, so the %s is already cached.</li>
+  teaching from, so the %s already cached.</li>
 <li>Check headsets or devices are charged and on the school network.</li>
 </ol>
 <h3>How pupils get in</h3>
@@ -435,12 +435,19 @@ def check_section(rec):
                    'finished, or as something to come back to.</p></div>')
         return "".join(out)
     if rec.get("retrieve"):
+        # Where a pupil writes it. A starter authored after the worksheet was
+        # printed is not on the sheet, and saying "or the worksheet" would send
+        # a teacher looking for a box that is not there.
+        if rec["retrieve"].get("lines"):
+            where = "Answer space: %s lines on the worksheet." % rec["retrieve"]["lines"]
+        elif "starter" in (rec.get("authored_from_alignment") or []):
+            where = ("On the board. This starter is not printed on the pupils' worksheet: "
+                     "this lesson's sheet predates the current build and carries none.")
+        else:
+            where = "On the board or the worksheet."
         out.append('<div class="band teal"><p><b>Starter</b> &mdash; %s</p>'
                    '<p class="shows">%s</p></div>'
-                   % (E(rec["retrieve"]["prompt"]),
-                      E("Answer space: %s lines on the worksheet."
-                        % rec["retrieve"]["lines"] if rec["retrieve"].get("lines")
-                        else "On the board or the worksheet.")))
+                   % (E(rec["retrieve"]["prompt"]), E(where)))
         out.append("<p>The answer is in the teacher answers for this unit, not on "
                    "this plan: a plan left on a desk should not give it away.</p>")
     else:

@@ -39,6 +39,15 @@ python3 mkguides.py               # the two printable Python guides
 python3 recoverwalls.py --write   # nw-l01 and nw-l06: wall text from l1.py/l6.py
 ```
 
+An `alignment/<lesson>.json` may also carry a `lesson_fields` block holding a
+starter, a key question or key vocabulary. That is only for the six lessons
+whose worksheet predates `tools/wsspecs` and never carried one, so there is
+nothing to recover and nothing to rebuild the sheet from. An authored field is
+used **only where the lesson has none of its own** — a starter printed on the
+worksheet always wins — and the record names which fields came from there, so a
+starter the sheet has always carried can be told from one written afterwards.
+The lesson plan says on the printout when a starter is not on the pupils' sheet.
+
 `recoverwalls.py` is only for the two lessons built by the oldest scripts, which
 pass their wall text straight to the painter. It imports the script, replaces the
 painter with one that writes down what it was asked to draw, and stores the
