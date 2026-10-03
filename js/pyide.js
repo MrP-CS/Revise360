@@ -32,6 +32,79 @@
     "blocked connection is the usual cause. Press the button to try again.";
   const GONE = "Python could not start in this browser.";
 
+  /* ---------------- what to tell a teacher when it fails ----------------
+   *
+   * "Python didn't work" is not something anybody can act on. So a failure
+   * records how far it got and what kind of failure it was, and shows a short
+   * code that can be read out, written on a worksheet or sent in an email.
+   *
+   * Nothing in it is about the pupil. No name, no code they wrote, no full user
+   * agent, no path, no traceback - a pupil reads the code out loud in a
+   * classroom, so there is nothing in it that could not be said out loud. What
+   * it carries is the build, the kind of device, the furthest stage reached and
+   * the kind of failure, which is what makes the report diagnosable. */
+  const BUILD = (function () {
+    try {
+      const s = document.currentScript && document.currentScript.src;
+      const m = s && s.match(/[?&]v=([\w.-]+)/);
+      return m ? m[1] : "dev";
+    } catch (e) { return "dev"; }
+  })();
+  /* A WebXR emulator spoofs the user agent, so an emulated run looks exactly
+   * like a Quest in a report - which is the one thing a report must never do.
+   * A native requestSession is browser code; an emulator's is JavaScript, and
+   * says so when you ask it to print itself. */
+  function emulated() {
+    try {
+      if (!navigator.xr || !navigator.xr.requestSession) return false;
+      return !/\[native code\]/.test(Function.prototype.toString.call(navigator.xr.requestSession));
+    } catch (e) { return false; }
+  }
+  function device() {
+    const ua = String(navigator.userAgent || "");
+    if (emulated()) return "emulator";
+    if (/OculusBrowser|Quest/i.test(ua)) return "quest";
+    if (/Pico|VR/i.test(ua) && /Android/i.test(ua)) return "vr";
+    if (/iPad|iPhone|iPod/i.test(ua)) return "ios";
+    if (/Android/i.test(ua)) return "android";
+    return "desktop";
+  }
+  function category(msg) {
+    const m = String(msg || "").toLowerCase();
+    if (/timeout|still running|did not finish/.test(m)) return "timeout";
+    if (/failed to fetch|network|load failed|err_/.test(m)) return "network";
+    if (/mime|disallowed|strict mime|text\/html/.test(m)) return "mime";
+    if (/module|import|resolve|specifier/.test(m)) return "module";
+    if (/memory|allocat|oom/.test(m)) return "memory";
+    if (/worker/.test(m)) return "worker";
+    if (/wasm|webassembly|compile/.test(m)) return "wasm";
+    if (/security|csp|content security/.test(m)) return "policy";
+    return "unknown";
+  }
+  const DIAG = { stage: "cold", worker: "-", module: "-", wasm: "-", cat: "none", seconds: 0 };
+  function diagCode() {
+    const bits = [device(), DIAG.stage, DIAG.cat, BUILD].join("|");
+    let h = 0; for (let i = 0; i < bits.length; i++) h = (h * 31 + bits.charCodeAt(i)) | 0;
+    return ("PY-" + device().slice(0, 2) + "-" + DIAG.stage.slice(0, 3) + "-" + DIAG.cat.slice(0, 4)
+            + "-" + (h >>> 0).toString(36).slice(0, 4)).toUpperCase();
+  }
+  function diagnostic() {
+    return { code: diagCode(), build: BUILD, device: device(), emulated: emulated(), stage: DIAG.stage,
+             worker: DIAG.worker, module: DIAG.module, wasm: DIAG.wasm,
+             category: DIAG.cat, seconds: DIAG.seconds, at: new Date().toISOString() };
+  }
+  /* Kept on the device, a few at a time, so a teacher looking at a headset the
+   * next morning can still see what happened. Never sent anywhere: there is no
+   * backend for it, and this file does not invent one. */
+  function keepDiag(d) {
+    try {
+      const k = "nvr:v1:pydiag";
+      const log = JSON.parse(localStorage.getItem(k) || "[]");
+      log.unshift(d);
+      localStorage.setItem(k, JSON.stringify(log.slice(0, 8)));
+    } catch (e) { /* storage blocked; the code on the panel is still readable */ }
+  }
+
   const RUN = {
     worker: null, seq: 0, waiting: new Map(),
     state: "cold", note: "", error: null, started: 0, listeners: [],
@@ -45,6 +118,7 @@
     }
   };
   const status = () => ({ state: RUN.state, note: RUN.note, error: RUN.error,
+    diag: RUN.diag || null,
     seconds: RUN.started ? Math.round((Date.now() - RUN.started) / 1000) : 0 });
 
   let readyOnce = null;
@@ -59,15 +133,33 @@
     if (RUN.worker) { try { RUN.worker.terminate(); } catch (e) { /* already gone */ } RUN.worker = null; }
     readyOnce = null;
     RUN.error = state === "error" ? msg : null;
+    if (state === "error") {
+      /* A worker that falls over on a module import reports no message at all -
+       * browsers withhold it - so the stage it reached is what names the
+       * failure. If no progress was ever heard from it, it never got as far as
+       * importing Pyodide, and saying so is worth more than "unknown". */
+      DIAG.cat = category(msg);
+      if (DIAG.cat === "unknown" && DIAG.worker === "ok" && DIAG.module === "-") DIAG.cat = "module";
+      DIAG.seconds = RUN.started ? Math.round((Date.now() - RUN.started) / 1000) : 0;
+      RUN.diag = diagnostic();
+      keepDiag(RUN.diag);
+    }
     RUN.say(state || "error", "");
   }
 
   function spawn() {
-    const w = new Worker("js/pyworker.js", { type: "module" });
+    let w;
+    try { w = new Worker("js/pyworker.js", { type: "module" }); DIAG.worker = "ok"; DIAG.stage = "worker"; }
+    catch (e) { DIAG.worker = "failed"; DIAG.stage = "worker"; throw e; }
     w.onmessage = (e) => {
       const { id, kind, note } = e.data || {};
       // what it is doing, so a long wait can say so rather than sit still
-      if (kind === "progress") { RUN.say(RUN.state, note || ""); return; }
+      if (kind === "progress") {
+        // the worker says which stage it reached, which is what a report needs
+        if (/download/i.test(note || "")) { DIAG.module = "ok"; DIAG.stage = "download"; }
+        if (/starting it up/i.test(note || "")) { DIAG.wasm = "ok"; DIAG.stage = "start"; }
+        RUN.say(RUN.state, note || ""); return;
+      }
       const hit = RUN.waiting.get(id);
       if (!hit) return;
       if (kind === "ready" || kind === "result") { RUN.waiting.delete(id); hit.resolve(e.data); }
@@ -106,6 +198,7 @@
     readyOnce = post({ kind: "init" }, LOAD_MS).then(r => {
       if (r.error === "__timeout__") { lost(SLOW, "error"); return { ok: false, error: SLOW }; }
       if (r.error) { lost(r.error, "error"); return { ok: false, error: r.error }; }
+      DIAG.stage = "ready"; DIAG.cat = "ok"; RUN.diag = null;
       RUN.say("ready", "");
       return { ok: true };
     });
@@ -287,6 +380,9 @@
   window.R360Py = {
     ready, run, editor, paint, tokens, warm, reset,
     get colours() { return TOK.colours; },
-    on: RUN.on, get state() { return RUN.state; }, get status() { return status(); }
+    on: RUN.on, get state() { return RUN.state; }, get status() { return status(); },
+    // what to tell a teacher, and the few most recent ones kept on this device
+    diagnostic, get build() { return BUILD; }, get device() { return device(); },
+    history() { try { return JSON.parse(localStorage.getItem("nvr:v1:pydiag") || "[]"); } catch (e) { return []; } }
   };
 })();

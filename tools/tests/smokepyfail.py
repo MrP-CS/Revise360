@@ -84,6 +84,24 @@ def main():
         r2 = pg.evaluate("() => R360Py.run('print(1)').then(r => r.noRuntime === true)")
         ok(r2, "running a program says the runtime is missing, not that the program is wrong")
 
+        # "Python didn't work" is not something a teacher can act on, so there
+        # is a code - and nothing in it may be about the pupil.
+        d = pg.evaluate("R360Py.diagnostic()")
+        ok(bool(d.get("code")) and d["code"].startswith("PY-"),
+           "there is a code to report: " + str(d.get("code")))
+        ok(d.get("category") not in ("none", "ok", None),
+           "and it names the kind of failure: " + str(d.get("category")))
+        shown = pg.evaluate("(document.querySelector('#pyout')||{}).textContent || ''")
+        ok(d["code"] in shown, "the code is on the screen where it can be read out")
+        blob = (str(d) + pg.evaluate("JSON.stringify(R360Py.history())")).lower()
+        for private in ("py fail", "pyfail", "print(", "/home/", "mozilla/"):
+            ok(private not in blob,
+               f"nothing in the report is about the pupil or this machine ({private})")
+        ok(len(pg.evaluate("R360Py.history()")) >= 1,
+           "and it is kept on the device for a teacher to find later")
+        labels = pg.evaluate("[...document.querySelectorAll('#mrow button')].map(b => b.textContent)")
+        ok(len(labels) >= 3, f"the pupil is given something to do: {labels}")
+
         # ------------------------------------------------ and the way back
         print("with the network restored and the pupil pressing the button")
         blocked["on"] = False

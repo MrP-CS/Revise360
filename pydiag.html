@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Python check | Revise 360</title>
+<link rel="stylesheet" href="css/style.css?v=20261003b-parity">
+<style>
+/* Big enough to read through a headset lens at arm's length, on the browser's
+   own flat panel. Deliberately not an immersive page: the point is to find out
+   why Python did not start, and a page that needs Python's own machinery to
+   show you its own failure is no use. */
+.diag{max-width:900px;margin:0 auto;padding:24px 20px 80px}
+.diag h1{font-size:34px;margin:0 0 6px}
+.diag p.lead{font-size:20px;color:var(--soft);margin:0 0 20px;line-height:1.5}
+.diag .btn{font-size:22px;padding:14px 22px}
+.row{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}
+ol.steps{list-style:none;margin:20px 0;padding:0;font-size:20px}
+ol.steps li{display:flex;gap:14px;align-items:flex-start;padding:12px 14px;margin:0 0 8px;
+  border:2px solid var(--line);border-radius:12px;background:#13203a;line-height:1.45}
+ol.steps li.ok{border-color:var(--ok)}
+ol.steps li.no{border-color:var(--bad)}
+ol.steps li.go{border-color:var(--edge)}
+ol.steps b{flex:0 0 auto;font-family:Consolas,monospace;font-size:24px;width:28px;text-align:center}
+ol.steps .ms{margin-left:auto;color:var(--soft);font-family:Consolas,monospace;font-size:17px;white-space:nowrap}
+ol.steps .say{display:block;color:var(--soft);font-size:17px;margin-top:4px;word-break:break-word}
+.code{font-family:Consolas,monospace;font-size:30px;letter-spacing:.06em;color:var(--edge);
+  background:#0a1120;border:2px solid var(--edge);border-radius:12px;padding:14px 18px;display:inline-block}
+.kv{font-size:18px;color:var(--soft);margin:10px 0 0;line-height:1.6}
+textarea.rep{width:100%;height:220px;font-family:Consolas,monospace;font-size:15px;
+  background:#0a1120;color:var(--fg);border:2px solid var(--line);border-radius:12px;padding:12px;margin-top:14px}
+</style>
+</head>
+<body class="page">
+<div class="diag">
+  <h1>Python check</h1>
+  <p class="lead">This finds out how far Python gets on <em>this</em> device, one step at a time, and
+    gives you something to report. Nothing here is marked and no pupil work is involved.
+    Run it on the headset that is having the problem.</p>
+
+  <div class="row">
+    <button class="btn" id="go">Run the checks</button>
+    <button class="btn ghost" id="vr" hidden>Enter VR and run them again</button>
+    <button class="btn ghost" id="copy" hidden>Copy the report</button>
+  </div>
+
+  <ol class="steps" id="steps"></ol>
+  <div id="result"></div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/pytok.js?v=20261003b-parity"></script>
+<script src="js/pyide.js?v=20261003b-parity"></script>
+<script>
+(function () {
+  "use strict";
+  const $ = s => document.querySelector(s);
+  const steps = $("#steps"), result = $("#result");
+  let log = [], mode = "flat";
+
+  function row(name) {
+    const li = document.createElement("li");
+    li.className = "go";
+    li.innerHTML = '<b>…</b><div></div><span class="ms"></span>';
+    li.querySelector("div").textContent = name;
+    steps.appendChild(li);
+    li.scrollIntoView({ block: "nearest" });
+    return li;
+  }
+  function done(li, ok, ms, say) {
+    li.className = ok ? "ok" : "no";
+    li.querySelector("b").textContent = ok ? "✓" : "✗";
+    li.querySelector(".ms").textContent = ms + " ms";
+    if (say) {
+      const s = document.createElement("span");
+      s.className = "say"; s.textContent = say;
+      li.querySelector("div").appendChild(s);
+    }
+  }
+  async function step(name, fn) {
+    const li = row(name), t0 = performance.now();
+    try {
+      const say = await fn();
+      const ms = Math.round(performance.now() - t0);
+      done(li, true, ms, say); log.push({ mode, step: name, ok: true, ms, say: say || "" });
+      return say;
+    } catch (e) {
+      const ms = Math.round(performance.now() - t0);
+      /* The real message, kept whole. This page is for the person fixing it,
+         not for a pupil, and the brief asks for the actual error rather than a
+         guess at it. The short code below is the part a pupil reads out. */
+      const say = String((e && e.message) || e);
+      done(li, false, ms, say); log.push({ mode, step: name, ok: false, ms, say });
+      throw e;
+    }
+  }
+
+  async function checks() {
+    steps.innerHTML = ""; result.innerHTML = ""; log = [];
+    try {
+      await step("The browser can run WebAssembly", async () => {
+        if (typeof WebAssembly !== "object") throw new Error("WebAssembly is not available");
+        return "yes";
+      });
+      await step("The browser supports module workers", async () => {
+        const url = URL.createObjectURL(new Blob(["export default 1;"], { type: "text/javascript" }));
+        const w = new Worker(url, { type: "module" });
+        w.terminate(); URL.revokeObjectURL(url);
+        return "yes";
+      });
+      await step("The headset can reach the Python worker file", async () => {
+        const r = await fetch("js/pyworker.js", { cache: "no-store" });
+        if (!r.ok) throw new Error("the server answered " + r.status);
+        return r.status + " · served as " + (r.headers.get("content-type") || "(no content type)");
+      });
+      await step("It can reach the Pyodide module", async () => {
+        const r = await fetch("vendor/pyodide/pyodide.mjs", { cache: "no-store" });
+        if (!r.ok) throw new Error("the server answered " + r.status);
+        const ct = r.headers.get("content-type") || "(no content type)";
+        if (!/javascript|ecmascript/i.test(ct))
+          throw new Error("served as " + ct + ", which a module import will refuse");
+        return r.status + " · " + ct;
+      });
+      await step("It can download Python itself (about 9.6 MB)", async () => {
+        const t0 = performance.now();
+        const r = await fetch("vendor/pyodide/pyodide.asm.wasm", { cache: "no-store" });
+        if (!r.ok) throw new Error("the server answered " + r.status);
+        const ct = r.headers.get("content-type") || "(no content type)";
+        const buf = await r.arrayBuffer();
+        const secs = (performance.now() - t0) / 1000;
+        return buf.byteLength.toLocaleString() + " bytes as " + ct +
+               " · " + Math.round(buf.byteLength / 1024 / secs) + " KB/s";
+      });
+      await step("It can compile Python's WebAssembly", async () => {
+        const r = await fetch("vendor/pyodide/pyodide.asm.wasm");
+        const m = await WebAssembly.compileStreaming(r);
+        return WebAssembly.Module.exports(m).length + " exports";
+      });
+      await step("The real worker starts and answers", async () => {
+        const said = [];
+        return await new Promise((res, rej) => {
+          const w = new Worker("js/pyworker.js", { type: "module" });
+          const to = setTimeout(() => { w.terminate(); rej(new Error("it did not answer within three minutes")); }, 180000);
+          w.onerror = e => { clearTimeout(to); rej(new Error("the worker stopped: " + ((e && e.message) || "no message given")
+            + (e && e.filename ? " in " + String(e.filename).split("/").pop() : "")
+            + (e && e.lineno ? " line " + e.lineno : ""))); };
+          w.onmessage = e => {
+            const d = e.data || {};
+            if (d.kind === "progress") { said.push(d.note); return; }
+            if (d.kind !== "ready") return;
+            clearTimeout(to); w.terminate(); res(said.join(" → ") || "ready");
+          };
+          w.postMessage({ id: 1, kind: "init" });
+        });
+      });
+      await step("R360Py.ready()", async () => {
+        const r = await R360Py.ready();
+        if (r && r.ok === false) throw new Error(r.error);
+        return "state " + R360Py.state;
+      });
+      await step("It runs a program", async () => {
+        const r = await R360Py.run("print(2 + 2)", { timeoutMs: 30000 });
+        if (r.error) throw new Error(r.error);
+        if (r.stdout.trim() !== "4") throw new Error("it printed " + JSON.stringify(r.stdout));
+        return "print(2 + 2) gave 4";
+      });
+      report(true);
+    } catch (e) { report(false); }
+  }
+
+  function report(allOk) {
+    const d = R360Py.diagnostic();
+    const total = log.reduce((n, s) => n + s.ms, 0);
+    result.innerHTML =
+      '<p style="font-size:22px;margin:18px 0 10px">' +
+      (allOk ? "Python works on this device."
+             : "Python did not get all the way through. The step marked ✗ above is where it stopped.") +
+      '</p><div class="code" id="codebox"></div>' +
+      '<p class="kv" id="kv"></p><textarea class="rep" id="rep" readonly></textarea>';
+    $("#codebox").textContent = d.code;
+    $("#kv").textContent = "build " + d.build + " · " + d.device + " · " +
+      Math.round(total / 1000) + "s in all · " + new Date().toLocaleString();
+    /* A WebXR emulator spoofs the user agent, so without this a run on a laptop
+       reads as a run on a Quest. A report that could be mistaken for a real
+       headset test is worse than no report at all. */
+    if (d.emulated) {
+      const w = document.createElement("p");
+      w.className = "kv"; w.style.color = "var(--bad)";
+      w.textContent = "This ran against a WebXR emulator, not a headset. It does not say anything "
+        + "about whether Python works on a Quest.";
+      $("#kv").after(w);
+    }
+    $("#rep").value = JSON.stringify({
+      code: d.code, build: d.build, device: d.device, mode: mode,
+      // the category of browser, not the whole user agent string
+      ua: String(navigator.userAgent || "").slice(0, 160),
+      xr: !!navigator.xr, totalMs: total, when: d.at, steps: log
+    }, null, 1);
+    $("#copy").hidden = false;
+    $("#copy").onclick = async () => {
+      try { await navigator.clipboard.writeText($("#rep").value); $("#copy").textContent = "Copied"; }
+      catch (e) { $("#rep").select(); $("#copy").textContent = "Select it and copy"; }
+    };
+  }
+
+  $("#go").onclick = () => { mode = "flat"; checks(); };
+
+  /* The same checks again from inside an immersive session, because that is
+     where it failed. A session has to start from the press itself - nothing is
+     awaited before requestSession - or the browser refuses it. */
+  if (navigator.xr) navigator.xr.isSessionSupported("immersive-vr").then(ok => {
+    if (!ok) return;
+    $("#vr").hidden = false;
+    $("#vr").onclick = () => {
+      navigator.xr.requestSession("immersive-vr").then(async s => {
+        mode = "immersive";
+        R360Py.reset();
+        await checks();
+        try { await s.end(); } catch (e) { /* already ended */ }
+      }).catch(e => {
+        const li = row("Entering VR");
+        done(li, false, 0, String(e && e.message || e));
+      });
+    };
+  }).catch(() => {});
+})();
+</script>
+</body></html>

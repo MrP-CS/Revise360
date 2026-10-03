@@ -674,14 +674,26 @@
      * rather than as a fault in the program, and give them something to press.
      * A pupil whose runtime failed used to be left with a panel that never
      * changed and no way back. */
+    /* It did not start. The pupil is told what has NOT happened - nothing
+     * marked, nothing unlocked, nothing lost - given the thing to check first,
+     * and given a code to report, because "Python didn't work" is not something
+     * a teacher can act on. No traceback, no path, no name: a pupil reads this
+     * out in a classroom. */
     function stalled(msg) {
       busy(true, "");
-      say(esc(msg || "") + "\n\n" + esc(ACT.SAY.runtimeStillHelp), true);
+      const D = ACT.SAY.down, code = (R360Py.status.diag || R360Py.diagnostic()).code;
+      say([esc(D.body), esc(D.connection), esc(ACT.SAY.runtimeStillHelp),
+           esc(D.report) + " " + esc(code)].join("\n\n"), true);
       if ($("#pyretry")) return;
-      const b = document.createElement("button");
-      b.className = "btn"; b.id = "pyretry"; b.textContent = ACT.SAY.runtimeRetry;
-      b.onclick = () => { b.remove(); R360Py.reset(); start(); };
-      const row = $("#mrow"); if (row) row.appendChild(b);
+      const row = $("#mrow"); if (!row) return;
+      const add = (id, label, fn, ghost) => {
+        const b = document.createElement("button");
+        b.className = ghost ? "btn ghost" : "btn"; b.id = id; b.textContent = label;
+        b.onclick = fn; row.appendChild(b); return b;
+      };
+      add("pyretry", D.buttons.retry, () => { row.innerHTML = ""; R360Py.reset(); start(); });
+      add("pyaskt", D.buttons.teacher, () => askTeacher(task, true), true);
+      add("pydown", D.buttons.close, () => closeModal(), true);
     }
     function start() {
       busy(true, ACT.SAY.starting);

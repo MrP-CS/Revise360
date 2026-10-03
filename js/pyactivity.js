@@ -248,7 +248,18 @@
      * something to sit in front of. */
     runtimeRetry: "Try loading Python again",
     runtimeWaiting: "Python is still loading. The hint and the example are there while you wait.",
-    runtimeStillHelp: "The hint and the example are still here, and so is your program."
+    runtimeStillHelp: "The hint and the example are still here, and so is your program.",
+    /* When it will not start at all. It says what has not happened, what it has
+     * not done - nothing is marked, nothing is unlocked, nothing is lost - and
+     * gives a code to report, because "Python didn't work" is not something a
+     * teacher or anybody else can act on. */
+    down: {
+      title: "Python could not start",
+      body: "Your program is safe and nothing has been marked. This question is still to be completed.",
+      connection: "Check the connection first: Python is about 12 MB and has to be downloaded. On school WiFi it can take a minute.",
+      report: "Tell your teacher this code:",
+      buttons: { retry: "Try again", close: "Close this question", teacher: "Ask your teacher" }
+    }
   };
 
   return { KINDS, ORDER, kindOf, stageOf, saysOf, splitSteps, model, version, hintLadder, rules, grade, SAY };

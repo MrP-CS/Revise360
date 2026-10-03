@@ -852,10 +852,14 @@
     }
     function runtimeDown(msg) {
       const v = vrCode; if (!v) return;
+      const D = ACT.SAY.down;
       v.busy = true; v.runtimeBad = true;
-      v.state = "Python did not start — press Try again";
+      v.diagCode = ((R360Py.status && R360Py.status.diag) || R360Py.diagnostic()).code;
+      v.state = D.title + " — " + D.report + " " + v.diagCode;
       v.err = true;
-      v.out = (msg || "") + "\n\n" + ACT.SAY.runtimeStillHelp;
+      /* What has NOT happened, what to check, and the code to report. No
+       * traceback and no path: a pupil reads this out loud in a classroom. */
+      v.out = [D.body, D.connection, ACT.SAY.runtimeStillHelp, D.report + " " + v.diagCode].join("\n\n");
       showKeyboard(); paintCode();
     }
 
@@ -930,7 +934,7 @@
       if (M.hasHint) act.push({ btn: "Hint", id: "chint", center: true, size: 26, onClick: showHint });
       // Asking is an ordinary thing to do, and it is on the screen, so it is here.
       act.push({ btn: "I need help", id: "chelp", center: true, size: 26, onClick: showHelp });
-      if (v.runtimeBad) act.push({ btn: "Try again", id: "cretry", center: true, size: 26,
+      if (v.runtimeBad) act.push({ btn: ACT.SAY.down.buttons.retry, id: "cretry", center: true, size: 26,
         onClick: () => { R360Py.reset(); startRuntime(); } });
 
       /* The way on, under the same rule as the screen: it appears when the
