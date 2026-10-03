@@ -331,15 +331,30 @@
       mesh.lookAt(a.pos);
     }
     let menuYaw = null;
+    /* The menu button has one place and stays in it.
+     *
+     * It used to hang off the head: a yaw that lazily chased where you looked,
+     * at a fixed pitch below the line of sight. Two things were wrong with
+     * that. A control that drifts is a control you have to hunt for, and one
+     * that is still drifting when you point at it is one you miss. And because
+     * it was placed from the head rather than from the workspace, Recentre
+     * moved the screen and the keys and left it behind.
+     *
+     * While a Python workspace is open it now sits at the anchor like
+     * everything else, out to the lower left, clear of both the screen and the
+     * keys - SEAT.menu says where, and tools/tests/smokevrbounds.py fails if
+     * the three ever overlap. Elsewhere in the experience there is no
+     * workspace to sit beside, so it keeps a fixed bearing taken when VR
+     * starts, below the line of sight; it still does not chase the gaze. */
     function placeMenuButton(force) {
-      const { pos, dir } = headPose(); const yaw = Math.atan2(dir.x, dir.z);
-      if (menuYaw === null || force) menuYaw = yaw;
-      let d = yaw - menuYaw; d = Math.atan2(Math.sin(d), Math.cos(d));
-      if (Math.abs(d) > .5) menuYaw += d * .08;   // lazily follow the user's gaze
-      /* Normally just below the line of sight. While a Python workspace is
-       * open the keys are there, so it goes further down and out of their way -
-       * it used to sit on top of them, covering Tab, the arrows and Check. */
-      const pitch = T.MathUtils.degToRad(vrCode ? -74 : -42), dist = .75;
+      // Beside a workspace it is 1.7m away rather than 0.75m, so it has to be
+      // bigger to stay the same size to point at.
+      const want = vrCode ? SEAT.menu.width : .2;
+      if (menuBtn.widthM !== want) { menuBtn.widthM = want; if (menuBtn.spec) menuBtn.draw(); }
+      if (vrCode) { atAnchor(menuBtn.mesh, SEAT.menu.dist, SEAT.menu.pitch, SEAT.menu.yaw); return; }
+      const { pos, dir } = headPose();
+      if (menuYaw === null || force) menuYaw = Math.atan2(dir.x, dir.z);
+      const pitch = T.MathUtils.degToRad(-42), dist = .75;
       menuBtn.mesh.position.set(pos.x + Math.sin(menuYaw) * Math.cos(pitch) * dist, pos.y + Math.sin(pitch) * dist, pos.z + Math.cos(menuYaw) * Math.cos(pitch) * dist);
       menuBtn.mesh.lookAt(pos);
     }
@@ -539,7 +554,21 @@
        * headset - roughly 22 of a Quest's pixels, which is ordinary reading
        * size. A smaller screen was legible but not comfortable. */
       screen: { dist: 2.05, pitch:   4, yaw: 0, width: 2.90 },
-      keys:   { dist: 1.80, pitch: -33, yaw: 0 }
+      /* -33 put the top of the keys 0.6 degrees under the bottom of the
+       * screen. They did not overlap, but a controller ray is not that
+       * steady - the smallest thing this course asks anybody to point at
+       * is a whole degree across - and with depthTest off the screen is
+       * drawn over the keys wherever they meet. -35 opens the join to
+       * 2.6 degrees, which is a boundary a hand can feel. */
+      keys:   { dist: 1.80, pitch: -35, yaw: 0 },
+      /* Out to the lower left, past the edge of both. The screen is 2.90m wide
+       * at 2.05m, which is 35 degrees either side of straight ahead; the keys
+       * are 2.50m at 1.80m, which is 35 too. 52 degrees clears both with room
+       * to spare, and -24 puts it below the screen's bottom edge rather than
+       * underneath the keyboard, where a hand reaching for Tab would cross it.
+       * Left rather than right because the right of the keyboard is where
+       * Backspace, Enter and the arrows are, and that is the busier hand. */
+      menu:   { dist: 1.70, pitch: -24, yaw: -52, width: 0.34 }
     };
     const SS = 2;                 // drawn at twice the layout size, for the lens
 
@@ -575,21 +604,31 @@
       const mesh = new T.Mesh(new T.PlaneGeometry(wM, hM),
         new T.MeshBasicMaterial({ map: tex, depthTest: false, depthWrite: false }));
       mesh.renderOrder = 22; mesh.userData.pyscreen = true;
-      /* The room stays, but what is directly behind a wall of text is noise -
-       * the page blurs and darkens the scene behind an open question for the
-       * same reason. This dims only what the screen covers, so the 360 room is
-       * still there around every edge of it. */
-      const dim = new T.Mesh(new T.PlaneGeometry(wM * 1.22, hM * 1.30),
-        new T.MeshBasicMaterial({ color: 0x060b18, transparent: true, opacity: .62,
-                                  depthTest: false, depthWrite: false }));
-      dim.renderOrder = 21;
+      /* There is no dimming plane behind this screen any more, and there must
+       * not be one again.
+       *
+       * It was a plane 22% wider and 30% taller than the screen, dark and 62%
+       * opaque, meant to quieten the 360 room behind a wall of text. It could
+       * not do that and did something else instead. The screen's own canvas is
+       * painted opaque corner to corner, so behind the screen the dim was never
+       * visible; all that ever showed was the overhang. And every surface here
+       * is drawn with depthTest off, so what is in front is decided by
+       * renderOrder alone - the dim at 21, the keyboard at 20. Being taller
+       * than the screen it hung down over the top rows of the keys, and being
+       * drawn after them it painted straight over Tab, the arrows and the
+       * number row, whatever the actual distances were. The menu button is a
+       * Panel, which is also 20, so it went under the dim too.
+       *
+       * That is the opaque black panel. Nothing replaces it: the room around
+       * the screen stays visible, which is what a 360 experience is for.
+       * tools/tests/smokevrclear.py fails if a mesh like it comes back. */
       setAnchor(true);
-      scene.add(dim); scene.add(mesh);
+      scene.add(mesh);
       const sc = core.exp.scenes[core.cur], st = sc.stations[k];
       const start = (core.getDraft ? core.getDraft(k, list[n], task) : null) || task.starter || "";
       vrCode = {
         task, model: ACT.model(task), k, list, n, st,
-        cv, cx, tex, mesh, dim,
+        cv, cx, tex, mesh,
         text: start, caret: caretAt(start, task), shift: false,
         out: "", err: false, attempts: 0, best: 0, done: false,
         tests: [], result: "", resultOk: false, tryLine: "",
@@ -607,8 +646,6 @@
     function layout() {
       const v = vrCode; if (!v) return;
       atAnchor(v.mesh, SEAT.screen.dist, SEAT.screen.pitch, SEAT.screen.yaw);
-      v.dim.position.copy(v.mesh.position); v.dim.quaternion.copy(v.mesh.quaternion);
-      v.dim.translateZ(-0.02);
       showKeyboard();
       atAnchor(kbPanel.mesh, SEAT.keys.dist, SEAT.keys.pitch, SEAT.keys.yaw);
       paint();
@@ -618,7 +655,46 @@
     function recentre() {
       if (!vrCode) return;
       setAnchor(true); layout();
+      placeMenuButton(true);     // the menu belongs to the workspace, so it comes too
       toast("Screen and keyboard moved to where you are looking.");
+    }
+
+    /* Where each surface of the workspace is, in the angles a seated pupil sees
+     * it at, measured from the anchor the workspace is built around.
+     *
+     * Every surface here is a flat plane turned to face the anchor, so what it
+     * covers is a rectangle of yaw and pitch about its own bearing, and two
+     * surfaces can only be pointed at by the same ray if those rectangles
+     * overlap. That is the model tools/tests/smokevrbounds.py tests against,
+     * and it is reported from here rather than worked out again there, so the
+     * check cannot drift from the layout it is checking. */
+    function workspaceBounds() {
+      const a = anchor; if (!a) return [];
+      const deg = T.MathUtils.radToDeg, out = [];
+      /* Measured off the meshes, not read back off SEAT.
+       *
+       * The first version of this computed each box from the SEAT numbers, and
+       * it was wrong in the way that matters: it reported where the layout
+       * MEANT to put a surface. Breaking the menu's placement on purpose left
+       * the button somewhere else entirely and this still said it was tucked
+       * out to the left, because that is what SEAT says. A check that reads the
+       * intention cannot catch the code failing to carry it out. */
+      const box = (name, mesh) => {
+        if (!mesh || !mesh.visible) return;
+        const d = mesh.position.clone().sub(a.pos), dist = d.length();
+        let yaw = Math.atan2(d.x, d.z) - a.yaw;
+        yaw = deg(Math.atan2(Math.sin(yaw), Math.cos(yaw)));
+        const pitch = deg(Math.asin(T.MathUtils.clamp(d.y / dist, -1, 1)) - a.pitch);
+        const bb = new T.Box3().setFromObject(mesh);
+        const w = bb.max.x - bb.min.x, h = bb.max.y - bb.min.y;
+        const hw = deg(Math.atan2(w / 2, dist)), hh = deg(Math.atan2(h / 2, dist));
+        out.push({ name, dist: +dist.toFixed(3), w: +w.toFixed(3), h: +h.toFixed(3),
+                   yaw0: yaw - hw, yaw1: yaw + hw, pitch0: pitch - hh, pitch1: pitch + hh });
+      };
+      box("monitor", vrCode && vrCode.mesh);
+      box("keyboard", kbPanel.mesh);
+      box("menu", menuBtn.mesh);
+      return out;
     }
 
     // ---- everything the screen needs to draw itself
@@ -1013,9 +1089,8 @@
       try { if (window.speechSynthesis) window.speechSynthesis.cancel(); } catch (e) { /* none */ }
       if (offPyState) { offPyState(); offPyState = null; }
       if (offKeys) offKeys();
-      scene.remove(vrCode.mesh); scene.remove(vrCode.dim);
+      scene.remove(vrCode.mesh);
       vrCode.tex.dispose(); vrCode.mesh.geometry.dispose(); vrCode.mesh.material.dispose();
-      vrCode.dim.geometry.dispose(); vrCode.dim.material.dispose();
       vrCode = null;
       kbPanel.hide(); closeDiagramVR(); clearAnchor();
       core.refreshSprites(); core.hud();
@@ -1304,8 +1379,22 @@
       /* While the Python screen is open the only things to point at are the
        * screen itself, the keys, and a hint diagram if one is playing - so a
        * stray trigger cannot open a station behind it and lose a program. */
+      /* The Python workspace is modal, and it stays modal: nothing behind it is
+       * selectable, so a stray trigger cannot open a station and throw a
+       * program away. But modal was being read as "only this panel", and the
+       * menu button was left out of the list, so while a pupil was coding the
+       * one control that gets them out of the lesson could be looked at and not
+       * pressed. The fixed controls are not what the workspace is modal
+       * against; the room behind it is.
+       *
+       * The three surfaces are picked between by distance, not by the order of
+       * this list - intersectObjects sorts, and the nearest wins. That is safe
+       * only because the screen, the keys and the menu do not overlap from
+       * where the pupil sits, so a ray can reach at most one of them.
+       * tools/tests/smokevrbounds.py is what keeps that true; without it, the
+       * priority this spec asks for would rest on nothing. */
       if (vrCode) return { panels: [vrCode.mesh].concat(
-        [diagPanel, kbPanel].filter(p => p.open).map(p => p.mesh)),
+        [kbPanel, diagPanel, menuPanel, menuBtn].filter(p => p.open).map(p => p.mesh)),
         sprites: [], model: null, screen: vrCode.mesh };
       if (qPanel.open) return { panels: vrBoard ? [qPanel.mesh, vrBoard.mesh] : [qPanel.mesh], sprites: [], model: null };   // questions are modal, like on the web page
       return { panels: [menuPanel, infoPanel, modelPanel, diagPanel, kbPanel, menuBtn].filter(p => p.open).map(p => p.mesh), sprites: core.sprites, model: vrModel };
@@ -1386,7 +1475,7 @@
     window.__openVRCode = (k, i) => openCodeVR(k, [i], 0, core.exp.scenes[core.cur].stations[k].tasks[i]);
     // One activity of any kind, opened the way a station would open it.
     window.__openVRTask = (k, i) => run(k, [i], 0);
-    window.NVRVR = { get vrBoard() { return vrBoard; }, modelPanel, get vrModel() { return vrModel; }, openModelVR: n => { const sp = core.sprites.filter(x => x.userData.type === "model")[n]; if (sp) openModelVR(sp.userData); }, openDiagramVR: n => { const sp = core.sprites.filter(x => x.userData.type === "diagram")[n]; if (sp) openDiagramVR(sp.userData); }, diagPanel, get vrDiag() { return vrDiag; }, kbPanel, SEAT, recentre, openHint, openHelp, openRef, sayTask, doAction, screenHit, placeCaret, paint, state, get vrCode() { return vrCode; }, typeKey, runCodeVR, checkCodeVR, openCodeVR, atAnchor, setAnchor, clearAnchor, get anchor() { return anchor; }, get COL() { return Object.assign({}, COL); }, qPanel, infoPanel, menuPanel, menuBtn, toastPanel, enter, exitVR, closeAll, closeCodeVR };  // for testing
+    window.NVRVR = { get vrBoard() { return vrBoard; }, modelPanel, get vrModel() { return vrModel; }, openModelVR: n => { const sp = core.sprites.filter(x => x.userData.type === "model")[n]; if (sp) openModelVR(sp.userData); }, openDiagramVR: n => { const sp = core.sprites.filter(x => x.userData.type === "diagram")[n]; if (sp) openDiagramVR(sp.userData); }, diagPanel, get vrDiag() { return vrDiag; }, kbPanel, SEAT, recentre, workspaceBounds, targets, scene, openHint, openHelp, openRef, sayTask, doAction, screenHit, placeCaret, paint, state, get vrCode() { return vrCode; }, typeKey, runCodeVR, checkCodeVR, openCodeVR, atAnchor, setAnchor, clearAnchor, get anchor() { return anchor; }, get COL() { return Object.assign({}, COL); }, qPanel, infoPanel, menuPanel, menuBtn, toastPanel, enter, exitVR, closeAll, closeCodeVR };  // for testing
   }
   if (window.NVRCore) start(window.NVRCore);
   else document.addEventListener("nvr-ready", () => start(window.NVRCore), { once: true });

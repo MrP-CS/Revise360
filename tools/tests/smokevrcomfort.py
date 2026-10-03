@@ -180,13 +180,20 @@ def main():
            f"and took the keyboard with it \u2014 one workspace, not two ({kbMoved:.2f} m)")
         ok(pg.evaluate("NVRVR.vrCode.text.length > 0"), "with the program still in it")
 
-        # the menu button must not sit on the keys
-        menu = pg.evaluate("""(() => { const a = NVRVR.anchor, m = NVRVR.menuBtn.mesh;
-          const d = m.position.clone().sub(a.pos);
-          return Math.asin(d.y / d.length()) * 180 / Math.PI; })()""")
-        keys = [s for s in g["surfaces"] if s["name"] == "keys"][0]
-        ok(menu < keys["pitch"] - keys["halfH"],
-           f"the menu button is at {menu:.0f}°, below the keys at {keys['pitch'] - keys['halfH']:.0f}°")
+        # The menu button must not sit on the keys. This used to require it to
+        # be BELOW them, which was how it was kept clear at the time - at -74
+        # degrees, almost under the pupil's chin. It sits out to the side now,
+        # which is what the spec asked for and which this would have failed, so
+        # the check is on the requirement rather than on one way of meeting it.
+        # tools/tests/smokevrbounds.py does the two-dimensional version.
+        bounds = pg.evaluate("NVRVR.workspaceBounds()")
+        bk = {x["name"]: x for x in bounds}
+        clear = ("menu" in bk and "keyboard" in bk and (
+            bk["menu"]["yaw1"] < bk["keyboard"]["yaw0"]
+            or bk["menu"]["yaw0"] > bk["keyboard"]["yaw1"]
+            or bk["menu"]["pitch1"] < bk["keyboard"]["pitch0"]
+            or bk["menu"]["pitch0"] > bk["keyboard"]["pitch1"]))
+        ok(clear, "the menu button is clear of the keys, not sitting on them")
 
         pg.close(); b.close()
 
