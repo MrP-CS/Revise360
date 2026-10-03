@@ -529,8 +529,21 @@
       if (!core.inVR && wasIn) { wasIn = false; close(); }
     });
 
+    /* Where each surface sits, in degrees from the anchor, measured off the
+     * meshes by js/vr.js. Section 72 says the question screen, the controls and
+     * the keyboard may not overlap, and tools/tests/smokeviserbounds.py checks
+     * that against this rather than working the geometry out a second time. Only
+     * what is actually showing is reported: the bar is put away while the
+     * keyboard is up, and a surface that is hidden covers nothing. */
+    function reviseBounds() {
+      return kit.boundsFor([["question", qp.mesh], ["controls", bar.mesh],
+                            ["keyboard", kit.kbPanel.mesh],
+                            ["menu", kit.menuBtn.mesh]]);
+    }
+
     window.NVRReviseVR = { ask, paint, submit, finish, menu, topics, progress,
-                           qp, bar, SEAT, place,
+                           qp, bar, SEAT, place, reviseBounds,
+                           get kbTarget() { return kbTarget; },
                            get answer() { return answer; },
                            set answer(x) { answer = x; },
                            get held() { return held; } };

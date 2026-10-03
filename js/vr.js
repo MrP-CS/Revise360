@@ -361,11 +361,20 @@
      * workspace to sit beside, so it keeps a fixed bearing taken when VR
      * starts, below the line of sight; it still does not chase the gaze. */
     function placeMenuButton(force) {
-      // Beside a workspace it is 1.7m away rather than 0.75m, so it has to be
-      // bigger to stay the same size to point at.
-      const want = vrCode ? SEAT.menu.width : .2;
+      /* Beside a workspace it is 1.7m away rather than 0.75m, so it has to be
+       * bigger to stay the same size to point at.
+       *
+       * "A workspace" means the Python one or anything an extension has
+       * anchored, not just vrCode. Revision 360 anchors a question screen and
+       * borrows this keyboard, and while the keyboard was up the menu was still
+       * being put where it goes in an empty room - straight ahead at -42
+       * degrees, which is underneath the keys. It could be looked at and not
+       * pressed, which is the same defect smokevrbounds.py exists to stop, in
+       * the one place that test was not looking. */
+      const workspace = !!vrCode || (anchor && extPanels.some(p => p.open));
+      const want = workspace ? SEAT.menu.width : .2;
       if (menuBtn.widthM !== want) { menuBtn.widthM = want; if (menuBtn.spec) menuBtn.draw(); }
-      if (vrCode) { atAnchor(menuBtn.mesh, SEAT.menu.dist, SEAT.menu.pitch, SEAT.menu.yaw); return; }
+      if (workspace) { atAnchor(menuBtn.mesh, SEAT.menu.dist, SEAT.menu.pitch, SEAT.menu.yaw); return; }
       const { pos, dir } = headPose();
       if (menuYaw === null || force) menuYaw = Math.atan2(dir.x, dir.z);
       const pitch = T.MathUtils.degToRad(-42), dist = .75;
@@ -709,7 +718,12 @@
      * overlap. That is the model tools/tests/smokevrbounds.py tests against,
      * and it is reported from here rather than worked out again there, so the
      * check cannot drift from the layout it is checking. */
-    function workspaceBounds() {
+    /* The same measurement for any set of named surfaces, because the revision
+     * renderer has its own arrangement to keep clear - a question screen, a
+     * control bar, the borrowed keyboard - and section 72 asks the same thing of
+     * it. One implementation, two layouts: tools/tests/smokeviserbounds.py
+     * checks the revision one through this. */
+    function boundsFor(pairs) {
       const a = anchor; if (!a) return [];
       const deg = T.MathUtils.radToDeg, out = [];
       /* Measured off the meshes, not read back off SEAT.
@@ -739,10 +753,14 @@
         out.push({ name, dist: +dist.toFixed(3), w: +w.toFixed(3), h: +h.toFixed(3),
                    yaw0: yaw - hw, yaw1: yaw + hw, pitch0: pitch - hh, pitch1: pitch + hh });
       };
-      box("monitor", vrCode && vrCode.mesh);
-      box("keyboard", kbPanel.mesh);
-      box("menu", menuBtn.mesh);
+      pairs.forEach(([name, mesh]) => box(name, mesh));
       return out;
+    }
+
+    function workspaceBounds() {
+      return boundsFor([["monitor", vrCode && vrCode.mesh],
+                        ["keyboard", kbPanel.mesh],
+                        ["menu", menuBtn.mesh]]);
     }
 
     // ---- everything the screen needs to draw itself
@@ -1486,8 +1504,13 @@
       if (vrCode) return { panels: [vrCode.mesh].concat(
         [kbPanel, diagPanel, menuPanel, menuBtn].filter(p => p.open).map(p => p.mesh)),
         sprites: [], model: null, screen: vrCode.mesh };
+      /* An extension's panels are modal the same way, and the same way again the
+       * fixed controls are not what they are modal against. The keyboard was
+       * left out of this list, so a pupil answering a written question in
+       * Revision 360 could see the keys and not press one of them. */
       if (extPanels.some(p => p.open))
-        return { panels: extPanels.filter(p => p.open).concat([menuPanel, menuBtn].filter(p => p.open))
+        return { panels: extPanels.filter(p => p.open)
+                   .concat([kbPanel, menuPanel, menuBtn].filter(p => p.open))
                    .map(p => p.mesh), sprites: [], model: null };
       if (qPanel.open) return { panels: vrBoard ? [qPanel.mesh, vrBoard.mesh] : [qPanel.mesh], sprites: [], model: null };   // questions are modal, like on the web page
       return { panels: [menuPanel, infoPanel, modelPanel, diagPanel, kbPanel, menuBtn].filter(p => p.open).map(p => p.mesh), sprites: core.sprites, model: vrModel };
@@ -1575,7 +1598,7 @@
     const vrKit = { T, core, root, scene, Panel, COL, BAND, FONT, panels, extPanels,
                     qPanel, menuPanel, menuBtn, kbPanel, toastPanel, toast,
                     atAnchor, setAnchor, clearAnchor, placeInFront, gazePitch, headPose,
-                    recentre, SEAT, exitVR, closeAll, enter,
+                    recentre, SEAT, exitVR, closeAll, enter, boundsFor, targets,
                     showKeyboard, useKeyboard, typeKey, listenForRealKeys,
                     drawMenuBtn, placeMenuButton,
                     register(p) { panels.push(p); extPanels.push(p); return p; },
