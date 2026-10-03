@@ -185,8 +185,15 @@ def resolve(q, stations):
             if st["id"] == sid:
                 q["revisitLessonId"] = lid
                 q["revisitStationId"] = sid
-                q["revisitLabel"] = "%s Lesson %s — %s, station %s: %s" % (
-                    L["unit"], L["lesson"], L["title"], st["n"], st["name"])
+                # A lesson's last station is numbered "final" rather than
+                # counted, and is already called Final challenge, so neither
+                # "station final" nor "the final challenge: Final challenge" is
+                # what it should say.
+                q["revisitLabel"] = ("%s Lesson %s — %s, %s" % (
+                    L["unit"], L["lesson"], L["title"], st["name"])
+                    if st["n"] == "final" else
+                    "%s Lesson %s — %s, station %s: %s" % (
+                        L["unit"], L["lesson"], L["title"], st["n"], st["name"]))
                 q["revisitScene"] = st["sceneIndex"]
                 q["revisitK"] = st["k"]
                 if L["unit"] != q["topic"]:

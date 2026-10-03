@@ -1358,12 +1358,18 @@
   }
 
   // ---------- toolbar ----------
-  let home = "index.html";
+  /* Revision 360 sends a learner here to look at the station that teaches
+   * something they lost marks on, and ?back says where that was, so Home takes
+   * them back into the revision session rather than out of it. Only a page of
+   * this site: a `back` is a file name, never a URL. */
+  const backTo = (params.get("back") || "").replace(/[^A-Za-z0-9._-]/g, "");
+  let home = backTo && /\.html$/.test(backTo) ? backTo : "index.html";
+  if (backTo) $("#homeBtn").textContent = "\u2190 Back to revision";
   $("#homeBtn").onclick = () => { if (publicDemo && window.top !== window) window.top.location.href = home; else location.href = home; };
   fetch("experiences/topics.json", { cache: "no-cache" }).then(r => r.json()).then(t => { if (t.siteTitle) document.title = exp.title + " | " + t.siteTitle; }).catch(() => {});
   fetch("experiences/registry.json", { cache: "no-cache" }).then(r => r.json()).then(reg => {
     const e = (reg.experiences || []).find(x => x.id === expId);
-    if (!publicDemo && e && e.topic) home = "index.html?topic=" + encodeURIComponent(e.topic);
+    if (!publicDemo && !backTo && e && e.topic) home = "index.html?topic=" + encodeURIComponent(e.topic);
     if (e && e.worksheet) { const a = $("#wsBtn"); a.href = e.worksheet; a.hidden = false; a.setAttribute("aria-label", "Download the worksheet for this lesson (Word document)"); }
     if (gated() && !publicDemo) guardLesson(reg, e);
   }).catch(() => {});

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Revision 360</title>
+<link rel="stylesheet" href="css/style.css?v=20261003d-revision">
+<link rel="stylesheet" href="css/pytok.css?v=20261003d-revision">
+<link rel="stylesheet" href="css/revise.css?v=20261003d-revision">
+</head>
+<body class="player revise">
+<div id="v" aria-label="The Revision 360 room. Drag or use the arrow keys to look around: command words are on one wall, how the marks work on another, and the eleven topics on a third. Your question is in the window in front of you."></div>
+<div class="hudbar">
+  <div class="pill" id="where" aria-live="polite"></div>
+  <div class="pill hud" id="hud" aria-live="polite"></div>
+</div>
+<div class="tools" role="toolbar" aria-label="Revision tools">
+  <button id="menuBtn">☰ Menu</button>
+  <button id="topicBtn">Topics</button>
+  <button id="progBtn">Progress</button>
+  <button id="markBtn" aria-pressed="false">☆ Bookmark</button>
+  <button id="recentreBtn">Recentre</button>
+  <button id="vrBtn" class="vr" hidden>🥽 Enter VR</button>
+  <button id="finishBtn">Finish session</button>
+  <button id="homeBtn">⌂ Home</button>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+<aside class="drawer" id="drawer" aria-live="polite"></aside>
+<div id="modal" role="dialog" aria-modal="true" aria-labelledby="mt"><div class="box huge plain" id="box"></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/pytok.js?v=20261003d-revision"></script>
+<script src="js/config.js"></script>
+<script src="js/local.js"></script>
+<script src="js/store.js"></script>
+<script src="js/revmark.js?v=20261003d-revision"></script>
+<script src="js/revbank.js?v=20261003d-revision"></script>
+<script src="js/revengine.js?v=20261003d-revision"></script>
+<script src="js/revise.js?v=20261003d-revision"></script>
+<script src="js/vr.js?v=20261003c-onescreen"></script>
+<script src="js/revvr.js?v=20261003d-revision"></script>
+</body></html>

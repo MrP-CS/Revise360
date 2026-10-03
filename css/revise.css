@@ -1,0 +1,107 @@
+/* Revision 360: the few things the rest of the site has no use for.
+   Everything else - the task window, the options, the feedback box, the chips,
+   the ordered list - is the course's own, so a revision question looks like a
+   lesson question because it is drawn with the same rules. */
+
+.revise .box.huge.plain { max-width: 900px; }
+.revise #modal { background: rgba(6, 11, 22, .55); }
+
+/* The line above every question: what it is, and what it is worth. */
+.qmeta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+         margin: 0 0 12px; font-size: 14px; color: var(--soft); }
+.qmeta .tag { background: var(--bg2); border: 1px solid var(--line);
+              border-radius: 999px; padding: 3px 11px; }
+.qmeta .marks { background: var(--edge); color: #0f1626; font-weight: 800;
+                border: 0; border-radius: 999px; padding: 3px 13px; font-size: 15px; }
+.qmeta .exam { border-color: var(--amber); color: var(--amber); }
+.qmeta .star { margin-left: auto; background: none; border: 0; color: var(--soft);
+               font-size: 20px; line-height: 1; padding: 0 2px; }
+.qmeta .star[aria-pressed="true"] { color: var(--edge); }
+
+/* A written answer. Big enough to write a three-mark explanation in without
+   scrolling, which is what a learner is being asked for. */
+.answer { width: 100%; background: var(--bg2); color: var(--fg); font: inherit;
+          font-size: 17px; line-height: 1.5; border: 2px solid var(--line);
+          border-radius: 14px; padding: 12px 14px; resize: vertical; min-height: 96px; }
+.answer:focus { border-color: var(--edge); outline: none; }
+.answer.one { min-height: 52px; }
+.saved { font-size: 13px; color: var(--soft); margin: 6px 0 0; min-height: 18px; }
+
+/* A short exact answer: a number, a binary pattern, a line of output. */
+.exact { background: var(--bg2); color: var(--fg); border: 2px solid var(--line);
+         border-radius: 12px; padding: 12px 14px; font-size: 20px; width: 100%;
+         max-width: 340px; }
+.exact.mono { font-family: Consolas, "Courier New", monospace; letter-spacing: .06em; }
+.unit { color: var(--soft); margin-left: 10px; font-size: 16px; }
+
+/* Mark points, after marking. Earned and missed, in the question's own order. */
+.points { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 6px; }
+.points li { display: grid; grid-template-columns: 24px 1fr; gap: 8px;
+             font-size: 16px; line-height: 1.4; }
+.points li i { font-style: normal; font-weight: 800; }
+.points li.got i { color: var(--ok); }
+.points li.lost i { color: var(--soft); }
+.points li.lost { color: var(--soft); }
+
+/* Where to go and look it up again. */
+.revisit { display: block; margin-top: 14px; background: #15223b;
+           border: 2px solid var(--info); border-radius: 14px; padding: 12px 16px;
+           color: var(--fg); text-decoration: none; }
+.revisit b { display: block; color: var(--info); font-size: 14px;
+             letter-spacing: .04em; text-transform: uppercase; margin-bottom: 4px; }
+.revisit:hover { border-color: var(--edge); }
+
+/* How sure are you? Offered, never demanded. */
+.confid { display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+          margin: 14px 0 0; font-size: 14px; color: var(--soft); }
+.confid .seg button { padding: 6px 12px; font-size: 14px; }
+
+/* The topic picker. */
+.picker { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+          gap: 8px; margin: 10px 0; }
+.picker button { text-align: left; background: var(--bg2); color: var(--fg);
+                 border: 2px solid var(--line); border-radius: 12px;
+                 padding: 10px 12px; font-size: 15px; }
+.picker button[aria-pressed="true"] { border-color: var(--edge); background: #1d2a44; }
+.picker button b { display: block; color: var(--edge); font-size: 13px; }
+.picker button span { color: var(--soft); font-size: 13px; }
+.modes { display: grid; gap: 6px; margin: 8px 0; }
+.modes button { text-align: left; background: var(--bg2); color: var(--fg);
+                border: 2px solid var(--line); border-radius: 12px; padding: 10px 13px;
+                font-size: 15px; }
+.modes button[aria-pressed="true"] { border-color: var(--edge); color: var(--edge); }
+.modes button:disabled { opacity: .55; }
+.modes .why { display: block; font-size: 13px; color: var(--soft); margin-top: 3px; }
+
+/* A grid answer: a truth table or a trace table. */
+.gridq { border-collapse: collapse; margin: 4px 0 12px; font-size: 16px; }
+.gridq th, .gridq td { border: 1px solid var(--line); padding: 4px; text-align: center; }
+.gridq th { background: #17233c; padding: 7px 12px; }
+.gridq td.given { background: var(--bg2); color: var(--soft); padding: 7px 12px; }
+.gridq input { width: 76px; background: var(--panel); color: var(--fg);
+               border: 2px solid var(--line); border-radius: 8px; padding: 6px;
+               font-size: 16px; text-align: center; }
+.gridq input.right { border-color: var(--ok); }
+.gridq input.wrong { border-color: var(--bad); }
+
+/* The session banner across the top of the room. */
+.revise .hud b { font-size: 22px; }
+.revise #where { font-size: 14px; color: var(--soft); max-width: 60vw; }
+.revise #where b { color: var(--fg); }
+
+.summary .stat b { font-size: 30px; }
+.sourceline { font-size: 13px; color: var(--soft); margin-top: 10px; }
+.selfcheck { display: grid; gap: 8px; margin: 10px 0; }
+.selfcheck label { display: grid; grid-template-columns: 26px 1fr; gap: 8px;
+                   align-items: start; background: var(--bg2); border: 2px solid var(--line);
+                   border-radius: 12px; padding: 10px 12px; font-size: 16px; line-height: 1.4; }
+.selfcheck input { width: 20px; height: 20px; margin-top: 2px; }
+
+/* The question window is open the whole time a learner is revising, so the
+   controls and the panels have to sit above it rather than behind it. In a
+   lesson a drawer and the task window are never open together and the order
+   they appear in the document is enough; here they are, and it is not. */
+.revise #modal { z-index: 4; }
+.revise .drawer { z-index: 5; max-height: calc(100% - 180px); }
+.revise .tools, .revise .hudbar { z-index: 6; }
+.revise .toast { z-index: 7; }

@@ -290,6 +290,13 @@
 
     const qPanel = new Panel(1.5), infoPanel = new Panel(.8, 1000), menuPanel = new Panel(.8, 1000), toastPanel = new Panel(.7, 1000), menuBtn = new Panel(.2, 360);
     const panels = [qPanel, infoPanel, menuPanel, toastPanel, menuBtn];
+    /* Panels belonging to another mode built on this one - Revision 360 is the
+     * first. They go in `panels` so closeAll and the hover pass find them, and
+     * in `extPanels` so targets() can make them the only things to point at
+     * while one is open. The alternative was a second copy of the panel kit,
+     * the raycast and the anchor, and two copies of those would drift. */
+    const extPanels = [];
+    let menuHook = null;
     toastPanel.mesh.renderOrder = 30;
 
     // ---------------- placement ----------------
@@ -389,6 +396,7 @@
       menuBtn.set({ blocks: [{ btn: "☰  Menu", id: "menu", center: true, size: 44, onClick: () => menuPanel.open ? menuPanel.hide() : showMenu() }] });
     }
     function showMenu() {
+      if (menuHook) return menuHook();
       const sc = core.exp.scenes[core.cur], s = Store.summarise(core.exp, core.prog);
       let got = 0, tot = 0, d = 0; sc.stations.forEach((_, k) => { const st = core.stationState(sc, k); got += st.got; tot += st.tot; if (st.done) d++; });
       const blocks = [
@@ -808,8 +816,19 @@
     }
 
     // ---------------- typing ----------------
+    /* The keyboard and everything that types on it work on an object with
+     * `text`, `caret` and `shift`, which happens to be the Python workspace and
+     * does not have to be. Revision 360 lends it for a written answer by
+     * handing over its own; the arrow keys, backspace, the indentation rule and
+     * the adaptive symbol set then all work there without a second copy. */
+    let keyTarget = null;
+    function useKeyboard(t) {
+      keyTarget = t;
+      if (t) showKeyboard(); else kbPanel.hide();
+      return t;
+    }
     function typeKey(key) {
-      const v = vrCode; if (!v || v.busy || v.overlay) return;
+      const v = keyTarget || vrCode; if (!v || v.busy || v.overlay) return;
       const ins = (t) => { v.text = v.text.slice(0, v.caret) + t + v.text.slice(v.caret); v.caret += t.length; };
       if (key === "←") v.caret = Math.max(0, v.caret - 1);
       else if (key === "→") v.caret = Math.min(v.text.length, v.caret + 1);
@@ -840,6 +859,7 @@
       else if (key === "Space") ins(" ");
       else if (key === "Shift") { v.shift = !v.shift; showKeyboard(); return; }
       else { ins(v.shift ? key.toUpperCase() : key); if (v.shift) { v.shift = false; showKeyboard(); } }
+      if (keyTarget) { keyTarget.changed(); return; }
       keepDraft();
       paint();
     }
@@ -858,7 +878,7 @@
      * aloud and I need help are on the screen, where they are on the page; this
      * is for typing. */
     function showKeyboard() {
-      const v = vrCode; if (!v) return;
+      const v = keyTarget || vrCode; if (!v) return;
       const row = (keys, cells) => ({ cells, row: keys.map(ch => ({
         btn: ch === " " ? "Space" : (v.shift && /[a-z]/.test(ch) ? ch.toUpperCase() : ch),
         id: "key" + ch, center: true, size: 30, onClick: () => typeKey(ch) })) });
@@ -917,7 +937,7 @@
     function listenForRealKeys() {
       if (offKeys) return;
       const onKey = (e) => {
-        if (!vrCode || vrCode.busy || vrCode.overlay) return;
+        if (!(keyTarget || vrCode) || (vrCode && (vrCode.busy || vrCode.overlay))) return;
         if (e.ctrlKey || e.metaKey || e.altKey) return;
         const kk = e.key;
         const named = { Enter: "Enter", Backspace: "Back", Tab: "Tab", ArrowLeft: "←",
@@ -925,9 +945,10 @@
                         Home: "Home", End: "End" }[kk];
         if (named) typeKey(named);
         else if (kk.length === 1) {
-          const v = vrCode;
+          const v = keyTarget || vrCode;
           v.text = v.text.slice(0, v.caret) + kk + v.text.slice(v.caret);
-          v.caret += kk.length; keepDraft(); paint();
+          v.caret += kk.length;
+          if (keyTarget) keyTarget.changed(); else { keepDraft(); paint(); }
         } else return;
         e.preventDefault();
       };
@@ -1465,6 +1486,9 @@
       if (vrCode) return { panels: [vrCode.mesh].concat(
         [kbPanel, diagPanel, menuPanel, menuBtn].filter(p => p.open).map(p => p.mesh)),
         sprites: [], model: null, screen: vrCode.mesh };
+      if (extPanels.some(p => p.open))
+        return { panels: extPanels.filter(p => p.open).concat([menuPanel, menuBtn].filter(p => p.open))
+                   .map(p => p.mesh), sprites: [], model: null };
       if (qPanel.open) return { panels: vrBoard ? [qPanel.mesh, vrBoard.mesh] : [qPanel.mesh], sprites: [], model: null };   // questions are modal, like on the web page
       return { panels: [menuPanel, infoPanel, modelPanel, diagPanel, kbPanel, menuBtn].filter(p => p.open).map(p => p.mesh), sprites: core.sprites, model: vrModel };
     }
@@ -1544,7 +1568,21 @@
     window.__openVRCode = (k, i) => openCodeVR(k, [i], 0, core.exp.scenes[core.cur].stations[k].tasks[i]);
     // One activity of any kind, opened the way a station would open it.
     window.__openVRTask = (k, i) => run(k, [i], 0);
-    window.NVRVR = { get vrBoard() { return vrBoard; }, modelPanel, get vrModel() { return vrModel; }, openModelVR: n => { const sp = core.sprites.filter(x => x.userData.type === "model")[n]; if (sp) openModelVR(sp.userData); }, openDiagramVR: n => { const sp = core.sprites.filter(x => x.userData.type === "diagram")[n]; if (sp) openDiagramVR(sp.userData); }, diagPanel, get vrDiag() { return vrDiag; }, kbPanel, SEAT, recentre, workspaceBounds, targets, scene, openHint, openHelp, openRef, sayTask, doAction, screenHit, placeCaret, paint, state, get vrCode() { return vrCode; }, typeKey, runCodeVR, checkCodeVR, openCodeVR, atAnchor, setAnchor, clearAnchor, get anchor() { return anchor; }, get COL() { return Object.assign({}, COL); }, qPanel, infoPanel, menuPanel, menuBtn, toastPanel, enter, exitVR, closeAll, closeCodeVR };  // for testing
+    /* Anything that registered before this file ran gets the kit: the panel
+     * class, the colours, the anchor and the controls. js/revvr.js uses it to
+     * put a revision question on a screen in the same room, marked by the same
+     * engine as the page. */
+    const vrKit = { T, core, root, scene, Panel, COL, BAND, FONT, panels, extPanels,
+                    qPanel, menuPanel, menuBtn, kbPanel, toastPanel, toast,
+                    atAnchor, setAnchor, clearAnchor, placeInFront, gazePitch, headPose,
+                    recentre, SEAT, exitVR, closeAll, enter,
+                    showKeyboard, useKeyboard, typeKey, listenForRealKeys,
+                    drawMenuBtn, placeMenuButton,
+                    register(p) { panels.push(p); extPanels.push(p); return p; },
+                    onMenu(fn) { menuHook = fn; } };
+    (window.R360VRExt || []).forEach(f => { try { f(vrKit); } catch (e) { console.error(e); } });
+
+    window.NVRVR = { vrKit, get vrBoard() { return vrBoard; }, modelPanel, get vrModel() { return vrModel; }, openModelVR: n => { const sp = core.sprites.filter(x => x.userData.type === "model")[n]; if (sp) openModelVR(sp.userData); }, openDiagramVR: n => { const sp = core.sprites.filter(x => x.userData.type === "diagram")[n]; if (sp) openDiagramVR(sp.userData); }, diagPanel, get vrDiag() { return vrDiag; }, kbPanel, SEAT, recentre, workspaceBounds, targets, scene, openHint, openHelp, openRef, sayTask, doAction, screenHit, placeCaret, paint, state, get vrCode() { return vrCode; }, typeKey, runCodeVR, checkCodeVR, openCodeVR, atAnchor, setAnchor, clearAnchor, get anchor() { return anchor; }, get COL() { return Object.assign({}, COL); }, qPanel, infoPanel, menuPanel, menuBtn, toastPanel, enter, exitVR, closeAll, closeCodeVR };  // for testing
   }
   if (window.NVRCore) start(window.NVRCore);
   else document.addEventListener("nvr-ready", () => start(window.NVRCore), { once: true });
