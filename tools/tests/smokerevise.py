@@ -213,10 +213,22 @@ def main():
         # ---- selection does not repeat itself
         picks = pg.evaluate("""() => { const out = [];
           for (let i = 0; i < 25; i++) { const q = R360Engine.pick(); if (!q) break;
-            out.push(q.id); R360Engine.session().asked.push(q.id); }
+            out.push({ id: q.id, shape: q.type + "|" + q.subtopic });
+            R360Engine.session().asked.push(q.id); }
           return out; }""")
-        ok(len(set(picks)) == len(picks),
-           "twenty-five questions in a row are twenty-five different questions (%d)" % len(picks))
+        ids = [x["id"] for x in picks]
+        ok(len(set(ids)) == len(ids),
+           "twenty-five questions in a row are twenty-five different questions (%d)" % len(ids))
+        # Not the same SHAPE three in a row either. The bank holds 64 conversions
+        # and 60 calculations on purpose, and without this the drill arrives in
+        # runs: three "convert this to binary" together is a worksheet.
+        shapes = [x["shape"] for x in picks]
+        runs = [(shapes[i], i) for i in range(len(shapes))
+                if shapes[i] in shapes[max(0, i - 3):i]]
+        ok(not runs,
+           "no question repeats the shape of one of the last three (%s)"
+           % (", ".join("%s at %d" % (sh.split("|")[0], i) for sh, i in runs[:3])
+              if runs else "none"))
         topics_hit = pg.evaluate("""() => { const seen = {};
           R360Engine.session().asked.forEach(id => { const q = R360Bank.question(id);
             if (q) seen[q.topic] = (seen[q.topic] || 0) + 1; });

@@ -146,6 +146,52 @@ pupil answering a written question could see the keys and not press one of them 
 "modal" read as "only this panel" for the second time in that function, in the one
 branch an earlier fix had not touched.
 
+## Against section 82's definition of done
+
+Thirty-seven items. Thirty-six are met; one is a documented decision rather than a
+tick, and it is the last row. Where a row says a check holds it, that check is in
+the table above.
+
+| # | what it asks for | where it is held |
+|---:|---|---|
+| 1 | revise all topics or any combination | `js/revengine.js` topic filters; `smokerevise.py` changes topics mid-session and loses nothing |
+| 2 | runs inside a 360° environment | `revise.html` + `js/revise.js` draw the Revision 360 room; `tools/revroom.py` builds it |
+| 3 | desktop and VR share one engine | `js/revengine.js` and `js/revmark.js` are loaded by both; neither renderer marks anything |
+| 4 | at least 1,500 meaningful questions, or a documented decision | **629, with the decision documented** — last row below |
+| 5 | substantial new revision-only content in every topic | 629 questions, none of them taken from a lesson; the thinnest topic is 20 |
+| 6 | many question types | 16 types, from `mcq` to `trace`; `revqa.py` counts them |
+| 7 | written responses a significant part | 31% of the bank, 189 questions, 346 mark points |
+| 8 | a realistic mark value on every question | 1 to 6 marks, `revqa.py` refuses anything outside it |
+| 9 | progress in marks achieved / marks available | the only figure the mode reports; `smokerevise.py` checks marks and not questions |
+| 10 | first-attempt and best marks preserved separately | `submit()` never overwrites `first`; `smokerevise.py` checks the first attempt survives an improvement |
+| 11 | partial credit | every multi-mark type; `revwritten.py`'s incomplete probes |
+| 12 | written partial marks from authored concepts | `markPoints`, one mark each; `revwritten.py`'s 596 point probes |
+| 13 | long answers not falsely auto-marked | `extended` questions are self-reviewed and stored as `SELF-REVIEWED` |
+| 14 | IMPROVE MY ANSWER | `js/revise.js` and `js/revvr.js`; `smokerevise.py` improves an answer from 1 to 2 of 2 |
+| 15 | first attempt, improved attempt, marks recovered all preserved | `smokerevise.py` checks all three, including the recovered figure |
+| 16 | every missed concept links to a station | `revisitStationId` on every question, derived from `revision/stations.json`; `revcoverage.py` reads it backwards |
+| 17 | REVISIT EXPERIENCE | `js/revbank.js` `href()`; `smokerevise.py` follows the link and lands on the right lesson |
+| 18 | return without losing state | `?back=revise.html` in `js/player.js`; `smokerevise.py` checks the way back exists |
+| 19 | REVISE MY MISTAKES | `mistakes` mode |
+| 20 | RECOVER MY MARKS | `recover` mode |
+| 21 | FOCUS ON MY WEAKEST TOPICS | `weakest` mode, with an evidence threshold of 40 marks before it will run |
+| 22 | confidently wrong prioritised | `submit()` sets `priority` when confidence was "Very sure" and marks were lost; `pick()` adds 45 to it |
+| 23 | command-word performance where evidence exists | `commandWords()`, reported only above 10 marks of evidence |
+| 24 | bookmarks | `bookmark()`, and the headset's "save it for a desktop" writes one |
+| 25 | revision history | the last 60 sessions, `history(n)` |
+| 26 | optional weekly targets | `setTarget()`; a missed target does nothing, by section 42 |
+| 27 | a personal revision queue | `queue(n)`, built from the stations with marks lost |
+| 28 | exam-style a substantial part | 28% of the bank, inside section 46's 18-30% |
+| 29 | no OCR copyrighted material | every question written for this bank; no past paper was used as a source |
+| 30 | repetition controlled | `SPACING`; `smokerevise.py` draws 25 in a row and gets 25 different questions |
+| 31 | spaced practice | the same question is penalised for 40 draws, the same concept for 6, the same stem shape for 3 |
+| 32 | weighted selection, not random | `pick()` scores on recency, novelty, marks lost, confident error, topic fairness, difficulty, type mix and exam share, with a small jitter |
+| 33 | progress persists | `nvr:v1:` under `expId` `revision`; `smokerevise.py` reloads and checks |
+| 34 | question-bank QA and answer validation exist | eleven checks, this file |
+| 35 | VR written responses usable and honest | `smokeviserbounds.py`: the keyboard reachable, the bar out of the way, no overlap |
+| 36 | long-response VR typing not forced | three routes offered on 4 and 6-mark questions; `smokeviserbounds.py` checks all three are there |
+| 37 | teaching course and Python progression undisturbed | no lesson, deck, worksheet or record changed. `js/revvr.js` loads only on `revise.html`, so the two changes to `js/vr.js` cannot fire in a lesson; `smokevrbounds`, `smokevrkeys`, `smokevrcode`, `smokevrcomfort`, `smokevrdiag` and `smokeparity` all still pass |
+
 ## What is not checked
 
 - **Nothing has been run on a real headset.** Every headset result here comes from

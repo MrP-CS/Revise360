@@ -46,6 +46,12 @@
   // again, and before a concept a learner got wrong is retested. Section 54:
   // later, not immediately.
   const SPACING = { sameQuestion: 40, sameConcept: 6, sameStem: 3 };
+  /* What "the same shape" means: the kind of question and the subtopic it came
+   * from. The bank holds 64 conversions and 60 calculations on purpose - a skill
+   * like that is learned by repetition - but three "convert this to binary" in a
+   * row is a worksheet, not revision, and the concept window alone does not stop
+   * it when a subtopic is thirteen questions deep. */
+  const shapeOf = q => q.type + "|" + q.subtopic;
   // Marks of first-attempt evidence before a topic verdict is worth printing.
   const EVIDENCE = { topic: 12, command: 10, weakest: 40 };
 
@@ -194,8 +200,10 @@
       const sess = Engine.session();
       const wanted = Engine.topicShares();
       const level = Engine.level();
-      const recentTypes = sess.asked.slice(-2).map(id => {
-        const q = R360Bank.question(id); return q ? q.type : null; });
+      const recent = sess.asked.slice(-SPACING.sameStem)
+        .map(id => R360Bank.question(id)).filter(Boolean);
+      const recentTypes = recent.slice(-2).map(q => q.type);
+      const recentShapes = recent.map(shapeOf);
       const examShare = sess.questions ? sess.examAvail / Math.max(1, sess.avail) : 0;
 
       let best = [], bestScore = -1e9;
@@ -226,6 +234,8 @@
 
         // A mix of kinds, and roughly the exam-style share the bank is built to.
         if (recentTypes.indexOf(q.type) >= 0) v -= 22;
+        // And not the same shape of question three times running.
+        if (recentShapes.indexOf(shapeOf(q)) >= 0) v -= 120;
         v += (q.examStyle ? 1 : -1) * (0.22 - examShare) * 60;
 
         v += Math.random() * 12;        // the controlled part of the randomness
