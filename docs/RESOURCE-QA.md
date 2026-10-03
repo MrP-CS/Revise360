@@ -36,7 +36,14 @@ python3 buildws.py                # the worksheet specs and .docx files
 python3 mkdeck.py PY && node deckgen.js deckspecs/deckPY.json PR
 python3 markdata.py --write       # mark prescribed data in new questions (idempotent)
 python3 mkguides.py               # the two printable Python guides
+python3 recoverwalls.py --write   # nw-l01 and nw-l06: wall text from l1.py/l6.py
 ```
+
+`recoverwalls.py` is only for the two lessons built by the oldest scripts, which
+pass their wall text straight to the painter. It imports the script, replaces the
+painter with one that writes down what it was asked to draw, and stores the
+result on the matching station. Run it without `--write` to see what would change;
+it exits non-zero if a wall card matches no station.
 
 ## Checking
 
@@ -107,6 +114,20 @@ the injected fault showed it.
 - `smokevrcomfort.py`'s first attempt at "does the workspace follow the head"
   moved the head and re-ran the placement, which is not the fault it is watching
   for. It only caught one once the placement was injected into the frame loop.
+- `record.py` read only the first scene of a lesson, so it audited five of
+  nw-l06's ten stations and five of nw-l01's fifteen and reported the rest as
+  absent. Unit 1.3 was counted at 175 activities when it has 203, and at **zero**
+  independent ones when it had fourteen. Injecting a station into a later scene
+  is what showed it.
+- `recoverwalls.py` was checked both ways round before its clean run was
+  believed: a stored bullet corrupted by hand came back as one station to
+  rewrite, and a station deleted from the experience left its wall card matching
+  nothing, which it reported and exited non-zero on.
+- `mkguides.py` read the Python activity names out of `player.js`, where they
+  stopped being after the parity pass moved them into `pyactivity.js`. It found
+  none, compared the empty set, and exited before writing anything — so the two
+  printed guides could not be rebuilt at all for several commits. `smokeguides.py`
+  had been saying so the whole time, as "older than player.js".
 - `smokeparity.py` and `smokevrcode.py` both passed against the headset's screen
   while a disabled Run button was being left out of the hit list entirely, which
   read as "the screen has no Run control". A disabled control is now a hit area

@@ -467,20 +467,28 @@ def build(lesson, unit):
 
     # --- stations, their explanations and their activities
     spec_st = (spec or {}).get("stations") or []
-    scene_st = (scene["scenes"][0]["stations"] if scene else [])
+    # Two lessons are built in parts - nw-l01 in three, nw-l06 in two - and a
+    # part is a scene of its own. Reading only the first scene audited five of
+    # nw-l06's ten stations and five of nw-l01's fifteen, and called the rest
+    # absent. Every scene, in order, is the lesson.
+    scene_st = [st for sc in (scene["scenes"] if scene else []) for st in sc.get("stations") or []]
     stations = []
     for i, st in enumerate(scene_st or spec_st):
         name = st.get("name")
         src = spec_st[i] if i < len(spec_st) else {}
         sid = "%s-s%d" % (lid, i + 1)
         tasks = st.get("tasks") or src.get("tasks") or []
-        bullets = src.get("bullets")
+        # A lesson with no spec module can still carry its wall text, if its
+        # build script writes the words it paints into the scene as well. Where
+        # it does, that is the source and it is read here.
+        bullets = src.get("bullets") or st.get("bullets")
         entry = {
             "id": sid,
             "n": i + 1 if not str(st.get("label", "")).startswith("★") else "final",
             "name": name,
             "explains": bullets,
-            "challenge": src.get("challenge") or (salvage or {}).get("challenges", {}).get(name),
+            "challenge": src.get("challenge") or st.get("challenge")
+                         or (salvage or {}).get("challenges", {}).get(name),
             "key_fact_prompt": src.get("fact") or (salvage or {}).get("facts", {}).get(name),
             "activities": [activity(t, "station %d activity %d" % (i + 1, j + 1), sid, j)
                            for j, t in enumerate(tasks)],
@@ -497,7 +505,7 @@ def build(lesson, unit):
     rec["stations"] = stations
 
     # --- what the lesson reads as information rather than teaches
-    info = (scene["scenes"][0].get("info") if scene else None) or []
+    info = [x for sc in (scene["scenes"] if scene else []) for x in sc.get("info") or []]
     rec["information"] = [{"title": f.get("title"), "text": f.get("text")} for f in info]
 
     # --- assessment: the worksheet's exam practice, which is also the deck's

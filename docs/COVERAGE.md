@@ -33,16 +33,16 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 | 1.2 | ms-l16 Revision HQ 1.2 part 2 | 2 | 1 | 1 | 1 | auto |  | 2 |
 | 1.2 | ms-l17-test Assessment 2 | 0 | 0 | 0 | 0 |  | 1 |  |
 | 1.2 | ms-bonus Binary blitz | 0 | 0 | 0 | 0 |  |  |  |
-| 1.3 | nw-l01 Types of network: zoom out | 4 | 1 | 1 | 4 | auto | 5 | 5 |
+| 1.3 | nw-l01 Types of network: zoom out | 4 | 4 | 4 | 4 | auto | 2 | 5 |
 | 1.3 | nw-l02 Network control room | 2 | 2 | 2 | 2 | auto |  | 4 |
 | 1.3 | nw-l03 Network showdown | 3 | 3 | 3 | 3 | auto |  | 2 |
 | 1.3 | nw-l04 Mission: wire up the school | 2 | 1 | 1 | 2 | auto | 2 | 4 |
 | 1.3 | nw-l05 Inside the internet | 4 | 3 | 3 | 4 | auto | 2 | 1 |
-| 1.3 | nw-l06 Star and mesh networks | 4 | 2 | 2 | 4 | auto | 2 | 5 |
+| 1.3 | nw-l06 Star and mesh networks | 4 | 4 | 4 | 4 | authored 4/4 |  | 4 |
 | 1.3 | nw-l07 Revision HQ | 3 | 3 | 3 | 2 | auto |  | 5 |
 | 1.3 | nw-l08-test Assessment 1 | 0 | 0 | 0 | 0 |  |  |  |
 | 1.3 | nw-l09 Connection café | 4 | 4 | 4 | 4 | auto |  | 1 |
-| 1.3 | nw-l10 Cipher room | 4 | 4 | 4 | 3 | auto | 1 | 2 |
+| 1.3 | nw-l10 Cipher room | 4 | 4 | 4 | 2 | auto | 2 | 2 |
 | 1.3 | nw-l11 Address sorting office | 3 | 3 | 3 | 3 | auto |  | 2 |
 | 1.3 | nw-l12 Protocol city | 2 | 2 | 2 | 2 | auto | 1 | 2 |
 | 1.3 | nw-l13 Parcel depot | 2 | 2 | 2 | 2 | auto | 1 | 1 |
@@ -131,13 +131,13 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 | | count |
 |---|---|
 | outcomes in the course | 270 |
-| of those, with an **authored** mapping | 5 |
-| the rest, matched by words and unchecked | 265 |
-| teaching lessons where every activity is recognition | 10 |
-| teaching lessons with only one activity that asks for an answer | 25 |
-| outcomes nothing in their unit assesses | 14 |
+| of those, with an **authored** mapping | 9 |
+| the rest, matched by words and unchecked | 261 |
+| teaching lessons where every activity is recognition | 8 |
+| teaching lessons with only one activity that asks for an answer | 26 |
+| outcomes nothing in their unit assesses | 15 |
 | outcomes no station's text matches | 8 |
-| outcomes that cannot be traced, because the teaching is only in the image | 9 |
+| outcomes that cannot be traced, because the teaching is only in the image | 4 |
 | exam questions matching no outcome stated in their unit | 58 |
 
 
@@ -245,15 +245,9 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 - **ms-l17-test-x3** is assessed but matches no outcome stated anywhere in this unit: Character sets
 
 ### nw-l01 — Types of network: zoom out
-- **nw-l01-o2** know the different types of network: LAN and WAN
-  - cannot be traced: this lesson's station text is only in the rendered image, so there is nothing to match
-- **nw-l01-o3** understand the advantages of networking
-  - cannot be traced: this lesson's station text is only in the rendered image, so there is nothing to match
-- **nw-l01-o4** understand the implications (disadvantages) of networking
-  - cannot be traced: this lesson's station text is only in the rendered image, so there is nothing to match
 - **nw-l01-x2** is assessed but matches no outcome stated anywhere in this unit: Name one advantage of a network.
 - **nw-l01-x3** is assessed but matches no outcome stated anywhere in this unit: Name one disadvantage of a network.
-- the lesson's shape: every activity is recognition: the answer is always on the screen
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 - the lesson's shape: no key vocabulary is listed
 - the lesson's shape: no starter, so nothing retrieves prior knowledge
@@ -285,11 +279,14 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 - the lesson's shape: no optional challenge activity
 
 ### nw-l06 — Star and mesh networks
+- **nw-l06-o1** know what a star network is
+  - *checked by hand:* No exam item on this sheet asks 'what is a star network' on its own, which is right: at GCSE the definition is only ever worth having inside a judgement. It is checked by the two station activities and then has to be used in x4.
 - **nw-l06-o2** know what a mesh network is
-  - cannot be traced: this lesson's station text is only in the rendered image, so there is nothing to match
+  - *checked by hand:* Full mesh, its trade-offs, and the wireless case. Wireless mesh is taught at s9 and assessed nowhere on paper; from October 2026 it is at least applied, in the scenario sort at the final station.
 - **nw-l06-o3** understand that the internet is an example of a partial mesh network
-  - cannot be traced: this lesson's station text is only in the rendered image, so there is nothing to match
-- the lesson's shape: every activity is recognition: the answer is always on the screen
+  - *checked by hand:* One station, two activities, no exam item. Until October 2026 this outcome could not be traced at all, because the only place the lesson said it was the painted wall. The wall says it clearly; the gap was in what could be read, not in what was taught.
+- **nw-l06-o4** know the advantages and disadvantages of star and mesh networks
+  - *checked by hand:* The lesson's real outcome, and the one the four-mark question rests on. s10 now runs in two steps: sort statements to the topology they describe, then choose a topology for six places it has not seen. The second is the rehearsal for x4.
 - the lesson's shape: no optional challenge activity
 - the lesson's shape: no key vocabulary is listed
 - the lesson's shape: no starter, so nothing retrieves prior knowledge
@@ -307,6 +304,8 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 
 ### nw-l10 — Cipher room
 - **nw-l10-o1** know the basics of how cryptography can work with a simple key
+  - nothing in this unit assesses it
+- **nw-l10-o2** know how wireless devices authenticate each other before communicating data
   - nothing in this unit assesses it
 - the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
@@ -619,10 +618,8 @@ These are not empty lessons. Their teaching text is in the rendered 360 image, o
 | ms-l17-test | no stations could be found |
 | ms-bonus | no learning outcomes could be found |
 | ms-bonus | its wall panels exist only as pixels |
-| nw-l01 | its wall panels exist only as pixels |
 | nw-l02 | its wall panels exist only as pixels |
 | nw-l04 | its wall panels exist only as pixels |
-| nw-l06 | its wall panels exist only as pixels |
 | nw-l07 | its wall panels exist only as pixels |
 | nw-l08-test | no learning outcomes could be found |
 | nw-l08-test | no stations could be found |

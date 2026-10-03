@@ -1,0 +1,39 @@
+{
+  "lesson": "nw-l06",
+  "reviewed": "2026-10-03",
+  "note": "Written after recovering the wall text from tools/l6.py, which is where this lesson's teaching had been kept only as pixels. Checked against the recovered walls, the worksheet's exam practice and the activities, station by station.",
+  "outcomes": {
+    "nw-l06-o1": {
+      "taught": ["nw-l06-s1", "nw-l06-s2", "nw-l06-s3", "nw-l06-s4"],
+      "assessed": ["nw-l06-s1-a1", "nw-l06-s1-a2", "nw-l06-x4"],
+      "note": "No exam item on this sheet asks 'what is a star network' on its own, which is right: at GCSE the definition is only ever worth having inside a judgement. It is checked by the two station activities and then has to be used in x4."
+    },
+    "nw-l06-o2": {
+      "taught": ["nw-l06-s6", "nw-l06-s7", "nw-l06-s9"],
+      "assessed": ["nw-l06-x2", "nw-l06-x3", "nw-l06-s6-a1", "nw-l06-s6-a2"],
+      "note": "Full mesh, its trade-offs, and the wireless case. Wireless mesh is taught at s9 and assessed nowhere on paper; from October 2026 it is at least applied, in the scenario sort at the final station."
+    },
+    "nw-l06-o3": {
+      "taught": ["nw-l06-s8"],
+      "assessed": ["nw-l06-s8-a1", "nw-l06-s8-a2"],
+      "note": "One station, two activities, no exam item. Until October 2026 this outcome could not be traced at all, because the only place the lesson said it was the painted wall. The wall says it clearly; the gap was in what could be read, not in what was taught."
+    },
+    "nw-l06-o4": {
+      "taught": ["nw-l06-s2", "nw-l06-s3", "nw-l06-s5", "nw-l06-s7", "nw-l06-s10"],
+      "assessed": ["nw-l06-x1", "nw-l06-x2", "nw-l06-x3", "nw-l06-x4",
+                   "nw-l06-s10-a1", "nw-l06-s10-a2"],
+      "note": "The lesson's real outcome, and the one the four-mark question rests on. s10 now runs in two steps: sort statements to the topology they describe, then choose a topology for six places it has not seen. The second is the rehearsal for x4."
+    }
+  },
+  "assessment": {
+    "nw-l06-x1": { "assesses": ["nw-l06-o1", "nw-l06-o4"] },
+    "nw-l06-x2": { "assesses": ["nw-l06-o2", "nw-l06-o4"] },
+    "nw-l06-x3": { "assesses": ["nw-l06-o2", "nw-l06-o4"] },
+    "nw-l06-x4": { "assesses": ["nw-l06-o1", "nw-l06-o2", "nw-l06-o4"] }
+  },
+  "for the owner": [
+    "Station 5 of each part - 'Break it!' and 'Star vs mesh' - is a hand-drawn panel rather than a station card, so its wall text could not be recovered and the lesson plan lists stations 1-4 and 6-9. That is the same shape as every other lesson in the course, whose final challenge station has no wall list either, so nothing was changed for it.",
+    "This lesson has no key question, no starter and no key vocabulary in any form the build can read, because its worksheet predates tools/wsspecs and survives only as a built .docx. The lesson plan says so on the printout rather than inventing them. Recovering those three is a worksheet-side job, not a lesson-side one, and was left alone here.",
+    "Recovering the walls also fixed nw-l01, which is built by the same script. Its exam items nw-l01-x2 and nw-l01-x3 ask for one advantage and one disadvantage of a network, and the lesson states no outcome about advantages or disadvantages - the wall cards are titled 'Advantages of networks' and 'Disadvantages of networks' but the stated outcomes do not cover them. Either the outcome list is short by one or those two questions belong to a different lesson. That is a decision for you; nothing was changed."
+  ]
+}

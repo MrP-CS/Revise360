@@ -1254,9 +1254,15 @@
       const items = shuffle(task.items), pickd = {};
       /* Eight things to sort, each with four buttons under it, is taller than a
        * laptop screen in one column. Past five they go two abreast where there
-       * is width for it, which is what stops this window being scrolled. */
+       * is width for it, which is what stops this window being scrolled.
+       *
+       * The thing being sorted sits beside its buttons while it is a word. A
+       * whole scenario next to three buttons, in half the window, wraps to one
+       * word a line, so anything longer than a phrase takes the row above the
+       * buttons instead - which is what four categories already did. */
+      const wordy = task.cats.length > 3 || task.items.some(it => it[0].length > 24);
       shell(head, st.col, `${qn}${img}<p class="q">${rich(task.q)}</p>` +
-        `<div class="items${items.length > 5 ? " many" : ""}">${items.map((it, x) => `<div class="item${task.cats.length > 3 ? " stack" : ""}" data-n="${x}"><span>${esc(it[0])}</span><div class="seg">${task.cats.map(c => `<button aria-pressed="false" data-c="${esc(c)}">${esc(c)}</button>`).join("")}</div></div>`).join("")}</div>${tail}`);
+        `<div class="items${items.length > 5 ? " many" : ""}">${items.map((it, x) => `<div class="item${wordy ? " stack" : ""}" data-n="${x}"><span>${esc(it[0])}</span><div class="seg">${task.cats.map(c => `<button aria-pressed="false" data-c="${esc(c)}">${esc(c)}</button>`).join("")}</div></div>`).join("")}</div>${tail}`);
       const row = $("#mrow"), ck = document.createElement("button"); ck.className = "btn"; ck.textContent = "Check my answers"; ck.disabled = true; row.appendChild(ck);
       box.querySelectorAll(".item").forEach(it => { const x = it.dataset.n; it.querySelectorAll(".seg button").forEach(b => b.onclick = () => { pickd[x] = b.dataset.c; it.querySelectorAll(".seg button").forEach(y => y.setAttribute("aria-pressed", y === b)); ck.disabled = Object.keys(pickd).length < items.length; }); });
       box.querySelector(".seg button").focus();

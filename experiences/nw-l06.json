@@ -40,7 +40,12 @@
        ],
        "fb": "Each device has its own dedicated cable to the switch. Cables to every other device would be a full mesh."
       }
-     ]
+     ],
+     "bullets": [
+      "Every device connects to a central switch with its own cable.",
+      "All data travels through the switch, which sends it on to the device it is meant for."
+     ],
+     "challenge": "Why is it called a star network? Sketch one with five computers on your worksheet."
     },
     {
      "label": "2",
@@ -74,7 +79,13 @@
        ],
        "fb": "The switch forwards each piece of data only where it needs to go, which keeps traffic down."
       }
-     ]
+     ],
+     "bullets": [
+      "If one cable fails, only that device is affected.",
+      "Easy to add a new device: just plug in one more cable.",
+      "Fast and reliable: the switch only sends data where it needs to go."
+     ],
+     "challenge": "One cable in a star network is cut. Which devices lose their connection?"
     },
     {
      "label": "3",
@@ -108,7 +119,12 @@
        ],
        "fb": "Running a separate cable from every device to the switch adds up to a lot of cable and installation work."
       }
-     ]
+     ],
+     "bullets": [
+      "If the central switch fails, every device loses its connection. It is a single point of failure.",
+      "Every device needs its own cable back to the switch, so it uses a lot of cable, which costs money."
+     ],
+     "challenge": "What is the biggest weakness of a star network? Explain why."
     },
     {
      "label": "4",
@@ -142,7 +158,12 @@
        ],
        "fb": "Each star still works on its own. Only traffic between the two stars is cut off."
       }
-     ]
+     ],
+     "bullets": [
+      "Bigger networks join several stars together by linking their switches with a cable.",
+      "Devices on different switches communicate over this link."
+     ],
+     "challenge": "The link cable between two switches is cut. Who can still talk to whom?"
     },
     {
      "label": "5",
@@ -296,7 +317,12 @@
        ],
        "fb": "Each of the 4 devices links to the 3 others: 4 × 3 = 12, but each cable joins two devices, so 12 ÷ 2 = 6."
       }
-     ]
+     ],
+     "bullets": [
+      "Every device is connected directly to every other device.",
+      "Data can travel along many different routes to reach its destination."
+     ],
+     "challenge": "Count the cables in the picture. How many would you need to connect four devices in a full mesh?"
     },
     {
      "label": "2",
@@ -330,7 +356,13 @@
        ],
        "fb": "The number of cables grows quickly as devices are added, which makes a full mesh costly."
       }
-     ]
+     ],
+     "bullets": [
+      "No single point of failure: if a link fails, data is rerouted along another path.",
+      "Can handle lots of traffic, because data is spread across many routes.",
+      "Needs a lot of cable and is difficult to set up, so it is expensive."
+     ],
+     "challenge": "Why would a bank's data centre choose a mesh rather than a star?"
     },
     {
      "label": "3",
@@ -364,7 +396,12 @@
        ],
        "fb": "Because the internet is a mesh, other routes are available around the failed router."
       }
-     ]
+     ],
+     "bullets": [
+      "In a partial mesh, devices connect to several others, but not to all of them.",
+      "The internet is a partial mesh: routers link to a few other routers, so there is always another route."
+     ],
+     "challenge": "Why isn't the internet a full mesh?"
     },
     {
      "label": "4",
@@ -398,7 +435,12 @@
        ],
        "fb": "Every hop between WAPs adds delay, and walls and other devices can weaken the signal."
       }
-     ]
+     ],
+     "bullets": [
+      "Wireless access points connect to each other by Wi-Fi. Each one must be in range of at least one other.",
+      "Only one WAP needs a cable. Coverage is easy to extend, but data slows down as it hops between WAPs."
+     ],
+     "challenge": "Why might a wireless mesh be a good choice for a large house or an old building?"
     },
     {
      "label": "5",
@@ -444,6 +486,42 @@
         ]
        ],
        "fb": "Use these to answer the worksheet question: why is a mesh network better than a star network, and when would you still choose a star?"
+      },
+      {
+       "t": "sort",
+       "q": "Now choose. Which network would you fit in each of these places?",
+       "cats": [
+        "Star",
+        "Full mesh",
+        "Wireless mesh"
+       ],
+       "items": [
+        [
+         "A classroom of 30 computers, on a tight budget",
+         "Star"
+        ],
+        [
+         "A hospital, where a failed link must not stop the data",
+         "Full mesh"
+        ],
+        [
+         "A listed building, where no cable may be fixed to a wall",
+         "Wireless mesh"
+        ],
+        [
+         "An office that plugs in a new computer most weeks",
+         "Star"
+        ],
+        [
+         "A park that needs Wi-Fi right across it",
+         "Wireless mesh"
+        ],
+        [
+         "A bank's data centre, where staying up matters more than cost",
+         "Full mesh"
+        ]
+       ],
+       "fb": "Each one turns on a single reason. Tight budget and one more cable point to a star. Surviving a broken link points to a full mesh. No cabling, or coverage to spread, points to a wireless mesh. In the exam the reason earns the mark, not the name."
       }
      ]
     }

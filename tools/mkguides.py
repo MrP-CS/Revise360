@@ -118,8 +118,13 @@ KINDS = [
 
 
 def check_kinds():
-    src = open(os.path.join(ROOT, "js", "player.js"), encoding="utf-8").read()
-    on_screen = set(re.findall(r'label: "([^"]+)"', src))
+    # The names of the Python activity kinds were read out of player.js until
+    # the parity pass moved them into pyactivity.js, which is now the one place
+    # both the page and the headset read them from. This read player.js for a
+    # while afterwards, found nothing, and stopped the guides being rebuilt at
+    # all; smokeguides.py said so by calling them older than player.js.
+    src = open(os.path.join(ROOT, "js", "pyactivity.js"), encoding="utf-8").read()
+    on_screen = set(re.findall(r'label:\s*"([^"]+)"', src))
     on_screen.add("Challenge")                       # stageOf() for an optional one
     mine = {k[0] for k in KINDS}
     if mine != on_screen:
