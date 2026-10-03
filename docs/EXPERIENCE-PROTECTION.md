@@ -86,6 +86,56 @@ anyone who is not. The dashboard panel says so on the page itself:
 > These files are served as ordinary downloads. This build has no server to check
 > who is asking, so treat the links as private rather than protected.
 
+## What is reachable today
+
+`tools/audit_exposure.py` walks everything git publishes and reports it by kind.
+Run it before any release; `--strict` makes it fail when answer material, a
+secret or a student record is published.
+
+As of the last run:
+
+| kind | published | linked from a pupil's page |
+|---|---|---|
+| answer material | none | — |
+| teacher material (plans, unit guides, packs) | 202 files, at ordinary addresses | no |
+| experience assets (scenes, images, scripts) | 105 scenes, 316 images, 39 scripts | yes, by the player, as the browser must |
+| secrets | none | — |
+| student records | none | — |
+
+It was validated by planting an answer file, a mark scheme, an AWS key and a
+roster and confirming each was reported. The first attempt **missed**
+`AL_L01_Answers.md`, because the pattern anchored to the start of a path segment
+and a real answer sheet is named with an underscore in front of the word. That is
+why the check is now a word boundary, and why it was worth planting the file.
+
+The password-shaped strings in the Python course's authentication lesson are its
+teaching content — `PASSWORD = "Owl4472"` is a fictional passcode in a question
+about comparing a typed entry against a stored one — and are deliberately not
+treated as secrets.
+
+### Three answer files are still in the repository's history
+
+A public repository publishes its history, and deleting a file does not remove it
+from the commit that added it. These are still fetchable by anyone who knows the
+commit:
+
+```
+tools/topic21/TeachingAnswers.md                        (1,459 lines of model answers)
+worksheets/AL_L17_AlgorithmsAssessment_MarkScheme.docx
+worksheets/AL_L17_AlgorithmsAssessment_MarkScheme.pdf
+```
+
+All three were removed from the working tree long ago. Taking them out of the
+history means rewriting it and force-pushing, which changes every commit id and
+breaks every existing clone and link. **That is the owner's decision, not a build
+step, and nothing in this repository will do it automatically.** If it is wanted,
+the tool is `git filter-repo --path <file> --invert-paths` followed by a force
+push, and every collaborator re-clones afterwards.
+
+Until then, treat those three as published. The practical consequence is small —
+they are answers to topic 2.1, which a determined pupil could reach — but it is
+real, and it should not be described as private.
+
 ### What would make it real
 
 The dependency is one thing: a server, or a trusted gateway, that authorises each
