@@ -1,0 +1,551 @@
+{
+ "topic": "2.2",
+ "lesson": "pf-l02",
+ "questions": [
+  {
+   "type": "match",
+   "q": "Match each value to its data type.",
+   "pairs": [
+    [
+     "17",
+     "Integer"
+    ],
+    [
+     "3.5",
+     "Real"
+    ],
+    [
+     "True",
+     "Boolean"
+    ],
+    [
+     "'k'",
+     "Character"
+    ],
+    [
+     "'Revise 360'",
+     "String"
+    ]
+   ],
+   "marks": 5,
+   "feedback": "A character is one symbol; a string is any number of them, including one.",
+   "commandWord": "draw",
+   "difficulty": "retrieve",
+   "subtopic": "Data types",
+   "revisit": "pf-l02-s1",
+   "revisitReason": "Data types",
+   "outcomes": [
+    "pf-l02-o1"
+   ],
+   "topic": "2.2",
+   "id": "rq-2.2-data-types-0004",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pf-l02",
+   "revisitStationId": "pf-l02-s1",
+   "revisitLabel": "2.2 Lesson 2 — Type foundry, station 1: Data types",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "mcq",
+   "q": "Which data type should be used for a variable holding the number of pupils in a class?",
+   "options": [
+    "Integer",
+    "Real",
+    "String",
+    "Boolean"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "A whole number that will be counted and compared. Storing it as a string would stop it being used in arithmetic.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "Data types",
+   "revisit": "pf-l02-s1",
+   "revisitReason": "Data types",
+   "outcomes": [
+    "pf-l02-o1"
+   ],
+   "topic": "2.2",
+   "id": "rq-2.2-data-types-0005",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pf-l02",
+   "revisitStationId": "pf-l02-s1",
+   "revisitLabel": "2.2 Lesson 2 — Type foundry, station 1: Data types",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "Explain why a program has to cast the result of an input before using it in a calculation.",
+   "markPoints": [
+    {
+     "concept": "input is received as a string",
+     "accept": [
+      [
+       "input|entered|typed|read",
+       "string|text|characters|str"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Whatever is typed in is received as a string."
+    },
+    {
+     "concept": "so it has to be converted to a number before arithmetic will work",
+     "accept": [
+      [
+       "integer|int|real|float|number|numeric"
+      ],
+      [
+       "convert|converted|cast|change|changed|turn|turned"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "It has to be converted to an integer before it can be used in a calculation."
+    }
+   ],
+   "example": "Anything typed in arrives as a string, even when it looks like a number, so it has to be cast to an integer or a real before it can be used in arithmetic — otherwise adding two inputs would join them end to end instead of adding them.",
+   "paraphrase": "Keyboard input always comes back as text, which means it must be converted into a numeric type before any sum will work on it.",
+   "marks": 2,
+   "feedback": "What input gives you, and what it has to become.",
+   "commandWord": "explain",
+   "difficulty": "understand",
+   "examStyle": true,
+   "subtopic": "Data types",
+   "revisit": "pf-l02-s1",
+   "revisitReason": "Data types",
+   "outcomes": [
+    "pf-l02-o1"
+   ],
+   "topic": "2.2",
+   "id": "rq-2.2-data-types-0006",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pf-l02",
+   "revisitStationId": "pf-l02-s1",
+   "revisitLabel": "2.2 Lesson 2 — Type foundry, station 1: Data types",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "codeout",
+   "q": "What does this program print, and why is it not 9?",
+   "code": "a = '4'\nb = '5'\nprint(a + b)",
+   "answer": "45",
+   "exact": "text",
+   "lang": "python",
+   "marks": 1,
+   "feedback": "Both values are strings, so + joins them rather than adding them. This is exactly what casting is for.",
+   "commandWord": "state",
+   "difficulty": "apply",
+   "examStyle": true,
+   "misconception": "Expecting 9 assumes they are numbers. The quotation marks say otherwise.",
+   "subtopic": "Data types",
+   "revisit": "pf-l02-s1",
+   "revisitReason": "Data types",
+   "outcomes": [
+    "pf-l02-o1"
+   ],
+   "topic": "2.2",
+   "id": "rq-2.2-data-types-0030",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pf-l02",
+   "revisitStationId": "pf-l02-s1",
+   "revisitLabel": "2.2 Lesson 2 — Type foundry, station 1: Data types",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "match",
+   "q": "Match each operator to what it gives.",
+   "pairs": [
+    [
+     "7 / 2",
+     "3.5"
+    ],
+    [
+     "7 // 2",
+     "3"
+    ],
+    [
+     "7 % 2",
+     "1"
+    ],
+    [
+     "7 ** 2",
+     "49"
+    ]
+   ],
+   "marks": 4,
+   "feedback": "// is whole-number division and % is the remainder. ** is to the power of.",
+   "commandWord": "draw",
+   "difficulty": "understand",
+   "subtopic": "Arithmetic operators",
+   "revisit": "pf-l02-s4",
+   "revisitReason": "Arithmetic operators",
+   "outcomes": [
+    "pf-l02-o3"
+   ],
+   "topic": "2.2",
+   "id": "rq-2.2-arithmetic-operators-0008",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pf-l02",
+   "revisitStationId": "pf-l02-s4",
+   "revisitLabel": "2.2 Lesson 2 — Type foundry, station 4: MOD and DIV",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "num",
+   "q": "What is the result of 17 MOD 5?",
+   "answer": 2,
+   "working": "17 % 5",
+   "marks": 1,
+   "feedback": "17 ÷ 5 is 3 remainder 2, and MOD gives the remainder.",
+   "commandWord": "calculate",
+   "difficulty": "apply",
+   "subtopic": "Arithmetic operators",
+   "revisit": "pf-l02-s4",
+   "revisitReason": "Arithmetic operators",
+   "outcomes": [
+    "pf-l02-o3"
+   ],
+   "topic": "2.2",
+   "id": "rq-2.2-arithmetic-operators-0009",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pf-l02",
+   "revisitStationId": "pf-l02-s4",
+   "revisitLabel": "2.2 Lesson 2 — Type foundry, station 4: MOD and DIV",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "num",
+   "q": "What is the result of 17 DIV 5?",
+   "answer": 3,
+   "working": "17 // 5",
+   "marks": 1,
+   "feedback": "DIV gives the whole number of times 5 goes into 17, throwing the remainder away.",
+   "commandWord": "calculate",
+   "difficulty": "apply",
+   "subtopic": "Arithmetic operators",
+   "revisit": "pf-l02-s4",
+   "revisitReason": "Arithmetic operators",
+   "outcomes": [
+    "pf-l02-o3"
+   ],
+   "topic": "2.2",
+   "id": "rq-2.2-arithmetic-operators-0010",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pf-l02",
+   "revisitStationId": "pf-l02-s4",
+   "revisitLabel": "2.2 Lesson 2 — Type foundry, station 4: MOD and DIV",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "codeout",
+   "q": "What does this program print when 23 items are packed into boxes of six?",
+   "code": "total = 23\nboxes = total // 6\nleft = total % 6\nprint(boxes, left)",
+   "answer": "3 5",
+   "exact": "text",
+   "lang": "python",
+   "marks": 1,
+   "feedback": "23 ÷ 6 is 3 remainder 5, so three full boxes with five left over. This pair of operators is how a program packs things into boxes.",
+   "commandWord": "state",
+   "difficulty": "apply",
+   "subtopic": "Arithmetic operators",
+   "revisit": "pf-l02-s4",
+   "revisitReason": "Arithmetic operators",
+   "outcomes": [
+    "pf-l02-o3"
+   ],
+   "topic": "2.2",
+   "id": "rq-2.2-arithmetic-operators-0031",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pf-l02",
+   "revisitStationId": "pf-l02-s4",
+   "revisitLabel": "2.2 Lesson 2 — Type foundry, station 4: MOD and DIV",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "mcq",
+   "q": "A program must work out how many full minutes are in 200 seconds. Which expression gives the answer?",
+   "options": [
+    "200 DIV 60",
+    "200 MOD 60",
+    "200 / 60",
+    "60 DIV 200"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "DIV gives whole minutes; MOD would give the seconds left over.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "subtopic": "Arithmetic operators",
+   "revisit": "pf-l02-s4",
+   "revisitReason": "Arithmetic operators",
+   "outcomes": [
+    "pf-l02-o3"
+   ],
+   "topic": "2.2",
+   "id": "rq-2.2-arithmetic-operators-0011",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pf-l02",
+   "revisitStationId": "pf-l02-s4",
+   "revisitLabel": "2.2 Lesson 2 — Type foundry, station 4: MOD and DIV",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "mcq",
+   "q": "Which comparison operator means 'is not equal to'?",
+   "options": [
+    "!=",
+    "==",
+    "=",
+    ">="
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "A single = assigns a value; == compares; != compares for difference.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "Comparison and Boolean operators",
+   "revisit": "pf-l02-s5",
+   "revisitReason": "Comparison and Boolean operators",
+   "outcomes": [
+    "pf-l02-o3"
+   ],
+   "topic": "2.2",
+   "id": "rq-2.2-comparison-and-boolean-operators-0012",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pf-l02",
+   "revisitStationId": "pf-l02-s5",
+   "revisitLabel": "2.2 Lesson 2 — Type foundry, station 5: Comparison and Boolean operators",
+   "revisitScene": 0,
+   "revisitK": 4
+  },
+  {
+   "type": "codeout",
+   "q": "What does this program print for a 15-year-old member?",
+   "code": "age = 15\nmember = True\nif age >= 16 or member:\n    print('Allowed')\nelse:\n    print('Refused')",
+   "answer": "Allowed",
+   "exact": "text",
+   "lang": "python",
+   "marks": 1,
+   "feedback": "The age test fails but member is True, and or needs only one side to be true.",
+   "commandWord": "state",
+   "difficulty": "apply",
+   "subtopic": "Comparison and Boolean operators",
+   "revisit": "pf-l02-s5",
+   "revisitReason": "Comparison and Boolean operators",
+   "outcomes": [
+    "pf-l02-o3"
+   ],
+   "topic": "2.2",
+   "id": "rq-2.2-comparison-and-boolean-operators-0032",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pf-l02",
+   "revisitStationId": "pf-l02-s5",
+   "revisitLabel": "2.2 Lesson 2 — Type foundry, station 5: Comparison and Boolean operators",
+   "revisitScene": 0,
+   "revisitK": 4
+  },
+  {
+   "type": "codeout",
+   "q": "What does this program print for a score of 48?",
+   "code": "score = 48\nif score > 70:\n    print('Distinction')\nelif score > 50:\n    print('Merit')\nelif score > 40:\n    print('Pass')\nelse:\n    print('Fail')",
+   "answer": "Pass",
+   "exact": "text",
+   "lang": "python",
+   "marks": 1,
+   "feedback": "The first two tests fail and the third succeeds. Once a branch is taken, the rest are skipped.",
+   "commandWord": "state",
+   "difficulty": "apply",
+   "subtopic": "Comparison and Boolean operators",
+   "revisit": "pf-l02-s5",
+   "revisitReason": "Comparison and Boolean operators",
+   "outcomes": [
+    "pf-l02-o3"
+   ],
+   "topic": "2.2",
+   "id": "rq-2.2-comparison-and-boolean-operators-0033",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pf-l02",
+   "revisitStationId": "pf-l02-s5",
+   "revisitLabel": "2.2 Lesson 2 — Type foundry, station 5: Comparison and Boolean operators",
+   "revisitScene": 0,
+   "revisitK": 4
+  },
+  {
+   "type": "written",
+   "q": "Explain why using = instead of == inside an if statement is a mistake.",
+   "markPoints": [
+    {
+     "concept": "a single = assigns a value rather than comparing two",
+     "accept": [
+      [
+       "assign|assigns|assignment|assigning|sets|puts|stores",
+       "value|variable|equals|it"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "A single = assigns a value rather than comparing two."
+    },
+    {
+     "concept": "so the condition does not test what the programmer intended",
+     "accept": [
+      [
+       "compare|comparison|compares|comparing|not test|does not test|not what|not comparing"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "So the condition does not test what was intended."
+    }
+   ],
+   "example": "A single = assigns a value to a variable, while == compares two values, so an if statement written with a single = is not testing anything — in many languages it would also overwrite the variable being tested.",
+   "paraphrase": "One equals sign stores a value in a variable instead of comparing, which means the condition is not actually checking what the programmer wanted it to check.",
+   "marks": 2,
+   "feedback": "Assignment against comparison, and then the consequence.",
+   "commandWord": "explain",
+   "difficulty": "understand",
+   "subtopic": "Comparison and Boolean operators",
+   "revisit": "pf-l02-s5",
+   "revisitReason": "Comparison and Boolean operators",
+   "outcomes": [
+    "pf-l02-o3"
+   ],
+   "topic": "2.2",
+   "id": "rq-2.2-comparison-and-boolean-operators-0013",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pf-l02",
+   "revisitStationId": "pf-l02-s5",
+   "revisitLabel": "2.2 Lesson 2 — Type foundry, station 5: Comparison and Boolean operators",
+   "revisitScene": 0,
+   "revisitK": 4
+  },
+  {
+   "type": "codeout",
+   "q": "What does this program print for the word Revise?",
+   "code": "name = 'Revise'\nprint(len(name))",
+   "answer": "6",
+   "exact": "text",
+   "lang": "python",
+   "marks": 1,
+   "feedback": "len counts the characters: R, e, v, i, s, e.",
+   "commandWord": "state",
+   "difficulty": "apply",
+   "subtopic": "String manipulation",
+   "revisit": "pf-l02-s6",
+   "revisitReason": "String manipulation",
+   "outcomes": [
+    "pf-l02-o3"
+   ],
+   "topic": "2.2",
+   "id": "rq-2.2-string-manipulation-0034",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pf-l02",
+   "revisitStationId": "pf-l02-s6",
+   "revisitLabel": "2.2 Lesson 2 — Type foundry, station 6: String manipulation",
+   "revisitScene": 0,
+   "revisitK": 5
+  },
+  {
+   "type": "codeout",
+   "q": "What does this slice of the word computer print?",
+   "code": "word = 'computer'\nprint(word[0:4])",
+   "answer": "comp",
+   "exact": "text",
+   "lang": "python",
+   "marks": 1,
+   "feedback": "A slice runs from the first index up to but not including the second, so 0 to 3.",
+   "commandWord": "state",
+   "difficulty": "apply",
+   "misconception": "Expecting 'compu' counts index 4 as well. The end of a slice is not included.",
+   "subtopic": "String manipulation",
+   "revisit": "pf-l02-s6",
+   "revisitReason": "String manipulation",
+   "outcomes": [
+    "pf-l02-o3"
+   ],
+   "topic": "2.2",
+   "id": "rq-2.2-string-manipulation-0035",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pf-l02",
+   "revisitStationId": "pf-l02-s6",
+   "revisitLabel": "2.2 Lesson 2 — Type foundry, station 6: String manipulation",
+   "revisitScene": 0,
+   "revisitK": 5
+  },
+  {
+   "type": "codeout",
+   "q": "What does this program print after lowering the case and joining a number?",
+   "code": "s = 'GCSE'\nprint(s.lower() + str(9))",
+   "answer": "gcse9",
+   "exact": "text",
+   "lang": "python",
+   "marks": 1,
+   "feedback": "lower() makes it lower case and str() turns the number into text so it can be joined.",
+   "commandWord": "state",
+   "difficulty": "apply",
+   "subtopic": "String manipulation",
+   "revisit": "pf-l02-s6",
+   "revisitReason": "String manipulation",
+   "outcomes": [
+    "pf-l02-o3"
+   ],
+   "topic": "2.2",
+   "id": "rq-2.2-string-manipulation-0036",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pf-l02",
+   "revisitStationId": "pf-l02-s6",
+   "revisitLabel": "2.2 Lesson 2 — Type foundry, station 6: String manipulation",
+   "revisitScene": 0,
+   "revisitK": 5
+  },
+  {
+   "type": "num",
+   "q": "A string holds 'Revise 360'. What does len() return for it?",
+   "answer": 10,
+   "working": "10",
+   "marks": 1,
+   "feedback": "Ten characters, because the space counts.",
+   "commandWord": "calculate",
+   "difficulty": "understand",
+   "misconception": "Forgetting the space gives 9.",
+   "subtopic": "String manipulation",
+   "revisit": "pf-l02-s6",
+   "revisitReason": "String manipulation",
+   "outcomes": [
+    "pf-l02-o3"
+   ],
+   "topic": "2.2",
+   "id": "rq-2.2-string-manipulation-0014",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pf-l02",
+   "revisitStationId": "pf-l02-s6",
+   "revisitLabel": "2.2 Lesson 2 — Type foundry, station 6: String manipulation",
+   "revisitScene": 0,
+   "revisitK": 5
+  }
+ ]
+}

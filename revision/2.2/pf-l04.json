@@ -1,0 +1,154 @@
+{
+ "topic": "2.2",
+ "lesson": "pf-l04",
+ "questions": [
+  {
+   "type": "match",
+   "q": "Match each SQL keyword to what it does.",
+   "pairs": [
+    [
+     "SELECT",
+     "Chooses which fields to show"
+    ],
+    [
+     "FROM",
+     "Says which table to look in"
+    ],
+    [
+     "WHERE",
+     "Says which records to include"
+    ],
+    [
+     "LIKE",
+     "Matches part of a value using a wildcard"
+    ]
+   ],
+   "marks": 4,
+   "feedback": "SELECT picks columns, WHERE picks rows.",
+   "commandWord": "draw",
+   "difficulty": "retrieve",
+   "subtopic": "Records and SQL",
+   "revisit": "pf-l04-s3",
+   "revisitReason": "Records and SQL",
+   "outcomes": [
+    "pf-l04-o1",
+    "pf-l04-o2",
+    "pf-l04-o3"
+   ],
+   "topic": "2.2",
+   "id": "rq-2.2-records-and-sql-0018",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pf-l04",
+   "revisitStationId": "pf-l04-s3",
+   "revisitLabel": "2.2 Lesson 4 — Record vault, station 3: SELECT and FROM",
+   "revisitScene": 0,
+   "revisitK": 2
+  },
+  {
+   "type": "mcq",
+   "q": "Which query returns the name and form of every pupil in year 11?",
+   "options": [
+    "SELECT Name, Form FROM Pupils WHERE Year = 11",
+    "SELECT Pupils FROM Name, Form WHERE Year = 11",
+    "SELECT Name, Form WHERE Pupils FROM Year = 11",
+    "SELECT * FROM Pupils"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Fields after SELECT, table after FROM, condition after WHERE. The last option returns everything about everybody.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Records and SQL",
+   "revisit": "pf-l04-s3",
+   "revisitReason": "Records and SQL",
+   "outcomes": [
+    "pf-l04-o1",
+    "pf-l04-o2",
+    "pf-l04-o3"
+   ],
+   "topic": "2.2",
+   "id": "rq-2.2-records-and-sql-0019",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pf-l04",
+   "revisitStationId": "pf-l04-s3",
+   "revisitLabel": "2.2 Lesson 4 — Record vault, station 3: SELECT and FROM",
+   "revisitScene": 0,
+   "revisitK": 2
+  },
+  {
+   "type": "short",
+   "q": "State what is meant by a field in a database table.",
+   "markPoints": [
+    {
+     "concept": "one item of data held about each record, shown as a column",
+     "accept": [
+      [
+       "column|category|attribute|item of data|piece of data|one piece|type of data|heading"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "One item of data held about each record, such as surname."
+    }
+   ],
+   "example": "A single item of data held about every record, such as the surname field — a column in the table.",
+   "paraphrase": "One column of the table: a single piece of information stored for each record.",
+   "marks": 1,
+   "feedback": "A field is a column; a record is a row.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "Records and SQL",
+   "revisit": "pf-l04-s3",
+   "revisitReason": "Records and SQL",
+   "outcomes": [
+    "pf-l04-o1",
+    "pf-l04-o2",
+    "pf-l04-o3"
+   ],
+   "topic": "2.2",
+   "id": "rq-2.2-records-and-sql-0020",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pf-l04",
+   "revisitStationId": "pf-l04-s3",
+   "revisitLabel": "2.2 Lesson 4 — Record vault, station 3: SELECT and FROM",
+   "revisitScene": 0,
+   "revisitK": 2
+  },
+  {
+   "type": "mcq",
+   "q": "A table of books has a Title field. Which query finds every book whose title starts with 'The'?",
+   "options": [
+    "SELECT * FROM Books WHERE Title LIKE 'The%'",
+    "SELECT * FROM Books WHERE Title = 'The'",
+    "SELECT * FROM Books WHERE Title LIKE '%The'",
+    "SELECT Title FROM Books WHERE 'The'"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "The wildcard goes where the unknown part is, so 'The%' means 'starts with The'.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Records and SQL",
+   "revisit": "pf-l04-s3",
+   "revisitReason": "Records and SQL",
+   "outcomes": [
+    "pf-l04-o1",
+    "pf-l04-o2",
+    "pf-l04-o3"
+   ],
+   "topic": "2.2",
+   "id": "rq-2.2-records-and-sql-0021",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pf-l04",
+   "revisitStationId": "pf-l04-s3",
+   "revisitLabel": "2.2 Lesson 4 — Record vault, station 3: SELECT and FROM",
+   "revisitScene": 0,
+   "revisitK": 2
+  }
+ ]
+}

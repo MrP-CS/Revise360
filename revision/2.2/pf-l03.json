@@ -1,0 +1,135 @@
+{
+ "topic": "2.2",
+ "lesson": "pf-l03",
+ "questions": [
+  {
+   "type": "written",
+   "q": "Explain the difference between opening a file to write and opening it to append.",
+   "markPoints": [
+    {
+     "concept": "writing replaces what was already in the file",
+     "accept": [
+      [
+       "write|writing|w mode|writes"
+      ],
+      [
+       "replace|replaces|overwrite|overwrites|deletes|erases|clears|starts again|empty|wipes|lost"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Opening a file to write replaces whatever was in it."
+    },
+    {
+     "concept": "appending adds to the end, keeping what was there",
+     "accept": [
+      [
+       "append|appending|a mode"
+      ],
+      [
+       "end|adds|added|keeps|kept|existing|without deleting|on to"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Appending adds to the end and keeps what was already there."
+    }
+   ],
+   "example": "Opening a file for writing clears it, so whatever was in it is lost and the new data starts from an empty file. Opening it to append keeps the existing contents and adds the new data to the end.",
+   "paraphrase": "Write mode wipes the file and starts fresh, whereas append mode preserves what is already stored and tacks the new data on at the end.",
+   "marks": 2,
+   "feedback": "Both halves. The mark is lost most often by saying what append does without saying what write does to the old contents.",
+   "commandWord": "explain",
+   "difficulty": "understand",
+   "examStyle": true,
+   "subtopic": "File handling",
+   "revisit": "pf-l03-s4",
+   "revisitReason": "File handling",
+   "outcomes": [
+    "pf-l03-o1",
+    "pf-l03-o2",
+    "pf-l03-o3"
+   ],
+   "topic": "2.2",
+   "id": "rq-2.2-file-handling-0015",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pf-l03",
+   "revisitStationId": "pf-l03-s4",
+   "revisitLabel": "2.2 Lesson 3 — Filing room, station 4: Writing to a file",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "short",
+   "q": "Give one reason a program should close a file when it has finished with it.",
+   "markPoints": [
+    {
+     "concept": "the data is written out properly and the file is freed for others",
+     "accept": [
+      [
+       "saved|written|stored|flushed|not lost|properly|complete|corrupt"
+      ],
+      [
+       "free|freed|release|released|available|another program|other programs|locked|unlock"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "So that everything is written out properly and nothing is lost."
+    }
+   ],
+   "example": "So that everything the program wrote is actually saved to the file rather than left unwritten, and so that other programs can use it.",
+   "paraphrase": "To make sure the data really is stored and to let anything else open the file.",
+   "marks": 1,
+   "feedback": "Either reason earns the mark. Both are about what happens to the file after the program stops needing it.",
+   "commandWord": "give",
+   "difficulty": "retrieve",
+   "subtopic": "File handling",
+   "revisit": "pf-l03-s4",
+   "revisitReason": "File handling",
+   "outcomes": [
+    "pf-l03-o1",
+    "pf-l03-o2",
+    "pf-l03-o3"
+   ],
+   "topic": "2.2",
+   "id": "rq-2.2-file-handling-0016",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pf-l03",
+   "revisitStationId": "pf-l03-s4",
+   "revisitLabel": "2.2 Lesson 3 — Filing room, station 4: Writing to a file",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "order",
+   "q": "Put the steps of reading a file in a program into order.",
+   "steps": [
+    "Open the file in read mode",
+    "Read a line from the file",
+    "Process the line that was read",
+    "Close the file"
+   ],
+   "marks": 4,
+   "feedback": "Open, read, use, close. The close is the step most often forgotten.",
+   "commandWord": "complete",
+   "difficulty": "retrieve",
+   "subtopic": "File handling",
+   "revisit": "pf-l03-s4",
+   "revisitReason": "File handling",
+   "outcomes": [
+    "pf-l03-o1",
+    "pf-l03-o2",
+    "pf-l03-o3"
+   ],
+   "topic": "2.2",
+   "id": "rq-2.2-file-handling-0017",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pf-l03",
+   "revisitStationId": "pf-l03-s4",
+   "revisitLabel": "2.2 Lesson 3 — Filing room, station 4: Writing to a file",
+   "revisitScene": 0,
+   "revisitK": 3
+  }
+ ]
+}

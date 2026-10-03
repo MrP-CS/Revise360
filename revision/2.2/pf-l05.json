@@ -1,0 +1,342 @@
+{
+ "topic": "2.2",
+ "lesson": "pf-l05",
+ "questions": [
+  {
+   "type": "codeout",
+   "q": "What does this program print for index 2 of the array?",
+   "code": "scores = [12, 7, 19, 4]\nprint(scores[2])",
+   "answer": "19",
+   "exact": "text",
+   "lang": "python",
+   "marks": 1,
+   "feedback": "Arrays are indexed from 0, so index 2 is the third item.",
+   "commandWord": "state",
+   "difficulty": "apply",
+   "misconception": "Expecting 7 counts from 1 instead of 0.",
+   "subtopic": "Arrays",
+   "revisit": "pf-l05-s1",
+   "revisitReason": "Arrays",
+   "outcomes": [
+    "pf-l05-o1",
+    "pf-l05-o2"
+   ],
+   "topic": "2.2",
+   "id": "rq-2.2-arrays-0037",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pf-l05",
+   "revisitStationId": "pf-l05-s1",
+   "revisitLabel": "2.2 Lesson 5 — Array yard, station 1: One-dimensional arrays",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "num",
+   "q": "An array is declared to hold 10 items. What is the index of the last one?",
+   "answer": 9,
+   "working": "10 - 1",
+   "marks": 1,
+   "feedback": "Indexing starts at 0, so ten items run from 0 to 9.",
+   "commandWord": "calculate",
+   "difficulty": "understand",
+   "subtopic": "Arrays",
+   "revisit": "pf-l05-s1",
+   "revisitReason": "Arrays",
+   "outcomes": [
+    "pf-l05-o1",
+    "pf-l05-o2"
+   ],
+   "topic": "2.2",
+   "id": "rq-2.2-arrays-0022",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pf-l05",
+   "revisitStationId": "pf-l05-s1",
+   "revisitLabel": "2.2 Lesson 5 — Array yard, station 1: One-dimensional arrays",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "codeout",
+   "q": "What does this program print from the two-dimensional array?",
+   "code": "grid = [[1, 2, 3], [4, 5, 6]]\nprint(grid[1][2])",
+   "answer": "6",
+   "exact": "text",
+   "lang": "python",
+   "marks": 1,
+   "feedback": "The first index chooses the row and the second chooses the position in it: row 1 is [4, 5, 6], and position 2 of that is 6.",
+   "hint": "Which index chooses the row, and which chooses the position in it?",
+   "commandWord": "state",
+   "difficulty": "stretch",
+   "examStyle": true,
+   "subtopic": "Arrays",
+   "revisit": "pf-l05-s1",
+   "revisitReason": "Arrays",
+   "outcomes": [
+    "pf-l05-o1",
+    "pf-l05-o2"
+   ],
+   "topic": "2.2",
+   "id": "rq-2.2-arrays-0038",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pf-l05",
+   "revisitStationId": "pf-l05-s1",
+   "revisitLabel": "2.2 Lesson 5 — Array yard, station 1: One-dimensional arrays",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "codeout",
+   "q": "What does this program print when it totals the array?",
+   "code": "nums = [5, 10, 15, 20]\ntotal = 0\nfor n in nums:\n    total = total + n\nprint(total)",
+   "answer": "50",
+   "exact": "text",
+   "lang": "python",
+   "marks": 1,
+   "feedback": "The loop visits each item and adds it to the running total.",
+   "commandWord": "state",
+   "difficulty": "apply",
+   "subtopic": "Arrays",
+   "revisit": "pf-l05-s1",
+   "revisitReason": "Arrays",
+   "outcomes": [
+    "pf-l05-o1",
+    "pf-l05-o2"
+   ],
+   "topic": "2.2",
+   "id": "rq-2.2-arrays-0039",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pf-l05",
+   "revisitStationId": "pf-l05-s1",
+   "revisitLabel": "2.2 Lesson 5 — Array yard, station 1: One-dimensional arrays",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "trace",
+   "q": "Complete the trace table for this program, which counts how many marks are above 50.",
+   "cols": [
+    "m",
+    "count"
+   ],
+   "rows": [
+    [
+     "34",
+     "0"
+    ],
+    [
+     "71",
+     ""
+    ],
+    [
+     "50",
+     ""
+    ],
+    [
+     "88",
+     ""
+    ]
+   ],
+   "answer": [
+    [
+     "34",
+     "0"
+    ],
+    [
+     "71",
+     "1"
+    ],
+    [
+     "50",
+     "1"
+    ],
+    [
+     "88",
+     "2"
+    ]
+   ],
+   "code": "marks = [34, 71, 50, 88]\ncount = 0\nfor m in marks:\n    if m > 50:\n        count = count + 1\nprint(count)",
+   "marks": 3,
+   "feedback": "50 is not above 50, so the count does not change on that row. That boundary is where most marks are lost.",
+   "hint": "Read the condition carefully: is 50 greater than 50?",
+   "commandWord": "trace",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Arrays",
+   "revisit": "pf-l05-s1",
+   "revisitReason": "Arrays",
+   "outcomes": [
+    "pf-l05-o1",
+    "pf-l05-o2"
+   ],
+   "topic": "2.2",
+   "id": "rq-2.2-arrays-0023",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pf-l05",
+   "revisitStationId": "pf-l05-s1",
+   "revisitLabel": "2.2 Lesson 5 — Array yard, station 1: One-dimensional arrays",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "mcq",
+   "q": "What is the difference between a procedure and a function?",
+   "options": [
+    "A function returns a value to the code that called it; a procedure does not",
+    "A procedure can take parameters and a function cannot",
+    "A function can only be called once in a program",
+    "A procedure is written outside the main program and a function inside it"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Returning a value is the whole difference. Both can take parameters.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "Procedures and functions",
+   "revisit": "pf-l05-s4",
+   "revisitReason": "Procedures and functions",
+   "outcomes": [
+    "pf-l05-o3"
+   ],
+   "topic": "2.2",
+   "id": "rq-2.2-procedures-and-functions-0024",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pf-l05",
+   "revisitStationId": "pf-l05-s4",
+   "revisitLabel": "2.2 Lesson 5 — Array yard, station 4: Procedures and functions",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "written",
+   "q": "Explain one advantage of using sub-programs in a large program.",
+   "markPoints": [
+    {
+     "concept": "the same code can be called from several places instead of being repeated",
+     "accept": [
+      [
+       "reuse|reused|re-used|called|call|invoked|again|several places|wherever|more than once|repeated|duplicate|written once"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The same code can be called from several places instead of being written out again."
+    },
+    {
+     "concept": "so the program is shorter and a change only has to be made in one place",
+     "accept": [
+      [
+       "shorter|smaller|less code|less of it|one place|in one place|single place|single spot|one spot|only once|easier to change|easier to maintain|easier to read|one copy"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "This makes the program shorter, and a change only has to be made once."
+    }
+   ],
+   "example": "A sub-program can be called from several places rather than having the same lines written out again and again, which makes the program shorter and means a change only has to be made in one place.",
+   "paraphrase": "Code written once can be invoked wherever it is needed, so there is less of it overall and any correction is made in a single spot.",
+   "marks": 2,
+   "feedback": "Called rather than repeated, and then what that saves.",
+   "commandWord": "explain",
+   "difficulty": "understand",
+   "examStyle": true,
+   "subtopic": "Procedures and functions",
+   "revisit": "pf-l05-s4",
+   "revisitReason": "Procedures and functions",
+   "outcomes": [
+    "pf-l05-o3"
+   ],
+   "topic": "2.2",
+   "id": "rq-2.2-procedures-and-functions-0025",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pf-l05",
+   "revisitStationId": "pf-l05-s4",
+   "revisitLabel": "2.2 Lesson 5 — Array yard, station 4: Procedures and functions",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "codeout",
+   "q": "What does this program print when both calls to the function are added?",
+   "code": "def double(n):\n    return n * 2\n\nprint(double(7) + double(3))",
+   "answer": "20",
+   "exact": "text",
+   "lang": "python",
+   "marks": 1,
+   "feedback": "14 + 6. A function returns a value, so it can be used inside a larger expression.",
+   "commandWord": "state",
+   "difficulty": "apply",
+   "subtopic": "Procedures and functions",
+   "revisit": "pf-l05-s4",
+   "revisitReason": "Procedures and functions",
+   "outcomes": [
+    "pf-l05-o3"
+   ],
+   "topic": "2.2",
+   "id": "rq-2.2-procedures-and-functions-0040",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pf-l05",
+   "revisitStationId": "pf-l05-s4",
+   "revisitLabel": "2.2 Lesson 5 — Array yard, station 4: Procedures and functions",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "written",
+   "q": "Explain why a local variable is usually preferred to a global one.",
+   "markPoints": [
+    {
+     "concept": "a local variable exists only inside its own sub-program",
+     "accept": [
+      [
+       "local|confined|scope",
+       "only|just|inside|within|its own|that subprogram|that function|that procedure|that routine|where it was"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "A local variable exists only inside its own sub-program."
+    },
+    {
+     "concept": "so it cannot be changed by accident somewhere else in the program",
+     "accept": [
+      [
+       "accident|accidentally|by mistake|unexpectedly|elsewhere|another part|somewhere else|other code|clash|conflict|overwritten|interfere"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "So no other part of the program can change it by accident."
+    }
+   ],
+   "example": "A local variable only exists inside the sub-program that declared it, so no other part of the program can read or change it by accident, which makes faults far easier to track down.",
+   "paraphrase": "Since it is confined to the routine that created it, nothing elsewhere can alter it unexpectedly, which keeps bugs contained.",
+   "marks": 2,
+   "feedback": "Scope, and then why limited scope is a good thing.",
+   "commandWord": "explain",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Procedures and functions",
+   "revisit": "pf-l05-s4",
+   "revisitReason": "Procedures and functions",
+   "outcomes": [
+    "pf-l05-o3"
+   ],
+   "topic": "2.2",
+   "id": "rq-2.2-procedures-and-functions-0026",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pf-l05",
+   "revisitStationId": "pf-l05-s4",
+   "revisitLabel": "2.2 Lesson 5 — Array yard, station 4: Procedures and functions",
+   "revisitScene": 0,
+   "revisitK": 3
+  }
+ ]
+}

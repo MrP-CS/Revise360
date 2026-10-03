@@ -286,7 +286,10 @@
    * exactly the right answer. */
   function isDump(t, points) {
     const ws = words(t);
-    if (ws.length < 3) return false;
+    /* Two words is enough to be a list. "write append" earned both marks on a
+     * two-mark question about the difference between them, which is section
+     * 17's complaint word for word. */
+    if (ws.length < 2) return false;
     const fn = ws.filter(w => FUNCTION_WORDS.has(w)).length;
     if (fn / ws.length < 0.12) return true;
     if (LINK.test(t)) return false;
