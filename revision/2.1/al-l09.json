@@ -1,0 +1,137 @@
+{
+ "topic": "2.1",
+ "lesson": "al-l09",
+ "questions": [
+  {
+   "type": "sort",
+   "q": "Sort each statement by the algorithm it describes best.",
+   "cats": [
+    "Bubble sort",
+    "Merge sort",
+    "Insertion sort"
+   ],
+   "items": [
+    [
+     "Simplest to write, and slowest on a large list",
+     "Bubble sort"
+    ],
+    [
+     "Splits the list in half repeatedly, then merges the pieces back",
+     "Merge sort"
+    ],
+    [
+     "Fastest of the three on a large list",
+     "Merge sort"
+    ],
+    [
+     "Builds a sorted section at the start of the list, one item at a time",
+     "Insertion sort"
+    ],
+    [
+     "Needs extra memory to hold the sub-lists",
+     "Merge sort"
+    ],
+    [
+     "Efficient on a list that is already nearly sorted",
+     "Insertion sort"
+    ]
+   ],
+   "marks": 6,
+   "feedback": "Merge sort buys its speed with memory. Insertion sort is the one that rewards a list that is nearly in order already.",
+   "commandWord": "tick",
+   "difficulty": "apply",
+   "subtopic": "Comparing the sorts",
+   "revisit": "al-l09-s5",
+   "revisitReason": "Comparing the sorts",
+   "outcomes": [
+    "al-l09-o3"
+   ],
+   "topic": "2.1",
+   "id": "rq-2.1-comparing-the-sorts-0026",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "al-l09",
+   "revisitStationId": "al-l09-s5",
+   "revisitLabel": "2.1 Lesson 9 — Split and insert, station 5: Comparing the three sorts",
+   "revisitScene": 0,
+   "revisitK": 4
+  },
+  {
+   "type": "order",
+   "q": "Put the stages of a merge sort in order.",
+   "steps": [
+    "Split the list in half, repeatedly, until every list has one item",
+    "Compare the first items of two lists",
+    "Merge the two lists into one sorted list",
+    "Repeat the merging until one sorted list remains"
+   ],
+   "marks": 4,
+   "feedback": "Split all the way down first, then merge all the way back up.",
+   "commandWord": "complete",
+   "difficulty": "understand",
+   "subtopic": "Comparing the sorts",
+   "revisit": "al-l09-s5",
+   "revisitReason": "Comparing the sorts",
+   "outcomes": [
+    "al-l09-o3"
+   ],
+   "topic": "2.1",
+   "id": "rq-2.1-comparing-the-sorts-0027",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "al-l09",
+   "revisitStationId": "al-l09-s5",
+   "revisitLabel": "2.1 Lesson 9 — Split and insert, station 5: Comparing the three sorts",
+   "revisitScene": 0,
+   "revisitK": 4
+  },
+  {
+   "type": "written",
+   "q": "Explain why a merge sort needs more memory than a bubble sort.",
+   "markPoints": [
+    {
+     "concept": "a merge sort creates new sub-lists as it splits and merges",
+     "accept": [
+      [
+       "new list|new lists|sub list|sublist|sublists|copies|extra lists|smaller lists|separate lists|another list|temporary|merged results"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "A merge sort creates new sub-lists as it splits the list up."
+    },
+    {
+     "concept": "while a bubble sort swaps items inside the original list",
+     "accept": [
+      [
+       "same list|original list|in place|within the list|inside the list|no extra memory|no extra space|list it was given"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "A bubble sort just swaps items inside the original list."
+    }
+   ],
+   "example": "A merge sort splits the list into sub-lists and then builds new merged lists, all of which have to be held in memory, whereas a bubble sort only ever swaps items around inside the original list.",
+   "paraphrase": "The merge method has to store the smaller lists it creates and the merged results, while the bubble method rearranges items within the list it was given.",
+   "marks": 2,
+   "feedback": "New lists against swapping in place.",
+   "commandWord": "explain",
+   "difficulty": "stretch",
+   "examStyle": true,
+   "subtopic": "Comparing the sorts",
+   "revisit": "al-l09-s5",
+   "revisitReason": "Comparing the sorts",
+   "outcomes": [
+    "al-l09-o3"
+   ],
+   "topic": "2.1",
+   "id": "rq-2.1-comparing-the-sorts-0028",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "al-l09",
+   "revisitStationId": "al-l09-s5",
+   "revisitLabel": "2.1 Lesson 9 — Split and insert, station 5: Comparing the three sorts",
+   "revisitScene": 0,
+   "revisitK": 4
+  }
+ ]
+}

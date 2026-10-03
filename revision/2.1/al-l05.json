@@ -1,0 +1,89 @@
+{
+ "topic": "2.1",
+ "lesson": "al-l05",
+ "questions": [
+  {
+   "type": "written",
+   "q": "Explain one advantage of writing an algorithm in pseudocode rather than in a programming language.",
+   "markPoints": [
+    {
+     "concept": "pseudocode does not have to follow the rules of any one language",
+     "accept": [
+      [
+       "no syntax|not syntax|any language|no particular language|not tied to|not specific to|not a real language|no rules|without worrying about|independent of|no specific language|language independent|one language"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Pseudocode does not have to follow the syntax rules of any particular language."
+    },
+    {
+     "concept": "so the programmer can concentrate on the logic, and anyone can read it",
+     "accept": [
+      [
+       "logic|steps|idea|design|how it works|what it does"
+      ],
+      [
+       "anyone|any programmer|easier to read|understood by|read by"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "This means the programmer can concentrate on the logic rather than on the syntax."
+    }
+   ],
+   "example": "Pseudocode does not have to obey the syntax rules of any particular language, so the programmer can concentrate on getting the logic right, and a programmer who uses a different language can still read it.",
+   "paraphrase": "Because it is not tied to one language's rules, the person writing it can think about the steps rather than the punctuation, and someone working in another language can follow it.",
+   "marks": 2,
+   "feedback": "No syntax to obey, therefore attention on the logic.",
+   "commandWord": "explain",
+   "difficulty": "understand",
+   "examStyle": true,
+   "subtopic": "Pseudocode",
+   "revisit": "al-l05-s1",
+   "revisitReason": "Pseudocode",
+   "outcomes": [
+    "al-l05-o1",
+    "al-l05-o2"
+   ],
+   "topic": "2.1",
+   "id": "rq-2.1-pseudocode-0011",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "al-l05",
+   "revisitStationId": "al-l05-s1",
+   "revisitLabel": "2.1 Lesson 5 — Pseudocode press, station 1: What pseudocode is",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "codeout",
+   "q": "What does this OCR reference language program output?",
+   "code": "total = 0\nfor i in range(1, 5):\n    total = total + i\nprint(total)",
+   "answer": "10",
+   "exact": "text",
+   "lang": "python",
+   "marks": 1,
+   "feedback": "1 + 2 + 3 + 4 = 10. The loop stops before 5, which is the trap.",
+   "hint": "Which values does the loop actually take?",
+   "commandWord": "state",
+   "difficulty": "apply",
+   "misconception": "Expecting 15 means counting 5 as well. range(1, 5) stops at 4.",
+   "subtopic": "Pseudocode",
+   "revisit": "al-l05-s1",
+   "revisitReason": "Pseudocode",
+   "outcomes": [
+    "al-l05-o1",
+    "al-l05-o2"
+   ],
+   "topic": "2.1",
+   "id": "rq-2.1-pseudocode-0012",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "al-l05",
+   "revisitStationId": "al-l05-s1",
+   "revisitLabel": "2.1 Lesson 5 — Pseudocode press, station 1: What pseudocode is",
+   "revisitScene": 0,
+   "revisitK": 0
+  }
+ ]
+}

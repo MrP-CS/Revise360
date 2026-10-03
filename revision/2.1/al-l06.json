@@ -1,0 +1,140 @@
+{
+ "topic": "2.1",
+ "lesson": "al-l06",
+ "questions": [
+  {
+   "type": "order",
+   "q": "Put the steps of a linear search in order.",
+   "steps": [
+    "Start at the first item in the list",
+    "Compare the item with the one being searched for",
+    "If it does not match, move to the next item",
+    "Stop when it is found or the end of the list is reached"
+   ],
+   "marks": 4,
+   "feedback": "Start, compare, move on, stop. There is nothing cleverer to it, which is both its weakness and its strength.",
+   "commandWord": "complete",
+   "difficulty": "understand",
+   "subtopic": "Linear search",
+   "revisit": "al-l06-s1",
+   "revisitReason": "Linear search",
+   "outcomes": [
+    "al-l06-o1",
+    "al-l06-o2"
+   ],
+   "topic": "2.1",
+   "id": "rq-2.1-linear-search-0013",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "al-l06",
+   "revisitStationId": "al-l06-s1",
+   "revisitLabel": "2.1 Lesson 6 — Search corridor, station 1: How it works",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "num",
+   "q": "A linear search looks for the value 19 in the list [4, 8, 11, 15, 19, 23, 42]. How many comparisons does it make?",
+   "answer": 5,
+   "unit": "comparisons",
+   "working": "5",
+   "marks": 1,
+   "feedback": "It checks 4, 8, 11, 15 and then 19: five comparisons.",
+   "commandWord": "calculate",
+   "difficulty": "apply",
+   "subtopic": "Linear search",
+   "revisit": "al-l06-s1",
+   "revisitReason": "Linear search",
+   "outcomes": [
+    "al-l06-o1",
+    "al-l06-o2"
+   ],
+   "topic": "2.1",
+   "id": "rq-2.1-linear-search-0014",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "al-l06",
+   "revisitStationId": "al-l06-s1",
+   "revisitLabel": "2.1 Lesson 6 — Search corridor, station 1: How it works",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "num",
+   "q": "In the worst case, how many comparisons does a linear search of a list of 40 items make?",
+   "answer": 40,
+   "unit": "comparisons",
+   "working": "40",
+   "marks": 1,
+   "feedback": "The worst case is the item being last, or not there at all, so every item is checked.",
+   "commandWord": "calculate",
+   "difficulty": "understand",
+   "subtopic": "Linear search",
+   "revisit": "al-l06-s1",
+   "revisitReason": "Linear search",
+   "outcomes": [
+    "al-l06-o1",
+    "al-l06-o2"
+   ],
+   "topic": "2.1",
+   "id": "rq-2.1-linear-search-0015",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "al-l06",
+   "revisitStationId": "al-l06-s1",
+   "revisitLabel": "2.1 Lesson 6 — Search corridor, station 1: How it works",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "Give one advantage of a linear search over a binary search.",
+   "markPoints": [
+    {
+     "concept": "the list does not have to be in order",
+     "accept": [
+      [
+       "does not have to be sorted|does not need to be sorted|does not require|not have to be in order|need not be sorted|not need sorting|unsorted|in any order|no need to sort|without sorting|not sorted|no sorting"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The list does not have to be in order."
+    },
+    {
+     "concept": "so it can be used on data that cannot be sorted or is not worth sorting",
+     "accept": [
+      [
+       "cannot be sorted|not worth sorting|no need to sort|save|saves|sorting takes|any list|unsorted data|straight away|immediately|rather than sorting|before sorting|without sorting first"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "So it can be used straight away on an unsorted list, without the cost of sorting it first."
+    }
+   ],
+   "example": "A linear search works on a list in any order, while a binary search needs a sorted one, so a linear search can be used straight away without paying the cost of sorting the list first.",
+   "paraphrase": "It does not require the data to be sorted, which means it can be run immediately on an unordered list rather than sorting it beforehand.",
+   "marks": 2,
+   "feedback": "No ordering needed, and then why that is worth something.",
+   "commandWord": "give",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Linear search",
+   "revisit": "al-l06-s1",
+   "revisitReason": "Linear search",
+   "outcomes": [
+    "al-l06-o1",
+    "al-l06-o2"
+   ],
+   "topic": "2.1",
+   "id": "rq-2.1-linear-search-0016",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "al-l06",
+   "revisitStationId": "al-l06-s1",
+   "revisitLabel": "2.1 Lesson 6 — Search corridor, station 1: How it works",
+   "revisitScene": 0,
+   "revisitK": 0
+  }
+ ]
+}

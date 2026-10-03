@@ -1,0 +1,158 @@
+{
+ "topic": "2.1",
+ "lesson": "al-l08",
+ "questions": [
+  {
+   "type": "mcq",
+   "q": "The list [5, 3, 8, 1] is sorted with a bubble sort. What is the list after the first complete pass?",
+   "options": [
+    "3, 5, 1, 8",
+    "3, 1, 5, 8",
+    "1, 3, 5, 8",
+    "5, 3, 1, 8"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Compare 5 and 3 and swap; 5 and 8, no swap; 8 and 1 and swap. The largest value has bubbled to the end.",
+   "hint": "Compare each adjacent pair in turn, left to right, swapping when they are the wrong way round.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Bubble sort",
+   "revisit": "al-l08-s2",
+   "revisitReason": "Bubble sort",
+   "outcomes": [
+    "al-l08-o1",
+    "al-l08-o2"
+   ],
+   "topic": "2.1",
+   "id": "rq-2.1-bubble-sort-0022",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "al-l08",
+   "revisitStationId": "al-l08-s2",
+   "revisitLabel": "2.1 Lesson 8 — Bubble bay, station 2: One pass",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "num",
+   "q": "How many comparisons are made in the first pass of a bubble sort on a list of 6 items?",
+   "answer": 5,
+   "unit": "comparisons",
+   "working": "6 - 1",
+   "marks": 1,
+   "feedback": "Each pass compares every adjacent pair, so a list of 6 gives 5 pairs.",
+   "commandWord": "calculate",
+   "difficulty": "apply",
+   "subtopic": "Bubble sort",
+   "revisit": "al-l08-s2",
+   "revisitReason": "Bubble sort",
+   "outcomes": [
+    "al-l08-o1",
+    "al-l08-o2"
+   ],
+   "topic": "2.1",
+   "id": "rq-2.1-bubble-sort-0023",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "al-l08",
+   "revisitStationId": "al-l08-s2",
+   "revisitLabel": "2.1 Lesson 8 — Bubble bay, station 2: One pass",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "written",
+   "q": "Explain why a bubble sort is slow on a large list.",
+   "markPoints": [
+    {
+     "concept": "it compares every adjacent pair on every pass",
+     "accept": [
+      [
+       "every pair|each pair|adjacent|neighbouring|next to each other|all the pairs|every item|compares every"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "It compares every adjacent pair on every pass."
+    },
+    {
+     "concept": "and many passes are needed, so the number of comparisons grows very quickly as the list grows",
+     "accept": [
+      [
+       "many passes|lots of passes|many sweeps|lot of sweeps|lots of sweeps|several sweeps|repeat|repeated|again and again|several passes|number of comparisons|grows"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "Many passes are needed, so the number of comparisons grows very quickly as the list gets longer."
+    }
+   ],
+   "example": "A bubble sort compares every adjacent pair on every pass, and it needs many passes before the list is sorted, so the total number of comparisons grows very quickly as the list gets longer.",
+   "paraphrase": "Each sweep checks all the neighbouring pairs, and a lot of sweeps are required, which means the work rises sharply with the size of the list.",
+   "marks": 2,
+   "feedback": "Every pair, every pass, many passes.",
+   "commandWord": "explain",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Bubble sort",
+   "revisit": "al-l08-s2",
+   "revisitReason": "Bubble sort",
+   "outcomes": [
+    "al-l08-o1",
+    "al-l08-o2"
+   ],
+   "topic": "2.1",
+   "id": "rq-2.1-bubble-sort-0024",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "al-l08",
+   "revisitStationId": "al-l08-s2",
+   "revisitLabel": "2.1 Lesson 8 — Bubble bay, station 2: One pass",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "short",
+   "q": "Give one advantage of a bubble sort.",
+   "markPoints": [
+    {
+     "concept": "it is simple to understand and to program",
+     "accept": [
+      [
+       "simple|easy|straightforward|easiest|simplest",
+       "understand|program|write|code|implement|explain"
+      ],
+      [
+       "little memory|less memory|no extra memory|in place"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "It is simple to understand and to program."
+    }
+   ],
+   "example": "It is very simple to understand and to write.",
+   "paraphrase": "It is the easiest of the sorts to code.",
+   "marks": 1,
+   "feedback": "Simplicity, or the small amount of memory it uses. Not speed.",
+   "commandWord": "give",
+   "difficulty": "retrieve",
+   "subtopic": "Bubble sort",
+   "revisit": "al-l08-s2",
+   "revisitReason": "Bubble sort",
+   "outcomes": [
+    "al-l08-o1",
+    "al-l08-o2"
+   ],
+   "topic": "2.1",
+   "id": "rq-2.1-bubble-sort-0025",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "al-l08",
+   "revisitStationId": "al-l08-s2",
+   "revisitLabel": "2.1 Lesson 8 — Bubble bay, station 2: One pass",
+   "revisitScene": 0,
+   "revisitK": 1
+  }
+ ]
+}

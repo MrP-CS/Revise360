@@ -72,6 +72,11 @@ def _common(out, fb, hint, cw, diff, exam, misc, marks):
 # comparison backwards loses the point rather than earning it on the keyword.
 # Section 18 asks for that, and asking every author to remember it for every
 # comparative in 1,500 questions is asking for it to be forgotten.
+# The words an answer is split on when it is divided into clauses. They are gone
+# by the time anything is looked for, so a pattern cannot consist of one.
+CLAUSE_WORDS = {"and", "or", "but", "then", "which", "that", "however", "whereas",
+                "although", "though", "while", "unlike"}
+
 AXES = [
     # "longer" and "shorter" are deliberately not here. A battery that lasts
     # longer is not a slower battery, and an automatic rejection built on that
@@ -150,6 +155,14 @@ def mp(concept, *ways, worth=1, developed=False, reject=None, exemplar=None,
     for w in ways:
         if not isinstance(w, (list, tuple)) or not all(isinstance(g, str) for g in w):
             raise ValueError("a way is a list of pattern groups: %r in %r" % (w, concept))
+        for g in w:
+            for alt in g.split("|"):
+                if alt.strip() and set(alt.strip().lower().split()) <= CLAUSE_WORDS:
+                    raise ValueError(
+                        "the pattern %r in %r is made only of words the marker splits an "
+                        "answer ON, so it can never be found. A mark point about the AND "
+                        "operator has to look for what AND means."
+                        % (alt.strip(), concept))
     out = {"concept": concept.strip(), "accept": [list(w) for w in ways], "worth": worth}
     if developed:
         out["developed"] = True

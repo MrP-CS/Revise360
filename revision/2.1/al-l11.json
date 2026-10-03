@@ -1,0 +1,247 @@
+{
+ "topic": "2.1",
+ "lesson": "al-l11",
+ "questions": [
+  {
+   "type": "short",
+   "q": "State what a trace table is used for.",
+   "markPoints": [
+    {
+     "concept": "to record the value of each variable as a program runs, so a fault can be found",
+     "accept": [
+      [
+       "value|values|contents",
+       "variable|variables"
+      ],
+      [
+       "step through|line by line|each step|as it runs|track|follow"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "To record the value of each variable as the program runs."
+    }
+   ],
+   "example": "To record the value of every variable at each step of a program, so that a fault can be found by seeing where a value first goes wrong.",
+   "paraphrase": "It tracks what each variable holds line by line while the program executes.",
+   "marks": 1,
+   "feedback": "Variable values, step by step. The point of it is finding where a value first becomes wrong.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "Trace tables",
+   "revisit": "al-l11-s2",
+   "revisitReason": "Trace tables",
+   "outcomes": [
+    "al-l11-o1",
+    "al-l11-o3"
+   ],
+   "topic": "2.1",
+   "id": "rq-2.1-trace-tables-0032",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "al-l11",
+   "revisitStationId": "al-l11-s2",
+   "revisitLabel": "2.1 Lesson 11 — Trace room, station 2: Filling one in",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "trace",
+   "q": "Complete the trace table for this program, which adds up the numbers 1 to 3.",
+   "cols": [
+    "count",
+    "total"
+   ],
+   "rows": [
+    [
+     "0",
+     "0"
+    ],
+    [
+     "1",
+     ""
+    ],
+    [
+     "2",
+     ""
+    ],
+    [
+     "3",
+     ""
+    ]
+   ],
+   "answer": [
+    [
+     "0",
+     "0"
+    ],
+    [
+     "1",
+     "1"
+    ],
+    [
+     "2",
+     "3"
+    ],
+    [
+     "3",
+     "6"
+    ]
+   ],
+   "code": "count = 0\ntotal = 0\nwhile count < 3:\n    count = count + 1\n    total = total + count\nprint(total)",
+   "marks": 3,
+   "feedback": "The total is a running sum: 1, then 1 + 2 = 3, then 3 + 3 = 6.",
+   "hint": "Fill in one row for each time round the loop, after both lines inside it have run.",
+   "commandWord": "trace",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Trace tables",
+   "revisit": "al-l11-s2",
+   "revisitReason": "Trace tables",
+   "outcomes": [
+    "al-l11-o1",
+    "al-l11-o3"
+   ],
+   "topic": "2.1",
+   "id": "rq-2.1-trace-tables-0035",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "al-l11",
+   "revisitStationId": "al-l11-s2",
+   "revisitLabel": "2.1 Lesson 11 — Trace room, station 2: Filling one in",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "trace",
+   "q": "Complete the trace table for this program, which counts how many times 20 can be halved.",
+   "cols": [
+    "n",
+    "steps"
+   ],
+   "rows": [
+    [
+     "20",
+     "0"
+    ],
+    [
+     "",
+     "1"
+    ],
+    [
+     "",
+     "2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ]
+   ],
+   "answer": [
+    [
+     "20",
+     "0"
+    ],
+    [
+     "10",
+     "1"
+    ],
+    [
+     "5",
+     "2"
+    ],
+    [
+     "2",
+     "3"
+    ],
+    [
+     "1",
+     "4"
+    ]
+   ],
+   "code": "n = 20\nsteps = 0\nwhile n > 1:\n    n = n // 2\n    steps = steps + 1\nprint(steps)",
+   "marks": 6,
+   "feedback": "Integer division halves and rounds down: 20, 10, 5, 2, 1. Four steps — which is how a binary search behaves on twenty items.",
+   "hint": "// throws away the remainder, so 5 // 2 is 2, not 2.5.",
+   "commandWord": "trace",
+   "difficulty": "stretch",
+   "examStyle": true,
+   "subtopic": "Trace tables",
+   "revisit": "al-l11-s2",
+   "revisitReason": "Trace tables",
+   "outcomes": [
+    "al-l11-o1",
+    "al-l11-o3"
+   ],
+   "topic": "2.1",
+   "id": "rq-2.1-trace-tables-0036",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "al-l11",
+   "revisitStationId": "al-l11-s2",
+   "revisitLabel": "2.1 Lesson 11 — Trace room, station 2: Filling one in",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "codeout",
+   "q": "What does this program print when it is run on the list shown?",
+   "code": "nums = [3, 7, 2, 9]\nbig = nums[0]\nfor n in nums:\n    if n > big:\n        big = n\nprint(big)",
+   "answer": "9",
+   "exact": "text",
+   "lang": "python",
+   "marks": 1,
+   "feedback": "The variable big holds the largest value found so far, and ends at 9.",
+   "commandWord": "state",
+   "difficulty": "apply",
+   "subtopic": "Trace tables",
+   "revisit": "al-l11-s2",
+   "revisitReason": "Trace tables",
+   "outcomes": [
+    "al-l11-o1",
+    "al-l11-o3"
+   ],
+   "topic": "2.1",
+   "id": "rq-2.1-trace-tables-0037",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "al-l11",
+   "revisitStationId": "al-l11-s2",
+   "revisitLabel": "2.1 Lesson 11 — Trace room, station 2: Filling one in",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "codeout",
+   "q": "What does this program print for the word shown?",
+   "code": "word = 'computer'\nout = ''\nfor i in range(len(word) - 1, -1, -1):\n    out = out + word[i]\nprint(out)",
+   "answer": "retupmoc",
+   "exact": "text",
+   "lang": "python",
+   "marks": 1,
+   "feedback": "The loop runs backwards through the string, building it up in reverse.",
+   "hint": "Which index does the loop start at, and which way does it go?",
+   "commandWord": "state",
+   "difficulty": "stretch",
+   "subtopic": "Trace tables",
+   "revisit": "al-l11-s2",
+   "revisitReason": "Trace tables",
+   "outcomes": [
+    "al-l11-o1",
+    "al-l11-o3"
+   ],
+   "topic": "2.1",
+   "id": "rq-2.1-trace-tables-0038",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "al-l11",
+   "revisitStationId": "al-l11-s2",
+   "revisitLabel": "2.1 Lesson 11 — Trace room, station 2: Filling one in",
+   "revisitScene": 0,
+   "revisitK": 1
+  }
+ ]
+}

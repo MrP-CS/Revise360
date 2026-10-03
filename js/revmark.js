@@ -90,7 +90,7 @@
     "not no nor never only both each any all some many much other another such same " +
     "you your we our i my he she him her his").split(" "));
 
-  const LINK = /(because|so that|so |therefore|thus|hence|as a result|this means|which |meaning|means that|due to|owing to|leads? to|causes?|causing|results? in|resulting in|in order to|consequently|then |allows? |allowing|makes? it|making it|that is why|why |when |if |unless |since |as a consequence|ends up|the reason)/;
+  const LINK = /(because|so that|so |therefore|thus|hence|as a result|this means|which |meaning|means that|due to|owing to|leads? to|causes?|causing|results? in|resulting in|in order to|consequently|then |allows? |allowing|makes? it|making it|that is why|why |when |if |unless |since |as a consequence|ends up|the reason|makes? the|makes? it|makes? them)/;
 
   function norm(s) {
     let t = " " + String(s == null ? "" : s).toLowerCase() + " ";

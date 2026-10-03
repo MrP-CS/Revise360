@@ -196,22 +196,30 @@ def check_codeout(q):
     return ok, "the program prints %r" % got
 
 
+# The program is run inside a function, not at the top level. sys.settrace only
+# takes effect for frames entered after it is set, so tracing a module that is
+# already running recorded nothing at all - and "nothing recorded" looked exactly
+# like "the table does not match", which is the wrong thing to be told.
 TRACER = """
 import sys, json
 _rows = []
 _want = %(cols)r
 def _tr(frame, event, arg):
-    if event == 'line' and frame.f_code.co_filename == __file__:
+    if event in ('call', 'line') and frame.f_code.co_name == '_main':
         st = [str(frame.f_locals.get(c, '')) for c in _want]
         if not _rows or _rows[-1] != st:
             _rows.append(st)
     return _tr
-def _dump():
-    sys.stderr.write('@@TRACE@@' + json.dumps(_rows))
-import atexit; atexit.register(_dump)
-sys.settrace(_tr)
+
+def _main():
 %(code)s
-sys.settrace(None)
+
+sys.settrace(_tr)
+try:
+    _main()
+finally:
+    sys.settrace(None)
+    sys.stderr.write('@@TRACE@@' + json.dumps(_rows))
 """
 
 
@@ -227,7 +235,8 @@ def check_trace(q):
     if not q.get("code"):
         return None, "no program to run"
     cols = [c for c in q["cols"] if c.lower() not in ("output", "out")]
-    src = TRACER % {"cols": cols, "code": q["code"]}
+    body = "\n".join("    " + ln for ln in q["code"].split("\n"))
+    src = TRACER % {"cols": cols, "code": body}
     out, err = run_python(src)
     if "@@TRACE@@" not in err:
         return False, "the program failed: " + (err.strip().splitlines() or ["no output"])[-1]

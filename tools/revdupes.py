@@ -74,7 +74,7 @@ def main():
                                   if bare(v[0]["q"]) != bare(v[1]["q"])}
 
     # And the slow one: everything else, pair by pair, within a topic.
-    close = []
+    close, same_words = [], []
     seen = {q["id"] for g in found.values() for v in g.values() for q in v}
     by_topic = collections.defaultdict(list)
     for q in bank:
@@ -88,7 +88,17 @@ def main():
                 if a["id"] in seen and b["id"] in seen:
                     continue
                 r = difflib.SequenceMatcher(None, bare(a["q"]), bare(b["q"])).ratio()
-                if r >= 0.85:
+                if r < 0.85:
+                    continue
+                # "Complete the truth table for Q = A AND B" and "... for Q =
+                # NOT (A OR B)" are 95% the same sentence and are not the same
+                # question: one of them has a NOT in it and every row of the
+                # answer differs. Where the answer itself differs, the pair is
+                # counted separately rather than put in front of a human as a
+                # possible duplicate.
+                if str(a.get("answer")) != str(b.get("answer")) or a["marks"] != b["marks"]:
+                    same_words.append((round(r, 3), a, b))
+                else:
                     close.append((round(r, 3), a, b))
     close.sort(reverse=True, key=lambda x: x[0])
 
@@ -105,6 +115,8 @@ def main():
                 lines.append("  - `%s` %s, %d marks, %s"
                              % (q["id"], q["type"], q["marks"], q["subtopic"]))
     print("%-18s %d pair(s)" % ("very close", len(close)))
+    print("%-18s %d pair(s)  (the same wording with a different answer: a drill, not a "
+          "duplicate)" % ("same shape", len(same_words)))
     total += len(close)
     for r, a, b in close[:40]:
         lines.append("### very close (%.0f%%)\n" % (100 * r))

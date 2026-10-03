@@ -1,0 +1,790 @@
+{
+ "topic": "2.4",
+ "lesson": "bl-l01",
+ "questions": [
+  {
+   "type": "match",
+   "q": "Match each logic gate to when its output is 1.",
+   "pairs": [
+    [
+     "AND",
+     "Only when both inputs are 1"
+    ],
+    [
+     "OR",
+     "When at least one input is 1"
+    ],
+    [
+     "NOT",
+     "When its single input is 0"
+    ]
+   ],
+   "marks": 3,
+   "feedback": "AND needs both, OR needs one, NOT reverses.",
+   "commandWord": "draw",
+   "difficulty": "retrieve",
+   "subtopic": "The three gates",
+   "revisit": "bl-l01-s1",
+   "revisitReason": "The three gates",
+   "outcomes": [
+    "bl-l01-o1",
+    "bl-l01-o2"
+   ],
+   "topic": "2.4",
+   "id": "rq-2.4-the-three-gates-0001",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "bl-l01",
+   "revisitStationId": "bl-l01-s1",
+   "revisitLabel": "2.4 Lesson 1 — Logic gate lab, station 1: The AND gate",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "mcq",
+   "q": "A two-input AND gate has inputs A = 1 and B = 0. What is its output?",
+   "options": [
+    "0",
+    "1",
+    "Both 0 and 1",
+    "It depends on the previous input"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "AND gives 1 only when both inputs are 1.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "The three gates",
+   "revisit": "bl-l01-s1",
+   "revisitReason": "The three gates",
+   "outcomes": [
+    "bl-l01-o1",
+    "bl-l01-o2"
+   ],
+   "topic": "2.4",
+   "id": "rq-2.4-the-three-gates-0002",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "bl-l01",
+   "revisitStationId": "bl-l01-s1",
+   "revisitLabel": "2.4 Lesson 1 — Logic gate lab, station 1: The AND gate",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "mcq",
+   "q": "A two-input OR gate has inputs A = 0 and B = 1. What is its output?",
+   "options": [
+    "1",
+    "0",
+    "Both 0 and 1",
+    "It cannot be worked out"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "OR gives 1 when at least one input is 1.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "The three gates",
+   "revisit": "bl-l01-s1",
+   "revisitReason": "The three gates",
+   "outcomes": [
+    "bl-l01-o1",
+    "bl-l01-o2"
+   ],
+   "topic": "2.4",
+   "id": "rq-2.4-the-three-gates-0003",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "bl-l01",
+   "revisitStationId": "bl-l01-s1",
+   "revisitLabel": "2.4 Lesson 1 — Logic gate lab, station 1: The AND gate",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "truth",
+   "q": "Complete the truth table for Q = A AND B.",
+   "cols": [
+    "A",
+    "B",
+    "Q"
+   ],
+   "rows": [
+    [
+     "0",
+     "0",
+     ""
+    ],
+    [
+     "0",
+     "1",
+     ""
+    ],
+    [
+     "1",
+     "0",
+     ""
+    ],
+    [
+     "1",
+     "1",
+     ""
+    ]
+   ],
+   "answer": [
+    [
+     "0",
+     "0",
+     "0"
+    ],
+    [
+     "0",
+     "1",
+     "0"
+    ],
+    [
+     "1",
+     "0",
+     "0"
+    ],
+    [
+     "1",
+     "1",
+     "1"
+    ]
+   ],
+   "expr": "A AND B",
+   "out": "Q",
+   "marks": 4,
+   "feedback": "Only the last row has both inputs at 1, so only the last row gives 1.",
+   "commandWord": "complete",
+   "difficulty": "retrieve",
+   "subtopic": "The three gates",
+   "revisit": "bl-l01-s1",
+   "revisitReason": "The three gates",
+   "outcomes": [
+    "bl-l01-o1",
+    "bl-l01-o2"
+   ],
+   "topic": "2.4",
+   "id": "rq-2.4-the-three-gates-0004",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "bl-l01",
+   "revisitStationId": "bl-l01-s1",
+   "revisitLabel": "2.4 Lesson 1 — Logic gate lab, station 1: The AND gate",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "truth",
+   "q": "Complete the truth table for Q = A OR B.",
+   "cols": [
+    "A",
+    "B",
+    "Q"
+   ],
+   "rows": [
+    [
+     "0",
+     "0",
+     ""
+    ],
+    [
+     "0",
+     "1",
+     ""
+    ],
+    [
+     "1",
+     "0",
+     ""
+    ],
+    [
+     "1",
+     "1",
+     ""
+    ]
+   ],
+   "answer": [
+    [
+     "0",
+     "0",
+     "0"
+    ],
+    [
+     "0",
+     "1",
+     "1"
+    ],
+    [
+     "1",
+     "0",
+     "1"
+    ],
+    [
+     "1",
+     "1",
+     "1"
+    ]
+   ],
+   "expr": "A OR B",
+   "out": "Q",
+   "marks": 4,
+   "feedback": "Everything except both-zero gives 1.",
+   "commandWord": "complete",
+   "difficulty": "retrieve",
+   "subtopic": "The three gates",
+   "revisit": "bl-l01-s1",
+   "revisitReason": "The three gates",
+   "outcomes": [
+    "bl-l01-o1",
+    "bl-l01-o2"
+   ],
+   "topic": "2.4",
+   "id": "rq-2.4-the-three-gates-0005",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "bl-l01",
+   "revisitStationId": "bl-l01-s1",
+   "revisitLabel": "2.4 Lesson 1 — Logic gate lab, station 1: The AND gate",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "truth",
+   "q": "Complete the truth table for Q = NOT A.",
+   "cols": [
+    "A",
+    "Q"
+   ],
+   "rows": [
+    [
+     "0",
+     ""
+    ],
+    [
+     "1",
+     ""
+    ]
+   ],
+   "answer": [
+    [
+     "0",
+     "1"
+    ],
+    [
+     "1",
+     "0"
+    ]
+   ],
+   "expr": "NOT A",
+   "out": "Q",
+   "marks": 2,
+   "feedback": "NOT reverses its input: 0 becomes 1 and 1 becomes 0.",
+   "commandWord": "complete",
+   "difficulty": "retrieve",
+   "subtopic": "The three gates",
+   "revisit": "bl-l01-s1",
+   "revisitReason": "The three gates",
+   "outcomes": [
+    "bl-l01-o1",
+    "bl-l01-o2"
+   ],
+   "topic": "2.4",
+   "id": "rq-2.4-the-three-gates-0006",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "bl-l01",
+   "revisitStationId": "bl-l01-s1",
+   "revisitLabel": "2.4 Lesson 1 — Logic gate lab, station 1: The AND gate",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "short",
+   "q": "State what the NOT gate does to its input.",
+   "markPoints": [
+    {
+     "concept": "it reverses it, so 0 becomes 1 and 1 becomes 0",
+     "accept": [
+      [
+       "reverse|reverses|reversed|invert|inverts|inverted|opposite|flip|flips|changes it|negates|other way round"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "It reverses the input."
+    }
+   ],
+   "example": "It reverses the input, so a 0 becomes a 1 and a 1 becomes a 0.",
+   "paraphrase": "It inverts whatever goes in.",
+   "marks": 1,
+   "feedback": "Reverses, inverts or gives the opposite — all the same answer.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "The three gates",
+   "revisit": "bl-l01-s1",
+   "revisitReason": "The three gates",
+   "outcomes": [
+    "bl-l01-o1",
+    "bl-l01-o2"
+   ],
+   "topic": "2.4",
+   "id": "rq-2.4-the-three-gates-0007",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "bl-l01",
+   "revisitStationId": "bl-l01-s1",
+   "revisitLabel": "2.4 Lesson 1 — Logic gate lab, station 1: The AND gate",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "truth",
+   "q": "Complete the truth table for Q = NOT A AND B.",
+   "cols": [
+    "A",
+    "B",
+    "Q"
+   ],
+   "rows": [
+    [
+     "0",
+     "0",
+     ""
+    ],
+    [
+     "0",
+     "1",
+     ""
+    ],
+    [
+     "1",
+     "0",
+     ""
+    ],
+    [
+     "1",
+     "1",
+     ""
+    ]
+   ],
+   "answer": [
+    [
+     "0",
+     "0",
+     "0"
+    ],
+    [
+     "0",
+     "1",
+     "1"
+    ],
+    [
+     "1",
+     "0",
+     "0"
+    ],
+    [
+     "1",
+     "1",
+     "0"
+    ]
+   ],
+   "expr": "(NOT A) AND B",
+   "out": "Q",
+   "marks": 4,
+   "feedback": "NOT A is worked out first, then ANDed with B, so only A = 0 and B = 1 gives 1.",
+   "hint": "Work out NOT A before the AND.",
+   "commandWord": "complete",
+   "difficulty": "apply",
+   "subtopic": "Combining gates",
+   "revisit": "bl-l01-s5",
+   "revisitReason": "Combining gates",
+   "outcomes": [
+    "bl-l01-o3"
+   ],
+   "topic": "2.4",
+   "id": "rq-2.4-combining-gates-0008",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "bl-l01",
+   "revisitStationId": "bl-l01-s5",
+   "revisitLabel": "2.4 Lesson 1 — Logic gate lab, station 5: Two-level circuits",
+   "revisitScene": 0,
+   "revisitK": 4
+  },
+  {
+   "type": "truth",
+   "q": "Complete the truth table for Q = NOT (A OR B).",
+   "cols": [
+    "A",
+    "B",
+    "Q"
+   ],
+   "rows": [
+    [
+     "0",
+     "0",
+     ""
+    ],
+    [
+     "0",
+     "1",
+     ""
+    ],
+    [
+     "1",
+     "0",
+     ""
+    ],
+    [
+     "1",
+     "1",
+     ""
+    ]
+   ],
+   "answer": [
+    [
+     "0",
+     "0",
+     "1"
+    ],
+    [
+     "0",
+     "1",
+     "0"
+    ],
+    [
+     "1",
+     "0",
+     "0"
+    ],
+    [
+     "1",
+     "1",
+     "0"
+    ]
+   ],
+   "expr": "NOT (A OR B)",
+   "out": "Q",
+   "marks": 4,
+   "feedback": "The brackets come first: A OR B, then reverse the whole thing. Only both-zero gives 1.",
+   "hint": "Brackets first, then the NOT across the whole result.",
+   "commandWord": "complete",
+   "difficulty": "apply",
+   "subtopic": "Combining gates",
+   "revisit": "bl-l01-s5",
+   "revisitReason": "Combining gates",
+   "outcomes": [
+    "bl-l01-o3"
+   ],
+   "topic": "2.4",
+   "id": "rq-2.4-combining-gates-0009",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "bl-l01",
+   "revisitStationId": "bl-l01-s5",
+   "revisitLabel": "2.4 Lesson 1 — Logic gate lab, station 5: Two-level circuits",
+   "revisitScene": 0,
+   "revisitK": 4
+  },
+  {
+   "type": "truth",
+   "q": "Complete the truth table for Q = A AND (B OR C).",
+   "cols": [
+    "A",
+    "B",
+    "C",
+    "Q"
+   ],
+   "rows": [
+    [
+     "0",
+     "0",
+     "0",
+     "0"
+    ],
+    [
+     "0",
+     "0",
+     "1",
+     "0"
+    ],
+    [
+     "0",
+     "1",
+     "0",
+     ""
+    ],
+    [
+     "0",
+     "1",
+     "1",
+     ""
+    ],
+    [
+     "1",
+     "0",
+     "0",
+     ""
+    ],
+    [
+     "1",
+     "0",
+     "1",
+     ""
+    ],
+    [
+     "1",
+     "1",
+     "0",
+     ""
+    ],
+    [
+     "1",
+     "1",
+     "1",
+     ""
+    ]
+   ],
+   "answer": [
+    [
+     "0",
+     "0",
+     "0",
+     "0"
+    ],
+    [
+     "0",
+     "0",
+     "1",
+     "0"
+    ],
+    [
+     "0",
+     "1",
+     "0",
+     "0"
+    ],
+    [
+     "0",
+     "1",
+     "1",
+     "0"
+    ],
+    [
+     "1",
+     "0",
+     "0",
+     "0"
+    ],
+    [
+     "1",
+     "0",
+     "1",
+     "1"
+    ],
+    [
+     "1",
+     "1",
+     "0",
+     "1"
+    ],
+    [
+     "1",
+     "1",
+     "1",
+     "1"
+    ]
+   ],
+   "expr": "A AND (B OR C)",
+   "out": "Q",
+   "marks": 6,
+   "feedback": "Three inputs give eight rows. Work out the bracket first, then the AND.",
+   "hint": "Eight rows, and the first two are done for you.",
+   "commandWord": "complete",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Combining gates",
+   "revisit": "bl-l01-s5",
+   "revisitReason": "Combining gates",
+   "outcomes": [
+    "bl-l01-o3"
+   ],
+   "topic": "2.4",
+   "id": "rq-2.4-combining-gates-0010",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "bl-l01",
+   "revisitStationId": "bl-l01-s5",
+   "revisitLabel": "2.4 Lesson 1 — Logic gate lab, station 5: Two-level circuits",
+   "revisitScene": 0,
+   "revisitK": 4
+  },
+  {
+   "type": "truth",
+   "q": "Complete the truth table for Q = (A AND B) OR (NOT C).",
+   "cols": [
+    "A",
+    "B",
+    "C",
+    "Q"
+   ],
+   "rows": [
+    [
+     "0",
+     "0",
+     "0",
+     "1"
+    ],
+    [
+     "0",
+     "0",
+     "1",
+     "0"
+    ],
+    [
+     "0",
+     "1",
+     "0",
+     ""
+    ],
+    [
+     "0",
+     "1",
+     "1",
+     ""
+    ],
+    [
+     "1",
+     "0",
+     "0",
+     ""
+    ],
+    [
+     "1",
+     "0",
+     "1",
+     ""
+    ],
+    [
+     "1",
+     "1",
+     "0",
+     ""
+    ],
+    [
+     "1",
+     "1",
+     "1",
+     ""
+    ]
+   ],
+   "answer": [
+    [
+     "0",
+     "0",
+     "0",
+     "1"
+    ],
+    [
+     "0",
+     "0",
+     "1",
+     "0"
+    ],
+    [
+     "0",
+     "1",
+     "0",
+     "1"
+    ],
+    [
+     "0",
+     "1",
+     "1",
+     "0"
+    ],
+    [
+     "1",
+     "0",
+     "0",
+     "1"
+    ],
+    [
+     "1",
+     "0",
+     "1",
+     "0"
+    ],
+    [
+     "1",
+     "1",
+     "0",
+     "1"
+    ],
+    [
+     "1",
+     "1",
+     "1",
+     "1"
+    ]
+   ],
+   "expr": "(A AND B) OR (NOT C)",
+   "out": "Q",
+   "marks": 6,
+   "feedback": "Two brackets, worked out separately, then ORed together. The output is 1 whenever C is 0, or whenever A and B are both 1.",
+   "commandWord": "complete",
+   "difficulty": "stretch",
+   "examStyle": true,
+   "subtopic": "Combining gates",
+   "revisit": "bl-l01-s5",
+   "revisitReason": "Combining gates",
+   "outcomes": [
+    "bl-l01-o3"
+   ],
+   "topic": "2.4",
+   "id": "rq-2.4-combining-gates-0011",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "bl-l01",
+   "revisitStationId": "bl-l01-s5",
+   "revisitLabel": "2.4 Lesson 1 — Logic gate lab, station 5: Two-level circuits",
+   "revisitScene": 0,
+   "revisitK": 4
+  },
+  {
+   "type": "mcq",
+   "q": "Why does Q = NOT A AND B give a different answer from Q = NOT (A AND B)?",
+   "options": [
+    "In the first, only A is reversed; in the second, the whole result is reversed",
+    "They are the same; the brackets make no difference",
+    "The second one cannot be worked out without a third input",
+    "The first one reverses B rather than A"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Brackets decide what the NOT applies to, and that changes every row of the table.",
+   "commandWord": "identify",
+   "difficulty": "understand",
+   "examStyle": true,
+   "subtopic": "Combining gates",
+   "revisit": "bl-l01-s5",
+   "revisitReason": "Combining gates",
+   "outcomes": [
+    "bl-l01-o3"
+   ],
+   "topic": "2.4",
+   "id": "rq-2.4-combining-gates-0012",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "bl-l01",
+   "revisitStationId": "bl-l01-s5",
+   "revisitLabel": "2.4 Lesson 1 — Logic gate lab, station 5: Two-level circuits",
+   "revisitScene": 0,
+   "revisitK": 4
+  }
+ ]
+}

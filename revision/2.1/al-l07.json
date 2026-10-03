@@ -1,0 +1,197 @@
+{
+ "topic": "2.1",
+ "lesson": "al-l07",
+ "questions": [
+  {
+   "type": "short",
+   "q": "State the one condition a list must meet for a binary search to work.",
+   "markPoints": [
+    {
+     "concept": "the list must be in order",
+     "accept": [
+      [
+       "sorted|in order|ordered|ascending|descending|arranged"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The list must be sorted into order."
+    }
+   ],
+   "example": "The list must be sorted into order.",
+   "paraphrase": "It has to be in order first.",
+   "marks": 1,
+   "feedback": "Sorted. Everything else about binary search follows from this.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "Binary search",
+   "revisit": "al-l07-s1",
+   "revisitReason": "Binary search",
+   "outcomes": [
+    "al-l07-o1",
+    "al-l07-o2",
+    "al-l07-o3"
+   ],
+   "topic": "2.1",
+   "id": "rq-2.1-binary-search-0017",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "al-l07",
+   "revisitStationId": "al-l07-s1",
+   "revisitLabel": "2.1 Lesson 7 — Halving hall, station 1: How it works",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "order",
+   "q": "Put the steps of a binary search in order.",
+   "steps": [
+    "Find the middle item of the list",
+    "Compare it with the item being searched for",
+    "Discard the half that cannot contain the item",
+    "Repeat on the half that remains"
+   ],
+   "marks": 4,
+   "feedback": "Middle, compare, discard half, repeat. Each step halves what is left.",
+   "commandWord": "complete",
+   "difficulty": "understand",
+   "subtopic": "Binary search",
+   "revisit": "al-l07-s1",
+   "revisitReason": "Binary search",
+   "outcomes": [
+    "al-l07-o1",
+    "al-l07-o2",
+    "al-l07-o3"
+   ],
+   "topic": "2.1",
+   "id": "rq-2.1-binary-search-0018",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "al-l07",
+   "revisitStationId": "al-l07-s1",
+   "revisitLabel": "2.1 Lesson 7 — Halving hall, station 1: How it works",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "num",
+   "q": "A binary search is used on a sorted list of 8 items. In the worst case, how many comparisons are needed?",
+   "answer": 3,
+   "unit": "comparisons",
+   "working": "3",
+   "marks": 1,
+   "feedback": "8 halves to 4, then 2, then 1: three comparisons.",
+   "hint": "How many times can you halve 8 before one item is left?",
+   "commandWord": "calculate",
+   "difficulty": "apply",
+   "subtopic": "Binary search",
+   "revisit": "al-l07-s1",
+   "revisitReason": "Binary search",
+   "outcomes": [
+    "al-l07-o1",
+    "al-l07-o2",
+    "al-l07-o3"
+   ],
+   "topic": "2.1",
+   "id": "rq-2.1-binary-search-0019",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "al-l07",
+   "revisitStationId": "al-l07-s1",
+   "revisitLabel": "2.1 Lesson 7 — Halving hall, station 1: How it works",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "num",
+   "q": "A binary search is used on a sorted list of 1,000 items. Roughly how many comparisons are needed in the worst case?",
+   "answer": 10,
+   "unit": "comparisons",
+   "tolerance": 0,
+   "working": "10",
+   "marks": 1,
+   "feedback": "Each comparison halves the list: 1000, 500, 250, 125, 63, 32, 16, 8, 4, 2, 1. Ten comparisons. A linear search would need up to a thousand.",
+   "hint": "Keep halving 1,000 and count how many times you can do it.",
+   "commandWord": "calculate",
+   "difficulty": "stretch",
+   "examStyle": true,
+   "subtopic": "Binary search",
+   "revisit": "al-l07-s1",
+   "revisitReason": "Binary search",
+   "outcomes": [
+    "al-l07-o1",
+    "al-l07-o2",
+    "al-l07-o3"
+   ],
+   "topic": "2.1",
+   "id": "rq-2.1-binary-search-0020",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "al-l07",
+   "revisitStationId": "al-l07-s1",
+   "revisitLabel": "2.1 Lesson 7 — Halving hall, station 1: How it works",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "Explain why a binary search is much faster than a linear search on a large sorted list.",
+   "markPoints": [
+    {
+     "concept": "a binary search discards half the remaining list at every step",
+     "accept": [
+      [
+       "half|halve|halves|halving|50%"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Each comparison discards half of what is left."
+    },
+    {
+     "concept": "a linear search checks one item at a time",
+     "accept": [
+      [
+       "one at a time|one by one|each item|every item|each one|item by item|one item|single item|a single"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "A linear search checks one item at a time."
+    },
+    {
+     "concept": "so the number of comparisons grows far more slowly as the list grows",
+     "accept": [
+      [
+       "fewer comparisons|far fewer|many fewer|grows slowly|grows enormously|gap grows|far more slowly|much more slowly|does not grow|much less|10|ten|hardly increases"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "So as the list gets bigger the binary search needs far fewer comparisons."
+    }
+   ],
+   "example": "A binary search throws away half of what remains at every comparison, while a linear search can only eliminate one item at a time. That means doubling the size of the list adds one comparison to a binary search and doubles the work for a linear search, so the gap grows enormously on a large list.",
+   "paraphrase": "Every check in a binary search eliminates half the remaining data, whereas a linear search removes a single item, which means the number of comparisons rises far more slowly as the list grows.",
+   "marks": 3,
+   "feedback": "Three ideas: what binary does, what linear does, and what that means as the list grows.",
+   "commandWord": "explain",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Binary search",
+   "revisit": "al-l07-s1",
+   "revisitReason": "Binary search",
+   "outcomes": [
+    "al-l07-o1",
+    "al-l07-o2",
+    "al-l07-o3"
+   ],
+   "topic": "2.1",
+   "id": "rq-2.1-binary-search-0021",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "al-l07",
+   "revisitStationId": "al-l07-s1",
+   "revisitLabel": "2.1 Lesson 7 — Halving hall, station 1: How it works",
+   "revisitScene": 0,
+   "revisitK": 0
+  }
+ ]
+}

@@ -1,0 +1,200 @@
+{
+ "topic": "2.4",
+ "lesson": "bl-l03",
+ "questions": [
+  {
+   "type": "mcq",
+   "q": "A shop alarm sounds when the shop is closed AND a door is opened. Which expression describes it?",
+   "options": [
+    "Q = Closed AND DoorOpen",
+    "Q = Closed OR DoorOpen",
+    "Q = NOT Closed AND DoorOpen",
+    "Q = NOT (Closed AND DoorOpen)"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Both conditions have to be true, which is AND.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "subtopic": "From words to logic",
+   "revisit": "bl-l03-s1",
+   "revisitReason": "From words to logic",
+   "outcomes": [
+    "bl-l03-o1"
+   ],
+   "topic": "2.4",
+   "id": "rq-2.4-from-words-to-logic-0016",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "bl-l03",
+   "revisitStationId": "bl-l03-s1",
+   "revisitLabel": "2.4 Lesson 3 — Circuit workshop, station 1: From words to logic",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "mcq",
+   "q": "A greenhouse heater turns on when the temperature is low AND the window is not open. Which expression describes it?",
+   "options": [
+    "Q = Low AND NOT Open",
+    "Q = Low AND Open",
+    "Q = NOT Low AND Open",
+    "Q = Low OR NOT Open"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "'Not open' is NOT applied to Open; both conditions are needed, so AND.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "From words to logic",
+   "revisit": "bl-l03-s1",
+   "revisitReason": "From words to logic",
+   "outcomes": [
+    "bl-l03-o1"
+   ],
+   "topic": "2.4",
+   "id": "rq-2.4-from-words-to-logic-0017",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "bl-l03",
+   "revisitStationId": "bl-l03-s1",
+   "revisitLabel": "2.4 Lesson 3 — Circuit workshop, station 1: From words to logic",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "A hospital lift will only move when the doors are closed and either the inside button or the outside button has been pressed. Write a Boolean expression for this, and explain what each operator does.",
+   "markPoints": [
+    {
+     "concept": "both the door condition and a button are required",
+     "accept": [
+      [
+       "both|as well as|at the same time|all of|two conditions|requires both|every condition|together|parts to hold"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The doors must be closed as well as a button being pressed."
+    },
+    {
+     "concept": "either button on its own is enough",
+     "accept": [
+      [
+       "either|one of|at least one|any of the|one button|just one|whichever|it does not matter which"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Either of the two buttons will do on its own."
+    },
+    {
+     "concept": "and the OR is bracketed, so it is worked out before the AND",
+     "accept": [
+      [
+       "bracket|brackets|parenthes|first|before the and|grouped"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "The OR is in brackets so that it is worked out before the AND."
+    }
+   ],
+   "example": "Q = Closed AND (Inside OR Outside). The AND means the doors must be closed as well as a button being pressed; the OR means either button will do; and the brackets make sure the OR is worked out first, so that the lift cannot move with the doors open just because a button was pressed.",
+   "paraphrase": "Writing it as Closed AND (Inside OR Outside): the AND requires both parts to hold, the OR accepts either button, and the brackets are there so that the button test is worked out first.",
+   "marks": 3,
+   "feedback": "What each operator requires, and what the brackets do. The brackets are the mark most answers miss, and without them the expression means something else.",
+   "hint": "Which part has to be worked out first for the expression to mean what the question says?",
+   "commandWord": "explain",
+   "difficulty": "stretch",
+   "examStyle": true,
+   "subtopic": "From words to logic",
+   "revisit": "bl-l03-s1",
+   "revisitReason": "From words to logic",
+   "outcomes": [
+    "bl-l03-o1"
+   ],
+   "topic": "2.4",
+   "id": "rq-2.4-from-words-to-logic-0018",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "bl-l03",
+   "revisitStationId": "bl-l03-s1",
+   "revisitLabel": "2.4 Lesson 3 — Circuit workshop, station 1: From words to logic",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "sort",
+   "q": "A security light comes on when it is dark AND movement is detected. Sort each situation by whether the light comes on.",
+   "cats": [
+    "Light on",
+    "Light off"
+   ],
+   "items": [
+    [
+     "Dark, movement detected",
+     "Light on"
+    ],
+    [
+     "Dark, no movement",
+     "Light off"
+    ],
+    [
+     "Daylight, movement detected",
+     "Light off"
+    ],
+    [
+     "Daylight, no movement",
+     "Light off"
+    ]
+   ],
+   "marks": 4,
+   "feedback": "AND needs both. Only the first row has both.",
+   "commandWord": "tick",
+   "difficulty": "apply",
+   "subtopic": "From words to logic",
+   "revisit": "bl-l03-s1",
+   "revisitReason": "From words to logic",
+   "outcomes": [
+    "bl-l03-o1"
+   ],
+   "topic": "2.4",
+   "id": "rq-2.4-from-words-to-logic-0019",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "bl-l03",
+   "revisitStationId": "bl-l03-s1",
+   "revisitLabel": "2.4 Lesson 3 — Circuit workshop, station 1: From words to logic",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "tf",
+   "q": "In the expression Q = A OR B AND C, the AND is worked out before the OR.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "True. AND binds more tightly than OR, which is why brackets are used to make the intention clear.",
+   "commandWord": "tick",
+   "difficulty": "stretch",
+   "subtopic": "From words to logic",
+   "revisit": "bl-l03-s1",
+   "revisitReason": "From words to logic",
+   "outcomes": [
+    "bl-l03-o1"
+   ],
+   "topic": "2.4",
+   "id": "rq-2.4-from-words-to-logic-0020",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "bl-l03",
+   "revisitStationId": "bl-l03-s1",
+   "revisitLabel": "2.4 Lesson 3 — Circuit workshop, station 1: From words to logic",
+   "revisitScene": 0,
+   "revisitK": 0
+  }
+ ]
+}
