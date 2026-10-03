@@ -46,18 +46,11 @@
   const pytok = s => TOK() ? TOK().html(s) : esc(s);
   const flat = s => String(s == null ? "" : s).replace(/`([^`]*)`/g, "$1");
 
-  /* The house wording is one sentence per step - ask, work out, display - so
-   * the sentences are the steps. The split has to step over the marked data:
-   * "Display `Done!` on the next line" is one step, not two, and a task that
-   * prescribes `3.5` or `Mr. Patel` must not break in the middle of it. */
-  function splitSteps(q) {
-    const s = String(q == null ? "" : q);
-    const held = [];
-    const masked = s.replace(/`[^`]*`/g, m => { held.push(m); return "\u0000" + (held.length - 1) + "\u0000"; });
-    return masked.split(/(?<=[.?!])\s+(?=[A-Z])/)
-      .map(x => x.trim().replace(/\u0000(\d+)\u0000/g, (_, i) => held[+i]))
-      .filter(Boolean);
-  }
+  /* What a Python activity is, and every sentence said about one, come from
+   * js/pyactivity.js - the same model the headset reads. This file decides how
+   * it looks on a screen and nothing else. */
+  const ACT = window.R360PyAct;
+  const splitSteps = ACT.splitSteps;
   const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
   const asset = p => /^(data:|blob:|https?:)/.test(p) ? p : "experiences/" + p;
   // One definition, in store.js, so a new task type cannot be added to one
@@ -459,83 +452,55 @@
     const sc = exp.scenes[cur];
     return (prog.scenes[sc.id].ans || {})[k + "-" + i] !== undefined;
   }
-  /* What kind of activity this is, and what the pupil is told it is.
-   *
-   * The course releases a technique in stages - watch it work, say what it will
-   * print, change one thing, fill a gap, fix a broken one, write it - and the
-   * pupil is shown which stage they are on, because a task that says "Try it"
-   * is read differently from one that says "Build it". The labels are
-   * deliberately about the action, never about how able the pupil is: there is
-   * no easy, medium or hard anywhere in this course. */
-  const KINDS = {
-    try:      { label: "Try it",      says: "Run this program and watch what it does. Nothing is marked." },
-    predict:  { label: "Predict",     says: "Read the program and say what it will display. Then you will see." },
-    change:   { label: "Change it",   says: "The program already works. Change the one thing asked for." },
-    complete: { label: "Complete it", says: "Part of the program is missing. Fill in the gap." },
-    debug:    { label: "Fix it",      says: "This program is broken. Find the mistake and put it right." },
-    build:    { label: "Build it",    says: "Write the program yourself." }
-  };
-  const kindOf = t => KINDS[t.kind] ? t.kind : "build";
-  const stageOf = t => t.opt ? "Challenge" : KINDS[kindOf(t)].label;
+  // The stages and their wording: js/pyactivity.js, read by both renderers.
+  const KINDS = ACT.KINDS, kindOf = ACT.kindOf, stageOf = ACT.stageOf;
   // Things to stop when the code window closes - speech, so far.
   const onCloseCode = [];
   function runCode(k, list, n, task, head, qn) {
     if (kindOf(task) === "predict") return runPredict(k, list, n, task, head);
     while (onCloseCode.length) { try { onCloseCode.pop()(); } catch (e) { /* already gone */ } }
-    const brief = (task.brief || []).map(b => `<li>${rich(b)}</li>`).join("");
-    /* A worked example of the technique, with different data from the task, so
-     * a pupil meeting it for the first time has something to copy the shape of.
-     * The early lessons carry one on every question and later ones carry none:
-     * a beginner needs the example, and someone on lesson 11 needs the thinking
-     * more than they need another worked case. */
-    const t = task.teach;
-    const kind = kindOf(task);
+    /* What this activity is: the stage, the steps, the worked example, the one
+     * real run, the line notes. Built once in js/pyactivity.js so the headset
+     * shows the same question rather than a second version of it. This function
+     * decides only what each part looks like on a screen. */
+    const M = ACT.model(task);
+    const kind = M.kind;
+    const brief = M.brief.map(b => `<li>${rich(b)}</li>`).join("");
     /* Line by line, for anyone who needs it. A beginner reading a three-line
      * example often cannot say which line does which job, and a paragraph about
      * it beside every program would bury the program. So it is folded away:
      * shut by default, one press to open, and the lines are numbered to match
      * the example above it. */
-    const lines = !t || !t.code || !task.lines ? "" : `<details class="pylines">
+    const lines = !M.teach || !M.teach.lines.length ? "" : `<details class="pylines">
         <summary>What each line does</summary>
-        <ol>${t.code.map((c, i) => task.lines[i]
-          ? `<li value="${i + 1}"><code>${pytok(c.trim())}</code><span>${rich(task.lines[i])}</span></li>` : "").join("")}</ol>
+        <ol>${M.teach.lines.map(l =>
+          `<li value="${l.n}"><code>${pytok(l.code)}</code><span>${rich(l.note)}</span></li>`).join("")}</ol>
       </details>`;
-    /* On a Try it the worked example and the program in the editor are the same
-     * thing, so printing it again on the left is the same lines twice and the
-     * length of the longest of them is why that column had to be scrolled. The
-     * sentence and the line-by-line notes stay; the code itself is on the right,
-     * where it can be run. */
-    const sameAsEditor = kind === "try";
-    /* The worked example is coloured by the same lexer as the editor, so the
-     * shape a pupil is about to copy already looks like the thing they will be
-     * looking at while they copy it. It used to be printed as plain grey text,
-     * which made the one program on the page that is certainly correct the only
-     * one with no colour in it. */
-    const teach = !t ? "" : `<div class="pyteach"><h4>Learn</h4><p>${rich(t.say)}</p>` +
-      (t.code && !sameAsEditor ? `<pre class="pyeg">${pytok(t.code.join("\n"))}</pre>` : "") +
-      (t.out && !sameAsEditor ? `<p class="pyegout"><span>shows</span>${t.out.map(esc).join("<br>")}</p>` : "") +
+    /* A worked example of the technique, with different data from the task, so
+     * a pupil meeting it for the first time has something to copy the shape of.
+     * It is coloured by the same lexer as the editor, so the shape a pupil is
+     * about to copy already looks like the thing they will be looking at while
+     * they copy it. */
+    const teach = !M.teach ? "" : `<div class="pyteach"><h4>Learn</h4><p>${rich(M.teach.say)}</p>` +
+      (M.teach.code.length ? `<pre class="pyeg">${pytok(M.teach.code.join("\n"))}</pre>` : "") +
+      (M.teach.out.length ? `<p class="pyegout"><span>shows</span>${M.teach.out.map(esc).join("<br>")}</p>` : "") +
       lines + "</div>";
 
     /* What the program is given and what it must print, shown as one real run.
-     * It is built from the first test rather than written by hand, so it is on
-     * every question, in the same place, and can never disagree with marking.
      * This is what stops a pupil guessing whether a value is typed in or just
      * written into the program - the commonest way a correct-looking answer
      * fails. It shows the required OUTPUT, not the program that makes it. */
-    const t0 = (task.tests || [])[0] || {};
-    const given = (t0.in || []), shows = (t0.out || []);
-    const files = Object.keys(t0.files || {});
-    const runEg = !shows.length ? "" : `<div class="pyrun">
+    const runEg = !M.run ? "" : `<div class="pyrun">
       <p class="pyrunh">One run of your program</p>
-      ${files.length ? `<div class="pyrunrow"><span>file</span><code>${files.map(esc).join(", ")}</code></div>` : ""}
-      <div class="pyrunrow in"><span>You type</span><code>${given.length ? given.map(esc).join("\n") : "nothing"}</code></div>
-      <div class="pyrunrow out"><span>It displays</span><code>${shows.map(esc).join("\n")}</code></div>
+      ${M.run.files.length ? `<div class="pyrunrow"><span>file</span><code>${M.run.files.map(esc).join(", ")}</code></div>` : ""}
+      <div class="pyrunrow in"><span>You type</span><code>${M.run.given.length ? M.run.given.map(esc).join("\n") : "nothing"}</code></div>
+      <div class="pyrunrow out"><span>It displays</span><code>${M.run.shows.map(esc).join("\n")}</code></div>
     </div>`;
     /* The task as steps rather than a paragraph. The house wording is already
      * one sentence per step - ask, work out, display - so the sentences are the
-     * steps, and splitting them here means all 238 questions get it without
-     * anybody rewriting them into bullets by hand. */
-    const steps = splitSteps(task.q);
+     * steps, and splitting them in the model means all 238 questions get it
+     * without anybody rewriting them into bullets by hand. */
+    const steps = M.steps;
     const stepList = steps.map((s, i) =>
       `<li><span class="stepn" aria-hidden="true">${i + 1}</span><span>${rich(s)}</span></li>`).join("");
 
@@ -552,15 +517,15 @@
      * words as well as in bubbles, because a row of circles does not tell a
      * pupil that this one is only to be run and nothing is being judged. */
     const stage = `<div class="pystage-head">
-        <span class="pychip ${task.opt ? "opt" : kind}">${esc(stageOf(task))}</span>
+        <span class="pychip ${M.opt ? "opt" : kind}">${esc(M.stage)}</span>
         <span class="pywhere">Activity ${n + 1} of ${list.length}</span>
-        <span class="pysays">${esc(task.opt ? "The hardest one on this station. Take your time over it." : KINDS[kind].says)}</span>
+        <span class="pysays">${esc(M.says)}</span>
       </div>`;
     /* A "Try it" activity has nothing to mark: the point of it is to run a
      * working program and watch what happens, which is the opposite of being
      * judged. So there is no Check button on it at all, and pressing Run is
      * what completes it. */
-    const noCheck = kind === "try";
+    const noCheck = M.noCheck;
     /* Left half: everything to read, in one box each, with the marking below it
      * where there is room for it. Right half: the editor, its own Run bar, the
      * output, and the two buttons that end the attempt. Half and half, so a
@@ -640,9 +605,9 @@
     box.classList.add("codewin");
     onCloseCode.push(() => box.classList.remove("codewin"));
 
-    const ed = R360Py.editor($("#pyed"), task.starter || "");
+    const ed = R360Py.editor($("#pyed"), M.starter);
     const out = $("#pyout"), state = $("#pystate");
-    const tests = task.tests || [];
+    const tests = M.tests;
     /* Programming is trial and error, so a code question is never locked after
      * one check the way a multiple-choice question is: the pupil keeps the best
      * mark they reach, and the help gets more specific the more they try. */
@@ -652,15 +617,47 @@
     /* The runtime takes seconds to arrive, and a pupil can close the window or
      * move to the next activity inside that time - at which point these buttons
      * no longer exist. Every one is checked, because an exception thrown from
-     * the ready() callback stops whatever was meant to run after it. */
+     * the ready() callback stops whatever was meant to run after it.
+     *
+     * Only Run and Check wait for Python. The hint, the example and the way to
+     * ask for help are not held back by a download: a pupil waiting a minute on
+     * a school network can be reading in the meantime, and withholding the help
+     * while they wait is the opposite of what it is for. */
     const busy = (on, msg) => {
-      ["#pyrun", "#pycheck", "#pyhint", "#pyhelp"].forEach(s => { const el = $(s); if (el) el.disabled = on; });
+      ["#pyrun", "#pycheck"].forEach(s => { const el = $(s); if (el) el.disabled = on; });
       if (state && state.isConnected) state.textContent = msg || "";
     };
-    // The runtime is a few megabytes, so it is fetched when a code question is
-    // opened rather than on every page, and the wait is said out loud.
-    busy(true, "Starting Python\u2026");
-    R360Py.ready().then(() => { if (out.isConnected) busy(false, ""); });
+    /* It did not arrive. Say so where the output goes, in Python's absence
+     * rather than as a fault in the program, and give them something to press.
+     * A pupil whose runtime failed used to be left with a panel that never
+     * changed and no way back. */
+    function stalled(msg) {
+      busy(true, "");
+      say(esc(msg || "") + "\n\n" + esc(ACT.SAY.runtimeStillHelp), true);
+      if ($("#pyretry")) return;
+      const b = document.createElement("button");
+      b.className = "btn"; b.id = "pyretry"; b.textContent = ACT.SAY.runtimeRetry;
+      b.onclick = () => { b.remove(); R360Py.reset(); start(); };
+      const row = $("#mrow"); if (row) row.appendChild(b);
+    }
+    function start() {
+      busy(true, ACT.SAY.starting);
+      R360Py.ready().then(r => {
+        if (!out.isConnected) return;
+        if (r && r.ok === false) { stalled(r.error); return; }
+        busy(false, "");
+        if (!$("#mrow").children.length) say(`<span class="muted">${esc(ACT.SAY.beforeRun)}</span>`);
+      });
+    }
+    /* The runtime says what it is doing while it does it, so a long wait reads
+     * as a download rather than as nothing happening. */
+    const offState = R360Py.on((s, st) => {
+      if (!out.isConnected) { offState(); return; }
+      if (s === "loading") busy(true, (st.note || ACT.SAY.starting) + (st.seconds > 5 ? ` (${st.seconds}s)` : "") + "…");
+      else if (s === "error") stalled(st.error);
+    });
+    onCloseCode.push(offState);
+    start();
 
     if ($("#pyhint")) $("#pyhint").onclick = () => openHint(task);
     if ($("#pyref")) $("#pyref").onclick = () => openRef();
@@ -675,22 +672,20 @@
     });
 
     $("#pyrun").onclick = async () => {
-      busy(true, "Running\u2026"); say('<span class="muted">Running\u2026</span>');
-      const first = tests[0] || { in: task.in || [] };
-      const r = await R360Py.run(ed.get(), { stdin: (first.in || []).slice(), files: first.files || {}, echo: true, timeoutMs: 6000 });
+      busy(true, ACT.SAY.running); say(`<span class="muted">${ACT.SAY.running}</span>`);
+      const r = await R360Py.run(ed.get(), { stdin: M.runInput.stdin.slice(), files: M.runInput.files, echo: true, timeoutMs: 6000 });
       busy(false, "");
       if (r.error) say(esc(r.stdout) + (r.stdout ? "\n" : "") + esc(r.error), true);
-      else say(r.stdout ? esc(r.stdout) : '<span class="muted">Your program ran but displayed nothing.</span>');
+      else say(r.stdout ? esc(r.stdout) : `<span class="muted">${esc(ACT.SAY.emptyOutput)}</span>`);
       /* On a "Try it" the run is the activity. It counts the moment the program
        * runs without an error, and it is said in words rather than scored, so a
        * pupil pressing Run out of curiosity is never told they were wrong. */
       if (noCheck && !r.error && !$("#mrow").children.length) {
         awardBest(k, i2(k, list, n), marks(task));
-        succeed(task.fb || "You ran a Python program and saw what it displayed.");
+        succeed(ACT.SAY.doneTry(task));
         nextBtn(k, list, n, true);
       } else if (noCheck && r.error) {
-        $("#pytry").textContent = "That program should run as it is. Put back anything you have "
-          + "changed, then press Run again.";
+        $("#pytry").textContent = ACT.SAY.tryBroken;
       }
     };
     if ($("#pyhelp")) $("#pyhelp").onclick = () => askTeacher(task, true);
@@ -700,30 +695,19 @@
     function succeed(text) {
       const fb = $("#fb");
       fb.className = "fb show ok done";
-      fb.innerHTML = `<strong>\u2713 Nice work.</strong>${esc(text)}`;
+      fb.innerHTML = `<strong>${esc(ACT.SAY.doneHead)}</strong>${esc(text)}`;
       $("#pytry").textContent = "";
     }
 
     if ($("#pycheck")) $("#pycheck").onclick = async () => {
       if (!tests.length) return;
       /* Running the code cannot see "write the sort yourself" - sorted() looks
-       * the same from the outside - so that one kind of rule is checked here. */
-      const broke = (task.forbid || []).find(f => ed.get().indexOf(f[0]) >= 0);
-      if (broke) {
-        feedback(false, "Not allowed here.", broke[1]);
-        return;
-      }
-      /* The other half of that rule. Some activities cannot be judged by their
-       * output at all - a program told to pick a random number between 4 and 4
-       * looks exactly like one that prints 4 - so the technique itself has to be
-       * required. Used only where running the code genuinely cannot tell, never
-       * for style. */
-      const absent = (task.require || []).find(f => ed.get().indexOf(f[0]) < 0);
-      if (absent) {
-        feedback(false, "Not quite.", absent[1]);
-        return;
-      }
-      busy(true, "Marking\u2026");
+       * the same from the outside - so that kind of rule is checked before the
+       * tests run. The rule, and the words it says, are in js/pyactivity.js, so
+       * the headset refuses the same program for the same reason. */
+      const refused = ACT.rules(task, ed.get());
+      if (refused) { feedback(false, refused.head, refused.text); return; }
+      busy(true, ACT.SAY.marking);
       const list2 = $("#pytests"); list2.innerHTML = "";
       let passed = 0;
       for (const t of tests) {
@@ -743,25 +727,20 @@
       }
       busy(false, "");
       attempts++;
-      const max = marks(task), got = Math.round(max * passed / tests.length);
-      best = Math.max(best, got);
+      const g = ACT.grade(marks(task), passed, tests.length);
+      best = Math.max(best, g.got);
       awardBest(k, i2(k, list, n), best);
-      const all = passed === tests.length;
+      const all = g.all;
 
       /* The help gets more specific the more times they have checked: the first
        * failure is theirs to read, the second points at the hint, and by the
        * third the hint is one button press away in the feedback itself. */
-      const tryLine = $("#pytry");
-      if (all) tryLine.textContent = "";
-      else if (attempts === 1) tryLine.textContent = "Change one thing and check again. Keeping your best mark.";
-      else if (attempts === 2) tryLine.textContent = "Still not there. The Hint button explains the technique this question needs.";
-      else tryLine.textContent = `Attempt ${attempts}. Open the hint, then come back and change one thing at a time.`;
+      $("#pytry").textContent = ACT.SAY.tryLine(attempts, all);
       if (!all && attempts >= 2 && $("#pyhint")) $("#pyhint").classList.add("nudge");
 
       const row = $("#mrow"); row.innerHTML = "";
-      if (all) succeed(`${task.fb || ""} All ${tests.length} tests passed.`);
-      else feedback(false, `${passed} of ${tests.length} tests passed - best so far ${best} of ${max} marks.`,
-        task.fb || "Look at the first test that failed and work out what your program displayed instead.");
+      if (all) succeed(ACT.SAY.doneAll(task, tests.length));
+      else feedback(false, ACT.SAY.missHead(passed, tests.length, best, g.max), ACT.SAY.missText(task));
       if (!all && attempts >= 3 && task.hint) {
         const h = document.createElement("button");
         h.className = "btn ghost"; h.textContent = "Show me the hint";
@@ -887,21 +866,24 @@
    * the technique on different data. */
   function openHint(task) {
     if (!task.hint || hintOpen()) return;
-    const h = typeof task.hint === "string" ? { diagram: task.hint } : task.hint;
-    const code = v => `<pre class="pyeg">${pytok((Array.isArray(v) ? v : [v]).join("\n"))}</pre>`;
-    const dia = h.diagram && window.R360Diagrams && R360Diagrams.kinds.includes(h.diagram) ? h.diagram : null;
-    const rungs = [];
-    if (h.think) rungs.push({ name: "Think", body: `<p class="hsay">${rich(h.think)}</p>` });
-    if (h.syntax) rungs.push({ name: "The Python you need", body: code(h.syntax) });
-    if (h.start) rungs.push({ name: "How it starts", body: code(h.start) });
-    if (h.walk) rungs.push({ name: "Work it through", body: `<ol class="hwalk">${(Array.isArray(h.walk) ? h.walk : [h.walk]).map(s => `<li>${rich(s)}</li>`).join("")}</ol>` });
-    if (dia) rungs.push({ name: "Watch the technique", diagram: dia, body: `<div class="hintdiag vwrap">
+    /* The rungs, and their names, come from js/pyactivity.js, so the ladder a
+     * pupil climbs in the headset is the same ladder with the same steps in the
+     * same order. Only the body of each rung is written here, because a screen
+     * draws a coloured block where a headset reads out a line. */
+    const code = v => `<pre class="pyeg">${pytok(v.join("\n"))}</pre>`;
+    const rungs = ACT.hintLadder(task,
+      d => !!(window.R360Diagrams && R360Diagrams.kinds.includes(d))).map(r => {
+        if (r.kind === "say") return { name: r.name, body: `<p class="hsay">${rich(r.text)}</p>` };
+        if (r.kind === "code") return { name: r.name, body: code(r.code) };
+        if (r.kind === "steps") return { name: r.name, body: `<ol class="hwalk">${r.steps.map(s => `<li>${rich(s)}</li>`).join("")}</ol>` };
+        return { name: r.name, diagram: r.diagram, body: `<div class="hintdiag vwrap">
         <div class="vstage" id="hint2d"></div>
         <div class="vside">
           <div class="vnow"><b id="hstep"></b><span id="hcap"></span></div>
           <div class="vrow"><button class="btn ghost" id="hprev">‹ Back</button><button class="btn" id="hplay">Pause</button><button class="btn ghost" id="hnext">Next ›</button></div>
         </div>
-      </div>` });
+      </div>` };
+      });
     if (!rungs.length) return;
     const pane = document.createElement("div");
     pane.id = "pyhintpane"; pane.className = "hintpane";
@@ -909,7 +891,7 @@
         <button class="btn ghost" id="hintclose">Close hint</button></div>
       <div class="hintladder" id="hladder"></div>
       <div class="hintfoot"><button class="btn" id="hmore">Show me more</button>
-        <span class="pysays">Your program is still behind this panel, exactly as you left it.</span></div>`;
+        <span class="pysays">${esc(ACT.SAY.hintKept)}</span></div>`;
     box.appendChild(pane);
     const ladder = $("#hladder"), more = $("#hmore"), where = $("#hwhere");
     let shown = 0;
@@ -920,12 +902,10 @@
       sec.innerHTML = `<h4>Step ${shown + 1} of ${rungs.length} — ${esc(r.name)}</h4>${r.body}`;
       ladder.appendChild(sec);
       shown++;
-      where.textContent = rungs.length > 1
-        ? `Step ${shown} of ${rungs.length}. Each step tells you a little more. None of them is the answer.`
-        : "How this technique works — not the answer to this question.";
+      where.textContent = ACT.SAY.hintWhere(shown, rungs.length);
       if (r.diagram) mountHintDiagram(r.diagram);
       if (shown >= rungs.length) more.remove();
-      else more.textContent = `Show me more (${rungs.length - shown} left)`;
+      else more.textContent = ACT.SAY.hintMore(rungs.length - shown);
       sec.scrollIntoView({ block: "nearest" });
     };
     more.onclick = reveal;
@@ -1162,22 +1142,20 @@
   function askTeacher(task, asked) {
     const pane = document.createElement("div");
     pane.id = "pyhintpane"; pane.className = "hintpane helppane";
-    pane.innerHTML = `<div class="hinthead"><b>Asking for help</b>
-        <span>Nothing here is marked, and asking costs you nothing.</span>
+    // Every word of it is in js/pyactivity.js, so the headset says the same.
+    const H = ACT.SAY.help;
+    pane.innerHTML = `<div class="hinthead"><b>${esc(H.title)}</b>
+        <span>${esc(H.lead)}</span>
         <button class="btn ghost" id="hintclose">Close</button></div>
       <div class="helpbody">
-        <p class="helpsay">Not sure what to do next? That is OK. You can use a hint or ask your
-          teacher for help. Show them this question and your code. Complete this question before
-          moving on.</p>
+        <p class="helpsay">${esc(H.body[0])}</p>
         <div class="vrow">
-          ${task && task.hint ? '<button class="btn" id="helphint">Show a hint</button>' : ""}
-          ${task && task.teach ? '<button class="btn ghost" id="helpeg">Review the example</button>' : ""}
-          <button class="btn ghost" id="helpback">Keep trying</button>
+          ${task && task.hint ? `<button class="btn" id="helphint">${esc(H.buttons.hint)}</button>` : ""}
+          ${task && task.teach ? `<button class="btn ghost" id="helpeg">${esc(H.buttons.example)}</button>` : ""}
+          <button class="btn ghost" id="helpback">${esc(H.buttons.back)}</button>
         </div>
-        <p class="qn">Your teacher cannot see this screen. Put your hand up, or send them a
-          message the way your school normally does, and show them this question.</p>
-        <p class="qn">Something wrong with the question itself? Tell your teacher so it can be
-          looked at. Reporting a fault does not finish the question.</p>
+        <p class="qn">${esc(H.body[1])}</p>
+        <p class="qn">${esc(H.body[2])}</p>
       </div>`;
     box.appendChild(pane);
     const shut = () => { const p2 = document.getElementById("pyhintpane"); if (p2) p2.remove(); };
@@ -1418,6 +1396,20 @@
   const go = params.get("go");
   const startScene = go ? Math.max(0, exp.scenes.findIndex(s => s.id === go.split(":")[0])) : 0;
   loadScene(startScene);
+  /* Python is about twelve megabytes. A lesson that has programming in it starts
+   * fetching it as soon as the room is up and the browser is otherwise idle, so
+   * the wait happens while a pupil is reading the first wall rather than while
+   * they are sitting in front of an editor - and, in a headset, so it is not
+   * competing with the moment they put it on.
+   *
+   * It is deliberately not awaited anywhere. Entering VR has to happen inside
+   * the gesture that asked for it, and anything awaited before that call spends
+   * the gesture and the session never opens. */
+  if (window.R360Py && exp.scenes.some(s => (s.stations || []).some(st => (st.tasks || []).some(t => t.t === "code")))) {
+    const warm = () => { try { R360Py.warm(); } catch (e) { /* best effort */ } };
+    if (window.requestIdleCallback) requestIdleCallback(warm, { timeout: 4000 });
+    else setTimeout(warm, 2500);
+  }
   if (go) setTimeout(() => goTo(go, reviewMode), 300);
   else if (reviewMode) toast("Review mode: stations marked Review or Focus let you retry the questions you got wrong.");
 })();

@@ -64,7 +64,13 @@ CHAIN = r"""async () => {
       const w = new Worker("js/pyworker.js", { type: "module" });
       const to = setTimeout(() => { w.terminate(); rej(new Error("worker never answered an init in 180s")); }, 180000);
       w.onerror = e => { clearTimeout(to); rej(new Error("worker onerror: " + (e.message || "(no message)") + " @" + (e.filename || "?") + ":" + (e.lineno || "?"))); };
-      w.onmessage = e => { clearTimeout(to); w.terminate(); res("init answered: " + JSON.stringify(e.data)); };
+      // progress messages come first; the one that answers the init is "ready"
+      const seen = [];
+      w.onmessage = e => {
+        seen.push((e.data || {}).kind + (e.data && e.data.note ? ": " + e.data.note : ""));
+        if ((e.data || {}).kind !== "ready") return;
+        clearTimeout(to); w.terminate(); res("init answered, saying: " + seen.join(" | "));
+      };
       w.postMessage({ id: 1, kind: "init" });
     }));
     await step("R360Py.ready()", async () => { await window.R360Py.ready(); return "state=" + window.R360Py.state; });

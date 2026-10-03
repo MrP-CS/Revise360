@@ -122,31 +122,64 @@ def main():
         # either, and the mark must follow the best attempt.
         press("kbPanel", "ccheck", wait=600)
         pg.wait_for_function("() => NVRVR.vrCode && !NVRVR.vrCode.busy", timeout=120000)
-        again = pg.evaluate("({ attempts: NVRVR.vrCode.attempts, best: NVRVR.vrCode.best, result: NVRVR.vrCode.result })")
+        again = pg.evaluate("({ attempts: NVRVR.vrCode.attempts, best: NVRVR.vrCode.best,"
+                            "  result: NVRVR.vrCode.result, tryLine: NVRVR.vrCode.tryLine })")
         print("checked twice:", again.get("attempts"), "attempts, best", again.get("best"))
         if (again.get("attempts") or 0) < 2:
             print("Check was locked after the first attempt"); bad += 1
-        if "Press Hint" not in (again.get("result") or ""):
-            print("the second failure did not point at the hint"); bad += 1
+        # the escalation is the screen's, word for word, out of js/pyactivity.js
+        want = pg.evaluate("R360PyAct.SAY.tryLine(2, false)")
+        if again.get("tryLine") != want:
+            print(f"the second failure did not say what the screen says: {again.get('tryLine')!r}"); bad += 1
+        # and every test is listed, pass or fail, as the screen lists them
+        rows = pg.evaluate("NVRVR.vrCode.tests.length")
+        if rows != pg.evaluate("NVRVR.vrCode.model.tests.length"):
+            print(f"only {rows} test(s) reported in the headset"); bad += 1
+        if not pg.evaluate("NVRVR.sidePanel.open"):
+            print("the marking was not shown anywhere"); bad += 1
+        # the way on is not offered before the activity is finished
+        if pg.evaluate("NVRVR.kbPanel.hits.some(h => h.id === 'cnext')"):
+            print("the headset offered the next question before this one was finished"); bad += 1
 
-        # The Hint key gives one rung at a time, the same ladder the screen
-        # shows, and the animated diagram is the last rung.
-        rungs = pg.evaluate("""(() => { const h = NVRVR.vrCode.task.hint;
-          if (!h) return 0; if (typeof h === 'string') return 0;
-          return ['think','syntax','start','walk'].filter(k => h[k]).length; })()""")
-        said = []
-        for _ in range(rungs):
-            press("kbPanel", "chint", wait=400)
-            said.append(pg.evaluate("NVRVR.vrCode.result") or "")
-        print("hint rungs in the headset:", rungs, "->", [t[:34] for t in said])
-        if rungs and not all(t.startswith("Hint ") for t in said):
-            print("a hint rung did not reach the console line"); bad += 1
-        press("kbPanel", "chint", wait=900)
-        hint = pg.evaluate("NVRVR.vrDiag ? ({ kind: NVRVR.vrDiag.u.dg.diagram, steps: NVRVR.vrDiag.dg.steps.length }) : None" .replace("None", "null"))
+        # The hint is the same ladder the screen shows, one rung at a time, with
+        # the animated diagram as the last rung - and the program stays put.
+        want_rungs = pg.evaluate("R360PyAct.hintLadder(NVRVR.vrCode.task,"
+                                 " d => !!(window.R360Diagrams && R360Diagrams.kinds.includes(d))).map(r => r.name)")
+        press("kbPanel", "chint", wait=500)
+        for _ in range(len(want_rungs)):
+            if not pg.evaluate("NVRVR.padPanel.hits.some(h => h.id === 'hmore')"): break
+            pg.evaluate("NVRVR.padPanel.hits.find(h => h.id === 'hmore').fn()")
+            pg.wait_for_timeout(350)
+        said = pg.evaluate("(NVRVR.padPanel.spec.blocks||[]).filter(b => b && b.p && /\\u2014/.test(b.p)).map(b => b.p)")
+        print("hint rungs in the headset:", [t[:38] for t in said])
+        if len(said) != len(want_rungs):
+            print(f"the ladder has {len(said)} rung(s) in here and {len(want_rungs)} on the screen"); bad += 1
+        for i, name in enumerate(want_rungs):
+            if i < len(said) and name not in said[i]:
+                print(f"rung {i + 1} is {said[i]!r}, not {name!r}"); bad += 1
+        hint = pg.evaluate("NVRVR.vrDiag ? ({ kind: NVRVR.vrDiag.u.dg.diagram, steps: NVRVR.vrDiag.dg.steps.length }) : null")
         print("hint diagram in the headset:", hint)
-        if not hint: print("the last rung opened no diagram"); bad += 1
-        if not pg.evaluate("!!NVRVR.vrCode"):
+        if "Watch the technique" in want_rungs and not hint:
+            print("the last rung opened no diagram"); bad += 1
+        if not pg.evaluate("!!NVRVR.vrCode && NVRVR.vrCode.text.length > 0"):
             print("opening the hint threw the pupil's program away"); bad += 1
+        pg.evaluate("NVRVR.padPanel.hits.find(h => h.id === 'hclose').fn()"); pg.wait_for_timeout(300)
+
+        # Asking the teacher is on the screen, so it is in here, in the same words.
+        press("kbPanel", "chelp", wait=500)
+        helps = pg.evaluate("(NVRVR.padPanel.spec.blocks||[]).filter(b => b && b.p).map(b => b.p)")
+        for line in pg.evaluate("R360PyAct.SAY.help.body"):
+            if line not in helps:
+                print("the help panel is missing a paragraph the screen has"); bad += 1
+        pg.evaluate("NVRVR.padPanel.hits.find(h => h.id === 'hback').fn()"); pg.wait_for_timeout(250)
+
+        # and the workspace can be moved to wherever the pupil is now looking
+        before_at = pg.evaluate("NVRVR.vrCode.mesh.position.toArray()")
+        pg.evaluate("__dev.position.set ? __dev.position.set(0, 1.8, 0) : 0")
+        pg.evaluate("NVRVR.recentre()"); pg.wait_for_timeout(300)
+        if not pg.evaluate("!!NVRVR.vrCode && NVRVR.vrCode.text.length > 0"):
+            print("recentring threw the pupil's program away"); bad += 1
+        print("recentre kept the program; panel was at", [round(x, 2) for x in before_at])
 
         pg.screenshot(path=os.environ.get("VR_CODE_SHOT", "vr_code.png"))
 
@@ -190,8 +223,19 @@ def main():
                 if pr.get("editor"): print("a Predict opened the typing editor"); bad += 1
                 if (pr.get("options") or 0) < 3: print("the Predict showed fewer than three options"); bad += 1
                 press("qPanel", "p0", wait=500)
-                after = pg.evaluate("NVRVR.qPanel.spec.blocks.some(b => b && b.id === 'next')")
-                if not after: print("answering the Predict offered no way on"); bad += 1
+                # The way on appears only when the activity is finished, and
+                # short of that the pupil goes round again - the same rule as
+                # the screen. Which of the two it is depends on whether the
+                # option the trigger landed on was the right one, so both are
+                # accepted and which one it was is reported.
+                after = pg.evaluate("""(() => {
+                  const b = NVRVR.qPanel.spec.blocks.filter(Boolean);
+                  const done = b.some(x => x.id === 'next'), again = b.some(x => x.id === 'again');
+                  return { done, again }; })()""")
+                if not after["done"] and not after["again"]:
+                    print("answering the Predict offered neither the next question nor another go"); bad += 1
+                else:
+                    print("predict answered ->", "next question" if after["done"] else "another go")
 
         real = [e for e in errs if "WebGL" not in e and "deprecat" not in e.lower()]
         if real: print("page errors:", real[:3]); bad += len(real)

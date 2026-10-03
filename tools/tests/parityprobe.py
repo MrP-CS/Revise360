@@ -62,30 +62,57 @@ SCREEN = r"""(() => {
 })()"""
 
 # ---------------------------------------------------------------- what the headset shows
+#
+# Read off the panels themselves - the blocks each one was given, and where its
+# mesh ended up - rather than off the task data, so this records what a pupil
+# would see and not what the code intended to show them.
 VRSHOW = r"""(() => {
   const v = NVRVR.vrCode; if (!v) return { open: false };
-  const kb = NVRVR.kbPanel;
+  const kb = NVRVR.kbPanel, task = NVRVR.taskPanel, side = NVRVR.sidePanel;
+  const blocks = p => (p && p.open && p.spec ? (p.spec.blocks || []).filter(Boolean) : []);
+  const text = p => blocks(p).map(b => b.rich !== undefined ? b.rich
+                                  : b.code !== undefined ? b.code
+                                  : b.p !== undefined ? b.p
+                                  : b.kv ? b.kv.filter(x => typeof x === "string").join(" ") : "")
+                             .filter(s => s !== "");
+  // a backtick that survives into PLAIN text is one the pupil would see; in a
+  // rich block it is the mark the renderer turns into a boxed, coloured value
+  const anyBacktick = p => blocks(p).some(b => b && b.p !== undefined && /`/.test(String(b.p)));
+  // where each surface ended up, as degrees from where the pupil is looking
+  const a = NVRVR.anchor;
+  const place = m => {
+    if (!a || !m || !m.visible) return null;
+    const d = m.position.clone().sub(a.pos);
+    const yaw = Math.atan2(d.x, d.z) - a.yaw;
+    return { dist: +d.length().toFixed(2),
+             yaw: Math.round(Math.atan2(Math.sin(yaw), Math.cos(yaw)) * 180 / Math.PI),
+             pitch: Math.round(Math.asin(Math.max(-1, Math.min(1, d.y / d.length()))) * 180 / Math.PI) };
+  };
+  const M = v.model;
   return {
     open: true,
-    // every string paintCode() puts on the canvas, in the order it paints them
-    painted_question: v.task.q,
-    painted_brief:    v.task.brief || [],
-    painted_teach:    v.task.teach ? "e.g.  " + (v.task.teach.code || []).join("    ").slice(0, 74) : null,
-    teach_say_shown:  false,
-    teach_out_shown:  false,
-    line_notes_shown: false,
-    run_eg_shown:     false,
-    stage_chip_shown: false,
-    dots_shown:       false,
+    task_panel:       text(task),
+    task_title:       task.open && task.spec ? task.spec.title : null,
+    side_panel:       text(side),
+    side_title:       side.open && side.spec ? side.spec.title : null,
+    stage_chip_shown: text(task).some(s => String(s).indexOf(M.stage) === 0),
+    steps_numbered:   blocks(task).filter(b => b.n).length,
+    teach_say_shown:  !!(M.teach && text(side).includes(M.teach.say)),
+    teach_code_shown: !!(M.teach && M.teach.code.length && text(side).includes(M.teach.code.join("\n"))),
+    teach_out_shown:  !!(M.teach && M.teach.out.length && text(side).includes(M.teach.out.join("\n"))),
+    line_notes_shown: !!(M.teach && M.teach.lines.length),
+    run_eg_shown:     !!M.run,
     starter:          v.text,
     console:          v.out || "Press Run to try your program.",
     state:            v.state,
     buttons:          kb.hits.filter(h => !/^key/.test(h.id)).map(h => h.id),
     keys:             kb.hits.filter(h => /^key/.test(h.id)).length,
-    raw_backticks:    String(v.task.q).includes("`")
-                        || (v.task.brief || []).some(b => String(b).includes("`")),
-    brief_lines_budget: 240,
-    palette_source:   "js/vr.js COL literal"
+    raw_backticks:    anyBacktick(task) || anyBacktick(side),
+    layout:           { task: place(task.mesh), code: place(v.mesh),
+                        side: place(side.mesh), keys: place(kb.mesh) },
+    // the brand colours the panels are actually drawn in, and where they came from
+    palette:          NVRVR.COL,
+    palette_source:   "css/style.css :root, read at draw time"
   };
 })()"""
 
@@ -171,17 +198,27 @@ def main():
         pg.wait_for_function("() => NVRVR.vrCode && !NVRVR.vrCode.busy", timeout=120000)
         rec["vr"] = pg.evaluate(VRSHOW)
         pg.screenshot(path=str(OUTDIR / f"vr-{lid}.png"))
-        # the hint ladder in the headset
-        said = []
+        # the hint ladder in the headset: one rung, then "show me more"
+        pg.evaluate("NVRVR.showHint()"); pg.wait_for_timeout(350)
         for _ in range(5):
-            pg.evaluate("NVRVR.vrCode && NVRVR.kbPanel.hits.find(h=>h.id==='chint') && NVRVR.kbPanel.hits.find(h=>h.id==='chint').fn()")
-            pg.wait_for_timeout(300)
-            r = pg.evaluate("NVRVR.vrCode ? NVRVR.vrCode.result : null")
-            if r and r not in said: said.append(r)
-            if pg.evaluate("!!NVRVR.vrDiag"): said.append("[diagram opened]"); break
-        rec["vr"]["hint_rungs"] = said
+            if not pg.evaluate("NVRVR.padPanel.hits.some(h => h.id === 'hmore')"): break
+            pg.evaluate("NVRVR.padPanel.hits.find(h => h.id === 'hmore').fn()")
+            pg.wait_for_timeout(350)
+        rec["vr"]["hint_rungs"] = pg.evaluate(
+            "(NVRVR.padPanel.spec.blocks||[]).filter(b => b && b.p && /^Step \\d+ of \\d+ \\u2014/.test(b.p)).map(b => b.p)")
+        rec["vr"]["hint_where"] = pg.evaluate(
+            "((NVRVR.padPanel.spec.blocks||[])[0]||{}).p || null")
+        rec["vr"]["hint_diagram"] = pg.evaluate("!!NVRVR.vrDiag")
+        rec["vr"]["program_kept"] = pg.evaluate("!!NVRVR.vrCode && NVRVR.vrCode.text.length > 0")
+        pg.screenshot(path=str(OUTDIR / f"vr-hint-{lid}.png"))
+        pg.evaluate("NVRVR.padPanel.hits.find(h => h.id === 'hclose').fn()"); pg.wait_for_timeout(300)
+        # and the teacher-help panel
+        pg.evaluate("NVRVR.showHelp()"); pg.wait_for_timeout(350)
         rec["vr"]["teacher_help"] = pg.evaluate(
-            "NVRVR.kbPanel.hits.some(h => /help/i.test(h.id)) ? 'present' : 'absent'")
+            "(NVRVR.padPanel.spec.blocks||[]).filter(b => b && b.p).map(b => b.p)")
+        rec["vr"]["teacher_help_buttons"] = pg.evaluate(
+            "NVRVR.padPanel.hits.map(h => h.id)")
+        pg.evaluate("NVRVR.padPanel.hits.find(h => h.id === 'hback').fn()"); pg.wait_for_timeout(250)
         pg.screenshot(path=str(OUTDIR / f"vr-hint-{lid}.png"))
         rec["vr"]["page_errors"] = [e for e in errs if "WebGL" not in e][:5]
         pg.close(); b.close()

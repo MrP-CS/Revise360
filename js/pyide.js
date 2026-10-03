@@ -12,25 +12,67 @@
   "use strict";
 
   // ---------------------------------------------------------------- runtime
+  /* Python is about twelve megabytes, and it arrives over whatever network the
+   * school has. On a desktop that is a few seconds. In a headset it can be a
+   * minute, and the thing that made it look broken was not the wait: it was
+   * that the wait said nothing, could not end, and could not be tried again.
+   *
+   * So the runtime has four states a pupil can be shown, every one of them
+   * reachable from every other:
+   *
+   *   cold     nothing has been asked for yet
+   *   loading  it is on its way, and `note` says what it is doing
+   *   ready    it works
+   *   error    it did not arrive, `error` says so, and reset() tries again
+   *
+   * (`running` is `ready` with a program in it.) Nothing waits for ever, a
+   * failure is never remembered as a success, and reset() is a real way back. */
+  const LOAD_MS = 180000;   // the longest a load may take before it has failed
+  const SLOW = "Python did not finish loading. It is about 12 MB, so a slow or " +
+    "blocked connection is the usual cause. Press the button to try again.";
+  const GONE = "Python could not start in this browser.";
+
   const RUN = {
-    worker: null, seq: 0, waiting: new Map(), state: "cold", listeners: [],
+    worker: null, seq: 0, waiting: new Map(),
+    state: "cold", note: "", error: null, started: 0, listeners: [],
     on(f) { RUN.listeners.push(f); return () => { const i = RUN.listeners.indexOf(f); if (i >= 0) RUN.listeners.splice(i, 1); }; },
-    say(s) { RUN.state = s; RUN.listeners.forEach(f => { try { f(s); } catch (e) { /* a listener must not stop the rest */ } }); }
+    say(s, note) {
+      RUN.state = s;
+      if (note !== undefined) RUN.note = note;
+      const st = status();
+      // a listener that throws must not stop the rest of them hearing
+      RUN.listeners.forEach(f => { try { f(st.state, st); } catch (e) { /* carry on */ } });
+    }
   };
+  const status = () => ({ state: RUN.state, note: RUN.note, error: RUN.error,
+    seconds: RUN.started ? Math.round((Date.now() - RUN.started) / 1000) : 0 });
+
+  let readyOnce = null;
+
+  /* The worker is gone and whatever was waiting on it will never be answered.
+   * `readyOnce` goes with it: a load that failed must not be remembered as one
+   * that worked, or every question after it skips the loading state and runs
+   * against a runtime that is not there. */
+  function lost(msg, state) {
+    RUN.waiting.forEach(h => h.resolve({ kind: "result", stdout: "", error: msg }));
+    RUN.waiting.clear();
+    if (RUN.worker) { try { RUN.worker.terminate(); } catch (e) { /* already gone */ } RUN.worker = null; }
+    readyOnce = null;
+    RUN.error = state === "error" ? msg : null;
+    RUN.say(state || "error", "");
+  }
 
   function spawn() {
     const w = new Worker("js/pyworker.js", { type: "module" });
     w.onmessage = (e) => {
-      const { id, kind } = e.data || {};
+      const { id, kind, note } = e.data || {};
+      // what it is doing, so a long wait can say so rather than sit still
+      if (kind === "progress") { RUN.say(RUN.state, note || ""); return; }
       const hit = RUN.waiting.get(id);
       if (!hit) return;
       if (kind === "ready" || kind === "result") { RUN.waiting.delete(id); hit.resolve(e.data); }
     };
-    w.onerror = () => {
-      // the whole worker fell over; fail everything outstanding rather than hang
-      RUN.waiting.forEach(h => h.resolve({ kind: "result", stdout: "", error: "Python could not start." }));
-      RUN.waiting.clear(); RUN.worker = null; RUN.say("error");
-    };
+    w.onerror = (e) => lost(GONE + ((e && e.message) ? " (" + e.message + ")" : ""), "error");
     return w;
   }
 
@@ -46,30 +88,54 @@
          * one is started for the next run. This is what makes `while True:`
          * survivable rather than a page you have to close. */
         RUN.waiting.delete(id);
-        if (RUN.worker) { RUN.worker.terminate(); RUN.worker = null; }
-        RUN.say("idle");
+        if (RUN.worker) { try { RUN.worker.terminate(); } catch (e) { /* gone */ } RUN.worker = null; }
+        readyOnce = null;          // the next call loads it again, properly
+        RUN.say("cold", "");
         resolve({ kind: "result", stdout: "", error: "__timeout__" });
       }, timeoutMs);
     });
   }
 
-  let readyOnce = null;
+  /* Loads the runtime, and says so while it does. Resolves to { ok } rather
+   * than throwing, so a caller that forgets to catch cannot leave a pupil
+   * looking at a panel that never changes. */
   function ready() {
     if (readyOnce) return readyOnce;
-    RUN.say("loading");
-    readyOnce = post({ kind: "init" }).then(r => { RUN.say("idle"); return r; });
+    RUN.error = null; RUN.started = Date.now();
+    RUN.say("loading", "Starting Python");
+    readyOnce = post({ kind: "init" }, LOAD_MS).then(r => {
+      if (r.error === "__timeout__") { lost(SLOW, "error"); return { ok: false, error: SLOW }; }
+      if (r.error) { lost(r.error, "error"); return { ok: false, error: r.error }; }
+      RUN.say("ready", "");
+      return { ok: true };
+    });
     return readyOnce;
   }
+
+  /* Start fetching it before anybody asks, without blocking anything. Called
+   * from the page once the scene is up, so a pupil who opens their first Python
+   * question thirty seconds later finds it already there - and, in a headset,
+   * so the download is not competing with the moment they put it on. It never
+   * awaits, so it cannot consume the gesture a WebXR session has to start on. */
+  function warm() { try { ready(); } catch (e) { /* warming is best effort */ } return status(); }
+
+  /* A way back. The runtime is thrown away and the next call loads it again
+   * from nothing, so a pupil whose Python failed has something to press rather
+   * than a session to abandon. */
+  function reset() { lost("", "cold"); RUN.error = null; RUN.note = ""; return status(); }
 
   /* Runs code and returns { stdout, error, timedOut }. `error` is Python's own
    * message, tidied, because a pupil should learn to read the real one. */
   async function run(code, opts) {
     opts = opts || {};
-    await ready();
+    /* If the runtime never arrived, say that rather than reporting it as a
+     * fault in the pupil's program. They did not write the bug. */
+    const up = await ready();
+    if (up && up.ok === false) return { stdout: "", error: up.error, noRuntime: true };
     RUN.say("running");
     const r = await post({ kind: "run", code, stdin: opts.stdin || [], echo: !!opts.echo,
                           files: opts.files || {} }, opts.timeoutMs || 6000);
-    RUN.say("idle");
+    if (RUN.state === "running") RUN.say("ready");
     if (r.error === "__timeout__")
       return { stdout: "", error: "Your program was still running after " +
         Math.round((opts.timeoutMs || 6000) / 1000) + " seconds, so it was stopped. " +
@@ -219,8 +285,8 @@
   const tokens = line => TOK.lex(line).map(x => ({ t: x.t, c: TOK.colours[x.k] }));
 
   window.R360Py = {
-    ready, run, editor, paint, tokens,
+    ready, run, editor, paint, tokens, warm, reset,
     get colours() { return TOK.colours; },
-    on: RUN.on, get state() { return RUN.state; }
+    on: RUN.on, get state() { return RUN.state; }, get status() { return status(); }
   };
 })();

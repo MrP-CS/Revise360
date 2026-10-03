@@ -16,10 +16,19 @@ import { loadPyodide } from "../vendor/pyodide/pyodide.mjs";
 
 let py = null, loading = null;
 
-function load() {
+/* A twelve-megabyte download over a school network is not instant, and in a
+ * headset it can be a minute. Saying which part is happening is the difference
+ * between a wait and a hang, so each stage is reported as it starts. Pyodide
+ * itself offers no byte counter, so these are stages rather than a percentage -
+ * which is honest, where an invented bar would not be. */
+function say(id, note) { self.postMessage({ id, kind: "progress", note }); }
+
+function load(id) {
   if (loading) return loading;
   loading = (async () => {
+    say(id, "Downloading Python (about 12 MB)");
     py = await loadPyodide({ indexURL: "../vendor/pyodide/" });
+    say(id, "Starting it up");
     // Pupils' programs are self-contained; nothing here should be reaching out.
     py.runPython("import sys\nsys.setrecursionlimit(300)\n");
     return py;
@@ -30,9 +39,9 @@ function load() {
 self.onmessage = async (e) => {
   const { id, kind, code, stdin, echo, files } = e.data || {};
   try {
-    if (kind === "init") { await load(); self.postMessage({ id, kind: "ready" }); return; }
+    if (kind === "init") { await load(id); self.postMessage({ id, kind: "ready" }); return; }
     if (kind !== "run") return;
-    await load();
+    await load(id);
 
     /* File-handling questions need their file to exist. Pyodide has a virtual
      * filesystem, so each test writes its own fixtures before the program runs
