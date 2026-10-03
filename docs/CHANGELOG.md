@@ -1,3 +1,87 @@
+# Revision 360 — October 2026
+
+A continuous revision mode covering all eleven topics of OCR J277, usable by a
+Year 11 on their own, on a laptop, a tablet or a Quest. It is a 360° experience
+rather than a web form, it reports marks rather than questions, and it does not
+give anybody a predicted grade.
+
+Read `docs/REVISION-360.md` for what it does, `docs/REVISION-QUESTION-BANK.md` for
+how the questions are written, `docs/REVISION-QUIZ-COVERAGE.md` for what they
+cover, and `docs/REVISION-QUIZ-QA.md` for what has been checked and what has not.
+
+## What it is
+
+| | |
+|---|---|
+| questions | 629, across all eleven topics |
+| marks available | 1,203 |
+| modes | ten — endless, three question counts, two mark targets, mistakes, recover, weakest topics, exam practice |
+| families | computed 29%, recognition 40%, written 31%; exam-style 28% — all inside the ranges the spec sets |
+| teaching lessons covered | all of them |
+| lesson outcomes with a question against them | 181 of 231 |
+| predicted grades | none, anywhere |
+
+## Marks, not words
+
+Written answers are marked on meaning. `js/revmark.js` is the only place marking
+happens — the page and the headset both call it — and it handles synonyms,
+inflections, negation, contradiction, spelling and British English, with no exact
+string matching anywhere in it.
+
+That is a claim, so it is tested. `tools/revwritten.py` builds nine kinds of probe
+for every mark point and marks each one with the site's own marker: 2,193 probes
+over 346 mark points. **430 of those probes fail against a word matcher**, which is
+the only evidence the suite can tell concept marking from matching words.
+
+The suite found twenty-three faults in the marker and about forty in the questions.
+The one worth repeating: a negator was denying the consequence of a causal link, so
+"a file that is not there causes an error" lost its mark. Shortening the negator's
+reach was the obvious fix and the suite immediately showed it letting a negated
+answer earn a mark somewhere else. The distance was never what told the two apart;
+a new predicate is.
+
+## Every answer that can be derived, is
+
+No conversion, truth table, binary addition, shift, calculation or trace table has
+its answer typed in. `tools/revkit.py` computes them from the inputs and
+`tools/revverify.py` computes them again with its own code: 181 of 181 agreed.
+That is the only reason a bank with 181 computed questions can be trusted —
+nobody has read 181 binary patterns to check them.
+
+## The headset
+
+One engine, two renderers. In a headset there is one question screen, a row of six
+controls that never moves, and clear air between every pair of surfaces.
+`tools/tests/smokeviserbounds.py` checks that through the geometry `js/vr.js`
+reports rather than a screenshot, and its first run found two defects nothing had
+been looking at: the menu button placed underneath the keyboard, and the keyboard
+left out of what a controller can point at.
+
+Nobody is made to write an essay on a virtual keyboard. A four or six-mark written
+question offers VR, paper, or saving it for a desktop.
+
+## The question count, honestly
+
+The spec asks for at least 1,500 meaningful questions unless a documented quality
+decision justifies a different number. There are 629.
+
+The families that can be generated honestly are already at the top of the range the
+spec allows them, so more drill would push the balance outside its own spec.
+Reaching 1,500 within those ranges needs roughly 270 more recognition questions and
+270 more written ones, each written answer carrying its own mark points and nine
+probes. That is weeks of authoring rather than hours, and padding it with reworded
+questions would make the bank worse while making the number better. The position
+taken here is 629 questions that each do something, every teaching lesson covered,
+and this note saying exactly what the remainder would cost.
+
+## Nothing was replaced
+
+No lesson, deck, worksheet, image or record changed. Revision 360 is additive: it
+reads the course's own station records to decide where each question sends a
+learner, and writes nothing back. Answer sheets remain outside the repository.
+
+---
+
 # Pedagogical gap-closing pass — October 2026
 
 A quality pass, not a redesign. The visual system, the lesson structure and the

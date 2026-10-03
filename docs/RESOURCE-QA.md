@@ -57,8 +57,10 @@ it exits non-zero if a wall card matches no station.
 
 ## Checking
 
-Twenty-six checks. Run them all; each prints a single sentence at the end and exits
-non-zero on a failure.
+Thirty-seven checks. Run them all; each prints a single sentence at the end and
+exits non-zero on a failure. The eleven that cover Revision 360 are listed
+separately below, and `docs/REVISION-QUIZ-QA.md` says what each one has found and
+what was broken on purpose to trust it.
 
 | check | what it holds | last run |
 |---|---|---|
@@ -89,6 +91,22 @@ non-zero on a failure.
 | `fit.js` | no question window needs scrolling at six widths | pass |
 | `a11y.js` | everything named, reachable and readable | pass |
 
+Revision 360, in the order they are run:
+
+| check | what it holds | last run |
+|---|---|---|
+| `tools/mkrevision.py` | the bank builds; no two questions share a stem; every station exists and is in the right unit | 629 questions, 1,203 marks, 11 topics |
+| `tools/revqa.py` | marks in range, required fields present, no answer given away by its stem, the manifest agrees with disk, the family balance inside its ranges | the bank is sound |
+| `tools/revwritten.py` | every written question marks meaning, not words | 2,193 probes, 0 problems |
+| `tools/revwritten.py --naive` | how many of those probes a word matcher gets wrong | 430 of 2,193 |
+| `tools/revverify.py` | every derived answer recomputed with independent code | 181 of 181 agreed |
+| `tools/revdupes.py` | six kinds of repetition, drill separated from duplication | 39 groups, all deliberate |
+| `tools/revcoverage.py` | every teaching lesson has a question; which outcomes nothing asks | 0 uncovered, 181 of 231 outcomes |
+| `tools/revindex.py` | every station a question points at opens in an experience | 702 of 702 |
+| `tools/tests/smokemark.py` | the marker's own rules, without the bank | 22 rules, pass |
+| `tools/tests/smokerevise.py` | a learner can revise end to end, in a browser | pass |
+| `tools/tests/smokeviserbounds.py` | one question, fixed controls, no overlap, in a headset runtime | pass |
+
 ```bash
 for t in verifycode verifyref checkws audit_claims audit_exposure; do python3 tools/$t.py; done
 for t in smoketok smokegate smokemarks smokeplans smokepacks smokeguides \
@@ -98,6 +116,12 @@ for t in smoketok smokegate smokemarks smokeplans smokepacks smokeguides \
 python3 tools/vrkeys.py
 python3 tools/recoverwalls.py
 node tools/tests/smokecode.js
+
+cd tools
+for t in mkrevision revqa revwritten revverify revdupes revcoverage revindex; do
+  python3 $t.py; done
+python3 revwritten.py --naive
+for t in smokemark smokerevise smokeviserbounds; do python3 tests/$t.py; done
 ```
 
 `renderall.js`, `fit.js`, `a11y.js`, `kinds.js`, `retry.js` and `regress.js` are

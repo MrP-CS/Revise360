@@ -425,7 +425,7 @@
        "lost|dropped|discarded|cut off|removed|thrown away"
       ],
       [
-       "wrong|incorrect|inaccurate|not the right answer|error"
+       "wrong|incorrect|inaccurate|not the right answer|wrong answer|wrong result|wrong value|wrong number"
       ]
      ],
      "worth": 1,
@@ -1635,6 +1635,114 @@
    "revisitLabel": "1.2 Lesson 8 — Binary workshop, station 4: Binary addition",
    "revisitScene": 0,
    "revisitK": 3
+  },
+  {
+   "type": "mcq",
+   "q": "In the binary number 10010110, which bit is the most significant?",
+   "options": [
+    "The leftmost 1, worth 128",
+    "The rightmost 0, worth 1",
+    "The leftmost 0, worth 64",
+    "The 1 in the middle, worth 16"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Most significant means worth the most. In an 8-bit number that is the left-hand end, worth 128.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "Most and least significant bit",
+   "revisit": "ms-l08-s3",
+   "revisitReason": "Most and least significant bit",
+   "outcomes": [
+    "ms-l08-o3"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-most-and-least-significant-bit-0221",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l08",
+   "revisitStationId": "ms-l08-s3",
+   "revisitLabel": "1.2 Lesson 8 — Binary workshop, station 3: MSB and LSB",
+   "revisitScene": 0,
+   "revisitK": 2
+  },
+  {
+   "type": "mcq",
+   "q": "What is the least significant bit of 11001101?",
+   "options": [
+    "1",
+    "0",
+    "128",
+    "There is not one"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "The least significant bit is the right-hand one, worth 1. Here it is a 1.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "Most and least significant bit",
+   "revisit": "ms-l08-s3",
+   "revisitReason": "Most and least significant bit",
+   "outcomes": [
+    "ms-l08-o3"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-most-and-least-significant-bit-0222",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l08",
+   "revisitStationId": "ms-l08-s3",
+   "revisitLabel": "1.2 Lesson 8 — Binary workshop, station 3: MSB and LSB",
+   "revisitScene": 0,
+   "revisitK": 2
+  },
+  {
+   "type": "written",
+   "q": "Explain why changing the most significant bit of an 8-bit number changes it by far more than changing the least significant bit.",
+   "markPoints": [
+    {
+     "concept": "the most significant bit is worth 128 and the least significant 1",
+     "accept": [
+      [
+       "128|1|place value|place values|worth|value|weight"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The most significant bit is worth 128 and the least significant bit is worth 1."
+    },
+    {
+     "concept": "so each place to the left is worth twice the one to its right",
+     "accept": [
+      [
+       "double|doubles|twice|times two|doubling|power|powers of two|each place|every place"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "This is because each place to the left is worth twice the one to its right."
+    }
+   ],
+   "example": "Each place in a binary number is worth twice the place to its right, so an 8-bit number runs 128, 64, 32, 16, 8, 4, 2, 1. Flipping the left-hand bit changes the value by 128; flipping the right-hand one changes it by 1.",
+   "paraphrase": "Every column is double the one beside it, so the leftmost position carries 128 while the rightmost carries only 1.",
+   "marks": 2,
+   "feedback": "The two place values, and the doubling that produces them.",
+   "commandWord": "explain",
+   "difficulty": "understand",
+   "subtopic": "Most and least significant bit",
+   "revisit": "ms-l08-s3",
+   "revisitReason": "Most and least significant bit",
+   "outcomes": [
+    "ms-l08-o3"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-most-and-least-significant-bit-0223",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l08",
+   "revisitStationId": "ms-l08-s3",
+   "revisitLabel": "1.2 Lesson 8 — Binary workshop, station 3: MSB and LSB",
+   "revisitScene": 0,
+   "revisitK": 2
   }
  ]
 }

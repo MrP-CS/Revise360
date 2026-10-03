@@ -29,8 +29,10 @@ BANK = [
         short("State what is meant by systems software.",
               [mp("software that runs and manages the computer itself, rather than doing a "
                   "job for the user",
-                  ["manage|manages|managing|run|runs|running|control|controls|operate"],
-                  ["computer|system|hardware|machine|resources"],
+                  ["manage|manages|managing|control|controls|controlling|operate|"
+                   "looks after|look after|runs the computer|run the computer|"
+                   "keeps the computer",
+                   "computer|system|hardware|machine|resources"],
                   exemplar="Software that runs and manages the computer itself.")],
               example="Software that runs and manages the computer itself, such as the "
                       "operating system and utilities, rather than application software that "
@@ -80,7 +82,8 @@ BANK = [
                  mp("so it is harder to learn and a mistyped command may do something "
                     "unintended",
                     ["harder|difficult|steep|not easy|intimidating|confusing"],
-                    ["mistype|mistyped|typo|wrong command|mistake|error|delete|damage"],
+                    ["mistype|mistyped|typo|wrong command|mistake|delete|deletes|"
+                     "damage|destroy|irreversible|no warning|no undo"],
                     developed=True,
                     exemplar="This makes it much harder to learn than clicking on an icon.")],
                 example="A command line gives no clues: the user has to know the exact "

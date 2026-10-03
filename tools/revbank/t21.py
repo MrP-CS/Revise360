@@ -36,8 +36,12 @@ BANK = [
         written("A programmer is writing a game where a car drives round a track. Explain "
                 "how abstraction helps them.", 2,
                 [mp("they leave out detail the game does not need",
-                    ["leave out|ignore|ignoring|remove|not include|do not need|does not need|unnecessary|"
-                     "irrelevant|not model|does not model|not affect"],
+                    ["leave out|leaves out|left out|ignore|ignoring|ignored|"
+                     "not include|does not include|do not model|does not model|"
+                     "only model|only models|simplif",
+                     "detail|details|how the engine|paint|inside|internal|"
+                     "not needed|does not need|do not need|unnecessary|irrelevant|"
+                     "not affect|does not affect|game|car|track"],
                     exemplar="They leave out detail the game does not need, such as how the "
                              "engine works internally."),
                  mp("so the program is simpler, quicker to write and faster to run",
@@ -252,7 +256,8 @@ BANK = [
         written("Explain why a binary search is much faster than a linear search on a large "
                 "sorted list.", 3,
                 [mp("a binary search discards half the remaining list at every step",
-                    ["half|halve|halves|halving|50%"],
+                    ["half the list|half of the list|half the remaining|half of what|"
+                     "halve the list|halves the list|half the items|half the data|discards half|throws away half|half each time|half every time|halving|50%"],
                     exemplar="Each comparison discards half of what is left."),
                  mp("a linear search checks one item at a time",
                     ["one at a time|one by one|each item|every item|each one|"

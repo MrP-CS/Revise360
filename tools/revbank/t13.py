@@ -512,7 +512,8 @@ BANK = [
                     exemplar="Wired Ethernet for the catalogue computers."),
                  mp("because they stay in one place and need a fast, reliable and more "
                     "secure connection",
-                    ["fixed|stay|do not move|one place|permanent"],
+                    ["fixed|stay in one place|stays in one place|do not move|does not move|"
+                     "not moved|one place|stays put|desktop|desktops"],
                     ["fast|faster|reliable|reliability|secure|security|stable"],
                     exemplar="They never move, and a wired link is faster, more reliable "
                              "and harder to intercept.")],

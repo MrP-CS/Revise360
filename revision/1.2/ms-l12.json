@@ -303,6 +303,87 @@
    "revisitLabel": "1.2 Lesson 12 — Character foundry, station 6: Text file size",
    "revisitScene": 0,
    "revisitK": 5
+  },
+  {
+   "type": "mcq",
+   "q": "How does a computer store the letter K?",
+   "options": [
+    "As a binary number given to it by a character set",
+    "As a tiny picture of the letter",
+    "As the shape of the letter in the font",
+    "As the word 'K' in the operating system"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Every character has a number, and the number is stored in binary like everything else. The font decides how it is drawn, not how it is stored.",
+   "commandWord": "identify",
+   "difficulty": "understand",
+   "subtopic": "Text as numbers",
+   "revisit": "ms-l12-s1",
+   "revisitReason": "Text as numbers",
+   "outcomes": [
+    "ms-l12-o1"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-text-as-numbers-0224",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l12",
+   "revisitStationId": "ms-l12-s1",
+   "revisitLabel": "1.2 Lesson 12 — Character foundry, station 1: Text as numbers",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "Explain why two computers need to use the same character set to exchange text correctly.",
+   "markPoints": [
+    {
+     "concept": "a character set decides which number stands for which character",
+     "accept": [
+      [
+       "number|code|value|binary",
+       "character|characters|letter|letters|symbol|symbols"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "A character set decides which number stands for which character."
+    },
+    {
+     "concept": "so with different sets the same number would be shown as a different character",
+     "accept": [
+      [
+       "different|another|wrong|not the same",
+       "shown|displayed|appear|appears|read|interpret|interpreted|character|letter|symbol|gibberish|nonsense"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "So the same number would be shown as a different character on the other computer."
+    }
+   ],
+   "example": "A character set is an agreement about which number means which character. If the sending computer uses one agreement and the receiving one uses another, the same binary number is read as a different character, and the text arrives as nonsense.",
+   "paraphrase": "The set is what links each code to a particular symbol, so if the two machines use different ones the identical number is displayed as the wrong character.",
+   "marks": 2,
+   "feedback": "What a character set decides, and what goes wrong when the two disagree.",
+   "commandWord": "explain",
+   "difficulty": "understand",
+   "examStyle": true,
+   "subtopic": "Text as numbers",
+   "revisit": "ms-l12-s1",
+   "revisitReason": "Text as numbers",
+   "outcomes": [
+    "ms-l12-o1"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-text-as-numbers-0225",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l12",
+   "revisitStationId": "ms-l12-s1",
+   "revisitLabel": "1.2 Lesson 12 — Character foundry, station 1: Text as numbers",
+   "revisitScene": 0,
+   "revisitK": 0
   }
  ]
 }

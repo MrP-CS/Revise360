@@ -664,7 +664,8 @@ BANK = [
                     exemplar="The answer needs more bits than the computer has set aside."),
                  mp("so the extra bit is lost and the stored answer is wrong",
                     ["lost|dropped|discarded|cut off|removed|thrown away"],
-                    ["wrong|incorrect|inaccurate|not the right answer|error"],
+                    ["wrong|incorrect|inaccurate|not the right answer|wrong answer|"
+                     "wrong result|wrong value|wrong number"],
                     exemplar="The extra bit is lost, so the stored answer is wrong.")],
                 example="An overflow happens when the result of a calculation needs more bits "
                         "than are available — for example a ninth bit in an 8-bit system. "
