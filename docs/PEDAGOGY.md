@@ -143,15 +143,67 @@ example and the practice, as it would be anywhere else.
 
 ## Where the model is not yet honoured
 
-`docs/COVERAGE.md` records this against every lesson. The largest gap:
+`docs/COVERAGE.md` records this against every lesson, and the numbers below come
+from the most recent run of `tools/record.py`, not from a previous count.
 
-**57 of the 115 lessons practise nothing independently.** The theory experiences
-are almost entirely multiple-choice: a pupil chooses between options at every
-station and never produces anything of their own on screen. Their independent work
-is on paper — the key facts, the station challenges, the exam practice — so plan
-for it, and do not read a full online score as evidence that a pupil can do it
-unaided. Each unit's pedagogy PDF says this where it is true of that unit.
+**8 of the 98 teaching lessons practise nothing independently**: `ns-l09`,
+`nw-l02`, `nw-l12`, `nw-l14`, `pf-l02`, `pf-l04`, `pl-l04`, `rp-l06`. A pupil
+chooses between options at every station and never produces anything of their
+own on screen. Their independent work is on paper — the key facts, the station
+challenges, the exam practice — so plan for it, and do not read a full online
+score as evidence that a pupil can do it unaided. Each unit's pedagogy PDF says
+this where it is true of that unit.
 
-85 lessons have no optional challenge activity. 17 outcomes are not assessed
-anywhere in their own unit. Those are listed lesson by lesson rather than
-summarised away.
+A further 26 lessons have exactly one activity that asks for an answer rather
+than a choice, which is thin rather than absent.
+
+85 lessons have no optional challenge activity. 15 outcomes are not assessed
+anywhere in their own unit, 8 match no station's text, and 4 cannot be traced at
+all. Those are listed lesson by lesson rather than summarised away.
+
+**This figure used to read 57, and that was a measurement fault, not an
+improvement.** Two things were wrong with the count. Bonus arcade games were
+scored as recognition, and sorting, ordering and table-filling — where nothing is
+offered and the pupil has to classify, sequence or work something out — were
+scored as guided. Separately, `record.py` read only the first scene of a lesson,
+so two lessons built in parts had two thirds of their stations treated as absent.
+Of the drop from 57 to 8, most is the corrected measurement; the rest is the work
+recorded below. The underlying course changed less than the number did.
+
+## The gap-closing pass, and what the pilots taught
+
+Four lessons were rebuilt first, deliberately different from each other, before
+anything was changed in bulk.
+
+| pilot | why it was chosen | what it needed |
+|---|---|---|
+| `ms-l07` Capacity calculator | a calculation lesson with fifteen multiple-choice activities | somewhere to actually do the calculation: a working-out table per formula station |
+| `sa-l02` Von Neumann HQ | conceptual, multiple-choice only, and one outcome nothing assessed | an activity *as* the assessment, where an exam question would have been the wrong instrument |
+| `nw-l06` Star and mesh | its teaching existed only as pixels in the 360 image | the wall text recovered into the source, and a choose-the-topology activity |
+| `el-l01` Impact desk | its deck had no model and no visible check | a MODEL slide and a CHECK slide |
+
+What the pilots settled, and what the rest of the pass follows:
+
+- **Add after, never replace.** A pupil's stored progress is keyed by station and
+  activity index. A new activity at a new index is invisible to existing progress;
+  renumbering an existing one silently moves somebody's marks.
+- **The paper keeps its job.** Nothing was added online that the worksheet
+  already does. `ms-l07`'s working-out tables deliberately print nothing on the
+  sheet, because the sheet already poses its own scenarios and printing the same
+  blank table would ask for the same sum twice.
+- **Theory does not become typing.** Every activity added is a classification, an
+  ordering or a calculation. None is a box to write prose in; prose belongs on
+  paper, where it can be marked.
+- **The new activity uses numbers and scenarios of its own.** Checked against the
+  walls, the worked examples, the worksheet and the exam practice every time.
+- **Where an outcome is genuinely untestable on paper, an activity assesses it.**
+  `sa-l02-o3` is "understand what a keyword is", which is not Paper 1 systems
+  architecture; writing an exam question for it would have been worse than the
+  activity that sorts keywords from chosen names.
+- **Measure before judging.** Two of the four pilots turned up a fault in the
+  audit rather than in the lesson. Recalculate, state what the correction was
+  worth, and do not present it as teaching that improved.
+
+The outcome mappings those pilots checked by hand are in `alignment/<lesson>.json`,
+and `docs/COVERAGE.md` marks every lesson as `authored` or `auto` so the difference
+between a human judgement and a word match is visible rather than implied.
