@@ -4,18 +4,13 @@ import json, subprocess, sys, importlib
 from kit import export
 import re as _re, itertools as _it
 def _vars(t): return t["inputs"] if t.get("inputs") else sorted(set(c for c in _re.sub("AND|OR|NOT", "", t["expr"]) if c.isalpha()))
-def marks(t):
-    # The code rule is copied from Store.marks in js/store.js, which is where
-    # the canonical mark table lives. There used to be two copies of that table
-    # that disagreed; this is the printed worksheet's view of the same rule, so
-    # keep it reading exactly like the one over there.
-    if t["t"] == "code": return t.get("marks") or 3
-    if t["t"] in ("mcq", "multi", "circuit", "expr", "convert", "addshift", "pixels", "sound", "memory", "permissions", "defrag", "impact", "searchstep", "sortstep"): return 1
-    if t["t"] == "bugline": return 2
-    if t["t"] == "trace": return sum(1 for row in t["rows"] for v in row if v == "")
-    if t["t"] == "table": return 1 << len(_vars(t))
-    if t["t"] in ("sprint", "defence", "blitz", "lawgame"): return 0
-    return len(t.get("items") or t.get("pairs") or t.get("steps"))
+# What an activity is worth: the one rule, from kit.py, which tools/tests/
+# smokemarks.py checks against Store.marks in js/store.js. There were three
+# copies of this table - here, in kit.py and in store.js - and they had already
+# drifted: "arena" was worth nothing in the browser and crashed in the build.
+from kit import task_marks as marks
+
+
 def code_blocks(tasks):
     """The paper side of a station whose work is done at a keyboard.
 

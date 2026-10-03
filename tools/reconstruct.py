@@ -19,7 +19,7 @@ Pair it with facefaces.py, which extracts the readable wall panels.
 """
 import os, sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from paths import SITE
-import json, re, zipfile, html, glob
+import json, re, zipfile, html, glob, os
 
 TOPIC_OF = {"ns": "1.4", "ss": "1.5", "rp": "2.3", "bl": "2.4", "al": "2.1",
             "sa": "1.1", "ms": "1.2", "nw": "1.3", "el": "1.6", "pl": "2.5"}
@@ -55,17 +55,23 @@ def between(lines, start_pat, stop_pats):
         if s: out.append(s)
     return out
 
-def find_ws(eid):
+def find_ws(eid, wspath=None):
     e = json.load(open(SITE / "experiences" / f"{eid}.json"))
     # Most scenes are <PREFIX>_Lnn_Name_360.jpg; topic 1.5's are missing the
     # _360 suffix, so strip it only if it is there.
     base = e["scenes"][0]["img"].split("/")[-1]
     base = re.sub(r"(_360)?\.jpg$", "", base)
+    if wspath:
+        # The caller knows which worksheet belongs to this lesson - the inventory
+        # records it - which is better than guessing from the scene's file name.
+        full = wspath if os.path.isabs(wspath) else str(SITE / wspath)
+        if os.path.exists(full):
+            return full, e
     hits = glob.glob(str(SITE / "worksheets" / f"{base}_Worksheet.docx"))
     return (hits[0] if hits else None), e
 
-def reconstruct(eid):
-    wspath, e = find_ws(eid)
+def reconstruct(eid, wspath=None):
+    wspath, e = find_ws(eid, wspath)
     if not wspath:
         raise SystemExit(f"{eid}: no worksheet found, nothing to reconstruct from")
     lines = doc_lines(wspath)

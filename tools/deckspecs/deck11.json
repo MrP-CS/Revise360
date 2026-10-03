@@ -1,0 +1,567 @@
+[
+ {
+  "id": "sa-l01",
+  "lesson": 1,
+  "title": "Fetch-execute factory",
+  "topic": "1.1",
+  "kicker": "1.1 Systems architecture  |  Lesson 1",
+  "subtitle": "OCR J277 Paper 1  |  Computer systems",
+  "intro": "Every program you run is broken into instructions, and the CPU processes them billions of times a second. Follow an instruction through the factory and meet the registers that make it happen.",
+  "keywords": [
+   "CPU",
+   "Fetch",
+   "Decode",
+   "Execute",
+   "Register",
+   "ALU",
+   "Control unit",
+   "Cache"
+  ],
+  "objectives": [
+   "understand what the CPU of a computer does",
+   "know what CPU registers are",
+   "know the stages of the fetch-execute cycle",
+   "know about other components of the CPU"
+  ],
+  "starter": "A chef can keep three ingredients on the worktop, twenty in the cupboard and anything else at the shop. Which is like cache, which is like RAM and which is like secondary storage? Why does the worktop make cooking faster?",
+  "keyq": "What is the architecture of a CPU?",
+  "keyterms": [
+   "CPU",
+   "Fetch-decode-execute cycle"
+  ],
+  "stations": [
+   {
+    "name": "Purpose of the CPU",
+    "bullets": [
+     "The CPU (central processing unit) processes data and instructions.",
+     "It does this by carrying out the fetch-decode-execute cycle, over and over.",
+     "It is sometimes called the brain of the computer."
+    ],
+    "challenge": "Write, in your own words, the purpose of a CPU.",
+    "fact": "The purpose of the CPU is..."
+   },
+   {
+    "name": "Stage 1: Fetch",
+    "bullets": [
+     "The program counter (PC) holds the address of the next instruction.",
+     "The address is copied to the MAR, and the instruction is fetched from RAM into the MDR.",
+     "The PC is incremented, so it points to the next instruction."
+    ],
+    "challenge": "Describe what happens to the program counter during the fetch stage.",
+    "fact": "During the fetch stage..."
+   },
+   {
+    "name": "Stage 2: Decode",
+    "bullets": [
+     "The instruction is now inside the CPU.",
+     "The control unit (CU) decodes it: it works out what the instruction means and what needs to be done."
+    ],
+    "challenge": "Which component decodes instructions?",
+    "fact": "During the decode stage..."
+   },
+   {
+    "name": "Stage 3: Execute",
+    "bullets": [
+     "The instruction is carried out. Depending on the instruction, the CPU may:",
+     "fetch data from memory to use in a calculation, done by the ALU;",
+     "jump to another instruction, or write data from the accumulator back to RAM."
+    ],
+    "challenge": "Give two different things that might happen during the execute stage.",
+    "fact": "During the execute stage..."
+   },
+   {
+    "name": "The registers",
+    "bullets": [
+     "Registers are tiny, very fast memory locations inside the CPU.",
+     "PC: address of the next instruction. MAR: address to fetch from or write to.",
+     "MDR: data fetched or to be written. ACC: results of calculations."
+    ],
+    "challenge": "Complete the registers table on your worksheet.",
+    "fact": "Registers are..."
+   },
+   {
+    "name": "Other CPU components",
+    "bullets": [
+     "ALU (arithmetic logic unit): performs calculations and logical decisions.",
+     "CU (control unit): decodes instructions and sends signals to control how data moves.",
+     "Cache: fast memory for frequently used instructions and data."
+    ],
+    "challenge": "How does the cache stop the CPU having to wait for RAM?",
+    "fact": "The ALU... The CU... The cache..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: the cycle",
+   "intro": "Put the six steps of the fetch-decode-execute cycle in the right order. Then tap the orange 3D markers to explore the hardware."
+  },
+  "info": [
+   {
+    "title": "The first microprocessor",
+    "text": "The Intel 4004, released in 1971, was the first CPU on a single chip. It had about 2,300 transistors; modern CPUs have billions."
+   },
+   {
+    "title": "Billions per second",
+    "text": "A 3 GHz CPU can run about 3 billion cycles every second, so the fetch-decode-execute cycle happens faster than you can imagine."
+   },
+   {
+    "title": "Instruction sets",
+    "text": "Each type of CPU understands its own set of instructions. PCs mostly use x86 CPUs, while phones and many new laptops use ARM."
+   },
+   {
+    "title": "Hot stuff",
+    "text": "CPUs get hot while they work. Many slow themselves down automatically if they reach around 100°C, to avoid damage."
+   },
+   {
+    "title": "Registers are tiny",
+    "text": "A register holds just one value, but it's the fastest memory in the whole computer."
+   },
+   {
+    "title": "The kitchen analogy",
+    "text": "Cache is like the worktop next to you: only a few things fit, but they're within reach. RAM is the cupboard across the kitchen, and storage is the shop down the road."
+   }
+  ],
+  "exam": [
+   {
+    "q": "Describe what the CPU does while a program is running.",
+    "marks": 2
+   },
+   {
+    "q": "Name two registers found in a CPU and state what each one holds.",
+    "marks": 4
+   },
+   {
+    "q": "A computer's cache is full. Explain the effect this has on the CPU.",
+    "marks": 3
+   }
+  ],
+  "confidence": [
+   "What the CPU does",
+   "The CPU registers",
+   "The stages of the fetch-execute cycle",
+   "The ALU, CU and cache"
+  ],
+  "wsfile": "SA_L01_FetchExecuteFactory_Worksheet.docx"
+ },
+ {
+  "id": "sa-l02",
+  "lesson": 2,
+  "title": "Von Neumann HQ",
+  "topic": "1.1",
+  "kicker": "1.1 Systems architecture  |  Lesson 2",
+  "subtitle": "OCR J277 Paper 1  |  Computer systems",
+  "intro": "Almost every computer you've used follows a design described in 1945. Explore the von Neumann architecture, its components and registers, and find out what other designs exist.",
+  "keywords": [
+   "Von Neumann",
+   "Stored program",
+   "MAR",
+   "MDR",
+   "Program counter",
+   "Accumulator",
+   "Keyword"
+  ],
+  "objectives": [
+   "describe the von Neumann architecture",
+   "know the components of the von Neumann architecture",
+   "understand what a keyword is"
+  ],
+  "starter": "The same laptop can run a game, then a word processor, then a browser, with no hardware changed. What makes that possible?",
+  "keyq": "What other architectures exist and where are they used?",
+  "keyterms": [
+   "ALU",
+   "CU (control unit)"
+  ],
+  "stations": [
+   {
+    "name": "John von Neumann",
+    "bullets": [
+     "A Hungarian-American mathematician and computer scientist.",
+     "In 1945 he described a design for a computer that stores programs in memory.",
+     "Nearly all modern computers still follow his ideas."
+    ],
+    "challenge": "Who was John von Neumann, and why is he important to computing?",
+    "fact": "John von Neumann was..."
+   },
+   {
+    "name": "The stored-program concept",
+    "bullets": [
+     "Instructions and data are both stored in the same main memory.",
+     "The CPU fetches instructions and data from memory, one at a time.",
+     "Loading a different program means the same computer can do a different job."
+    ],
+    "challenge": "Explain how data and instructions are stored in von Neumann architecture.",
+    "fact": "In von Neumann architecture, instructions and data are..."
+   },
+   {
+    "name": "Program counter and accumulator",
+    "bullets": [
+     "Program counter (PC): holds the address of the next instruction to be fetched.",
+     "It increments during each fetch-decode-execute cycle.",
+     "Accumulator (ACC): holds the results of calculations done by the ALU."
+    ],
+    "challenge": "Explain the purpose of the program counter and how its value changes.",
+    "fact": "The PC... The accumulator..."
+   },
+   {
+    "name": "MAR and MDR",
+    "bullets": [
+     "MAR (memory address register): holds the address of the data or instruction to be fetched or stored.",
+     "MDR (memory data register): holds the data or instruction fetched from memory, or to be written to it.",
+     "They work as a pair to move data between the CPU and RAM."
+    ],
+    "challenge": "Describe the purpose of the memory data register.",
+    "fact": "The MAR holds... The MDR holds..."
+   },
+   {
+    "name": "Other architectures",
+    "bullets": [
+     "Harvard architecture stores instructions and data in separate memories, with separate buses.",
+     "It lets an instruction and data be fetched at the same time.",
+     "It's used in many embedded systems and microcontrollers."
+    ],
+    "challenge": "What other architectures exist, and where are they used?",
+    "fact": "Another architecture is..."
+   },
+   {
+    "name": "Keywords",
+    "bullets": [
+     "Every programming language has keywords: reserved words with a special meaning.",
+     "Python keywords include if, else, while, for, def, return, True and False.",
+     "You can't use a keyword as a variable name."
+    ],
+    "challenge": "Find three Python keywords and write what each one does.",
+    "fact": "A keyword is..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: name that part",
+   "intro": "Match each component or register to its definition. This is a real exam question. Then explore the orange 3D model of the architecture."
+  },
+  "info": [
+   {
+    "title": "A brilliant mind",
+    "text": "Von Neumann also made major contributions to maths, physics and game theory, and worked on some of the first electronic computers."
+   },
+   {
+    "title": "Rewiring computers",
+    "text": "Before stored programs, machines like ENIAC had to be physically rewired with cables to change the job they did."
+   },
+   {
+    "title": "The von Neumann bottleneck",
+    "text": "Because instructions and data share one memory, the CPU can only fetch one at a time. This limit is called the von Neumann bottleneck."
+   },
+   {
+    "title": "Best of both",
+    "text": "Modern CPUs mix both ideas: they use von Neumann-style shared RAM, but separate caches for instructions and data, like Harvard architecture."
+   },
+   {
+    "title": "Harvard Mark I",
+    "text": "Harvard architecture is named after the Harvard Mark I computer of 1944, which read instructions from punched tape and kept data separately."
+   },
+   {
+    "title": "How many keywords?",
+    "text": "Python has about 35 keywords. Try typing help(\"keywords\") into Python to see the full list."
+   }
+  ],
+  "exam": [
+   {
+    "q": "Name the register that holds the address of the next instruction to be fetched.",
+    "marks": 1
+   },
+   {
+    "q": "Describe what the memory data register holds and when it is used.",
+    "marks": 2
+   },
+   {
+    "q": "Explain what happens during each of the three stages of the fetch-decode-execute cycle.",
+    "marks": 6
+   }
+  ],
+  "confidence": [
+   "The von Neumann architecture",
+   "The PC, MAR, MDR and accumulator",
+   "What a keyword is"
+  ],
+  "wsfile": "SA_L02_VonNeumannHQ_Worksheet.docx"
+ },
+ {
+  "id": "sa-l03",
+  "lesson": 3,
+  "title": "Speed lab",
+  "topic": "1.1",
+  "kicker": "1.1 Systems architecture  |  Lesson 3",
+  "subtitle": "OCR J277 Paper 1  |  Computer systems",
+  "intro": "Why is one computer faster than another? In the speed lab you'll test the three characteristics that affect CPU performance: clock speed, cache size and the number of cores.",
+  "keywords": [
+   "Clock speed",
+   "Hertz",
+   "GHz",
+   "Cache",
+   "Cores",
+   "Overclocking",
+   "Performance"
+  ],
+  "objectives": [
+   "understand three ways in which the speed of a CPU, and therefore a computer, can be increased",
+   "know the units clock speed is measured in, and what overclocking does to heat"
+  ],
+  "starter": "Two laptops both have 8 GB of RAM, but one feels much faster. Suggest three things about their processors that could explain the difference.",
+  "keyq": "What factors affect CPU performance?",
+  "keyterms": [
+   "Cache",
+   "Register"
+  ],
+  "stations": [
+   {
+    "name": "Clock speed",
+    "bullets": [
+     "The number of fetch-decode-execute cycles a CPU can carry out each second.",
+     "Measured in hertz (Hz): 1 Hz is one cycle per second.",
+     "A 3.5 GHz CPU runs 3.5 billion cycles per second. Higher clock speed means more instructions each second."
+    ],
+    "challenge": "State what is meant by a 2.5 GHz processor.",
+    "fact": "Clock speed is..."
+   },
+   {
+    "name": "Overclocking and heat",
+    "bullets": [
+     "Overclocking runs a CPU faster than its intended clock speed.",
+     "Faster CPUs produce more heat, so they need better cooling, like heatsinks and fans.",
+     "Too much heat can make a computer unstable or damage the CPU."
+    ],
+    "challenge": "Why do faster CPUs need better cooling?",
+    "fact": "Overclocking means... The risk is..."
+   },
+   {
+    "name": "Cache size",
+    "bullets": [
+     "Cache is fast memory inside the CPU for frequently used instructions and data.",
+     "A bigger cache holds more, so the CPU makes fewer slow trips to RAM.",
+     "Cache comes in levels: L1 is fastest and smallest; L2 and L3 are bigger and a little slower."
+    ],
+    "challenge": "Explain how a bigger cache improves performance.",
+    "fact": "A larger cache improves performance because..."
+   },
+   {
+    "name": "Number of cores",
+    "bullets": [
+     "Each core is a processing unit that can fetch, decode and execute instructions on its own.",
+     "A quad-core CPU can process four instructions at the same time.",
+     "Doubling the cores doesn't always double the speed: software must be written to use them, and some tasks can't be split up."
+    ],
+    "challenge": "Why doesn't a dual-core CPU always run a program twice as fast as a single-core one?",
+    "fact": "More cores improve performance because... but..."
+   },
+   {
+    "name": "Single core, 2.5 GHz",
+    "bullets": [
+     "'Single core' means the CPU has one processing unit.",
+     "'2.5 GHz' means it runs 2.5 billion fetch-decode-execute cycles each second.",
+     "Exam answers should link each characteristic to its effect on performance."
+    ],
+    "challenge": "A computer has a 2.5 GHz processor and 5 GB of RAM. State the purpose of its CPU.",
+    "fact": "A single core 2.5 GHz processor..."
+   },
+   {
+    "name": "Units of speed",
+    "bullets": [
+     "1 kilohertz (kHz) = 1,000 cycles per second.",
+     "1 megahertz (MHz) = 1 million cycles per second.",
+     "1 gigahertz (GHz) = 1 billion cycles per second."
+    ],
+    "challenge": "Put these in order, slowest first: 900 MHz, 1.2 GHz, 400 kHz.",
+    "fact": "The units of clock speed are..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: fastest to slowest",
+   "intro": "Five processors are on the starting line. Put them in order, slowest first. Then explore the orange 3D models."
+  },
+  "info": [
+   {
+    "title": "Turbo boost",
+    "text": "Many CPUs speed themselves up automatically for short bursts when there's lots of work, then slow down again to stay cool."
+   },
+   {
+    "title": "World records",
+    "text": "Enthusiasts have overclocked CPUs past 9 GHz using liquid nitrogen to keep them cold, but only for a few minutes."
+   },
+   {
+    "title": "Cache sizes",
+    "text": "Cache is measured in megabytes, while RAM is measured in gigabytes. Cache is tiny, but much faster."
+   },
+   {
+    "title": "Phones have many cores",
+    "text": "Many smartphones have eight cores: some powerful ones for games and some low-power ones to save battery."
+   },
+   {
+    "title": "It's not just the CPU",
+    "text": "The amount of RAM, the speed of storage and the graphics card also affect how fast a computer feels."
+   },
+   {
+    "title": "Hertz",
+    "text": "The unit hertz is named after Heinrich Hertz, a German physicist who proved radio waves exist."
+   }
+  ],
+  "exam": [
+   {
+    "q": "State three characteristics of a CPU that affect its performance.",
+    "marks": 3
+   },
+   {
+    "q": "A laptop is advertised with a quad-core 3.2 GHz processor. Explain what this tells you about the CPU.",
+    "marks": 3
+   },
+   {
+    "q": "A user edits video and finds their computer slow. Explain how each of the three characteristics could improve its performance.",
+    "marks": 6
+   }
+  ],
+  "confidence": [
+   "How clock speed affects performance",
+   "How cache size affects performance",
+   "How the number of cores affects performance"
+  ],
+  "wsfile": "SA_L03_SpeedLab_Worksheet.docx"
+ },
+ {
+  "id": "sa-l04",
+  "lesson": 4,
+  "title": "Smart home",
+  "topic": "1.1",
+  "kicker": "1.1 Systems architecture  |  Lesson 4",
+  "subtitle": "OCR J277 Paper 1  |  Computer systems",
+  "intro": "This house is full of computers, but hardly any of them look like one. Find out what embedded systems are, where they are, and how they take input, process it and give output.",
+  "keywords": [
+   "Embedded system",
+   "Dedicated function",
+   "Microcontroller",
+   "Input",
+   "Process",
+   "Output",
+   "Firmware"
+  ],
+  "objectives": [
+   "understand what is meant by the term embedded system",
+   "know several examples of embedded systems",
+   "understand how an embedded system takes input, processes it and produces output"
+  ],
+  "starter": "List five devices in your home that contain a computer but don't look like one. What does each one do with the data it collects?",
+  "keyq": "What are embedded systems, and what are their characteristics?",
+  "keyterms": [
+   "Von Neumann architecture",
+   "MAR"
+  ],
+  "stations": [
+   {
+    "name": "What is an embedded system?",
+    "bullets": [
+     "A computer system built into a larger device.",
+     "It has a dedicated function: it does one job, or a small set of jobs.",
+     "Examples: washing machines, microwaves, traffic lights and car engine management."
+    ],
+    "challenge": "Explain what an embedded system is.",
+    "fact": "An embedded system is..."
+   },
+   {
+    "name": "Characteristics",
+    "bullets": [
+     "Limited functions: runs one dedicated program.",
+     "Usually small, low power and cheap to mass produce.",
+     "Very reliable, and often has to respond in real time."
+    ],
+    "challenge": "Why are embedded systems usually cheap and low power?",
+    "fact": "Embedded systems are usually..."
+   },
+   {
+    "name": "Embedded systems everywhere",
+    "bullets": [
+     "At home: washing machines, microwaves, smart thermostats, TVs and fridges.",
+     "Out and about: traffic lights, cash machines and car systems, like automatic lights and anti-lock brakes.",
+     "On you: fitness trackers and smartwatches."
+    ],
+    "challenge": "List five embedded systems you have used today.",
+    "fact": "Examples of embedded systems include..."
+   },
+   {
+    "name": "Input, process, output",
+    "bullets": [
+     "Input: buttons, dials and sensors, such as a water temperature sensor.",
+     "Process: a microcontroller runs the program and makes decisions.",
+     "Output: motors, heaters, lights and displays."
+    ],
+    "challenge": "Choose a device in your home and describe its inputs, its processing and its outputs.",
+    "fact": "A washing machine is a computer because..."
+   },
+   {
+    "name": "Programming embedded systems",
+    "bullets": [
+     "The program is stored permanently in the device, often called firmware.",
+     "Embedded systems are often programmed in C or C++, which run fast and give close control of the hardware.",
+     "Some firmware can be updated, like a smart TV's software update."
+    ],
+    "challenge": "What programming language is mainly used for embedded systems, and why?",
+    "fact": "Embedded systems are programmed using..."
+   },
+   {
+    "name": "Embedded or general purpose?",
+    "bullets": [
+     "A general-purpose computer, like a laptop, can run many different programs.",
+     "An embedded system is built in to one device and does one dedicated job.",
+     "Some devices blur the line, like smart TVs that run apps."
+    ],
+    "challenge": "Explain why a laptop is not an embedded system.",
+    "fact": "The difference between embedded and general-purpose computers is..."
+   }
+  ],
+  "final": {
+   "name": "Final challenge: spot the embedded system",
+   "intro": "Eight devices from around the house and street. Tap the star and sort each one into embedded system or general-purpose computer. Then take apart the 3D washing machine."
+  },
+  "info": [
+   {
+    "title": "Computers on wheels",
+    "text": "A modern car has dozens of embedded computers, often more than 50, controlling everything from the engine to the windows."
+   },
+   {
+    "title": "Life-saving computers",
+    "text": "Pacemakers are embedded systems that must be extremely reliable and run for years on one battery."
+   },
+   {
+    "title": "The Internet of Things",
+    "text": "When embedded systems connect to the internet, like smart speakers and doorbells, they're called the Internet of Things."
+   },
+   {
+    "title": "Microcontrollers",
+    "text": "A microcontroller combines a CPU, memory and input/output on one tiny chip: a whole computer the size of a fingernail."
+   },
+   {
+    "title": "Space-proof code",
+    "text": "The Mars rovers are controlled by embedded systems whose software can be updated from Earth, millions of kilometres away."
+   },
+   {
+    "title": "Real time",
+    "text": "Anti-lock brakes must respond in milliseconds. Systems that must react instantly are called real-time systems."
+   }
+  ],
+  "exam": [
+   {
+    "q": "Name an embedded system and explain why it is described as a computer.",
+    "marks": 3
+   },
+   {
+    "q": "Describe two characteristics of embedded systems.",
+    "marks": 4
+   },
+   {
+    "q": "Explain why a laptop is not an embedded system.",
+    "marks": 2
+   }
+  ],
+  "confidence": [
+   "What an embedded system is",
+   "Examples of embedded systems",
+   "How embedded systems take input, process and output"
+  ],
+  "wsfile": "SA_L04_SmartHome_Worksheet.docx"
+ }
+]

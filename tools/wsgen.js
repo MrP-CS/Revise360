@@ -239,7 +239,7 @@ if (S.kind === "reflection") {
   if (S.checklist) kids.push(box(null, "Outstanding programs checklist", COL[2], [grid(["Program", "Done ✓"], S.checklist.map(c => [c, ""]), [IW - 1400, 1400], { h: 500 })]), gap());
   if (S.keyq) kids.push(box(null, "Key question", NAVY, [p([t(S.keyq, { bold: true })], { keepNext: true }), ...lines(3)]), gap());
   if (S.exam && S.exam.length) kids.push(box(null, "Exam practice", NAVY, [p([t("Take the headset off, or close the page, and answer from memory.", { color: SOFT, italics: true })], { keepNext: true }),
-    ...S.exam.flatMap((e, i) => [p([t(String.fromCharCode(97 + i) + ")  " + e[0] + "  ", { bold: true }), t("[" + e[1] + "]", { color: SOFT })], { before: 120, keepNext: true }), ...(e[2] ? lines(e[2]) : [drawBox("Your answer", 2200)])])]), gap());
+    ...S.exam.flatMap((e, i) => [p([t(String.fromCharCode(97 + i) + ")  ", { bold: true }), ...rich(e[0] + "  ", { bold: true }), t("[" + e[1] + "]", { color: SOFT })], { before: 120, keepNext: true }), ...(e[2] ? lines(e[2]) : [drawBox("Your answer", 2200)])])]), gap());
   if (S.rag) kids.push(box(null, "Revision checklist: RAG each topic", COL[4], [grid(["Topic", "Red", "Amber", "Green"], S.rag.map(r => [r, "", "", ""]), [IW - 3000, 1000, 1000, 1000], { h: 480 })]), gap());
   kids.push(confidence(S.confidence));
 }

@@ -417,19 +417,36 @@ def export(L, site=SITE_S):
         info.append(dict(id=f"f{i+1}", face=fc, x=x, y=y, title=it[1], text=it[2]))
     exp = dict(id=L["id"], lesson=L["lesson"], title=L["title"], scenes=[dict(id="main", title=L["title"], img=f"img/{base}.jpg", imgHi=f"img/{base}_hi.jpg", stations=stations, info=info, models=models, diagrams=diagrams)])
     json.dump(exp, open(site + f"experiences/{L['id']}.json", "w"), indent=1, ensure_ascii=False)
-    def marks(t):
-        if t["t"] in ("mcq", "multi", "circuit", "expr", "convert", "addshift", "pixels", "sound", "memory", "permissions", "defrag", "impact", "searchstep", "sortstep"): return 1
-        if t["t"] == "bugline": return 2
-        # A code question is marked by running it: the award is the share of its
-        # tests passed, out of the mark total the question carries. store.js uses
-        # the same default for one written without a total.
-        if t["t"] == "code": return t.get("marks", 3)
-        if t["t"] == "trace": return sum(1 for row in t["rows"] for v in row if v == "")
-        if t["t"] == "table": return 1 << (len(t["inputs"]) if t.get("inputs") else len(set(c for c in _re.sub("AND|OR|NOT", "", t["expr"]) if c.isalpha())))
-        if t["t"] in ("sprint", "defence", "blitz", "lawgame"): return 0
-        return len(t.get("items") or t.get("pairs") or t.get("steps"))
-    total = sum(marks(t) for s in stations for t in s["tasks"])
+    total = sum(task_marks(t) for s in stations for t in s["tasks"])
     return total
+
+
+ONE_MARK = ("mcq", "multi", "circuit", "expr", "convert", "addshift", "pixels", "sound",
+            "memory", "permissions", "defrag", "impact", "searchstep", "sortstep")
+# A game station is played, not marked, so it carries no marks towards the total.
+# "arena" was missing here while js/store.js had it, so this rule and the one the
+# site uses disagreed about one task type until tools/tests/smokemarks.py said so.
+NO_MARK = ("sprint", "defence", "blitz", "lawgame", "arena")
+
+
+def task_marks(t):
+    """What one activity is worth. The same rule as Store.marks in js/store.js.
+
+    It was a closure inside export(), which meant anything else that needed a mark
+    total - a lesson record, a teacher's pack, a coverage claim - had to write the
+    rule out again and could disagree with the site about what a lesson is worth.
+    tools/tests/smokemarks.py checks this against the JavaScript copy.
+    """
+    if t["t"] in ONE_MARK: return 1
+    if t["t"] == "bugline": return 2
+    # A code question is marked by running it: the award is the share of its
+    # tests passed, out of the mark total the question carries. store.js uses
+    # the same default for one written without a total.
+    if t["t"] == "code": return t.get("marks", 3)
+    if t["t"] == "trace": return sum(1 for row in t["rows"] for v in row if v == "")
+    if t["t"] == "table": return 1 << (len(t["inputs"]) if t.get("inputs") else len(set(c for c in _re.sub("AND|OR|NOT", "", t["expr"]) if c.isalpha())))
+    if t["t"] in NO_MARK: return 0
+    return len(t.get("items") or t.get("pairs") or t.get("steps"))
 
 def mcq(q, r, w, fb): return dict(t="mcq", q=q, a=[r] + w, fb=fb)
 def multi(q, opts, correct, fb): return dict(t="multi", q=q, opts=opts, correct=correct, fb=fb)
