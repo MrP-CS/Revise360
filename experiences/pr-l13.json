@@ -98,7 +98,7 @@
        "brief": [
         "Nothing is marked on this one.",
         "Each line you type becomes one row of the table.",
-        "The word END tells the program the table is full.",
+        "The word `\"END\"` tells the program the table is full.",
         "Your own query goes under the last comment, as it does here."
        ],
        "fb": "The same query works on any table, because the query describes what is wanted rather than listing it.",
@@ -193,10 +193,10 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Change the query so it gives the column kind instead of the column title.",
+       "q": "Change the query so it gives the column `kind` instead of the column `title`.",
        "brief": [
         "Change the query only.",
-        "Its columns are title, kind, players and minutes.",
+        "Its columns are `title`, `kind`, `players` and `minutes`.",
         "Display each row the query finds on its own line."
        ],
        "fb": "One SELECT, one column, one value per row. Changing the column name changes the whole answer.",
@@ -273,10 +273,10 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Finish the query so it gives the column title and then the column players.",
+       "q": "Finish the query so it gives the column `title` and then the column `players`.",
        "brief": [
         "Replace ____ with the name of one column.",
-        "Its columns are title, kind, players and minutes.",
+        "Its columns are `title`, `kind`, `players` and `minutes`.",
         "The printing is written for you.",
         "Display each row on its own line, the two values separated by one space."
        ],
@@ -365,10 +365,10 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Write one query giving the column title and then the column minutes for every game in the table games. Display each row on its own line, the two values separated by one space.",
+       "q": "Write one query giving the column `title` and then the column `minutes` for every game in the table `games`. Display each row on its own line, the two values separated by one space.",
        "brief": [
-        "The table games holds one row for each game.",
-        "Its columns are title, kind, players and minutes.",
+        "The table `games` holds one row for each game.",
+        "Its columns are `title`, `kind`, `players` and `minutes`.",
         "The lines above the comment fill the table from what is typed in.",
         "Every game comes back, so no row is left out."
        ],
@@ -449,7 +449,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Write one query giving the column title for every game in the table games. Display each row the query finds on its own line. Then display one more line giving how many rows the query found.",
+       "q": "Write one query giving the column `title` for every game in the table `games`. Display each row the query finds on its own line. Then display one more line giving how many rows the query found.",
        "brief": [
         "The lines above the comment fill the table from what is typed in.",
         "The last line is one number on its own, with no words.",
@@ -521,8 +521,8 @@
         "think": "A running total, but counting rows rather than adding values up.",
         "syntax": "count = count + 1",
         "walk": [
-         "Set a counter to 0 before the loop.",
-         "Add 1 to it each time a row comes back.",
+         "Set a counter to `0` before the loop.",
+         "Add `1` to it each time a row comes back.",
          "Display the counter after the loop has finished."
         ]
        },
@@ -661,7 +661,7 @@
        "q": "Change the query so it keeps the party games instead of the card games.",
        "brief": [
         "Change the query only.",
-        "kind holds words such as strategy, card, party, dice and word.",
+        "`kind` holds words such as strategy, card, party, dice and word.",
         "Display each row the query finds on its own line."
        ],
        "fb": "WHERE compares a column with a value, and the quotation marks stay round the value because it is text.",
@@ -726,7 +726,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "This program should display the title and minutes of every word game. Find the mistake and put it right.",
+       "q": "This program should display the title and `minutes` of every word game. Find the mistake and put it right.",
        "brief": [
         "Press Run first and read the error message.",
         "Do not change anything above the last comment.",
@@ -798,9 +798,9 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Write one query giving the column title and then the column kind for every game in the table games. Keep only the games for exactly 4 players. Display each row on its own line, the two values separated by one space.",
+       "q": "Write one query giving the column `title` and then the column `kind` for every game in the table `games`. Keep only the games for exactly 4 players. Display each row on its own line, the two values separated by one space.",
        "brief": [
-        "Its columns are title, kind, players and minutes.",
+        "Its columns are `title`, `kind`, `players` and `minutes`.",
         "A game for 3 or 5 players is left out.",
         "The lines above the comment fill the table from what is typed in."
        ],
@@ -876,7 +876,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Write one query giving the column title and then the column minutes for every card game in the table games. Display each row on its own line, the two values separated by one space. Then display one more line giving the total number of minutes of those games.",
+       "q": "Write one query giving the column `title` and then the column `minutes` for every card game in the table `games`. Display each row on its own line, the two values separated by one space. Then display one more line giving the total number of minutes of those games.",
        "brief": [
         "Keep only the games whose kind is card.",
         "The last line is one number on its own, with no words.",
@@ -935,7 +935,7 @@
        ],
        "opt": true,
        "hint": {
-        "think": "A running total: start it at 0 before the loop and add each row's minutes inside it.",
+        "think": "A running total: start it at `0` before the loop and add each row's `minutes` inside it.",
         "syntax": "total = total + value",
         "walk": [
          "Write the query so only card games come back.",
@@ -1183,7 +1183,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "This program should display the title and minutes of every game lasting more than 35 minutes. Find the mistake and put it right.",
+       "q": "This program should display the title and `minutes` of every game lasting more than 35 minutes. Find the mistake and put it right.",
        "brief": [
         "Press Run first and read the error message.",
         "The query is already right. The mistake is in the line that displays the row.",
@@ -1269,9 +1269,9 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Write one query giving the column title and then the column minutes for every game in the table games. Keep only the games lasting fewer than 30 minutes. Display each row on its own line, the two values separated by one space.",
+       "q": "Write one query giving the column `title` and then the column `minutes` for every game in the table `games`. Keep only the games lasting fewer than 30 minutes. Display each row on its own line, the two values separated by one space.",
        "brief": [
-        "Its columns are title, kind, players and minutes.",
+        "Its columns are `title`, `kind`, `players` and `minutes`.",
         "A game lasting exactly 30 minutes is left out.",
         "The lines above the comment fill the table from what is typed in."
        ],
@@ -1338,7 +1338,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Write one query giving the column title and then the column minutes for every game in the table games that is not a card game. Display each row on its own line, the two values separated by one space. Then display one more line giving the minutes of the longest game the query found.",
+       "q": "Write one query giving the column `title` and then the column `minutes` for every game in the table `games` that is not a card game. Display each row on its own line, the two values separated by one space. Then display one more line giving the minutes of the longest game the query found.",
        "brief": [
         "Use <> in the query rather than listing the other kinds.",
         "The last line is one number on its own, with no words.",
@@ -1643,7 +1643,7 @@
         }
        ],
        "hint": {
-        "think": "players >= 4 AND < 40 is not a comparison, because nothing says what the 40 is being compared with.",
+        "think": "`players` >= 4 AND < 40 is not a comparison, because nothing says what the 40 is being compared with.",
         "syntax": "WHERE ... AND column < number",
         "diagram": "sqlwhere"
        },
@@ -1657,7 +1657,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "This program should display the title and kind of every card game and every party game. Find the mistake and put it right.",
+       "q": "This program should display the title and `kind` of every card game and every party game. Find the mistake and put it right.",
        "brief": [
         "Press Run first. The program runs, but the answer is wrong.",
         "Each side of an OR has to be a complete comparison.",
@@ -1734,7 +1734,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Write one query giving the column title and then the column players for every game in the table games. Keep only the games for 4 or more players. Of those, keep only the games lasting 20 minutes or more. Display each row on its own line, the two values separated by one space.",
+       "q": "Write one query giving the column `title` and then the column `players` for every game in the table `games`. Keep only the games for 4 or more players. Of those, keep only the games lasting 20 minutes or more. Display each row on its own line, the two values separated by one space.",
        "brief": [
         "Exactly 4 players counts.",
         "Exactly 20 minutes counts.",
@@ -1806,7 +1806,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Write one query giving the column title and then the column kind for every game in the table games. Keep only the games whose kind is card, dice or word. Display each row on its own line, the two values separated by one space.",
+       "q": "Write one query giving the column `title` and then the column `kind` for every game in the table `games`. Keep only the games whose kind is card, dice or word. Display each row on its own line, the two values separated by one space.",
        "brief": [
         "Three kinds are wanted, so the query needs three comparisons.",
         "Each comparison names the column, the operator and the value.",
@@ -2123,7 +2123,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Write one query giving the column title and then the column minutes for every game in the table games. Put the rows in order of minutes, shortest first. Display each row on its own line, the two values separated by one space.",
+       "q": "Write one query giving the column `title` and then the column `minutes` for every game in the table `games`. Put the rows in order of minutes, shortest first. Display each row on its own line, the two values separated by one space.",
        "brief": [
         "Every game comes back, so no row is left out.",
         "Shortest first is the order ORDER BY gives on its own.",
@@ -2202,7 +2202,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Write one query giving the column title and then the column players for every game in the table games. Put the rows in order of title, from Z to A. Display each row on its own line, the two values separated by one space.",
+       "q": "Write one query giving the column `title` and then the column `players` for every game in the table `games`. Put the rows in order of title, from Z to A. Display each row on its own line, the two values separated by one space.",
        "brief": [
         "Ordering by a text column puts it in alphabetical order.",
         "Z to A is the opposite of that.",
@@ -2281,7 +2281,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Write one query giving the column title for every game in the table games. Put the rows in order of minutes, longest first. Display each row the query finds on its own line.",
+       "q": "Write one query giving the column `title` for every game in the table `games`. Put the rows in order of minutes, longest first. Display each row the query finds on its own line.",
        "brief": [
         "Only the title is displayed, and nothing else.",
         "The rows are still ordered by minutes.",
@@ -2522,7 +2522,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "This program should display the title and minutes of every game lasting more than 30 minutes, shortest first. Find the mistake and put it right.",
+       "q": "This program should display the title and `minutes` of every game lasting more than 30 minutes, shortest first. Find the mistake and put it right.",
        "brief": [
         "Press Run first and read the error message.",
         "Both clauses are the right ones, in the wrong order.",
@@ -2600,10 +2600,10 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Write one query giving the column title and then the column minutes for every game in the table games. Keep only the games for 4 or more players. Put the rows in order of minutes, shortest first. Display each row on its own line, the two values separated by one space.",
+       "q": "Write one query giving the column `title` and then the column `minutes` for every game in the table `games`. Keep only the games for 4 or more players. Put the rows in order of minutes, shortest first. Display each row on its own line, the two values separated by one space.",
        "brief": [
         "Exactly 4 players counts.",
-        "The order comes from minutes, not from players.",
+        "The order comes from `minutes`, not from `players`.",
         "The lines above the comment fill the table from what is typed in."
        ],
        "fb": "Narrow the rows down with WHERE, then put what is left in order with ORDER BY.",
@@ -2673,7 +2673,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Write one query giving the column title, then the column players and then the column minutes for every game in the table games. Keep only the games whose kind is not card. Of those, keep only the games lasting 60 minutes or fewer. Put the rows in order of minutes, longest first. Display each row on its own line, the three values separated by single spaces.",
+       "q": "Write one query giving the column `title`, then the column `players` and then the column `minutes` for every game in the table `games`. Keep only the games whose kind is not card. Of those, keep only the games lasting 60 minutes or fewer. Put the rows in order of minutes, longest first. Display each row on its own line, the three values separated by single spaces.",
        "brief": [
         "Exactly 60 minutes counts.",
         "Both rules must be true for a game to be kept.",
@@ -2750,7 +2750,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Write one query giving the column title for every game in the table games, in order of minutes, shortest first. Display the title of the first row the query finds and nothing else.",
+       "q": "Write one query giving the column `title` for every game in the table `games`, in order of minutes, shortest first. Display the title of the first row the query finds and nothing else.",
        "brief": [
         "One line of output only.",
         "Let the query put the rows in order, then stop after the first one.",

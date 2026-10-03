@@ -123,31 +123,16 @@
   }
 
   // ---------------------------------------------------------------- editor
-  const KEY = ("False None True and as assert async await break class continue def del elif else " +
-    "except finally for from global if import in is lambda nonlocal not or pass raise return try " +
-    "while with yield").split(" ");
-  const BUILT = ("abs all any bool chr dict enumerate float input int len list max min open ord " +
-    "print range reversed round set sorted str sum tuple type zip append").split(" ");
-  const esc = s => s.replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
+  /* The lexer and the colours live in js/pytok.js and css/pytok.css, so the
+   * editor, the instructions, the headset and the printed worksheets all split
+   * and colour Python the same way. This file used to carry its own copy of
+   * both, in two slightly different versions. */
+  const TOK = window.R360Tok;
 
-  /* Highlights one line into HTML. The editor is a textarea with this drawn
+  /* Highlights the program into HTML. The editor is a textarea with this drawn
    * behind it, which keeps real typing, selection, undo and screen-reader
    * support rather than reimplementing all of it on a div. */
-  function paint(src) {
-    let out = "";
-    const re = /(#[^\n]*)|('''[\s\S]*?'''|"""[\s\S]*?"""|'(?:\\.|[^'\\])*'|"(?:\\.|[^"\\])*")|(\b\d+\.?\d*\b)|([A-Za-z_]\w*)|(\s+)|(.)/g;
-    let m;
-    while ((m = re.exec(src))) {
-      if (m[1]) out += `<i class="c">${esc(m[1])}</i>`;
-      else if (m[2]) out += `<i class="s">${esc(m[2])}</i>`;
-      else if (m[3]) out += `<i class="n">${esc(m[3])}</i>`;
-      else if (m[4]) out += KEY.indexOf(m[4]) >= 0 ? `<i class="k">${m[4]}</i>`
-                          : BUILT.indexOf(m[4]) >= 0 ? `<i class="b">${m[4]}</i>` : esc(m[4]);
-      else if (m[5]) out += m[5];
-      else out += `<i class="o">${esc(m[6])}</i>`;
-    }
-    return out;
-  }
+  const paint = src => TOK.html(src, "i");
 
   /* Builds the editor into `host`. Returns { get, set, focus, destroy }. */
   function editor(host, initial) {
@@ -227,23 +212,15 @@
     };
   }
 
-  /* The same split the editor's highlighter uses, as data rather than HTML, so
-   * the headset can paint code onto a canvas with the identical colours. */
-  const COLS = { k: "#c792ea", b: "#7fb2ff", s: "#9fe6a0", n: "#ffcb6b", c: "#5d7290", o: "#b4c4dc", t: "#f0f4fa" };
-  function tokens(line) {
-    const out = [];
-    const re = /(#[^\n]*)|('(?:\\.|[^'\\])*'|"(?:\\.|[^"\\])*")|(\b\d+\.?\d*\b)|([A-Za-z_]\w*)|(\s+)|(.)/g;
-    let m;
-    while ((m = re.exec(line))) {
-      if (m[1]) out.push({ t: m[1], c: COLS.c });
-      else if (m[2]) out.push({ t: m[2], c: COLS.s });
-      else if (m[3]) out.push({ t: m[3], c: COLS.n });
-      else if (m[4]) out.push({ t: m[4], c: KEY.indexOf(m[4]) >= 0 ? COLS.k : BUILT.indexOf(m[4]) >= 0 ? COLS.b : COLS.t });
-      else if (m[5]) out.push({ t: m[5], c: COLS.t });
-      else out.push({ t: m[6], c: COLS.o });
-    }
-    return out;
-  }
+  /* The same split, as data rather than HTML, so the headset can paint code
+   * onto a canvas with the identical colours. One lexer, one colour table: the
+   * canvas and the editor cannot disagree about what a token is or how it is
+   * coloured, because neither of them decides. */
+  const tokens = line => TOK.lex(line).map(x => ({ t: x.t, c: TOK.colours[x.k] }));
 
-  window.R360Py = { ready, run, editor, paint, tokens, colours: COLS, on: RUN.on, get state() { return RUN.state; } };
+  window.R360Py = {
+    ready, run, editor, paint, tokens,
+    get colours() { return TOK.colours; },
+    on: RUN.on, get state() { return RUN.state; }
+  };
 })();

@@ -23,7 +23,7 @@
        "q": "Press Run. The same two numbers are used four times, with a different sign each time.",
        "brief": [
         "Nothing is marked on this one.",
-        "Look at the last line: dividing 7 by 2 gives 3.5, not 3."
+        "Look at the last line: dividing `7` by `2` gives 3.5, not 3."
        ],
        "fb": "Four signs, four sums: + - * / . The star multiplies and the slash divides.",
        "kind": "try",
@@ -432,7 +432,7 @@
         "Nothing is marked on this one.",
         "Compare the three answers before you move on."
        ],
-       "fb": "Three whole 5s fit into 17 and 2 are left over, which is what // and % report.",
+       "fb": "Three whole 5s fit into `17` and 2 are left over, which is what // and % report.",
        "kind": "try",
        "starter": "print(17 // 5)\nprint(17 % 5)\nprint(17 / 5)\n",
        "tests": [],
@@ -744,10 +744,10 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a whole number of eggs. Display how many full boxes of 6 the eggs fill. Then display how many eggs are left over on the next line. Then display how many boxes are needed to hold every egg on the next line.",
+       "q": "Ask the user for a whole number of eggs. Display how many full boxes of `6` the eggs fill. Then display how many eggs are left over on the next line. Then display how many boxes are needed to hold every egg on the next line.",
        "brief": [
         "The user types in one whole number of eggs.",
-        "A box holds 6 eggs, and the 6 is written into your program.",
+        "A box holds `6` eggs, and the `6` is written into your program.",
         "A box with only some eggs in it is still a box that is needed.",
         "Three lines of output."
        ],
@@ -817,7 +817,7 @@
         "Nothing is marked on this one.",
         "Two stars together are the power sign. One star on its own multiplies."
        ],
-       "fb": "** is the power sign, and the power 0.5 asks for the square root.",
+       "fb": "** is the power sign, and the power `0.5` asks for the square root.",
        "kind": "try",
        "starter": "print(3 ** 2)\nprint(2 ** 5)\nprint(49 ** 0.5)\n",
        "tests": [],
@@ -865,10 +865,10 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Change the program so it raises the number to the power 3 instead of the power 2.",
+       "q": "Change the program so it raises the number to the power `3` instead of the power `2`.",
        "brief": [
         "Change one number only.",
-        "The 5 stays as it is.",
+        "The `5` stays as it is.",
         "Display exactly: 125"
        ],
        "fb": "The number after the ** is the only thing that decides how many are multiplied.",
@@ -924,7 +924,7 @@
         "Replace ____ with one number.",
         "Display one number, which keeps its decimal part."
        ],
-       "fb": "Raising to the power 0.5 is the square root, and the answer is always a decimal number.",
+       "fb": "Raising to the power `0.5` is the square root, and the answer is always a decimal number.",
        "kind": "complete",
        "starter": "n = float(input())\nprint(n ** ____)\n",
        "tests": [
@@ -964,13 +964,13 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for a whole number. Display that number raised to the power 2.",
+       "q": "Ask the user for a whole number. Display that number raised to the power `2`.",
        "brief": [
         "The user types in one whole number.",
         "Use ** , not ^ , which means something else in Python.",
         "One line of output."
        ],
-       "fb": "** 2 squares a number, and a single * would only have doubled it.",
+       "fb": "** `2` squares a number, and a single * would only have doubled it.",
        "starter": "# One whole number in, its square out\n",
        "tests": [
         {
@@ -1002,7 +1002,7 @@
         }
        ],
        "hint": {
-        "think": "The power 2 means the number multiplied by itself.",
+        "think": "The power `2` means the number multiplied by itself.",
         "syntax": "a ** b",
         "diagram": "pypower"
        },
@@ -1016,10 +1016,10 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for a whole number. Display the number 2 raised to that power.",
+       "q": "Ask the user for a whole number. Display the number `2` raised to that power.",
        "brief": [
         "The user types in one whole number.",
-        "The 2 is written into your program.",
+        "The `2` is written into your program.",
         "The power is the number typed in.",
         "One line of output."
        ],
@@ -1066,7 +1066,7 @@
        "brief": [
         "Press Run first and read the error message.",
         "The user types in one number, which may have a decimal point.",
-        "The 0.5 is already right.",
+        "The `0.5` is already right.",
         "Display one number."
        ],
        "fb": "^ is a real Python sign for something else entirely, which is why the error talks about types.",
@@ -1125,7 +1125,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a whole number. Display that number raised to the power 2. Then display it raised to the power 3 on the next line. Then display its square root on the next line.",
+       "q": "Ask the user for a whole number. Display that number raised to the power `2`. Then display it raised to the power `3` on the next line. Then display its square root on the next line.",
        "brief": [
         "The user types in one whole number.",
         "Every test uses a number whose square root is exact.",
@@ -1174,7 +1174,7 @@
         "think": "Three powers of one value, so read it in once and use it three times.",
         "walk": [
          "Read the number and cast it.",
-         "Display the power 2, then the power 3.",
+         "Display the power `2`, then the power `3`.",
          "The third line is a power as well, but not a whole one."
         ],
         "diagram": "pypower"
@@ -1269,7 +1269,7 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Change the program so it rounds to 1 decimal place instead of 2.",
+       "q": "Change the program so it rounds to `1` decimal place instead of `2`.",
        "brief": [
         "Change one number only.",
         "The number being rounded stays as it is.",
@@ -1301,7 +1301,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Finish the program so it rounds the number to 2 decimal places.",
+       "q": "Finish the program so it rounds the number to `2` decimal places.",
        "brief": [
         "The user types in one number, which may have a decimal point.",
         "Replace ____ with one number.",
@@ -1402,7 +1402,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a whole number. Then ask for a second whole number. Divide the first by the second. Round the answer to 1 decimal place. Display the answer.",
+       "q": "Ask the user for a whole number. Then ask for a second whole number. Divide the first by the second. Round the answer to `1` decimal place. Display the answer.",
        "brief": [
         "The user types in two whole numbers, one on each line.",
         "The second number is never 0.",
@@ -1452,7 +1452,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "This program should display the number rounded to 2 decimal places. Find the mistake and put it right.",
+       "q": "This program should display the number rounded to `2` decimal places. Find the mistake and put it right.",
        "brief": [
         "Press Run first and work out what it displayed instead.",
         "The user types in one number, which may have a decimal point.",
@@ -1496,7 +1496,7 @@
         "walk": [
          "round() is given two things: the number and how many places.",
          "Both of them belong inside its own brackets.",
-         "At the moment the 2 is outside, so print() displays it as a second value."
+         "At the moment the `2` is outside, so print() displays it as a second value."
         ],
         "diagram": "pyround"
        }
@@ -1504,7 +1504,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for the price of one item in pounds. Then ask for a whole number of items. Work out the total cost. Round the total to 2 decimal places. Display the line Total is [total].",
+       "q": "Ask the user for the price of one item in pounds. Then ask for a whole number of items. Work out the total cost. Round the total to `2` decimal places. Display the line `\"Total is \"`[total].",
        "brief": [
         "The user types in two lines: a price with a decimal point, then a whole number.",
         "One line of output.",
@@ -1576,7 +1576,7 @@
         "Run it at least three times and watch the number change.",
         "import random has to be there, or Python does not know the word random."
        ],
-       "fb": "randint(1, 6) is a dice roll, and the two numbers in the brackets are the lowest and the highest it may give.",
+       "fb": "randint(`1`, `6`) is a dice roll, and the two numbers in the brackets are the lowest and the highest it may give.",
        "kind": "try",
        "starter": "import random\nprint(random.randint(1, 6))\n",
        "tests": [],
@@ -1655,7 +1655,7 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Change the program so it can only ever display 9.",
+       "q": "Change the program so it can only ever display `9`.",
        "brief": [
         "Keep randint.",
         "Change both numbers inside its brackets.",
@@ -2042,7 +2042,7 @@
        "q": "Finish the program so it displays the whole pounds and then the pence left over.",
        "brief": [
         "The user types in one whole number of pence.",
-        "There are 100 pence in a pound.",
+        "There are `100` pence in a pound.",
         "Replace each ____ with one sign.",
         "Two lines of output."
        ],
@@ -2101,7 +2101,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "This program should display the total and then the average to 1 decimal place. Find the mistake and put it right.",
+       "q": "This program should display the total and then the average to `1` decimal place. Find the mistake and put it right.",
        "brief": [
         "Press Run first and work out what it displayed instead.",
         "The user types in three whole numbers, one on each line.",
@@ -2162,11 +2162,11 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a whole number. Work out the number raised to the power 2. Work out its square root rounded to 2 decimal places. Display the power 2 answer. Then display the rounded square root on the next line.",
+       "q": "Ask the user for a whole number. Work out the number raised to the power `2`. Work out its square root rounded to `2` decimal places. Display the power `2` answer. Then display the rounded square root on the next line.",
        "brief": [
         "The user types in one whole number.",
         "The square root is a power, so it is worked out with ** .",
-        "Round only the square root, to 2 decimal places.",
+        "Round only the square root, to `2` decimal places.",
         "Two lines of output."
        ],
        "fb": "A rounded answer is still a decimal number, so a root like 2.0 keeps its decimal part.",
@@ -2218,10 +2218,10 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a whole number. Work out that number raised to the power 3. Display the answer. Then display how many whole hundreds are in it on the next line. Then display what is left over on the next line.",
+       "q": "Ask the user for a whole number. Work out that number raised to the power `3`. Display the answer. Then display how many whole hundreds are in it on the next line. Then display what is left over on the next line.",
        "brief": [
         "The user types in one whole number.",
-        "The 100 is written into your program.",
+        "The `100` is written into your program.",
         "Three lines of output."
        ],
        "fb": "// and % do not care where a number came from, so the answer to a power splits up like any other number.",
@@ -2276,7 +2276,7 @@
        "q": "Ask the user for a whole number of items bought. Then ask for the price of one item in pence. Work out the total cost in pence. Display the total in pence. Then display the whole pounds on the next line. Then display the pence left over on the next line.",
        "brief": [
         "The user types in two lines: how many items, then the price of one in pence.",
-        "There are 100 pence in a pound.",
+        "There are `100` pence in a pound.",
         "Three lines of output: the total, the pounds, then the pence."
        ],
        "fb": "Cast the inputs, work out one total, then show that total in the form the task asks for.",
@@ -2328,12 +2328,12 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a name. Then ask for a whole number. Then ask for a second whole number. Work out the average of the two numbers rounded to 1 decimal place. Display the line [name] averaged [average].",
+       "q": "Ask the user for a name. Then ask for a whole number. Then ask for a second whole number. Work out the average of the two numbers rounded to `1` decimal place. Display the line [name] averaged [average].",
        "brief": [
         "The user types in three lines: a name, then two whole numbers.",
         "One line of output.",
         "There is one space either side of averaged.",
-        "The average is rounded to 1 decimal place."
+        "The average is rounded to `1` decimal place."
        ],
        "fb": "int() on the way in, / and round() in the middle, str() on the way out.",
        "starter": "# A name and two numbers in, one sentence out\n",
@@ -2377,8 +2377,8 @@
         "syntax": "print(name + \" averaged \" + str(x))",
         "walk": [
          "Read the name, then both numbers.",
-         "Add the two numbers and divide by 2.",
-         "Round the answer to 1 decimal place.",
+         "Add the two numbers and divide by `2`.",
+         "Round the answer to `1` decimal place.",
          "Join the message together and display it."
         ]
        }
@@ -2386,7 +2386,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a whole number. Then ask for a second whole number. Divide the first by the second and round the answer to 2 decimal places. Display that answer. Then display how many whole times the second goes into the first on the next line. Then display what is left over on the next line.",
+       "q": "Ask the user for a whole number. Then ask for a second whole number. Divide the first by the second and round the answer to `2` decimal places. Display that answer. Then display how many whole times the second goes into the first on the next line. Then display what is left over on the next line.",
        "brief": [
         "The user types in two whole numbers, one on each line.",
         "The second number is never 0.",

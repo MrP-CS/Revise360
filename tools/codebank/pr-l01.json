@@ -39,7 +39,7 @@
    "id": "pr-l01-q2",
    "station": 0,
    "marks": 1,
-   "q": "Change the word Hello to Goodbye.",
+   "q": "Change the word `\"Hello\"` to `\"Goodbye\"`.",
    "kind": "change",
    "teach": {
     "say": "The words inside the quotation marks are yours to choose. Run shows you what your program does. Check my answer compares it with what the task asked for, so Run as often as you like and only Check when you think it is right.",
@@ -95,7 +95,7 @@
    "id": "pr-l01-q4",
    "station": 0,
    "marks": 2,
-   "q": "Finish the program. Display Line one. Then display Line two on the next line.",
+   "q": "Finish the program. Display `\"Line one\"`. Then display `\"Line two\"` on the next line.",
    "kind": "complete",
    "teach": {
     "say": "One print() makes one line. A second print() under it makes a second line.",
@@ -137,7 +137,7 @@
    "id": "pr-l01-q5",
    "station": 0,
    "marks": 1,
-   "q": "Display the message Hello world.",
+   "q": "Display the message `\"Hello world\"`.",
    "teach": {
     "say": "This is the first activity with an empty editor. The line already in it starts with a # , which makes it a note to you rather than an instruction: Python ignores it completely. Leave it there and write your program underneath.",
     "code": [
@@ -180,7 +180,7 @@
    "id": "pr-l01-q6",
    "station": 0,
    "marks": 2,
-   "q": "This program should display Ready. Find the mistake and put it right.",
+   "q": "This program should display `\"Ready\"`. Find the mistake and put it right.",
    "kind": "debug",
    "teach": {
     "say": "An error message is Python saying it could not follow an instruction. Every programmer sees them all day long. Read the last line of the message: it names what went wrong, and the two notes underneath say what to look at.",
@@ -194,11 +194,11 @@
    },
    "brief": [
     "Press Run first and read the error message.",
-    "Do not change the word Ready.",
+    "Do not change the word `\"Ready\"`.",
     "Display exactly: Ready"
    ],
    "hint": {
-    "think": "Python is looking for something named Ready, because nothing tells it that Ready is text.",
+    "think": "Python is looking for something named `\"Ready\"`, because nothing tells it that Ready is text.",
     "syntax": "print(\"some text\")",
     "walk": [
      "Text always has quotation marks round it.",
@@ -245,7 +245,7 @@
    "id": "pr-l01-q8",
    "station": 0,
    "marks": 2,
-   "q": "Display Line 1 of 2. Then display Done! on the next line.",
+   "q": "Display `\"Line 1 of 2\"`. Then display `\"Done!\"` on the next line.",
    "teach": {
     "say": "Digits and punctuation inside the quotation marks are part of the text, and print() shows them exactly as written.",
     "code": [
@@ -285,7 +285,7 @@
    "id": "pr-l01-q9",
    "station": 0,
    "marks": 3,
-   "q": "Display Name: Alex. Then display Age: 13 on the next line. Then display Town: Bury on the next line.",
+   "q": "Display `\"Name: Alex\"`. Then display `\"Age: 13\"` on the next line. Then display `\"Town: Bury\"` on the next line.",
    "brief": [
     "Nothing is typed in by the user.",
     "Display exactly: Name: Alex",
@@ -315,19 +315,19 @@
    "id": "pr-l01-q10",
    "station": 0,
    "marks": 3,
-   "q": "Display Top. Then display an empty line. Then display Bottom on the next line.",
+   "q": "Display `\"Top\"`. Then display an empty line. Then display `\"Bottom\"` on the next line.",
    "brief": [
     "Nothing is typed in by the user.",
-    "Line 1 is Top and line 3 is Bottom.",
+    "Line 1 is `\"Top\"` and line 3 is `\"Bottom\"`.",
     "Line 2 has nothing on it at all - not even a space."
    ],
    "hint": {
     "think": "print() can be asked to show nothing at all. What would you put between the brackets?",
     "syntax": "print()",
     "walk": [
-     "Line 1 displays Top.",
+     "Line 1 displays `\"Top\"`.",
      "Line 2 displays nothing.",
-     "Line 3 displays Bottom."
+     "Line 3 displays `\"Bottom\"`."
     ]
    },
    "starter": "# Top, a gap, then Bottom\n",
@@ -401,7 +401,7 @@
    "id": "pr-l01-q13",
    "station": 1,
    "marks": 1,
-   "q": "Change the program so it remembers 25 instead of 10.",
+   "q": "Change the program so it remembers `25` instead of `10`.",
    "kind": "change",
    "brief": [
     "Change only the number.",
@@ -489,10 +489,10 @@
    "id": "pr-l01-q16",
    "station": 1,
    "marks": 2,
-   "q": "Keep the word harbour in a variable. Display that variable. Then display it again on the next line.",
+   "q": "Keep the word `\"harbour\"` in a variable. Display that variable. Then display it again on the next line.",
    "brief": [
     "Nothing is typed in by the user.",
-    "The word harbour is written into your program, in one place only.",
+    "The word `\"harbour\"` is written into your program, in one place only.",
     "Display the same variable twice."
    ],
    "hint": {
@@ -517,7 +517,7 @@
    "id": "pr-l01-q17",
    "station": 1,
    "marks": 2,
-   "q": "This program should display 12. Find the mistake and put it right.",
+   "q": "This program should display `12`. Find the mistake and put it right.",
    "kind": "debug",
    "teach": {
     "say": "The name always goes on the left of the = and the value on the right. The other way round is not a sentence Python can read.",
@@ -555,7 +555,7 @@
    "id": "pr-l01-q18",
    "station": 1,
    "marks": 2,
-   "q": "Keep the word north in a variable. Display that variable. Then change the variable to the word south. Display it again on the next line.",
+   "q": "Keep the word `\"north\"` in a variable. Display that variable. Then change the variable to the word `\"south\"`. Display it again on the next line.",
    "brief": [
     "Nothing is typed in by the user.",
     "Use one variable for both words.",
@@ -588,10 +588,10 @@
    "id": "pr-l01-q19",
    "station": 1,
    "marks": 3,
-   "q": "Keep the word amber in a variable called a. Copy the value of a into a second variable called b. Then change a to the word silver. Display a. Then display b on the next line.",
+   "q": "Keep the word `\"amber\"` in a variable called `a`. Copy the value of a into a second variable called `b`. Then change a to the word `\"silver\"`. Display a. Then display b on the next line.",
    "brief": [
     "Nothing is typed in by the user.",
-    "b = a copies the value, so b keeps the word amber.",
+    "b = a copies the value, so b keeps the word `\"amber\"`.",
     "Display a first, then b."
    ],
    "hint": {
@@ -610,13 +610,13 @@
      "why": "b = a copies the value at that moment. Changing a afterwards does not change b."
     }
    ],
-   "fb": "A copy is a copy. b took the value amber and kept it, whatever happened to a next."
+   "fb": "A copy is a copy. b took the value `\"amber\"` and kept it, whatever happened to a next."
   },
   {
    "id": "pr-l01-q20",
    "station": 1,
    "marks": 2,
-   "q": "Keep the word closed in a variable. Keep the whole number 100 in a constant called LIMIT. Display the variable. Then display LIMIT on the next line.",
+   "q": "Keep the word `\"closed\"` in a variable. Keep the whole number `100` in a constant called `LIMIT`. Display the variable. Then display `LIMIT` on the next line.",
    "teach": {
     "say": "A constant is a value a program never changes once it is set. Python does not stop you changing one, so programmers write the name in capitals as a promise not to.",
     "code": [
@@ -629,8 +629,8 @@
    },
    "brief": [
     "Nothing is typed in by the user.",
-    "Name the constant LIMIT, in capitals.",
-    "The number 100 is written into your program in one place only."
+    "Name the constant `LIMIT`, in capitals.",
+    "The number `100` is written into your program in one place only."
    ],
    "hint": {
     "think": "A constant is made exactly like a variable. Only the name is different.",
@@ -1352,7 +1352,7 @@
    "id": "pr-l01-q38",
    "station": 3,
    "marks": 2,
-   "q": "Ask the user for a colour. Display the line The colour is [colour].",
+   "q": "Ask the user for a colour. Display the line `\"The colour is \"`[colour].",
    "brief": [
     "The user types in one word.",
     "One line of output.",
@@ -1504,7 +1504,7 @@
    "id": "pr-l01-q42",
    "station": 4,
    "marks": 2,
-   "q": "Finish the program so it adds 1 to the number the user types.",
+   "q": "Finish the program so it adds `1` to the number the user types.",
    "kind": "complete",
    "teach": {
     "say": "int(input()) is read from the inside out: input() reads the line, and int() turns what came back into a whole number.",
@@ -1561,7 +1561,7 @@
    "id": "pr-l01-q43",
    "station": 4,
    "marks": 2,
-   "q": "This program should display the number that is 10 bigger than the one typed. Find the mistake and put it right.",
+   "q": "This program should display the number that is `10` bigger than the one typed. Find the mistake and put it right.",
    "kind": "debug",
    "brief": [
     "Press Run first and read the error message.",
@@ -1612,7 +1612,7 @@
    "q": "Ask the user for a whole number. Work out that number doubled. Display the answer.",
    "brief": [
     "The user types one whole number.",
-    "One line of output, which is the number multiplied by 2."
+    "One line of output, which is the number multiplied by `2`."
    ],
    "hint": {
     "think": "Read it as a number, work out the answer, display the answer.",
@@ -1681,7 +1681,7 @@
    "id": "pr-l01-q46",
    "station": 4,
    "marks": 2,
-   "q": "Ask the user for a price with a decimal point in it. Display the line The price is [price].",
+   "q": "Ask the user for a price with a decimal point in it. Display the line `\"The price is \"`[price].",
    "brief": [
     "The user types one number, which may have a decimal point in it.",
     "Keep it as a decimal number, not a whole number.",
@@ -1749,7 +1749,7 @@
     "walk": [
      "Read the name.",
      "Read the age and cast it with int( ).",
-     "Add 1 to the age.",
+     "Add `1` to the age.",
      "Join the whole message together and display it."
     ]
    },
@@ -1947,7 +1947,7 @@
     "walk": [
      "Two values need two different names.",
      "Reading both into one name loses the first.",
-     "Then nothing called b exists for the sum."
+     "Then nothing called `b` exists for the sum."
     ]
    },
    "starter": "a = int(input())\na = int(input())\nprint(a + b)\n",
@@ -1993,7 +1993,7 @@
    "brief": [
     "The user types in two lines: a word, then a whole number.",
     "Two lines of output.",
-    "The second line is the number multiplied by 2."
+    "The second line is the number multiplied by `2`."
    ],
    "hint": {
     "think": "The word stays text. The number has to be cast before it can be doubled.",

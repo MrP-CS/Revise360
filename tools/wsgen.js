@@ -10,6 +10,40 @@ const COL = { 1: "1E9BD7", 2: "8A55C9", 3: "E0603F", 4: "E08A10", 5: "2FAE72", 6
 const F = "Arial";
 
 const t = (text, o = {}) => new TextRun({ text, font: F, size: o.size || 21, bold: o.bold, italics: o.italics, color: o.color });
+
+/* The data a task prescribes, printed the way the editor shows it.
+ *
+ * A task that says to store 25 in a variable marks the 25 in the bank, and on
+ * paper it comes out in the same monospace, the same seven token kinds and the
+ * same meaning as on screen - in ink tuned for white paper, from the @media print
+ * half of css/pytok.css. Colour is never the only signal: the monospace face and
+ * the shading carry it on a black-and-white printout, which is how most of these
+ * worksheets are actually handed out.
+ *
+ * `rich` returns runs for p(); it is a no-op on text with nothing marked. */
+const TOK = require("../js/pytok.js");
+const INK = TOK.flat("print");
+const MONO = "Consolas";
+function rich(text, o = {}) {
+  const s = String(text == null ? "" : text);
+  if (!TOK.has(s)) return [t(s, o)];
+  const runs = [];
+  let i = 0;
+  for (;;) {
+    const a = s.indexOf("`", i);
+    const b = a < 0 ? -1 : s.indexOf("`", a + 1);
+    if (a < 0 || b < 0) { if (i < s.length) runs.push(t(s.slice(i), o)); break; }
+    if (a > i) runs.push(t(s.slice(i, a), o));
+    for (const tk of TOK.lex(s.slice(a + 1, b))) {
+      runs.push(new TextRun({ text: tk.t, font: MONO, size: o.size || 21,
+        bold: o.bold, color: INK[tk.k], shading: { fill: "F4F4F5" } }));
+    }
+    i = b + 1;
+  }
+  return runs;
+}
+/* For a place that can only take a string - a table head, a document title. */
+const flat = s => TOK.plain(s);
 const p = (runs, o = {}) => new Paragraph({ children: Array.isArray(runs) ? runs : [t(runs, o)], spacing: { before: o.before ?? 60, after: o.after ?? 60, line: o.line }, alignment: o.align, keepNext: o.keepNext, numbering: o.numbering });
 const nb = { style: BorderStyle.NONE, size: 0, color: "FFFFFF" };
 const noBorders = { top: nb, bottom: nb, left: nb, right: nb, insideHorizontal: nb, insideVertical: nb };
@@ -23,10 +57,10 @@ function lines(n, label, width = W - 440) {
       children: [new Paragraph({ children: [t(k === 0 && label ? label : "", { color: SOFT })], spacing: { before: 0, after: 0 } })] })] })) })];
 }
 function challenge(q, n = 2) {
-  return [p([t("Challenge: ", { bold: true, color: YEL }), t(q, { bold: true })], { before: 120, keepNext: true }), ...lines(n)];
+  return [p([t("Challenge: ", { bold: true, color: YEL }), ...rich(q, { bold: true })], { before: 120, keepNext: true }), ...lines(n)];
 }
 function keyFact(prompt, n = 2) {
-  return [p([t("Key fact in your own words: ", { bold: true, color: SOFT }), t(prompt, { italics: true })], { keepNext: true }), ...lines(n)];
+  return [p([t("Key fact in your own words: ", { bold: true, color: SOFT }), ...rich(prompt, { italics: true })], { keepNext: true }), ...lines(n)];
 }
 function box(num, title, colour, children, width = W) {
   return new Table({
@@ -78,7 +112,7 @@ function grid(headers, rows, widths, opts = {}) {
   const mk = (txt, w, head, fill) => new TableCell({ width: { size: w, type: WidthType.DXA }, borders,
     shading: { type: ShadingType.CLEAR, color: "auto", fill: fill || (head ? "E6ECF5" : "FFFFFF") },
     margins: { top: 80, bottom: 80, left: 120, right: 120 }, verticalAlign: VerticalAlign.CENTER,
-    children: [p([t(txt, { bold: head, size: head ? 20 : 21 })], { before: 0, after: 0 })] });
+    children: [p(rich(txt, { bold: head, size: head ? 20 : 21 }), { before: 0, after: 0 })] });
   return new Table({ width: { size: widths.reduce((a, c) => a + c, 0), type: WidthType.DXA }, columnWidths: widths,
     rows: [new TableRow({ tableHeader: true, cantSplit: true, children: headers.map((h, i) => mk(h, widths[i], true)) }),
       ...rows.map(r => new TableRow({ cantSplit: true, height: { value: opts.h || 520, rule: "atLeast" }, children: r.map((c, i) => mk(c, widths[i], i === 0 && opts.firstBold, i === 0 && opts.firstBold ? "F3F6FA" : null)) }))] });

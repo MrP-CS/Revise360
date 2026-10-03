@@ -100,7 +100,7 @@
   "info": [
    {
     "title": "Start here: how this course works",
-    "text": "Python is a language for writing instructions a computer follows, one line at a time. You write them in the editor on the right of a task window. Run follows your instructions and shows whatever they display in the panel underneath, labelled Program output. Check my answer is different: it marks your program against the task. So run as often as you like while you are trying things out, and check when you think it is right. You can check as many times as you like too, and your best mark is the one that is kept. If you are stuck, the Hint button gives you one step at a time, starting with the idea and never with the answer, and Syntax reminder lists every Python command the course has taught so far. Errors are a normal part of programming. Everyone writing Python sees them all day, and reading the message is how you find out what to change. Work round this room through the six numbered badges in order, then tap the star for the final challenge. Your progress saves after every answer."
+    "text": "Python is a language for writing instructions a computer follows, one line at a time. You write them in the editor on the right of a task window. Run follows your instructions and shows whatever they display in the panel underneath, labelled Program output. Check my answer is different: it marks your program against the task. So run as often as you like while you are trying things out, and check when you think it is right. You can check as many times as you like, and your best mark is the one that is kept. You work through the course in order and complete every question: the next one opens when this one is finished, because each activity teaches what the next one needs. If you are stuck, the Hint button gives you one step at a time, starting with the idea and never with the answer, and Syntax reminder lists every Python command the course has taught so far. I need help is there from the first attempt on every question - it costs you nothing, and it will tell you to ask your teacher and show them the question and your code. Errors are a normal part of programming. Everyone writing Python sees them all day, and reading the message is how you find out what to change. Work round this room through the six numbered badges in order, then tap the star for the final challenge. A badge that says Later is not open yet: finish the one you are on first. Your progress saves after every answer, so you can stop and come back to the same question."
    },
    {
     "title": "Naming rules",
@@ -125,7 +125,7 @@
   ],
   "exam": [
    {
-    "q": "A pupil writes two lines to add 1 to a number that has been typed in: n = input() and then print(n + 1). State what Python does when these two lines run, and rewrite them so that they work.",
+    "q": "A pupil writes two lines to add 1 to a number that has been typed in: `n = input()` and then `print(n + 1)`. State what Python does when these two lines run, and rewrite them so that they work.",
     "marks": 3
    },
    {
@@ -269,7 +269,7 @@
   ],
   "exam": [
    {
-    "q": "A program works out how many whole 6s go into a number, and the line reads lots = n / 6. State what is wrong with the result this gives, and write the line corrected.",
+    "q": "A program works out how many whole 6s go into a number, and the line reads `lots = n / 6`. State what is wrong with the result this gives, and write the line corrected.",
     "marks": 2
    },
    {
@@ -415,7 +415,7 @@
   ],
   "exam": [
    {
-    "q": "A program should print cheap when a number is 2 or less and dear when it is more. A pupil writes if n > 2 then prints cheap, and else prints dear. Identify the logic error and write the two lines corrected.",
+    "q": "A program should print cheap when a number is 2 or less and dear when it is more. A pupil writes `if n > 2` then prints cheap, and else prints dear. Identify the logic error and write the two lines corrected.",
     "marks": 3
    },
    {
@@ -559,7 +559,7 @@
   ],
   "exam": [
    {
-    "q": "A program should print the numbers 1 to 10 but prints 0 to 9 instead. Its loop begins for i in range(10). State which values the original range() counted through, and rewrite the line so the loop prints 1 to 10.",
+    "q": "A program should print the numbers 1 to 10 but prints 0 to 9 instead. Its loop begins `for i in range(10)`. State which values the original `range()` counted through, and rewrite the line so the loop prints 1 to 10.",
     "marks": 2
    },
    {
@@ -847,7 +847,7 @@
   ],
   "exam": [
    {
-    "q": "A program tries to print the last character of a word with print(word[len(word)]) and stops with an error. Explain why it fails, and write the line corrected.",
+    "q": "A program tries to print the last character of a word with `print(word[len(word)])` and stops with an error. Explain why it fails, and write the line corrected.",
     "marks": 3
    },
    {
@@ -991,11 +991,11 @@
   ],
   "exam": [
    {
-    "q": "A loop over a list of six numbers begins for i in range(1, 6). State which item is never looked at, and rewrite the line so that every item is included.",
+    "q": "A loop over a list of six numbers begins `for i in range(1, 6)`. State which item is never looked at, and rewrite the line so that every item is included.",
     "marks": 2
    },
    {
-    "q": "Write a program that reads seven whole numbers into a list, then prints the largest and the position it is stored at, without using max().",
+    "q": "Write a program that reads seven whole numbers into a list, then prints the largest and the position it is stored at, without using `max()`.",
     "marks": 5
    },
    {
@@ -1134,7 +1134,7 @@
   ],
   "exam": [
    {
-    "q": "A program that should total column 2 of a grid of 4 rows by 3 columns begins its loop with for r in range(len(grid[0])). Explain why this looks at the wrong number of cells, and write the line corrected.",
+    "q": "A program that should total column 2 of a grid of 4 rows by 3 columns begins its loop with `for r in range(len(grid[0]))`. Explain why this looks at the wrong number of cells, and write the line corrected.",
     "marks": 3
    },
    {
@@ -1279,7 +1279,7 @@
   ],
   "exam": [
    {
-    "q": "A function called double holds one line, print(n * 2). The main program writes answer = double(7) and then prints answer, which shows None. Explain why None is printed, and write the line inside double corrected.",
+    "q": "A function called `double` holds one line, `print(n * 2)`. The main program writes `answer = double(7)` and then prints `answer`, which shows `None`. Explain why `None` is printed, and write the line inside double corrected.",
     "marks": 3
    },
    {
@@ -1424,15 +1424,15 @@
   ],
   "exam": [
    {
-    "q": "Every line read from a file is measured with len(), and each answer comes out one character bigger than expected. Name the character being counted, and write the line that removes it.",
+    "q": "Every line read from a file is measured with `len()`, and each answer comes out one character bigger than expected. Name the character being counted, and write the line that removes it.",
     "marks": 2
    },
    {
-    "q": "Write a program that reads a word and adds it onto the end of log.txt on a line of its own, without losing the lines already in the file, then prints every line of the file.",
+    "q": "Write a program that reads a word and adds it onto the end of `\"log.txt\"` on a line of its own, without losing the lines already in the file, then prints every line of the file.",
     "marks": 4
    },
    {
-    "q": "Each line of data.txt holds a word and a whole number, separated by a comma. Write a program that prints the word from every line whose number is 16 or more.",
+    "q": "Each line of `\"data.txt\"` holds a word and a whole number, separated by a comma. Write a program that prints the word from every line whose number is 16 or more.",
     "marks": 5
    }
   ],
@@ -1712,7 +1712,7 @@
   ],
   "exam": [
    {
-    "q": "A range check for a score that must be from 1 to 10 inclusive is written if score > 1 and score < 10. State the two scores this wrongly refuses, and write the condition corrected.",
+    "q": "A range check for a score that must be from 1 to 10 inclusive is written `if score > 1 and score < 10`. State the two scores this wrongly refuses, and write the condition corrected.",
     "marks": 3
    },
    {
@@ -1858,7 +1858,7 @@
   ],
   "exam": [
    {
-    "q": "A query is written SELECT Title FROM Game ORDER BY Length WHERE Players = 2. State the error in it, and write the query out corrected.",
+    "q": "A query is written `SELECT Title FROM Game ORDER BY Length WHERE Players = 2`. State the error in it, and write the query out corrected.",
     "marks": 2
    },
    {

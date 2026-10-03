@@ -25,8 +25,15 @@
    * tokens and draws each in its own colour, keeping a monospace font so the
    * indentation still lines up down the page.
    */
-  const CODE = { key: "#c792ea", built: "#7fb2ff", str: "#9fe6a0", num: "#ffcb6b",
-                 comment: "#5d7290", op: "#b4c4dc", name: "#f0f4fa" };
+  /* The colours are the Python editor's, from js/pytok.js and css/pytok.css.
+   * Exam Reference Language is not Python, but a pupil who has learnt that amber
+   * means a number should not have to learn it twice, so the two share one table
+   * rather than two that happen to agree. Read at draw time, not at load time,
+   * so the stylesheet has certainly arrived. */
+  const CODE = () => {
+    const c = window.R360Tok.colours;
+    return { key: c.k, built: c.b, str: c.s, num: c.n, comment: c.c, op: c.o, name: c.t };
+  };
   const KEYWORDS = ("if then else elseif endif for to step next while endwhile do until " +
     "switch case default endswitch function endfunction procedure endprocedure return " +
     "and or not true false global array new").split(" ");
@@ -38,31 +45,32 @@
                "*", "/", "^", "(", ")", "[", "]", "{", "}", ",", ":", ".", ";"];
 
   function tokenise(line) {
+    const C = CODE();
     const out = [];
     let i = 0;
     while (i < line.length) {
       const c = line[i];
       if (c === " " || c === "\t") { let j = i; while (j < line.length && (line[j] === " " || line[j] === "\t")) j++;
-                                      out.push({ t: line.slice(i, j), c: CODE.name }); i = j; continue; }
-      if (c === "/" && line[i + 1] === "/") { out.push({ t: line.slice(i), c: CODE.comment }); break; }
-      if (c === "#") { out.push({ t: line.slice(i), c: CODE.comment }); break; }
+                                      out.push({ t: line.slice(i, j), c: C.name }); i = j; continue; }
+      if (c === "/" && line[i + 1] === "/") { out.push({ t: line.slice(i), c: C.comment }); break; }
+      if (c === "#") { out.push({ t: line.slice(i), c: C.comment }); break; }
       if (c === "'" || c === '"') {                       // a string, closed or not
         let j = i + 1; while (j < line.length && line[j] !== c) j++;
-        out.push({ t: line.slice(i, Math.min(j + 1, line.length)), c: CODE.str });
+        out.push({ t: line.slice(i, Math.min(j + 1, line.length)), c: C.str });
         i = j + 1; continue;
       }
       if (c >= "0" && c <= "9") { let j = i; while (j < line.length && /[0-9.]/.test(line[j])) j++;
-                                  out.push({ t: line.slice(i, j), c: CODE.num }); i = j; continue; }
+                                  out.push({ t: line.slice(i, j), c: C.num }); i = j; continue; }
       if (/[A-Za-z_]/.test(c)) {
         let j = i; while (j < line.length && /[A-Za-z0-9_]/.test(line[j])) j++;
         const w = line.slice(i, j), lw = w.toLowerCase();
-        out.push({ t: w, c: KEYWORDS.indexOf(lw) >= 0 ? CODE.key
-                        : BUILTINS.indexOf(lw) >= 0 ? CODE.built : CODE.name });
+        out.push({ t: w, c: KEYWORDS.indexOf(lw) >= 0 ? C.key
+                        : BUILTINS.indexOf(lw) >= 0 ? C.built : C.name });
         i = j; continue;
       }
       const op = OPS.find(o => line.startsWith(o, i));
-      if (op) { out.push({ t: op, c: CODE.op }); i += op.length; continue; }
-      out.push({ t: c, c: CODE.name }); i++;
+      if (op) { out.push({ t: op, c: C.op }); i += op.length; continue; }
+      out.push({ t: c, c: C.name }); i++;
     }
     return out;
   }

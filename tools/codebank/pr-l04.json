@@ -68,7 +68,7 @@
    "id": "pr-l04-q3",
    "station": 0,
    "marks": 1,
-   "q": "Change the program so the word ping appears on five lines.",
+   "q": "Change the program so the word `\"ping\"` appears on five lines.",
    "kind": "change",
    "brief": [
     "Change only the number inside range().",
@@ -101,7 +101,7 @@
    "id": "pr-l04-q4",
    "station": 0,
    "marks": 2,
-   "q": "Finish the program so the word ready appears on three lines.",
+   "q": "Finish the program so the word `\"ready\"` appears on three lines.",
    "kind": "complete",
    "teach": {
     "say": "The for line says how many turns. The indented line underneath says what happens on each one.",
@@ -311,7 +311,7 @@
    "id": "pr-l04-q8",
    "station": 0,
    "marks": 2,
-   "q": "This program should display the word drip on four lines. Find the mistake and put it right.",
+   "q": "This program should display the word `\"drip\"` on four lines. Find the mistake and put it right.",
    "kind": "debug",
    "teach": {
     "say": "Python needs the indent to know which lines belong to the loop. Without it the loop has no body at all, and that is an error.",
@@ -327,7 +327,7 @@
    },
    "brief": [
     "Press Run first and read the error message.",
-    "Do not change the word drip.",
+    "Do not change the word `\"drip\"`.",
     "Four lines of output, all saying drip."
    ],
    "hint": {
@@ -362,12 +362,12 @@
    "id": "pr-l04-q9",
    "station": 0,
    "marks": 3,
-   "q": "Ask the user for a word. Then ask for a whole number. Display the word on that many lines. Then display done on the next line.",
+   "q": "Ask the user for a word. Then ask for a whole number. Display the word on that many lines. Then display `\"done\"` on the next line.",
    "brief": [
     "The user types in two lines: a word, then a whole number.",
     "The number may be 0, and then the word is not displayed at all.",
     "Display exactly: done",
-    "The word done is displayed once, however many turns the loop takes."
+    "The word `\"done\"` is displayed once, however many turns the loop takes."
    ],
    "hint": {
     "think": "range() can be given a variable instead of a fixed number.",
@@ -376,7 +376,7 @@
      "Read the word and keep it.",
      "Read the number and turn it into a whole number.",
      "Repeat the word that many times.",
-     "Display done where it will only run once."
+     "Display `\"done\"` where it will only run once."
     ],
     "diagram": "pyrange"
    },
@@ -500,7 +500,7 @@
    "id": "pr-l04-q13",
    "station": 1,
    "marks": 1,
-   "q": "Change the program so it displays 1 to 5 instead of 0 to 4.",
+   "q": "Change the program so it displays `1` to `5` instead of 0 to 4.",
    "kind": "change",
    "brief": [
     "Do not change the number inside range().",
@@ -533,7 +533,7 @@
    "id": "pr-l04-q14",
    "station": 1,
    "marks": 2,
-   "q": "Finish the program so it displays every multiple of 10 from 0 to 50, one on each line.",
+   "q": "Finish the program so it displays every multiple of `10` from 0 to 50, one on each line.",
    "kind": "complete",
    "teach": {
     "say": "A sum on the counter is worked out again on every turn, so each line is different.",
@@ -638,10 +638,10 @@
    "id": "pr-l04-q16",
    "station": 1,
    "marks": 2,
-   "q": "Ask the user for a whole number. Display every number from 1 up to and including it, one on each line.",
+   "q": "Ask the user for a whole number. Display every number from `1` up to and including it, one on each line.",
    "brief": [
-    "The user types in one whole number, never less than 1.",
-    "The first line is always 1.",
+    "The user types in one whole number, never less than `1`.",
+    "The first line is always `1`.",
     "The last line is the number typed in."
    ],
    "hint": {
@@ -685,7 +685,7 @@
      "why": "The last number must appear. A missing 3 means the loop took one turn too few."
     }
    ],
-   "fb": "range(n) gives n turns counting from 0, so adding 1 to the counter turns them into 1 up to n."
+   "fb": "range(n) gives n turns counting from 0, so adding `1` to the counter turns them into `1` up to n."
   },
   {
    "id": "pr-l04-q17",
@@ -714,7 +714,7 @@
    "hint": {
     "think": "One line inside the loop is changing the counter as well as range().",
     "walk": [
-     "range(5) already hands out 0, 1, 2, 3 and 4.",
+     "range(`5`) already hands out 0, 1, 2, 3 and 4.",
      "Read each line of the body and ask what it does to i.",
      "Decide whether that line is needed at all."
     ],
@@ -741,7 +741,7 @@
    "id": "pr-l04-q18",
    "station": 1,
    "marks": 3,
-   "q": "Ask the user for a whole number. For every number from 1 up to and including it, work out that number multiplied by itself. Display a line in the form [number] [answer].",
+   "q": "Ask the user for a whole number. For every number from `1` up to and including it, work out that number multiplied by itself. Display a line in the form [number] [answer].",
    "teach": {
     "say": "Giving the counter plus 1 a name of its own makes the rest of the line easier to write. print() with two values puts one space between them.",
     "code": [
@@ -761,9 +761,9 @@
     "Show c and then c multiplied by 10, on one line."
    ],
    "brief": [
-    "The user types in one whole number, never less than 1.",
+    "The user types in one whole number, never less than `1`.",
     "One space between the two numbers on a line.",
-    "One line for every number from 1 up to the number typed in."
+    "One line for every number from `1` up to the number typed in."
    ],
    "hint": {
     "think": "Each line uses its own counter value twice.",
@@ -865,7 +865,7 @@
    "id": "pr-l04-q21",
    "station": 2,
    "marks": 1,
-   "q": "Change the program so 8 is displayed as well.",
+   "q": "Change the program so `8` is displayed as well.",
    "kind": "change",
    "brief": [
     "Change only the stop number.",
@@ -938,7 +938,7 @@
      "why": "A missing 9 means the stop was 9 itself. Python stops before the stop number, so it needs to be one higher."
     }
    ],
-   "fb": "Five numbers from 5 to 9 means a stop of 10. Counting the lines is a good way to check."
+   "fb": "Five numbers from 5 to 9 means a stop of `10`. Counting the lines is a good way to check."
   },
   {
    "id": "pr-l04-q23",
@@ -1048,10 +1048,10 @@
    "id": "pr-l04-q25",
    "station": 2,
    "marks": 3,
-   "q": "Ask the user for a whole number. Display every even number from 2 up to and including it, one on each line.",
+   "q": "Ask the user for a whole number. Display every even number from `2` up to and including it, one on each line.",
    "brief": [
-    "The user types in one whole number, never less than 2.",
-    "Start at 2 and count in twos.",
+    "The user types in one whole number, never less than `2`.",
+    "Start at `2` and count in twos.",
     "An odd number typed in is never displayed."
    ],
    "hint": {
@@ -1175,7 +1175,7 @@
    "id": "pr-l04-q27",
    "station": 2,
    "marks": 3,
-   "q": "Ask the user for a whole number. Display every number from it down to 1, one on each line.",
+   "q": "Ask the user for a whole number. Display every number from it down to `1`, one on each line.",
    "teach": {
     "say": "A step can be negative, and then the count goes downwards. The stop is still never reached, so range(6, 3, -1) counts 6, 5 and 4.",
     "code": [
@@ -1193,10 +1193,10 @@
     "Show the counter on every turn."
    ],
    "brief": [
-    "The user types in one whole number, never less than 1.",
+    "The user types in one whole number, never less than `1`.",
     "The first line is the number typed in.",
-    "The last line is 1.",
-    "Use a step of -1."
+    "The last line is `1`.",
+    "Use a step of `-1`."
    ],
    "hint": {
     "think": "Counting down, the stop has to be below the last number you want.",
@@ -1493,13 +1493,13 @@
      "why": "Two zeros total 0, and that single line still has to be displayed."
     }
    ],
-   "fb": "Set it to 0, add inside the loop, display after it. Every running total you ever write has those three parts."
+   "fb": "Set it to `0`, add inside the loop, display after it. Every running total you ever write has those three parts."
   },
   {
    "id": "pr-l04-q34",
    "station": 3,
    "marks": 3,
-   "q": "Ask the user for how many numbers there are. Then ask for that many whole numbers. Count how many of them are below 0. Display the count.",
+   "q": "Ask the user for how many numbers there are. Then ask for that many whole numbers. Count how many of them are below `0`. Display the count.",
    "teach": {
     "say": "A count is a total that goes up by 1 instead of by the number. An if inside the loop decides which turns are counted and which are passed over.",
     "code": [
@@ -1525,7 +1525,7 @@
    "brief": [
     "The user types in a whole number saying how many follow.",
     "Then come that many whole numbers, one on each line.",
-    "Exactly 0 is not below 0.",
+    "Exactly `0` is not below `0`.",
     "One line of output, which is the count."
    ],
    "hint": {
@@ -1656,7 +1656,7 @@
      "why": "Two zeros still total 0, so this test alone would not show the mistake either."
     }
    ],
-   "fb": "An accumulator is set to 0 once, before the loop. Inside the loop it has to be left alone except for the adding."
+   "fb": "An accumulator is set to `0` once, before the loop. Inside the loop it has to be left alone except for the adding."
   },
   {
    "id": "pr-l04-q36",
@@ -1673,7 +1673,7 @@
     "think": "The total is displayed on every turn, so the print() belongs inside the loop.",
     "syntax": "print(n, total)",
     "walk": [
-     "Create the total and set it to 0.",
+     "Create the total and set it to `0`.",
      "Read one number on each turn.",
      "Add it to the total.",
      "Display the number and the total together, still inside the loop."
@@ -1984,7 +1984,7 @@
    "marks": 3,
    "q": "Ask the user for a whole number. Display that many lines of * characters. Make the first line one character long and every line after it one longer than the one above.",
    "brief": [
-    "The user types in one whole number, never less than 1.",
+    "The user types in one whole number, never less than `1`.",
     "Line 1 holds one * character.",
     "The last line holds as many * characters as the number typed in."
    ],
@@ -2092,7 +2092,7 @@
    "id": "pr-l04-q45",
    "station": 4,
    "marks": 3,
-   "q": "Ask the user for a whole number. For every row from 1 up to and including that number, work out the row number multiplied by 1, then by 2, and so on up to the number. Display each row's answers on one line.",
+   "q": "Ask the user for a whole number. For every row from `1` up to and including that number, work out the row number multiplied by `1`, then by 2, and so on up to the number. Display each row's answers on one line.",
    "teach": {
     "say": "Numbers have to be turned into text with str() before + can join them onto a line being built up.",
     "code": [
@@ -2112,7 +2112,7 @@
     "Display the finished line."
    ],
    "brief": [
-    "The user types in one whole number, never less than 1.",
+    "The user types in one whole number, never less than `1`.",
     "One space between the numbers on a line.",
     "The number typed in says how many lines there are and how many numbers are on each line."
    ],
@@ -2241,7 +2241,7 @@
    "id": "pr-l04-q48",
    "station": 5,
    "marks": 1,
-   "q": "Change the program so the average is rounded to 1 decimal place.",
+   "q": "Change the program so the average is rounded to `1` decimal place.",
    "kind": "change",
    "brief": [
     "The user types in a whole number saying how many follow.",
@@ -2297,12 +2297,12 @@
    "id": "pr-l04-q49",
    "station": 5,
    "marks": 2,
-   "q": "Finish the program so it adds up only the numbers above 0.",
+   "q": "Finish the program so it adds up only the numbers above `0`.",
    "kind": "complete",
    "brief": [
     "The user types in a whole number saying how many follow.",
     "Then come that many whole numbers, one on each line.",
-    "Exactly 0 is not above 0.",
+    "Exactly `0` is not above `0`.",
     "One line of output, which is the total."
    ],
    "hint": {
@@ -2375,7 +2375,7 @@
    "brief": [
     "The user types in a whole number saying how many follow.",
     "Then come that many whole numbers, one on each line.",
-    "Round the average to 1 decimal place.",
+    "Round the average to `1` decimal place.",
     "Two lines of output: the total, then the average."
    ],
    "hint": {
@@ -2448,15 +2448,15 @@
    "id": "pr-l04-q51",
    "station": 5,
    "marks": 3,
-   "q": "Ask the user for a whole number. Work out which numbers from 1 up to and including it divide into it exactly. Display those numbers, one on each line.",
+   "q": "Ask the user for a whole number. Work out which numbers from `1` up to and including it divide into it exactly. Display those numbers, one on each line.",
    "brief": [
-    "The user types in one whole number, never less than 1.",
-    "A number divides exactly when the remainder is 0.",
+    "The user types in one whole number, never less than `1`.",
+    "A number divides exactly when the remainder is `0`.",
     "The number typed in is always displayed, because it divides into itself.",
-    "1 is always displayed too."
+    "`1` is always displayed too."
    ],
    "hint": {
-    "think": "Try every number from 1 upwards in turn, and ask what the remainder is each time.",
+    "think": "Try every number from `1` upwards in turn, and ask what the remainder is each time.",
     "syntax": "if ... % ... == 0:",
     "diagram": "pyrange"
    },
@@ -2508,7 +2508,7 @@
      "why": "A missing 12 means the loop stopped one turn too early."
     }
    ],
-   "fb": "% gives the remainder, and a remainder of 0 is how a program asks whether one number goes into another exactly."
+   "fb": "% gives the remainder, and a remainder of `0` is how a program asks whether one number goes into another exactly."
   },
   {
    "id": "pr-l04-q52",
@@ -2656,12 +2656,12 @@
    "id": "pr-l04-q54",
    "station": 5,
    "marks": 3,
-   "q": "Ask the user for how many numbers there are. Then ask for that many whole numbers. Display the total of the ones above 0. Then display how many are below 0 on the next line. Then display the average of all of them on the next line.",
+   "q": "Ask the user for how many numbers there are. Then ask for that many whole numbers. Display the total of the ones above `0`. Then display how many are below `0` on the next line. Then display the average of all of them on the next line.",
    "brief": [
     "The user types in a whole number saying how many follow.",
     "Then come that many whole numbers, one on each line.",
-    "Exactly 0 is neither above nor below 0.",
-    "Round the average to 1 decimal place."
+    "Exactly `0` is neither above nor below `0`.",
+    "Round the average to `1` decimal place."
    ],
    "hint": {
     "think": "Three answers need three variables, all set up before the loop and all updated inside it.",
@@ -2674,8 +2674,8 @@
     "walk": [
      "Read one number on each turn of the loop.",
      "Add it to the total of all of them, whatever it is.",
-     "Add it to the above-0 total only when it is above 0.",
-     "Add 1 to the count only when it is below 0.",
+     "Add it to the above-`0` total only when it is above `0`.",
+     "Add `1` to the count only when it is below `0`.",
      "Display the three answers after the loop."
     ],
     "diagram": "pyrange"

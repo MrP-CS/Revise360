@@ -1,0 +1,93 @@
+/* The Python token colours, in one place.
+ *
+ * Everything that shows Python to a pupil reads its colours from here: the
+ * editor's highlighter behind the textarea, the worked examples, the inline
+ * code in a task instruction, the headset's painted panels (through
+ * R360Tok.colours, which reads these custom properties) and the print
+ * stylesheets the worksheets and slides are built from.
+ *
+ * It is one file because the point of the colouring is recognition: a pupil
+ * who sees "25" in amber in the instruction and amber again in their own
+ * program is reading one thing, not two. The moment the editor and the
+ * instruction are coloured by two separate tables, they drift, and the
+ * recognition quietly stops being true. tools/tests/smoketok.py fails if any
+ * copy of these values appears anywhere else in the repository.
+ *
+ * tok-t is ordinary text: a name the pupil chose or Python does not know.
+ */
+:root{
+  --tok-k:#c792ea;   /* keyword          if, for, while, def, True */
+  --tok-b:#7fb2ff;   /* built-in         print, input, int, len, range */
+  --tok-s:#9fe6a0;   /* string           "Alex", '007' */
+  --tok-n:#ffcb6b;   /* number           25, 3.5 */
+  --tok-c:#5d7290;   /* comment          # like this */
+  --tok-o:#b4c4dc;   /* operator         = + ( ) : , [ ] */
+  --tok-t:#f0f4fa;   /* name or text     score, total */
+}
+
+/* The highlighter drawn behind the editor's textarea. */
+.pyhl .k{color:var(--tok-k)}
+.pyhl .b{color:var(--tok-b)}
+.pyhl .s{color:var(--tok-s)}
+.pyhl .n{color:var(--tok-n)}
+.pyhl .c{color:var(--tok-c)}
+.pyhl .o{color:var(--tok-o)}
+.pyhl .k,.pyhl .b,.pyhl .s,.pyhl .n,.pyhl .c,.pyhl .o{font-style:normal}
+
+/* Python inside a sentence: the data a task is telling the pupil to use.
+ *
+ * It is boxed as well as coloured, so it is still obviously a piece of program
+ * rather than a word of the sentence when the colours cannot be seen - on a
+ * black-and-white printout, in a high-contrast mode, or to anyone who does not
+ * separate green from amber. The box, not the colour, is what carries "this is
+ * the exact data". */
+code.pytok{
+  font-family:"IBM Plex Mono",ui-monospace,"Cascadia Mono","Consolas",monospace;
+  font-size:0.94em;
+  padding:1px 5px;
+  border:1px solid var(--line,#3c5a87);
+  border-radius:4px;
+  background:rgba(0,0,0,.28);
+  white-space:pre-wrap;
+  word-break:break-word;
+}
+code.pytok .k{color:var(--tok-k)}
+code.pytok .b{color:var(--tok-b)}
+code.pytok .s{color:var(--tok-s)}
+code.pytok .n{color:var(--tok-n)}
+code.pytok .c{color:var(--tok-c)}
+code.pytok .o{color:var(--tok-o)}
+code.pytok .t{color:var(--tok-t)}
+
+/* A worked example, and the folded line-by-line notes beside it, use the same
+ * table as the editor rather than a set of their own. */
+.pyeg .k,.pylines code .k{color:var(--tok-k)}
+.pyeg .b,.pylines code .b{color:var(--tok-b)}
+.pyeg .s,.pylines code .s{color:var(--tok-s)}
+.pyeg .n,.pylines code .n{color:var(--tok-n)}
+.pyeg .c,.pylines code .c{color:var(--tok-c)}
+.pyeg .o,.pylines code .o{color:var(--tok-o)}
+.pyeg .t,.pylines code .t{color:var(--tok-t)}
+.pyeg i,.pylines code i{font-style:normal}
+
+/* On paper and in a high-contrast mode the dark-background colours are either
+ * invisible or illegible, so the same seven token kinds get a second set of
+ * values tuned for dark ink on white. The kinds, the classes and the box do
+ * not change: only the ink does, which is why a worksheet and the screen still
+ * teach the same distinction. */
+@media print{
+  :root{
+    --tok-k:#6b21a8;
+    --tok-b:#1d4ed8;
+    --tok-s:#15803d;
+    --tok-n:#9a3412;
+    --tok-c:#52525b;
+    --tok-o:#3f3f46;
+    --tok-t:#18181b;
+  }
+  code.pytok{
+    border:1px solid #a1a1aa;
+    background:#f4f4f5;
+    color:#18181b;
+  }
+}

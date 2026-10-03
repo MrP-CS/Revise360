@@ -74,7 +74,7 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Change the list so the middle number is 4 instead of 7.",
+       "q": "Change the list so the middle number is `4` instead of `7`.",
        "brief": [
         "Change only the number in the middle of the list.",
         "Leave the other two numbers alone.",
@@ -100,7 +100,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Finish the program so the list holds the three words red, blue and grey. Display the whole list.",
+       "q": "Finish the program so the list holds the three words `\"red\"`, `\"blue\"` and `\"grey\"`. Display the whole list.",
        "brief": [
         "Replace ____ with the three words, in that order.",
         "Each word needs a quotation mark at each end.",
@@ -304,9 +304,9 @@
        "q": "Press Run. The program takes two items out of the list and shows them.",
        "brief": [
         "Nothing is marked on this one.",
-        "Counting starts at 0, so position 2 is the third item."
+        "Counting starts at `0`, so position `2` is the third item."
        ],
-       "fb": "Positions start at 0, so a list of three items has positions 0, 1 and 2.",
+       "fb": "Positions start at `0`, so a list of three items has positions 0, 1 and 2.",
        "kind": "try",
        "starter": "tools = [\"tin\", \"jar\", \"tub\"]\nprint(tools[0])\nprint(tools[2])\n",
        "tests": [],
@@ -361,7 +361,7 @@
         "Work the position out from the length, rather than typing the number 3.",
         "Display exactly: thu"
        ],
-       "fb": "len() - 1 finds the end of any list, however long it is, so the program keeps working when the list changes.",
+       "fb": "len() - `1` finds the end of any list, however long it is, so the program keeps working when the list changes.",
        "kind": "complete",
        "starter": "days = [\"mon\", \"tue\", \"wed\", \"thu\"]\nprint(days[____])\n",
        "tests": [
@@ -488,7 +488,7 @@
         "Find the last one from the length of the list, rather than typing its position.",
         "Two lines of output, one number on each."
        ],
-       "fb": "The two ends of a list are position 0 and position len() - 1, and that is true however many items it holds.",
+       "fb": "The two ends of a list are position `0` and position len() - `1`, and that is true however many items it holds.",
        "starter": "# The first number, then the last one\n",
        "tests": [
         {
@@ -535,7 +535,7 @@
         }
        ],
        "hint": {
-        "think": "Position 0 is the first item, and the last one is at len() - 1.",
+        "think": "Position `0` is the first item, and the last one is at len() - `1`.",
         "syntax": [
          "print(nums[0])",
          "print(nums[len(nums) - 1])"
@@ -558,7 +558,7 @@
         "Do not change the list.",
         "Display exactly: rose"
        ],
-       "fb": "An IndexError means a position the list does not have. The highest one it ever has is len() - 1.",
+       "fb": "An IndexError means a position the list does not have. The highest one it ever has is len() - `1`.",
        "kind": "debug",
        "starter": "words = [\"fern\", \"ivy\", \"rose\"]\nprint(words[len(words)])\n",
        "tests": [
@@ -959,12 +959,12 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for five whole numbers, one on each line. Keep them in one list. Count how many of them are 10 or more. Display that count.",
+       "q": "Ask the user for five whole numbers, one on each line. Keep them in one list. Count how many of them are `10` or more. Display that count.",
        "brief": [
         "The user types in five lines, one whole number on each.",
-        "Exactly 10 counts as 10 or more.",
+        "Exactly `10` counts as `10` or more.",
         "One line of output, which is one number.",
-        "A count of 0 still has to be displayed."
+        "A count of `0` still has to be displayed."
        ],
        "fb": "A counter and an if inside the loop count only the items that pass the test, and the counter is set up before the loop starts.",
        "starter": "# Count the numbers that reach 10\n",
@@ -1024,7 +1024,7 @@
        ],
        "opt": true,
        "hint": {
-        "think": "Start a counter at 0 before the loop, and add 1 to it whenever an item passes the test.",
+        "think": "Start a counter at `0` before the loop, and add `1` to it whenever an item passes the test.",
         "syntax": "count = count + 1",
         "start": [
          "count = 0",
@@ -1505,10 +1505,10 @@
        "q": "Press Run. The program adds up every number in the list.",
        "brief": [
         "Nothing is marked on this one.",
-        "The total has to start at 0 before the loop begins.",
+        "The total has to start at `0` before the loop begins.",
         "The print() is not indented, so it runs once at the end."
        ],
-       "fb": "Set it to 0, add inside the loop, display after it. Those three steps total any list, however long.",
+       "fb": "Set it to `0`, add inside the loop, display after it. Those three steps total any list, however long.",
        "kind": "try",
        "starter": "nums = [5, 2, 8]\ntotal = 0\nfor n in nums:\n    total = total + n\nprint(total)\n",
        "tests": [],
@@ -1606,7 +1606,7 @@
         "The user types in five lines, one whole number on each.",
         "Some of the numbers may be negative.",
         "One line of output, which is one number.",
-        "A total of 0 still has to be displayed."
+        "A total of `0` still has to be displayed."
        ],
        "fb": "Reading the list and totalling the list are two separate jobs, and it is clearer to give each one its own loop.",
        "starter": "# Five numbers in, one total out\n",
@@ -1676,12 +1676,12 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for five whole numbers, one on each line. Keep them in one list. Work out their average. Round the average to 1 decimal place. Display the average.",
+       "q": "Ask the user for five whole numbers, one on each line. Keep them in one list. Work out their average. Round the average to `1` decimal place. Display the average.",
        "brief": [
         "The user types in five lines, one whole number on each.",
         "Divide the total by how many items the list holds, not by a number of your own.",
-        "Round the average to 1 decimal place.",
-        "Dividing always gives a decimal, so an average of 5 is displayed as 5.0."
+        "Round the average to `1` decimal place.",
+        "Dividing always gives a decimal, so an average of `5` is displayed as 5.0."
        ],
        "fb": "len() is what makes an average work for any list: the program never has to be told how many items there are.",
        "starter": "# Five numbers in, one average out\n",
@@ -1796,10 +1796,10 @@
         }
        ],
        "hint": {
-        "think": "How many times does the line that sets the total to 0 actually run?",
+        "think": "How many times does the line that sets the total to `0` actually run?",
         "walk": [
          "A line inside the loop runs once for every item.",
-         "Setting the total to 0 there wipes it out on every turn.",
+         "Setting the total to `0` there wipes it out on every turn.",
          "It belongs before the loop, where it runs once."
         ],
         "diagram": "pylist"
@@ -1812,10 +1812,10 @@
        "brief": [
         "The user types in six lines, one whole number on each.",
         "Some of the numbers may be negative.",
-        "Start the answer at the first item of the list, not at 0.",
+        "Start the answer at the first item of the list, not at `0`.",
         "Do not use max()."
        ],
-       "fb": "The first item is the only safe starting guess, because 0 is bigger than every negative number.",
+       "fb": "The first item is the only safe starting guess, because `0` is bigger than every negative number.",
        "starter": "# Six numbers in, the largest out\n",
        "tests": [
         {
@@ -2010,10 +2010,10 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Change the program so it counts the numbers that are 5 or more instead of the numbers that are more than 5.",
+       "q": "Change the program so it counts the numbers that are `5` or more instead of the numbers that are more than `5`.",
        "brief": [
         "Change only the comparison.",
-        "Exactly 5 now counts.",
+        "Exactly `5` now counts.",
         "Display exactly: 3"
        ],
        "fb": "One character decides whether the boundary value counts, and that is the commonest place for a counting program to go wrong.",
@@ -2040,7 +2040,7 @@
        "brief": [
         "Replace ____ with the comparison.",
         "A word of exactly three letters is not longer than three.",
-        "Three lines of output: fern, then rose, then holly."
+        "Three lines of output: `\"fern\"`, then `\"rose\"`, then `\"holly\"`."
        ],
        "fb": "An if inside a loop lets some items through and not others, and len() is what turns a word into a number to test.",
        "kind": "complete",
@@ -2057,7 +2057,7 @@
         }
        ],
        "hint": {
-        "think": "len() of the word counts its letters, and that count has to be compared with 3.",
+        "think": "len() of the word counts its letters, and that count has to be compared with `3`.",
         "syntax": "len(value) > number",
         "diagram": "pylist"
        }
@@ -2124,11 +2124,11 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for six whole numbers, one on each line. Keep them in one list. Add them all up. Work out their average, rounded to 1 decimal place. Display the total. Then display the average on the next line.",
+       "q": "Ask the user for six whole numbers, one on each line. Keep them in one list. Add them all up. Work out their average, rounded to `1` decimal place. Display the total. Then display the average on the next line.",
        "brief": [
         "The user types in six lines, one whole number on each.",
         "Line 1 is the total, which is a whole number.",
-        "Line 2 is the average, rounded to 1 decimal place.",
+        "Line 2 is the average, rounded to `1` decimal place.",
         "Dividing always gives a decimal, so an average of 12 is displayed as 12.0."
        ],
        "fb": "The total grows inside the loop, and the average comes from the finished total and the length of the list.",
@@ -2212,7 +2212,7 @@
         "The user types in six lines: five words, then the word to look for.",
         "Count every match, not only the first one.",
         "One line of output, which is one number.",
-        "Display 0 when the word is not in the list at all."
+        "Display `0` when the word is not in the list at all."
        ],
        "fb": "Counting matches is the same counter and if as counting large numbers: only the comparison changes.",
        "starter": "# Five words in, then how many times one of them appears\n",
@@ -2287,7 +2287,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for seven whole numbers, one on each line. Keep them in one list. Find the largest one with a loop of your own. Work out which position it sits at, counting from 0. Display the largest. Then display its position on the next line.",
+       "q": "Ask the user for seven whole numbers, one on each line. Keep them in one list. Find the largest one with a loop of your own. Work out which position it sits at, counting from `0`. Display the largest. Then display its position on the next line.",
        "brief": [
         "The user types in seven lines, one whole number on each.",
         "Some of the numbers may be negative.",
@@ -2383,7 +2383,7 @@
         "think": "Count through the positions, so the position of the best one can be remembered as well as the value.",
         "syntax": "for i in range(len(nums)):",
         "walk": [
-         "Start the best position at 0.",
+         "Start the best position at `0`.",
          "Go through the positions of the list.",
          "Replace the best position only when the item there is strictly larger.",
          "Display the item at the best position, then the position itself."

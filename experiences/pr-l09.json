@@ -159,7 +159,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for a word. Write a procedure called rule that displays five dashes. Use rule to put a line of dashes above the word and another below it.",
+       "q": "Ask the user for a word. Write a procedure called `rule` that displays five dashes. Use `rule` to put a line of dashes above the word and another below it.",
        "brief": [
         "The user types in one word.",
         "Three lines of output.",
@@ -226,11 +226,11 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "This program should display the word that was typed, then the word Hooray on the next line. Find the mistake and put it right.",
+       "q": "This program should display the word that was typed, then the word `\"Hooray\"` on the next line. Find the mistake and put it right.",
        "brief": [
         "Press Run first and look at how many lines come out.",
         "There is no error message on this one.",
-        "Do not change the word Hooray.",
+        "Do not change the word `\"Hooray\"`.",
         "Two lines of output."
        ],
        "fb": "A subprogram that is never called is a subprogram that never runs. This is the commonest mistake of the whole lesson, and it gives no error message at all.",
@@ -288,12 +288,12 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for two words, one on each line. Write a procedure called bar that displays four equals signs. Use bar to put a line of equals signs above each word and one more below the second word.",
+       "q": "Ask the user for two words, one on each line. Write a procedure called `bar` that displays four equals signs. Use `bar` to put a line of equals signs above each word and one more below the second word.",
        "brief": [
         "The user types in two lines, one word on each.",
         "Five lines of output in all.",
         "Lines 1, 3 and 5 are exactly: ====",
-        "bar is called three times and holds the equals signs once."
+        "`bar` is called three times and holds the equals signs once."
        ],
        "fb": "Three calls, one procedure. If you typed print(\"====\") out three times you have written the program without using a subprogram at all.",
        "starter": "# One procedure, three calls, two words\n",
@@ -346,9 +346,9 @@
         "think": "Work out the five lines of output on paper first, then decide which of them bar makes.",
         "walk": [
          "Read both words before you display anything.",
-         "A call to bar, then the first word.",
-         "A call to bar, then the second word.",
-         "One more call to bar at the end."
+         "A call to `bar`, then the first word.",
+         "A call to `bar`, then the second word.",
+         "One more call to `bar` at the end."
         ],
         "diagram": "pyfunc"
        },
@@ -375,9 +375,9 @@
        "q": "Press Run. One procedure displays two different colours.",
        "brief": [
         "Nothing is marked on this one.",
-        "Look at where the words red and blue are written, and where they are used."
+        "Look at where the words `\"red\"` and `\"blue\"` are written, and where they are used."
        ],
-       "fb": "The procedure is written once and knows nothing about red or blue. Those are chosen at the moment it is called.",
+       "fb": "The procedure is written once and knows nothing about red or `\"blue\"`. Those are chosen at the moment it is called.",
        "kind": "try",
        "starter": "def label(colour):\n    print(\"Colour: \" + colour)\nlabel(\"red\")\nlabel(\"blue\")\n",
        "tests": [],
@@ -430,7 +430,7 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Change the program so the procedure is handed 7 instead of 4.",
+       "q": "Change the program so the procedure is handed `7` instead of `4`.",
        "brief": [
         "Do not change the procedure itself.",
         "Change only the value in the brackets of the call.",
@@ -540,7 +540,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for two words, one on each line. Write a procedure called show that takes one word and displays value [that word]. Call show once for each word, in the order they were typed.",
+       "q": "Ask the user for two words, one on each line. Write a procedure called `show` that takes one word and displays `\"value \"`[that word]. Call `show` once for each word, in the order they were typed.",
        "brief": [
         "The user types in two lines, one word on each.",
         "Two lines of output and nothing else.",
@@ -666,7 +666,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for two words, one on each line. Write a procedure called pair that takes two words and displays [first word] and [second word]. Call pair with the words in the order typed, then call it again with them the other way round.",
+       "q": "Ask the user for two words, one on each line. Write a procedure called `pair` that takes two words and displays [first word] and [second word]. Call `pair` with the words in the order typed, then call it again with them the other way round.",
        "brief": [
         "The user types in two lines, one word on each.",
         "Two lines of output.",
@@ -904,13 +904,13 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for a whole number. Write a function called double that returns twice the number it is handed. Display what double hands back.",
+       "q": "Ask the user for a whole number. Write a function called `double` that returns twice the number it is handed. Display what `double` hands back.",
        "brief": [
         "The user types one whole number, which may be negative or zero.",
-        "double displays nothing of its own.",
+        "`double` displays nothing of its own.",
         "One line of output, holding the number and nothing else."
        ],
-       "fb": "A function hands its answer to whatever called it, so print(double(7)) displays 14 without double ever displaying anything.",
+       "fb": "A function hands its answer to whatever called it, so print(`double`(7)) displays 14 without double ever displaying anything.",
        "starter": "# double returns the answer; the main program displays it\n",
        "tests": [
         {
@@ -1039,7 +1039,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a whole number. Write a function called double that returns twice the number it is handed. Keep what double hands back in a variable and display it. Then hand that variable to double and display what comes back on the next line.",
+       "q": "Ask the user for a whole number. Write a function called `double` that returns twice the number it is handed. Keep what `double` hands back in a variable and display it. Then hand that variable to `double` and display what comes back on the next line.",
        "brief": [
         "The user types one whole number, which may be negative or zero.",
         "Two lines of output.",
@@ -1096,9 +1096,9 @@
         "syntax": "second = name(first)",
         "walk": [
          "Read the number and cast it with int().",
-         "Call double once and keep what comes back.",
+         "Call `double` once and keep what comes back.",
          "Display that value.",
-         "Call double again on the value you kept, and display what comes back."
+         "Call `double` again on the value you kept, and display what comes back."
         ],
         "diagram": "pyfunc"
        },
@@ -1232,7 +1232,7 @@
         "Display exactly one line, in the form cost [the answer].",
         "There is one space after the word cost."
        ],
-       "fb": "cost = fee(n) runs the function, takes what it hands back, and keeps it. The call and the = are doing two separate jobs on one line.",
+       "fb": "`\"cost \"`= fee(n) runs the function, takes what it hands back, and keeps it. The call and the = are doing two separate jobs on one line.",
        "kind": "complete",
        "starter": "n = int(input())\ndef fee(x):\n    return x * 3\ncost = ____\nprint(\"cost \" + str(cost))\n",
        "tests": [
@@ -1291,11 +1291,11 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a whole number. Write a function called band that returns the word high for a number of 40 or more and the word low for anything less. Display the line band [the word band hands back].",
+       "q": "Ask the user for a whole number. Write a function called `band` that returns the word `\"high\"` for a number of `40` or more and the word `\"low\"` for anything less. Display the line `\"band \"`[the word band hands back].",
        "brief": [
         "The user types one whole number.",
-        "Exactly 40 counts as high.",
-        "band displays nothing of its own.",
+        "Exactly `40` counts as `\"high\"`.",
+        "`band` displays nothing of its own.",
         "One line of output, with one space after the word band."
        ],
        "fb": "The function decides, the main program displays. Keeping those two jobs apart is what the words function and procedure are for.",
@@ -1389,12 +1389,12 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "This program should display one word, either high or low. Find the mistake and put it right.",
+       "q": "This program should display one word, either high or `\"low\"`. Find the mistake and put it right.",
        "brief": [
         "Press Run first and type 20, then run it again and type 60.",
         "One of the two paths through the if is wrong.",
         "One line of output, holding one word.",
-        "A number of 40 or more is high."
+        "A number of `40` or more is `\"high\"`."
        ],
        "fb": "A function that returns on one path and prints on the other is the hardest bug in this lesson, because half of the tests pass. Every path needs its own return.",
        "kind": "debug",
@@ -1460,14 +1460,14 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a word. Then ask for a whole number. Write a function called tag that returns the word high for a number of 40 or more and the word low for anything less. Write a procedure called show that takes a word and a tag and displays [word]: [tag].",
+       "q": "Ask the user for a word. Then ask for a whole number. Write a function called `tag` that returns the word `\"high\"` for a number of `40` or more and the word `\"low\"` for anything less. Write a procedure called `show` that takes a word and a tag and displays [word]: [tag].",
        "brief": [
-        "Exactly 40 counts as high.",
-        "tag has no print() of its own and show has no return.",
-        "Call show once, handing it the word and what tag hands back.",
+        "Exactly `40` counts as `\"high\"`.",
+        "`tag` has no print() of its own and `show` has no return.",
+        "Call `show` once, handing it the word and what `tag` hands back.",
         "One line of output, with a colon and one space between the two parts."
        ],
-       "fb": "show(word, tag(n)) runs the function first and hands its answer straight into the procedure. A return value can be an argument like any other value.",
+       "fb": "`show`(word, `tag`(n)) runs the function first and hands its answer straight into the procedure. A return value can be an argument like any other value.",
        "starter": "# A function that decides, a procedure that displays\n",
        "tests": [
         {
@@ -1520,7 +1520,7 @@
         ],
         "walk": [
          "Read the word, then read the number and cast it.",
-         "Write the function that chooses high or low.",
+         "Write the function that chooses high or `\"low\"`.",
          "Write the procedure that displays the line from two parameters.",
          "Call the procedure, handing it the word and what the function gives back."
         ],
@@ -1557,7 +1557,7 @@
        "q": "Press Run. Two variables share a name and hold different values.",
        "brief": [
         "Nothing is marked on this one.",
-        "The 1 and the 50 are both displayed, so neither one replaced the other."
+        "The `1` and the `50` are both displayed, so neither one replaced the other."
        ],
        "fb": "The local n lives and dies inside count_up. The main program's n never knew it existed.",
        "kind": "try",
@@ -1643,9 +1643,9 @@
        "q": "Finish the program so the procedure changes the main program's score.",
        "brief": [
         "The user types one whole number.",
-        "score starts at 100, which is written into the program.",
+        "score starts at `100`, which is written into the program.",
         "Replace ____ with the one word that reaches the variable outside.",
-        "Display one number, which is 100 plus the number typed."
+        "Display one number, which is `100` plus the number typed."
        ],
        "fb": "global score says this name belongs to the main program. Reading an outside variable needs nothing; changing one needs global.",
        "kind": "complete",
@@ -1721,14 +1721,14 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a whole number and keep it in a variable called total. Write a procedure called boost that puts 99 in its own variable called total and displays it. Call boost, then display the main program's total on the next line.",
+       "q": "Ask the user for a whole number and keep it in a variable called `total`. Write a procedure called `boost` that puts `99` in its own variable called `total` and displays it. Call `boost`, then display the main program's `total` on the next line.",
        "brief": [
         "The user types one whole number, which may be negative or zero.",
-        "Two lines of output, with the 99 first.",
-        "boost takes nothing in its brackets.",
-        "The main program's total must still hold what was typed."
+        "Two lines of output, with the `99` first.",
+        "`boost` takes nothing in its brackets.",
+        "The main program's `total` must still hold what was typed."
        ],
-       "fb": "Two variables can share a name without sharing anything else. The local one inside boost is thrown away the moment boost finishes.",
+       "fb": "Two variables can share a name without sharing anything else. The local one inside `boost` is thrown away the moment boost finishes.",
        "starter": "# Two variables, one name, two different lives\n",
        "tests": [
         {
@@ -1773,7 +1773,7 @@
         }
        ],
        "hint": {
-        "think": "A variable given a value inside a subprogram is local, so it does not need to avoid the name total.",
+        "think": "A variable given a value inside a subprogram is local, so it does not need to avoid the name `total`.",
         "syntax": [
          "def boost():",
          "    total = 99"
@@ -1795,12 +1795,12 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "This program should add 2 to the total once for every turn, then display the total. Find the mistake and put it right.",
+       "q": "This program should add `2` to the total once for every turn, then display the total. Find the mistake and put it right.",
        "brief": [
         "Press Run first and type 3, then read the last line of the error message.",
-        "Do not change the loop or the number 2.",
-        "The total starts at 0, which is written into the program.",
-        "A number of 0 turns means the total stays at 0."
+        "Do not change the loop or the number `2`.",
+        "The total starts at `0`, which is written into the program.",
+        "A number of `0` turns means the total stays at `0`."
        ],
        "fb": "An UnboundLocalError means Python made a local variable of that name and then found nothing in it. global tells it to use the outside one instead.",
        "kind": "debug",
@@ -1858,10 +1858,10 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a whole number of turns. Write a procedure called up that adds 3 to a total the whole program shares. Write a procedure called down that takes 1 away from that same total. Call up and then down once for every turn, then display the total.",
+       "q": "Ask the user for a whole number of turns. Write a procedure called `up` that adds `3` to a total the whole program shares. Write a procedure called `down` that takes `1` away from that same total. Call up and then `down` once for every turn, then display the total.",
        "brief": [
-        "The user types one whole number, which is never below 0.",
-        "The total starts at 0, which is written into the program.",
+        "The user types one whole number, which is never below `0`.",
+        "The total starts at `0`, which is written into the program.",
         "Neither procedure displays anything.",
         "One line of output, holding the final total."
        ],
@@ -1910,7 +1910,7 @@
         "think": "Both procedures change one variable that lives in the main program, so both need the same declaration.",
         "syntax": "global total",
         "walk": [
-         "Make the total in the main program and set it to 0.",
+         "Make the total in the main program and set it to `0`.",
          "Write each procedure with global as its first line.",
          "Loop once per turn, calling both procedures each time.",
          "Display the total after the loop has finished."
@@ -1976,7 +1976,7 @@
         "The user types how many numbers there are, then that many whole numbers.",
         "Replace ____ with a call to points, handing it the number just read.",
         "Display one number, which is the total.",
-        "A count of 0 means no numbers are read at all."
+        "A count of `0` means no numbers are read at all."
        ],
        "fb": "The loop decides how many times. The function deals with one number at a time. Neither one needs to know about the other.",
        "kind": "complete",
@@ -2105,11 +2105,11 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for how many numbers there are. Write a function called points that returns 5 for a number of 10 or more and 1 for anything less. Then ask for that many whole numbers, one on each line. Display the total of everything points hands back.",
+       "q": "Ask the user for how many numbers there are. Write a function called `points` that returns `5` for a number of `10` or more and `1` for anything less. Then ask for that many whole numbers, one on each line. Display the total of everything points hands back.",
        "brief": [
         "The user types the count first, then that many whole numbers.",
-        "The numbers are never below 0, and there may be none at all.",
-        "points is called once for each number, inside the loop.",
+        "The numbers are never below `0`, and there may be none at all.",
+        "`points` is called once for each number, inside the loop.",
         "One line of output, holding the total and nothing else."
        ],
        "fb": "One subprogram, used once per item. The loop handles how many there are and the function handles one at a time.",
@@ -2172,7 +2172,7 @@
         }
        ],
        "hint": {
-        "think": "A running total starts at 0 before the loop and grows by one return value each turn.",
+        "think": "A running total starts at `0` before the loop and grows by one return value each turn.",
         "syntax": [
          "def points(x):",
          "for i in range(count):"
@@ -2199,11 +2199,11 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for two whole numbers, one on each line. Write a function called larger that returns the bigger of the two numbers it is handed. Write a procedure called announce that displays largest [that number]. Call announce with what larger hands back.",
+       "q": "Ask the user for two whole numbers, one on each line. Write a function called `larger` that returns the bigger of the two numbers it is handed. Write a procedure called `announce` that displays `\"largest \"`[that number]. Call `announce` with what `larger` hands back.",
        "brief": [
         "The user types in two lines, one whole number on each.",
         "Either number may be negative, and the two may be equal.",
-        "larger has no print() of its own and announce has no return.",
+        "`larger` has no print() of its own and `announce` has no return.",
         "One line of output, with one space after the word largest."
        ],
        "fb": "Deciding and displaying are two jobs, so they get two subprograms. The main program only has to join them together.",
@@ -2292,11 +2292,11 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for three words, one on each line. Write a function called shorten that returns the first three characters of the word it is handed. Display what shorten hands back for each word, one on each line.",
+       "q": "Ask the user for three words, one on each line. Write a function called `shorten` that returns the first three characters of the word it is handed. Display what `shorten` hands back for each word, one on each line.",
        "brief": [
         "The user types in three lines, one word on each.",
         "A word shorter than three characters comes back whole.",
-        "shorten displays nothing of its own.",
+        "`shorten` displays nothing of its own.",
         "Three lines of output, in the order the words were typed."
        ],
        "fb": "The function knows nothing about how many words there are. Written once, it works on every word the main program hands it.",
@@ -2368,10 +2368,10 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for two whole numbers, one on each line. Write a function called base that returns the first number times 25. Write a function called whole that calls base and returns what base handed back times the second number. Display the line whole [that value].",
+       "q": "Ask the user for two whole numbers, one on each line. Write a function called `base` that returns the first number times `25`. Write a function called `whole` that calls `base` and returns what `base` handed back times the second number. Display the line `\"whole \"`[that value].",
        "brief": [
         "The user types in two lines, one whole number on each.",
-        "whole calls base rather than multiplying by 25 itself.",
+        "`whole` calls `base` rather than multiplying by `25` itself.",
         "Neither function displays anything.",
         "One line of output, with one space after the word whole."
        ],
@@ -2428,10 +2428,10 @@
          "    return base(...) * ..."
         ],
         "walk": [
-         "Write base, which multiplies its parameter by 25 and hands it back.",
-         "Write whole with two parameters.",
-         "Inside whole, call base and use what it hands back.",
-         "Display the line from what whole hands back."
+         "Write `base`, which multiplies its parameter by `25` and hands it back.",
+         "Write `whole` with two parameters.",
+         "Inside `whole`, call `base` and use what it hands back.",
+         "Display the line from what `whole` hands back."
         ],
         "diagram": "pyfunc"
        },

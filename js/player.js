@@ -31,6 +31,33 @@
   if (!student) { location.href = "index.html?next=" + encodeURIComponent(location.pathname.split("/").pop() + location.search); return; }
   const $ = s => document.querySelector(s);
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+  /* A piece of Python written into a sentence, and a whole program, both
+   * coloured by the one lexer in js/pytok.js. A task that says to store 25 in a
+   * variable shows `25` in exactly the amber the pupil will see in their own
+   * editor a moment later; the point is recognition, so there is no second
+   * colour table anywhere. `rich` is for anything a pupil reads, `pytok` for a
+   * block that is already all Python, `flat` for a voice or a title attribute.
+   *
+   * Everything still goes through escaping: the author marks data with
+   * backticks, and nothing else in the sentence is treated as markup. */
+  const TOK = () => window.R360Tok;
+  const rich = s => TOK() ? TOK().rich(s) : esc(flat(s));
+  const pytok = s => TOK() ? TOK().html(s) : esc(s);
+  const flat = s => String(s == null ? "" : s).replace(/`([^`]*)`/g, "$1");
+
+  /* The house wording is one sentence per step - ask, work out, display - so
+   * the sentences are the steps. The split has to step over the marked data:
+   * "Display `Done!` on the next line" is one step, not two, and a task that
+   * prescribes `3.5` or `Mr. Patel` must not break in the middle of it. */
+  function splitSteps(q) {
+    const s = String(q == null ? "" : q);
+    const held = [];
+    const masked = s.replace(/`[^`]*`/g, m => { held.push(m); return "\u0000" + (held.length - 1) + "\u0000"; });
+    return masked.split(/(?<=[.?!])\s+(?=[A-Z])/)
+      .map(x => x.trim().replace(/\u0000(\d+)\u0000/g, (_, i) => held[+i]))
+      .filter(Boolean);
+  }
   const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
   const asset = p => /^(data:|blob:|https?:)/.test(p) ? p : "experiences/" + p;
   // One definition, in store.js, so a new task type cannot be added to one
@@ -383,7 +410,7 @@
         if (s.timeLeft() <= 0) return end();
         const q = s.next(); busy = false;
         shell(st.name, st.col, `<div class="sprinthud"><span>⏱ <b id="spT"></b></span><span>Score <b id="spS"></b></span><span>Streak <b id="spK"></b></span><span>Best <b>${rec.best}</b></span></div>
-          <p class="q">${esc(q.q)}</p><div class="lboard" id="lb"></div><div class="fb" id="fb" role="status"></div><div class="mrow" id="mrow"></div>`);
+          <p class="q">${rich(q.q)}</p><div class="lboard" id="lb"></div><div class="fb" id="fb" role="status"></div><div class="mrow" id="mrow"></div>`);
         hud();
         board = R360Algo.TYPES.includes(q.t) ? R360Algo.make(q) : q.t === "law" ? R360OS.make(q) : q.t === "convert" ? R360Data.make(q) : q.t === "circuit" ? Lg.CircuitBoard({ inputs: Lg.vars(Lg.parse(q.expr)) }) : Lg.ExprBoard({ expr: q.expr });
         mountBoard($("#lb"), board); window.__sprint = { s, board, q };
@@ -455,7 +482,7 @@
   function runCode(k, list, n, task, head, qn) {
     if (kindOf(task) === "predict") return runPredict(k, list, n, task, head);
     while (onCloseCode.length) { try { onCloseCode.pop()(); } catch (e) { /* already gone */ } }
-    const brief = (task.brief || []).map(b => `<li>${esc(b)}</li>`).join("");
+    const brief = (task.brief || []).map(b => `<li>${rich(b)}</li>`).join("");
     /* A worked example of the technique, with different data from the task, so
      * a pupil meeting it for the first time has something to copy the shape of.
      * The early lessons carry one on every question and later ones carry none:
@@ -471,7 +498,7 @@
     const lines = !t || !t.code || !task.lines ? "" : `<details class="pylines">
         <summary>What each line does</summary>
         <ol>${t.code.map((c, i) => task.lines[i]
-          ? `<li value="${i + 1}"><code>${esc(c.trim())}</code><span>${esc(task.lines[i])}</span></li>` : "").join("")}</ol>
+          ? `<li value="${i + 1}"><code>${pytok(c.trim())}</code><span>${rich(task.lines[i])}</span></li>` : "").join("")}</ol>
       </details>`;
     /* On a Try it the worked example and the program in the editor are the same
      * thing, so printing it again on the left is the same lines twice and the
@@ -479,8 +506,13 @@
      * sentence and the line-by-line notes stay; the code itself is on the right,
      * where it can be run. */
     const sameAsEditor = kind === "try";
-    const teach = !t ? "" : `<div class="pyteach"><h4>Learn</h4><p>${esc(t.say)}</p>` +
-      (t.code && !sameAsEditor ? `<pre class="pyeg">${t.code.map(esc).join("\n")}</pre>` : "") +
+    /* The worked example is coloured by the same lexer as the editor, so the
+     * shape a pupil is about to copy already looks like the thing they will be
+     * looking at while they copy it. It used to be printed as plain grey text,
+     * which made the one program on the page that is certainly correct the only
+     * one with no colour in it. */
+    const teach = !t ? "" : `<div class="pyteach"><h4>Learn</h4><p>${rich(t.say)}</p>` +
+      (t.code && !sameAsEditor ? `<pre class="pyeg">${pytok(t.code.join("\n"))}</pre>` : "") +
       (t.out && !sameAsEditor ? `<p class="pyegout"><span>shows</span>${t.out.map(esc).join("<br>")}</p>` : "") +
       lines + "</div>";
 
@@ -503,9 +535,9 @@
      * one sentence per step - ask, work out, display - so the sentences are the
      * steps, and splitting them here means all 238 questions get it without
      * anybody rewriting them into bullets by hand. */
-    const steps = String(task.q).split(/(?<=[.?!])\s+(?=[A-Z])/).map(x => x.trim()).filter(Boolean);
+    const steps = splitSteps(task.q);
     const stepList = steps.map((s, i) =>
-      `<li><span class="stepn" aria-hidden="true">${i + 1}</span><span>${esc(s)}</span></li>`).join("");
+      `<li><span class="stepn" aria-hidden="true">${i + 1}</span><span>${rich(s)}</span></li>`).join("");
 
     /* Where the pupil is in this station, the way a lesson site shows it: one
      * bubble per question, the one they are on filled in. */
@@ -587,7 +619,10 @@
       const speech = window.speechSynthesis;
       if (!speech) sayBtn.remove();
       else {
-        const words = steps.join(" ") + " " + (task.brief || []).join(" ");
+        /* Spoken without the backticks: a voice reading "store backtick 25
+         * backtick" is worse than no voice at all. The marked data is still
+         * read, in its place in the sentence, as the value it is. */
+        const words = flat(steps.join(" ") + " " + (task.brief || []).join(" "));
         const stop = () => { speech.cancel(); sayBtn.textContent = "🔊 Read aloud"; sayBtn.setAttribute("aria-pressed", "false"); };
         sayBtn.setAttribute("aria-pressed", "false");
         sayBtn.onclick = () => {
@@ -836,8 +871,8 @@
     pane.innerHTML = `<div class="hinthead"><b>Python syntax</b><span>Everything the course has used so far. Look things up here as often as you like.</span>
         <button class="btn ghost" id="hintclose">Close</button></div>
       <div class="reflist">${groups.map(g => `<section><h3>${esc(g.name)}</h3>${g.items.map(it => `
-        <div class="refit"><code>${esc(it.syntax)}</code><p>${esc(it.what)}</p>` +
-        (it.eg ? `<pre class="pyeg">${(Array.isArray(it.eg) ? it.eg : [it.eg]).map(esc).join("\n")}</pre>` : "") +
+        <div class="refit"><code class="pytok">${pytok(it.syntax)}</code><p>${rich(it.what)}</p>` +
+        (it.eg ? `<pre class="pyeg">${pytok((Array.isArray(it.eg) ? it.eg : [it.eg]).join("\n"))}</pre>` : "") +
         (it.egOut ? `<p class="pyegout"><span>shows</span>${(Array.isArray(it.egOut) ? it.egOut : [it.egOut]).map(esc).join("<br>")}</p>` : "") +
         `</div>`).join("")}</section>`).join("")}</div>`;
     box.appendChild(pane);
@@ -853,13 +888,13 @@
   function openHint(task) {
     if (!task.hint || hintOpen()) return;
     const h = typeof task.hint === "string" ? { diagram: task.hint } : task.hint;
-    const code = v => `<pre class="pyeg">${(Array.isArray(v) ? v : [v]).map(esc).join("\n")}</pre>`;
+    const code = v => `<pre class="pyeg">${pytok((Array.isArray(v) ? v : [v]).join("\n"))}</pre>`;
     const dia = h.diagram && window.R360Diagrams && R360Diagrams.kinds.includes(h.diagram) ? h.diagram : null;
     const rungs = [];
-    if (h.think) rungs.push({ name: "Think", body: `<p class="hsay">${esc(h.think)}</p>` });
+    if (h.think) rungs.push({ name: "Think", body: `<p class="hsay">${rich(h.think)}</p>` });
     if (h.syntax) rungs.push({ name: "The Python you need", body: code(h.syntax) });
     if (h.start) rungs.push({ name: "How it starts", body: code(h.start) });
-    if (h.walk) rungs.push({ name: "Work it through", body: `<ol class="hwalk">${(Array.isArray(h.walk) ? h.walk : [h.walk]).map(s => `<li>${esc(s)}</li>`).join("")}</ol>` });
+    if (h.walk) rungs.push({ name: "Work it through", body: `<ol class="hwalk">${(Array.isArray(h.walk) ? h.walk : [h.walk]).map(s => `<li>${rich(s)}</li>`).join("")}</ol>` });
     if (dia) rungs.push({ name: "Watch the technique", diagram: dia, body: `<div class="hintdiag vwrap">
         <div class="vstage" id="hint2d"></div>
         <div class="vside">
@@ -937,11 +972,11 @@
           ${where}
           ${learn}
           <p class="pyrunh">The program</p>
-          <pre class="pyeg big${task.code.length > 20 ? " tiny" : task.code.length > 13 ? " long" : ""}">${task.code.map(esc).join("\n")}</pre>
+          <pre class="pyeg big${task.code.length > 20 ? " tiny" : task.code.length > 13 ? " long" : ""}">${pytok(task.code.join("\n"))}</pre>
           ${typed ? `<div class="pyrun">${typed}</div>` : ""}
         </div>
         <div class="predask">
-          <p class="q">${esc(task.q)}</p>
+          <p class="q">${rich(task.q)}</p>
           <p class="pyrunh">Choose what it displays</p>
           <div class="opts">${shuffle(task.a.slice()).map(a => `<button class="opt mono">${esc(a)}</button>`).join("")}</div>
           <div class="fb" id="fb" aria-live="polite"></div>
@@ -960,7 +995,7 @@
       const fb = $("#fb");
       fb.className = "fb show " + (ok ? "ok done" : "no");
       fb.innerHTML = `<strong>${ok ? "✓ That is what it displays." : "It displays this instead:"}</strong>` +
-        (ok ? "" : `<span class="predans">${esc(right)}</span>`) + esc(task.fb || "");
+        (ok ? "" : `<span class="predans">${esc(right)}</span>`) + rich(task.fb || "");
       if (ok) nextBtn(k, list, n, true);
       else tryAgain(k, list, n, "Read the program again with that answer in mind, then choose.");
     });
@@ -1063,7 +1098,7 @@
     }
     save(); hud();
   }
-  function feedback(ok, partial, text) { const fb = $("#fb"); fb.className = "fb show " + (ok ? "ok" : "no"); fb.innerHTML = `<strong>${ok ? "Correct!" : partial || "Not quite."}</strong>${esc(text)}`; }
+  function feedback(ok, partial, text) { const fb = $("#fb"); fb.className = "fb show " + (ok ? "ok" : "no"); fb.innerHTML = `<strong>${ok ? "Correct!" : partial || "Not quite."}</strong>${rich(text)}`; }
   /* Has this activity been finished to the standard the course asks for?
    *
    * Full marks, and nothing else: every test passing on a program, the right
@@ -1160,7 +1195,7 @@
     const img = task.img ? `<img class="diag" src="${esc(asset(task.img))}" alt="${esc(task.alt || ALT)}">` : "";
     const tail = '<div class="fb" id="fb" aria-live="polite"></div><div class="mrow" id="mrow"></div>';
     if (task.t === "mcq") {
-      shell(head, st.col, `${qn}${img}<p class="q">${esc(task.q)}</p><div class="opts">${shuffle(task.a).map(a => `<button class="opt">${esc(a)}</button>`).join("")}</div>${tail}`);
+      shell(head, st.col, `${qn}${img}<p class="q">${rich(task.q)}</p><div class="opts">${shuffle(task.a).map(a => `<button class="opt">${esc(a)}</button>`).join("")}</div>${tail}`);
       const opts = [...box.querySelectorAll(".opt")]; opts[0].focus(); const right = task.a[0];
       opts.forEach(b => b.onclick = () => {
         const ok = b.textContent === right; opts.forEach(o => { o.disabled = true; if (o.textContent === right) o.classList.add("right"); });
@@ -1169,7 +1204,7 @@
         if (ok) nextBtn(k, list, n, true); else tryAgain(k, list, n, "Read the right answer above, then answer it again.");
       });
     } else if (task.t === "multi") {
-      shell(head, st.col, `${qn}${img}<p class="q">${esc(task.q)}</p><div class="chips">${task.opts.map(o => `<button class="chip" aria-pressed="false">${esc(o)}</button>`).join("")}</div>${tail}`);
+      shell(head, st.col, `${qn}${img}<p class="q">${rich(task.q)}</p><div class="chips">${task.opts.map(o => `<button class="chip" aria-pressed="false">${esc(o)}</button>`).join("")}</div>${tail}`);
       const chips = [...box.querySelectorAll(".chip")], row = $("#mrow"); chips[0].focus();
       const ck = document.createElement("button"); ck.className = "btn"; ck.textContent = "Check my answer"; ck.disabled = true; row.appendChild(ck);
       chips.forEach(c => c.onclick = () => { c.setAttribute("aria-pressed", c.getAttribute("aria-pressed") !== "true"); ck.disabled = !chips.some(x => x.getAttribute("aria-pressed") === "true"); });
@@ -1187,7 +1222,7 @@
       /* Eight things to sort, each with four buttons under it, is taller than a
        * laptop screen in one column. Past five they go two abreast where there
        * is width for it, which is what stops this window being scrolled. */
-      shell(head, st.col, `${qn}${img}<p class="q">${esc(task.q)}</p>` +
+      shell(head, st.col, `${qn}${img}<p class="q">${rich(task.q)}</p>` +
         `<div class="items${items.length > 5 ? " many" : ""}">${items.map((it, x) => `<div class="item${task.cats.length > 3 ? " stack" : ""}" data-n="${x}"><span>${esc(it[0])}</span><div class="seg">${task.cats.map(c => `<button aria-pressed="false" data-c="${esc(c)}">${esc(c)}</button>`).join("")}</div></div>`).join("")}</div>${tail}`);
       const row = $("#mrow"), ck = document.createElement("button"); ck.className = "btn"; ck.textContent = "Check my answers"; ck.disabled = true; row.appendChild(ck);
       box.querySelectorAll(".item").forEach(it => { const x = it.dataset.n; it.querySelectorAll(".seg button").forEach(b => b.onclick = () => { pickd[x] = b.dataset.c; it.querySelectorAll(".seg button").forEach(y => y.setAttribute("aria-pressed", y === b)); ck.disabled = Object.keys(pickd).length < items.length; }); });
@@ -1199,7 +1234,7 @@
       };
     } else if (task.t === "match") {
       const rights = shuffle(task.pairs.map(p => p[1]));
-      shell(head, st.col, `${qn}${img}<p class="q">${esc(task.q)}</p>` +
+      shell(head, st.col, `${qn}${img}<p class="q">${rich(task.q)}</p>` +
         `<div class="items${task.pairs.length > 5 ? " many" : ""}">${task.pairs.map((p, x) => `<div class="item stack"><strong>${esc(p[0])}</strong><select aria-label="${esc(p[0])}"><option value="">Choose…</option>${rights.map(y => `<option>${esc(y)}</option>`).join("")}</select></div>`).join("")}</div>${tail}`);
       const sels = [...box.querySelectorAll("select")], row = $("#mrow"), ck = document.createElement("button"); ck.className = "btn"; ck.textContent = "Check my answers"; ck.disabled = true; row.appendChild(ck); sels[0].focus();
       sels.forEach(s => s.onchange = () => ck.disabled = sels.some(x => !x.value));
@@ -1221,7 +1256,7 @@
       runSprint(k, st, task);
     } else if (BOARD_TASKS.includes(task.t)) {
       const Lg = window.R360Logic;
-      shell(head, st.col, `${qn}<p class="q">${esc(task.q)}</p><div class="lboard" id="lb"></div>${tail}`);
+      shell(head, st.col, `${qn}<p class="q">${rich(task.q)}</p><div class="lboard" id="lb"></div>${tail}`);
       const board = task.t === "circuit" ? Lg.CircuitBoard({ inputs: task.inputs || Lg.vars(Lg.parse(task.expr)) })
         : task.t === "expr" ? Lg.ExprBoard({ expr: task.expr, out: task.out })
         : task.t === "table" ? Lg.TableBoard({ expr: task.expr, cols: task.cols, out: task.out, inputs: task.inputs, diagram: task.diagram })
@@ -1245,7 +1280,7 @@
       /* The slots and the steps to drop into them sit side by side where there
        * is room: stacked, a pupil choosing the next step cannot see the order
        * they are building it into. */
-      shell(head, st.col, `${qn}${img}<p class="q">${esc(task.q)}</p>` +
+      shell(head, st.col, `${qn}${img}<p class="q">${rich(task.q)}</p>` +
         `<div class="orderwrap"><ol class="olist" id="ol"></ol>` +
         `<div><p class="qn" id="tapl">Tap the steps in order:</p>` +
         `<div class="pool" id="pool">${pool.map(p => `<button class="opt">${esc(p)}</button>`).join("")}</div></div></div>${tail}`);

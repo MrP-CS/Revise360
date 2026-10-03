@@ -172,7 +172,7 @@ L1 = dict(id="pr-l01", topic="PY", lesson=1, title="Printing and variables", img
     starter="Three lines run in this order: a = 40, then a = 65, then print(a). Write down exactly what is printed, and explain in one sentence what became of the first value.", starter_lines=3,
     keyterms=["Variable", "Constant", "Casting", "Concatenation"],
     keyq="Why must a program decide the data type of a value before it can do anything useful with it?",
-    exam=[("A pupil writes two lines to add 1 to a number that has been typed in: n = input() and then print(n + 1). State what Python does when these two lines run, and rewrite them so that they work.", 3, 5),
+    exam=[("A pupil writes two lines to add 1 to a number that has been typed in: `n = input()` and then `print(n + 1)`. State what Python does when these two lines run, and rewrite them so that they work.", 3, 5),
           ("Write a program that reads a word and then a whole number, adds 1 to the number, and prints the word on one line and the new number on the next line.", 4, 10),
           ("Write a program that reads a number which may have a decimal point, and prints one line in the form Value is 4.0, with the number shown as a real number.", 3, 8)],
     confidence=["Printing lines of output in the right order", "Holding values in variables and constants", "Casting between text and numbers"]))
@@ -242,7 +242,7 @@ L2 = dict(id="pr-l02", topic="PY", lesson=2, title="Arithmetic", img="PR_L02_Ari
     starter="Work these out by hand, with no computer: 17 / 5, 17 // 5, 17 % 5 and 2 ** 5. Beside each answer write whether Python shows a whole number or a decimal.", starter_lines=4,
     keyterms=["Integer division", "Modulus", "Exponent", "Pseudo-random"],
     keyq="How do you choose between /, // and % when the answer to a calculation has to come out as a whole number?",
-    exam=[("A program works out how many whole 6s go into a number, and the line reads lots = n / 6. State what is wrong with the result this gives, and write the line corrected.", 2, 4),
+    exam=[("A program works out how many whole 6s go into a number, and the line reads `lots = n / 6`. State what is wrong with the result this gives, and write the line corrected.", 2, 4),
           ("Write a program that reads a whole number of pence and prints how many whole pounds are in it, then how many pence are left over on the next line.", 4, 9),
           ("Write a program that reads three whole numbers and prints their average, rounded to one decimal place.", 4, 9)],
     confidence=["Choosing the right arithmetic operator", "Using // and % for whole-number answers", "Rounding a result and seeding a random number"]))
@@ -311,7 +311,7 @@ L3 = dict(id="pr-l03", topic="PY", lesson=3, title="Selection", img="PR_L03_Sele
     starter="A program has three branches: if n > 20 it prints big, elif n > 10 it prints middle, and else it prints small. Write down what is printed when n is 30, when it is 11, and when it is 10.", starter_lines=3,
     keyterms=["Selection", "Condition", "elif", "Nested selection"],
     keyq="Why does the order the branches are written in change what an if ... elif ... else actually does?",
-    exam=[("A program should print cheap when a number is 2 or less and dear when it is more. A pupil writes if n > 2 then prints cheap, and else prints dear. Identify the logic error and write the two lines corrected.", 3, 5),
+    exam=[("A program should print cheap when a number is 2 or less and dear when it is more. A pupil writes `if n > 2` then prints cheap, and else prints dear. Identify the logic error and write the two lines corrected.", 3, 5),
           ("Write a program that reads a whole number and prints small when it is 10 or less, medium when it is more than 10 but 100 or less, and large when it is more than 100.", 4, 10),
           ("Write a program that reads a whole number and then a word, and prints open only when the number is 3 or 7 and the word is not locked. Otherwise it prints refused.", 4, 10)],
     confidence=["Writing a condition with a comparison operator", "Choosing between if, elif and else", "Joining conditions with and, or and not"]))
@@ -380,7 +380,7 @@ L4 = dict(id="pr-l04", topic="PY", lesson=4, title="Count-controlled loops", img
     starter="Write down every number printed by for i in range(2, 9, 3), then say how many lines of output there are altogether.", starter_lines=3,
     keyterms=["Count-controlled iteration", "range()", "Running total", "Nested loop"],
     keyq="How do you decide what to put inside range() so that a loop counts exactly the values you want?",
-    exam=[("A program should print the numbers 1 to 10 but prints 0 to 9 instead. Its loop begins for i in range(10). State which values the original range() counted through, and rewrite the line so the loop prints 1 to 10.", 2, 4),
+    exam=[("A program should print the numbers 1 to 10 but prints 0 to 9 instead. Its loop begins `for i in range(10)`. State which values the original `range()` counted through, and rewrite the line so the loop prints 1 to 10.", 2, 4),
           ("Write a program that reads how many numbers there are, then reads that many whole numbers and prints their total and their average.", 5, 11),
           ("Write a program that reads a whole number and prints that many lines, the first holding one * character, the second two, and so on.", 4, 10)],
     confidence=["Writing a for loop with the right range", "Keeping a running total inside a loop", "Using one loop inside another"]))
@@ -518,7 +518,7 @@ L6 = dict(id="pr-l06", topic="PY", lesson=6, title="String handling", img="PR_L0
     starter="The variable word holds Cavendish. Write down what each of these gives: len(word), word[0], word[0:4], word[-1] and word.upper().", starter_lines=4,
     keyterms=["Index", "Slice", "Character set", "ord() and chr()"],
     keyq="Why are the characters of a string numbered from 0 rather than from 1?",
-    exam=[("A program tries to print the last character of a word with print(word[len(word)]) and stops with an error. Explain why it fails, and write the line corrected.", 3, 5),
+    exam=[("A program tries to print the last character of a word with `print(word[len(word)])` and stops with an error. Explain why it fails, and write the line corrected.", 3, 5),
           ("Write a program that reads a line of text and prints how many of its characters are capital letters.", 4, 9),
           ("Write a program that reads a word and prints palindrome when it reads the same both ways once capitals are ignored, and not a palindrome when it does not.", 5, 11)],
     confidence=["Using len() and an index on a string", "Taking a slice out of a string", "Searching text and using ord() and chr()"]))
@@ -587,8 +587,8 @@ L7 = dict(id="pr-l07", topic="PY", lesson=7, title="Lists", img="PR_L07_Lists_36
     starter="The list words holds red, blue, green and teal, in that order. Write down what words[0], words[3] and len(words) each give, and the index of the last item.", starter_lines=4,
     keyterms=["Array", "Index", "Traverse", "append() and pop()"],
     keyq="Why is the last item of a list always at index len(list) - 1?",
-    exam=[("A loop over a list of six numbers begins for i in range(1, 6). State which item is never looked at, and rewrite the line so that every item is included.", 2, 4),
-          ("Write a program that reads seven whole numbers into a list, then prints the largest and the position it is stored at, without using max().", 5, 11),
+    exam=[("A loop over a list of six numbers begins `for i in range(1, 6)`. State which item is never looked at, and rewrite the line so that every item is included.", 2, 4),
+          ("Write a program that reads seven whole numbers into a list, then prints the largest and the position it is stored at, without using `max()`.", 5, 11),
           ("Write a program that reads five words into a list, removes a word the user types in, then prints the words that are left and how many there are.", 4, 10)],
     confidence=["Creating a list and reading an item by its index", "Traversing a list to total or compare its items", "Adding items to a list and removing them"]))
 
@@ -655,7 +655,7 @@ L8 = dict(id="pr-l08", topic="PY", lesson=8, title="Two-dimensional lists", img=
     starter="The grid g holds two rows: 4, 9, 2 in the first and 7, 1, 6 in the second. Write down what g[0][2], g[1][0] and len(g) each give, and which row and column hold the 6.", starter_lines=4,
     keyterms=["Two-dimensional list", "Row and column", "Cell", "Nested loop"],
     keyq="Which index comes first when a program reads a cell, and why does swapping the two over give a different answer?",
-    exam=[("A program that should total column 2 of a grid of 4 rows by 3 columns begins its loop with for r in range(len(grid[0])). Explain why this looks at the wrong number of cells, and write the line corrected.", 3, 5),
+    exam=[("A program that should total column 2 of a grid of 4 rows by 3 columns begins its loop with `for r in range(len(grid[0]))`. Explain why this looks at the wrong number of cells, and write the line corrected.", 3, 5),
           ("Write a program that reads twelve whole numbers into a grid of three rows of four, then prints the total of each row on a line of its own.", 5, 11),
           ("A grid of 2 rows by 3 columns is already stored in a program. Write the code that prints it one row to a line, with single spaces between the values and no brackets.", 4, 10)],
     confidence=["Building a list of lists and filling it", "Reading a cell with a row index and a column index", "Totalling rows and columns with nested loops"]))
@@ -725,7 +725,7 @@ L9 = dict(id="pr-l09", topic="PY", lesson=9, title="Subprograms", img="PR_L09_Su
     starter="A program defines a subprogram called banner with one print line inside it, and then stops. Nothing is printed when it runs. Explain why, and write down the line that has been left out.", starter_lines=3,
     keyterms=["Subprogram", "Parameter and argument", "return", "Local and global variable"],
     keyq="When should a subprogram return a value rather than print one?",
-    exam=[("A function called double holds one line, print(n * 2). The main program writes answer = double(7) and then prints answer, which shows None. Explain why None is printed, and write the line inside double corrected.", 3, 5),
+    exam=[("A function called `double` holds one line, `print(n * 2)`. The main program writes `answer = double(7)` and then prints `answer`, which shows `None`. Explain why `None` is printed, and write the line inside double corrected.", 3, 5),
           ("Write a function that takes two whole numbers and returns the larger of them, and a main program that reads two numbers and prints the value the function hands back.", 5, 11),
           ("Write a procedure that takes a word and a whole number and prints them on one line with a single space between them, then call it for three different pairs of values.", 4, 10)],
     confidence=["Defining a subprogram and calling it", "Passing values in with parameters and back with return", "Telling a local variable from a global one"]))
@@ -795,9 +795,9 @@ L10 = dict(id="pr-l10", topic="PY", lesson=10, title="File handling", img="PR_L1
     starter="A program opens scores.txt in write mode, and the file already holds 40 lines. Write down what the file holds the moment that line has run, and which mode should have been used to add to it instead.", starter_lines=3,
     keyterms=["Append mode", "Record", "Field", "split()"],
     keyq="Why does the mode a file is opened in matter more than anything else on that line?",
-    exam=[("Every line read from a file is measured with len(), and each answer comes out one character bigger than expected. Name the character being counted, and write the line that removes it.", 2, 4),
-          ("Write a program that reads a word and adds it onto the end of log.txt on a line of its own, without losing the lines already in the file, then prints every line of the file.", 4, 10),
-          ("Each line of data.txt holds a word and a whole number, separated by a comma. Write a program that prints the word from every line whose number is 16 or more.", 5, 11)],
+    exam=[("Every line read from a file is measured with `len()`, and each answer comes out one character bigger than expected. Name the character being counted, and write the line that removes it.", 2, 4),
+          ("Write a program that reads a word and adds it onto the end of `\"log.txt\"` on a line of its own, without losing the lines already in the file, then prints every line of the file.", 4, 10),
+          ("Each line of `\"data.txt\"` holds a word and a whole number, separated by a comma. Write a program that prints the word from every line whose number is 16 or more.", 5, 11)],
     confidence=["Opening, reading and closing a file", "Choosing between write mode and append mode", "Splitting a record into its fields"]))
 
 # ---------------------------------------------------------------- Lesson 11
@@ -935,7 +935,7 @@ L12 = dict(id="pr-l12", topic="PY", lesson=12, title="Validation and authenticat
     starter="A program reads an age with age = int(input()) and the user types the word twelve. Write down what happens to the program, and the check that should have come before the cast.", starter_lines=3,
     keyterms=["Validation", "Format check", "Validation loop", "Authentication"],
     keyq="Why is refusing bad data better than letting a program stop with an error?",
-    exam=[("A range check for a score that must be from 1 to 10 inclusive is written if score > 1 and score < 10. State the two scores this wrongly refuses, and write the condition corrected.", 3, 5),
+    exam=[("A range check for a score that must be from 1 to 10 inclusive is written `if score > 1 and score < 10`. State the two scores this wrongly refuses, and write the condition corrected.", 3, 5),
           ("Write a program that keeps asking for a code of exactly one letter followed by two digits, saying what is wrong each time, until a valid code is typed.", 6, 13),
           ("Write a program that allows three attempts at a four-digit passcode already held in the program, and prints Locked when all three attempts are wrong.", 5, 11)],
     confidence=["Coding a presence, type and range check", "Coding a length check and a format check", "Writing a validation loop and an authentication check"]))
@@ -1004,7 +1004,7 @@ L13 = dict(id="pr-l13", topic="PY", lesson=13, title="SQL queries", img="PR_L13_
     starter="A table called Tree holds the fields Name, Height and Native, and 30 records. Write down how many fields and how many records come back from SELECT Name, Height FROM Tree, and which clause you would add to cut the records down.", starter_lines=3,
     keyterms=["SQL", "Record and field", "WHERE", "ORDER BY"],
     keyq="Which clause of a query decides which fields come back, and which clause decides which records?",
-    exam=[("A query is written SELECT Title FROM Game ORDER BY Length WHERE Players = 2. State the error in it, and write the query out corrected.", 2, 4),
+    exam=[("A query is written `SELECT Title FROM Game ORDER BY Length WHERE Players = 2`. State the error in it, and write the query out corrected.", 2, 4),
           ("A table called Track holds the fields Title, Artist, Seconds and Genre. Write a query that lists the title and artist of every track longer than 240 seconds, longest first.", 4, 6),
           ("Using the same Track table, write a query that lists the title of every track that is Jazz or Blues and lasts under 180 seconds.", 4, 6)],
     confidence=["Writing a SELECT ... FROM query", "Filtering records with WHERE", "Using AND, OR and ORDER BY"]))

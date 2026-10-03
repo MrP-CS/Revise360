@@ -98,9 +98,9 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Change the program so it displays what is in notes.txt instead of how long it is.",
+       "q": "Change the program so it displays what is in `\"notes.txt\"` instead of how long it is.",
        "brief": [
-        "notes.txt is already there.",
+        "`\"notes.txt\"` is already there.",
         "Change only the last line.",
         "Display what was read and nothing of your own."
        ],
@@ -138,9 +138,9 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Finish the program so it reads the whole of notes.txt and displays it.",
+       "q": "Finish the program so it reads the whole of `\"notes.txt\"` and displays it.",
        "brief": [
-        "notes.txt is already there.",
+        "`\"notes.txt\"` is already there.",
         "Replace ____ with one method of the file.",
         "Display the whole file and nothing of your own."
        ],
@@ -192,10 +192,10 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "A file called notes.txt is already there. Read the whole of notes.txt in one go. Close the file. Display exactly what was in it.",
+       "q": "A file called `\"notes.txt\"` is already there. Read the whole of `\"notes.txt\"` in one go. Close the file. Display exactly what was in it.",
        "brief": [
         "Nothing is typed in.",
-        "The program only reads notes.txt.",
+        "The program only reads `\"notes.txt\"`.",
         "Display nothing of your own, not even a heading."
        ],
        "fb": "open(), use, close. That is the shape of every file program you will write.",
@@ -247,10 +247,10 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "This program should display what is in notes.txt. Find the mistake and put it right.",
+       "q": "This program should display what is in `\"notes.txt\"`. Find the mistake and put it right.",
        "brief": [
         "Press Run first and look at what is displayed.",
-        "notes.txt is already there.",
+        "`\"notes.txt\"` is already there.",
         "Display the contents of the file and nothing else."
        ],
        "fb": "open() hands back a link to the file, not the file itself. .read() is what fetches what is inside.",
@@ -288,12 +288,12 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "A file called data.txt is already there, and it may be empty. Read the whole of data.txt. Count every character in it, newlines included. Display the line characters [the count].",
+       "q": "A file called `\"data.txt\"` is already there, and it may be empty. Read the whole of `\"data.txt\"`. Count every character in it, newlines included. Display the line `\"characters\"` [the count].",
        "brief": [
         "Nothing is typed in.",
-        "The program only reads data.txt.",
+        "The program only reads `\"data.txt\"`.",
         "An empty file holds 0 characters.",
-        "There is one space after the word characters."
+        "There is one space after the word `\"characters\"`."
        ],
        "fb": "A newline is one real character. That is why a file is almost always longer than it looks.",
        "starter": "# count the characters, newlines too\n",
@@ -432,9 +432,9 @@
        "marks": 1,
        "q": "Change the program so the blank line does not appear.",
        "brief": [
-        "words.txt is already there.",
+        "`\"words.txt\"` is already there.",
         "Change only the line that displays the word.",
-        "Display the word, then done on the next line."
+        "Display the word, then `\"done\"` on the next line."
        ],
        "fb": "print() ends the line itself. The \\n that came out of the file makes a second ending, which shows as a blank line.",
        "kind": "change",
@@ -471,12 +471,12 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Finish the program so it displays how many lines words.txt holds.",
+       "q": "Finish the program so it displays how many lines `\"words.txt\"` holds.",
        "brief": [
-        "words.txt is already there, with one word per line, and it may be empty.",
+        "`\"words.txt\"` is already there, with one word per line, and it may be empty.",
         "Replace ____ with one method of the file.",
         "An empty file holds 0 lines.",
-        "Display the line lines [the count]."
+        "Display the line `\"lines\"` [the count]."
        ],
        "fb": ".readlines() gives a list with one string per line, so len() of that list is how many lines the file holds.",
        "kind": "complete",
@@ -543,11 +543,11 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "A file called words.txt is already there, and it may be empty. Read the first line of words.txt only. Close the file. Take the newline off that line. Display the line first [that line]. Then display the line length [how many characters are left] on the next line.",
+       "q": "A file called `\"words.txt\"` is already there, and it may be empty. Read the first line of `\"words.txt\"` only. Close the file. Take the newline off that line. Display the line `\"first\"` [that line]. Then display the line `\"length\"` [how many characters are left] on the next line.",
        "brief": [
         "Nothing is typed in.",
-        "The program only reads words.txt.",
-        "An empty file has no first line, so the word first is displayed on its own.",
+        "The program only reads `\"words.txt\"`.",
+        "An empty file has no first line, so the word `\"first\"` is displayed on its own.",
         "An empty file gives a length of 0."
        ],
        "fb": ".readline() stops at the newline and brings it with it. .strip() takes it off, and the length is how you prove it has gone.",
@@ -607,8 +607,8 @@
         "walk": [
          "Read one line and close the file.",
          "Take the newline off that line.",
-         "Display the word first and the line.",
-         "Display the word length and how long the line now is."
+         "Display the word `\"first\"` and the line.",
+         "Display the word `\"length\"` and how long the line now is."
         ],
         "diagram": "pyfile"
        }
@@ -616,10 +616,10 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "This program should display every word in words.txt, one on each line. Find the mistake and put it right.",
+       "q": "This program should display every word in `\"words.txt\"`, one on each line. Find the mistake and put it right.",
        "brief": [
         "Press Run first and read the error message.",
-        "words.txt is already there, with one word per line.",
+        "`\"words.txt\"` is already there, with one word per line.",
         "Change only the line with the mistake in it.",
         "Take the newline off each word before displaying it."
        ],
@@ -658,14 +658,14 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "A file called words.txt is already there, with one word per line, and it may be empty. Read words.txt. Display one line for each word, in the form [position] [word], counting the positions from 1. Display none instead, on a line of its own, when the file holds no words.",
+       "q": "A file called `\"words.txt\"` is already there, with one word per line, and it may be empty. Read `\"words.txt\"`. Display one line for each word, in the form [position] [word], counting the positions from `1`. Display `\"none\"` instead, on a line of its own, when the file holds no words.",
        "brief": [
         "Nothing is typed in.",
-        "The program only reads words.txt.",
+        "The program only reads `\"words.txt\"`.",
         "Take each word's newline off before displaying it.",
         "Display exactly: none"
        ],
-       "fb": "Every string .readlines() hands back ends with \\n until it is stripped, and the position you display is the list position plus 1.",
+       "fb": "Every string .readlines() hands back ends with \\n until it is stripped, and the position you display is the list position plus `1`.",
        "starter": "# each word numbered from 1\n",
        "tests": [
         {
@@ -714,13 +714,13 @@
        ],
        "opt": true,
        "hint": {
-        "think": "A list position starts at 0, and the number you display starts at 1.",
+        "think": "A list position starts at `0`, and the number you display starts at `1`.",
         "syntax": "for i in range(len(lines)):",
         "walk": [
          "Read the whole file into a list of lines.",
          "Check whether that list is empty first.",
          "Otherwise walk the positions of the list.",
-         "Display the position plus 1 and the stripped word."
+         "Display the position plus `1` and the stripped word."
         ],
         "diagram": "pyfile"
        }
@@ -812,7 +812,7 @@
        "brief": [
         "The user types in one word.",
         "Change only the two .write() lines.",
-        "Display the word, then ready on the next line."
+        "Display the word, then `\"ready\"` on the next line."
        ],
        "fb": "A file is only a list of characters. The \\n characters are the only thing that makes it a file of lines.",
        "kind": "change",
@@ -899,9 +899,9 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a word. Make a file called out.txt. Write that word into out.txt on a line of its own. Write ready on the next line. Close the file. Then read the whole of out.txt back and display it.",
+       "q": "Ask the user for a word. Make a file called `\"out.txt\"`. Write that word into `\"out.txt\"` on a line of its own. Write ready on the next line. Close the file. Then read the whole of `\"out.txt\"` back and display it.",
        "brief": [
-        "There is no out.txt to start with, so the program makes it.",
+        "There is no `\"out.txt\"` to start with, so the program makes it.",
         ".write() adds no newline of its own.",
         "Display exactly two lines, the typed word and then ready."
        ],
@@ -947,7 +947,7 @@
         ],
         "walk": [
          "Read the word.",
-         "Open out.txt for writing.",
+         "Open `\"out.txt\"` for writing.",
          "Write the word with a \\n on the end.",
          "Write ready with a \\n on the end.",
          "Close the file.",
@@ -959,10 +959,10 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "This program should write the word into data.txt and read it back. Find the mistake and put it right.",
+       "q": "This program should write the word into `\"data.txt\"` and read it back. Find the mistake and put it right.",
        "brief": [
         "Press Run first and read the error message.",
-        "data.txt is already there and may hold lines of its own.",
+        "`\"data.txt\"` is already there and may hold lines of its own.",
         "The user types in one word.",
         "Display the typed word and nothing else."
        ],
@@ -1016,9 +1016,9 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a word. Open the file data.txt for writing, which empties whatever it held. Write that word into data.txt on a line of its own. Close the file. Then read data.txt back. Display every line in it, one on each line. Then display the line lines [how many] on the last line.",
+       "q": "Ask the user for a word. Open the file `\"data.txt\"` for writing, which empties whatever it held. Write that word into `\"data.txt\"` on a line of its own. Close the file. Then read `\"data.txt\"` back. Display every line in it, one on each line. Then display the line `\"lines\"` [how many] on the last line.",
        "brief": [
-        "data.txt is already there and may already hold lines.",
+        "`\"data.txt\"` is already there and may already hold lines.",
         "The user types in one word.",
         "Take the newline off each line before displaying it.",
         "Display the count last."
@@ -1084,7 +1084,7 @@
         "think": "\"w\" empties the file first, so whatever you write is all that is left in it.",
         "walk": [
          "Read the word.",
-         "Open data.txt with \"w\" and write the word with a \\n on the end.",
+         "Open `\"data.txt\"` with \"w\" and write the word with a \\n on the end.",
          "Close the file.",
          "Open it again and read it into a list of lines.",
          "Display each line stripped, then how many lines there were."
@@ -1179,9 +1179,9 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Change the program so the lines log.txt already holds are kept.",
+       "q": "Change the program so the lines `\"log.txt\"` already holds are kept.",
        "brief": [
-        "log.txt is already there and may hold lines.",
+        "`\"log.txt\"` is already there and may hold lines.",
         "Change only the mode in the first open().",
         "The user types in one word.",
         "Display every line of the file, with the new word last."
@@ -1240,10 +1240,10 @@
        "marks": 2,
        "q": "Finish the program so the word is added on a line of its own.",
        "brief": [
-        "log.txt is already there and may be empty.",
+        "`\"log.txt\"` is already there and may be empty.",
         "Replace ____ with what should be written.",
         "The user types in one word.",
-        "Display every line of log.txt, with the new word last."
+        "Display every line of `\"log.txt\"`, with the new word last."
        ],
        "fb": "Appending text with no \\n joins it onto the last line that is already there. The newline is what starts a new line.",
        "kind": "complete",
@@ -1311,9 +1311,9 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a word. Add that word to the end of the file log.txt, on a line of its own. Keep the lines log.txt already holds. Then read the whole of log.txt back. Display every line in it, one on each line.",
+       "q": "Ask the user for a word. Add that word to the end of the file `\"log.txt\"`, on a line of its own. Keep the lines `\"log.txt\"` already holds. Then read the whole of `\"log.txt\"` back. Display every line in it, one on each line.",
        "brief": [
-        "log.txt is already there and may be empty.",
+        "`\"log.txt\"` is already there and may be empty.",
         "Take the newline off each line before displaying it.",
         "The word just added is the last line.",
         "Display nothing of your own."
@@ -1384,7 +1384,7 @@
         ],
         "walk": [
          "Read the word.",
-         "Open log.txt with \"a\".",
+         "Open `\"log.txt\"` with \"a\".",
          "Write the word with a \\n on the end.",
          "Close the file.",
          "Open it for reading and display each line stripped."
@@ -1395,10 +1395,10 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "This program should display every line of log.txt, with the new word last. Find the mistake and put it right.",
+       "q": "This program should display every line of `\"log.txt\"`, with the new word last. Find the mistake and put it right.",
        "brief": [
         "Press Run first and look for the word you typed.",
-        "log.txt is already there and holds lines.",
+        "`\"log.txt\"` is already there and holds lines.",
         "The user types in one word.",
         "Display every line of the file."
        ],
@@ -1460,14 +1460,14 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a word. Add that word to the end of the file log.txt, on a line of its own. Keep the lines log.txt already holds. Then read log.txt back. Display the line latest [the last line of the file]. Then display the line total [how many lines there are] on the next line.",
+       "q": "Ask the user for a word. Add that word to the end of the file `\"log.txt\"`, on a line of its own. Keep the lines `\"log.txt\"` already holds. Then read `\"log.txt\"` back. Display the line `\"latest\"` [the last line of the file]. Then display the line `\"total\"` [how many lines there are] on the next line.",
        "brief": [
-        "log.txt is already there and may be empty.",
+        "`\"log.txt\"` is already there and may be empty.",
         "The user types in one word.",
         "Take the newline off the last line before displaying it.",
-        "An empty log.txt leaves one line once the word has been added."
+        "An empty `\"log.txt\"` leaves one line once the word has been added."
        ],
-       "fb": "The last line is the item at len(lines) - 1, and len(lines) itself is how many lines the file holds.",
+       "fb": "The last line is the item at len(lines) - `1`, and len(lines) itself is how many lines the file holds.",
        "starter": "# add to the end, then report on the whole file\n",
        "tests": [
         {
@@ -1618,7 +1618,7 @@
        "marks": 1,
        "q": "Change the program so the newline does not end up inside the second field.",
        "brief": [
-        "data.txt is already there, with one word,number record on each line.",
+        "`\"data.txt\"` is already there, with one word,number record on each line.",
         "Change only the line that splits the record.",
         "Display one line for each record, in the form [word] [number]."
        ],
@@ -1660,12 +1660,12 @@
        "marks": 2,
        "q": "Finish the program so it displays the number from each record.",
        "brief": [
-        "data.txt is already there, with one word,number record on each line.",
+        "`\"data.txt\"` is already there, with one word,number record on each line.",
         "Replace ____ with the position of the number field.",
         "Field positions count from 0.",
-        "Display the line number [the number] for each record."
+        "Display the line `\"number\"` [the number] for each record."
        ],
-       "fb": "A split line is an ordinary list, so the first field is at position 0 and the second at position 1.",
+       "fb": "A split line is an ordinary list, so the first field is at position 0 and the second at position `1`.",
        "kind": "complete",
        "starter": "f = open(\"data.txt\", \"r\")\nlines = f.readlines()\nf.close()\nfor line in lines:\n    fields = line.strip().split(\",\")\n    print(\"number\", fields[____])\n",
        "tests": [
@@ -1700,10 +1700,10 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "A file called data.txt is already there, holding one word,number record per line, and it may be empty. Read data.txt. Display one line for each record, in the form [word] [number]. Display none instead, on a line of its own, when the file holds no records.",
+       "q": "A file called `\"data.txt\"` is already there, holding one word,number record per line, and it may be empty. Read `\"data.txt\"`. Display one line for each record, in the form [word] [number]. Display `\"none\"` instead, on a line of its own, when the file holds no records.",
        "brief": [
         "Nothing is typed in.",
-        "The program only reads data.txt.",
+        "The program only reads `\"data.txt\"`.",
         "There is one space between the two fields, in place of the comma.",
         "Display exactly: none"
        ],
@@ -1762,7 +1762,7 @@
         ],
         "walk": [
          "Read the whole file into a list.",
-         "If that list is empty, display none.",
+         "If that list is empty, display `\"none\"`.",
          "Otherwise take each line in turn.",
          "Strip it, split it at the comma, and display both fields."
         ],
@@ -1775,9 +1775,9 @@
        "q": "This program should display every record's number added together. Find the mistake and put it right.",
        "brief": [
         "Press Run first and read the error message.",
-        "data.txt is already there, with one word,number record on each line.",
+        "`\"data.txt\"` is already there, with one word,number record on each line.",
         "Change only the line that adds to the total.",
-        "Display the line total [the numbers added together]."
+        "Display the line `\"total\"` [the numbers added together]."
        ],
        "fb": "Everything that comes out of a file is text, exactly like everything that comes out of input(). int() is needed before it can be added up.",
        "kind": "debug",
@@ -1822,10 +1822,10 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a word to find. The file data.txt is already there, holding one word,number record per line. Look at every record in data.txt. Display the line [word] is [its number] when a record matches. Display no record instead when none matches. Then display the line checked [how many records you looked at] on the next line.",
+       "q": "Ask the user for a word to find. The file `\"data.txt\"` is already there, holding one word,number record per line. Look at every record in `\"data.txt\"`. Display the line [word] is [its number] when a record matches. Display `\"no record\"` instead when none matches. Then display the line `\"checked\"` [how many records you looked at] on the next line.",
        "brief": [
-        "data.txt may be empty.",
-        "The program only reads data.txt.",
+        "`\"data.txt\"` may be empty.",
+        "The program only reads `\"data.txt\"`.",
         "Look at every record, even after one has matched.",
         "Display exactly: no record"
        ],
@@ -1905,7 +1905,7 @@
          "Read the file into a list of lines.",
          "Keep a variable for what you found, set to an empty string before the loop.",
          "Split each record and compare its first field with the word.",
-         "After the loop, display what you found, or no record.",
+         "After the loop, display what you found, or `\"no record\"`.",
          "Then display how many records there were."
         ],
         "diagram": "pyfile"
@@ -1927,7 +1927,7 @@
        "q": "Press Run. The program reads one file and writes a second one out of it.",
        "brief": [
         "Nothing is marked on this one.",
-        "out.txt ends up holding only the first field of each record."
+        "`\"out.txt\"` ends up holding only the first field of each record."
        ],
        "fb": "Two files, two variables, two modes. Reading the new file back is the only way to see that it was really written.",
        "kind": "try",
@@ -2005,12 +2005,12 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Finish the program so only the records with a number above 50 are written into picked.txt.",
+       "q": "Finish the program so only the records with a number above `50` are written into `\"picked.txt\"`.",
        "brief": [
-        "data.txt is already there, with one word,number record on each line.",
+        "`\"data.txt\"` is already there, with one word,number record on each line.",
         "Replace ____ with one condition.",
-        "A number of exactly 50 does not count as above 50.",
-        "Display every line of picked.txt, one on each line."
+        "A number of exactly `50` does not count as above `50`.",
+        "Display every line of `\"picked.txt\"`, one on each line."
        ],
        "fb": "A number out of a file is text, so int() comes first and the comparison second.",
        "kind": "complete",
@@ -2056,14 +2056,14 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "A file called data.txt is already there, holding one word,first,second record per line, and it may be empty. Read data.txt. Make a file called out.txt. Write a line of [word] [the first number times the second] into out.txt for each record. Then write the line total [all those values added up] into out.txt last. Close out.txt. Then read out.txt back and display the whole of it.",
+       "q": "A file called `\"data.txt\"` is already there, holding one word,first,second record per line, and it may be empty. Read `\"data.txt\"`. Make a file called `\"out.txt\"`. Write a line of [word] [the first number times the second] into `\"out.txt\"` for each record. Then write the line `\"total \"`[all those values added up] into `\"out.txt\"` last. Close `\"out.txt\"`. Then read `\"out.txt\"` back and display the whole of it.",
        "brief": [
         "Nothing is typed in.",
-        "There is no out.txt to start with, so the program makes it.",
+        "There is no `\"out.txt\"` to start with, so the program makes it.",
         "The total line is written last, after every record's line.",
-        "An empty data.txt still gets a total line."
+        "An empty `\"data.txt\"` still gets a total line."
        ],
-       "fb": "Reading one file and writing another is the usual shape of this job. Only what you display is seen, so reading out.txt back is how you prove you wrote it.",
+       "fb": "Reading one file and writing another is the usual shape of this job. Only what you display is seen, so reading `\"out.txt\"` back is how you prove you wrote it.",
        "starter": "# one file in, another out, then read it back\n",
        "tests": [
         {
@@ -2131,12 +2131,12 @@
          "lines = f.readlines()"
         ],
         "walk": [
-         "Read the records into a list and close data.txt.",
-         "Open out.txt for writing and set the total to 0.",
+         "Read the records into a list and close `\"data.txt\"`.",
+         "Open `\"out.txt\"` for writing and set the total to `0`.",
          "For each record, work out the two numbers multiplied.",
          "Write the word and that value, and add the value to the total.",
-         "After the loop, write the total line and close out.txt.",
-         "Open out.txt for reading and display it."
+         "After the loop, write the total line and close `\"out.txt\"`.",
+         "Open `\"out.txt\"` for reading and display it."
         ],
         "diagram": "pyfile"
        }
@@ -2144,14 +2144,14 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a limit as a whole number. The file data.txt is already there, holding one word,number record per line. Read data.txt. Make a file called picked.txt. Write a line of [word] [number] into picked.txt for each record whose number is above the limit. Close picked.txt. Then read picked.txt back. Display every line in it, one on each line. Then display the line picked [how many] on the last line.",
+       "q": "Ask the user for a limit as a whole number. The file `\"data.txt\"` is already there, holding one word,number record per line. Read `\"data.txt\"`. Make a file called `\"picked.txt\"`. Write a line of [word] [number] into `\"picked.txt\"` for each record whose number is above the limit. Close `\"picked.txt\"`. Then read `\"picked.txt\"` back. Display every line in it, one on each line. Then display the line `\"picked\"` [how many] on the last line.",
        "brief": [
-        "data.txt may be empty.",
-        "Make picked.txt even when nothing matches.",
+        "`\"data.txt\"` may be empty.",
+        "Make `\"picked.txt\"` even when nothing matches.",
         "A number equal to the limit does not count.",
         "There is one space between the two fields of a line, in place of the comma."
        ],
-       "fb": "This is the whole pattern in one program: read records in, decide about each one, write the chosen ones out, then read the new file back. Opening picked.txt before the loop is what makes the empty case work.",
+       "fb": "This is the whole pattern in one program: read records in, decide about each one, write the chosen ones out, then read the new file back. Opening `\"picked.txt\"` before the loop is what makes the empty case work.",
        "starter": "# pick some out, then read the new file back\n",
        "tests": [
         {
@@ -2233,13 +2233,13 @@
         }
        ],
        "hint": {
-        "think": "Open picked.txt before the loop, so the file exists even when nothing matches.",
+        "think": "Open `\"picked.txt\"` before the loop, so the file exists even when nothing matches.",
         "walk": [
          "Read the limit and cast it with int().",
-         "Read data.txt into a list of records and close it.",
-         "Open picked.txt for writing, before the loop starts.",
+         "Read `\"data.txt\"` into a list of records and close it.",
+         "Open `\"picked.txt\"` for writing, before the loop starts.",
          "Write the word and the number of every record that is above the limit.",
-         "Close picked.txt, then open it again for reading.",
+         "Close `\"picked.txt\"`, then open it again for reading.",
          "Display each of its lines, then how many there were."
         ],
         "diagram": "pyfile"
@@ -2248,10 +2248,10 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "This program should display every line of out.txt. Find the mistake and put it right.",
+       "q": "This program should display every line of `\"out.txt\"`. Find the mistake and put it right.",
        "brief": [
         "Press Run first and read the error message.",
-        "data.txt is already there, with one word on each line.",
+        "`\"data.txt\"` is already there, with one word on each line.",
         "Change only the mode in the last open().",
         "Display each word in capitals, one on each line."
        ],
@@ -2302,9 +2302,9 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a word. Then ask for a whole number. Add the record [word],[number] to the end of the file log.txt, on a line of its own. Keep the records log.txt already holds. Then read log.txt back. Display the line records [how many records there are]. Then display the line total [every number added up] on the next line.",
+       "q": "Ask the user for a word. Then ask for a whole number. Add the record [word],[number] to the end of the file `\"log.txt\"`, on a line of its own. Keep the records `\"log.txt\"` already holds. Then read `\"log.txt\"` back. Display the line `\"records\"` [how many records there are]. Then display the line `\"total\"` [every number added up] on the next line.",
        "brief": [
-        "log.txt is already there and may be empty.",
+        "`\"log.txt\"` is already there and may be empty.",
         "Each record is a word and a number with a comma between them.",
         "The user types in two lines: a word, then a whole number.",
         "The record just added counts in both answers."
@@ -2374,7 +2374,7 @@
         "think": "Append the new record first, then read the whole file and work on every record in it.",
         "walk": [
          "Read the word and the number.",
-         "Open log.txt with \"a\" and write the record with a \\n on the end.",
+         "Open `\"log.txt\"` with \"a\" and write the record with a \\n on the end.",
          "Close the file.",
          "Open it for reading and read every line into a list.",
          "Add up the number field of each record, casting each one with int().",

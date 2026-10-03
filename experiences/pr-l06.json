@@ -103,7 +103,7 @@
         }
        ],
        "hint": {
-        "think": "Count the characters of stone, then remember that the first one is at position 0.",
+        "think": "Count the characters of stone, then remember that the first one is at position `0`.",
         "syntax": "w[position]",
         "diagram": "pystring"
        }
@@ -254,7 +254,7 @@
         "The user types in one word.",
         "Display exactly one character."
        ],
-       "fb": "IndexError means a position past the end of the string. The last one is always len() - 1, and Python offers w[-1] as a short cut for exactly that.",
+       "fb": "IndexError means a position past the end of the string. The last one is always len() - `1`, and Python offers w[-1] as a short cut for exactly that.",
        "kind": "debug",
        "starter": "w = input()\nprint(w[len(w)])\n",
        "tests": [
@@ -311,7 +311,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a word. Then ask for a position as a whole number. Display the character at that position. Display no such position instead when the word has no character there.",
+       "q": "Ask the user for a word. Then ask for a position as a whole number. Display the character at that position. Display `\"no such position\"` instead when the word has no character there.",
        "brief": [
         "The user types in two lines: one word, then a whole number.",
         "Positions count from 0 and are never below 0.",
@@ -454,7 +454,7 @@
         "The word stays harbour.",
         "Display exactly: harb"
        ],
-       "fb": "Starting at 0 and stopping before 4 gives four characters: positions 0, 1, 2 and 3.",
+       "fb": "Starting at `0` and stopping before `4` gives four characters: positions 0, 1, 2 and 3.",
        "kind": "change",
        "starter": "w = \"harbour\"\nprint(w[0:2])\n",
        "tests": [
@@ -638,7 +638,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a line of text. Display the text without its first and last characters. Display nothing inside instead when the text has fewer than three characters.",
+       "q": "Ask the user for a line of text. Display the text without its first and last characters. Display `\"nothing inside\"` instead when the text has fewer than three characters.",
        "brief": [
         "The user types in one line of text, which may be empty.",
         "Display exactly: nothing inside",
@@ -800,7 +800,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Finish the program so it displays match when the two words are the same word, ignoring capitals.",
+       "q": "Finish the program so it displays `\"match\"` when the two words are the same word, ignoring capitals.",
        "brief": [
         "The user types in two words, one on each line.",
         "Replace ____ so both words are compared in the same case.",
@@ -880,7 +880,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for a word. Display all capitals when every letter of the word is a capital. Display not all capitals when it is not.",
+       "q": "Ask the user for a word. Display `\"all capitals\"` when every letter of the word is a capital. Display `\"not all capitals\"` when it is not.",
        "brief": [
         "The user types in one word.",
         "Display exactly: all capitals or not all capitals",
@@ -946,7 +946,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "This program should display match when the two words are the same word, ignoring capitals. Find the mistake and put it right.",
+       "q": "This program should display `\"match\"` when the two words are the same word, ignoring capitals. Find the mistake and put it right.",
        "brief": [
         "Press Run first and try the same word twice, once with a capital.",
         "The user types in two words, one on each line.",
@@ -1138,7 +1138,7 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Change the program so it displays the position where the word kettle starts.",
+       "q": "Change the program so it displays the position where the word `\"kettle\"` starts.",
        "brief": [
         "Change only the word being looked for.",
         "The line of text stays the same.",
@@ -1164,7 +1164,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Finish the program so it displays found when the word appears in the text.",
+       "q": "Finish the program so it displays `\"found\"` when the word appears in the text.",
        "brief": [
         "The user types in two lines: a line of text, then a word to look for.",
         "Replace ____ with the test.",
@@ -1236,14 +1236,14 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a line of text. Then ask for a word to look for. Display the position where the word starts, counting from 0. Display not found instead when the word is not there.",
+       "q": "Ask the user for a line of text. Then ask for a word to look for. Display the position where the word starts, counting from 0. Display `\"not found\"` instead when the word is not there.",
        "brief": [
         "The user types in two lines: a line of text, then a word to look for.",
         "Positions count from 0.",
         "Display exactly: not found",
         "One line of output."
        ],
-       "fb": "Keep find()'s answer in a variable, test it for -1, and display it only when it really is a position.",
+       "fb": "Keep find()'s answer in a variable, test it for `-1`, and display it only when it really is a position.",
        "starter": "# Where in the text does the word start?\n",
        "tests": [
         {
@@ -1298,7 +1298,7 @@
         }
        ],
        "hint": {
-        "think": "find() answers both halves of this on its own: a position, or -1 when there is nothing.",
+        "think": "find() answers both halves of this on its own: a position, or `-1` when there is nothing.",
         "start": [
          "text = input()",
          "word = input()",
@@ -1310,13 +1310,13 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "This program should display the position of the word, or not found when the word is not there. Find the mistake and put it right.",
+       "q": "This program should display the position of the word, or `\"not found\"` when the word is not there. Find the mistake and put it right.",
        "brief": [
         "Press Run first and try looking for a word at the very start.",
         "The user types in two lines: a line of text, then a word to look for.",
         "Display exactly: not found"
        ],
-       "fb": "0 is the first position, not a failure. Only -1 means the word is not in the text.",
+       "fb": "`0` is the first position, not a failure. Only `-1` means the word is not in the text.",
        "kind": "debug",
        "starter": "text = input()\nword = input()\nplace = text.find(word)\nif place > 0:\n    print(place)\nelse:\n    print(\"not found\")\n",
        "tests": [
@@ -1354,9 +1354,9 @@
        "hint": {
         "think": "Which answers from find() really mean the word was not there?",
         "walk": [
-         "Only -1 means no match at all.",
-         "0 means a match right at the start of the text.",
-         "The test on line 4 is sending 0 to the wrong branch."
+         "Only `-1` means no match at all.",
+         "`0` means a match right at the start of the text.",
+         "The test on line 4 is sending `0` to the wrong branch."
         ],
         "diagram": "pystring"
        },
@@ -1376,11 +1376,11 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a line of text. Then ask for a word to look for. Display at the start when the text begins with the word. Display inside when the word appears later. Display missing when it is not there at all.",
+       "q": "Ask the user for a line of text. Then ask for a word to look for. Display `\"at the start\"` when the text begins with the word. Display `\"inside\"` when the word appears later. Display `\"missing\"` when it is not there at all.",
        "brief": [
         "The user types in two lines: a line of text, then a word to look for.",
         "Display exactly one of: at the start, inside, missing",
-        "A word that begins the text counts as at the start and not as inside."
+        "A word that begins the text counts as `\"at the start\"` and not as `\"inside\"`."
        ],
        "fb": "One call to find() and two comparisons sort all three cases out.",
        "starter": "# At the start, further in, or not there at all?\n",
@@ -1441,8 +1441,8 @@
         "think": "One number from find() answers all three cases.",
         "walk": [
          "Get the position once and keep it in a variable.",
-         "-1 means missing.",
-         "0 means at the start.",
+         "`-1` means missing.",
+         "`0` means at the start.",
          "Any other number means inside."
         ],
         "diagram": "pystring"
@@ -1612,7 +1612,7 @@
         "Work the second code out from the first one, not with upper().",
         "Two lines of output, both numbers."
        ],
-       "fb": "Every capital's code is exactly 32 below its small letter's code.",
+       "fb": "Every capital's code is exactly `32` below its small letter's code.",
        "starter": "# The code of the letter, then the code of its capital\n",
        "tests": [
         {
@@ -1647,7 +1647,7 @@
         }
        ],
        "hint": {
-        "think": "A capital's code is 32 lower than its small letter's code.",
+        "think": "A capital's code is `32` lower than its small letter's code.",
         "syntax": "print(ord(c))",
         "diagram": "pystring"
        },
@@ -2018,7 +2018,7 @@
         }
        ],
        "hint": {
-        "think": "Start a counter at 0 before the loop and add 1 each time a capital is met.",
+        "think": "Start a counter at `0` before the loop and add `1` each time a capital is met.",
         "syntax": "count = count + 1",
         "start": [
          "s = input()",
@@ -2047,7 +2047,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for one word. Display palindrome when it reads the same both ways once capitals are ignored. Display not a palindrome when it does not.",
+       "q": "Ask the user for one word. Display `\"palindrome\"` when it reads the same both ways once capitals are ignored. Display `\"not a palindrome\"` when it does not.",
        "brief": [
         "The user types in one word.",
         "Ignore capitals when comparing.",

@@ -79,7 +79,7 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Change the program so that a line of nothing but spaces also counts as nothing typed.",
+       "q": "Change the program so that a line of nothing but spaces also counts as `\"nothing typed\"`.",
        "brief": [
         "Add one thing to line 1 and change nothing else.",
         "A word typed with spaces either side is displayed without them.",
@@ -135,7 +135,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for a colour. Take the spaces off each end of what was typed. Display no colour given when nothing is left. Otherwise display the line colour is [colour].",
+       "q": "Ask the user for a colour. Take the spaces off each end of what was typed. Display `\"no colour given\"` when nothing is left. Otherwise display the line `\"colour is \"`[colour].",
        "brief": [
         "The user types in one line.",
         "A line of nothing but spaces counts as nothing given.",
@@ -210,7 +210,7 @@
        "q": "Press Run. Type 14 when the program waits. The program checks before it casts.",
        "brief": [
         "Nothing is marked on this one.",
-        "Run it again and type apple. The program says digits only instead of stopping."
+        "Run it again and type apple. The program says `\"digits only\"` instead of stopping."
        ],
        "fb": "isdigit() checks safely, before int() gets the chance to stop the program.",
        "kind": "try",
@@ -269,11 +269,11 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a whole number. Check whether every character typed is a digit. Display the line number: [the number] when they all are. Otherwise display not a number.",
+       "q": "Ask the user for a whole number. Check whether every character typed is a digit. Display the line `\"number: \"`[the number] when they all are. Otherwise display `\"not a number\"`.",
        "brief": [
         "A minus sign is not a digit.",
         "A decimal point is not a digit.",
-        "An empty line is not a number.",
+        "An empty line is `\"not a number\"`.",
         "One line only is displayed."
        ],
        "fb": "A type check comes before the cast, every time, because the cast is the thing that would stop the program.",
@@ -343,7 +343,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "This program should display the line number: [the number] when the line is all digits. It should display not a number for anything else. Find the mistake and put it right.",
+       "q": "This program should display the line `\"number: \"`[the number] when the line is all digits. It should display `\"not a number\"` for anything else. Find the mistake and put it right.",
        "brief": [
         "Press Run first and type apple, then read the error message.",
         "Move one line rather than rewriting the program.",
@@ -403,10 +403,10 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a colour. Check it against red, green and blue, which are written into the program. Display known when it is one of those three. Otherwise display unknown.",
+       "q": "Ask the user for a colour. Check it against `\"red\"`, `\"green\"` and `\"blue\"`, which are written into the program. Display `\"known\"` when it is one of those three. Otherwise display `\"unknown\"`.",
        "brief": [
         "The three allowed words are written into your program, not typed in.",
-        "Matching is exact, so a capital letter makes a word unknown.",
+        "Matching is exact, so a capital letter makes a word `\"unknown\"`.",
         "One line only is displayed."
        ],
        "fb": "A look-up check compares what was typed against values the program already holds, and each one needs a complete comparison: thing == \"red\" or thing == \"green\", never thing == \"red\" or \"green\".",
@@ -487,12 +487,12 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Press Run. Type 10 when the program waits. 10 is the highest score allowed.",
+       "q": "Press Run. Type `10` when the program waits. `10` is the highest score allowed.",
        "brief": [
         "Nothing is marked on this one.",
         "Run it again and type 11. Watch which message comes out."
        ],
-       "fb": "1 and 10 are allowed because the condition only refuses what is below 1 or above 10.",
+       "fb": "`1` and `10` are allowed because the condition only refuses what is below `1` or above `10`.",
        "kind": "try",
        "starter": "score = int(input(\"Score? \"))   # the user typed 10\nif score < 1 or score > 10:\n    print(\"out of range\")\nelse:\n    print(\"valid\")\n",
        "tests": [],
@@ -548,7 +548,7 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Change the program so that 0 and 100 are both accepted.",
+       "q": "Change the program so that `0` and `100` are both accepted.",
        "brief": [
         "Change only the two comparisons.",
         "Every mark typed is a whole number.",
@@ -612,10 +612,10 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a whole number of tickets. Display too few when it is below 1. Display sold out when it is above 6. Otherwise display the line tickets: [the number].",
+       "q": "Ask the user for a whole number of tickets. Display `\"too few\"` when it is below `1`. Display `\"sold out\"` when it is above `6`. Otherwise display the line `\"tickets: \"`[the number].",
        "brief": [
         "Every line typed is a whole number.",
-        "Both 1 and 6 are allowed.",
+        "Both `1` and `6` are allowed.",
         "One line only is displayed."
        ],
        "fb": "A range check is worth testing on four values: one below each limit, and each limit itself.",
@@ -697,7 +697,7 @@
        "q": "Press Run. Type -4 when the program waits. A minus sign is not a digit, yet this program copes.",
        "brief": [
         "Nothing is marked on this one.",
-        "Run it again and type seven. The program says not a number instead of stopping."
+        "Run it again and type seven. The program says `\"not a number\"` instead of stopping."
        ],
        "fb": "try and except let a program keep going when a cast fails, which is how a negative number gets past a type check.",
        "kind": "try",
@@ -732,11 +732,11 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a temperature as a whole number. Display not a number when it cannot be read as one. Display ok when it is from -10 to 40 inclusive. Otherwise display out of range.",
+       "q": "Ask the user for a temperature as a whole number. Display `\"not a number\"` when it cannot be read as one. Display `\"ok\"` when it is from `-10` to `40` inclusive. Otherwise display `\"out of range\"`.",
        "brief": [
         "A minus sign at the front is allowed.",
         "A decimal point is not allowed.",
-        "Both -10 and 40 are allowed.",
+        "Both `-10` and `40` are allowed.",
         "One line only is displayed."
        ],
        "fb": "The cast goes inside the try, and so does the range check, because the range check needs a value the cast has already made.",
@@ -824,7 +824,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for the lowest allowed whole number. Then ask for the highest allowed whole number. Then ask for a whole number to check. Display inside when it is from the lowest to the highest inclusive. Otherwise display outside.",
+       "q": "Ask the user for the lowest allowed whole number. Then ask for the highest allowed whole number. Then ask for a whole number to check. Display `\"inside\"` when it is from the lowest to the highest inclusive. Otherwise display `\"outside\"`.",
        "brief": [
         "The user types in three lines, one whole number on each.",
         "The limits are typed in, not written into your program.",
@@ -969,13 +969,13 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Change the program so that a word of exactly 8 characters is accepted.",
+       "q": "Change the program so that a word of exactly `8` characters is accepted.",
        "brief": [
         "Change only the comparison.",
         "A word of 7 characters is still too short.",
         "Display exactly: too short or exactly: ok"
        ],
-       "fb": "<= includes the boundary length in the lengths it refuses. < leaves it out, which is what a minimum of 8 means.",
+       "fb": "<= includes the boundary length in the lengths it refuses. < leaves it out, which is what a minimum of `8` means.",
        "kind": "change",
        "starter": "word = input()\nif len(word) <= 8:\n    print(\"too short\")\nelse:\n    print(\"ok\")\n",
        "tests": [
@@ -1008,21 +1008,21 @@
         }
        ],
        "hint": {
-        "think": "At the moment a length of exactly 8 is being refused. Which comparison refuses it?",
+        "think": "At the moment a length of exactly `8` is being refused. Which comparison refuses it?",
         "syntax": "if len(thing) < limit:"
        }
       },
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a password. Display too short when it is under 8 characters. Display too long when it is over 16 characters. Otherwise display ok.",
+       "q": "Ask the user for a password. Display `\"too short\"` when it is under `8` characters. Display `\"too long\"` when it is over `16` characters. Otherwise display `\"ok\"`.",
        "brief": [
         "Count the line exactly as it is typed, with no stripping.",
-        "Both 8 and 16 characters are allowed.",
-        "An empty line is too short.",
+        "Both `8` and `16` characters are allowed.",
+        "An empty line is `\"too short\"`.",
         "One line only is displayed."
        ],
-       "fb": "The four lengths worth testing are 7 and 8 at one end, 16 and 17 at the other.",
+       "fb": "The four lengths worth testing are 7 and `8` at one end, `16` and 17 at the other.",
        "starter": "# 8 to 16 characters\n",
        "tests": [
         {
@@ -1152,7 +1152,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Finish the program so that a reference of one letter and then two digits is valid.",
+       "q": "Finish the program so that a reference of one letter and then two digits is `\"valid\"`.",
        "brief": [
         "Replace ____ with one condition.",
         "The length and the first character are already checked for you.",
@@ -1308,11 +1308,11 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a date typed as two digits, a slash, then two digits. Display invalid date when it is not that shape. Display day too big when the shape is right but the first two digits are above 31. Otherwise display date ok.",
+       "q": "Ask the user for a date typed as two digits, a slash, then two digits. Display `\"invalid date\"` when it is not that shape. Display `\"day too big\"` when the shape is right but the first two digits are above `31`. Otherwise display `\"date ok\"`.",
        "brief": [
-        "The date is exactly 5 characters, so 14/03 is the shape wanted.",
+        "The date is exactly `5` characters, so 14/03 is the shape wanted.",
         "The middle character must be a slash.",
-        "31 is allowed and 32 is not.",
+        "`31` is allowed and 32 is not.",
         "One line only is displayed."
        ],
        "fb": "A format check and a range check often sit together: the shape has to be right before the value inside it means anything.",
@@ -1410,7 +1410,7 @@
         "walk": [
          "Ask about the length, the two digits, the slash and the two digits, all joined with and.",
          "Inside that, cast the first two characters to a whole number.",
-         "Then compare that number with 31."
+         "Then compare that number with `31`."
         ],
         "diagram": "pystring"
        }
@@ -1524,11 +1524,11 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Finish the program so that it keeps asking until the number is from 1 to 5 inclusive.",
+       "q": "Finish the program so that it keeps asking until the number is from `1` to `5` inclusive.",
        "brief": [
         "Replace ____ with one condition.",
         "Every line typed is a whole number.",
-        "Both 1 and 5 are allowed.",
+        "Both `1` and `5` are allowed.",
         "Nothing more is read once a number is accepted."
        ],
        "fb": "A validation loop needs the refusing condition, not the accepting one, so swap > for < and and for or when you turn one into the other.",
@@ -1669,10 +1669,10 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Keep asking the user for a colour until it is red, green or blue. Display choose red, green or blue for every wrong one. Then display the line colour [the colour] for the one you take.",
+       "q": "Keep asking the user for a colour until it is `\"red\"`, `\"green\"` or `\"blue\"`. Display `\"choose red, green or blue\"` for every wrong one. Then display the line `\"colour \"`[the colour] for the one you take.",
        "brief": [
         "The three allowed words are written into your program.",
-        "Matching is exact, so Red is not red.",
+        "Matching is exact, so Red is not `\"red\"`.",
         "Nothing more is read once a colour is accepted.",
         "Display exactly: choose red, green or blue"
        ],
@@ -1738,10 +1738,10 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Keep asking the user for a whole number until it is from 10 to 99 inclusive. Display that is not a whole number when what was typed is not all digits. Display that is outside 10 to 99 when it is digits but outside the range. Then display the line accepted: [the number].",
+       "q": "Keep asking the user for a whole number until it is from `10` to `99` inclusive. Display `\"that is not a whole number\"` when what was typed is not all digits. Display `\"that is outside 10 to 99\"` when it is digits but outside the range. Then display the line `\"accepted: \"`[the number].",
        "brief": [
         "Check whether it is all digits before you check the range.",
-        "Both 10 and 99 are allowed.",
+        "Both `10` and `99` are allowed.",
         "Nothing more is read once a number is accepted.",
         "One message only is displayed for each wrong line."
        ],
@@ -2062,7 +2062,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for the correct passcode. Then read one attempt at a time, up to three of them. Display wrong passcode for each miss. Display access granted as soon as one matches. Display account locked instead when the third attempt has missed too.",
+       "q": "Ask the user for the correct passcode. Then read one attempt at a time, up to three of them. Display `\"wrong passcode\"` for each miss. Display `\"access granted\"` as soon as one matches. Display `\"account locked\"` instead when the third attempt has missed too.",
        "brief": [
         "Matching is exact, so capitals count.",
         "No more than three attempts are read.",
@@ -2154,7 +2154,7 @@
         ],
         "walk": [
          "Read the correct passcode first.",
-         "Start the count at 0 and loop while it is under 3.",
+         "Start the count at `0` and loop while it is under `3`.",
          "Leave the loop on a match.",
          "After the loop, the count tells you whether all three were used."
         ],
@@ -2164,7 +2164,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a line of usernames separated by spaces. Then ask for a line of passwords in the same order. Then ask for one username to check. Then ask for one password to check. Display unknown user when the username is not on the list. Display wrong password when the username is on the list but the password does not match it. Otherwise display access granted.",
+       "q": "Ask the user for a line of usernames separated by spaces. Then ask for a line of passwords in the same order. Then ask for one username to check. Then ask for one password to check. Display `\"unknown user\"` when the username is not on the list. Display `\"wrong password\"` when the username is on the list but the password does not match it. Otherwise display `\"access granted\"`.",
        "brief": [
         "Both lines are separated by single spaces.",
         "Matching is exact, so capitals count.",
@@ -2268,9 +2268,9 @@
         ],
         "walk": [
          "Split both lines into lists.",
-         "Set a position variable to -1 to mean not found yet.",
+         "Set a position variable to `-1` to mean not found yet.",
          "Walk the usernames and record the position when one matches.",
-         "Still -1 means unknown user; otherwise compare the password at that position."
+         "Still `-1` means unknown user; otherwise compare the password at that position."
         ],
         "diagram": "pylist"
        },
@@ -2429,11 +2429,11 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Finish the program so that a number outside 1 to 20 inclusive is refused.",
+       "q": "Finish the program so that a number outside `1` to `20` inclusive is refused.",
        "brief": [
         "Replace ____ with one condition.",
         "The type check is written for you on line 2.",
-        "Both 1 and 20 are allowed.",
+        "Both `1` and `20` are allowed.",
         "One line only is displayed."
        ],
        "fb": "Because the type check has already passed, casting inside the elif is safe. The other way round it would stop the program.",
@@ -2513,12 +2513,12 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Keep asking the user for a name until something is typed. Then keep asking for an age until it is a whole number from 5 to 18 inclusive. Display the line [name] is [age].",
+       "q": "Keep asking the user for a name until something is typed. Then keep asking for an age until it is a whole number from `5` to `18` inclusive. Display the line [name] is [age].",
        "brief": [
         "Take the spaces off each end of the name, so a line of spaces is nothing typed.",
         "Display exactly: name cannot be empty",
         "Display exactly: age must be a whole number from 5 to 18",
-        "Both 5 and 18 are allowed."
+        "Both `5` and `18` are allowed."
        ],
        "fb": "Validate each value completely before you move on to the next, then display the result once.",
        "starter": "# one loop per value, display last\n",
@@ -2611,10 +2611,10 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Keep asking the user for a username until it is 5 to 12 characters of letters and digits only. Display username must be 5 to 12 characters when the length is wrong. Display username must be letters and digits only when the length is right but a character is not a letter or a digit. Then display the line registered [the username].",
+       "q": "Keep asking the user for a username until it is `5` to `12` characters of letters and digits only. Display `\"username must be 5 to 12 characters\"` when the length is wrong. Display `\"username must be letters and digits only\"` when the length is right but a character is not a letter or a digit. Then display the line `\"registered \"`[the username].",
        "brief": [
         "Count the line exactly as it is typed, with no stripping.",
-        "Both 5 and 12 characters are allowed.",
+        "Both `5` and `12` characters are allowed.",
         "Check the length first, so a short username gets the length message.",
         "One message only is displayed for each wrong line."
        ],
@@ -2728,12 +2728,12 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Keep asking the user for a username until it is 5 to 12 characters of letters and digits only. Then keep asking for a whole number until it is from 11 to 19 inclusive. Display the line registered [the username] [the number].",
+       "q": "Keep asking the user for a username until it is `5` to `12` characters of letters and digits only. Then keep asking for a whole number until it is from `11` to `19` inclusive. Display the line `\"registered \"`[the username] [the number].",
        "brief": [
-        "Refuse a username of the wrong length with exactly: username must be 5 to 12 characters",
-        "Refuse one of the right length holding anything but letters and digits with exactly: username must be letters and digits only",
-        "Refuse something that is not a whole number with exactly: number must be a whole number",
-        "Refuse a number outside the range with exactly: number must be 11 to 19"
+        "Refuse a username of the wrong length with exactly: `\"username must be 5 to 12 characters\"`",
+        "Refuse one of the right length holding anything but letters and digits with exactly: `\"username must be letters and digits only\"`",
+        "Refuse something that is not a whole number with exactly: `\"number must be a whole number\"`",
+        "Refuse a number outside the range with exactly: `\"number must be 11 to 19\"`"
        ],
        "fb": "Four rules, four messages, and each one checked in an order that tells the user the one thing that is actually wrong.",
        "starter": "# four rules, four messages, checked in order\n",

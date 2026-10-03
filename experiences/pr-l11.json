@@ -187,9 +187,9 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for the number to find. Search the list from the front, one position at a time. Display the position that number is at, counting from 0. Display not found instead when it is not in the list.",
+       "q": "Ask the user for the number to find. Search the list from the front, one position at a time. Display the position that number is at, counting from `0`. Display `\"not found\"` instead when it is not in the list.",
        "brief": [
-        "The line of numbers the user types is already read into a list called nums for you.",
+        "The line of numbers the user types is already read into a list called `nums` for you.",
         "The user types in one whole number.",
         "One line of output and nothing else.",
         "Display exactly: not found"
@@ -268,7 +268,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "This program should display the position of the number typed in, or not found when it is not there. Find the mistake and put it right.",
+       "q": "This program should display the position of the number typed in, or `\"not found\"` when it is not there. Find the mistake and put it right.",
        "brief": [
         "Press Run first and look at how many lines come out.",
         "The five numbers are written into the program, and the user types in the one to find.",
@@ -332,9 +332,9 @@
        "marks": 3,
        "q": "Ask the user for the number to find. Count how many times that number appears in the list. Display the count and nothing else.",
        "brief": [
-        "The line of numbers the user types is already read into a list called nums for you.",
+        "The line of numbers the user types is already read into a list called `nums` for you.",
         "The user types in one whole number.",
-        "A number that is not in the list at all appears 0 times.",
+        "A number that is not in the list at all appears `0` times.",
         "Count with a loop of your own, not with .count()."
        ],
        "fb": "Counting changes a search in one way only: it must run all the way to the end instead of stopping at the first match.",
@@ -565,12 +565,12 @@
        "marks": 2,
        "q": "Finish the binary search so it displays the position the number is at.",
        "brief": [
-        "The line the user types is already read into nums for you, and it is already in order.",
+        "The line the user types is already read into `nums` for you, and it is already in order.",
         "The user types in one whole number, which is the number to find.",
         "Replace ____ with one instruction that moves one of the two markers.",
         "Display exactly: not found"
        ],
-       "fb": "mid + 1 and mid - 1 matter: moving a marker to mid itself leaves the same middle to be compared again for ever.",
+       "fb": "mid + `1` and mid - `1` matter: moving a marker to mid itself leaves the same middle to be compared again for ever.",
        "kind": "complete",
        "starter": "nums = []\nfor part in input(\"Numbers? \").split():\n    nums.append(int(part))\ntarget = int(input())\nlow = 0\nhigh = len(nums) - 1\nfound = -1\nwhile low <= high and found == -1:\n    mid = (low + high) // 2\n    if nums[mid] == target:\n        found = mid\n    elif nums[mid] > target:\n        high = mid - 1\n    else:\n        ____\nif found == -1:\n    print(\"not found\")\nelse:\n    print(found)\n",
        "tests": [
@@ -640,9 +640,9 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for the number to find. Find it with a binary search of your own. Display the position it is at, counting from 0. Display not found instead when it is not in the list.",
+       "q": "Ask the user for the number to find. Find it with a binary search of your own. Display the position it is at, counting from `0`. Display `\"not found\"` instead when it is not in the list.",
        "brief": [
-        "The line the user types is already read into nums for you, and it is already in order.",
+        "The line the user types is already read into `nums` for you, and it is already in order.",
         "The user types in one whole number.",
         "One line of output and nothing else.",
         "Display exactly: not found"
@@ -801,9 +801,9 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for the number to find. Find it with a binary search of your own. Count every middle item you compare. Display the position it is at, counting from 0, or not found when it is not there. Then display checks: [the count] on the next line.",
+       "q": "Ask the user for the number to find. Find it with a binary search of your own. Count every middle item you compare. Display the position it is at, counting from `0`, or `\"not found\"` when it is not there. Then display `\"checks: \"`[the count] on the next line.",
        "brief": [
-        "The line the user types is already read into nums for you, and it is already in order.",
+        "The line the user types is already read into `nums` for you, and it is already in order.",
         "Add one to the count as soon as you have worked out the middle, before you compare it.",
         "The middle that matches counts as a check too.",
         "Display exactly: not found"
@@ -995,7 +995,7 @@
        "marks": 2,
        "q": "Finish the program so it sorts the numbers smallest first.",
        "brief": [
-        "The line of numbers the user types is already read into a list called nums for you.",
+        "The line of numbers the user types is already read into a list called `nums` for you.",
         "Replace ____ with the condition that decides whether this pair is the wrong way round.",
         "A line of numbers already in order must come out unchanged.",
         "Put single spaces between the numbers."
@@ -1062,7 +1062,7 @@
        "marks": 3,
        "q": "Sort the numbers smallest first by swapping neighbouring pairs that are the wrong way round. Display the sorted numbers on one line, separated by single spaces.",
        "brief": [
-        "The line of numbers the user types is already read into a list called nums for you.",
+        "The line of numbers the user types is already read into a list called `nums` for you.",
         "One pass is not enough, so the passes have to be repeated.",
         "A list of one number is already sorted and must come back as it is.",
         "The space left on the end of the line is ignored when your answer is marked."
@@ -1216,7 +1216,7 @@
        "marks": 3,
        "q": "Sort the numbers smallest first by swapping neighbouring pairs. Display the whole list on one line after each pass has finished, one line for each pass. Make exactly one pass fewer than there are numbers, however soon the list comes into order.",
        "brief": [
-        "The line of numbers the user types is already read into a list called nums for you.",
+        "The line of numbers the user types is already read into a list called `nums` for you.",
         "Six numbers give five lines and five numbers give four lines.",
         "Each line is displayed after that pass has ended, not during it.",
         "Nothing else is displayed."
@@ -1406,12 +1406,12 @@
        "marks": 2,
        "q": "Finish the program so it sorts the numbers smallest first.",
        "brief": [
-        "The line of numbers the user types is already read into a list called nums for you.",
+        "The line of numbers the user types is already read into a list called `nums` for you.",
         "Replace ____ with the condition that keeps the while loop going.",
-        "j must never go below 0, or the loop looks at the wrong end of the list.",
+        "j must never go below `0`, or the loop looks at the wrong end of the list.",
         "Put single spaces between the numbers."
        ],
-       "fb": "The j >= 0 half stops the loop running off the front; the comparison half stops it once the held value has reached its place.",
+       "fb": "The j >= `0` half stops the loop running off the front; the comparison half stops it once the held value has reached its place.",
        "kind": "complete",
        "starter": "nums = []\nfor part in input(\"Numbers? \").split():\n    nums.append(int(part))\nfor k in range(1, len(nums)):\n    held = nums[k]\n    j = k - 1\n    while ____:\n        nums[j + 1] = nums[j]\n        j = j - 1\n    nums[j + 1] = held\nline = \"\"\nfor n in nums:\n    line = line + str(n) + \" \"\nprint(line)\n",
        "tests": [
@@ -1473,7 +1473,7 @@
        "marks": 3,
        "q": "Sort the numbers smallest first by moving each number back to its place among the numbers before it. Display the sorted numbers on one line, separated by single spaces.",
        "brief": [
-        "The line of numbers the user types is already read into a list called nums for you.",
+        "The line of numbers the user types is already read into a list called `nums` for you.",
         "Start at the second number: the first on its own is already a sorted list of one.",
         "Hold the number aside before you shift anything, or it is overwritten.",
         "The space left on the end of the line is ignored when your answer is marked."
@@ -1865,8 +1865,8 @@
        "marks": 3,
        "q": "Merge the two lists into one list in order by taking the smaller front item each time. Display the merged numbers on one line, separated by single spaces.",
        "brief": [
-        "Both lines are already read in for you, into lists called left and right, and both are already in order.",
-        "When the two front items are equal, take the one from left.",
+        "Both lines are already read in for you, into lists called `left` and `right`, and both are already in order.",
+        "When the two front items are equal, take the one from `left`.",
         "When one list runs out, everything left in the other one still has to be copied across.",
         "The space left on the end of the line is ignored when your answer is marked."
        ],
@@ -2020,7 +2020,7 @@
        "marks": 2,
        "q": "Finish the program so it sorts the numbers smallest first.",
        "brief": [
-        "The line of numbers the user types is already read into a list called nums for you.",
+        "The line of numbers the user types is already read into a list called `nums` for you.",
         "Replace ____ with one instruction.",
         "The subprogram hands back a sorted list, so what it hands back has to be kept.",
         "Put single spaces between the numbers."
@@ -2087,7 +2087,7 @@
        "marks": 3,
        "q": "Sort the numbers smallest first with a merge sort of your own. Display the sorted numbers on one line, separated by single spaces.",
        "brief": [
-        "The line of numbers the user types is already read into a list called nums for you.",
+        "The line of numbers the user types is already read into a list called `nums` for you.",
         "A list of one number is already in order, and that is what stops the work.",
         "Write the sort yourself, not with sorted() or .sort().",
         "The space left on the end of the line is ignored when your answer is marked."
@@ -2458,9 +2458,9 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for the number to find. Count what a linear search compares to find it. Count what a binary search compares to find it. Display linear: [the first count]. Then display binary: [the second count] on the next line.",
+       "q": "Ask the user for the number to find. Count what a linear search compares to find it. Count what a binary search compares to find it. Display `\"linear: \"`[the first count]. Then display `\"binary: \"`[the second count] on the next line.",
        "brief": [
-        "The line the user types is already read into nums for you, and it is already in order.",
+        "The line the user types is already read into `nums` for you, and it is already in order.",
         "The linear search starts at the front and stops as soon as it matches.",
         "The matching item counts as a comparison in both searches.",
         "When the number is not in the list, each search still counts every item it looked at."
@@ -2547,9 +2547,9 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for the number to find. Sort the numbers smallest first with a sort of your own. Display the sorted numbers on one line, separated by single spaces. Then display the position that number is at in the sorted list, counting from 0, on the next line. Display not found instead when it is not there.",
+       "q": "Ask the user for the number to find. Sort the numbers smallest first with a sort of your own. Display the sorted numbers on one line, separated by single spaces. Then display the position that number is at in the sorted list, counting from `0`, on the next line. Display `\"not found\"` instead when it is not there.",
        "brief": [
-        "The line the user types is already read into nums for you, and it is not in order.",
+        "The line the user types is already read into `nums` for you, and it is not in order.",
         "Find the position with a binary search over the sorted list, not with a loop from the front.",
         "Two lines of output, in that order.",
         "Display exactly: not found"

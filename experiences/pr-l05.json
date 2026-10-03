@@ -81,7 +81,7 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Change the program so it displays the numbers 1 to 6, one on each line.",
+       "q": "Change the program so it displays the numbers `1` to `6`, one on each line.",
        "brief": [
         "Change only the number in the condition.",
         "Display the numbers 1, 2, 3, 4, 5 and 6, one on each line."
@@ -111,12 +111,12 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Finish the program so it counts down from the number typed in to 1, one number on each line.",
+       "q": "Finish the program so it counts down from the number typed in to `1`, one number on each line.",
        "brief": [
         "The first three lines are written for you.",
-        "The user types in one whole number, which is never less than 1.",
+        "The user types in one whole number, which is never less than `1`.",
         "Replace ____ with one instruction of your own.",
-        "Display the numbers from the one typed down to 1, one on each line."
+        "Display the numbers from the one typed down to `1`, one on each line."
        ],
        "fb": "Set it, test it, change it. The third part is the one beginners leave out.",
        "kind": "complete",
@@ -159,8 +159,8 @@
        "hint": {
         "think": "The number has to get smaller on every turn, or the condition stays true for ever.",
         "walk": [
-         "The loop runs while n is above 0.",
-         "Something inside the loop has to bring n closer to 0."
+         "The loop runs while n is above `0`.",
+         "Something inside the loop has to bring n closer to `0`."
         ],
         "diagram": "pywhile"
        },
@@ -183,9 +183,9 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for a whole number. Using a while loop, display every number from 1 up to that number, one on each line.",
+       "q": "Ask the user for a whole number. Using a while loop, display every number from `1` up to that number, one on each line.",
        "brief": [
-        "The user types in one whole number, which is never less than 1.",
+        "The user types in one whole number, which is never less than `1`.",
         "The number typed in is displayed as well, on the last line.",
         "Use a while loop, not a for loop."
        ],
@@ -268,10 +268,10 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a whole number. Using a while loop, display every even number from 2 up to that number, one on each line.",
+       "q": "Ask the user for a whole number. Using a while loop, display every even number from `2` up to that number, one on each line.",
        "brief": [
-        "The user types in one whole number, which is never less than 2.",
-        "Start at 2 and go up in twos.",
+        "The user types in one whole number, which is never less than `2`.",
+        "Start at `2` and go up in twos.",
         "Display the number typed in as well, if it is even."
        ],
        "fb": "The size of the step is yours to choose, and it is what decides which numbers the loop lands on.",
@@ -326,7 +326,7 @@
        "q": "This program should display 5, 4, 3, 2, 1, one on each line. It never stops. Find the mistake and put it right.",
        "brief": [
         "Press Run first and watch what happens.",
-        "Do not change the number 5 or the condition.",
+        "Do not change the number `5` or the condition.",
         "Display 5, 4, 3, 2 and 1, one on each line."
        ],
        "fb": "A loop that runs for ever is the commonest while loop mistake there is, and the cure is always the same: change the variable inside the loop.",
@@ -348,7 +348,7 @@
        "hint": {
         "think": "Which of the three parts of a while loop is missing here?",
         "walk": [
-         "n is set to 5 before the loop.",
+         "n is set to `5` before the loop.",
          "n is tested in the condition.",
          "Nothing inside the loop ever changes n."
         ],
@@ -371,9 +371,9 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for a whole number. Using a while loop, display the line Step [number] for every number from 1 up to that number.",
+       "q": "Ask the user for a whole number. Using a while loop, display the line `\"Step \"`[number] for every number from `1` up to that number.",
        "brief": [
-        "The user types in one whole number, which is never less than 1.",
+        "The user types in one whole number, which is never less than `1`.",
         "There is one space after the word Step.",
         "One line of output for each number."
        ],
@@ -422,11 +422,11 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a whole number. Using a while loop, display every number from it down to 1, one on each line. Then, using a second while loop, display every number from 1 back up to it, one on each line.",
+       "q": "Ask the user for a whole number. Using a while loop, display every number from it down to `1`, one on each line. Then, using a second while loop, display every number from `1` back up to it, one on each line.",
        "brief": [
-        "The user types in one whole number, which is never less than 1.",
+        "The user types in one whole number, which is never less than `1`.",
         "The numbers come down first, then go back up.",
-        "The number 1 appears twice, once at the end of the first loop and once at the start of the second."
+        "The number `1` appears twice, once at the end of the first loop and once at the start of the second."
        ],
        "fb": "Two loops in one program each keep their own count, and the second one has to be set up just as carefully as the first.",
        "starter": "# Down to 1, then back up again\n",
@@ -477,8 +477,8 @@
         "think": "Two separate loops, one after the other, each with its own counter set up before it.",
         "walk": [
          "Read the number.",
-         "Count down to 1 in the first loop.",
-         "Set a counter back to 1.",
+         "Count down to `1` in the first loop.",
+         "Set a counter back to `1`.",
          "Count up to the number in the second loop."
         ],
         "diagram": "pywhile"
@@ -566,11 +566,11 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Change the program so it keeps asking until the number is 10 or more.",
+       "q": "Change the program so it keeps asking until the number is `10` or more.",
        "brief": [
         "Change only the number in the condition.",
-        "A number of exactly 10 is accepted.",
-        "Display too small for each number refused."
+        "A number of exactly `10` is accepted.",
+        "Display `\"too small\"` for each number refused."
        ],
        "fb": "One number in the condition decides what the program will accept.",
        "kind": "change",
@@ -616,11 +616,11 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Finish the program so it keeps asking until the mark typed in is 100 or less.",
+       "q": "Finish the program so it keeps asking until the mark typed in is `100` or less.",
        "brief": [
-        "The user types in whole numbers, one on each line, until one of them is 100 or less.",
+        "The user types in whole numbers, one on each line, until one of them is `100` or less.",
         "Replace ____ with one instruction of your own.",
-        "Display too big for each mark refused.",
+        "Display `\"too big\"` for each mark refused.",
         "Then display the accepted mark on a line of its own."
        ],
        "fb": "A validation loop reads twice: once before the loop, and once at the bottom of the body.",
@@ -684,10 +684,10 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Keep asking the user for a whole number until one of them is 1 or more. Display Too small for every number refused. Then display the accepted number on a line of its own.",
+       "q": "Keep asking the user for a whole number until one of them is `1` or more. Display `\"Too small\"` for every number refused. Then display the accepted number on a line of its own.",
        "brief": [
-        "The user types in whole numbers, one on each line, until one of them is 1 or more.",
-        "A number of exactly 1 is accepted.",
+        "The user types in whole numbers, one on each line, until one of them is `1` or more.",
+        "A number of exactly `1` is accepted.",
         "Display exactly: Too small"
        ],
        "fb": "An if asks once and gives up. A while keeps asking, which is exactly what validation needs.",
@@ -753,10 +753,10 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Keep asking the user for a whole number until one of them is from 1 to 5. Display Out of range for every number refused. Then display the accepted number on a line of its own.",
+       "q": "Keep asking the user for a whole number until one of them is from `1` to `5`. Display `\"Out of range\"` for every number refused. Then display the accepted number on a line of its own.",
        "brief": [
-        "The user types in whole numbers, one on each line, until one of them is from 1 to 5.",
-        "Both 1 and 5 are accepted.",
+        "The user types in whole numbers, one on each line, until one of them is from `1` to `5`.",
+        "Both `1` and `5` are accepted.",
         "Display exactly: Out of range"
        ],
        "fb": "Join the two ways of being wrong with or, and the loop keeps going while either of them is still true.",
@@ -828,10 +828,10 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "This program should keep asking until the number is 10 or more. It gives up after one go. Find the mistake and put it right.",
+       "q": "This program should keep asking until the number is `10` or more. It gives up after one go. Find the mistake and put it right.",
        "brief": [
         "Press Run first and type 3, then 5, then 12.",
-        "Display too small for each number refused.",
+        "Display `\"too small\"` for each number refused.",
         "Then display the accepted number on a line of its own."
        ],
        "fb": "An if and a while look alike and behave very differently: only one of them goes back and checks again.",
@@ -880,10 +880,10 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Keep asking the user for a word until it is yes or no. Display Please type yes or no for every other word. Then display the accepted word on a line of its own.",
+       "q": "Keep asking the user for a word until it is `\"yes\"` or `\"no\"`. Display `\"Please type yes or no\"` for every other word. Then display the accepted word on a line of its own.",
        "brief": [
-        "The user types in words, one on each line, until one of them is yes or no.",
-        "The words are compared exactly, so y is not the word yes.",
+        "The user types in words, one on each line, until one of them is `\"yes\"` or `\"no\"`.",
+        "The words are compared exactly, so y is not the word `\"yes\"`.",
         "Display exactly: Please type yes or no"
        ],
        "fb": "Use and to rule out both allowed answers. With or the condition is always true, and the loop would never stop.",
@@ -957,7 +957,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Keep asking the user for a whole number until one of them is 10 or more. Display Too small for every number refused. Then keep asking for a word until it is yes or no. Display Please type yes or no for every word refused. Then display the accepted number. Then display the accepted word on the next line.",
+       "q": "Keep asking the user for a whole number until one of them is `10` or more. Display `\"Too small\"` for every number refused. Then keep asking for a word until it is `\"yes\"` or `\"no\"`. Display `\"Please type yes or no\"` for every word refused. Then display the accepted number. Then display the accepted word on the next line.",
        "brief": [
         "The user types in whole numbers first, then words.",
         "Two separate loops, one after the other.",
@@ -1035,10 +1035,10 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Press Run. Type red, then blue, then stop.",
+       "q": "Press Run. Type red, then blue, then `\"stop\"`.",
        "brief": [
         "Nothing is marked on this one.",
-        "The word stop is the signal to finish, so it is not displayed.",
+        "The word `\"stop\"` is the signal to finish, so it is not displayed.",
         "A value that means stop is called a sentinel."
        ],
        "fb": "The sentinel is never used, because the condition tests every value before the body gets to it.",
@@ -1105,11 +1105,11 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Change the program so the word end stops the loop instead of the word stop.",
+       "q": "Change the program so the word `\"end\"` stops the loop instead of the word `\"stop\"`.",
        "brief": [
         "Change only the sentinel in the condition.",
         "Display each word as it is typed, one on each line.",
-        "Do not display the word end."
+        "Do not display the word `\"end\"`."
        ],
        "fb": "Changing the sentinel changes nothing else: the shape of the loop stays exactly the same.",
        "kind": "change",
@@ -1160,12 +1160,12 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Finish the program so it displays each number until -1 is typed.",
+       "q": "Finish the program so it displays each number until `-1` is typed.",
        "brief": [
-        "The user types in whole numbers, one on each line, until they type -1.",
+        "The user types in whole numbers, one on each line, until they type `-1`.",
         "Replace ____ with one instruction of your own.",
         "Display each number as it is typed, one on each line.",
-        "Do not display the -1."
+        "Do not display the `-1`."
        ],
        "fb": "Read one before the loop, read the next at the bottom. That pair is the whole pattern.",
        "kind": "complete",
@@ -1227,11 +1227,11 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for whole numbers until they type 0, which means stop. Display each number doubled, one on each line. Do not display anything for the 0.",
+       "q": "Ask the user for whole numbers until they type `0`, which means stop. Display each number doubled, one on each line. Do not display anything for the `0`.",
        "brief": [
-        "The user types in whole numbers, one on each line, until they type 0.",
-        "At least one number comes before the 0.",
-        "One line of output for each number, which is that number multiplied by 2."
+        "The user types in whole numbers, one on each line, until they type `0`.",
+        "At least one number comes before the `0`.",
+        "One line of output for each number, which is that number multiplied by `2`."
        ],
        "fb": "The sentinel loop reads, tests, then uses. Nothing is done to a value until the condition has allowed it.",
        "starter": "# Double each number until 0 stops the loop\n",
@@ -1283,11 +1283,11 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for whole numbers until they type -1, which means stop. Add the numbers up. Display the total and nothing else.",
+       "q": "Ask the user for whole numbers until they type `-1`, which means stop. Add the numbers up. Display the total and nothing else.",
        "brief": [
-        "The user types in whole numbers, one on each line, until they type -1.",
-        "The -1 is not added to the total.",
-        "With no numbers at all the total is 0, and that 0 is still displayed."
+        "The user types in whole numbers, one on each line, until they type `-1`.",
+        "The `-1` is not added to the total.",
+        "With no numbers at all the total is `0`, and that `0` is still displayed."
        ],
        "fb": "Set it, add to it, display it. A while loop handles a running total exactly as a for loop does.",
        "starter": "# Add the numbers up until -1 stops the loop\n",
@@ -1358,12 +1358,12 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "This program should add up the numbers typed before the -1. It adds the -1 as well. Find the mistake and put it right.",
+       "q": "This program should add up the numbers typed before the `-1`. It adds the `-1` as well. Find the mistake and put it right.",
        "brief": [
-        "Press Run first and type 10, then 20, then -1.",
-        "The -1 is the signal to stop and is not part of the total.",
+        "Press Run first and type 10, then 20, then `-1`.",
+        "The `-1` is the signal to stop and is not part of the total.",
         "Display the total and nothing else.",
-        "With no numbers at all the total is 0."
+        "With no numbers at all the total is `0`."
        ],
        "fb": "Reading at the top of the loop lets the sentinel into the body. Reading at the bottom keeps it out.",
        "kind": "debug",
@@ -1425,11 +1425,11 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for whole numbers until they type the word end, which means stop. Add the numbers up. Display the line Total is [total].",
+       "q": "Ask the user for whole numbers until they type the word `\"end\"`, which means stop. Add the numbers up. Display the line `\"Total is \"`[total].",
        "brief": [
-        "The user types in whole numbers, one on each line, then the word end to finish.",
+        "The user types in whole numbers, one on each line, then the word `\"end\"` to finish.",
         "Read each line as text, and cast it to a number inside the loop.",
-        "With no numbers at all the total is 0.",
+        "With no numbers at all the total is `0`.",
         "There is one space after the word is."
        ],
        "fb": "Read as text, test the condition, then cast. Casting too early is what makes a word sentinel crash.",
@@ -1478,7 +1478,7 @@
         }
        ],
        "hint": {
-        "think": "int() on the word end would crash, so the line must stay text until the condition has let it through.",
+        "think": "int() on the word `\"end\"` would crash, so the line must stay text until the condition has let it through.",
         "syntax": [
          "line = input()",
          "while line != \"end\":",
@@ -1502,9 +1502,9 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for whole numbers until they type -1, which means stop. Display each number as it is typed, one on each line. Then display the line Highest was [the largest number]. Display none instead when -1 is the very first number typed.",
+       "q": "Ask the user for whole numbers until they type `-1`, which means stop. Display each number as it is typed, one on each line. Then display the line `\"Highest was \"`[the largest number]. Display `\"none\"` instead when `-1` is the very first number typed.",
        "brief": [
-        "The user types in whole numbers, one on each line, until they type -1.",
+        "The user types in whole numbers, one on each line, until they type `-1`.",
         "The numbers may be negative.",
         "Display exactly: none",
         "There is one space after the word was."
@@ -1566,7 +1566,7 @@
         "think": "A largest so far that starts at 0 can never be beaten by a negative number.",
         "walk": [
          "Read the first number.",
-         "If it is the sentinel, display none.",
+         "If it is the sentinel, display `\"none\"`.",
          "Otherwise make it the largest so far, then loop, displaying and comparing.",
          "Then display the Highest was line."
         ],
@@ -1586,10 +1586,10 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Press Run. Type red, then blue, then end.",
+       "q": "Press Run. Type red, then blue, then `\"end\"`.",
        "brief": [
         "Nothing is marked on this one.",
-        "The word end is the sentinel, so it is not counted.",
+        "The word `\"end\"` is the sentinel, so it is not counted.",
         "The count is displayed once, after the loop."
        ],
        "fb": "The counter counts turns of the loop, so it does not matter what the values themselves are.",
@@ -1654,7 +1654,7 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Change the program so it displays tick ten times instead of five times.",
+       "q": "Change the program so it displays `\"tick\"` ten times instead of five times.",
        "brief": [
         "Change only the number in the condition.",
         "Display exactly: tick",
@@ -1689,14 +1689,14 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Finish the program so it displays how many words were typed before the word end.",
+       "q": "Finish the program so it displays how many words were typed before the word `\"end\"`.",
        "brief": [
-        "The user types in words, one on each line, then the word end to finish.",
+        "The user types in words, one on each line, then the word `\"end\"` to finish.",
         "Replace ____ with one instruction of your own.",
-        "The word end is not counted.",
+        "The word `\"end\"` is not counted.",
         "Display one number and nothing else."
        ],
-       "fb": "A counter that is never added to stays at 0, however many times the loop goes round.",
+       "fb": "A counter that is never added to stays at `0`, however many times the loop goes round.",
        "kind": "complete",
        "starter": "count = 0\nword = input()\nwhile word != \"end\":\n    ____\n    word = input()\nprint(count)\n",
        "tests": [
@@ -1733,7 +1733,7 @@
         }
        ],
        "hint": {
-        "think": "The counter is already set to 0. It just never goes up.",
+        "think": "The counter is already set to `0`. It just never goes up.",
         "syntax": "count = count + 1",
         "diagram": "pywhile"
        }
@@ -1741,13 +1741,13 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Ask the user for whole numbers until they type -1, which means stop. Count how many numbers were typed. Display the count and nothing else.",
+       "q": "Ask the user for whole numbers until they type `-1`, which means stop. Count how many numbers were typed. Display the count and nothing else.",
        "brief": [
-        "The user types in whole numbers, one on each line, until they type -1.",
-        "The -1 is not counted.",
-        "With no numbers at all the count is 0, and that 0 is still displayed."
+        "The user types in whole numbers, one on each line, until they type `-1`.",
+        "The `-1` is not counted.",
+        "With no numbers at all the count is `0`, and that `0` is still displayed."
        ],
-       "fb": "The counter counts turns, so a 0 or a negative number counts just as much as a big one.",
+       "fb": "The counter counts turns, so a `0` or a negative number counts just as much as a big one.",
        "starter": "# Count the numbers until -1 stops the loop\n",
        "tests": [
         {
@@ -1805,10 +1805,10 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for whole numbers until they type -1, which means stop. Count how many of them are 50 or more. Display the count and nothing else.",
+       "q": "Ask the user for whole numbers until they type `-1`, which means stop. Count how many of them are `50` or more. Display the count and nothing else.",
        "brief": [
-        "The user types in whole numbers, one on each line, until they type -1.",
-        "A number of exactly 50 counts.",
+        "The user types in whole numbers, one on each line, until they type `-1`.",
+        "A number of exactly `50` counts.",
         "Display one number and nothing else."
        ],
        "fb": "The loop visits every value and the if decides which ones are worth counting.",
@@ -1882,10 +1882,10 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "This program should display how many numbers were typed before the -1. It always displays 1. Find the mistake and put it right.",
+       "q": "This program should display how many numbers were typed before the `-1`. It always displays `1`. Find the mistake and put it right.",
        "brief": [
-        "Press Run first and type 4, then 7, then 9, then -1.",
-        "The -1 is not counted.",
+        "Press Run first and type 4, then 7, then 9, then `-1`.",
+        "The `-1` is not counted.",
         "Display one number and nothing else."
        ],
        "fb": "Setting a counter up belongs before the loop. Inside the loop it wipes out everything counted so far.",
@@ -1927,7 +1927,7 @@
         }
        ],
        "hint": {
-        "think": "A counter is set up once. What happens if it is set to 0 again on every turn?",
+        "think": "A counter is set up once. What happens if it is set to `0` again on every turn?",
         "walk": [
          "Look at the two lines inside the loop that touch count.",
          "One of them belongs above the loop, not inside it."
@@ -1938,12 +1938,12 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for whole numbers until they type -1, which means stop. Count how many numbers were typed. Add them up. Display the count. Then display the total on the next line.",
+       "q": "Ask the user for whole numbers until they type `-1`, which means stop. Count how many numbers were typed. Add them up. Display the count. Then display the total on the next line.",
        "brief": [
-        "The user types in whole numbers, one on each line, until they type -1.",
-        "The -1 is neither counted nor added.",
+        "The user types in whole numbers, one on each line, until they type `-1`.",
+        "The `-1` is neither counted nor added.",
         "Two lines of output: the count first, then the total.",
-        "With no numbers at all both lines display 0."
+        "With no numbers at all both lines display `0`."
        ],
        "fb": "One pass through the data can keep as many running values as you like, as long as each has its own variable.",
        "starter": "# Count them and add them up at the same time\n",
@@ -2007,14 +2007,14 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for whole numbers until they type -1, which means stop. Count how many of them are above 0. Count how many are below 0. Display the line [how many] above zero. Then display the line [how many] below zero on the next line.",
+       "q": "Ask the user for whole numbers until they type `-1`, which means stop. Count how many of them are above `0`. Count how many are below `0`. Display the line [how many] above zero. Then display the line [how many] below zero on the next line.",
        "brief": [
-        "The user types in whole numbers, one on each line, until they type -1.",
-        "A 0 is neither above nor below, so it is not counted at all.",
+        "The user types in whole numbers, one on each line, until they type `-1`.",
+        "A `0` is neither above nor below, so it is not counted at all.",
         "Two lines of output, the above line first.",
         "There is one space after each number."
        ],
-       "fb": "An elif keeps the two counters apart, and a 0 falls through both of them and is counted nowhere.",
+       "fb": "An elif keeps the two counters apart, and a `0` falls through both of them and is counted nowhere.",
        "starter": "# Count the numbers above zero and below zero\n",
        "tests": [
         {
@@ -2188,7 +2188,7 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Change the program so it uses a for loop instead of a while loop, and displays hello five times.",
+       "q": "Change the program so it uses a for loop instead of a while loop, and displays `\"hello\"` five times.",
        "brief": [
         "The number of turns is known before the loop starts, so a for loop fits.",
         "Your program must not use the word while.",
@@ -2239,8 +2239,8 @@
        "marks": 2,
        "q": "Finish the condition so the program keeps doubling the value until it reaches the number typed in.",
        "brief": [
-        "The user types in one whole number, which is never less than 1.",
-        "The value starts at 1, written into the program, and is doubled on every turn.",
+        "The user types in one whole number, which is never less than `1`.",
+        "The value starts at `1`, written into the program, and is doubled on every turn.",
         "Replace ____ with a condition.",
         "Display how many doublings were needed, and nothing else."
        ],
@@ -2313,7 +2313,7 @@
        "brief": [
         "The user types in a whole number saying how many follow, which is never less than 1.",
         "Then come that many whole numbers, one on each line.",
-        "One line of output for each number, which is that number multiplied by 2."
+        "One line of output for each number, which is that number multiplied by `2`."
        ],
        "fb": "A for loop needs the count up front, and here the user hands it over before any data arrives.",
        "starter": "# A for loop, because the count is known\n",
@@ -2392,14 +2392,14 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for whole numbers until they type the word stop, which means finish. Display each number doubled, one on each line. Use a while loop.",
+       "q": "Ask the user for whole numbers until they type the word `\"stop\"`, which means finish. Display each number doubled, one on each line. Use a while loop.",
        "brief": [
-        "The user types in whole numbers, one on each line, then the word stop to finish.",
+        "The user types in whole numbers, one on each line, then the word `\"stop\"` to finish.",
         "Nobody says how many numbers there will be, so a for loop cannot be used.",
-        "One line of output for each number, which is that number multiplied by 2.",
-        "At least one number comes before the word stop."
+        "One line of output for each number, which is that number multiplied by `2`.",
+        "At least one number comes before the word `\"stop\"`."
        ],
-       "fb": "Same job, two loops. The for loop needed the count in advance; the while loop waits to be told when to stop.",
+       "fb": "Same job, two loops. The for loop needed the count in advance; the while loop waits to be told when to `\"stop\"`.",
        "starter": "# The same job, now with a while loop\n",
        "tests": [
         {
@@ -2451,11 +2451,11 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "This program should keep halving the number typed in until it reaches 1, and display how many halvings that took. It always goes round five times. Find the mistake and put it right.",
+       "q": "This program should keep halving the number typed in until it reaches `1`, and display how many halvings that took. It always goes round five times. Find the mistake and put it right.",
        "brief": [
         "Press Run first and type 8.",
         "Halve with // so the answer stays a whole number.",
-        "The user types in one whole number, which is never less than 1.",
+        "The user types in one whole number, which is never less than `1`.",
         "Display one number and nothing else."
        ],
        "fb": "When the number of turns depends on the data, swap the for loop for a while loop and let the condition decide.",
@@ -2522,7 +2522,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for how many whole numbers there are. Then ask for that many whole numbers, using a for loop. Work out the largest of them. Then, using a while loop, keep asking for one more number until one of them is bigger than that largest number. Display Not bigger for every number refused. Then display the line Beaten by [that number].",
+       "q": "Ask the user for how many whole numbers there are. Then ask for that many whole numbers, using a for loop. Work out the largest of them. Then, using a while loop, keep asking for one more number until one of them is bigger than that largest number. Display `\"Not bigger\"` for every number refused. Then display the line `\"Beaten by \"`[that number].",
        "brief": [
         "The user types in a whole number saying how many follow, which is never less than 1.",
         "Then come that many whole numbers, one on each line, which may be negative.",
@@ -2618,7 +2618,7 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Press Run. Type 5, then -2, then 7, then done.",
+       "q": "Press Run. Type 5, then -2, then 7, then `\"done\"`.",
        "brief": [
         "Nothing is marked on this one.",
         "Two things are tracked at once: a count and a total.",
@@ -2698,7 +2698,7 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Change the program so it displays the line Count is [count] instead of just the number.",
+       "q": "Change the program so it displays the line `\"Count is \"`[count] instead of just the number.",
        "brief": [
         "Change only the last line.",
         "There is one space either side of the word is.",
@@ -2747,9 +2747,9 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Finish the program so it displays lower when the number typed in is above 24.",
+       "q": "Finish the program so it displays `\"lower\"` when the number typed in is above `24`.",
        "brief": [
-        "The user types in whole numbers, one on each line, until they type 24.",
+        "The user types in whole numbers, one on each line, until they type `24`.",
         "Replace ____ with one instruction of your own.",
         "Display exactly: higher, lower and correct",
         "One line of output for every number typed."
@@ -2793,7 +2793,7 @@
         }
        ],
        "hint": {
-        "think": "The if has already dealt with numbers below 24. What is left?",
+        "think": "The if has already dealt with numbers below `24`. What is left?",
         "syntax": "print(\"...\")"
        },
        "teach": {
@@ -2818,12 +2818,12 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "The whole number 37 is written into your program. Keep asking the user for a whole number until they type 37. Display Higher when the number typed is below 37. Display Lower when it is above 37. Then display Correct on a line of its own.",
+       "q": "The whole number `37` is written into your program. Keep asking the user for a whole number until they type `37`. Display `\"Higher\"` when the number typed is below `37`. Display `\"Lower\"` when it is above `37`. Then display `\"Correct\"` on a line of its own.",
        "brief": [
-        "The 37 is written into your program and is not typed in.",
+        "The `37` is written into your program and is not typed in.",
         "One line of output for every number typed.",
         "Display exactly: Higher, Lower and Correct",
-        "Correct is displayed once, after the loop has finished."
+        "`\"Correct\"` is displayed once, after the loop has finished."
        ],
        "fb": "Guessing games are while loops: nobody knows how many guesses it will take until it has taken them.",
        "starter": "# The number to find is 37. Say which way to go.\n",
@@ -2887,11 +2887,11 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for whole numbers until they type -1, which means stop. Add up only the numbers that are 10 or more. Count how many were added. Display the total. Then display the count on the next line.",
+       "q": "Ask the user for whole numbers until they type `-1`, which means stop. Add up only the numbers that are `10` or more. Count how many were added. Display the total. Then display the count on the next line.",
        "brief": [
-        "The user types in whole numbers, one on each line, until they type -1.",
-        "A number of exactly 10 is added and counted.",
-        "Numbers below 10 are read but ignored.",
+        "The user types in whole numbers, one on each line, until they type `-1`.",
+        "A number of exactly `10` is added and counted.",
+        "Numbers below `10` are read but ignored.",
         "Two lines of output: the total first, then the count."
        ],
        "fb": "One if can guard two lines at once, so the total and the count always agree with each other.",
@@ -2957,14 +2957,14 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "This program should display the largest number typed before the -1. It gets it wrong when every number is below 0. Find the mistake and put it right.",
+       "q": "This program should display the largest number typed before the `-1`. It gets it wrong when every number is below `0`. Find the mistake and put it right.",
        "brief": [
-        "Press Run first and type -5, then -9, then -2, then -1.",
-        "At least one number comes before the -1.",
-        "The numbers may all be below 0.",
+        "Press Run first and type -5, then -9, then -2, then `-1`.",
+        "At least one number comes before the `-1`.",
+        "The numbers may all be below `0`.",
         "Display one number and nothing else."
        ],
-       "fb": "A largest so far must start at the first real value. Starting at 0 quietly invents a number nobody typed.",
+       "fb": "A largest so far must start at the first real value. Starting at `0` quietly invents a number nobody typed.",
        "kind": "debug",
        "starter": "best = 0\nn = int(input())\nwhile n != -1:\n    if n > best:\n        best = n\n    n = int(input())\nprint(best)\n",
        "tests": [
@@ -3004,7 +3004,7 @@
         }
        ],
        "hint": {
-        "think": "Nothing below 0 can ever beat a largest so far that starts at 0.",
+        "think": "Nothing below `0` can ever beat a largest so far that starts at `0`.",
         "walk": [
          "Read the first number before the loop.",
          "Make that first number the largest so far.",
@@ -3016,14 +3016,14 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for whole numbers until they type the word end, which means stop. Count how many numbers were typed. Add them up. Display the line Count [count]. Then display the line Total [total] on the next line. Display the line No numbers instead when end is the very first line typed.",
+       "q": "Ask the user for whole numbers until they type the word `\"end\"`, which means stop. Count how many numbers were typed. Add them up. Display the line `\"Count \"`[count]. Then display the line `\"Total \"`[total] on the next line. Display the line `\"No numbers\"` instead when end is the very first line typed.",
        "brief": [
-        "The user types in whole numbers, one on each line, then the word end to finish.",
+        "The user types in whole numbers, one on each line, then the word `\"end\"` to finish.",
         "The numbers may be negative.",
         "There is one space after the words Count and Total.",
         "Display exactly: No numbers"
        ],
-       "fb": "A total of 0 and no numbers at all are different things, and only the program can tell the user which one happened.",
+       "fb": "A total of `0` and no numbers at all are different things, and only the program can tell the user which one happened.",
        "starter": "# Count them, add them up, or say there were none\n",
        "tests": [
         {
@@ -3075,7 +3075,7 @@
         "think": "Read the first line before you decide which of the two kinds of output to display.",
         "walk": [
          "Read the first line as text.",
-         "If it is the sentinel, display No numbers.",
+         "If it is the sentinel, display `\"No numbers\"`.",
          "Otherwise loop, counting and totalling.",
          "Then display the two lines."
         ],
@@ -3085,14 +3085,14 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Ask the user for a whole number that is 0 or more. Add up its digits without turning the number into text. Display the total and nothing else.",
+       "q": "Ask the user for a whole number that is `0` or more. Add up its digits without turning the number into text. Display the total and nothing else.",
        "brief": [
-        "The user types in one whole number that is 0 or more.",
+        "The user types in one whole number that is `0` or more.",
         "Take the digits off with % and //, not by turning the number into text.",
-        "With a 0 the answer is 0.",
+        "With a `0` the answer is `0`.",
         "Display one number and nothing else."
        ],
-       "fb": "% 10 for the last digit, // 10 to take it off, and the loop stops when the number has run out.",
+       "fb": "% `10` for the last digit, // `10` to take it off, and the loop stops when the number has run out.",
        "starter": "# Take the last digit off the number on every turn\n",
        "tests": [
         {

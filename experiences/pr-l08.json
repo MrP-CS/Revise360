@@ -90,7 +90,7 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Change the grid so the last number of row 1 is 5 instead of 1.",
+       "q": "Change the grid so the last number of row `1` is `5` instead of `1`.",
        "brief": [
         "Change only that one number.",
         "Leave the five other numbers alone.",
@@ -109,16 +109,16 @@
         }
        ],
        "hint": {
-        "think": "Row 1 is the second row, because the rows count from 0.",
+        "think": "Row `1` is the second row, because the rows count from 0.",
         "diagram": "pygrid"
        }
       },
       {
        "t": "code",
        "marks": 2,
-       "q": "Finish the grid so row 1 holds the numbers 5, 2 and 9. Display the whole grid.",
+       "q": "Finish the grid so row `1` holds the numbers `5`, `2` and `9`. Display the whole grid.",
        "brief": [
-        "Replace ____ with the whole of row 1.",
+        "Replace ____ with the whole of row `1`.",
         "Put square brackets round the three numbers.",
         "Displaying the grid shows both sets of square brackets, so [[3, 6, 1], [5, 2, 9]] is right."
        ],
@@ -385,7 +385,7 @@
        "brief": [
         "Nothing is marked on this one.",
         "The first number in the square brackets is the row.",
-        "The second one is the column. Both count from 0."
+        "The second one is the column. Both count from `0`."
        ],
        "fb": "grid[0][0] is the top left value. The row is always written first and the column second.",
        "kind": "try",
@@ -451,13 +451,13 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Change the program so it displays the 5 instead of the 1.",
+       "q": "Change the program so it displays the `5` instead of the `1`.",
        "brief": [
         "Change only the two numbers in the square brackets.",
-        "Take the 5 out of the grid rather than typing it in.",
+        "Take the `5` out of the grid rather than typing it in.",
         "Display exactly: 5"
        ],
-       "fb": "Two numbers decide which value you get, and both of them count from 0.",
+       "fb": "Two numbers decide which value you get, and both of them count from `0`.",
        "kind": "change",
        "starter": "grid = [[3, 6, 1],\n        [5, 2, 9]]\nprint(grid[0][2])\n",
        "tests": [
@@ -470,7 +470,7 @@
         }
        ],
        "hint": {
-        "think": "Find which row the 5 sits in, then count along that row from 0.",
+        "think": "Find which row the `5` sits in, then count along that row from `0`.",
         "syntax": "grid[row][column]",
         "diagram": "pygrid"
        },
@@ -484,11 +484,11 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Finish the program so it displays the 9 in the grid.",
+       "q": "Finish the program so it displays the `9` in the grid.",
        "brief": [
         "Replace ____ with one number.",
         "The row is already written for you, so count along that row from 0.",
-        "Take the 9 out of the grid rather than typing it in.",
+        "Take the `9` out of the grid rather than typing it in.",
         "Display exactly: 9"
        ],
        "fb": "The column counts from 0 along the row, exactly as a position counts along any list.",
@@ -504,7 +504,7 @@
         }
        ],
        "hint": {
-        "think": "The 9 is the last value of row 1. A row of three ends at column 2.",
+        "think": "The `9` is the last value of row `1`. A row of three ends at column `2`.",
         "diagram": "pygrid"
        },
        "teach": {
@@ -598,10 +598,10 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "This program should display the 4 in the grid. Find the mistake and put it right.",
+       "q": "This program should display the `4` in the grid. Find the mistake and put it right.",
        "brief": [
         "Press Run first and read the error message.",
-        "Do not change the grid, and take the 4 out of it rather than typing it in.",
+        "Do not change the grid, and take the `4` out of it rather than typing it in.",
         "This grid is three rows of two, so a row holds two values.",
         "Display exactly: 4"
        ],
@@ -621,7 +621,7 @@
         "think": "A row of this grid holds two values, so one of these two numbers is being used in the wrong place.",
         "syntax": "grid[row][column]",
         "walk": [
-         "Count down the rows from 0 to find the row the 4 is in.",
+         "Count down the rows from 0 to find the row the `4` is in.",
          "Count along that row from 0 to find its column.",
          "The row number is the one written first."
         ],
@@ -812,7 +812,7 @@
        "brief": [
         "Replace ____ with the name the outer loop gives each row.",
         "Six lines of output, one value on each.",
-        "All of row 0 comes before row 1."
+        "All of row 0 comes before row `1`."
        ],
        "fb": "The outer loop picks the row and the inner loop picks the value, which is how every cell gets visited exactly once.",
        "kind": "complete",
@@ -1081,7 +1081,7 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "A grid of two rows of four is written into the program. Ask the user for one whole number. Display every value in the grid that is that number or more, one on each line. Display the word none instead, on a line of its own, when there are no such values.",
+       "q": "A grid of two rows of four is written into the program. Ask the user for one whole number. Display every value in the grid that is that number or more, one on each line. Display the word `\"none\"` instead, on a line of its own, when there are no such values.",
        "brief": [
         "The grid is already in the editor. Do not change it.",
         "The user types in one whole number.",
@@ -1166,8 +1166,8 @@
        "q": "Press Run. The program adds up one row of the grid.",
        "brief": [
         "Nothing is marked on this one.",
-        "grid[1] is the second row, because the rows count from 0.",
-        "The total starts at 0 before the loop begins."
+        "grid[1] is the second row, because the rows count from `0`.",
+        "The total starts at `0` before the loop begins."
        ],
        "fb": "Nothing new is needed to total a row: it is a list, and a running total over a list is lesson 7's work.",
        "kind": "try",
@@ -1244,7 +1244,7 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Finish the program so it adds up row 1 of the grid and displays the total.",
+       "q": "Finish the program so it adds up row `1` of the grid and displays the total.",
        "brief": [
         "Replace ____ with one instruction.",
         "It has to add the value the loop has reached onto the total.",
@@ -1288,9 +1288,9 @@
        "q": "A grid of three rows of two is written into the program. Ask the user for a row number. Add up that row. Display the total.",
        "brief": [
         "The grid is already in the editor. Do not change it.",
-        "The user types in one line: the row number, which counts from 0.",
+        "The user types in one line: the row number, which counts from `0`.",
         "The row number is always one the grid has.",
-        "A total of 0 still has to be displayed."
+        "A total of `0` still has to be displayed."
        ],
        "fb": "grid[r] is a single row and behaves like any other list, so the running total works exactly as it did before.",
        "starter": "grid = [[3, 6],\n        [0, 0],\n        [9, 4]]\n# A row number in, one total out\n",
@@ -1338,11 +1338,11 @@
        "q": "Ask the user for six test scores, one on each line. Keep them in a grid of two rows of three. Add up each row in turn. Display the total of each row, one on each line.",
        "brief": [
         "The user types in six lines, one whole number on each.",
-        "Two lines of output, the total of row 0 first.",
-        "Set the total back to 0 at the start of each row.",
+        "Two lines of output, the total of row `0` first.",
+        "Set the total back to `0` at the start of each row.",
         "A row of zeros still has its total displayed."
        ],
-       "fb": "A total per row is set to 0 at the top of the outer loop and displayed at the bottom of it.",
+       "fb": "A total per row is set to `0` at the top of the outer loop and displayed at the bottom of it.",
        "starter": "# A total for each row in turn\n",
        "tests": [
         {
@@ -1407,7 +1407,7 @@
         }
        ],
        "hint": {
-        "think": "Each row needs a total of its own, so the total is set to 0 inside the outer loop.",
+        "think": "Each row needs a total of its own, so the total is set to `0` inside the outer loop.",
         "syntax": "total = 0",
         "start": [
          "# the six scores and the grid first",
@@ -1428,7 +1428,7 @@
         "Display exactly: 10",
         "Then display exactly: 11"
        ],
-       "fb": "Where a total is set to 0 decides what it means: before the loop it totals everything, inside it the one row.",
+       "fb": "Where a total is set to `0` decides what it means: before the loop it totals everything, inside it the one row.",
        "kind": "debug",
        "starter": "grid = [[3, 6, 1],\n        [5, 2, 4]]\ntotal = 0\nfor row in grid:\n    for v in row:\n        total = total + v\n    print(total)\n",
        "tests": [
@@ -1442,11 +1442,11 @@
         }
        ],
        "hint": {
-        "think": "Row 1's total has row 0 still inside it. Where is the total set to 0?",
+        "think": "Row 1's total has row `0` still inside it. Where is the total set to `0`?",
         "walk": [
          "A line before the outer loop runs once in the whole program.",
          "A line at the top of the outer loop runs once for every row.",
-         "Each row needs a total that starts at 0."
+         "Each row needs a total that starts at `0`."
         ],
         "diagram": "pygrid"
        }
@@ -1457,11 +1457,11 @@
        "q": "Ask the user for six marks, one on each line. Put them in a grid of three rows of two. Add up each row in turn. Display the total of each row, one on each line. Then display the total of the whole grid on the next line.",
        "brief": [
         "The user types in six lines, one whole number on each.",
-        "Four lines of output in all, the total of row 0 first.",
-        "The row total starts again at 0 for each row.",
-        "The grand total is never set back to 0."
+        "Four lines of output in all, the total of row `0` first.",
+        "The row total starts again at `0` for each row.",
+        "The grand total is never set back to `0`."
        ],
-       "fb": "Two totals in one program, and where each is set to 0 is the only difference between them.",
+       "fb": "Two totals in one program, and where each is set to `0` is the only difference between them.",
        "starter": "# A total for each row, then one for everything\n",
        "tests": [
         {
@@ -1541,8 +1541,8 @@
          "total = 0"
         ],
         "walk": [
-         "Set the grand total to 0 before the outer loop.",
-         "Set the row total to 0 at the top of the outer loop.",
+         "Set the grand total to `0` before the outer loop.",
+         "Set the row total to `0` at the top of the outer loop.",
          "Add each value onto both totals.",
          "Display the row total inside the outer loop and the grand total after it."
         ],
@@ -1567,7 +1567,7 @@
         "Nothing is marked on this one.",
         "A row is a list the grid already holds, so grid[0] hands you the whole of it.",
         "No column is stored anywhere, so this one is collected with append.",
-        "The column number stays 1 while the row number changes."
+        "The column number stays `1` while the row number changes."
        ],
        "fb": "A row you can take out in one go. A column has to be fetched, a row at a time, which is what makes it the harder of the two.",
        "kind": "try",
@@ -1655,7 +1655,7 @@
        "brief": [
         "Change only the column number.",
         "Keep the loop and the append line that collect the column.",
-        "A row of three ends at column 2.",
+        "A row of three ends at column `2`.",
         "Display exactly: [1, 8, 7]"
        ],
        "fb": "The row number is the one the loop changes. The column number is the one you choose, and it stays the same all the way down.",
@@ -1685,10 +1685,10 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Finish the program so it collects column 1 of the grid into col and displays it.",
+       "q": "Finish the program so it collects column `1` of the grid into `col` and displays it.",
        "brief": [
         "Replace ____ with one instruction.",
-        "It has to put the value in this row at column 1 onto the end of col.",
+        "It has to put the value in this row at column `1` onto the end of col.",
         "The row number is already counted for you.",
         "Display exactly: [6, 2, 4]"
        ],
@@ -1740,9 +1740,9 @@
        "q": "A grid of four rows of three is written into the program. Ask the user for a column number. Display the values in that column, one on each line. Then display the total of that column on the next line.",
        "brief": [
         "The grid is already in the editor. Do not change it.",
-        "The user types in one line: the column number, which counts from 0.",
+        "The user types in one line: the column number, which counts from `0`.",
         "Five lines of output: the four values, then their total.",
-        "A 0 is one of the values and still has to be displayed."
+        "A `0` is one of the values and still has to be displayed."
        ],
        "fb": "A column is walked down by holding one number still and letting the other count on. Nothing else about it is new.",
        "starter": "grid = [[3, 1, 2],\n        [0, 2, 5],\n        [4, 4, 1],\n        [1, 0, 3]]\n# A column number in: that column, then its total\n",
@@ -1823,11 +1823,11 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "This program should display the total of column 1. Find the mistake and put it right.",
+       "q": "This program should display the total of column `1`. Find the mistake and put it right.",
        "brief": [
         "Press Run first and look at the number it displays.",
         "Do not change the grid, and add its own values up rather than typing the answer in.",
-        "Column 1 holds 6, 2 and 4.",
+        "Column `1` holds `6`, `2` and `4`.",
         "Display exactly: 12"
        ],
        "fb": "len(grid) and len(grid[0]) are different numbers. A column has as many values as the grid has rows, so a column loop counts with len(grid).",
@@ -1849,8 +1849,8 @@
          "len(grid[0])"
         ],
         "walk": [
-         "len(grid) is how many rows the grid has, which is 3.",
-         "len(grid[0]) is how many values one row holds, which is 2.",
+         "len(grid) is how many rows the grid has, which is `3`.",
+         "len(grid[0]) is how many values one row holds, which is `2`.",
          "Going down a column, the loop has to run once for every row."
         ],
         "diagram": "pygrid"
@@ -1865,12 +1865,12 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "Row 0 of the grid is written into the program and holds 5, 3, 8 and 2. Ask the user for four whole numbers, one on each line. Keep them as row 1 of the same grid. Compare the two values in each column in turn. Display one word for each column, one on each line.",
+       "q": "Row `0` of the grid is written into the program and holds `5`, `3`, `8` and `2`. Ask the user for four whole numbers, one on each line. Keep them as row `1` of the same grid. Compare the two values in each column in turn. Display one word for each column, one on each line.",
        "brief": [
         "The user types in four lines, one whole number on each.",
-        "Display up when row 1 holds the bigger value of the two.",
-        "Display down when row 1 holds the smaller, and same when they match.",
-        "Four lines of output, column 0 first."
+        "Display `\"up\"` when row `1` holds the bigger value of the two.",
+        "Display `\"down\"` when row `1` holds the smaller, and `\"same\"` when they match.",
+        "Four lines of output, column `0` first."
        ],
        "fb": "Two rows side by side are compared column by column, because the column number is the one thing the two values share.",
        "starter": "# Row 0 of the grid is 5, 3, 8, 2\n# Four numbers in, four words out\n",
@@ -2041,10 +2041,10 @@
       {
        "t": "code",
        "marks": 1,
-       "q": "Change the program so it counts the values that are 7 or more instead of the values that are more than 7.",
+       "q": "Change the program so it counts the values that are `7` or more instead of the values that are more than `7`.",
        "brief": [
         "Change only the comparison.",
-        "Exactly 7 now counts.",
+        "Exactly `7` now counts.",
         "Display exactly: 3"
        ],
        "fb": "One character decides whether the boundary value counts, and that is still the commonest place for a counting program to go wrong.",
@@ -2067,11 +2067,11 @@
       {
        "t": "code",
        "marks": 2,
-       "q": "Finish the program so it displays only the values below 5, one on each line.",
+       "q": "Finish the program so it displays only the values below `5`, one on each line.",
        "brief": [
         "Replace ____ with the comparison.",
-        "A value of exactly 5 is not below 5.",
-        "Two lines of output: 4, then 1."
+        "A value of exactly `5` is not below `5`.",
+        "Two lines of output: `4`, then `1`."
        ],
        "fb": "An if inside two loops lets some values through and not others, wherever in the grid they sit.",
        "kind": "complete",
@@ -2087,7 +2087,7 @@
         }
        ],
        "hint": {
-        "think": "The inner loop hands you one value at a time, and that value has to be compared with 5.",
+        "think": "The inner loop hands you one value at a time, and that value has to be compared with `5`.",
         "syntax": "value < number",
         "diagram": "pygrid"
        }
@@ -2135,11 +2135,11 @@
       {
        "t": "code",
        "marks": 3,
-       "q": "A grid of two rows of three holding six colour names is written into the program. Ask the user for a colour to look for. Display the row and the column where that colour sits, with one space between them. Display the words not there instead when the colour is not in the grid.",
+       "q": "A grid of two rows of three holding six colour names is written into the program. Ask the user for a colour to look for. Display the row and the column where that colour sits, with one space between them. Display the words `\"not there\"` instead when the colour is not in the grid.",
        "brief": [
         "The grid is already in the editor. Do not change it.",
         "The user types in one line: the colour to look for.",
-        "Rows and columns count from 0, and the row comes first.",
+        "Rows and columns count from `0`, and the row comes first.",
         "Display exactly: not there"
        ],
        "fb": "A search over a grid is a search over a list twice over, and the two counters give you the row and the column together.",
@@ -2203,7 +2203,7 @@
        "brief": [
         "The user types in six lines, one whole number on each.",
         "Some of the temperatures may be below zero.",
-        "Start the largest at the top left value of the grid, not at 0.",
+        "Start the largest at the top left value of the grid, not at `0`.",
         "Two lines of output: the largest, then the total."
        ],
        "fb": "The largest-so-far loop of lesson 7 works over a grid too, as long as the first guess comes out of the grid.",
@@ -2318,7 +2318,7 @@
        "q": "Ask the user for six prices in whole pounds, one on each line. Keep them in a grid of two rows of three. Display the grid on its side, so each line holds one column of it. Put one space between the values.",
        "brief": [
         "The user types in six lines, one whole number on each.",
-        "Three lines of output, column 0 first.",
+        "Three lines of output, column `0` first.",
         "A line holds the values of one column, from the top row down.",
         "Put one space between the values, and no square brackets and no commas."
        ],

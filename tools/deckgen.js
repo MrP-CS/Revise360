@@ -10,6 +10,35 @@ const INK = "101828", CANVAS = "F7F7F4", COBALT = "2D63FF", TEAL = "08A6A6",
 const SANS = "IBM Plex Sans", MONO = "IBM Plex Mono";
 const W = 13.33, H = 7.5;
 
+/* Python inside a sentence on a slide, in the editor's own token colours.
+ *
+ * A projector is a sheet of paper that glows, so the ink is the printed palette
+ * from the @media print half of css/pytok.css rather than the dark-background
+ * one: #9fe6a0 on a white slide is unreadable at the back of a room. The seven
+ * token kinds, the monospace face and the meaning are the same as on screen.
+ *
+ * Returns the run array pptxgenjs takes for rich text. Text with nothing marked
+ * comes back as a single run, so every call site can use it unconditionally. */
+const TOK = require("../js/pytok.js");
+const PINK = TOK.flat("print");
+function rich(text, opts = {}) {
+  const str = String(text == null ? "" : text);
+  if (!TOK.has(str)) return [{ text: str, options: { ...opts } }];
+  const runs = [];
+  let i = 0;
+  for (;;) {
+    const a = str.indexOf("`", i);
+    const b = a < 0 ? -1 : str.indexOf("`", a + 1);
+    if (a < 0 || b < 0) { if (i < str.length) runs.push({ text: str.slice(i), options: { ...opts } }); break; }
+    if (a > i) runs.push({ text: str.slice(i, a), options: { ...opts } });
+    for (const tk of TOK.lex(str.slice(a + 1, b))) {
+      runs.push({ text: tk.t, options: { ...opts, fontFace: MONO, color: PINK[tk.k] } });
+    }
+    i = b + 1;
+  }
+  return runs;
+}
+
 const DATA = process.argv[2] || P.TOOLS + "/deckspecs/deck21.json";
 const PREFIX = process.argv[3] || "AL";
 const OUT = process.argv[4] || P.OUT + "/decks";
@@ -106,7 +135,7 @@ function starterSlide(pres, L) {
   s.addText("Five minutes, on paper", { x: 3.05, y: 0.5, w: 6, h: 0.5, fontSize: 14, fontFace: SANS,
     color: SLATE, isTextBox: true, margin: 0, valign: "middle" });
   card(s, 0.55, 1.35, 12.2, 3.5, COBALT);
-  s.addText(L.starter, { x: 1.1, y: 1.8, w: 11.1, h: 2.6, fontSize: 26, fontFace: SANS,
+  s.addText(rich(L.starter), { x: 1.1, y: 1.8, w: 11.1, h: 2.6, fontSize: 26, fontFace: SANS,
     color: INK, isTextBox: true, margin: 0, lineSpacingMultiple: 1.3, valign: "middle" });
   s.addText("No devices yet. Write your answer on the worksheet before anyone talks.",
     { x: 0.55, y: 5.15, w: 12.2, h: 0.5, fontSize: 15, fontFace: SANS, color: SLATE,
@@ -152,15 +181,18 @@ function stationSlide(pres, L, st, n) {
   s.addText(st.name, { x: 1.35, y: 0.45, w: 11.4, h: 0.68, fontSize: 30, bold: true,
     fontFace: SANS, color: INK, isTextBox: true, margin: 0, valign: "middle" });
   card(s, 0.55, 1.4, 7.7, 3.55, BORDER);
-  const bullets = st.bullets.map((b, i) => ({
-    text: b, options: { bullet: true, breakLine: i < st.bullets.length - 1, paraSpaceAfter: 12 }
-  }));
+  const bullets = st.bullets.flatMap((b, i) => {
+    const runs = rich(b, { bullet: true });
+    const last = runs[runs.length - 1];
+    last.options = { ...last.options, breakLine: i < st.bullets.length - 1, paraSpaceAfter: 12 };
+    return runs;
+  });
   s.addText(bullets, { x: 1.0, y: 1.75, w: 6.9, h: 2.9, fontSize: 17, fontFace: SANS,
     color: INK, isTextBox: true, margin: 0, lineSpacingMultiple: 1.2, valign: "top" });
   card(s, 8.55, 1.4, 4.2, 3.55, AMBER);
   s.addText("CHALLENGE", { x: 8.95, y: 1.65, w: 3.5, h: 0.35, fontSize: 12, bold: true,
     fontFace: MONO, color: SLATE, isTextBox: true, margin: 0, valign: "middle" });
-  s.addText(st.challenge, { x: 8.95, y: 2.05, w: 3.45, h: 2.6, fontSize: 16, fontFace: SANS,
+  s.addText(rich(st.challenge), { x: 8.95, y: 2.05, w: 3.45, h: 2.6, fontSize: 16, fontFace: SANS,
     color: INK, isTextBox: true, margin: 0, lineSpacingMultiple: 1.25, valign: "top" });
   if (st.fact) {
     s.addShape("roundRect", { x: 0.55, y: 5.2, w: 12.2, h: 0.85, rectRadius: 0.1,
@@ -208,7 +240,7 @@ function didYouKnowSlide(pres, L) {
     card(s, x, y, 5.9, 1.9, i % 2 ? TEAL : COBALT);
     s.addText(f.title, { x: x + 0.35, y: y + 0.2, w: 5.2, h: 0.4, fontSize: 16, bold: true,
       fontFace: SANS, color: i % 2 ? TEAL : COBALT, isTextBox: true, margin: 0, valign: "middle" });
-    s.addText(f.text, { x: x + 0.35, y: y + 0.62, w: 5.2, h: 1.1, fontSize: 13, fontFace: SANS,
+    s.addText(rich(f.text), { x: x + 0.35, y: y + 0.62, w: 5.2, h: 1.1, fontSize: 13, fontFace: SANS,
       color: SLATE, isTextBox: true, margin: 0, lineSpacingMultiple: 1.2, valign: "top" });
   });
   s.addNotes("Use these as a settler, or as something for early finishers to read in the experience.");
@@ -223,7 +255,7 @@ function examSlide(pres, L) {
   L.exam.forEach((q, i) => {
     const y = 2.0 + i * 1.42;
     card(s, 0.55, y, 12.2, 1.2, BORDER);
-    s.addText(q.q, { x: 1.0, y: y + 0.12, w: 10.3, h: 0.96, fontSize: 17, fontFace: SANS,
+    s.addText(rich(q.q), { x: 1.0, y: y + 0.12, w: 10.3, h: 0.96, fontSize: 17, fontFace: SANS,
       color: INK, isTextBox: true, margin: 0, lineSpacingMultiple: 1.18, valign: "middle" });
     s.addShape("roundRect", { x: 11.5, y: y + 0.33, w: 0.95, h: 0.54, rectRadius: 0.1,
       fill: { color: "EEF2FB" } });
