@@ -98,6 +98,15 @@
     const cols = opts.columns, rows = opts.rows, want = opts.answer;
     const st = { grid: rows.map(r => r.slice()), sel: null, locked: false, marks: null, hover: null, hits: [] };
     const CX = 470, CY = 152, CW = Math.min(118, (W - CX - 46) / cols.length), RH = 44;
+    /* Where the keypad sits, and how tall the board needs to be. Neither
+     * depends on what the pupil has typed, so both are worked out once. A trace
+     * of a nine-line program fills the canvas; a three-cell calculation does
+     * not, and `fit` cuts the board down to what it uses rather than leaving a
+     * third of it empty. */
+    const used = Math.max(CY + rows.length * RH, 106 + (opts.code || []).length * 29) + 34;
+    const KEYTOP = Math.min(H - 118, Math.max(used, 240));
+    const HH = opts.fit ? Math.min(H, KEYTOP + 152) : H;
+    cv.height = HH;
     function draw() {
       st.hits = []; bg(x);
       label(x, opts.title || "Complete the trace table", 36, 42, 25, C.edge, "left", true);
@@ -126,14 +135,15 @@
         if (!fixed) st.hits.push({ id, px, py, w: CW - 4, h: RH - 4 });
       }));
       ["0","1","2","3","4","5","6","7","8","9",".","←"].forEach((k, i) => {
-        const px = 36 + (i % 6) * 68, py = H - 118 + Math.floor(i / 6) * 54, w = 60, h = 46;
+        const px = 36 + (i % 6) * 68, py = KEYTOP + Math.floor(i / 6) * 54, w = 60, h = 46;
         rr(x, px, py, w, h, 8);
         x.fillStyle = st.hover === "k" + k ? "#1d2f52" : C.pale; x.fill();
         x.lineWidth = 2; x.strokeStyle = C.line; x.stroke();
         label(x, k, px + w / 2, py + h / 2, 21, C.fg, "center", true);
         st.hits.push({ id: "k" + k, px, py, w, h });
       });
-      label(x, "Tap a cell, then use the keypad. Only fill a cell when that variable changes.", 36, H - 20, 16, C.soft);
+      label(x, opts.foot || "Tap a cell, then use the keypad. Only fill a cell when that variable changes.",
+            36, KEYTOP + 124, 16, C.soft);
       api.dirty = true;
     }
     const api = {
@@ -144,7 +154,10 @@
         else if (st.sel) {
           const [r, c] = st.sel.slice(1).split("_").map(Number), k = h.id.slice(1);
           if (k === "←") st.grid[r][c] = st.grid[r][c].slice(0, -1);
-          else if (st.grid[r][c].length < 6) st.grid[r][c] += k;
+          /* A trace table holds a loop counter; a capacity calculation holds
+           * 6,400,000. The cap is the widest value a cell can show, not a rule
+           * about what may be typed. */
+          else if (st.grid[r][c].length < (opts.maxlen || 6)) st.grid[r][c] += k;
         }
         draw(); },
       move(px, py) { const h = hitAt(st.hits, px, py); const id = h ? h.id : null;
@@ -164,7 +177,8 @@
         }));
         draw();
         return { ok: right === total, got: right, max: total,
-          msg: right === total ? "Correct: every value matches what the program would produce."
+          msg: right === total
+               ? (opts.msgOk || "Every value matches what the program would produce.")
                : `${right} of ${total} cells right. The correct values are shown in green.` };
       },
       lock() { st.locked = true; draw(); },
@@ -403,6 +417,16 @@
   }
 
   function make(task) {
+    /* A working-out table. The same board as a trace, because the interaction
+     * is the same - point at a cell, type the value - but a different thing to
+     * do: the pupil works out each step of a calculation rather than following
+     * a program. It is a separate type so a lesson record, a plan and a teacher
+     * can tell the two apart. */
+    if (task.t === "calc") return Trace(Object.assign({
+      foot: "Tap a cell, then use the keypad. Show every step of your working.",
+      // the window already says "Correct!" above this, so it does not say it again
+      msgOk: "Every step of the working is right.",
+      fit: true, maxlen: 10 }, task));
     if (task.t === "trace") return Trace(task);
     if (task.t === "bugline") return BugLine(task);
     if (task.t === "searchstep") return SearchStep(task);
@@ -410,5 +434,5 @@
     return null;
   }
   window.R360Algo = { make, Trace, BugLine, SearchStep, SortStep, arenaCase, codeLine, tokenise, CODE,
-                      TYPES: ["trace", "bugline", "searchstep", "sortstep"] };
+                      TYPES: ["calc", "trace", "bugline", "searchstep", "sortstep"] };
 })();

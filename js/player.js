@@ -346,7 +346,7 @@
 
   // ---------- question modal ----------
   const modal = $("#modal"), box = $("#box"); let lastFocus = null;
-  const BOARD_TASKS = ["circuit", "expr", "table", "convert", "addshift", "pixels", "sound", "memory", "permissions", "defrag", "impact", "trace", "bugline", "searchstep", "sortstep"];
+  const BOARD_TASKS = ["circuit", "expr", "table", "convert", "addshift", "pixels", "sound", "memory", "permissions", "defrag", "impact", "calc", "trace", "bugline", "searchstep", "sortstep"];
   // Boards draw to a canvas; map mouse and touch events onto it
   function mountBoard(host, board) {
     const cv = board.canvas;

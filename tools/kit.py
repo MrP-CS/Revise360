@@ -381,14 +381,24 @@ MODEL_Y = DIAG_Y = INFO_Y
 INFO_POS = [(fc, PANEL_CENTRE[k % 2]) for k, (fc, _) in enumerate(STATION_WALLS)]
 MODEL_POS = [(fc, x0 + MODEL_INSET) for fc, x0 in STATION_WALLS]
 DIAG_POS = [(fc, x0 + DIAG_INSET) for fc, x0 in STATION_WALLS]
-def export(L, site=SITE_S):
+def export(L, site=SITE_S, images=True):
+    """Build one lesson: the 360 artwork and the scene JSON beside it.
+
+    `images=False` writes only the JSON. Station names, wall bullets and the
+    challenge are painted into the artwork, so changing one of those needs a
+    render; adding or changing an ACTIVITY does not, because activities are
+    runtime JSON. A render takes about two minutes a lesson and rewrites a
+    three-megabyte photograph, so a pass that only touches activities should
+    not do one - it would churn the repository for an identical picture.
+    """
     import os
-    faces = build_faces(L)
     base = L["img"]
-    render(faces, OUT_S + f"{base}.jpg", OUT_S + f"prev_{base}")
-    import shutil; shutil.copy(OUT_S + f"{base}.jpg", site + f"experiences/img/{base}.jpg")
-    fcache = {k: np.asarray(f(), dtype=np.float32) for k, f in faces.items()}
-    render_hi(fcache, site + f"experiences/img/{base}_hi.jpg")
+    if images:
+        faces = build_faces(L)
+        render(faces, OUT_S + f"{base}.jpg", OUT_S + f"prev_{base}")
+        import shutil; shutil.copy(OUT_S + f"{base}.jpg", site + f"experiences/img/{base}.jpg")
+        fcache = {k: np.asarray(f(), dtype=np.float32) for k, f in faces.items()}
+        render_hi(fcache, site + f"experiences/img/{base}_hi.jpg")
     stations = []
     for k, st in enumerate(L["stations"]):
         fc, x0 = STATION_WALLS[k]
@@ -429,6 +439,25 @@ ONE_MARK = ("mcq", "multi", "circuit", "expr", "convert", "addshift", "pixels", 
 NO_MARK = ("sprint", "defence", "blitz", "lawgame", "arena")
 
 
+def calc(q, columns, rows, answer, fb="", title=None, given=None):
+    """A working-out table: the pupil fills every blank cell from the keypad.
+
+    The same interaction as a trace table and a different job. A capacity
+    lesson can ask "what is the size of a 1,000 x 800 image at 8 bits?" and get
+    a number back, step by step, instead of four options to choose between -
+    which is the difference between a pupil who can calculate and one who can
+    eliminate. One mark per blank cell, so the working is what is marked.
+
+      calc("Work out the size of the image, one step at a time.",
+           ["bits", "bytes", "kB"], [["", "", ""]], [["6400000", "800000", "800"]],
+           given=["width = 1000", "height = 800", "colour depth = 8"])
+    """
+    t = dict(t="calc", q=q, columns=columns, rows=rows, answer=answer, fb=fb)
+    if title: t["title"] = title
+    if given: t["code"] = given
+    return t
+
+
 def task_marks(t):
     """What one activity is worth. The same rule as Store.marks in js/store.js.
 
@@ -443,7 +472,7 @@ def task_marks(t):
     # tests passed, out of the mark total the question carries. store.js uses
     # the same default for one written without a total.
     if t["t"] == "code": return t.get("marks", 3)
-    if t["t"] == "trace": return sum(1 for row in t["rows"] for v in row if v == "")
+    if t["t"] in ("trace", "calc"): return sum(1 for row in t["rows"] for v in row if v == "")
     if t["t"] == "table": return 1 << (len(t["inputs"]) if t.get("inputs") else len(set(c for c in _re.sub("AND|OR|NOT", "", t["expr"]) if c.isalpha())))
     if t["t"] in NO_MARK: return 0
     return len(t.get("items") or t.get("pairs") or t.get("steps"))

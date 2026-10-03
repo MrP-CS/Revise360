@@ -80,6 +80,7 @@ ROLE = {
     "convert": "construct", "addshift": "construct", "pixels": "construct",
     "sound": "construct", "memory": "construct", "permissions": "construct",
     "defrag": "construct", "impact": "construct", "trace": "construct",
+    "calc": "construct",
     "bugline": "construct", "searchstep": "construct", "sortstep": "construct",
     "circuit": "construct", "expr": "construct",
     # a Python activity, by its stage in the release of support
@@ -740,8 +741,7 @@ def trace(rec, unit_pool, unit_outcomes=(), rare=frozenset()):
             status["assessed"] = "authored"
         gaps = []
         housekeeping = bool(HOUSEKEEPING.search(o["text"]))
-        if au.get("note"):
-            gaps.append("reviewed: " + au["note"])
+
         if not taught and not housekeeping:
             if all(s["explains"] is None for s in rec["stations"]):
                 gaps.append("cannot be traced: this lesson's station text is only "
@@ -757,7 +757,7 @@ def trace(rec, unit_pool, unit_outcomes=(), rare=frozenset()):
         rows.append({"outcome": o["id"], "text": o["text"], "taught_at": taught,
                      "matched_words": evidence, "practised_by": practised[:40],
                      "practice_count": len(practised), "assessed_by": assessed,
-                     "status": status, "gaps": gaps})
+                     "status": status, "note": au.get("note"), "gaps": gaps})
     # An exam question is an orphan only when NOTHING in the unit claims to teach
     # it. A test lesson's topics assess outcomes taught in earlier lessons, so
     # looking only at this lesson's outcomes would call every one of them an
@@ -956,10 +956,10 @@ def write_md(matrix, records, thin):
                   if any("cannot be traced" in g for g in r["gaps"])),
             "| exam questions matching no outcome stated in their unit | %d |"
             % sum(len(m["assessed_but_not_an_outcome"]) for m in matrix), ""]
-    out += ["", "## Outcomes with a gap", ""]
+    out += ["", "## Outcomes with a gap, and outcomes someone has checked", ""]
     any_gap = False
     for m in matrix:
-        rows = [r for r in m["outcomes"] if r["gaps"]]
+        rows = [r for r in m["outcomes"] if r["gaps"] or r.get("note")]
         if not rows and not m["assessed_but_not_an_outcome"] and not m.get("shape"):
             continue
         any_gap = True
@@ -968,6 +968,8 @@ def write_md(matrix, records, thin):
             out.append("- **%s** %s" % (r["outcome"], r["text"]))
             for g in r["gaps"]:
                 out.append("  - %s" % g)
+            if r.get("note"):
+                out.append("  - *checked by hand:* %s" % r["note"])
         for x in m["assessed_but_not_an_outcome"]:
             out.append("- **%s** is assessed but matches no outcome stated anywhere in "
                        "this unit: %s" % (x["id"], x.get("asks")))

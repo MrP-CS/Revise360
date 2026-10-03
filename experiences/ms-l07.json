@@ -70,6 +70,36 @@
         "8,000"
        ],
        "fb": "500 × 400 × 4 = 800,000 bits."
+      },
+      {
+       "t": "calc",
+       "q": "Now work one out yourself, one step at a time.",
+       "columns": [
+        "bits",
+        "bytes",
+        "kB"
+       ],
+       "rows": [
+        [
+         "",
+         "",
+         ""
+        ]
+       ],
+       "answer": [
+        [
+         "2400000",
+         "300000",
+         "300"
+        ]
+       ],
+       "fb": "500 × 300 × 16 = 2,400,000 bits. ÷ 8 = 300,000 bytes. ÷ 1,000 = 300 kB.",
+       "title": "A 500 × 300 image at 16 bits",
+       "code": [
+        "width = 500",
+        "height = 300",
+        "colour depth = 16 bits"
+       ]
       }
      ]
     },
@@ -102,6 +132,36 @@
         "6,400,000"
        ],
        "fb": "8,000 × 8 × 10 = 640,000 bits."
+      },
+      {
+       "t": "calc",
+       "q": "Now work one out yourself, one step at a time.",
+       "columns": [
+        "bits",
+        "bytes",
+        "kB"
+       ],
+       "rows": [
+        [
+         "",
+         "",
+         ""
+        ]
+       ],
+       "answer": [
+        [
+         "7056000",
+         "882000",
+         "882"
+        ]
+       ],
+       "fb": "22,050 × 8 × 40 = 7,056,000 bits. ÷ 8 = 882,000 bytes. ÷ 1,000 = 882 kB.",
+       "title": "40 seconds at 22,050 Hz, 8-bit",
+       "code": [
+        "sample rate = 22,050 Hz",
+        "bit depth = 8",
+        "duration = 40 seconds"
+       ]
       }
      ]
     },
@@ -134,6 +194,35 @@
         "It isn't: they're the same"
        ],
        "fb": "More bits per character means a bigger file."
+      },
+      {
+       "t": "calc",
+       "q": "Now work one out yourself, one step at a time.",
+       "columns": [
+        "bits",
+        "bytes",
+        "kB"
+       ],
+       "rows": [
+        [
+         "",
+         "",
+         ""
+        ]
+       ],
+       "answer": [
+        [
+         "24000",
+         "3000",
+         "3"
+        ]
+       ],
+       "fb": "1,500 × 16 = 24,000 bits. ÷ 8 = 3,000 bytes. ÷ 1,000 = 3 kB.",
+       "title": "1,500 characters in 16-bit Unicode",
+       "code": [
+        "characters = 1,500",
+        "bits per character = 16"
+       ]
       }
      ]
     },
@@ -241,6 +330,35 @@
         "500"
        ],
        "fb": "4,000 × 16 = 64,000 bits, and ÷ 8 = 8,000 bytes."
+      },
+      {
+       "t": "calc",
+       "q": "How many of these photos fit on the card? Work through it one step at a time.",
+       "columns": [
+        "one photo (bits)",
+        "one photo (kB)",
+        "photos that fit"
+       ],
+       "rows": [
+        [
+         "",
+         "",
+         ""
+        ]
+       ],
+       "answer": [
+        [
+         "14400000",
+         "1800",
+         "200"
+        ]
+       ],
+       "fb": "1,000 × 600 × 24 = 14,400,000 bits. ÷ 8 = 1,800,000 bytes = 1,800 kB. 360,000 ÷ 1,800 = 200 photos.",
+       "title": "Final challenge: will they fit?",
+       "code": [
+        "photo = 1,000 × 600 at 24 bits",
+        "card = 360,000 kB free"
+       ]
       }
      ]
     }
@@ -295,7 +413,8 @@
      "text": "Examiners award method marks. Even if you slip up dividing by 8, the formula and substitution can still earn marks."
     }
    ],
-   "models": []
+   "models": [],
+   "diagrams": []
   }
  ]
 }

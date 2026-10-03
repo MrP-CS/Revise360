@@ -151,7 +151,7 @@
     if (t.t === "code") return t.marks || 3;
     if (["mcq", "multi", "circuit", "expr", "convert", "addshift", "pixels", "sound",
          "memory", "permissions", "defrag", "impact", "searchstep", "sortstep"].indexOf(t.t) >= 0) return 1;
-    if (t.t === "trace") return t.answer.reduce((n, r, i) => n + r.filter((v, c) => t.rows[i][c] === "").length, 0);
+    if (t.t === "trace" || t.t === "calc") return t.answer.reduce((n, r, i) => n + r.filter((v, c) => t.rows[i][c] === "").length, 0);
     if (t.t === "bugline") return 2;
     if (t.t === "table") return 1 << (t.inputs ? t.inputs.length
       : new Set((t.expr || "").replace(/AND|OR|NOT/g, "").match(/[A-Z]/g) || []).size);

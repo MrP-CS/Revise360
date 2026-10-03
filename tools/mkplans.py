@@ -507,20 +507,29 @@ def practice_section(rec):
   marks are per question, so nothing is lost by the order.</li>
 </ul>""")
         return "".join(out)
+    # Three kinds of activity, by what the pupil has to supply. A teacher
+    # planning the lesson needs to know which, because a full score on twelve
+    # multiple-choice questions and a full score on three worked calculations
+    # are not the same evidence.
+    rows = [("Recognise", t.get("recognise", t["guided"]),
+             "The answer is on the screen and the pupil picks it: multiple "
+             "choice, choosing several, matching a pair."),
+            ("Construct", t.get("construct", 0),
+             "Nothing is offered. The pupil classifies, orders, fills in a "
+             "table or works a number out, and types or places the answer."),
+            ("Produce", t.get("produce", 0),
+             "The pupil writes it from the brief and nothing else."),
+            ("Challenge", t["challenge"],
+             "The hardest activity on each station. It is not optional and it "
+             "is not extra: it is the last step of the station.")]
     out.append("<table><thead><tr><th>Stage</th><th>Activities</th><th>What it is</th>"
                "</tr></thead><tbody>"
-               "<tr><td>Guided</td><td class=\"num\">%d</td><td>Support is in the "
-               "activity: an example to run, an output to predict, one thing to "
-               "change, a gap to fill.</td></tr>"
-               "<tr><td>Independent</td><td class=\"num\">%d</td><td>The pupil writes "
-               "or fixes it with the brief and nothing else.</td></tr>"
-               "<tr><td>Challenge</td><td class=\"num\">%d</td><td>The hardest activity "
-               "on each station. It is not optional and it is not extra: it is the "
-               "last step of the station.</td></tr></tbody></table>"
-               % (t["guided"], t["independent"], t["challenge"]))
-    if not t["independent"] and not t["challenge"]:
+               + "".join('<tr><td>%s</td><td class="num">%d</td><td>%s</td></tr>'
+                         % (name, n, why) for name, n, why in rows if n)
+               + "</tbody></table>")
+    if not t["independent"]:
         out.append('<div class="band amber"><p>Every activity in this lesson is '
-                   'guided: a pupil chooses between options and never produces '
+                   'recognition: a pupil chooses between options and never produces '
                    'anything of their own. Plan the independent work yourself - the '
                    'exam practice on the worksheet is the obvious place - and do not '
                    'read a full score here as evidence that a pupil can do it '

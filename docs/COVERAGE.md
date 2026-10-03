@@ -21,7 +21,7 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 | 1.2 | ms-l04 Top Trumps | 2 | 2 | 2 | 2 | auto | 1 | 1 |
 | 1.2 | ms-l05 Pick the storage | 2 | 0 | 0 | 2 | auto | 3 | 2 |
 | 1.2 | ms-l06 Units lab | 3 | 2 | 2 | 3 | auto | 2 | 1 |
-| 1.2 | ms-l07 Capacity calculator | 2 | 2 | 2 | 2 | auto |  | 2 |
+| 1.2 | ms-l07 Capacity calculator | 2 | 2 | 2 | 2 | authored 2/2 |  | 1 |
 | 1.2 | ms-l08 Binary workshop | 4 | 4 | 4 | 4 | auto |  | 1 |
 | 1.2 | ms-l09-test Assessment 1 | 0 | 0 | 0 | 0 |  | 4 |  |
 | 1.2 | ms-l10 Shift and hex lab | 4 | 3 | 3 | 4 | auto | 1 | 1 |
@@ -131,9 +131,9 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 | | count |
 |---|---|
 | outcomes in the course | 270 |
-| of those, with an **authored** mapping | 0 |
-| the rest, matched by words and unchecked | 270 |
-| teaching lessons where every activity is recognition | 12 |
+| of those, with an **authored** mapping | 2 |
+| the rest, matched by words and unchecked | 268 |
+| teaching lessons where every activity is recognition | 11 |
 | teaching lessons with only one activity that asks for an answer | 25 |
 | outcomes nothing in their unit assesses | 15 |
 | outcomes no station's text matches | 8 |
@@ -141,7 +141,7 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 | exam questions matching no outcome stated in their unit | 59 |
 
 
-## Outcomes with a gap
+## Outcomes with a gap, and outcomes someone has checked
 
 ### sa-l01 — Fetch-execute factory
 - **sa-l01-x1** is assessed but matches no outcome stated anywhere in this unit: Describe what the CPU does while a program is running.
@@ -199,7 +199,10 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 - the lesson's shape: no optional challenge activity
 
 ### ms-l07 — Capacity calculator
-- the lesson's shape: every activity is recognition: the answer is always on the screen
+- **ms-l07-o1** know what data capacity means
+  - *checked by hand:* Station 1 is the only place the lesson says what capacity means. Nothing on this worksheet asks for the definition on its own - every question here is a calculation - so it is assessed by the unit's own test item, which is where a definition question belongs.
+- **ms-l07-o2** understand how to calculate data capacity requirements
+  - *checked by hand:* Three formula stations, then scenarios and estimating. From October 2026 each formula station also ends with a working-out table the pupil fills in, so the outcome is produced online as well as written up on paper.
 - the lesson's shape: no optional challenge activity
 
 ### ms-l08 — Binary workshop

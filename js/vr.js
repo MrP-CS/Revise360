@@ -489,7 +489,7 @@
       v.tex.needsUpdate = true;
     });
 
-    const BOARD_TASKS = ["circuit", "expr", "table", "convert", "addshift", "pixels", "sound", "memory", "permissions", "defrag", "impact", "trace", "bugline", "searchstep", "sortstep"];
+    const BOARD_TASKS = ["circuit", "expr", "table", "convert", "addshift", "pixels", "sound", "memory", "permissions", "defrag", "impact", "calc", "trace", "bugline", "searchstep", "sortstep"];
     // ---------------- boards (drag, paint and tap in VR) ----------------
     let vrBoard = null;
     function openBoard(board) {
@@ -1130,6 +1130,7 @@
           pixels: "Choose a colour, then hold the trigger and sweep across the pixels to paint them.", sound: "Pull the trigger on the level nearest the wave in each column.",
           memory: "Hold the trigger on a program and drag it into RAM, or onto the disk if RAM is full.", permissions: "Pull the trigger on a cell to change the access level.", impact: "Pull the trigger on a cell to change how that group is affected.",
           trace: "Pull the trigger on a cell, then on the keypad to type the value.",
+          calc: "Pull the trigger on a cell, then on the keypad to type each step of your working.",
           bugline: "Pull the trigger on the line with the error, then on the kind of error it is.",
           searchstep: "Pull the trigger on the item the algorithm checks next.",
           sortstep: "Pull the trigger on two items to swap them.",

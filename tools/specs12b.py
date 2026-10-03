@@ -1,4 +1,4 @@
-from kit import mcq, multi, sort, match, order
+from kit import mcq, multi, sort, match, order, calc
 
 K12 = "1.2 Memory and storage"
 SUB12 = "OCR J277 Paper 1  |  Computer systems"
@@ -24,20 +24,39 @@ L7 = dict(id="ms-l07", topic="1.2", lesson=7, title="Capacity calculator", img="
         fact="Image file size is calculated by...",
         tasks=[mcq("What is the formula for the size of a bitmap image?", "Width × height × colour depth", ["Width + height + colour depth", "Width × height ÷ colour depth", "Resolution × sample rate"],
                    "All in pixels and bits per pixel."),
-               mcq("A 500 × 400 image has a colour depth of 4 bits. What is its size in bits?", "800,000", ["200,000", "1,600,000", "8,000"], "500 × 400 × 4 = 800,000 bits.")]),
+               mcq("A 500 × 400 image has a colour depth of 4 bits. What is its size in bits?", "800,000", ["200,000", "1,600,000", "8,000"], "500 × 400 × 4 = 800,000 bits."),
+               # Choosing between four answers and working one out are not the
+               # same skill, and this lesson is about the second. Different
+               # numbers from the wall, the worked example, the worksheet and
+               # the exam practice, so none of them gives this away.
+               calc("Now work one out yourself, one step at a time.",
+                    ["bits", "bytes", "kB"], [["", "", ""]], [["2400000", "300000", "300"]],
+                    given=["width = 500", "height = 300", "colour depth = 16 bits"],
+                    title="A 500 × 300 image at 16 bits",
+                    fb="500 × 300 × 16 = 2,400,000 bits. ÷ 8 = 300,000 bytes. ÷ 1,000 = 300 kB.")]),
    dict(name="Sound file size", bullets=["File size (bits) = sample rate × bit depth × duration in seconds.", "Sample rate is measured in hertz: samples per second.",
         "Stereo doubles it, because there are two channels."], challenge="Calculate the size of 30 seconds recorded at 44,100 Hz with a bit depth of 16.",
         ill=("code", ["size = sample rate × bit depth × seconds", "44100 × 16 × 30 = 21,168,000 bits", "÷ 8 = 2,646,000 bytes ≈ 2.6 MB"], 26),
         fact="Sound file size is calculated by...",
         tasks=[mcq("What is the formula for the size of a sound file?", "Sample rate × bit depth × duration", ["Width × height × colour depth", "Sample rate + bit depth + duration", "Bit depth ÷ duration"],
                    "Multiply by the number of channels for stereo."),
-               mcq("A 10-second clip is recorded at 8,000 Hz with a bit depth of 8. What is its size in bits?", "640,000", ["80,000", "64,000", "6,400,000"], "8,000 × 8 × 10 = 640,000 bits.")]),
+               mcq("A 10-second clip is recorded at 8,000 Hz with a bit depth of 8. What is its size in bits?", "640,000", ["80,000", "64,000", "6,400,000"], "8,000 × 8 × 10 = 640,000 bits."),
+               calc("Now work one out yourself, one step at a time.",
+                    ["bits", "bytes", "kB"], [["", "", ""]], [["7056000", "882000", "882"]],
+                    given=["sample rate = 22,050 Hz", "bit depth = 8", "duration = 40 seconds"],
+                    title="40 seconds at 22,050 Hz, 8-bit",
+                    fb="22,050 × 8 × 40 = 7,056,000 bits. ÷ 8 = 882,000 bytes. ÷ 1,000 = 882 kB.")]),
    dict(name="Text file size", bullets=["File size (bits) = number of characters × bits per character.", "ASCII uses 7 or 8 bits per character; Unicode often uses 16.",
         "Spaces and punctuation are characters too."], challenge="Calculate the size of a 2,000-character message in 8-bit ASCII.",
         ill=("code", ["size = characters × bits per character", "2000 × 8 = 16,000 bits", "÷ 8 = 2,000 bytes = 2 kB"], 26), fact="Text file size is calculated by...",
         tasks=[mcq("A 500-character text file uses 8 bits per character. How large is it?", "500 bytes", ["500 bits", "4,000 bytes", "64 bytes"], "500 × 8 = 4,000 bits, which is 500 bytes."),
                mcq("Why is the same text larger in Unicode than in ASCII?", "Unicode uses more bits per character", ["Unicode adds pictures", "Unicode repeats each character", "It isn't: they're the same"],
-                   "More bits per character means a bigger file.")]),
+                   "More bits per character means a bigger file."),
+               calc("Now work one out yourself, one step at a time.",
+                    ["bits", "bytes", "kB"], [["", "", ""]], [["24000", "3000", "3"]],
+                    given=["characters = 1,500", "bits per character = 16"],
+                    title="1,500 characters in 16-bit Unicode",
+                    fb="1,500 × 16 = 24,000 bits. ÷ 8 = 3,000 bytes. ÷ 1,000 = 3 kB.")]),
    dict(name="Scenario practice", bullets=["Read carefully: what's the file size, and how many files?", "Convert at the end, not halfway through.",
         "Show your working: marks are given for the method as well as the answer."], challenge="Complete the three scenarios on your worksheet.",
         ill=("table", ["Scenario", "Working"], [["200 photos, 2 MB each", "200 × 2 = 400 MB"], ["1 hour of audio at 1 MB/min", "60 MB"], ["Fits on 1 GB?", "460 MB: yes"]]),
@@ -61,7 +80,17 @@ L7 = dict(id="ms-l07", topic="1.2", lesson=7, title="Capacity calculator", img="
                "800 × 600 × 8 = 3,840,000 bits, and ÷ 8 = 480,000 bytes."),
            mcq("A 60-second clip is sampled at 20,000 Hz with a bit depth of 16. What is the file size in bits?", "19,200,000", ["1,200,000", "320,000", "2,400,000"],
                "20,000 × 16 × 60 = 19,200,000 bits."),
-           mcq("A text file has 4,000 characters stored in 16-bit Unicode. How big is it in bytes?", "8,000", ["4,000", "64,000", "500"], "4,000 × 16 = 64,000 bits, and ÷ 8 = 8,000 bytes.")]),
+           mcq("A text file has 4,000 characters stored in 16-bit Unicode. How big is it in bytes?", "8,000", ["4,000", "64,000", "500"], "4,000 × 16 = 64,000 bits, and ÷ 8 = 8,000 bytes."),
+           # The lesson's key question - "how many fit?" - answered rather than
+           # recognised. Three steps, one mark each, so the method is what is
+           # marked, which is what the worksheet and the exam also reward.
+           calc("How many of these photos fit on the card? Work through it one step at a time.",
+                ["one photo (bits)", "one photo (kB)", "photos that fit"],
+                [["", "", ""]], [["14400000", "1800", "200"]],
+                given=["photo = 1,000 × 600 at 24 bits", "card = 360,000 kB free"],
+                title="Final challenge: will they fit?",
+                fb="1,000 × 600 × 24 = 14,400,000 bits. ÷ 8 = 1,800,000 bytes = 1,800 kB. "
+                   "360,000 ÷ 1,800 = 200 photos.")]),
   info=[(0, "CD quality", "A music CD samples at 44,100 Hz with 16-bit depth in stereo, which is about 10 MB per minute of audio."),
         (1, "Why 44,100?", "Sampling must be at least twice the highest frequency you want to record. Human hearing stops around 20 kHz, so 44.1 kHz covers it."),
         (2, "Raw photos", "Professional cameras can save 'raw' files with 14 bits per colour channel, which is why they're often 30 MB or more each."),

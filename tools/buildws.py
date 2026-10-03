@@ -59,6 +59,13 @@ def logic_blocks(tasks):
                             head=["Stakeholder", "Effect", "Why"], rows=[[s2["name"], "", ""] for s2 in t["stakeholders"]])); continue
         if t["t"] == "defrag":
             out.append(dict(kind="lines", title="Explain what defragmentation does to the blocks on a disk, and why it makes files open faster:", n=3)); continue
+        if t["t"] == "calc":
+            # A working-out table is done at the screen, where the pupil finds
+            # out at once whether the number is right. Printing the same blank
+            # table on paper asks for the same sum twice, and the sheet already
+            # carries its own calculation practice with different figures. The
+            # screen marks the method; the paper is where it is written up. */
+            continue
         if t["t"] == "trace":
             out.append(dict(kind="table", title=t["q"], head=t["columns"],
                             rows=[[v if v else "" for v in row] for row in t["rows"]])); continue
@@ -92,7 +99,7 @@ def make(L):
     fin = L["final"]; task = fin["tasks"][0]
     if task["t"] == "code":
         rows = []; right = ""; instr = "plan your program on paper first."
-    elif task["t"] in ("memory", "permissions", "defrag", "impact", "trace", "bugline", "searchstep", "sortstep"):
+    elif task["t"] in ("memory", "permissions", "defrag", "impact", "calc", "trace", "bugline", "searchstep", "sortstep"):
         rows = []; right = ""; instr = "plan your answer here first."
     elif task["t"] in ("mcq", "multi"):
         rows = []; right = ""; instr = "note your answers below."
