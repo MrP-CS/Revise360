@@ -594,7 +594,7 @@ BANK = [
                      "not split|cannot be divided|not be divided|cannot be shared|"
                      "not be shared|impossible to split|hard to split|difficult to split|"
                      "cannot be done in parallel"],
-                    ["depend|depends|sequential|in order|one after|result of|needs the"],
+                    ["depend|depends|sequential|one after|result of|needs the result|relies on the previous"],
                     reject=[["can be split|can be divided|can be shared|"
                              "can be done in parallel|easy to split"]],
                     exemplar="Some tasks cannot be divided, because each step needs the "
@@ -781,7 +781,8 @@ BANK = [
                     ["sensor|thermometer|thermistor|measure|reads|detects", "temperature|room"],
                     exemplar="A temperature sensor measures how warm the room is."),
                  mp("process: the system compares the reading with the target temperature",
-                    ["compare|compares|checks|works out|decides|if|less than|below|against"],
+                    ["compare|compares|checks|works out|decides|less than|below|against",
+                     "temperature|target|20|reading|set|thermostat|room"],
                     exemplar="It compares that reading with the target of 20 degrees."),
                  mp("output: it switches the heating on or off",
                     ["switch|turns|sends|activates|starts|stops|opens|on|off",

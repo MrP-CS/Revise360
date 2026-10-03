@@ -87,8 +87,10 @@ AXES = [
      "more|larger|bigger|greater|higher|increase|increases|twice|double"),
     (("volatile",), "non-volatile|nonvolatile|keeps its contents|retains its contents"),
     (("non-volatile", "nonvolatile", "permanent", "permanently"), "volatile|temporary"),
-    (("cheap", "cheaper", "inexpensive"), "expensive|dearer|costly|costs more"),
-    (("expensive", "dearer", "costly"), "cheap|cheaper|inexpensive|costs less"),
+    # "costly" is not on either side: it reduces to the same stem as "costs", so
+    # a rejection built on it fired on an answer that said "costs less".
+    (("cheap", "cheaper", "inexpensive"), "more expensive|dearer|costs more"),
+    (("expensive", "dearer"), "cheap|cheaper|inexpensive|costs less"),
     (("before",), "after|afterwards|later"),
     (("after", "afterwards"), "before|first|beforehand"),
 ]

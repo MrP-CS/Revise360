@@ -1,0 +1,253 @@
+{
+ "topic": "1.3",
+ "lesson": "nw-l02",
+ "questions": [
+  {
+   "type": "short",
+   "q": "State what is meant by bandwidth.",
+   "markPoints": [
+    {
+     "concept": "the amount of data that can be carried in a given time",
+     "accept": [
+      [
+       "amount|quantity|how much|volume|data|bits",
+       "time|second|per second|at once|given time"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The amount of data that can be sent in a given time."
+    }
+   ],
+   "example": "The amount of data that can be carried over a connection in a given time, usually measured in megabits per second.",
+   "paraphrase": "How much data the connection can carry each second.",
+   "marks": 1,
+   "feedback": "A rate, not a speed: it is how much goes through, not how fast each bit travels.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "Bandwidth",
+   "revisit": "nw-l02-s1",
+   "revisitReason": "Bandwidth",
+   "outcomes": [
+    "nw-l02-o1",
+    "nw-l02-o2"
+   ],
+   "topic": "1.3",
+   "id": "rq-1.3-bandwidth-0009",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "nw-l02",
+   "revisitStationId": "nw-l02-s1",
+   "revisitLabel": "1.3 Lesson 2 — Network control room, station 1: Bandwidth",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "Explain why a network slows down when many users are connected at once.",
+   "markPoints": [
+    {
+     "concept": "the available bandwidth is shared between them",
+     "accept": [
+      [
+       "shared|share|sharing|divided|split|between them|each gets less"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The bandwidth is shared between all the users."
+    },
+    {
+     "concept": "so each user has less of it and their data takes longer to arrive",
+     "accept": [
+      [
+       "less|smaller share|slower|takes longer|wait|queue|congestion|collision|delay"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "So each one has less of it and their data takes longer to arrive."
+    }
+   ],
+   "example": "There is a fixed amount of bandwidth and it is shared between everybody using the network, so the more users there are the less each one gets and the longer their data takes to arrive.",
+   "paraphrase": "Everyone is drawing on the same fixed capacity, which means each person's share shrinks as more join and their transfers take longer.",
+   "marks": 2,
+   "feedback": "Shared, therefore less each. The second mark is the consequence.",
+   "commandWord": "explain",
+   "difficulty": "understand",
+   "examStyle": true,
+   "subtopic": "Bandwidth",
+   "revisit": "nw-l02-s1",
+   "revisitReason": "Bandwidth",
+   "outcomes": [
+    "nw-l02-o1",
+    "nw-l02-o2"
+   ],
+   "topic": "1.3",
+   "id": "rq-1.3-bandwidth-0010",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "nw-l02",
+   "revisitStationId": "nw-l02-s1",
+   "revisitLabel": "1.3 Lesson 2 — Network control room, station 1: Bandwidth",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "multi",
+   "q": "Which of these affect the performance of a network? Tick all that apply.",
+   "options": [
+    "Bandwidth",
+    "The number of users connected",
+    "The transmission media used",
+    "The error rate",
+    "Latency",
+    "The colour of the cables"
+   ],
+   "correct": [
+    "Bandwidth",
+    "The number of users connected",
+    "The transmission media used",
+    "The error rate",
+    "Latency"
+   ],
+   "marks": 5,
+   "feedback": "Five real factors. The error rate matters because every corrupted packet has to be sent again.",
+   "commandWord": "tick",
+   "difficulty": "retrieve",
+   "subtopic": "What affects network performance",
+   "revisit": "nw-l02-s5",
+   "revisitReason": "What affects network performance",
+   "outcomes": [
+    "nw-l02-o1"
+   ],
+   "topic": "1.3",
+   "id": "rq-1.3-what-affects-network-performance-0011",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "nw-l02",
+   "revisitStationId": "nw-l02-s5",
+   "revisitLabel": "1.3 Lesson 2 — Network control room, station 5: Latency",
+   "revisitScene": 0,
+   "revisitK": 4
+  },
+  {
+   "type": "short",
+   "q": "State what is meant by latency.",
+   "markPoints": [
+    {
+     "concept": "the delay before data arrives",
+     "accept": [
+      [
+       "delay|lag|time taken|wait|how long|time it takes|pause"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The delay between sending data and it arriving."
+    }
+   ],
+   "example": "The delay between data being sent and it arriving at the other end.",
+   "paraphrase": "The lag before the data gets there.",
+   "marks": 1,
+   "feedback": "Latency is a delay, not a quantity. A connection can have huge bandwidth and poor latency — a satellite link is the classic example.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "What affects network performance",
+   "revisit": "nw-l02-s5",
+   "revisitReason": "What affects network performance",
+   "outcomes": [
+    "nw-l02-o1"
+   ],
+   "topic": "1.3",
+   "id": "rq-1.3-what-affects-network-performance-0012",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "nw-l02",
+   "revisitStationId": "nw-l02-s5",
+   "revisitLabel": "1.3 Lesson 2 — Network control room, station 5: Latency",
+   "revisitScene": 0,
+   "revisitK": 4
+  },
+  {
+   "type": "written",
+   "q": "A video call over a satellite connection has plenty of bandwidth but is still difficult to hold. Explain why.",
+   "markPoints": [
+    {
+     "concept": "the signal has a long way to travel, so latency is high",
+     "accept": [
+      [
+       "latency|delay|lag"
+      ],
+      [
+       "distance|far|long way|thousands of|orbit|space|travel"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The signal has to travel out to the satellite and back, so there is a long delay."
+    },
+    {
+     "concept": "and a conversation needs the delay to be short, not the bandwidth to be large",
+     "accept": [
+      [
+       "conversation|talk|talking|speaking|real time|interrupt|talk over|reply|response"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "A conversation needs a short delay rather than a lot of bandwidth, so people keep talking over each other."
+    }
+   ],
+   "example": "The signal has to travel up to the satellite and back down again, which is a very long way, so the latency is high. A conversation depends on short delays rather than on large bandwidth, so the two people keep talking over each other.",
+   "paraphrase": "Because the data goes all the way to orbit and back there is a noticeable lag, and holding a conversation depends on quick responses rather than on how much data can be carried.",
+   "marks": 2,
+   "feedback": "Bandwidth and latency are different things. This question is entirely about the second one.",
+   "hint": "How far does the signal actually travel, and what does a conversation need that a file download does not?",
+   "commandWord": "explain",
+   "difficulty": "stretch",
+   "examStyle": true,
+   "subtopic": "What affects network performance",
+   "revisit": "nw-l02-s5",
+   "revisitReason": "What affects network performance",
+   "outcomes": [
+    "nw-l02-o1"
+   ],
+   "topic": "1.3",
+   "id": "rq-1.3-what-affects-network-performance-0013",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "nw-l02",
+   "revisitStationId": "nw-l02-s5",
+   "revisitLabel": "1.3 Lesson 2 — Network control room, station 5: Latency",
+   "revisitScene": 0,
+   "revisitK": 4
+  },
+  {
+   "type": "mcq",
+   "q": "A school replaces its copper cables with fibre optic. Which network problem is this most likely to improve?",
+   "options": [
+    "A high error rate causing packets to be resent",
+    "The number of users connected at once",
+    "The distance to the web server",
+    "The cost of running the network"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Fibre is immune to electrical interference, so fewer packets are corrupted and fewer have to be sent again.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "subtopic": "What affects network performance",
+   "revisit": "nw-l02-s5",
+   "revisitReason": "What affects network performance",
+   "outcomes": [
+    "nw-l02-o1"
+   ],
+   "topic": "1.3",
+   "id": "rq-1.3-what-affects-network-performance-0014",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "nw-l02",
+   "revisitStationId": "nw-l02-s5",
+   "revisitLabel": "1.3 Lesson 2 — Network control room, station 5: Latency",
+   "revisitScene": 0,
+   "revisitK": 4
+  }
+ ]
+}

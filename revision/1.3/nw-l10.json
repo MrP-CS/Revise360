@@ -1,0 +1,160 @@
+{
+ "topic": "1.3",
+ "lesson": "nw-l10",
+ "questions": [
+  {
+   "type": "short",
+   "q": "State what encryption does to data.",
+   "markPoints": [
+    {
+     "concept": "it scrambles the data so it cannot be understood without the key",
+     "accept": [
+      [
+       "scramble|scrambled|unreadable|cannot be read|cannot be understood|meaningless|cipher|ciphertext|jumbled|coded|unintelligible|not readable"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "It scrambles the data so it cannot be understood without the key."
+    }
+   ],
+   "example": "It scrambles the data into a form that cannot be understood by anyone without the key.",
+   "paraphrase": "It turns the information into something unreadable unless you hold the key.",
+   "marks": 1,
+   "feedback": "Unreadable without the key. Encryption does not stop data being intercepted — it stops it being useful once it has been.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "Encryption and keys",
+   "revisit": "nw-l10-s3",
+   "revisitReason": "Encryption and keys",
+   "outcomes": [
+    "nw-l10-o1",
+    "nw-l10-o3",
+    "nw-l10-o4"
+   ],
+   "topic": "1.3",
+   "id": "rq-1.3-encryption-and-keys-0037",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "nw-l10",
+   "revisitStationId": "nw-l10-s3",
+   "revisitLabel": "1.3 Lesson 10 — Cipher room, station 3: Keys",
+   "revisitScene": 0,
+   "revisitK": 2
+  },
+  {
+   "type": "written",
+   "q": "Explain why encrypting data sent over a public Wi-Fi network protects a user, even though anyone nearby can pick up the signal.",
+   "markPoints": [
+    {
+     "concept": "the signal can still be intercepted",
+     "accept": [
+      [
+       "intercept|intercepted|pick up|picked up|capture|captured|received|read the signal|listen"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Anyone nearby can still intercept the signal."
+    },
+    {
+     "concept": "but encrypted data is meaningless without the key",
+     "accept": [
+      [
+       "without the key|no key|do not have the key|unless they have the key"
+      ],
+      [
+       "unreadable|meaningless|nonsense|scrambled|cannot read|cannot understand|no use"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "What they intercept is meaningless without the key."
+    },
+    {
+     "concept": "so the data is useless to the attacker",
+     "accept": [
+      [
+       "useless|no use|cannot use|worthless|cannot do anything|safe|protected|cannot read it|tells them nothing|means nothing|gets them nothing|of no value"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "So the data is of no use to them."
+    }
+   ],
+   "example": "Encryption does not stop the signal being intercepted — anybody in range can still capture it. What it does is turn the data into something meaningless to anyone without the key, so even though the attacker has the data, it is useless to them.",
+   "paraphrase": "Someone nearby can certainly capture what is transmitted, but because it has been scrambled and they have no key, what they end up with tells them nothing.",
+   "marks": 3,
+   "feedback": "Three ideas, and the first one matters: encryption is not a way of hiding the signal.",
+   "commandWord": "explain",
+   "difficulty": "apply",
+   "examStyle": true,
+   "misconception": "A common wrong answer is that encryption stops the data being intercepted. It does not.",
+   "subtopic": "Encryption and keys",
+   "revisit": "nw-l10-s3",
+   "revisitReason": "Encryption and keys",
+   "outcomes": [
+    "nw-l10-o1",
+    "nw-l10-o3",
+    "nw-l10-o4"
+   ],
+   "topic": "1.3",
+   "id": "rq-1.3-encryption-and-keys-0038",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "nw-l10",
+   "revisitStationId": "nw-l10-s3",
+   "revisitLabel": "1.3 Lesson 10 — Cipher room, station 3: Keys",
+   "revisitScene": 0,
+   "revisitK": 2
+  },
+  {
+   "type": "written",
+   "q": "Explain why a private key must never be shared.",
+   "markPoints": [
+    {
+     "concept": "anyone with the private key can decrypt the messages",
+     "accept": [
+      [
+       "decrypt|read|unscramble|open|understand|access"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Anyone who has the private key can decrypt the messages."
+    },
+    {
+     "concept": "so sharing it removes the protection entirely",
+     "accept": [
+      [
+       "no longer|not secure|no protection|pointless|useless|removes|anyone could|not private|no point|stops protecting|nothing is protected|protects nothing"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "So sharing it means the encryption no longer protects anything."
+    }
+   ],
+   "example": "The private key is what decrypts the messages, so anyone who has a copy of it can read everything that was meant to be protected, which means sharing it removes the protection completely.",
+   "paraphrase": "Whoever holds that key can unscramble the messages, so passing it around means the encryption stops protecting anything at all.",
+   "marks": 2,
+   "feedback": "What the key does, and what sharing it costs. The public key may be shared freely — that is the point of it.",
+   "commandWord": "explain",
+   "difficulty": "understand",
+   "subtopic": "Encryption and keys",
+   "revisit": "nw-l10-s3",
+   "revisitReason": "Encryption and keys",
+   "outcomes": [
+    "nw-l10-o1",
+    "nw-l10-o3",
+    "nw-l10-o4"
+   ],
+   "topic": "1.3",
+   "id": "rq-1.3-encryption-and-keys-0039",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "nw-l10",
+   "revisitStationId": "nw-l10-s3",
+   "revisitLabel": "1.3 Lesson 10 — Cipher room, station 3: Keys",
+   "revisitScene": 0,
+   "revisitK": 2
+  }
+ ]
+}

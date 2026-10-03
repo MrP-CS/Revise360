@@ -1,0 +1,203 @@
+{
+ "topic": "1.3",
+ "lesson": "nw-l04",
+ "questions": [
+  {
+   "type": "match",
+   "q": "Match each piece of network hardware to its job.",
+   "pairs": [
+    [
+     "Switch",
+     "Sends a frame only to the device it is addressed to"
+    ],
+    [
+     "Router",
+     "Sends data between different networks"
+    ],
+    [
+     "Wireless access point",
+     "Lets devices join the network without a cable"
+    ],
+    [
+     "Network interface card",
+     "Gives a device its MAC address and its connection"
+    ]
+   ],
+   "marks": 4,
+   "feedback": "A switch works within one network; a router works between networks.",
+   "commandWord": "draw",
+   "difficulty": "understand",
+   "subtopic": "LAN hardware",
+   "revisit": "nw-l04-s1",
+   "revisitReason": "LAN hardware",
+   "outcomes": [
+    "nw-l04-o1",
+    "nw-l04-o2"
+   ],
+   "topic": "1.3",
+   "id": "rq-1.3-lan-hardware-0018",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "nw-l04",
+   "revisitStationId": "nw-l04-s1",
+   "revisitLabel": "1.3 Lesson 4 — Mission: wire up the school, station 1: Switch",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "Explain why a switch is more efficient than a hub.",
+   "markPoints": [
+    {
+     "concept": "a switch sends data only to the device it is addressed to",
+     "accept": [
+      [
+       "only|just|single|one device|the right device|intended|destination|correct device"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "A switch sends the data only to the device it is addressed to."
+    },
+    {
+     "concept": "so less of the network's bandwidth is wasted on devices that do not need the data",
+     "accept": [
+      [
+       "bandwidth|traffic|congestion|collision|wasted|unnecessary|every device|all devices|broadcast"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "This means less bandwidth is wasted sending data to devices that do not want it."
+    }
+   ],
+   "example": "A switch reads the MAC address on each frame and sends it only to the port the destination device is on, whereas a hub sends it to every port, so a switch wastes far less of the network's bandwidth.",
+   "paraphrase": "Because a switch directs each frame to just the intended machine rather than broadcasting it everywhere, much less of the available capacity is used up on traffic nobody wanted.",
+   "marks": 2,
+   "feedback": "One device rather than all of them, and then what that saves.",
+   "commandWord": "explain",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "LAN hardware",
+   "revisit": "nw-l04-s1",
+   "revisitReason": "LAN hardware",
+   "outcomes": [
+    "nw-l04-o1",
+    "nw-l04-o2"
+   ],
+   "topic": "1.3",
+   "id": "rq-1.3-lan-hardware-0019",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "nw-l04",
+   "revisitStationId": "nw-l04-s1",
+   "revisitLabel": "1.3 Lesson 4 — Mission: wire up the school, station 1: Switch",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "mcq",
+   "q": "Which piece of hardware joins a home network to the internet?",
+   "options": [
+    "A router",
+    "A switch",
+    "A network interface card",
+    "A wireless access point"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "A router moves data between networks — here, between the home LAN and the internet.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "LAN hardware",
+   "revisit": "nw-l04-s1",
+   "revisitReason": "LAN hardware",
+   "outcomes": [
+    "nw-l04-o1",
+    "nw-l04-o2"
+   ],
+   "topic": "1.3",
+   "id": "rq-1.3-lan-hardware-0020",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "nw-l04",
+   "revisitStationId": "nw-l04-s1",
+   "revisitLabel": "1.3 Lesson 4 — Mission: wire up the school, station 1: Switch",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "Compare UTP copper cable with fibre optic cable for connecting two school buildings 400 metres apart.",
+   "markPoints": [
+    {
+     "concept": "fibre carries data much further without the signal weakening",
+     "accept": [
+      [
+       "fibre|fiber|optic|optical",
+       "further|greater runs|greater distance|longer distance|long distance|does not weaken|no attenuation|400|hundreds of metres"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Fibre can carry the signal far further than copper without it weakening."
+    },
+    {
+     "concept": "copper is limited to about 100 metres, which is not far enough here",
+     "accept": [
+      [
+       "100|hundred|limit|limited|only",
+       "metre|meter|m\\b"
+      ],
+      [
+       "not far enough|too short|would not reach|not enough"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "UTP is limited to about 100 metres, so it would not reach."
+    },
+    {
+     "concept": "fibre is immune to electrical interference, so the error rate is lower",
+     "accept": [
+      [
+       "not affected by interference|not affected by electrical|unaffected|immune|no interference|does not pick up|not disturbed"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Fibre is not affected by electrical interference."
+    },
+    {
+     "concept": "but fibre is more expensive to buy and to install",
+     "accept": [
+      [
+       "expensive|costly|dearer|cost more|more to install|price"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Fibre costs more to buy and to install."
+    }
+   ],
+   "example": "UTP copper is limited to about 100 metres before the signal weakens too much, so it could not cover 400 metres in one run. Fibre optic carries the signal far further without weakening, and because it uses light it is immune to the electrical interference that copper picks up, so the error rate is lower. The drawback is cost: fibre and the equipment to terminate it are considerably more expensive.",
+   "paraphrase": "Twisted pair only works over about a hundred metres, which is nowhere near the distance needed, while optical cable manages far greater runs and is unaffected by electrical noise, giving fewer errors. Against that, it is dearer to buy and to fit.",
+   "marks": 4,
+   "feedback": "Four points, and the distance one is the one the scenario is really asking about.",
+   "commandWord": "compare",
+   "difficulty": "stretch",
+   "examStyle": true,
+   "subtopic": "LAN hardware",
+   "revisit": "nw-l04-s1",
+   "revisitReason": "LAN hardware",
+   "outcomes": [
+    "nw-l04-o1",
+    "nw-l04-o2"
+   ],
+   "topic": "1.3",
+   "id": "rq-1.3-lan-hardware-0021",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "nw-l04",
+   "revisitStationId": "nw-l04-s1",
+   "revisitLabel": "1.3 Lesson 4 — Mission: wire up the school, station 1: Switch",
+   "revisitScene": 0,
+   "revisitK": 0
+  }
+ ]
+}

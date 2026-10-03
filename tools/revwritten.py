@@ -59,6 +59,12 @@ IRRELEVANT = [
     "an hour before the test.",
     "An IDE provides an editor, a translator, a debugger and an error diagnostics "
     "window, all in one program, so a developer does not need separate tools.",
+    "A firewall inspects the traffic entering and leaving a network and blocks anything "
+    "that does not meet the rules it has been given.",
+    "An array is a data structure holding several values of the same type under one "
+    "identifier, each reached by its index.",
+    "Validation checks that data entered is sensible before it is accepted, for example "
+    "that an age is a number between 0 and 120.",
 ]
 
 # Deliberate reversals, used to build the contradiction probe where the author
@@ -78,7 +84,7 @@ REVERSALS = [
 ]
 
 NEGATORS = ("not", "never", "no", "none", "without", "nor", "neither", "cannot",
-            "lacks", "lacking", "fails", "unable")
+            "unable")
 
 
 def misspell(text):
@@ -177,6 +183,15 @@ def affirm(p):
     owns = any(t in NEGATORS for way in p["accept"] for g in way
                for alt in g.split("|") for t in alt.strip().split())
     if not owns:
+        return None
+    # Only where the denial is the whole of what is being matched here: an
+    # exemplar may contain a "not" the point does not depend on, and taking that
+    # one out denies nothing. "It scrambles the data so it cannot be understood"
+    # still says it scrambles the data.
+    low = text.lower()
+    present = [alt.strip() for way in p["accept"] for g in way
+               for alt in g.split("|") if alt.strip() and alt.strip() in low]
+    if not present or not all(set(a.split()) & set(NEGATORS) for a in present):
         return None
     out, found = [], False
     for w in text.split():
@@ -290,7 +305,13 @@ def probes_for(q, n):
         out.append(("incomplete", q["incomplete"], ("<", marks)))
     elif len(pts) > 1 and pts[0].get("exemplar"):
         out.append(("incomplete", pts[0]["exemplar"], ("<", marks)))
+    # Two of them, from different places in the pool. One irrelevant answer tests
+    # one question's patterns against one vocabulary; a mark point written too
+    # loosely usually survives one and not two. The first version of this suite
+    # used one, and a mark point that could be earned by an answer about
+    # phishing went through it.
     out.append(("irrelevant", IRRELEVANT[n % len(IRRELEVANT)], ("==", 0)))
+    out.append(("irrelevant", IRRELEVANT[(n + 3) % len(IRRELEVANT)], ("==", 0)))
     if marks > 1:
         out.append(("keyword dump", keyword_dump(q), ("<=", 1)))
     for pi, p in enumerate(pts):
@@ -312,7 +333,7 @@ def probes_for(q, n):
             # states the memory advantage, and a marker that awards it is right.
             # So the two probes that alter one wording are only enforced where
             # there IS only one wording.
-            aff = affirm(p) if len(p["accept"]) == 1 or owns_neg else None
+            aff = affirm(p) if owns_neg else None
             if aff:
                 out.append(("point %d affirmed" % (pi + 1), aff, ("point", pi, False)))
             bad = contradict(p) if len(p["accept"]) == 1 else None

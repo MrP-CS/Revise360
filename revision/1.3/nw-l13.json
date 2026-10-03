@@ -1,0 +1,188 @@
+{
+ "topic": "1.3",
+ "lesson": "nw-l13",
+ "questions": [
+  {
+   "type": "multi",
+   "q": "Which of these are advantages of dividing network protocols into layers? Tick all that apply.",
+   "options": [
+    "A change to one layer does not require the others to be rewritten",
+    "Each layer can be developed by different people",
+    "It is easier to find where a fault is",
+    "Data is transmitted faster than it would be without layers",
+    "Less data has to be sent"
+   ],
+   "correct": [
+    "A change to one layer does not require the others to be rewritten",
+    "Each layer can be developed by different people",
+    "It is easier to find where a fault is"
+   ],
+   "marks": 3,
+   "feedback": "Layering is about managing complexity. It adds a little overhead rather than removing any.",
+   "commandWord": "tick",
+   "difficulty": "understand",
+   "subtopic": "Layers",
+   "revisit": "nw-l13-s3",
+   "revisitReason": "Layers",
+   "outcomes": [
+    "nw-l13-o1",
+    "nw-l13-o2"
+   ],
+   "topic": "1.3",
+   "id": "rq-1.3-layers-0049",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "nw-l13",
+   "revisitStationId": "nw-l13-s3",
+   "revisitLabel": "1.3 Lesson 13 — Parcel depot, station 3: Advantages of layering",
+   "revisitScene": 0,
+   "revisitK": 2
+  },
+  {
+   "type": "written",
+   "q": "Explain one advantage of layering network protocols.",
+   "markPoints": [
+    {
+     "concept": "each layer can be changed or replaced on its own",
+     "accept": [
+      [
+       "change|changed|replace|replaced|update|updated|improve|rewritten|swap|swapped",
+       "one layer|that layer|a layer|independently|on its own|without affecting|without rewriting"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "A layer can be changed without the others being rewritten."
+    },
+    {
+     "concept": "because the layers only have to agree on what passes between them",
+     "accept": [
+      [
+       "interface|between them|agree|agrees|boundary|do not need to know|hidden|self contained|selfcontained"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "This is because each layer only has to agree with its neighbours on what passes between them."
+    }
+   ],
+   "example": "One layer can be changed or replaced without rewriting the others, because each layer only has to agree with its neighbours about what is passed between them — so Wi-Fi could replace Ethernet underneath without anything above it changing.",
+   "paraphrase": "You can swap out or improve a single layer on its own, since the layers only need to agree on the interface between them rather than on how each other works inside.",
+   "marks": 2,
+   "feedback": "Independence, and then the reason independence is possible.",
+   "commandWord": "explain",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Layers",
+   "revisit": "nw-l13-s3",
+   "revisitReason": "Layers",
+   "outcomes": [
+    "nw-l13-o1",
+    "nw-l13-o2"
+   ],
+   "topic": "1.3",
+   "id": "rq-1.3-layers-0050",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "nw-l13",
+   "revisitStationId": "nw-l13-s3",
+   "revisitLabel": "1.3 Lesson 13 — Parcel depot, station 3: Advantages of layering",
+   "revisitScene": 0,
+   "revisitK": 2
+  },
+  {
+   "type": "order",
+   "q": "Put the four layers of the TCP/IP model in order, starting with the one closest to the user.",
+   "steps": [
+    "Application",
+    "Transport",
+    "Internet",
+    "Link"
+   ],
+   "marks": 4,
+   "feedback": "Application at the top where the user is, link at the bottom where the cable is.",
+   "commandWord": "complete",
+   "difficulty": "retrieve",
+   "subtopic": "Layers",
+   "revisit": "nw-l13-s3",
+   "revisitReason": "Layers",
+   "outcomes": [
+    "nw-l13-o1",
+    "nw-l13-o2"
+   ],
+   "topic": "1.3",
+   "id": "rq-1.3-layers-0051",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "nw-l13",
+   "revisitStationId": "nw-l13-s3",
+   "revisitLabel": "1.3 Lesson 13 — Parcel depot, station 3: Advantages of layering",
+   "revisitScene": 0,
+   "revisitK": 2
+  },
+  {
+   "type": "extended",
+   "q": "A network manager is explaining to a head teacher why the school's network uses layered protocols rather than one large program that does everything. Discuss the arguments she could use.",
+   "markPoints": [
+    {
+     "concept": "explains what layering means in this context",
+     "accept": [],
+     "worth": 1
+    },
+    {
+     "concept": "argues that a layer can be changed without the rest being rewritten",
+     "accept": [],
+     "worth": 1
+    },
+    {
+     "concept": "argues that faults are easier to find when each layer is separate",
+     "accept": [],
+     "worth": 1
+    },
+    {
+     "concept": "argues that different specialists can work on different layers",
+     "accept": [],
+     "worth": 1
+    },
+    {
+     "concept": "acknowledges a cost: more overhead, or more complexity to understand",
+     "accept": [],
+     "worth": 1
+    },
+    {
+     "concept": "reaches a judgement about whether layering is worth it here, with a reason",
+     "accept": [],
+     "worth": 1
+    }
+   ],
+   "example": "Layering means the job of getting data from one machine to another is divided into separate stages, each with its own rules, and each only having to agree with its neighbours about what is passed between them. The first argument is that this makes change possible: when the school replaces its wireless access points, only the bottom layer is affected and nothing above it has to be touched. The second is that faults become findable: if web pages load but email does not, the problem is in the application layer and not in the cabling, which saves hours. The third is that nobody has to understand all of it at once, so different specialists, and different manufacturers, can work on different layers. Against that, layering does add some overhead to every packet and is harder to explain than one program would be. For a school network that has to be maintained for years by people who did not build it, I would say the ability to change and diagnose one layer at a time is worth far more than the overhead it costs.",
+   "bands": [
+    "CONTENT",
+    "APPLICATION",
+    "DEVELOPMENT",
+    "BALANCE",
+    "CONCLUSION"
+   ],
+   "marks": 6,
+   "feedback": "You mark this one yourself against the points above. The mark that separates a discussion from a list is the last one: a judgement with a reason attached.",
+   "commandWord": "discuss",
+   "difficulty": "stretch",
+   "examStyle": true,
+   "subtopic": "Layers",
+   "revisit": "nw-l13-s3",
+   "revisitReason": "Layers",
+   "outcomes": [
+    "nw-l13-o1",
+    "nw-l13-o2"
+   ],
+   "topic": "1.3",
+   "id": "rq-1.3-layers-0052",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "nw-l13",
+   "revisitStationId": "nw-l13-s3",
+   "revisitLabel": "1.3 Lesson 13 — Parcel depot, station 3: Advantages of layering",
+   "revisitScene": 0,
+   "revisitK": 2
+  }
+ ]
+}

@@ -1,0 +1,327 @@
+{
+ "topic": "1.3",
+ "lesson": "nw-l06",
+ "questions": [
+  {
+   "type": "mcq",
+   "q": "In a star network, how is each device connected?",
+   "options": [
+    "By its own cable to a central switch",
+    "To the two devices either side of it",
+    "To every other device on the network",
+    "By a single cable that every device shares"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Its own cable to the centre. That is why one failing cable affects one device.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "Star topology",
+   "revisit": "nw-l06-s1",
+   "revisitReason": "Star topology",
+   "outcomes": [
+    "nw-l06-o1",
+    "nw-l06-o4"
+   ],
+   "topic": "1.3",
+   "id": "rq-1.3-star-topology-0026",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "nw-l06",
+   "revisitStationId": "nw-l06-s1",
+   "revisitLabel": "1.3 Lesson 6 — Star and mesh networks, station 1: Star topology",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "Explain one advantage of a star network over a network where all devices share one cable.",
+   "markPoints": [
+    {
+     "concept": "each device has its own connection to the switch",
+     "accept": [
+      [
+       "own cable|own connection|own line|separate cable|separate line|separate connection|individual|its own|dedicated"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Each device has its own cable to the switch."
+    },
+    {
+     "concept": "so one cable failing affects only that device, and there are no collisions",
+     "accept": [
+      [
+       "only that|just that|one device|rest keep working|others continue|no collision|collisions|does not affect"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "So if one cable fails only that device is affected and the rest keep working."
+    }
+   ],
+   "example": "In a star network each device has its own cable to the central switch, so if one cable fails only that one device drops off and everybody else carries on working.",
+   "paraphrase": "Every machine runs a separate line to the switch, which means a broken cable only takes out the computer at the end of it.",
+   "marks": 2,
+   "feedback": "Own cable, therefore isolated failure. Either consequence — one device affected, or no collisions — earns the second mark.",
+   "commandWord": "explain",
+   "difficulty": "understand",
+   "examStyle": true,
+   "subtopic": "Star topology",
+   "revisit": "nw-l06-s1",
+   "revisitReason": "Star topology",
+   "outcomes": [
+    "nw-l06-o1",
+    "nw-l06-o4"
+   ],
+   "topic": "1.3",
+   "id": "rq-1.3-star-topology-0027",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "nw-l06",
+   "revisitStationId": "nw-l06-s1",
+   "revisitLabel": "1.3 Lesson 6 — Star and mesh networks, station 1: Star topology",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "mcq",
+   "q": "What is the main disadvantage of a star network?",
+   "options": [
+    "If the central switch fails, the whole network goes down",
+    "Data has to pass through every other device first",
+    "Only one device can send data at a time",
+    "Every device needs to know every other device's address"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "The centre is a single point of failure. That is the price of the convenience.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "Star topology",
+   "revisit": "nw-l06-s1",
+   "revisitReason": "Star topology",
+   "outcomes": [
+    "nw-l06-o1",
+    "nw-l06-o4"
+   ],
+   "topic": "1.3",
+   "id": "rq-1.3-star-topology-0028",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "nw-l06",
+   "revisitStationId": "nw-l06-s1",
+   "revisitLabel": "1.3 Lesson 6 — Star and mesh networks, station 1: Star topology",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "short",
+   "q": "State what is meant by a full mesh network.",
+   "markPoints": [
+    {
+     "concept": "every device is connected directly to every other device",
+     "accept": [
+      [
+       "every|all|each",
+       "connected|connection|link|linked|joined"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Every device is connected directly to every other device."
+    }
+   ],
+   "example": "A network in which every device is connected directly to every other device.",
+   "paraphrase": "All the machines are linked to all of the others.",
+   "marks": 1,
+   "feedback": "Every device to every other. A partial mesh has some of those connections but not all.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "Mesh topology",
+   "revisit": "nw-l06-s6",
+   "revisitReason": "Mesh topology",
+   "outcomes": [
+    "nw-l06-o2",
+    "nw-l06-o3",
+    "nw-l06-o4"
+   ],
+   "topic": "1.3",
+   "id": "rq-1.3-mesh-topology-0029",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "nw-l06",
+   "revisitStationId": "nw-l06-s6",
+   "revisitLabel": "1.3 Lesson 6 — Star and mesh networks, station 6: Full mesh",
+   "revisitScene": 1,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "Explain why a mesh network is more reliable than a star network.",
+   "markPoints": [
+    {
+     "concept": "there is more than one route between any two devices",
+     "accept": [
+      [
+       "more than one route|more than one path|several routes|several paths|many routes|another route|another path|multiple paths|different paths|alternative|other path|different route|reroute|redirect"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "There is more than one route between any two devices."
+    },
+    {
+     "concept": "so if one connection fails the data can take a different path",
+     "accept": [
+      [
+       "fail|fails|breaks|broken|goes down|lost|damaged|cut"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "So if one connection fails the data simply takes another route."
+    }
+   ],
+   "example": "In a mesh there is more than one route between any two devices, so if a connection fails the data can be sent by a different path, whereas in a star everything depends on the one switch in the middle.",
+   "paraphrase": "Because several different paths link each pair of devices, a broken link just means the traffic goes round another way.",
+   "marks": 2,
+   "feedback": "More than one route, therefore a failure is survivable.",
+   "commandWord": "explain",
+   "difficulty": "understand",
+   "examStyle": true,
+   "subtopic": "Mesh topology",
+   "revisit": "nw-l06-s6",
+   "revisitReason": "Mesh topology",
+   "outcomes": [
+    "nw-l06-o2",
+    "nw-l06-o3",
+    "nw-l06-o4"
+   ],
+   "topic": "1.3",
+   "id": "rq-1.3-mesh-topology-0030",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "nw-l06",
+   "revisitStationId": "nw-l06-s6",
+   "revisitLabel": "1.3 Lesson 6 — Star and mesh networks, station 6: Full mesh",
+   "revisitScene": 1,
+   "revisitK": 0
+  },
+  {
+   "type": "tf",
+   "q": "The internet is an example of a full mesh network.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correct": 1,
+   "marks": 1,
+   "feedback": "False. It is a partial mesh: there are many alternative routes, but no computer is connected directly to every other one.",
+   "commandWord": "tick",
+   "difficulty": "understand",
+   "misconception": "A full mesh of the internet would need an impossible number of connections.",
+   "subtopic": "Mesh topology",
+   "revisit": "nw-l06-s6",
+   "revisitReason": "Mesh topology",
+   "outcomes": [
+    "nw-l06-o2",
+    "nw-l06-o3",
+    "nw-l06-o4"
+   ],
+   "topic": "1.3",
+   "id": "rq-1.3-mesh-topology-0031",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "nw-l06",
+   "revisitStationId": "nw-l06-s6",
+   "revisitLabel": "1.3 Lesson 6 — Star and mesh networks, station 6: Full mesh",
+   "revisitScene": 1,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "A full mesh network of 50 computers is rarely built. Explain why.",
+   "markPoints": [
+    {
+     "concept": "the number of connections needed is enormous",
+     "accept": [
+      [
+       "number of|how many|lots of|huge|enormous|many|1225|hundreds|thousands"
+      ],
+      [
+       "cable|connection|link|wire|port"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The number of cables needed is enormous."
+    },
+    {
+     "concept": "which makes it very expensive and difficult to install",
+     "accept": [
+      [
+       "expensive|cost|costly|price"
+      ],
+      [
+       "difficult|hard|impractical|complex|time consuming|awkward"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "This makes it far too expensive and difficult to install."
+    }
+   ],
+   "example": "Every computer would need a direct connection to all 49 others, which is well over a thousand cables in total, so the cost of the cable and the difficulty of installing it make a full mesh impractical at that size.",
+   "paraphrase": "Each machine would have to be wired to all the rest, running to more than a thousand links, which is far too costly and awkward to put in.",
+   "marks": 2,
+   "feedback": "The number of connections grows very fast, and the cost and difficulty grow with it.",
+   "commandWord": "explain",
+   "difficulty": "stretch",
+   "examStyle": true,
+   "subtopic": "Mesh topology",
+   "revisit": "nw-l06-s6",
+   "revisitReason": "Mesh topology",
+   "outcomes": [
+    "nw-l06-o2",
+    "nw-l06-o3",
+    "nw-l06-o4"
+   ],
+   "topic": "1.3",
+   "id": "rq-1.3-mesh-topology-0032",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "nw-l06",
+   "revisitStationId": "nw-l06-s6",
+   "revisitLabel": "1.3 Lesson 6 — Star and mesh networks, station 6: Full mesh",
+   "revisitScene": 1,
+   "revisitK": 0
+  },
+  {
+   "type": "num",
+   "q": "In a full mesh network of 6 computers, how many connections are needed?",
+   "answer": 15,
+   "unit": "connections",
+   "working": "6 * 5 / 2",
+   "marks": 1,
+   "feedback": "Each of the 6 connects to 5 others, and each cable is counted twice, so (6 × 5) ÷ 2 = 15.",
+   "hint": "How many does each computer need, and how many times is each cable counted?",
+   "commandWord": "calculate",
+   "difficulty": "stretch",
+   "examStyle": true,
+   "subtopic": "Mesh topology",
+   "revisit": "nw-l06-s6",
+   "revisitReason": "Mesh topology",
+   "outcomes": [
+    "nw-l06-o2",
+    "nw-l06-o3",
+    "nw-l06-o4"
+   ],
+   "topic": "1.3",
+   "id": "rq-1.3-mesh-topology-0033",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "nw-l06",
+   "revisitStationId": "nw-l06-s6",
+   "revisitLabel": "1.3 Lesson 6 — Star and mesh networks, station 6: Full mesh",
+   "revisitScene": 1,
+   "revisitK": 0
+  }
+ ]
+}

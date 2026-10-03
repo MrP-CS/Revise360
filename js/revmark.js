@@ -71,8 +71,12 @@
 
   // Separators that end a clause. Negation does not reach past one of these.
   const CLAUSE = /(?:[.;:!?]+|,| but | however | whereas | although | though | unlike | while | and | or | then | so that | which | that )/;
+  /* "fails" is deliberately not here. "If one cable fails" is a condition, not a
+   * denial, and treating it as one lost the mark on an answer about what happens
+   * when a cable breaks. A learner who means a denial writes "fails to", and the
+   * "to" is not what makes it negative - "not" is. */
   const NEGATOR = new Set(["not", "never", "no", "none", "without", "nor", "neither",
-                           "cannot", "lacks", "lacking", "fails", "unable"]);
+                           "cannot", "unable"]);
   const NEG_REACH = 4;          // how many words forward a negator denies
 
   /* Words that carry sentence structure. A written answer with almost none of
