@@ -287,8 +287,10 @@ BANK = [
                      "someone to ask|to call when|guarantee|warranty"],
                     exemplar="Proprietary software comes with support from the company."),
                  mp("and is usually better tested and more widely compatible",
-                    ["tested|reliable|stable|polished|compatible|compatibility|"
-                     "works with|everybody uses|standard|updates"],
+                    ["better tested|well tested|thoroughly tested|tested properly|"
+                     "reliable|stable|polished|compatible|compatibility|"
+                     "works with everything|works with more|widely used|everybody uses|"
+                     "industry standard|regular updates"],
                     exemplar="It is also usually better tested and more widely compatible.")],
                 example="Open source software is normally free, which matters a great deal "
                         "to a charity, and because the source code is published it could be "

@@ -155,8 +155,8 @@
      "concept": "which is where an off-by-one mistake in the condition shows up",
      "accept": [
       [
-       "off by one|one out|mistake|mistakes|error|errors|fault|slip|wrong|incorrect|missed|misses",
-       "condition|comparison|compare|operator|sign|symbol|inequality|greater than|less than|equal|if statement"
+       "off by one|one out|mistake|mistakes|error|errors|fault|slip|wrong operator|wrong symbol|wrong sign|incorrect|missed|misses",
+       "condition|comparison|operator|sign|symbol|inequality|greater than|less than|equal|if statement"
       ]
      ],
      "worth": 1,
@@ -219,6 +219,142 @@
    "revisitLabel": "2.3 Lesson 4 — Bug hunt lab, station 1: Why test a program?",
    "revisitScene": 0,
    "revisitK": 0
+  },
+  {
+   "type": "sort",
+   "q": "Sort each fault by whether it is a syntax error or a logic error.",
+   "cats": [
+    "Syntax error",
+    "Logic error"
+   ],
+   "items": [
+    [
+     "A missing colon at the end of an if line",
+     "Syntax error"
+    ],
+    [
+     "print spelled as pirnt",
+     "Syntax error"
+    ],
+    [
+     "A closing bracket left off",
+     "Syntax error"
+    ],
+    [
+     "Using + where * was meant",
+     "Logic error"
+    ],
+    [
+     "A loop that runs one time too many",
+     "Logic error"
+    ],
+    [
+     "Dividing by the wrong variable",
+     "Logic error"
+    ]
+   ],
+   "marks": 6,
+   "feedback": "A syntax error stops the program running. A logic error lets it run and produce the wrong answer, which is why it is harder to find.",
+   "commandWord": "tick",
+   "difficulty": "understand",
+   "examStyle": true,
+   "subtopic": "Syntax and logic errors",
+   "revisit": "rp-l04-s4",
+   "revisitReason": "Syntax and logic errors",
+   "outcomes": [
+    "rp-l04-o4",
+    "rp-l04-o5"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-syntax-and-logic-errors-0035",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l04",
+   "revisitStationId": "rp-l04-s4",
+   "revisitLabel": "2.3 Lesson 4 — Bug hunt lab, station 4: Syntax errors",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "written",
+   "q": "Explain why a logic error is usually harder to find than a syntax error.",
+   "markPoints": [
+    {
+     "concept": "a syntax error is reported by the translator with a line number",
+     "accept": [
+      [
+       "translator|compiler|interpreter|ide|computer|program",
+       "reports|reported|tells you|points|flagged|flags|identifies|highlights|names the line|error message|line number|will not run|refuses|stops"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "A syntax error is reported by the translator, often with a line number."
+    },
+    {
+     "concept": "a logic error lets the program run, so nothing points to where it is",
+     "accept": [
+      [
+       "runs|still works|no message|no error|nothing tells|does not stop|looks fine|seems to work|wrong answer|wrong output|wrong result"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "A logic error lets the program run, so nothing tells the programmer where to look."
+    }
+   ],
+   "example": "A syntax error stops the program from running at all, and the translator says which line it could not understand. A logic error breaks no rules, so the program runs happily and simply produces the wrong answer — the programmer has to work out which part of their own reasoning was wrong, with nothing pointing at it.",
+   "paraphrase": "The first is flagged by the translator, which names the line; the second allows the program to execute normally, so there is no message and no indication of where the fault lies.",
+   "marks": 2,
+   "feedback": "What you are told about one, and what you are not told about the other.",
+   "commandWord": "explain",
+   "difficulty": "understand",
+   "examStyle": true,
+   "subtopic": "Syntax and logic errors",
+   "revisit": "rp-l04-s4",
+   "revisitReason": "Syntax and logic errors",
+   "outcomes": [
+    "rp-l04-o4",
+    "rp-l04-o5"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-syntax-and-logic-errors-0036",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l04",
+   "revisitStationId": "rp-l04-s4",
+   "revisitLabel": "2.3 Lesson 4 — Bug hunt lab, station 4: Syntax errors",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "codeout",
+   "q": "What does this program print?",
+   "code": "total = 0\nfor n in [4, 8, 15]:\n    total = n\nprint(total)",
+   "answer": "15",
+   "exact": "text",
+   "lang": "python",
+   "marks": 1,
+   "feedback": "The program was meant to add the numbers up but it replaces total each time, so it ends up holding the last one. It runs perfectly: that is what makes it a logic error.",
+   "hint": "Read the line inside the loop carefully. Is it adding or replacing?",
+   "commandWord": "state",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Syntax and logic errors",
+   "revisit": "rp-l04-s4",
+   "revisitReason": "Syntax and logic errors",
+   "outcomes": [
+    "rp-l04-o4",
+    "rp-l04-o5"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-syntax-and-logic-errors-0037",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l04",
+   "revisitStationId": "rp-l04-s4",
+   "revisitLabel": "2.3 Lesson 4 — Bug hunt lab, station 4: Syntax errors",
+   "revisitScene": 0,
+   "revisitK": 3
   }
  ]
 }

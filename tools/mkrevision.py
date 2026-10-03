@@ -67,12 +67,17 @@ def build(write=False):
     given, nxt = ids["given"], ids["next"]
     files, problems, all_q = {}, [], []
 
+    # Across every module, not within one. A topic may be authored in more than
+    # one file now - the drill a generator produces sits beside the questions
+    # written by hand - and a stem collision between two files is exactly the
+    # one that would have gone unnoticed, because each file looked clean.
+    seen_stems = {}
+
     for mod in modules():
         topic = mod.TOPIC
         if topic not in S.TOPIC_TITLE:
             problems.append("%s: %r is not a topic" % (mod.__name__, topic))
             continue
-        seen_stems = {}
         for block in mod.BANK:
             lid = lesson_of(block["revisit"])
             for q in block["questions"]:
@@ -84,9 +89,9 @@ def build(write=False):
                 q["topic"] = topic
                 k = key_of(topic, q)
                 if k in seen_stems:
-                    problems.append("%s: two questions share a stem: %r"
-                                    % (topic, q["q"][:70]))
-                seen_stems[k] = True
+                    problems.append("%s: two questions share a stem (%s and %s): %r"
+                                    % (topic, seen_stems[k], mod.__name__, q["q"][:70]))
+                seen_stems[k] = mod.__name__
                 if k not in given:
                     n = nxt.get(topic, 0) + 1
                     nxt[topic] = n

@@ -201,6 +201,272 @@
    "revisitLabel": "2.3 Lesson 1 — Security desk, station 2: Type check",
    "revisitScene": 0,
    "revisitK": 1
+  },
+  {
+   "type": "mcq",
+   "q": "A program asks for a pupil's name and the user presses Enter without typing anything. Which check catches this?",
+   "options": [
+    "A presence check",
+    "A type check",
+    "A range check",
+    "A format check"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Nothing was entered at all, so there is nothing for the other checks to look at.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "subtopic": "Type and presence checks",
+   "revisit": "rp-l01-s2",
+   "revisitReason": "Type and presence checks",
+   "outcomes": [
+    "rp-l01-o3"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-type-and-presence-checks-0019",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l01",
+   "revisitStationId": "rp-l01-s2",
+   "revisitLabel": "2.3 Lesson 1 — Security desk, station 2: Type check",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "mcq",
+   "q": "A program expects a whole number and the user types the word 'twelve'. Which check catches this?",
+   "options": [
+    "A type check",
+    "A range check",
+    "A presence check",
+    "A length check"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Something was entered, and it is in no sensible range, because it is not a number at all. The type is what is wrong.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "subtopic": "Type and presence checks",
+   "revisit": "rp-l01-s2",
+   "revisitReason": "Type and presence checks",
+   "outcomes": [
+    "rp-l01-o3"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-type-and-presence-checks-0020",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l01",
+   "revisitStationId": "rp-l01-s2",
+   "revisitLabel": "2.3 Lesson 1 — Security desk, station 2: Type check",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "written",
+   "q": "Explain why a program that asks for an age should use both a type check and a range check.",
+   "markPoints": [
+    {
+     "concept": "a type check only makes sure the entry is a number",
+     "accept": [
+      [
+       "type check|number|numeric|whole number|integer|digits",
+       "only|just|all it|does not|cannot|says nothing|no idea|no opinion|nothing about|no view"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "A type check only makes sure what was entered is a number."
+    },
+    {
+     "concept": "so a number like 250 still has to be rejected for being impossible",
+     "accept": [
+      [
+       "range|too big|too large|impossible|unrealistic|between|limit|limits|sensible|250|300|minus|negative"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "So a range check is still needed, because 250 is a number and is not a possible age."
+    }
+   ],
+   "example": "A type check makes sure the entry is a number rather than text, but it has no opinion about which numbers are sensible. 250 and -7 both pass it, so a range check is needed as well to keep the value between limits an age could actually take.",
+   "paraphrase": "The first only establishes that a number was given; a second check is required because values such as 250 are numbers and still impossible ages.",
+   "marks": 2,
+   "feedback": "What a type check does not do, and what fills the gap.",
+   "commandWord": "explain",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Type and presence checks",
+   "revisit": "rp-l01-s2",
+   "revisitReason": "Type and presence checks",
+   "outcomes": [
+    "rp-l01-o3"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-type-and-presence-checks-0021",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l01",
+   "revisitStationId": "rp-l01-s2",
+   "revisitLabel": "2.3 Lesson 1 — Security desk, station 2: Type check",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "mcq",
+   "q": "A website requires a password of at least eight characters. Which check enforces this?",
+   "options": [
+    "A length check",
+    "A format check",
+    "A presence check",
+    "A type check"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "How many characters there are is a length check. What they look like would be a format check.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "subtopic": "Length and format checks",
+   "revisit": "rp-l01-s5",
+   "revisitReason": "Length and format checks",
+   "outcomes": [
+    "rp-l01-o3"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-length-and-format-checks-0022",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l01",
+   "revisitStationId": "rp-l01-s5",
+   "revisitLabel": "2.3 Lesson 1 — Security desk, station 5: Format and length checks",
+   "revisitScene": 0,
+   "revisitK": 4
+  },
+  {
+   "type": "match",
+   "q": "Match each entry to the check that would reject it.",
+   "pairs": [
+    [
+     "An empty box where a name should be",
+     "Presence check"
+    ],
+    [
+     "A date of birth of 30/02/2009",
+     "Format check"
+    ],
+    [
+     "A price of -5",
+     "Range check"
+    ],
+    [
+     "A phone number with four digits",
+     "Length check"
+    ],
+    [
+     "The word 'seven' where a quantity should be",
+     "Type check"
+    ]
+   ],
+   "marks": 5,
+   "feedback": "Each entry is wrong in a different way, and only the matching check notices.",
+   "commandWord": "draw",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Length and format checks",
+   "revisit": "rp-l01-s5",
+   "revisitReason": "Length and format checks",
+   "outcomes": [
+    "rp-l01-o3"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-length-and-format-checks-0023",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l01",
+   "revisitStationId": "rp-l01-s5",
+   "revisitLabel": "2.3 Lesson 1 — Security desk, station 5: Format and length checks",
+   "revisitScene": 0,
+   "revisitK": 4
+  },
+  {
+   "type": "mcq",
+   "q": "A program accepts only the words RED, AMBER and GREEN and rejects everything else. What is this called?",
+   "options": [
+    "A whitelist",
+    "A blacklist",
+    "A range check",
+    "A length check"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "A whitelist names what is allowed. A blacklist names what is not, and everything it has not thought of gets through.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "Whitelists and blacklists",
+   "revisit": "rp-l01-s6",
+   "revisitReason": "Whitelists and blacklists",
+   "outcomes": [
+    "rp-l01-o3"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-whitelists-and-blacklists-0024",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l01",
+   "revisitStationId": "rp-l01-s6",
+   "revisitLabel": "2.3 Lesson 1 — Security desk, station 6: Whitelists and blacklists",
+   "revisitScene": 0,
+   "revisitK": 5
+  },
+  {
+   "type": "written",
+   "q": "Explain why a whitelist is usually safer than a blacklist.",
+   "markPoints": [
+    {
+     "concept": "a whitelist allows only what is on it",
+     "accept": [
+      [
+       "whitelist|white list|allowed list|only|just",
+       "allow|allows|allowed|accept|accepts|permitted|on the list"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "A whitelist allows only the entries that are on it."
+    },
+    {
+     "concept": "so anything the programmer did not think of is rejected rather than let through",
+     "accept": [
+      [
+       "did not think of|not thought of|forgot|forgotten|new|unexpected|anything else|everything else|reject|rejected|blocked|refused|gets through|let through|slip"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "This means anything the programmer did not think of is rejected rather than let through."
+    }
+   ],
+   "example": "A whitelist allows only what is on it, so anything nobody thought of is refused by default. A blacklist has to name every bad entry in advance, and anything new — a misspelling, a trick nobody had seen — goes straight through.",
+   "paraphrase": "Because only listed entries are accepted, anything unforeseen is turned away, whereas a list of banned entries lets through everything it failed to anticipate.",
+   "marks": 2,
+   "feedback": "What each list decides, and what happens to the thing nobody predicted.",
+   "commandWord": "explain",
+   "difficulty": "stretch",
+   "examStyle": true,
+   "subtopic": "Whitelists and blacklists",
+   "revisit": "rp-l01-s6",
+   "revisitReason": "Whitelists and blacklists",
+   "outcomes": [
+    "rp-l01-o3"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-whitelists-and-blacklists-0025",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l01",
+   "revisitStationId": "rp-l01-s6",
+   "revisitLabel": "2.3 Lesson 1 — Security desk, station 6: Whitelists and blacklists",
+   "revisitScene": 0,
+   "revisitK": 5
   }
  ]
 }

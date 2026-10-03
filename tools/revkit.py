@@ -178,15 +178,17 @@ def mp(concept, *ways, worth=1, developed=False, reject=None, exemplar=None,
                 # number" in an answer that went on to say "not where", and the
                 # negation never got a chance, because the word it was denying
                 # was no longer the one being looked for.
-                left = [p for p in parts if p not in CLAUSE_WORDS]
-                if len(parts) > 1 and len(left) < 2:
+                cut = [p for p in parts if p in CLAUSE_WORDS]
+                left = [p for p in parts
+                        if p not in CLAUSE_WORDS and p not in ("the", "a", "an")]
+                if cut and len(left) < 2:
                     raise ValueError(
                         "the pattern %r in %r is %s qualifying one word, and the marker splits "
                         "an answer ON %s, so the pattern silently becomes just %r - a much "
                         "looser thing to look for than you wrote. Say it without the clause "
                         "word." % (alt, concept,
-                                   ", ".join(repr(p) for p in parts if p in CLAUSE_WORDS),
-                                   "them" if len(parts) - len(left) > 1 else "it",
+                                   ", ".join(repr(p) for p in cut),
+                                   "them" if len(cut) > 1 else "it",
                                    " ".join(left)))
     out = {"concept": concept.strip(), "accept": [list(w) for w in ways], "worth": worth}
     if developed:

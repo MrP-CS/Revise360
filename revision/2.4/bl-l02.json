@@ -114,6 +114,228 @@
    "revisitLabel": "2.4 Lesson 2 — Truth table detectives, station 1: Setting out a truth table",
    "revisitScene": 0,
    "revisitK": 0
+  },
+  {
+   "type": "mcq",
+   "q": "A truth table for two inputs has an output of 1 on exactly one row, where A = 1 and B = 1. Which expression does it describe?",
+   "options": [
+    "Q = A AND B",
+    "Q = A OR B",
+    "Q = NOT A AND B",
+    "Q = NOT (A AND B)"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "One row of 1, and it is the row where both inputs are 1. That is AND.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Reading a truth table",
+   "revisit": "bl-l02-s1",
+   "revisitReason": "Reading a truth table",
+   "outcomes": [
+    "bl-l02-o1"
+   ],
+   "topic": "2.4",
+   "id": "rq-2.4-reading-a-truth-table-0035",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "bl-l02",
+   "revisitStationId": "bl-l02-s1",
+   "revisitLabel": "2.4 Lesson 2 — Truth table detectives, station 1: Setting out a truth table",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "mcq",
+   "q": "A truth table for two inputs has an output of 1 on three rows and 0 only where A = 0 and B = 0. Which expression does it describe?",
+   "options": [
+    "Q = A OR B",
+    "Q = A AND B",
+    "Q = NOT A OR NOT B",
+    "Q = NOT (A OR B)"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "OR is 0 only when every input is 0, which is the one row left.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Reading a truth table",
+   "revisit": "bl-l02-s1",
+   "revisitReason": "Reading a truth table",
+   "outcomes": [
+    "bl-l02-o1"
+   ],
+   "topic": "2.4",
+   "id": "rq-2.4-reading-a-truth-table-0036",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "bl-l02",
+   "revisitStationId": "bl-l02-s1",
+   "revisitLabel": "2.4 Lesson 2 — Truth table detectives, station 1: Setting out a truth table",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "Explain why a truth table is a complete test of a logic circuit, when testing a program with every possible input is impossible.",
+   "markPoints": [
+    {
+     "concept": "a logic circuit has only a small fixed number of input combinations",
+     "accept": [
+      [
+       "small|few|only|fixed|limited|two|four|eight|sixteen|2|4|8|16|every combination|all the combinations|all of them",
+       "input|inputs|combination|combinations|row|rows"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "A circuit with three inputs has only eight possible combinations."
+    },
+    {
+     "concept": "so every one of them can be listed and checked",
+     "accept": [
+      [
+       "list|listed|listing|write every one|write them down|written out|verified|verify|nothing left out|exhaustive|certain|tried"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "This means every single one can be listed and checked."
+    }
+   ],
+   "example": "Each input is either 0 or 1, so a circuit with three inputs has only eight possible combinations and one with four has sixteen. That is few enough to write every one down and check it, which is why a truth table proves a circuit works — a program taking a number could be given billions of values and never be tested exhaustively.",
+   "paraphrase": "Since every input can only be 0 or 1, the number of possibilities is tiny and fixed, so all of them can be written out and verified rather than sampled.",
+   "marks": 2,
+   "feedback": "How few combinations there are, and what being able to list them proves.",
+   "commandWord": "explain",
+   "difficulty": "stretch",
+   "subtopic": "Reading a truth table",
+   "revisit": "bl-l02-s1",
+   "revisitReason": "Reading a truth table",
+   "outcomes": [
+    "bl-l02-o1"
+   ],
+   "topic": "2.4",
+   "id": "rq-2.4-reading-a-truth-table-0037",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "bl-l02",
+   "revisitStationId": "bl-l02-s1",
+   "revisitLabel": "2.4 Lesson 2 — Truth table detectives, station 1: Setting out a truth table",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "mcq",
+   "q": "How many rows does a truth table need for an expression with two inputs?",
+   "options": [
+    "4",
+    "2",
+    "6",
+    "8"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Two inputs, two choices each: 2 times 2 is 4.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "Counting the rows",
+   "revisit": "bl-l02-s4",
+   "revisitReason": "Counting the rows",
+   "outcomes": [
+    "bl-l02-o1"
+   ],
+   "topic": "2.4",
+   "id": "rq-2.4-counting-the-rows-0038",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "bl-l02",
+   "revisitStationId": "bl-l02-s4",
+   "revisitLabel": "2.4 Lesson 2 — Truth table detectives, station 4: Three inputs",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "mcq",
+   "q": "An expression has three inputs. A fourth input is added. What happens to the number of rows its truth table needs?",
+   "options": [
+    "It doubles",
+    "It goes up by one",
+    "It goes up by two",
+    "It stays the same"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Each new input has two possible values, and every existing row has to be written out for both of them. 8 becomes 16.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Counting the rows",
+   "revisit": "bl-l02-s4",
+   "revisitReason": "Counting the rows",
+   "outcomes": [
+    "bl-l02-o1"
+   ],
+   "topic": "2.4",
+   "id": "rq-2.4-counting-the-rows-0049",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "bl-l02",
+   "revisitStationId": "bl-l02-s4",
+   "revisitLabel": "2.4 Lesson 2 — Truth table detectives, station 4: Three inputs",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "sort",
+   "q": "Sort each expression by how many inputs it has.",
+   "cats": [
+    "One input",
+    "Two inputs",
+    "Three inputs"
+   ],
+   "items": [
+    [
+     "Q = NOT A",
+     "One input"
+    ],
+    [
+     "Q = A AND B",
+     "Two inputs"
+    ],
+    [
+     "Q = NOT (A OR B)",
+     "Two inputs"
+    ],
+    [
+     "Q = A AND (B OR C)",
+     "Three inputs"
+    ],
+    [
+     "Q = (A AND B) OR C",
+     "Three inputs"
+    ]
+   ],
+   "marks": 5,
+   "feedback": "Count the different letters, not the gates. NOT (A OR B) has two inputs and two gates.",
+   "commandWord": "tick",
+   "difficulty": "understand",
+   "subtopic": "Counting the rows",
+   "revisit": "bl-l02-s4",
+   "revisitReason": "Counting the rows",
+   "outcomes": [
+    "bl-l02-o1"
+   ],
+   "topic": "2.4",
+   "id": "rq-2.4-counting-the-rows-0040",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "bl-l02",
+   "revisitStationId": "bl-l02-s4",
+   "revisitLabel": "2.4 Lesson 2 — Truth table detectives, station 4: Three inputs",
+   "revisitScene": 0,
+   "revisitK": 3
   }
  ]
 }

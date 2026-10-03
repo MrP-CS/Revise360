@@ -1,0 +1,176 @@
+{
+ "topic": "2.3",
+ "lesson": "rp-l05",
+ "questions": [
+  {
+   "type": "sort",
+   "q": "A program accepts a percentage from 0 to 100. Sort each test value by the kind of data it is.",
+   "cats": [
+    "Normal",
+    "Boundary",
+    "Invalid",
+    "Erroneous"
+   ],
+   "items": [
+    [
+     "62",
+     "Normal"
+    ],
+    [
+     "0",
+     "Boundary"
+    ],
+    [
+     "101",
+     "Invalid"
+    ],
+    [
+     "ninety",
+     "Erroneous"
+    ]
+   ],
+   "marks": 4,
+   "feedback": "Boundary data is on the limit, invalid data is the right type and out of range, erroneous data is the wrong type altogether.",
+   "commandWord": "tick",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Normal, boundary, invalid and erroneous data",
+   "revisit": "rp-l05-s1",
+   "revisitReason": "Normal, boundary, invalid and erroneous data",
+   "outcomes": [
+    "rp-l05-o1",
+    "rp-l05-o2"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-normal-boundary-invalid-and-erroneous-data-0038",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l05",
+   "revisitStationId": "rp-l05-s1",
+   "revisitLabel": "2.3 Lesson 5 — Test lab, station 1: Why test with different data?",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "Explain why testing a program with normal data only is not enough.",
+   "markPoints": [
+    {
+     "concept": "normal data is what the program was written to expect",
+     "accept": [
+      [
+       "expect|expected|expects|sensible|designed for|meant to handle|supposed to|everyday|written for|designed around|built for"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Normal data is exactly what the program was written to expect."
+    },
+    {
+     "concept": "so faults only appear when something unexpected or on the limit is entered",
+     "accept": [
+      [
+       "boundary|limit|edge|invalid|erroneous|unexpected|wrong type|out of range|extreme|empty|blank|text|letters"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "This means a fault only shows up when something on the limit or of the wrong type is entered."
+    }
+   ],
+   "example": "Normal data is what the program was written to handle, so it will almost always work. The faults live at the edges: a value exactly on the limit, a number just outside the range, or a word where a number was expected. Testing only with sensible input finds none of them.",
+   "paraphrase": "Since ordinary values are the ones the program was designed around, problems only surface with input at the boundary or of entirely the wrong kind.",
+   "marks": 2,
+   "feedback": "What normal data proves, and where the faults actually are.",
+   "commandWord": "explain",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Normal, boundary, invalid and erroneous data",
+   "revisit": "rp-l05-s1",
+   "revisitReason": "Normal, boundary, invalid and erroneous data",
+   "outcomes": [
+    "rp-l05-o1",
+    "rp-l05-o2"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-normal-boundary-invalid-and-erroneous-data-0039",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l05",
+   "revisitStationId": "rp-l05-s1",
+   "revisitLabel": "2.3 Lesson 5 — Test lab, station 1: Why test with different data?",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "mcq",
+   "q": "A program accepts a mark from 0 to 50. Which of these is erroneous data?",
+   "options": [
+    "fifty",
+    "50",
+    "51",
+    "-1"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Erroneous data is the wrong data type. 51 and -1 are numbers in the wrong range, which makes them invalid rather than erroneous.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Normal, boundary, invalid and erroneous data",
+   "revisit": "rp-l05-s1",
+   "revisitReason": "Normal, boundary, invalid and erroneous data",
+   "outcomes": [
+    "rp-l05-o1",
+    "rp-l05-o2"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-normal-boundary-invalid-and-erroneous-data-0040",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l05",
+   "revisitStationId": "rp-l05-s1",
+   "revisitLabel": "2.3 Lesson 5 — Test lab, station 1: Why test with different data?",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "multi",
+   "q": "A program asks for a date of birth. Which of these would be sensible test values? Tick all that apply.",
+   "options": [
+    "A date in the past",
+    "Today's date",
+    "A date in the future",
+    "30 February",
+    "The word 'yesterday'",
+    "A date the programmer knows will work"
+   ],
+   "correct": [
+    "A date in the past",
+    "Today's date",
+    "A date in the future",
+    "30 February",
+    "The word 'yesterday'"
+   ],
+   "marks": 5,
+   "feedback": "Good test data includes the awkward cases. A value chosen because it works tests nothing.",
+   "commandWord": "tick",
+   "difficulty": "apply",
+   "subtopic": "Normal, boundary, invalid and erroneous data",
+   "revisit": "rp-l05-s1",
+   "revisitReason": "Normal, boundary, invalid and erroneous data",
+   "outcomes": [
+    "rp-l05-o1",
+    "rp-l05-o2"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-normal-boundary-invalid-and-erroneous-data-0041",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l05",
+   "revisitStationId": "rp-l05-s1",
+   "revisitLabel": "2.3 Lesson 5 — Test lab, station 1: Why test with different data?",
+   "revisitScene": 0,
+   "revisitK": 0
+  }
+ ]
+}

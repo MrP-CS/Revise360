@@ -102,6 +102,239 @@
    "revisitLabel": "1.5 Lesson 4 — Utility workshop, station 1: What is utility software?",
    "revisitScene": 0,
    "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "Explain why encrypting a laptop's hard disk protects the data on it if the laptop is stolen.",
+   "markPoints": [
+    {
+     "concept": "the data is scrambled so it cannot be read without the key",
+     "accept": [
+      [
+       "scramble|unreadable|cannot be read|not be read|meaningless|cipher|ciphertext|jumbled|nonsense",
+       "key|password|passphrase|decrypt|without the key|without a key|without the password|need the key|needs the key"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The data is scrambled and cannot be read without the key."
+    },
+    {
+     "concept": "so a thief who takes the disk out still gets nothing useful",
+     "accept": [
+      [
+       "thief|thieves|stolen|steal|takes the disk|takes the drive|another computer|different computer|another machine|nothing useful|no use|still cannot|still unreadable"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "This means a thief can take the disk out and put it in another computer and still get nothing."
+    }
+   ],
+   "example": "Encryption scrambles the contents of the disk so that they are meaningless without the key. A thief can take the drive out and plug it into their own machine, and it will still be unreadable, because the login password is not what is protecting it — the encryption is.",
+   "paraphrase": "The contents are turned into something unreadable unless the correct key is supplied, so even moving the drive to another machine gives the thief nothing.",
+   "marks": 2,
+   "feedback": "Unreadable without the key, and why moving the disk does not help.",
+   "commandWord": "explain",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Encryption as a utility",
+   "revisit": "ss-l04-s2",
+   "revisitReason": "Encryption as a utility",
+   "outcomes": [
+    "ss-l04-o1"
+   ],
+   "topic": "1.5",
+   "id": "rq-1.5-encryption-as-a-utility-0032",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ss-l04",
+   "revisitStationId": "ss-l04-s2",
+   "revisitLabel": "1.5 Lesson 4 — Utility workshop, station 2: Encryption",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "tf",
+   "q": "Encrypting a file stops it from being deleted.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correct": 1,
+   "marks": 1,
+   "feedback": "Encryption protects what is inside a file, not whether it exists. Deleting an encrypted file is just as easy.",
+   "commandWord": "tick",
+   "difficulty": "retrieve",
+   "examStyle": true,
+   "subtopic": "Encryption as a utility",
+   "revisit": "ss-l04-s2",
+   "revisitReason": "Encryption as a utility",
+   "outcomes": [
+    "ss-l04-o1"
+   ],
+   "topic": "1.5",
+   "id": "rq-1.5-encryption-as-a-utility-0033",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ss-l04",
+   "revisitStationId": "ss-l04-s2",
+   "revisitLabel": "1.5 Lesson 4 — Utility workshop, station 2: Encryption",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "mcq",
+   "q": "Why might a user compress a folder before emailing it?",
+   "options": [
+    "To make it small enough to send and quicker to upload",
+    "To stop the recipient from opening it",
+    "To make the files inside open faster",
+    "To check the files for errors"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Compression reduces size, which is about sending and storing. It does nothing for how fast a file opens afterwards.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "subtopic": "Compression as a utility",
+   "revisit": "ss-l04-s4",
+   "revisitReason": "Compression as a utility",
+   "outcomes": [
+    "ss-l04-o3"
+   ],
+   "topic": "1.5",
+   "id": "rq-1.5-compression-as-a-utility-0034",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ss-l04",
+   "revisitStationId": "ss-l04-s4",
+   "revisitLabel": "1.5 Lesson 4 — Utility workshop, station 4: Compression",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "short",
+   "q": "State one disadvantage of compressing a file.",
+   "markPoints": [
+    {
+     "concept": "it has to be decompressed before it can be used, which takes time and processing",
+     "accept": [
+      [
+       "decompress|uncompress|unzip|extract|expand|open|restore|before it can be used|before you can use|back to normal",
+       "time|slower|wait|processing|work|effort|cpu|extra step"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "It has to be decompressed before it can be used, which takes time."
+    }
+   ],
+   "example": "The file has to be decompressed before it can be used, which takes time and processing — and with lossy compression some of the original data is gone for good.",
+   "paraphrase": "Extra time and processing are needed to expand it again before it can be opened.",
+   "marks": 1,
+   "feedback": "The cost of getting it back. Losing quality is the other acceptable answer, but only for lossy compression.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "Compression as a utility",
+   "revisit": "ss-l04-s4",
+   "revisitReason": "Compression as a utility",
+   "outcomes": [
+    "ss-l04-o3"
+   ],
+   "topic": "1.5",
+   "id": "rq-1.5-compression-as-a-utility-0035",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ss-l04",
+   "revisitStationId": "ss-l04-s4",
+   "revisitLabel": "1.5 Lesson 4 — Utility workshop, station 4: Compression",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "match",
+   "q": "Match each kind of backup to what it copies.",
+   "pairs": [
+    [
+     "Full backup",
+     "Every file, every time"
+    ],
+    [
+     "Incremental backup",
+     "Only the files that have changed since the last backup"
+    ],
+    [
+     "Automatic backup",
+     "Whatever is due, at a time nobody has to remember"
+    ]
+   ],
+   "marks": 3,
+   "feedback": "A full backup is slow to make and quick to restore. An incremental one is the other way round.",
+   "commandWord": "draw",
+   "difficulty": "understand",
+   "subtopic": "Backup as a utility",
+   "revisit": "ss-l04-s5",
+   "revisitReason": "Backup as a utility",
+   "outcomes": [
+    "ss-l04-o1"
+   ],
+   "topic": "1.5",
+   "id": "rq-1.5-backup-as-a-utility-0036",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ss-l04",
+   "revisitStationId": "ss-l04-s5",
+   "revisitLabel": "1.5 Lesson 4 — Utility workshop, station 5: Backup and updates",
+   "revisitScene": 0,
+   "revisitK": 4
+  },
+  {
+   "type": "written",
+   "q": "Explain one reason a school keeps a backup copy of its data somewhere other than the school building.",
+   "markPoints": [
+    {
+     "concept": "a fire, flood or theft could destroy everything in one place",
+     "accept": [
+      [
+       "fire|flood|theft|stolen|burgl|disaster|destroy|damage|building|site|same place|same room"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "A fire or flood would destroy both the data and a backup kept in the same building."
+    },
+    {
+     "concept": "so a copy somewhere else is the only one certain to survive",
+     "accept": [
+      [
+       "elsewhere|another site|off site|offsite|cloud|different place|another building|survive|still have|restore|recover"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "This means a copy somewhere else is the only one that would survive."
+    }
+   ],
+   "example": "A fire, a flood or a burglary would take the servers and any backup sitting beside them in the same cupboard. A copy held off site, or in the cloud, is the only one certain to survive, which is the whole point of keeping it somewhere else.",
+   "paraphrase": "Since a single disaster at one location would destroy both the original and a copy stored next to it, only a copy held elsewhere is guaranteed to remain.",
+   "marks": 2,
+   "feedback": "What could destroy both copies, and why distance fixes it.",
+   "commandWord": "explain",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Backup as a utility",
+   "revisit": "ss-l04-s5",
+   "revisitReason": "Backup as a utility",
+   "outcomes": [
+    "ss-l04-o1"
+   ],
+   "topic": "1.5",
+   "id": "rq-1.5-backup-as-a-utility-0037",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ss-l04",
+   "revisitStationId": "ss-l04-s5",
+   "revisitLabel": "1.5 Lesson 4 — Utility workshop, station 5: Backup and updates",
+   "revisitScene": 0,
+   "revisitK": 4
   }
  ]
 }

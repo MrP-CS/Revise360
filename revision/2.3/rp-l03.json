@@ -185,6 +185,195 @@
    "revisitLabel": "2.3 Lesson 3 — Code clinic, station 1: Naming conventions",
    "revisitScene": 0,
    "revisitK": 0
+  },
+  {
+   "type": "mcq",
+   "q": "Which variable name is the better choice in a maintainable program?",
+   "options": [
+    "numberOfPupils",
+    "n",
+    "x1",
+    "thing2"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "A name that says what the variable holds saves the next reader working it out from how it is used.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "Naming and indentation",
+   "revisit": "rp-l03-s1",
+   "revisitReason": "Naming and indentation",
+   "outcomes": [
+    "rp-l03-o2"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-naming-and-indentation-0030",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l03",
+   "revisitStationId": "rp-l03-s1",
+   "revisitLabel": "2.3 Lesson 3 — Code clinic, station 1: Naming conventions",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "Explain how consistent indentation helps somebody reading a program.",
+   "markPoints": [
+    {
+     "concept": "it shows which lines are inside a loop or a condition",
+     "accept": [
+      [
+       "inside|within|part of|belongs to|contained|nested|block",
+       "loop|loops|condition|if|selection|iteration|function|subprogram|statement"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "It shows which lines are inside a loop or an if statement."
+    },
+    {
+     "concept": "so the structure can be seen without reading every line",
+     "accept": [
+      [
+       "structure|shape|layout|see|seen|visible|obvious|glance|quickly|immediately|easier to follow|at a look|without reading|straight away"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "This means the structure of the program can be seen at a glance."
+    }
+   ],
+   "example": "Indentation shows which lines belong inside a loop or an if statement, so the shape of the program can be seen at a glance rather than worked out line by line. In Python it is not even optional — the indentation is what decides where a block ends.",
+   "paraphrase": "Because it makes clear which statements sit within a loop or condition, the layout of the program is visible immediately instead of having to be traced.",
+   "marks": 2,
+   "feedback": "What indentation shows, and what seeing it saves.",
+   "commandWord": "explain",
+   "difficulty": "understand",
+   "subtopic": "Naming and indentation",
+   "revisit": "rp-l03-s1",
+   "revisitReason": "Naming and indentation",
+   "outcomes": [
+    "rp-l03-o2"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-naming-and-indentation-0031",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l03",
+   "revisitStationId": "rp-l03-s1",
+   "revisitLabel": "2.3 Lesson 3 — Code clinic, station 1: Naming conventions",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "tf",
+   "q": "In Python, indentation changes what a program does.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "In most languages indentation is only for readers. In Python it decides which lines are inside a block, so getting it wrong changes the program.",
+   "commandWord": "tick",
+   "difficulty": "retrieve",
+   "subtopic": "Naming and indentation",
+   "revisit": "rp-l03-s1",
+   "revisitReason": "Naming and indentation",
+   "outcomes": [
+    "rp-l03-o2"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-naming-and-indentation-0032",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l03",
+   "revisitStationId": "rp-l03-s1",
+   "revisitLabel": "2.3 Lesson 3 — Code clinic, station 1: Naming conventions",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "Explain how breaking a program into sub-programs makes it easier to maintain.",
+   "markPoints": [
+    {
+     "concept": "each sub-program does one job and can be read on its own",
+     "accept": [
+      [
+       "one job|one task|single task|one thing|single job|single purpose|own job|separately|on its own|by itself|smaller|short|self contained",
+       "sub program|subprogram|procedure|function|routine|part|parts|section|sections|block"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Each sub-program does one job and can be read on its own."
+    },
+    {
+     "concept": "so a change or a fix only has to be made in one place",
+     "accept": [
+      [
+       "one place|once|single place|only there|reuse|reused|again|rest of the program|does not affect|without changing"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "This means a change only has to be made in one place rather than everywhere the code was repeated."
+    }
+   ],
+   "example": "Each sub-program does one job, so it can be read and understood without holding the whole program in your head. And because the code sits in one place rather than being copied, fixing it means changing one sub-program rather than hunting for every copy.",
+   "paraphrase": "Since every routine handles a single task it can be understood by itself, and as the code appears only once, a correction needs making in a single location.",
+   "marks": 2,
+   "feedback": "One job each, and the one place a fix goes.",
+   "commandWord": "explain",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Sub-programs and maintainability",
+   "revisit": "rp-l03-s4",
+   "revisitReason": "Sub-programs and maintainability",
+   "outcomes": [
+    "rp-l03-o2",
+    "rp-l03-o3"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-sub-programs-and-maintainability-0033",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l03",
+   "revisitStationId": "rp-l03-s4",
+   "revisitLabel": "2.3 Lesson 3 — Code clinic, station 4: Sub-programs",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "order",
+   "q": "A program repeats the same eight lines in four different places. Put these steps in the order a programmer would take to improve it.",
+   "steps": [
+    "Notice that the same eight lines appear four times",
+    "Work out what those eight lines do as one job",
+    "Write the eight lines once as a sub-program with a name that says that job",
+    "Replace each of the four copies with a call to the sub-program",
+    "Test that the program still behaves the same way"
+   ],
+   "marks": 5,
+   "feedback": "Testing last is not optional: refactoring that is not tested is just editing.",
+   "commandWord": "complete",
+   "difficulty": "apply",
+   "subtopic": "Sub-programs and maintainability",
+   "revisit": "rp-l03-s4",
+   "revisitReason": "Sub-programs and maintainability",
+   "outcomes": [
+    "rp-l03-o2",
+    "rp-l03-o3"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-sub-programs-and-maintainability-0034",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l03",
+   "revisitStationId": "rp-l03-s4",
+   "revisitLabel": "2.3 Lesson 3 — Code clinic, station 4: Sub-programs",
+   "revisitScene": 0,
+   "revisitK": 3
   }
  ]
 }

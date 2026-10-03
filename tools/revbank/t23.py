@@ -249,9 +249,9 @@ BANK = [
                     exemplar="Boundary data sits exactly on the limit the program checks "
                              "against."),
                  mp("which is where an off-by-one mistake in the condition shows up",
-                    ["off by one|one out|mistake|mistakes|error|errors|fault|slip|wrong|"
-                     "incorrect|missed|misses",
-                     "condition|comparison|compare|operator|sign|symbol|inequality|"
+                    ["off by one|one out|mistake|mistakes|error|errors|fault|slip|"
+                     "wrong operator|wrong symbol|wrong sign|incorrect|missed|misses",
+                     "condition|comparison|operator|sign|symbol|inequality|"
                      "greater than|less than|equal|if statement"],
                     developed=True,
                     exemplar="So that is where a mistake in the comparison shows up, such as "

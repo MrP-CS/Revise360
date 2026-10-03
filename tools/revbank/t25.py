@@ -355,8 +355,9 @@ BANK = [
         short("State one way the editor in an IDE helps a programmer write correct code.",
               [mp("it shows the structure of the code as it is typed, for example by "
                   "colouring keywords or indenting automatically",
-                  ["colour|highlight|keyword|indent|line number|auto|complete|"
-                   "format|structure|bracket|matching|suggests|prompt"],
+                  ["colour|highlight|keyword|indent|line number|autocomplete|"
+                   "auto complete|bracket|matching|suggests|prompt|formatting|"
+                   "shows the structure"],
                   exemplar="It colours keywords and indents the code automatically, so "
                            "mistakes show up as they are typed.")],
               example="It colour-codes keywords, numbers the lines and indents blocks "

@@ -182,7 +182,9 @@ BANK = [
                     exemplar="Each user has their own files and settings."),
                  mp("and the system can control what each one is allowed to do",
                     ["permission|permissions|access|allowed|rights|control|restrict|"
-                     "cannot see|cannot change|privilege"],
+                     "cannot see|cannot change|privilege",
+                     "user|users|account|accounts|each one|pupil|pupils|person|people|"
+                     "student|students|staff"],
                     exemplar="The system can also control what each one is allowed to do.")],
                 example="Each user gets their own files, settings and desktop, which stay "
                         "private from the others, and the operating system can control what "

@@ -1,8 +1,8 @@
 {
  "note": "Built by tools/mkrevision.py from tools/revbank. The engine reads this first and fetches only the files for the topics a learner has chosen.",
  "version": 1,
- "questions": 436,
- "marks": 924,
+ "questions": 618,
+ "marks": 1185,
  "topics": [
   {
    "topic": "1.1",
@@ -50,8 +50,8 @@
    "topic": "1.2",
    "title": "Memory and storage",
    "paper": 1,
-   "questions": 103,
-   "marks": 183,
+   "questions": 212,
+   "marks": 292,
    "files": [
     "1.2/ms-l01.json",
     "1.2/ms-l02.json",
@@ -69,17 +69,27 @@
    "subtopics": [
     "Avoiding virtual memory",
     "Binary addition",
+    "Binary addition drill",
+    "Binary shift drill",
     "Binary shifts",
+    "Binary to denary drill",
+    "Binary to hexadecimal drill",
     "Bits, nibbles and bytes",
     "Character sets",
     "Characteristics of storage devices",
     "Choosing a storage type",
     "Comparing the three types",
+    "Comparing units",
     "Converting between units",
     "Denary and binary",
+    "Denary and hexadecimal drill",
+    "Denary to binary drill",
     "Hexadecimal",
+    "Hexadecimal to binary drill",
+    "Hexadecimal to denary drill",
     "Image file size",
     "Image file size and quality",
+    "Image file size drill",
     "Lossy and lossless",
     "More RAM, faster computer?",
     "Overflow",
@@ -91,9 +101,12 @@
     "Run-length encoding",
     "Sampling",
     "Sound file size",
+    "Sound file size drill",
     "Text file size",
+    "Text file size drill",
     "The boot sequence",
     "Types of storage",
+    "Unit conversion drill",
     "When RAM runs out",
     "Why binary?",
     "Why compress?",
@@ -174,8 +187,8 @@
    "topic": "1.5",
    "title": "Systems software",
    "paper": 1,
-   "questions": 14,
-   "marks": 33,
+   "questions": 37,
+   "marks": 83,
    "files": [
     "1.5/ss-l01.json",
     "1.5/ss-l02.json",
@@ -183,11 +196,22 @@
     "1.5/ss-l04.json"
    ],
    "subtopics": [
+    "Access levels",
+    "Backup as a utility",
+    "Compression as a utility",
     "Device drivers",
+    "Encryption as a utility",
+    "File extensions and what the OS does with files",
+    "Graphical user interfaces",
+    "Menu driven and voice interfaces",
     "Multitasking and memory management",
+    "Sharing the processor",
+    "Systems software and application software",
+    "Updates and plug and play",
     "User accounts and file management",
     "User interfaces",
     "Utility software",
+    "Virtual memory",
     "What the operating system does"
    ]
   },
@@ -280,27 +304,37 @@
    "topic": "2.3",
    "title": "Producing robust programs",
    "paper": 2,
-   "questions": 18,
-   "marks": 45,
+   "questions": 41,
+   "marks": 101,
    "files": [
     "2.3/rp-l01.json",
     "2.3/rp-l02.json",
     "2.3/rp-l03.json",
-    "2.3/rp-l04.json"
+    "2.3/rp-l04.json",
+    "2.3/rp-l05.json"
    ],
    "subtopics": [
+    "Authentication",
     "Defensive design",
+    "Length and format checks",
     "Maintainability",
+    "Naming and indentation",
+    "Normal, boundary, invalid and erroneous data",
+    "Sub-programs and maintainability",
+    "Syntax and logic errors",
     "Testing",
-    "Validation"
+    "Type and presence checks",
+    "Validation",
+    "When things go wrong at run time",
+    "Whitelists and blacklists"
    ]
   },
   {
    "topic": "2.4",
    "title": "Boolean logic",
    "paper": 2,
-   "questions": 20,
-   "marks": 51,
+   "questions": 47,
+   "marks": 97,
    "files": [
     "2.4/bl-l01.json",
     "2.4/bl-l02.json",
@@ -308,9 +342,17 @@
    ],
    "subtopics": [
     "Combining gates",
+    "Counting the rows",
     "From words to logic",
+    "NOT and brackets",
+    "Reading a diagram back into words",
+    "Reading a truth table",
+    "Reading the three gates",
     "Setting out a truth table",
-    "The three gates"
+    "Symbols and pseudocode",
+    "The three gates",
+    "Two-level circuits",
+    "Writing an expression from a sentence"
    ]
   },
   {

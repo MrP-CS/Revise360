@@ -91,7 +91,7 @@
      "concept": "and the OR is bracketed, so it is worked out before the AND",
      "accept": [
       [
-       "bracket|brackets|parenthes|first|before the and|grouped"
+       "bracket|brackets|parenthes|first|grouped|group|together"
       ]
      ],
      "worth": 1,
@@ -195,6 +195,254 @@
    "revisitLabel": "2.4 Lesson 3 — Circuit workshop, station 1: From words to logic",
    "revisitScene": 0,
    "revisitK": 0
+  },
+  {
+   "type": "mcq",
+   "q": "A fan turns on when the room is hot AND the window is closed. Using H for hot and W for the window being open, which expression is right?",
+   "options": [
+    "Q = H AND NOT W",
+    "Q = H AND W",
+    "Q = NOT (H AND W)",
+    "Q = H OR NOT W"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "W stands for the window being OPEN, so 'closed' has to be written NOT W. Reading what each letter actually means is where most marks are lost.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Writing an expression from a sentence",
+   "revisit": "bl-l03-s1",
+   "revisitReason": "Writing an expression from a sentence",
+   "outcomes": [
+    "bl-l03-o1"
+   ],
+   "topic": "2.4",
+   "id": "rq-2.4-writing-an-expression-from-a-sentence-0041",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "bl-l03",
+   "revisitStationId": "bl-l03-s1",
+   "revisitLabel": "2.4 Lesson 3 — Circuit workshop, station 1: From words to logic",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "mcq",
+   "q": "A door unlocks when a valid card is presented OR the fire alarm is sounding. Using C and F, which expression is right?",
+   "options": [
+    "Q = C OR F",
+    "Q = C AND F",
+    "Q = NOT C OR F",
+    "Q = NOT (C OR F)"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Either condition on its own is enough, which is OR. A fire alarm that needed a card as well would be a dangerous door.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "subtopic": "Writing an expression from a sentence",
+   "revisit": "bl-l03-s1",
+   "revisitReason": "Writing an expression from a sentence",
+   "outcomes": [
+    "bl-l03-o1"
+   ],
+   "topic": "2.4",
+   "id": "rq-2.4-writing-an-expression-from-a-sentence-0042",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "bl-l03",
+   "revisitStationId": "bl-l03-s1",
+   "revisitLabel": "2.4 Lesson 3 — Circuit workshop, station 1: From words to logic",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "mcq",
+   "q": "A machine starts when the guard is closed AND either the green button OR the foot pedal is pressed. Using G, B and P, which expression is right?",
+   "options": [
+    "Q = G AND (B OR P)",
+    "Q = G AND B OR P",
+    "Q = (G AND B) OR P",
+    "Q = G OR (B AND P)"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "The brackets are what make the guard compulsory. Without them the machine could start on the pedal alone with the guard open.",
+   "commandWord": "identify",
+   "difficulty": "stretch",
+   "examStyle": true,
+   "subtopic": "Writing an expression from a sentence",
+   "revisit": "bl-l03-s1",
+   "revisitReason": "Writing an expression from a sentence",
+   "outcomes": [
+    "bl-l03-o1"
+   ],
+   "topic": "2.4",
+   "id": "rq-2.4-writing-an-expression-from-a-sentence-0043",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "bl-l03",
+   "revisitStationId": "bl-l03-s1",
+   "revisitLabel": "2.4 Lesson 3 — Circuit workshop, station 1: From words to logic",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "A till gives a discount when the customer has a loyalty card AND is either a student OR over 65. Explain why the expression needs brackets.",
+   "markPoints": [
+    {
+     "concept": "the card is needed in every case",
+     "accept": [
+      [
+       "card|loyalty|first condition|c",
+       "always|every case|both|all|compulsory|must|needed|required|whatever|regardless"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The loyalty card is needed whichever of the other two applies."
+    },
+    {
+     "concept": "so the OR has to be worked out first and then combined with the card",
+     "accept": [
+      [
+       "brackets make|brackets mean|brackets force|brackets group|inside the brackets|happen first|happens first|worked out first|evaluated first|done first|grouped|group|together|combined with the card|before being combined"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "So the OR must be worked out first, and its result combined with the card by the AND."
+    }
+   ],
+   "example": "The loyalty card is needed in every case, and the student-or-over-65 test is a choice between two ways of qualifying. The brackets make the OR happen first, so its result is then ANDed with the card. Without them, AND binds tighter than OR and somebody over 65 with no card would get the discount.",
+   "paraphrase": "Because the card is required whichever of the two other conditions applies, those two must be grouped and evaluated together before being combined with the card.",
+   "marks": 2,
+   "feedback": "What is always required, and what the brackets therefore have to group.",
+   "hint": "What would happen without the brackets, for somebody over 65 and no card?",
+   "commandWord": "explain",
+   "difficulty": "stretch",
+   "examStyle": true,
+   "subtopic": "Writing an expression from a sentence",
+   "revisit": "bl-l03-s1",
+   "revisitReason": "Writing an expression from a sentence",
+   "outcomes": [
+    "bl-l03-o1"
+   ],
+   "topic": "2.4",
+   "id": "rq-2.4-writing-an-expression-from-a-sentence-0044",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "bl-l03",
+   "revisitStationId": "bl-l03-s1",
+   "revisitLabel": "2.4 Lesson 3 — Circuit workshop, station 1: From words to logic",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "mcq",
+   "q": "A circuit takes inputs A and B. A goes into a NOT gate, and the result goes into an AND gate with B. When is the output 1?",
+   "options": [
+    "When A is 0 and B is 1",
+    "When A is 1 and B is 1",
+    "When A is 0 and B is 0",
+    "When A is 1 and B is 0"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "The NOT turns A round first, so the AND sees NOT A and B — and an AND needs both of the things it is given to be 1.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Reading a diagram back into words",
+   "revisit": "bl-l03-s6",
+   "revisitReason": "Reading a diagram back into words",
+   "outcomes": [
+    "bl-l03-o1"
+   ],
+   "topic": "2.4",
+   "id": "rq-2.4-reading-a-diagram-back-into-words-0047",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "bl-l03",
+   "revisitStationId": "bl-l03-s6",
+   "revisitLabel": "2.4 Lesson 3 — Circuit workshop, station 6: Reading diagrams",
+   "revisitScene": 0,
+   "revisitK": 5
+  },
+  {
+   "type": "sort",
+   "q": "A circuit computes Q = NOT A AND B. Sort each pair of inputs by what Q is.",
+   "cats": [
+    "Q is 1",
+    "Q is 0"
+   ],
+   "items": [
+    [
+     "A = 0, B = 1",
+     "Q is 1"
+    ],
+    [
+     "A = 0, B = 0",
+     "Q is 0"
+    ],
+    [
+     "A = 1, B = 1",
+     "Q is 0"
+    ],
+    [
+     "A = 1, B = 0",
+     "Q is 0"
+    ]
+   ],
+   "marks": 4,
+   "feedback": "Only one of the four rows gives 1. Inverting A first is what moves it there from the row an ordinary AND would pick.",
+   "commandWord": "tick",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Reading a diagram back into words",
+   "revisit": "bl-l03-s6",
+   "revisitReason": "Reading a diagram back into words",
+   "outcomes": [
+    "bl-l03-o1"
+   ],
+   "topic": "2.4",
+   "id": "rq-2.4-reading-a-diagram-back-into-words-0048",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "bl-l03",
+   "revisitStationId": "bl-l03-s6",
+   "revisitLabel": "2.4 Lesson 3 — Circuit workshop, station 6: Reading diagrams",
+   "revisitScene": 0,
+   "revisitK": 5
+  },
+  {
+   "type": "tf",
+   "q": "A circuit diagram and a truth table can describe exactly the same logic.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "They are two ways of writing the same thing, along with the expression. Being able to move between all three is what 2.4 asks for.",
+   "commandWord": "tick",
+   "difficulty": "retrieve",
+   "subtopic": "Reading a diagram back into words",
+   "revisit": "bl-l03-s6",
+   "revisitReason": "Reading a diagram back into words",
+   "outcomes": [
+    "bl-l03-o1"
+   ],
+   "topic": "2.4",
+   "id": "rq-2.4-reading-a-diagram-back-into-words-0046",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "bl-l03",
+   "revisitStationId": "bl-l03-s6",
+   "revisitLabel": "2.4 Lesson 3 — Circuit workshop, station 6: Reading diagrams",
+   "revisitScene": 0,
+   "revisitK": 5
   }
  ]
 }

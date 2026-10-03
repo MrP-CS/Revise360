@@ -159,6 +159,160 @@
    "revisitLabel": "2.3 Lesson 2 — Cyber defence HQ, station 1: Anticipating misuse",
    "revisitScene": 0,
    "revisitK": 0
+  },
+  {
+   "type": "multi",
+   "q": "Which of these are ways a program can authenticate a user? Tick all that apply.",
+   "options": [
+    "A username and password",
+    "A code sent to the user's phone",
+    "A fingerprint or face scan",
+    "Answering a security question set earlier",
+    "Checking that the username is spelled correctly",
+    "Checking that the password is at least eight characters long"
+   ],
+   "correct": [
+    "A username and password",
+    "A code sent to the user's phone",
+    "A fingerprint or face scan",
+    "Answering a security question set earlier"
+   ],
+   "marks": 4,
+   "feedback": "Authentication proves who somebody is. The last two are validation: they check the entry makes sense, not who typed it.",
+   "commandWord": "tick",
+   "difficulty": "understand",
+   "subtopic": "Authentication",
+   "revisit": "rp-l02-s3",
+   "revisitReason": "Authentication",
+   "outcomes": [
+    "rp-l02-o3"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-authentication-0026",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l02",
+   "revisitStationId": "rp-l02-s3",
+   "revisitLabel": "2.3 Lesson 2 — Cyber defence HQ, station 3: Authentication",
+   "revisitScene": 0,
+   "revisitK": 2
+  },
+  {
+   "type": "written",
+   "q": "Explain why a program should store a hashed version of a password rather than the password itself.",
+   "markPoints": [
+    {
+     "concept": "if the stored data is read the actual passwords are not in it",
+     "accept": [
+      [
+       "stolen|taken|read|leaked|breach|hacked|copied|got hold of|database|if someone sees",
+       "not the password|passwords are not|no passwords|not in it|not stored|cannot see|cannot read|does not have|hash|hashes|hashed|scrambled|unreadable"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "If the stored data is stolen, the actual passwords are not in it."
+    },
+    {
+     "concept": "because a hash cannot practically be turned back into the original",
+     "accept": [
+      [
+       "cannot be reversed|not be reversed|cannot be turned back|not be turned back|cannot turn it back|cannot be worked backwards|not be worked backwards|cannot be undone|one way|oneway|cannot get back|cannot work out|cannot undo|impossible to|very hard to"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "This is because a hash cannot practically be turned back into the password."
+    }
+   ],
+   "example": "If the file of accounts is stolen, what the attacker has is a list of hashes, and a hash cannot practically be turned back into the password it came from. The program can still check a login, because it hashes what was typed and compares the two hashes rather than the passwords.",
+   "paraphrase": "Should the stored records be taken, they contain no usable passwords, since the process of producing a hash cannot be worked backwards.",
+   "marks": 2,
+   "feedback": "What a thief gets, and why it is no use to them.",
+   "commandWord": "explain",
+   "difficulty": "stretch",
+   "subtopic": "Authentication",
+   "revisit": "rp-l02-s3",
+   "revisitReason": "Authentication",
+   "outcomes": [
+    "rp-l02-o3"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-authentication-0027",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l02",
+   "revisitStationId": "rp-l02-s3",
+   "revisitLabel": "2.3 Lesson 2 — Cyber defence HQ, station 3: Authentication",
+   "revisitScene": 0,
+   "revisitK": 2
+  },
+  {
+   "type": "multi",
+   "q": "Which of these can go wrong while a program is running, however carefully it was written? Tick all that apply.",
+   "options": [
+    "The user enters something unexpected",
+    "A file the program needs has been moved or deleted",
+    "The network connection drops part-way through",
+    "A calculation ends up dividing by zero",
+    "The program's syntax is wrong",
+    "The programmer has not finished writing it"
+   ],
+   "correct": [
+    "The user enters something unexpected",
+    "A file the program needs has been moved or deleted",
+    "The network connection drops part-way through",
+    "A calculation ends up dividing by zero"
+   ],
+   "marks": 4,
+   "feedback": "These are run-time problems: they depend on what happens while the program runs. A syntax error stops it running at all.",
+   "commandWord": "tick",
+   "difficulty": "understand",
+   "subtopic": "When things go wrong at run time",
+   "revisit": "rp-l02-s2",
+   "revisitReason": "When things go wrong at run time",
+   "outcomes": [
+    "rp-l02-o2"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-when-things-go-wrong-at-run-time-0028",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l02",
+   "revisitStationId": "rp-l02-s2",
+   "revisitLabel": "2.3 Lesson 2 — Cyber defence HQ, station 2: When things go wrong",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "mcq",
+   "q": "A program asks the user for two numbers and divides the first by the second. What should it check before dividing?",
+   "options": [
+    "That the second number is not zero",
+    "That the first number is larger than the second",
+    "That both numbers are whole numbers",
+    "That the user has entered them in order"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Dividing by zero stops the program. Checking for it first is defensive design in one line.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "When things go wrong at run time",
+   "revisit": "rp-l02-s2",
+   "revisitReason": "When things go wrong at run time",
+   "outcomes": [
+    "rp-l02-o2"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-when-things-go-wrong-at-run-time-0029",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l02",
+   "revisitStationId": "rp-l02-s2",
+   "revisitLabel": "2.3 Lesson 2 — Cyber defence HQ, station 2: When things go wrong",
+   "revisitScene": 0,
+   "revisitK": 1
   }
  ]
 }

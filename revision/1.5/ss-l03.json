@@ -20,7 +20,8 @@
      "concept": "and the system can control what each one is allowed to do",
      "accept": [
       [
-       "permission|permissions|access|allowed|rights|control|restrict|cannot see|cannot change|privilege"
+       "permission|permissions|access|allowed|rights|control|restrict|cannot see|cannot change|privilege",
+       "user|users|account|accounts|each one|pupil|pupils|person|people|student|students|staff"
       ]
      ],
      "worth": 1,
@@ -83,6 +84,164 @@
    "revisitLabel": "1.5 Lesson 3 — Accounts office, station 1: User accounts",
    "revisitScene": 0,
    "revisitK": 0
+  },
+  {
+   "type": "match",
+   "q": "Match each account to the access it should be given on a school network.",
+   "pairs": [
+    [
+     "A Year 11 pupil",
+     "Read and write their own files, read shared resources"
+    ],
+    [
+     "A teacher",
+     "Read and write their class's work and enter marks"
+    ],
+    [
+     "A network technician",
+     "Install software and change settings on any machine"
+    ],
+    [
+     "A visitor",
+     "Reach the internet and nothing else"
+    ]
+   ],
+   "marks": 4,
+   "feedback": "Each account gets what the job needs and no more. That principle is what limits the damage when an account is misused.",
+   "commandWord": "draw",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Access levels",
+   "revisit": "ss-l03-s2",
+   "revisitReason": "Access levels",
+   "outcomes": [
+    "ss-l03-o1"
+   ],
+   "topic": "1.5",
+   "id": "rq-1.5-access-levels-0028",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ss-l03",
+   "revisitStationId": "ss-l03-s2",
+   "revisitLabel": "1.5 Lesson 3 — Accounts office, station 2: Access levels",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "written",
+   "q": "Explain why a school does not give every pupil the same access rights as a technician.",
+   "markPoints": [
+    {
+     "concept": "a technician's account can change settings and install software",
+     "accept": [
+      [
+       "install|change settings|change anything|alter|delete|admin|administrator|full access|everything|any machine|system files|system itself"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "A technician's account can install software."
+    },
+    {
+     "concept": "so if a pupil's account were misused or stolen the damage would be far worse",
+     "accept": [
+      [
+       "damage|harm|break|broken|mistake|error|fault|accident|misuse|stolen|hacked|compromised|virus|malware|worse|whole network|entire network|everyone|everybody"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "This means a misused pupil account could damage the whole network rather than just their own files."
+    }
+   ],
+   "example": "A technician's account can install software and change system settings on any machine. If every pupil had that, one careless mistake or one stolen password could break machines for everybody rather than affecting only that pupil's own files.",
+   "paraphrase": "Because such an account can alter the system itself, giving it to everyone would mean a single error or compromised login could affect the entire network.",
+   "marks": 2,
+   "feedback": "What the extra rights allow, and what goes wrong when they are misused.",
+   "commandWord": "explain",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Access levels",
+   "revisit": "ss-l03-s2",
+   "revisitReason": "Access levels",
+   "outcomes": [
+    "ss-l03-o1"
+   ],
+   "topic": "1.5",
+   "id": "rq-1.5-access-levels-0029",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ss-l03",
+   "revisitStationId": "ss-l03-s2",
+   "revisitLabel": "1.5 Lesson 3 — Accounts office, station 2: Access levels",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "mcq",
+   "q": "What does a file's extension tell the operating system?",
+   "options": [
+    "Which program should be used to open it",
+    "How large the file is",
+    "Where on the disk the file is stored",
+    "Who is allowed to open it"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "The extension is how the operating system knows which program a file belongs to. Size, location and permissions are all recorded separately.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "File extensions and what the OS does with files",
+   "revisit": "ss-l03-s6",
+   "revisitReason": "File extensions and what the OS does with files",
+   "outcomes": [
+    "ss-l03-o2"
+   ],
+   "topic": "1.5",
+   "id": "rq-1.5-file-extensions-and-what-the-os-does-with-files-0030",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ss-l03",
+   "revisitStationId": "ss-l03-s6",
+   "revisitLabel": "1.5 Lesson 3 — Accounts office, station 6: File extensions",
+   "revisitScene": 0,
+   "revisitK": 5
+  },
+  {
+   "type": "multi",
+   "q": "Which of these does an operating system do when it manages files? Tick all that apply.",
+   "options": [
+    "Records where on the disk each file is stored",
+    "Keeps a folder structure so files can be organised",
+    "Records which account owns each file",
+    "Opens a file in the right program when it is double-clicked",
+    "Decides whether the contents of a file are correct",
+    "Writes the contents of the file for the user"
+   ],
+   "correct": [
+    "Records where on the disk each file is stored",
+    "Keeps a folder structure so files can be organised",
+    "Records which account owns each file",
+    "Opens a file in the right program when it is double-clicked"
+   ],
+   "marks": 4,
+   "feedback": "Where it is, who owns it, how it is organised and what opens it. What is inside it is the application's business.",
+   "commandWord": "tick",
+   "difficulty": "understand",
+   "subtopic": "File extensions and what the OS does with files",
+   "revisit": "ss-l03-s6",
+   "revisitReason": "File extensions and what the OS does with files",
+   "outcomes": [
+    "ss-l03-o2"
+   ],
+   "topic": "1.5",
+   "id": "rq-1.5-file-extensions-and-what-the-os-does-with-files-0031",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ss-l03",
+   "revisitStationId": "ss-l03-s6",
+   "revisitLabel": "1.5 Lesson 3 — Accounts office, station 6: File extensions",
+   "revisitScene": 0,
+   "revisitK": 5
   }
  ]
 }

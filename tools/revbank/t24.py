@@ -135,7 +135,7 @@ BANK = [
                      "whichever|it does not matter which"],
                     exemplar="Either of the two buttons will do on its own."),
                  mp("and the OR is bracketed, so it is worked out before the AND",
-                    ["bracket|brackets|parenthes|first|before the and|grouped"],
+                    ["bracket|brackets|parenthes|first|grouped|group|together"],
                     developed=True,
                     exemplar="The OR is in brackets so that it is worked out before the AND.")],
                 example="Q = Closed AND (Inside OR Outside). The AND means the doors must be "

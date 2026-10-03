@@ -213,6 +213,233 @@
    "revisitLabel": "1.5 Lesson 2 — Multitasking floor, station 4: Virtual memory",
    "revisitScene": 0,
    "revisitK": 3
+  },
+  {
+   "type": "order",
+   "q": "Put these steps in the order the operating system carries them out when it switches between two programs.",
+   "steps": [
+    "The first program's turn runs out",
+    "The operating system saves where that program had got to",
+    "The operating system loads where the second program had got to",
+    "The second program runs for its turn",
+    "The operating system saves the second program's position in its turn"
+   ],
+   "marks": 5,
+   "feedback": "Saving where a program had got to is the whole trick: without it the program could not carry on from the same place.",
+   "commandWord": "complete",
+   "difficulty": "understand",
+   "subtopic": "Sharing the processor",
+   "revisit": "ss-l02-s2",
+   "revisitReason": "Sharing the processor",
+   "outcomes": [
+    "ss-l02-o1"
+   ],
+   "topic": "1.5",
+   "id": "rq-1.5-sharing-the-processor-0022",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ss-l02",
+   "revisitStationId": "ss-l02-s2",
+   "revisitLabel": "1.5 Lesson 2 — Multitasking floor, station 2: Sharing the processor",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "mcq",
+   "q": "A computer with one processor core appears to run six programs at once. What is actually happening?",
+   "options": [
+    "The processor is switching between them very quickly",
+    "All six are running in the same instant",
+    "Five of them are paused until the first finishes",
+    "The programs are sharing one set of instructions"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "One core, one instruction at a time. The speed of the switching is what makes it look simultaneous.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "subtopic": "Sharing the processor",
+   "revisit": "ss-l02-s2",
+   "revisitReason": "Sharing the processor",
+   "outcomes": [
+    "ss-l02-o1"
+   ],
+   "topic": "1.5",
+   "id": "rq-1.5-sharing-the-processor-0023",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ss-l02",
+   "revisitStationId": "ss-l02-s2",
+   "revisitLabel": "1.5 Lesson 2 — Multitasking floor, station 2: Sharing the processor",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "short",
+   "q": "State what virtual memory is.",
+   "markPoints": [
+    {
+     "concept": "space on secondary storage used as if it were RAM when RAM is full",
+     "accept": [
+      [
+       "hard disk|disk|drive|secondary storage|ssd|storage",
+       "as if it were ram|as though it were ram|as though it is ram|like ram|instead of ram|extra ram|pretend|acts as ram|used as ram|ram is full|ram runs out|stand in for ram|stands in for ram|stand in for main memory|stands in for main memory"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Space on the hard disk used as though it were RAM when RAM is full."
+    }
+   ],
+   "example": "An area of secondary storage that the operating system uses as though it were RAM, when the programs running need more memory than the RAM can hold.",
+   "paraphrase": "Part of the hard drive set aside to stand in for main memory once that memory is full.",
+   "marks": 1,
+   "feedback": "Disk standing in for RAM. Saying it is more RAM is not quite the answer.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "Virtual memory",
+   "revisit": "ss-l02-s4",
+   "revisitReason": "Virtual memory",
+   "outcomes": [
+    "ss-l02-o2"
+   ],
+   "topic": "1.5",
+   "id": "rq-1.5-virtual-memory-0024",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ss-l02",
+   "revisitStationId": "ss-l02-s4",
+   "revisitLabel": "1.5 Lesson 2 — Multitasking floor, station 4: Virtual memory",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "written",
+   "q": "Explain why a computer using virtual memory heavily feels slow.",
+   "markPoints": [
+    {
+     "concept": "secondary storage is far slower to read and write than RAM",
+     "accept": [
+      [
+       "slower|slow|not as fast|less quick|longer|thousands of times|takes more time",
+       "disk|drive|secondary storage|hard disk|ssd|storage"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Secondary storage is far slower to read and write than RAM."
+    },
+    {
+     "concept": "and the operating system keeps moving pages between the two",
+     "accept": [
+      [
+       "swap|swaps|swapping|move|moves|moving|transfer|back and forth|repeatedly|constantly|again and again",
+       "disk|drive|storage|ram|memory|data|page|pages|between the two"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "This means the operating system spends its time moving data back and forth instead of running programs."
+    }
+   ],
+   "example": "Reading and writing secondary storage takes thousands of times longer than reading RAM, and when memory is short the operating system is constantly moving data out to the disk and back again. The processor ends up waiting for the disk rather than running the programs.",
+   "paraphrase": "Because the drive is so much slower than main memory, and data has to be shifted between the two over and over, the machine spends its time transferring rather than computing.",
+   "marks": 2,
+   "feedback": "Slower storage, and the constant moving. Both halves.",
+   "commandWord": "explain",
+   "difficulty": "understand",
+   "examStyle": true,
+   "subtopic": "Virtual memory",
+   "revisit": "ss-l02-s4",
+   "revisitReason": "Virtual memory",
+   "outcomes": [
+    "ss-l02-o2"
+   ],
+   "topic": "1.5",
+   "id": "rq-1.5-virtual-memory-0025",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ss-l02",
+   "revisitStationId": "ss-l02-s4",
+   "revisitLabel": "1.5 Lesson 2 — Multitasking floor, station 4: Virtual memory",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "mcq",
+   "q": "A user plugs in a USB memory stick and it works immediately with no software to install. What makes this possible?",
+   "options": [
+    "The operating system already has a driver for that kind of device",
+    "The memory stick contains its own operating system",
+    "The memory stick does not need a driver",
+    "The user must have installed one earlier that day"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Common kinds of device have drivers built into the operating system, which is what plug and play means.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "subtopic": "Updates and plug and play",
+   "revisit": "ss-l02-s6",
+   "revisitReason": "Updates and plug and play",
+   "outcomes": [
+    "ss-l02-o3"
+   ],
+   "topic": "1.5",
+   "id": "rq-1.5-updates-and-plug-and-play-0026",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ss-l02",
+   "revisitStationId": "ss-l02-s6",
+   "revisitLabel": "1.5 Lesson 2 — Multitasking floor, station 6: Updates and plug and play",
+   "revisitScene": 0,
+   "revisitK": 5
+  },
+  {
+   "type": "written",
+   "q": "Explain why an operating system needs updating.",
+   "markPoints": [
+    {
+     "concept": "newly found security weaknesses have to be closed",
+     "accept": [
+      [
+       "security|vulnerab|weakness|hole|exploit|attack|attacker|malware|virus|patch|safe",
+       "update|updates|updated|patch|patched|close|closes|closed|fix|fixes|fixed|found|discovered|released|since|protect"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Updates close security weaknesses that have been found since it was released."
+    },
+    {
+     "concept": "and new hardware and software need support that did not exist before",
+     "accept": [
+      [
+       "new hardware|new device|new devices|new software|driver|drivers|compatib|support|work with|bug|bugs|fault|faults|improve"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "They also add support for new hardware and fix faults that have been found."
+    }
+   ],
+   "example": "Weaknesses are found in any operating system after it is released, and an update closes them before an attacker can use them. Updates also add support for hardware and software that did not exist when the system shipped, and fix faults that have come to light.",
+   "paraphrase": "Flaws that attackers could exploit are patched, and support is added for devices and programs that were not around when the system was written.",
+   "marks": 2,
+   "feedback": "Security, and keeping up with new things. Either pair earns both marks.",
+   "commandWord": "explain",
+   "difficulty": "understand",
+   "subtopic": "Updates and plug and play",
+   "revisit": "ss-l02-s6",
+   "revisitReason": "Updates and plug and play",
+   "outcomes": [
+    "ss-l02-o3"
+   ],
+   "topic": "1.5",
+   "id": "rq-1.5-updates-and-plug-and-play-0027",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ss-l02",
+   "revisitStationId": "ss-l02-s6",
+   "revisitLabel": "1.5 Lesson 2 — Multitasking floor, station 6: Updates and plug and play",
+   "revisitScene": 0,
+   "revisitK": 5
   }
  ]
 }
