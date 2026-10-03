@@ -17,7 +17,7 @@ name.length, name.substring(x, i), name.upper, ASC() and CHR(), openRead and
 openWrite with readLine, writeLine, endOfFile and close, array a[n] and
 a[r,c], and random(a, b).
 """
-from kit import mcq, multi, sort, match, order
+from kit import mcq, multi, sort, match, order, calc
 
 K22 = "2.2 Programming fundamentals"
 SUB22 = "OCR J277 Paper 2  |  Computational thinking, algorithms and programming"
@@ -220,7 +220,20 @@ L2 = dict(id="pf-l02", topic="2.2", lesson=2, title="Type foundry", img="PF_L02_
             "MOD and DIV are the two most often muddled: DIV is how many times it goes in, MOD is what is left over."),
       mcq("Which expression gives the remainder when 30 is divided by 7?", "30 MOD 7",
           ["30 DIV 7", "30 / 7", "30 ^ 7"],
-          "MOD gives the remainder, which here is 2, because 7 goes into 30 four times with 2 left over.")]),
+          "MOD gives the remainder, which here is 2, because 7 goes into 30 four times with 2 left over."),
+      # The station is called "work it out" and until now nobody worked anything
+      # out: the expressions were matched to values already on the screen. These
+      # totals are not 19, 23 or 30, and the scenario is not the seconds-to-
+      # minutes one the worksheet's third exam question asks for, so neither the
+      # earlier activities nor the exam practice is given away here.
+      calc("Boxes hold 12 eggs. Fill in the two blanks on each row.",
+           ["Eggs", "Full boxes  (eggs DIV 12)", "Left over  (eggs MOD 12)"],
+           [["100", "", ""], ["45", "", ""], ["7", "", ""]],
+           [["100", "8", "4"], ["45", "3", "9"], ["7", "0", "7"]],
+           title="DIV and MOD on the same number",
+           fb="DIV is how many whole boxes you fill, MOD is what is left over on the bench. "
+              "The last row is the one worth remembering: 7 DIV 12 is 0, because you cannot "
+              "fill a box at all, and 7 MOD 12 is the whole 7.")]),
   info=[(0, "Why types matter", "Choosing the right data type saves memory and prevents errors. A Boolean needs only one bit of information, while storing the same yes or no as a string needs a byte for every character."),
         (1, "Casting can lose data", "Casting a real number to an integer throws the decimal part away rather than rounding it, so 4.9 becomes 4. If you need rounding, use a rounding function instead of a cast."),
         (2, "Integer division", "Dividing with / can give an answer with a decimal part even when both numbers are whole. That is exactly why DIV exists: it keeps the answer a whole number."),
@@ -437,7 +450,19 @@ L4 = dict(id="pf-l04", topic="2.2", lesson=4, title="Record vault", img="PF_L04_
             "Take one record at a time and ask whether the condition is True for it. If it is, the record is returned."),
       mcq("Which query would find every seed whose name ends in the letter n?", "SELECT Name FROM Seeds WHERE Name LIKE '%n';",
           ["SELECT Name FROM Seeds WHERE Name LIKE 'n%';", "SELECT Name FROM Seeds WHERE Name = 'n';", "SELECT Name FROM Seeds WHERE Name LIKE '_n';"],
-          "Put the % before the letter and the pattern means anything, then n at the very end.")]),
+          "Put the % before the letter and the pattern means anything, then n at the very end."),
+      # Every other activity in this lesson hands the pupil a finished query and
+      # asks what it returns, or which of four is right. The exam asks them to
+      # write one. Ordering the clauses is the half of that a tap can do: it is
+      # the clause order pupils lose marks on, and it needs no keyboard.
+      # Different columns and a different condition from the six queries above.
+      order("Build a query that lists the name and family of every legume with "
+            "more than five packets left. Tap the parts in the right order.",
+            ["SELECT Name, Family", "FROM Seeds", "WHERE Family = 'Legume'",
+             "AND PacketsLeft > 5;"],
+            "SELECT says which columns you want, FROM says which table they are in, and "
+            "WHERE narrows it to the rows you want. Extra conditions join on with AND "
+            "after the first WHERE, not as a second WHERE.")]),
   info=[(0, "Why not one big list", "A table of records keeps related data together, so one row can be added, changed or deleted without disturbing any other. Storing the same data as separate lists of names and separate lists of numbers makes it far too easy for the lists to drift out of step."),
         (1, "Primary keys", "A field like SeedID that is different for every record is called a primary key. It matters because two packets could easily share a name, but a key is guaranteed to pick out exactly one record."),
         (2, "SQL is everywhere", "The same SELECT, FROM and WHERE are used by almost every database in the world, from a school register to an airline booking system. Learning them once means you can query any of them."),

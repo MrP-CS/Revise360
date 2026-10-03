@@ -262,6 +262,23 @@
         "Repeating the question"
        ],
        "fb": "Depth and examples earn the top marks."
+      },
+      {
+       "t": "bugline",
+       "q": "This program should only accept a month from 1 to 12. One line lets 13 through. Which one?",
+       "code": [
+        "month = int(input('Month: '))",
+        "while month < 1 OR month > 13",
+        "  print('That is not a month.')",
+        "  month = int(input('Month: '))",
+        "endwhile",
+        "print('Thank you.')"
+       ],
+       "line": 2,
+       "kind": "Logic",
+       "fix": "Reject anything above 12: while month < 1 OR month > 12",
+       "fb": "The program runs, asks politely and never crashes, which is why a logic error is harder to find than a syntax one: nothing tells you it is wrong except the answer being wrong. A boundary test with 13 finds it in one go, which is why boundary data is tested at all.",
+       "title": "A validation check that nearly works"
       }
      ]
     },
@@ -357,7 +374,8 @@
      "text": "A robust program keeps working correctly whatever users throw at it: that's the thread that links every lesson in this topic."
     }
    ],
-   "models": []
+   "models": [],
+   "diagrams": []
   }
  ]
 }

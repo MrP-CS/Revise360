@@ -133,8 +133,8 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 | outcomes in the course | 270 |
 | of those, with an **authored** mapping | 9 |
 | the rest, matched by words and unchecked | 261 |
-| teaching lessons where every activity is recognition | 8 |
-| teaching lessons with only one activity that asks for an answer | 26 |
+| teaching lessons where every activity is recognition | 0 |
+| teaching lessons with only one activity that asks for an answer | 34 |
 | outcomes nothing in their unit assesses | 15 |
 | outcomes no station's text matches | 8 |
 | outcomes that cannot be traced, because the teaching is only in the image | 4 |
@@ -254,7 +254,7 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 - the lesson's shape: no key question
 
 ### nw-l02 — Network control room
-- the lesson's shape: every activity is recognition: the answer is always on the screen
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 - the lesson's shape: no key vocabulary is listed
 - the lesson's shape: no key question
@@ -316,7 +316,7 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 
 ### nw-l12 — Protocol city
 - **nw-l12-x3** is assessed but matches no outcome stated anywhere in this unit: Describe what HTTPS adds to HTTP and why it matters.
-- the lesson's shape: every activity is recognition: the answer is always on the screen
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 
 ### nw-l13 — Parcel depot
@@ -324,7 +324,7 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 - the lesson's shape: no optional challenge activity
 
 ### nw-l14 — Revision HQ 2
-- the lesson's shape: every activity is recognition: the answer is always on the screen
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 - the lesson's shape: no key question
 
@@ -373,7 +373,7 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 - the lesson's shape: no optional challenge activity
 
 ### ns-l09 — Defence depot
-- the lesson's shape: every activity is recognition: the answer is always on the screen
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 
 ### ns-l10 — Defence depot 2
@@ -466,7 +466,7 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 
 ### pf-l02 — Type foundry
 - **pf-l02-x1** is assessed but matches no outcome stated anywhere in this unit: Identify the most suitable data type for each of these values: 17, 3.5, True, "Year 10".
-- the lesson's shape: every activity is recognition: the answer is always on the screen
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 
 ### pf-l03 — Filing room
@@ -474,7 +474,7 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 - the lesson's shape: no optional challenge activity
 
 ### pf-l04 — Record vault
-- the lesson's shape: every activity is recognition: the answer is always on the screen
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 
 ### pf-l05 — Array yard
@@ -532,7 +532,7 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 - the lesson's shape: no optional challenge activity
 
 ### rp-l06 — Revision HQ 2.3
-- the lesson's shape: every activity is recognition: the answer is always on the screen
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 
 ### rp-l07-test — End-of-topic test
@@ -567,7 +567,7 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 ### pl-l04 — IDE control room
 - **pl-l04-o2** Explain how each facility supports programming.
   - cannot be traced: this lesson's station text is only in the rendered image, so there is nothing to match
-- the lesson's shape: every activity is recognition: the answer is always on the screen
+- the lesson's shape: only one activity asks the pupil to produce an answer rather than choose one
 - the lesson's shape: no optional challenge activity
 
 ### pl-l05 — Language review HQ

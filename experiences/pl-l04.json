@@ -270,6 +270,19 @@
         "Only auto-completion"
        ],
        "fb": "Execute the corrected program to see its output."
+      },
+      {
+       "t": "order",
+       "q": "A program will not run. Put the IDE facilities in the order you would use them.",
+       "steps": [
+        "Open the source code in the editor",
+        "Run the translator over it",
+        "Read the diagnostic message and the line it names",
+        "Correct that line in the editor",
+        "Run the program in the run-time environment",
+        "Check the output is what you expected"
+       ],
+       "fb": "The order is the point. A diagnostic is no use until something has tried to translate the code, and running it proves nothing until the error it reported is gone. Most of programming is going round this loop, which is why an IDE puts all four facilities in one window."
       }
      ]
     }

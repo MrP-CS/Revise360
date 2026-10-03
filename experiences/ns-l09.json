@@ -195,6 +195,41 @@
         "A longer lunch break"
        ],
        "fb": "Testing with permission is the professional way to find holes."
+      },
+      {
+       "t": "sort",
+       "q": "Where is the weakness in each of these: in the technology, or in the people using it?",
+       "cats": [
+        "The technology",
+        "The people"
+       ],
+       "items": [
+        [
+         "The server still runs software the maker stopped supporting two years ago",
+         "The technology"
+        ],
+        [
+         "A member of staff holds the door open for somebody carrying boxes",
+         "The people"
+        ],
+        [
+         "Someone tells a caller claiming to be from IT what their password is",
+         "The people"
+        ],
+        [
+         "The firewall allows any traffic in from outside the network",
+         "The technology"
+        ],
+        [
+         "An accountant pays an invoice emailed by somebody claiming to be the director",
+         "The people"
+        ],
+        [
+         "Every member of staff is an administrator on their own machine",
+         "The technology"
+        ]
+       ],
+       "fb": "Three of these would survive any amount of new equipment, because what went wrong was something a person did in the moment. That is why training and an acceptable use policy sit alongside the firewall rather than behind it: you cannot buy your way out of somebody holding a door open."
       }
      ]
     },
@@ -291,17 +326,7 @@
     }
    ],
    "models": [],
-   "diagrams": [
-    {
-     "id": "d1",
-     "face": "back",
-     "x": 190,
-     "y": 240,
-     "diagram": "firewall",
-     "title": "Checked against the rules",
-     "text": "Packets arriving and being allowed or dropped by a rule list, and the one thing a firewall never looks at."
-    }
-   ]
+   "diagrams": []
   }
  ]
 }

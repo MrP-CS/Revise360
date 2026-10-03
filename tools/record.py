@@ -320,7 +320,7 @@ def misconceptions(bullets, tasks, sid):
         if m:
             out.append({"says": m.group(1).strip(), "from": "wall panel"})
     for i, t in enumerate(tasks or []):
-        kind = t.get("kind") or t.get("t")
+        kind = kind_of(t)
         opts = t.get("a") or t.get("opts") or []
         if kind in ("mcq", "predict") and len(opts) > 1:
             out.append({"wrong_answers_offered": list(opts[1:]),
@@ -335,11 +335,26 @@ def misconceptions(bullets, tasks, sid):
     return out
 
 
+def kind_of(t):
+    """What kind of activity this is, for the role table.
+
+    A Python activity carries both: `t` is "code" and `kind` says which of try,
+    predict, change, complete, debug or build it is, and that refinement is the
+    whole point of the role table. A bugline also carries both, and its `kind`
+    is the kind of ERROR - "Syntax" or "Logic" - which is a different idea
+    wearing the same word. Reading `kind` first classified every bugline in the
+    course by its error type, so al-l10's six and rp-l06's new one counted as
+    neither recognition nor construction.
+    """
+    k = t.get("t") or "build"
+    return (t.get("kind") or "code") if k == "code" else k
+
+
 def checks(tasks, prefix):
     """The diagnostic questions, with the teaching response the author wrote."""
     out = []
     for i, t in enumerate(tasks or []):
-        kind = t.get("kind") or t.get("t")
+        kind = kind_of(t)
         if kind not in ("mcq", "multi", "predict"):
             continue
         opts = t.get("a") or t.get("opts") or []
@@ -376,7 +391,7 @@ def checks(tasks, prefix):
 
 def activity(t, ref, prefix, n):
     """One activity, with the data it prescribes pulled out of the instruction."""
-    kind = t.get("kind") or t.get("t") or "build"
+    kind = kind_of(t)
     marked = re.findall(r"`([^`]*)`", " ".join(
         [str(t.get("q") or "")] + [str(x) for x in (t.get("brief") or [])]))
     a = {

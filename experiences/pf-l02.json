@@ -250,6 +250,51 @@
         "30 ^ 7"
        ],
        "fb": "MOD gives the remainder, which here is 2, because 7 goes into 30 four times with 2 left over."
+      },
+      {
+       "t": "calc",
+       "q": "Boxes hold 12 eggs. Fill in the two blanks on each row.",
+       "columns": [
+        "Eggs",
+        "Full boxes  (eggs DIV 12)",
+        "Left over  (eggs MOD 12)"
+       ],
+       "rows": [
+        [
+         "100",
+         "",
+         ""
+        ],
+        [
+         "45",
+         "",
+         ""
+        ],
+        [
+         "7",
+         "",
+         ""
+        ]
+       ],
+       "answer": [
+        [
+         "100",
+         "8",
+         "4"
+        ],
+        [
+         "45",
+         "3",
+         "9"
+        ],
+        [
+         "7",
+         "0",
+         "7"
+        ]
+       ],
+       "fb": "DIV is how many whole boxes you fill, MOD is what is left over on the bench. The last row is the one worth remembering: 7 DIV 12 is 0, because you cannot fill a box at all, and 7 MOD 12 is the whole 7.",
+       "title": "DIV and MOD on the same number"
       }
      ]
     }

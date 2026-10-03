@@ -277,7 +277,25 @@ L9 = dict(id="ns-l09", topic="1.4", lesson=9, title="Defence depot", img="NS_L09
         tasks=[mcq("A company keeps getting infected by malware from downloads. Which helps most?", "Anti-malware software, kept up to date", ["A longer Wi-Fi password", "A bigger monitor", "A penetration test once every five years"],
                    "Match the defence to the threat."),
                mcq("A company wants to find weaknesses before criminals do. What should it arrange?", "A penetration test", ["A denial-of-service attack on a rival", "More printers", "A longer lunch break"],
-                   "Testing with permission is the professional way to find holes.")]),
+                   "Testing with permission is the professional way to find holes."),
+               # The lesson's first outcome is that people are a weak point in a
+               # secure system, and every activity before this one is about the
+               # technology. Telling the two apart is the outcome, and it is
+               # also the distinction the exam turns on: the strongest firewall
+               # in the world does not stop somebody holding a door open.
+               sort("Where is the weakness in each of these: in the technology, "
+                    "or in the people using it?",
+                    ["The technology", "The people"],
+                    [["The server still runs software the maker stopped supporting two years ago", "The technology"],
+                     ["A member of staff holds the door open for somebody carrying boxes", "The people"],
+                     ["Someone tells a caller claiming to be from IT what their password is", "The people"],
+                     ["The firewall allows any traffic in from outside the network", "The technology"],
+                     ["An accountant pays an invoice emailed by somebody claiming to be the director", "The people"],
+                     ["Every member of staff is an administrator on their own machine", "The technology"]],
+                    "Three of these would survive any amount of new equipment, because what "
+                    "went wrong was something a person did in the moment. That is why training "
+                    "and an acceptable use policy sit alongside the firewall rather than behind "
+                    "it: you cannot buy your way out of somebody holding a door open.")]),
   ],
   final=dict(name="Final challenge: defence definitions", floor_title="Final challenge: defence definitions",
     intro="Match each prevention method to what it does. These definitions come up in every exam series.",

@@ -255,6 +255,43 @@
         ]
        ],
        "fb": "Learn these eight: exam questions often ask you to name the protocol for a job."
+      },
+      {
+       "t": "sort",
+       "q": "Which protocol does each job need?",
+       "cats": [
+        "HTTPS",
+        "FTP",
+        "SMTP",
+        "IMAP"
+       ],
+       "items": [
+        [
+         "Entering card details on a shop's checkout page",
+         "HTTPS"
+        ],
+        [
+         "Your mail app handing a finished message to the mail server",
+         "SMTP"
+        ],
+        [
+         "Reading the same inbox on a phone and a laptop, both in step",
+         "IMAP"
+        ],
+        [
+         "Uploading a finished website to its web server",
+         "FTP"
+        ],
+        [
+         "A bank's online login page",
+         "HTTPS"
+        ],
+        [
+         "Moving a folder of large files onto a server",
+         "FTP"
+        ]
+       ],
+       "fb": "Two of these turn on one word. Card details and a login page need the S on the end, because that is the encryption. Sending a message is SMTP and reading one is IMAP, however much it feels like email should be a single protocol."
       }
      ]
     }
@@ -309,7 +346,8 @@
      "text": "The packets for one web page can travel by completely different routes. TCP puts them back in order when they arrive."
     }
    ],
-   "models": []
+   "models": [],
+   "diagrams": []
   }
  ]
 }

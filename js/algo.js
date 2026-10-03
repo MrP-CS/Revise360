@@ -97,7 +97,26 @@
     const cv = base(), x = cv.getContext("2d");
     const cols = opts.columns, rows = opts.rows, want = opts.answer;
     const st = { grid: rows.map(r => r.slice()), sel: null, locked: false, marks: null, hover: null, hits: [] };
-    const CX = 470, CY = 152, CW = Math.min(118, (W - CX - 46) / cols.length), RH = 44;
+    /* A trace table sits to the right of the program it is tracing. A working-out
+     * table has no program, so the 470px reserved for one was dead space on the
+     * left and squeezed the columns into the right-hand third.
+     *
+     * The column width also has to hold the heading. "Full boxes (eggs DIV 12)"
+     * is the teaching, not decoration, and at a fixed 118px two headings printed
+     * on top of each other. Columns grow to the widest heading or value they
+     * carry, up to whatever room there is. */
+    const CX = (opts.code && opts.code.length) ? 470 : 36, CY = 152, RH = 44;
+    const widest = (() => {
+      x.font = "700 17px Consolas, monospace";
+      let w = 0;
+      cols.forEach(c => { w = Math.max(w, x.measureText(String(c)).width); });
+      x.font = "700 19px Consolas, monospace";
+      rows.forEach((r, i) => r.forEach((v, j) => {
+        w = Math.max(w, x.measureText(String(want[i][j] || v)).width);
+      }));
+      return w + 26;
+    })();
+    const CW = Math.max(72, Math.min(widest, (W - CX - 46) / cols.length));
     /* Where the keypad sits, and how tall the board needs to be. Neither
      * depends on what the pupil has typed, so both are worked out once. A trace
      * of a nine-line program fills the canvas; a three-cell calculation does

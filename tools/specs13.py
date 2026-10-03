@@ -427,7 +427,21 @@ L12 = dict(id="nw-l12", topic="1.3", lesson=12, title="Protocol city", img="NW_L
     tasks=[match("Match each protocol to its description.", [["HTTP", "Requests and delivers web pages (HTML files)"], ["HTTPS", "Web pages with encryption and authentication"],
       ["FTP", "Sends files between computers"], ["SMTP", "Sends email to a mail server"], ["POP", "Retrieves email from a mail server"],
       ["IMAP", "Retrieves email and manages mailboxes on the server"], ["TCP", "Error-free transmission of packets"], ["IP", "Routes packets across a WAN"]],
-      "Learn these eight: exam questions often ask you to name the protocol for a job.")]),
+      "Learn these eight: exam questions often ask you to name the protocol for a job."),
+      # Matching a protocol to its definition is not the same as picking one for
+      # a job, which is what the exam asks. These six jobs are described in the
+      # language a question would use rather than in the words of the
+      # definitions above, so knowing the list is not enough to answer them.
+      sort("Which protocol does each job need?", ["HTTPS", "FTP", "SMTP", "IMAP"],
+           [["Entering card details on a shop's checkout page", "HTTPS"],
+            ["Your mail app handing a finished message to the mail server", "SMTP"],
+            ["Reading the same inbox on a phone and a laptop, both in step", "IMAP"],
+            ["Uploading a finished website to its web server", "FTP"],
+            ["A bank's online login page", "HTTPS"],
+            ["Moving a folder of large files onto a server", "FTP"]],
+           "Two of these turn on one word. Card details and a login page need the S on the "
+           "end, because that is the encryption. Sending a message is SMTP and reading one "
+           "is IMAP, however much it feels like email should be a single protocol.")]),
   info=[(0, "USB-C", "A standard can become law: from the end of 2024, new phones sold in the EU had to use USB-C charging ports."),
         (1, "Who writes the rules?", "Organisations such as the IEEE and the IETF agree networking standards, so that companies around the world build compatible products."),
         (2, "Port numbers", "Protocols use numbered 'ports'. Web servers usually listen on port 80 for HTTP and port 443 for HTTPS."),
@@ -544,7 +558,24 @@ L14 = dict(id="nw-l14", topic="1.3", lesson=14, title="Revision HQ 2", img="NW_L
         "Use the key terms from this unit."], challenge="Which command word needs you to give a reason?", ill=("tiles", [("State", "b"), ("Describe", "g"), ("Explain", "o"), ("Compare", "p")], 2),
         tasks=[mcq("A question says 'Explain'. What do you need to include?", "Reasons: how or why something happens", ["Just a single word", "A drawing", "A list of acronyms only"], "Link each point with 'because' or 'so'."),
                mcq("How many points should you aim for in a 4-mark question?", "Four clear points", ["One", "Two", "Ten"], "Usually one mark per valid point."),
-               mcq("A question says 'State'. What is expected?", "A short, direct fact", ["A full paragraph", "An essay", "A diagram with labels"], "State questions don't need explanations.")]),
+               mcq("A question says 'State'. What is expected?", "A short, direct fact", ["A full paragraph", "An essay", "A diagram with labels"], "State questions don't need explanations."),
+               # Knowing that Explain needs a reason is not the same as telling
+               # an answer that gives one from an answer that does not. These
+               # six sentences are about lessons 9 to 13, so the judgement
+               # revises the content as well as the technique.
+               sort("Each of these is an answer to a two-mark Explain question. "
+                    "Would it earn a mark?",
+                    ["Earns a mark", "Earns nothing"],
+                    [["Fibre is better than copper.", "Earns nothing"],
+                     ["Fibre carries data as light, so it is not affected by electrical interference.", "Earns a mark"],
+                     ["WPA2 encrypts the data, so anyone intercepting it cannot read it.", "Earns a mark"],
+                     ["Encryption makes the network safe.", "Earns nothing"],
+                     ["A MAC address is fixed to the device itself, so it identifies the hardware wherever it connects.", "Earns a mark"],
+                     ["IP addresses and MAC addresses are different from each other.", "Earns nothing"]],
+                    "Look at what the three failures have in common: each one states that "
+                    "something is the case and stops. The three that earn the mark all turn "
+                    "on a 'so' or a 'because'. That is the whole difference between a "
+                    "Describe answer and an Explain one.")]),
   ],
   final=dict(name="Final challenge: key terms", floor_title="Final challenge: key terms",
     intro="Match each key term from lessons 9 to 13 with its meaning. These definitions often come up in the test.",

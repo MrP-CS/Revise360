@@ -146,29 +146,36 @@ example and the practice, as it would be anywhere else.
 `docs/COVERAGE.md` records this against every lesson, and the numbers below come
 from the most recent run of `tools/record.py`, not from a previous count.
 
-**8 of the 98 teaching lessons practise nothing independently**: `ns-l09`,
-`nw-l02`, `nw-l12`, `nw-l14`, `pf-l02`, `pf-l04`, `pl-l04`, `rp-l06`. A pupil
-chooses between options at every station and never produces anything of their
-own on screen. Their independent work is on paper — the key facts, the station
-challenges, the exam practice — so plan for it, and do not read a full online
-score as evidence that a pupil can do it unaided. Each unit's pedagogy PDF says
-this where it is true of that unit.
+**Every teaching lesson now practises something independently.** The figure was
+8 of 98 before October 2026 and is 0; the eight were `ns-l09`, `nw-l02`,
+`nw-l12`, `nw-l14`, `pf-l02`, `pf-l04`, `pl-l04` and `rp-l06`, and each gained
+exactly one activity, chosen for what that lesson was actually missing rather
+than to fill a slot. Read the list in `docs/CHANGELOG.md` before assuming any of
+them is now rich: one activity is a floor, not a standard.
 
-A further 26 lessons have exactly one activity that asks for an answer rather
-than a choice, which is thin rather than absent.
+**34 lessons still have exactly one activity that asks for an answer rather than
+a choice**, which is thin rather than absent, and includes every lesson in the
+paragraph above. The independent work in those lessons is still mostly on paper
+— the key facts, the station challenges, the exam practice — so plan for it, and
+do not read a full online score as evidence that a pupil can do it unaided. Each
+unit's pedagogy PDF says this where it is true of that unit.
 
 85 lessons have no optional challenge activity. 15 outcomes are not assessed
 anywhere in their own unit, 8 match no station's text, and 4 cannot be traced at
 all. Those are listed lesson by lesson rather than summarised away.
 
-**This figure used to read 57, and that was a measurement fault, not an
-improvement.** Two things were wrong with the count. Bonus arcade games were
-scored as recognition, and sorting, ordering and table-filling — where nothing is
-offered and the pupil has to classify, sequence or work something out — were
-scored as guided. Separately, `record.py` read only the first scene of a lesson,
-so two lessons built in parts had two thirds of their stations treated as absent.
-Of the drop from 57 to 8, most is the corrected measurement; the rest is the work
-recorded below. The underlying course changed less than the number did.
+**This figure used to read 57, and most of the drop was the count being wrong,
+not the course getting better.** Three things were wrong with it. Bonus arcade
+games were scored as recognition, and sorting, ordering and table-filling — where
+nothing is offered and the pupil has to classify, sequence or work something out —
+were scored as guided. `record.py` read only the first scene of a lesson, so two
+lessons built in parts had two thirds of their stations treated as absent. And a
+"find the broken line" activity was classified by the kind of *error* it contains
+rather than by what it asks a pupil to do, because both are called `kind`, so
+every one in the course counted as neither recognition nor construction.
+
+57 to 9 was those three corrections. 9 to 0 was the work recorded below. Keep the
+two apart when reading any of these numbers.
 
 ## The gap-closing pass, and what the pilots taught
 

@@ -482,3 +482,18 @@ def multi(q, opts, correct, fb): return dict(t="multi", q=q, opts=opts, correct=
 def sort(q, cats, items, fb): return dict(t="sort", q=q, cats=cats, items=items, fb=fb)
 def match(q, pairs, fb): return dict(t="match", q=q, pairs=pairs, fb=fb)
 def order(q, steps, fb): return dict(t="order", q=q, steps=steps, fb=fb)
+
+
+def bugline(q, code, line, kind, fix, fb="", title=None):
+    """Find the line that is wrong, say what kind of error it is, and fix it.
+
+    This lived in specs21.py, which was fine while algorithms was the only unit
+    that asked a pupil to find a fault. Producing robust programs needs it too,
+    and two copies of one helper is how two kinds drift apart, so it is here with
+    the rest of them and specs21 imports it. Its siblings searchstep and sortstep
+    are still local to specs21, because nothing outside that unit uses them.
+    """
+    d = dict(t="bugline", q=q, code=code, line=line, kind=kind, fix=fix, fb=fb)
+    if title:
+        d["title"] = title
+    return d

@@ -1,4 +1,4 @@
-from kit import mcq, multi, sort, match, order
+from kit import mcq, multi, sort, match, order, bugline
 
 K23 = "2.3 Producing robust programs"
 SUB23 = "OCR J277 Paper 2  |  Computational thinking, algorithms and programming"
@@ -227,7 +227,27 @@ L6 = dict(id="rp-l06", topic="2.3", lesson=6, title="Revision HQ 2.3", img="RP_L
                      ["Input validation, with examples of checks", "Authentication of users", "Planning for misuse and runtime errors", "Maintainable code with comments and sub-programs", "Testing with normal, boundary, invalid and erroneous data"],
                      "Everything except the colour scheme contributes to robustness."),
                mcq("What makes a 12-mark answer stand out?", "Explaining why each technique makes the program robust, with examples", ["Listing as many keywords as possible", "Writing in bullet points only", "Repeating the question"],
-                   "Depth and examples earn the top marks.")]),
+                   "Depth and examples earn the top marks."),
+               # Every other activity in this revision lesson asks the pupil to
+               # recognise a description of robustness. This one asks them to
+               # find a program that is not robust, which is the thing the unit
+               # is actually about. The fault is a boundary that lets 13 through
+               # - a range check written with the wrong comparison - and it is
+               # not the 'twelve'-as-an-age or month-of-13 example lesson 1 uses.
+               bugline("This program should only accept a month from 1 to 12. "
+                       "One line lets 13 through. Which one?",
+                       ["month = int(input('Month: '))",
+                        "while month < 1 OR month > 13",
+                        "  print('That is not a month.')",
+                        "  month = int(input('Month: '))",
+                        "endwhile",
+                        "print('Thank you.')"],
+                       2, "Logic", "Reject anything above 12: while month < 1 OR month > 12",
+                       "The program runs, asks politely and never crashes, which is why a "
+                       "logic error is harder to find than a syntax one: nothing tells you "
+                       "it is wrong except the answer being wrong. A boundary test with 13 "
+                       "finds it in one go, which is why boundary data is tested at all.",
+                       title="A validation check that nearly works")]),
   ],
   final=dict(name="Final challenge: key terms", floor_title="Final challenge: key terms",
     intro="Match each key term from topic 2.3 to its meaning. These are the terms from your key terminology sheet.",

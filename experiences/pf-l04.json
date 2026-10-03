@@ -250,6 +250,17 @@
         "SELECT Name FROM Seeds WHERE Name LIKE '_n';"
        ],
        "fb": "Put the % before the letter and the pattern means anything, then n at the very end."
+      },
+      {
+       "t": "order",
+       "q": "Build a query that lists the name and family of every legume with more than five packets left. Tap the parts in the right order.",
+       "steps": [
+        "SELECT Name, Family",
+        "FROM Seeds",
+        "WHERE Family = 'Legume'",
+        "AND PacketsLeft > 5;"
+       ],
+       "fb": "SELECT says which columns you want, FROM says which table they are in, and WHERE narrows it to the rows you want. Extra conditions join on with AND after the first WHERE, not as a second WHERE."
       }
      ]
     }

@@ -1,4 +1,4 @@
-from kit import mcq, multi, sort, match, order
+from kit import mcq, multi, sort, match, order, bugline
 
 K21 = "2.1 Algorithms"
 SUB21 = "OCR J277 Paper 2  |  Computational thinking, algorithms and programming"
@@ -8,10 +8,6 @@ def trace(q, code, columns, rows, answer, fb="", title=None):
     if title: d["title"] = title
     return d
 
-def bugline(q, code, line, kind, fix, fb="", title=None):
-    d = dict(t="bugline", q=q, code=code, line=line, kind=kind, fix=fix, fb=fb)
-    if title: d["title"] = title
-    return d
 
 def searchstep(q, lst, target, mode="binary", fb="", title=None):
     d = dict(t="searchstep", q=q, list=lst, target=target, mode=mode, fb=fb)
