@@ -125,8 +125,9 @@ BANK = [
                "rest of the CPU do what it says."),
         short("State what the CPU works out during the decode stage.",
               [mp("what the instruction means, and so what has to be done",
-                  ["what|which", "instruction|it", "mean|means|is|does|requires|needs"],
-                  ["work out|works out|determine|identify|interpret|understand|translate"],
+                  ["instruction|it", "mean|means|meaning|requires|needs|says|is asking"],
+                  ["work out|works out|determine|identify|interpret|understand|"
+                   "decode|decodes|figure out"],
                   exemplar="What the instruction means and what needs to be done.")],
               example="It works out what the instruction means and what needs to be done next.",
               paraphrase="The processor interprets the instruction to determine what action "

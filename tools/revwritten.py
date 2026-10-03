@@ -40,6 +40,7 @@ import subprocess
 import sys
 import pathlib
 
+import revkit
 import revschema as S
 
 HERE = pathlib.Path(__file__).resolve().parent
@@ -56,8 +57,8 @@ IRRELEVANT = [
     "produces an executable file.",
     "I think this topic is quite interesting and I revised it last night for about half "
     "an hour before the test.",
-    "The resolution of an image is the number of pixels it contains, and the colour "
-    "depth is the number of bits used for each pixel.",
+    "An IDE provides an editor, a translator, a debugger and an error diagnostics "
+    "window, all in one program, so a developer does not need separate tools.",
 ]
 
 # Deliberate reversals, used to build the contradiction probe where the author
@@ -189,6 +190,26 @@ def affirm(p):
     return " ".join(out) if found else None
 
 
+def comparative_group(p, word):
+    """Is `word` matched by a group of this point that is ENTIRELY comparative?
+
+    That is the only case where turning the word round contradicts the point. A
+    group reading "faster or less memory" matches "faster", but reversing it to
+    "slower" leaves the memory advantage standing and the mark properly earned -
+    so demanding that the marker refuse it was demanding that it be wrong."""
+    w = word.lower()
+    for way in p["accept"]:
+        for g in way:
+            alts = {a.strip() for a in g.split("|")}
+            singles = {a for a in alts if " " not in a}
+            if not singles or not matches_word(singles, w):
+                continue
+            for side, _ in revkit.AXES:
+                if singles <= set(side):
+                    return True
+    return False
+
+
 def contradict(p):
     """The right words, the wrong claim: one mark point's own exemplar with its
     comparatives turned round.
@@ -206,11 +227,10 @@ def contradict(p):
     t = p.get("exemplar")
     if not t:
         return None
-    alts = alternatives(p)
     hit = False
     for pat, to in REVERSALS:
         for m in re.finditer(pat, t, re.I):
-            if matches_word(alts, m.group(0)):
+            if comparative_group(p, m.group(0)):
                 t = t[:m.start()] + to + t[m.end():]
                 hit = True
                 break
@@ -245,7 +265,10 @@ def way_probe(way, developed):
     ideas, so the probe carries a link word. Without one this probe failed every
     developed point in the bank and said nothing about the patterns, which is
     the fault it was written to find in them."""
-    body = " ".join(first_words(g) for g in way)
+    # Comma-separated, so a negation written into one group does not reach the
+    # next one. Joined with spaces, the probe for "no moving parts" + "durable"
+    # read as a denial of durability and failed a point that was fine.
+    body = ", ".join(first_words(g) for g in way)
     return ("this happens because " + body) if developed else body
 
 
@@ -275,13 +298,24 @@ def probes_for(q, n):
             # The one sentence that states this point earns this point. That is
             # what makes partial credit real rather than claimed.
             out.append(("point %d alone" % (pi + 1), p["exemplar"], ("point", pi, True)))
-            neg = negate(p)
+            # A point with a denial among its accepted wordings is tested by
+            # `affirm`. Negating the others leaves that one standing and says
+            # nothing: "RAM can be not written to" still matches the wording
+            # that describes ROM as read-only, and rightly so.
+            owns_neg = any(t in NEGATORS for way in p["accept"] for g in way
+                           for alt in g.split("|") for t in alt.strip().split())
+            neg = None if owns_neg else negate(p)
             if neg:
                 out.append(("point %d negated" % (pi + 1), neg, ("point", pi, False)))
-            aff = affirm(p)
+            # A point with more than one accepted route is not denied by
+            # changing one of them: "C runs slower and uses less memory" still
+            # states the memory advantage, and a marker that awards it is right.
+            # So the two probes that alter one wording are only enforced where
+            # there IS only one wording.
+            aff = affirm(p) if len(p["accept"]) == 1 or owns_neg else None
             if aff:
                 out.append(("point %d affirmed" % (pi + 1), aff, ("point", pi, False)))
-            bad = contradict(p)
+            bad = contradict(p) if len(p["accept"]) == 1 else None
             if bad:
                 out.append(("point %d reversed" % (pi + 1), bad, ("point", pi, False)))
         for wi, way in enumerate(p["accept"]):

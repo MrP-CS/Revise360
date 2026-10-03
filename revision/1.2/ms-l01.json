@@ -1,0 +1,638 @@
+{
+ "topic": "1.2",
+ "lesson": "ms-l01",
+ "questions": [
+  {
+   "type": "mcq",
+   "q": "Why does a computer need primary storage?",
+   "options": [
+    "The CPU can only work on data and instructions that are in main memory",
+    "Primary storage keeps files safe when the power is off",
+    "Primary storage is cheaper per gigabyte than secondary storage",
+    "Primary storage holds the operating system permanently"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "The CPU reaches main memory directly. Anything on a drive has to be loaded into it first.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "Why primary storage?",
+   "revisit": "ms-l01-s1",
+   "revisitReason": "Why primary storage?",
+   "outcomes": [
+    "ms-l01-o1"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-why-primary-storage-0001",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l01",
+   "revisitStationId": "ms-l01-s1",
+   "revisitLabel": "1.2 Lesson 1 — Memory bay, station 1: Why primary storage?",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "short",
+   "q": "State what is meant by primary storage.",
+   "markPoints": [
+    {
+     "concept": "memory the CPU can access directly",
+     "accept": [
+      [
+       "cpu|processor",
+       "direct|directly|straight|immediately"
+      ],
+      [
+       "main memory|ram|rom|accessed by the cpu"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Memory the CPU can access directly."
+    }
+   ],
+   "example": "Memory that the CPU can access directly, such as RAM and ROM.",
+   "paraphrase": "The memory the processor reads from straight away.",
+   "marks": 1,
+   "feedback": "Directly accessible by the CPU is the definition; RAM and ROM are the examples.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "Why primary storage?",
+   "revisit": "ms-l01-s1",
+   "revisitReason": "Why primary storage?",
+   "outcomes": [
+    "ms-l01-o1"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-why-primary-storage-0002",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l01",
+   "revisitStationId": "ms-l01-s1",
+   "revisitLabel": "1.2 Lesson 1 — Memory bay, station 1: Why primary storage?",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "tf",
+   "q": "A hard disk is an example of primary storage.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correct": 1,
+   "marks": 1,
+   "feedback": "False. A hard disk is secondary storage. Primary storage is RAM and ROM.",
+   "commandWord": "tick",
+   "difficulty": "retrieve",
+   "subtopic": "Why primary storage?",
+   "revisit": "ms-l01-s1",
+   "revisitReason": "Why primary storage?",
+   "outcomes": [
+    "ms-l01-o1"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-why-primary-storage-0003",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l01",
+   "revisitStationId": "ms-l01-s1",
+   "revisitLabel": "1.2 Lesson 1 — Memory bay, station 1: Why primary storage?",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "mcq",
+   "q": "Which statement about RAM is true?",
+   "options": [
+    "It is volatile, so its contents are lost when the power is switched off",
+    "It is non-volatile, so its contents survive a restart",
+    "It can only be read from, never written to",
+    "It holds the instructions that start the computer up"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "RAM is volatile and is read from and written to constantly. The start-up instructions are in ROM.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "RAM",
+   "revisit": "ms-l01-s2",
+   "revisitReason": "RAM",
+   "outcomes": [
+    "ms-l01-o2",
+    "ms-l01-o3"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-ram-0004",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l01",
+   "revisitStationId": "ms-l01-s2",
+   "revisitLabel": "1.2 Lesson 1 — Memory bay, station 2: RAM",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "short",
+   "q": "State what RAM stands for.",
+   "markPoints": [
+    {
+     "concept": "random access memory",
+     "accept": [
+      [
+       "random access memory|random access"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Random access memory."
+    }
+   ],
+   "example": "Random access memory.",
+   "paraphrase": "It stands for random access memory.",
+   "marks": 1,
+   "feedback": "Random access memory. 'Read-and-write memory' describes it but is not what the letters stand for.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "RAM",
+   "revisit": "ms-l01-s2",
+   "revisitReason": "RAM",
+   "outcomes": [
+    "ms-l01-o2",
+    "ms-l01-o3"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-ram-0005",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l01",
+   "revisitStationId": "ms-l01-s2",
+   "revisitLabel": "1.2 Lesson 1 — Memory bay, station 2: RAM",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "written",
+   "q": "Explain what is meant by saying that RAM is volatile.",
+   "markPoints": [
+    {
+     "concept": "its contents are lost when the power is removed",
+     "accept": [
+      [
+       "volatile|lose|lost|loses|disappear|erased|wiped|cleared|not kept|not stored|emptied|gone|empties|empty",
+       "power|switched off|turned off|electricity|shut down|no power|off"
+      ]
+     ],
+     "worth": 1,
+     "reject": [
+      [
+       "ram|memory|it",
+       "nonvolatile"
+      ]
+     ],
+     "exemplar": "Everything in RAM is lost when the power is switched off."
+    },
+    {
+     "concept": "so anything that must be kept has to be saved to secondary storage",
+     "accept": [
+      [
+       "save|saved|store|stored|written|copied|kept",
+       "secondary storage|hard disk|drive|ssd|disk"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "So anything that has to be kept must be saved to secondary storage."
+    }
+   ],
+   "example": "RAM is volatile, which means everything in it is lost as soon as the power is switched off, so anything that needs to be kept has to be saved to secondary storage first.",
+   "paraphrase": "Its contents disappear when the computer is turned off, so work has to be written to a drive if you want it afterwards.",
+   "marks": 2,
+   "feedback": "Volatile means lost without power. The second mark is for what follows from it.",
+   "commandWord": "explain",
+   "difficulty": "understand",
+   "subtopic": "RAM",
+   "revisit": "ms-l01-s2",
+   "revisitReason": "RAM",
+   "outcomes": [
+    "ms-l01-o2",
+    "ms-l01-o3"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-ram-0006",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l01",
+   "revisitStationId": "ms-l01-s2",
+   "revisitLabel": "1.2 Lesson 1 — Memory bay, station 2: RAM",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "mcq",
+   "q": "What is held in ROM?",
+   "options": [
+    "The instructions the computer needs to start up",
+    "The programs the user is running now",
+    "The user's documents and photographs",
+    "Data that has been swapped out of RAM"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "ROM holds the boot program, which runs before anything can be loaded from a drive.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "ROM",
+   "revisit": "ms-l01-s3",
+   "revisitReason": "ROM",
+   "outcomes": [
+    "ms-l01-o2",
+    "ms-l01-o3"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-rom-0007",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l01",
+   "revisitStationId": "ms-l01-s3",
+   "revisitLabel": "1.2 Lesson 1 — Memory bay, station 3: ROM",
+   "revisitScene": 0,
+   "revisitK": 2
+  },
+  {
+   "type": "short",
+   "q": "Give one reason the start-up instructions are kept in ROM rather than RAM.",
+   "markPoints": [
+    {
+     "concept": "ROM is non-volatile, so they are still there when the power comes on",
+     "accept": [
+      [
+       "non-volatile|nonvolatile|not volatile|keeps|keep|retains|retain|stays|remains|still there|permanent|permanently|kept"
+      ]
+     ],
+     "worth": 1,
+     "reject": [
+      [
+       "rom|it",
+       "volatile"
+      ]
+     ],
+     "exemplar": "ROM is non-volatile, so the instructions are still there when the computer is switched on."
+    }
+   ],
+   "example": "ROM is non-volatile, so the instructions are still there when the power comes back on. RAM would be empty.",
+   "paraphrase": "ROM keeps its contents without power, and RAM does not.",
+   "marks": 1,
+   "feedback": "If the boot instructions were in RAM there would be nothing to run when the computer was switched on.",
+   "commandWord": "give",
+   "difficulty": "understand",
+   "subtopic": "ROM",
+   "revisit": "ms-l01-s3",
+   "revisitReason": "ROM",
+   "outcomes": [
+    "ms-l01-o2",
+    "ms-l01-o3"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-rom-0008",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l01",
+   "revisitStationId": "ms-l01-s3",
+   "revisitLabel": "1.2 Lesson 1 — Memory bay, station 3: ROM",
+   "revisitScene": 0,
+   "revisitK": 2
+  },
+  {
+   "type": "tf",
+   "q": "ROM is normally much smaller than RAM.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "True. ROM only has to hold the start-up instructions, so it is measured in megabytes while RAM is measured in gigabytes.",
+   "commandWord": "tick",
+   "difficulty": "retrieve",
+   "subtopic": "ROM",
+   "revisit": "ms-l01-s3",
+   "revisitReason": "ROM",
+   "outcomes": [
+    "ms-l01-o2",
+    "ms-l01-o3"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-rom-0009",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l01",
+   "revisitStationId": "ms-l01-s3",
+   "revisitLabel": "1.2 Lesson 1 — Memory bay, station 3: ROM",
+   "revisitScene": 0,
+   "revisitK": 2
+  },
+  {
+   "type": "sort",
+   "q": "Sort each statement by whether it describes RAM or ROM.",
+   "cats": [
+    "RAM",
+    "ROM"
+   ],
+   "items": [
+    [
+     "Volatile",
+     "RAM"
+    ],
+    [
+     "Non-volatile",
+     "ROM"
+    ],
+    [
+     "Holds the programs currently in use",
+     "RAM"
+    ],
+    [
+     "Holds the start-up instructions",
+     "ROM"
+    ],
+    [
+     "Written to constantly while the computer runs",
+     "RAM"
+    ],
+    [
+     "Usually only a few megabytes",
+     "ROM"
+    ]
+   ],
+   "marks": 6,
+   "feedback": "Volatile and busy is RAM; non-volatile and small is ROM.",
+   "commandWord": "tick",
+   "difficulty": "understand",
+   "subtopic": "RAM compared with ROM",
+   "revisit": "ms-l01-s4",
+   "revisitReason": "RAM compared with ROM",
+   "outcomes": [
+    "ms-l01-o2"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-ram-compared-with-rom-0010",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l01",
+   "revisitStationId": "ms-l01-s4",
+   "revisitLabel": "1.2 Lesson 1 — Memory bay, station 4: RAM vs ROM",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "written",
+   "q": "Compare RAM and ROM.",
+   "markPoints": [
+    {
+     "concept": "RAM is volatile; ROM is non-volatile",
+     "accept": [
+      [
+       "ram",
+       "volatile|lose|lost|loses|disappear|erased|wiped|cleared|not kept|not stored|emptied|gone|empties|empty"
+      ],
+      [
+       "rom",
+       "non-volatile|nonvolatile|not volatile|keeps|keep|retains|retain|stays|remains|still there|permanent|permanently|kept"
+      ]
+     ],
+     "worth": 1,
+     "reject": [
+      [
+       "ram",
+       "nonvolatile"
+      ],
+      [
+       "rom",
+       "volatile"
+      ]
+     ],
+     "exemplar": "RAM is volatile and ROM is non-volatile."
+    },
+    {
+     "concept": "RAM holds what is in use now; ROM holds the start-up instructions",
+     "accept": [
+      [
+       "currently|in use|running|open|being used|programs|data"
+      ],
+      [
+       "start|boot|bios|startup|start-up"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "RAM holds the programs in use while ROM holds the start-up instructions."
+    },
+    {
+     "concept": "RAM is read from and written to; ROM is normally only read",
+     "accept": [
+      [
+       "written to|read/write|readwrite|can be changed|can be overwritten|writable|both read"
+      ],
+      [
+       "read only|only read|cannot be written|not written|cannot be changed"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "RAM can be written to, while ROM is normally only read."
+    },
+    {
+     "concept": "RAM is much larger than ROM",
+     "accept": [
+      [
+       "larger|bigger|more|gigabyte|gb"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "RAM is much larger than ROM."
+    }
+   ],
+   "example": "RAM is volatile while ROM is non-volatile, so RAM empties when the power goes and ROM does not. RAM holds the programs and data in use at the moment, while ROM holds the instructions that start the computer. RAM is written to constantly, while ROM is normally only read. RAM is also far larger, measured in gigabytes against a few megabytes of ROM.",
+   "paraphrase": "RAM empties when the power goes and ROM does not. RAM stores whatever software is running and is changed all the time, while ROM stores the boot instructions and is only read. There is also far more RAM than ROM.",
+   "marks": 4,
+   "feedback": "A comparison needs both sides of each point. Four differences, each naming what RAM does and what ROM does.",
+   "commandWord": "compare",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "RAM compared with ROM",
+   "revisit": "ms-l01-s4",
+   "revisitReason": "RAM compared with ROM",
+   "outcomes": [
+    "ms-l01-o2"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-ram-compared-with-rom-0011",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l01",
+   "revisitStationId": "ms-l01-s4",
+   "revisitLabel": "1.2 Lesson 1 — Memory bay, station 4: RAM vs ROM",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "order",
+   "q": "Put the steps of starting a computer in order.",
+   "steps": [
+    "The computer is switched on",
+    "The instructions in ROM run",
+    "The operating system is loaded from secondary storage into RAM",
+    "The user's programs can be loaded into RAM"
+   ],
+   "marks": 4,
+   "feedback": "ROM first, because it is the only memory with anything in it when the power comes on.",
+   "commandWord": "complete",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "The boot sequence",
+   "revisit": "ms-l01-s5",
+   "revisitReason": "The boot sequence",
+   "outcomes": [
+    "ms-l01-o3"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-the-boot-sequence-0012",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l01",
+   "revisitStationId": "ms-l01-s5",
+   "revisitLabel": "1.2 Lesson 1 — Memory bay, station 5: The boot sequence",
+   "revisitScene": 0,
+   "revisitK": 4
+  },
+  {
+   "type": "written",
+   "q": "Explain why the operating system has to be copied into RAM when a computer starts.",
+   "markPoints": [
+    {
+     "concept": "the CPU can only work on data and instructions that are in RAM",
+     "accept": [
+      [
+       "cpu|processor",
+       "only|has to|must|can only|needs"
+      ],
+      [
+       "ram|main memory",
+       "direct|directly|access"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The CPU can only work on instructions that are in RAM."
+    },
+    {
+     "concept": "and the operating system is stored on secondary storage, which the CPU cannot run from",
+     "accept": [
+      [
+       "hard disk|drive|ssd|secondary storage|disk"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "It is kept on the hard disk, so it has to be copied across before it can run."
+    }
+   ],
+   "example": "The CPU can only execute instructions that are in RAM, and the operating system is stored on secondary storage, so it has to be copied into RAM before any of it can run.",
+   "paraphrase": "The processor only runs what is in main memory, which means the operating system has to be loaded there from the drive first.",
+   "marks": 2,
+   "feedback": "The CPU's reach is the reason. The drive is where the operating system lives the rest of the time.",
+   "commandWord": "explain",
+   "difficulty": "apply",
+   "subtopic": "The boot sequence",
+   "revisit": "ms-l01-s5",
+   "revisitReason": "The boot sequence",
+   "outcomes": [
+    "ms-l01-o3"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-the-boot-sequence-0013",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l01",
+   "revisitStationId": "ms-l01-s5",
+   "revisitLabel": "1.2 Lesson 1 — Memory bay, station 5: The boot sequence",
+   "revisitScene": 0,
+   "revisitK": 4
+  },
+  {
+   "type": "mcq",
+   "q": "A computer with 4 GB of RAM is slow when several large programs are open. Why would adding more RAM help?",
+   "options": [
+    "More programs can be held in RAM at once, so less has to be swapped to secondary storage",
+    "The CPU will complete more cycles each second",
+    "The hard disk will spin faster",
+    "The operating system will need fewer instructions"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "More RAM does not make the CPU faster. It reduces how often the computer has to use the much slower drive.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "subtopic": "More RAM, faster computer?",
+   "revisit": "ms-l01-s6",
+   "revisitReason": "More RAM, faster computer?",
+   "outcomes": [
+    "ms-l01-o1"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-more-ram-faster-computer-0014",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l01",
+   "revisitStationId": "ms-l01-s6",
+   "revisitLabel": "1.2 Lesson 1 — Memory bay, station 6: More RAM, faster computer?",
+   "revisitScene": 0,
+   "revisitK": 5
+  },
+  {
+   "type": "written",
+   "q": "A computer already has far more RAM than it ever uses. Explain why adding more would make almost no difference.",
+   "markPoints": [
+    {
+     "concept": "everything that is needed already fits in RAM",
+     "accept": [
+      [
+       "already|enough|fits|never full|not full|spare|unused|plenty|nothing is being|room to spare"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Everything that is needed already fits in RAM."
+    },
+    {
+     "concept": "so nothing is being swapped out, and there is nothing for the extra RAM to prevent",
+     "accept": [
+      [
+       "virtual memory|swapped out|swap space|swapping|paging|secondary storage|pushed out|trips to the disk|slow trips"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "So virtual memory is never being used, and the extra RAM has nothing to prevent."
+    }
+   ],
+   "example": "If everything the computer needs already fits in RAM, it is never having to swap anything out to virtual memory, so extra RAM has nothing to prevent and the computer is no faster.",
+   "paraphrase": "Because nothing is being pushed out to the disk in the first place, more memory has no slow trips to save and makes no difference.",
+   "marks": 2,
+   "feedback": "More of something you are not short of changes nothing. The mark is for saying what the extra RAM would have been preventing.",
+   "commandWord": "explain",
+   "difficulty": "stretch",
+   "examStyle": true,
+   "subtopic": "More RAM, faster computer?",
+   "revisit": "ms-l01-s6",
+   "revisitReason": "More RAM, faster computer?",
+   "outcomes": [
+    "ms-l01-o1"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-more-ram-faster-computer-0015",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l01",
+   "revisitStationId": "ms-l01-s6",
+   "revisitLabel": "1.2 Lesson 1 — Memory bay, station 6: More RAM, faster computer?",
+   "revisitScene": 0,
+   "revisitK": 5
+  }
+ ]
+}

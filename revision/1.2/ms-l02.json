@@ -1,0 +1,253 @@
+{
+ "topic": "1.2",
+ "lesson": "ms-l02",
+ "questions": [
+  {
+   "type": "mcq",
+   "q": "What happens when RAM becomes full and another program is opened?",
+   "options": [
+    "Data that is not in use is moved out to secondary storage to make room",
+    "The computer switches itself off to protect the data",
+    "The CPU reduces its clock speed until space is free",
+    "The oldest file on the hard disk is deleted"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Something is moved out rather than lost. The space it moves to is virtual memory.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "When RAM runs out",
+   "revisit": "ms-l02-s1",
+   "revisitReason": "When RAM runs out",
+   "outcomes": [
+    "ms-l02-o1"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-when-ram-runs-out-0016",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l02",
+   "revisitStationId": "ms-l02-s1",
+   "revisitLabel": "1.2 Lesson 2 — Swap space, station 1: When RAM runs out",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "short",
+   "q": "State what is meant by virtual memory.",
+   "markPoints": [
+    {
+     "concept": "secondary storage used as if it were extra RAM",
+     "accept": [
+      [
+       "secondary storage|hard disk|hard drive|ssd|disk|drive",
+       "as if|like|extra ram|more ram|pretend|instead of ram|acts as|additional memory|extra memory|more memory|used as memory"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Part of secondary storage used as if it were extra RAM."
+    }
+   ],
+   "example": "A part of secondary storage that is used as if it were extra RAM.",
+   "paraphrase": "Space on the drive that the computer treats as additional memory.",
+   "marks": 1,
+   "feedback": "It is storage behaving as memory, not a separate kind of chip.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "When RAM runs out",
+   "revisit": "ms-l02-s1",
+   "revisitReason": "When RAM runs out",
+   "outcomes": [
+    "ms-l02-o1"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-when-ram-runs-out-0017",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l02",
+   "revisitStationId": "ms-l02-s1",
+   "revisitLabel": "1.2 Lesson 2 — Swap space, station 1: When RAM runs out",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "Explain why a computer that is using virtual memory heavily feels slow.",
+   "markPoints": [
+    {
+     "concept": "data has to be moved between RAM and secondary storage",
+     "accept": [
+      [
+       "move|moved|moving|swap|swapped|transfer|copied|written|shuffling|shuffled|pushed|sent|shunted",
+       "ram|memory",
+       "disk|drive|storage|ssd|hdd"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Data is moved between RAM and secondary storage."
+    },
+    {
+     "concept": "secondary storage is much slower to access than RAM",
+     "accept": [
+      [
+       "slow|slower|takes longer|less quick|not as fast"
+      ]
+     ],
+     "worth": 1,
+     "reject": [
+      [
+       "fast|faster|quick|quicker|quickly|more quickly|speeds up"
+      ]
+     ],
+     "exemplar": "Secondary storage is much slower to read than RAM."
+    },
+    {
+     "concept": "so the CPU waits for data and the programs run more slowly",
+     "accept": [
+      [
+       "wait|waiting|idle|delay|held up|pause|stall"
+      ],
+      [
+       "program|computer|it|system",
+       "slow|slower|lag|freeze|grind"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "This means the CPU is left waiting, so the program runs more slowly."
+    }
+   ],
+   "example": "When RAM is full, data is constantly moved between RAM and secondary storage. Secondary storage is far slower to read and write than RAM, so the CPU spends time waiting for data to arrive and the programs run noticeably more slowly.",
+   "paraphrase": "The computer keeps shuffling data out to the drive and back, and because the drive is much slower than memory the processor is held up and everything drags.",
+   "marks": 3,
+   "feedback": "Three ideas: the moving, the speed difference, and what that does to the program. The third needs to be joined to the second.",
+   "hint": "What is being moved, how fast is the place it moves to, and what is the CPU doing meanwhile?",
+   "commandWord": "explain",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Why virtual memory is slow",
+   "revisit": "ms-l02-s4",
+   "revisitReason": "Why virtual memory is slow",
+   "outcomes": [
+    "ms-l02-o2"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-why-virtual-memory-is-slow-0018",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l02",
+   "revisitStationId": "ms-l02-s4",
+   "revisitLabel": "1.2 Lesson 2 — Swap space, station 4: Why it's slow",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "mcq",
+   "q": "Which of these would reduce how much a computer relies on virtual memory?",
+   "options": [
+    "Installing more RAM",
+    "Installing a larger hard disk",
+    "Increasing the CPU clock speed",
+    "Defragmenting the hard disk"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Virtual memory is used because RAM ran out, so more RAM is what stops it. A bigger disk just gives more room for the swapping to happen in.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "subtopic": "Why virtual memory is slow",
+   "revisit": "ms-l02-s4",
+   "revisitReason": "Why virtual memory is slow",
+   "outcomes": [
+    "ms-l02-o2"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-why-virtual-memory-is-slow-0019",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l02",
+   "revisitStationId": "ms-l02-s4",
+   "revisitLabel": "1.2 Lesson 2 — Swap space, station 4: Why it's slow",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "multi",
+   "q": "Which of these would help a computer avoid using virtual memory? Tick all that apply.",
+   "options": [
+    "Closing programs that are not being used",
+    "Installing more RAM",
+    "Choosing programs that need less memory",
+    "Buying a faster CPU",
+    "Using a larger monitor"
+   ],
+   "correct": [
+    "Closing programs that are not being used",
+    "Installing more RAM",
+    "Choosing programs that need less memory"
+   ],
+   "marks": 3,
+   "feedback": "Anything that keeps what is needed inside RAM. A faster CPU does not change how much memory a program asks for.",
+   "commandWord": "tick",
+   "difficulty": "apply",
+   "subtopic": "Avoiding virtual memory",
+   "revisit": "ms-l02-s5",
+   "revisitReason": "Avoiding virtual memory",
+   "outcomes": [
+    "ms-l02-o1",
+    "ms-l02-o2"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-avoiding-virtual-memory-0020",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l02",
+   "revisitStationId": "ms-l02-s5",
+   "revisitLabel": "1.2 Lesson 2 — Swap space, station 5: Avoiding virtual memory",
+   "revisitScene": 0,
+   "revisitK": 4
+  },
+  {
+   "type": "short",
+   "q": "State one sign that a computer is relying on virtual memory.",
+   "markPoints": [
+    {
+     "concept": "it becomes noticeably slower, and the drive is busy",
+     "accept": [
+      [
+       "slow|slower|lag|freeze|grind|unresponsive|stutter|delay"
+      ],
+      [
+       "drive|disk|hard disk|ssd",
+       "busy|light|noise|spinning|active"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "It becomes much slower to respond."
+    }
+   ],
+   "example": "Everything becomes much slower, and the drive is busy even though nothing is being saved.",
+   "paraphrase": "The machine starts dragging and the disk light stays on.",
+   "marks": 1,
+   "feedback": "Slowness is the symptom everybody notices; the busy drive is the one that says why.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "Avoiding virtual memory",
+   "revisit": "ms-l02-s5",
+   "revisitReason": "Avoiding virtual memory",
+   "outcomes": [
+    "ms-l02-o1",
+    "ms-l02-o2"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-avoiding-virtual-memory-0021",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l02",
+   "revisitStationId": "ms-l02-s5",
+   "revisitLabel": "1.2 Lesson 2 — Swap space, station 5: Avoiding virtual memory",
+   "revisitScene": 0,
+   "revisitK": 4
+  }
+ ]
+}

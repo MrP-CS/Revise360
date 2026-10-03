@@ -1,0 +1,361 @@
+{
+ "topic": "1.2",
+ "lesson": "ms-l15",
+ "questions": [
+  {
+   "type": "multi",
+   "q": "Which of these are reasons for compressing a file? Tick all that apply.",
+   "options": [
+    "It takes up less storage space",
+    "It can be sent over a network more quickly",
+    "It uses less bandwidth",
+    "It makes the file open faster in every program",
+    "It improves the quality of the data"
+   ],
+   "correct": [
+    "It takes up less storage space",
+    "It can be sent over a network more quickly",
+    "It uses less bandwidth"
+   ],
+   "marks": 3,
+   "feedback": "Smaller means less space and less time to send. Compression never improves quality — lossy compression reduces it.",
+   "commandWord": "tick",
+   "difficulty": "understand",
+   "subtopic": "Why compress?",
+   "revisit": "ms-l15-s1",
+   "revisitReason": "Why compress?",
+   "outcomes": [
+    "ms-l15-o1"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-why-compress-0094",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l15",
+   "revisitStationId": "ms-l15-s1",
+   "revisitLabel": "1.2 Lesson 15 — Compression works, station 1: Why compress?",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "short",
+   "q": "State one reason a website would compress its images.",
+   "markPoints": [
+    {
+     "concept": "pages load faster, or less bandwidth is used",
+     "accept": [
+      [
+       "load|loads|loading|download|downloads|open|opens|faster|quicker|speed"
+      ],
+      [
+       "bandwidth|data|less to send|smaller|transfer"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The pages load faster for visitors."
+    }
+   ],
+   "example": "The pages load more quickly, because there is less data to send.",
+   "paraphrase": "Visitors get the site faster since less data has to travel.",
+   "marks": 1,
+   "feedback": "Speed or bandwidth. Both are the same underlying reason: there is less to send.",
+   "commandWord": "give",
+   "difficulty": "retrieve",
+   "subtopic": "Why compress?",
+   "revisit": "ms-l15-s1",
+   "revisitReason": "Why compress?",
+   "outcomes": [
+    "ms-l15-o1"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-why-compress-0095",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l15",
+   "revisitStationId": "ms-l15-s1",
+   "revisitLabel": "1.2 Lesson 15 — Compression works, station 1: Why compress?",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "sort",
+   "q": "Sort each statement by the kind of compression it describes.",
+   "cats": [
+    "Lossy",
+    "Lossless"
+   ],
+   "items": [
+    [
+     "Some data is permanently removed",
+     "Lossy"
+    ],
+    [
+     "The original file can be rebuilt exactly",
+     "Lossless"
+    ],
+    [
+     "Used for MP3 and JPEG",
+     "Lossy"
+    ],
+    [
+     "Used for ZIP and PNG",
+     "Lossless"
+    ],
+    [
+     "Usually gives the smaller file",
+     "Lossy"
+    ],
+    [
+     "The only safe choice for a program file",
+     "Lossless"
+    ]
+   ],
+   "marks": 6,
+   "feedback": "Lossy throws data away and cannot get it back; lossless rearranges it and can.",
+   "commandWord": "tick",
+   "difficulty": "understand",
+   "subtopic": "Lossy and lossless",
+   "revisit": "ms-l15-s4",
+   "revisitReason": "Lossy and lossless",
+   "outcomes": [
+    "ms-l15-o2",
+    "ms-l15-o3"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-lossy-and-lossless-0096",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l15",
+   "revisitStationId": "ms-l15-s4",
+   "revisitLabel": "1.2 Lesson 15 — Compression works, station 4: Which one, when?",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "written",
+   "q": "Explain why a text document must be compressed losslessly rather than lossily.",
+   "markPoints": [
+    {
+     "concept": "lossy compression permanently removes some of the data",
+     "accept": [
+      [
+       "remove|removed|removes|lost|loses|deleted|discarded|thrown away|permanently"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Lossy compression permanently removes some of the data."
+    },
+    {
+     "concept": "and every character of a document matters, so the meaning would change",
+     "accept": [
+      [
+       "every character|every letter|every word|each character|meaning|unreadable|nonsense|change the meaning|changed|corrupt|not make sense|would not read"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "Every character matters, so removing any of them would change what the document says."
+    }
+   ],
+   "example": "Lossy compression works by permanently throwing away data that will not be noticed. In a document every character matters, so losing any of them would change what it says, which means only lossless compression can be used.",
+   "paraphrase": "Because the lossy method deletes information for good, and in text every single letter counts, taking some out would alter the meaning.",
+   "marks": 2,
+   "feedback": "What lossy does, then why that is unacceptable here.",
+   "commandWord": "explain",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Lossy and lossless",
+   "revisit": "ms-l15-s4",
+   "revisitReason": "Lossy and lossless",
+   "outcomes": [
+    "ms-l15-o2",
+    "ms-l15-o3"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-lossy-and-lossless-0097",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l15",
+   "revisitStationId": "ms-l15-s4",
+   "revisitLabel": "1.2 Lesson 15 — Compression works, station 4: Which one, when?",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "mcq",
+   "q": "A photograph is compressed as a JPEG at a high compression setting. What has happened to the original pixel data?",
+   "options": [
+    "Some of it has been permanently discarded and cannot be recovered",
+    "It has been rearranged and can be restored exactly",
+    "It has been moved into the file's metadata",
+    "It has been converted to hexadecimal to save space"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "JPEG is lossy. Saving it again at full quality will not bring the detail back.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "subtopic": "Lossy and lossless",
+   "revisit": "ms-l15-s4",
+   "revisitReason": "Lossy and lossless",
+   "outcomes": [
+    "ms-l15-o2",
+    "ms-l15-o3"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-lossy-and-lossless-0098",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l15",
+   "revisitStationId": "ms-l15-s4",
+   "revisitLabel": "1.2 Lesson 15 — Compression works, station 4: Which one, when?",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "extended",
+   "q": "A film studio is deciding how to distribute a new film: as a very large lossless file, or as a smaller lossy file. Discuss the considerations involved and recommend one.",
+   "markPoints": [
+    {
+     "concept": "explains what lossy compression does to the film",
+     "accept": [],
+     "worth": 1
+    },
+    {
+     "concept": "explains what lossless compression keeps, and what it costs in size",
+     "accept": [],
+     "worth": 1
+    },
+    {
+     "concept": "considers download time and bandwidth for the viewer",
+     "accept": [],
+     "worth": 1
+    },
+    {
+     "concept": "considers storage and distribution cost for the studio",
+     "accept": [],
+     "worth": 1
+    },
+    {
+     "concept": "considers what most viewers would actually notice on their screens",
+     "accept": [],
+     "worth": 1
+    },
+    {
+     "concept": "reaches a recommendation and gives a reason for it",
+     "accept": [],
+     "worth": 1
+    }
+   ],
+   "example": "A lossy version permanently removes detail the eye is least likely to notice, which makes the file far smaller. A lossless version keeps every pixel exactly, which matters to anyone watching on a large, high-quality screen, but the file may be several times bigger. For the viewer, the lossy file downloads far faster and uses much less of a monthly data allowance, and on a phone or an ordinary television the difference in quality is hard to see. For the studio, the lossy file is cheaper to store and cheaper to serve to millions of people. I would recommend offering the lossy version as the standard download, with the lossless version available to those who want it, because that gets the film to most people quickly without taking the choice away from viewers who would notice the difference.",
+   "bands": [
+    "CONTENT",
+    "APPLICATION",
+    "DEVELOPMENT",
+    "BALANCE",
+    "CONCLUSION"
+   ],
+   "marks": 6,
+   "feedback": "A six-mark discussion is marked by you against the points above. The mark that separates a good answer from a list is the last one: a recommendation with a reason attached to it.",
+   "commandWord": "discuss",
+   "difficulty": "stretch",
+   "examStyle": true,
+   "subtopic": "Lossy and lossless",
+   "revisit": "ms-l15-s4",
+   "revisitReason": "Lossy and lossless",
+   "outcomes": [
+    "ms-l15-o2",
+    "ms-l15-o3"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-lossy-and-lossless-0099",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l15",
+   "revisitStationId": "ms-l15-s4",
+   "revisitLabel": "1.2 Lesson 15 — Compression works, station 4: Which one, when?",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "mcq",
+   "q": "Run-length encoding replaces AAAABBBCCCCCCC with 4A3B7C. What kind of compression is this?",
+   "options": [
+    "Lossless, because the original can be rebuilt exactly",
+    "Lossy, because some letters have been removed",
+    "Lossy, because the file is smaller",
+    "Neither; it is encryption rather than compression"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Nothing has been lost: 4A3B7C expands back to exactly what it came from.",
+   "commandWord": "identify",
+   "difficulty": "understand",
+   "subtopic": "Run-length encoding",
+   "revisit": "ms-l15-s5",
+   "revisitReason": "Run-length encoding",
+   "outcomes": [
+    "ms-l15-o2"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-run-length-encoding-0100",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l15",
+   "revisitStationId": "ms-l15-s5",
+   "revisitLabel": "1.2 Lesson 15 — Compression works, station 5: Run-length encoding",
+   "revisitScene": 0,
+   "revisitK": 4
+  },
+  {
+   "type": "written",
+   "q": "Explain why run-length encoding would make the file BIGGER for the string ABCDEFG.",
+   "markPoints": [
+    {
+     "concept": "there are no runs of repeated characters",
+     "accept": [
+      [
+       "no runs|no repeat|no repeats|not repeated|all different|nothing repeats|nothing is repeated|every character is different|none repeat|no repetition|none of the letters appear twice"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "There are no runs of repeated characters."
+    },
+    {
+     "concept": "so a count has to be stored for every single character",
+     "accept": [
+      [
+       "count|number|1|one",
+       "every|each|all"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "So a count of 1 has to be stored in front of every character."
+    }
+   ],
+   "example": "Run-length encoding only saves space where characters repeat. In ABCDEFG nothing repeats, so the encoding has to store a count of 1 in front of every single character, which makes it twice as long.",
+   "paraphrase": "Since none of the letters appear twice in a row, the method ends up adding a 1 before each one and the result is longer than the original.",
+   "marks": 2,
+   "feedback": "No runs, so nothing to shorten — and the counts are pure overhead.",
+   "commandWord": "explain",
+   "difficulty": "stretch",
+   "examStyle": true,
+   "subtopic": "Run-length encoding",
+   "revisit": "ms-l15-s5",
+   "revisitReason": "Run-length encoding",
+   "outcomes": [
+    "ms-l15-o2"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-run-length-encoding-0101",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l15",
+   "revisitStationId": "ms-l15-s5",
+   "revisitLabel": "1.2 Lesson 15 — Compression works, station 5: Run-length encoding",
+   "revisitScene": 0,
+   "revisitK": 4
+  }
+ ]
+}

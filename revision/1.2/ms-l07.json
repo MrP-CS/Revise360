@@ -1,0 +1,263 @@
+{
+ "topic": "1.2",
+ "lesson": "ms-l07",
+ "questions": [
+  {
+   "type": "num",
+   "q": "An image is 800 pixels wide and 600 pixels high, with a colour depth of 8 bits. Calculate its file size in bits.",
+   "answer": 3840000,
+   "unit": "bits",
+   "working": "800 * 600 * 8",
+   "marks": 1,
+   "feedback": "File size = width × height × colour depth = 800 × 600 × 8.",
+   "hint": "Work out how many pixels there are first, then how many bits each one needs.",
+   "commandWord": "calculate",
+   "difficulty": "apply",
+   "subtopic": "Image file size",
+   "revisit": "ms-l07-s2",
+   "revisitReason": "Image file size",
+   "outcomes": [
+    "ms-l07-o2"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-image-file-size-0046",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l07",
+   "revisitStationId": "ms-l07-s2",
+   "revisitLabel": "1.2 Lesson 7 — Capacity calculator, station 2: Image file size",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "num",
+   "q": "An image is 1,000 × 500 pixels with a colour depth of 24 bits. Calculate its file size in megabytes.",
+   "answer": 1.5,
+   "unit": "MB",
+   "methodMark": [
+    {
+     "label": "works out the size in bits (12,000,000)",
+     "value": 12000000,
+     "worth": 1
+    },
+    {
+     "label": "converts to bytes by dividing by 8 (1,500,000)",
+     "value": 1500000,
+     "worth": 1
+    }
+   ],
+   "working": "1000 * 500 * 24 / 8 / 1000 / 1000",
+   "marks": 3,
+   "feedback": "1,000 × 500 × 24 = 12,000,000 bits; ÷ 8 = 1,500,000 bytes; ÷ 1,000 twice = 1.5 MB. Each step earns its own mark.",
+   "hint": "Bits first, then bytes, then up through the units.",
+   "commandWord": "calculate",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Image file size",
+   "revisit": "ms-l07-s2",
+   "revisitReason": "Image file size",
+   "outcomes": [
+    "ms-l07-o2"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-image-file-size-0047",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l07",
+   "revisitStationId": "ms-l07-s2",
+   "revisitLabel": "1.2 Lesson 7 — Capacity calculator, station 2: Image file size",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "written",
+   "q": "Explain what happens to the file size of an image when its colour depth is doubled from 8 bits to 16 bits.",
+   "markPoints": [
+    {
+     "concept": "the file size doubles",
+     "accept": [
+      [
+       "double|doubles|twice|two times|x2|2 times"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The file size doubles."
+    },
+    {
+     "concept": "because every pixel now needs twice as many bits",
+     "accept": [
+      [
+       "every pixel|each pixel|per pixel|every point|each point|each one|every one"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "This is because each pixel now needs twice as many bits."
+    }
+   ],
+   "example": "The file size doubles, because the number of pixels has not changed but each one now needs sixteen bits instead of eight.",
+   "paraphrase": "It becomes twice as big, since every single pixel is stored in twice as much space as before.",
+   "marks": 2,
+   "feedback": "The size, then the reason. The reason is that colour depth is per pixel.",
+   "commandWord": "explain",
+   "difficulty": "understand",
+   "subtopic": "Image file size",
+   "revisit": "ms-l07-s2",
+   "revisitReason": "Image file size",
+   "outcomes": [
+    "ms-l07-o2"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-image-file-size-0048",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l07",
+   "revisitStationId": "ms-l07-s2",
+   "revisitLabel": "1.2 Lesson 7 — Capacity calculator, station 2: Image file size",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "num",
+   "q": "A sound file is recorded at a sample rate of 44,100 Hz, with a bit depth of 16 bits, for 30 seconds. Calculate its file size in bits.",
+   "answer": 21168000,
+   "unit": "bits",
+   "working": "44100 * 16 * 30",
+   "marks": 1,
+   "feedback": "File size = sample rate × bit depth × duration.",
+   "hint": "How many samples a second, how many bits a sample, and for how long?",
+   "commandWord": "calculate",
+   "difficulty": "apply",
+   "subtopic": "Sound file size",
+   "revisit": "ms-l07-s3",
+   "revisitReason": "Sound file size",
+   "outcomes": [
+    "ms-l07-o2"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-sound-file-size-0049",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l07",
+   "revisitStationId": "ms-l07-s3",
+   "revisitLabel": "1.2 Lesson 7 — Capacity calculator, station 3: Sound file size",
+   "revisitScene": 0,
+   "revisitK": 2
+  },
+  {
+   "type": "num",
+   "q": "A 10-second recording is sampled 8,000 times a second with a bit depth of 8. Calculate its file size in kilobytes.",
+   "answer": 80,
+   "unit": "kB",
+   "methodMark": [
+    {
+     "label": "works out the size in bits (640,000)",
+     "value": 640000,
+     "worth": 1
+    },
+    {
+     "label": "converts to bytes by dividing by 8 (80,000)",
+     "value": 80000,
+     "worth": 1
+    }
+   ],
+   "working": "8000 * 8 * 10 / 8 / 1000",
+   "marks": 3,
+   "feedback": "8,000 × 8 × 10 = 640,000 bits; ÷ 8 = 80,000 bytes; ÷ 1,000 = 80 kB.",
+   "commandWord": "calculate",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Sound file size",
+   "revisit": "ms-l07-s3",
+   "revisitReason": "Sound file size",
+   "outcomes": [
+    "ms-l07-o2"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-sound-file-size-0050",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l07",
+   "revisitStationId": "ms-l07-s3",
+   "revisitLabel": "1.2 Lesson 7 — Capacity calculator, station 3: Sound file size",
+   "revisitScene": 0,
+   "revisitK": 2
+  },
+  {
+   "type": "num",
+   "q": "A plain text file contains 2,400 characters, each stored in 8 bits. Calculate its file size in bytes.",
+   "answer": 2400,
+   "unit": "bytes",
+   "working": "2400 * 8 / 8",
+   "marks": 1,
+   "feedback": "Each character is one byte, so 2,400 characters is 2,400 bytes.",
+   "hint": "How many bits is each character, and how many bytes is that?",
+   "commandWord": "calculate",
+   "difficulty": "apply",
+   "subtopic": "Text file size",
+   "revisit": "ms-l07-s4",
+   "revisitReason": "Text file size",
+   "outcomes": [
+    "ms-l07-o2"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-text-file-size-0051",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l07",
+   "revisitStationId": "ms-l07-s4",
+   "revisitLabel": "1.2 Lesson 7 — Capacity calculator, station 4: Text file size",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "written",
+   "q": "A pupil says a Word document with 2,400 characters in it will be exactly 2,400 bytes. Explain why it will actually be larger.",
+   "markPoints": [
+    {
+     "concept": "the file also stores formatting and other information about the document",
+     "accept": [
+      [
+       "formatting|font|style|bold|layout|colour|metadata|extra|other information|header"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The file also stores formatting information such as fonts and styles."
+    },
+    {
+     "concept": "so the file is larger than the characters alone",
+     "accept": [
+      [
+       "larger|bigger|more|extra|adds"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "This means the file is bigger than the characters on their own."
+    }
+   ],
+   "example": "A Word document stores more than the characters: it also stores formatting such as fonts, sizes and colours, along with other metadata, so the file is bigger than the text alone.",
+   "paraphrase": "There is extra information in it besides the letters — how they are styled and laid out — which makes it larger.",
+   "marks": 2,
+   "feedback": "The calculation is for the characters. A real document file has more in it than that.",
+   "commandWord": "explain",
+   "difficulty": "stretch",
+   "examStyle": true,
+   "subtopic": "Text file size",
+   "revisit": "ms-l07-s4",
+   "revisitReason": "Text file size",
+   "outcomes": [
+    "ms-l07-o2"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-text-file-size-0052",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l07",
+   "revisitStationId": "ms-l07-s4",
+   "revisitLabel": "1.2 Lesson 7 — Capacity calculator, station 4: Text file size",
+   "revisitScene": 0,
+   "revisitK": 3
+  }
+ ]
+}

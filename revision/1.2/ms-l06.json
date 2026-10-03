@@ -1,0 +1,383 @@
+{
+ "topic": "1.2",
+ "lesson": "ms-l06",
+ "questions": [
+  {
+   "type": "written",
+   "q": "Explain why computers represent all data in binary.",
+   "markPoints": [
+    {
+     "concept": "the components in a computer have two states, such as on and off",
+     "accept": [
+      [
+       "two|2|only|either",
+       "state|values|options|positions|levels"
+      ],
+      [
+       "on and off|on or off|high and low|current|voltage|switch"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The circuits inside a computer can only be on or off."
+    },
+    {
+     "concept": "so a 1 and a 0 can represent those two states directly",
+     "accept": [
+      [
+       "1|one",
+       "0|zero"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "So a 1 can mean on and a 0 can mean off."
+    }
+   ],
+   "example": "The circuits inside a computer can only be in one of two states, on or off, so a 1 and a 0 map straight onto those two states and everything has to be built out of them.",
+   "paraphrase": "Hardware only has two conditions, current flowing or not, which means a one and a zero represent them exactly.",
+   "marks": 2,
+   "feedback": "Two states in the hardware, two digits in the number system.",
+   "commandWord": "explain",
+   "difficulty": "understand",
+   "subtopic": "Why binary?",
+   "revisit": "ms-l06-s1",
+   "revisitReason": "Why binary?",
+   "outcomes": [
+    "ms-l06-o3"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-why-binary-0035",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l06",
+   "revisitStationId": "ms-l06-s1",
+   "revisitLabel": "1.2 Lesson 6 — Units lab, station 1: Why binary?",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "mcq",
+   "q": "How many different values can be represented by one bit?",
+   "options": [
+    "2",
+    "1",
+    "8",
+    "256"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "One bit is one binary digit: 0 or 1.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "Why binary?",
+   "revisit": "ms-l06-s1",
+   "revisitReason": "Why binary?",
+   "outcomes": [
+    "ms-l06-o3"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-why-binary-0036",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l06",
+   "revisitStationId": "ms-l06-s1",
+   "revisitLabel": "1.2 Lesson 6 — Units lab, station 1: Why binary?",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "match",
+   "q": "Match each unit to how many bits it contains.",
+   "pairs": [
+    [
+     "Bit",
+     "1 bit"
+    ],
+    [
+     "Nibble",
+     "4 bits"
+    ],
+    [
+     "Byte",
+     "8 bits"
+    ]
+   ],
+   "marks": 3,
+   "feedback": "A nibble is half a byte, which is where its name comes from.",
+   "commandWord": "draw",
+   "difficulty": "retrieve",
+   "subtopic": "Bits, nibbles and bytes",
+   "revisit": "ms-l06-s2",
+   "revisitReason": "Bits, nibbles and bytes",
+   "outcomes": [
+    "ms-l06-o1"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-bits-nibbles-and-bytes-0037",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l06",
+   "revisitStationId": "ms-l06-s2",
+   "revisitLabel": "1.2 Lesson 6 — Units lab, station 2: Bits, nibbles and bytes",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "num",
+   "q": "How many bits are there in 3 bytes?",
+   "answer": 24,
+   "unit": "bits",
+   "working": "3 * 8",
+   "marks": 1,
+   "feedback": "8 bits in a byte, so 3 × 8 = 24.",
+   "commandWord": "calculate",
+   "difficulty": "apply",
+   "subtopic": "Bits, nibbles and bytes",
+   "revisit": "ms-l06-s2",
+   "revisitReason": "Bits, nibbles and bytes",
+   "outcomes": [
+    "ms-l06-o1"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-bits-nibbles-and-bytes-0038",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l06",
+   "revisitStationId": "ms-l06-s2",
+   "revisitLabel": "1.2 Lesson 6 — Units lab, station 2: Bits, nibbles and bytes",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "num",
+   "q": "A file is 2 KB. How many bytes is that?",
+   "answer": 2000,
+   "unit": "bytes",
+   "working": "2 * 1000",
+   "marks": 1,
+   "feedback": "This course uses 1 kB = 1,000 bytes, which is the convention OCR uses.",
+   "hint": "How many bytes does this course take a kilobyte to be?",
+   "commandWord": "calculate",
+   "difficulty": "apply",
+   "subtopic": "Bits, nibbles and bytes",
+   "revisit": "ms-l06-s2",
+   "revisitReason": "Bits, nibbles and bytes",
+   "outcomes": [
+    "ms-l06-o1"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-bits-nibbles-and-bytes-0039",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l06",
+   "revisitStationId": "ms-l06-s2",
+   "revisitLabel": "1.2 Lesson 6 — Units lab, station 2: Bits, nibbles and bytes",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "mcq",
+   "q": "How many values can be represented by one nibble?",
+   "options": [
+    "16",
+    "4",
+    "8",
+    "256"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "4 bits, so 2⁴ = 16 different patterns.",
+   "commandWord": "identify",
+   "difficulty": "understand",
+   "subtopic": "Bits, nibbles and bytes",
+   "revisit": "ms-l06-s2",
+   "revisitReason": "Bits, nibbles and bytes",
+   "outcomes": [
+    "ms-l06-o1"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-bits-nibbles-and-bytes-0040",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l06",
+   "revisitStationId": "ms-l06-s2",
+   "revisitLabel": "1.2 Lesson 6 — Units lab, station 2: Bits, nibbles and bytes",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "num",
+   "q": "A memory card holds 64 GB. How many megabytes is that?",
+   "answer": 64000,
+   "unit": "MB",
+   "working": "64 * 1000",
+   "marks": 1,
+   "feedback": "One gigabyte is 1,000 megabytes, so 64 GB = 64,000 MB.",
+   "commandWord": "calculate",
+   "difficulty": "apply",
+   "subtopic": "Converting between units",
+   "revisit": "ms-l06-s4",
+   "revisitReason": "Converting between units",
+   "outcomes": [
+    "ms-l06-o2"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-converting-between-units-0041",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l06",
+   "revisitStationId": "ms-l06-s4",
+   "revisitLabel": "1.2 Lesson 6 — Units lab, station 4: Converting units",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "num",
+   "q": "A video is 4.5 GB. How many kilobytes is that?",
+   "answer": 4500000,
+   "unit": "kB",
+   "working": "4.5 * 1000 * 1000",
+   "marks": 1,
+   "feedback": "GB to MB to kB is two steps of a thousand: 4.5 × 1,000 × 1,000.",
+   "hint": "Go one unit at a time rather than trying to do it in one jump.",
+   "commandWord": "calculate",
+   "difficulty": "apply",
+   "subtopic": "Converting between units",
+   "revisit": "ms-l06-s4",
+   "revisitReason": "Converting between units",
+   "outcomes": [
+    "ms-l06-o2"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-converting-between-units-0042",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l06",
+   "revisitStationId": "ms-l06-s4",
+   "revisitLabel": "1.2 Lesson 6 — Units lab, station 4: Converting units",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "num",
+   "q": "A hard disk holds 3 TB. How many gigabytes is that?",
+   "answer": 3000,
+   "unit": "GB",
+   "working": "3 * 1000",
+   "marks": 1,
+   "feedback": "A terabyte is 1,000 gigabytes.",
+   "commandWord": "calculate",
+   "difficulty": "apply",
+   "subtopic": "Converting between units",
+   "revisit": "ms-l06-s4",
+   "revisitReason": "Converting between units",
+   "outcomes": [
+    "ms-l06-o2"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-converting-between-units-0043",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l06",
+   "revisitStationId": "ms-l06-s4",
+   "revisitLabel": "1.2 Lesson 6 — Units lab, station 4: Converting units",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "order",
+   "q": "Put these units in order, smallest first.",
+   "steps": [
+    "Nibble",
+    "Byte",
+    "Kilobyte",
+    "Megabyte",
+    "Gigabyte",
+    "Terabyte"
+   ],
+   "marks": 6,
+   "feedback": "A nibble is four bits, a byte is eight, and from there it is steps of a thousand all the way up.",
+   "commandWord": "complete",
+   "difficulty": "retrieve",
+   "subtopic": "Converting between units",
+   "revisit": "ms-l06-s4",
+   "revisitReason": "Converting between units",
+   "outcomes": [
+    "ms-l06-o2"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-converting-between-units-0044",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l06",
+   "revisitStationId": "ms-l06-s4",
+   "revisitLabel": "1.2 Lesson 6 — Units lab, station 4: Converting units",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "mcq",
+   "q": "Which unit comes immediately after a terabyte?",
+   "options": [
+    "Petabyte",
+    "Gigabyte",
+    "Exabyte",
+    "Megabyte"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Kilo, mega, giga, tera, peta — each a thousand times the one before.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "Converting between units",
+   "revisit": "ms-l06-s4",
+   "revisitReason": "Converting between units",
+   "outcomes": [
+    "ms-l06-o2"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-converting-between-units-0102",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l06",
+   "revisitStationId": "ms-l06-s4",
+   "revisitLabel": "1.2 Lesson 6 — Units lab, station 4: Converting units",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "num",
+   "q": "A school has 1,500 photographs, each 4 MB. How many gigabytes of storage are needed?",
+   "answer": 6,
+   "unit": "GB",
+   "methodMark": [
+    {
+     "label": "works out the total in megabytes (6,000 MB)",
+     "value": 6000,
+     "worth": 1
+    }
+   ],
+   "working": "1500 * 4 / 1000",
+   "marks": 2,
+   "feedback": "1,500 × 4 = 6,000 MB, and 6,000 ÷ 1,000 = 6 GB. The method mark is for reaching 6,000 MB even if the last step goes wrong.",
+   "commandWord": "calculate",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Converting between units",
+   "revisit": "ms-l06-s4",
+   "revisitReason": "Converting between units",
+   "outcomes": [
+    "ms-l06-o2"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-converting-between-units-0045",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l06",
+   "revisitStationId": "ms-l06-s4",
+   "revisitLabel": "1.2 Lesson 6 — Units lab, station 4: Converting units",
+   "revisitScene": 0,
+   "revisitK": 3
+  }
+ ]
+}

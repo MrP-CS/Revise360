@@ -1,0 +1,521 @@
+{
+ "topic": "1.2",
+ "lesson": "ms-l08",
+ "questions": [
+  {
+   "type": "mcq",
+   "q": "Which list gives the place values of an 8-bit binary number, from the most significant bit to the least?",
+   "options": [
+    "128, 64, 32, 16, 8, 4, 2, 1",
+    "1, 2, 4, 8, 16, 32, 64, 128",
+    "256, 128, 64, 32, 16, 8, 4, 2",
+    "128, 64, 32, 16, 8, 4, 2, 0"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Each place is worth twice the one to its right, and the rightmost is 1.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "Place values",
+   "revisit": "ms-l08-s1",
+   "revisitReason": "Place values",
+   "outcomes": [
+    "ms-l08-o1"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-place-values-0103",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l08",
+   "revisitStationId": "ms-l08-s1",
+   "revisitLabel": "1.2 Lesson 8 — Binary workshop, station 1: Place values",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "num",
+   "q": "What is the largest value that can be stored in 8 bits?",
+   "answer": 255,
+   "working": "128 + 64 + 32 + 16 + 8 + 4 + 2 + 1",
+   "marks": 1,
+   "feedback": "Every bit set to 1: 128 + 64 + 32 + 16 + 8 + 4 + 2 + 1 = 255.",
+   "commandWord": "calculate",
+   "difficulty": "understand",
+   "subtopic": "Place values",
+   "revisit": "ms-l08-s1",
+   "revisitReason": "Place values",
+   "outcomes": [
+    "ms-l08-o1"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-place-values-0104",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l08",
+   "revisitStationId": "ms-l08-s1",
+   "revisitLabel": "1.2 Lesson 8 — Binary workshop, station 1: Place values",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "short",
+   "q": "State what is meant by the most significant bit.",
+   "markPoints": [
+    {
+     "concept": "the bit with the largest place value, on the left",
+     "accept": [
+      [
+       "largest|biggest|highest|greatest|most|128",
+       "value|place|worth|column"
+      ],
+      [
+       "left|leftmost|left hand|far left|start"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The bit on the left, with the largest place value."
+    }
+   ],
+   "example": "The leftmost bit, which has the largest place value — 128 in an 8-bit number.",
+   "paraphrase": "The one on the far left, worth the most.",
+   "marks": 1,
+   "feedback": "Most significant means worth the most, which is the one furthest left.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "Place values",
+   "revisit": "ms-l08-s1",
+   "revisitReason": "Place values",
+   "outcomes": [
+    "ms-l08-o1"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-place-values-0054",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l08",
+   "revisitStationId": "ms-l08-s1",
+   "revisitLabel": "1.2 Lesson 8 — Binary workshop, station 1: Place values",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "convert",
+   "q": "Convert the denary number 37 to 8-bit binary.",
+   "answer": "00100101",
+   "exact": "binary",
+   "verify": {
+    "value": 37,
+    "from": "denary",
+    "to": "binary",
+    "bits": 8
+   },
+   "marks": 1,
+   "feedback": "32 + 4 + 1 = 37, so 00100101.",
+   "hint": "Start at 128 and work down, taking each place value if it fits.",
+   "commandWord": "convert",
+   "difficulty": "apply",
+   "subtopic": "Denary and binary",
+   "revisit": "ms-l08-s2",
+   "revisitReason": "Denary and binary",
+   "outcomes": [
+    "ms-l08-o1"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-denary-and-binary-0055",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l08",
+   "revisitStationId": "ms-l08-s2",
+   "revisitLabel": "1.2 Lesson 8 — Binary workshop, station 2: Denary to binary",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "convert",
+   "q": "Convert the denary number 214 to 8-bit binary.",
+   "answer": "11010110",
+   "exact": "binary",
+   "verify": {
+    "value": 214,
+    "from": "denary",
+    "to": "binary",
+    "bits": 8
+   },
+   "marks": 1,
+   "feedback": "128 + 64 + 16 + 4 + 2 = 214, so 11010110.",
+   "commandWord": "convert",
+   "difficulty": "apply",
+   "subtopic": "Denary and binary",
+   "revisit": "ms-l08-s2",
+   "revisitReason": "Denary and binary",
+   "outcomes": [
+    "ms-l08-o1"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-denary-and-binary-0056",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l08",
+   "revisitStationId": "ms-l08-s2",
+   "revisitLabel": "1.2 Lesson 8 — Binary workshop, station 2: Denary to binary",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "convert",
+   "q": "Convert the denary number 9 to 8-bit binary.",
+   "answer": "00001001",
+   "exact": "binary",
+   "verify": {
+    "value": 9,
+    "from": "denary",
+    "to": "binary",
+    "bits": 8
+   },
+   "marks": 1,
+   "feedback": "8 + 1 = 9, so 00001001. Remember to pad to eight bits.",
+   "commandWord": "convert",
+   "difficulty": "retrieve",
+   "subtopic": "Denary and binary",
+   "revisit": "ms-l08-s2",
+   "revisitReason": "Denary and binary",
+   "outcomes": [
+    "ms-l08-o1"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-denary-and-binary-0057",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l08",
+   "revisitStationId": "ms-l08-s2",
+   "revisitLabel": "1.2 Lesson 8 — Binary workshop, station 2: Denary to binary",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "convert",
+   "q": "Convert the binary number 01101100 to denary.",
+   "answer": "108",
+   "exact": "text",
+   "verify": {
+    "value": "01101100",
+    "from": "binary",
+    "to": "denary",
+    "bits": 8
+   },
+   "marks": 1,
+   "feedback": "64 + 32 + 8 + 4 = 108.",
+   "commandWord": "convert",
+   "difficulty": "apply",
+   "subtopic": "Denary and binary",
+   "revisit": "ms-l08-s2",
+   "revisitReason": "Denary and binary",
+   "outcomes": [
+    "ms-l08-o1"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-denary-and-binary-0058",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l08",
+   "revisitStationId": "ms-l08-s2",
+   "revisitLabel": "1.2 Lesson 8 — Binary workshop, station 2: Denary to binary",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "convert",
+   "q": "Convert the binary number 10011011 to denary.",
+   "answer": "155",
+   "exact": "text",
+   "verify": {
+    "value": "10011011",
+    "from": "binary",
+    "to": "denary",
+    "bits": 8
+   },
+   "marks": 1,
+   "feedback": "128 + 16 + 8 + 2 + 1 = 155.",
+   "commandWord": "convert",
+   "difficulty": "apply",
+   "subtopic": "Denary and binary",
+   "revisit": "ms-l08-s2",
+   "revisitReason": "Denary and binary",
+   "outcomes": [
+    "ms-l08-o1"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-denary-and-binary-0059",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l08",
+   "revisitStationId": "ms-l08-s2",
+   "revisitLabel": "1.2 Lesson 8 — Binary workshop, station 2: Denary to binary",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "convert",
+   "q": "Convert the binary number 11111111 to denary.",
+   "answer": "255",
+   "exact": "text",
+   "verify": {
+    "value": "11111111",
+    "from": "binary",
+    "to": "denary",
+    "bits": 8
+   },
+   "marks": 1,
+   "feedback": "255. This is the largest value eight bits can hold, which is why 8-bit numbers run from 0 to 255.",
+   "commandWord": "convert",
+   "difficulty": "understand",
+   "subtopic": "Denary and binary",
+   "revisit": "ms-l08-s2",
+   "revisitReason": "Denary and binary",
+   "outcomes": [
+    "ms-l08-o1"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-denary-and-binary-0060",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l08",
+   "revisitStationId": "ms-l08-s2",
+   "revisitLabel": "1.2 Lesson 8 — Binary workshop, station 2: Denary to binary",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "binadd",
+   "q": "Add these two 8-bit binary numbers: 00101101 + 01011011.",
+   "answer": "10001000",
+   "exact": "binary",
+   "verify": {
+    "a": "00101101",
+    "b": "01011011",
+    "bits": 8
+   },
+   "marks": 1,
+   "feedback": "45 + 91 = 136, which is 10001000.",
+   "hint": "Work from the right. 1 + 1 is 0 carry 1, and 1 + 1 + 1 is 1 carry 1.",
+   "commandWord": "calculate",
+   "difficulty": "apply",
+   "subtopic": "Binary addition",
+   "revisit": "ms-l08-s4",
+   "revisitReason": "Binary addition",
+   "outcomes": [
+    "ms-l08-o2"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-binary-addition-0061",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l08",
+   "revisitStationId": "ms-l08-s4",
+   "revisitLabel": "1.2 Lesson 8 — Binary workshop, station 4: Binary addition",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "binadd",
+   "q": "Add these two 8-bit binary numbers: 00110011 + 00001111.",
+   "answer": "01000010",
+   "exact": "binary",
+   "verify": {
+    "a": "00110011",
+    "b": "00001111",
+    "bits": 8
+   },
+   "marks": 1,
+   "feedback": "51 + 15 = 66, which is 01000010.",
+   "commandWord": "calculate",
+   "difficulty": "apply",
+   "subtopic": "Binary addition",
+   "revisit": "ms-l08-s4",
+   "revisitReason": "Binary addition",
+   "outcomes": [
+    "ms-l08-o2"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-binary-addition-0062",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l08",
+   "revisitStationId": "ms-l08-s4",
+   "revisitLabel": "1.2 Lesson 8 — Binary workshop, station 4: Binary addition",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "binadd",
+   "q": "Add these two 8-bit binary numbers: 01111111 + 00000001.",
+   "answer": "10000000",
+   "exact": "binary",
+   "verify": {
+    "a": "01111111",
+    "b": "00000001",
+    "bits": 8
+   },
+   "marks": 1,
+   "feedback": "127 + 1 = 128, which is 10000000. Every bit carried into the next column.",
+   "commandWord": "calculate",
+   "difficulty": "understand",
+   "subtopic": "Binary addition",
+   "revisit": "ms-l08-s4",
+   "revisitReason": "Binary addition",
+   "outcomes": [
+    "ms-l08-o2"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-binary-addition-0063",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l08",
+   "revisitStationId": "ms-l08-s4",
+   "revisitLabel": "1.2 Lesson 8 — Binary workshop, station 4: Binary addition",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "tf",
+   "q": "When adding binary, 1 + 1 gives 0 with a 1 carried to the next column.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "True. It is the same idea as carrying in denary, but it happens at 2 rather than at 10.",
+   "commandWord": "tick",
+   "difficulty": "retrieve",
+   "subtopic": "Binary addition",
+   "revisit": "ms-l08-s4",
+   "revisitReason": "Binary addition",
+   "outcomes": [
+    "ms-l08-o2"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-binary-addition-0064",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l08",
+   "revisitStationId": "ms-l08-s4",
+   "revisitLabel": "1.2 Lesson 8 — Binary workshop, station 4: Binary addition",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "written",
+   "q": "Explain what an overflow error is.",
+   "markPoints": [
+    {
+     "concept": "the result of a calculation needs more bits than are available",
+     "accept": [
+      [
+       "more bits|too many bits|more than|too big|too large|exceeds|does not fit|will not fit|9 bits|nine bits"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The answer needs more bits than the computer has set aside."
+    },
+    {
+     "concept": "so the extra bit is lost and the stored answer is wrong",
+     "accept": [
+      [
+       "lost|dropped|discarded|cut off|removed|thrown away"
+      ],
+      [
+       "wrong|incorrect|inaccurate|not the right answer|error"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The extra bit is lost, so the stored answer is wrong."
+    }
+   ],
+   "example": "An overflow happens when the result of a calculation needs more bits than are available — for example a ninth bit in an 8-bit system. The extra bit cannot be stored, so it is lost and the answer the computer keeps is wrong.",
+   "paraphrase": "It occurs when an answer is too big for the number of bits allowed, and because the top bit has nowhere to go the result that gets stored is incorrect.",
+   "marks": 2,
+   "feedback": "Too big for the space, then what that costs.",
+   "commandWord": "explain",
+   "difficulty": "understand",
+   "examStyle": true,
+   "subtopic": "Overflow",
+   "revisit": "ms-l08-s5",
+   "revisitReason": "Overflow",
+   "outcomes": [
+    "ms-l08-o4"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-overflow-0065",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l08",
+   "revisitStationId": "ms-l08-s5",
+   "revisitLabel": "1.2 Lesson 8 — Binary workshop, station 5: Overflow",
+   "revisitScene": 0,
+   "revisitK": 4
+  },
+  {
+   "type": "binadd",
+   "q": "Add these two 8-bit binary numbers: 11101101 + 01011011. Give the 8 bits that would be stored.",
+   "answer": "01001000",
+   "exact": "binary",
+   "overflow": true,
+   "verify": {
+    "a": "11101101",
+    "b": "01011011",
+    "bits": 8
+   },
+   "marks": 1,
+   "feedback": "237 + 91 = 328, which needs nine bits. Only the lower eight are stored, giving 01001000 — 72, not 328. That is an overflow error.",
+   "commandWord": "calculate",
+   "difficulty": "stretch",
+   "examStyle": true,
+   "subtopic": "Overflow",
+   "revisit": "ms-l08-s5",
+   "revisitReason": "Overflow",
+   "outcomes": [
+    "ms-l08-o4"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-overflow-0066",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l08",
+   "revisitStationId": "ms-l08-s5",
+   "revisitLabel": "1.2 Lesson 8 — Binary workshop, station 5: Overflow",
+   "revisitScene": 0,
+   "revisitK": 4
+  },
+  {
+   "type": "mcq",
+   "q": "An 8-bit system adds 10110101 and 11001100. What happens?",
+   "options": [
+    "An overflow error: the answer needs nine bits",
+    "The answer is stored correctly as an 8-bit number",
+    "The computer automatically switches to 16 bits",
+    "The two numbers are swapped and added again"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "181 + 204 = 385, which will not fit in eight bits.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "subtopic": "Overflow",
+   "revisit": "ms-l08-s5",
+   "revisitReason": "Overflow",
+   "outcomes": [
+    "ms-l08-o4"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-overflow-0067",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l08",
+   "revisitStationId": "ms-l08-s5",
+   "revisitLabel": "1.2 Lesson 8 — Binary workshop, station 5: Overflow",
+   "revisitScene": 0,
+   "revisitK": 4
+  }
+ ]
+}

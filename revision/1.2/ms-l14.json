@@ -1,0 +1,182 @@
+{
+ "topic": "1.2",
+ "lesson": "ms-l14",
+ "questions": [
+  {
+   "type": "short",
+   "q": "State what is meant by the sample rate of a sound recording.",
+   "markPoints": [
+    {
+     "concept": "how many samples are taken each second",
+     "accept": [
+      [
+       "samples|measurements|readings|snapshots|measured|measures|measuring",
+       "second|per second|each second|hertz|hz"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The number of samples taken each second."
+    }
+   ],
+   "example": "The number of samples taken each second, measured in hertz.",
+   "paraphrase": "How many times a second the sound is measured.",
+   "marks": 1,
+   "feedback": "Per second is the part that makes it a rate.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "Sampling",
+   "revisit": "ms-l14-s1",
+   "revisitReason": "Sampling",
+   "outcomes": [
+    "ms-l14-o1"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-sampling-0090",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l14",
+   "revisitStationId": "ms-l14-s1",
+   "revisitLabel": "1.2 Lesson 14 — Sound studio, station 1: Analogue to digital",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "order",
+   "q": "Put the steps of recording a digital sound in order.",
+   "steps": [
+    "A microphone picks up the analogue sound wave",
+    "The wave is measured at regular intervals",
+    "Each measurement is stored as a binary number",
+    "The stored numbers can be played back as sound"
+   ],
+   "marks": 4,
+   "feedback": "Measure, then store. Sampling is measuring the wave at intervals.",
+   "commandWord": "complete",
+   "difficulty": "understand",
+   "subtopic": "Sampling",
+   "revisit": "ms-l14-s1",
+   "revisitReason": "Sampling",
+   "outcomes": [
+    "ms-l14-o1"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-sampling-0091",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l14",
+   "revisitStationId": "ms-l14-s1",
+   "revisitLabel": "1.2 Lesson 14 — Sound studio, station 1: Analogue to digital",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "Explain the effect of increasing the sample rate of a recording.",
+   "markPoints": [
+    {
+     "concept": "more samples are taken each second",
+     "accept": [
+      [
+       "more samples|more measurements|more readings|increases|higher rate|measured more|more often|more frequently|measures more"
+      ]
+     ],
+     "worth": 1,
+     "reject": [
+      [
+       "less|fewer|smaller|lower|decrease|decreases|decreased|half|halves"
+      ]
+     ],
+     "exemplar": "More samples are taken each second."
+    },
+    {
+     "concept": "so the digital recording is a closer match to the original wave",
+     "accept": [
+      [
+       "closer|more accurate|better match|more faithful|truer|nearer|better quality|more detail"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "This means the recording follows the original wave more closely, so the quality is better."
+    },
+    {
+     "concept": "but the file size increases",
+     "accept": [
+      [
+       "file size|size of the file|bigger|larger|more storage|more space"
+      ]
+     ],
+     "worth": 1,
+     "reject": [
+      [
+       "less|fewer|smaller|lower|decrease|decreases|decreased|half|halves"
+      ]
+     ],
+     "exemplar": "The file size also increases."
+    }
+   ],
+   "example": "Increasing the sample rate means the wave is measured more often each second, so the stored version follows the original more closely and sounds better. The cost is that more samples have to be stored, so the file is bigger.",
+   "paraphrase": "The sound is measured more frequently, which makes the digital copy a nearer match to the real wave and improves quality, although it takes more space.",
+   "marks": 3,
+   "feedback": "Three things: more samples, better quality, bigger file. The quality mark needs to be joined to the sampling.",
+   "commandWord": "explain",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Sampling",
+   "revisit": "ms-l14-s1",
+   "revisitReason": "Sampling",
+   "outcomes": [
+    "ms-l14-o1"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-sampling-0092",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l14",
+   "revisitStationId": "ms-l14-s1",
+   "revisitLabel": "1.2 Lesson 14 — Sound studio, station 1: Analogue to digital",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "num",
+   "q": "A recording is sampled at 22,050 Hz with a bit depth of 16 for 4 minutes. Calculate the file size in bytes.",
+   "answer": 10584000,
+   "unit": "bytes",
+   "methodMark": [
+    {
+     "label": "converts 4 minutes to 240 seconds",
+     "value": 240,
+     "worth": 1
+    },
+    {
+     "label": "works out the size in bits (84,672,000)",
+     "value": 84672000,
+     "worth": 1
+    }
+   ],
+   "working": "22050 * 16 * 240 / 8",
+   "marks": 3,
+   "feedback": "4 minutes is 240 seconds. 22,050 × 16 × 240 = 84,672,000 bits, and ÷ 8 = 10,584,000 bytes.",
+   "hint": "The duration has to be in seconds before anything else.",
+   "commandWord": "calculate",
+   "difficulty": "stretch",
+   "examStyle": true,
+   "subtopic": "Sampling",
+   "revisit": "ms-l14-s1",
+   "revisitReason": "Sampling",
+   "outcomes": [
+    "ms-l14-o1"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-sampling-0093",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l14",
+   "revisitStationId": "ms-l14-s1",
+   "revisitLabel": "1.2 Lesson 14 — Sound studio, station 1: Analogue to digital",
+   "revisitScene": 0,
+   "revisitK": 0
+  }
+ ]
+}

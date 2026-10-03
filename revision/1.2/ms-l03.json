@@ -1,0 +1,331 @@
+{
+ "topic": "1.2",
+ "lesson": "ms-l03",
+ "questions": [
+  {
+   "type": "written",
+   "q": "Explain why a computer needs secondary storage as well as RAM.",
+   "markPoints": [
+    {
+     "concept": "RAM is volatile, so its contents are lost when the power goes",
+     "accept": [
+      [
+       "ram|memory|main memory",
+       "volatile|lose|lost|loses|disappear|erased|wiped|cleared|not kept|not stored|emptied|gone|empties|empty"
+      ]
+     ],
+     "worth": 1,
+     "reject": [
+      [
+       "ram|memory|main memory",
+       "nonvolatile"
+      ]
+     ],
+     "exemplar": "RAM is volatile, so everything in it is lost when the power goes off."
+    },
+    {
+     "concept": "secondary storage is non-volatile, so files are still there next time",
+     "accept": [
+      [
+       "non-volatile|nonvolatile|not volatile|keeps|keep|retains|retain|stays|remains|still there|permanent|permanently|kept"
+      ]
+     ],
+     "worth": 1,
+     "reject": [
+      [
+       "secondary storage|hard disk|drive|ssd|disk",
+       "volatile"
+      ]
+     ],
+     "exemplar": "Secondary storage is non-volatile, so files are still there next time."
+    }
+   ],
+   "example": "RAM is volatile, so anything in it disappears when the computer is switched off. Secondary storage is non-volatile, so files are still there the next time the computer is used.",
+   "paraphrase": "Memory empties when the power goes, while a drive keeps what is on it, so work survives being switched off.",
+   "marks": 2,
+   "feedback": "One mark for what RAM cannot do, one for what secondary storage can.",
+   "commandWord": "explain",
+   "difficulty": "understand",
+   "subtopic": "Why secondary storage?",
+   "revisit": "ms-l03-s1",
+   "revisitReason": "Why secondary storage?",
+   "outcomes": [
+    "ms-l03-o1"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-why-secondary-storage-0022",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l03",
+   "revisitStationId": "ms-l03-s1",
+   "revisitLabel": "1.2 Lesson 3 — Storage warehouse, station 1: Why secondary storage?",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "mcq",
+   "q": "Which is the best description of secondary storage?",
+   "options": [
+    "Non-volatile storage used to keep programs and data when the computer is off",
+    "Memory the CPU reads from directly during the cycle",
+    "A small amount of very fast memory inside the CPU",
+    "Space used only when RAM becomes full"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Virtual memory is one use of secondary storage, not what it is.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "Why secondary storage?",
+   "revisit": "ms-l03-s1",
+   "revisitReason": "Why secondary storage?",
+   "outcomes": [
+    "ms-l03-o1"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-why-secondary-storage-0023",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l03",
+   "revisitStationId": "ms-l03-s1",
+   "revisitLabel": "1.2 Lesson 3 — Storage warehouse, station 1: Why secondary storage?",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "match",
+   "q": "Match each storage type to how it stores data.",
+   "pairs": [
+    [
+     "Magnetic",
+     "Magnetised patterns on spinning platters"
+    ],
+    [
+     "Optical",
+     "Pits and lands burnt into a disc, read by a laser"
+    ],
+    [
+     "Solid state",
+     "Charge held in flash memory cells, with no moving parts"
+    ]
+   ],
+   "marks": 3,
+   "feedback": "Spin, laser, no moving parts — the three mechanisms.",
+   "commandWord": "draw",
+   "difficulty": "retrieve",
+   "subtopic": "Types of storage",
+   "revisit": "ms-l03-s2",
+   "revisitReason": "Types of storage",
+   "outcomes": [
+    "ms-l03-o2",
+    "ms-l03-o3"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-types-of-storage-0024",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l03",
+   "revisitStationId": "ms-l03-s2",
+   "revisitLabel": "1.2 Lesson 3 — Storage warehouse, station 2: Magnetic storage",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "mcq",
+   "q": "Which part of a hard disk drive moves across the platters to read and write data?",
+   "options": [
+    "The read/write head",
+    "The spindle",
+    "The laser",
+    "The controller"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "The spindle spins the platters; the head moves across them. A laser belongs to optical storage.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "Types of storage",
+   "revisit": "ms-l03-s2",
+   "revisitReason": "Types of storage",
+   "outcomes": [
+    "ms-l03-o2",
+    "ms-l03-o3"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-types-of-storage-0025",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l03",
+   "revisitStationId": "ms-l03-s2",
+   "revisitLabel": "1.2 Lesson 3 — Storage warehouse, station 2: Magnetic storage",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "short",
+   "q": "Name one moving part found in a magnetic hard disk drive.",
+   "markPoints": [
+    {
+     "concept": "a named moving part: the platter, the spindle or the read/write head",
+     "accept": [
+      [
+       "platter|spindle|read write head|read/write head|head|arm|actuator|disc|disk"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The read/write head."
+    }
+   ],
+   "example": "The read/write head.",
+   "paraphrase": "The spinning platters.",
+   "marks": 1,
+   "feedback": "Platters, spindle, arm or head. This is the reason an HDD is more easily damaged by being dropped.",
+   "commandWord": "name",
+   "difficulty": "retrieve",
+   "subtopic": "Types of storage",
+   "revisit": "ms-l03-s2",
+   "revisitReason": "Types of storage",
+   "outcomes": [
+    "ms-l03-o2",
+    "ms-l03-o3"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-types-of-storage-0026",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l03",
+   "revisitStationId": "ms-l03-s2",
+   "revisitLabel": "1.2 Lesson 3 — Storage warehouse, station 2: Magnetic storage",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "tf",
+   "q": "Solid state storage has no moving parts.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "True, and it is the reason an SSD is more durable, quieter and faster to access than a hard disk.",
+   "commandWord": "tick",
+   "difficulty": "retrieve",
+   "subtopic": "Types of storage",
+   "revisit": "ms-l03-s2",
+   "revisitReason": "Types of storage",
+   "outcomes": [
+    "ms-l03-o2",
+    "ms-l03-o3"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-types-of-storage-0027",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l03",
+   "revisitStationId": "ms-l03-s2",
+   "revisitLabel": "1.2 Lesson 3 — Storage warehouse, station 2: Magnetic storage",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "written",
+   "q": "A school is buying laptops for pupils to carry between lessons. Explain why solid state storage is a better choice than a magnetic hard disk.",
+   "markPoints": [
+    {
+     "concept": "SSDs have no moving parts",
+     "accept": [
+      [
+       "no moving parts|without moving parts|nothing moves|solid state|no platters|no spinning|nothing inside to break|nothing to break|nothing moving"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "An SSD has no moving parts."
+    },
+    {
+     "concept": "so they are far more resistant to being knocked or dropped",
+     "accept": [
+      [
+       "durable|robust|resist|survive|withstand|less likely to break|less easily damaged|less likely to be damaged|harder to damage|shock|nothing inside to break|nothing to break"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "This means it is much less likely to be damaged if a laptop is dropped."
+    },
+    {
+     "concept": "and they are faster to access and use less power, which helps battery life",
+     "accept": [
+      [
+       "fast|faster|quick|quicker"
+      ],
+      [
+       "less power|lower power|battery|power consumption"
+      ]
+     ],
+     "worth": 1,
+     "reject": [
+      [
+       "slow|slower|slowly|less quick|not as fast|takes longer|sluggish"
+      ]
+     ],
+     "exemplar": "They are also faster and use less power."
+    }
+   ],
+   "example": "An SSD has no moving parts, so it is far less likely to be damaged when a laptop is carried around and dropped. It is also faster to read and uses less power, which makes the laptop quicker to start and the battery last longer.",
+   "paraphrase": "There is nothing inside to break if it gets knocked, which matters for something carried about; on top of that it reads more quickly and draws less power.",
+   "marks": 3,
+   "feedback": "Durability is the point of the scenario. The other two marks are the ordinary advantages.",
+   "hint": "What is different about the inside of an SSD, and why does that matter for something carried in a bag?",
+   "commandWord": "explain",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Choosing a storage type",
+   "revisit": "ms-l03-s6",
+   "revisitReason": "Choosing a storage type",
+   "outcomes": [
+    "ms-l03-o2"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-choosing-a-storage-type-0028",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l03",
+   "revisitStationId": "ms-l03-s6",
+   "revisitLabel": "1.2 Lesson 3 — Storage warehouse, station 6: Choosing a type",
+   "revisitScene": 0,
+   "revisitK": 5
+  },
+  {
+   "type": "mcq",
+   "q": "A company needs to archive 200 TB of records cheaply, and will rarely read them. Which storage is most suitable?",
+   "options": [
+    "Magnetic tape or magnetic hard disks",
+    "Solid state drives",
+    "Optical discs",
+    "Cloud storage on a phone"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Magnetic storage is by far the cheapest per terabyte, and slow access does not matter for an archive.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Choosing a storage type",
+   "revisit": "ms-l03-s6",
+   "revisitReason": "Choosing a storage type",
+   "outcomes": [
+    "ms-l03-o2"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-choosing-a-storage-type-0029",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l03",
+   "revisitStationId": "ms-l03-s6",
+   "revisitLabel": "1.2 Lesson 3 — Storage warehouse, station 6: Choosing a type",
+   "revisitScene": 0,
+   "revisitK": 5
+  }
+ ]
+}

@@ -1,0 +1,396 @@
+{
+ "topic": "1.2",
+ "lesson": "ms-l10",
+ "questions": [
+  {
+   "type": "binshift",
+   "q": "Perform a left shift of 2 places on the 8-bit number 00010110.",
+   "answer": "01011000",
+   "exact": "binary",
+   "verify": {
+    "value": "00010110",
+    "places": 2,
+    "dir": "left",
+    "bits": 8
+   },
+   "marks": 1,
+   "feedback": "22 becomes 88: every bit moves two places left and zeros fill in from the right.",
+   "hint": "Shifting left multiplies. By how much, for each place?",
+   "commandWord": "calculate",
+   "difficulty": "apply",
+   "subtopic": "Binary shifts",
+   "revisit": "ms-l10-s1",
+   "revisitReason": "Binary shifts",
+   "outcomes": [
+    "ms-l10-o1",
+    "ms-l10-o2"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-binary-shifts-0068",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l10",
+   "revisitStationId": "ms-l10-s1",
+   "revisitLabel": "1.2 Lesson 10 — Shift and hex lab, station 1: Left shift",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "binshift",
+   "q": "Perform a right shift of 3 places on the 8-bit number 11000000.",
+   "answer": "00011000",
+   "exact": "binary",
+   "verify": {
+    "value": "11000000",
+    "places": 3,
+    "dir": "right",
+    "bits": 8
+   },
+   "marks": 1,
+   "feedback": "192 becomes 24: every bit moves three places right.",
+   "commandWord": "calculate",
+   "difficulty": "apply",
+   "subtopic": "Binary shifts",
+   "revisit": "ms-l10-s1",
+   "revisitReason": "Binary shifts",
+   "outcomes": [
+    "ms-l10-o1",
+    "ms-l10-o2"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-binary-shifts-0069",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l10",
+   "revisitStationId": "ms-l10-s1",
+   "revisitLabel": "1.2 Lesson 10 — Shift and hex lab, station 1: Left shift",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "Explain what a left shift of 1 place does to the value of a binary number.",
+   "markPoints": [
+    {
+     "concept": "it doubles the value, or multiplies it by two",
+     "accept": [
+      [
+       "double|doubles|multiplied by 2|multiply by 2|multiplied by two|multiply by two|times 2|x 2|twice"
+      ]
+     ],
+     "worth": 1,
+     "reject": [
+      [
+       "less|fewer|smaller|lower|decrease|decreases|decreased|half|halves"
+      ]
+     ],
+     "exemplar": "It doubles the value."
+    },
+    {
+     "concept": "because every bit moves into a place worth twice as much",
+     "accept": [
+      [
+       "place value|column|worth|place",
+       "twice|double|2"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "This is because every bit moves into a column worth twice as much."
+    }
+   ],
+   "example": "A left shift of one place doubles the value, because every bit moves into a place value worth twice as much as the one it was in.",
+   "paraphrase": "The number is multiplied by two, since each digit ends up in a column of double the worth.",
+   "marks": 2,
+   "feedback": "The effect, and why the effect is what it is.",
+   "commandWord": "explain",
+   "difficulty": "understand",
+   "examStyle": true,
+   "subtopic": "Binary shifts",
+   "revisit": "ms-l10-s1",
+   "revisitReason": "Binary shifts",
+   "outcomes": [
+    "ms-l10-o1",
+    "ms-l10-o2"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-binary-shifts-0070",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l10",
+   "revisitStationId": "ms-l10-s1",
+   "revisitLabel": "1.2 Lesson 10 — Shift and hex lab, station 1: Left shift",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "mcq",
+   "q": "A right shift of 2 places is performed on the binary number 00001001 (9). What is lost?",
+   "options": [
+    "The two least significant bits, so the answer is rounded down to 2",
+    "Nothing; the answer is exactly 2.25",
+    "The two most significant bits, so the answer is far too small",
+    "Nothing; a right shift never loses anything"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "9 ÷ 4 is 2.25, but the bits that fall off the right-hand end are gone. The stored answer is 2.",
+   "commandWord": "identify",
+   "difficulty": "stretch",
+   "examStyle": true,
+   "subtopic": "Binary shifts",
+   "revisit": "ms-l10-s1",
+   "revisitReason": "Binary shifts",
+   "outcomes": [
+    "ms-l10-o1",
+    "ms-l10-o2"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-binary-shifts-0071",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l10",
+   "revisitStationId": "ms-l10-s1",
+   "revisitLabel": "1.2 Lesson 10 — Shift and hex lab, station 1: Left shift",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "Explain why hexadecimal is often used to write down binary values.",
+   "markPoints": [
+    {
+     "concept": "it is much shorter than the equivalent binary",
+     "accept": [
+      [
+       "short|shorter|fewer digits|fewer characters|compact|concise|two digits|2 digits|quarter of the space|less space|takes up less"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "A hex value is much shorter than the same value in binary."
+    },
+    {
+     "concept": "so it is easier for people to read and less error-prone to copy",
+     "accept": [
+      [
+       "easier|simpler|clearer|less likely|fewer mistakes|fewer errors|remember|read|mistake"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "This makes it easier to read and less likely to be copied wrongly."
+    }
+   ],
+   "example": "Two hexadecimal digits say the same thing as eight binary digits, so it is far shorter, which makes it easier for a person to read and less likely that a digit is miscopied.",
+   "paraphrase": "It takes up a quarter of the space binary does, which means people can read it and copy it without losing their place.",
+   "marks": 2,
+   "feedback": "Shorter, therefore easier for a human. It is no easier for the computer, which works in binary either way.",
+   "commandWord": "explain",
+   "difficulty": "understand",
+   "examStyle": true,
+   "subtopic": "Hexadecimal",
+   "revisit": "ms-l10-s4",
+   "revisitReason": "Hexadecimal",
+   "outcomes": [
+    "ms-l10-o3"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-hexadecimal-0072",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l10",
+   "revisitStationId": "ms-l10-s4",
+   "revisitLabel": "1.2 Lesson 10 — Shift and hex lab, station 4: Why hexadecimal?",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "convert",
+   "q": "Convert the denary number 202 to hexadecimal.",
+   "answer": "ca",
+   "exact": "hex",
+   "verify": {
+    "value": 202,
+    "from": "denary",
+    "to": "hex",
+    "bits": 8
+   },
+   "marks": 1,
+   "feedback": "202 ÷ 16 = 12 remainder 10, so CA.",
+   "hint": "How many sixteens, and what is left over?",
+   "commandWord": "convert",
+   "difficulty": "apply",
+   "subtopic": "Hexadecimal",
+   "revisit": "ms-l10-s4",
+   "revisitReason": "Hexadecimal",
+   "outcomes": [
+    "ms-l10-o3"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-hexadecimal-0073",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l10",
+   "revisitStationId": "ms-l10-s4",
+   "revisitLabel": "1.2 Lesson 10 — Shift and hex lab, station 4: Why hexadecimal?",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "convert",
+   "q": "Convert the denary number 47 to hexadecimal.",
+   "answer": "2f",
+   "exact": "hex",
+   "verify": {
+    "value": 47,
+    "from": "denary",
+    "to": "hex",
+    "bits": 8
+   },
+   "marks": 1,
+   "feedback": "47 ÷ 16 = 2 remainder 15, so 2F.",
+   "commandWord": "convert",
+   "difficulty": "apply",
+   "subtopic": "Hexadecimal",
+   "revisit": "ms-l10-s4",
+   "revisitReason": "Hexadecimal",
+   "outcomes": [
+    "ms-l10-o3"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-hexadecimal-0074",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l10",
+   "revisitStationId": "ms-l10-s4",
+   "revisitLabel": "1.2 Lesson 10 — Shift and hex lab, station 4: Why hexadecimal?",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "convert",
+   "q": "Convert the hexadecimal value 3E to denary.",
+   "answer": "62",
+   "exact": "text",
+   "verify": {
+    "value": "3e",
+    "from": "hex",
+    "to": "denary",
+    "bits": 8
+   },
+   "marks": 1,
+   "feedback": "(3 × 16) + 14 = 62.",
+   "commandWord": "convert",
+   "difficulty": "apply",
+   "subtopic": "Hexadecimal",
+   "revisit": "ms-l10-s4",
+   "revisitReason": "Hexadecimal",
+   "outcomes": [
+    "ms-l10-o3"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-hexadecimal-0075",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l10",
+   "revisitStationId": "ms-l10-s4",
+   "revisitLabel": "1.2 Lesson 10 — Shift and hex lab, station 4: Why hexadecimal?",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "convert",
+   "q": "Convert the hexadecimal value FF to denary.",
+   "answer": "255",
+   "exact": "text",
+   "verify": {
+    "value": "ff",
+    "from": "hex",
+    "to": "denary",
+    "bits": 8
+   },
+   "marks": 1,
+   "feedback": "(15 × 16) + 15 = 255, the largest value two hex digits can hold.",
+   "commandWord": "convert",
+   "difficulty": "apply",
+   "subtopic": "Hexadecimal",
+   "revisit": "ms-l10-s4",
+   "revisitReason": "Hexadecimal",
+   "outcomes": [
+    "ms-l10-o3"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-hexadecimal-0076",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l10",
+   "revisitStationId": "ms-l10-s4",
+   "revisitLabel": "1.2 Lesson 10 — Shift and hex lab, station 4: Why hexadecimal?",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "convert",
+   "q": "Convert the binary number 10110111 to hexadecimal.",
+   "answer": "b7",
+   "exact": "hex",
+   "verify": {
+    "value": "10110111",
+    "from": "binary",
+    "to": "hex",
+    "bits": 8
+   },
+   "marks": 1,
+   "feedback": "Split into nibbles: 1011 = B and 0111 = 7, so B7.",
+   "hint": "Four bits at a time, from the right.",
+   "commandWord": "convert",
+   "difficulty": "apply",
+   "subtopic": "Hexadecimal",
+   "revisit": "ms-l10-s4",
+   "revisitReason": "Hexadecimal",
+   "outcomes": [
+    "ms-l10-o3"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-hexadecimal-0077",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l10",
+   "revisitStationId": "ms-l10-s4",
+   "revisitLabel": "1.2 Lesson 10 — Shift and hex lab, station 4: Why hexadecimal?",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "convert",
+   "q": "Convert the hexadecimal value 6D to 8-bit binary.",
+   "answer": "01101101",
+   "exact": "binary",
+   "verify": {
+    "value": "6d",
+    "from": "hex",
+    "to": "binary",
+    "bits": 8
+   },
+   "marks": 1,
+   "feedback": "6 = 0110 and D = 1101, so 01101101.",
+   "commandWord": "convert",
+   "difficulty": "apply",
+   "subtopic": "Hexadecimal",
+   "revisit": "ms-l10-s4",
+   "revisitReason": "Hexadecimal",
+   "outcomes": [
+    "ms-l10-o3"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-hexadecimal-0078",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l10",
+   "revisitStationId": "ms-l10-s4",
+   "revisitLabel": "1.2 Lesson 10 — Shift and hex lab, station 4: Why hexadecimal?",
+   "revisitScene": 0,
+   "revisitK": 3
+  }
+ ]
+}

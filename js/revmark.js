@@ -86,7 +86,7 @@
     "not no nor never only both each any all some many much other another such same " +
     "you your we our i my he she him her his").split(" "));
 
-  const LINK = /(because|so that|so |therefore|thus|hence|as a result|this means|which |meaning|means that|due to|owing to|leads? to|causes?|causing|results? in|resulting in|in order to|consequently|then |allows? |allowing|makes? it|making it|that is why|why |when |if |unless )/;
+  const LINK = /(because|so that|so |therefore|thus|hence|as a result|this means|which |meaning|means that|due to|owing to|leads? to|causes?|causing|results? in|resulting in|in order to|consequently|then |allows? |allowing|makes? it|making it|that is why|why |when |if |unless |since |as a consequence|ends up|the reason)/;
 
   function norm(s) {
     let t = " " + String(s == null ? "" : s).toLowerCase() + " ";
@@ -94,6 +94,12 @@
     SPELLING.forEach(([re, to]) => { t = t.replace(re, to); });
     t = t.replace(/[‘’“”]/g, "'")
          .replace(/[^a-z0-9.,;:!?%/\-+*'\s]/g, " ")
+         /* A hyphen inside a word closes the word up rather than splitting it.
+          * "non-volatile" was becoming the two words "non" and "volatile", so a
+          * rejection written to catch "volatile" fired on an answer that said
+          * non-volatile - and every mark point about ROM was being lost by a
+          * learner who had got it right. */
+         .replace(/([a-z])-([a-z])/g, "$1$2")
          .replace(/\s+/g, " ");
     return t;
   }
@@ -147,7 +153,11 @@
     if (word.indexOf(token) === 0) return true;
     const ts = stem(token), ws = stem(word);
     if (ws.indexOf(ts) === 0) return true;
-    if (ts.length >= 5 && ts[0] === ws[0] && dist1(ts, ws)) return true;
+    /* Both stems long enough. One edit apart is a typo between two long words
+     * and a different word between short ones: "sort" and "short" are one edit
+     * apart, and an answer about sorting was earning a mark about hexadecimal
+     * being shorter. */
+    if (ts.length >= 5 && ws.length >= 5 && ts[0] === ws[0] && dist1(ts, ws)) return true;
     /* One typo in a long word, compared on the words themselves rather than on
      * their stems. "waiting" and "waiing" do not stem together, because the
      * stemmer will not take "ing" off something that short - and a learner who
@@ -177,62 +187,84 @@
     return null;
   }
 
-  function clauses(t) {
-    return t.split(CLAUSE).map(s => words(s)).filter(a => a.length);
+  /* The answer as one list of words, with the clause each word belongs to.
+   *
+   * It used to be a list of clauses, and a pattern was looked for inside one of
+   * them. That made a pattern containing "and" or "or" impossible to match -
+   * "on and off" is a perfectly ordinary way to say what one bit holds, and no
+   * clause ever contained it, so the mark point could not be earned at all.
+   *
+   * A phrase may now run across a clause boundary. A negation may not: it still
+   * reaches forward a few words and stops dead at the end of its own clause,
+   * which is the whole reason the boundaries are tracked rather than dropped. */
+  function prepare(t) {
+    const ws = [], clause = [];
+    t.split(CLAUSE).forEach((part, ci) => words(part).forEach(w => {
+      ws.push(w); clause.push(ci);
+    }));
+    return { ws: ws, clause: clause };
   }
 
   /* A pattern goes through exactly the same tidying as the answer. It has to:
    * `norm` writes "cannot" as "can not", so a pattern that said "cannot repair"
    * was looking for a word the answer could never contain, and every mark point
    * written that way silently matched nothing. */
+  /* A pattern is tokenised exactly as the answer is, clause separators and all.
+   * The answer's "and" is dropped when it is split into clauses, so a pattern
+   * that kept its own "and" was looking for a word the answer no longer had:
+   * "on and off" matched nothing at all. */
   function phrasesOf(group) {
-    return String(group).split("|").map(p => words(norm(p))).filter(a => a.length);
+    return String(group).split("|").map(p => prepare(norm(p)).ws).filter(a => a.length);
   }
 
-  /* Is this group in this clause, meaning it rather than denying it?
-   *
-   * A negator before the match, inside the same clause, scopes over it - unless
-   * the pattern itself is written with one. Some mark points ARE denials: "the
-   * CPU does not have to wait", "the data cannot be fetched at the same time".
-   * An author writes those as one phrase with the negator in it, and then the
-   * veto must not fire, because the negation is the point. The positive form
-   * then does not match the phrase at all, which is what keeps it precise. */
-  function inClause(ws, group) {
+  /* Is this group in the answer, meant rather than denied? Returns the clause it
+   * was found in, or -1. */
+  function findGroup(prep, group) {
     for (const tokens of phrasesOf(group)) {
       const own = tokens.some(t => NEGATOR.has(t));
-      const span = findPhrase(ws, tokens);
+      const span = findPhrase(prep.ws, tokens);
       if (!span) continue;
-      /* A negator reaches forward over the next few words, not over the whole
-       * clause. "no moving parts" denies the moving parts; "without a CPU the
-       * instructions would simply sit in RAM" does not deny that they sit
-       * there. Taking the whole clause as the scope marked the second one
-       * wrong, and a learner who wrote it had said the right thing.
-       *
-       * The span itself counts too, not only what comes before it. A phrase is
-       * allowed to match with a word or two in between, and "respond in not
-       * real time" was matching the pattern "respond in time" with the denial
-       * sitting in the gap - a negation the marker looked straight past. */
-      if (!own && ws.slice(Math.max(0, span[0] - NEG_REACH), span[1] + 1)
-                    .some(w => NEGATOR.has(w))) continue;
-      return true;
+      if (!own && negatedAt(prep, span)) continue;
+      return prep.clause[span[0]];
     }
+    return -1;
+  }
+
+  /* A negator reaches forward over the next few words and no further, and does
+   * not reach past the end of its own clause. "no moving parts" denies the
+   * moving parts; "without a CPU the instructions would simply sit in RAM" does
+   * not deny that they sit there, and "RAM is volatile, unlike a disk, which
+   * does not lose its contents" does not deny the volatility.
+   *
+   * The span itself counts too, not only what comes before it: a phrase may
+   * match with a word or two in between, and "respond in not real time" was
+   * matching the pattern "respond in time" with the denial sitting in the gap. */
+  function negatedAt(prep, span) {
+    const here = prep.clause[span[0]];
+    for (let i = span[0] - 1; i >= Math.max(0, span[0] - NEG_REACH); i--) {
+      if (prep.clause[i] !== here) break;
+      if (NEGATOR.has(prep.ws[i])) return true;
+    }
+    for (let i = span[0]; i <= span[1]; i++) if (NEGATOR.has(prep.ws[i])) return true;
     return false;
   }
 
-  /* A way is satisfied when every one of its groups appears somewhere in the
-   * answer, in a clause that is not negating it. Across clauses, because an
-   * explanation spreads over sentences. */
-  function wayMet(cls, groups) {
-    return groups.every(g => cls.some(ws => inClause(ws, g)));
+  /* A way is satisfied when every one of its groups is in the answer, meant
+   * rather than denied. Across clauses, because an explanation spreads over
+   * sentences. */
+  function wayMet(prep, groups) {
+    return groups.every(g => findGroup(prep, g) >= 0);
   }
 
   /* A rejection is one specific wrong statement, so all of its groups have to
    * land in the SAME clause: "keeps its contents when the power is removed" is
    * wrong as a sentence, while "keeps" in one clause and "power" in another is
    * just two things a correct answer might also say. */
-  function rejectMet(cls, ways) {
-    return (Array.isArray(ways[0]) ? ways : [ways])
-      .some(way => cls.some(ws => way.every(g => inClause(ws, g))));
+  function rejectMet(prep, ways) {
+    return (Array.isArray(ways[0]) ? ways : [ways]).some(function (way) {
+      const where = way.map(g => findGroup(prep, g));
+      return where.every(c => c >= 0) && new Set(where).size === 1;
+    });
   }
 
   /* Is this a list of key words rather than an answer?
@@ -283,15 +315,15 @@
       return out;
     }
     const t = norm(answer);
-    const cls = clauses(t);
+    const prep = prepare(t);
     const linked = LINK.test(t);
     out.dump = isDump(t, points);
 
     points.forEach(p => {
       const ways = p.accept || [];
-      let met = ways.some(way => wayMet(cls, way));
+      let met = ways.some(way => wayMet(prep, way));
       let why = met ? "met" : "not stated";
-      if (met && p.reject && rejectMet(cls, p.reject)) { met = false; why = "contradicted"; }
+      if (met && p.reject && rejectMet(prep, p.reject)) { met = false; why = "contradicted"; }
       if (met && p.developed && !linked) { met = false; why = "not developed"; }
       out.detail.push({ concept: p.concept, met, why, worth: p.worth || 1 });
       if (met) { out.earned.push(p.concept); out.got += p.worth || 1; }
@@ -474,6 +506,6 @@
 
   return { mark, markWritten, markNumeric, markExact, markChoice, markMulti,
            markPairs, markOrder, markSort, markGrid, markSelfReview,
-           norm, stem, accepts, clauses, inClause, isDump, numbersIn, dist1,
+           norm, stem, accepts, prepare, findGroup, isDump, numbersIn, dist1,
            WRITTEN, TYPES: Object.keys(BY_TYPE) };
 });

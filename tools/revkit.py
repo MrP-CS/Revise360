@@ -73,11 +73,13 @@ def _common(out, fb, hint, cw, diff, exam, misc, marks):
 # Section 18 asks for that, and asking every author to remember it for every
 # comparative in 1,500 questions is asking for it to be forgotten.
 AXES = [
-    (("fast", "faster", "quick", "quicker", "quickly", "speed", "speeds", "rapid",
-      "sooner", "shorter"),
-     "slow|slower|slowly|less quick|not as fast|takes longer|sluggish|longer"),
-    (("slow", "slower", "slowly", "sluggish", "longer"),
-     "fast|faster|quick|quicker|quickly|more quickly|speeds up|sooner|shorter"),
+    # "longer" and "shorter" are deliberately not here. A battery that lasts
+    # longer is not a slower battery, and an automatic rejection built on that
+    # word threw away a mark a learner had earned.
+    (("fast", "faster", "quick", "quicker", "quickly", "speed", "speeds", "rapid"),
+     "slow|slower|slowly|less quick|not as fast|takes longer|sluggish"),
+    (("slow", "slower", "slowly", "sluggish"),
+     "fast|faster|quick|quicker|quickly|more quickly|speeds up"),
     (("more", "larger", "bigger", "greater", "higher", "increase", "increases",
       "increased", "twice", "double", "doubles"),
      "less|fewer|smaller|lower|decrease|decreases|decreased|half|halves"),
@@ -93,13 +95,20 @@ AXES = [
 
 
 def _auto_rejects(ways):
-    """For each way, the same way with one comparative group turned round."""
+    """For each way, the same way with one comparative group turned round.
+
+    Only a group that is ENTIRELY comparative is turned round. Flipping one that
+    merely contains a comparative among other things was worse than not flipping
+    at all: a group reading "bandwidth|data|less to send|smaller|transfer" was
+    flipped on the strength of "smaller", and then rejected a correct answer for
+    containing the word "more"."""
     out = []
     for way in ways:
         for i, group in enumerate(way):
             alts = {a.strip() for a in group.split("|")}
+            singles = {a for a in alts if " " not in a}
             for side, opposite in AXES:
-                if alts & set(side):
+                if singles and singles <= set(side):
                     flipped = list(way)
                     flipped[i] = opposite
                     if flipped not in out:
@@ -185,6 +194,9 @@ def multi(stem, options, correct, fb, hint=None, cw="tick", diff="understand",
 def match(stem, pairs, fb, hint=None, cw="draw", diff="understand", exam=False, misc=None):
     if len({p[1] for p in pairs}) != len(pairs):
         raise ValueError("two items match the same thing, so the answer is not unique: " + stem)
+    if len(pairs) > 6:
+        raise ValueError("matching %d pairs would be worth %d marks: %s"
+                         % (len(pairs), len(pairs), stem))
     out = _q("match", stem, pairs=[list(p) for p in pairs])
     return _common(out, fb, hint, cw, diff, exam, misc, len(pairs))
 
@@ -192,6 +204,10 @@ def match(stem, pairs, fb, hint=None, cw="draw", diff="understand", exam=False, 
 def order(stem, steps, fb, hint=None, cw="complete", diff="understand", exam=False, misc=None):
     if len(set(steps)) != len(steps):
         raise ValueError("a repeated step makes the order ambiguous: " + stem)
+    if len(steps) > 6:
+        raise ValueError("an ordering of %d steps would be worth %d marks, which is not a "
+                         "value a paper uses; ask for fewer, or ask it another way: %s"
+                         % (len(steps), len(steps), stem))
     out = _q("order", stem, steps=list(steps))
     return _common(out, fb, hint, cw, diff, exam, misc, len(steps))
 
@@ -201,6 +217,9 @@ def sort(stem, cats, items, fb, hint=None, cw="tick", diff="understand", exam=Fa
         if it[1] not in cats:
             raise ValueError("%r is sorted into %r, which is not a category: %s"
                              % (it[0], it[1], stem))
+    if len(items) > 6:
+        raise ValueError("sorting %d items would be worth %d marks: %s"
+                         % (len(items), len(items), stem))
     out = _q("sort", stem, cats=list(cats), items=[list(i) for i in items])
     return _common(out, fb, hint, cw, diff, exam, misc, len(items))
 
@@ -286,39 +305,107 @@ def step(label, value, worth=1, tolerance=None):
     return out
 
 
-def convert(stem, answer, kind, fb, marks=1, also=None, hint=None, cw="convert",
-            diff="apply", exam=False, misc=None):
-    if kind not in ("binary", "hex", "denary"):
-        raise ValueError("convert() kind is binary, hex or denary: " + stem)
-    out = _q("convert", stem, answer=str(answer), exact=kind, alsoAccept=also)
+def _to_base(value, base, bits=None):
+    """Repeated division. A question's answer is computed from its inputs, so an
+    author never types a binary pattern out by hand - and tools/revverify.py
+    then works the same answer out again, with its own code."""
+    v, out = int(value), ""
+    if v == 0:
+        out = "0"
+    while v:
+        out = "0123456789abcdef"[v % base] + out
+        v //= base
+    if bits and base == 2:
+        out = out.rjust(bits, "0")
+    if bits and base == 16:
+        out = out.rjust(max(1, bits // 4), "0")
+    return out
+
+
+def _from_base(text, base):
+    v = 0
+    for ch in str(text).strip().lower().replace(" ", ""):
+        v = v * base + "0123456789abcdef".index(ch)
+    return v
+
+
+BASES = {"denary": 10, "binary": 2, "hex": 16}
+
+
+def convert(stem, value, frm, to, fb, bits=8, marks=1, also=None, hint=None,
+            cw="convert", diff="apply", exam=False, misc=None):
+    """A conversion between denary, binary and hexadecimal. The answer is not
+    given: it is worked out from `value`, which is written in base `frm`."""
+    if frm not in BASES or to not in BASES or frm == to:
+        raise ValueError("convert() goes between denary, binary and hex: " + stem)
+    n = int(value) if frm == "denary" else _from_base(value, BASES[frm])
+    answer = str(n) if to == "denary" else _to_base(n, BASES[to], bits)
+    out = _q("convert", stem, answer=answer, exact=to if to != "denary" else "text",
+             alsoAccept=also, verify={"value": value, "from": frm, "to": to, "bits": bits})
     return _common(out, fb, hint, cw, diff, exam, misc, marks)
 
 
-def binadd(stem, answer, fb, marks=1, hint=None, diff="apply", exam=False, misc=None,
-           overflow=False):
-    out = _q("binadd", stem, answer=str(answer), exact="binary", overflow=overflow or None)
+def binadd(stem, a, b, fb, bits=8, marks=1, hint=None, diff="apply", exam=False,
+           misc=None):
+    """Two binary patterns added. Whether it overflows is worked out rather than
+    stated, so a question cannot claim an overflow it does not have."""
+    total = _from_base(a, 2) + _from_base(b, 2)
+    over = total >= (1 << bits)
+    answer = _to_base(total % (1 << bits), 2, bits)
+    out = _q("binadd", stem, answer=answer, exact="binary", overflow=over or None,
+             verify={"a": a, "b": b, "bits": bits})
     return _common(out, fb, hint, "calculate", diff, exam, misc, marks)
 
 
-def binshift(stem, answer, fb, marks=1, hint=None, diff="apply", exam=False, misc=None):
-    out = _q("binshift", stem, answer=str(answer), exact="binary")
+def binshift(stem, value, places, dirn, fb, bits=8, marks=1, hint=None, diff="apply",
+             exam=False, misc=None):
+    """A binary shift. `value` may be a pattern or a denary number."""
+    if dirn not in ("left", "right"):
+        raise ValueError("a shift goes left or right: " + stem)
+    src = _to_base(value, 2, bits) if isinstance(value, int) else str(value).replace(" ", "")
+    answer = ((src[places:] + "0" * places) if dirn == "left"
+              else ("0" * places + src)[:bits])
+    answer = answer[-bits:].rjust(bits, "0")
+    out = _q("binshift", stem, answer=answer, exact="binary",
+             verify={"value": value, "places": places, "dir": dirn, "bits": bits})
     return _common(out, fb, hint, "calculate", diff, exam, misc, marks)
 
 
-def truth(stem, cols, rows, answer, fb, hint=None, diff="apply", exam=False, misc=None,
-          expr=None):
-    out = _q("truth", stem, cols=list(cols), rows=[list(r) for r in rows],
-             answer=[list(a) for a in answer], expr=expr)
-    blanks = sum(1 for r, row in enumerate(answer) for c, _ in enumerate(row) if rows[r][c] == "")
-    return _common(out, fb, hint, "complete", diff, exam, misc, blanks)
+BOOL_PY = {"AND": " and ", "OR": " or ", "NOT": " not ", "XOR": " != "}
 
 
-def trace(stem, cols, rows, answer, fb, hint=None, diff="apply", exam=False, misc=None,
-          code=None):
-    out = _q("trace", stem, cols=list(cols), rows=[list(r) for r in rows],
-             answer=[list(a) for a in answer], code=code)
-    blanks = sum(1 for r, row in enumerate(answer) for c, _ in enumerate(row) if rows[r][c] == "")
-    return _common(out, fb, hint, "trace", diff, exam, misc, blanks)
+def truth(stem, expr, inputs, fb, out="Q", hint=None, diff="apply", exam=False,
+          misc=None, given=0):
+    """A truth table for a Boolean expression. The rows are generated in the
+    standard order and the output column is worked out by evaluating the
+    expression, so the table cannot disagree with the expression above it.
+    `given` fills in that many output rows as worked examples."""
+    py = expr
+    for k, v in BOOL_PY.items():
+        py = py.replace(k, v)
+    cols = list(inputs) + [out]
+    rows, answer = [], []
+    for i in range(1 << len(inputs)):
+        bits = [(i >> (len(inputs) - 1 - j)) & 1 for j in range(len(inputs))]
+        env = {nm: bool(b) for nm, b in zip(inputs, bits)}
+        q_ = int(bool(eval(py, {"__builtins__": {}}, env)))
+        answer.append([str(b) for b in bits] + [str(q_)])
+        rows.append([str(b) for b in bits] + [str(q_) if len(rows) < given else ""])
+    o = _q("truth", stem, cols=cols, rows=rows, answer=answer, expr=expr, out=out)
+    blanks = sum(1 for row in rows for v in row if v == "")
+    return _common(o, fb, hint, "complete", diff, exam, misc, blanks)
+
+
+def trace(stem, code, cols, rows, answer, fb, hint=None, diff="apply", exam=False,
+          misc=None):
+    """A trace table beside a program. tools/revverify.py runs the program with a
+    line tracer and checks every row is a state it really passes through, in the
+    order the table gives - so a table that drifts from its code is caught."""
+    o = _q("trace", stem, cols=list(cols), rows=[list(r) for r in rows],
+           answer=[list(a) for a in answer], code=code.strip("\n"))
+    blanks = sum(1 for row in rows for v in row if v == "")
+    return _common(o, fb, hint, "trace", diff, exam, misc, blanks)
+
 
 
 def codeout(stem, code, answer, fb, marks=1, also=None, hint=None, diff="apply",

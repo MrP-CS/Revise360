@@ -1,0 +1,183 @@
+{
+ "topic": "1.2",
+ "lesson": "ms-l12",
+ "questions": [
+  {
+   "type": "short",
+   "q": "State what is meant by a character set.",
+   "markPoints": [
+    {
+     "concept": "the set of characters a computer can use, each with its own binary code",
+     "accept": [
+      [
+       "character|letter|symbol",
+       "code|number|value|binary|represent"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The characters a computer can represent, each with its own binary code."
+    }
+   ],
+   "example": "The collection of characters a computer can use, with a unique binary code for each one.",
+   "paraphrase": "A list of every symbol the machine knows, each given its own number in binary.",
+   "marks": 1,
+   "feedback": "A set of characters AND the codes for them. Either half on its own is not the definition.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "Character sets",
+   "revisit": "ms-l12-s2",
+   "revisitReason": "Character sets",
+   "outcomes": [
+    "ms-l12-o2",
+    "ms-l12-o4"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-character-sets-0079",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l12",
+   "revisitStationId": "ms-l12-s2",
+   "revisitLabel": "1.2 Lesson 12 — Character foundry, station 2: ASCII",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "mcq",
+   "q": "ASCII uses 7 bits for each character. How many different characters can it represent?",
+   "options": [
+    "128",
+    "7",
+    "64",
+    "256"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "2⁷ = 128. Extended ASCII adds an eighth bit and gets 256.",
+   "commandWord": "identify",
+   "difficulty": "understand",
+   "subtopic": "Character sets",
+   "revisit": "ms-l12-s2",
+   "revisitReason": "Character sets",
+   "outcomes": [
+    "ms-l12-o2",
+    "ms-l12-o4"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-character-sets-0080",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l12",
+   "revisitStationId": "ms-l12-s2",
+   "revisitLabel": "1.2 Lesson 12 — Character foundry, station 2: ASCII",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "written",
+   "q": "Explain why Unicode was developed when ASCII already existed.",
+   "markPoints": [
+    {
+     "concept": "ASCII does not have enough codes for the characters of every language",
+     "accept": [
+      [
+       "not enough|too few|only 128|only 256|limited|cannot represent|ran out|no room"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "ASCII does not have enough codes for every language's characters."
+    },
+    {
+     "concept": "Unicode uses more bits, so it can represent far more characters",
+     "accept": [
+      [
+       "more bits|16 bits|32 bits|more codes|more characters|far more|thousands|millions"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Unicode uses more bits per character, so it can represent far more of them."
+    }
+   ],
+   "example": "ASCII has only 128 codes, which is nowhere near enough for the characters used by every language in the world. Unicode uses more bits for each character, so it can represent many thousands of them, including emoji.",
+   "paraphrase": "There were far too few codes in ASCII for all the world's alphabets, so a system with more bits per symbol was needed.",
+   "marks": 2,
+   "feedback": "Not enough codes, then what Unicode does about it.",
+   "commandWord": "explain",
+   "difficulty": "understand",
+   "examStyle": true,
+   "subtopic": "Character sets",
+   "revisit": "ms-l12-s2",
+   "revisitReason": "Character sets",
+   "outcomes": [
+    "ms-l12-o2",
+    "ms-l12-o4"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-character-sets-0081",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l12",
+   "revisitStationId": "ms-l12-s2",
+   "revisitLabel": "1.2 Lesson 12 — Character foundry, station 2: ASCII",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "mcq",
+   "q": "In ASCII, the code for 'A' is 65. What is the code for 'C'?",
+   "options": [
+    "67",
+    "66",
+    "68",
+    "97"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "The letters run in order, so C is two after A. 97 is lower-case 'a'.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "subtopic": "Character sets",
+   "revisit": "ms-l12-s2",
+   "revisitReason": "Character sets",
+   "outcomes": [
+    "ms-l12-o2",
+    "ms-l12-o4"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-character-sets-0082",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l12",
+   "revisitStationId": "ms-l12-s2",
+   "revisitLabel": "1.2 Lesson 12 — Character foundry, station 2: ASCII",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "num",
+   "q": "A plain text file uses 8 bits per character and contains 500 characters. Calculate its size in bytes.",
+   "answer": 500,
+   "unit": "bytes",
+   "working": "500 * 8 / 8",
+   "marks": 1,
+   "feedback": "8 bits is one byte, so 500 characters is 500 bytes.",
+   "commandWord": "calculate",
+   "difficulty": "apply",
+   "subtopic": "Character sets",
+   "revisit": "ms-l12-s2",
+   "revisitReason": "Character sets",
+   "outcomes": [
+    "ms-l12-o2",
+    "ms-l12-o4"
+   ],
+   "topic": "1.2",
+   "id": "rq-1.2-character-sets-0083",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ms-l12",
+   "revisitStationId": "ms-l12-s2",
+   "revisitLabel": "1.2 Lesson 12 — Character foundry, station 2: ASCII",
+   "revisitScene": 0,
+   "revisitK": 1
+  }
+ ]
+}

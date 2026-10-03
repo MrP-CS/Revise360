@@ -112,9 +112,15 @@ def main():
                              % (r + 1, c + 1, v, ans[r][c]))
         if q["type"] in S.WRITTEN + S.SELF_REVIEW:
             for p in q.get("markPoints") or []:
+                # A self-reviewed question's mark points are a checklist the
+                # learner reads, not patterns anything matches against, so they
+                # carry neither an accept list nor an exemplar - and demanding
+                # one would be demanding the pretence that they are marked.
+                if q["type"] == "extended":
+                    continue
                 if not p.get("accept"):
                     fail("mark point %r accepts nothing" % p.get("concept"))
-                if q["type"] != "extended" and not p.get("exemplar"):
+                if not p.get("exemplar"):
                     fail("mark point %r has no exemplar" % p.get("concept"))
         if q["type"] == "num" and not isinstance(q.get("answer"), (int, float)):
             fail("a calculation's answer must be a number, not %r" % (q.get("answer"),))
@@ -142,7 +148,10 @@ def main():
             right = str((q.get("options") or [None])[q.get("correct", 0)] or "")
             stem = words(q["q"]) | words(q.get("hint"))
             rw = {w for w in words(right) if len(w) > 4}
-            if rw and rw <= stem:
+            # Two long words at least. "The read/write head" has one, and a
+            # question about reading and writing is bound to contain it; that is
+            # the question, not a giveaway.
+            if len(rw) >= 2 and rw <= stem:
                 fail("the stem or hint contains every long word of the right answer")
         if q["type"] in ("num", "convert", "binadd", "binshift", "codeout"):
             if str(q.get("answer")) and str(q["answer"]) in str(q.get("hint") or ""):
