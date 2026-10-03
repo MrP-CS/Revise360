@@ -1,0 +1,30 @@
+{
+  "lesson": "sa-l02",
+  "reviewed": "2026-10-03",
+  "note": "Written while resolving the outcome nothing assessed. Checked against tools/specs11.py and the unit's exam items.",
+  "outcomes": {
+    "sa-l02-o1": {
+      "taught": ["sa-l02-s1", "sa-l02-s2", "sa-l02-s5"],
+      "assessed": ["sa-l02-x3"],
+      "note": "The stored-program idea and what makes the architecture what it is. Assessed by the six-mark fetch-decode-execute question, which is the only place a pupil has to describe the architecture working rather than name a part of it."
+    },
+    "sa-l02-o2": {
+      "taught": ["sa-l02-s3", "sa-l02-s4"],
+      "assessed": ["sa-l02-x1", "sa-l02-x2", "sa-l02-s7-a2"],
+      "note": "Registers. From October 2026 the final station also asks which register is doing the work in a described step, which is the application the six-mark question needs and the matching activity beside it does not reach."
+    },
+    "sa-l02-o3": {
+      "taught": ["sa-l02-s6"],
+      "assessed": ["sa-l02-s6-a3"],
+      "note": "Nothing assessed this. It is not a Paper 1 systems architecture question and writing one would have been worse than leaving it alone, so it is assessed by an activity instead: sorting eight words into Python keywords and names somebody chose. Understanding what a keyword is means being able to tell one from the other."
+    }
+  },
+  "assessment": {
+    "sa-l02-x1": { "assesses": ["sa-l02-o2"] },
+    "sa-l02-x2": { "assesses": ["sa-l02-o2"] },
+    "sa-l02-x3": { "assesses": ["sa-l02-o1", "sa-l02-o2"] }
+  },
+  "for the owner": [
+    "The final challenge's matching activity gives 'Program counter - stores the address of the next instruction' word for word, and exam question sa-l02-x1 on the same worksheet asks for exactly that. A pupil who does the activity first has been handed the answer. It is a good activity and this pass did not rewrite it; it is noted here so the decision is yours."
+  ]
+}

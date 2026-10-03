@@ -732,11 +732,17 @@ def trace(rec, unit_pool, unit_outcomes=(), rare=frozenset()):
             practised = list(au["practised"])
             status["practised"] = "authored"
         if au.get("assessed") is not None:
-            known = {xid for lid, xid, xw in pool}
+            # An outcome may be assessed by an activity rather than by an exam
+            # question. "Understand what a keyword is" is not a Paper 1 systems
+            # architecture question and writing one would be worse than leaving
+            # it alone; sorting eight words into keywords and names is the
+            # assessment. So an activity id counts here too. */
+            known = {xid for lid, xid, xw in pool} | {
+                a3["id"] for s3 in rec["stations"] for a3 in s3["activities"]}
             bad = [x for x in au["assessed"] if x not in known]
             if bad:
-                print("   %-14s alignment names an exam item that is not in the "
-                      "unit: %s" % (rec["id"], ", ".join(bad)))
+                print("   %-14s alignment names something that is not an exam item "
+                      "or an activity in this lesson: %s" % (rec["id"], ", ".join(bad)))
             assessed = [x for x in au["assessed"] if x in known]
             status["assessed"] = "authored"
         gaps = []

@@ -11,7 +11,7 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 | unit | lesson | outcomes | taught | practised | assessed | mapping | outcome gaps | notes on the lesson |
 |---|---|---|---|---|---|---|---|---|
 | 1.1 | sa-l01 Fetch-execute factory | 4 | 4 | 4 | 4 | auto | 2 | 2 |
-| 1.1 | sa-l02 Von Neumann HQ | 3 | 3 | 3 | 2 | auto | 2 | 2 |
+| 1.1 | sa-l02 Von Neumann HQ | 3 | 3 | 3 | 3 | authored 3/3 |  | 1 |
 | 1.1 | sa-l03 Speed lab | 2 | 2 | 2 | 2 | auto | 1 | 2 |
 | 1.1 | sa-l04 Smart home | 3 | 3 | 3 | 3 | auto |  | 1 |
 | 1.1 | sa-l05-test End-of-topic test | 0 | 0 | 0 | 0 |  |  |  |
@@ -131,14 +131,14 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 | | count |
 |---|---|
 | outcomes in the course | 270 |
-| of those, with an **authored** mapping | 2 |
-| the rest, matched by words and unchecked | 268 |
-| teaching lessons where every activity is recognition | 11 |
+| of those, with an **authored** mapping | 5 |
+| the rest, matched by words and unchecked | 265 |
+| teaching lessons where every activity is recognition | 10 |
 | teaching lessons with only one activity that asks for an answer | 25 |
-| outcomes nothing in their unit assesses | 15 |
+| outcomes nothing in their unit assesses | 14 |
 | outcomes no station's text matches | 8 |
 | outcomes that cannot be traced, because the teaching is only in the image | 9 |
-| exam questions matching no outcome stated in their unit | 59 |
+| exam questions matching no outcome stated in their unit | 58 |
 
 
 ## Outcomes with a gap, and outcomes someone has checked
@@ -150,10 +150,12 @@ Assessment is looked for across the whole unit, because a lesson has three or fo
 - the lesson's shape: no optional challenge activity
 
 ### sa-l02 — Von Neumann HQ
+- **sa-l02-o1** describe the von Neumann architecture
+  - *checked by hand:* The stored-program idea and what makes the architecture what it is. Assessed by the six-mark fetch-decode-execute question, which is the only place a pupil has to describe the architecture working rather than name a part of it.
+- **sa-l02-o2** know the components of the von Neumann architecture
+  - *checked by hand:* Registers. From October 2026 the final station also asks which register is doing the work in a described step, which is the application the six-mark question needs and the matching activity beside it does not reach.
 - **sa-l02-o3** understand what a keyword is
-  - nothing in this unit assesses it
-- **sa-l02-x2** is assessed but matches no outcome stated anywhere in this unit: Describe what the memory data register holds and when it is used.
-- the lesson's shape: every activity is recognition: the answer is always on the screen
+  - *checked by hand:* Nothing assessed this. It is not a Paper 1 systems architecture question and writing one would have been worse than leaving it alone, so it is assessed by an activity instead: sorting eight words into Python keywords and names somebody chose. Understanding what a keyword is means being able to tell one from the other.
 - the lesson's shape: no optional challenge activity
 
 ### sa-l03 — Speed lab

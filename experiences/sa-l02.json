@@ -198,6 +198,49 @@
         "It would use too much memory"
        ],
        "fb": "Keywords are reserved by the language."
+      },
+      {
+       "t": "sort",
+       "q": "Sort each word: is it a Python keyword, or a name a programmer chose?",
+       "cats": [
+        "Python keyword",
+        "A name somebody chose"
+       ],
+       "items": [
+        [
+         "return",
+         "Python keyword"
+        ],
+        [
+         "answer",
+         "A name somebody chose"
+        ],
+        [
+         "while",
+         "Python keyword"
+        ],
+        [
+         "counter",
+         "A name somebody chose"
+        ],
+        [
+         "def",
+         "Python keyword"
+        ],
+        [
+         "average",
+         "A name somebody chose"
+        ],
+        [
+         "False",
+         "Python keyword"
+        ],
+        [
+         "result",
+         "A name somebody chose"
+        ]
+       ],
+       "fb": "Keywords are reserved by Python itself. The others are names a programmer invented, and could have been anything."
       }
      ]
     },
@@ -243,6 +286,47 @@
         ]
        ],
        "fb": "Exam tip: learn these seven definitions word for word in your own style."
+      },
+      {
+       "t": "sort",
+       "q": "Each of these happens during one cycle. Which register is doing the work?",
+       "cats": [
+        "Program counter",
+        "MAR",
+        "MDR",
+        "Accumulator"
+       ],
+       "items": [
+        [
+         "It goes up by one, so the CPU knows where to look next time",
+         "Program counter"
+        ],
+        [
+         "The address of the cell the CPU wants to read is copied in",
+         "MAR"
+        ],
+        [
+         "The instruction coming back from memory waits here",
+         "MDR"
+        ],
+        [
+         "The running total of the additions so far is kept here",
+         "Accumulator"
+        ],
+        [
+         "The answer to 14 + 9 is put here before anything else happens to it",
+         "Accumulator"
+        ],
+        [
+         "A value about to be written into memory is held here first",
+         "MDR"
+        ],
+        [
+         "The address of the data to be stored is put here",
+         "MAR"
+        ]
+       ],
+       "fb": "The two address registers are the ones pupils mix up: MAR carries an address, MDR carries what is at that address."
       }
      ]
     }
@@ -317,17 +401,7 @@
      "text": "See the registers' neighbours: the cores and cache on the silicon die."
     }
    ],
-   "diagrams": [
-    {
-     "id": "d1",
-     "face": "right",
-     "x": 1158,
-     "y": 240,
-     "diagram": "buses",
-     "title": "One memory, two kinds of thing",
-     "text": "Instructions and data sit in the same memory and come back along the same bus. Watch what that forces the CPU to do one at a time."
-    }
-   ]
+   "diagrams": []
   }
  ]
 }

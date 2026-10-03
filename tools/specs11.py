@@ -108,14 +108,43 @@ L2 = dict(id="sa-l02", topic="1.1", lesson=2, title="Von Neumann HQ", img="SA_L0
         fact="A keyword is...",
         tasks=[mcq("Which of these is a Python keyword?", "while", ["total", "score", "myList"], "while starts a loop. The others are just names a programmer might choose."),
                mcq("Why can't you call a variable 'if'?", "It's a keyword with a special meaning in the language", ["It's too short", "Variables must start with a capital letter", "It would use too much memory"],
-                   "Keywords are reserved by the language.")]),
+                   "Keywords are reserved by the language."),
+               # The lesson states "understand what a keyword is" as an outcome and
+               # nothing assessed it. Understanding it means being able to tell a
+               # reserved word from a name somebody chose, which is this, rather
+               # than reciting a definition - and a keyword question has no place
+               # in a Paper 1 systems architecture exam, so an exam question would
+               # have been the wrong answer. Nothing is offered per word.
+               sort("Sort each word: is it a Python keyword, or a name a programmer chose?",
+                    ["Python keyword", "A name somebody chose"],
+                    [["return", "Python keyword"], ["answer", "A name somebody chose"],
+                     ["while", "Python keyword"], ["counter", "A name somebody chose"],
+                     ["def", "Python keyword"], ["average", "A name somebody chose"],
+                     ["False", "Python keyword"], ["result", "A name somebody chose"]],
+                    "Keywords are reserved by Python itself. The others are names a "
+                    "programmer invented, and could have been anything.")]),
   ],
   final=dict(name="Final challenge: name that part", floor_title="Final challenge: name that part",
     intro="Match each component or register to its definition. This is a real exam question. Then explore the orange 3D model of the architecture.",
     ill=("tiles", [("PC", "b"), ("MAR", "b"), ("MDR", "b"), ("ACC", "b"), ("ALU", "o"), ("CU", "p"), ("Cache", "y")], 4),
     tasks=[match("Match each component or register to its definition.", [["Program counter", "Stores the address of the next instruction; increments each cycle"], ["Control unit", "Decodes instructions and sends control signals"],
       ["MAR", "Stores the address of the data to be fetched or stored"], ["ALU", "Performs mathematical calculations and logical operations"], ["MDR", "Stores data fetched from, or to be written to, memory"],
-      ["Accumulator", "Stores the results of calculations"], ["Cache", "Fast memory for frequently used instructions and data"]], "Exam tip: learn these seven definitions word for word in your own style.")]),
+      ["Accumulator", "Stores the results of calculations"], ["Cache", "Fast memory for frequently used instructions and data"]], "Exam tip: learn these seven definitions word for word in your own style."),
+           # Matching a definition to a name is recall. Saying which register is
+           # doing the work in a described step is the thing the six-mark
+           # fetch-decode-execute question actually needs, and nothing is offered
+           # per item. Deliberately not worded as any of the definitions above.
+           sort("Each of these happens during one cycle. Which register is doing the work?",
+                ["Program counter", "MAR", "MDR", "Accumulator"],
+                [["It goes up by one, so the CPU knows where to look next time", "Program counter"],
+                 ["The address of the cell the CPU wants to read is copied in", "MAR"],
+                 ["The instruction coming back from memory waits here", "MDR"],
+                 ["The running total of the additions so far is kept here", "Accumulator"],
+                 ["The answer to 14 + 9 is put here before anything else happens to it", "Accumulator"],
+                 ["A value about to be written into memory is held here first", "MDR"],
+                 ["The address of the data to be stored is put here", "MAR"]],
+                "The two address registers are the ones pupils mix up: MAR carries an address, "
+                "MDR carries what is at that address.")]),
   models=[(1, "vonneumann", "Von Neumann architecture", "Turn the model and click each block. Notice that the one RAM block holds both instructions and data."),
           (3, "cpu", "Inside a CPU", "See the registers' neighbours: the cores and cache on the silicon die.")],
   info=[(0, "A brilliant mind", "Von Neumann also made major contributions to maths, physics and game theory, and worked on some of the first electronic computers."),
