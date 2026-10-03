@@ -552,7 +552,7 @@
       task: { dist: 1.95, pitch:  28, yaw:   0 },
       code: { dist: 1.75, pitch:  -3, yaw:   0 },
       side: { dist: 1.95, pitch:   0, yaw:  32 },
-      keys: { dist: 1.55, pitch: -33, yaw:   0 },
+      keys: { dist: 1.55, pitch: -30, yaw:   0 },
       pad:  { dist: 1.40, pitch:   0, yaw:   0 }
     };
     const seat = (mesh, s) => atAnchor(mesh, s.dist, s.pitch, s.yaw);
@@ -932,6 +932,8 @@
       // A Try it has nothing to mark: running it is the activity.
       if (!M.noCheck) act.push({ btn: wait ? "…" : "Check my answer", id: "ccheck", center: true, size: 26, disabled: v.busy, onClick: checkCodeVR });
       if (M.hasHint) act.push({ btn: "Hint", id: "chint", center: true, size: 26, onClick: showHint });
+      if (window.R360Ref) act.push({ btn: "Syntax reminder", id: "cref", center: true, size: 24, onClick: showRef });
+      if (window.speechSynthesis) act.push({ btn: speaking ? "■ Stop" : "🔊 Read aloud", id: "csay", center: true, size: 24, state: speaking ? "on" : "", onClick: sayTask });
       // Asking is an ordinary thing to do, and it is on the screen, so it is here.
       act.push({ btn: "I need help", id: "chelp", center: true, size: 26, onClick: showHelp });
       if (v.runtimeBad) act.push({ btn: ACT.SAY.down.buttons.retry, id: "cretry", center: true, size: 26,
@@ -957,9 +959,9 @@
       /* Where everything is, said once and left there, rather than as a message
        * that appears over the program and then goes away. A pupil who puts the
        * headset down for a week comes back to the same sentence. */
-      const whereLine = { p: "Look up for the task  ·  right for the example and your marks  ·  ⌖ Recentre moves it all to where you are looking",
+      const whereLine = { p: "Look up for the task  ·  left for the example and your marks  ·  ⌖ Recentre moves it all to where you are looking",
                           size: 21, align: "center", color: COL.soft };
-      kbPanel.set({ color: COL.line, scale: .8, blocks: [
+      kbPanel.set({ color: COL.line, scale: .7, blocks: [
         row(KEYS[0]), row(KEYS[1]), row(KEYS[2]), row(KEYS[3]), row(KEYS[4]), row(KEYS[5]), row(KEYS[6]),
         { row: [
           { btn: v.shift ? "SHIFT on" : "Shift", id: "kshift", center: true, size: 24, state: v.shift ? "on" : "", onClick: () => typeKey("Shift") },
@@ -1095,11 +1097,60 @@
         { row: nav }] });
       seat(padPanel.mesh, SEAT.pad);
     }
+    /* Everything the course has used so far, looked up as often as they like.
+     * The screen has this behind "Syntax reminder" and the headset did not, and
+     * a support that exists on one and not the other is the course changing
+     * when a pupil puts the headset on. One group at a time, because the whole
+     * reference on one panel would be unreadable at this distance. */
+    let refAt = 0;
+    function showRef() {
+      if (!window.R360Ref) return;
+      const m = String(core.exp.id).match(/-l0*(\d+)/);
+      const groups = R360Ref.upTo(m ? Number(m[1]) : 99);
+      if (!groups.length) return;
+      refAt = Math.max(0, Math.min(refAt, groups.length - 1));
+      const g = groups[refAt];
+      const b = [{ p: "Everything the course has used so far.", size: 21, color: COL.soft },
+                 { p: g.name, size: 27, bold: true, color: COL.edge }];
+      g.items.forEach(it => {
+        b.push({ code: it.syntax, size: 22 });
+        b.push({ rich: it.what, size: 22, color: COL.soft, tight: true });
+        if (it.eg) b.push({ code: (Array.isArray(it.eg) ? it.eg : [it.eg]).join("\n"), size: 21 });
+      });
+      const nav = [
+        { btn: "‹ Back", id: "rprev", center: true, size: 23, disabled: refAt === 0, onClick: () => { refAt--; showRef(); } },
+        { btn: `${refAt + 1} of ${groups.length}`, id: "rwhere", center: true, size: 21, disabled: true },
+        { btn: "Next ›", id: "rnext", center: true, size: 23, disabled: refAt >= groups.length - 1, onClick: () => { refAt++; showRef(); } },
+        { btn: "Close", id: "rclose", center: true, size: 23, onClick: closePad }];
+      padPanel.set({ title: "Python syntax", color: COL.info, onClose: closePad, blocks: b.concat([{ row: nav }]) });
+      seat(padPanel.mesh, SEAT.pad);
+    }
+
+    /* Read aloud. Some pupils read code far more easily than they read English
+     * about code, and the screen offers this on every task. Spoken without the
+     * backticks, because a voice saying "store backtick 25 backtick" is worse
+     * than no voice at all - the same words the page speaks. */
+    let speaking = false;
+    function sayTask() {
+      const v = vrCode, speech = window.speechSynthesis;
+      if (!v || !speech) return;
+      if (speaking || speech.speaking) { speech.cancel(); speaking = false; showKeyboard(); return; }
+      const flat = s => String(s == null ? "" : s).replace(/`([^`]*)`/g, "$1");
+      const words = flat(v.model.steps.join(" ") + " " + v.model.brief.join(" "));
+      const u = new SpeechSynthesisUtterance(words);
+      u.rate = 0.95; u.lang = "en-GB";
+      u.onend = u.onerror = () => { speaking = false; if (vrCode) showKeyboard(); };
+      speech.cancel(); speech.speak(u);
+      speaking = true; showKeyboard();
+    }
+
     function closePad() { padPanel.hide(); closeDiagramVR(); }
 
     function closeCodeVR() {
       if (!vrCode) return;
       keepDraft(true); clearTimeout(draftT);
+      try { if (window.speechSynthesis) window.speechSynthesis.cancel(); } catch (e) { /* none */ }
+      speaking = false;
       if (offPyState) { offPyState(); offPyState = null; }
       if (offKeys) offKeys();
       scene.remove(vrCode.mesh); vrCode.tex.dispose(); vrCode = null;

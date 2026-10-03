@@ -40,7 +40,7 @@ python3 mkguides.py               # the two printable Python guides
 
 ## Checking
 
-Sixteen checks. Run them all; each prints a single sentence at the end and exits
+Twenty checks. Run them all; each prints a single sentence at the end and exits
 non-zero on a failure.
 
 | check | what it holds | last run |
@@ -58,14 +58,20 @@ non-zero on a failure.
 | `tools/tests/smokeguides.py` | the printed guides are real and quote the course's own figures | pass |
 | `tools/tests/smokecode.js` | every code question marked in a real browser | pass |
 | `tools/tests/smokevrcode.py` | a pupil can write and run a program in a headset | pass |
+| `tools/tests/smokeparity.py` | every Python activity is the same question on both interfaces | 620 activities, 0 differences |
+| `tools/tests/smokedraft.py` | a program typed on one is found on the other, and survives a reload | pass |
+| `tools/tests/smokepyfail.py` | a runtime that does not arrive is said, reported and recoverable | pass |
+| `tools/vrkeys.py` | every character the course needs can be typed in the headset | 87 needed, 98 typable |
 | `renderall.js` | all 614 activities render the parts their kind calls for | pass |
 | `fit.js` | no question window needs scrolling at six widths | pass |
 | `a11y.js` | everything named, reachable and readable | pass |
 
 ```bash
 for t in verifycode verifyref checkws audit_claims audit_exposure; do python3 tools/$t.py; done
-for t in smoketok smokegate smokemarks smokeplans smokepacks smokeguides smokevrcode; do
+for t in smoketok smokegate smokemarks smokeplans smokepacks smokeguides \
+         smokevrcode smokeparity smokedraft smokepyfail; do
   python3 tools/tests/$t.py; done
+python3 tools/vrkeys.py
 node tools/tests/smokecode.js
 ```
 
@@ -88,6 +94,13 @@ the injected fault showed it.
   boundary turned up two real mark schemes in the git history.
 - `smokepacks.py` first accepted a `--no-pdf` build, because "only these file
   kinds" is satisfied by a pack with no printable worksheet in it at all.
+- `smokeparity.py` first read the headset keyboard's live hit areas, so a Check
+  button disabled while Python downloaded counted as **absent** — and it
+  flattened the required output, so the blank line lesson 1 teaches with
+  `print()` compared equal to no blank line at all.
+- `vrkeys.py` first matched only double-quoted strings in the keyboard table,
+  which made the double-quote key itself look missing. Fixing that left four
+  characters genuinely missing, `?` among them.
 
 ## Visual review
 
@@ -115,4 +128,11 @@ the small text, the code and the timings are legible.
   progression and the teacher downloads are enforced in the browser only; see
   `docs/PYTHON-PROGRESSION.md` and `docs/EXPERIENCE-PROTECTION.md`.
 - **The read-aloud button is not verified by ear.** It is checked for presence,
-  wiring and the text it is given; nobody has listened to it in this environment.
+  wiring and the text it is given, on the page and now in the headset; nobody
+  has listened to it in this environment.
+- **Nothing here has run on a headset.** Every VR check runs against an emulated
+  WebXR device in Chromium on x86, which even reports itself as a Quest 3 unless
+  it is caught — `R360Py.diagnostic()` labels it `emulator` for that reason.
+  They catch regressions and say nothing about Quest CPU, memory, texture
+  limits, Oculus Browser or school network filtering. `docs/VR-HEADSET-QA.md` is
+  the sheet for that, and `pydiag.html` the instrument.

@@ -66,8 +66,14 @@ def main():
             if vr:
                 pg.click("#vrBtn"); pg.wait_for_timeout(1000)
             # page load -> Python ready
-            pg.wait_for_function("() => R360Py.state === 'ready'", timeout=300000)
-            ready = round((time.time() - t0) * 1000)
+            if warm:
+                pg.wait_for_function("() => R360Py.state === 'ready'", timeout=300000)
+                ready = round((time.time() - t0) * 1000)
+            else:
+                # with no pre-warm nothing starts until a question is opened, so
+                # there is no such moment - the whole wait lands on the pupil
+                # instead, in the number below
+                ready = None
 
             where = pg.evaluate("""(() => {
               const sc = NVRCore.exp.scenes[NVRCore.cur];
@@ -107,11 +113,12 @@ def main():
         run("headset, ~1 MB/s network", True, True, slow_kbps=1024)
         b.close()
 
-    print(f"{'':<28}{'page -> ready':>14}{'question -> editor':>20}"
-          f"{'heap':>8}{'after 7 opens':>15}{'textures':>10}")
+    print(f"{'':<30}{'page -> ready':>16}{'question -> editor':>21}"
+          f"{'heap':>9}{'after 7 opens':>15}{'textures':>10}")
     for label, ready, usable, mem, mem2, tex in rows:
-        print(f"{label:<28}{ready:>11} ms{usable:>17} ms"
-              f"{(str(mem) + ' MB') if mem else '-':>8}{(str(mem2) + ' MB') if mem2 else '-':>15}{tex:>10}")
+        r = f"{ready} ms" if ready is not None else "nothing starts"
+        print(f"{label:<30}{r:>16}{str(usable) + ' ms':>21}"
+              f"{(str(mem) + ' MB') if mem else '-':>9}{(str(mem2) + ' MB') if mem2 else '-':>15}{tex:>10}")
     print("\nLoopback on a build machine, not a headset on school WiFi.")
     return 0
 

@@ -53,7 +53,7 @@ anchor is retaken only when the pupil presses **✛ Recentre**.
 | **what to do** — stage, steps, brief | 1.95 m | +28° | 0° | 1.50 m |
 | **your program** — editor, required run, output | 1.75 m | −3° | 0° | 1.55 m |
 | **the example and the marking** | 1.95 m | 0° | +32° (left) | 0.95 m |
-| **the keys** — and Run, Check, Hint, Help, the way on | 1.55 m | −33° | 0° | 1.70 m |
+| **the keys** — and Run, Check, Hint, the reference, Read aloud, Help, the way on | 1.55 m | −30° | 0° | 1.70 m |
 | **a hint or the help panel** | 1.40 m | 0° | 0° | 1.25 m |
 
 The reason for each: a pupil looks **up** to read the task, **ahead** to write,
@@ -80,7 +80,7 @@ what matters is the angle it subtends. On the task panel (1200 px over 1.50 m at
 | the stage line | 27 px | 1.0° |
 | the brief, the line notes | 25 px | 0.9° |
 | the program in the editor | 27 px over 1.55 m at 1.75 m | 1.0° |
-| a key's label | 26 px × 0.8 scale | 0.7° |
+| a key's label | 26 px × 0.7 scale | 0.8° |
 | a line of console output | 20 px | 0.8° |
 
 The floor is about 0.7°, which is roughly 20 px at arm's length on a phone. The
@@ -90,8 +90,9 @@ says how many lines are below.
 
 ## Targets
 
-A key is at least 66 canvas px tall before the 0.8 scale, which on the keyboard
-panel is about 1.6° — comfortably above the 1° a controller ray can hold steady.
+A key is at least 66 canvas px tall before the 0.7 scale, which on the keyboard
+panel (1500 px over 1.70 m at 1.55 m) is about 1.9° — comfortably above the 1°
+a controller ray can hold steady.
 Hover is drawn as a brighter fill *and* a thicker border, never colour alone,
 and every hover pulses the controller for 12 ms so a target can be felt as well
 as seen.
@@ -108,8 +109,9 @@ teaches; and a status line for what the runtime is doing.
 ## The keyboard
 
 Seven rows of characters, then a row of controls (Shift, Space, Tab, the four
-arrows, line start, line end, clear line, Back, Enter), then the actions, then
-the way on. Which characters it must carry is not a judgement: `tools/vrkeys.py`
+arrows, line start, line end, clear line, Back, Enter), then the actions (Run,
+Check my answer, Hint, Syntax reminder, Read aloud, I need help), then the way
+on, then one line saying where everything is. Which characters it must carry is not a judgement: `tools/vrkeys.py`
 reads every starter, model solution, worked example, hint and required technique
 in the course and fails if one of them cannot be typed.
 
