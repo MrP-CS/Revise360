@@ -447,6 +447,40 @@
       .filter((l, i, a) => l !== "" || i < a.length - 1).join("\n").replace(/\n+$/, "").toLowerCase();
   }
   const sameOutput = (got, want) => norm(got) === norm(want);
+  /* ---- a pupil's half-written program ----
+   *
+   * Typing a program by pointing at keys takes minutes, and losing it is the
+   * worst thing a headset can do to someone. So the draft is kept the moment it
+   * changes, in the progress this experience already saves - not in a store of
+   * its own, so it goes wherever progress goes and a pupil who starts a program
+   * in a headset finds it on a computer, and the other way round.
+   *
+   * It is kept against the version of the question it was written for. A
+   * starter or a test that has changed makes the draft an answer to a question
+   * that is no longer being asked, and it is dropped rather than restored.
+   *
+   * Bounded, because a lesson has up to sixty code questions and a browser's
+   * storage is not large: the oldest go first. */
+  const DRAFT_MAX = 60000, DRAFT_KEEP = 40;
+  function draftKey(k, i) { return k + "-" + i; }
+  function draftsOf(sc) { return (prog.scenes[sc.id].drafts = prog.scenes[sc.id].drafts || {}); }
+  function getDraft(k, i, task) {
+    const d = draftsOf(exp.scenes[cur])[draftKey(k, i)];
+    if (!d || d.v !== ACT.version(task)) return null;
+    return typeof d.c === "string" ? d.c : null;
+  }
+  function setDraft(k, i, task, code) {
+    const sc = exp.scenes[cur], all = draftsOf(sc), key = draftKey(k, i);
+    if (code === (task.starter || "")) delete all[key];     // unchanged is not a draft
+    else all[key] = { c: String(code).slice(0, 8000), v: ACT.version(task), at: Date.now() };
+    // keep it from growing without limit: the oldest drafts go first
+    const keys = Object.keys(all);
+    if (keys.length > DRAFT_KEEP || JSON.stringify(all).length > DRAFT_MAX) {
+      keys.sort((a, b) => (all[a].at || 0) - (all[b].at || 0))
+          .slice(0, Math.max(1, keys.length - DRAFT_KEEP)).forEach(x => delete all[x]);
+    }
+    save();
+  }
   // Has this question been answered already? Used for the progress bubbles.
   function isDone(k, i) {
     const sc = exp.scenes[cur];
@@ -605,7 +639,16 @@
     box.classList.add("codewin");
     onCloseCode.push(() => box.classList.remove("codewin"));
 
-    const ed = R360Py.editor($("#pyed"), M.starter);
+    // Where they left it, if they left one - in a headset or on here.
+    const ed = R360Py.editor($("#pyed"), getDraft(k, i2(k, list, n), task) || M.starter);
+    {
+      let keep = null;
+      ed.el.addEventListener("input", () => {
+        clearTimeout(keep);
+        keep = setTimeout(() => setDraft(k, i2(k, list, n), task, ed.get()), 600);
+      });
+      onCloseCode.push(() => { clearTimeout(keep); setDraft(k, i2(k, list, n), task, ed.get()); });
+    }
     const out = $("#pyout"), state = $("#pystate");
     const tests = M.tests;
     /* Programming is trial and error, so a code question is never locked after
@@ -1383,6 +1426,8 @@
     stationState, taskList, award, awardBest, asset, completeStation, markInfo, setReview, loadScene, cubeFrom, world, texFor, sameOutput,
     // The progression rule, shared so the headset uses the same one as the screen
     gated, isComplete, firstOpen, lockedStation,
+    // and the pupil's half-written program, in the progress both of them save
+    getDraft, setDraft,
     sceneHooks: [], closeUI() { closeDrawer(); if (modal.classList.contains("open")) closeModal(); }
   });
   // Live values (getters, so VR always sees the current scene and mode)

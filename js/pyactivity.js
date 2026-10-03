@@ -57,6 +57,25 @@
 
   const arr = v => v == null ? [] : (Array.isArray(v) ? v : [v]);
 
+  /* Which version of a question a saved draft belongs to.
+   *
+   * A pupil's half-written program is only worth restoring against the question
+   * they were answering. If the starter changes, or the tests change, the draft
+   * is answering a question that no longer exists and handing it back would be
+   * worse than handing back nothing. So a draft carries this, and a draft whose
+   * version does not match is dropped rather than shown.
+   *
+   * Deliberately not a cryptographic hash: it has to be computed the instant a
+   * question opens, on both renderers, without waiting for anything. */
+  function version(task) {
+    const t = task || {};
+    const src = String(t.starter || "") + "\u0000" + JSON.stringify(t.tests || [])
+      + "\u0000" + JSON.stringify(t.require || []) + JSON.stringify(t.forbid || []);
+    let h = 0;
+    for (let i = 0; i < src.length; i++) h = (h * 31 + src.charCodeAt(i)) | 0;
+    return "v" + (h >>> 0).toString(36);
+  }
+
   /* Everything a renderer needs in order to show one Python activity, in the
    * order a pupil meets it. A renderer picks what it can afford to draw; it
    * does not get to invent a different version of any of it. */
@@ -232,5 +251,5 @@
     runtimeStillHelp: "The hint and the example are still here, and so is your program."
   };
 
-  return { KINDS, ORDER, kindOf, stageOf, saysOf, splitSteps, model, hintLadder, rules, grade, SAY };
+  return { KINDS, ORDER, kindOf, stageOf, saysOf, splitSteps, model, version, hintLadder, rules, grade, SAY };
 });

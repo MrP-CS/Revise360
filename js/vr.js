@@ -557,13 +557,21 @@
     };
     const seat = (mesh, s) => atAnchor(mesh, s.dist, s.pitch, s.yaw);
 
+    /* Every character the course asks a pupil to type. Which ones those are is
+     * not a judgement: tools/vrkeys.py reads the starters, the model solutions,
+     * the worked examples, the hint syntax and the required techniques, and
+     * fails if one of them is not here. It found four missing - `?`, used in
+     * sixty-three input() prompts from lesson 1, `\` for the newline in lesson
+     * 10's file writing, `;` and `^` - which is the failure the keyboard is
+     * meant to be checked against rather than discovered in a classroom. */
     const KEYS = [
       "1234567890".split(""),
       "qwertyuiop".split(""),
       "asdfghjkl:".split(""),
       "zxcvbnm,.'".split(""),
       ["(", ")", "[", "]", "=", "+", "-", "*", "/", "_"],
-      ["<", ">", "#", '"', "%", "!", "&", "|", "{", "}"]
+      ["<", ">", "#", '"', "%", "!", "&", "|", "{", "}"],
+      ["?", "\\", ";", "^", "@", "~", "$", "£"]
     ];
 
     const CW = 1200, CH = 900;
@@ -580,14 +588,60 @@
       setAnchor(true);
       scene.add(mesh);
       const sc = core.exp.scenes[core.cur], st = sc.stations[k];
+      /* Whatever they last had in this question, wherever they typed it. Typing
+       * a program by pointing at keys takes minutes; losing it is the worst
+       * thing a headset can do to someone, and it is the same draft a computer
+       * would hand back because it is kept in the same progress. */
+      const start = (core.getDraft ? core.getDraft(k, list[n], task) : null) || task.starter || "";
       vrCode = { task, model: ACT.model(task), k, list, n, st,
-                 cv, cx, tex, mesh, text: task.starter || "", caret: (task.starter || "").length,
+                 cv, cx, tex, mesh, text: start, caret: start.length,
                  shift: false, out: "", err: false, attempts: 0, best: 0, hintStep: 0,
                  tests: [], result: "", resultOk: false, tryLine: "", done: false,
                  busy: true, state: ACT.SAY.starting };
       vrCode.caret = vrCode.text.length;
       layout();
       startRuntime();
+      listenForRealKeys();
+    }
+
+    /* ---- a keyboard someone has actually paired with the headset ----
+     *
+     * Pointing at pictures of keys is slow, and a pupil who has a Bluetooth
+     * keyboard should not have to. Where the browser delivers key events to a
+     * page that is in an immersive session, they are taken here; where it does
+     * not, nothing happens and the drawn keyboard is still the whole of it.
+     * Nothing requires one: no question in the course can only be answered with
+     * a real keyboard.
+     *
+     * Whether Quest Browser delivers these while immersive is NOT known - it
+     * has not been tried on a headset from here, and docs/VR-HEADSET-QA.md asks
+     * for it rather than claiming it. */
+    let offKeys = null;
+    function listenForRealKeys() {
+      if (offKeys) return;
+      const onKey = (e) => {
+        if (!vrCode || vrCode.busy) return;
+        if (e.ctrlKey || e.metaKey || e.altKey) return;
+        const k = e.key;
+        if (k === "Enter") typeKey("Enter");
+        else if (k === "Backspace") typeKey("Back");
+        else if (k === "Tab") typeKey("Tab");
+        else if (k === "ArrowLeft") typeKey("←");
+        else if (k === "ArrowRight") typeKey("→");
+        else if (k === "ArrowUp") typeKey("↑");
+        else if (k === "ArrowDown") typeKey("↓");
+        else if (k === "Home") typeKey("Home");
+        else if (k === "End") typeKey("End");
+        else if (k.length === 1) {
+          // typed as itself, not through the drawn keyboard's shift state
+          const v = vrCode;
+          v.text = v.text.slice(0, v.caret) + k + v.text.slice(v.caret);
+          v.caret += k.length; keepDraft(); paintCode();
+        } else return;
+        e.preventDefault();
+      };
+      document.addEventListener("keydown", onKey, true);
+      offKeys = () => { document.removeEventListener("keydown", onKey, true); offKeys = null; };
     }
 
     // Everything the workspace shows, placed and painted.
@@ -821,7 +875,17 @@
         let at = 0; for (let i = 0; i < to; i++) at += lines[i].length + 1;
         v.caret = at + Math.min(col, lines[to].length);
       }
+      else if (key === "Home") v.caret = v.text.lastIndexOf("\n", v.caret - 1) + 1;
+      else if (key === "End") { const nx = v.text.indexOf("\n", v.caret); v.caret = nx < 0 ? v.text.length : nx; }
       else if (key === "Back") { if (v.caret > 0) { v.text = v.text.slice(0, v.caret - 1) + v.text.slice(v.caret); v.caret--; } }
+      /* Clearing a line a character at a time with a pointer is the slowest
+       * thing in here, and it is what a pupil does most when they are fixing a
+       * mistake. One press takes the line out. */
+      else if (key === "ClearLine") {
+        const a = v.text.lastIndexOf("\n", v.caret - 1) + 1;
+        const nx = v.text.indexOf("\n", v.caret), b = nx < 0 ? v.text.length : nx;
+        v.text = v.text.slice(0, a) + v.text.slice(b); v.caret = a;
+      }
       else if (key === "Enter") {
         // keep this line's indentation, and add one after a colon, exactly as
         // the editor on the web does - indentation is most of Python
@@ -833,7 +897,18 @@
       else if (key === "Space") ins(" ");
       else if (key === "Shift") { v.shift = !v.shift; showKeyboard(); return; }
       else { ins(v.shift ? key.toUpperCase() : key); if (v.shift) { v.shift = false; showKeyboard(); } }
+      keepDraft();
       paintCode();
+    }
+    /* Kept as they type, not when they close. A headset that runs out of
+     * battery, a session that ends, a pupil who takes it off and walks away -
+     * none of those should cost them the program. */
+    let draftT = null;
+    function keepDraft(now) {
+      const v = vrCode; if (!v || !core.setDraft) return;
+      clearTimeout(draftT);
+      const put = () => { if (vrCode) core.setDraft(vrCode.k, vrCode.list[vrCode.n], vrCode.task, vrCode.text); };
+      if (now) put(); else draftT = setTimeout(put, 600);
     }
 
     /* A headset has no keyboard, and the system one is not offered while a page
@@ -881,7 +956,7 @@
       const whereLine = { p: "Look up for the task  ·  right for the example and your marks  ·  ⌖ Recentre moves it all to where you are looking",
                           size: 21, align: "center", color: COL.soft };
       kbPanel.set({ color: COL.line, scale: .8, blocks: [
-        row(KEYS[0]), row(KEYS[1]), row(KEYS[2]), row(KEYS[3]), row(KEYS[4]), row(KEYS[5]),
+        row(KEYS[0]), row(KEYS[1]), row(KEYS[2]), row(KEYS[3]), row(KEYS[4]), row(KEYS[5]), row(KEYS[6]),
         { row: [
           { btn: v.shift ? "SHIFT on" : "Shift", id: "kshift", center: true, size: 24, state: v.shift ? "on" : "", onClick: () => typeKey("Shift") },
           { btn: "Space", id: "kspace", center: true, size: 24, onClick: () => typeKey("Space") },
@@ -890,6 +965,9 @@
           { btn: "→", id: "kright", center: true, size: 24, onClick: () => typeKey("→") },
           { btn: "↑", id: "kup", center: true, size: 24, onClick: () => typeKey("↑") },
           { btn: "↓", id: "kdown", center: true, size: 24, onClick: () => typeKey("↓") },
+          { btn: "Line start", id: "khome", center: true, size: 22, onClick: () => typeKey("Home") },
+          { btn: "Line end", id: "kend", center: true, size: 22, onClick: () => typeKey("End") },
+          { btn: "Clear line", id: "kclear", center: true, size: 22, onClick: () => typeKey("ClearLine") },
           { btn: "Back", id: "kback", center: true, size: 24, onClick: () => typeKey("Back") },
           { btn: "Enter", id: "kenter", center: true, size: 24, onClick: () => typeKey("Enter") }
         ] },
@@ -1017,7 +1095,9 @@
 
     function closeCodeVR() {
       if (!vrCode) return;
+      keepDraft(true); clearTimeout(draftT);
       if (offPyState) { offPyState(); offPyState = null; }
+      if (offKeys) offKeys();
       scene.remove(vrCode.mesh); vrCode.tex.dispose(); vrCode = null;
       kbPanel.hide(); taskPanel.hide(); sidePanel.hide(); padPanel.hide();
       closeDiagramVR(); clearAnchor();
