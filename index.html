@@ -8,6 +8,7 @@
 <link rel="icon" href="assets/revise360-mark.svg" type="image/svg+xml">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/rebrand.css?v=20260925b">
+<link rel="stylesheet" href="css/pytok.css?v=20261003b-tokens">
 <script src="js/config.js"></script>
 <script src="js/local.js"></script>
 <script src="js/store.js"></script>
@@ -43,9 +44,62 @@
   <div class="proof-strip" aria-label="Course at a glance">
     <div><strong>12</strong><span>topics to explore</span></div>
     <div><strong>103</strong><span>interactive experiences</span></div>
+    <div><strong>13</strong><span>Python lessons</span></div>
     <div><strong>98</strong><span>lesson PowerPoints</span></div>
-    <div><strong>PC / VR</strong><span>ways to explore</span></div>
+    <div><strong>115</strong><span>lesson plans</span></div>
   </div>
+
+
+  <section class="home-section py-section" id="python" aria-labelledby="py-title">
+    <div class="py-copy on-light">
+      <p class="eyebrow">THE PYTHON COURSE</p>
+      <h2 id="py-title">From your first <code class="pytok"><span class="b">print</span><span class="o">(</span><span class="o">)</span></code><br>to independent programs.</h2>
+      <p class="lead">Thirteen lessons that start from nothing. A student who has never written a line
+        of code writes one in the first minute, and by lesson thirteen is writing whole programs
+        that read a file, search a list and answer an exam question.</p>
+      <p>Every program runs in the browser. Nothing to install, no account to set up on a
+        laptop that already has one.</p>
+      <div class="row hero-actions">
+        <a class="btn big" href="topics.html?topic=PY">Start the Python course <span aria-hidden="true">↗</span></a>
+        <a class="text-link" href="guides/Revise360_Python_Course_Guide.pdf" download>The course guide, as a PDF <span aria-hidden="true">↓</span></a>
+      </div>
+    </div>
+    <div class="py-journey">
+      <ol class="py-steps">
+        <li><span>01</span><div><h3>See a small example</h3>
+          <p>One idea, three lines, and a sentence saying what it does.</p></div></li>
+        <li><span>02</span><div><h3>Run it</h3>
+          <p>Press Run and watch what happens. Nothing is marked: the point is to see it work.</p></div></li>
+        <li><span>03</span><div><h3>Say what it will do</h3>
+          <p>Predict the output before running it. This is where a misreading surfaces early,
+            while it is still cheap to put right.</p></div></li>
+        <li><span>04</span><div><h3>Change one thing</h3>
+          <p>Then finish a program with a gap in it, then find a real error in a broken one.</p></div></li>
+        <li><span>05</span><div><h3>Build it yourself</h3>
+          <p>From nothing, with a brief. Press Check and your program is run against its test
+            cases, so the mark is what it does, not how it looks.</p></div></li>
+        <li><span>06</span><div><h3>Get told what to fix</h3>
+          <p>A failing test shows what was expected and what came out. The hint is a ladder you
+            climb a rung at a time, and the top of it is still the technique on different data,
+            never the answer.</p></div></li>
+      </ol>
+      <figure class="py-shot">
+        <figcaption><span class="visual-dot"></span>WHAT A TASK LOOKS LIKE</figcaption>
+        <div class="py-win">
+          <div class="py-task">
+            <span class="pychip-ish">Change it</span>
+            <p>Change the program so it remembers <code class="pytok"><span class="n">25</span></code>
+              instead of <code class="pytok"><span class="n">10</span></code>.</p>
+          </div>
+          <pre class="py-ed"><span class="t">score</span> <span class="o">=</span> <span class="n">25</span>
+<span class="b">print</span><span class="o">(</span><span class="t">score</span><span class="o">)</span></pre>
+          <div class="py-out"><span>Program output</span><b>25</b></div>
+        </div>
+        <p class="info-caption">The value a task asks for is shown in the same colours as the
+          editor, so a student recognises it rather than hunting for it.</p>
+      </figure>
+    </div>
+  </section>
 
   <section class="access-section" aria-labelledby="access-title">
     <div>
@@ -70,7 +124,7 @@
   </section>
 
   <section class="home-section course-section" id="course">
-    <div class="section-heading"><p class="eyebrow">02 / THE COURSE</p><h2>Choose your starting point.</h2><p>Follow the OCR J277 specification, one topic at a time, or learn to program in Python alongside it. More topics are on the way.</p></div>
+    <div class="section-heading"><p class="eyebrow">02 / THE COURSE</p><h2>Choose your starting point.</h2><p>Follow the OCR J277 specification, one topic at a time, or learn to program in Python alongside it. All eleven specification topics are here, and the Python course runs beside them.</p></div>
     <div class="course-preview">
       <div class="course-paper"><div class="course-paper-head"><span>PAPER 01</span><h3>Computer systems</h3></div>
         <a href="topics.html?topic=1.1"><span>1.1</span><strong>Systems architecture</strong><span aria-hidden="true">↗</span></a>
@@ -86,7 +140,7 @@
         <a href="topics.html?topic=2.3"><span>2.3</span><strong>Producing robust programs</strong><span aria-hidden="true">↗</span></a>
         <a href="topics.html?topic=2.4"><span>2.4</span><strong>Boolean logic</strong><span aria-hidden="true">↗</span></a>
         <a href="topics.html?topic=2.5"><span>2.5</span><strong>Programming languages and IDEs</strong><span aria-hidden="true">↗</span></a>
-        <div class="course-coming"><span>+ MORE</span><strong>More Paper 2 topics coming soon</strong></div>
+        
       </div>
       <div class="course-paper course-extra"><div class="course-paper-head"><span>PYTHON · BEYOND THE SPECIFICATION</span><h3>Learning to program</h3></div>
         <a href="topics.html?topic=PY"><span>PY</span><strong>Python programming — thirteen lessons, written and run in the browser</strong><span aria-hidden="true">↗</span></a>
@@ -95,9 +149,50 @@
     <a class="text-link course-all" href="topics.html">View all topics <span aria-hidden="true">→</span></a>
   </section>
 
-  <section class="home-section teacher-callout">
-    <div><p class="eyebrow">LESSONS, HOMEWORK &amp; INTERVENTION</p><h2>Support learning beyond the lesson.</h2><p>Lesson PowerPoints guide the starter, key terms, experience task and plenary. Matching worksheets make space for key facts in students’ own words. Set a focused task for homework, or revisit selected stations in a small-group or one-to-one intervention session. Download the slides and worksheets from each experience card. The newest addition, the Python course, sits beyond the specification: students write and run real Python in the browser and every question is marked as it is answered. Its worksheets are built for that — the programs are written at the keyboard, so paper is used for planning and for exam-style questions.</p></div>
-    <a class="btn ghost" href="teachers.html">Explore the teacher guide <span aria-hidden="true">↗</span></a>
+  <section class="home-section built-section" aria-labelledby="built-title">
+    <div class="info-heading">
+      <p class="eyebrow">BUILT FOR LEARNING, NOT JUST REVISION</p>
+      <h2 id="built-title">Every principle is a feature you can point at.</h2>
+    </div>
+    <div class="built-grid">
+      <article><h3>Retrieval</h3><p>Every worksheet opens with a starter about the lesson before
+        it, answered on paper and corrected before anything else happens. Review mode reopens the
+        questions a student got wrong, not the whole lesson again.</p></article>
+      <article><h3>Worked examples</h3><p>The early activities of a station carry a worked example
+        with its own data, and the later ones carry none. The support fades on purpose.</p></article>
+      <article><h3>Guided practice</h3><p>Run it, predict it, change one thing, fill the gap, fix
+        the error — then write it from nothing. Six steps, in that order, every station.</p></article>
+      <article><h3>Checking</h3><p>Every multiple-choice question offers wrong answers that are
+        real misconceptions, not filler, so the split across the options tells a teacher what to
+        reteach. The score screen breaks down by station, not into one number.</p></article>
+      <article><h3>Independent application</h3><p>The hardest activity on each station comes last
+        and is not optional, and the worksheet carries exam-style questions to answer away from
+        the screen.</p></article>
+      <article><h3>Nothing is skipped</h3><p>In the Python course a question opens when the one
+        before it is finished. A student who is stuck gets the hint, then asks their teacher.
+        There is no way past a question except through it.</p></article>
+    </div>
+  </section>
+
+  <section class="home-section teacher-callout" id="for-teachers">
+    <div>
+      <p class="eyebrow">LESSONS, HOMEWORK &amp; INTERVENTION</p>
+      <h2>Three things that fit together.</h2>
+      <p><b>The slides</b> are for the front of the room: the key question, the starter, key terms
+        and the task. <b>The experience</b> is where a student reads, decides and is marked.
+        <b>The worksheet</b> is where they write the key fact in their own words and answer
+        exam-style questions, and it is what survives when the devices do not.</p>
+      <p>Download the slides and worksheet from any experience card, or take a whole unit at once
+        from the teacher dashboard: one download with every PowerPoint and worksheet in it, and a
+        second with the unit's pedagogy, its specification map, a delivery guide and a lesson plan
+        for every lesson.</p>
+      <p class="info-caption">PowerPoints, worksheets and teacher guides are downloadable. The
+        interactive 360° experiences are used on this website and are not part of any download.</p>
+    </div>
+    <div class="teacher-actions">
+      <a class="btn" href="teachers.html">Explore the teacher guide <span aria-hidden="true">↗</span></a>
+      <a class="text-link" href="teacher.html">Open the teacher dashboard <span aria-hidden="true">→</span></a>
+    </div>
   </section>
 </main>
 

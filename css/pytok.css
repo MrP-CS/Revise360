@@ -70,11 +70,9 @@ code.pytok .t{color:var(--tok-t)}
 .pyeg .t,.pylines code .t{color:var(--tok-t)}
 .pyeg i,.pylines code i{font-style:normal}
 
-/* On paper and in a high-contrast mode the dark-background colours are either
- * invisible or illegible, so the same seven token kinds get a second set of
- * values tuned for dark ink on white. The kinds, the classes and the box do
- * not change: only the ink does, which is why a worksheet and the screen still
- * teach the same distinction. */
+/* The same seven kinds in ink for a light surface: the printed page, and any
+ * light-themed page of the site that shows Python inside a sentence. One list of
+ * values, used by both, so paper and a white web page cannot drift apart. */
 @media print{
   :root{
     --tok-k:#6b21a8;
@@ -90,4 +88,19 @@ code.pytok .t{color:var(--tok-t)}
     background:#f4f4f5;
     color:#18181b;
   }
+}
+.on-light,
+.on-light code.pytok{
+    --tok-k:#6b21a8;
+    --tok-b:#1d4ed8;
+    --tok-s:#15803d;
+    --tok-n:#9a3412;
+    --tok-c:#52525b;
+    --tok-o:#3f3f46;
+    --tok-t:#18181b;
+}
+.on-light code.pytok{
+  border:1px solid #a1a1aa;
+  background:#f4f4f5;
+  color:#18181b;
 }
