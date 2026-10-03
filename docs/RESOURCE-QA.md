@@ -161,6 +161,12 @@ the small text, the code and the timings are legible.
   maintenance step. `tools/deckspecs/` has no deck12 or deck13 for the same
   reason: generating one is easy and installing what it builds would be a
   regression.
+- **Nothing checks that a working-out table's stored answer is arithmetically
+  true.** `smokecalc.py` checks that the board marks the working against the
+  answer the lesson stores, not that the answer is right: the inputs are prose on
+  a wall, so there is nothing to recompute from. The five that exist were
+  computed by hand in October 2026 and all five agreed. A sixth will need the
+  same treatment, and a wrong one would be marked confidently.
 - **Nothing checks that a lesson teaches well.** The coverage trace in
   `docs/COVERAGE.md` is derived by matching content words and is a prompt to look,
   not a verdict.
