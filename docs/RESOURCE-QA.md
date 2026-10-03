@@ -40,7 +40,7 @@ python3 mkguides.py               # the two printable Python guides
 
 ## Checking
 
-Twenty checks. Run them all; each prints a single sentence at the end and exits
+Twenty-one checks. Run them all; each prints a single sentence at the end and exits
 non-zero on a failure.
 
 | check | what it holds | last run |
@@ -62,6 +62,7 @@ non-zero on a failure.
 | `tools/tests/smokedraft.py` | a program typed on one is found on the other, and survives a reload | pass |
 | `tools/tests/smokepyfail.py` | a runtime that does not arrive is said, reported and recoverable | pass |
 | `tools/vrkeys.py` | every character the course needs can be typed in the headset | 87 needed, 98 typable |
+| `tools/tests/smokevrcomfort.py` | the workspace is where a seated pupil can read and reach it | pass |
 | `renderall.js` | all 614 activities render the parts their kind calls for | pass |
 | `fit.js` | no question window needs scrolling at six widths | pass |
 | `a11y.js` | everything named, reachable and readable | pass |
@@ -69,7 +70,7 @@ non-zero on a failure.
 ```bash
 for t in verifycode verifyref checkws audit_claims audit_exposure; do python3 tools/$t.py; done
 for t in smoketok smokegate smokemarks smokeplans smokepacks smokeguides \
-         smokevrcode smokeparity smokedraft smokepyfail; do
+         smokevrcode smokeparity smokedraft smokepyfail smokevrcomfort; do
   python3 tools/tests/$t.py; done
 python3 tools/vrkeys.py
 node tools/tests/smokecode.js
@@ -101,6 +102,9 @@ the injected fault showed it.
 - `vrkeys.py` first matched only double-quoted strings in the keyboard table,
   which made the double-quote key itself look missing. Fixing that left four
   characters genuinely missing, `?` among them.
+- `smokevrcomfort.py`'s first attempt at "does the workspace follow the head"
+  moved the head and re-ran the placement, which is not the fault it is watching
+  for. It only caught one once the placement was injected into the frame loop.
 
 ## Visual review
 

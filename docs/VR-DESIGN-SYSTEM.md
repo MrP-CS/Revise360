@@ -38,6 +38,12 @@ The nine the headset uses, all from `:root`:
 
 The seven Python token colours are the screen palette from `css/pytok.css`,
 unchanged: a string is the same green in the headset's editor as in the page's.
+
+`tools/tests/smokevrcomfort.py` measures each one against the surface it is
+drawn on. Everything clears 4.5:1 except a comment at 3.67:1, which is dimmed on
+purpose and is the same value the page uses — it is the one thing in the editor
+meant to recede, and changing it here would make the headset's editor differ
+from the screen's.
 **Colour is never the only signal.** Prescribed data in a sentence is boxed and
 monospace as well as coloured, exactly as on paper; a passed test carries ✓ and
 a failed one ✗ as well as a border colour; a stage is named in words.
