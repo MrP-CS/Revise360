@@ -195,6 +195,18 @@ a.topic:hover { background:#F5F7FC;border-color:var(--line);color:var(--fg)!impo
 .topic-summary div:last-child { border:0; }
 .topic-summary span { font-size:13px;color:var(--soft); }
 .topic-summary strong { font:600 19px 'IBM Plex Mono',ui-monospace,monospace;white-space:nowrap; }
+/* A course worked in order: where the pupil is up to, and the lessons that are
+   not open yet. A locked card is shown rather than hidden, so a pupil can see
+   what is coming and why it is not available. */
+.topic-resume { margin:24px 0 8px;padding:18px 20px;background:#fff;border:1px solid var(--line);
+  border-left:4px solid var(--edge);border-radius:9px; }
+.topic-resume p { margin:0 0 12px;font-size:15px;line-height:1.5;color:#35445A; }
+.exp.locked { background:#FAFBFD;color:var(--soft); }
+.exp.locked h3 { color:#5A6B86; }
+.exp.locked .locked-thumb { display:flex;align-items:center;width:190px;height:120px;padding:12px 14px;
+  border:1px dashed #C9D5E7;background:#F2F5FB;color:#5A6B86;font-size:12px;line-height:1.35; }
+.exp.locked .lesson-meta { font-size:13px; }
+.exp.locked .lesson-meta b { color:#35445A; }
 /* Printable guides for a whole topic, above its lessons: the things to read
    before the first one and to keep beside you through all of them. */
 .topic-guides { margin:26px 0 38px; }

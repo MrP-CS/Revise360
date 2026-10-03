@@ -161,6 +161,29 @@
     return (t.pairs || []).length;
   };
 
+  /* An experience's own definition, fetched once and kept.
+   *
+   * The Python course is worked in order, so both the topic page and the player
+   * have to know whether an earlier lesson is finished. That is worked out from
+   * the answers actually stored for it, not from a flag that says so: a flag is
+   * a claim a browser makes about itself, and this is the only check there is
+   * until the backend enforces prerequisites as well. */
+  const expCache = {};
+  Store.experience = async function (expId) {
+    if (expId in expCache) return expCache[expId];
+    try {
+      const r = await fetch("experiences/" + encodeURIComponent(expId) + ".json", { cache: "no-cache" });
+      expCache[expId] = r.ok ? await r.json() : null;
+    } catch (e) { expCache[expId] = null; }
+    return expCache[expId];
+  };
+  /* Is every station of every scene of this experience finished? */
+  Store.isComplete = async function (expId) {
+    const prog = Store.get(expId); if (!prog) return false;
+    const exp = await Store.experience(expId); if (!exp) return false;
+    return !!Store.summarise(exp, prog).complete;
+  };
+
   // Summarise an experience's progress for hub cards and the teacher view
   Store.summarise = function (exp, prog) {
     const out = { score: 0, total: 0, done: 0, count: 0, stations: [], infoSeen: (prog && prog.info || []).length, infoTotal: 0 };

@@ -149,13 +149,18 @@ L1 = dict(id="pr-l01", topic="PY", lesson=1, title="Printing and variables", img
          "labelled Program output. "
          "Check my answer is different: it marks your program against the task. "
          "So run as often as you like while you are trying things out, and check when you think it is right. "
-         "You can check as many times as you like too, and your best mark is the one that is kept. "
+         "You can check as many times as you like, and your best mark is the one that is kept. "
+         "You work through the course in order and complete every question: the next one opens when "
+         "this one is finished, because each activity teaches what the next one needs. "
          "If you are stuck, the Hint button gives you one step at a time, starting with the idea and "
          "never with the answer, and Syntax reminder lists every Python command the course has taught so far. "
+         "I need help is there from the first attempt on every question - it costs you nothing, and it "
+         "will tell you to ask your teacher and show them the question and your code. "
          "Errors are a normal part of programming. Everyone writing Python sees them all day, and reading the "
          "message is how you find out what to change. "
          "Work round this room through the six numbered badges in order, then tap the star for the final "
-         "challenge. Your progress saves after every answer."),
+         "challenge. A badge that says Later is not open yet: finish the one you are on first. "
+         "Your progress saves after every answer, so you can stop and come back to the same question."),
         (1, "Naming rules", "A Python variable name can hold letters, digits and underscores, but it cannot start with a digit or contain a space. Capitals are used for the name of a constant, so a reader can see at a glance that the value is not meant to change."),
         (2, "Why it waits", "input() reads one whole line, so the program only carries on once the Enter key has been pressed. Nothing else happens while it waits."),
         (3, "One bit each", "A boolean has only two possible values, so it needs just one bit of storage - the smallest piece of data there is."),

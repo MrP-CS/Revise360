@@ -91,6 +91,14 @@
     // title alone, so the Python course is not labelled with a spec number.
     $("#topic").textContent = /^\d/.test(t.id) ? `${t.id} ${t.title}` : t.title;
     const list = expsFor(id), sums = await summaries(list);
+    /* Which lesson of a worked-in-order course this pupil is up to: the first
+     * one that is not finished. Everything after it waits. */
+    const gatedTopic = String(id) === "PY";
+    let locked = null;
+    if (gatedTopic) {
+      const ordered = list.filter(e => e.lesson).sort((a2, b2) => a2.lesson - b2.lesson);
+      locked = ordered.find(e => !(sums[e.id] && sums[e.id].complete)) || null;
+    }
     const rows = [], weak = []; let totS = 0, totT = 0, doneE = 0;
     for (const e of allFor(id)) {
       const number = e.lesson ? String(e.lesson).padStart(2, "0") : "★";
@@ -105,6 +113,19 @@
       const started = sum && (sum.done > 0 || Object.values(prog?.scenes || {}).some(sc => Object.keys(sc.ans || {}).length));
       const hasWeak = sum && sum.stations.some(st => st.done && st.wrongTasks > st.fixed);
       const kind = e.sprint || e.badge ? "Challenge" : "360° experience";
+      /* The Python course is worked in order, so a later lesson is shown but not
+       * opened until the one before it is finished. The card says why and sends
+       * the pupil to the lesson they are actually up to, rather than silently
+       * doing nothing when they press Start. */
+      if (gatedTopic && locked && e.id !== locked.id && (e.lesson || 0) > (locked.lesson || 0)) {
+        rows.push(`<article class="exp locked"><span class="lesson-number">${number}</span>
+          <div class="thumb locked-thumb" aria-hidden="true"><span class="thumb-copy">Opens when lesson ${esc(locked.lesson)} is finished</span></div>
+          <div class="body"><span class="lesson-type">${kind}</span><h3>${esc(e.title)}</h3>
+          <div class="lesson-meta"><span>Finish <b>${esc(locked.title)}</b> first. This course is worked in order.</span></div></div>
+          <div class="lesson-actions"><a class="btn small ghost" href="experience.html?id=${encodeURIComponent(locked.id)}">Return to your current question</a>
+          ${e.worksheet ? `<a class="quiet-link" href="${esc(e.worksheet)}" download aria-label="Download the ${esc(e.title)} worksheet (Word document)">Worksheet ↓</a>` : ""}</div></article>`);
+        continue;
+      }
       rows.push(`<article class="exp"><span class="lesson-number">${number}</span><button class="thumb" type="button" data-description="${esc(e.id)}" aria-label="Enlarge the description of ${esc(e.title)}"><span class="thumb-copy">${esc(e.description || "")}</span></button><div class="body"><span class="lesson-type">${kind}</span><h3>${esc(e.title)}</h3>
         ${sum && e.sprint ? `<div class="lesson-meta">${sum.sprint ? `Personal best ${sum.sprint.best} · ${sum.sprint.attempts} ${sum.sprint.attempts === 1 ? "try" : "tries"}` : "Set your first score"}</div>` :
         sum ? `<div class="lesson-meta"><span>${sum.done}/${sum.count} stations · ${sum.score}/${sum.total} marks${sum.infoTotal ? ` · ${sum.infoSeen}/${sum.infoTotal} facts` : ""}</span><span class="rag ${band}">${sum.done ? Store.BAND_LABEL[band] : "Not started"}</span><div class="bar" role="progressbar" aria-label="${esc(e.title)} stations complete" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100"><i style="width:${pct}%"></i></div></div>` : '<span class="err">Could not load this experience.</span>'}</div>
@@ -122,6 +143,10 @@
         <strong>${esc(g.title)}</strong><span>${esc(g.description || "")}</span></a>`).join("");
     $("#main").innerHTML = `<a class="crumb" href="?">← All topics</a>
       <div class="topic-intro"><div><p class="eyebrow">${esc(t.eyebrow || `TOPIC ${t.id} / OCR J277`)}</p><h1>${esc(t.title)}</h1><p>${esc(t.description || "")}</p></div><span class="topic-count">${list.length} experiences</span></div>
+      ${locked ? `<section class="topic-resume"><p><b>You are up to lesson ${esc(locked.lesson)}: ${esc(locked.title)}.</b>
+        Work through the Python course in order and complete every question. If you get stuck, use the
+        hint or ask your teacher &mdash; show them the question and your code.</p>
+        <a class="btn" href="experience.html?id=${encodeURIComponent(locked.id)}">Continue where you left off</a></section>` : ""}
       ${guides ? `<section class="topic-guides"><div class="section-title"><span>START HERE</span><h2>Print these and keep them beside you</h2></div><div class="guide-row">${guides}</div></section>` : ""}
       ${list.length ? `<div class="topic-summary"><div><span>Experiences complete</span><strong>${doneE} / ${list.length}</strong></div><div><span>Marks so far</span><strong>${totS} / ${totT}</strong></div><div><span>Areas to review</span><strong>${weak.length}</strong></div></div>
       <section class="learning-section"><div class="section-title"><span>YOUR LEARNING PATH</span><h2>Experiences and assessments</h2></div><div class="learning-list">${rows.join("")}</div></section>

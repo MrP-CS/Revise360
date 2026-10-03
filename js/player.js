@@ -122,15 +122,22 @@
   const world = p => new THREE.Vector3(-p[2], p[1], -p[0]).normalize().multiplyScalar(38);
   function lookAtVec(v) { const n = v.clone().normalize(); lat = THREE.MathUtils.radToDeg(Math.asin(n.y)); lon = THREE.MathUtils.radToDeg(Math.atan2(-n.z, -n.x)); }
 
-  /* Which activities a pupil may leave out without it counting against them.
+  /* The Python course is worked in order, and every activity in it counts.
    *
-   * An optional challenge, obviously. But also the warm-ups: a Try it is a
-   * program to run and watch and a Predict is a question about somebody else's
-   * code, and neither is an assessment of what this pupil can write. A beginner
-   * who works through all of them gains their marks; a confident one who goes
-   * straight to writing the program is not marked down for skipping a button
-   * press. Anything the pupil actually attempts counts either way. */
-  const SKIPPABLE = t => !!(t.opt || t.kind === "try" || t.kind === "predict");
+   * There is no skipping and no optional question: a pupil who is stuck is given
+   * more help and told to ask their teacher, not a way round. A "Challenge" is
+   * the hardest activity on a station, not one that can be left out, and the
+   * warm-ups are where the technique is taught, so missing them is missing the
+   * teaching. Nothing here decides what a pupil may skip; it decides what the
+   * course calls finished.
+   *
+   * An activity is finished when it is answered to full marks - every test
+   * passing on a program, the right option on a Predict, a clean run on a Try
+   * it. Short of that it stays open and the pupil keeps working at it. Opening a
+   * hint, reading the example, asking for help, running out of attempts or
+   * reporting a fault never finish anything. */
+  const GATED = t => String(t).startsWith("pr-");
+  const gated = () => GATED(expId);
   function stationState(sc, k) {
     const st = sc.stations[k], sp = prog.scenes[sc.id];
     let got = 0, tot = 0, open = 0;
@@ -139,7 +146,6 @@
      * something wrong, and their mark should not say they have. */
     st.tasks.forEach((tk, i) => {
       const m = marks(tk), a = (sp.ans || {})[k + "-" + i];
-      if (SKIPPABLE(tk) && a === undefined) return;
       tot += m;
       if (a !== undefined) { got += a; if (a < m && !prog.review[sc.id + ":" + k + "-" + i]) open++; }
     });
@@ -188,7 +194,10 @@
       else {
         const st = stationState(sc, u.k), def = sc.stations[u.k];
         let mode;
-        if (!st.done) mode = { caption: "Answer" };
+        // In the Python course a station that is not open yet says so, dimmed,
+        // rather than inviting a pupil to tap it and be turned away.
+        if (!st.done && lockedStation(u.k) >= 0) mode = { caption: "Later", dim: true };
+        else if (!st.done) mode = { caption: "Answer" };
         else mode = { band: st.band, caption: st.band === "g" ? "Secure" : st.band === "a" ? "Revise" : "Focus" };
         if (reviewMode) { if (!st.done) mode.dim = true; else if (st.open === 0) mode = { band: "g", caption: st.band === "g" ? "Secure" : "Reviewed", dim: true }; else mode.caption = "Review"; }
         s.material.map = badgeTex(def.label, def.col, mode);
@@ -353,6 +362,8 @@
     const body = ownLayout ? inner : `<div class="taskwrap${board ? " board" : ""}">${inner}</div>`;
     box.innerHTML = `<div class="head"><span id="mt">${esc(title)}</span><button aria-label="Close" id="x">×</button></div><div class="mbody">${body}</div>`;
     $("#x").onclick = closeModal; box.scrollTop = 0;
+    // A locked lesson has nowhere to be dismissed to, so it has no close cross.
+    if (modal.dataset.locked) $("#x").remove();
   }
   // ---------------- Logic sprint (laptop) ----------------
   let sprintTimer = null;
@@ -511,21 +522,13 @@
     const stage = `<div class="pystage-head">
         <span class="pychip ${task.opt ? "opt" : kind}">${esc(stageOf(task))}</span>
         <span class="pywhere">Activity ${n + 1} of ${list.length}</span>
-        <span class="pysays">${esc(task.opt ? "Optional. Finish the station without it if you would rather." : KINDS[kind].says)}</span>
+        <span class="pysays">${esc(task.opt ? "The hardest one on this station. Take your time over it." : KINDS[kind].says)}</span>
       </div>`;
     /* A "Try it" activity has nothing to mark: the point of it is to run a
      * working program and watch what happens, which is the opposite of being
      * judged. So there is no Check button on it at all, and pressing Run is
      * what completes it. */
     const noCheck = kind === "try";
-    /* A way past the warm-ups, for the pupil who does not need them. It is
-     * offered only while they are on one, and only when there is something
-     * later in the station to write: a Year 10 who already knows how a loop
-     * works should not have to press Run four times to reach one. What they
-     * skip is not counted against them - see SKIPPABLE. */
-    const sc0 = exp.scenes[cur], tasks0 = sc0.stations[k].tasks;
-    const ahead = (kind === "try" || kind === "predict")
-      ? list.findIndex((qi, j) => j > n && !SKIPPABLE(tasks0[qi])) : -1;
     /* Left half: everything to read, in one box each, with the marking below it
      * where there is room for it. Right half: the editor, its own Run bar, the
      * output, and the two buttons that end the attempt. Half and half, so a
@@ -570,8 +573,7 @@
           <div class="pyact">
             ${task.hint ? '<button class="btn ghost" id="pyhint">Hint</button>' : ""}
             ${noCheck ? "" : '<button class="btn" id="pycheck" aria-keyshortcuts="Control+Shift+Enter">Check my answer</button>'}
-            ${task.opt ? '<button class="btn ghost" id="pyskip">Skip the challenge</button>' : ""}
-            ${ahead >= 0 ? '<button class="btn ghost" id="pyahead">Skip the warm-up</button>' : ""}
+            <button class="btn ghost" id="pyhelp">I need help</button>
             <span class="mrow" id="mrow"></span>
           </div>
         </div>
@@ -617,7 +619,7 @@
      * no longer exist. Every one is checked, because an exception thrown from
      * the ready() callback stops whatever was meant to run after it. */
     const busy = (on, msg) => {
-      ["#pyrun", "#pycheck", "#pyhint", "#pyskip"].forEach(s => { const el = $(s); if (el) el.disabled = on; });
+      ["#pyrun", "#pycheck", "#pyhint", "#pyhelp"].forEach(s => { const el = $(s); if (el) el.disabled = on; });
       if (state && state.isConnected) state.textContent = msg || "";
     };
     // The runtime is a few megabytes, so it is fetched when a code question is
@@ -650,15 +652,13 @@
       if (noCheck && !r.error && !$("#mrow").children.length) {
         awardBest(k, i2(k, list, n), marks(task));
         succeed(task.fb || "You ran a Python program and saw what it displayed.");
-        nextBtn(k, list, n);
+        nextBtn(k, list, n, true);
+      } else if (noCheck && r.error) {
+        $("#pytry").textContent = "That program should run as it is. Put back anything you have "
+          + "changed, then press Run again.";
       }
     };
-    if ($("#pyahead")) $("#pyahead").onclick = () => run(k, list, ahead);
-    if ($("#pyskip")) $("#pyskip").onclick = () => {
-      $("#pytry").textContent = "Challenge skipped. It stays here if you want to come back to it in review mode.";
-      $("#pyskip").remove(); if ($("#pycheck")) $("#pycheck").remove();
-      nextBtn(k, list, n);
-    };
+    if ($("#pyhelp")) $("#pyhelp").onclick = () => askTeacher(task, true);
     /* What a finished activity looks like: a plain tick, one sentence naming the
      * technique they just used, and the way on. No noise, no confetti - the
      * pupils reading this include Year 11. */
@@ -732,7 +732,11 @@
         h.className = "btn ghost"; h.textContent = "Show me the hint";
         h.onclick = () => openHint(task); row.appendChild(h);
       }
-      nextBtn(k, list, n);
+      /* Three checks that have not worked is the moment to say, once, that
+       * asking the teacher is an ordinary thing to do - not after ten, and not
+       * again every time after that. */
+      if (!all && attempts === 3) askTeacher(task, false);
+      nextBtn(k, list, n, all);
     };
   }
   // the index of the task being run, which award() needs
@@ -917,9 +921,6 @@
   function runPredict(k, list, n, task, head) {
     while (onCloseCode.length) { try { onCloseCode.pop()(); } catch (e) { /* already gone */ } }
     const right = task.a[0];
-    // The same way past the warm-ups the code window offers - see runCode.
-    const tasks0 = exp.scenes[cur].stations[k].tasks;
-    const ahead = list.findIndex((qi, j) => j > n && !SKIPPABLE(tasks0[qi]));
     const where = `<div class="pystage-head"><span class="pychip predict">Predict</span>
         <span class="pywhere">Activity ${n + 1} of ${list.length}</span>
         <span class="pysays">${esc(KINDS.predict.says)}</span></div>`;
@@ -944,12 +945,11 @@
           <p class="pyrunh">Choose what it displays</p>
           <div class="opts">${shuffle(task.a.slice()).map(a => `<button class="opt mono">${esc(a)}</button>`).join("")}</div>
           <div class="fb" id="fb" aria-live="polite"></div>
-          <div class="mrow" id="mrow">${ahead >= 0 ? '<button class="btn ghost" id="pyahead">Skip the warm-up</button>' : ""}</div>
+          <div class="mrow" id="mrow"></div>
         </div>
       </div>`);
     box.classList.add("predwin");
     onCloseCode.push(() => box.classList.remove("predwin"));
-    if ($("#pyahead")) $("#pyahead").onclick = () => run(k, list, ahead);
     const opts = [...box.querySelectorAll(".opt")];
     opts[0].focus();
     opts.forEach(b => b.onclick = () => {
@@ -961,11 +961,14 @@
       fb.className = "fb show " + (ok ? "ok done" : "no");
       fb.innerHTML = `<strong>${ok ? "✓ That is what it displays." : "It displays this instead:"}</strong>` +
         (ok ? "" : `<span class="predans">${esc(right)}</span>`) + esc(task.fb || "");
-      const sk = $("#pyahead"); if (sk) sk.remove();
-      nextBtn(k, list, n);
+      if (ok) nextBtn(k, list, n, true);
+      else tryAgain(k, list, n, "Read the program again with that answer in mind, then choose.");
     });
   }
   function closeModal() {
+    // A locked lesson is not a window to dismiss: there is nothing behind it
+    // that this pupil is meant to be working on yet.
+    if (modal.dataset.locked) return;
     while (onCloseCode.length) { try { onCloseCode.pop()(); } catch (e) { /* already gone */ } }
     if (hintOpen()) closeHint();
     if (sprintTimer) { clearInterval(sprintTimer); sprintTimer = null; }
@@ -973,9 +976,32 @@
     if (diagView) { diagView.dispose(); diagView = null; }
     box.classList.remove("huge", "plain", "hasboard");
     modal.classList.remove("open"); refreshSprites(); hud(); drawNav(); if (lastFocus && lastFocus.focus) lastFocus.focus(); }
-  modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
+  modal.addEventListener("click", e => { if (e.target === modal && !modal.dataset.locked) closeModal(); });
+  /* Which station a pupil in the Python course is up to. Stations are worked in
+   * order, so the one after the earliest unfinished one is not open yet. */
+  function lockedStation(k) {
+    if (!gated() || reviewMode) return -1;
+    const open = firstOpenStation();
+    return open >= 0 && k > open ? open : -1;
+  }
+  /* What a pupil sees when they reach for something that is not open yet. It
+   * says plainly why, and the only button on it goes to the work they are
+   * actually up to - never past it. */
+  function lockedWindow(name, k) {
+    lastFocus = document.activeElement; modal.classList.add("open"); closeDrawer();
+    shell("Not yet", "#ffd046", `<p class="q">Finish the station you are on first.</p>
+      <p>This course is worked in order, so each station opens once the one before it is
+      finished. You are up to <b>${esc(name)}</b>.</p>
+      <p class="qn">Stuck on a question? Use the hint, or ask your teacher and show them the
+      question and your code. Complete it before moving on.</p>
+      <div class="mrow" id="mrow"><button class="btn" id="goback">Return to your current question</button></div>`);
+    $("#goback").onclick = () => { closeModal(); openStation(k); };
+    $("#goback").focus();
+  }
   function openStation(k) {
     const sc = exp.scenes[cur], st = sc.stations[k]; if (!st) return;
+    const at = lockedStation(k);
+    if (at >= 0) { lockedWindow(sc.stations[at].name, at); return; }
     const list = taskList(k); if (!list) return;
     lastFocus = document.activeElement; modal.classList.add("open"); closeDrawer(); run(k, list, 0);
   }
@@ -989,6 +1015,14 @@
       if (!state.done) { toast("Answer this station normally first. Turn review mode off to start it."); return null; }
       list = st.tasks.map((_, i) => i).filter(i => ((sp.ans || {})[k + "-" + i] ?? 0) < marks(st.tasks[i]) && !prog.review[sc.id + ":" + k + "-" + i]);
       if (!list.length) { toast("Nothing left to review here. Well done!"); return null; }
+    } else if (gated()) {
+      /* Everything on this station, in the order it was written, starting at the
+       * first one that is not finished. An activity that was answered but not
+       * got right is still waiting, so it is still in the list. */
+      if (state.done) { toast(`You scored ${state.got}/${state.tot} here. Use review mode to look back over it.`); return null; }
+      const from = firstOpen(k);
+      if (from < 0) { sp.done[k] = true; save(); refreshSprites(); return null; }
+      list = st.tasks.map((_, i) => i).filter(i => i >= from);
     } else {
       if (state.done) { toast(`You scored ${state.got}/${state.tot} here. Use review mode to retry anything you got wrong.`); return null; }
       list = st.tasks.map((_, i) => i).filter(i => (sp.ans || {})[k + "-" + i] === undefined);
@@ -1000,6 +1034,9 @@
   function completeStation(k) {
     const sc = exp.scenes[cur];
     if (reviewMode) { const st = stationState(sc, k); return { review: true, message: st.open ? "Keep going: some questions still need reviewing." : "Reviewed. Nice work." }; }
+    // In the Python course a station is finished only when every activity on it
+    // is. Reaching the end of the list is not the same thing.
+    if (gated() && firstOpen(k) >= 0) return { stillOpen: true, at: firstOpen(k) };
     prog.scenes[sc.id].done[k] = true; save(); refreshSprites(); hud(); drawNav();
     if (!sc.stations.every((_, x) => prog.scenes[sc.id].done[x])) return { sceneDone: false };
     const rows = sc.stations.map((st, x) => ({ name: st.name, ...stationState(sc, x) }));
@@ -1027,9 +1064,93 @@
     save(); hud();
   }
   function feedback(ok, partial, text) { const fb = $("#fb"); fb.className = "fb show " + (ok ? "ok" : "no"); fb.innerHTML = `<strong>${ok ? "Correct!" : partial || "Not quite."}</strong>${esc(text)}`; }
-  function nextBtn(k, list, n) {
-    const last = n === list.length - 1; const b = document.createElement("button"); b.className = "btn"; b.textContent = last ? "Finish" : "Next question";
-    b.onclick = () => last ? finish(k) : run(k, list, n + 1); $("#mrow").appendChild(b); b.focus();
+  /* Has this activity been finished to the standard the course asks for?
+   *
+   * Full marks, and nothing else: every test passing on a program, the right
+   * option on a Predict, a clean run on a Try it. Partial credit is recorded and
+   * shown, because it is honest about where a pupil got to, but it does not
+   * finish the activity. */
+  function isComplete(k, i) {
+    const sc = exp.scenes[cur], task = sc.stations[k].tasks[i];
+    const a = (prog.scenes[sc.id].ans || {})[k + "-" + i];
+    return a !== undefined && a >= marks(task);
+  }
+  // The first activity on this station that is not finished, or -1 if all are.
+  function firstOpen(k) {
+    const st = exp.scenes[cur].stations[k];
+    for (let i = 0; i < st.tasks.length; i++) if (!isComplete(k, i)) return i;
+    return -1;
+  }
+  // The first station with unfinished work on it, or -1.
+  function firstOpenStation() {
+    const sc = exp.scenes[cur];
+    for (let k = 0; k < sc.stations.length; k++) if (firstOpen(k) >= 0) return k;
+    return -1;
+  }
+
+  /* What to offer when an activity has been answered.
+   *
+   * In the Python course the way on appears only once the activity is finished.
+   * Until then the pupil stays here, with the help they need - which is the
+   * whole of the rule: a question is not got past, it is got right. Everywhere
+   * else the course works as it always has. */
+  function nextBtn(k, list, n, done) {
+    const row = $("#mrow"); if (!row) return;
+    if (gated() && !reviewMode && done === false) return;
+    const last = n === list.length - 1;
+    const b = document.createElement("button"); b.className = "btn";
+    b.textContent = last ? "Finish" : "Next question";
+    b.onclick = () => last ? finish(k) : run(k, list, n + 1);
+    row.appendChild(b); b.focus();
+  }
+
+  /* Answered, but not right. In the Python course that means going round again
+   * rather than moving on, so the question is re-offered with the first answer
+   * already recorded - the mark a teacher sees is still the honest one. */
+  function tryAgain(k, list, n, why) {
+    if (!gated() || reviewMode) return nextBtn(k, list, n, true);
+    const row = $("#mrow"); if (!row) return;
+    const b = document.createElement("button"); b.className = "btn"; b.textContent = "Try this one again";
+    b.onclick = () => run(k, list, n);
+    row.appendChild(b);
+    const h = document.createElement("button"); h.className = "btn ghost"; h.textContent = "I need help";
+    h.onclick = () => askTeacher(exp.scenes[cur].stations[k].tasks[list[n]], true);
+    row.appendChild(h);
+    if (why) { const p = document.createElement("p"); p.className = "qn"; p.textContent = why; row.parentNode.insertBefore(p, row); }
+    b.focus();
+  }
+
+  /* The help a stuck pupil is offered, from the first attempt and without any
+   * cost. It is not a way past the question and it does not claim to have told
+   * anybody anything: there is no teacher messaging in this product, so it says
+   * to ask the teacher in the room. */
+  function askTeacher(task, asked) {
+    const pane = document.createElement("div");
+    pane.id = "pyhintpane"; pane.className = "hintpane helppane";
+    pane.innerHTML = `<div class="hinthead"><b>Asking for help</b>
+        <span>Nothing here is marked, and asking costs you nothing.</span>
+        <button class="btn ghost" id="hintclose">Close</button></div>
+      <div class="helpbody">
+        <p class="helpsay">Not sure what to do next? That is OK. You can use a hint or ask your
+          teacher for help. Show them this question and your code. Complete this question before
+          moving on.</p>
+        <div class="vrow">
+          ${task && task.hint ? '<button class="btn" id="helphint">Show a hint</button>' : ""}
+          ${task && task.teach ? '<button class="btn ghost" id="helpeg">Review the example</button>' : ""}
+          <button class="btn ghost" id="helpback">Keep trying</button>
+        </div>
+        <p class="qn">Your teacher cannot see this screen. Put your hand up, or send them a
+          message the way your school normally does, and show them this question.</p>
+        <p class="qn">Something wrong with the question itself? Tell your teacher so it can be
+          looked at. Reporting a fault does not finish the question.</p>
+      </div>`;
+    box.appendChild(pane);
+    const shut = () => { const p2 = document.getElementById("pyhintpane"); if (p2) p2.remove(); };
+    $("#hintclose").onclick = shut;
+    if ($("#helpback")) $("#helpback").onclick = shut;
+    if ($("#helphint")) $("#helphint").onclick = () => { shut(); openHint(task); };
+    if ($("#helpeg")) $("#helpeg").onclick = () => { shut(); const t = $(".pyteach"); if (t) t.scrollIntoView({ block: "center" }); };
+    $("#hintclose").focus();
   }
   const ALT = "Diagram for this question";
   function run(k, list, n) {
@@ -1044,7 +1165,8 @@
       opts.forEach(b => b.onclick = () => {
         const ok = b.textContent === right; opts.forEach(o => { o.disabled = true; if (o.textContent === right) o.classList.add("right"); });
         if (!ok) b.classList.add("wrong"); award(k, i, ok ? 1 : 0);
-        feedback(ok, null, (ok ? "" : "The correct answer is highlighted in green. ") + task.fb); nextBtn(k, list, n);
+        feedback(ok, null, (ok ? "" : "The correct answer is highlighted in green. ") + task.fb);
+        if (ok) nextBtn(k, list, n, true); else tryAgain(k, list, n, "Read the right answer above, then answer it again.");
       });
     } else if (task.t === "multi") {
       shell(head, st.col, `${qn}${img}<p class="q">${esc(task.q)}</p><div class="chips">${task.opts.map(o => `<button class="chip" aria-pressed="false">${esc(o)}</button>`).join("")}</div>${tail}`);
@@ -1055,7 +1177,8 @@
         const sel = chips.filter(c => c.getAttribute("aria-pressed") === "true").map(c => c.textContent);
         const ok = sel.length === task.correct.length && sel.every(x => task.correct.includes(x));
         chips.forEach(c => { c.disabled = true; const want = task.correct.includes(c.textContent), got = c.getAttribute("aria-pressed") === "true"; if (want) c.classList.add("right"); else if (got) c.classList.add("wrong"); });
-        award(k, i, ok ? 1 : 0); ck.remove(); feedback(ok, null, (ok ? "" : "The correct answers are shown in green. ") + task.fb); nextBtn(k, list, n);
+        award(k, i, ok ? 1 : 0); ck.remove(); feedback(ok, null, (ok ? "" : "The correct answers are shown in green. ") + task.fb);
+        if (ok) nextBtn(k, list, n, true); else tryAgain(k, list, n, "Look at the ones in green, then choose again.");
       };
     } else if (task.t === "code") {
       runCode(k, list, n, task, head, qn);
@@ -1071,7 +1194,8 @@
       box.querySelector(".seg button").focus();
       ck.onclick = () => {
         let got = 0; box.querySelectorAll(".item").forEach(it => { const x = it.dataset.n, ok = pickd[x] === items[x][1]; if (ok) got++; it.classList.add(ok ? "right" : "wrong"); it.querySelectorAll("button").forEach(b => b.disabled = true); if (!ok) { const f = document.createElement("div"); f.className = "fix"; f.textContent = "Answer: " + items[x][1]; it.firstElementChild.appendChild(f); } });
-        award(k, i, got); ck.remove(); const all = got === items.length; feedback(all, `You got ${got} out of ${items.length}.`, (all ? "" : "Corrections are shown in green. ") + task.fb); nextBtn(k, list, n);
+        award(k, i, got); ck.remove(); const all = got === items.length; feedback(all, `You got ${got} out of ${items.length}.`, (all ? "" : "Corrections are shown in green. ") + task.fb);
+        if (all) nextBtn(k, list, n, true); else tryAgain(k, list, n, "Read the corrections, then sort them again.");
       };
     } else if (task.t === "match") {
       const rights = shuffle(task.pairs.map(p => p[1]));
@@ -1081,7 +1205,8 @@
       sels.forEach(s => s.onchange = () => ck.disabled = sels.some(x => !x.value));
       ck.onclick = () => {
         let got = 0; sels.forEach((s, x) => { const ok = s.value === task.pairs[x][1]; if (ok) got++; s.disabled = true; const it = s.parentElement; it.classList.add(ok ? "right" : "wrong"); if (!ok) { const f = document.createElement("div"); f.className = "fix"; f.textContent = "Answer: " + task.pairs[x][1]; it.appendChild(f); } });
-        award(k, i, got); ck.remove(); const all = got === task.pairs.length; feedback(all, `You got ${got} out of ${task.pairs.length}.`, (all ? "" : "Corrections are shown in green. ") + task.fb); nextBtn(k, list, n);
+        award(k, i, got); ck.remove(); const all = got === task.pairs.length; feedback(all, `You got ${got} out of ${task.pairs.length}.`, (all ? "" : "Corrections are shown in green. ") + task.fb);
+        if (all) nextBtn(k, list, n, true); else tryAgain(k, list, n, "Read the corrections, then match them again.");
       };
     } else if (task.t === "defence") {
       const rec = prog.defence || { best: 0, attempts: 0 };
@@ -1113,7 +1238,7 @@
         award(k, i, res.got); clr.remove(); ck.remove();
         feedback(res.ok, res.max > 1 ? `You got ${res.got} out of ${res.max}.` : null, res.msg + " " + (task.fb || ""));
         if (!res.ok && task.t === "circuit") { const sa = document.createElement("button"); sa.className = "btn ghost"; sa.textContent = "Show a correct circuit"; sa.onclick = () => { board.showAnswer(task.expr); sa.remove(); }; row.appendChild(sa); }
-        nextBtn(k, list, n);
+        if (res.ok) nextBtn(k, list, n, true); else tryAgain(k, list, n, "Look at what was marked, then try it again.");
       };
     } else if (task.t === "order") {
       const pool = shuffle(task.steps); let seq = [];
@@ -1135,13 +1260,16 @@
         let got = 0; const lis = [...ol.children];
         seq.forEach((x, y) => { const ok = x === task.steps[y]; if (ok) got++; lis[y].classList.add(ok ? "right" : "wrong"); if (!ok) { const f = document.createElement("div"); f.className = "fix"; f.textContent = "Should be: " + task.steps[y]; lis[y].appendChild(f); } });
         award(k, i, got); $("#pool").remove(); $("#tapl").remove(); rs.remove(); ck.remove();
-        const all = got === task.steps.length; feedback(all, `You got ${got} out of ${task.steps.length} in the right place.`, (all ? "" : "The correct step is shown under each one you got wrong. ") + task.fb); nextBtn(k, list, n);
+        const all = got === task.steps.length; feedback(all, `You got ${got} out of ${task.steps.length} in the right place.`, (all ? "" : "The correct step is shown under each one you got wrong. ") + task.fb);
+        if (all) nextBtn(k, list, n, true); else tryAgain(k, list, n, "Read the corrections, then put them in order again.");
       };
     }
   }
   function finish(k) {
     const res = completeStation(k);
     if (res.review) { closeModal(); toast(res.message); return; }
+    // Something on this station is still unfinished, so this is where they go.
+    if (res.stillOpen) { closeModal(); openStation(k); return; }
     if (!res.sceneDone) { closeModal(); return; }
     const { sc, got, tot, nextIdx, whole } = res;
     const rows = res.rows.map(s => `<tr><td>${esc(s.name)}</td><td>${s.got} / ${s.tot} <span class="rag ${s.band}">${Store.BAND_LABEL[s.band]}</span></td></tr>`).join("");
@@ -1163,7 +1291,45 @@
     const e = (reg.experiences || []).find(x => x.id === expId);
     if (!publicDemo && e && e.topic) home = "index.html?topic=" + encodeURIComponent(e.topic);
     if (e && e.worksheet) { const a = $("#wsBtn"); a.href = e.worksheet; a.hidden = false; a.setAttribute("aria-label", "Download the worksheet for this lesson (Word document)"); }
+    if (gated() && !publicDemo) guardLesson(reg, e);
   }).catch(() => {});
+
+  /* The lesson a pupil has typed, or bookmarked, or been sent a link to.
+   *
+   * The Python course is worked in order, so lesson five is not open until
+   * lesson four is finished. This is worked out from the answers stored for the
+   * earlier lessons rather than from any claim that they are done - which is
+   * also the honest limit of it: everything here runs in the pupil's own
+   * browser, so it stops a pupil wandering ahead, not one determined to edit
+   * their own storage. See docs/EXPERIENCE-PROTECTION.md. */
+  async function guardLesson(reg, me) {
+    if (!me || !me.lesson) return;
+    const before = (reg.experiences || [])
+      .filter(x => x.topic === me.topic && x.lesson && x.lesson < me.lesson && x.type !== "worksheet")
+      .sort((a2, b2) => a2.lesson - b2.lesson);
+    for (const e of before) {
+      if (await Store.isComplete(e.id)) continue;
+      lockedLesson(e);
+      return;
+    }
+  }
+  function lockedLesson(e) {
+    closeUIAll();
+    lastFocus = document.activeElement; modal.classList.add("open");
+    // Set before the window is built: shell() reads this to leave out the close
+    // cross, and there is nowhere for this one to be dismissed to.
+    modal.dataset.locked = "1";
+    shell("Not yet", "#ffd046", `<p class="q">Finish lesson ${esc(e.lesson)} first.</p>
+      <p>The Python course is worked in order: each lesson opens once the one before it is
+      finished. You still have work to do in <b>${esc(e.title)}</b>.</p>
+      <p class="qn">Stuck on a question? Use the hint, or ask your teacher and show them the
+      question and your code. Complete it before moving on.</p>
+      <div class="mrow" id="mrow">
+        <a class="btn" href="experience.html?id=${encodeURIComponent(e.id)}">Return to your current question</a>
+        <a class="btn ghost" href="${esc(home)}">Back to the course</a></div>`);
+    const go = box.querySelector(".mrow .btn"); if (go) go.focus();
+  }
+  function closeUIAll() { closeDrawer(); if (modal.classList.contains("open")) closeModal(); }
   $("#progBtn").onclick = () => drawer.classList.contains("progress") ? closeDrawer() : showProgress();
   $("#reviewBtn").onclick = () => setReview(!reviewMode);
   $("#reviewBtn").setAttribute("aria-pressed", reviewMode);
@@ -1202,6 +1368,8 @@
   Object.assign(core, {
     exp, prog, student, CFG, publicDemo, scene, cam, renderer: r, grp, mat, marks, shuffle, esc, save, hud, drawNav, refreshSprites,
     stationState, taskList, award, awardBest, asset, completeStation, markInfo, setReview, loadScene, cubeFrom, world, texFor, sameOutput,
+    // The progression rule, shared so the headset uses the same one as the screen
+    gated, isComplete, firstOpen, lockedStation,
     sceneHooks: [], closeUI() { closeDrawer(); if (modal.classList.contains("open")) closeModal(); }
   });
   // Live values (getters, so VR always sees the current scene and mode)

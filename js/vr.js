@@ -611,6 +611,20 @@
 
     // ---------------- questions ----------------
     function openStation(k) {
+      /* The same rule as on the screen: the Python course is worked in order, so
+       * a station the pupil has not reached yet says so rather than opening. */
+      const at = core.lockedStation ? core.lockedStation(k) : -1;
+      if (at >= 0) {
+        const name = core.exp.scenes[core.cur].stations[at].name;
+        qPanel.set({ title: "Not yet", color: COL.edge, onClose: () => qPanel.hide(), blocks: [
+          { p: "Finish the station you are on first.", size: 34, bold: true },
+          { p: "This course is worked in order. You are up to " + name + ".", size: 26 },
+          { p: "Stuck? Use the hint, or take the headset off and ask your teacher.", size: 24, color: COL.soft },
+          { btn: "Return to your current question", id: "back", primary: true,
+            onClick: () => openStation(at) }] });
+        atAnchor(qPanel.mesh, 1.5, 0);
+        return;
+      }
       const list = core.taskList(k); if (!list) return;
       infoPanel.hide(); menuPanel.hide();
       setAnchor(true);                              // one pose for this whole station
@@ -628,7 +642,12 @@
       const close = () => { qPanel.hide(); closeBoard(); clearAnchor(); core.refreshSprites(); core.hud(); };
       let fb = null, done = false;
       const fbBlocks = () => fb ? [{ gap: 4 }, { p: fb.head, size: 32, bold: true, color: fb.ok ? COL.ok : COL.bad }, { p: fb.text, size: 28 },
-        { btn: n === list.length - 1 ? "Finish" : "Next question", id: "next", primary: true, onClick: () => n === list.length - 1 ? finish(k) : run(k, list, n + 1) }] : [];
+        /* The way on appears only when the activity is finished. Short of that
+          * the pupil goes round again - see the same rule in js/player.js. */
+          (!core.gated || !core.gated() || core.reviewMode || core.isComplete(k, i)
+            ? { btn: n === list.length - 1 ? "Finish" : "Next question", id: "next", primary: true,
+                onClick: () => n === list.length - 1 ? finish(k) : run(k, list, n + 1) }
+            : { btn: "Try this one again", id: "again", primary: true, onClick: () => run(k, list, n) })] : [];
       const setFb = (ok, partial, text) => { fb = { ok, head: ok ? "Correct!" : partial || "Not quite.", text }; };
       const show = body => qPanel.set({ title, color: st.col, onClose: close, blocks: [...top(), ...body(), ...fbBlocks()] });
 

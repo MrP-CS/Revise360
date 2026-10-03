@@ -117,7 +117,8 @@ function howTo(expName, objectives, code) { return box(null, "How to use this sh
     p([t("4.  ", { bold: true }), t("Plan the ones you write on this sheet, then type the program in the editor and press Run to try it. Run never marks anything, so try things out freely.")]),
     p([t("5.  ", { bold: true }), t("Press Check to mark it. You can change your program and check again as often as you like - your best mark is the one that is kept.")]),
     p([t("6.  ", { bold: true }), t("Read the tests that failed: each one says what was expected and what your program displayed. If you are stuck, the Hint button gives you one step at a time.")]),
-    p([t("7.  ", { bold: true }), t("The activities marked Challenge are optional. Finish the rest of a station first, and come back to them if you have time.")]),
+    p([t("7.  ", { bold: true }), t("Work through the activities in order and complete every one. The next activity opens when the one you are on is finished.")]),
+    p([t("8.  ", { bold: true }), t("If you get stuck, press I need help. Use a hint, or ask your teacher and show them the question and your code. Complete the question before moving on.")]),
 ] : [
     p([t("1.  ", { bold: true }), t("Answer the starter below before you open the experience.")]),
     p([t("2.  ", { bold: true }), t("Open " + expName + ". At each numbered station, read the wall panel and fill in its box on this sheet "), t("before", { bold: true }), t(" you tap the badge.")]),

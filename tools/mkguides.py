@@ -112,8 +112,8 @@ KINDS = [
      "Check my answer runs your program against the tests."),
     ("Build it", "Write the program yourself.",
      "Check my answer runs your program against the tests."),
-    ("Challenge", "An optional harder activity at the end of a station.",
-     "You can skip it, and skipping costs you no marks."),
+    ("Challenge", "The hardest activity on a station, at the end of it.",
+     "Check my answer runs your program against the tests. It is not optional."),
 ]
 
 
@@ -375,8 +375,8 @@ and only then write it from nothing. The label at the top left of every activity
 of those you are doing.</p>
 <table><tr><th>Shown as</th><th>What you do</th><th>How it is finished</th></tr>%s</table>
 <p style="font-size:8.6pt;color:%s">Across the whole course there are %d activities: %d to run,
-%d to predict, %d to change, %d to complete, %d to fix and %d to write, of which %d are optional
-challenges.</p>
+%d to predict, %d to change, %d to complete, %d to fix and %d to write, of which %d are the
+challenge at the end of a station. You complete all of them, in order.</p>
 </section>
 """ % (kinds, SLATE, total, kc["try"], kc["predict"], kc["change"], kc["complete"],
        kc["debug"], kc["build"], opt)
@@ -422,17 +422,30 @@ for you; go back to the loop and find the line that was meant to change the valu
 """ % err_rows
 
     body += """
-<section><h2>How your marks work</h2>
+<section><h2>Working in order, and getting help</h2>
+<div class="band"><p><b>You do every question, in order.</b> The next one opens when this one is
+finished, and there is no way to skip past it. That is on purpose: each activity teaches the thing
+the next one needs, so going round it would only make the next one harder.</p></div>
 <ul>
-<li><b>Your best attempt counts.</b> Check as often as you like; the highest mark you reach is the
-one that is kept.</li>
-<li><b>Warm-ups are not an exam.</b> Try it and Predict activities are there to teach you. If you
-skip them they do not count against you &mdash; and if you do them, they add to your mark.</li>
-<li><b>Challenges are optional.</b> Finish the rest of a station and the station is finished. A
-challenge you never attempt is not counted as a mark lost.</li>
-<li><b>Review mode</b> lets you go back to anything you got wrong, without changing your first score.</li>
-<li>Your work saves after every answer, so you can stop and come back.</li>
+<li><b>Finished means right.</b> A program is finished when every test passes; a Predict when you
+choose the right answer; a Try it when it runs. Part of the way there is recorded, but it does not
+open the next question.</li>
+<li><b>Try as many times as you like.</b> Your best attempt is the mark that is kept, so getting it
+working on the fourth try scores the same as first time.</li>
+<li><b>Asking for help costs you nothing.</b> It takes no marks off and it is not a last resort.</li>
+<li><b>Hints do not finish a question for you</b>, and neither does running out of attempts.
+Only doing the work does.</li>
+<li>Your work saves after every answer. You can stop, log out and come back to the same question.</li>
+<li><b>Review mode</b> lets you look back over anything you have already finished.</li>
 </ul>
+<h3>When you are stuck</h3>
+<p>Press <b>I need help</b>. It is there from the first attempt, on every question. It will offer
+you a hint, take you back to the worked example, or tell you to ask your teacher.</p>
+<div class="band amber"><p>Not sure what to do next? That is OK. You can use a hint or ask your
+teacher for help. Show them this question and your code. Complete this question before moving on.</p></div>
+<p>Your teacher cannot see your screen from their desk, so put your hand up or message them the way
+your school normally does. If you think the question itself is wrong, tell them &mdash; reporting a
+fault does not finish the question, and it should not.</p>
 </section>
 
 <section><h2>How to work through an activity</h2>
