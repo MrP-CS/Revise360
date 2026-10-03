@@ -14,6 +14,69 @@
   const exps = {};
   await Promise.all(fullReg.experiences.map(async e => { try { exps[e.id] = await (await fetch("experiences/" + e.id + ".json", { cache: "no-cache" })).json(); } catch (x) {} }));
   const COL = { g: "#50dc96", a: "#ffd046", r: "#ff5f5f", n: "#51607a" };
+
+  /* The two downloads for a unit, and the documents inside the second one.
+   *
+   * These are teacher materials, so they are behind the teacher sign-in and
+   * nowhere on a pupil's page. What they are NOT behind is a server that checks
+   * who is asking: this build has no backend, so the files sit at ordinary
+   * addresses and anyone who guesses one can fetch it. That is written down in
+   * docs/EXPERIENCE-PROTECTION.md and said on the panel itself, because a teacher
+   * deciding what to put in a pack needs to know it. */
+  const packs = await fetch("packs/index.json", { cache: "no-cache" })
+    .then(r => r.json()).catch(() => null);
+  const plans = await fetch("lessonplans/index.json", { cache: "no-cache" })
+    .then(r => r.json()).catch(() => null);
+  const mb = n => (n / 1048576).toFixed(1) + " MB";
+
+  function downloadsHtml() {
+    if (!packs || !packs.units) return "";
+    const u = packs.units[topicSel];
+    if (!u) return "";
+    const slug = String(topicSel).replace(/\./g, "_");
+    const mine = plans && plans.plans
+      ? Object.values(plans.plans).filter(p => p.unit === topicSel)
+          .sort((a, b) => (a.lesson || 0) - (b.lesson || 0)) : [];
+    return `<section class="packs">
+      <h2>Download this unit</h2>
+      <p class="muted">${esc(u.title)} &middot; ${u.lessons} lessons &middot;
+        updated ${esc(u.built)}</p>
+      <p class="packsay">PowerPoints, worksheets and teacher guides are downloadable.
+        Interactive 360-degree experiences are accessed on the Revise360 website.</p>
+      <div class="packgrid">
+        <article class="packcard">
+          <h3>Unit teaching resources</h3>
+          <p>Every lesson PowerPoint (.pptx) and the matching student worksheets
+            (.docx to edit, .pdf to print), in numbered lesson folders.</p>
+          <a class="btn" href="${esc(u.resources.file)}" download>Download &middot;
+            ${esc(mb(u.resources.bytes))} &darr;</a>
+        </article>
+        <article class="packcard">
+          <h3>Unit teacher guide</h3>
+          <p>The unit pedagogy, big picture and delivery guide, a lesson plan for
+            every lesson, the whole-course map, and the teacher answers where
+            verified ones exist.</p>
+          <a class="btn" href="${esc(u.guide.file)}" download>Download &middot;
+            ${esc(mb(u.guide.bytes))} &darr;</a>
+        </article>
+      </div>
+      <details class="packlist"><summary>Open a single document instead</summary>
+        <ul class="packdocs">
+          <li><a href="unitdocs/${esc(slug)}_Unit_Pedagogy.pdf" download>Unit pedagogy &darr;</a></li>
+          <li><a href="unitdocs/${esc(slug)}_Unit_Big_Picture.pdf" download>Unit big picture &darr;</a></li>
+          <li><a href="unitdocs/${esc(slug)}_Unit_Delivery_Guide.pdf" download>Unit delivery guide &darr;</a></li>
+          <li><a href="unitdocs/GCSE_Course_Big_Picture.pdf" download>Whole-course big picture &darr;</a></li>
+          ${mine.map(p => `<li><a href="${esc(p.file)}" download>Lesson ${esc(p.lesson)}:
+            ${esc(p.title)} &mdash; lesson plan &darr;</a></li>`).join("")}
+        </ul>
+      </details>
+      ${u.notes && u.notes.length ? `<p class="muted packnote">What is not in the pack:
+        ${u.notes.map(esc).join("; ")}.</p>` : ""}
+      <p class="muted packnote">These files are served as ordinary downloads. This
+        build has no server to check who is asking, so treat the links as private
+        rather than protected.</p>
+    </section>`;
+  }
   let rows = [], students = [], cls = "", expSel;
   setTopic(topicSel);
 
@@ -99,7 +162,8 @@
       <section><div class="row" style="justify-content:space-between"><h2 style="margin:0">Class weak areas</h2>
         <select id="ef" class="btn small ghost" aria-label="Experience">${reg.experiences.map(e => `<option value="${esc(e.id)}" ${e.id === expSel ? "selected" : ""}>L${esc(e.lesson)}: ${esc(e.title)}</option>`).join("")}</select></div>
         <p class="muted">Average first-attempt score per station, weakest first.</p><div class="card">${weakHtml}</div></section>
-      <section id="detail"></section>`;
+      <section id="detail"></section>
+      ${downloadsHtml()}`;
     $("#cf").onchange = e => { cls = e.target.value; render(); };
     $("#tf").onchange = e => { setTopic(e.target.value); $("#detail") && ($("#detail").innerHTML = ""); render(); };
     $("#ef").onchange = e => { expSel = e.target.value; render(); };

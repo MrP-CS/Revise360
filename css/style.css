@@ -581,3 +581,21 @@ textarea{width:100%;background:#0f1930;color:var(--fg);border:1px solid var(--li
   .pyrunrow span,.pyrunrow code{flex:0 0 auto}
   .pyegout{flex-direction:column;gap:2px}
 }
+
+/* The two unit downloads on the teacher dashboard, and the single documents
+ * behind them. These are teacher materials: they are on this page and nowhere a
+ * pupil goes. */
+.packs{margin-top:22px}
+.packsay{background:var(--panel);border:2px solid var(--line);border-radius:12px;
+  padding:10px 14px;margin:0 0 14px;font-size:15px}
+.packgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.packcard{background:var(--panel);border:2px solid var(--line);border-radius:14px;padding:16px}
+.packcard h3{margin:0 0 6px;font-size:18px}
+.packcard p{margin:0 0 12px;color:var(--soft);font-size:15px}
+.packlist{margin-top:14px}
+.packlist summary{cursor:pointer;color:var(--info);font-weight:600;padding:6px 0}
+.packdocs{list-style:none;margin:8px 0 0;padding:0;columns:2;column-gap:20px}
+.packdocs li{margin:0 0 6px;break-inside:avoid}
+.packdocs a{color:var(--fg)}
+.packnote{font-size:14px;margin-top:10px}
+@media (max-width:640px){.packdocs{columns:1}}
