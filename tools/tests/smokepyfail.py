@@ -133,18 +133,18 @@ def main():
         pg.wait_for_function("() => R360Py.state === 'error'", timeout=90000)
         pg.wait_for_timeout(500)
         st = pg.evaluate("""(() => { const v = NVRVR.vrCode; if (!v) return null;
-          return { state: v.state, result: v.result, busy: v.busy,
-                   keys: NVRVR.kbPanel.hits.map(h => h.id) }; })()""")
+          return { state: v.runtimeNote, result: v.out, busy: v.busy,
+                   keys: v.hits.map(h => h.id) }; })()""")
         ok(st is not None, "the code panel is still there")
         if st:
             said = (st.get("state") or "") + " " + (st.get("result") or "")
             ok("Python" in said,
                "the headset says the runtime did not start: " + repr(said.strip()[:70]))
             ok(any("retry" in i or "again" in i for i in st["keys"]),
-               "and offers a key to try again")
+               "and offers a button to try again, on the screen itself")
         blocked2["on"] = False
-        hit = pg.evaluate("""(() => { const h = NVRVR.kbPanel.hits.find(x => /retry|again/.test(x.id));
-          if (!h) return false; h.fn(); return true; })()""")
+        hit = pg.evaluate("""(() => { const h = NVRVR.vrCode.hits.find(x => /retry|again/.test(x.id));
+          if (!h) return false; NVRVR.doAction(h.id); return true; })()""")
         if hit:
             pg.wait_for_function("() => R360Py.state === 'ready'", timeout=180000)
             ok(True, "and the retry works in the headset too")

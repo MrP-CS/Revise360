@@ -505,65 +505,44 @@
     function closeBoard() { if (!vrBoard) return; root.remove(vrBoard.mesh); vrBoard.tex.dispose(); vrBoard = null; }
     const boardXY = uv => [uv.x * vrBoard.board.canvas.width, (1 - uv.y) * vrBoard.board.canvas.height];
 
-    /* ---------------- the Python workspace in the headset ----------------
+    /* ---------------- the Python screen in the headset ----------------
      *
-     * The same activity as the screen, not a reduced one. What a question IS -
-     * its stage, its steps, its worked example, the one real run, the ladder of
-     * hints, when the next one opens, every sentence said about it - comes from
-     * js/pyactivity.js, which js/player.js reads as well. This file decides only
-     * where each part hangs in the room.
+     * One large screen in front of the pupil, with a keyboard under it. That is
+     * the whole of it. The screen is the normal Revise 360 Python interface -
+     * the same two columns in the same proportions, the same boxes in the same
+     * order, the same buttons in the same places - drawn by js/pyscreen.js from
+     * the measurements in build/parity/screen-layout-*.json. The hint, the help
+     * and the syntax reference open over it, as panes, the way the page lays
+     * them over the window rather than in windows of their own.
      *
-     * It is not the web page on a billboard. The screen puts everything to read
-     * on the left and the program on the right because a monitor is wide; a room
-     * is not, so the same material is placed where a pupil can turn to it:
+     * This file decides where the screen hangs, what a controller pointing at
+     * it means, and what the keys do. It does not decide what the interface
+     * looks like, and it does not decide what the question is: that is
+     * js/pyscreen.js and js/pyactivity.js.
      *
-     *        up      what to do          the stage, the steps, the brief
-     *      left      how it works        the worked example and its output
-     *     ahead      your program        the editor, the required run, the output
-     *     right      how it went         the marking, test by test
-     *      down      the keys            and Run, Check, Hint, Help, the way on
-     *
-     * Everything is placed against one anchor taken when the question opens, so
-     * the workspace stays put while the pupil looks around it. RECENTRE takes
-     * the anchor again, for someone who has turned in their chair.
+     * An earlier version of this broke the interface into five floating panels
+     * at different depths. It is not that any more, and it should not become
+     * that again: everything a Python activity shows belongs inside the one
+     * screen.
      */
-    const ACT = window.R360PyAct;
+    const ACT = window.R360PyAct, SCR = window.R360PyScreen;
     let vrCode = null;
-    const kbPanel = new Panel(1.70, 1500);
-    const taskPanel = new Panel(1.50, 1300);
-    const sidePanel = new Panel(0.95, 900);       // the example, and how the marking went
-    const padPanel = new Panel(1.25, 1100);       // the hint and the help, over the program
-    panels.push(kbPanel, taskPanel, sidePanel, padPanel);
-    /* Nothing in a workspace uses the depth buffer - panels are drawn over the
-     * room on purpose - so where two of them cross, the order decides. The
-     * program wins over the panel beside it, and the hint wins over everything,
-     * because that is the thing being read at the time. */
-    kbPanel.mesh.renderOrder = 20; taskPanel.mesh.renderOrder = 20;
-    sidePanel.mesh.renderOrder = 20; padPanel.mesh.renderOrder = 24;
+    const kbPanel = new Panel(2.50, 1800);
+    panels.push(kbPanel);
+    kbPanel.mesh.renderOrder = 20;
 
-    /* Where each surface sits, as metres and degrees from the anchor. One place,
-     * so the layout can be read and changed without hunting through the drawing
-     * code, and so RECENTRE has one thing to re-apply.
-     *
-     * Everything is at the same yaw except the reference panel, which is a
-     * small turn of the head to the right - the place the screen keeps the
-     * worked example and the marking. Nothing is behind anything else. */
+    /* Where the workspace sits. Two surfaces, one above the other, and
+     * RECENTRE moves both together - they are one workspace, not two things
+     * that can drift apart. */
     const SEAT = {
-      task: { dist: 1.95, pitch:  28, yaw:   0 },
-      code: { dist: 1.75, pitch:  -3, yaw:   0 },
-      side: { dist: 1.95, pitch:   0, yaw:  32 },
-      keys: { dist: 1.55, pitch: -30, yaw:   0 },
-      pad:  { dist: 1.40, pitch:   0, yaw:   0 }
+      /* Big enough that 15px of the page is about 0.9 degrees in the
+       * headset - roughly 22 of a Quest's pixels, which is ordinary reading
+       * size. A smaller screen was legible but not comfortable. */
+      screen: { dist: 2.05, pitch:   4, yaw: 0, width: 2.90 },
+      keys:   { dist: 1.80, pitch: -33, yaw: 0 }
     };
-    const seat = (mesh, s) => atAnchor(mesh, s.dist, s.pitch, s.yaw);
+    const SS = 2;                 // drawn at twice the layout size, for the lens
 
-    /* Every character the course asks a pupil to type. Which ones those are is
-     * not a judgement: tools/vrkeys.py reads the starters, the model solutions,
-     * the worked examples, the hint syntax and the required techniques, and
-     * fails if one of them is not here. It found four missing - `?`, used in
-     * sixty-three input() prompts from lesson 1, `\` for the newline in lesson
-     * 10's file writing, `;` and `^` - which is the failure the keyboard is
-     * meant to be checked against rather than discovered in a classroom. */
     const KEYS = [
       "1234567890".split(""),
       "qwertyuiop".split(""),
@@ -574,280 +553,131 @@
       ["?", "\\", ";", "^", "@", "~", "$", "£"]
     ];
 
-    const CW = 1200, CH = 900;
-
+    /* Where the caret goes when the screen opens. A Complete it hands the pupil
+     * a program with a gap in it, and the gap is the thing they are there to
+     * fill, so that is where the caret lands - just past it, where a Backspace
+     * takes the gap out. Anything else, and it goes to the end, which is where
+     * a program is continued from. Only for the starter: a draft they typed
+     * themselves opens where it ends. */
+    function caretAt(text, task) {
+      if (text !== (task.starter || "")) return text.length;
+      const gap = text.indexOf("____");
+      return gap < 0 ? text.length : gap + 4;
+    }
     function openCodeVR(k, list, n, task) {
       closeCodeVR();
-      if (!window.R360Py || !ACT) { toast("The Python editor is not available here."); return; }
-      const cv = document.createElement("canvas"); cv.width = CW; cv.height = CH;
+      if (!window.R360Py || !ACT || !SCR) { toast("The Python editor is not available here."); return; }
+      const cv = document.createElement("canvas");
+      cv.width = SCR.W * SS; cv.height = SCR.H * SS;
       const cx = cv.getContext("2d");
       const tex = new T.CanvasTexture(cv); tex.minFilter = T.LinearFilter; tex.generateMipmaps = false;
-      const mesh = new T.Mesh(new T.PlaneGeometry(1.55, 1.55 * CH / CW),
+      const wM = SEAT.screen.width, hM = wM * SCR.H / SCR.W;
+      const mesh = new T.Mesh(new T.PlaneGeometry(wM, hM),
         new T.MeshBasicMaterial({ map: tex, depthTest: false, depthWrite: false }));
-      mesh.renderOrder = 22;    // the program is in front of the panels beside it
+      mesh.renderOrder = 22; mesh.userData.pyscreen = true;
+      /* The room stays, but what is directly behind a wall of text is noise -
+       * the page blurs and darkens the scene behind an open question for the
+       * same reason. This dims only what the screen covers, so the 360 room is
+       * still there around every edge of it. */
+      const dim = new T.Mesh(new T.PlaneGeometry(wM * 1.22, hM * 1.30),
+        new T.MeshBasicMaterial({ color: 0x060b18, transparent: true, opacity: .62,
+                                  depthTest: false, depthWrite: false }));
+      dim.renderOrder = 21;
       setAnchor(true);
-      scene.add(mesh);
+      scene.add(dim); scene.add(mesh);
       const sc = core.exp.scenes[core.cur], st = sc.stations[k];
-      /* Whatever they last had in this question, wherever they typed it. Typing
-       * a program by pointing at keys takes minutes; losing it is the worst
-       * thing a headset can do to someone, and it is the same draft a computer
-       * would hand back because it is kept in the same progress. */
       const start = (core.getDraft ? core.getDraft(k, list[n], task) : null) || task.starter || "";
-      vrCode = { task, model: ACT.model(task), k, list, n, st,
-                 cv, cx, tex, mesh, text: start, caret: start.length,
-                 shift: false, out: "", err: false, attempts: 0, best: 0, hintStep: 0,
-                 tests: [], result: "", resultOk: false, tryLine: "", done: false,
-                 busy: true, state: ACT.SAY.starting };
-      vrCode.caret = vrCode.text.length;
+      vrCode = {
+        task, model: ACT.model(task), k, list, n, st,
+        cv, cx, tex, mesh, dim,
+        text: start, caret: caretAt(start, task), shift: false,
+        out: "", err: false, attempts: 0, best: 0, done: false,
+        tests: [], result: "", resultOk: false, tryLine: "",
+        busy: true, runtimeBad: false, runtimeNote: ACT.SAY.starting,
+        scrollLeft: 0, scrollOut: 0, scrollEditor: 0,
+        overlay: null, hintStep: 0, refAt: 0, speaking: false,
+        hover: null, hits: [], caretMap: null
+      };
       layout();
       startRuntime();
       listenForRealKeys();
     }
 
-    /* ---- a keyboard someone has actually paired with the headset ----
-     *
-     * Pointing at pictures of keys is slow, and a pupil who has a Bluetooth
-     * keyboard should not have to. Where the browser delivers key events to a
-     * page that is in an immersive session, they are taken here; where it does
-     * not, nothing happens and the drawn keyboard is still the whole of it.
-     * Nothing requires one: no question in the course can only be answered with
-     * a real keyboard.
-     *
-     * Whether Quest Browser delivers these while immersive is NOT known - it
-     * has not been tried on a headset from here, and docs/VR-HEADSET-QA.md asks
-     * for it rather than claiming it. */
-    let offKeys = null;
-    function listenForRealKeys() {
-      if (offKeys) return;
-      const onKey = (e) => {
-        if (!vrCode || vrCode.busy) return;
-        if (e.ctrlKey || e.metaKey || e.altKey) return;
-        const k = e.key;
-        if (k === "Enter") typeKey("Enter");
-        else if (k === "Backspace") typeKey("Back");
-        else if (k === "Tab") typeKey("Tab");
-        else if (k === "ArrowLeft") typeKey("←");
-        else if (k === "ArrowRight") typeKey("→");
-        else if (k === "ArrowUp") typeKey("↑");
-        else if (k === "ArrowDown") typeKey("↓");
-        else if (k === "Home") typeKey("Home");
-        else if (k === "End") typeKey("End");
-        else if (k.length === 1) {
-          // typed as itself, not through the drawn keyboard's shift state
-          const v = vrCode;
-          v.text = v.text.slice(0, v.caret) + k + v.text.slice(v.caret);
-          v.caret += k.length; keepDraft(); paintCode();
-        } else return;
-        e.preventDefault();
-      };
-      document.addEventListener("keydown", onKey, true);
-      offKeys = () => { document.removeEventListener("keydown", onKey, true); offKeys = null; };
-    }
-
-    // Everything the workspace shows, placed and painted.
+    // Place the screen and the keyboard, and draw them.
     function layout() {
       const v = vrCode; if (!v) return;
-      seat(v.mesh, SEAT.code);
-      showTask(); seat(taskPanel.mesh, SEAT.task);
-      showSide(); if (sidePanel.open) seat(sidePanel.mesh, SEAT.side);
-      showKeyboard(); seat(kbPanel.mesh, SEAT.keys);
-      if (padPanel.open) seat(padPanel.mesh, SEAT.pad);
-      paintCode();
+      atAnchor(v.mesh, SEAT.screen.dist, SEAT.screen.pitch, SEAT.screen.yaw);
+      v.dim.position.copy(v.mesh.position); v.dim.quaternion.copy(v.mesh.quaternion);
+      v.dim.translateZ(-0.02);
+      showKeyboard();
+      atAnchor(kbPanel.mesh, SEAT.keys.dist, SEAT.keys.pitch, SEAT.keys.yaw);
+      paint();
     }
-    /* For a pupil who has turned round, or who started the lesson lying back and
-     * is now sitting up. The workspace is taken to wherever they are looking
-     * now, with every character of their program still in it. */
+    /* One control, moving one workspace. The screen and the keyboard go
+     * together to wherever the pupil is looking now, with the program in it. */
     function recentre() {
       if (!vrCode) return;
-      setAnchor(true);
-      layout();
-      toast("Workspace moved to where you are looking.");
+      setAnchor(true); layout();
+      toast("Screen and keyboard moved to where you are looking.");
     }
 
-    // ---- what to do: the stage, the steps, the brief. Above.
-    function showTask() {
+    // ---- everything the screen needs to draw itself
+    function state() {
+      const v = vrCode, M = v.model;
+      const may = v.done || !core.gated || !core.gated() || core.reviewMode
+                  || core.isComplete(v.k, v.list[v.n]);
+      return {
+        model: M, task: v.task,
+        title: `${v.st.label === "?" ? "" : v.st.label + "  "}${v.st.name}`,
+        /* The page heads a code question in green whatever station it is in -
+         * shell(head, "#50dc96") in js/player.js - so this does too. */
+        titleColour: null,
+        n: v.n, total: v.list.length,
+        dots: v.list.map((qi, j) => ({ now: j === v.n, done: core.isDone ? core.isDone(v.k, qi) : false })),
+        text: v.text, caret: v.caret,
+        out: v.out, err: v.err, beforeRun: ACT.SAY.beforeRun,
+        busy: v.busy, runtimeDown: v.runtimeBad, runtimeNote: v.runtimeNote,
+        result: v.result, resultOk: v.resultOk, tryLine: v.tryLine, tests: v.tests,
+        attempts: v.attempts, againLabel: ACT.SAY.again,
+        nudgeHint: !v.done && v.attempts >= 2,
+        mayGoOn: may, isLast: v.n === v.list.length - 1,
+        canRef: !!window.R360Ref, canSpeak: !!window.speechSynthesis, speaking: v.speaking,
+        scrollLeft: v.scrollLeft, scrollOut: v.scrollOut, scrollEditor: v.scrollEditor,
+        overlay: v.overlay, hover: v.hover
+      };
+    }
+    function paint() {
       const v = vrCode; if (!v) return;
-      const M = v.model, b = [];
-      b.push({ p: `${M.stage}  ·  Activity ${v.n + 1} of ${v.list.length}`, size: 27, bold: true, color: STAGE_COL(M) });
-      b.push({ p: M.says, size: 24, color: COL.soft });
-      b.push({ gap: 10 });
-      M.steps.forEach((s, i) => b.push({ rich: s, n: i + 1, size: 30 }));
-      if (M.brief.length) {
-        b.push({ gap: 8 });
-        M.brief.forEach(x => b.push({ rich: x, bullet: true, size: 25, color: COL.soft, tight: true }));
-      }
-      taskPanel.set({ title: `${v.st.label === "?" ? "" : v.st.label + "  "}${v.st.name}`,
-                      color: v.st.col || COL.ok, blocks: b });
-    }
-    /* The chips on the screen are coloured by stage - a Try it reads as an
-     * invitation and a Challenge as the hard one - and the same colours are
-     * used here so the two are recognisably the same question. */
-    function STAGE_COL(M) {
-      if (M.opt) return COL.ok;
-      if (M.kind === "try" || M.kind === "predict") return COL.info;
-      if (M.kind === "debug") return "#ffb36b";
-      if (M.kind === "change" || M.kind === "complete") return "#cdb8ff";
-      return COL.edge;
-    }
-
-    /* ---- the reference panel: a turn of the head to the right ----
-     *
-     * The screen keeps the worked example and the marking in the same column,
-     * because they are the two things a pupil looks away from their program to
-     * read. So they are one surface in here as well: the marking goes on top
-     * when there is any, and the example is underneath it, still there.
-     */
-    function showSide() {
-      const v = vrCode; if (!v) return;
-      const M = v.model;
-      const marked = v.tryLine || v.tests.length || v.result;
-      if (!M.teach && !marked) { sidePanel.hide(); return; }
-      const b = [];
-      if (marked) {
-        if (v.result) b.push({ p: v.result, size: 25, bold: true, color: v.resultOk ? COL.ok : COL.bad });
-        if (v.tryLine) b.push({ p: v.tryLine, size: 22, color: COL.edge });
-        // every test, pass or fail, the way the screen lists them
-        v.tests.forEach(t => {
-          b.push({ kv: [(t.given ? "Input " + t.given + " → " : "") + "expected " + t.want, "",
-                        [t.ok ? "g" : "r", t.ok ? "✓" : "✗"]] });
-          if (!t.ok && t.why) b.push({ p: t.why, size: 20, color: COL.soft, tight: true });
-        });
-        if (M.teach) b.push({ gap: 12 });
-      }
-      if (M.teach) {
-        b.push({ p: "LEARN", size: 19, color: COL.info });
-        b.push({ rich: M.teach.say, size: 24 });
-        if (M.teach.code.length) b.push({ gap: 4 }, { code: M.teach.code.join("\n"), size: 22 });
-        if (M.teach.out.length) b.push({ p: "shows", size: 19, color: COL.info },
-                                       { p: M.teach.out.join("\n"), size: 22, mono: true, tight: true });
-        M.teach.lines.forEach(l => b.push({ rich: "`" + l.code + "` — " + l.note, size: 20, color: COL.soft, tight: true }));
-      }
-      sidePanel.set({ title: marked ? (v.resultOk ? "Marked" : "How it went") : "Learn",
-                      color: marked ? (v.resultOk ? COL.ok : COL.edge) : COL.info, blocks: b });
-    }
-
-    // ---- your program: the editor, the required run, the output. Ahead.
-    function paintCode() {
-      const v = vrCode; if (!v) return;
-      const M = v.model, x = v.cx, W = CW, H = CH;
-      x.setTransform(1, 0, 0, 1, 0, 0);
-      x.fillStyle = COL.deep; x.fillRect(0, 0, W, H);
-      rr(x, 2, 2, W - 4, H - 4, 20); x.lineWidth = 5; x.strokeStyle = COL.line; x.stroke();
-
-      // the header, so a pupil can see which question they are in
-      x.fillStyle = COL.bg; rr(x, 2, 2, W - 4, 58, 20); x.fill();
-      x.fillStyle = COL.edge; x.font = `700 26px ${FONT}`; x.textAlign = "left"; x.textBaseline = "middle";
-      x.fillText("YOUR PROGRAM", 26, 32);
-      x.fillStyle = COL.soft; x.font = `22px ${FONT}`; x.textAlign = "right";
-      x.fillText(`${M.stage} · ${v.n + 1} of ${v.list.length}`, W - 26, 32);
-
-      // the program
-      const SZ = 27, LH = 34, PADX = 78, TOP = 76, SHOWN = 11;
-      const lines = v.text.split("\n");
-      const before = v.text.slice(0, v.caret).split("\n");
-      const cl = before.length - 1, cc = before[before.length - 1].length;
-      x.font = SZ + "px Consolas, monospace";
-      const chw = x.measureText("0").width;
-      const first = Math.max(0, Math.min(cl - SHOWN + 3, lines.length - SHOWN));
-      for (let i = first; i < Math.min(lines.length, first + SHOWN); i++) {
-        const y = TOP + (i - first) * LH;
-        x.font = (SZ - 5) + "px Consolas, monospace"; x.fillStyle = "#4a5a78";
-        x.textAlign = "right"; x.textBaseline = "top"; x.fillText(String(i + 1), PADX - 20, y + 5);
-        x.textAlign = "left";
-        let px = PADX;
-        for (const tok of R360Py.tokens(lines[i])) {
-          x.font = SZ + "px Consolas, monospace"; x.fillStyle = tok.c;
-          x.fillText(tok.t, px, y); px += x.measureText(tok.t).width;
-        }
-        if (i === cl) { x.fillStyle = COL.edge; x.fillRect(PADX + cc * chw, y - 2, 3, SZ + 8); }
-      }
-      if (lines.length > first + SHOWN)
-        { x.fillStyle = COL.soft; x.font = `20px ${FONT}`; x.textAlign = "right";
-          x.fillText(`${lines.length - first - SHOWN} more line(s) below`, W - 26, TOP + SHOWN * LH - 24); }
-
-      /* What one run has to display, directly above what this run did display,
-       * so the two can be compared without looking away. This is the panel that
-       * stops a pupil guessing whether a value is typed in or written into the
-       * program, and it was missing from the headset entirely. */
-      let y = TOP + SHOWN * LH + 8;
-      if (M.run) {
-        const h = 36 + Math.max(M.run.given.length || 1, M.run.shows.length) * 26;
-        rr(x, 22, y, W - 44, h, 12); x.fillStyle = COL.bg; x.fill();
-        x.lineWidth = 2; x.strokeStyle = COL.line; x.stroke();
-        x.fillStyle = COL.edge; x.font = `700 19px ${FONT}`; x.textAlign = "left"; x.textBaseline = "top";
-        x.fillText("ONE RUN OF YOUR PROGRAM", 36, y + 10);
-        x.font = `19px ${FONT}`; x.fillStyle = COL.soft;
-        x.fillText("You type", 36, y + 36); x.fillText("It displays", 36, y + 62);
-        x.font = "21px Consolas, monospace"; x.fillStyle = COL.fg;
-        x.fillText(M.run.given.length ? M.run.given.join(", ") : "nothing", 180, y + 35);
-        x.fillStyle = COL.ok;
-        M.run.shows.forEach((s, i) => x.fillText(s, 180, y + 61 + i * 24));
-        y += h + 10;
-      }
-
-      // the console
-      x.fillStyle = COL.edge; x.font = `700 19px ${FONT}`; x.textAlign = "left"; x.textBaseline = "top";
-      x.fillText("PROGRAM OUTPUT", 26, y); y += 26;
-      const conH = H - y - 86;
-      rr(x, 22, y, W - 44, conH, 12); x.fillStyle = "#0a1120"; x.fill();
-      x.lineWidth = 2; x.strokeStyle = COL.line; x.stroke();
-      /* The whole message, wrapped. Python's errors are said in three parts -
-       * its own words, what they probably mean, and what to look at - and the
-       * headset used to cut that to four lines of ninety characters, which threw
-       * away the part that teaches. */
-      x.font = "20px Consolas, monospace";
-      const wrapped = [];
-      (v.out || ACT.SAY.beforeRun).split("\n").forEach(l => {
-        let cur = "";
-        (l.split(" ")).forEach(w => {
-          const t2 = cur ? cur + " " + w : w;
-          if (x.measureText(t2).width > W - 92 && cur) { wrapped.push(cur); cur = w; } else cur = t2;
-        });
-        wrapped.push(cur);
-      });
-      const room = Math.floor((conH - 20) / 25);
-      wrapped.slice(0, room).forEach((l, i) => {
-        x.fillStyle = v.err ? "#ff9a9a" : (v.out ? COL.fg : "#4a5a78");
-        x.fillText(l, 36, y + 12 + i * 25);
-      });
-      if (wrapped.length > room) {
-        x.fillStyle = COL.soft; x.font = `18px ${FONT}`; x.textAlign = "right";
-        x.fillText(`${wrapped.length - room} more line(s)`, W - 36, y + conH - 26);
-      }
-
-      // what the runtime is doing, said where it can be seen
-      if (v.state) {
-        x.textAlign = "left"; x.textBaseline = "middle";
-        x.font = `700 23px ${FONT}`;
-        x.fillStyle = v.runtimeBad ? COL.bad : COL.edge;
-        x.fillText(v.state, 26, H - 44);
-      }
+      const c = v.cx;
+      c.setTransform(SS, 0, 0, SS, 0, 0);
+      const out = SCR.draw(c, state());
+      v.hits = out.hits; v.caretMap = out.caret; v.leftContentH = out.leftContentH;
       v.tex.needsUpdate = true;
     }
 
-    // ---------------- the runtime, and what it is doing ----------------
+    // ---------------- the runtime ----------------
     /* Python is about twelve megabytes and a headset is usually on the slowest
-     * network in the building. The wait is said, with what it is doing and how
-     * long it has been; a failure is said too, and offers a key to try again,
-     * because what a pupil met before was "Starting Python..." for ever. */
+     * network in the building. The wait is said inside the screen, where the
+     * page says it, and so is a failure - not in a floating card. */
     let offPyState = null;
     function startRuntime() {
       const v = vrCode; if (!v) return;
-      v.busy = true; v.runtimeBad = false; v.state = ACT.SAY.starting;
+      v.busy = true; v.runtimeBad = false; v.runtimeNote = ACT.SAY.starting;
       if (offPyState) { offPyState(); offPyState = null; }
-      offPyState = R360Py.on((s, st) => {
+      offPyState = R360Py.on((s2, st) => {
         if (!vrCode) { if (offPyState) { offPyState(); offPyState = null; } return; }
-        if (s === "loading") {
-          vrCode.state = (st.note || ACT.SAY.starting) + (st.seconds > 5 ? ` (${st.seconds}s)` : "") + "…";
-          vrCode.runtimeBad = false; paintCode();
-        } else if (s === "error") runtimeDown(st.error);
+        if (s2 === "loading") {
+          vrCode.runtimeNote = (st.note || ACT.SAY.starting)
+            + (st.seconds > 5 ? ` (${st.seconds}s)` : "") + "…";
+          vrCode.runtimeBad = false; paint();
+        } else if (s2 === "error") runtimeDown(st.error);
       });
-      showKeyboard(); paintCode();
-      R360Py.ready().then(r => {
+      paint();
+      R360Py.ready().then(r2 => {
         if (!vrCode) return;
-        if (r && r.ok === false) { runtimeDown(r.error); return; }
-        vrCode.busy = false; vrCode.runtimeBad = false; vrCode.state = "";
-        showKeyboard(); paintCode();
+        if (r2 && r2.ok === false) { runtimeDown(r2.error); return; }
+        vrCode.busy = false; vrCode.runtimeBad = false; vrCode.runtimeNote = "";
+        paint();
       });
     }
     function runtimeDown(msg) {
@@ -855,25 +685,21 @@
       const D = ACT.SAY.down;
       v.busy = true; v.runtimeBad = true;
       v.diagCode = ((R360Py.status && R360Py.status.diag) || R360Py.diagnostic()).code;
-      v.state = D.title + " — " + D.report + " " + v.diagCode;
+      v.runtimeNote = D.title + " — " + D.report + " " + v.diagCode;
       v.err = true;
-      /* What has NOT happened, what to check, and the code to report. No
-       * traceback and no path: a pupil reads this out loud in a classroom. */
       v.out = [D.body, D.connection, ACT.SAY.runtimeStillHelp, D.report + " " + v.diagCode].join("\n\n");
-      showKeyboard(); paintCode();
+      paint();
     }
 
     // ---------------- typing ----------------
     function typeKey(key) {
-      const v = vrCode; if (!v || v.busy) return;
+      const v = vrCode; if (!v || v.busy || v.overlay) return;
       const ins = (t) => { v.text = v.text.slice(0, v.caret) + t + v.text.slice(v.caret); v.caret += t.length; };
       if (key === "←") v.caret = Math.max(0, v.caret - 1);
       else if (key === "→") v.caret = Math.min(v.text.length, v.caret + 1);
       else if (key === "↑" || key === "↓") {
-        // up and down a line, keeping the column, as any editor does
-        const before = v.text.slice(0, v.caret).split("\n");
-        const lines = v.text.split("\n");
-        const li = before.length - 1, col = before[before.length - 1].length;
+        const bef = v.text.slice(0, v.caret).split("\n"), lines = v.text.split("\n");
+        const li = bef.length - 1, col = bef[bef.length - 1].length;
         const to = key === "↑" ? li - 1 : li + 1;
         if (to < 0 || to >= lines.length) return;
         let at = 0; for (let i = 0; i < to; i++) at += lines[i].length + 1;
@@ -882,13 +708,10 @@
       else if (key === "Home") v.caret = v.text.lastIndexOf("\n", v.caret - 1) + 1;
       else if (key === "End") { const nx = v.text.indexOf("\n", v.caret); v.caret = nx < 0 ? v.text.length : nx; }
       else if (key === "Back") { if (v.caret > 0) { v.text = v.text.slice(0, v.caret - 1) + v.text.slice(v.caret); v.caret--; } }
-      /* Clearing a line a character at a time with a pointer is the slowest
-       * thing in here, and it is what a pupil does most when they are fixing a
-       * mistake. One press takes the line out. */
       else if (key === "ClearLine") {
         const a = v.text.lastIndexOf("\n", v.caret - 1) + 1;
-        const nx = v.text.indexOf("\n", v.caret), b = nx < 0 ? v.text.length : nx;
-        v.text = v.text.slice(0, a) + v.text.slice(b); v.caret = a;
+        const nx = v.text.indexOf("\n", v.caret), b2 = nx < 0 ? v.text.length : nx;
+        v.text = v.text.slice(0, a) + v.text.slice(b2); v.caret = a;
       }
       else if (key === "Enter") {
         // keep this line's indentation, and add one after a colon, exactly as
@@ -902,7 +725,7 @@
       else if (key === "Shift") { v.shift = !v.shift; showKeyboard(); return; }
       else { ins(v.shift ? key.toUpperCase() : key); if (v.shift) { v.shift = false; showKeyboard(); } }
       keepDraft();
-      paintCode();
+      paint();
     }
     /* Kept as they type, not when they close. A headset that runs out of
      * battery, a session that ends, a pupil who takes it off and walks away -
@@ -915,53 +738,15 @@
       if (now) put(); else draftT = setTimeout(put, 600);
     }
 
-    /* A headset has no keyboard, and the system one is not offered while a page
-     * is in immersive VR, so this is one. A physical keyboard paired with the
-     * headset types into it as well: the characters arrive as ordinary key
-     * events on the page, and there is no reason to make someone who has one
-     * point at pictures of keys. */
+    /* The keyboard, and nothing else. Run, Check, Hint, the reference, Read
+     * aloud and I need help are on the screen, where they are on the page; this
+     * is for typing. */
     function showKeyboard() {
       const v = vrCode; if (!v) return;
-      const M = v.model;
       const row = keys => ({ row: keys.map(ch => ({
         btn: ch === " " ? "Space" : (v.shift && /[a-z]/.test(ch) ? ch.toUpperCase() : ch),
-        id: "key" + ch, center: true, size: 26, onClick: () => typeKey(ch) })) });
-      const wait = v.busy && !v.runtimeBad;
-      const act = [];
-      act.push({ btn: wait ? "…" : "▶ Run", id: "crun", center: true, size: 26, disabled: v.busy, onClick: runCodeVR });
-      // A Try it has nothing to mark: running it is the activity.
-      if (!M.noCheck) act.push({ btn: wait ? "…" : "Check my answer", id: "ccheck", center: true, size: 26, disabled: v.busy, onClick: checkCodeVR });
-      if (M.hasHint) act.push({ btn: "Hint", id: "chint", center: true, size: 26, onClick: showHint });
-      if (window.R360Ref) act.push({ btn: "Syntax reminder", id: "cref", center: true, size: 24, onClick: showRef });
-      if (window.speechSynthesis) act.push({ btn: speaking ? "■ Stop" : "🔊 Read aloud", id: "csay", center: true, size: 24, state: speaking ? "on" : "", onClick: sayTask });
-      // Asking is an ordinary thing to do, and it is on the screen, so it is here.
-      act.push({ btn: "I need help", id: "chelp", center: true, size: 26, onClick: showHelp });
-      if (v.runtimeBad) act.push({ btn: ACT.SAY.down.buttons.retry, id: "cretry", center: true, size: 26,
-        onClick: () => { R360Py.reset(); startRuntime(); } });
-
-      /* The way on, under the same rule as the screen: it appears when the
-       * activity is finished, and short of that the pupil goes round again.
-       * Before this there was no way on at all in the headset - Close was the
-       * only button - so a station could not be worked through in here. */
-      const nav = [];
-      const last = v.n === v.list.length - 1;
-      const may = !core.gated || !core.gated() || core.reviewMode || core.isComplete(v.k, v.list[v.n]);
-      if (v.done || may) nav.push({ btn: last ? ACT.SAY.finish : ACT.SAY.next, id: "cnext", primary: true, center: true, size: 26,
-        onClick: () => { const k = v.k, list = v.list, n = v.n; closeCodeVR(); last ? finish(k) : run(k, list, n + 1); } });
-      /* Not finished yet, and they have tried: the way on stays in its place so
-       * it can be seen not to be available, and says what to do instead. The
-       * same rule and the same words as the screen - there is no skipping in
-       * this course, in here either. */
-      else if (v.attempts) nav.push({ btn: ACT.SAY.again, id: "cagain", center: true, size: 26, disabled: true });
-      nav.push({ btn: "⌖ Recentre", id: "crecentre", center: true, size: 24, onClick: recentre });
-      nav.push({ btn: "Close", id: "cclose", center: true, size: 26, onClick: closeCodeVR });
-
-      /* Where everything is, said once and left there, rather than as a message
-       * that appears over the program and then goes away. A pupil who puts the
-       * headset down for a week comes back to the same sentence. */
-      const whereLine = { p: "Look up for the task  ·  left for the example and your marks  ·  ⌖ Recentre moves it all to where you are looking",
-                          size: 21, align: "center", color: COL.soft };
-      kbPanel.set({ color: COL.line, scale: .7, blocks: [
+        id: "key" + ch, center: true, size: 30, onClick: () => typeKey(ch) })) });
+      kbPanel.set({ color: COL.line, scale: .62, blocks: [
         row(KEYS[0]), row(KEYS[1]), row(KEYS[2]), row(KEYS[3]), row(KEYS[4]), row(KEYS[5]), row(KEYS[6]),
         { row: [
           { btn: v.shift ? "SHIFT on" : "Shift", id: "kshift", center: true, size: 24, state: v.shift ? "on" : "", onClick: () => typeKey("Shift") },
@@ -971,38 +756,128 @@
           { btn: "→", id: "kright", center: true, size: 24, onClick: () => typeKey("→") },
           { btn: "↑", id: "kup", center: true, size: 24, onClick: () => typeKey("↑") },
           { btn: "↓", id: "kdown", center: true, size: 24, onClick: () => typeKey("↓") },
-          { btn: "Line start", id: "khome", center: true, size: 22, onClick: () => typeKey("Home") },
-          { btn: "Line end", id: "kend", center: true, size: 22, onClick: () => typeKey("End") },
-          { btn: "Clear line", id: "kclear", center: true, size: 22, onClick: () => typeKey("ClearLine") },
+          { btn: "Line start", id: "khome", center: true, size: 21, onClick: () => typeKey("Home") },
+          { btn: "Line end", id: "kend", center: true, size: 21, onClick: () => typeKey("End") },
+          { btn: "Clear line", id: "kclear", center: true, size: 21, onClick: () => typeKey("ClearLine") },
           { btn: "Back", id: "kback", center: true, size: 24, onClick: () => typeKey("Back") },
           { btn: "Enter", id: "kenter", center: true, size: 24, onClick: () => typeKey("Enter") }
-        ] },
-        { row: act }, { row: nav }, whereLine] });
+        ] }] });
+    }
+
+    /* A keyboard someone has paired with the headset types into the editor as
+     * well, where the browser delivers the events to an immersive page. Nothing
+     * requires one, and whether Quest Browser delivers them is not known from
+     * here - docs/VR-HEADSET-QA.md asks for it rather than claiming it. */
+    let offKeys = null;
+    function listenForRealKeys() {
+      if (offKeys) return;
+      const onKey = (e) => {
+        if (!vrCode || vrCode.busy || vrCode.overlay) return;
+        if (e.ctrlKey || e.metaKey || e.altKey) return;
+        const kk = e.key;
+        const named = { Enter: "Enter", Backspace: "Back", Tab: "Tab", ArrowLeft: "←",
+                        ArrowRight: "→", ArrowUp: "↑", ArrowDown: "↓",
+                        Home: "Home", End: "End" }[kk];
+        if (named) typeKey(named);
+        else if (kk.length === 1) {
+          const v = vrCode;
+          v.text = v.text.slice(0, v.caret) + kk + v.text.slice(v.caret);
+          v.caret += kk.length; keepDraft(); paint();
+        } else return;
+        e.preventDefault();
+      };
+      document.addEventListener("keydown", onKey, true);
+      offKeys = () => { document.removeEventListener("keydown", onKey, true); offKeys = null; };
+    }
+
+    // ---------------- pointing at the screen ----------------
+    /* The screen's own hit areas are in layout coordinates, so a ray that meets
+     * the plane is turned into a point on the page and looked up there. Every
+     * target is grown beyond its paint - a controller ray is not a mouse. */
+    function screenHit(uv) {
+      const v = vrCode; if (!v) return null;
+      const x = uv.x * SCR.W, y = (1 - uv.y) * SCR.H;
+      // the last one drawn wins, so an overlay's buttons beat the window's
+      for (let i = v.hits.length - 1; i >= 0; i--) {
+        const h = v.hits[i];
+        if (x >= h.x && x <= h.x + h.w && y >= h.y && y <= h.y + h.h) return { hit: h, x, y };
+      }
+      return null;
+    }
+    function screenPress(uv) {
+      const v = vrCode; if (!v) return;
+      const f = screenHit(uv); if (!f) return;
+      if (f.hit.editor) { placeCaret(f.x, f.y); return; }
+      if (f.hit.disabled) return;
+      doAction(f.hit.id);
+    }
+    // pointing into the program puts the caret where they pointed
+    function placeCaret(x, y) {
+      const v = vrCode, m = v.caretMap; if (!m) return;
+      const lines = v.text.split("\n");
+      const row = Math.max(0, Math.min(lines.length - 1, m.first + Math.floor((y - m.y) / m.lh)));
+      const col = Math.max(0, Math.min(lines[row].length, Math.round((x - m.x) / m.chw)));
+      let at = 0; for (let i = 0; i < row; i++) at += lines[i].length + 1;
+      v.caret = at + col;
+      paint();
+    }
+    const SCROLL = 90;
+    function doAction(id) {
+      const v = vrCode; if (!v) return;
+      switch (id) {
+        case "close": closeCodeVR(); return;
+        case "recentre": recentre(); return;
+        case "run": runCodeVR(); return;
+        case "check": checkCodeVR(); return;
+        case "hint": openHint(); return;
+        case "help": openHelp(); return;
+        case "ref": openRef(); return;
+        case "say": sayTask(); return;
+        case "retry": R360Py.reset(); startRuntime(); return;
+        case "next": {
+          const k = v.k, list = v.list, n = v.n, last = n === list.length - 1;
+          closeCodeVR(); last ? finish(k) : run(k, list, n + 1); return;
+        }
+        case "leftUp": v.scrollLeft = Math.max(0, v.scrollLeft - SCROLL); break;
+        case "leftDown": v.scrollLeft = Math.min(Math.max(0, (v.leftContentH || 0) - 300), v.scrollLeft + SCROLL); break;
+        case "outUp": v.scrollOut = Math.max(0, v.scrollOut - 4); break;
+        case "outDown": v.scrollOut += 4; break;
+        case "overUp": if (v.overlay) v.overlay.scroll = Math.max(0, (v.overlay.scroll || 0) - 120); break;
+        case "overDown": if (v.overlay) v.overlay.scroll = (v.overlay.scroll || 0) + 120; break;
+        case "overClose": v.overlay = null; closeDiagramVR(); break;
+        case "hmore": v.hintStep++; openHint(); return;
+        case "hhint": v.overlay = null; openHint(); return;
+        case "rprev": v.refAt--; openRef(); return;
+        case "rnext": v.refAt++; openRef(); return;
+        default: return;
+      }
+      paint();
     }
 
     // ---------------- running and marking ----------------
     async function runCodeVR() {
       const v = vrCode; if (!v || v.busy) return;
-      v.busy = true; v.state = ACT.SAY.running; showKeyboard(); paintCode();
+      v.busy = true; v.runtimeNote = ACT.SAY.running; paint();
       const M = v.model;
-      const r = await R360Py.run(v.text, { stdin: M.runInput.stdin.slice(), files: M.runInput.files, echo: true, timeoutMs: 6000 });
+      const r2 = await R360Py.run(v.text, { stdin: M.runInput.stdin.slice(), files: M.runInput.files,
+                                            echo: true, timeoutMs: 6000 });
       if (!vrCode) return;
-      if (r.noRuntime) { runtimeDown(r.error); return; }
-      v.err = !!r.error;
-      v.out = (r.stdout || "") + (r.error ? (r.stdout ? "\n" : "") + r.error : "");
+      if (r2.noRuntime) { runtimeDown(r2.error); return; }
+      v.err = !!r2.error;
+      v.out = (r2.stdout || "") + (r2.error ? (r2.stdout ? "\n" : "") + r2.error : "");
       if (!v.out.trim()) v.out = ACT.SAY.emptyOutput;
+      v.scrollOut = 0;
       // On a Try it the run is the activity, so a clean one finishes it.
       if (M.noCheck) {
-        if (!r.error && !v.done) {
+        if (!r2.error && !v.done) {
           v.best = core.marks(v.task);
           core.awardBest(v.k, v.list[v.n], v.best);
           v.done = true; v.resultOk = true; v.tryLine = "";
           v.result = ACT.SAY.doneHead + " " + ACT.SAY.doneTry(v.task);
-        } else if (r.error) { v.tryLine = ACT.SAY.tryBroken; }
+        } else if (r2.error) v.tryLine = ACT.SAY.tryBroken;
       }
-      v.busy = false; v.state = "";
-      showKeyboard(); showSide(); if (sidePanel.open) seat(sidePanel.mesh, SEAT.side);
-      paintCode();
+      v.busy = false; v.runtimeNote = "";
+      paint();
     }
 
     async function checkCodeVR() {
@@ -1013,149 +888,136 @@
       const refused = ACT.rules(v.task, v.text);
       if (refused) {
         v.resultOk = false; v.result = refused.head + " " + refused.text; v.tests = [];
-        showKeyboard(); showSide(); seat(sidePanel.mesh, SEAT.side); paintCode(); return;
+        paint(); return;
       }
-      v.busy = true; v.state = ACT.SAY.marking; showKeyboard(); paintCode();
+      v.busy = true; v.runtimeNote = ACT.SAY.marking; paint();
       const rows = []; let passed = 0;
       for (const t of tests) {
-        const r = await R360Py.run(v.text, { stdin: (t.in || []).slice(), files: t.files || {}, echo: false, timeoutMs: 6000 });
+        const r2 = await R360Py.run(v.text, { stdin: (t.in || []).slice(), files: t.files || {},
+                                              echo: false, timeoutMs: 6000 });
         if (!vrCode) return;
-        if (r.noRuntime) { runtimeDown(r.error); return; }
+        if (r2.noRuntime) { runtimeDown(r2.error); return; }
         const want = (t.out || []).join("\n");
-        const ok = !r.error && core.sameOutput(r.stdout, want);
+        const ok = !r2.error && core.sameOutput(r2.stdout, want);
         if (ok) passed++;
         rows.push({ ok, want, given: (t.in || []).join(", "),
-          why: ok ? "" : (r.error ? r.error.split("\n")[0]
-            : "your program printed " + ((r.stdout || "").trim() || "nothing")) + (t.why ? "  " + t.why : "") });
+          why: ok ? "" : (r2.error ? r2.error.split("\n")[0]
+            : "your program printed " + ((r2.stdout || "").trim() || "nothing")) + (t.why ? "  " + t.why : "") });
       }
       const g = ACT.grade(core.marks(v.task), passed, tests.length);
       // Same rule as on screen: keep trying, keep the best mark reached.
       v.attempts++;
       v.best = Math.max(v.best, g.got);
       core.awardBest(v.k, v.list[v.n], v.best);
-      v.busy = false; v.state = ""; v.tests = rows;
+      v.busy = false; v.runtimeNote = ""; v.tests = rows;
       v.done = g.all; v.resultOk = g.all;
       v.tryLine = ACT.SAY.tryLine(v.attempts, g.all);
       v.result = g.all ? ACT.SAY.doneHead + " " + ACT.SAY.doneAll(v.task, tests.length)
                        : ACT.SAY.missHead(passed, tests.length, v.best, g.max) + "  " + ACT.SAY.missText(v.task);
-      showKeyboard(); showSide(); seat(sidePanel.mesh, SEAT.side); paintCode();
+      paint();
       /* Three checks that have not worked is the moment to say, once, that
-       * asking the teacher is an ordinary thing to do. The same rule, and the
-       * same words, as the screen. */
-      if (!g.all && v.attempts === 3) showHelp();
+       * asking the teacher is an ordinary thing to do. */
+      if (!g.all && v.attempts === 3) openHelp();
     }
 
-    // ---------------- the ladder, and asking ----------------
+    // ---------------- the panes over the screen ----------------
     /* A hint is a ladder, not a door: one rung at a time, each asked for, and
      * the top of it is still only the technique on different data. The rungs
      * come from js/pyactivity.js, so they are the same rungs in the same order
-     * as the screen, and the animated one opens the diagram the way any diagram
-     * opens in here. The program stays where it is behind the panel. */
-    function showHint() {
+     * as the screen. The animated one plays the diagram the way any diagram
+     * plays in here, with the screen still behind it. */
+    function openHint() {
       const v = vrCode; if (!v) return;
       const rungs = ACT.hintLadder(v.task, d => !!(window.R360Diagrams && R360Diagrams.kinds.includes(d)));
       if (!rungs.length) return;
       v.hintStep = Math.min(Math.max(v.hintStep, 1), rungs.length);
-      const shown = rungs.slice(0, v.hintStep);
-      const b = [{ p: ACT.SAY.hintWhere(v.hintStep, rungs.length), size: 22, color: COL.soft }, { gap: 6 }];
-      shown.forEach((r, i) => {
-        b.push({ p: `Step ${i + 1} of ${rungs.length} — ${r.name}`, size: 24, bold: true, color: COL.edge });
-        if (r.kind === "say") b.push({ rich: r.text, size: 27 });
-        else if (r.kind === "code") b.push({ code: r.code.join("\n"), size: 24 });
-        else if (r.kind === "steps") r.steps.forEach(s => b.push({ rich: s, bullet: true, size: 24, tight: true }));
-        else if (r.kind === "diagram") b.push({ p: "Watch it work, then come back to your program.", size: 24, color: COL.soft });
-        b.push({ gap: 6 });
+      const blocks = [];
+      rungs.slice(0, v.hintStep).forEach((r2, i) => {
+        blocks.push({ rung: `Step ${i + 1} of ${rungs.length} — ${r2.name}` });
+        if (r2.kind === "say") blocks.push({ say: r2.text, big: true });
+        else if (r2.kind === "code") blocks.push({ code: r2.code.join("\n") });
+        else if (r2.kind === "steps") r2.steps.forEach(x2 => blocks.push({ say: x2 }));
+        else if (r2.kind === "diagram") blocks.push({ note: "It is playing in front of you. Watch it, then close this and come back to your program." });
+        blocks.push({ gap: 8 });
       });
       const top = rungs[v.hintStep - 1];
-      if (top && top.kind === "diagram") {
+      if (top && top.kind === "diagram")
         openDiagramVR({ id: "hint:" + top.diagram, dg: { diagram: top.diagram, title: "Hint: how this technique works" } });
-      }
-      const nav = [];
+      else closeDiagramVR();
+      const buttons = [{ id: "overClose", label: "Close hint" }];
       if (v.hintStep < rungs.length)
-        nav.push({ btn: ACT.SAY.hintMore(rungs.length - v.hintStep), id: "hmore", primary: true, center: true, size: 25,
-          onClick: () => { v.hintStep++; showHint(); } });
-      nav.push({ btn: "Close hint", id: "hclose", center: true, size: 25, onClick: closePad });
-      b.push({ p: ACT.SAY.hintKept, size: 21, color: COL.soft }, { row: nav });
-      padPanel.set({ title: "Hint", color: COL.edge, onClose: closePad, blocks: b });
-      seat(padPanel.mesh, SEAT.pad);
+        buttons.push({ id: "hmore", label: ACT.SAY.hintMore(rungs.length - v.hintStep), primary: true });
+      v.overlay = { kind: "hint", title: "Hint", lead: ACT.SAY.hintWhere(v.hintStep, rungs.length),
+                    blocks, buttons, foot: ACT.SAY.hintKept, scroll: 0, closeLabel: "Close hint" };
+      paint();
     }
     /* Asking for help says to ask, says the question still has to be finished,
      * and says nobody has been told - the same three paragraphs as the screen,
-     * out of the same place, because a headset that quietly unlocked the next
-     * question would be a way round the course rather than a way through it. */
-    function showHelp() {
+     * out of the same place. */
+    function openHelp() {
       const v = vrCode; if (!v) return;
-      const H = ACT.SAY.help;
-      const nav = [];
-      if (v.model.hasHint) nav.push({ btn: H.buttons.hint, id: "hhint", center: true, size: 25, onClick: () => { closePad(); showHint(); } });
-      nav.push({ btn: H.buttons.back, id: "hback", primary: true, center: true, size: 25, onClick: closePad });
-      padPanel.set({ title: H.title, color: COL.info, onClose: closePad, blocks: [
-        { p: H.lead, size: 22, color: COL.soft }, { gap: 6 },
-        { p: H.body[0], size: 27 }, { gap: 4 },
-        { p: H.body[1], size: 23, color: COL.soft },
-        { p: H.body[2], size: 23, color: COL.soft }, { gap: 6 },
-        { row: nav }] });
-      seat(padPanel.mesh, SEAT.pad);
+      const Hs = ACT.SAY.help;
+      const buttons = [{ id: "overClose", label: Hs.buttons.back, primary: true }];
+      if (v.model.hasHint) buttons.push({ id: "hhint", label: Hs.buttons.hint });
+      v.overlay = { kind: "help", title: Hs.title, lead: Hs.lead,
+                    blocks: [{ say: Hs.body[0], big: true }, { gap: 10 },
+                             { note: Hs.body[1] }, { note: Hs.body[2] }],
+                    buttons, foot: "", scroll: 0 };
+      paint();
     }
-    /* Everything the course has used so far, looked up as often as they like.
-     * The screen has this behind "Syntax reminder" and the headset did not, and
-     * a support that exists on one and not the other is the course changing
-     * when a pupil puts the headset on. One group at a time, because the whole
-     * reference on one panel would be unreadable at this distance. */
-    let refAt = 0;
-    function showRef() {
-      if (!window.R360Ref) return;
+    /* Everything the course has used so far, looked up as often as they like -
+     * the same reference the page opens behind Syntax reminder, a group at a
+     * time because the whole of it at once would not be readable. */
+    function openRef() {
+      const v = vrCode; if (!v || !window.R360Ref) return;
       const m = String(core.exp.id).match(/-l0*(\d+)/);
       const groups = R360Ref.upTo(m ? Number(m[1]) : 99);
       if (!groups.length) return;
-      refAt = Math.max(0, Math.min(refAt, groups.length - 1));
-      const g = groups[refAt];
-      const b = [{ p: "Everything the course has used so far.", size: 21, color: COL.soft },
-                 { p: g.name, size: 27, bold: true, color: COL.edge }];
+      v.refAt = Math.max(0, Math.min(v.refAt, groups.length - 1));
+      const g = groups[v.refAt];
+      const blocks = [{ rung: g.name }];
       g.items.forEach(it => {
-        b.push({ code: it.syntax, size: 22 });
-        b.push({ rich: it.what, size: 22, color: COL.soft, tight: true });
-        if (it.eg) b.push({ code: (Array.isArray(it.eg) ? it.eg : [it.eg]).join("\n"), size: 21 });
+        blocks.push({ code: it.syntax });
+        blocks.push({ say: it.what });
+        if (it.eg) blocks.push({ code: (Array.isArray(it.eg) ? it.eg : [it.eg]).join("\n") });
+        blocks.push({ gap: 6 });
       });
-      const nav = [
-        { btn: "‹ Back", id: "rprev", center: true, size: 23, disabled: refAt === 0, onClick: () => { refAt--; showRef(); } },
-        { btn: `${refAt + 1} of ${groups.length}`, id: "rwhere", center: true, size: 21, disabled: true },
-        { btn: "Next ›", id: "rnext", center: true, size: 23, disabled: refAt >= groups.length - 1, onClick: () => { refAt++; showRef(); } },
-        { btn: "Close", id: "rclose", center: true, size: 23, onClick: closePad }];
-      padPanel.set({ title: "Python syntax", color: COL.info, onClose: closePad, blocks: b.concat([{ row: nav }]) });
-      seat(padPanel.mesh, SEAT.pad);
+      v.overlay = { kind: "ref", title: "Python syntax",
+                    lead: "Everything the course has used so far.",
+                    blocks, scroll: 0, foot: `${v.refAt + 1} of ${groups.length}`,
+                    buttons: [{ id: "overClose", label: "Close" },
+                              { id: "rnext", label: "Next ›", disabled: v.refAt >= groups.length - 1 },
+                              { id: "rprev", label: "‹ Back", disabled: v.refAt === 0 }] };
+      paint();
     }
-
     /* Read aloud. Some pupils read code far more easily than they read English
-     * about code, and the screen offers this on every task. Spoken without the
+     * about code, and the page offers this on every task. Spoken without the
      * backticks, because a voice saying "store backtick 25 backtick" is worse
-     * than no voice at all - the same words the page speaks. */
-    let speaking = false;
+     * than no voice at all. */
     function sayTask() {
       const v = vrCode, speech = window.speechSynthesis;
       if (!v || !speech) return;
-      if (speaking || speech.speaking) { speech.cancel(); speaking = false; showKeyboard(); return; }
-      const flat = s => String(s == null ? "" : s).replace(/`([^`]*)`/g, "$1");
+      if (v.speaking || speech.speaking) { speech.cancel(); v.speaking = false; paint(); return; }
+      const flat = s2 => String(s2 == null ? "" : s2).replace(/`([^`]*)`/g, "$1");
       const words = flat(v.model.steps.join(" ") + " " + v.model.brief.join(" "));
       const u = new SpeechSynthesisUtterance(words);
       u.rate = 0.95; u.lang = "en-GB";
-      u.onend = u.onerror = () => { speaking = false; if (vrCode) showKeyboard(); };
+      u.onend = u.onerror = () => { if (vrCode) { vrCode.speaking = false; paint(); } };
       speech.cancel(); speech.speak(u);
-      speaking = true; showKeyboard();
+      v.speaking = true; paint();
     }
-
-    function closePad() { padPanel.hide(); closeDiagramVR(); }
 
     function closeCodeVR() {
       if (!vrCode) return;
       keepDraft(true); clearTimeout(draftT);
       try { if (window.speechSynthesis) window.speechSynthesis.cancel(); } catch (e) { /* none */ }
-      speaking = false;
       if (offPyState) { offPyState(); offPyState = null; }
       if (offKeys) offKeys();
-      scene.remove(vrCode.mesh); vrCode.tex.dispose(); vrCode = null;
-      kbPanel.hide(); taskPanel.hide(); sidePanel.hide(); padPanel.hide();
-      closeDiagramVR(); clearAnchor();
+      scene.remove(vrCode.mesh); scene.remove(vrCode.dim);
+      vrCode.tex.dispose(); vrCode.mesh.geometry.dispose(); vrCode.mesh.material.dispose();
+      vrCode.dim.geometry.dispose(); vrCode.dim.material.dispose();
+      vrCode = null;
+      kbPanel.hide(); closeDiagramVR(); clearAnchor();
       core.refreshSprites(); core.hud();
     }
 
@@ -1438,8 +1300,12 @@
        * point at are its own surfaces, so a stray trigger cannot open a station
        * behind the panels and throw a program away. The hint and the help sit in
        * front of the keys, and win, because they are over the top of them. */
-      if (vrCode) return { panels: [padPanel, diagPanel, kbPanel, taskPanel, sidePanel]
-        .filter(p => p.open).map(p => p.mesh).concat(menuBtn.open ? [menuBtn.mesh] : []), sprites: [], model: null };
+      /* While the Python screen is open the only things to point at are the
+       * screen itself, the keys, and a hint diagram if one is playing - so a
+       * stray trigger cannot open a station behind it and lose a program. */
+      if (vrCode) return { panels: [vrCode.mesh].concat(
+        [diagPanel, kbPanel].filter(p => p.open).map(p => p.mesh)),
+        sprites: [], model: null, screen: vrCode.mesh };
       if (qPanel.open) return { panels: vrBoard ? [qPanel.mesh, vrBoard.mesh] : [qPanel.mesh], sprites: [], model: null };   // questions are modal, like on the web page
       return { panels: [menuPanel, infoPanel, modelPanel, diagPanel, kbPanel, menuBtn].filter(p => p.open).map(p => p.mesh), sprites: core.sprites, model: vrModel };
     }
@@ -1465,6 +1331,7 @@
     }
     function select(c) {
       const h = c.userData.hover; if (!h || h.board) return;
+      if (h.screen) { pulse(c, .5, 30); screenPress(h.uv); return; }
       if (h.modelPart !== undefined) { pulse(c, .5, 30); showModelPanel(h.modelPart); return; }
       if (h.panel) { const hit = h.panel.hitAt(h.uv); if (hit && hit.fn) { pulse(c, .5, 30); hit.fn(); } return; }
       const u = h.sprite.userData; pulse(c, .5, 30);
@@ -1477,6 +1344,7 @@
       if (!menuBtn.open) drawMenuBtn();
       placeMenuButton(false);
       const hovered = new Map();
+      let screenHover = null;
       ctrls.forEach(c => {
         const ud = c.userData; if (!ud.source) { ud.dot.visible = false; return; }
         const h = hitFor(c);
@@ -1487,12 +1355,17 @@
             if (vrBoard && (!vrBoard.lastXY || Math.hypot(xy[0] - vrBoard.lastXY[0], xy[1] - vrBoard.lastXY[1]) > 3) && now - vrBoard.last > 30) { vrBoard.board.move(...xy); vrBoard.lastXY = xy; vrBoard.last = now; }
           }
           else if (h.modelPart !== undefined) { ud.hover = { modelPart: h.modelPart }; }
+          else if (h.object.userData.pyscreen) {
+            ud.hover = { screen: true, uv: h.uv.clone() };
+            const f = screenHit(h.uv);
+            screenHover = f && !f.hit.editor && !f.hit.disabled ? f.hit.id : null;
+          }
           else if (h.object.userData.panel) {
             const p = h.object.userData.panel, hit = p.hitAt(h.uv);
             ud.hover = { panel: p, uv: h.uv.clone() }; if (hit) hovered.set(p, hit.id);
           } else ud.hover = { sprite: h.object };
         } else { ud.hover = null; ud.line.scale.z = 3; ud.dot.visible = false; }
-        const prev = ud.lastId, now = ud.hover ? (ud.hover.board ? "board" : ud.hover.modelPart !== undefined ? "m" + ud.hover.modelPart : ud.hover.panel ? (ud.hover.panel.hitAt(ud.hover.uv) || {}).id : ud.hover.sprite.uuid) : null;
+        const prev = ud.lastId, now = ud.hover ? (ud.hover.screen ? "s:" + screenHover : ud.hover.board ? "board" : ud.hover.modelPart !== undefined ? "m" + ud.hover.modelPart : ud.hover.panel ? (ud.hover.panel.hitAt(ud.hover.uv) || {}).id : ud.hover.sprite.uuid) : null;
         if (now && now !== prev) pulse(c, .15, 12); ud.lastId = now;
         // snap turn with the thumbstick
         const gp = ud.source.gamepad;
@@ -1504,13 +1377,15 @@
         }
       });
       panels.forEach(p => p.open && p.setHover(hovered.get(p) || null));
+      // the screen draws its own hover, so it is only repainted when it changes
+      if (vrCode && vrCode.hover !== screenHover) { vrCode.hover = screenHover; paint(); }
       if (vrBoard && vrBoard.board.dirty) { vrBoard.tex.needsUpdate = true; vrBoard.board.dirty = false; }
     });
     core.sceneHooks.push(() => { if (core.inVR) { closeCodeVR(); closeAll(); closeModelVR(); } });
     window.__openVRCode = (k, i) => openCodeVR(k, [i], 0, core.exp.scenes[core.cur].stations[k].tasks[i]);
     // One activity of any kind, opened the way a station would open it.
     window.__openVRTask = (k, i) => run(k, [i], 0);
-    window.NVRVR = { get vrBoard() { return vrBoard; }, modelPanel, get vrModel() { return vrModel; }, openModelVR: n => { const sp = core.sprites.filter(x => x.userData.type === "model")[n]; if (sp) openModelVR(sp.userData); }, openDiagramVR: n => { const sp = core.sprites.filter(x => x.userData.type === "diagram")[n]; if (sp) openDiagramVR(sp.userData); }, diagPanel, get vrDiag() { return vrDiag; }, kbPanel, taskPanel, sidePanel, padPanel, SEAT, recentre, showHint, showHelp, get vrCode() { return vrCode; }, typeKey, runCodeVR, checkCodeVR, openCodeVR, atAnchor, setAnchor, clearAnchor, get anchor() { return anchor; }, get COL() { return Object.assign({}, COL); }, qPanel, infoPanel, menuPanel, menuBtn, toastPanel, enter, exitVR, closeAll, closeCodeVR };  // for testing
+    window.NVRVR = { get vrBoard() { return vrBoard; }, modelPanel, get vrModel() { return vrModel; }, openModelVR: n => { const sp = core.sprites.filter(x => x.userData.type === "model")[n]; if (sp) openModelVR(sp.userData); }, openDiagramVR: n => { const sp = core.sprites.filter(x => x.userData.type === "diagram")[n]; if (sp) openDiagramVR(sp.userData); }, diagPanel, get vrDiag() { return vrDiag; }, kbPanel, SEAT, recentre, openHint, openHelp, openRef, sayTask, doAction, screenHit, placeCaret, paint, state, get vrCode() { return vrCode; }, typeKey, runCodeVR, checkCodeVR, openCodeVR, atAnchor, setAnchor, clearAnchor, get anchor() { return anchor; }, get COL() { return Object.assign({}, COL); }, qPanel, infoPanel, menuPanel, menuBtn, toastPanel, enter, exitVR, closeAll, closeCodeVR };  // for testing
   }
   if (window.NVRCore) start(window.NVRCore);
   else document.addEventListener("nvr-ready", () => start(window.NVRCore), { once: true });

@@ -65,10 +65,12 @@ WHERE = r"""(() => {
       halfW: +(Math.atan((Math.max(w, h) / 2) / dist) * 180 / Math.PI).toFixed(1),
       halfH: +(Math.atan((h / 2) / dist) * 180 / Math.PI).toFixed(1) });
   };
-  place("task", NVRVR.taskPanel.mesh);
-  place("program", V ? V.mesh : null);
-  place("reference", NVRVR.sidePanel.mesh);
+  place("screen", V ? V.mesh : null);
   place("keys", NVRVR.kbPanel.mesh);
+  // one screen and one keyboard. Anything else open beside them is the design
+  // this replaced, and is reported rather than measured.
+  out.floating = ["qPanel", "infoPanel", "menuPanel", "modelPanel", "diagPanel"]
+    .filter(k => NVRVR[k] && NVRVR[k].open);
   // every thing a pupil has to point at, in degrees across
   const P = NVRVR.kbPanel, m = P.mesh;
   const dist = m.position.distanceTo(a.pos);
@@ -76,12 +78,15 @@ WHERE = r"""(() => {
   P.hits.forEach(h => out.targets.push({ id: h.id,
     w: +(Math.atan((h.w * mPerPx) / 2 / dist) * 2 * 180 / Math.PI).toFixed(2),
     h: +(Math.atan((h.h * mPerPx) / 2 / dist) * 2 * 180 / Math.PI).toFixed(2) }));
-  // and the smallest type on the task panel, the same way
-  const T = NVRVR.taskPanel, tm = T.mesh, td = tm.position.distanceTo(a.pos);
-  const tPerPx = tm.scale.x / T.W;
-  const sizes = (T.spec.blocks || []).filter(Boolean)
-    .map(b => (b.size || 32) * (T.spec.scale || 1)).filter(Boolean);
-  out.smallestText = +(Math.atan(Math.min(...sizes) * tPerPx / td) * 180 / Math.PI).toFixed(2);
+  /* And the smallest type on the screen, the same way. The screen is drawn in
+   * the page's own pixels, so 15px there is the body size the page uses - what
+   * matters is how big that ends up in the headset. */
+  const S = window.R360PyScreen, sm = V.mesh;
+  const sPerPx = sm.geometry.parameters.width / S.W;
+  const sd = sm.position.distanceTo(a.pos);
+  out.bodyText = +(Math.atan(15 * sPerPx / sd) * 180 / Math.PI).toFixed(2);
+  out.smallestText = +(Math.atan(12 * sPerPx / sd) * 180 / Math.PI).toFixed(2);
+  out.screenWide = +(Math.atan(sm.geometry.parameters.width / 2 / sd) * 2 * 180 / Math.PI).toFixed(1);
   return out;
 })()"""
 
@@ -142,11 +147,18 @@ def main():
            f"the smallest thing to point at is {small}° across ({', '.join(worst)}), "
            f"at least {MIN_TARGET}°")
         ok(g["smallestText"] >= MIN_TEXT,
-           f"the smallest type on the task panel is {g['smallestText']}°, at least {MIN_TEXT}°")
+           f"the smallest type on the screen is {g['smallestText']}°, at least {MIN_TEXT}°")
+        ok(g["bodyText"] >= 0.75,
+           f"body text is {g['bodyText']}° \u2014 about {round(g['bodyText'] * 25)} of a Quest's pixels")
+        ok(45 <= g["screenWide"] <= 90,
+           f"the screen is {g['screenWide']}° across: a large monitor, not a wall")
+        ok(not g["floating"],
+           f"nothing is floating beside the screen and the keyboard ({g['floating']})")
 
         # the workspace must stay where it was put, whatever the pupil does with
         # their head - that is the whole point of the anchor
         before = pg.evaluate("NVRVR.vrCode.mesh.position.toArray()")
+        kbBefore = pg.evaluate("NVRVR.kbPanel.mesh.position.toArray()")
         pg.evaluate("""(() => { const d = window.__dev;
           // move the head and turn it: the emulator's own position and
           // orientation, not a three.js object
@@ -163,6 +175,9 @@ def main():
         pg.evaluate("NVRVR.recentre()"); pg.wait_for_timeout(400)
         moved2 = math.dist(before, pg.evaluate("NVRVR.vrCode.mesh.position.toArray()"))
         ok(moved2 > 0.05, f"and Recentre did move it ({moved2:.2f} m)")
+        kbMoved = math.dist(kbBefore, pg.evaluate("NVRVR.kbPanel.mesh.position.toArray()"))
+        ok(kbMoved > 0.05,
+           f"and took the keyboard with it \u2014 one workspace, not two ({kbMoved:.2f} m)")
         ok(pg.evaluate("NVRVR.vrCode.text.length > 0"), "with the program still in it")
 
         # the menu button must not sit on the keys

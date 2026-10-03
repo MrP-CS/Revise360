@@ -68,17 +68,7 @@ SCREEN = r"""(() => {
 # would see and not what the code intended to show them.
 VRSHOW = r"""(() => {
   const v = NVRVR.vrCode; if (!v) return { open: false };
-  const kb = NVRVR.kbPanel, task = NVRVR.taskPanel, side = NVRVR.sidePanel;
-  const blocks = p => (p && p.open && p.spec ? (p.spec.blocks || []).filter(Boolean) : []);
-  const text = p => blocks(p).map(b => b.rich !== undefined ? b.rich
-                                  : b.code !== undefined ? b.code
-                                  : b.p !== undefined ? b.p
-                                  : b.kv ? b.kv.filter(x => typeof x === "string").join(" ") : "")
-                             .filter(s => s !== "");
-  // a backtick that survives into PLAIN text is one the pupil would see; in a
-  // rich block it is the mark the renderer turns into a boxed, coloured value
-  const anyBacktick = p => blocks(p).some(b => b && b.p !== undefined && /`/.test(String(b.p)));
-  // where each surface ended up, as degrees from where the pupil is looking
+  const st = NVRVR.state(), M = v.model, S = window.R360PyScreen;
   const a = NVRVR.anchor;
   const place = m => {
     if (!a || !m || !m.visible) return null;
@@ -88,31 +78,26 @@ VRSHOW = r"""(() => {
              yaw: Math.round(Math.atan2(Math.sin(yaw), Math.cos(yaw)) * 180 / Math.PI),
              pitch: Math.round(Math.asin(Math.max(-1, Math.min(1, d.y / d.length()))) * 180 / Math.PI) };
   };
-  const M = v.model;
   return {
     open: true,
-    task_panel:       text(task),
-    task_title:       task.open && task.spec ? task.spec.title : null,
-    side_panel:       text(side),
-    side_title:       side.open && side.spec ? side.spec.title : null,
-    stage_chip_shown: text(task).some(s => String(s).indexOf(M.stage) === 0),
-    steps_numbered:   blocks(task).filter(b => b.n).length,
-    teach_say_shown:  !!(M.teach && text(side).includes(M.teach.say)),
-    teach_code_shown: !!(M.teach && M.teach.code.length && text(side).includes(M.teach.code.join("\n"))),
-    teach_out_shown:  !!(M.teach && M.teach.out.length && text(side).includes(M.teach.out.join("\n"))),
+    stage: M.stage, says: M.says,
+    steps: M.steps, brief: M.brief,
+    teach_say_shown: !!M.teach,
+    teach_code_shown: !!(M.teach && M.teach.code.length),
+    teach_out_shown: !!(M.teach && M.teach.out.length),
     line_notes_shown: !!(M.teach && M.teach.lines.length),
-    run_eg_shown:     !!M.run,
-    starter:          v.text,
-    console:          v.out || "Press Run to try your program.",
-    state:            v.state,
-    buttons:          kb.hits.filter(h => !/^key/.test(h.id)).map(h => h.id),
-    keys:             kb.hits.filter(h => /^key/.test(h.id)).length,
-    raw_backticks:    anyBacktick(task) || anyBacktick(side),
-    layout:           { task: place(task.mesh), code: place(v.mesh),
-                        side: place(side.mesh), keys: place(kb.mesh) },
-    // the brand colours the panels are actually drawn in, and where they came from
-    palette:          NVRVR.COL,
-    palette_source:   "css/style.css :root, read at draw time"
+    run_eg_shown: !!M.run,
+    starter: v.text,
+    console: v.out || "Press Run to try your program.",
+    state: v.runtimeNote,
+    controls: v.hits.map(h => h.id),
+    keys: NVRVR.kbPanel.hits.filter(h => /^key/.test(h.id)).length,
+    // one screen and one keyboard, and nothing else
+    surfaces: { screen: place(v.mesh), keys: place(NVRVR.kbPanel.mesh) },
+    floating: ["qPanel", "infoPanel", "menuPanel", "modelPanel", "diagPanel"]
+      .filter(k => NVRVR[k] && NVRVR[k].open),
+    palette: NVRVR.COL,
+    palette_source: "css/style.css :root, read at draw time"
   };
 })()"""
 
@@ -199,26 +184,24 @@ def main():
         rec["vr"] = pg.evaluate(VRSHOW)
         pg.screenshot(path=str(OUTDIR / f"vr-{lid}.png"))
         # the hint ladder in the headset: one rung, then "show me more"
-        pg.evaluate("NVRVR.showHint()"); pg.wait_for_timeout(350)
+        pg.evaluate("NVRVR.openHint()"); pg.wait_for_timeout(350)
         for _ in range(5):
-            if not pg.evaluate("NVRVR.padPanel.hits.some(h => h.id === 'hmore')"): break
-            pg.evaluate("NVRVR.padPanel.hits.find(h => h.id === 'hmore').fn()")
-            pg.wait_for_timeout(350)
+            if not pg.evaluate("NVRVR.vrCode.hits.some(h => h.id === 'hmore')"): break
+            pg.evaluate("NVRVR.doAction('hmore')"); pg.wait_for_timeout(350)
         rec["vr"]["hint_rungs"] = pg.evaluate(
-            "(NVRVR.padPanel.spec.blocks||[]).filter(b => b && b.p && /^Step \\d+ of \\d+ \\u2014/.test(b.p)).map(b => b.p)")
-        rec["vr"]["hint_where"] = pg.evaluate(
-            "((NVRVR.padPanel.spec.blocks||[])[0]||{}).p || null")
-        rec["vr"]["hint_diagram"] = pg.evaluate("!!NVRVR.vrDiag")
+            "((NVRVR.vrCode.overlay||{}).blocks||[]).filter(b => b.rung).map(b => b.rung)")
+        rec["vr"]["hint_where"] = pg.evaluate("(NVRVR.vrCode.overlay||{}).lead || null")
         rec["vr"]["program_kept"] = pg.evaluate("!!NVRVR.vrCode && NVRVR.vrCode.text.length > 0")
+        rec["vr"]["hint_diagram"] = pg.evaluate("!!NVRVR.vrDiag")
         pg.screenshot(path=str(OUTDIR / f"vr-hint-{lid}.png"))
-        pg.evaluate("NVRVR.padPanel.hits.find(h => h.id === 'hclose').fn()"); pg.wait_for_timeout(300)
+        pg.evaluate("NVRVR.doAction('overClose')"); pg.wait_for_timeout(300)
         # and the teacher-help panel
-        pg.evaluate("NVRVR.showHelp()"); pg.wait_for_timeout(350)
-        rec["vr"]["teacher_help"] = pg.evaluate(
-            "(NVRVR.padPanel.spec.blocks||[]).filter(b => b && b.p).map(b => b.p)")
+        pg.evaluate("NVRVR.openHelp()"); pg.wait_for_timeout(350)
+        rec["vr"]["teacher_help"] = pg.evaluate("""((NVRVR.vrCode.overlay||{}).blocks||[])
+          .map(b => b.say !== undefined ? b.say : b.note !== undefined ? b.note : '').filter(Boolean)""")
         rec["vr"]["teacher_help_buttons"] = pg.evaluate(
-            "NVRVR.padPanel.hits.map(h => h.id)")
-        pg.evaluate("NVRVR.padPanel.hits.find(h => h.id === 'hback').fn()"); pg.wait_for_timeout(250)
+            "((NVRVR.vrCode.overlay||{}).buttons||[]).map(b => b.id)")
+        pg.evaluate("NVRVR.doAction('overClose')"); pg.wait_for_timeout(250)
         pg.screenshot(path=str(OUTDIR / f"vr-hint-{lid}.png"))
         rec["vr"]["page_errors"] = [e for e in errs if "WebGL" not in e][:5]
         pg.close(); b.close()

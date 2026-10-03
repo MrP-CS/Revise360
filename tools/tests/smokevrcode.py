@@ -26,9 +26,31 @@ iwer = open(os.environ.get("R360_IWER", "node_modules/iwer/build/iwer.js")).read
 
 AIM = """([panel, id]) => {
   const core = NVRCore, V = THREE.Vector3, r = core.renderer, dev = window.__dev;
-  const p = NVRVR[panel]; const h = p.hits.find(x => x.id === id);
-  if (!h) return 'nohit ' + id;
-  const u = (h.x + h.w / 2) / p.W, v = (h.y + h.h / 2) / p.canvas.height;
+  // the virtual screen is one surface with its own hit list; a panel is the
+  // keyboard. Both are pointed at the same way.
+  let p, h, W, Hh;
+  if (panel === 'screen') {
+    const S = window.R360PyScreen, C = NVRVR.vrCode;
+    if (!C) return 'noscreen';
+    h = C.hits.find(x => x.id === id); if (!h) return 'nohit ' + id;
+    p = { mesh: C.mesh }; W = S.W; Hh = S.H;
+    // the screen's plane carries its size in its geometry rather than its
+    // scale, so a point on it is found in metres, not in a unit square
+    const g = C.mesh.geometry.parameters;
+    const u2 = (h.x + h.w / 2) / W, v2 = (h.y + h.h / 2) / Hh;
+    const target2 = C.mesh.localToWorld(new V((u2 - .5) * g.width, (.5 - v2) * g.height, 0));
+    const head2 = r.xr.getCamera(core.cam).getWorldPosition(new V());
+    const q2 = new THREE.Quaternion().setFromUnitVectors(new V(0, 0, -1), target2.clone().sub(head2).normalize());
+    const c2 = dev.controllers.right;
+    c2.position.set(dev.position.x, dev.position.y, dev.position.z);
+    c2.quaternion.set(q2.x, q2.y, q2.z, q2.w);
+    return 'ok';
+  } else {
+    p = NVRVR[panel]; h = p.hits.find(x => x.id === id);
+    if (!h) return 'nohit ' + id;
+    W = p.W; Hh = p.canvas.height;
+  }
+  const u = (h.x + h.w / 2) / W, v = (h.y + h.h / 2) / Hh;
   const target = p.mesh.localToWorld(new V(u - .5, .5 - v, 0));
   const head = r.xr.getCamera(core.cam).getWorldPosition(new V());
   const q = new THREE.Quaternion().setFromUnitVectors(new V(0, 0, -1), target.clone().sub(head).normalize());
@@ -93,6 +115,34 @@ def main():
             print("the code editor did not open in VR"); return 1
         if st["keys"] < 60:
             print(f"only {st['keys']} keys on the keyboard"); bad += 1
+        # the interface is one screen, not a scatter of panels
+        panels = pg.evaluate("""(() => {
+          const open = ['qPanel','infoPanel','menuPanel','modelPanel','diagPanel']
+            .filter(k => NVRVR[k] && NVRVR[k].open);
+          return open; })()""")
+        if panels:
+            print(f"other panels were left open beside the screen: {panels}"); bad += 1
+        onscreen = pg.evaluate("NVRVR.vrCode.hits.map(h => h.id)")
+        for want in ["run", "check", "help", "editor", "close", "recentre"]:
+            if want not in onscreen:
+                print(f"the screen has no {want} control"); bad += 1
+        # and nothing a pupil needs is anywhere but on the screen or the keys
+        stray = [i for i in onscreen if i in ("crun", "ccheck", "chint", "chelp")]
+        if stray: print(f"controls left on the keyboard panel: {stray}"); bad += 1
+        # no control may be drawn on top of another: a press would reach the
+        # wrong one, which is exactly what hid "I need help" once
+        overlap = pg.evaluate("""(() => {
+          const h = NVRVR.vrCode.hits.filter(a => !a.editor), bad = [];
+          for (let i = 0; i < h.length; i++) for (let j = i + 1; j < h.length; j++) {
+            const a = h[i], b = h[j];
+            const ox = Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x);
+            const oy = Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y);
+            // the grown hit areas may touch; more than a third of one is a clash
+            if (ox > 0 && oy > 0 && ox * oy > 0.34 * Math.min(a.w * a.h, b.w * b.h))
+              bad.push(a.id + " over " + b.id);
+          }
+          return bad; })()""")
+        if overlap: print(f"controls drawn on top of each other: {overlap}"); bad += 1
 
         # wait for Python, then type a program with the trigger
         pg.wait_for_function("() => NVRVR.vrCode && !NVRVR.vrCode.busy", timeout=90000)
@@ -101,18 +151,20 @@ def main():
             r = press("kbPanel", key, wait=120)
             if r != "ok": print("  key miss:", key, r); bad += 1
         typed = pg.evaluate("NVRVR.vrCode.text")
-        print("typed by trigger:", repr(typed[len(before):]))
+        # the caret starts at the gap on a Complete it, so the new characters
+        # are not necessarily at the end
+        print("typed by trigger:", repr(typed.replace(before.rstrip("\n"), "").strip()))
         if "print('hi')" not in typed.replace(" ", ""):
             print("the keyboard did not type what was pressed"); bad += 1
 
-        press("kbPanel", "crun", wait=400)
+        press("screen", "run", wait=400)
         pg.wait_for_function("() => NVRVR.vrCode && !NVRVR.vrCode.busy", timeout=90000)
         out = pg.evaluate("NVRVR.vrCode.out")
         print("ran, console says:", repr(out.strip()[:60]))
         if "hi" not in out: print("Run did not produce the program's output"); bad += 1
 
         # and marking, which must award and report
-        press("kbPanel", "ccheck", wait=600)
+        press("screen", "check", wait=600)
         pg.wait_for_function("() => NVRVR.vrCode && !NVRVR.vrCode.busy", timeout=120000)
         res = pg.evaluate("({ result: NVRVR.vrCode.result, ok: NVRVR.vrCode.resultOk })")
         print("marked:", repr((res.get("result") or "")[:90]))
@@ -120,7 +172,7 @@ def main():
 
         # Programming is trial and error, so Check must not lock in the headset
         # either, and the mark must follow the best attempt.
-        press("kbPanel", "ccheck", wait=600)
+        press("screen", "check", wait=600)
         pg.wait_for_function("() => NVRVR.vrCode && !NVRVR.vrCode.busy", timeout=120000)
         again = pg.evaluate("({ attempts: NVRVR.vrCode.attempts, best: NVRVR.vrCode.best,"
                             "  result: NVRVR.vrCode.result, tryLine: NVRVR.vrCode.tryLine })")
@@ -135,22 +187,22 @@ def main():
         rows = pg.evaluate("NVRVR.vrCode.tests.length")
         if rows != pg.evaluate("NVRVR.vrCode.model.tests.length"):
             print(f"only {rows} test(s) reported in the headset"); bad += 1
-        if not pg.evaluate("NVRVR.sidePanel.open"):
+        if not pg.evaluate("NVRVR.vrCode.tests.length && NVRVR.vrCode.result"):
             print("the marking was not shown anywhere"); bad += 1
         # the way on is not offered before the activity is finished
-        if pg.evaluate("NVRVR.kbPanel.hits.some(h => h.id === 'cnext')"):
+        if pg.evaluate("NVRVR.vrCode.hits.some(h => h.id === 'next')"):
             print("the headset offered the next question before this one was finished"); bad += 1
 
         # The hint is the same ladder the screen shows, one rung at a time, with
         # the animated diagram as the last rung - and the program stays put.
         want_rungs = pg.evaluate("R360PyAct.hintLadder(NVRVR.vrCode.task,"
                                  " d => !!(window.R360Diagrams && R360Diagrams.kinds.includes(d))).map(r => r.name)")
-        press("kbPanel", "chint", wait=500)
+        press("screen", "hint", wait=500)
         for _ in range(len(want_rungs)):
-            if not pg.evaluate("NVRVR.padPanel.hits.some(h => h.id === 'hmore')"): break
-            pg.evaluate("NVRVR.padPanel.hits.find(h => h.id === 'hmore').fn()")
+            if not pg.evaluate("NVRVR.vrCode.hits.some(h => h.id === 'hmore')"): break
+            pg.evaluate("NVRVR.doAction('hmore')")
             pg.wait_for_timeout(350)
-        said = pg.evaluate("(NVRVR.padPanel.spec.blocks||[]).filter(b => b && b.p && /\\u2014/.test(b.p)).map(b => b.p)")
+        said = pg.evaluate("((NVRVR.vrCode.overlay||{}).blocks||[]).filter(b => b.rung).map(b => b.rung)")
         print("hint rungs in the headset:", [t[:38] for t in said])
         if len(said) != len(want_rungs):
             print(f"the ladder has {len(said)} rung(s) in here and {len(want_rungs)} on the screen"); bad += 1
@@ -163,15 +215,17 @@ def main():
             print("the last rung opened no diagram"); bad += 1
         if not pg.evaluate("!!NVRVR.vrCode && NVRVR.vrCode.text.length > 0"):
             print("opening the hint threw the pupil's program away"); bad += 1
-        pg.evaluate("NVRVR.padPanel.hits.find(h => h.id === 'hclose').fn()"); pg.wait_for_timeout(300)
+        pg.evaluate("NVRVR.doAction('overClose')"); pg.wait_for_timeout(300)
 
         # Asking the teacher is on the screen, so it is in here, in the same words.
-        press("kbPanel", "chelp", wait=500)
-        helps = pg.evaluate("(NVRVR.padPanel.spec.blocks||[]).filter(b => b && b.p).map(b => b.p)")
+        press("screen", "help", wait=500)
+        helps = pg.evaluate("""((NVRVR.vrCode.overlay||{}).blocks||[])
+          .map(b => b.say !== undefined ? b.say : b.note !== undefined ? b.note : '')""")
         for line in pg.evaluate("R360PyAct.SAY.help.body"):
             if line not in helps:
-                print("the help panel is missing a paragraph the screen has"); bad += 1
-        pg.evaluate("NVRVR.padPanel.hits.find(h => h.id === 'hback').fn()"); pg.wait_for_timeout(250)
+                print(f"the help panel is missing a paragraph the screen has: {line[:40]!r}")
+                bad += 1
+        pg.evaluate("NVRVR.doAction('overClose')"); pg.wait_for_timeout(250)
 
         # and the workspace can be moved to wherever the pupil is now looking
         before_at = pg.evaluate("NVRVR.vrCode.mesh.position.toArray()")
@@ -201,7 +255,7 @@ def main():
             pg.wait_for_function("() => NVRVR.vrCode && !NVRVR.vrCode.busy", timeout=90000)
             keys = pg.evaluate("NVRVR.kbPanel.hits.map(h => h.id)")
             if "ccheck" in keys: print("a Try it offered a Check key in the headset"); bad += 1
-            press("kbPanel", "crun", wait=600)
+            press("screen", "run", wait=600)
             pg.wait_for_function("() => NVRVR.vrCode && !NVRVR.vrCode.busy", timeout=90000)
             t = pg.evaluate("({ ok: NVRVR.vrCode.resultOk, result: NVRVR.vrCode.result, best: NVRVR.vrCode.best })")
             print("try it in the headset:", repr((t.get("result") or "")[:60]), "best", t.get("best"))

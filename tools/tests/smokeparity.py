@@ -70,40 +70,34 @@ COMPARE = r"""([k, i, side]) => {
       options: opts
     };
   } else {
-    const V = NVRVR.vrCode, tp = NVRVR.taskPanel, sp = NVRVR.sidePanel, kb = NVRVR.kbPanel, qp = NVRVR.qPanel;
-    const blocks = p => (p && p.open && p.spec ? (p.spec.blocks || []).filter(Boolean) : []);
-    const rich = p => blocks(p).filter(b => b.rich !== undefined).map(b => flat(b.rich));
-    const plain = p => blocks(p).filter(b => b.p !== undefined).map(b => flat(b.p));
-    const code = p => blocks(p).filter(b => b.code !== undefined).map(b => b.code);
+    const V = NVRVR.vrCode, qp = NVRVR.qPanel;
     if (V) {
-      // a button that is disabled while Python loads is still offered, so the
-      // blocks are read rather than the live hit areas
-      const ids = [];
-      (kb.spec.blocks || []).filter(Boolean).forEach(b => {
-        if (b.row) b.row.forEach(x => x && x.id && ids.push(x.id));
-        else if (b.id) ids.push(b.id);
-      });
+      // one screen: what it was asked to draw, and what can be pressed on it
+      const st = NVRVR.state(), ids = V.hits.map(h => h.id);
       shown = {
-        chip: (plain(tp)[0] || "").split("·")[0].trim(),
-        says: plain(tp)[1] || null,
-        steps: blocks(tp).filter(b => b.n).map(b => flat(b.rich)),
-        brief: blocks(tp).filter(b => b.bullet).map(b => flat(b.rich)),
-        teach: rich(sp)[0] || null,
-        teachCode: code(sp)[0] || null,
-        given: V.model.run ? (V.model.run.given.join(", ") || "nothing") : null,
-        shows: V.model.run ? V.model.run.shows.join("\n") : null,
+        chip: st.model.stage, says: st.model.says,
+        steps: st.model.steps.map(flat), brief: st.model.brief.map(flat),
+        teach: st.model.teach ? flat(st.model.teach.say) : null,
+        teachCode: st.model.teach && st.model.teach.code.length ? st.model.teach.code.join("\n") : null,
+        given: st.model.run ? (st.model.run.given.join(", ") || "nothing") : null,
+        shows: st.model.run ? st.model.run.shows.join("\n") : null,
         starter: V.text,
-        hasCheck: ids.indexOf("ccheck") >= 0,
-        hasHint: ids.indexOf("chint") >= 0,
-        hasHelp: ids.indexOf("chelp") >= 0,
+        hasCheck: ids.indexOf("check") >= 0,
+        hasHint: ids.indexOf("hint") >= 0,
+        hasHelp: ids.indexOf("help") >= 0,
         model: JSON.stringify(V.model),
+        // nothing may be floating beside the one screen
+        others: ["qPanel", "infoPanel", "menuPanel", "modelPanel"].filter(k => NVRVR[k] && NVRVR[k].open),
         options: []
       };
     } else {
       // a Predict has no editor: it is the question panel with the options
+      const blocks = p2 => (p2 && p2.open && p2.spec ? (p2.spec.blocks || []).filter(Boolean) : []);
       shown = { predict: true,
-        text: plain(qp).concat(code(qp)).concat(rich(qp)).join(" · "),
-        options: qp.hits.filter(h => /^p\d/.test(h.id)).map(h => flat((qp.spec.blocks.find(b => b && b.id === h.id) || {}).btn)) };
+        text: blocks(qp).map(b2 => b2.p !== undefined ? b2.p : b2.rich !== undefined ? b2.rich
+                                 : b2.code !== undefined ? b2.code : "").map(flat).join(" \u00b7 "),
+        options: qp.hits.filter(h => /^p\d/.test(h.id))
+          .map(h => flat((qp.spec.blocks.find(b2 => b2 && b2.id === h.id) || {}).btn)) };
     }
   }
   return { shared, shown, model: JSON.stringify(M) };
@@ -220,6 +214,8 @@ def main():
                     differ(where, "the headset is not using the shared model",
                            A["model"][:140], (bb.get("model") or "")[:140])
                 sh = A["shared"]
+                if bb.get("others"):
+                    differ(where, "panels floating beside the one screen", [], bb["others"])
                 if a["chip"] != sh["stage"]: differ(where, "stage on the screen", a["chip"], sh["stage"])
                 if bb["chip"] != sh["stage"]: differ(where, "stage in the headset", sh["stage"], bb["chip"])
                 if a["says"] != sh["says"] or bb["says"] != sh["says"]:
