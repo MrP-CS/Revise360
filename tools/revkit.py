@@ -157,12 +157,37 @@ def mp(concept, *ways, worth=1, developed=False, reject=None, exemplar=None,
             raise ValueError("a way is a list of pattern groups: %r in %r" % (w, concept))
         for g in w:
             for alt in g.split("|"):
-                if alt.strip() and set(alt.strip().lower().split()) <= CLAUSE_WORDS:
+                alt = alt.strip()
+                if not alt:
+                    continue
+                parts = alt.lower().split()
+                if set(parts) <= CLAUSE_WORDS:
                     raise ValueError(
                         "the pattern %r in %r is made only of words the marker splits an "
                         "answer ON, so it can never be found. A mark point about the AND "
                         "operator has to look for what AND means."
-                        % (alt.strip(), concept))
+                        % (alt, concept))
+                # A clause word inside a pattern is dropped, because the answer
+                 # is split on it too - and that is deliberate: "on and off"
+                # becomes "on off" on both sides and still needs both words, so
+                # a mark point may say it the way a learner would.
+                #
+                # What is not safe is a clause word that was QUALIFYING a single
+                # word. "which line" becomes "line", which is a far looser thing
+                # to look for than the author wrote: it matched "the line
+                # number" in an answer that went on to say "not where", and the
+                # negation never got a chance, because the word it was denying
+                # was no longer the one being looked for.
+                left = [p for p in parts if p not in CLAUSE_WORDS]
+                if len(parts) > 1 and len(left) < 2:
+                    raise ValueError(
+                        "the pattern %r in %r is %s qualifying one word, and the marker splits "
+                        "an answer ON %s, so the pattern silently becomes just %r - a much "
+                        "looser thing to look for than you wrote. Say it without the clause "
+                        "word." % (alt, concept,
+                                   ", ".join(repr(p) for p in parts if p in CLAUSE_WORDS),
+                                   "them" if len(parts) - len(left) > 1 else "it",
+                                   " ".join(left)))
     out = {"concept": concept.strip(), "accept": [list(w) for w in ways], "worth": worth}
     if developed:
         out["developed"] = True

@@ -1,0 +1,316 @@
+{
+ "topic": "2.5",
+ "lesson": "pl-l04",
+ "questions": [
+  {
+   "type": "multi",
+   "q": "Which of these are facilities an integrated development environment provides? Tick all that apply.",
+   "options": [
+    "An editor for writing source code",
+    "A translator so the program can be run",
+    "Error diagnostics such as messages and breakpoints",
+    "A run-time environment for running the program without leaving the IDE",
+    "A faster processor",
+    "A guarantee that the program contains no logic errors"
+   ],
+   "correct": [
+    "An editor for writing source code",
+    "A translator so the program can be run",
+    "Error diagnostics such as messages and breakpoints",
+    "A run-time environment for running the program without leaving the IDE"
+   ],
+   "marks": 4,
+   "feedback": "Four facilities: editor, translator, diagnostics and run-time environment. No IDE can promise your logic is right.",
+   "commandWord": "tick",
+   "difficulty": "retrieve",
+   "examStyle": true,
+   "subtopic": "The facilities of an IDE",
+   "revisit": "pl-l04-s1",
+   "revisitReason": "The facilities of an IDE",
+   "outcomes": [
+    "pl-l04-o1",
+    "pl-l04-o2"
+   ],
+   "topic": "2.5",
+   "id": "rq-2.5-the-facilities-of-an-ide-0018",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pl-l04",
+   "revisitStationId": "pl-l04-s1",
+   "revisitLabel": "2.5 Lesson 4 — IDE control room, station 1: Tools in one place",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "match",
+   "q": "Match each IDE facility to what it does for the programmer.",
+   "pairs": [
+    [
+     "Editor",
+     "Provides line numbers, indentation and colour-coded keywords while code is typed"
+    ],
+    [
+     "Error diagnostics",
+     "Reports the line where a fault was found and lets the program be paused to inspect variables"
+    ],
+    [
+     "Run-time environment",
+     "Runs the program and shows its output inside the same window"
+    ],
+    [
+     "Translator",
+     "Converts the source code so that it can be executed"
+    ]
+   ],
+   "marks": 4,
+   "feedback": "Each facility removes a different separate tool the programmer would otherwise need.",
+   "commandWord": "draw",
+   "difficulty": "understand",
+   "subtopic": "The facilities of an IDE",
+   "revisit": "pl-l04-s1",
+   "revisitReason": "The facilities of an IDE",
+   "outcomes": [
+    "pl-l04-o1",
+    "pl-l04-o2"
+   ],
+   "topic": "2.5",
+   "id": "rq-2.5-the-facilities-of-an-ide-0019",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pl-l04",
+   "revisitStationId": "pl-l04-s1",
+   "revisitLabel": "2.5 Lesson 4 — IDE control room, station 1: Tools in one place",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "short",
+   "q": "State one way the editor in an IDE helps a programmer write correct code.",
+   "markPoints": [
+    {
+     "concept": "it shows the structure of the code as it is typed, for example by colouring keywords or indenting automatically",
+     "accept": [
+      [
+       "colour|highlight|keyword|indent|line number|auto|complete|format|structure|bracket|matching|suggests|prompt"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "It colours keywords and indents the code automatically, so mistakes show up as they are typed."
+    }
+   ],
+   "example": "It colour-codes keywords, numbers the lines and indents blocks automatically, so a missing bracket or a misspelled keyword is visible while the code is being written.",
+   "paraphrase": "Features such as highlighted keywords, automatic indentation and line numbering make an error obvious as soon as it is typed.",
+   "marks": 1,
+   "feedback": "Anything the editor itself does to make the code's structure visible.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "The facilities of an IDE",
+   "revisit": "pl-l04-s1",
+   "revisitReason": "The facilities of an IDE",
+   "outcomes": [
+    "pl-l04-o1",
+    "pl-l04-o2"
+   ],
+   "topic": "2.5",
+   "id": "rq-2.5-the-facilities-of-an-ide-0020",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pl-l04",
+   "revisitStationId": "pl-l04-s1",
+   "revisitLabel": "2.5 Lesson 4 — IDE control room, station 1: Tools in one place",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "Explain how a breakpoint helps a programmer find a logic error.",
+   "markPoints": [
+    {
+     "concept": "it pauses the program at a chosen line",
+     "accept": [
+      [
+       "pause|pauses|paused|stop|stops|halt|halts|freeze|break|chosen line|particular line|a chosen point"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "It pauses the program at a line the programmer chooses."
+    },
+    {
+     "concept": "so the values held in the variables at that point can be inspected",
+     "accept": [
+      [
+       "see|sees|shows|shown|inspect|watch|examine|check|look|view|read|compare",
+       "variable|variables|value|values|contents|data|what is stored|what it holds"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "This lets the programmer see what the variables hold at that point and compare it with what they expected."
+    }
+   ],
+   "example": "A breakpoint pauses execution at a line the programmer chooses, so the program stops part-way instead of running to the end. The programmer can then inspect the values in the variables at that exact point and compare them with what they expected, which is how a logic error is tracked down to a particular line.",
+   "paraphrase": "It halts the program at a selected point so that the contents of the variables can be examined and checked against what they ought to be.",
+   "marks": 2,
+   "feedback": "Pausing, and what pausing lets you look at.",
+   "commandWord": "explain",
+   "difficulty": "understand",
+   "examStyle": true,
+   "subtopic": "The facilities of an IDE",
+   "revisit": "pl-l04-s1",
+   "revisitReason": "The facilities of an IDE",
+   "outcomes": [
+    "pl-l04-o1",
+    "pl-l04-o2"
+   ],
+   "topic": "2.5",
+   "id": "rq-2.5-the-facilities-of-an-ide-0021",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pl-l04",
+   "revisitStationId": "pl-l04-s1",
+   "revisitLabel": "2.5 Lesson 4 — IDE control room, station 1: Tools in one place",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "mcq",
+   "q": "A program runs without crashing but prints the wrong average. Which IDE facility is most useful here?",
+   "options": [
+    "Error diagnostics such as breakpoints and variable watches",
+    "The editor's keyword colouring",
+    "The run-time environment's output window",
+    "The translator's compilation speed"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "The program runs, so this is a logic error. Watching the variables change is what finds it.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "The facilities of an IDE",
+   "revisit": "pl-l04-s1",
+   "revisitReason": "The facilities of an IDE",
+   "outcomes": [
+    "pl-l04-o1",
+    "pl-l04-o2"
+   ],
+   "topic": "2.5",
+   "id": "rq-2.5-the-facilities-of-an-ide-0022",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pl-l04",
+   "revisitStationId": "pl-l04-s1",
+   "revisitLabel": "2.5 Lesson 4 — IDE control room, station 1: Tools in one place",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "Explain why an IDE's error message gives a line number as well as a description of the fault.",
+   "markPoints": [
+    {
+     "concept": "the line number says where to look in the source code",
+     "accept": [
+      [
+       "where|the line number|locate|find|position|place|point to|straight to|jump to"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The line number tells the programmer where in the source code to look."
+    },
+    {
+     "concept": "so a long program does not have to be read through to find the fault",
+     "accept": [
+      [
+       "long|large|hundreds|thousands|whole program|every line|search|read through|time|quicker|faster|without reading"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "This means a long program does not have to be read through from the start to find it."
+    }
+   ],
+   "example": "The description says what is wrong and the line number says where, so the programmer can go straight to the fault. Without the line number, finding a missing colon in a program of several hundred lines would mean reading all of them.",
+   "paraphrase": "Knowing the position as well as the nature of the problem means that the programmer can go directly to it instead of searching through the whole listing.",
+   "marks": 2,
+   "feedback": "Where, and why where saves time.",
+   "commandWord": "explain",
+   "difficulty": "understand",
+   "subtopic": "Diagnostics and the run-time environment",
+   "revisit": "pl-l04-s4",
+   "revisitReason": "Diagnostics and the run-time environment",
+   "outcomes": [
+    "pl-l04-o2",
+    "pl-l04-o3"
+   ],
+   "topic": "2.5",
+   "id": "rq-2.5-diagnostics-and-the-run-time-environment-0023",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pl-l04",
+   "revisitStationId": "pl-l04-s4",
+   "revisitLabel": "2.5 Lesson 4 — IDE control room, station 4: Diagnostic messages",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "tf",
+   "q": "An IDE's error diagnostics will find every logic error in a program.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correct": 1,
+   "marks": 1,
+   "feedback": "Diagnostics find errors the translator or the run-time can detect. A program that runs perfectly and produces the wrong answer looks fine to them.",
+   "commandWord": "tick",
+   "difficulty": "retrieve",
+   "examStyle": true,
+   "subtopic": "Diagnostics and the run-time environment",
+   "revisit": "pl-l04-s4",
+   "revisitReason": "Diagnostics and the run-time environment",
+   "outcomes": [
+    "pl-l04-o2",
+    "pl-l04-o3"
+   ],
+   "topic": "2.5",
+   "id": "rq-2.5-diagnostics-and-the-run-time-environment-0024",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pl-l04",
+   "revisitStationId": "pl-l04-s4",
+   "revisitLabel": "2.5 Lesson 4 — IDE control room, station 4: Diagnostic messages",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "codeout",
+   "q": "A pupil runs this in an IDE. What does it print?",
+   "code": "total = 0\nfor n in range(1, 5):\n    total = total + n\nprint(total)",
+   "answer": "10",
+   "exact": "text",
+   "lang": "python",
+   "marks": 1,
+   "feedback": "range(1, 5) gives 1, 2, 3 and 4, which add to 10. The IDE's run-time environment shows this in its own output window.",
+   "hint": "Which values does range(1, 5) actually produce?",
+   "commandWord": "state",
+   "difficulty": "apply",
+   "subtopic": "Diagnostics and the run-time environment",
+   "revisit": "pl-l04-s4",
+   "revisitReason": "Diagnostics and the run-time environment",
+   "outcomes": [
+    "pl-l04-o2",
+    "pl-l04-o3"
+   ],
+   "topic": "2.5",
+   "id": "rq-2.5-diagnostics-and-the-run-time-environment-0025",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pl-l04",
+   "revisitStationId": "pl-l04-s4",
+   "revisitLabel": "2.5 Lesson 4 — IDE control room, station 4: Diagnostic messages",
+   "revisitScene": 0,
+   "revisitK": 3
+  }
+ ]
+}

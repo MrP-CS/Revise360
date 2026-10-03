@@ -266,8 +266,7 @@ BANK = [
                     ["longer|years|centuries|too long|not worth|impractical|give up|"
                      "takes time|slow"],
                     developed=True,
-                    exemplar="This means the attack would take so long that it is not worth "
-                             "attempting.")],
+                    exemplar="This means the attack would take years rather than minutes.")],
                 example="Each extra character multiplies the number of possible passwords by "
                         "the size of the character set, so the total number of combinations "
                         "grows enormously with every character added. That means a brute-"

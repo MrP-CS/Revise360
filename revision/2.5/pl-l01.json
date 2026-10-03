@@ -1,0 +1,250 @@
+{
+ "topic": "2.5",
+ "lesson": "pl-l01",
+ "questions": [
+  {
+   "type": "match",
+   "q": "Match each description to the kind of language it describes.",
+   "pairs": [
+    [
+     "High-level language",
+     "Written in words and symbols close to English"
+    ],
+    [
+     "Low-level language",
+     "Written in instructions tied to one kind of processor"
+    ],
+    [
+     "Assembly language",
+     "Uses short mnemonics such as LDA and ADD, one per machine instruction"
+    ],
+    [
+     "Machine code",
+     "The binary instructions the processor actually executes"
+    ]
+   ],
+   "marks": 4,
+   "feedback": "Assembly language and machine code are both low level. Assembly is the readable form of the same instructions.",
+   "commandWord": "draw",
+   "difficulty": "retrieve",
+   "subtopic": "High-level and low-level languages",
+   "revisit": "pl-l01-s1",
+   "revisitReason": "High-level and low-level languages",
+   "outcomes": [
+    "pl-l01-o1",
+    "pl-l01-o2"
+   ],
+   "topic": "2.5",
+   "id": "rq-2.5-high-level-and-low-level-languages-0001",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pl-l01",
+   "revisitStationId": "pl-l01-s1",
+   "revisitLabel": "2.5 Lesson 1 — Language level lab, station 1: High-level languages",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "short",
+   "q": "State one advantage of writing a program in a high-level language rather than in machine code.",
+   "markPoints": [
+    {
+     "concept": "it is far quicker to write, read and correct because it is closer to English",
+     "accept": [
+      [
+       "quicker|faster|less time|easier|simpler|readable|read|understand|correct|debug|fewer lines|shorter"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "It is much easier and quicker to write, read and correct."
+    }
+   ],
+   "example": "It is much easier and quicker to write, because the instructions are close to English rather than to the processor's own instruction set.",
+   "paraphrase": "Writing it takes less time and the result is simpler to read, since the code resembles ordinary language.",
+   "marks": 1,
+   "feedback": "Easier for a person. Any answer about the programmer's time or understanding earns it.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "High-level and low-level languages",
+   "revisit": "pl-l01-s1",
+   "revisitReason": "High-level and low-level languages",
+   "outcomes": [
+    "pl-l01-o1",
+    "pl-l01-o2"
+   ],
+   "topic": "2.5",
+   "id": "rq-2.5-high-level-and-low-level-languages-0002",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pl-l01",
+   "revisitStationId": "pl-l01-s1",
+   "revisitLabel": "2.5 Lesson 1 — Language level lab, station 1: High-level languages",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "Explain why a program written in a high-level language has to be translated before the processor can run it.",
+   "markPoints": [
+    {
+     "concept": "the processor can only execute machine code",
+     "accept": [
+      [
+       "machine code|binary|machine instruction|its own instruction|zeros and ones|0s and 1s",
+       "processor|cpu|computer|hardware|chip"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The processor can only execute machine code."
+    },
+    {
+     "concept": "so the high-level source has to be turned into it by a translator",
+     "accept": [
+      [
+       "translat|compil|interpret|convert|turned into|changed into|assembl"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "So a translator has to convert the source code into machine code first."
+    }
+   ],
+   "example": "A processor can only execute the binary machine code instructions it was built to recognise. A high-level language is nothing like those instructions, so a translator has to convert the source code into machine code before anything can run.",
+   "paraphrase": "Hardware understands only its own binary instruction set, which means the source has to be converted into that form by a translator first.",
+   "marks": 2,
+   "feedback": "What the processor can run, and what therefore has to happen to the source.",
+   "commandWord": "explain",
+   "difficulty": "understand",
+   "examStyle": true,
+   "subtopic": "High-level and low-level languages",
+   "revisit": "pl-l01-s1",
+   "revisitReason": "High-level and low-level languages",
+   "outcomes": [
+    "pl-l01-o1",
+    "pl-l01-o2"
+   ],
+   "topic": "2.5",
+   "id": "rq-2.5-high-level-and-low-level-languages-0003",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pl-l01",
+   "revisitStationId": "pl-l01-s1",
+   "revisitLabel": "2.5 Lesson 1 — Language level lab, station 1: High-level languages",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "mcq",
+   "q": "Which of these is a low-level language?",
+   "options": [
+    "Assembly language",
+    "Python",
+    "Java",
+    "C#"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Assembly language maps one instruction to one machine instruction. The other three are all high level.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "High-level and low-level languages",
+   "revisit": "pl-l01-s1",
+   "revisitReason": "High-level and low-level languages",
+   "outcomes": [
+    "pl-l01-o1",
+    "pl-l01-o2"
+   ],
+   "topic": "2.5",
+   "id": "rq-2.5-high-level-and-low-level-languages-0004",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pl-l01",
+   "revisitStationId": "pl-l01-s1",
+   "revisitLabel": "2.5 Lesson 1 — Language level lab, station 1: High-level languages",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "A program is written in machine code for one model of processor. Explain why it will not run on a computer with a different kind of processor.",
+   "markPoints": [
+    {
+     "concept": "machine code instructions are specific to one instruction set",
+     "accept": [
+      [
+       "specific|particular|only one|tied to|designed for|written for|depends on|unique to",
+       "processor|cpu|instruction set|architecture|chip|hardware"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Machine code is written for one particular processor's instruction set."
+    },
+    {
+     "concept": "so a different processor does not recognise the same instructions",
+     "accept": [
+      [
+       "different|another|other",
+       "does not recognis|not recognis|does not understand|not understand|cannot read|different instruction|no meaning|not the same"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "So another processor cannot recognise those instructions, because its own instruction set is different."
+    }
+   ],
+   "example": "Machine code is written for one particular processor's instruction set, and the binary patterns mean what that processor was built to take them to mean. A different kind of processor has a different instruction set, so the same patterns mean nothing to it and the program will not run.",
+   "paraphrase": "The binary instructions only make sense to the chip they were written for, because another design of chip uses a different set of instructions altogether.",
+   "marks": 2,
+   "feedback": "Tied to one processor, and what that means for a different one.",
+   "hint": "What does a particular binary pattern mean, and to whom?",
+   "commandWord": "explain",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Machine code and portability",
+   "revisit": "pl-l01-s5",
+   "revisitReason": "Machine code and portability",
+   "outcomes": [
+    "pl-l01-o1",
+    "pl-l01-o3"
+   ],
+   "topic": "2.5",
+   "id": "rq-2.5-machine-code-and-portability-0005",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pl-l01",
+   "revisitStationId": "pl-l01-s5",
+   "revisitLabel": "2.5 Lesson 1 — Language level lab, station 5: Moving between devices",
+   "revisitScene": 0,
+   "revisitK": 4
+  },
+  {
+   "type": "tf",
+   "q": "A program written in Python can usually be run on computers with different kinds of processor without being rewritten.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "High-level source is portable: a translator for each machine does the work of producing instructions that machine understands.",
+   "commandWord": "tick",
+   "difficulty": "retrieve",
+   "subtopic": "Machine code and portability",
+   "revisit": "pl-l01-s5",
+   "revisitReason": "Machine code and portability",
+   "outcomes": [
+    "pl-l01-o1",
+    "pl-l01-o3"
+   ],
+   "topic": "2.5",
+   "id": "rq-2.5-machine-code-and-portability-0006",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pl-l01",
+   "revisitStationId": "pl-l01-s5",
+   "revisitLabel": "2.5 Lesson 1 — Language level lab, station 5: Moving between devices",
+   "revisitScene": 0,
+   "revisitK": 4
+  }
+ ]
+}

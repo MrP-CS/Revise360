@@ -1,0 +1,218 @@
+{
+ "topic": "1.5",
+ "lesson": "ss-l02",
+ "questions": [
+  {
+   "type": "short",
+   "q": "State what is meant by multitasking.",
+   "markPoints": [
+    {
+     "concept": "the operating system appears to run several programs at the same time",
+     "accept": [
+      [
+       "several|more than one|multiple|many|two or more",
+       "program|programs|task|tasks|application|applications"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Running several programs at what appears to be the same time."
+    }
+   ],
+   "example": "The operating system running several programs at what appears to the user to be the same time, by switching between them very quickly.",
+   "paraphrase": "Several applications appearing to run together, because the system swaps between them rapidly.",
+   "marks": 1,
+   "feedback": "More than one program at once. On a single core it only appears simultaneous, which is worth saying.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "Multitasking and memory management",
+   "revisit": "ss-l02-s1",
+   "revisitReason": "Multitasking and memory management",
+   "outcomes": [
+    "ss-l02-o1",
+    "ss-l02-o2"
+   ],
+   "topic": "1.5",
+   "id": "rq-1.5-multitasking-and-memory-management-0006",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ss-l02",
+   "revisitStationId": "ss-l02-s1",
+   "revisitLabel": "1.5 Lesson 2 — Multitasking floor, station 1: Multitasking",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "Explain how an operating system makes several programs appear to run at the same time on a single-core processor.",
+   "markPoints": [
+    {
+     "concept": "only one program can actually use the processor at any instant",
+     "accept": [
+      [
+       "one|only one|a single|at a time|at once",
+       "processor|cpu|core"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Only one program can use the processor at any one moment."
+    },
+    {
+     "concept": "so the operating system gives each program a short turn in rotation",
+     "accept": [
+      [
+       "turn|turns|slice|slot|share|shares|swap|swaps|switch|switches|rotation|round|allocate|allocates"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The operating system gives each program a short turn in rotation."
+    },
+    {
+     "concept": "and the switching is so fast that the user does not notice",
+     "accept": [
+      [
+       "so fast|very fast|quickly|rapid|milliseconds|does not notice|cannot tell|appears|seems|looks like"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "The switching is so fast that it appears simultaneous to the user."
+    }
+   ],
+   "example": "A single core can only execute one program's instructions at any instant, so the operating system gives each program a very short slice of processor time in turn and then switches to the next one. The switching happens thousands of times a second, so to the user everything appears to be running at once.",
+   "paraphrase": "Because the processor can only handle one program at a time, the system allocates each a brief slot before moving to the next, and it does this so rapidly that the user cannot tell they are taking turns.",
+   "marks": 3,
+   "feedback": "Three ideas: one at a time, turns, and why it looks simultaneous.",
+   "commandWord": "explain",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Multitasking and memory management",
+   "revisit": "ss-l02-s1",
+   "revisitReason": "Multitasking and memory management",
+   "outcomes": [
+    "ss-l02-o1",
+    "ss-l02-o2"
+   ],
+   "topic": "1.5",
+   "id": "rq-1.5-multitasking-and-memory-management-0007",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ss-l02",
+   "revisitStationId": "ss-l02-s1",
+   "revisitLabel": "1.5 Lesson 2 — Multitasking floor, station 1: Multitasking",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "short",
+   "q": "State one thing the operating system does when it manages memory.",
+   "markPoints": [
+    {
+     "concept": "it decides where each program's data goes and stops programs overwriting each other",
+     "accept": [
+      [
+       "allocat|assign|decides where|gives each|space|room|location|address"
+      ],
+      [
+       "separate|own|cannot|overwrit|interfere|stop|protect|not overwrite"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "It allocates each program its own space in memory."
+    }
+   ],
+   "example": "It allocates each program its own area of memory and stops one program from overwriting another's data.",
+   "paraphrase": "It assigns space to each program and keeps them from interfering with one another.",
+   "marks": 1,
+   "feedback": "Allocating, and keeping programs apart. Either half earns the mark.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "Multitasking and memory management",
+   "revisit": "ss-l02-s1",
+   "revisitReason": "Multitasking and memory management",
+   "outcomes": [
+    "ss-l02-o1",
+    "ss-l02-o2"
+   ],
+   "topic": "1.5",
+   "id": "rq-1.5-multitasking-and-memory-management-0008",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ss-l02",
+   "revisitStationId": "ss-l02-s1",
+   "revisitLabel": "1.5 Lesson 2 — Multitasking floor, station 1: Multitasking",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "short",
+   "q": "State what a device driver does.",
+   "markPoints": [
+    {
+     "concept": "it lets the operating system communicate with a particular piece of hardware",
+     "accept": [
+      [
+       "operating system|os|computer|software",
+       "communicat|talk|control|work with|use|understand|send|instruct"
+      ],
+      [
+       "hardware|device|peripheral|printer|mouse|keyboard|card"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "It lets the operating system communicate with a piece of hardware."
+    }
+   ],
+   "example": "It translates between the operating system and a particular piece of hardware, so the operating system can use the device without knowing how it works inside.",
+   "paraphrase": "It allows the system software to control a specific device.",
+   "marks": 1,
+   "feedback": "Between the operating system and the device. A driver is a translator, not a program the user runs.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "Device drivers",
+   "revisit": "ss-l02-s4",
+   "revisitReason": "Device drivers",
+   "outcomes": [
+    "ss-l02-o3"
+   ],
+   "topic": "1.5",
+   "id": "rq-1.5-device-drivers-0009",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ss-l02",
+   "revisitStationId": "ss-l02-s4",
+   "revisitLabel": "1.5 Lesson 2 — Multitasking floor, station 4: Virtual memory",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "mcq",
+   "q": "A user plugs in a new printer and it does not work until software is installed. What has been installed?",
+   "options": [
+    "A device driver",
+    "A utility",
+    "An operating system update",
+    "Firmware"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Every model of hardware needs its own driver, which is why a new device often needs one installed.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "subtopic": "Device drivers",
+   "revisit": "ss-l02-s4",
+   "revisitReason": "Device drivers",
+   "outcomes": [
+    "ss-l02-o3"
+   ],
+   "topic": "1.5",
+   "id": "rq-1.5-device-drivers-0010",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "ss-l02",
+   "revisitStationId": "ss-l02-s4",
+   "revisitLabel": "1.5 Lesson 2 — Multitasking floor, station 4: Virtual memory",
+   "revisitScene": 0,
+   "revisitK": 3
+  }
+ ]
+}

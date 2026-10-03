@@ -365,8 +365,9 @@ BANK = [
                 diff="apply"),
         written("Explain why a local variable is usually preferred to a global one.", 2,
                 [mp("a local variable exists only inside its own sub-program",
-                    ["local|confined|scope", "only|just|inside|within|its own|that subprogram|"
-                     "that function|that procedure|that routine|where it was"],
+                    ["local|confined|scope",
+                     "only|just|inside|within|its own|subprogram|function|procedure|"
+                     "routine|where it was"],
                     exemplar="A local variable exists only inside its own sub-program."),
                  mp("so it cannot be changed by accident somewhere else in the program",
                     ["accident|accidentally|by mistake|unexpectedly|elsewhere|"

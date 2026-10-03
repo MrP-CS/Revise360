@@ -1,0 +1,252 @@
+{
+ "topic": "2.5",
+ "lesson": "pl-l05",
+ "questions": [
+  {
+   "type": "order",
+   "q": "Put these stages in the order they happen when a compiled program is written and then used by a customer.",
+   "steps": [
+    "The programmer writes the source code in an editor",
+    "The compiler translates the whole program and reports any errors",
+    "The compiler produces an executable file",
+    "The executable file is sent to the customer",
+    "The customer runs the executable without a translator installed"
+   ],
+   "marks": 5,
+   "feedback": "Translation happens once, before distribution. That is exactly why the customer needs no translator.",
+   "commandWord": "complete",
+   "difficulty": "understand",
+   "subtopic": "Putting the topic together",
+   "revisit": "pl-l05-s6",
+   "revisitReason": "Putting the topic together",
+   "outcomes": [
+    "pl-l05-o1",
+    "pl-l05-o3"
+   ],
+   "topic": "2.5",
+   "id": "rq-2.5-putting-the-topic-together-0026",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pl-l05",
+   "revisitStationId": "pl-l05-s6",
+   "revisitLabel": "2.5 Lesson 5 — Language review HQ, station 6: Writing an explanation",
+   "revisitScene": 0,
+   "revisitK": 5
+  },
+  {
+   "type": "extended",
+   "q": "A charity needs a program that will run on several makes of computer, be changed by volunteers over many years, and be given out as a file people can simply run. Discuss what language level and what translator you would recommend, and why.",
+   "markPoints": [
+    {
+     "concept": "a high-level language, because the source can be translated for different machines",
+     "accept": [
+      [
+       "high level|high-level|python|java|c#|c sharp|visual basic",
+       "different|several|various|any machine|portab|more than one"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "A high-level language, because the same source can be translated for each different make of computer."
+    },
+    {
+     "concept": "and because volunteers can read and change high-level code",
+     "accept": [
+      [
+       "volunteer|others|other people|read|readable|understand|maintain|change|years|easier"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Volunteers can also read and change high-level code, which matters over many years."
+    },
+    {
+     "concept": "a compiler, because the charity wants to hand out a file people can run",
+     "accept": [
+      [
+       "compil",
+       "file|executable|hand out|give out|distribut|send|run it|without a translator|on its own"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "A compiler, because the charity wants to give out a file people can simply run."
+    },
+    {
+     "concept": "the compiled program also runs faster than an interpreted one",
+     "accept": [
+      [
+       "faster|quicker|speed|efficient|performance"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "A compiled program also runs faster than the same program being interpreted."
+    },
+    {
+     "concept": "but it has to be compiled separately for each kind of machine",
+     "accept": [
+      [
+       "each|every|separate|again|recompil|once per|one for",
+       "machine|computer|platform|system|processor|make"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The drawback is that it has to be compiled separately for each kind of machine."
+    },
+    {
+     "concept": "and an interpreter would have suited the volunteers' own testing",
+     "accept": [
+      [
+       "interpret",
+       "test|testing|writing it|develop|try|straight away|immediately|as they work"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "An interpreter would still be useful to the volunteers while they are writing and testing changes."
+    }
+   ],
+   "example": "I would recommend a high-level language such as Python or Java. The same source code can be translated for each make of computer, so the charity does not need a separate program for every machine, and high-level code is readable enough that volunteers arriving years later can understand and change it — which would be close to impossible in assembly language.\n\nFor the version handed out I would use a compiler. Compiling produces an executable file that people can simply run, with no source code and no translator needed on their computer, and it runs faster than the same program being translated line by line. The drawback is that the program has to be compiled separately for each kind of machine the charity supports, and anyone wanting to change it needs the source and a compiler.\n\nWhile the volunteers are actually writing the code, an interpreter is the better tool: they can run a half-finished change immediately and see the first error rather than waiting for a full compilation. So the honest answer is both — interpreted while developing, compiled for release.",
+   "marks": 6,
+   "feedback": "Six ideas are available and a good answer reaches a recommendation rather than listing features. Mark yourself on whether you said why each choice suits THIS charity.",
+   "hint": "Three requirements are given: several makes of computer, years of volunteers, and a file people can run. Take each in turn.",
+   "commandWord": "discuss",
+   "difficulty": "stretch",
+   "examStyle": true,
+   "subtopic": "Putting the topic together",
+   "revisit": "pl-l05-s6",
+   "revisitReason": "Putting the topic together",
+   "outcomes": [
+    "pl-l05-o1",
+    "pl-l05-o3"
+   ],
+   "topic": "2.5",
+   "id": "rq-2.5-putting-the-topic-together-0027",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pl-l05",
+   "revisitStationId": "pl-l05-s6",
+   "revisitLabel": "2.5 Lesson 5 — Language review HQ, station 6: Writing an explanation",
+   "revisitScene": 0,
+   "revisitK": 5
+  },
+  {
+   "type": "sort",
+   "q": "Sort each statement by whether it describes a compiler or an interpreter.",
+   "cats": [
+    "Compiler",
+    "Interpreter"
+   ],
+   "items": [
+    [
+     "Translates the program once before it runs",
+     "Compiler"
+    ],
+    [
+     "Translates each line again every time it is reached",
+     "Interpreter"
+    ],
+    [
+     "Produces an executable file",
+     "Compiler"
+    ],
+    [
+     "Must be installed on any computer that runs the program",
+     "Interpreter"
+    ],
+    [
+     "Reports all the errors it found together",
+     "Compiler"
+    ],
+    [
+     "Stops at the first error it reaches",
+     "Interpreter"
+    ]
+   ],
+   "marks": 6,
+   "feedback": "Once versus every time. Every other difference follows from that one.",
+   "commandWord": "tick",
+   "difficulty": "understand",
+   "examStyle": true,
+   "subtopic": "Recalling the whole topic",
+   "revisit": "pl-l05-s1",
+   "revisitReason": "Recalling the whole topic",
+   "outcomes": [
+    "pl-l05-o1"
+   ],
+   "topic": "2.5",
+   "id": "rq-2.5-recalling-the-whole-topic-0028",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pl-l05",
+   "revisitStationId": "pl-l05-s1",
+   "revisitLabel": "2.5 Lesson 5 — Language review HQ, station 1: Language decisions",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "mcq",
+   "q": "Which of these is NOT one of the four facilities of an IDE?",
+   "options": [
+    "A guarantee that the program meets the user's requirements",
+    "An editor",
+    "A translator",
+    "A run-time environment"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "Whether the program does what was asked is settled by testing against the requirements, not by the IDE.",
+   "commandWord": "identify",
+   "difficulty": "retrieve",
+   "subtopic": "Recalling the whole topic",
+   "revisit": "pl-l05-s1",
+   "revisitReason": "Recalling the whole topic",
+   "outcomes": [
+    "pl-l05-o1"
+   ],
+   "topic": "2.5",
+   "id": "rq-2.5-recalling-the-whole-topic-0029",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pl-l05",
+   "revisitStationId": "pl-l05-s1",
+   "revisitLabel": "2.5 Lesson 5 — Language review HQ, station 1: Language decisions",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "short",
+   "q": "State what is meant by source code.",
+   "markPoints": [
+    {
+     "concept": "the program as the programmer wrote it, before translation",
+     "accept": [
+      [
+       "written|wrote|writes|typed|types|programmer|human|original",
+       "before|not yet|untranslat|high level|readable|text|language"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The program as the programmer wrote it, before it is translated."
+    }
+   ],
+   "example": "The program in the language the programmer wrote it in, before a translator has converted it into machine code.",
+   "paraphrase": "The original human-readable version of a program, as typed by the programmer and not yet converted.",
+   "marks": 1,
+   "feedback": "What the programmer typed. Machine code is the output of translation, not the source.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "Recalling the whole topic",
+   "revisit": "pl-l05-s1",
+   "revisitReason": "Recalling the whole topic",
+   "outcomes": [
+    "pl-l05-o1"
+   ],
+   "topic": "2.5",
+   "id": "rq-2.5-recalling-the-whole-topic-0030",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pl-l05",
+   "revisitStationId": "pl-l05-s1",
+   "revisitLabel": "2.5 Lesson 5 — Language review HQ, station 1: Language decisions",
+   "revisitScene": 0,
+   "revisitK": 0
+  }
+ ]
+}

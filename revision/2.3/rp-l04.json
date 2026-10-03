@@ -1,0 +1,224 @@
+{
+ "topic": "2.3",
+ "lesson": "rp-l04",
+ "questions": [
+  {
+   "type": "multi",
+   "q": "Which of these are reasons for testing a program? Tick all that apply.",
+   "options": [
+    "To make sure it produces the right output for the right input",
+    "To make sure it does not crash on unexpected input",
+    "To make sure it meets what was asked for",
+    "To find errors before users do",
+    "To make the program run faster",
+    "To reduce the number of lines of code"
+   ],
+   "correct": [
+    "To make sure it produces the right output for the right input",
+    "To make sure it does not crash on unexpected input",
+    "To make sure it meets what was asked for",
+    "To find errors before users do"
+   ],
+   "marks": 4,
+   "feedback": "Testing finds faults. It does not make code faster or shorter.",
+   "commandWord": "tick",
+   "difficulty": "retrieve",
+   "subtopic": "Testing",
+   "revisit": "rp-l04-s1",
+   "revisitReason": "Testing",
+   "outcomes": [
+    "rp-l04-o1",
+    "rp-l04-o2",
+    "rp-l04-o3"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-testing-0014",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l04",
+   "revisitStationId": "rp-l04-s1",
+   "revisitLabel": "2.3 Lesson 4 — Bug hunt lab, station 1: Why test a program?",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "Explain the difference between iterative testing and final testing.",
+   "markPoints": [
+    {
+     "concept": "iterative testing happens while the program is being written, section by section",
+     "accept": [
+      [
+       "iterative",
+       "during|as it is|as you|each section|each part|throughout|as it goes|modules|bit by bit|being written|not finished|still writing|develop"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Iterative testing happens while the program is being written, a section at a time."
+    },
+    {
+     "concept": "final testing happens once the whole program is complete",
+     "accept": [
+      [
+       "final|terminal",
+       "whole|complete|finished|end|all of it|everything together|once it is done"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Final testing happens once the whole program is finished."
+    }
+   ],
+   "example": "Iterative testing is done while the program is being written, testing each section as it is added, so faults are found early. Final testing is done once the whole program is complete, to check that all the parts work together and that it does what was asked for.",
+   "paraphrase": "Iterative testing is carried out during development, checking each piece as it is built, whereas final testing comes at the end, once everything is assembled.",
+   "marks": 2,
+   "feedback": "Both halves. During, and at the end.",
+   "commandWord": "explain",
+   "difficulty": "understand",
+   "examStyle": true,
+   "subtopic": "Testing",
+   "revisit": "rp-l04-s1",
+   "revisitReason": "Testing",
+   "outcomes": [
+    "rp-l04-o1",
+    "rp-l04-o2",
+    "rp-l04-o3"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-testing-0015",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l04",
+   "revisitStationId": "rp-l04-s1",
+   "revisitLabel": "2.3 Lesson 4 — Bug hunt lab, station 1: Why test a program?",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "match",
+   "q": "Match each test data type to an example, for a program that accepts a mark between 0 and 100.",
+   "pairs": [
+    [
+     "Normal data",
+     "57"
+    ],
+    [
+     "Boundary data",
+     "100"
+    ],
+    [
+     "Invalid data",
+     "101"
+    ],
+    [
+     "Erroneous data",
+     "fifty"
+    ]
+   ],
+   "marks": 4,
+   "feedback": "Boundary data sits exactly on the limit, which is where most off-by-one faults live.",
+   "commandWord": "draw",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Testing",
+   "revisit": "rp-l04-s1",
+   "revisitReason": "Testing",
+   "outcomes": [
+    "rp-l04-o1",
+    "rp-l04-o2",
+    "rp-l04-o3"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-testing-0016",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l04",
+   "revisitStationId": "rp-l04-s1",
+   "revisitLabel": "2.3 Lesson 4 — Bug hunt lab, station 1: Why test a program?",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "Explain why boundary data is particularly important to test.",
+   "markPoints": [
+    {
+     "concept": "it sits exactly on the limit the program checks against",
+     "accept": [
+      [
+       "limit|edge|boundary|border|exactly on|right on|extreme|highest|lowest|largest|smallest"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Boundary data sits exactly on the limit the program checks against."
+    },
+    {
+     "concept": "which is where an off-by-one mistake in the condition shows up",
+     "accept": [
+      [
+       "off by one|one out|mistake|mistakes|error|errors|fault|slip|wrong|incorrect|missed|misses",
+       "condition|comparison|compare|operator|sign|symbol|inequality|greater than|less than|equal|if statement"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "So that is where a mistake in the comparison shows up, such as writing less than where less than or equal to was meant."
+    }
+   ],
+   "example": "Boundary data is the value right on the limit, which is exactly where a mistake in the condition shows itself — using > where >= was meant only goes wrong for the one value on the boundary, and normal data would never find it.",
+   "paraphrase": "Because it falls precisely on the edge of what is allowed, it is the only data that exposes an error in the comparison, such as using the wrong inequality.",
+   "marks": 2,
+   "feedback": "On the limit, and what being on the limit catches.",
+   "commandWord": "explain",
+   "difficulty": "stretch",
+   "examStyle": true,
+   "subtopic": "Testing",
+   "revisit": "rp-l04-s1",
+   "revisitReason": "Testing",
+   "outcomes": [
+    "rp-l04-o1",
+    "rp-l04-o2",
+    "rp-l04-o3"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-testing-0017",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l04",
+   "revisitStationId": "rp-l04-s1",
+   "revisitLabel": "2.3 Lesson 4 — Bug hunt lab, station 1: Why test a program?",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "codeout",
+   "q": "A program is meant to accept a mark from 0 to 100 inclusive. What does it print when the mark entered is 100?",
+   "code": "mark = 100\nif mark >= 0 and mark < 100:\n    print('Accepted')\nelse:\n    print('Rejected')",
+   "answer": "Rejected",
+   "exact": "text",
+   "lang": "python",
+   "marks": 1,
+   "feedback": "The condition uses < where <= was meant, so the top boundary is wrongly rejected. Only boundary data finds this.",
+   "hint": "Try the value that sits exactly on the limit.",
+   "commandWord": "state",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Testing",
+   "revisit": "rp-l04-s1",
+   "revisitReason": "Testing",
+   "outcomes": [
+    "rp-l04-o1",
+    "rp-l04-o2",
+    "rp-l04-o3"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-testing-0018",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l04",
+   "revisitStationId": "rp-l04-s1",
+   "revisitLabel": "2.3 Lesson 4 — Bug hunt lab, station 1: Why test a program?",
+   "revisitScene": 0,
+   "revisitK": 0
+  }
+ ]
+}

@@ -1,0 +1,190 @@
+{
+ "topic": "2.3",
+ "lesson": "rp-l03",
+ "questions": [
+  {
+   "type": "multi",
+   "q": "Which of these make a program easier to maintain? Tick all that apply.",
+   "options": [
+    "Using variable names that say what the variable holds",
+    "Adding comments that explain why the code does what it does",
+    "Indenting the code consistently",
+    "Breaking the program into sub-programs",
+    "Using single-letter names to keep the file short",
+    "Removing all the white space"
+   ],
+   "correct": [
+    "Using variable names that say what the variable holds",
+    "Adding comments that explain why the code does what it does",
+    "Indenting the code consistently",
+    "Breaking the program into sub-programs"
+   ],
+   "marks": 4,
+   "feedback": "Everything that makes code readable makes it maintainable. Short is not the same as clear.",
+   "commandWord": "tick",
+   "difficulty": "retrieve",
+   "subtopic": "Maintainability",
+   "revisit": "rp-l03-s1",
+   "revisitReason": "Maintainability",
+   "outcomes": [
+    "rp-l03-o1",
+    "rp-l03-o2"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-maintainability-0010",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l03",
+   "revisitStationId": "rp-l03-s1",
+   "revisitLabel": "2.3 Lesson 3 — Code clinic, station 1: Naming conventions",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "Explain why maintainability matters on a program that will be worked on for years.",
+   "markPoints": [
+    {
+     "concept": "the person maintaining it may not be the person who wrote it",
+     "accept": [
+      [
+       "someone else|somebody else|another programmer|another person|different programmer|different person|new programmer|other people|team|not the author|not the original|not the person who wrote|did not write|not written by|original author|original programmer|original writer|rarely the"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The person maintaining it is often not the person who wrote it."
+    },
+    {
+     "concept": "so they have to understand it before they can change it safely",
+     "accept": [
+      [
+       "understand|work out|follow|read|make sense|figure out"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "They have to understand it before they can change anything."
+    },
+    {
+     "concept": "and unclear code takes longer to change and is easier to break",
+     "accept": [
+      [
+       "longer|slow|time|costly|expensive|delay|drag",
+       "break|breaks|broken|bug|bugs|mistake|error|introduce|wrong"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "So unclear code takes longer to change and is much easier to break by accident."
+    }
+   ],
+   "example": "Over several years the person maintaining a program is usually not the person who wrote it, and quite often the author has forgotten it too. Whoever picks it up has to understand it before they can safely change anything, so code that is hard to follow takes much longer to work through and is far easier to break by accident.",
+   "paraphrase": "The programmer making changes later is rarely the original author, so they must first make sense of the code, and anything unclear slows that down because it raises the chance of introducing a fault.",
+   "marks": 3,
+   "feedback": "Three ideas: who, what they must do first, and the cost of it being hard.",
+   "commandWord": "explain",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Maintainability",
+   "revisit": "rp-l03-s1",
+   "revisitReason": "Maintainability",
+   "outcomes": [
+    "rp-l03-o1",
+    "rp-l03-o2"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-maintainability-0011",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l03",
+   "revisitStationId": "rp-l03-s1",
+   "revisitLabel": "2.3 Lesson 3 — Code clinic, station 1: Naming conventions",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "mcq",
+   "q": "Which comment is the more useful in a maintainable program?",
+   "options": [
+    "# VAT is applied before the discount, as required by the finance team",
+    "# add 20 per cent",
+    "# this line does a calculation",
+    "# written by J. Patel"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "A comment should say why, not restate what the line already says.",
+   "commandWord": "identify",
+   "difficulty": "understand",
+   "subtopic": "Maintainability",
+   "revisit": "rp-l03-s1",
+   "revisitReason": "Maintainability",
+   "outcomes": [
+    "rp-l03-o1",
+    "rp-l03-o2"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-maintainability-0012",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l03",
+   "revisitStationId": "rp-l03-s1",
+   "revisitLabel": "2.3 Lesson 3 — Code clinic, station 1: Naming conventions",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "sort",
+   "q": "Sort each habit by whether it is good practice or bad practice.",
+   "cats": [
+    "Good practice",
+    "Bad practice"
+   ],
+   "items": [
+    [
+     "Naming a variable totalScore",
+     "Good practice"
+    ],
+    [
+     "Naming a variable x2",
+     "Bad practice"
+    ],
+    [
+     "Indenting the body of every loop",
+     "Good practice"
+    ],
+    [
+     "Writing the whole program in one long block",
+     "Bad practice"
+    ],
+    [
+     "Commenting why an unusual approach was taken",
+     "Good practice"
+    ],
+    [
+     "Commenting every single line",
+     "Bad practice"
+    ]
+   ],
+   "marks": 6,
+   "feedback": "Commenting every line is as unhelpful as commenting none: the useful comments get lost in the noise.",
+   "commandWord": "tick",
+   "difficulty": "understand",
+   "subtopic": "Maintainability",
+   "revisit": "rp-l03-s1",
+   "revisitReason": "Maintainability",
+   "outcomes": [
+    "rp-l03-o1",
+    "rp-l03-o2"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-maintainability-0013",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l03",
+   "revisitStationId": "rp-l03-s1",
+   "revisitLabel": "2.3 Lesson 3 — Code clinic, station 1: Naming conventions",
+   "revisitScene": 0,
+   "revisitK": 0
+  }
+ ]
+}

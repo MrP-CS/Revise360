@@ -1,0 +1,164 @@
+{
+ "topic": "2.3",
+ "lesson": "rp-l02",
+ "questions": [
+  {
+   "type": "short",
+   "q": "State what is meant by defensive design.",
+   "markPoints": [
+    {
+     "concept": "writing a program so that it copes with being used wrongly",
+     "accept": [
+      [
+       "anticipat|expect|expects|plan|planning|prepare|designed|written|think about|consider|cope|copes|handle|handles|guard|guards",
+       "misuse|used wrongly|mistake|mistakes|wrong input|bad input|error|errors|unexpected|crash|crashing|incorrect input|invalid"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Writing a program so that it anticipates being used wrongly."
+    }
+   ],
+   "example": "Writing a program so that it anticipates the mistakes and misuse it will meet, and copes with them rather than crashing.",
+   "paraphrase": "Designing code that expects users to do unexpected things and handles it.",
+   "marks": 1,
+   "feedback": "Anticipating misuse. A program that only works when everything goes right has not been designed defensively.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "Defensive design",
+   "revisit": "rp-l02-s1",
+   "revisitReason": "Defensive design",
+   "outcomes": [
+    "rp-l02-o1",
+    "rp-l02-o2"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-defensive-design-0006",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l02",
+   "revisitStationId": "rp-l02-s1",
+   "revisitLabel": "2.3 Lesson 2 — Cyber defence HQ, station 1: Anticipating misuse",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "multi",
+   "q": "Which of these are part of designing a program defensively? Tick all that apply.",
+   "options": [
+    "Validating every input before using it",
+    "Checking that a file exists before opening it",
+    "Giving a helpful message when something goes wrong",
+    "Requiring users to authenticate before reaching private data",
+    "Writing the program in as few lines as possible",
+    "Making the program run as fast as possible"
+   ],
+   "correct": [
+    "Validating every input before using it",
+    "Checking that a file exists before opening it",
+    "Giving a helpful message when something goes wrong",
+    "Requiring users to authenticate before reaching private data"
+   ],
+   "marks": 4,
+   "feedback": "Speed and brevity are not defences. A short fast program that crashes on bad input is not robust.",
+   "commandWord": "tick",
+   "difficulty": "understand",
+   "subtopic": "Defensive design",
+   "revisit": "rp-l02-s1",
+   "revisitReason": "Defensive design",
+   "outcomes": [
+    "rp-l02-o1",
+    "rp-l02-o2"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-defensive-design-0007",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l02",
+   "revisitStationId": "rp-l02-s1",
+   "revisitLabel": "2.3 Lesson 2 — Cyber defence HQ, station 1: Anticipating misuse",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "written",
+   "q": "Explain why a program should check that a file exists before trying to open it.",
+   "markPoints": [
+    {
+     "concept": "opening a file that is not there causes an error",
+     "accept": [
+      [
+       "error|crash|crashes|exception|fail|fails|stop|stops|cannot open|will not open"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Trying to open a file that is not there causes an error."
+    },
+    {
+     "concept": "so the program can give a sensible message instead of stopping",
+     "accept": [
+      [
+       "message|tell|tells|warn|warns|inform|prompt|ask|carry on|continue|keep going|handle|recover"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "Checking first means that the program can tell the user instead of crashing."
+    }
+   ],
+   "example": "If the file is missing, trying to open it raises an error and the program stops. Checking first lets it tell the user that the file could not be found and carry on, which is far better than crashing in front of them.",
+   "paraphrase": "Attempting to open a non-existent file throws an error that halts the program, so testing for it first allows a sensible message to be shown and execution to continue.",
+   "marks": 2,
+   "feedback": "What goes wrong, and what checking lets you do instead.",
+   "commandWord": "explain",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Defensive design",
+   "revisit": "rp-l02-s1",
+   "revisitReason": "Defensive design",
+   "outcomes": [
+    "rp-l02-o1",
+    "rp-l02-o2"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-defensive-design-0008",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l02",
+   "revisitStationId": "rp-l02-s1",
+   "revisitLabel": "2.3 Lesson 2 — Cyber defence HQ, station 1: Anticipating misuse",
+   "revisitScene": 0,
+   "revisitK": 0
+  },
+  {
+   "type": "mcq",
+   "q": "A website asks a user to type a word shown in a distorted image. What is this for?",
+   "options": [
+    "To check that the user is a person rather than an automated program",
+    "To check that the user's keyboard works",
+    "To encrypt the user's password before sending it",
+    "To validate the format of the user's email address"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "A CAPTCHA defends against bots submitting the form thousands of times.",
+   "commandWord": "identify",
+   "difficulty": "understand",
+   "subtopic": "Defensive design",
+   "revisit": "rp-l02-s1",
+   "revisitReason": "Defensive design",
+   "outcomes": [
+    "rp-l02-o1",
+    "rp-l02-o2"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-defensive-design-0009",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l02",
+   "revisitStationId": "rp-l02-s1",
+   "revisitLabel": "2.3 Lesson 2 — Cyber defence HQ, station 1: Anticipating misuse",
+   "revisitScene": 0,
+   "revisitK": 0
+  }
+ ]
+}

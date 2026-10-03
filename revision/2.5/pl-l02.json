@@ -1,0 +1,162 @@
+{
+ "topic": "2.5",
+ "lesson": "pl-l02",
+ "questions": [
+  {
+   "type": "sort",
+   "q": "Sort each statement by whether it describes a high-level or a low-level language.",
+   "cats": [
+    "High level",
+    "Low level"
+   ],
+   "items": [
+    [
+     "One line often stands for many machine instructions",
+     "High level"
+    ],
+    [
+     "The programmer controls exactly which registers are used",
+     "Low level"
+    ],
+    [
+     "The same source can be translated for different processors",
+     "High level"
+    ],
+    [
+     "The programmer has to manage memory addresses themselves",
+     "Low level"
+    ],
+    [
+     "Programs are quicker to write and easier to maintain",
+     "High level"
+    ],
+    [
+     "Instructions correspond one-to-one with machine instructions",
+     "Low level"
+    ]
+   ],
+   "marks": 6,
+   "feedback": "Control and detail on one side, speed of development and portability on the other. That trade is the whole topic.",
+   "commandWord": "tick",
+   "difficulty": "understand",
+   "examStyle": true,
+   "subtopic": "Choosing a language level",
+   "revisit": "pl-l02-s4",
+   "revisitReason": "Choosing a language level",
+   "outcomes": [
+    "pl-l02-o1",
+    "pl-l02-o2"
+   ],
+   "topic": "2.5",
+   "id": "rq-2.5-choosing-a-language-level-0007",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pl-l02",
+   "revisitStationId": "pl-l02-s4",
+   "revisitLabel": "2.5 Lesson 2 — Language choice workshop, station 4: Control of hardware",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "written",
+   "q": "A team is writing the software that controls a washing machine's motor directly. Explain why they might choose a low-level language.",
+   "markPoints": [
+    {
+     "concept": "a low-level language gives direct control of the hardware",
+     "accept": [
+      [
+       "direct|directly|precise|exact|full|complete|fine",
+       "control|access|manage|hardware|register|registers|memory|port|component"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "A low-level language gives direct control of the hardware."
+    },
+    {
+     "concept": "and uses less memory or runs faster, which matters on a small embedded device",
+     "accept": [
+      [
+       "less memory|little memory|small memory|smaller|efficient|faster|quick|compact|speed|limited|cheap|cheaper|hardly any"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "It also uses less memory and runs faster, which matters because an embedded device has very little of either."
+    }
+   ],
+   "example": "A low-level language lets them control the hardware directly, setting individual registers and memory locations rather than hoping a high-level library does the right thing. The code is also smaller and faster, which matters because the controller inside a washing machine has very little memory and has to respond to the motor immediately.",
+   "paraphrase": "It allows them to address the components precisely, and because the resulting program is compact and quick it suits a controller with hardly any memory.",
+   "marks": 2,
+   "feedback": "Control, then why control and efficiency matter on this particular device.",
+   "commandWord": "explain",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Choosing a language level",
+   "revisit": "pl-l02-s4",
+   "revisitReason": "Choosing a language level",
+   "outcomes": [
+    "pl-l02-o1",
+    "pl-l02-o2"
+   ],
+   "topic": "2.5",
+   "id": "rq-2.5-choosing-a-language-level-0008",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pl-l02",
+   "revisitStationId": "pl-l02-s4",
+   "revisitLabel": "2.5 Lesson 2 — Language choice workshop, station 4: Control of hardware",
+   "revisitScene": 0,
+   "revisitK": 3
+  },
+  {
+   "type": "written",
+   "q": "Explain one reason a business writing a large accounts system would choose a high-level language instead.",
+   "markPoints": [
+    {
+     "concept": "a large program is written and maintained far more quickly in a high-level language",
+     "accept": [
+      [
+       "quicker|faster|less time|saves time|save time|development time|time to write|sooner|easier|simpler",
+       "write|written|writing|develop|maintain|change|read|team|programmer|programmers"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "A large program is much quicker to write and maintain in a high-level language."
+    },
+    {
+     "concept": "so the development cost is lower",
+     "accept": [
+      [
+       "cost|cheaper|money|budget|save money|spend less|less to develop|within budget"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "This means it costs the business less to develop."
+    }
+   ],
+   "example": "An accounts system is large and will be changed for years, and high-level code is far quicker to write and far easier to read. That keeps the development cost down and means other programmers can safely pick the system up later, which would be painful in assembly language.",
+   "paraphrase": "Because the program is big and long-lived, writing it in a high-level language saves a great deal of development time, which reduces cost and lets other members of the team work on it.",
+   "marks": 2,
+   "feedback": "Development time, and what saving it buys the business.",
+   "commandWord": "explain",
+   "difficulty": "apply",
+   "subtopic": "Choosing a language level",
+   "revisit": "pl-l02-s4",
+   "revisitReason": "Choosing a language level",
+   "outcomes": [
+    "pl-l02-o1",
+    "pl-l02-o2"
+   ],
+   "topic": "2.5",
+   "id": "rq-2.5-choosing-a-language-level-0009",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pl-l02",
+   "revisitStationId": "pl-l02-s4",
+   "revisitLabel": "2.5 Lesson 2 — Language choice workshop, station 4: Control of hardware",
+   "revisitScene": 0,
+   "revisitK": 3
+  }
+ ]
+}

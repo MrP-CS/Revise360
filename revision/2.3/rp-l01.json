@@ -1,0 +1,206 @@
+{
+ "topic": "2.3",
+ "lesson": "rp-l01",
+ "questions": [
+  {
+   "type": "match",
+   "q": "Match each validation check to what it tests.",
+   "pairs": [
+    [
+     "Type check",
+     "That the data is of the right data type"
+    ],
+    [
+     "Range check",
+     "That a number is between two limits"
+    ],
+    [
+     "Presence check",
+     "That something has been entered at all"
+    ],
+    [
+     "Length check",
+     "That the data has the right number of characters"
+    ],
+    [
+     "Format check",
+     "That the data follows a pattern, such as a postcode"
+    ]
+   ],
+   "marks": 5,
+   "feedback": "Each check stops a different kind of bad input. Naming the wrong one in an exam earns nothing however well it is explained.",
+   "commandWord": "draw",
+   "difficulty": "retrieve",
+   "examStyle": true,
+   "subtopic": "Validation",
+   "revisit": "rp-l01-s2",
+   "revisitReason": "Validation",
+   "outcomes": [
+    "rp-l01-o2",
+    "rp-l01-o3"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-validation-0001",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l01",
+   "revisitStationId": "rp-l01-s2",
+   "revisitLabel": "2.3 Lesson 1 — Security desk, station 2: Type check",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "mcq",
+   "q": "A program asks for a pupil's age in years. Which check makes sure 250 is rejected?",
+   "options": [
+    "A range check",
+    "A presence check",
+    "A type check",
+    "A format check"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "250 is a whole number, so a type check passes it. Only a range check knows it is impossible.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "subtopic": "Validation",
+   "revisit": "rp-l01-s2",
+   "revisitReason": "Validation",
+   "outcomes": [
+    "rp-l01-o2",
+    "rp-l01-o3"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-validation-0002",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l01",
+   "revisitStationId": "rp-l01-s2",
+   "revisitLabel": "2.3 Lesson 1 — Security desk, station 2: Type check",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "mcq",
+   "q": "A program asks for an email address. Which check makes sure it contains an @ and a full stop in the right places?",
+   "options": [
+    "A format check",
+    "A length check",
+    "A range check",
+    "A presence check"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "A format check tests the pattern the data has to follow.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "subtopic": "Validation",
+   "revisit": "rp-l01-s2",
+   "revisitReason": "Validation",
+   "outcomes": [
+    "rp-l01-o2",
+    "rp-l01-o3"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-validation-0003",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l01",
+   "revisitStationId": "rp-l01-s2",
+   "revisitLabel": "2.3 Lesson 1 — Security desk, station 2: Type check",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "short",
+   "q": "State what is meant by validation.",
+   "markPoints": [
+    {
+     "concept": "checking that data entered is sensible or reasonable before it is accepted",
+     "accept": [
+      [
+       "check|checks|checking|test|tests|testing|make sure|makes sure",
+       "sensible|reasonable|allowable|acceptable|valid|within|correct type|right format|meets the rules|right kind|possible"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Checking that data entered is sensible before it is accepted."
+    }
+   ],
+   "example": "Checking that the data entered is sensible and allowable before the program accepts it.",
+   "paraphrase": "Testing input against rules to make sure it is reasonable before it is used.",
+   "marks": 1,
+   "feedback": "Sensible, not correct: validation cannot tell whether an age of 15 is the learner's real age.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "misconception": "Validation does not check that data is TRUE, only that it is possible.",
+   "subtopic": "Validation",
+   "revisit": "rp-l01-s2",
+   "revisitReason": "Validation",
+   "outcomes": [
+    "rp-l01-o2",
+    "rp-l01-o3"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-validation-0004",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l01",
+   "revisitStationId": "rp-l01-s2",
+   "revisitLabel": "2.3 Lesson 1 — Security desk, station 2: Type check",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "written",
+   "q": "Explain why validation cannot guarantee that the data a user enters is correct.",
+   "markPoints": [
+    {
+     "concept": "validation only checks that the data is possible or sensible",
+     "accept": [
+      [
+       "sensible|possible|reasonable|allowable|valid|within range|right type|right format|meets the rule"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "Validation only checks that the data is possible."
+    },
+    {
+     "concept": "a user can still enter something possible but untrue",
+     "accept": [
+      [
+       "still|could|can|might",
+       "wrong|untrue|not true|false|lie|lies|lying|incorrect|not correct|not accurate|not their|not the real|made up|different|dishonest"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "So a user can still type a date of birth that is possible but not theirs."
+    }
+   ],
+   "example": "Validation only tests whether the data is possible: that it is a number, that it is in range, that it has the right shape. So a user can type a date of birth that passes every one of those checks and is still not their date of birth.",
+   "paraphrase": "The checks only establish that an entry is plausible, so somebody can supply something perfectly allowable that simply is not true.",
+   "marks": 2,
+   "feedback": "Possible is not the same as true. That distinction is the whole answer.",
+   "commandWord": "explain",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Validation",
+   "revisit": "rp-l01-s2",
+   "revisitReason": "Validation",
+   "outcomes": [
+    "rp-l01-o2",
+    "rp-l01-o3"
+   ],
+   "topic": "2.3",
+   "id": "rq-2.3-validation-0005",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "rp-l01",
+   "revisitStationId": "rp-l01-s2",
+   "revisitLabel": "2.3 Lesson 1 — Security desk, station 2: Type check",
+   "revisitScene": 0,
+   "revisitK": 1
+  }
+ ]
+}

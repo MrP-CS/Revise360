@@ -79,6 +79,30 @@
                            "cannot", "unable"]);
   const NEG_REACH = 4;          // how many words forward a negator denies
 
+  /* Words that introduce a consequence rather than continue a denial.
+   *
+   * "a file that is not there causes an error" was losing its mark: the negator
+   * denies "there", and "error" sits exactly four words later, so the denial
+   * swallowed a consequence it had nothing to do with. Shortening the reach to
+   * three was the obvious answer and the wrong one - it let "The read/write not
+   * head has to move not further" earn a mark about the head moving, because
+   * "move" is also four words out. The distance is not what tells the two
+   * apart; a new predicate is. So the reach stops at one of these words, and
+   * the word itself is not denied either: "causes an error" is a consequence of
+   * the absence, not part of it.
+   *
+   * Only when the connective is two or more words past the negator, because
+   * "does not cause a problem" denies the causing, and the reach has to carry
+   * on through it. The gap is what distinguishes the verb a negator governs
+   * from the verb of the next clause. "does not really cause a problem" is
+   * therefore read as two predicates when it is one; an adverb in that slot is
+   * rare enough, in answers to these questions, to be worth the trade. */
+  const CONSEQUENCE = new Set((
+    "cause causes caused causing mean means meant meaning lead leads leading " +
+    "result results resulting allow allows allowed allowing let lets letting " +
+    "make makes made making force forces forcing produce produces trigger triggers"
+  ).split(" "));
+
   /* Words that carry sentence structure. A written answer with almost none of
    * them is a list of terms, not an explanation. */
   const FUNCTION_WORDS = new Set((
@@ -132,7 +156,7 @@
   const SUFFIX = [["ication", "ic"], ["ational", "at"], ["ations", "at"], ["ation", "at"],
                   ["ities", "it"], ["ity", ""], ["iness", ""], ["ness", ""],
                   ["ingly", ""], ["ing", ""], ["ied", "y"], ["ies", "y"], ["edly", ""],
-                  ["ed", ""], ["ly", ""], ["es", ""], ["s", ""], ["e", ""]];
+                  ["ed", ""], ["ly", ""], ["er", ""], ["es", ""], ["s", ""], ["e", ""]];
   function stem(w) {
     if (w.length <= 4) return w;
     for (const [suf, rep] of SUFFIX)
@@ -160,8 +184,16 @@
     /* Both stems long enough. One edit apart is a typo between two long words
      * and a different word between short ones: "sort" and "short" are one edit
      * apart, and an answer about sorting was earning a mark about hexadecimal
-     * being shorter. */
-    if (ts.length >= 5 && ws.length >= 5 && ts[0] === ws[0] && dist1(ts, ws)) return true;
+     * being shorter.
+     *
+     * Six letters, not five. At five, "entir" and "enter" were one edit apart,
+     * so a mark point about checking the ENTIRE program was earned by an answer
+     * about the data ENTERED - and the same collision had already been patched
+     * out of one pattern by hand. Raising the floor costs nothing, because the
+     * stemmer now takes "er" off a comparative, which is what the five-letter
+     * case was really being used for: "closer" and "closely" reduce together
+     * rather than being rescued by an edit. */
+    if (ts.length >= 6 && ws.length >= 6 && ts[0] === ws[0] && dist1(ts, ws)) return true;
     /* One typo in a long word, compared on the words themselves rather than on
      * their stems. "waiting" and "waiing" do not stem together, because the
      * stemmer will not take "ing" off something that short - and a learner who
@@ -172,11 +204,18 @@
            && dist1(token, word);
   }
 
-  /* Where does this phrase start in these words, or -1? Up to two words may sit
-   * between the phrase's own words, so "loses its contents" matches a pattern
-   * written "lose contents" without the author listing every filler. */
-  function findPhrase(ws, tokens) {
-    for (let i = 0; i + tokens.length - 1 < ws.length; i++) {
+  /* Where does this phrase start in these words at or after `from`, or null? Up
+   * to two words may sit between the phrase's own words, so "loses its contents"
+   * matches a pattern written "lose contents" without the author listing every
+   * filler.
+   *
+   * `from` exists because a phrase may appear twice, once denied and once meant:
+   * "a disk does not lose its contents, unlike RAM, which loses its contents"
+   * says plainly that RAM loses its contents, and the mark was being thrown away
+   * because the FIRST occurrence was the negated one and nothing looked past
+   * it. */
+  function findPhrase(ws, tokens, from) {
+    for (let i = from || 0; i + tokens.length - 1 < ws.length; i++) {
       if (!accepts(tokens[0], ws[i])) continue;
       let at = i, ok = true;
       for (let j = 1; j < tokens.length; j++) {
@@ -226,10 +265,14 @@
   function findGroup(prep, group) {
     for (const tokens of phrasesOf(group)) {
       const own = tokens.some(t => NEGATOR.has(t));
-      const span = findPhrase(prep.ws, tokens);
-      if (!span) continue;
-      if (!own && negatedAt(prep, span)) continue;
-      return prep.clause[span[0]];
+      /* Every occurrence, not only the first: one of them being denied says
+       * nothing about the others. */
+      for (let from = 0; ; ) {
+        const span = findPhrase(prep.ws, tokens, from);
+        if (!span) break;
+        if (own || !negatedAt(prep, span)) return prep.clause[span[0]];
+        from = span[0] + 1;
+      }
     }
     return -1;
   }
@@ -247,7 +290,12 @@
     const here = prep.clause[span[0]];
     for (let i = span[0] - 1; i >= Math.max(0, span[0] - NEG_REACH); i--) {
       if (prep.clause[i] !== here) break;
-      if (NEGATOR.has(prep.ws[i])) return true;
+      if (!NEGATOR.has(prep.ws[i])) continue;
+      /* Did this negator's reach end before it got here? See CONSEQUENCE. */
+      let stopped = false;
+      for (let j = i + 2; j <= span[0]; j++)
+        if (CONSEQUENCE.has(prep.ws[j])) { stopped = true; break; }
+      if (!stopped) return true;
     }
     for (let i = span[0]; i <= span[1]; i++) if (NEGATOR.has(prep.ws[i])) return true;
     return false;
@@ -292,7 +340,10 @@
     if (ws.length < 2) return false;
     const fn = ws.filter(w => FUNCTION_WORDS.has(w)).length;
     if (fn / ws.length < 0.12) return true;
-    if (LINK.test(t)) return false;
+    /* A connective used to excuse an answer from this test. It should not: "one
+     * processor turn so fast" contains the word "so" and is still a list of
+     * remembered words, and it earned three marks out of three on the strength
+     * of it. The ratio below is the test; nothing waves it away. */
     const wanted = [];
     (points || []).forEach(p => (p.accept || []).forEach(way => way.forEach(g =>
       g.split("|").forEach(a => { const ts = words(a.toLowerCase()); if (ts.length) wanted.push(ts); }))));

@@ -1,0 +1,367 @@
+{
+ "topic": "2.5",
+ "lesson": "pl-l03",
+ "questions": [
+  {
+   "type": "match",
+   "q": "Match each statement to the translator it describes.",
+   "pairs": [
+    [
+     "Compiler",
+     "Translates the whole program once, before it is run"
+    ],
+    [
+     "Interpreter",
+     "Translates and runs the program one line at a time"
+    ],
+    [
+     "Compiler",
+     "Produces a file that can be run without the translator present"
+    ],
+    [
+     "Interpreter",
+     "Stops at the first line containing an error and reports it"
+    ]
+   ],
+   "marks": 4,
+   "feedback": "A compiler produces something you can hand over. An interpreter has to be there every time the program runs.",
+   "commandWord": "draw",
+   "difficulty": "understand",
+   "examStyle": true,
+   "subtopic": "Compilers and interpreters",
+   "revisit": "pl-l03-s2",
+   "revisitReason": "Compilers and interpreters",
+   "outcomes": [
+    "pl-l03-o1",
+    "pl-l03-o2"
+   ],
+   "topic": "2.5",
+   "id": "rq-2.5-compilers-and-interpreters-0010",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pl-l03",
+   "revisitStationId": "pl-l03-s2",
+   "revisitLabel": "2.5 Lesson 3 — Translation studio, station 2: The compiler route",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "short",
+   "q": "State what a translator does.",
+   "markPoints": [
+    {
+     "concept": "it converts source code into machine code the processor can run",
+     "accept": [
+      [
+       "convert|translat|change|turn|produce|compil|interpret",
+       "machine code|binary|object code|executable|machine instruction|code the computer can run|code the processor can run"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "It converts source code into machine code the processor can run."
+    }
+   ],
+   "example": "It converts the source code a programmer wrote into the machine code the processor can execute.",
+   "paraphrase": "It turns program source into the binary instructions the hardware is able to run.",
+   "marks": 1,
+   "feedback": "From source to machine code. Naming compilers and interpreters without saying what they do is not the answer to this question.",
+   "commandWord": "state",
+   "difficulty": "retrieve",
+   "subtopic": "Compilers and interpreters",
+   "revisit": "pl-l03-s2",
+   "revisitReason": "Compilers and interpreters",
+   "outcomes": [
+    "pl-l03-o1",
+    "pl-l03-o2"
+   ],
+   "topic": "2.5",
+   "id": "rq-2.5-compilers-and-interpreters-0011",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pl-l03",
+   "revisitStationId": "pl-l03-s2",
+   "revisitLabel": "2.5 Lesson 3 — Translation studio, station 2: The compiler route",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "written",
+   "q": "Explain one advantage of using an interpreter while a program is being written.",
+   "markPoints": [
+    {
+     "concept": "the program can be run straight away without waiting for the whole thing to be translated",
+     "accept": [
+      [
+       "straight away|immediately|at once|without waiting|no wait|instantly|quickly|run it now|partly written|unfinished|incomplete|line at a time|one line"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "The program can be run straight away, without waiting for the whole thing to be translated."
+    },
+    {
+     "concept": "so errors are found and corrected one at a time as the code is written",
+     "accept": [
+      [
+       "error|errors|mistake|mistakes|bug|bugs|fault|where it went wrong|the line number|reports"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "This means each error is reported as it is reached, so it can be corrected at once."
+    }
+   ],
+   "example": "An interpreter translates and runs one line at a time, so a part-written program can be tried immediately rather than waiting for a full compilation. It stops at the first line with an error and says where, so the programmer fixes one fault at a time instead of reading a long list at the end.",
+   "paraphrase": "Because it works through the code line by line, an unfinished program can be tested right away, and it halts at each mistake so that faults are dealt with one by one.",
+   "marks": 2,
+   "feedback": "Running it at once, and what that does for finding mistakes.",
+   "commandWord": "explain",
+   "difficulty": "understand",
+   "examStyle": true,
+   "subtopic": "Compilers and interpreters",
+   "revisit": "pl-l03-s2",
+   "revisitReason": "Compilers and interpreters",
+   "outcomes": [
+    "pl-l03-o1",
+    "pl-l03-o2"
+   ],
+   "topic": "2.5",
+   "id": "rq-2.5-compilers-and-interpreters-0012",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pl-l03",
+   "revisitStationId": "pl-l03-s2",
+   "revisitLabel": "2.5 Lesson 3 — Translation studio, station 2: The compiler route",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "written",
+   "q": "Explain one advantage of using a compiler to produce the finished version of a program.",
+   "markPoints": [
+    {
+     "concept": "the compiled program runs faster because it is already machine code",
+     "accept": [
+      [
+       "faster|quicker|speed|more efficient|better performance|already translated|no translation while|not translated again"
+      ]
+     ],
+     "worth": 1,
+     "reject": [
+      [
+       "slow|slower|slowly|less quick|not as fast|takes longer|sluggish"
+      ]
+     ],
+     "exemplar": "The compiled program runs faster because it is already in machine code."
+    },
+    {
+     "concept": "and it can be given to someone else without the source code or the translator",
+     "accept": [
+      [
+       "without|no need for|does not need|hidden|protect|cannot see|distribut|share|sell|give|given|send|sent|hand|handed|standalone|on its own",
+       "source code|translator|compiler|interpreter|user|users|customer|someone else|somebody else|other people|their computer|another computer"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "It can also be handed to a user without the source code or the translator."
+    }
+   ],
+   "example": "A compiled program is already machine code, so it runs faster than the same program being translated line by line every time. It is also a file in its own right, so it can be distributed to users who have neither the source code nor a translator installed.",
+   "paraphrase": "Since the translation has already happened, execution is quicker, and the resulting file can be handed out on its own without revealing the source or requiring a translator.",
+   "marks": 2,
+   "feedback": "Speed, and what you can hand over. Either pair of ideas earns both marks.",
+   "commandWord": "explain",
+   "difficulty": "understand",
+   "examStyle": true,
+   "subtopic": "Compilers and interpreters",
+   "revisit": "pl-l03-s2",
+   "revisitReason": "Compilers and interpreters",
+   "outcomes": [
+    "pl-l03-o1",
+    "pl-l03-o2"
+   ],
+   "topic": "2.5",
+   "id": "rq-2.5-compilers-and-interpreters-0013",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pl-l03",
+   "revisitStationId": "pl-l03-s2",
+   "revisitLabel": "2.5 Lesson 3 — Translation studio, station 2: The compiler route",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "mcq",
+   "q": "A programmer runs a program and it works correctly until the twentieth line, where it stops with an error message. Which translator is most likely in use?",
+   "options": [
+    "An interpreter",
+    "A compiler",
+    "An assembler",
+    "A linker"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "A compiler would have refused to produce a program at all. Running correctly up to the faulty line is what an interpreter does.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Compilers and interpreters",
+   "revisit": "pl-l03-s2",
+   "revisitReason": "Compilers and interpreters",
+   "outcomes": [
+    "pl-l03-o1",
+    "pl-l03-o2"
+   ],
+   "topic": "2.5",
+   "id": "rq-2.5-compilers-and-interpreters-0014",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pl-l03",
+   "revisitStationId": "pl-l03-s2",
+   "revisitLabel": "2.5 Lesson 3 — Translation studio, station 2: The compiler route",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "written",
+   "q": "Explain why a compiler reports errors differently from an interpreter.",
+   "markPoints": [
+    {
+     "concept": "a compiler checks the whole program before producing anything",
+     "accept": [
+      [
+       "whole|all of it|all of the code|all the code|entire program|entire thing|complete|everything|every line|all at once|in one go",
+       "check|checks|translat|read|reads|look|looks|examin|scan|goes through|been through|before it runs|before running|before it produces|first"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "A compiler checks the whole program before it produces anything."
+    },
+    {
+     "concept": "so it reports a list of every error it found together",
+     "accept": [
+      [
+       "list|all the errors|every error|together|report|reports|at the end|summary"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "It then reports all the errors it found together."
+    },
+    {
+     "concept": "an interpreter stops at the first error because it has only reached that line",
+     "accept": [
+      [
+       "stops|halts|first error|first mistake|one at a time|as it reaches|only got as far|line by line|one line"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "An interpreter stops at the first error, because that is as far as it has got."
+    }
+   ],
+   "example": "A compiler translates the whole program before producing anything, so it can check every line and then report a list of all the errors it found. An interpreter translates and runs one line at a time, so it stops as soon as it reaches a line it cannot translate and reports that one error, because it has not looked at the rest of the program yet.",
+   "paraphrase": "One examines all of the code first and so can list every fault at once, whereas the other works through the lines in turn and halts at the first problem, since it has not yet seen what follows.",
+   "marks": 3,
+   "feedback": "Three ideas: checking everything, listing them, and why the other can only report one.",
+   "hint": "How much of the program has each translator looked at when it reports?",
+   "commandWord": "explain",
+   "difficulty": "stretch",
+   "examStyle": true,
+   "subtopic": "Compilers and interpreters",
+   "revisit": "pl-l03-s2",
+   "revisitReason": "Compilers and interpreters",
+   "outcomes": [
+    "pl-l03-o1",
+    "pl-l03-o2"
+   ],
+   "topic": "2.5",
+   "id": "rq-2.5-compilers-and-interpreters-0015",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pl-l03",
+   "revisitStationId": "pl-l03-s2",
+   "revisitLabel": "2.5 Lesson 3 — Translation studio, station 2: The compiler route",
+   "revisitScene": 0,
+   "revisitK": 1
+  },
+  {
+   "type": "written",
+   "q": "A teacher wants pupils to try short Python programs in lesson and see the result immediately. Explain why an interpreter suits this better than a compiler.",
+   "markPoints": [
+    {
+     "concept": "an interpreter runs the code as soon as it is typed, with no separate compilation step",
+     "accept": [
+      [
+       "straight away|immediately|at once|no wait|without waiting|as soon as|instantly|no compil|no separate step|line at a time"
+      ]
+     ],
+     "worth": 1,
+     "exemplar": "An interpreter runs the code as soon as it is typed, with no separate compiling step."
+    },
+    {
+     "concept": "so pupils see the result and any error message within a lesson",
+     "accept": [
+      [
+       "see|sees|shows|result|output|error message|feedback|try again|change it|quick|lesson"
+      ]
+     ],
+     "worth": 1,
+     "developed": true,
+     "exemplar": "This means pupils see the result, or the error, and can change the code and try again."
+    }
+   ],
+   "example": "An interpreter runs each line as it is typed, so there is no compile step to wait through: a pupil presses run and sees the output or the error message at once, changes a line and tries again. In a fifty-minute lesson that matters more than the small speed advantage a compiled program would have.",
+   "paraphrase": "Because it executes the code immediately rather than building a separate file first, learners get the output or the error straight away and can keep adjusting their program.",
+   "marks": 2,
+   "feedback": "No compile step, and what the pupils get because of it.",
+   "commandWord": "explain",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Choosing a translator",
+   "revisit": "pl-l03-s6",
+   "revisitReason": "Choosing a translator",
+   "outcomes": [
+    "pl-l03-o3"
+   ],
+   "topic": "2.5",
+   "id": "rq-2.5-choosing-a-translator-0016",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pl-l03",
+   "revisitStationId": "pl-l03-s6",
+   "revisitLabel": "2.5 Lesson 3 — Translation studio, station 6: Choosing a route",
+   "revisitScene": 0,
+   "revisitK": 5
+  },
+  {
+   "type": "mcq",
+   "q": "A company is selling a game to the public and does not want customers to see or change the source code. Which translator should it use for the version it sells?",
+   "options": [
+    "A compiler",
+    "An interpreter",
+    "An assembler",
+    "A text editor"
+   ],
+   "correct": 0,
+   "marks": 1,
+   "feedback": "A compiled file is machine code. An interpreted program has to be shipped as source, which anyone can read.",
+   "commandWord": "identify",
+   "difficulty": "apply",
+   "examStyle": true,
+   "subtopic": "Choosing a translator",
+   "revisit": "pl-l03-s6",
+   "revisitReason": "Choosing a translator",
+   "outcomes": [
+    "pl-l03-o3"
+   ],
+   "topic": "2.5",
+   "id": "rq-2.5-choosing-a-translator-0017",
+   "contentVersion": 1,
+   "reviewStatus": "VALIDATED",
+   "revisitLessonId": "pl-l03",
+   "revisitStationId": "pl-l03-s6",
+   "revisitLabel": "2.5 Lesson 3 — Translation studio, station 6: Choosing a route",
+   "revisitScene": 0,
+   "revisitK": 5
+  }
+ ]
+}

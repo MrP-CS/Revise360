@@ -390,7 +390,9 @@ BANK = [
                     exemplar="Each device has its own cable to the switch."),
                  mp("so one cable failing affects only that device, and there are no "
                     "collisions",
-                    ["only that|just that|one device|rest keep working|others continue|"
+                    ["only one device|just one device|one device|that one device|"
+                     "rest keep working|others continue|rest carry on|one computer|"
+                     "only the computer|only the machine|a single device|"
                      "no collision|collisions|does not affect"],
                     developed=True,
                     exemplar="So if one cable fails only that device is affected and the "
@@ -721,7 +723,7 @@ BANK = [
                 [mp("each layer can be changed or replaced on its own",
                     ["change|changed|replace|replaced|update|updated|improve|rewritten|"
                      "swap|swapped",
-                     "one layer|that layer|a layer|independently|on its own|"
+                     "one layer|a single layer|a layer|independently|on its own|"
                      "without affecting|without rewriting"],
                     exemplar="A layer can be changed without the others being rewritten."),
                  mp("because the layers only have to agree on what passes between them",
