@@ -1462,7 +1462,8 @@
    * It is deliberately not awaited anywhere. Entering VR has to happen inside
    * the gesture that asked for it, and anything awaited before that call spends
    * the gesture and the session never opens. */
-  if (window.R360Py && exp.scenes.some(s => (s.stations || []).some(st => (st.tasks || []).some(t => t.t === "code")))) {
+  if (window.R360Py && !window.__noWarm
+      && exp.scenes.some(s => (s.stations || []).some(st => (st.tasks || []).some(t => t.t === "code")))) {
     const warm = () => { try { R360Py.warm(); } catch (e) { /* best effort */ } };
     if (window.requestIdleCallback) requestIdleCallback(warm, { timeout: 4000 });
     else setTimeout(warm, 2500);
