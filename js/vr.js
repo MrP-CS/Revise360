@@ -134,9 +134,16 @@
           else if (b.kv) { ops.push({ k: "kv", y, kv: b.kv }); y += 50 * scale; }
           else if (b.btn !== undefined) { const m = btnH(b, IW); ops.push({ k: "btn", y, x: P, w: IW, b, ...m }); y += m.h + 12; }
           else if (b.row) {
-            const n = b.row.length, gap = 14, w = (IW - gap * (n - 1)) / n;
+            /* A row normally shares the full width between its buttons. `cells`
+             * says to size them as if the row were that many columns wide and
+             * centre what is actually there, which is what a symbol row of four
+             * keys needs: stretched across the panel, a bracket becomes a key
+             * the width of a hand, and the keyboard stops looking like one. */
+            const n = b.row.length, gap = 14, cells = Math.max(n, b.cells || n);
+            const w = (IW - gap * (cells - 1)) / cells;
+            const x0 = P + ((cells - n) * (w + gap)) / 2;
             const ms = b.row.map(x => btnH(x, w)), h = Math.max(...ms.map(m => m.h));
-            b.row.forEach((x, i) => ops.push({ k: "btn", y, x: P + i * (w + gap), w, b: x, ...ms[i], h }));
+            b.row.forEach((x, i) => ops.push({ k: "btn", y, x: x0 + i * (w + gap), w, b: x, ...ms[i], h }));
             y += h + 12;
           }
         });
@@ -560,7 +567,14 @@
        * is a whole degree across - and with depthTest off the screen is
        * drawn over the keys wherever they meet. -35 opens the join to
        * 2.6 degrees, which is a boundary a hand can feel. */
-      keys:   { dist: 1.80, pitch: -35, yaw: 0 },
+      /* The keyboard is placed by its TOP edge, not its middle, because its
+       * height changes: four symbols is six rows, every symbol is nine. Placed
+       * by the middle it grew upward as well as down, and with every symbol
+       * showing its top reached -19.6 degrees, which is exactly where the
+       * bottom of the screen is. Pinning the top means extra rows go
+       * downwards, where there is nothing, and the join with the screen is the
+       * same whatever the question needs. */
+      keys:   { dist: 1.80, top: -23, yaw: 0 },
       /* Out to the lower left, past the edge of both. The screen is 2.90m wide
        * at 2.05m, which is 35 degrees either side of straight ahead; the keys
        * are 2.50m at 1.80m, which is 35 too. 52 degrees clears both with room
@@ -572,15 +586,31 @@
     };
     const SS = 2;                 // drawn at twice the layout size, for the lens
 
-    const KEYS = [
-      "1234567890".split(""),
-      "qwertyuiop".split(""),
-      "asdfghjkl:".split(""),
-      "zxcvbnm,.'".split(""),
-      ["(", ")", "[", "]", "=", "+", "-", "*", "/", "_"],
-      ["<", ">", "#", '"', "%", "!", "&", "|", "{", "}"],
-      ["?", "\\", ";", "^", "@", "~", "$", "£"]
-    ];
+    /* The letters are always there, and so are the editing keys. What changes
+     * with the question is the number row and the symbol row.
+     *
+     * The symbols used to be three fixed rows of punctuation - 32 keys, most of
+     * them irrelevant to whatever was on the screen. A pupil writing
+     * print("Hello") had to find the brackets and the quote among braces,
+     * pipes, carets and a pound sign. Now each question carries `vrKeys`, the
+     * characters it could reasonably need, worked out at build time by
+     * tools/vrsymbols.py, and only those are drawn.
+     *
+     * The letter rows hold letters only. They used to carry a colon, a comma, a
+     * full stop and an apostrophe on their ends, which meant four symbols were
+     * always present whether the question wanted them or not; those come off
+     * the symbol row now like everything else.
+     *
+     * KEYS is kept as the full set, in one place, because `More symbols` falls
+     * back to it and tools/vrkeys.py reads it to check the course can be typed
+     * at all. */
+    const LETTERS = ["qwertyuiop".split(""), "asdfghjkl".split(""), "zxcvbnm".split("")];
+    const DIGITS = "1234567890".split("");
+    const SYMBOLS = ["(", ")", "[", "]", "{", "}", "=", "+", "-", "*", "/", "_",
+                     "<", ">", "!", "#", '"', "'", ":", ";", ",", ".", "%",
+                     "&", "|", "?", "\\", "^", "@", "~", "$", "£"];
+    const KEYS = [DIGITS].concat(LETTERS, [SYMBOLS.slice(0, 12), SYMBOLS.slice(12, 22),
+                                           SYMBOLS.slice(22)]);
 
     /* Where the caret goes when the screen opens. A Complete it hands the pupil
      * a program with a gap in it, and the gap is the thing they are there to
@@ -647,7 +677,10 @@
       const v = vrCode; if (!v) return;
       atAnchor(v.mesh, SEAT.screen.dist, SEAT.screen.pitch, SEAT.screen.yaw);
       showKeyboard();
-      atAnchor(kbPanel.mesh, SEAT.keys.dist, SEAT.keys.pitch, SEAT.keys.yaw);
+      // the top edge is what is pinned; the centre follows from how tall it is
+      const kh = kbPanel.mesh.scale.y || 0.6;
+      const kMid = SEAT.keys.top - T.MathUtils.radToDeg(Math.atan2(kh / 2, SEAT.keys.dist));
+      atAnchor(kbPanel.mesh, SEAT.keys.dist, kMid, SEAT.keys.yaw);
       paint();
     }
     /* One control, moving one workspace. The screen and the keyboard go
@@ -685,8 +718,15 @@
         let yaw = Math.atan2(d.x, d.z) - a.yaw;
         yaw = deg(Math.atan2(Math.sin(yaw), Math.cos(yaw)));
         const pitch = deg(Math.asin(T.MathUtils.clamp(d.y / dist, -1, 1)) - a.pitch);
-        const bb = new T.Box3().setFromObject(mesh);
-        const w = bb.max.x - bb.min.x, h = bb.max.y - bb.min.y;
+        /* The surface's own size, not a world axis-aligned box around it.
+         *
+         * A box around a plane pitched 35 degrees back is shorter than the
+         * plane is: the height leans into the depth. Measuring that way made
+         * the keyboard look 20 degrees tall when it is 25, and with every
+         * symbol showing it reported 25 where the truth is 31 - which was the
+         * difference between "clear of the screen" and "touching it". */
+        const g = mesh.geometry.parameters || { width: 1, height: 1 };
+        const w = g.width * mesh.scale.x, h = g.height * mesh.scale.y;
         const hw = deg(Math.atan2(w / 2, dist)), hh = deg(Math.atan2(h / 2, dist));
         out.push({ name, dist: +dist.toFixed(3), w: +w.toFixed(3), h: +h.toFixed(3),
                    yaw0: yaw - hw, yaw1: yaw + hw, pitch0: pitch - hh, pitch1: pitch + hh });
@@ -819,12 +859,36 @@
      * is for typing. */
     function showKeyboard() {
       const v = vrCode; if (!v) return;
-      const row = keys => ({ row: keys.map(ch => ({
+      const row = (keys, cells) => ({ cells, row: keys.map(ch => ({
         btn: ch === " " ? "Space" : (v.shift && /[a-z]/.test(ch) ? ch.toUpperCase() : ch),
         id: "key" + ch, center: true, size: 30, onClick: () => typeKey(ch) })) });
-      kbPanel.set({ color: COL.line, scale: .62, blocks: [
-        row(KEYS[0]), row(KEYS[1]), row(KEYS[2]), row(KEYS[3]), row(KEYS[4]), row(KEYS[5]), row(KEYS[6]),
-        { row: [
+      /* What this question needs, and nothing else - unless the pupil asks for
+       * the rest. The escape hatch matters: tools/vrsymbols.py works the set
+       * out from the question's own material and errs large, but it is a
+       * derivation and derivations are wrong sometimes. A pupil who has thought
+       * of a way to answer that nobody anticipated must still be able to type
+       * it, so `More symbols` is always there and a paired keyboard is never
+       * filtered at all. Without that, a mistake in the derivation would turn
+       * into a question that cannot be answered. */
+      const want = new Set(Array.isArray(v.task.vrKeys) ? v.task.vrKeys : SYMBOLS.concat(DIGITS));
+      const syms = v.allKeys ? SYMBOLS : SYMBOLS.filter(ch => want.has(ch));
+      const digits = v.allKeys || DIGITS.some(d => want.has(d));
+      // reflowed, not greyed out: a row of dead keys is the clutter this removes
+      /* Ten to a row normally, twelve when every symbol is showing. Four rows
+       * of punctuation put the bottom of the keyboard 54 degrees below the
+       * line of sight, which is further down than this course asks anybody to
+       * look; three rows brings it back inside. The expanded set is a way out
+       * of trouble rather than the normal view, so slightly narrower keys
+       * there is the right way round. */
+      const per = v.allKeys ? 12 : 10;
+      const symRows = [];
+      for (let i = 0; i < syms.length; i += per) symRows.push(syms.slice(i, i + per));
+      const trimmed = syms.length < SYMBOLS.length || !digits;
+      kbPanel.set({ color: COL.line, scale: .62, blocks: [].concat(
+        digits ? [row(DIGITS)] : [],
+        LETTERS.map(row),
+        symRows.map(r => row(r, per)),
+        [{ row: [
           { btn: v.shift ? "SHIFT on" : "Shift", id: "kshift", center: true, size: 24, state: v.shift ? "on" : "", onClick: () => typeKey("Shift") },
           { btn: "Space", id: "kspace", center: true, size: 24, onClick: () => typeKey("Space") },
           { btn: "Tab", id: "ktab", center: true, size: 24, onClick: () => typeKey("Tab") },
@@ -837,7 +901,12 @@
           { btn: "Clear line", id: "kclear", center: true, size: 21, onClick: () => typeKey("ClearLine") },
           { btn: "Back", id: "kback", center: true, size: 24, onClick: () => typeKey("Back") },
           { btn: "Enter", id: "kenter", center: true, size: 24, onClick: () => typeKey("Enter") }
-        ] }] });
+        ] }],
+        trimmed || v.allKeys
+          ? [{ cells: 4, row: [{ btn: v.allKeys ? "Fewer symbols" : "More symbols", id: "kmore",
+                       center: true, size: 22, state: v.allKeys ? "on" : "",
+                       onClick: () => { v.allKeys = !v.allKeys; showKeyboard(); layout(); } }] }]
+          : []) });
     }
 
     /* A keyboard someone has paired with the headset types into the editor as

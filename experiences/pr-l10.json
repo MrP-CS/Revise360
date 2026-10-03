@@ -55,6 +55,16 @@
         "Read the whole file into text as one string.",
         "Close the file again.",
         "Show what was read."
+       ],
+       "vrKeys": [
+        "\"",
+        "'",
+        "(",
+        ")",
+        ",",
+        ".",
+        "=",
+        "\\"
        ]
       },
       {
@@ -93,7 +103,17 @@
         "out": [
          "cat"
         ]
-       }
+       },
+       "vrKeys": [
+        "\"",
+        "'",
+        "(",
+        ")",
+        ",",
+        ".",
+        "=",
+        "\\"
+       ]
       },
       {
        "t": "code",
@@ -133,7 +153,16 @@
        "hint": {
         "think": "text already holds the whole file, so only the last line needs changing.",
         "syntax": "print(variable)"
-       }
+       },
+       "vrKeys": [
+        "\"",
+        "'",
+        "(",
+        ")",
+        ",",
+        ".",
+        "="
+       ]
       },
       {
        "t": "code",
@@ -187,7 +216,18 @@
          "cat",
          "dog"
         ]
-       }
+       },
+       "vrKeys": [
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        ",",
+        ".",
+        "=",
+        "_"
+       ]
       },
       {
        "t": "code",
@@ -242,7 +282,17 @@
          "# read the whole file into a variable"
         ],
         "diagram": "pyfile"
-       }
+       },
+       "vrKeys": [
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        ",",
+        ".",
+        "="
+       ]
       },
       {
        "t": "code",
@@ -283,7 +333,16 @@
         "think": "f is the link to the file, not the words inside it. Something has to fetch the words.",
         "syntax": "f.read()",
         "diagram": "pyfile"
-       }
+       },
+       "vrKeys": [
+        "\"",
+        "'",
+        "(",
+        ")",
+        ",",
+        ".",
+        "="
+       ]
       },
       {
        "t": "code",
@@ -344,7 +403,27 @@
         "think": "len() counts the characters of a string, and .read() gave you one string.",
         "syntax": "len(text)",
         "diagram": "pyfile"
-       }
+       },
+       "vrKeys": [
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        ",",
+        ".",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "="
+       ]
       }
      ]
     },
@@ -398,6 +477,16 @@
         "Show the line, which leaves a blank line under it.",
         "Count its characters, which comes to 4.",
         "Count them again with the newline taken off, which comes to 3."
+       ],
+       "vrKeys": [
+        "\"",
+        "'",
+        "(",
+        ")",
+        ",",
+        ".",
+        "=",
+        "\\"
        ]
       },
       {
@@ -425,7 +514,17 @@
        ],
        "teach": {
         "say": "The file remembers how far it has been read. The next .readline() carries on from there instead of starting again."
-       }
+       },
+       "vrKeys": [
+        "\"",
+        "'",
+        "(",
+        ")",
+        ",",
+        ".",
+        "=",
+        "\\"
+       ]
       },
       {
        "t": "code",
@@ -466,7 +565,16 @@
        "hint": {
         "think": "The newline from the file is still on the end of the word.",
         "syntax": "text.strip()"
-       }
+       },
+       "vrKeys": [
+        "\"",
+        "'",
+        "(",
+        ")",
+        ",",
+        ".",
+        "="
+       ]
       },
       {
        "t": "code",
@@ -538,7 +646,28 @@
         "out": [
          "['cat\\n', 'dog\\n']"
         ]
-       }
+       },
+       "vrKeys": [
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        ",",
+        ".",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "=",
+        "_"
+       ]
       },
       {
        "t": "code",
@@ -611,7 +740,27 @@
          "Display the word `\"length\"` and how long the line now is."
         ],
         "diagram": "pyfile"
-       }
+       },
+       "vrKeys": [
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        ",",
+        ".",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "="
+       ]
       },
       {
        "t": "code",
@@ -653,7 +802,17 @@
        "hint": {
         "think": "Read the error. Every line that starts a block ends with the same punctuation mark.",
         "syntax": "for item in list:"
-       }
+       },
+       "vrKeys": [
+        "\"",
+        "'",
+        "(",
+        ")",
+        ",",
+        ".",
+        ":",
+        "="
+       ]
       },
       {
        "t": "code",
@@ -723,7 +882,37 @@
          "Display the position plus `1` and the stripped word."
         ],
         "diagram": "pyfile"
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        "*",
+        "+",
+        ",",
+        "-",
+        ".",
+        "/",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">",
+        "[",
+        "]"
+       ]
       }
      ]
     },
@@ -776,6 +965,16 @@
         "Open it for reading.",
         "Show the whole file, which is green and nothing else.",
         "Close the file again."
+       ],
+       "vrKeys": [
+        "\"",
+        "'",
+        "(",
+        ")",
+        ",",
+        ".",
+        "=",
+        "\\"
        ]
       },
       {
@@ -803,7 +1002,16 @@
        ],
        "teach": {
         "say": ".write() puts exactly what it is given into the file and nothing more. print() ends a line for you, but .write() never does."
-       }
+       },
+       "vrKeys": [
+        "\"",
+        "'",
+        "(",
+        ")",
+        ",",
+        ".",
+        "="
+       ]
       },
       {
        "t": "code",
@@ -842,7 +1050,18 @@
        "hint": {
         "think": "A line in a file ends with a \\n, and .write() will not put one there for you.",
         "syntax": "f.write(text + \"\\n\")"
-       }
+       },
+       "vrKeys": [
+        "\"",
+        "'",
+        "(",
+        ")",
+        "+",
+        ",",
+        ".",
+        "=",
+        "\\"
+       ]
       },
       {
        "t": "code",
@@ -894,7 +1113,19 @@
         "out": [
          "cat"
         ]
-       }
+       },
+       "vrKeys": [
+        "\"",
+        "'",
+        "(",
+        ")",
+        "+",
+        ",",
+        ".",
+        "=",
+        "\\",
+        "_"
+       ]
       },
       {
        "t": "code",
@@ -954,7 +1185,19 @@
          "Open it for reading, read it all and display it."
         ],
         "diagram": "pyfile"
-       }
+       },
+       "vrKeys": [
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        "+",
+        ",",
+        ".",
+        "=",
+        "\\"
+       ]
       },
       {
        "t": "code",
@@ -1011,7 +1254,18 @@
         "think": "Read the error. A file opened for reading will not let anything be written to it.",
         "syntax": "open(name, \"w\")",
         "diagram": "pyfile"
-       }
+       },
+       "vrKeys": [
+        "\"",
+        "'",
+        "(",
+        ")",
+        "+",
+        ",",
+        ".",
+        "=",
+        "\\"
+       ]
       },
       {
        "t": "code",
@@ -1090,7 +1344,30 @@
          "Display each line stripped, then how many lines there were."
         ],
         "diagram": "pyfile"
-       }
+       },
+       "vrKeys": [
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        "+",
+        ",",
+        ".",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "=",
+        "\\"
+       ]
       }
      ]
     },
@@ -1142,6 +1419,16 @@
         "Open it for reading.",
         "Show the whole file, which is now two lines.",
         "Close the file again."
+       ],
+       "vrKeys": [
+        "\"",
+        "'",
+        "(",
+        ")",
+        ",",
+        ".",
+        "=",
+        "\\"
        ]
       },
       {
@@ -1174,7 +1461,17 @@
        ],
        "teach": {
         "say": "\"a\" adds to the end of the file. \"w\" empties it first. The mode you choose is the whole difference between them."
-       }
+       },
+       "vrKeys": [
+        "\"",
+        "'",
+        "(",
+        ")",
+        ",",
+        ".",
+        "=",
+        "\\"
+       ]
       },
       {
        "t": "code",
@@ -1233,7 +1530,18 @@
        "hint": {
         "think": "One mode empties the file and one adds to the end of it.",
         "syntax": "open(name, \"a\")"
-       }
+       },
+       "vrKeys": [
+        "\"",
+        "'",
+        "(",
+        ")",
+        "+",
+        ",",
+        ".",
+        "=",
+        "\\"
+       ]
       },
       {
        "t": "code",
@@ -1306,7 +1614,20 @@
         "out": [
          "cat"
         ]
-       }
+       },
+       "vrKeys": [
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        "+",
+        ",",
+        ".",
+        "=",
+        "\\",
+        "_"
+       ]
       },
       {
        "t": "code",
@@ -1390,7 +1711,20 @@
          "Open it for reading and display each line stripped."
         ],
         "diagram": "pyfile"
-       }
+       },
+       "vrKeys": [
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        "+",
+        ",",
+        ".",
+        ":",
+        "=",
+        "\\"
+       ]
       },
       {
        "t": "code",
@@ -1455,7 +1789,18 @@
          "The file is opened again for reading before it has been closed.",
          "What was written is still waiting, so it does not come back."
         ]
-       }
+       },
+       "vrKeys": [
+        "\"",
+        "'",
+        "(",
+        ")",
+        "+",
+        ",",
+        ".",
+        "=",
+        "\\"
+       ]
       },
       {
        "t": "code",
@@ -1528,7 +1873,35 @@
         "think": "The last line of the file is the last item of the list .readlines() gave you.",
         "syntax": "list[len(list) - 1]",
         "diagram": "pyfile"
-       }
+       },
+       "vrKeys": [
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        "*",
+        "+",
+        ",",
+        "-",
+        ".",
+        "/",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "=",
+        "[",
+        "\\",
+        "]"
+       ]
       }
      ]
     },
@@ -1582,6 +1955,29 @@
         "Take each line of the list in turn.",
         "Strip the newline off it, then cut it at the comma into a list of fields.",
         "Show the two fields with a space between them."
+       ],
+       "vrKeys": [
+        "\"",
+        "'",
+        "(",
+        ")",
+        ",",
+        ".",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "=",
+        "[",
+        "\\",
+        "]"
        ]
       },
       {
@@ -1611,7 +2007,30 @@
        ],
        "teach": {
         "say": "The newline is part of the line, so it ends up inside the last field unless the line is stripped before it is split."
-       }
+       },
+       "vrKeys": [
+        "\"",
+        "'",
+        "(",
+        ")",
+        ",",
+        ".",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "=",
+        "[",
+        "\\",
+        "]"
+       ]
       },
       {
        "t": "code",
@@ -1653,7 +2072,29 @@
        "hint": {
         "think": "Take the newline off the line before you cut it up.",
         "syntax": "text.strip()"
-       }
+       },
+       "vrKeys": [
+        "\"",
+        "'",
+        "(",
+        ")",
+        ",",
+        ".",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "=",
+        "[",
+        "]"
+       ]
       },
       {
        "t": "code",
@@ -1695,7 +2136,30 @@
        "hint": {
         "think": "The word is the first field and the number is the second one.",
         "syntax": "fields[position]"
-       }
+       },
+       "vrKeys": [
+        "\"",
+        "'",
+        "(",
+        ")",
+        ",",
+        ".",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "=",
+        "[",
+        "]",
+        "_"
+       ]
       },
       {
        "t": "code",
@@ -1767,7 +2231,33 @@
          "Strip it, split it at the comma, and display both fields."
         ],
         "diagram": "pyfile"
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        ",",
+        ".",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">",
+        "[",
+        "]"
+       ]
       },
       {
        "t": "code",
@@ -1817,7 +2307,33 @@
        "hint": {
         "think": "A field taken out of a file is text, even when it is nothing but digits.",
         "syntax": "int(text)"
-       }
+       },
+       "vrKeys": [
+        "\"",
+        "'",
+        "(",
+        ")",
+        "*",
+        "+",
+        ",",
+        "-",
+        ".",
+        "/",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "=",
+        "[",
+        "]"
+       ]
       },
       {
        "t": "code",
@@ -1909,7 +2425,33 @@
          "Then display how many records there were."
         ],
         "diagram": "pyfile"
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        ",",
+        ".",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">",
+        "[",
+        "]"
+       ]
       }
      ]
     },
@@ -1971,6 +2513,30 @@
         "Open out.txt for reading, under the name check.",
         "Show the whole of the new file.",
         "Close check."
+       ],
+       "vrKeys": [
+        "\"",
+        "'",
+        "(",
+        ")",
+        "+",
+        ",",
+        ".",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "=",
+        "[",
+        "\\",
+        "]"
        ]
       },
       {
@@ -2000,7 +2566,29 @@
        ],
        "teach": {
         "say": "A file can be opened, written to and closed again inside a loop. \"a\" keeps what is already in the file, so each turn of the loop adds one more line."
-       }
+       },
+       "vrKeys": [
+        "\"",
+        "'",
+        "(",
+        ")",
+        "+",
+        ",",
+        ".",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "=",
+        "\\"
+       ]
       },
       {
        "t": "code",
@@ -2051,7 +2639,38 @@
        "hint": {
         "think": "The number field is text until int() turns it into a number.",
         "syntax": "int(field) > limit"
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "'",
+        "(",
+        ")",
+        "*",
+        "+",
+        ",",
+        "-",
+        ".",
+        "/",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">",
+        "[",
+        "\\",
+        "]",
+        "_"
+       ]
       },
       {
        "t": "code",
@@ -2139,7 +2758,35 @@
          "Open `\"out.txt\"` for reading and display it."
         ],
         "diagram": "pyfile"
-       }
+       },
+       "vrKeys": [
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        "*",
+        "+",
+        ",",
+        "-",
+        ".",
+        "/",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "=",
+        "[",
+        "\\",
+        "]"
+       ]
       },
       {
        "t": "code",
@@ -2243,7 +2890,38 @@
          "Display each of its lines, then how many there were."
         ],
         "diagram": "pyfile"
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        "*",
+        "+",
+        ",",
+        "-",
+        ".",
+        "/",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">",
+        "[",
+        "\\",
+        "]"
+       ]
       },
       {
        "t": "code",
@@ -2297,7 +2975,19 @@
         "think": "The mode on the last open() is not the mode for what the program does next.",
         "syntax": "open(name, \"r\")",
         "diagram": "pyfile"
-       }
+       },
+       "vrKeys": [
+        "\"",
+        "'",
+        "(",
+        ")",
+        "+",
+        ",",
+        ".",
+        ":",
+        "=",
+        "\\"
+       ]
       },
       {
        "t": "code",
@@ -2381,7 +3071,35 @@
          "Display how many records there are, then the total."
         ],
         "diagram": "pyfile"
-       }
+       },
+       "vrKeys": [
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        "*",
+        "+",
+        ",",
+        "-",
+        ".",
+        "/",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "=",
+        "[",
+        "\\",
+        "]"
+       ]
       }
      ]
     },

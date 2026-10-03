@@ -113,8 +113,31 @@ def main():
         print("opened:", st)
         if not st.get("open"):
             print("the code editor did not open in VR"); return 1
-        if st["keys"] < 60:
-            print(f"only {st['keys']} keys on the keyboard"); bad += 1
+        # The keyboard used to carry every symbol in Python whatever the
+        # question was, and this asked for at least 60 keys to prove it had
+        # arrived. It is the question's own symbols now, so a count proves
+        # nothing - lesson 1 needs four of them. What matters is that the
+        # letters, the editing keys and whatever THIS question needs are all
+        # there, which is what is checked instead.
+        # tools/tests/smokevrkeys.py does it for all 620 questions.
+        have = pg.evaluate("""(() => {
+          const ids = NVRVR.kbPanel.hits.map(h => h.id);
+          return { chars: ids.filter(i => i.startsWith('key')).map(i => i.slice(3)),
+                   ids }; })()""")
+        chars = set(have["chars"])
+        miss = [c for c in "abcdefghijklmnopqrstuvwxyz" if c not in chars]
+        if miss:
+            print(f"letters missing from the keyboard: {''.join(miss)}"); bad += 1
+        for ctl in ("kshift", "kspace", "ktab", "kleft", "kright", "kback", "kenter"):
+            if ctl not in have["ids"]:
+                print(f"editing key {ctl} is not on the keyboard"); bad += 1
+        want = pg.evaluate("NVRVR.vrCode.task.vrKeys || []")
+        gone = [c for c in want if c not in chars]
+        if gone:
+            print(f"this question needs {gone} and the keyboard does not offer them"); bad += 1
+        else:
+            print(f"the keyboard offers all {len(want)} symbol(s) this question needs, "
+                  f"out of {st['keys']} keys in total")
         # the interface is one screen, not a scatter of panels
         panels = pg.evaluate("""(() => {
           const open = ['qPanel','infoPanel','menuPanel','modelPanel','diagPanel']

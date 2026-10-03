@@ -187,6 +187,26 @@ def main():
         tg2 = pg.evaluate("""(() => { const t = NVRVR.targets();
           return t.panels.some(m => m.userData.panel === NVRVR.menuBtn); })()""")
         ok(tg2, "the menu button is still selectable after a recentre")
+
+        # ---- 5. and with every symbol showing, which is the tallest it gets
+        # "More symbols" adds three rows and a number row. The keyboard is
+        # anchored at its middle, so it grows upward as well as down - towards
+        # the screen. The clearance has to hold in that state too, and it is the
+        # state nobody looks at.
+        pg.evaluate("""() => { const h = NVRVR.kbPanel.hits.find(x => x.id === 'kmore');
+          if (h && h.fn) h.fn(); }""")
+        pg.wait_for_timeout(400)
+        wide = pg.evaluate("NVRVR.workspaceBounds()")
+        kb = [x for x in wide if x["name"] == "keyboard"]
+        ok(bool(kb), "the keyboard is still there with every symbol showing")
+        if kb:
+            print(f"  with every symbol showing the keyboard spans "
+                  f"{kb[0]['pitch0']:.1f} to {kb[0]['pitch1']:.1f} degrees")
+        for i in range(len(wide)):
+            for j in range(i + 1, len(wide)):
+                a, c = wide[i], wide[j]
+                ok(not overlap(a, c),
+                   f"{a['name']} and {c['name']} stay clear with every symbol showing")
         b.close()
 
     print()

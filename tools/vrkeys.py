@@ -24,9 +24,20 @@ VR = (SITE / "js" / "vr.js").read_text()
 
 
 def keyboard():
-    m = re.search(r"const KEYS = \[(.*?)\n    \];", VR, re.S)
-    if not m:
-        print("could not find the KEYS table in js/vr.js"); sys.exit(2)
+    """Every character the headset keyboard can produce.
+
+    The keyboard used to be one KEYS table of fixed rows. It is three lists now
+    - LETTERS, DIGITS and SYMBOLS - because what a question shows is chosen from
+    them per question. This reads all three: what matters here is whether a
+    character can be typed in the headset at all, which is the full set, and
+    whether the right ones are showing on the right question is
+    tools/tests/smokevrkeys.py.
+    """
+    parts = [re.search(r"const %s = (.*?);\n" % name, VR, re.S)
+             for name in ("LETTERS", "DIGITS", "SYMBOLS")]
+    if not all(parts):
+        print("could not find the LETTERS, DIGITS and SYMBOLS lists in js/vr.js"); sys.exit(2)
+    m = type("M", (), {"group": lambda self, n: "\n".join(p.group(1) for p in parts)})()
     chars = set()
     # both quotes: a double quote key has to be written '"' in the source
     for q, s in re.findall(r'"((?:[^"\\]|\\.)*)"' + "|" + r"'((?:[^'\\]|\\.)*)'", m.group(1)):

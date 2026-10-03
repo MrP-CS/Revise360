@@ -51,6 +51,19 @@
         "Say so when it is.",
         "",
         "Otherwise carry on as normal."
+       ],
+       "vrKeys": [
+        "!",
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        ":",
+        "<",
+        "=",
+        ">",
+        "?"
        ]
       },
       {
@@ -74,7 +87,18 @@
        ],
        "teach": {
         "say": "A line of spaces looks empty on the screen. To Python it is not empty at all. .strip() hands back a copy with the spaces taken off each end. A line of nothing but spaces strips down to nothing at all."
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "'",
+        "(",
+        ")",
+        ".",
+        "<",
+        "=",
+        ">"
+       ]
       },
       {
        "t": "code",
@@ -130,7 +154,20 @@
         "think": "The spaces have to come off before the line is compared with the empty text.",
         "syntax": "thing = input().strip()",
         "diagram": "pyvalidate"
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "'",
+        "(",
+        ")",
+        "+",
+        ".",
+        ":",
+        "<",
+        "=",
+        ">"
+       ]
       },
       {
        "t": "code",
@@ -202,7 +239,23 @@
         "out": [
          "town is Bury"
         ]
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        "+",
+        ",",
+        ".",
+        ":",
+        "<",
+        "=",
+        ">",
+        "?"
+       ]
       },
       {
        "t": "code",
@@ -240,6 +293,34 @@
         "Use the number.",
         "",
         "Say what was wrong when it was not digits."
+       ],
+       "vrKeys": [
+        "!",
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        "*",
+        "+",
+        "-",
+        ".",
+        "/",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">",
+        "?"
        ]
       },
       {
@@ -264,7 +345,28 @@
        ],
        "teach": {
         "say": "isdigit() wants every single character to be a digit. A decimal point is not a digit. A minus sign is not a digit either. An empty piece of text has no digits in it at all."
-       }
+       },
+       "vrKeys": [
+        "\"",
+        "'",
+        "(",
+        ")",
+        "*",
+        "+",
+        "-",
+        ".",
+        "/",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+       ]
       },
       {
        "t": "code",
@@ -338,7 +440,35 @@
         "think": "One check on the whole line, made before anything is cast.",
         "syntax": "if thing.isdigit():",
         "diagram": "pyvalidate"
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        "*",
+        "+",
+        ",",
+        "-",
+        ".",
+        "/",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">"
+       ]
       },
       {
        "t": "code",
@@ -398,7 +528,33 @@
          "There is one place inside the if where it belongs."
         ],
         "diagram": "pyvalidate"
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "'",
+        "(",
+        ")",
+        "*",
+        "+",
+        "-",
+        ".",
+        "/",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">"
+       ]
       },
       {
        "t": "code",
@@ -472,7 +628,19 @@
         "think": "Each allowed word needs a comparison of its own, joined with or.",
         "syntax": "if thing == \"one\" or thing == \"two\":",
         "diagram": "pyif"
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        ":",
+        "<",
+        "=",
+        ">"
+       ]
       }
      ]
     },
@@ -518,6 +686,33 @@
         "Say so.",
         "",
         "Anything else is inside the range, 1 and 10 included."
+       ],
+       "vrKeys": [
+        "!",
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        "*",
+        "+",
+        "-",
+        "/",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">",
+        "?"
        ]
       },
       {
@@ -543,7 +738,28 @@
        ],
        "teach": {
         "say": "> and < leave the two limits out. >= and <= let them in. This is the one mistake worth learning to spot. The program looks right and refuses a value it should accept."
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "'",
+        "(",
+        ")",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">"
+       ]
       },
       {
        "t": "code",
@@ -607,7 +823,32 @@
        "hint": {
         "think": "Which two comparisons let a value equal the limit as well as pass it?",
         "syntax": "value >= low and value <= high"
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "'",
+        "(",
+        ")",
+        "*",
+        "+",
+        "-",
+        "/",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">"
+       ]
       },
       {
        "t": "code",
@@ -689,7 +930,35 @@
         "out": [
          "boxes: 2"
         ]
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        "*",
+        "+",
+        ",",
+        "-",
+        "/",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">",
+        "?"
+       ]
       },
       {
        "t": "code",
@@ -727,6 +996,30 @@
         "Use the number, still inside the try.",
         "Catch the ValueError int() raises when the text cannot be read.",
         "Say what was wrong, instead of the program stopping."
+       ],
+       "vrKeys": [
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        "*",
+        "+",
+        "-",
+        "/",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "=",
+        "?"
        ]
       },
       {
@@ -819,7 +1112,35 @@
          "    # cast it, then check the range in here"
         ],
         "diagram": "pyvalidate"
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        "*",
+        "+",
+        ",",
+        "-",
+        ".",
+        "/",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">"
+       ]
       },
       {
        "t": "code",
@@ -895,7 +1216,33 @@
         "think": "The limits are in variables now, but the comparison is the same one.",
         "syntax": "if value >= low and value <= high:",
         "diagram": "pyvalidate"
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        "*",
+        "+",
+        "-",
+        "/",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">"
+       ]
       }
      ]
     },
@@ -941,6 +1288,29 @@
         "Say so when there are too few.",
         "",
         "Otherwise it is long enough."
+       ],
+       "vrKeys": [
+        "!",
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">",
+        "?"
        ]
       },
       {
@@ -964,7 +1334,27 @@
        ],
        "teach": {
         "say": "A length check on exactly the boundary length is where < and <= part company. One of them allows the boundary and the other refuses it."
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "'",
+        "(",
+        ")",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "<",
+        "=",
+        ">"
+       ]
       },
       {
        "t": "code",
@@ -1010,7 +1400,28 @@
        "hint": {
         "think": "At the moment a length of exactly `8` is being refused. Which comparison refuses it?",
         "syntax": "if len(thing) < limit:"
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "'",
+        "(",
+        ")",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">"
+       ]
       },
       {
        "t": "code",
@@ -1111,7 +1522,30 @@
         "out": [
          "ok"
         ]
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">",
+        "?"
+       ]
       },
       {
        "t": "code",
@@ -1147,6 +1581,33 @@
         "Say so when all three parts of the condition are true.",
         "",
         "Anything else is the wrong shape."
+       ],
+       "vrKeys": [
+        "!",
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        ",",
+        ".",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">",
+        "?",
+        "[",
+        "]"
        ]
       },
       {
@@ -1233,7 +1694,33 @@
          "True",
          "True"
         ]
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "'",
+        "(",
+        ")",
+        ",",
+        ".",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">",
+        "[",
+        "]",
+        "_"
+       ]
       },
       {
        "t": "code",
@@ -1303,7 +1790,32 @@
          "The length has to be asked about first, before either slice."
         ],
         "diagram": "pystring"
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "'",
+        "(",
+        ")",
+        ",",
+        ".",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">",
+        "[",
+        "]"
+       ]
       },
       {
        "t": "code",
@@ -1413,7 +1925,37 @@
          "Then compare that number with `31`."
         ],
         "diagram": "pystring"
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        "*",
+        "+",
+        ",",
+        "-",
+        ".",
+        "/",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">",
+        "[",
+        "]"
+       ]
       }
      ]
     },
@@ -1461,6 +2003,21 @@
         "Say what was wrong with it.",
         "Read another one, which is what gives the user a second go.",
         "Once the loop has ended the value has passed, so it is safe to use."
+       ],
+       "vrKeys": [
+        "!",
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        "+",
+        ",",
+        ":",
+        "<",
+        "=",
+        ">",
+        "?"
        ]
       },
       {
@@ -1490,7 +2047,28 @@
        ],
        "teach": {
         "say": "A program can do three things with bad input. It can refuse the value and stop, or ignore it and carry on. The third way is to ask again, which is a validation loop. That is the friendliest of the three."
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "'",
+        "(",
+        ")",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">"
+       ]
       },
       {
        "t": "code",
@@ -1519,7 +2097,33 @@
        ],
        "teach": {
         "say": "This program takes the other choice of the three. It refuses the bad value and says nothing more about it. The rest of the program then carries on. Nothing is asked again and nothing stops."
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "'",
+        "(",
+        ")",
+        "*",
+        "+",
+        "-",
+        ".",
+        "/",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">"
+       ]
       },
       {
        "t": "code",
@@ -1596,7 +2200,35 @@
          "1 to 9 only",
          "picked 4"
         ]
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        "*",
+        "+",
+        ",",
+        "-",
+        "/",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">",
+        "_"
+       ]
       },
       {
        "t": "code",
@@ -1664,7 +2296,20 @@
         "think": "An if asks once. What asks again and again until the answer changes?",
         "syntax": "while condition:",
         "diagram": "pywhile"
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "'",
+        "(",
+        ")",
+        "+",
+        ".",
+        ":",
+        "<",
+        "=",
+        ">"
+       ]
       },
       {
        "t": "code",
@@ -1733,7 +2378,21 @@
          "Inside the loop say what the choices are and read another one."
         ],
         "diagram": "pywhile"
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        "+",
+        ",",
+        ":",
+        "<",
+        "=",
+        ">"
+       ]
       },
       {
        "t": "code",
@@ -1819,7 +2478,35 @@
          "Inside the loop choose the message that fits, then read another line."
         ],
         "diagram": "pyvalidate"
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        "*",
+        "+",
+        ",",
+        "-",
+        ".",
+        "/",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">"
+       ]
       }
      ]
     },
@@ -1867,6 +2554,29 @@
         "Let them in when they match.",
         "",
         "Turn them away when they do not."
+       ],
+       "vrKeys": [
+        "!",
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">",
+        "?"
        ]
       },
       {
@@ -1891,7 +2601,27 @@
        ],
        "teach": {
         "say": "== compares exactly, character for character. A capital letter is a different character from a small one. A space on the end is a character too. That is why passwords are case sensitive."
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "'",
+        "(",
+        ")",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "<",
+        "=",
+        ">"
+       ]
       },
       {
        "t": "code",
@@ -1950,7 +2680,28 @@
        "hint": {
         "think": "At the moment one match out of two is enough. Which joining word needs both sides to be true?",
         "syntax": "if a == b and c == d:"
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "'",
+        "(",
+        ")",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">"
+       ]
       },
       {
        "t": "code",
@@ -1996,6 +2747,33 @@
         "Leave the loop at once, so nothing more is read.",
         "This line is only reached when the attempt was wrong.",
         "Count that attempt and go round again."
+       ],
+       "vrKeys": [
+        "!",
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        "*",
+        "+",
+        ",",
+        "-",
+        "/",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">"
        ]
       },
       {
@@ -2057,7 +2835,32 @@
          "One word, inside the if, leaves the loop at once."
         ],
         "diagram": "pywhile"
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "'",
+        "(",
+        ")",
+        "*",
+        "+",
+        "-",
+        "/",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">"
+       ]
       },
       {
        "t": "code",
@@ -2159,7 +2962,34 @@
          "After the loop, the count tells you whether all three were used."
         ],
         "diagram": "pywhile"
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        "*",
+        "+",
+        ",",
+        "-",
+        "/",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">"
+       ]
       },
       {
        "t": "code",
@@ -2284,7 +3114,37 @@
         "out": [
          "beech 9"
         ]
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        "*",
+        "+",
+        ",",
+        "-",
+        ".",
+        "/",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">",
+        "[",
+        "]"
+       ]
       }
      ]
     },
@@ -2339,6 +3199,31 @@
         "Say what was wrong with it.",
         "Read another score.",
         "Both values have passed, so build the line and display it."
+       ],
+       "vrKeys": [
+        "!",
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        "+",
+        ".",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">",
+        "?"
        ]
       },
       {
@@ -2371,7 +3256,33 @@
        ],
        "teach": {
         "say": "A full check runs in order: first the type, then the range. The range test never runs on text the type test has refused. That is exactly why the order matters."
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "'",
+        "(",
+        ")",
+        "*",
+        "+",
+        "-",
+        ".",
+        "/",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">"
+       ]
       },
       {
        "t": "code",
@@ -2424,7 +3335,20 @@
          "if, else, for and while lines all end the same way.",
          "One of them on this program does not."
         ]
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "'",
+        "(",
+        ")",
+        "+",
+        ".",
+        ":",
+        "<",
+        "=",
+        ">"
+       ]
       },
       {
        "t": "code",
@@ -2508,7 +3432,34 @@
         "think": "You know the line is all digits by this point, so it is safe to cast it here.",
         "syntax": "int(thing) < low or int(thing) > high",
         "diagram": "pyvalidate"
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "'",
+        "(",
+        ")",
+        "*",
+        "+",
+        "-",
+        ".",
+        "/",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">",
+        "_"
+       ]
       },
       {
        "t": "code",
@@ -2606,7 +3557,35 @@
          "After both loops, build the one line and display it."
         ],
         "diagram": "pyvalidate"
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        "*",
+        "+",
+        ",",
+        "-",
+        ".",
+        "/",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">"
+       ]
       },
       {
        "t": "code",
@@ -2723,7 +3702,35 @@
          "False",
          "False"
         ]
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        "*",
+        "+",
+        ",",
+        "-",
+        ".",
+        "/",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">"
+       ]
       },
       {
        "t": "code",
@@ -2830,7 +3837,35 @@
          "Display the one line after both loops have ended."
         ],
         "diagram": "pyvalidate"
-       }
+       },
+       "vrKeys": [
+        "!",
+        "\"",
+        "#",
+        "'",
+        "(",
+        ")",
+        "*",
+        "+",
+        ",",
+        "-",
+        ".",
+        "/",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        ":",
+        "<",
+        "=",
+        ">"
+       ]
       }
      ]
     },

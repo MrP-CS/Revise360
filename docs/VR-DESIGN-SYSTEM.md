@@ -76,17 +76,33 @@ One anchor is taken from the pupil's gaze when a question opens. Nothing follows
 the head afterwards. **✛ Recentre**, in the title bar, retakes it and moves the
 screen and the keyboard together.
 
-| | distance | pitch | size | across |
+| | distance | placed by | size | across |
 |---|---|---|---|---|
-| **the screen** | 2.05 m | +4° | 2.90 m wide, 1.79 m tall | 70.5° wide, −20° to +28° |
-| **the keyboard** | 1.80 m | −33° | 2.50 m wide | −44° to −22° |
+| **the screen** | 2.05 m | centre at +4° | 2.90 m wide, 1.79 m tall | 70.5° wide, −19.6° to +27.6° |
+| **the keyboard** | 1.80 m | **top edge** at −23° | 2.50 m wide | 69.6° wide, down to −43° |
+| **the menu button** | 1.70 m | centre at −24°, 52° left | 0.34 m wide | −57.7° to −46.3° yaw |
 
-Nothing is to the side, nothing is nearer than 1.8 m, nothing is above +28° or
-below −44°. A pupil mostly moves their eyes.
+The keyboard is placed by its top edge rather than its middle because its height
+depends on the question: four symbols is six rows, every symbol is nine. Placed
+by the middle it grew upward as well as down, and with every symbol showing its
+top reached exactly the bottom of the screen. Pinned by the top, extra rows go
+downwards, where there is nothing.
 
-The panorama directly behind the screen is dimmed by a plane 22% wider than it,
-at 62% opacity — the page blurs and darkens the scene behind an open question
-for the same reason. The room is visible around every edge, and is not replaced.
+The menu button is out to the lower left, outside both. It is **fixed to the
+workspace**: it does not follow the gaze, and **✛ Recentre** moves it with
+everything else. Left rather than right because the right of the keyboard
+carries Backspace, Enter and the arrows.
+
+`tools/tests/smokevrbounds.py` measures all three off the meshes and fails if any
+two come within 2° of each other, in the default state and with every symbol
+showing. That is not housekeeping: every surface here is drawn with depth
+testing off, so which one a ray reaches is decided by render order, and "they do
+not overlap" is the only reason the right one wins.
+
+**Nothing is drawn over the screen.** There was a dimming plane behind it once,
+22% wider and 30% taller, at 62% opacity. The screen's own canvas is opaque, so
+behind the screen it was never visible — all that showed was the overhang, which
+fell across the top rows of the keyboard. It is gone and must not come back.
 
 ## Type, and how big it ends up
 
@@ -123,12 +139,69 @@ takes the gap out.
 
 ## The keyboard, and nothing else on it
 
-Seven rows of characters, then one row of controls: Shift, Space, Tab, the four
-arrows, Line start, Line end, Clear line, Back, Enter.
+Three rows of letters, always. Then the number row, **only when the question
+works with numbers**. Then the symbols **that question needs and no others**.
+Then one row of controls: Shift, Space, Tab, the four arrows, Line start, Line
+end, Clear line, Back, Enter.
 
-Which characters it must carry is not a judgement. `tools/vrkeys.py` reads every
-starter, model solution, worked example, hint and required technique in the
-course and fails if one of them cannot be typed. 87 are needed; 98 are there.
+It used to be seven fixed rows — 32 symbols whatever was on the screen, with a
+colon, a comma, a full stop and an apostrophe stuck on the ends of the letter
+rows. A pupil writing `print("Hello")` had to find the brackets and the quote
+among braces, pipes, carets and a pound sign. Lesson 1 now shows four symbols:
+`(`, `)`, `"`, `'`.
+
+### How the set is worked out
+
+`tools/vrsymbols.py` does it at build time and writes `vrKeys` onto each public
+task. It reads the question's starter, the program it shows, its worked example,
+its hint, the lines it requires, the values it prescribes, the output it demands
+— and the model solution, which is teacher-only and never leaves the build. A
+set of characters is not a solution: knowing a question needs `(`, `)` and `"`
+does not tell you `print("Hello")`, in what order, or with what inside it.
+
+It errs large on purpose, because a question is marked by running it and any
+Python that produces the right output is accepted:
+
+- quotes travel together — one implies the other;
+- a bracket implies its partner;
+- a comparison brings `<`, `>`, `=` and `!`, so `>=` is typable where the
+  solution only used `>`;
+- the technique the question is about brings its own symbols whether or not the
+  stored solution used them.
+
+An `=` on its own does **not** bring the comparison family. Every assignment has
+one, and letting it count put the comparison row on 559 of the 620 questions,
+which is not a simplification of anything.
+
+### The way out
+
+**More symbols** is always there, and shows all 32. The derivation errs large
+but it is still a derivation, and a pupil who has thought of an answer nobody
+anticipated must be able to type it. A paired physical keyboard is never
+filtered at all. Without both of those, a mistake in the derivation would be a
+question that cannot be answered.
+
+### Support fades because the Python does
+
+Nothing is hard-coded by lesson number. The symbol row grows because the
+programs do:
+
+| | median symbols | range |
+|---|---|---|
+| Python lesson 1 | 7 | 4–13 |
+| Python lesson 5 | 14 | 9–16 |
+| Python lesson 13 | 19 | 10–20 |
+
+### What checks it
+
+`tools/vrkeys.py` reads `LETTERS`, `DIGITS` and `SYMBOLS` from `js/vr.js` and
+fails if any character the course needs cannot be typed in the headset at all.
+87 are needed; 98 are there.
+
+`tools/tests/smokevrkeys.py` goes further and checks all 620 questions: that
+each carries its own key list, that everything in that question can be typed
+from it, and that the renderer still reads the metadata, still reflows rather
+than greying keys out, and still offers the way out.
 
 **Run, Check my answer, Hint, Syntax reminder, Read aloud and I need help are
 not on the keyboard.** They are on the screen, in the places the page puts them.
@@ -178,3 +251,14 @@ and it was the wrong design — it read as a VR utility rather than as Revise 36
 other panel is open beside the screen and the keyboard, and
 `tools/tests/sidebyside.py` exists so the question "does this obviously look like
 the same interface?" can be answered by looking.
+
+Six more things that were defects, and that the checks now refuse:
+
+| defect | what it was | what fails if it returns |
+|---|---|---|
+| an opaque panel over the monitor | the dimming plane, drawn after the keyboard with depth testing off | `smokevrbounds` |
+| a panel across the top of the keys | the same plane, 30% taller than the screen | `smokevrbounds` |
+| the menu drifting with the gaze | `menuYaw += d * .08`, placed from the head | `smokevrbounds` |
+| the menu left out of the raycast | `targets()` returned only the screen, the keys and a diagram | `smokevrbounds` |
+| every symbol regardless of the question | seven fixed rows of punctuation | `smokevrkeys` |
+| a question missing a key it needs | — | `smokevrkeys`, `vrkeys` |

@@ -36,6 +36,7 @@ python3 buildws.py                # the worksheet specs and .docx files
 python3 mkdeck.py PY && node deckgen.js deckspecs/deckPY.json PR
 python3 markdata.py --write       # mark prescribed data in new questions (idempotent)
 python3 mkguides.py               # the two printable Python guides
+python3 vrsymbols.py --write      # which symbol keys each Python question shows
 python3 recoverwalls.py --write   # nw-l01 and nw-l06: wall text from l1.py/l6.py
 ```
 
@@ -56,7 +57,7 @@ it exits non-zero if a wall card matches no station.
 
 ## Checking
 
-Twenty-four checks. Run them all; each prints a single sentence at the end and exits
+Twenty-six checks. Run them all; each prints a single sentence at the end and exits
 non-zero on a failure.
 
 | check | what it holds | last run |
@@ -77,7 +78,9 @@ non-zero on a failure.
 | `tools/tests/smokeparity.py` | every Python activity is the same question on both interfaces | 620 activities, 0 differences |
 | `tools/tests/smokedraft.py` | a program typed on one is found on the other, and survives a reload | pass |
 | `tools/tests/smokepyfail.py` | a runtime that does not arrive is said, reported and recoverable | pass |
-| `tools/vrkeys.py` | every character the course needs can be typed in the headset | 87 needed, 98 typable |
+| `tools/vrkeys.py` | every character the course needs can be typed in the headset at all | 87 needed, 98 typable |
+| `tools/tests/smokevrkeys.py` | every Python question can be typed from the keys that question shows | 620 questions, 0 short |
+| `tools/tests/smokevrbounds.py` | nothing covers the monitor, and the menu is always selectable | pass |
 | `tools/recoverwalls.py` | the wall text stored for nw-l01, nw-l04, nw-l06 and topic 2.5 is still what their scripts paint | 35 stations, 0 adrift |
 | `tools/tests/smokevrcomfort.py` | the screen and the keyboard are where a seated pupil can read and reach them | pass |
 | `tools/tests/sidebyside.py` | the page and the headset's screen, side by side for five lessons | read, not asserted |
@@ -89,7 +92,8 @@ non-zero on a failure.
 ```bash
 for t in verifycode verifyref checkws audit_claims audit_exposure; do python3 tools/$t.py; done
 for t in smoketok smokegate smokemarks smokeplans smokepacks smokeguides \
-         smokevrcode smokeparity smokedraft smokepyfail smokevrcomfort; do
+         smokevrcode smokeparity smokedraft smokepyfail smokevrcomfort \
+         smokevrbounds smokevrkeys; do
   python3 tools/tests/$t.py; done
 python3 tools/vrkeys.py
 python3 tools/recoverwalls.py
@@ -139,6 +143,17 @@ the injected fault showed it.
   none, compared the empty set, and exited before writing anything — so the two
   printed guides could not be rebuilt at all for several commits. `smokeguides.py`
   had been saying so the whole time, as "older than player.js".
+- `smokevrbounds.py` computed each surface's box from the layout constants, so it
+  reported where the layout MEANT to put things rather than where they were.
+  Breaking the menu's placement left the button somewhere else entirely and it
+  still said it was tucked out to the left. It measures the meshes now. Its
+  second fault was subtler: it took a world axis-aligned box around each plane,
+  and a plane pitched 35 degrees back is shorter that way than it really is, so
+  the keyboard read as 20 degrees tall when it is 25 — the difference between
+  "clear of the screen" and "touching it" once every symbol was showing.
+- `smokevrkeys.py` checked for the words "More symbols" to prove the escape
+  hatch existed. The phrase is in a comment directly above the button, so
+  deleting the button passed. It matches the control's id.
 - `smokeparity.py` and `smokevrcode.py` both passed against the headset's screen
   while a disabled Run button was being left out of the hit list entirely, which
   read as "the screen has no Run control". A disabled control is now a hit area

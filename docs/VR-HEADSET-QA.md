@@ -65,7 +65,18 @@ L1  L3  L6  L10 L13
 [ ] [ ] [ ] [ ] [ ]  Python is already ready, or says what it is doing, by the first code question
 [ ] [ ] [ ] [ ] [ ]  A code question opens from its badge
 [ ] [ ] [ ] [ ] [ ]  It opens as ONE screen with the keyboard under it - nothing else floating
+[ ] [ ] [ ] [ ] [ ]  NOTHING dark or opaque sits over any part of the screen
+[ ] [ ] [ ] [ ] [ ]  NOTHING covers the top rows of the keyboard
 [ ] [ ] [ ] [ ] [ ]  The 360 room is still visible around every edge of the screen
+[ ] [ ] [ ] [ ] [ ]  The Menu button is visible, out to the lower left, on its own
+[ ] [ ] [ ] [ ] [ ]  It stays exactly where it is when you turn your head
+[ ] [ ] [ ] [ ] [ ]  You can point at it and press it WHILE the code screen is open
+[ ] [ ] [ ] [ ] [ ]  It is not in the way of the screen or of reaching the keys
+[ ] [ ] [ ] [ ] [ ]  Recentre moves the screen, the keyboard AND the menu together
+[ ] [ ] [ ] [ ] [ ]  The keyboard shows only the symbols this question needs
+[ ] [ ] [ ] [ ] [ ]  Every symbol you actually need to answer it is there
+[ ] [ ] [ ] [ ] [ ]  More symbols shows the rest, and Fewer symbols puts them back
+[ ] [ ] [ ] [ ] [ ]  The symbol row is compact and centred, not a row of dead keys
 [ ] [ ] [ ] [ ] [ ]  It looks like the same window you get on a computer
 [ ] [ ] [ ] [ ] [ ]  The starter code is there, and is what the computer shows
 [ ] [ ] [ ] [ ] [ ]  Keywords, strings, numbers and comments are the colours they are on the computer
